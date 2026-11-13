@@ -197,7 +197,7 @@ Onze lieux hors de Paris. Les noms historiques, les géométries datées et les 
 
 ### 7.1. Ce qui est vérifié
 
-**20 sources** sont enregistrées dans `source-register.csv`. Toutes ont été vérifiées le 2026-11-13 via Crossref (DOI), le catalogue de la BnF (notices, ISBN) ou une page institutionnelle. Les sources sont de niveaux différents : synthèses savantes (Woolf, Scott, Sessions, Higonnet, Morton, Paxton, Rousso, Milward, House & MacMaster, Shepard, Bess, Pavard, Hargreaves, Fassin, Bowen), article évalué (Bojovic et Stanisljevic), ouvrage d’économie historique (Fourastié), source primaire (UNFCCC), page institutionnelle (Nobel). Aucune source n’est inventée ; aucune citation n’est forgée.
+**20 sources** sont enregistrées dans `source-register.csv`. Toutes ont été vérifiées le 2026-11-13 via Crossref (DOI), le catalogue de la BnF (notices, ISBN) ou une page institutionnelle. Les sources sont de niveaux différents : synthèses savantes (Woolf, Scott, Sessions, Higonnet, Morton, Paxton, Rousso, Milward, House & MacMaster, Shepard, Bess, Pavard, Hargreaves, Fassin, Bowen), article évalué (Bojovic et Stanisljevic), ouvrage d’économie historique (Fourastié), source primaire (UNFCCC), page institutionnelle (Nobel). La vérification porte sur les métadonnées, les DOI/ISBN et les notices ; elle ne remplace pas une lecture intégrale. Aucune source n’est inventée ; aucune citation n’est forgée.
 
 ### 7.2. Ce qui n’est pas vérifié
 
@@ -218,7 +218,7 @@ La matrice `coverage-matrix.csv` contient **126 cellules** (9 ères × 14 domain
 - **Moyen** : Vanoise (date et acteurs locaux à confirmer), 2005 (causalité disputée), euro (interprétation), Charlie (cadrage) ; l’interprétation de Maastricht est discutée, mais la correction factuelle est solide.
 - **Faible / à instruire** : Antiquité non romaine, Moyen Âge juridique et scientifique, Renaissance artistique, migrations du XIXe siècle, environnement du XIXe siècle, sciences de la Grande Guerre, religions de 1945-1989, arts contemporains, handicap, LGBTQ+, diasporas.
 
-## Points non résolus
+### Points non résolus
 
 1. Date exacte du baptême de Clovis (496, 498 ou 499) et statut de l’année 496 dans la frise.
 2. Bilan exact du 17 octobre 1961 ; maintien du statut `disputed`.
