@@ -762,7 +762,7 @@ places:
     functions: ["ville religieuse", "centre du Pendjab", "lieu de massacre"]
     events: ["PROP-007"]
     contestations:
-      - "Bilan officiel (379 morts) contre estimations; mémoire et excuses britanniques."
+      - "Bilan officiel (379 morts) contre estimations; mémoire et gestes de repentance britanniques."
     sources: ["SRC-015"]
   - id: "PLACE-012"
     label_current: "Capel Celyn / Tryweryn"

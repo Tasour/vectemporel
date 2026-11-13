@@ -18,12 +18,13 @@
 | Chine populaire | 1949/1978 | La fondation de la RPC et le troisième plénum de 1978 encadrent une séquence politique distincte. | Une seule fiche (cn-1949) pour 29 ans ; la famine, la Révolution culturelle, le hukou et les campagnes de masse sont absents. |
 | Réforme et puissance | 1978/2026 | L’ouverture et la croissance sont centrales. | Une seule fiche (cn-deng) pour 48 ans ; 1989, 1997, 2001, 2008 et 2020 sont absents. Le label « puissance » est téléologique. |
 
-### 1.2. Quatre périodisations comparées
+### 1.2. Cinq périodisations comparées
 
 1. **Politique (actuelle, POL-1).** Souveraineté, dynasties, régimes. Lisible, mais survalorise la continuité de l’État et la capitale.
-2. **Politique alternative (POL-2/POL-3).** 1895-1949 comme séquence autonome (défaite sino-japonaise, réformes, révolution, parti-État, guerre, guerre civile) ; à l’intérieur, 1912-1927, 1927-1937, 1937-1949. Plus fidèle à la République et à la guerre.
-3. **Sociale/économique (SOC-1).** Révolution commerciale Song, croissance démographique Qing, industrialisation tardive, collectivisation, réformes, urbanisation. Fait apparaître les paysans, les migrants et les inégalités.
-4. **Culturelle/religieuse/environnementale (CULT-1).** Bouddhisme, synthèse néo-confucéenne, sécularisation, Révolution culturelle, recompositions religieuses, crises du fleuve Jaune et pollution. Fait apparaître les croyances et la nature.
+2. **Dynastique et impériale (POL-2).** Shang, Zhou, Qin, Han, divisions, Sui-Tang, Song, Yuan, Ming, Qing. Plus fidèle aux institutions impériales, mais masque les continuités sociales.
+3. **République et révolutions (POL-3).** 1895-1949 comme séquence autonome (défaite sino-japonaise, réformes, révolution, parti-État, guerre, guerre civile) ; à l’intérieur, 1912-1927, 1927-1937, 1937-1949. Plus fidèle à la République et à la guerre.
+4. **Sociale/économique (SOC-1).** Révolution commerciale Song, croissance démographique Qing, industrialisation tardive, collectivisation, réformes, urbanisation. Fait apparaître les paysans, les migrants et les inégalités.
+5. **Culturelle/religieuse/environnementale (CULT-1).** Bouddhisme, synthèse néo-confucéenne, sécularisation, Révolution culturelle, recompositions religieuses, crises du fleuve Jaune et pollution. Fait apparaître les croyances et la nature.
 
 **Recommandation.** Conserver les cinq macro-ères pour l’interface, mais : (a) renommer l’ère 1 « Shang, Zhou et Royaumes combattants » ; (b) renommer l’ère 2 « Empires et divisions » et y ajouter des sous-périodes Qin-Han / Division / Sui-Tang / Song-Yuan / Ming-Qing ; (c) remplir l’ère 3 avec les propositions 001-009 ; (d) sous-périodiser les ères 4 et 5 (1949-1957, 1958-1965, 1966-1976 ; 1978-1992, 1992-2001, 2001-2012, 2012-2026). Le nombre d’ères peut rester à cinq : ce sont les sous-périodes qui portent la précision historique.
 
