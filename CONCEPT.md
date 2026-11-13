@@ -587,13 +587,13 @@ Le POC utilise le hash pour rester simple. Une version production devrait utilis
 
 ### 10.1 Direction
 
-Un **musée de nuit** : fond encre, or discret, typographie éditoriale, papier chaud pour la lecture. La frise est un instrument de mesure, pas un dashboard.
+Un **musée de nuit** : fond encre, or discret, typographie éditoriale, lecteur sombre cohérent avec l’ambiance. La frise est un instrument de mesure, pas un dashboard.
 
 - **Fond** : `#090b0f`, dégradés très doux, grain léger.
 - **Accent** : or `#e6b96f` pour le temps, la marque et les actions.
 - **Pays** : couleur propre (France bleu, Royaume-Uni corail, États-Unis turquoise, Allemagne ambre, Italie vert, Espagne orange) utilisée avec parcimonie.
 - **Tags** : couleurs distinctes pour les points et les années.
-- **Lecteur** : papier `#f3ecde`, encre `#241f18`, serif Newsreader, lettrine.
+- **Lecteur** : fond encre `#090b0f`, halos or/pays, grain animé, serif Newsreader, lettrine. Le papier chaud reste réservé aux images et aux documents anciens.
 - **Typographie** : Fraunces pour les titres, Inter pour l’interface, Newsreader pour la lecture.
 
 ### 10.2 Motifs

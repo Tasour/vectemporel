@@ -3833,3 +3833,281 @@ body.globe-open {
   height: 100% !important;
   touch-action: none;
 }
+
+/* -------------------------------------------------------------------------- */
+/* Reader — thème sombre et ambiance                                          */
+/* -------------------------------------------------------------------------- */
+
+.reader {
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--ink);
+  box-shadow: -30px 0 110px rgba(0, 0, 0, 0.72);
+}
+
+.reader-ambient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.reader-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(82px);
+  opacity: 0.5;
+  will-change: transform;
+}
+
+.reader-glow-a {
+  width: 86%;
+  aspect-ratio: 1;
+  top: -32%;
+  right: -30%;
+  background: radial-gradient(circle, rgba(230, 185, 111, 0.3), transparent 68%);
+  opacity: 0.62;
+  animation: reader-drift-a 18s ease-in-out infinite alternate;
+}
+
+.reader-glow-b {
+  width: 82%;
+  aspect-ratio: 1;
+  bottom: -34%;
+  left: -34%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--country) 34%, transparent), transparent 68%);
+  opacity: 0.46;
+  animation: reader-drift-b 23s ease-in-out infinite alternate;
+}
+
+.reader-ambient::before {
+  position: absolute;
+  inset: -22%;
+  background:
+    radial-gradient(52% 46% at 56% 38%, rgba(96, 146, 186, 0.12), transparent 70%),
+    conic-gradient(from 210deg at 58% 42%, transparent 0 34%, rgba(230, 185, 111, 0.055) 44%, transparent 54% 100%);
+  filter: blur(34px);
+  mix-blend-mode: screen;
+  animation: reader-sheen 28s linear infinite;
+  content: "";
+}
+
+@keyframes reader-sheen {
+  to { transform: rotate(10deg) scale(1.06); }
+}
+
+.reader-grain {
+  position: absolute;
+  inset: -50%;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 9s steps(6) infinite;
+}
+
+@keyframes reader-drift-a {
+  0% { transform: translate3d(-2%, -1%, 0) scale(1.02); }
+  100% { transform: translate3d(2%, 3%, 0) scale(1.12); }
+}
+
+@keyframes reader-drift-b {
+  0% { transform: translate3d(2%, 2%, 0) scale(1.08); }
+  100% { transform: translate3d(-3%, -2%, 0) scale(1); }
+}
+
+.reader-bar,
+.reader-scroll {
+  position: relative;
+  z-index: 1;
+}
+
+.reader-bar {
+  background: linear-gradient(180deg, rgba(11, 14, 19, 0.96), rgba(9, 11, 15, 0.82));
+  border-bottom-color: var(--line);
+  backdrop-filter: blur(14px);
+}
+
+.reader-scroll {
+  background:
+    linear-gradient(180deg, rgba(10, 13, 18, 0.08), rgba(9, 11, 15, 0.44) 56%, rgba(7, 9, 13, 0.74));
+  scrollbar-color: rgba(230, 185, 111, 0.38) transparent;
+}
+
+.reader-scroll::-webkit-scrollbar-thumb {
+  background: rgba(230, 185, 111, 0.28);
+}
+
+.reader-context {
+  color: rgba(241, 236, 226, 0.42);
+}
+
+#reader-title,
+.grok-body h2,
+.grok-body strong,
+.grok-article-title,
+.reader-message h3 {
+  color: var(--ink);
+}
+
+.reader-hashtag {
+  color: color-mix(in srgb, var(--tag) 62%, var(--ink));
+}
+
+.reader-eyebrow,
+.grok-article-kicker,
+.grok-body h3,
+.reader-footer > a svg {
+  color: var(--gold);
+}
+
+.grok-body {
+  color: var(--ink-soft);
+}
+
+.grok-body > p:first-of-type::first-letter {
+  color: var(--gold);
+}
+
+.grok-body h4,
+.reader-summary,
+.reader-message p {
+  color: var(--ink-soft);
+}
+
+.grok-body a {
+  color: var(--gold-bright);
+  text-decoration-color: rgba(230, 185, 111, 0.45);
+}
+
+.grok-body a:hover {
+  text-decoration-color: var(--gold-bright);
+}
+
+.grok-body blockquote {
+  padding: 10px 16px;
+  border-left-color: var(--gold);
+  border-radius: 0 8px 8px 0;
+  background: rgba(255, 255, 255, 0.025);
+  color: var(--ink-soft);
+}
+
+.grok-body img {
+  border: 1px solid var(--line);
+  filter: saturate(0.85) brightness(0.82);
+}
+
+.grok-body th,
+.grok-body td {
+  border-bottom-color: var(--line);
+}
+
+.grok-body th {
+  color: var(--muted);
+}
+
+.grok-article-head,
+.reader-related,
+.reader-footer,
+.reader-source-note {
+  border-color: var(--line);
+}
+
+.grok-article-lang {
+  border-color: var(--line);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--muted);
+}
+
+.reader-source-note,
+.reader-divider,
+.related-heading,
+.skeleton-caption {
+  color: var(--muted);
+}
+
+.reader-source-note span {
+  color: var(--muted-2);
+}
+
+.source-pulse {
+  background: var(--gold);
+  box-shadow: 0 0 10px rgba(230, 185, 111, 0.5);
+}
+
+.reader-divider::before,
+.reader-divider::after {
+  background: var(--line);
+}
+
+.reader-tag {
+  border-color: var(--line);
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--ink-soft);
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.045) 25%,
+    rgba(255, 255, 255, 0.1) 37%,
+    rgba(255, 255, 255, 0.045) 63%
+  );
+  background-size: 400% 100%;
+}
+
+.reader-message {
+  border-color: var(--line);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.reader-candidate,
+.related-chip {
+  border-color: var(--line);
+  background: rgba(255, 255, 255, 0.035);
+  color: var(--ink-soft);
+}
+
+.reader-candidate:hover,
+.related-chip:hover {
+  border-color: rgba(230, 185, 111, 0.45);
+  background: rgba(230, 185, 111, 0.08);
+}
+
+.reader-candidate span,
+.related-chip .rc-year {
+  color: var(--gold);
+}
+
+.reader-link-button {
+  background: var(--gold);
+  color: #1a140d;
+}
+
+.reader-link-button:hover {
+  background: var(--gold-bright);
+}
+
+.reader-retry {
+  border-color: var(--line);
+  color: var(--ink-soft);
+}
+
+.reader-retry:hover {
+  border-color: rgba(230, 185, 111, 0.45);
+  background: rgba(230, 185, 111, 0.06);
+}
+
+.reader-footer > a {
+  border-color: var(--line);
+  background: rgba(255, 255, 255, 0.025);
+  color: var(--ink-soft);
+}
+
+.reader-footer > a:hover {
+  border-color: rgba(230, 185, 111, 0.45);
+  background: rgba(230, 185, 111, 0.06);
+}
+
+.reader-footer p {
+  color: var(--muted-2);
+}
