@@ -1,0 +1,36 @@
+{
+  "name": "vectemporel-history-poc",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Vectemporel — POC de frise historique zoomable, pays par pays, avec filtres par tags et lecteur Grokipedia traduit en français.",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "build:atlas": "node scripts/build-atlas.mjs",
+    "build:globe": "node scripts/build-globe-textures.mjs",
+    "verify": "node scripts/verify-grok.mjs"
+  },
+  "keywords": [
+    "histoire",
+    "timeline",
+    "grokipedia",
+    "poc",
+    "dataviz"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "cheerio": "^1.2.0",
+    "sanitize-html": "^2.18.2"
+  },
+  "devDependencies": {
+    "@napi-rs/canvas": "^1.1.1",
+    "d3-geo": "^3.1.2",
+    "three": "^0.152.2",
+    "topojson-client": "^3.1.0",
+    "world-atlas": "^2.0.2",
+    "world-countries": "^5.1.0"
+  }
+}

@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#090b0f" />
+    <meta
+      name="description"
+      content="Vectemporel — POC d'une frise historique zoomable, pays par pays, avec filtres par tags et lecture intégrée des articles Grokipedia traduits en français."
+    />
+    <title>Vectemporel — L’Histoire, à portée de zoom</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..700&family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="ambient" aria-hidden="true">
+      <span class="ambient-glow ambient-glow-a"></span>
+      <span class="ambient-glow ambient-glow-b"></span>
+      <span class="ambient-grain"></span>
+    </div>
+
+    <div class="app" id="app">
+      <header class="topbar">
+        <a class="brand" href="#" id="brand" aria-label="Vectemporel, revenir à la vue d’ensemble">
+          <svg class="brand-mark" viewBox="0 0 34 34" aria-hidden="true">
+            <path d="M4 17h25m-5.5-5.5L29 17l-5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="4" cy="17" r="2.1" fill="currentColor" />
+            <circle cx="13" cy="17" r="1.35" fill="currentColor" fill-opacity=".55" />
+            <circle cx="21.5" cy="17" r="1.35" fill="currentColor" fill-opacity=".55" />
+          </svg>
+          <span class="brand-copy">
+            <span class="brand-word">Vectemporel</span>
+            <span class="brand-line">L’Histoire, à portée de zoom</span>
+          </span>
+          <span class="brand-badge">POC</span>
+        </a>
+
+        <button class="world-switcher" id="world-btn" type="button" aria-haspopup="dialog" aria-label="Choisir un pays sur le globe">
+          <svg class="world-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="8.6" fill="none" stroke="currentColor" stroke-width="1.3" />
+            <ellipse cx="12" cy="12" rx="3.7" ry="8.6" fill="none" stroke="currentColor" stroke-width="1.1" />
+            <path d="M3.6 12h16.8M5.1 7.5h13.8M5.1 16.5h13.8" fill="none" stroke="currentColor" stroke-width="1.1" />
+          </svg>
+          <span class="world-flag" id="world-flag">🇫🇷</span>
+          <span class="world-copy">
+            <span class="world-name" id="world-name">France</span>
+            <span class="world-sub">Choisir un pays</span>
+          </span>
+          <svg class="world-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+        </button>
+
+        <div class="topbar-actions">
+          <div class="search" id="search">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6" />
+              <path d="m15.5 15.5 5 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+            </svg>
+            <input
+              id="search-input"
+              type="search"
+              placeholder="Rechercher un repère…"
+              autocomplete="off"
+              spellcheck="false"
+              aria-label="Rechercher un événement ou une année"
+              aria-controls="search-results"
+              aria-expanded="false"
+            />
+            <kbd>/</kbd>
+            <div class="search-results" id="search-results" role="listbox" hidden></div>
+          </div>
+          <button class="ghost-button" id="about-btn" type="button" aria-label="Le concept">
+            <span class="about-dot"></span>
+            <span>Le concept</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="workspace">
+        <aside class="sidebar" id="sidebar">
+          <div class="country-heading">
+            <div class="eyebrow">
+              <span class="country-flag" id="country-flag">🇫🇷</span>
+              <span id="country-name">France</span>
+              <span class="eyebrow-sep">/</span>
+              <span id="country-tagline">De la Gaule à la République</span>
+            </div>
+            <h1 id="country-title">L’Histoire de France</h1>
+            <p class="country-intro" id="country-intro"></p>
+            <div class="country-stats">
+              <span><strong id="event-count">53</strong> événements</span>
+              <span class="stat-dot"></span>
+              <span><strong id="era-count">9</strong> périodes</span>
+              <span class="stat-dot"></span>
+              <span><strong id="tag-count">8</strong> lentilles</span>
+            </div>
+          </div>
+
+          <section class="side-section">
+            <div class="section-heading">
+              <span>Lentilles</span>
+              <button class="text-button" id="clear-tags" type="button" hidden>Tout effacer</button>
+            </div>
+            <div class="tag-list" id="tag-list"></div>
+            <p class="filter-summary" id="filter-summary">Tous les événements</p>
+          </section>
+
+          <section class="side-section era-section">
+            <div class="section-heading">
+              <span>Périodes</span>
+              <span class="section-hint">cliquer pour zoomer</span>
+            </div>
+            <div class="era-list" id="era-list"></div>
+          </section>
+
+          <div class="side-tip">
+            <span class="tip-mark">⌁</span>
+            <p>
+              <strong>Molette</strong> ou pincement pour zoomer.
+              <strong>Glisser</strong> pour naviguer.
+              Cliquez sur un point pour lire l’article.
+            </p>
+          </div>
+        </aside>
+
+        <main class="stage-wrap" id="stage-wrap">
+          <div class="stage-toolbar">
+            <div class="view-label">
+              <span class="view-eyebrow" id="center-era">Vue d’ensemble</span>
+              <h2 id="range-label">600 av. J.-C. — 2026</h2>
+            </div>
+            <div class="toolbar-actions">
+              <button class="icon-button" id="share-btn" type="button" title="Copier le lien de cette vue" aria-label="Copier le lien de cette vue">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M10 13.5a4.5 4.5 0 0 0 6.4.1l2.1-2.1a4.5 4.5 0 0 0-6.4-6.4l-1.1 1.1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                  <path d="M14 10.5a4.5 4.5 0 0 0-6.4-.1l-2.1 2.1a4.5 4.5 0 0 0 6.4 6.4l1.1-1.1" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+                </svg>
+              </button>
+              <button class="soft-button" id="recent-btn" type="button">Époque récente</button>
+              <div class="zoom-readout">
+                <span id="zoom-level">Millénaires</span>
+                <span class="zoom-sep"></span>
+                <strong id="zoom-factor">×1</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-shell">
+            <div
+              class="timeline-stage"
+              id="stage"
+              tabindex="0"
+              role="application"
+              aria-label="Frise chronologique zoomable. Utilisez la molette pour zoomer, les flèches pour naviguer, et Entrée sur un événement pour ouvrir son article."
+            >
+              <div class="era-band" id="era-band" aria-label="Périodes historiques"></div>
+              <div class="grid-layer" id="grid-layer" aria-hidden="true"></div>
+              <svg class="stem-layer" id="stem-layer" aria-hidden="true"></svg>
+              <div class="events-layer" id="events-layer"></div>
+              <div class="axis" id="axis" aria-hidden="true"><span class="axis-arrow"></span><span class="axis-origin"></span></div>
+              <div class="ticks-layer" id="ticks-layer" aria-hidden="true"></div>
+              <div class="zoom-hint" id="zoom-hint">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 3v18M3 12h18M7 7l-4 5 4 5m10-10 4 5-4 5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <span>Molette pour zoomer · glisser pour naviguer</span>
+              </div>
+            </div>
+
+            <div class="timeline-bottom">
+              <div class="minimap" id="minimap" aria-label="Aperçu de la frise. Cliquez ou glissez pour vous déplacer.">
+                <div class="minimap-eras" id="minimap-eras" aria-hidden="true"></div>
+                <div class="minimap-events" id="minimap-events" aria-hidden="true"></div>
+                <div class="minimap-window" id="minimap-window" aria-hidden="true">
+                  <span class="minimap-handle minimap-handle-left"></span>
+                  <span class="minimap-handle minimap-handle-right"></span>
+                </div>
+                <span class="minimap-edge minimap-edge-left" id="minimap-start">600 av. J.-C.</span>
+                <span class="minimap-edge minimap-edge-right" id="minimap-end">2026</span>
+              </div>
+              <div class="bottom-controls">
+                <span class="timeline-hint">Chaque point est un repère. Chaque trait relie une date à son événement.</span>
+                <div class="zoom-controls" aria-label="Contrôles de zoom">
+                  <button id="zoom-out" type="button" aria-label="Dézoomer">−</button>
+                  <button id="zoom-fit" type="button">Vue d’ensemble</button>
+                  <button id="zoom-in" type="button" aria-label="Zoomer">+</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <div class="globe-overlay" id="globe-overlay" hidden>
+      <div class="globe-backdrop" data-close-globe></div>
+      <section class="globe-modal" role="dialog" aria-modal="true" aria-labelledby="globe-title">
+        <header class="globe-header">
+          <div class="globe-heading">
+            <div class="globe-eyebrow">Atlas · <span id="globe-total">196</span> pays</div>
+            <h2 id="globe-title">Choisir un pays</h2>
+          </div>
+          <div class="globe-header-actions">
+            <span class="globe-available-count" id="globe-available-count">10 frises disponibles</span>
+            <button class="globe-close" id="globe-close" type="button" aria-label="Fermer l’atlas">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" /></svg>
+            </button>
+          </div>
+        </header>
+
+        <div class="globe-layout">
+          <div class="globe-stage" id="globe-stage">
+            <div class="globe-canvas" id="globe-canvas"></div>
+            <div class="globe-loading" id="globe-loading">
+              <span class="globe-spinner"></span>
+              Chargement de l’atlas…
+            </div>
+            <div class="globe-hint">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M3 12h18M7 7l-4 5 4 5m10-10 4 5-4 5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              Glisser pour tourner · molette pour zoomer
+            </div>
+            <div class="globe-legend">
+              <span><i class="legend-dot legend-available"></i> Frise disponible</span>
+              <span><i class="legend-dot legend-queued"></i> Audit à venir</span>
+            </div>
+          </div>
+
+          <aside class="globe-panel">
+            <div class="globe-search">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="1.5" />
+                <path d="m15.5 15.5 5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+              <input id="globe-search" type="search" placeholder="Rechercher un pays…" autocomplete="off" spellcheck="false" aria-label="Rechercher un pays" />
+            </div>
+
+            <div class="globe-detail" id="globe-detail"></div>
+
+            <div class="globe-list-head">
+              <span>Tous les pays</span>
+              <span id="globe-list-count">196</span>
+            </div>
+            <div class="globe-list" id="globe-list" role="listbox" aria-label="Tous les pays"></div>
+          </aside>
+        </div>
+      </section>
+    </div>
+
+    <div class="tooltip" id="tooltip" role="tooltip" hidden></div>
+
+    <div class="reader-overlay" id="reader-overlay" hidden>
+      <div class="reader-backdrop" data-close-reader></div>
+      <aside class="reader" id="reader" role="dialog" aria-modal="true" aria-labelledby="reader-title">
+        <header class="reader-bar">
+          <div class="reader-brand">
+            <svg class="reader-mark" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2.8 14.6 9l6.6 2.6-6.6 2.6L12 20.4l-2.6-6.2L2.8 11.6 9.4 9 12 2.8Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" />
+            </svg>
+            <span class="reader-brand-name">Grokipedia</span>
+            <span class="reader-brand-tag">lecture intégrée</span>
+            <span class="reader-context" id="reader-context"></span>
+          </div>
+          <div class="reader-actions">
+            <button class="reader-icon-button" id="reader-back" type="button" aria-label="Revenir à l’article précédent" hidden>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </button>
+            <a class="reader-external" id="reader-external" href="#" target="_blank" rel="noopener noreferrer">
+              Original
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </a>
+            <button class="reader-icon-button reader-close" id="reader-close" type="button" aria-label="Fermer le lecteur">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" /></svg>
+            </button>
+          </div>
+        </header>
+
+        <div class="reader-scroll" id="reader-scroll" tabindex="0" aria-label="Contenu de l’article Grokipedia">
+          <header class="reader-article-header">
+            <h2 id="reader-title">Événement</h2>
+            <div class="reader-hashtags" id="reader-tags"></div>
+          </header>
+
+          <div class="grok-state" id="grok-state">
+            <div class="skeleton skeleton-line"></div>
+            <div class="skeleton skeleton-line skeleton-line-90"></div>
+            <div class="skeleton skeleton-line skeleton-line-75"></div>
+            <div class="skeleton skeleton-line skeleton-line-85"></div>
+            <div class="skeleton skeleton-line skeleton-line-60"></div>
+            <p class="skeleton-caption">Connexion et traduction de l’article en français…</p>
+          </div>
+
+          <div class="grok-body" id="grok-body" hidden></div>
+
+          <div class="reader-related" id="reader-related" hidden>
+            <div class="related-heading">Continuer le fil</div>
+            <div class="related-list" id="related-list"></div>
+          </div>
+
+          <footer class="reader-footer">
+            <a id="reader-footer-link" href="#" target="_blank" rel="noopener noreferrer">
+              Ouvrir la page complète sur Grokipedia
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </a>
+            <p>Traduction automatique via Google Translate. Source originale : Grokipedia. Vectemporel est un prototype indépendant, non affilié à Grokipedia.</p>
+          </footer>
+        </div>
+      </aside>
+    </div>
+
+    <div class="modal-overlay" id="about-overlay" hidden>
+      <div class="modal-backdrop" data-close-modal></div>
+      <section class="concept-modal" role="dialog" aria-modal="true" aria-labelledby="concept-title">
+        <button class="modal-close" id="modal-close" type="button" aria-label="Fermer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" /></svg>
+        </button>
+        <div class="concept-eyebrow">Note de concept · POC v0.1</div>
+        <h2 id="concept-title">L’Histoire n’est pas une liste.<br />C’est un territoire.</h2>
+        <p class="concept-lead">
+          Vectemporel est une frise historique zoomable, pays par pays. On commence par la France, on dézoome pour comprendre les grandes périodes, on zoome pour lire un événement, puis on ouvre son article Grokipedia sans quitter l’application.
+        </p>
+
+        <div class="concept-grid">
+          <article class="concept-card">
+            <span class="concept-number">01</span>
+            <h3>Le globe & la flèche</h3>
+            <p>Un globe 3D pour choisir parmi 196 pays, puis une flèche temporelle zoomable. La molette, le pincement et la mini-carte permettent d’aller du millénaire à la décennie.</p>
+          </article>
+          <article class="concept-card">
+            <span class="concept-number">02</span>
+            <h3>Les lentilles</h3>
+            <p>Huit tags traversent les pays : politique, guerres, sciences, arts, religions, société, économie, explorations. Ils transforment la frise en filtre de lecture.</p>
+          </article>
+          <article class="concept-card">
+            <span class="concept-number">03</span>
+            <h3>Le lecteur</h3>
+            <p>Chaque repère ouvre directement son article : titre, hashtags, puis texte traduit. Les événements voisins sont proposés en bas de lecture.</p>
+          </article>
+        </div>
+
+        <div class="concept-cols">
+          <div>
+            <h3 class="concept-subtitle">Ce que montre le POC</h3>
+            <ul class="concept-list">
+              <li><strong>10 pays</strong> et 189 événements curatés, dans un atlas 3D de 196 pays.</li>
+              <li>Une frise réellement zoomable, avec placement intelligent des labels.</li>
+              <li>Filtres par tags, recherche globale, deep links partageables.</li>
+              <li>189/189 pages Grokipedia directes vérifiées.</li>
+              <li>Lecteur Grokipedia traduit en français, avec navigation interne et repli par recherche.</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="concept-subtitle">Limites assumées</h3>
+            <ul class="concept-list">
+              <li>Les articles Grokipedia sont traduits automatiquement en français ; la source originale reste accessible.</li>
+              <li>Les données sont une sélection éditoriale, pas une encyclopédie exhaustive.</li>
+              <li>Pas de compte, pas de quiz, pas de carte historique : c’est un POC de la boucle « explorer → filtrer → lire ».</li>
+              <li>La traduction est automatique et perfectible ; le lecteur extrait des pages publiques. Une version production devrait passer par un accord et une relecture.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="concept-roadmap">
+          <span class="roadmap-label">Ensuite</span>
+          <div class="roadmap-steps">
+            <span><strong>M1</strong> 30 pays, 1 000 repères, back-office éditorial</span>
+            <span><strong>M2</strong> parcours guidés, quiz, répétition espacée</span>
+            <span><strong>M3</strong> comparaison de pays, carte, version enseignant</span>
+          </div>
+        </div>
+
+        <div class="concept-footer">
+          <a href="CONCEPT.md" target="_blank" class="concept-link">Lire la note de concept complète <span>↗</span></a>
+          <button class="concept-cta" id="concept-explore" type="button">Explorer la frise</button>
+        </div>
+      </section>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <script src="data.js"></script>
+    <script src="countries.js"></script>
+    <script src="vendor/three.min.js"></script>
+    <script src="globe-engine.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
