@@ -188,7 +188,7 @@ Une seule fiche pour 48 ans. Manquent 1989, la rétrocession de Hong Kong, l’e
 1. **Aucune source primaire.** Pas d’archives centrales chinoises, d’Academia Historica, d’archives britanniques, tibétaines ou ouïghoures. Les points contestés restent dépendants de la littérature secondaire (OM-015).
 2. **Pas de sources chinoises contemporaines.** Le registre est presque entièrement anglophone. Il manque des travaux chinois, taïwanais et hongkongais, des gazetiers locaux, des mémoires et des enquêtes de terrain.
 3. **Pas de sources taïwanaises.** Taïwan après 1949 est une omission majeure (OM-011).
-4. **Pas de sources sur le Xinjiang et le Tibet contemporains.** Millward et Shakya s’arrêtent largement avant les politiques des années 2010 ; les qualifications et les chiffres sont disputés (OM-010).
+4. **Pas de sources spécialisées sur le Xinjiang et le Tibet contemporains.** Millward et Shakya donnent le contexte historique, mais les politiques des années 2010 ne sont pas traitées avec la précision requise ; les qualifications et les chiffres sont disputés (OM-010).
 5. **Pas de fiche ni de source spécialisée sur le hukou et les migrations.** Naughton en donne le cadre économique, mais l’histoire sociale des migrations reste à faire (OM-005, OM-009).
 6. **Pas de sources sur les sciences, la santé, les arts et l’environnement contemporain.** Ces domaines sont des angles morts (OM-006, OM-007, OM-008).
 7. **Pas de vérification page à page.** Les références sont exactes au niveau du livre, pas de la page. Une double lecture humaine doit reprendre les citations. Les corrections des repères impériaux et de la guerre de l’opium (cn-shang à cn-opium) reposent sur SRC-001 seul ; une seconde synthèse (Cambridge History of China) est nécessaire.

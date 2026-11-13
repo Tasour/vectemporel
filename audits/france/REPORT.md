@@ -67,7 +67,7 @@ Cette omission fausse plusieurs lectures : la citoyenneté (qui est Français ?)
 
 ### 2.4. L’angle mort des femmes
 
-Deux repères seulement : le vote de 1944 et la loi Veil de 1975. Jeanne d’Arc est une femme, mais la fiche la traite comme figure militaire et religieuse, pas comme histoire des femmes. Olympe de Gouges, Berthe Morisot, Marie Curie, Simone Veil comme actrice, la contraception de 1967 et l’IVG constitutionnelle de 2024 sont absentes. Le problème n’est pas d’ajouter des « femmes illustres » : c’est de documenter le travail, la citoyenneté, la maternité, la sexualité, l’éducation et les rapports de genre. Les propositions 002, 004, 005, 012 et 018 sont un début, pas une histoire des femmes.
+Deux repères seulement : le vote de 1944 et la loi Veil de 1975. Jeanne d’Arc est une femme, mais la fiche la traite comme figure militaire et religieuse, pas comme histoire des femmes. Olympe de Gouges, Berthe Morisot, Marie Curie, Simone Veil comme actrice de la loi de 1975, la contraception de 1967 et l’IVG constitutionnelle de 2024 sont absentes. Le problème n’est pas d’ajouter des « femmes illustres » : c’est de documenter le travail, la citoyenneté, la maternité, la sexualité, l’éducation et les rapports de genre. Les propositions 002, 004, 005, 012 et 018 sont un début, pas une histoire des femmes.
 
 ### 2.5. L’angle mort des « Trente Glorieuses » et des « Temps présents »
 

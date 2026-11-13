@@ -12,7 +12,7 @@ country:
   names_historical:
     - "中国 (Zhōngguó)"
     - "中华人民共和国 (Zhōnghuá Rénmín Gònghéguó, 1949-)"
-    - "中華民國 (Zhōnghuá Mínguó, 1912-1949)"
+    - "中華民國 (Zhōnghuá Mínguó, 1912-1949 ; continue à Taïwan après 1949)"
     - "大清 (Dà Qīng, 1644-1912)"
     - "Chine / China (exonymes européens)"
   flag: "🇨🇳"
@@ -27,7 +27,7 @@ scope:
     sont signalées, pas résolues.
   territories_historical:
     - "Empire Qing (1644-1912), y compris la Mandchourie, la Mongolie-Intérieure, le Tibet dans l'orbite Qing et le Xinjiang conquis en 1755-1759"
-    - "Taïwan sous administration Qing (1683-1895), puis colonie japonaise (1895-1945)"
+    - "Taïwan sous administration Qing (1683-1895), colonie japonaise (1895-1945), puis administration de la République de Chine (1945-)"
     - "Hong Kong britannique (1842-1997) et Macao portugais (1557-1999)"
     - "Ports ouverts et concessions étrangères (1842-1945)"
     - "Mandchoukouo (1932-1945)"

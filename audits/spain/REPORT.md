@@ -254,7 +254,7 @@ La matrice de couverture compte **51 cellules couvertes, 7 partielles, 12 vides 
 
 ## Points non résolus
 
-1. **Date exacte de la bataille de Guadalete** : juillet 711 est certain, le jour ne l’est pas.
+1. **Date exacte de la bataille de Guadalete** : juillet 711 est la datation retenue, le jour ne l’est pas.
 2. **Historicité de Covadonga** : la tradition de 722 n’est pas contemporaine ; faut-il conserver le repère comme « tradition » ou le déplacer ?
 3. **Nombre de Juifs expulsés en 1492** : les estimations varient fortement ; le dossier ne fixe pas de chiffre.
 4. **Nombre de Morisques expulsés (1609-1614)** : les estimations varient selon les régions.
