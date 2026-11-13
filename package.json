@@ -10,7 +10,9 @@
     "build:globe": "node scripts/build-globe-textures.mjs",
     "audit:timeline": "node scripts/audit-timeline.mjs",
     "audit:timeline:strict": "node scripts/audit-timeline.mjs --strict",
-    "verify": "node scripts/verify-grok.mjs"
+    "audit:dossiers": "node scripts/check-audit-dossiers.mjs",
+    "verify": "node scripts/verify-grok.mjs",
+    "verify:sources": "node scripts/verify-sources.mjs"
   },
   "keywords": [
     "histoire",

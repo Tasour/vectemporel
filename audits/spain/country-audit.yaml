@@ -1,0 +1,876 @@
+# Vectemporel — dossier pays (méthode v1.0)
+# Audit de première version, non signé. verdict: pending ; scores null.
+# Aucune donnée inventée : les incertitudes sont explicites.
+
+schema_version: "1.0"
+country:
+  id: "spain"
+  iso2: "ES"
+  iso3: "ESP"
+  name_current: "Espagne"
+  names_historical:
+    - "Hispania (romain)"
+    - "Regnum Gothorum (royaume wisigoth)"
+    - "Al-Andalus"
+    - "Reino de Castilla / Corona de Aragón"
+    - "Monarquía Hispánica"
+    - "Reino de España"
+  flag: "🇪🇸"
+
+scope:
+  territory_current: "Espagne péninsulaire, îles Baléares, îles Canaries, villes autonomes de Ceuta et Melilla, eaux territoriales et enclaves."
+  territories_historical:
+    - "Royaume wisigoth (418-711)"
+    - "Émirat et califat de Cordoue, taïfas, royaume nasride de Grenade"
+    - "Couronne de Castille, Couronne d'Aragon, royaume de Navarre"
+    - "Vice-royautés américaines (Nouvelle-Espagne, Pérou, Nouvelle-Grenade, Río de la Plata)"
+    - "Cuba, Porto Rico, Philippines, Guam"
+    - "Protectorat espagnol du Maroc (1912-1956), Sahara occidental, Guinée équatoriale, protectorats et possessions africaines"
+  contested_territories:
+    - "Ceuta et Melilla (souveraineté contestée par le Maroc)"
+    - "Sahara occidental (statut international contesté ; ancienne colonie espagnole)"
+    - "Gibraltar (cédé au Royaume-Uni en 1713 ; revendication espagnole)"
+  regions_autonomous:
+    - "Andalousie"
+    - "Aragon"
+    - "Asturies"
+    - "Baléares"
+    - "Canaries"
+    - "Cantabrie"
+    - "Castille-et-León"
+    - "Castille-La Manche"
+    - "Catalogne"
+    - "Estrémadure"
+    - "Galice"
+    - "La Rioja"
+    - "Madrid"
+    - "Murcie"
+    - "Navarre"
+    - "Pays basque"
+    - "Communauté valencienne"
+    - "Ceuta et Melilla (villes autonomes)"
+  populations_included:
+    - "citoyens espagnols résidant sur le territoire"
+    - "résidents étrangers et immigrés"
+    - "Roms/Calé"
+    - "diasporas séfarades et républicaines"
+    - "populations des territoires coloniaux historiques"
+  populations_excluded:
+    - "populations coloniales non citoyennes avant les réformes du XIXe siècle"
+    - "diasporas qui ne résident pas sur le territoire, traitées comme acteurs transnationaux"
+  diasporas:
+    - "Séfarades expulsés en 1492 et descendants"
+    - "exil républicain de 1939 et descendants"
+    - "émigrants économiques vers l'Amérique latine et l'Europe (XIXe-XXe siècles)"
+    - "communautés espagnoles installées en Amérique latine"
+  temporal:
+    start_edtf: "711"
+    end_edtf: "2026"
+    start_rationale: "Borne actuelle de la frise. Elle correspond à la conquête omeyyade et efface l'Ibérie préromaine, l'Hispanie romaine et le royaume wisigoth. L'audit propose une extension à -218 (conquête romaine), voire plus tôt, avec un prologue ibérique."
+    end_rationale: "Date de travail de l'audit (2026-11-13), pas une borne historique."
+  unit_of_analysis: "fiche-événement"
+  inclusion_criteria:
+    - "événement, processus ou institution attesté par deux sources indépendantes, ou exception documentée"
+    - "acteur ou groupe ayant une capacité d'action documentée, y compris les acteurs sans pouvoir"
+    - "lieu daté, avec toponyme et fonction valides pour la période"
+  exclusion_criteria:
+    - "fait non attesté ou seulement romancé"
+    - "frontière moderne rétroprojetée"
+    - "citation non vérifiée"
+  audience:
+    - "grand public"
+    - "scolaire"
+    - "diasporas"
+    - "recherche"
+  evidence_threshold: "deux sources indépendantes par fiche, ou exception documentée"
+
+governance:
+  editor: ""
+  country_reader: ""
+  method_reader: ""
+  arbiter: ""
+  data_steward: ""
+  sensitivity_expert: ""
+  responsible_editor: ""
+  conflicts_of_interest: []
+
+historiography:
+  schools:
+    - "histoire politique et institutionnelle"
+    - "histoire sociale et du travail"
+    - "histoire culturelle et des représentations"
+    - "histoire des femmes et du genre"
+    - "histoire globale et impériale"
+    - "histoire environnementale"
+    - "études andalouses"
+    - "histoire régionale (Catalogne, Pays basque, Galice)"
+  national_narratives:
+    - "Reconquista comme récit fondateur"
+    - "unité nationale réalisée par les Rois catholiques"
+    - "Siècle d'or et décadence impériale"
+    - "régénération nationale après 1898"
+    - "transition démocratique comme modèle"
+  counter_narratives:
+    - "Al-Andalus pluriel et conflictuel"
+    - "nations périphériques et plurinationalité"
+    - "mémoires républicaines et des vaincus"
+    - "histoire coloniale critique"
+    - "histoire des femmes et des minorités"
+    - "mémoire des victimes du franquisme"
+  structuring_debates:
+    - "711 : invasion, conquête ou processus d'installation ?"
+    - "Covadonga et la construction de la Reconquista"
+    - "convivencia : coexistence réelle ou idéalisation ?"
+    - "1492 : fin de la Reconquista ou triple événement ?"
+    - "Inquisition et légendes noires"
+    - "empire, colonialisme et esclavage"
+    - "1898 : désastre ou crise de régime ?"
+    - "guerre civile, répression et responsabilités"
+    - "franquisme : fascisme ou autoritarisme ?"
+    - "transition : modèle ou amnistie coûteuse ?"
+    - "Catalogne et Pays basque : nations ou régions ?"
+    - "mémoire et lois mémorielles"
+  blind_spots:
+    - "Ibères, Celtes, Lusitaniens et autres populations préromaines"
+    - "Hispanie romaine et royaume wisigoth"
+    - "Berbères, muladíes, mozárabes et esclaves d'al-Andalus"
+    - "juifs séfarades après 1492"
+    - "mudéjars et morisques"
+    - "Roms/Calé"
+    - "femmes, genre et sexualités"
+    - "paysans, jornaleros et communs"
+    - "anarchistes et mouvement ouvrier"
+    - "esclaves et populations coloniales"
+    - "colonialisme africain"
+    - "exil républicain"
+    - "répression franquiste"
+    - "handicap et migrations"
+    - "environnement et catastrophes"
+  key_syntheses:
+    - "SRC-001"
+    - "SRC-002"
+    - "SRC-003"
+    - "SRC-004"
+    - "SRC-008"
+    - "SRC-011"
+    - "SRC-013"
+    - "SRC-014"
+    - "SRC-015"
+    - "SRC-018"
+
+periodizations:
+  - id: "POL-1"
+    label: "Périodisation politique proposée : souverainetés, régimes et ruptures"
+    type: "political"
+    start_edtf: "-0218"
+    end_edtf: "2026"
+    rationale: "Hispanie romaine (-218/409), royaume wisigoth (418/711), al-Andalus et royaumes chrétiens (711/1492), monarchie composite et empire (1492/1808), révolution libérale (1808/1874), Restauration (1874/1931), République et guerre (1931/1939), franquisme (1939/1975), démocratie (1975/2026)."
+    sources: ["SRC-001", "SRC-002", "SRC-008", "SRC-011"]
+    selected: true
+  - id: "SOC-1"
+    label: "Périodisation sociale et économique proposée : travail, démographie, techniques"
+    type: "social_economic"
+    start_edtf: "-0218"
+    end_edtf: "2026"
+    rationale: "Romanisation et esclavage (-218/409), société wisigothe (418/711), économie agraire et marchande d'al-Andalus (711/1492), empire colonial et fiscalité (1492/1808), révolution agraire et industrialisation (1808/1936), société de masse et exode rural (1936/1975), tertiarisation, immigration et précarité (1975/2026)."
+    sources: ["SRC-011", "SRC-012"]
+    selected: false
+  - id: "CULT-1"
+    label: "Périodisation culturelle, religieuse et environnementale proposée"
+    type: "cultural_religious_environmental"
+    start_edtf: "-0218"
+    end_edtf: "2026"
+    rationale: "Paganisme romain et christianisation (-218/589), catholicisme wisigoth (589/711), coexistence et conflits des trois religions (711/1492), État confessionnel et Inquisition (1492/1808), sécularisation et anticléricalisme (1808/1936), national-catholicisme (1939/1975), pluralisme, mémoires et crise environnementale (1975/2026)."
+    sources: ["SRC-004", "SRC-006", "SRC-019"]
+    selected: false
+
+periods:
+  - id: "PERIOD-1"
+    label: "Al-Andalus & Reconquista"
+    start_edtf: "711"
+    end_edtf: "1492"
+    boundary_type: "military"
+    boundary_rationale: "711 : bataille de Guadalete et effondrement du royaume wisigoth. La période mêle al-Andalus et royaumes chrétiens ; le label « Reconquista » est téléologique et doit être discuté."
+    alternatives_considered:
+      - "711-1212 / 1212-1492"
+      - "711-1031 / 1031-1492"
+      - "garder 711-1492 avec sous-périodes"
+    sources: ["SRC-001", "SRC-003"]
+  - id: "PERIOD-2"
+    label: "Empire espagnol"
+    start_edtf: "1492"
+    end_edtf: "1808"
+    boundary_type: "political"
+    boundary_rationale: "1492 est un triple événement (Grenade, expulsion des Juifs, Colomb) ; 1808 ouvre la crise de la monarchie. La période couvre les Habsbourg et les Bourbons."
+    alternatives_considered:
+      - "1492-1700 / 1700-1808"
+      - "1516-1700 / 1700-1808"
+    sources: ["SRC-006", "SRC-008"]
+  - id: "PERIOD-3"
+    label: "Crises & nation"
+    start_edtf: "1808"
+    end_edtf: "1936"
+    boundary_type: "political"
+    boundary_rationale: "1808-1814 : guerre et révolution libérale ; 1814-1874 : construction de l'État libéral ; 1874-1931 : Restauration ; 1931-1936 : République. La borne de 1936 est politique et militaire."
+    alternatives_considered:
+      - "1808-1874 / 1874-1936"
+      - "1808-1898 / 1898-1936"
+    sources: ["SRC-010", "SRC-011"]
+  - id: "PERIOD-4"
+    label: "Guerre civile & franquisme"
+    start_edtf: "1936"
+    end_edtf: "1975"
+    boundary_type: "military"
+    boundary_rationale: "1936-1939 : guerre civile ; 1939-1975 : dictature. La borne de 1936 inclut le coup d'État et la guerre ; 1975 marque la mort de Franco, pas la fin immédiate du régime."
+    alternatives_considered:
+      - "1936-1939 / 1939-1975"
+      - "1939-1975 seulement"
+    sources: ["SRC-013", "SRC-014"]
+  - id: "PERIOD-5"
+    label: "Démocratie"
+    start_edtf: "1975"
+    end_edtf: "2026"
+    boundary_type: "political"
+    boundary_rationale: "1975-1982 : transition ; 1982-2008 : consolidation européenne ; 2008-2026 : crises, 15-M, Catalogne, mémoire. La borne de 1975 est symbolique et doit être complétée par 1978."
+    alternatives_considered:
+      - "1975-1986 / 1986-2026"
+      - "1975-2008 / 2008-2026"
+    sources: ["SRC-015", "SRC-018"]
+
+coverage:
+  matrix_file: "coverage-matrix.csv"
+  omissions_file: "omissions.yaml"
+  target_threshold: "90 % des cellules couvertes ou justifiées"
+  status_definition: "couvert = fiche du dossier (existante ou proposée) documentée avec acteur, lieu et source ; partiel = entrée existante sans acteur, lieu ou source ; vide justifié = absence argumentée ; vide non traité = défaut."
+  status_summary:
+    covered: 51
+    partial: 7
+    justified_empty: 12
+    untreated_empty: 0
+  known_omissions:
+    - "OM-001"
+    - "OM-002"
+    - "OM-003"
+    - "OM-004"
+    - "OM-005"
+    - "OM-006"
+    - "OM-007"
+    - "OM-008"
+    - "OM-009"
+    - "OM-010"
+    - "OM-011"
+    - "OM-012"
+    - "OM-013"
+
+actors:
+  - id: "ACTOR-1"
+    label: "Isabelle Ire de Castille"
+    type: "individual"
+    roles:
+      - "reine de Castille (1474-1504)"
+      - "épouse de Ferdinand II d'Aragon (1469)"
+      - "patronne de l'expédition de Colomb"
+    period_ids: ["PERIOD-1", "PERIOD-2"]
+    places: ["Valladolid", "Grenade", "Tolède", "Séville"]
+    resources:
+      - "légitimité dynastique"
+      - "fiscalité castillane"
+      - "réseaux nobiliaires"
+      - "appui de l'Église"
+    constraints:
+      - "guerre de succession castillane"
+      - "opposition nobiliaire"
+      - "finances de guerre"
+      - "autorité pontificale"
+    networks:
+      - "Ferdinand II d'Aragon"
+      - "Francisco Jiménez de Cisneros"
+      - "Christophe Colomb"
+    counterpowers:
+      - "Cortès de Castille"
+      - "villes"
+      - "noblesse"
+      - "papauté"
+    assessment: "Reine de Castille en titre, elle gouverne avec Ferdinand dans une monarchie composite ; son règne combine expansion territoriale, confessionnalisation et délégation de l'expédition atlantique."
+    memory: "Figure centrale du récit national espagnol, célébrée et contestée pour l'expulsion des Juifs et la politique envers les musulmans."
+    sources: ["SRC-008", "SRC-005"]
+  - id: "ACTOR-2"
+    label: "Christophe Colomb"
+    type: "individual"
+    roles:
+      - "navigateur génois"
+      - "amiral et vice-roi des Indes"
+      - "gouverneur"
+    period_ids: ["PERIOD-2"]
+    places: ["Palos de la Frontera", "Séville", "Guanahani", "Hispaniola"]
+    resources:
+      - "contrat de la couronne (capitulations de Santa Fe, 1492)"
+      - "navires et équipages"
+      - "savoir nautique"
+    constraints:
+      - "contrôle royal"
+      - "méconnaissance des territoires"
+      - "résistance des populations taïnos"
+      - "conflits avec les colons"
+    networks:
+      - "Rois catholiques"
+      - "frères Pinzón"
+      - "colons de Hispaniola"
+    counterpowers:
+      - "couronne"
+      - "colons"
+      - "peuples autochtones"
+    assessment: "Ses voyages ouvrent une route atlantique durable et un processus de conquête et de colonisation ; il n'« invente » pas un monde et ses descriptions sont marquées par les attentes de la couronne."
+    memory: "Objet de commémorations et de controverses en Espagne et en Amérique."
+    sources: ["SRC-008"]
+  - id: "ACTOR-3"
+    label: "Philippe II"
+    type: "individual"
+    roles:
+      - "roi d'Espagne (1556-1598)"
+      - "roi de Portugal (1580-1598)"
+      - "chef de la monarchie catholique"
+    period_ids: ["PERIOD-2"]
+    places: ["Madrid", "Escorial", "Lisbonne", "Bruxelles"]
+    resources:
+      - "empire américain"
+      - "argent de Potosí"
+      - "armée"
+      - "Église"
+      - "réseaux de conseils"
+    constraints:
+      - "finances"
+      - "révolte des Pays-Bas"
+      - "conflit ottoman"
+      - "opposition pontificale"
+    networks:
+      - "conseils de la monarchie"
+      - "noblesse"
+      - "banquiers génois"
+    counterpowers:
+      - "Cortès"
+      - "papauté"
+      - "villes"
+      - "noblesse périphérique"
+    assessment: "La monarchie atteint son extension maximale, mais la fiscalité, les révoltes et la dispersion des fronts limitent la puissance ; l'Armada de 1588 est un échec majeur, pas la fin de la puissance navale."
+    memory: "Symbole de la puissance impériale et du catholicisme militant ; mémoire noire et mémoire dorée."
+    sources: ["SRC-008"]
+  - id: "ACTOR-4"
+    label: "Averroès (Ibn Rushd)"
+    type: "individual"
+    roles:
+      - "philosophe"
+      - "juriste malikite (qadi)"
+      - "médecin"
+    period_ids: ["PERIOD-1"]
+    places: ["Cordoue", "Séville", "Marrakech"]
+    resources:
+      - "savoir aristotélicien"
+      - "réseaux savants"
+      - "protection almohade"
+    constraints:
+      - "orthodoxie almohade"
+      - "exil ou disgrâce"
+      - "limites de la transmission manuscrite"
+    networks:
+      - "philosophes andalous"
+      - "médecins de cour"
+      - "milieux juifs et chrétiens"
+    counterpowers:
+      - "autorités religieuses"
+      - "califat almohade"
+    assessment: "Ses commentaires d'Aristote circulent en latin et en hébreu et nourrissent la scolastique européenne ; son influence dépasse largement al-Andalus."
+    memory: "Figure de la « convivencia » savante, parfois isolée de son contexte politique et religieux."
+    sources: ["SRC-003"]
+  - id: "ACTOR-5"
+    label: "Clara Campoamor"
+    type: "individual"
+    roles:
+      - "avocate"
+      - "députée (1931-1933)"
+      - "militante féministe"
+    period_ids: ["PERIOD-3"]
+    places: ["Madrid", "Barcelone", "Buenos Aires"]
+    resources:
+      - "profession juridique"
+      - "tribune parlementaire"
+      - "réseaux républicains"
+    constraints:
+      - "opposition des partis"
+      - "hostilité d'une partie de la gauche"
+      - "exil après 1936"
+    networks:
+      - "Parti radical"
+      - "mouvements féministes"
+      - "républicains"
+    counterpowers:
+      - "gouvernement"
+      - "partis"
+      - "Église"
+    assessment: "Son intervention décisive aux Cortès permet l'adoption du suffrage féminin le 1er octobre 1931 ; elle paie cette victoire d'un isolement politique."
+    memory: "Figure de l'égalité politique ; son héritage est revendiqué par les féminismes espagnols."
+    sources: ["SRC-013", "SRC-011"]
+  - id: "ACTOR-6"
+    label: "Federica Montseny"
+    type: "individual"
+    roles:
+      - "militante anarchiste"
+      - "membre de la CNT"
+      - "ministre de la Santé (1936-1937)"
+    period_ids: ["PERIOD-3", "PERIOD-4"]
+    places: ["Barcelone", "Madrid", "Toulouse"]
+    resources:
+      - "réseaux anarchistes"
+      - "presse"
+      - "légitimité militante"
+    constraints:
+      - "division du camp républicain"
+      - "hostilité des communistes"
+      - "exil"
+    networks:
+      - "CNT"
+      - "Mujeres Libres"
+      - "gouvernement Largo Caballero"
+    counterpowers:
+      - "État républicain"
+      - "partis communistes"
+      - "Église"
+    assessment: "Première femme ministre en Espagne ; son passage au gouvernement illustre la tension entre anarchisme et institutionnalisation."
+    memory: "Figure de l'anarchisme et de l'émancipation des femmes, souvent minorée dans le récit national."
+    sources: ["SRC-013", "SRC-011"]
+  - id: "ACTOR-7"
+    label: "Dolores Ibárruri"
+    type: "individual"
+    roles:
+      - "dirigeante du PCE"
+      - "députée"
+      - "oratrice"
+    period_ids: ["PERIOD-3", "PERIOD-4"]
+    places: ["Bilbao", "Madrid", "Moscou"]
+    resources:
+      - "parti communiste"
+      - "réseaux internationaux"
+      - "tribune"
+    constraints:
+      - "répression"
+      - "exil"
+      - "ligne soviétique"
+    networks:
+      - "PCE"
+      - "Internationale communiste"
+      - "Front populaire"
+    counterpowers:
+      - "Franco"
+      - "partis rivaux"
+      - "Église"
+    assessment: "Figure majeure de la mobilisation républicaine ; son rôle est indissociable de la politique du PCE et de l'aide soviétique."
+    memory: "Icône de la Résistance, contestée pour son alignement stalinien."
+    sources: ["SRC-013", "SRC-014"]
+  - id: "ACTOR-8"
+    label: "Francisco Franco"
+    type: "individual"
+    roles:
+      - "général"
+      - "chef de l'État (1936/1939-1975)"
+      - "chef du mouvement national"
+    period_ids: ["PERIOD-4"]
+    places: ["Ferrol", "Salamanque", "Madrid", "El Pardo"]
+    resources:
+      - "armée d'Afrique"
+      - "appui de l'Église"
+      - "Falange"
+      - "aide allemande et italienne"
+      - "guerre froide"
+    constraints:
+      - "opposition républicaine"
+      - "isolement international"
+      - "crise économique"
+      - "tensions internes au régime"
+    networks:
+      - "armée"
+      - "Église"
+      - "Falange"
+      - "technocrates"
+      - "États-Unis"
+    counterpowers:
+      - "maquis"
+      - "mouvements ouvriers"
+      - "opposition exilée"
+      - "Église conciliaire"
+    assessment: "Le régime combine répression, national-catholicisme, autoritarisme et développement économique tardif ; la thèse d'un régime « fasciste » est débattue au profit d'une lecture autoritaire et corporatiste."
+    memory: "Mémoire divisée : Valle de los Caídos, exhumations, lois mémorielles."
+    sources: ["SRC-014", "SRC-013"]
+  - id: "ACTOR-9"
+    label: "Juan Carlos Ier"
+    type: "individual"
+    roles:
+      - "roi d'Espagne (1975-2014)"
+      - "chef de l'État"
+      - "artisan de la transition"
+    period_ids: ["PERIOD-5"]
+    places: ["Madrid", "Zarzuela", "Saint-Sébastien"]
+    resources:
+      - "légitimité monarchique"
+      - "armée"
+      - "appuis politiques"
+      - "réseaux internationaux"
+    constraints:
+      - "héritage franquiste"
+      - "pression de l'armée"
+      - "crise économique"
+      - "opposition démocratique"
+    networks:
+      - "Adolfo Suárez"
+      - "partis modérés"
+      - "monarchies européennes"
+    counterpowers:
+      - "armée"
+      - "partis"
+      - "mouvements sociaux"
+      - "opinion"
+    assessment: "Il facilite la transition négociée et la Constitution de 1978, mais son rôle reste dépendant des rapports de force et de la mobilisation sociale."
+    memory: "Figure de la démocratie pour une partie de l'opinion, contestée pour ses liens avec le franquisme et les affaires de corruption."
+    sources: ["SRC-015", "SRC-011"]
+  - id: "ACTOR-10"
+    label: "CNT (Confédération nationale du travail)"
+    type: "collective"
+    roles:
+      - "syndicat anarcho-syndicaliste"
+      - "organisation de masse"
+    period_ids: ["PERIOD-3", "PERIOD-4"]
+    places: ["Barcelone", "Séville", "Saragosse", "Madrid"]
+    resources:
+      - "réseaux ouvriers"
+      - "grèves"
+      - "milices"
+    constraints:
+      - "répression"
+      - "divisions internes"
+      - "accords avec la République"
+    networks:
+      - "UGT"
+      - "FAI"
+      - "Mujeres Libres"
+    counterpowers:
+      - "État"
+      - "patronat"
+      - "partis communistes"
+    assessment: "Force centrale du mouvement ouvrier espagnol, la CNT combine action syndicale, insurrection et participation gouvernementale ; son histoire est traversée de conflits internes."
+    memory: "Figure de l'anarchisme espagnol, entre mémoire romantique et critique des violences."
+    sources: ["SRC-012", "SRC-013"]
+  - id: "ACTOR-11"
+    label: "Mujeres Libres"
+    type: "collective"
+    roles:
+      - "organisation féminine anarchiste (1936-1939)"
+      - "réseau d'éducation et d'émancipation"
+    period_ids: ["PERIOD-3", "PERIOD-4"]
+    places: ["Barcelone", "Madrid", "Valence"]
+    resources:
+      - "réseaux anarchistes"
+      - "écoles"
+      - "presse"
+    constraints:
+      - "guerre"
+      - "marginalisation par les organisations anarchistes"
+      - "répression"
+    networks:
+      - "CNT"
+      - "FAI"
+      - "mouvements féministes"
+    counterpowers:
+      - "direction anarchiste"
+      - "État républicain"
+      - "Église"
+    assessment: "Mujeres Libres articule émancipation des femmes et projet anarchiste ; son action reste limitée par la guerre et les hiérarchies de genre du mouvement."
+    memory: "Mémoire retrouvée par l'histoire des femmes et des mouvements sociaux."
+    sources: ["SRC-013", "SRC-011"]
+  - id: "ACTOR-12"
+    label: "Diaspora séfarade"
+    type: "collective"
+    roles:
+      - "juifs expulsés en 1492 et descendants"
+      - "diaspora transnationale"
+    period_ids: ["PERIOD-2", "PERIOD-3", "PERIOD-4", "PERIOD-5"]
+    places: ["Tolède", "Amsterdam", "Istanbul", "Thessalonique", "New York"]
+    resources:
+      - "réseaux commerciaux"
+      - "langues (ladino, hébreu)"
+      - "communautés urbaines"
+    constraints:
+      - "expulsion"
+      - "statuts d'étrangers"
+      - "persécutions"
+      - "assimilation"
+    networks:
+      - "communautés séfarades"
+      - "marchands méditerranéens"
+      - "réseaux atlantiques"
+    counterpowers:
+      - "États d'accueil"
+      - "Inquisition"
+      - "nationalismes"
+    assessment: "La diaspora séfarade maintient des identités et des réseaux transnationaux ; son histoire ne se réduit pas à l'expulsion de 1492."
+    memory: "Mémoire de l'expulsion, du ladino et de la citoyenneté espagnole accordée tardivement."
+    sources: ["SRC-005"]
+
+places:
+  - id: "PLACE-1"
+    label_current: "Madrid"
+    names_historical: ["Mayrit (IXe siècle)", "Madrid", "Villa y Corte"]
+    geometry_period: "Municipalité de Madrid (2026) ; capitale de la monarchie à partir de 1561, avec un séjour de la cour à Valladolid en 1601-1606."
+    hierarchy: "national"
+    functions: ["capitale", "administration", "cour", "presse", "musées", "lieu de mémoire"]
+    events: ["es-constitution", "es-civile", "es-franco", "PROP-017"]
+    contestations: ["capitalité contestée par les nationalismes périphériques", "mémoire de la guerre civile"]
+    sources: ["SRC-011", "SRC-015"]
+  - id: "PLACE-2"
+    label_current: "Barcelone"
+    names_historical: ["Barcino", "Barcelona", "Barcelone"]
+    geometry_period: "Municipalité de Barcelone (2026) ; capitale de la Catalogne."
+    hierarchy: "regional"
+    functions: ["port", "industrie", "capitale régionale", "anarchisme", "tourisme", "lieu de mémoire"]
+    events: ["es-civile", "es-catalogne"]
+    contestations: ["1714", "2017", "mémoire de la guerre"]
+    sources: ["SRC-011", "SRC-018"]
+  - id: "PLACE-3"
+    label_current: "Grenade"
+    names_historical: ["Ġarnāṭa", "Granada"]
+    geometry_period: "Royaume nasride de Grenade (1238-1492) ; municipalité de Grenade (2026)."
+    hierarchy: "regional"
+    functions: ["capitale nasride", "Alhambra", "frontière", "lieu de mémoire"]
+    events: ["es-grenade", "es-mariage"]
+    contestations: ["mémoire de 1492", "tourisme patrimonial"]
+    sources: ["SRC-003", "SRC-008"]
+  - id: "PLACE-4"
+    label_current: "Cordoue"
+    names_historical: ["Corduba", "Qurṭuba", "Córdoba"]
+    geometry_period: "Capitale du califat omeyyade (929-1031) ; municipalité de Cordoue (2026)."
+    hierarchy: "regional"
+    functions: ["capitale califale", "mosquée-cathédrale", "centre savant"]
+    events: ["PROP-003"]
+    contestations: ["mémoire de la Mezquita", "patrimoine mondial"]
+    sources: ["SRC-003"]
+  - id: "PLACE-5"
+    label_current: "Tolède"
+    names_historical: ["Toletum", "Ṭulayṭula", "Toledo"]
+    geometry_period: "Capitale du royaume wisigoth ; ville de Castille après 1085 ; municipalité (2026)."
+    hierarchy: "regional"
+    functions: ["capitale wisigothe", "cité des trois cultures", "traductions", "primatie ecclésiastique"]
+    events: ["PROP-002", "PROP-004"]
+    contestations: ["mémoire de la convivencia", "patrimoine"]
+    sources: ["SRC-001", "SRC-003"]
+  - id: "PLACE-6"
+    label_current: "Séville"
+    names_historical: ["Hispalis", "Išbīliya", "Sevilla"]
+    geometry_period: "Municipalité de Séville (2026) ; port colonial à partir de 1503."
+    hierarchy: "regional"
+    functions: ["port", "Casa de Contratación (1503)", "archives", "commerce colonial"]
+    events: ["es-colomb"]
+    contestations: ["mémoire coloniale", "patrimoine"]
+    sources: ["SRC-008", "SRC-010"]
+  - id: "PLACE-7"
+    label_current: "Valence"
+    names_historical: ["Valentia", "Balansiyya", "València"]
+    geometry_period: "Royaume de Valence ; municipalité (2026) ; capitale républicaine de novembre 1936 à octobre 1937."
+    hierarchy: "regional"
+    functions: ["port", "industrie", "capitale républicaine", "agriculture irriguée"]
+    events: ["PROP-007", "es-civile"]
+    contestations: ["expulsion des Morisques", "mémoire républicaine"]
+    sources: ["SRC-006", "SRC-011"]
+  - id: "PLACE-8"
+    label_current: "Bilbao"
+    names_historical: ["Bilbo", "Bilbao"]
+    geometry_period: "Municipalité de Bilbao (2026) ; fondation en 1300."
+    hierarchy: "regional"
+    functions: ["port", "industrie sidérurgique", "nationalisme basque", "siège de 1937"]
+    events: ["es-civile", "PROP-016"]
+    contestations: ["mémoire de la guerre", "terrorisme"]
+    sources: ["SRC-011", "SRC-014"]
+  - id: "PLACE-9"
+    label_current: "Guernica"
+    names_historical: ["Gernika", "Guernica"]
+    geometry_period: "Municipalité de Gernika-Lumo (2026)."
+    hierarchy: "local"
+    functions: ["lieu de mémoire", "bombardement du 26 avril 1937", "arbre de Gernika"]
+    events: ["es-civile"]
+    contestations: ["mémoire du bombardement", "usage de Guernica"]
+    sources: ["SRC-014", "SRC-013"]
+  - id: "PLACE-10"
+    label_current: "Cadix"
+    names_historical: ["Gades", "Cádiz"]
+    geometry_period: "Municipalité de Cadix (2026) ; port atlantique."
+    hierarchy: "regional"
+    functions: ["port", "Constitution de 1812", "commerce colonial"]
+    events: ["es-independance"]
+    contestations: ["mémoire libérale", "colonialisme"]
+    sources: ["SRC-011", "SRC-010"]
+  - id: "PLACE-11"
+    label_current: "Palos de la Frontera"
+    names_historical: ["Palos de la Frontera"]
+    geometry_period: "Municipalité de Palos de la Frontera (2026) ; port de départ de 1492."
+    hierarchy: "local"
+    functions: ["port", "départ de Colomb", "lieu de mémoire"]
+    events: ["es-colomb"]
+    contestations: ["mémoire de 1492", "tourisme"]
+    sources: ["SRC-008"]
+  - id: "PLACE-12"
+    label_current: "A Coruña / côte galicienne"
+    names_historical: ["A Coruña", "La Coruña"]
+    geometry_period: "Municipalité d'A Coruña (2026) ; côte galicienne affectée par la marée noire de 2002."
+    hierarchy: "regional"
+    functions: ["port", "pêche", "zone sinistrée", "lieu de mémoire environnementale"]
+    events: ["PROP-015"]
+    contestations: ["responsabilité de l'État et de la compagnie", "mémoire de la marée noire"]
+    sources: ["SRC-019"]
+
+claims:
+  - id: "CLAIM-1"
+    subject: "Conquête de 711"
+    predicate: "fut"
+    object: "un processus"
+    text: "La conquête musulmane de 711 ne se réduit pas à un débarquement unique : elle combine une bataille (Guadalete), des accords locaux et une installation progressive de forces arabo-berbères."
+    confidence: "probable"
+    sources: ["SRC-001", "SRC-003"]
+    revisions: []
+  - id: "CLAIM-2"
+    subject: "Covadonga"
+    predicate: "est"
+    object: "une construction historiographique"
+    text: "La bataille de Covadonga, traditionnellement datée de 722, est connue par des sources tardives ; son rôle de « début de la Reconquista » est une construction médiévale et moderne."
+    confidence: "disputed"
+    sources: ["SRC-001"]
+    revisions: []
+  - id: "CLAIM-3"
+    subject: "1492"
+    predicate: "doit être traité comme"
+    object: "un ensemble d'événements"
+    text: "1492 réunit la capitulation de Grenade (2 janvier), le décret d'expulsion des Juifs (31 mars) et l’arrivée de Colomb aux Caraïbes (12 octobre) ; les confondre en une « fin de la Reconquista » masque les politiques de confessionnalisation."
+    confidence: "certain"
+    sources: ["SRC-005", "SRC-008"]
+    revisions: []
+  - id: "CLAIM-4"
+    subject: "Convivencia"
+    predicate: "est"
+    object: "un modèle historiographique discuté"
+    text: "La notion de convivencia décrit des formes réelles de coexistence, mais elle ne doit pas effacer les violences, les conversions forcées et les persécutions."
+    confidence: "disputed"
+    sources: ["SRC-004", "SRC-003"]
+    revisions: []
+  - id: "CLAIM-5"
+    subject: "1898"
+    predicate: "ne marque pas"
+    object: "la fin de toutes les colonies espagnoles"
+    text: "L'Espagne perd Cuba, Porto Rico, les Philippines et Guam en 1898, mais conserve le Río de Oro/Sahara occidental et la Guinée équatoriale, et établit plus tard un protectorat au Maroc (1912)."
+    confidence: "certain"
+    sources: ["SRC-010", "SRC-009"]
+    revisions: []
+  - id: "CLAIM-6"
+    subject: "Régime franquiste"
+    predicate: "est"
+    object: "un régime autoritaire et national-catholique"
+    text: "Le franquisme combine répression, parti unique, corporatisme et national-catholicisme ; sa qualification de « fasciste » fait débat chez les historiens."
+    confidence: "disputed"
+    sources: ["SRC-014", "SRC-013"]
+    revisions: []
+  - id: "CLAIM-7"
+    subject: "Transition démocratique"
+    predicate: "fut"
+    object: "une transition négociée avec des coûts mémoriels"
+    text: "La transition de 1975-1982 repose sur des pactes, une amnistie et des compromis ; elle n'efface ni les violences de la guerre ni les demandes de justice des victimes."
+    confidence: "disputed"
+    sources: ["SRC-015", "SRC-011"]
+    revisions: []
+  - id: "CLAIM-8"
+    subject: "Référendum catalan de 2017"
+    predicate: "fut"
+    object: "organisé sans base constitutionnelle"
+    text: "Le référendum du 1er octobre 2017 a été suspendu par le Tribunal constitutionnel ; la déclaration d'indépendance du 27 octobre n'a pas été reconnue et la crise reste politique."
+    confidence: "certain"
+    sources: ["SRC-018"]
+    revisions: []
+  - id: "CLAIM-9"
+    subject: "ETA"
+    predicate: "annonça"
+    object: "la fin de son activité armée en 2011"
+    text: "ETA annonce le 20 octobre 2011 la cessation définitive de son activité armée ; la dissolution et la question des victimes restent des enjeux mémoriels."
+    confidence: "certain"
+    sources: ["SRC-011"]
+    revisions: []
+  - id: "CLAIM-10"
+    subject: "Suffrage féminin"
+    predicate: "fut"
+    object: "adopté en 1931 après un vote contesté"
+    text: "Le suffrage féminin est adopté par les Cortès le 1er octobre 1931 ; Clara Campoamor joue un rôle décisif face à une partie de la gauche et des républicains."
+    confidence: "certain"
+    sources: ["SRC-013", "SRC-011"]
+    revisions: []
+
+source_policy:
+  min_independent_sources: 2
+  grokipedia_role: "point d'entrée de lecture, jamais autorité de validation"
+  generative_ai_role: "aide à la recherche uniquement, vérifiée et signalée"
+  date_roles_required: true
+  license: null
+
+audit:
+  protocol_version: "1.0"
+  double_read:
+    sensitive_share: 1.0
+    other_share: 0.25
+    kappa_target: 0.70
+    kappa_sensitive_target: 0.80
+  delphi:
+    used: false
+    experts: 0
+    rounds: 0
+    consensus_threshold: "75 % de notes 4–5/5 et IQR ≤ 1"
+  scores:
+    coverage: null
+    accuracy: null
+    balance: null
+    provenance: null
+    readability: null
+    weighted_total: null
+  blocking_errors: []
+  disagreements:
+    - id: "D-001"
+      type: "F3"
+      object: "Qualification du franquisme"
+      positions:
+        - "régime autoritaire, corporatiste et national-catholique"
+        - "régime fasciste ou parafasciste"
+      status: "open"
+    - id: "D-002"
+      type: "F3"
+      object: "Borne de 711 et statut de l'histoire pré-711"
+      positions:
+        - "conserver 711 comme borne principale, avec un prologue"
+        - "déplacer la borne à -218 et traiter 711 comme un événement interne"
+      status: "open"
+    - id: "D-003"
+      type: "F4"
+      object: "Nommage de la « Reconquista »"
+      positions:
+        - "conserver le terme pour la lisibilité publique"
+        - "le remplacer par « Al-Andalus et royaumes chrétiens »"
+      status: "open"
+    - id: "D-004"
+      type: "F3"
+      object: "Bilan mémoriel de la transition"
+      positions:
+        - "transition modèle et consolidée"
+        - "transition négociée avec amnistie et refoulement mémoriel"
+      status: "open"
+  verdict: "pending"
+  signoff:
+    date: ""
+    signed_by: []
+
+publication:
+  release: ""
+  date: ""
+  changelog: ""
+  public_quality_note: ""
+  correction_contact: ""
+  archive_url: ""

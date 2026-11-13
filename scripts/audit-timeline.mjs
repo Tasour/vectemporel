@@ -148,14 +148,17 @@ function omissionsCount(countryId) {
 
 function coverageMatrixStats(countryId) {
   const text = readCountryFile(countryId, 'coverage-matrix.csv');
-  if (!text) return { total: 0, valid: 0 };
+  const counts = { couvert: 0, partiel: 0, 'vide justifié': 0, 'vide non traité': 0 };
+  if (!text) return { total: 0, valid: 0, counts };
   const lines = text.split(/\r?\n/).filter((line) => line.trim());
-  if (lines.length < 2) return { total: 0, valid: 0 };
+  if (lines.length < 2) return { total: 0, valid: 0, counts };
   const rows = lines.slice(1).map(parseCsvLine).filter((row) => row.length >= 7);
-  const valid = rows.filter((row) =>
-    ['couvert', 'partiel', 'vide justifié'].includes((row[6] || '').trim())
-  ).length;
-  return { total: rows.length, valid };
+  for (const row of rows) {
+    const status = (row[6] || '').trim();
+    if (status in counts) counts[status] += 1;
+  }
+  const valid = counts.couvert + counts.partiel + counts['vide justifié'];
+  return { total: rows.length, valid, counts };
 }
 
 function signoffStatus(countryId) {
@@ -425,6 +428,12 @@ function globalAggregate(results, allEvents) {
   const matrices = results.filter((result) => result.matrix.total > 0 && result.matrix.valid > 0);
   const matrixValid = results.reduce((sum, result) => sum + result.matrix.valid, 0);
   const matrixTotal = results.reduce((sum, result) => sum + result.matrix.total, 0);
+  const matrixCounts = { couvert: 0, partiel: 0, 'vide justifié': 0, 'vide non traité': 0 };
+  for (const result of results) {
+    for (const status of Object.keys(matrixCounts)) {
+      matrixCounts[status] += result.matrix.counts?.[status] || 0;
+    }
+  }
   const signoffs = results.filter((result) => result.signoff).length;
   const score =
     ratio(count('actors'), total) * 15 +
@@ -438,7 +447,7 @@ function globalAggregate(results, allEvents) {
     ratio(omissions, results.length) * 5 +
     ratio(matrixValid, matrixTotal) * 7.5 +
     ratio(signoffs, results.length) * 7.5;
-  return { total, count, withTimeSpan, withPrecision, omissions, matrices, matrixValid, matrixTotal, signoffs, score };
+  return { total, count, withTimeSpan, withPrecision, omissions, matrices, matrixValid, matrixTotal, matrixCounts, signoffs, score };
 }
 
 // ---------------------------------------------------------------------------
@@ -512,6 +521,7 @@ push(`| Ères | ${totalEras} |`);
 push(`| Intégrité POC | **${passedChecks}/${totalChecks} contrôles** (${pct(passedChecks, totalChecks)}) |`);
 push(`| Pays avec anomalie d’intégrité | ${countriesWithIssues.length} |`);
 push(`| Couverture tags × ères | ${coveredCells}/${totalCells} cellules (${pct(coveredCells, totalCells)}) |`);
+push(`| Matrice pays | ${aggregate.matrixCounts.couvert} couvertes, ${aggregate.matrixCounts.partiel} partielles, ${aggregate.matrixCounts['vide justifié']} justifiées, ${aggregate.matrixCounts['vide non traité']} non traitées |`);
 push(`| Liens \`related\` | ${relatedTotal} liens, ${brokenRelated} cassé(s), ${pct(reciprocal, relatedTotal)} réciproques |`);
 push(`| Grokipedia | ${allEvents.filter((event) => event.grok).length}/${aggregate.total} slugs présents |`);
 push(`| Audits prose | ${results.filter((result) => result.slug).length}/${results.length} sections présentes |`);
@@ -575,11 +585,15 @@ push(`| \`sources\` indépendantes | ${aggregate.count('sources')}/${aggregate.t
 push(`| \`claims\` | ${aggregate.count('claims')}/${aggregate.total} | 0 % | Les désaccords et les incertitudes ne sont pas modélisés. |`);
 push(`| \`TimeSpan\` | ${aggregate.withTimeSpan}/${aggregate.total} | 0 % | Le temps est réduit à une année (et parfois \`endYear\`) ; pas de bornes, de calendrier ni d’incertitude. |`);
 push(`| \`datePrecision\` | ${aggregate.withPrecision}/${aggregate.total} | 0 % | Aucune distinction jour / mois / année / décennie / siècle. |`);
-push(`| Registre d’omissions | ${aggregate.omissions}/${results.length} pays | 0 % | Les absences ne sont pas documentées : un oubli reste silencieux. |`);
-push(`| Matrice de couverture | ${aggregate.matrices.length}/${results.length} pays | 0 % | Les 14 domaines de la méthode ne sont pas remplis ni justifiés. |`);
+const omissionsCovered = aggregate.omissions === results.length;
+const matricesCovered = aggregate.matrices.length === results.length;
+push(`| Registre d’omissions | ${aggregate.omissions}/${results.length} pays | ${pct(aggregate.omissions, results.length)} | ${omissionsCovered ? 'Les absences sont documentées au niveau pays ; il reste à les relier à chaque fiche-événement.' : 'Les absences ne sont pas documentées : un oubli reste silencieux.'} |`);
+push(`| Matrice de couverture | ${aggregate.matrices.length}/${results.length} pays | ${pct(aggregate.matrices.length, results.length)} | ${matricesCovered ? `Les 14 domaines sont remplis au niveau pays (${aggregate.matrixCounts.couvert} couvertes, ${aggregate.matrixCounts.partiel} partielles, ${aggregate.matrixCounts['vide justifié']} justifiées, ${aggregate.matrixCounts['vide non traité']} non traitées) ; il reste à les relier aux fiches.` : 'Les 14 domaines de la méthode ne sont pas remplis ni justifiés.'} |`);
 push(`| Audit expert signé | ${aggregate.signoffs}/${results.length} pays | 0 % | Les audits prose ne sont ni une double lecture ni un sign-off. |`);
 push('');
 push(`Le score de **${aggregate.score.toFixed(1)}/100** est donc cohérent : le POC possède un schéma minimal (année, titre, tags, lien), pas le schéma de preuve de la méthode v${METHOD_VERSION}.`);
+push('');
+push(`**Matrice, lecture stricte.** Sur ${aggregate.matrixTotal} cellules : **${aggregate.matrixCounts.couvert} couvertes (${pct(aggregate.matrixCounts.couvert, aggregate.matrixTotal)})**, ${aggregate.matrixCounts.partiel} partielles, ${aggregate.matrixCounts['vide justifié']} vides justifiées et ${aggregate.matrixCounts['vide non traité']} non traitées. Le sous-score « matrice » récompense le traitement (couvert, partiel ou justifié), pas la couverture stricte.`);
 push('');
 
 push('## 3. Couverture thématique');
@@ -697,6 +711,10 @@ for (const result of results) {
       result.totalCells
     )}) ; ${result.emptyEras.length ? `ères vides : ${result.emptyEras.join(', ')}` : 'aucune ère vide'}.`
   );
+  const matrixCounts = result.matrix.counts;
+  push(
+    `- **Matrice pays** : ${matrixCounts.couvert} couvertes, ${matrixCounts.partiel} partielles, ${matrixCounts['vide justifié']} justifiées, ${matrixCounts['vide non traité']} non traitées (${result.matrix.total} cellules).`
+  );
   const emptyPreview = result.emptyCells.slice(0, 8);
   push(
     `- **Cellules vides** : ${
@@ -759,7 +777,7 @@ push('- **Intégrité POC** : contrôles de cohérence internes. Un échec est u
 push('- **Cible v1.0** : part du schéma de preuve effectivement renseignée. Un score faible n’est pas une condamnation des contenus : c’est la mesure de ce qui manque pour rendre les frises auditables.');
 push('- **Couverture tags × ères** : mesure la présence d’au moins un repère par tag et par ère. Elle ne mesure ni la qualité, ni la proportion, ni l’absence de biais.');
 push('');
-push('**Formule de la cible v1.0.** Acteurs 15 % + lieux 15 % + sources 20 % + claims 10 % + temps 15 % (année seule : 40 % du sous-score ; `TimeSpan` : 60 %) + précision 5 % + registre d’omissions 5 % + matrice de couverture 7,5 % + sign-off 7,5 %.');
+push('**Formule de la cible v1.0.** Acteurs 15 % + lieux 15 % + sources 20 % + claims 10 % + temps 15 % (année seule : 40 % du sous-score ; `TimeSpan` : 60 %) + précision 5 % + registre d’omissions 5 % + matrice de couverture 7,5 % (cellules traitées : couvertes, partielles ou justifiées ; la couverture stricte est indiquée séparément) + sign-off 7,5 %.');
 push('');
 push(`Méthode complète : [TIMELINE_METHOD.md](TIMELINE_METHOD.md). Gabarits : [templates/](templates/).`);
 push('');

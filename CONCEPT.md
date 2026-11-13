@@ -408,7 +408,7 @@ Le pipeline comporte 11 étapes (0 à 10) :
 - `PeriodDefinition` : périodisation comme assertion savante, pas comme conteneur naturel ;
 - `TimelineView` : vue générée, pas stockée comme vérité.
 
-**Audit structurel.** `npm run audit:timeline` produit **[TIMELINE_AUDIT.md](TIMELINE_AUDIT.md)**. Dernier état : **120/120 contrôles d’intégrité POC**, **6/100 de complétude cible**, **39 % de couverture tags × ères**, **10/10 pays au-dessus du seuil politique/guerre**. Les gabarits sont dans **[templates/](templates/)**.
+**Audit structurel.** `npm run audit:timeline` produit **[TIMELINE_AUDIT.md](TIMELINE_AUDIT.md)**. Dernier état : **120/120 contrôles d’intégrité POC**, **17,9/100 de complétude cible**, **39 % de couverture tags × ères**, **10/10 pays au-dessus du seuil politique/guerre**. Les **10 dossiers pays** sont produits (**200 sources**, **180 propositions**, **120 corrections**, **148 omissions**), avec leur synthèse dans **[AUDIT_SYNTHESIS.md](AUDIT_SYNTHESIS.md)**. Les gabarits sont dans **[templates/](templates/)**.
 
 **Garde-fous.** Pas de récit téléologique, pas de frontières modernes rétroprojetées, pas de « grands hommes » sans contraintes ni contre-pouvoirs, pas de Grokipedia utilisé comme autorité, pas de date sans rôle ni source, pas d’omission silencieuse.
 

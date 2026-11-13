@@ -1,0 +1,535 @@
+schema_version: "1.0"
+country_id: "india"
+generated_at: "2026-11-13"
+author: ""
+
+periodization:
+  current_verdict: "Les bornes 1206, 1757 et 1947 sont défendables, mais l'ère « Civilisations anciennes » couvre 3 806 ans et mélange Indus, Védas, Maurya, Gupta et royaumes régionaux ; le label « Raj britannique » couvre en outre 1757-1858, période de domination de la Compagnie."
+  proposed_changes:
+    - action: "split"
+      era_name: "Civilisations anciennes"
+      proposal: "Scinder en « Indus & Védique » (-2600/-600) et « Empires classiques & régionaux » (-600/1200)."
+      rationale: "La seconde urbanisation (vers -600) et l'irruption du bouddhisme/jaïnisme ouvrent une séquence politique et culturelle distincte de l'Indus et du corpus védique."
+      sources: ["SRC-001", "SRC-002"]
+    - action: "rename"
+      era_name: "Sultanats & Moghols"
+      proposal: "Renommer « Sultanats, Vijayanagara & Moghols » (1206/1757)."
+      rationale: "L'ère ne se réduit pas à Delhi : Vijayanagara, les sultanats du Deccan et du Bengale, puis les Marathes structurent le sous-continent."
+      sources: ["SRC-003"]
+    - action: "rename"
+      era_name: "Raj britannique"
+      proposal: "Renommer « Compagnie & Raj » (1757/1947), ou scinder à 1858."
+      rationale: "De 1757 à 1858, l'Inde est dominée par la Compagnie des Indes ; le Raj de la Couronne commence en 1858. Le label actuel projette le second régime sur le premier."
+      sources: ["SRC-004", "SRC-005"]
+    - action: "keep"
+      era_name: "Inde contemporaine"
+      proposal: "Conserver 1947/2026 comme borne politique majeure."
+      rationale: "L'indépendance et la Partition restent la rupture fondatrice de l'Inde contemporaine, à condition de distinguer les deux événements."
+      sources: ["SRC-006", "SRC-007"]
+    - action: "add"
+      era_name: "Couche environnementale"
+      proposal: "Ajouter une périodisation alternative : régime des moussons et famines (avant 1757), État colonial extractif (1757/1947), Révolution verte et grands barrages (1947/1991), crise climatique et eau (1991/2026)."
+      rationale: "Une histoire environnementale ne suit pas les mêmes bornes que l'histoire politique ; elle éclaire les famines, les forêts, l'irrigation et les conflits actuels."
+      sources: ["SRC-013", "SRC-016"]
+    - action: "add"
+      era_name: "Couche sociale et économique"
+      proposal: "Ajouter une lecture 1757/1947/1991/2026 : extraction coloniale, État développementaliste, libéralisation."
+      rationale: "1991 est une borne économique et sociale majeure, invisible dans la périodisation politique actuelle."
+      sources: ["SRC-006", "SRC-014"]
+
+events:
+  - id: "PROP-001"
+    action: "add"
+    existing_id: null
+    year: -1500
+    end_year: -1200
+    title: "Corpus védique"
+    subtitle: "Rigveda, rituel et société"
+    tags: ["religion", "arts", "societe"]
+    importance: 3
+    summary: "Les poètes et prêtres védiques composent le Rigveda dans la région du Sapta Sindhu, au Panjab actuel ; le corpus, transmis oralement, fonde des siècles de rituel et de spéculation. La chronologie et les modalités des migrations indo-européennes restent discutées."
+    sources: ["SRC-001", "SRC-002"]
+    confidence: "high"
+    rationale: "Comble le vide entre l'Indus et les Maurya et permet de traiter le débat aryen sans le trancher."
+
+  - id: "PROP-002"
+    action: "add"
+    existing_id: null
+    year: -600
+    end_year: -400
+    title: "Bouddha, Mahavira et la seconde urbanisation"
+    subtitle: "Magadha, ascétisme et villes"
+    tags: ["religion", "politique", "societe"]
+    importance: 3
+    summary: "Siddhartha Gautama et Mahavira enseignent dans les royaumes du Magadha et du Kosala, au moment où villes, monnaie et États territoriaux se multiplient. Le bouddhisme et le jaïnisme critiquent l'ordre brahmanique et essaiment en Asie."
+    sources: ["SRC-001", "SRC-002"]
+    confidence: "high"
+    rationale: "Marque la seconde urbanisation et l'émergence des religions universalistes, absentes entre l'Indus et les Maurya."
+
+  - id: "PROP-003"
+    action: "add"
+    existing_id: null
+    year: -300
+    end_year: 300
+    title: "Littérature sangam"
+    subtitle: "Tamilakam, ports et poétesses"
+    tags: ["arts", "societe", "economie"]
+    importance: 2
+    summary: "Des poètes tamils, dont des femmes, composent à Madurai et dans le Tamilakam un corpus de poésie amoureuse et héroïque. Les ports de la côte de Coromandel commercent avec Rome et l'Asie du Sud-Est."
+    sources: ["SRC-001", "SRC-002"]
+    confidence: "medium"
+    rationale: "Donne une voix au Sud et aux langues non sanskrites ; les datations du corpus sont débattues."
+
+  - id: "PROP-004"
+    action: "add"
+    existing_id: null
+    year: 848
+    end_year: 1279
+    title: "Empire chola"
+    subtitle: "Thanjavur, temples et mer"
+    tags: ["politique", "economie", "arts", "guerre"]
+    importance: 3
+    summary: "Rajaraja I et Rajendra I font de Thanjavur un centre impérial ; le temple de Brihadeeswarar et l'expédition maritime de 1025 vers Srivijaya témoignent d'un pouvoir naval et fiscal. L'empire chola structure le Sud jusqu'au XIIIe siècle."
+    sources: ["SRC-001", "SRC-002"]
+    confidence: "high"
+    rationale: "Corrige la sur-représentation de Delhi et couvre l'océan Indien avant l'arrivée des Européens ; l'empire traverse la borne de 1206, ce qui révèle la limite d'une coupure purement politique."
+
+  - id: "PROP-005"
+    action: "add"
+    existing_id: null
+    year: 1336
+    end_year: 1646
+    title: "Vijayanagara"
+    subtitle: "Hampi, capitale et carrefour"
+    tags: ["politique", "arts", "economie"]
+    importance: 3
+    summary: "Harihara et Bukka fondent Vijayanagara ; Hampi devient une capitale monumentale et un carrefour du commerce des épices et du coton. La défaite de 1565 à Talikota précède le déclin, tandis que les nayakas régionaux prolongent l'ordre politique."
+    sources: ["SRC-003"]
+    confidence: "medium"
+    rationale: "État majeur du Sud, absent de la frise ; source unique, à corroborer par une monographie sur Vijayanagara."
+
+  - id: "PROP-006"
+    action: "add"
+    existing_id: null
+    year: 1200
+    end_year: 1700
+    title: "Bhakti vernaculaire et soufisme"
+    subtitle: "Mirabai, Kabir, Guru Nanak"
+    tags: ["religion", "arts", "societe"]
+    importance: 3
+    summary: "Des traditions dévotionnelles plus anciennes (Andal, Basava) nourrissent les poètes et mystiques vernaculaires, dont Mirabai et Kabir ; les ordres soufis implantent khanqahs et langues persanes. Ces mouvements contestent et reconfigurent les hiérarchies religieuses entre le XIIe et le XVIIe siècle."
+    sources: ["SRC-001", "SRC-003"]
+    confidence: "high"
+    rationale: "Couvre religions, langues et femmes, et évite un récit uniquement impérial."
+
+  - id: "PROP-007"
+    action: "add"
+    existing_id: null
+    year: 1699
+    end_year: null
+    title: "Khalsa"
+    subtitle: "Guru Gobind Singh et la communauté sikhe"
+    tags: ["religion", "politique", "guerre"]
+    importance: 3
+    summary: "Guru Gobind Singh fonde le Khalsa à Anandpur lors de la Baisakhi de 1699, dotant la communauté sikhe d'une discipline et d'une autorité collectives. La tradition s'inscrit dans les conflits avec les Moghols et les États régionaux."
+    sources: ["SRC-003"]
+    confidence: "medium"
+    rationale: "Minorité religieuse majeure, absente de la frise ; source unique, à corroborer par une histoire du sikhisme."
+
+  - id: "PROP-008"
+    action: "add"
+    existing_id: null
+    year: 1834
+    end_year: 1917
+    title: "Engagisme indien"
+    subtitle: "Un million de migrants vers les colonies"
+    tags: ["economie", "societe", "exploration"]
+    importance: 3
+    summary: "Après l'abolition de l'esclavage, plus d'un million de travailleurs indiens, surtout du Bihar, de l'Uttar Pradesh et du Tamil Nadu, sont recrutés sous contrat pour les plantations de Maurice, des Caraïbes, de Fiji et d'Afrique du Sud. Le système, assimilé à une nouvelle servitude, façonne les diasporas."
+    sources: ["SRC-004", "SRC-015"]
+    confidence: "high"
+    rationale: "Couvre les migrations de travail et les diasporas, totalement absentes du récit actuel."
+
+  - id: "PROP-009"
+    action: "add"
+    existing_id: null
+    year: 1770
+    end_year: 1900
+    title: "Régime colonial des famines"
+    subtitle: "1770, 1876-1878 et la doctrine du laissez-faire"
+    tags: ["economie", "societe", "politique"]
+    importance: 3
+    summary: "La famine du Bengale de 1770, liée à la fiscalité de la Compagnie, et la Grande Famine de 1876-1878, aggravée par la politique de non-intervention de Lytton, tuent des millions de personnes. Les estimations varient fortement ; la responsabilité coloniale est documentée mais discutée."
+    sources: ["SRC-004", "SRC-013", "SRC-014", "SRC-017"]
+    confidence: "high"
+    rationale: "Fait des famines un processus colonial et environnemental, pas une catastrophe naturelle isolée."
+
+  - id: "PROP-010"
+    action: "add"
+    existing_id: null
+    year: 1927
+    end_year: null
+    title: "Satyagraha de Mahad"
+    subtitle: "Ambedkar et le droit à l'eau"
+    tags: ["politique", "societe", "religion"]
+    importance: 3
+    summary: "Le 20 mars 1927, Ambedkar et des milliers de Dalits boivent l'eau du réservoir Chavdar à Mahad, affirmant l'égalité d'accès aux espaces publics. La campagne ouvre une décennie de luttes pour les droits des intouchables."
+    sources: ["SRC-019", "SRC-011"]
+    confidence: "high"
+    rationale: "Introduit la caste et les Dalits comme acteurs politiques, au-delà de la seule figure de Gandhi."
+
+  - id: "PROP-011"
+    action: "add"
+    existing_id: null
+    year: 1930
+    end_year: null
+    title: "Marche du sel"
+    subtitle: "Gandhi, Dandi et la désobéissance civile"
+    tags: ["politique", "societe", "economie"]
+    importance: 3
+    summary: "Du 12 mars au 6 avril 1930, Gandhi et ses compagnons marchent de Sabarmati à Dandi pour produire du sel illégalement ; Sarojini Naidu et des milliers de femmes rejoignent le mouvement. La répression touche environ 60 000 personnes."
+    sources: ["SRC-005", "SRC-012"]
+    confidence: "high"
+    rationale: "Donne un repère de non-violence de masse, hors Delhi, et documente la participation des femmes."
+
+  - id: "PROP-012"
+    action: "add"
+    existing_id: null
+    year: 1943
+    end_year: null
+    title: "Famine du Bengale"
+    subtitle: "Guerre, riz et empire"
+    tags: ["societe", "economie", "guerre"]
+    importance: 3
+    summary: "La famine frappe le Bengale en 1943 ; les estimations vont de 0,8 à 3,8 millions de morts, avec un consensus autour de 2,1 millions. La guerre, les réquisitions, les transports et la politique coloniale sont au cœur des explications."
+    sources: ["SRC-017", "SRC-014"]
+    confidence: "high"
+    rationale: "Comble un vide majeur de la période coloniale et montre les effets sociaux de la guerre."
+
+  - id: "PROP-013"
+    action: "add"
+    existing_id: null
+    year: 1950
+    end_year: null
+    title: "Constitution de la République"
+    subtitle: "Ambedkar et l'égalité juridique"
+    tags: ["politique", "societe"]
+    importance: 3
+    summary: "L'Assemblée constituante adopte la Constitution le 26 novembre 1949 ; elle entre en vigueur le 26 janvier 1950. Elle établit le suffrage universel, l'égalité devant la loi, l'abolition de l'intouchabilité et des quotas pour les castes et tribus répertoriées."
+    sources: ["SRC-020", "SRC-006", "SRC-019"]
+    confidence: "high"
+    rationale: "Fonde l'État-nation et le droit positif ; indispensable pour comprendre la démocratie indienne."
+
+  - id: "PROP-014"
+    action: "add"
+    existing_id: null
+    year: 1956
+    end_year: null
+    title: "Réorganisation des États"
+    subtitle: "Langues et fédéralisme"
+    tags: ["politique", "societe"]
+    importance: 2
+    summary: "La loi de 1956 redessine les États sur des bases linguistiques, créant 14 États et 6 territoires ; elle suit les mobilisations linguistiques, notamment telougou, et stabilise le fédéralisme, au prix de nouvelles minorités."
+    sources: ["SRC-006", "SRC-020"]
+    confidence: "high"
+    rationale: "Introduit la question linguistique, absente de la frise, et explique la carte politique contemporaine."
+
+  - id: "PROP-015"
+    action: "add"
+    existing_id: null
+    year: 1966
+    end_year: 1970
+    title: "Révolution verte"
+    subtitle: "Blé, irrigation et inégalités"
+    tags: ["economie", "sciences", "societe"]
+    importance: 3
+    summary: "Des variétés de blé à haut rendement, l'irrigation et les engrais transforment le Panjab et l'Haryana ; M. S. Swaminathan joue un rôle clé. La production augmente, mais les nappes phréatiques et les inégalités sociales se dégradent."
+    sources: ["SRC-006", "SRC-016"]
+    confidence: "high"
+    rationale: "Couvre l'histoire agraire, scientifique et environnementale de l'Inde indépendante."
+
+  - id: "PROP-016"
+    action: "add"
+    existing_id: null
+    year: 1975
+    end_year: 1977
+    title: "État d'urgence"
+    subtitle: "Indira Gandhi, censure et stérilisation"
+    tags: ["politique", "societe"]
+    importance: 3
+    summary: "Le 25 juin 1975, Indira Gandhi fait proclamer l'état d'urgence ; les libertés sont suspendues, la presse censurée, l'opposition arrêtée. Le programme de stérilisation de Sanjay Gandhi touche plusieurs millions de personnes ; l'urgence est levée le 21 mars 1977."
+    sources: ["SRC-006", "SRC-020"]
+    confidence: "high"
+    rationale: "Rupture démocratique majeure, absente de la frise ; elle éclaire les débats sur les libertés et le pouvoir central."
+
+  - id: "PROP-017"
+    action: "add"
+    existing_id: null
+    year: 1985
+    end_year: null
+    title: "Affaire Shah Bano"
+    subtitle: "Droit des femmes et droit personnel"
+    tags: ["politique", "societe", "religion"]
+    importance: 3
+    summary: "Le 23 avril 1985, la Cour suprême accorde à Shah Bano, divorcée musulmane d'Indore, une pension au titre du Code de procédure pénale. Le gouvernement fait voter en 1986 une loi qui limite cette obligation, relançant le débat sur l'égalité et les droits personnels."
+    sources: ["SRC-006", "SRC-012"]
+    confidence: "high"
+    rationale: "Articule genre, religion et droit ; cas emblématique des tensions entre égalité et droits communautaires."
+
+  - id: "PROP-018"
+    action: "add"
+    existing_id: null
+    year: 2006
+    end_year: null
+    title: "Loi sur les droits forestiers"
+    subtitle: "Adivasis, gram sabhas et environnement"
+    tags: ["politique", "societe", "economie"]
+    importance: 3
+    summary: "La loi de 2006 reconnaît les droits individuels et collectifs des communautés forestières, notamment des Adivasis, sur les terres et ressources qu'elles occupent. Son application reste inégale ; Niyamgiri (2013) devient un cas emblématique."
+    sources: ["SRC-018", "SRC-016"]
+    confidence: "high"
+    rationale: "Introduit les Adivasis et la justice environnementale, absents de la frise."
+
+# period_ids renvoient aux ères actuelles ERA-1..ERA-4 de data.js.
+actors:
+  - id: "ACTOR-PROP-001"
+    label: "Ashoka"
+    type: "individual"
+    period_ids: ["ERA-1"]
+    why: "Empereur maurya (268-232 av. J.-C.) dont les édits construisent un idéal de gouvernement moral ; à documenter par Kalinga, l'administration et les missions bouddhiques, pas comme un saint pacifiste."
+    sources: ["SRC-001", "SRC-002"]
+
+  - id: "ACTOR-PROP-002"
+    label: "Akbar"
+    type: "individual"
+    period_ids: ["ERA-2"]
+    why: "Empereur moghol (1556-1605) qui consolide l'empire par le mansabdari, l'alliance rajput et une politique religieuse discutée ; son apogée territorial n'est pas celle de tout l'empire."
+    sources: ["SRC-003"]
+
+  - id: "ACTOR-PROP-003"
+    label: "Nur Jahan"
+    type: "individual"
+    period_ids: ["ERA-2"]
+    why: "Impératrice moghole (vers 1577-1645), actrice politique et patronne architecturale, souvent réduite à un personnage de harem ; à documenter par ses réseaux et ses contraintes."
+    sources: ["SRC-003"]
+
+  - id: "ACTOR-PROP-004"
+    label: "Sarojini Naidu"
+    type: "individual"
+    period_ids: ["ERA-3"]
+    why: "Poétesse et dirigeante du Congrès, première femme indienne présidente du parti (1925), gouverneure de l'Uttar Pradesh (1947-1949) ; actrice de la marche du sel et de la mobilisation des femmes."
+    sources: ["SRC-012", "SRC-005"]
+
+  - id: "ACTOR-PROP-005"
+    label: "B. R. Ambedkar"
+    type: "individual"
+    period_ids: ["ERA-3", "ERA-4"]
+    why: "Juriste et dirigeant dalit, président du comité de rédaction de la Constitution, figure de Mahad et de la conversion au bouddhisme ; à documenter par ses institutions, ses adversaires et ses alliances."
+    sources: ["SRC-019", "SRC-011", "SRC-010"]
+
+  - id: "ACTOR-PROP-006"
+    label: "M. K. Gandhi"
+    type: "individual"
+    period_ids: ["ERA-3", "ERA-4"]
+    why: "Dirigeant du mouvement national, théoricien de la non-violence et de la désobéissance civile ; à documenter par ses campagnes, ses compromis, ses critiques de la caste et son héritage contesté."
+    sources: ["SRC-005", "SRC-006"]
+
+  - id: "ACTOR-PROP-007"
+    label: "Jawaharlal Nehru"
+    type: "individual"
+    period_ids: ["ERA-3", "ERA-4"]
+    why: "Premier Premier ministre (1947-1964), architecte du fédéralisme parlementaire, de la planification et du non-alignement ; à documenter par les contraintes de la Partition et de la guerre froide."
+    sources: ["SRC-006", "SRC-005"]
+
+  - id: "ACTOR-PROP-008"
+    label: "Indira Gandhi"
+    type: "individual"
+    period_ids: ["ERA-4"]
+    why: "Première ministre (1966-1977, 1980-1984), actrice de la guerre de 1971, du test nucléaire de 1974 et de l'État d'urgence ; figure centrale et controversée, à ne pas réduire à un bilan héroïque."
+    sources: ["SRC-006", "SRC-020"]
+
+  - id: "ACTOR-PROP-009"
+    label: "Muhammad Ali Jinnah"
+    type: "individual"
+    period_ids: ["ERA-3"]
+    why: "Dirigeant de la Ligue musulmane et fondateur du Pakistan ; à documenter par ses calculs constitutionnels, ses alliances et ses contraintes, sans en faire le seul responsable de la Partition."
+    sources: ["SRC-009", "SRC-008"]
+
+  - id: "ACTOR-PROP-010"
+    label: "Dalit Panthers"
+    type: "collective"
+    period_ids: ["ERA-4"]
+    why: "Mouvement fondé à Bombay en 1972, qui radicalise la politique dalit par la poésie, la rue et la dénonciation des atrocités ; à documenter par ses divisions et sa répression."
+    sources: ["SRC-011", "SRC-019"]
+
+  - id: "ACTOR-PROP-011"
+    label: "Indian National Congress"
+    type: "collective"
+    period_ids: ["ERA-3", "ERA-4"]
+    why: "Parti fondé en 1885, vecteur du mouvement national puis parti dominant de l'Inde indépendante ; à documenter par ses factions, ses relais locaux et son rapport au pouvoir."
+    sources: ["SRC-005", "SRC-006"]
+
+  - id: "ACTOR-PROP-012"
+    label: "East India Company"
+    type: "institution"
+    period_ids: ["ERA-2", "ERA-3"]
+    why: "Compagnie chartée en 1600, devenue puissance territoriale après Plassey (1757) ; acteur étranger et corporatif dont les armées, les dettes et les revenus transforment le sous-continent."
+    sources: ["SRC-003", "SRC-004"]
+
+places:
+  - id: "PLACE-PROP-001"
+    label: "Mohenjo-daro"
+    hierarchy: "regional"
+    why: "Ville majeure de l'Indus (vers -2600/-1900), aujourd'hui au Sindh (Pakistan) ; son nom, sa géométrie et son statut patrimonial doivent être datés."
+    sources: ["SRC-001", "SRC-002"]
+
+  - id: "PLACE-PROP-002"
+    label: "Pataliputra"
+    hierarchy: "imperial"
+    why: "Capitale maurya puis gupta, aujourd'hui Patna ; permet de décentrer Delhi et de documenter l'administration impériale."
+    sources: ["SRC-001", "SRC-002"]
+
+  - id: "PLACE-PROP-003"
+    label: "Thanjavur"
+    hierarchy: "imperial"
+    why: "Capitale chola et centre du temple de Brihadeeswarar ; lieu majeur de l'histoire du Sud et de l'océan Indien."
+    sources: ["SRC-001", "SRC-002"]
+
+  - id: "PLACE-PROP-004"
+    label: "Hampi"
+    hierarchy: "imperial"
+    why: "Capitale de Vijayanagara (1336-1565), aujourd'hui site classé ; lieu de pouvoir, de commerce et de mémoire."
+    sources: ["SRC-003"]
+
+  - id: "PLACE-PROP-005"
+    label: "Lahore"
+    hierarchy: "regional"
+    why: "Ville moghole, sikh et provinciale, devenue frontière de la Partition en 1947 ; aujourd'hui au Pakistan."
+    sources: ["SRC-003", "SRC-008"]
+
+  - id: "PLACE-PROP-006"
+    label: "Kolkata"
+    hierarchy: "imperial"
+    why: "Capitale de l'Inde britannique de 1772 à 1911, port, centre de la famine de 1943 et de la Partition du Bengale."
+    sources: ["SRC-005", "SRC-017"]
+
+  - id: "PLACE-PROP-007"
+    label: "Mumbai"
+    hierarchy: "national"
+    why: "Port et métropole industrielle, centre du mouvement dalit et de la presse ; nommée Bombay jusqu'en 1995."
+    sources: ["SRC-004", "SRC-011"]
+
+  - id: "PLACE-PROP-008"
+    label: "Chennai"
+    hierarchy: "regional"
+    why: "Port colonial fondé sous le nom de Madras (1639), capitale du Sud britannique ; nommée Chennai depuis 1996."
+    sources: ["SRC-004", "SRC-002"]
+
+  - id: "PLACE-PROP-009"
+    label: "Dhaka"
+    hierarchy: "regional"
+    why: "Capitale moghole du Bengale, puis capitale du Pakistan oriental et du Bangladesh ; carrefour de la Partition et de 1971."
+    sources: ["SRC-008", "SRC-009"]
+
+  - id: "PLACE-PROP-010"
+    label: "Amritsar"
+    hierarchy: "regional"
+    why: "Ville sainte sikhe, fondée en 1577, théâtre du massacre de Jallianwala Bagh (1919) et de l'opération Blue Star (1984)."
+    sources: ["SRC-005", "SRC-003"]
+
+  - id: "PLACE-PROP-011"
+    label: "Dandi"
+    hierarchy: "local"
+    why: "Village côtier du Gujarat où Gandhi rompt la loi sur le sel le 6 avril 1930 ; lieu de mémoire de la non-violence."
+    sources: ["SRC-005", "SRC-012"]
+
+  - id: "PLACE-PROP-012"
+    label: "Niyamgiri"
+    hierarchy: "local"
+    why: "Collines sacrées des Dongria Kondh (Odisha), devenues en 2013 un cas emblématique de droits adivasis contre l'extraction de bauxite."
+    sources: ["SRC-018", "SRC-016"]
+
+corrections:
+  - existing_id: "in-indus"
+    issue: "La formulation « disparaît vers 1900 av. J.-C. » confond dé-urbanisation et disparition ; les causes (climat, fleuves, commerce) sont discutées et l'écriture n'est pas déchiffrée."
+    proposal: "Écrire « dé-urbanisation entre 1900 et 1300 av. J.-C. » et ajouter l'incertitude sur l'écriture et les causes."
+    sources: ["SRC-001", "SRC-002"]
+    confidence: "high"
+
+  - existing_id: "in-maurya"
+    issue: "« Premier grand empire indien » ignore Magadha et les Nanda ; « Ashoka et la non-violence » surestime le dhamma et omet Kalinga (261 av. J.-C.) et la violence d'État ; « toute l'Asie » est trop large."
+    proposal: "Préciser les précédents, Kalinga, les missions bouddhiques et la distinction entre dhamma et non-violence."
+    sources: ["SRC-001", "SRC-002"]
+    confidence: "high"
+
+  - existing_id: "in-gupta"
+    issue: "« Âge d'or » est un label historiographique ; le zéro n'est pas inventé par les Gupta et la numération décimale se développe sur plusieurs siècles."
+    proposal: "Remplacer par « construction d'un âge d'or » et dater les mathématiques (Aryabhata, 499) sans attribuer le zéro aux Gupta."
+    sources: ["SRC-001", "SRC-002"]
+    confidence: "high"
+
+  - existing_id: "in-delhi"
+    issue: "« Dynasties turques » réduit cinq dynasties (Mamelouks, Khalji, Tughlaq, Sayyid, Lodi) et omet les sultanats du Deccan, du Bengale et du Gujarat ; la période va de 1206 à 1526."
+    proposal: "Préciser la chronologie, la pluralité des sultanats et les institutions (iqta, monnaie, persan)."
+    sources: ["SRC-001", "SRC-003"]
+    confidence: "high"
+
+  - existing_id: "in-moghol"
+    issue: "« Apogée sous Akbar » confond apogée territoriale (Aurangzeb) et apogée culturelle ; le Taj Mahal est construit de 1632 à 1653 et l'empire décline après 1707."
+    proposal: "Distinguer Akbar, Shah Jahan et Aurangzeb ; dater le Taj Mahal et la crise successorale."
+    sources: ["SRC-003"]
+    confidence: "high"
+
+  - existing_id: "in-eic"
+    issue: "1600-1757 est comprimé ; la charte de 1600 ne donne pas de comptoirs, le premier comptoir est à Surat en 1613, et le pouvoir territorial date de Plassey (1757), Buxar (1764) et du Diwani (1765)."
+    proposal: "Décrire la Compagnie comme un processus et distinguer commerce, comptoirs et souveraineté."
+    sources: ["SRC-003", "SRC-004"]
+    confidence: "high"
+
+  - existing_id: "in-cipayes"
+    issue: "« Mutinerie des cipayes » sous-estime l'ampleur de la révolte de 1857-1858, qui implique sepoys, paysans, princes et villes, avec une répression massive et des violences des deux côtés."
+    proposal: "Renommer « Révolte de 1857-1858 » et ajouter la répression, les victimes civiles et le passage à la Couronne en 1858."
+    sources: ["SRC-004", "SRC-005"]
+    confidence: "high"
+
+  - existing_id: "in-congres"
+    issue: "« Élites réformistes » ignore la diversité sociale du premier Congrès (avocats, journalistes, propriétaires, marchands) et le fait qu'il ne devient un parti de masse qu'après 1920."
+    proposal: "Préciser la composition, les phases modérée et de masse, et la concurrence de la Ligue musulmane."
+    sources: ["SRC-005"]
+    confidence: "high"
+
+  - existing_id: "in-amritsar"
+    issue: "« Centaines de morts » est vague ; les estimations vont de 379 à plus de 1 500 morts, avec environ 1 200 blessés ; le rôle du général Dyer et la commission Hunter sont absents."
+    proposal: "Donner une fourchette, citer la commission Hunter et replacer le massacre dans la répression du Rowlatt Act."
+    sources: ["SRC-005"]
+    confidence: "high"
+
+  - existing_id: "in-independance"
+    issue: "La fiche confond l'indépendance (15 août 1947) et la Partition (ligne Radcliffe, août 1947) ; elle ne donne pas les ordres de grandeur (12 à 20 millions de déplacés, 200 000 à 2 millions de morts) et ignore le Cachemire."
+    proposal: "Scinder en deux fiches, indépendance et Partition, et ajouter la guerre de 1947-1948 au Cachemire."
+    sources: ["SRC-007", "SRC-008", "SRC-009"]
+    confidence: "high"
+
+  - existing_id: "in-gandhi"
+    issue: "« Nationaliste hindou » est vague ; l'assassin est Nathuram Godse, ancien militant du RSS, le 30 janvier 1948. La phrase sur sa pensée qui « continue d'inspirer » est un jugement, et les critiques de ses positions sur la caste et de son rôle dans les négociations de 1942-1947 manquent."
+    proposal: "Nommer Godse, dater l'assassinat et ajouter un paragraphe sur les héritages contestés de Gandhi, notamment ses positions sur la caste."
+    sources: ["SRC-005", "SRC-006"]
+    confidence: "high"
+
+  - existing_id: "in-liberalisation"
+    issue: "1991 n'est pas un point unique : crise de balance des paiements, gouvernement Rao, Manmohan Singh, conditions du FMI, libéralisation partielle et croissance inégale."
+    proposal: "Décrire un processus 1991-2000s et ajouter des indicateurs sociaux, pas seulement la croissance."
+    sources: ["SRC-006", "SRC-014"]
+    confidence: "high"
+
+review:
+  status: "draft"
+  unresolved:
+    - "Vérifier les dates de Vijayanagara et du Khalsa avec une seconde monographie spécialisée."
+    - "Trouver une source indépendante sur Nur Jahan et les femmes mogholes."
+    - "Documenter les bilans de la Partition et de la famine de 1943 avec au moins deux démographes."
+    - "Ajouter Delhi/Shahjahanabad comme treizième lieu si le plafond de 12 est relevé."
+    - "Construire des fiches sur les guerres de 1962, 1971 et 1999, absentes des 18 propositions."
+    - "Vérifier les chiffres de la stérilisation pendant l'État d'urgence (plusieurs millions, estimations divergentes)."
+    - "La correction in-liberalisation s'appuie sur Guha (SRC-006) et sur Sen (SRC-014) pour le cadre analytique, non pour les données post-1991 ; corroborer avec une source économique spécialisée."
+    - "Les corrections in-moghol, in-congres et in-amritsar reposent sur une seule synthèse (SRC-003 ou SRC-005) ; corroborer avec une seconde source avant publication."

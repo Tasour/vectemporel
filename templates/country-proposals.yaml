@@ -1,0 +1,60 @@
+# Vectemporel — propositions d’enrichissement (méthode v1.0)
+# Copier dans audits/<country-id>/proposals.yaml.
+# Ce fichier sert à préparer une revue éditoriale : aucune proposition n’est publiée automatiquement.
+# Toute proposition doit citer au moins une source vérifiée du source-register.csv.
+# Aucune date, aucun acteur, aucun lieu ne se propose sans source.
+
+schema_version: "1.0"
+country_id: ""
+generated_at: ""
+author: ""
+
+periodization:
+  current_verdict: ""        # ce qui tient, ce qui ne tient pas dans la périodisation actuelle
+  proposed_changes:
+    - action: "keep"         # keep | split | merge | rename | move_boundary | add
+      era_name: ""
+      proposal: ""
+      rationale: ""
+      sources: []
+
+events:
+  - id: "PROP-001"
+    action: "add"            # add | correct | remove
+    existing_id: null        # obligatoire pour correct/remove
+    year: null
+    end_year: null
+    title: ""
+    subtitle: ""
+    tags: []
+    importance: 1            # 1 | 2 | 3
+    summary: ""
+    sources: []              # ex. [SRC-003, SRC-011]
+    confidence: "medium"     # high | medium | low
+    rationale: ""
+
+actors:
+  - id: "ACTOR-PROP-001"
+    label: ""
+    type: ""                 # individual | collective | institution
+    period_ids: []
+    why: ""
+    sources: []
+
+places:
+  - id: "PLACE-PROP-001"
+    label: ""
+    hierarchy: ""            # local | regional | national | imperial | transnational
+    why: ""
+    sources: []
+
+corrections:
+  - existing_id: ""
+    issue: ""
+    proposal: ""
+    sources: []
+    confidence: "medium"
+
+review:
+  status: "draft"            # draft | reviewed | rejected | integrated
+  unresolved: []

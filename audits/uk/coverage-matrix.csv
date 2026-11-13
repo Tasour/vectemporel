@@ -1,0 +1,85 @@
+period_id,period_label,start_edtf,end_edtf,scale,domain,status,entry_ids,justification,reviewer,last_review
+ERA-1,Antiquité & invasions,43,1066,national,Politique & institutions,partiel,uk-rome;uk-410,"Deux repères sur la conquête et le retrait romains, mais aucun acteur ni lieu structuré dans data.js.",,2026-11-13
+ERA-1,Antiquité & invasions,43,1066,national,Guerres & diplomatie,partiel,uk-rome;uk-410,"La conquête et les incursions germaniques sont présentes, sans forces, chefs ou lieux datés.",,2026-11-13
+ERA-1,Antiquité & invasions,43,1066,national,Droit & justice,vide justifié,,OM-002 : l'administration provinciale et le droit romain ne sont pas traités; dette documentée.,,2026-11-13
+ERA-1,Antiquité & invasions,43,1066,national,Économie & travail,partiel,uk-rome,"La romanisation économique est évoquée par le seul repère de conquête, sans fiche sur les villas, mines ou échanges.",,2026-11-13
+ERA-1,Antiquité & invasions,43,1066,national,Société & démographie,partiel,uk-rome;uk-410,"La société provinciale et les recompositions post-romaines sont mentionnées, sans acteurs ni lieux.",,2026-11-13
+ERA-1,Antiquité & invasions,43,1066,national,"Femmes, genre, sexualités",vide justifié,,OM-004 : aucune fiche sur les femmes dans la Bretagne romaine ou anglo-saxonne; source spécialisée absente du registre.,,2026-11-13
+ERA-1,Antiquité & invasions,43,1066,national,Religions & croyances,vide justifié,,OM-003 : la christianisation (597) et les cultes romains ne sont pas traités.,,2026-11-13
+ERA-1,Antiquité & invasions,43,1066,national,"Sciences, techniques & santé",vide justifié,,"OM-002 : techniques, médecine et savoirs romains absents.",,2026-11-13
+ERA-1,Antiquité & invasions,43,1066,national,Arts & lettres,vide justifié,,OM-002 : arts et architecture romains absents.,,2026-11-13
+ERA-1,Antiquité & invasions,43,1066,national,Environnement & territoire,vide justifié,,"OM-002 : paysages, agriculture et exploitation des ressources absents.",,2026-11-13
+ERA-1,Antiquité & invasions,43,1066,national,Migrations & diasporas,partiel,uk-410,"Les migrations germaniques sont évoquées par le retrait romain, sans datation ni acteurs.",,2026-11-13
+ERA-1,Antiquité & invasions,43,1066,national,Peuples autochtones & minorités,partiel,uk-rome;uk-410,"Les Bretons romanisés et les populations germaniques sont présents, mais sans statut ni voix.",,2026-11-13
+ERA-1,Antiquité & invasions,43,1066,national,Mémoire & patrimoine,vide justifié,,OM-002 : la mémoire romaine et les récits de fondation ne sont pas traités.,,2026-11-13
+ERA-1,Antiquité & invasions,43,1066,transnational,Circulations transnationales,partiel,uk-rome,"L'intégration à l'Empire romain est un fait de circulation, mais sans réseau ni commerce documenté.",,2026-11-13
+ERA-2,Moyen Âge,1066,1485,national,Politique & institutions,partiel,uk-hastings;uk-magna,"Conquête normande et charte baronniale, sans institutions ni acteurs structurés.",,2026-11-13
+ERA-2,Moyen Âge,1066,1485,national,Guerres & diplomatie,partiel,uk-hastings,"Hastings est présent; les guerres d'Écosse, du pays de Galles et d'Irlande sont absentes (OM-006).",,2026-11-13
+ERA-2,Moyen Âge,1066,1485,national,Droit & justice,partiel,uk-magna,"Magna Carta est présentée comme charte de droits, sans critique du texte de 1215.",,2026-11-13
+ERA-2,Moyen Âge,1066,1485,national,Économie & travail,partiel,uk-peste,"La peste est traitée comme événement démographique, sans économie agraire ni travail.",,2026-11-13
+ERA-2,Moyen Âge,1066,1485,national,Société & démographie,partiel,uk-peste,"La mortalité est présente; la société féodale, les paysans et les villes sont absents.",,2026-11-13
+ERA-2,Moyen Âge,1066,1485,national,"Femmes, genre, sexualités",vide justifié,,"OM-004 : aucune fiche sur les femmes, le mariage, le travail ou les voix religieuses.",,2026-11-13
+ERA-2,Moyen Âge,1066,1485,national,Religions & croyances,partiel,uk-magna,"L'Église est évoquée indirectement; la chrétienté médiévale, les ordres et les minorités religieuses sont absents.",,2026-11-13
+ERA-2,Moyen Âge,1066,1485,national,"Sciences, techniques & santé",vide justifié,,"OM-005 : médecine, techniques et savoirs médiévaux absents.",,2026-11-13
+ERA-2,Moyen Âge,1066,1485,national,Arts & lettres,vide justifié,,"OM-005 : architecture, littérature et arts médiévaux absents.",,2026-11-13
+ERA-2,Moyen Âge,1066,1485,national,Environnement & territoire,partiel,uk-peste,"La peste est liée à l'environnement, mais sans histoire agraire ni climat.",,2026-11-13
+ERA-2,Moyen Âge,1066,1485,national,Migrations & diasporas,vide justifié,,"OM-006 : migrations normandes, flamandes, galloises et irlandaises non traitées.",,2026-11-13
+ERA-2,Moyen Âge,1066,1485,regional,Peuples autochtones & minorités,partiel,uk-hastings,"La conquête normande est présente; Gallois, Irlandais, Écossais et Juifs médiévaux sont absents (OM-006).",,2026-11-13
+ERA-2,Moyen Âge,1066,1485,national,Mémoire & patrimoine,partiel,uk-magna,"Magna Carta est déjà un objet de mémoire, mais la distinction texte/postérité manque.",,2026-11-13
+ERA-2,Moyen Âge,1066,1485,transnational,Circulations transnationales,partiel,uk-hastings,"L'espace normand et angevin est évoqué, sans réseaux ni échanges.",,2026-11-13
+ERA-3,Renaissance & Réforme,1485,1688,national,Politique & institutions,partiel,uk-suprematie;uk-civil;uk-glorieuse,"Réforme, guerres civiles et révolution sont présentes, sans acteurs ni institutions détaillés.",,2026-11-13
+ERA-3,Renaissance & Réforme,1485,1688,national,Guerres & diplomatie,partiel,uk-armada;uk-civil,Armada et guerre civile sont présentes; les guerres des Trois Royaumes et l'Irlande sont sous-traitées.,,2026-11-13
+ERA-3,Renaissance & Réforme,1485,1688,national,Droit & justice,partiel,uk-glorieuse,"Le Bill of Rights est présenté comme 'Déclaration des droits', sans distinction des textes de 1689.",,2026-11-13
+ERA-3,Renaissance & Réforme,1485,1688,national,Économie & travail,vide justifié,,"OM-009 : commerce atlantique, enclosure, travail et finances de guerre absents.",,2026-11-13
+ERA-3,Renaissance & Réforme,1485,1688,national,Société & démographie,partiel,uk-civil,"La guerre civile est le seul repère social; famines, épidémies et structure sociale absentes.",,2026-11-13
+ERA-3,Renaissance & Réforme,1485,1688,national,"Femmes, genre, sexualités",vide justifié,,"OM-008 : aucune fiche sur les femmes, la sorcellerie, le travail ou la famille.",,2026-11-13
+ERA-3,Renaissance & Réforme,1485,1688,national,Religions & croyances,partiel,uk-suprematie,"La rupture henricienne est présente; la Réforme écossaise, galloise et irlandaise, les catholiques et les dissidents sont absents (OM-007).",,2026-11-13
+ERA-3,Renaissance & Réforme,1485,1688,national,"Sciences, techniques & santé",vide justifié,,"OM-009 : révolution scientifique, médecine et techniques absentes.",,2026-11-13
+ERA-3,Renaissance & Réforme,1485,1688,national,Arts & lettres,vide justifié,,"OM-009 : Shakespeare, musique et arts de la période absents.",,2026-11-13
+ERA-3,Renaissance & Réforme,1485,1688,national,Environnement & territoire,vide justifié,,"OM-009 : déforestation, agriculture et climat absents.",,2026-11-13
+ERA-3,Renaissance & Réforme,1485,1688,national,Migrations & diasporas,vide justifié,,"OM-011 : migrations irlandaises, écossaises et huguenotes absentes.",,2026-11-13
+ERA-3,Renaissance & Réforme,1485,1688,regional,Peuples autochtones & minorités,vide justifié,,"OM-006 et OM-007 : Irlande, pays de Galles et Écosse sous-représentés; populations colonisées absentes.",,2026-11-13
+ERA-3,Renaissance & Réforme,1485,1688,national,Mémoire & patrimoine,partiel,uk-glorieuse,"La Glorieuse Révolution est un lieu de mémoire, mais sans analyse de sa postérité.",,2026-11-13
+ERA-3,Renaissance & Réforme,1485,1688,transnational,Circulations transnationales,partiel,uk-armada;uk-civil,"Les liens avec l'Espagne, les Provinces-Unies et l'Atlantique sont évoqués, sans réseaux documentés.",,2026-11-13
+ERA-4,Empire & industrie,1688,1914,national,Politique & institutions,couvert,uk-union;PROP-001,Union de 1707 et union de 1801 proposée; acteurs et lieux identifiés dans les propositions.,,2026-11-13
+ERA-4,Empire & industrie,1688,1914,national,Guerres & diplomatie,vide justifié,,"OM-010 : Révolution américaine, guerres napoléoniennes et guerres impériales absentes.",,2026-11-13
+ERA-4,Empire & industrie,1688,1914,national,Droit & justice,couvert,uk-esclavage;PROP-002,Abolition de 1833 et mouvement abolitionniste proposé; sources primaires et savantes.,,2026-11-13
+ERA-4,Empire & industrie,1688,1914,national,Économie & travail,couvert,uk-industrie;PROP-004;PROP-005,"Industrialisation, chartisme et famine irlandaise couvrent économie et travail.",,2026-11-13
+ERA-4,Empire & industrie,1688,1914,regional,Société & démographie,couvert,PROP-003;PROP-004;PROP-005,"Peterloo, chartisme et famine documentent classes populaires, violences et migrations.",,2026-11-13
+ERA-4,Empire & industrie,1688,1914,national,"Femmes, genre, sexualités",partiel,PROP-002;PROP-003,"Les femmes apparaissent dans l'abolitionnisme et à Peterloo, mais aucune fiche dédiée (OM-008).",,2026-11-13
+ERA-4,Empire & industrie,1688,1914,national,Religions & croyances,partiel,uk-union,L'Église d'Écosse est en jeu dans l'union; la diversité religieuse et la sécularisation sont absentes (OM-007).,,2026-11-13
+ERA-4,Empire & industrie,1688,1914,national,"Sciences, techniques & santé",partiel,uk-industrie,"La révolution industrielle couvre techniques et énergie, mais la fiche n'a ni acteur, ni lieu, ni source structurés.",,2026-11-13
+ERA-4,Empire & industrie,1688,1914,national,Arts & lettres,vide justifié,,"OM-009 : romantisme, roman victorien et arts du XIXe siècle absents.",,2026-11-13
+ERA-4,Empire & industrie,1688,1914,regional,Environnement & territoire,couvert,PROP-005;PROP-006,"Famine et agitation crofters documentent agriculture, ressources et paysages.",,2026-11-13
+ERA-4,Empire & industrie,1688,1914,transnational,Migrations & diasporas,couvert,PROP-005;PROP-006,Émigration irlandaise et migrations des Highlands sont identifiées.,,2026-11-13
+ERA-4,Empire & industrie,1688,1914,imperial,Peuples autochtones & minorités,couvert,PROP-001;PROP-002;PROP-005;PROP-006,"Irlandais, Highlanders, populations asservies et colonisées sont présents.",,2026-11-13
+ERA-4,Empire & industrie,1688,1914,national,Mémoire & patrimoine,partiel,uk-expo;PROP-002,"Crystal Palace et abolition sont des objets de mémoire, sans analyse dédiée.",,2026-11-13
+ERA-4,Empire & industrie,1688,1914,transnational,Circulations transnationales,couvert,uk-industrie;uk-expo;PROP-002,"Commerce impérial, exposition et abolitionnisme transnational sont couverts.",,2026-11-13
+ERA-5,Guerres mondiales,1914,1945,national,Politique & institutions,partiel,uk-ww1;uk-vote;PROP-016,"Guerre, suffrage et révolution irlandaise proposée; institutions et partis restent à documenter.",,2026-11-13
+ERA-5,Guerres mondiales,1914,1945,national,Guerres & diplomatie,couvert,uk-ww1;uk-ww2;PROP-016,Deux guerres mondiales et révolution irlandaise; acteurs et lieux identifiés.,,2026-11-13
+ERA-5,Guerres mondiales,1914,1945,national,Droit & justice,partiel,uk-vote,"Le droit de vote est traité; le droit d'exception, la conscription et la justice militaire sont absents.",,2026-11-13
+ERA-5,Guerres mondiales,1914,1945,national,Économie & travail,partiel,uk-ww1;uk-ww2,"Les guerres sont présentes; économie de guerre, rationnement et travail des femmes restent à documenter.",,2026-11-13
+ERA-5,Guerres mondiales,1914,1945,imperial,Société & démographie,couvert,uk-vote;PROP-007;PROP-008,"Suffrage, Amritsar et famine du Bengale couvrent société, violence et empire.",,2026-11-13
+ERA-5,Guerres mondiales,1914,1945,national,"Femmes, genre, sexualités",couvert,uk-vote;PROP-008,Le suffrage de 1918 et les expériences des femmes dans la famine sont identifiés; le front intérieur reste partiel.,,2026-11-13
+ERA-5,Guerres mondiales,1914,1945,national,Religions & croyances,vide justifié,,"OM-014 : religions, pacifismes et minorités religieuses 1914–1945 absents.",,2026-11-13
+ERA-5,Guerres mondiales,1914,1945,imperial,"Sciences, techniques & santé",partiel,uk-ww1;uk-ww2,"Les guerres sont présentes, mais sciences, médecine et technique ne sont pas des fiches.",,2026-11-13
+ERA-5,Guerres mondiales,1914,1945,national,Arts & lettres,vide justifié,,"OM-015 : arts, littérature et propagande 1914–1945 absents.",,2026-11-13
+ERA-5,Guerres mondiales,1914,1945,imperial,Environnement & territoire,couvert,PROP-008,La famine du Bengale documente la relation guerre-ressources-climat.,,2026-11-13
+ERA-5,Guerres mondiales,1914,1945,national,Migrations & diasporas,partiel,uk-ww2,"Les mouvements de populations de guerre sont évoqués, sans fiches sur réfugiés et déplacements.",,2026-11-13
+ERA-5,Guerres mondiales,1914,1945,imperial,Peuples autochtones & minorités,couvert,PROP-007;PROP-008,Amritsar et le Bengale donnent une place aux populations colonisées.,,2026-11-13
+ERA-5,Guerres mondiales,1914,1945,national,Mémoire & patrimoine,couvert,uk-ww1;uk-ww2;PROP-007,Commémorations de guerre et mémoire d'Amritsar sont identifiées.,,2026-11-13
+ERA-5,Guerres mondiales,1914,1945,transnational,Circulations transnationales,couvert,uk-ww1;uk-ww2;PROP-007;PROP-008,"Empire, Alliés et théâtres extra-européens sont présents.",,2026-11-13
+ERA-6,Royaume-Uni contemporain,1945,2026,national,Politique & institutions,couvert,uk-thatcher;uk-good-friday;uk-brexit;PROP-015;PROP-017,"Thatcher, accord de 1998, Brexit et dévolution couvrent les institutions.",,2026-11-13
+ERA-6,Royaume-Uni contemporain,1945,2026,national,Guerres & diplomatie,vide justifié,,"OM-013 : guerres et interventions post-1945 absentes (Malaisie, Corée, Suez, Falklands, Irak, Afghanistan).",,2026-11-13
+ERA-6,Royaume-Uni contemporain,1945,2026,national,Droit & justice,couvert,PROP-014;uk-good-friday,"Affaire Stephen Lawrence et accord de 1998 documentent justice, police et droits.",,2026-11-13
+ERA-6,Royaume-Uni contemporain,1945,2026,national,Économie & travail,couvert,uk-thatcher;PROP-012;PROP-013;PROP-017,"Thatcher, Grunwick et grève des mineurs couvrent néolibéralisme, travail et désindustrialisation.",,2026-11-13
+ERA-6,Royaume-Uni contemporain,1945,2026,national,Société & démographie,couvert,uk-nhs;PROP-010;PROP-014,"NHS, Windrush et Stephen Lawrence couvrent État social, migration et racisme.",,2026-11-13
+ERA-6,Royaume-Uni contemporain,1945,2026,national,"Femmes, genre, sexualités",couvert,PROP-012;PROP-013;uk-thatcher,"Grunwick, Women Against Pit Closures et Thatcher documentent femmes, travail et pouvoir.",,2026-11-13
+ERA-6,Royaume-Uni contemporain,1945,2026,national,Religions & croyances,vide justifié,,"OM-014 : sécularisation, diversité religieuse et islam britannique absents.",,2026-11-13
+ERA-6,Royaume-Uni contemporain,1945,2026,national,"Sciences, techniques & santé",couvert,uk-nhs;PROP-018,Le NHS et sa fondation 1948–1951 couvrent santé publique et financement; les sciences biomédicales restent à approfondir.,,2026-11-13
+ERA-6,Royaume-Uni contemporain,1945,2026,national,Arts & lettres,vide justifié,,"OM-015 : arts, sport et culture populaire 1945–2026 absents.",,2026-11-13
+ERA-6,Royaume-Uni contemporain,1945,2026,local,Environnement & territoire,couvert,PROP-011,"Tryweryn documente l'environnement, l'eau et la mémoire; le smog et le climat restent absents (OM-015).",,2026-11-13
+ERA-6,Royaume-Uni contemporain,1945,2026,transnational,Migrations & diasporas,couvert,PROP-009;PROP-010,Partition et Windrush couvrent migrations impériales et caribéennes.,,2026-11-13
+ERA-6,Royaume-Uni contemporain,1945,2026,national,Peuples autochtones & minorités,couvert,PROP-009;PROP-010;PROP-014,"Partition, Windrush et Stephen Lawrence donnent une place aux minorités.",,2026-11-13
+ERA-6,Royaume-Uni contemporain,1945,2026,national,Mémoire & patrimoine,couvert,PROP-011;PROP-014;uk-good-friday,"Tryweryn, Stephen Lawrence et l'accord de 1998 sont des objets mémoriels.",,2026-11-13
+ERA-6,Royaume-Uni contemporain,1945,2026,transnational,Circulations transnationales,couvert,uk-brexit;PROP-017;PROP-009;PROP-010,"Brexit, partition et Windrush documentent l'Europe, l'empire et le Commonwealth.",,2026-11-13

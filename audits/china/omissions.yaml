@@ -1,0 +1,280 @@
+# Vectemporel — registre des omissions (méthode v1.0)
+# Une omission est une décision documentée, pas un oubli silencieux.
+# Aucune justification n'invente de source : si la source manque, elle est nommée.
+
+schema_version: "1.0"
+country_id: "china"
+reviewed_at: "2026-11-13"
+reviewer: ""
+
+reviewed_scope:
+  period_ids: ["ERA-1", "ERA-2", "ERA-3", "ERA-4", "ERA-5"]
+  domains:
+    - "Politique & institutions"
+    - "Guerres & diplomatie"
+    - "Droit & justice"
+    - "Économie & travail"
+    - "Société & démographie"
+    - "Femmes, genre, sexualités"
+    - "Religions & croyances"
+    - "Sciences, techniques & santé"
+    - "Arts & lettres"
+    - "Environnement & territoire"
+    - "Migrations & diasporas"
+    - "Peuples autochtones & minorités"
+    - "Mémoire & patrimoine"
+    - "Circulations transnationales"
+  scales: ["local", "regional", "national", "imperial", "transnational"]
+
+omissions:
+  - id: "OM-001"
+    period_id: "ERA-3"
+    domain: "Économie & travail"
+    scale: "national"
+    what_is_missing: >-
+      Histoire économique de la République (1912-1949) : industrie, finance,
+      inflation, ports ouverts, travail ouvrier et économie de guerre.
+    reason: "not_yet_researched"
+    justification: >-
+      La frise ne contient aucun repère économique pour 1912-1949. Les synthèses
+      disponibles (Zarrow, Spence) en traitent, mais aucune fiche n'a été rédigée ;
+      c'est une dette prioritaire, car elle conditionne la compréhension de la
+      guerre et de la crise du KMT.
+    evidence_checked: ["SRC-002", "SRC-001"]
+    status: "to_fill"
+    reviewer: ""
+    review_date: "2026-11-13"
+  - id: "OM-002"
+    period_id: "ERA-3"
+    domain: "Femmes, genre, sexualités"
+    scale: "national"
+    what_is_missing: >-
+      Droits des femmes, suffrage, travail féminin, mariage et statut légal dans
+      la Chine républicaine.
+    reason: "not_yet_researched"
+    justification: >-
+      Les femmes apparaissent seulement comme participantes au 4 Mai et à la
+      Nouvelle Culture, sans fiche sur le droit de vote, le mariage ou le travail.
+      Mitter et Hershatter fournissent des points d'appui, mais une histoire des
+      femmes républicaines reste à construire avec des sources chinoises.
+    evidence_checked: ["SRC-003", "SRC-011"]
+    status: "to_fill"
+    reviewer: ""
+    review_date: "2026-11-13"
+  - id: "OM-003"
+    period_id: "ERA-3"
+    domain: "Peuples autochtones & minorités"
+    scale: "regional"
+    what_is_missing: >-
+      Tibet, Xinjiang, Mongolie-Intérieure et Guangxi zhuang sous la République
+      (1912-1949), ainsi que les politiques de frontière du KMT.
+    reason: "not_yet_researched"
+    justification: >-
+      La période républicaine est traitée comme une histoire Han et étatique.
+      Millward, Shakya et Mullaney couvrent partiellement la longue durée, mais
+      aucune fiche n'a été rédigée ; le sujet est politiquement contesté et exige
+      des sources croisées chinoises, tibétaines, ouïghoures et taïwanaises.
+    evidence_checked: ["SRC-015", "SRC-016", "SRC-020"]
+    status: "to_fill"
+    reviewer: ""
+    review_date: "2026-11-13"
+  - id: "OM-004"
+    period_id: "ERA-4"
+    domain: "Guerres & diplomatie"
+    scale: "transnational"
+    what_is_missing: >-
+      Guerre de Corée, conflit sino-indien de 1962, affrontements sino-soviétiques
+      de 1969 et guerre sino-vietnamienne de 1979.
+    reason: "not_yet_researched"
+    justification: >-
+      La frise saute de 1949 à 1978 sans aucun conflit. Ces guerres structurent
+      pourtant la diplomatie, le budget militaire et les relations avec l'URSS et
+      les États-Unis ; elles nécessitent des sources militaires et diplomatiques
+      qui ne sont pas dans le registre.
+    evidence_checked: ["SRC-001", "SRC-008"]
+    status: "to_fill"
+    reviewer: ""
+    review_date: "2026-11-13"
+  - id: "OM-005"
+    period_id: "ERA-4"
+    domain: "Migrations & diasporas"
+    scale: "national"
+    what_is_missing: >-
+      Mise en place du hukou (1958), migrations intérieures, déplacements de
+      populations et exil des minorités.
+    reason: "not_yet_researched"
+    justification: >-
+      Le hukou est un mécanisme central de la Chine populaire et de la Chine
+      réformée, mais il n'a pas de fiche. Naughton en traite pour la période
+      récente ; l'histoire sociale des migrations 1949-1978 reste à documenter.
+    evidence_checked: ["SRC-014", "SRC-008"]
+    status: "to_fill"
+    reviewer: ""
+    review_date: "2026-11-13"
+  - id: "OM-006"
+    period_id: "ERA-4"
+    domain: "Sciences, techniques & santé"
+    scale: "national"
+    what_is_missing: >-
+      Politique scientifique, programme des « deux bombes, un satellite », santé
+      rurale et médecins aux pieds nus.
+    reason: "source_absent"
+    justification: >-
+      Aucune source du registre ne traite spécifiquement l'histoire des sciences
+      et de la santé maoïstes. Le sujet est pourtant majeur pour comprendre la
+      légitimité du PCC et les campagnes sanitaires ; une bibliographie dédiée
+      est nécessaire avant toute fiche.
+    evidence_checked: ["SRC-008", "SRC-001"]
+    status: "to_fill"
+    reviewer: ""
+    review_date: "2026-11-13"
+  - id: "OM-007"
+    period_id: "ERA-4"
+    domain: "Arts & lettres"
+    scale: "national"
+    what_is_missing: >-
+      Réalisme socialiste, censure littéraire, destructions culturelles de la
+      Révolution culturelle et formes artistiques autorisées.
+    reason: "not_yet_researched"
+    justification: >-
+      La Révolution culturelle est présente comme événement politique, mais pas
+      comme histoire culturelle. MacFarquhar et Walder en donnent le cadre ; une
+      histoire des œuvres, des artistes et des institutions culturelles reste à
+      écrire.
+    evidence_checked: ["SRC-007", "SRC-008"]
+    status: "to_fill"
+    reviewer: ""
+    review_date: "2026-11-13"
+  - id: "OM-008"
+    period_id: "ERA-5"
+    domain: "Environnement & territoire"
+    scale: "national"
+    what_is_missing: >-
+      Barrage des Trois Gorges, pollution industrielle, désertification,
+      politiques climatiques et catastrophes environnementales récentes.
+    reason: "not_yet_researched"
+    justification: >-
+      Marks couvre la longue durée environnementale, mais la frise n'a aucun
+      repère post-1978. Les conflits autour de l'eau, de l'air et du climat sont
+      centraux dans la Chine contemporaine et exigent des sources spécialisées.
+    evidence_checked: ["SRC-017", "SRC-014"]
+    status: "to_fill"
+    reviewer: ""
+    review_date: "2026-11-13"
+  - id: "OM-009"
+    period_id: "ERA-5"
+    domain: "Migrations & diasporas"
+    scale: "transnational"
+    what_is_missing: >-
+      Migrations rurales-urbaines de masse, réforme du hukou, émigration et
+      diasporas chinoises contemporaines.
+    reason: "not_yet_researched"
+    justification: >-
+      Les mingong sont un acteur collectif proposé, mais aucun événement ne
+      documente les vagues migratoires, les villes-dortoirs ou les diasporas.
+      Naughton et Vogel fournissent des données économiques, pas une histoire
+      sociale des migrations.
+    evidence_checked: ["SRC-014", "SRC-013"]
+    status: "to_fill"
+    reviewer: ""
+    review_date: "2026-11-13"
+  - id: "OM-010"
+    period_id: "ERA-5"
+    domain: "Peuples autochtones & minorités"
+    scale: "regional"
+    what_is_missing: >-
+      Politiques contemporaines au Xinjiang et au Tibet : surveillance,
+      internement, rééducation, restrictions religieuses et résistances.
+    reason: "disputed"
+    justification: >-
+      Les qualifications, les chiffres et les cadres juridiques sont fortement
+      contestés entre sources chinoises, organisations internationales et travaux
+      universitaires. Millward et Shakya donnent le contexte historique, mais une
+      fiche contemporaine exige un dossier de sources contradictoires explicite.
+    evidence_checked: ["SRC-015", "SRC-016"]
+    status: "documented"
+    reviewer: ""
+    review_date: "2026-11-13"
+  - id: "OM-011"
+    period_id: "ERA-4"
+    domain: "Politique & institutions"
+    scale: "regional"
+    what_is_missing: >-
+      Taïwan après 1949 : incident 228, loi martiale, développement économique,
+      démocratisation et relations transdétroit.
+    reason: "not_yet_researched"
+    justification: >-
+      Taïwan est mentionnée comme lieu de retraite du KMT en 1949, mais son
+      histoire propre n'est pas traitée. Le sujet est politiquement contesté et
+      nécessite des sources taïwanaises et chinoises croisées, absentes du registre.
+    evidence_checked: ["SRC-001"]
+    status: "to_fill"
+    reviewer: ""
+    review_date: "2026-11-13"
+  - id: "OM-012"
+    period_id: "ERA-5"
+    domain: "Politique & institutions"
+    scale: "regional"
+    what_is_missing: >-
+      Hong Kong après 1997 : mouvements de 2019, loi de sécurité nationale de
+      2020, évolution du statut autonome.
+    reason: "not_yet_researched"
+    justification: >-
+      La rétrocession de 1997 est proposée, mais la période postérieure est
+      absente. Les sources du registre s'arrêtent avant 2019 ; une histoire
+      documentée des mobilisations et de la répression exige des sources
+      journalistiques et juridiques supplémentaires.
+    evidence_checked: ["SRC-013", "SRC-001"]
+    status: "to_fill"
+    reviewer: ""
+    review_date: "2026-11-13"
+  - id: "OM-013"
+    period_id: "ERA-5"
+    domain: "Sciences, techniques & santé"
+    scale: "national"
+    what_is_missing: >-
+      Fin de la politique zéro-COVID, protestations de 2022 et transition
+      sanitaire de 2022-2023.
+    reason: "not_yet_researched"
+    justification: >-
+      Le confinement de Wuhan est proposé, mais la suite de la pandémie n'est pas
+      documentée. Les sources institutionnelles sont rares et les récits
+      contestés ; le sujet est trop récent pour une fiche stable.
+    evidence_checked: ["SRC-019"]
+    status: "to_fill"
+    reviewer: ""
+    review_date: "2026-11-13"
+  - id: "OM-014"
+    period_id: "ERA-4"
+    domain: "Société & démographie"
+    scale: "national"
+    what_is_missing: >-
+      Bilan humain détaillé de la Révolution culturelle : morts, camps, suicides,
+      violences de faction et répression locale.
+    reason: "disputed"
+    justification: >-
+      Les estimations varient fortement et les archives restent fermées. Le
+      dossier présente la Révolution culturelle comme événement de violence de
+      masse, sans chiffre unique ; une fiche quantitative serait prématurée.
+    evidence_checked: ["SRC-007", "SRC-008"]
+    status: "documented"
+    reviewer: ""
+    review_date: "2026-11-13"
+  - id: "OM-015"
+    period_id: "ERA-2"
+    domain: "Politique & institutions"
+    scale: "imperial"
+    what_is_missing: >-
+      Sources primaires : archives centrales chinoises, Academia Historica de
+      Taïwan, archives britanniques et françaises, archives tibétaines et
+      ouïghoures.
+    reason: "access_restricted"
+    justification: >-
+      Le registre est composé de synthèses savantes et d'un rapport
+      institutionnel. Aucune archive primaire n'a été consultée ; les claims sont
+      donc de niveau synthèse, et les points contestés (famine, Nanjing, 1989,
+      Tibet, Xinjiang) restent dépendants de la littérature secondaire.
+    evidence_checked: ["SRC-001", "SRC-002", "SRC-005", "SRC-016"]
+    status: "documented"
+    reviewer: ""
+    review_date: "2026-11-13"

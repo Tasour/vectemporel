@@ -40,7 +40,7 @@ L’audit structurel `npm run audit:timeline` mesure deux choses distinctes :
 | Indicateur | Dernier résultat | Lecture |
 | --- | ---: | --- |
 | Intégrité POC | **120/120 contrôles** | Ères contiguës, repères dans leur domaine, identifiants, tags, liens et ancres valides. |
-| Complétude cible v1.0 | **6/100** | Le schéma de preuve est presque entièrement absent : acteurs, lieux, sources indépendantes, claims, `TimeSpan`, omissions. |
+| Complétude cible v1.0 | **17,9/100** | La couche pays est documentée (10 dossiers, 200 sources), mais les fiches-événements n’ont pas encore acteurs, lieux, sources, claims, `TimeSpan`. |
 | Couverture tags × ères | **39 %** | 173 cellules sur 448 ont au moins un repère ; aucune cellule vide n’est encore justifiée. |
 | Équilibre politique/guerre | **10/10 pays > 50 %** | La sélection sur-représente les événements politiques et militaires. |
 
@@ -56,6 +56,8 @@ Commandes :
 ```bash
 npm run audit:timeline          # régénère TIMELINE_AUDIT.md
 npm run audit:timeline:strict   # échoue si la cible v1.0 est < 80/100
+npm run audit:dossiers          # contrôle structurel des 10 dossiers pays
+npm run verify:sources          # vérifie DOI et URL des sources
 npm run verify                  # vérifie la disponibilité des pages Grokipedia
 ```
 

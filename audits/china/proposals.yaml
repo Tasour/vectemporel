@@ -1,0 +1,692 @@
+# Vectemporel — propositions d’enrichissement (méthode v1.0)
+# File de revue : aucune proposition n’est publiée automatiquement.
+# Toute proposition renvoie à une source du source-register.csv.
+
+schema_version: "1.0"
+country_id: "china"
+generated_at: "2026-11-13"
+author: ""
+
+periodization:
+  current_verdict: >-
+    Les cinq macro-ères sont lisibles mais historiquement anisotropes : l'ère 1
+    est téléologique, l'ère 2 couvre 2 133 ans et masque les divisions, l'ère 3
+    est vide dans les données, les ères 4 et 5 sont sous-périodisées. La
+    périodisation politique actuelle doit être conservée pour la navigation,
+    mais documentée par des sous-périodes et corrigée par des bornes alternatives.
+  proposed_changes:
+    - action: "keep"
+      era_name: "Cinq ères Vectemporel"
+      proposal: >-
+        Conserver les cinq macro-ères comme cadre de navigation, en ajoutant des
+        sous-périodes internes (non affichées comme des ères) pour les divisions
+        impériales, la République, la Chine maoïste et la période post-1978.
+      rationale: >-
+        Le changement du nombre d'ères casserait la lisibilité et l'interface ;
+        les sous-périodes permettent de corriger l'effet de continuité sans
+        refonte complète.
+      sources: ["SRC-001", "SRC-002", "SRC-008", "SRC-013"]
+    - action: "rename"
+      era_name: "Dynasties fondatrices"
+      proposal: "Renommer « Shang, Zhou et Royaumes combattants »."
+      rationale: >-
+        « Fondatrices » projette une téléologie nationale et masque la diversité
+        politique des cités-États, des Royaumes combattants et des peuples non-Han.
+      sources: ["SRC-001"]
+    - action: "rename"
+      era_name: "Empire unifié"
+      proposal: "Renommer « Empires et divisions » et documenter les sous-périodes Qin-Han, Division, Sui-Tang, Song-Yuan, Ming-Qing."
+      rationale: >-
+        L'empire n'est pas continuellement unifié : 220-589, 907-960 et 1127-1279
+        sont des périodes de division ou de régimes concurrents.
+      sources: ["SRC-001"]
+    - action: "keep"
+      era_name: "République et révolutions"
+      proposal: >-
+        Conserver l'ère 1912-1949 et la remplir avec les propositions PROP-001 à
+        PROP-009, en distinguant 1912-1927, 1927-1937 et 1937-1949.
+      rationale: >-
+        L'ère est actuellement vide, alors qu'elle concentre la chute de l'empire,
+        la construction du parti-État, la guerre sino-japonaise et la guerre civile.
+      sources: ["SRC-002", "SRC-003", "SRC-004"]
+    - action: "split"
+      era_name: "Chine populaire (1949-1978)"
+      proposal: >-
+        Scinder en « Chine maoïste (1949-1976) » et « Transition (1976-1978) »,
+        ou conserver l'ère avec des sous-périodes 1949-1957, 1958-1965, 1966-1976.
+      rationale: >-
+        La mort de Mao en 1976 et la transition vers Deng sont une rupture
+        distincte du troisième plénum de 1978.
+      sources: ["SRC-007", "SRC-008"]
+    - action: "split"
+      era_name: "Réforme et puissance (1978-2026)"
+      proposal: >-
+        Scinder en « Réformes (1978-2001) » et « Puissance et tensions
+        (2001-2026) », ou conserver l'ère avec des sous-périodes 1978-1992,
+        1992-2001, 2001-2012, 2012-2026.
+      rationale: >-
+        L'accession à l'OMC en 2001 et l'arrivée de Xi Jinping en 2012 sont des
+        bifurcations majeures que l'ère unique efface.
+      sources: ["SRC-013", "SRC-014"]
+
+events:
+  - id: "PROP-001"
+    action: "add"
+    existing_id: null
+    year: 1912
+    end_year: 1913
+    title: "République de Chine et Seconde Révolution"
+    subtitle: "Nanjing, abdication, échec de 1913"
+    tags: ["politique", "guerre"]
+    importance: 3
+    summary: >-
+      Le 1er janvier 1912, Sun Yat-sen proclame la République à Nanjing ; Puyi
+      abdique le 12 février. En juillet 1913, la Seconde Révolution contre Yuan
+      Shikai échoue, ouvrant la fragmentation des seigneurs de la guerre.
+    sources: ["SRC-002", "SRC-001"]
+    confidence: "high"
+    rationale: >-
+      Comble l'ère 1912-1949 vide et corrige cn-1911, qui confond le soulèvement
+      de Wuchang, la proclamation de la République et l'abdication.
+  - id: "PROP-002"
+    action: "add"
+    existing_id: null
+    year: 1915
+    end_year: 1923
+    title: "Mouvement de la Nouvelle Culture"
+    subtitle: "Nouvelle Jeunesse, langue vernaculaire, science et démocratie"
+    tags: ["arts", "politique", "sciences"]
+    importance: 2
+    summary: >-
+      À partir de 1915, la revue Nouvelle Jeunesse et des intellectuels comme
+      Chen Duxiu, Hu Shi et Lu Xun lancent une critique du confucianisme,
+      défendent la langue vernaculaire, la science et la démocratie. Le mouvement
+      se prolonge dans les années 1920.
+    sources: ["SRC-003", "SRC-001"]
+    confidence: "high"
+    rationale: >-
+      Couvre les arts, les idées et les femmes intellectuelles, absents de la
+      frise actuelle ; hors politique et guerre.
+  - id: "PROP-003"
+    action: "add"
+    existing_id: null
+    year: 1919
+    end_year: null
+    title: "Mouvement du 4 Mai"
+    subtitle: "Étudiants, Versailles et nation"
+    tags: ["politique", "arts"]
+    importance: 3
+    summary: >-
+      Le 4 mai 1919, des étudiants de Pékin manifestent contre le transfert au
+      Japon des concessions allemandes du Shandong. Le mouvement s'étend aux
+      villes, aux ouvriers et aux femmes ; il devient un moment fondateur du
+      nationalisme et de la Nouvelle Culture.
+    sources: ["SRC-003", "SRC-001"]
+    confidence: "high"
+    rationale: >-
+      Événement charnière de l'ère 1912-1949, absent de la frise ; permet
+      d'intégrer étudiants, ouvriers et femmes.
+  - id: "PROP-004"
+    action: "add"
+    existing_id: null
+    year: 1921
+    end_year: null
+    title: "Fondation du Parti communiste chinois"
+    subtitle: "Shanghai, Komintern, organisation centralisée"
+    tags: ["politique"]
+    importance: 3
+    summary: >-
+      En juillet 1921, treize délégués environ tiennent à Shanghai le premier
+      congrès du PCC, avec l'aide du Komintern. Le parti adopte une organisation
+      centralisée et s'implante dans les milieux ouvriers et intellectuels.
+    sources: ["SRC-002", "SRC-001"]
+    confidence: "high"
+    rationale: >-
+      Origine du parti-État, absente de la frise ; acteur collectif central du
+      XXe siècle.
+  - id: "PROP-005"
+    action: "add"
+    existing_id: null
+    year: 1927
+    end_year: null
+    title: "Purge de Shanghai"
+    subtitle: "Rupture KMT-PCC"
+    tags: ["politique", "guerre"]
+    importance: 3
+    summary: >-
+      Le 12 avril 1927, Chiang Kai-shek et les forces du KMT répriment les
+      organisations communistes et ouvrières de Shanghai, avec l'appui de la
+      pègre. La rupture entre KMT et PCC structure la décennie de Nanjing.
+    sources: ["SRC-002", "SRC-001"]
+    confidence: "high"
+    rationale: >-
+      Explique la guerre civile et la répression ouvrière ; hors Pékin et
+      articule politique, violence et travail.
+  - id: "PROP-006"
+    action: "add"
+    existing_id: null
+    year: 1931
+    end_year: 1945
+    title: "Guerre sino-japonaise"
+    subtitle: "De Mukden à la capitulation"
+    tags: ["guerre", "politique"]
+    importance: 3
+    summary: >-
+      Le 18 septembre 1931, l'armée japonaise du Guandong simule un attentat près
+      de Mukden et envahit la Mandchourie ; le Mandchoukouo est créé en 1932. La
+      guerre totale commence en juillet 1937, s'étend à Shanghai, Nanjing et
+      Chongqing ; le Japon capitule en août-septembre 1945.
+    sources: ["SRC-004", "SRC-002"]
+    confidence: "high"
+    rationale: >-
+      Comble l'absence de la guerre sino-japonaise comme processus ; PROP-008
+      (Nanjing) et PROP-009 (crue de 1938) en sont des épisodes.
+  - id: "PROP-007"
+    action: "add"
+    existing_id: null
+    year: 1934
+    end_year: 1935
+    title: "Longue Marche et base de Yan'an"
+    subtitle: "Retraite, survie et recomposition du PCC"
+    tags: ["guerre", "politique"]
+    importance: 3
+    summary: >-
+      D'octobre 1934 à octobre 1935, l'Armée rouge quitte le Jiangxi et gagne le
+      Shaanxi après une retraite de plusieurs milliers de kilomètres. La base de
+      Yan'an devient le centre du PCC ; la marche est aussi une opération de
+      survie et de purge.
+    sources: ["SRC-006", "SRC-001"]
+    confidence: "high"
+    rationale: >-
+      Comble le chaînon manquant entre 1927 et 1949 ; permet de traiter Yan'an,
+      les purges et les régions minoritaires traversées.
+  - id: "PROP-008"
+    action: "add"
+    existing_id: null
+    year: 1937
+    end_year: 1938
+    title: "Massacre de Nanjing"
+    subtitle: "Violences de masse et mémoires disputées"
+    tags: ["guerre", "memoire"]
+    importance: 3
+    summary: >-
+      Après la prise de Nanjing en décembre 1937, l'armée japonaise commet des
+      massacres, des viols et des pillages pendant plusieurs semaines. Les
+      estimations de victimes varient ; le tribunal de Tokyo retient environ
+      200 000 morts.
+    sources: ["SRC-005", "SRC-004"]
+    confidence: "high"
+    rationale: >-
+      Événement central de la guerre et de la mémoire ; hors Pékin, avec un
+      dossier de sources contradictoires explicite.
+  - id: "PROP-009"
+    action: "add"
+    existing_id: null
+    year: 1938
+    end_year: null
+    title: "Crue du fleuve Jaune"
+    subtitle: "Destruction des digues de Huayuankou"
+    tags: ["guerre", "environnement", "societe"]
+    importance: 2
+    summary: >-
+      En juin 1938, l'armée nationaliste détruit les digues de Huayuankou pour
+      ralentir l'avance japonaise. La crue dévaste le Henan, l'Anhui et le
+      Jiangsu, fait des centaines de milliers de morts et des millions de
+      déplacés.
+    sources: ["SRC-017", "SRC-004"]
+    confidence: "high"
+    rationale: >-
+      Seul événement environnemental majeur de la frise ; articule guerre,
+      catastrophe et déplacements de population.
+  - id: "PROP-010"
+    action: "add"
+    existing_id: null
+    year: 1950
+    end_year: null
+    title: "Loi sur le mariage"
+    subtitle: "Égalité des époux et fin du mariage arrangé"
+    tags: ["droit", "femmes", "societe"]
+    importance: 3
+    summary: >-
+      Le 1er mai 1950, la loi sur le mariage interdit le mariage arrangé, la
+      polygamie et le concubinage, et proclame l'égalité des époux. Sa mise en
+      œuvre se heurte aux pratiques locales et aux campagnes de propagande.
+    sources: ["SRC-011", "SRC-001"]
+    confidence: "high"
+    rationale: >-
+      Comble l'absence des femmes et du droit dans la Chine populaire ; événement
+      majeur de genre et de société.
+  - id: "PROP-011"
+    action: "add"
+    existing_id: null
+    year: 1951
+    end_year: null
+    title: "Accord en dix-sept points sur le Tibet"
+    subtitle: "Intégration contestée à la RPC"
+    tags: ["politique", "minorites", "religion"]
+    importance: 3
+    summary: >-
+      Le 23 mai 1951, des plénipotentiaires tibétains et le gouvernement central
+      signent à Pékin un accord en dix-sept points sur l'intégration du Tibet à
+      la RPC. Le dalaï-lama le ratifie par télégramme en octobre ; le texte et sa
+      portée sont contestés.
+    sources: ["SRC-016", "SRC-001"]
+    confidence: "high"
+    rationale: >-
+      Documente une minorité majeure et un point politique disputé, absent de la
+      frise ; hors Pékin.
+  - id: "PROP-012"
+    action: "add"
+    existing_id: null
+    year: 1958
+    end_year: 1962
+    title: "Grand Bond en avant et Grande Famine"
+    subtitle: "Communes, quotas, réquisitions"
+    tags: ["economie", "societe", "environnement"]
+    importance: 3
+    summary: >-
+      Lancé en 1958, le Grand Bond en avant crée des communes populaires, fixe des
+      quotas irréalistes et réquisitionne les grains. La famine de 1959-1961 tue
+      entre 15 et 46 millions de personnes selon les estimations ; les politiques,
+      la gestion et le climat se combinent.
+    sources: ["SRC-009", "SRC-010", "SRC-008"]
+    confidence: "high"
+    rationale: >-
+      Catastrophe centrale de la Chine maoïste, totalement absente de la frise ;
+      nécessite un traitement chiffré avec fourchettes.
+  - id: "PROP-013"
+    action: "add"
+    existing_id: null
+    year: 1966
+    end_year: 1976
+    title: "Révolution culturelle"
+    subtitle: "Gardes rouges, purges, destructions"
+    tags: ["politique", "societe", "memoire"]
+    importance: 3
+    summary: >-
+      Lancée par Mao en 1966, la Révolution culturelle mobilise les gardes rouges,
+      purge les cadres et les intellectuels, et détruit des biens culturels. Elle
+      prend fin avec la mort de Mao en 1976 ; le bilan humain reste disputé.
+    sources: ["SRC-007", "SRC-008"]
+    confidence: "high"
+    rationale: >-
+      Deuxième catastrophe politique du XXe siècle chinois, absente de la frise ;
+      permet de traiter violences, culture et mémoire.
+  - id: "PROP-014"
+    action: "add"
+    existing_id: null
+    year: 1979
+    end_year: 2015
+    title: "Politique de l'enfant unique"
+    subtitle: "État, genre et démographie"
+    tags: ["femmes", "droit", "societe"]
+    importance: 3
+    summary: >-
+      Annoncée en 1979 et généralisée en 1980, la politique de l'enfant unique
+      limite la plupart des familles urbaines à un enfant, avec des exceptions
+      rurales et minoritaires. Elle est assouplie en 2013 et remplacée par la
+      politique de deux enfants en 2015.
+    sources: ["SRC-012", "SRC-001"]
+    confidence: "high"
+    rationale: >-
+      Politique majeure de genre et de démographie, absente de la frise ; couvre
+      les femmes et les familles, pas seulement l'économie.
+  - id: "PROP-015"
+    action: "add"
+    existing_id: null
+    year: 1989
+    end_year: null
+    title: "Tiananmen 1989"
+    subtitle: "Manifestations et répression"
+    tags: ["politique", "memoire"]
+    importance: 3
+    summary: >-
+      Au printemps 1989, des étudiants et des ouvriers manifestent à Pékin et dans
+      plusieurs villes pour la démocratie et contre la corruption. Dans la nuit du
+      3 au 4 juin, l'armée réprime le mouvement ; le bilan est disputé et
+      l'événement est censuré en RPC.
+    sources: ["SRC-018", "SRC-001"]
+    confidence: "high"
+    rationale: >-
+      Rupture politique majeure entre 1978 et 2026, absente de la frise ; point
+      de mémoire sensible à traiter avec sources contradictoires.
+  - id: "PROP-016"
+    action: "add"
+    existing_id: null
+    year: 1997
+    end_year: null
+    title: "Rétrocession de Hong Kong"
+    subtitle: "Fin de la colonie britannique"
+    tags: ["politique", "transnational"]
+    importance: 3
+    summary: >-
+      Le 1er juillet 1997, le Royaume-Uni rétrocède Hong Kong à la RPC, sous le
+      régime « un pays, deux systèmes ». La déclaration conjointe sino-britannique
+      de 1984 avait fixé les modalités.
+    sources: ["SRC-013", "SRC-001"]
+    confidence: "high"
+    rationale: >-
+      Événement transnational majeur, absent de la frise ; hors Pékin et hors
+      récit continental.
+  - id: "PROP-017"
+    action: "add"
+    existing_id: null
+    year: 2001
+    end_year: null
+    title: "Entrée à l'OMC"
+    subtitle: "Intégration aux chaînes de valeur mondiales"
+    tags: ["economie", "transnational"]
+    importance: 3
+    summary: >-
+      Le 11 décembre 2001, la Chine devient membre de l'OMC après quinze ans de
+      négociations. L'accession accélère l'ouverture, les investissements
+      étrangers et l'intégration industrielle, au prix d'ajustements sociaux.
+    sources: ["SRC-014", "SRC-013"]
+    confidence: "high"
+    rationale: >-
+      Bifurcation économique de la période post-1978, absente de la frise ;
+      relie la Chine aux circulations transnationales.
+  - id: "PROP-018"
+    action: "add"
+    existing_id: null
+    year: 2020
+    end_year: null
+    title: "Confinement de Wuhan"
+    subtitle: "COVID-19 et état d'urgence sanitaire"
+    tags: ["sciences", "societe", "transnational"]
+    importance: 3
+    summary: >-
+      Le 23 janvier 2020, Wuhan est mise en confinement pour contenir l'épidémie
+      de COVID-19 ; d'autres villes du Hubei suivent. L'OMS déclare l'urgence de
+      santé publique internationale le 30 janvier.
+    sources: ["SRC-019"]
+    confidence: "high"
+    rationale: >-
+      Événement mondial majeur de la période récente, absent de la frise. Source
+      institutionnelle unique : exception documentée, à corroborer par des
+      sources indépendantes.
+
+actors:
+  - id: "ACTOR-PROP-001"
+    label: "Sun Yat-sen"
+    type: "individual"
+    period_ids: ["ERA-3"]
+    why: "Fondateur de la République, acteur central de 1911-1912 et de la fragile coalition républicaine."
+    sources: ["SRC-001", "SRC-002"]
+  - id: "ACTOR-PROP-002"
+    label: "Soong Ching-ling"
+    type: "individual"
+    period_ids: ["ERA-3", "ERA-4"]
+    why: "Femme politique, passeuse entre le KMT de gauche et la RPC, utile pour sortir d'une histoire uniquement masculine."
+    sources: ["SRC-001", "SRC-008"]
+  - id: "ACTOR-PROP-003"
+    label: "Qiu Jin"
+    type: "individual"
+    period_ids: ["ERA-2", "ERA-3"]
+    why: "Révolutionnaire et féministe exécutée en 1907, absente de la frise alors qu'elle précède 1911."
+    sources: ["SRC-001", "SRC-002"]
+  - id: "ACTOR-PROP-004"
+    label: "Ding Ling"
+    type: "individual"
+    period_ids: ["ERA-3", "ERA-4"]
+    why: "Écrivaine féministe et militante communiste, permet de traiter littérature, genre et purges."
+    sources: ["SRC-001", "SRC-007"]
+  - id: "ACTOR-PROP-005"
+    label: "Mao Zedong"
+    type: "individual"
+    period_ids: ["ERA-3", "ERA-4"]
+    why: "Dirigeant central de la révolution et de la Chine populaire, à documenter par ses ressources, contraintes et violences."
+    sources: ["SRC-001", "SRC-008", "SRC-009"]
+  - id: "ACTOR-PROP-006"
+    label: "Chiang Kai-shek"
+    type: "individual"
+    period_ids: ["ERA-3", "ERA-4"]
+    why: "Chef du KMT et de l'État républicain, adversaire du PCC et acteur de la guerre."
+    sources: ["SRC-001", "SRC-002"]
+  - id: "ACTOR-PROP-007"
+    label: "Deng Xiaoping"
+    type: "individual"
+    period_ids: ["ERA-4", "ERA-5"]
+    why: "Architecte des réformes, mais aussi responsable de la répression de 1989 ; indispensable pour la période post-1978."
+    sources: ["SRC-013", "SRC-014"]
+  - id: "ACTOR-PROP-008"
+    label: "14e dalaï-lama"
+    type: "individual"
+    period_ids: ["ERA-4", "ERA-5"]
+    why: "Autorité religieuse et acteur politique tibétain, permet de traiter Tibet, exil et contestation."
+    sources: ["SRC-016", "SRC-001"]
+  - id: "ACTOR-PROP-009"
+    label: "Parti communiste chinois"
+    type: "collective"
+    period_ids: ["ERA-3", "ERA-4", "ERA-5"]
+    why: "Acteur collectif central du XXe siècle, à documenter comme institution, appareil et réseau."
+    sources: ["SRC-001", "SRC-008", "SRC-013"]
+  - id: "ACTOR-PROP-010"
+    label: "Travailleurs migrants (nongmingong)"
+    type: "collective"
+    period_ids: ["ERA-5"]
+    why: "Acteurs de l'industrialisation et de l'urbanisation, absents des récits politiques."
+    sources: ["SRC-014", "SRC-013"]
+  - id: "ACTOR-PROP-011"
+    label: "Femmes rurales"
+    type: "collective"
+    period_ids: ["ERA-4", "ERA-5"]
+    why: "Actrices de la collectivisation, de la famine et des recompositions rurales, documentées par l'histoire orale."
+    sources: ["SRC-011", "SRC-008"]
+  - id: "ACTOR-PROP-012"
+    label: "Komintern"
+    type: "institution"
+    period_ids: ["ERA-3"]
+    why: "Acteur transnational de la fondation du PCC et du mouvement communiste, absent de la frise."
+    sources: ["SRC-001", "SRC-002"]
+
+places:
+  - id: "PLACE-PROP-001"
+    label: "Pékin"
+    hierarchy: "national"
+    why: "Capitale impériale et capitale de la RPC ; point d'ancrage de la plupart des récits nationaux."
+    sources: ["SRC-001", "SRC-008"]
+  - id: "PLACE-PROP-002"
+    label: "Nanjing"
+    hierarchy: "national"
+    why: "Capitale Ming, capitale de la République, lieu du massacre de 1937 ; indispensable pour l'ère 1912-1949."
+    sources: ["SRC-001", "SRC-002", "SRC-005"]
+  - id: "PLACE-PROP-003"
+    label: "Shanghai"
+    hierarchy: "national"
+    why: "Port ouvert, centre industriel, lieu de fondation du PCC et de la purge de 1927."
+    sources: ["SRC-001", "SRC-002", "SRC-013"]
+  - id: "PLACE-PROP-004"
+    label: "Wuhan"
+    hierarchy: "regional"
+    why: "Soulèvement de Wuchang en 1911, capitale provisoire en 1927, confinement de 2020."
+    sources: ["SRC-001", "SRC-019"]
+  - id: "PLACE-PROP-005"
+    label: "Chongqing"
+    hierarchy: "national"
+    why: "Capitale de guerre du gouvernement nationaliste (1937-1946), cible des bombardements japonais."
+    sources: ["SRC-004", "SRC-001"]
+  - id: "PLACE-PROP-006"
+    label: "Xi'an / Chang'an"
+    hierarchy: "regional"
+    why: "Capitale Tang et carrefour de l'Asie centrale ; permet de sortir d'une histoire centrée sur Pékin."
+    sources: ["SRC-001", "SRC-002"]
+  - id: "PLACE-PROP-007"
+    label: "Guangzhou"
+    hierarchy: "regional"
+    why: "Port du système de Canton, centre révolutionnaire du KMT dans les années 1920."
+    sources: ["SRC-001", "SRC-002"]
+  - id: "PLACE-PROP-008"
+    label: "Yan'an"
+    hierarchy: "regional"
+    why: "Base communiste de 1935-1947, lieu de la rectification et de la mémoire révolutionnaire."
+    sources: ["SRC-006", "SRC-001"]
+  - id: "PLACE-PROP-009"
+    label: "Hong Kong"
+    hierarchy: "transnational"
+    why: "Colonie britannique, entrepôt, interface financière et lieu de la rétrocession de 1997."
+    sources: ["SRC-013", "SRC-001"]
+  - id: "PLACE-PROP-010"
+    label: "Lhassa"
+    hierarchy: "regional"
+    why: "Capitale tibétaine, lieu de l'accord de 1951 et du soulèvement de 1959."
+    sources: ["SRC-016", "SRC-001"]
+  - id: "PLACE-PROP-011"
+    label: "Ürümqi"
+    hierarchy: "regional"
+    why: "Capitale du Xinjiang, centre administratif et militaire, lieu des émeutes de 2009."
+    sources: ["SRC-015", "SRC-001"]
+  - id: "PLACE-PROP-012"
+    label: "Nanning"
+    hierarchy: "regional"
+    why: "Capitale du Guangxi et centre de la région autonome zhuang, pour sortir de l'angle mort des minorités du Sud."
+    sources: ["SRC-020", "SRC-001"]
+
+corrections:
+  - existing_id: "cn-shang"
+    issue: >-
+      La date de -1600 est présentée comme certaine et le label « première
+      dynastie chinoise solidement attestée » ignore le débat Xia/Erlitou et la
+      datation d'Anyang.
+    proposal: >-
+      Écrire « vers -1600 » avec une certitude « probable/disputée » ; ajouter
+      Anyang et les os oraculaires (vers -1250) ; mentionner Erlitou sans
+      trancher.
+    sources: ["SRC-001"]
+    confidence: "high"
+  - existing_id: "cn-zhou"
+    issue: >-
+      La date de -1046 est conventionnelle et la « longue domination » masque la
+      perte de pouvoir des Zhou après -771 et la période des Royaumes combattants.
+    proposal: >-
+      Ajouter « Zhou occidentaux / Zhou orientaux », la bataille de Muye et la
+      rupture de -771 ; présenter le mandat du Ciel comme légitimation.
+    sources: ["SRC-001"]
+    confidence: "high"
+  - existing_id: "cn-qin"
+    issue: >-
+      « Premiers grands travaux défensifs » suggère que Qin a créé la Grande
+      Muraille ex nihilo ; le règne est aussi présenté de façon trop univoque.
+    proposal: >-
+      Préciser que Qin relie et étend des murs antérieurs ; ajouter la
+      standardisation, le recensement, les routes et la brièveté du régime.
+    sources: ["SRC-001"]
+    confidence: "high"
+  - existing_id: "cn-han"
+    issue: >-
+      « Ouvrent les routes commerciales » au début de la dynastie confond la
+      fondation (-206) et les missions de Zhang Qian (138-126 av. J.-C.) ; le
+      papier est attribué à tout le Han alors qu'il est associé à Cai Lun (vers
+      105 apr. J.-C.).
+    proposal: >-
+      Distinguer Han occidentaux et orientaux ; dater l'ouverture des routes vers
+      -130 ; préciser l'histoire du papier.
+    sources: ["SRC-001"]
+    confidence: "high"
+  - existing_id: "cn-tang"
+    issue: >-
+      « Âge d'or » et « apogée » sont des étiquettes évaluatives ; la rébellion
+      d'An Lushan (755-763) et les crises de la fin des Tang sont absentes.
+    proposal: >-
+      Qualifier l'« âge d'or » comme label historiographique ; ajouter An Lushan,
+      les raids tibétains et la chute de 907.
+    sources: ["SRC-001"]
+    confidence: "high"
+  - existing_id: "cn-song"
+    issue: >-
+      « Développent l'imprimerie, la poudre et la boussole » surestime l'invention
+      song ; ces techniques existent avant et sont perfectionnées ou diffusées
+      sous les Song. La dynastie ne contrôle pas toute la Chine.
+    proposal: >-
+      Écrire « perfectionnent et diffusent » ; distinguer Song du Nord (960-1127)
+      et du Sud (1127-1279), avec Liao, Jin et Xia occidentaux.
+    sources: ["SRC-001"]
+    confidence: "high"
+  - existing_id: "cn-yuan"
+    issue: >-
+      « Intègre la Chine à l'empire mongol » en 1271 est inexact : l'empire
+      mongol est déjà fragmenté et le Yuan est un khanat successeur ; la conquête
+      du Sud est achevée en 1279.
+    proposal: >-
+      Écrire « khanat Yuan, successeur de l'empire mongol » ; ajouter 1279 et la
+      place des Mongols dans l'administration.
+    sources: ["SRC-001"]
+    confidence: "high"
+  - existing_id: "cn-ming"
+    issue: >-
+      « Restaurent un pouvoir chinois » reprend un récit ethnique de restauration
+      han ; les Ming héritent d'institutions mongoles et la Cité interdite est
+      construite de 1406 à 1420.
+    proposal: >-
+      Nuancer la « restauration » ; dater la Cité interdite et les expéditions de
+      Zheng He (1405-1433) ; distinguer interdiction maritime et commerce réel.
+    sources: ["SRC-001"]
+    confidence: "high"
+  - existing_id: "cn-qing"
+    issue: >-
+      « Étend l'empire » et « réformes tardives » restent vagues ; la conquête
+      mandchoue est longue (1644-1662 en Chine propre, 1683 pour Taïwan) et
+      violente, et les réformes de 1861-1895/1901-1911 ne sont pas datées.
+    proposal: >-
+      Ajouter 1683, la conquête du Xinjiang (1755-1759), l'autorenforcement
+      (1861-1895) et les Nouvelles Politiques (1901-1911) ; qualifier la
+      conquête.
+    sources: ["SRC-001"]
+    confidence: "high"
+  - existing_id: "cn-opium"
+    issue: >-
+      Le résumé dit que le Royaume-Uni impose l'ouverture au commerce de l'opium ;
+      le traité de Nanjing ouvre cinq ports, cède Hong Kong et impose une
+      indemnité, mais l'opium n'est légalisé qu'en 1858. « Siècle d'humiliation »
+      est un récit national, pas un fait neutre.
+    proposal: >-
+      Dater 1839-1842, préciser les clauses du traité, mentionner Lin Zexu et
+      l'agency chinoise ; attribuer explicitement le récit du « siècle
+      d'humiliation ».
+    sources: ["SRC-001"]
+    confidence: "high"
+  - existing_id: "cn-1911"
+    issue: >-
+      Le repère confond le soulèvement de Wuchang (10 octobre 1911), la
+      proclamation de la République (1er janvier 1912) et l'abdication de Puyi
+      (12 février 1912).
+    proposal: >-
+      Remplacer par une fiche 1911-1912 ou par PROP-001 ; ajouter Sun Yat-sen,
+      Yuan Shikai et Nanjing.
+    sources: ["SRC-002", "SRC-001"]
+    confidence: "high"
+  - existing_id: "cn-1949"
+    issue: >-
+      Le résumé comprime 1949-1978 en une phrase et présente la victoire du PCC
+      comme achevée en 1949, alors que la guerre civile continue (Hainan 1950,
+      Tibet 1951) et que la RPC n'est pas reconnue par tous les États.
+    proposal: >-
+      Dater le 1er octobre 1949 ; ajouter la retraite du KMT à Taïwan, la réforme
+      agraire (1950-1952), la famine et la Révolution culturelle comme fiches
+      distinctes.
+    sources: ["SRC-001", "SRC-008"]
+    confidence: "high"
+  - existing_id: "cn-deng"
+    issue: >-
+      Le repère date les réformes de 1978 sans préciser le troisième plénum
+      (décembre 1978) et conclut téléologiquement à la « puissance industrielle
+      mondiale », en omettant 1989, 1997, 2001 et 2020.
+    proposal: >-
+      Dater décembre 1978 ; décrire les réformes agraires et les zones spéciales
+      (Shenzhen, Zhuhai, Shantou, Xiamen) ; ajouter les propositions 1989, 1997,
+      2001 et 2020.
+    sources: ["SRC-013", "SRC-014"]
+    confidence: "high"
+
+review:
+  status: "draft"
+  unresolved:
+    - "Vérifier page à page les citations de Spence, Zarrow, Mitter, Fogel, Selden, MacFarquhar, Walder, Dikötter, Hershatter, Greenhalgh, Vogel, Naughton, Millward, Shakya, Marks, Lim et Mullaney."
+    - "Obtenir des sources primaires chinoises, taïwanaises, tibétaines et ouïghoures pour les points contestés."
+    - "Trancher la question de Taïwan dans le périmètre : histoire distincte, statut politique non préjugé."
+    - "Vérifier la date de création de la région autonome zhuang du Guangxi (1958) dans une source institutionnelle chinoise."
+    - "Établir une fiche dédiée au hukou et aux migrations intérieures, absentes des 18 propositions."
+    - "Documenter les crimes de masse et les bilans humains avec des fourchettes et des sources contradictoires, sans chiffre unique."
+    - "Instrumenter les nouveaux tags `droit`, `femmes`, `societe`, `environnement`, `minorites`, `memoire` et `transnational` dans data.js/app.js, ou les mapper sur les tags existants."
+    - "Les corrections des repères impériaux (cn-shang à cn-ming) ne disposent que de SRC-001 ; ajouter une seconde synthèse (Cambridge History of China) avant publication."
+    - "Faire une double lecture humaine et un arbitrage éditorial avant tout passage en `reviewed`."

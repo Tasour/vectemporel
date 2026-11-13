@@ -1,0 +1,211 @@
+schema_version: '1.0'
+country_id: spain
+reviewed_at: '2026-11-13'
+reviewer: ''
+reviewed_scope:
+  period_ids:
+  - ERA-1
+  - ERA-2
+  - ERA-3
+  - ERA-4
+  - ERA-5
+  domains:
+  - Politique & institutions
+  - Guerres & diplomatie
+  - Droit & justice
+  - Économie & travail
+  - Société & démographie
+  - Femmes, genre, sexualités
+  - Religions & croyances
+  - Sciences, techniques & santé
+  - Arts & lettres
+  - Environnement & territoire
+  - Migrations & diasporas
+  - Peuples autochtones & minorités
+  - Mémoire & patrimoine
+  - Circulations transnationales
+  scales:
+  - local
+  - regional
+  - national
+  - imperial
+  - transnational
+omissions:
+- id: OM-001
+  period_id: ERA-1
+  domain: Politique & institutions
+  scale: national
+  what_is_missing: Ibérie préromaine, Hispanie romaine et royaume wisigoth (avant 711)
+  reason: out_of_scope
+  justification: La frise commence en 711 ; l'audit propose un prologue -218/711, mais le corpus actuel ne contient aucune
+    fiche sur ces périodes. L'absence est un effet de la borne, pas une décision scientifique.
+  evidence_checked:
+  - SRC-001
+  - SRC-002
+  status: accepted
+  reviewer: ''
+  review_date: '2026-11-13'
+- id: OM-002
+  period_id: ERA-1
+  domain: Peuples autochtones & minorités
+  scale: national
+  what_is_missing: 'Diversité interne d''al-Andalus : Berbères, muladíes, mozárabes, esclaves'
+  reason: not_yet_researched
+  justification: Les fiches existantes traitent al-Andalus comme un bloc ; la documentation savante existe mais n'est pas
+    encore intégrée à la frise.
+  evidence_checked:
+  - SRC-003
+  - SRC-004
+  status: to_fill
+  reviewer: ''
+  review_date: '2026-11-13'
+- id: OM-003
+  period_id: ERA-2
+  domain: Religions & croyances
+  scale: national
+  what_is_missing: Mudéjars, morisques et conversions forcées (1502-1609)
+  reason: not_yet_researched
+  justification: La proposition sur 1609 couvre l'expulsion, mais pas les conversions de 1502 ni la vie des mudéjars entre
+    les deux dates.
+  evidence_checked:
+  - SRC-006
+  status: to_fill
+  reviewer: ''
+  review_date: '2026-11-13'
+- id: OM-004
+  period_id: ERA-1
+  domain: Environnement & territoire
+  scale: national
+  what_is_missing: 'Histoire environnementale médiévale et moderne : irrigation, forêts, Mesta, mines, pollution industrielle'
+  reason: source_absent
+  justification: Aucune source du registre ne permet une fiche précise sur ces processus ; la dette est documentée et devra
+    être comblée par une histoire environnementale de l'Espagne.
+  evidence_checked:
+  - SRC-001
+  - SRC-003
+  - SRC-008
+  status: to_fill
+  reviewer: ''
+  review_date: '2026-11-13'
+- id: OM-005
+  period_id: ERA-3
+  domain: Femmes, genre, sexualités
+  scale: national
+  what_is_missing: 'Histoire des femmes avant 1931 et après 1975 : travail, famille, sexualité, droits'
+  reason: not_yet_researched
+  justification: Le dossier documente Isabelle, Campoamor, Montseny et Ibárruri, mais pas le travail, la famille, la sexualité
+    ou les droits des femmes sur la longue durée.
+  evidence_checked:
+  - SRC-011
+  - SRC-013
+  status: to_fill
+  reviewer: ''
+  review_date: '2026-11-13'
+- id: OM-006
+  period_id: ERA-3
+  domain: Économie & travail
+  scale: national
+  what_is_missing: Paysannerie, latifundia, jornaleros et révoltes rurales
+  reason: not_yet_researched
+  justification: Kaplan documente l'anarchisme andalou, mais aucune fiche n'est proposée sur les jornaleros, les métayers,
+    les communs ou les hiérarchies agraires.
+  evidence_checked:
+  - SRC-012
+  status: to_fill
+  reviewer: ''
+  review_date: '2026-11-13'
+- id: OM-007
+  period_id: ERA-2
+  domain: Arts & lettres
+  scale: national
+  what_is_missing: Siècle d'or, avant-gardes, cinéma et littérature post-1975
+  reason: not_yet_researched
+  justification: Le corpus actuel n'a aucun repère artistique ; les sources existent mais n'ont pas été intégrées, ce qui
+    biaise la frise vers le politique.
+  evidence_checked:
+  - SRC-008
+  - SRC-011
+  status: to_fill
+  reviewer: ''
+  review_date: '2026-11-13'
+- id: OM-008
+  period_id: ERA-4
+  domain: Sciences, techniques & santé
+  scale: national
+  what_is_missing: Cajal, CSIC, santé publique, pandémie de 2020
+  reason: source_absent
+  justification: Aucune source du registre ne soutient une fiche scientifique précise ; la dette est explicitée plutôt que
+    comblée par vraisemblance.
+  evidence_checked:
+  - SRC-011
+  status: to_fill
+  reviewer: ''
+  review_date: '2026-11-13'
+- id: OM-009
+  period_id: ERA-5
+  domain: Femmes, genre, sexualités
+  scale: national
+  what_is_missing: Loi de 2004 contre les violences de genre, IVG, mariage égalitaire
+  reason: not_yet_researched
+  justification: Le dossier s'arrête à 1931 pour les femmes ; les politiques d'égalité post-1975 ne sont pas couvertes, alors
+    qu'elles structurent la démocratie espagnole.
+  evidence_checked:
+  - SRC-011
+  - SRC-015
+  status: to_fill
+  reviewer: ''
+  review_date: '2026-11-13'
+- id: OM-010
+  period_id: ERA-3
+  domain: Migrations & diasporas
+  scale: transnational
+  what_is_missing: 'Colonialisme africain : Maroc, Sahara occidental, Guinée équatoriale'
+  reason: not_yet_researched
+  justification: Balfour couvre le Maroc, mais aucune fiche n'est proposée sur le Sahara, la Guinée ou les migrations coloniales
+    ; 1898 est souvent lu comme une fin, alors que l'empire africain continue.
+  evidence_checked:
+  - SRC-009
+  status: to_fill
+  reviewer: ''
+  review_date: '2026-11-13'
+- id: OM-011
+  period_id: ERA-4
+  domain: Droit & justice
+  scale: national
+  what_is_missing: 'Répression franquiste : camps, tribunaux, fosses communes'
+  reason: not_yet_researched
+  justification: Preston documente la répression, mais aucune fiche spécifique n'est proposée ; la mémoire reste disputée
+    et nécessite un traitement sensible.
+  evidence_checked:
+  - SRC-014
+  status: to_fill
+  reviewer: ''
+  review_date: '2026-11-13'
+- id: OM-012
+  period_id: ERA-5
+  domain: Mémoire & patrimoine
+  scale: national
+  what_is_missing: Vallée des Fallen, exhumations, lois de 2007 et 2022
+  reason: not_yet_researched
+  justification: La loi de 2022 est proposée, mais l'histoire des exhumations, des associations de victimes et des controverses
+    mémorielles reste à documenter.
+  evidence_checked:
+  - SRC-015
+  - SRC-020
+  status: to_fill
+  reviewer: ''
+  review_date: '2026-11-13'
+- id: OM-013
+  period_id: ERA-5
+  domain: Migrations & diasporas
+  scale: transnational
+  what_is_missing: Immigration de masse en Espagne (1990-2008) et politiques d'intégration
+  reason: not_yet_researched
+  justification: Le dossier couvre l'émigration et l'exil, pas l'immigration récente (Amérique latine, Maghreb, Europe de
+    l'Est), pourtant centrale dans la démographie espagnole.
+  evidence_checked:
+  - SRC-011
+  - SRC-017
+  status: to_fill
+  reviewer: ''
+  review_date: '2026-11-13'

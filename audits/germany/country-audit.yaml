@@ -1,0 +1,800 @@
+# Vectemporel — dossier pays (méthode v1.0)
+# Allemagne — audit de première version, non signé.
+
+schema_version: "1.0"
+country:
+  id: "germany"
+  iso2: "DE"
+  iso3: "DEU"
+  name_current: "Allemagne"
+  names_historical:
+    - "Regnum Teutonicum / Regnum Teutonicorum (XIe–XIIe siècle)"
+    - "Sacrum Romanum Imperium (attesté au Moyen Âge tardif)"
+    - "Heiliges Römisches Reich deutscher Nation (fin du Moyen Âge–1806)"
+    - "Deutscher Bund (1815–1866)"
+    - "Deutsches Reich (1871–1945)"
+    - "Bundesrepublik Deutschland (1949–)"
+    - "Deutsche Demokratische Republik (1949–1990)"
+  flag: "🇩🇪"
+
+scope:
+  territory_current: >-
+    République fédérale d’Allemagne, 16 Länder, frontières de 1990. Les
+    territoires situés à l’est de l’Oder et de la Neisse, ainsi que la
+    Sarre jusqu’en 1957, sont traités comme des configurations historiques
+    distinctes.
+  territories_historical:
+    - "Saint-Empire (962–1806), dit « romain germanique » à partir du Moyen Âge tardif, incluant des territoires italiens et bourguignons"
+    - "Confédération germanique (1815–1866)"
+    - "Empire allemand (1871–1918)"
+    - "Colonies allemandes en Afrique et dans le Pacifique (1884–1918)"
+    - "Territoires occupés par le Troisième Reich (1939–1945)"
+    - "Zones d’occupation alliées (1945–1949)"
+    - "République fédérale d’Allemagne et République démocratique allemande (1949–1990)"
+    - "Sarre (1947–1956, rattachée en 1957)"
+  regions_autonomous: []
+  populations_included:
+    - "citoyens allemands"
+    - "minorités nationales reconnues : Sorbs, Danois, Frisons, Sinti et Roma"
+    - "migrants, Gastarbeiter et descendants"
+    - "réfugiés et demandeurs d’asile"
+    - "personnes déplacées et expulsées après 1945"
+    - "travailleurs forcés et victimes du nazisme"
+  populations_excluded:
+    - "les populations des territoires occupés ne sont incluses que lorsqu’elles sont en relation directe avec l’Allemagne"
+    - "les diasporas allemandes hors d’Europe ne sont pas traitées comme objet principal"
+    - "l’histoire autrichienne et suisse n’est pas incluse, sauf lorsque le Saint-Empire les relie"
+  diasporas:
+    - "Allemands de la Volga"
+    - "Allemands des Sudètes"
+    - "Aussiedler / Spätaussiedler"
+    - "diaspora allemande aux Amériques"
+  temporal:
+    start_edtf: "962"
+    end_edtf: "2026"
+    start_rationale: >-
+      962 est retenu comme convention historiographique : couronnement impérial
+      d’Otton Ier à Rome le 2 février 962. Ce n’est ni la naissance d’un État
+      allemand ni la création du titre « Saint-Empire ». Les alternatives
+      examinées sont 911/919 (élection d’Henri Ier), 936 (Otton roi), 1254
+      (première attestation de Sacrum Romanum Imperium) et 1512 (formule
+      « deutscher Nation »).
+    end_rationale: >-
+      2026 est une borne de mise à jour, non une rupture historique. La période
+      1990–2026 est traitée comme une séquence ouverte, avec des bornes
+      internes indicatives (2005, 2015, 2022).
+  unit_of_analysis: "fiche-événement"
+  inclusion_criteria:
+    - "événement ou processus documenté par au moins une synthèse savante ou une source institutionnelle vérifiée"
+    - "impact structurel, portée collective ou valeur explicative"
+    - "lien explicite avec l’espace germanique ou avec des populations en relation avec lui"
+  exclusion_criteria:
+    - "anecdote sans portée documentée"
+    - "fait divers non relié à un processus historique"
+    - "événement dont la date ou l’acteur ne peut être vérifié"
+  audience: ["grand public", "scolaire", "diasporas", "recherche"]
+  evidence_threshold: "deux sources indépendantes par fiche, ou exception documentée"
+
+governance:
+  editor: ""
+  country_reader: ""
+  method_reader: ""
+  arbiter: ""
+  data_steward: ""
+  sensitivity_expert: ""
+  responsible_editor: ""
+  conflicts_of_interest: []
+
+historiography:
+  schools:
+    - "histoire politique nationale (Ranke, puis histoire de l’État)"
+    - "histoire sociale critique (Wehler, Kocka, Lüdtke)"
+    - "histoire culturelle et de la vie quotidienne (Blackbourn, Confino, Lüdtke)"
+    - "histoire du genre (Canning, Hagemann, Herzog)"
+    - "histoire coloniale et globale (Conrad, Zimmerer, Kundrus)"
+    - "histoire environnementale (Blackbourn, Uekötter)"
+    - "histoire de la mémoire et de la Shoah (Friedländer, Fulbrook, Frei)"
+    - "histoire régionale (Bavière, Saxe, Rhénanie, Prusse)"
+  national_narratives:
+    - "Reich médiéval → Réforme → unification de 1871 → catastrophe 1914–1945 → rédemption démocratique de 1949/1990"
+    - "thèse du Sonderweg et sa critique"
+    - "Wirtschaftswunder comme récit de reconstruction"
+    - "Vergangenheitsbewältigung et culture de la mémoire"
+  counter_narratives:
+    - "régionalismes et histoires des Länder"
+    - "minorités sorabes, danoises, frisonnes, sinti et roma"
+    - "histoire ouvrière et sociale"
+    - "histoire des femmes et des sexualités"
+    - "mémoire coloniale et postcoloniale"
+    - "RDA comme société et dictature, au-delà du seul récit de la Stasi"
+    - "migrations et Gastarbeiter"
+  structuring_debates:
+    - "Sonderweg : exceptionnalité allemande ou trajectoire européenne comparée ?"
+    - "continuité ou rupture entre Empire, Weimar et nazisme"
+    - "Historikerstreit (1986) et normativisation de la Shoah"
+    - "Goldhagen et le rôle des « Allemands ordinaires »"
+    - "1945 : effondrement, libération ou « heure zéro » ?"
+    - "1990 : accession, annexion ou réunification négociée ?"
+    - "génocide colonial Herero/Nama et réparations"
+    - "Energiewende et sortie du nucléaire"
+  blind_spots:
+    - "femmes, genre et sexualités"
+    - "classes populaires et travail"
+    - "minorités et peuples autochtones"
+    - "migrations et diasporas"
+    - "environnement et territoire"
+    - "sciences, techniques et santé"
+    - "histoire régionale"
+    - "handicap et victimes non juives du nazisme"
+    - "mémoire coloniale"
+  key_syntheses:
+    - "SRC-001"
+    - "SRC-003"
+    - "SRC-004"
+    - "SRC-005"
+    - "SRC-006"
+    - "SRC-007"
+    - "SRC-008"
+    - "SRC-009"
+    - "SRC-010"
+    - "SRC-012"
+    - "SRC-013"
+    - "SRC-014"
+    - "SRC-015"
+
+periodizations:
+  - id: "POL-1"
+    label: "Périodisation politique en neuf séquences"
+    type: "political"
+    start_edtf: "962"
+    end_edtf: "2026"
+    rationale: >-
+      Elle distingue les configurations de souveraineté : Reich médiéval,
+      confessionnalisation, Lumières et réformes, vers l’unité, Empire,
+      guerre et Weimar, nazisme, occupation et deux Allemagnes, République
+      réunifiée. Elle est retenue pour le récit principal, mais ses bornes
+      restent discutées.
+    sources: ["SRC-001", "SRC-003", "SRC-004", "SRC-005", "SRC-006", "SRC-007", "SRC-010", "SRC-012"]
+    selected: true
+  - id: "SOC-1"
+    label: "Périodisation sociale et économique"
+    type: "social_economic"
+    start_edtf: "1500"
+    end_edtf: "2026"
+    rationale: >-
+      Phases proposées : économie agraire et proto-industrielle (1500–1800),
+      industrialisation et formation du prolétariat (1800–1914), économies de
+      guerre et crises (1914–1945), Wirtschaftswunder et Gastarbeiter
+      (1945–1973), désindustrialisation et chômage (1973–1990), transformation
+      post-socialiste et transition énergétique (1990–2026).
+    sources: ["SRC-004", "SRC-005", "SRC-008", "SRC-009", "SRC-010", "SRC-014"]
+    selected: false
+  - id: "CULT-1"
+    label: "Périodisation culturelle, religieuse et environnementale"
+    type: "cultural_religious_environmental"
+    start_edtf: "962"
+    end_edtf: "2026"
+    rationale: >-
+      Phases proposées : christianisation et culture impériale (962–1517),
+      confessionnalisation (1517–1648), Lumières et piétisme (1648–1800),
+      sécularisation et sciences (1800–1914), culture de masse et nazisme
+      (1914–1945), deux cultures et mémoire (1945–1990), République de Berlin,
+      mémoire de la Shoah et Energiewende (1990–2026).
+    sources: ["SRC-002", "SRC-003", "SRC-006", "SRC-007", "SRC-013", "SRC-014"]
+    selected: false
+
+periods:
+  - id: "PERIOD-1"
+    label: "Reich médiéval"
+    start_edtf: "962"
+    end_edtf: "1517"
+    boundary_type: "political"
+    boundary_rationale: >-
+      Le couronnement d’Otton Ier à Rome (2 février 962) est retenu comme
+      convention de départ. L’Empire est composite et son titre complet se fixe
+      bien après 962. La borne de 1517 marque le début de la Réforme, non la fin
+      de l’Empire.
+    alternatives_considered: ["911", "919", "936", "1254", "1512"]
+    sources: ["SRC-001"]
+  - id: "PERIOD-2"
+    label: "Réforme et guerre de Trente Ans"
+    start_edtf: "1517"
+    end_edtf: "1648"
+    boundary_type: "religious"
+    boundary_rationale: >-
+      1517 est une borne symbolique (diffusion des thèses), non un acte
+      documenté d’affichage. 1648 clôt la guerre de Trente Ans et redéfinit
+      l’ordre impérial.
+    alternatives_considered: ["1517", "1521", "1555", "1618", "1648"]
+    sources: ["SRC-002", "SRC-016", "SRC-003"]
+  - id: "PERIOD-3"
+    label: "Lumières, absolutisme et réformes"
+    start_edtf: "1648"
+    end_edtf: "1815"
+    boundary_type: "political"
+    boundary_rationale: >-
+      1648 ouvre une période de reconstruction et de coexistence
+      confessionnelle ; 1815 clôt les guerres napoléoniennes et réorganise
+      l’Allemagne en Confédération germanique.
+    alternatives_considered: ["1648", "1740", "1789", "1806", "1815"]
+    sources: ["SRC-003", "SRC-004"]
+  - id: "PERIOD-4"
+    label: "Vers l’unité"
+    start_edtf: "1815"
+    end_edtf: "1871"
+    boundary_type: "political"
+    boundary_rationale: >-
+      1815 ouvre le Vormärz et la Confédération germanique ; 1871 marque la
+      proclamation de l’Empire allemand après la guerre franco-prussienne.
+    alternatives_considered: ["1815", "1830", "1848", "1866", "1871"]
+    sources: ["SRC-004"]
+  - id: "PERIOD-5"
+    label: "Empire allemand"
+    start_edtf: "1871"
+    end_edtf: "1914"
+    boundary_type: "political"
+    boundary_rationale: >-
+      1871 installe un Empire fédéral à suffrage masculin restreint ; 1914
+      marque l’entrée dans la Première Guerre mondiale et la fin de l’ordre
+      impérial.
+    alternatives_considered: ["1871", "1890", "1914"]
+    sources: ["SRC-004", "SRC-005"]
+  - id: "PERIOD-6"
+    label: "Guerre, révolution et Weimar"
+    start_edtf: "1914"
+    end_edtf: "1933"
+    boundary_type: "military"
+    boundary_rationale: >-
+      1914 ouvre la guerre qui provoque la chute de l’Empire ; 1933 marque
+      l’arrivée de Hitler au pouvoir et la fin de la République de Weimar.
+    alternatives_considered: ["1914", "1918", "1919", "1929", "1933"]
+    sources: ["SRC-006"]
+  - id: "PERIOD-7"
+    label: "Nazisme et guerre"
+    start_edtf: "1933"
+    end_edtf: "1945"
+    boundary_type: "political"
+    boundary_rationale: >-
+      1933 ouvre la dictature nazie ; 1945 marque la défaite, la fin de la
+      guerre en Europe et le début de l’occupation alliée.
+    alternatives_considered: ["1933", "1939", "1941", "1945"]
+    sources: ["SRC-007"]
+  - id: "PERIOD-8"
+    label: "Occupation et deux Allemagnes"
+    start_edtf: "1945"
+    end_edtf: "1990"
+    boundary_type: "military"
+    boundary_rationale: >-
+      1945 ouvre l’occupation et la reconstruction ; 1949 voit la fondation
+      de la RFA et de la RDA ; 1990 met fin à la division.
+    alternatives_considered: ["1945", "1949", "1961", "1989", "1990"]
+    sources: ["SRC-010", "SRC-012", "SRC-015"]
+  - id: "PERIOD-9"
+    label: "Allemagne réunifiée"
+    start_edtf: "1990"
+    end_edtf: "2026"
+    boundary_type: "political"
+    boundary_rationale: >-
+      1990 marque l’accession des Länder de la RDA à la RFA ; la période est
+      ouverte et segmentée par des bornes internes (2005, 2015, 2022).
+    alternatives_considered: ["1990", "2005", "2015", "2022"]
+    sources: ["SRC-012", "SRC-014"]
+
+coverage:
+  matrix_file: "coverage-matrix.csv"
+  omissions_file: "omissions.yaml"
+  target_threshold: "90 % des cellules couvertes ou justifiées"
+  status_summary:
+    covered: 8
+    partial: 38
+    justified_empty: 38
+    untreated_empty: 0
+  known_omissions:
+    - "OM-001"
+    - "OM-002"
+    - "OM-003"
+    - "OM-004"
+    - "OM-005"
+    - "OM-006"
+    - "OM-007"
+    - "OM-008"
+    - "OM-009"
+    - "OM-010"
+    - "OM-011"
+    - "OM-012"
+    - "OM-013"
+    - "OM-014"
+    - "OM-015"
+
+actors:
+  - id: "ACTOR-PROP-001"
+    label: "Otton Ier"
+    type: "individual"
+    roles: ["roi de Germanie (936)", "empereur (962–973)"]
+    period_ids: ["PERIOD-1"]
+    places: ["Rome", "Saxe"]
+    resources: ["élection royale", "réseau épiscopal", "armée", "legs carolingien"]
+    constraints: ["papauté", "princes territoriaux", "distance de Rome", "héritage byzantin"]
+    networks: ["évêques", "abbayes", "famille ottonienne"]
+    counterpowers: ["papauté", "princes", "courants réformateurs"]
+    assessment: >-
+      Sa royauté repose sur un consensus princier et épiscopal ; le couronnement
+      de 962 ne crée pas un État allemand.
+    memory: >-
+      Figure fondatrice du Saint-Empire, mobilisée par les récits nationaux du
+      XIXe siècle.
+    sources: ["SRC-001"]
+
+  - id: "ACTOR-PROP-002"
+    label: "Martin Luther"
+    type: "individual"
+    roles: ["moine augustin", "théologien", "professeur à Wittenberg"]
+    period_ids: ["PERIOD-2"]
+    places: ["Wittenberg", "Worms"]
+    resources: ["chaire universitaire", "réseau de mécènes", "imprimerie"]
+    constraints: ["autorité papale", "princes", "guerre des Paysans"]
+    networks: ["Philipp Melanchthon", "princes saxons", "imprimeurs"]
+    counterpowers: ["Rome", "Charles Quint", "courants radicaux"]
+    assessment: >-
+      La Réforme est un processus collectif ; Luther en est le catalyseur, pas
+      l’auteur unique.
+    memory: >-
+      Figure confessionnelle et nationale, instrumentalisée du XVIe au XXe
+      siècle.
+    sources: ["SRC-002", "SRC-016"]
+
+  - id: "ACTOR-PROP-003"
+    label: "Louise Otto-Peters"
+    type: "individual"
+    roles: ["journaliste", "écrivaine", "présidente de l’ADF"]
+    period_ids: ["PERIOD-4", "PERIOD-5"]
+    places: ["Leipzig", "Meissen"]
+    resources: ["presse", "réseaux féminins", "legs familial"]
+    constraints: ["lois sur les associations", "exclusion politique des femmes", "censure"]
+    networks: ["Auguste Schmidt", "Henriette Goldschmidt", "mouvement féminin"]
+    counterpowers: ["autorités saxonnes", "presse conservatrice"]
+    assessment: >-
+      Elle organise le mouvement féminin autour de l’éducation et du travail,
+      sans obtenir le suffrage.
+    memory: >-
+      Pionnière de la Frauenbewegung, redécouverte par l’histoire des femmes.
+    sources: ["SRC-017"]
+
+  - id: "ACTOR-PROP-004"
+    label: "August Bebel"
+    type: "individual"
+    roles: ["tourneur", "dirigeant du SDAP", "président de la SPD"]
+    period_ids: ["PERIOD-4", "PERIOD-5"]
+    places: ["Leipzig", "Eisenach", "Berlin"]
+    resources: ["parti", "syndicats", "presse", "Reichstag"]
+    constraints: ["loi antisocialiste", "répression", "division du mouvement"]
+    networks: ["Wilhelm Liebknecht", "Karl Kautsky", "syndicats"]
+    counterpowers: ["Bismarck", "patronat", "État impérial"]
+    assessment: >-
+      Il construit un parti de masse intégré au système impérial, sans
+      révolution.
+    memory: >-
+      Figure fondatrice de la social-démocratie allemande.
+    sources: ["SRC-005"]
+
+  - id: "ACTOR-PROP-005"
+    label: "Rosa Luxemburg"
+    type: "individual"
+    roles: ["théoricienne", "révolutionnaire", "cofondatrice de la Ligue spartakiste"]
+    period_ids: ["PERIOD-5", "PERIOD-6"]
+    places: ["Berlin", "Varsovie", "Zurich"]
+    resources: ["presse", "réseaux internationalistes", "autorité intellectuelle"]
+    constraints: ["sexisme", "répression", "isolement politique"]
+    networks: ["Karl Liebknecht", "Clara Zetkin", "Leo Jogiches"]
+    counterpowers: ["SPD", "État impérial", "Freikorps"]
+    assessment: >-
+      Elle critique le réformisme et paie de sa vie la révolution de 1919.
+    memory: >-
+      Figure de la gauche allemande, disputée entre communistes et
+      sociaux-démocrates.
+    sources: ["SRC-005", "SRC-006"]
+
+  - id: "ACTOR-PROP-006"
+    label: "Clara Zetkin"
+    type: "individual"
+    roles: ["enseignante", "journaliste", "dirigeante socialiste", "députée"]
+    period_ids: ["PERIOD-4", "PERIOD-5", "PERIOD-6"]
+    places: ["Stuttgart", "Berlin", "Moscou"]
+    resources: ["Die Gleichheit", "réseaux féminins socialistes", "Internationale"]
+    constraints: ["lois antisocialistes", "sexisme", "exil"]
+    networks: ["Rosa Luxemburg", "SPD", "Internationale socialiste des femmes"]
+    counterpowers: ["direction masculine de la SPD", "État"]
+    assessment: >-
+      Elle fait du suffrage féminin une cause ouvrière et internationale.
+    memory: >-
+      Figure du féminisme socialiste, longtemps marginalisée.
+    sources: ["SRC-005", "SRC-006"]
+
+  - id: "ACTOR-PROP-007"
+    label: "Lothar von Trotha"
+    type: "individual"
+    roles: ["général", "commandant des troupes coloniales"]
+    period_ids: ["PERIOD-5"]
+    places: ["Sud-Ouest africain allemand", "Windhoek"]
+    resources: ["armée coloniale", "autorité impériale", "logistique"]
+    constraints: ["guérilla", "distance", "opinion métropolitaine"]
+    networks: ["gouvernement colonial", "états-majors"]
+    counterpowers: ["missions", "administrations coloniales", "opinion"]
+    assessment: >-
+      Il conduit une guerre d’extermination ; son ordre de 1904 est documenté.
+    memory: >-
+      Figure de la violence coloniale, débattue en Namibie et en Allemagne.
+    sources: ["SRC-013"]
+
+  - id: "ACTOR-PROP-008"
+    label: "Herero et Nama"
+    type: "collective"
+    roles: ["peuples autochtones", "victimes du génocide", "acteurs de la mémoire"]
+    period_ids: ["PERIOD-5", "PERIOD-9"]
+    places: ["Sud-Ouest africain allemand", "Windhoek"]
+    resources: ["réseaux de parenté", "connaissance du terrain", "diaspora"]
+    constraints: ["supériorité militaire allemande", "dépossession", "camps"]
+    networks: ["chefs traditionnels", "Églises", "organisations de la diaspora"]
+    counterpowers: ["administration coloniale", "armée allemande"]
+    assessment: >-
+      La résistance armée est écrasée ; la mémoire du génocide devient un enjeu
+      diplomatique en 2021.
+    memory: >-
+      Commémoration, reconnaissance de 2021, critiques sur l’absence de
+      réparations.
+    sources: ["SRC-013", "SRC-020"]
+
+  - id: "ACTOR-PROP-009"
+    label: "Sinti et Roma"
+    type: "collective"
+    roles: ["minorité reconnue", "victimes du Porajmos", "acteurs de la mémoire"]
+    period_ids: ["PERIOD-7", "PERIOD-8", "PERIOD-9"]
+    places: ["Auschwitz-Birkenau", "Berlin", "Europe"]
+    resources: ["réseaux familiaux", "langue romaní", "organisations"]
+    constraints: ["antitsiganisme", "ségrégation", "déportation"]
+    networks: ["Zentralrat", "organisations européennes"]
+    counterpowers: ["police", "administration nazie", "préjugés"]
+    assessment: >-
+      Le génocide est longtemps nié ; la reconnaissance fédérale date de 1982.
+    memory: >-
+      2 août, mémorial de Berlin (2012), Porajmos.
+    sources: ["SRC-018"]
+
+  - id: "ACTOR-PROP-010"
+    label: "Gastarbeiter"
+    type: "collective"
+    roles: ["travailleurs migrants", "résidents durables", "acteurs syndicaux"]
+    period_ids: ["PERIOD-8"]
+    places: ["Bad Godesberg", "Cologne", "Ruhr", "Berlin-Ouest"]
+    resources: ["contrats de travail", "réseaux familiaux", "épargne"]
+    constraints: ["principe de rotation", "permis de séjour", "discrimination"]
+    networks: ["syndicats", "associations", "familles"]
+    counterpowers: ["patronat", "administration", "xénophobie"]
+    assessment: >-
+      Le retour prévu devient installation ; la RFA se découvre pays
+      d’immigration.
+    memory: >-
+      Mémoire des quartiers, musées, débats sur l’intégration.
+    sources: ["SRC-009"]
+
+  - id: "ACTOR-PROP-011"
+    label: "Rudi Dutschke"
+    type: "individual"
+    roles: ["sociologue", "dirigeant du SDS", "figure de l’APO"]
+    period_ids: ["PERIOD-8"]
+    places: ["Berlin-Ouest"]
+    resources: ["charisme", "réseaux étudiants", "presse"]
+    constraints: ["répression", "division de la gauche", "attentat"]
+    networks: ["SDS", "mouvements américains", "intellectuels"]
+    counterpowers: ["Springer", "État", "génération parentale"]
+    assessment: >-
+      Il incarne une révolte culturelle et politique ; l’attentat radicalise le
+      mouvement.
+    memory: >-
+      Figure de 1968, honorée et contestée.
+    sources: ["SRC-011"]
+
+  - id: "ACTOR-PROP-012"
+    label: "Domowina"
+    type: "collective"
+    roles: ["fédération des Sorbs", "acteur culturel et politique"]
+    period_ids: ["PERIOD-8", "PERIOD-9"]
+    places: ["Bautzen/Budyšin", "Cottbus/Chóśebuz"]
+    resources: ["réseau associatif", "écoles", "presse", "institutions culturelles"]
+    constraints: ["assimilation", "politique des Länder", "financement"]
+    networks: ["Églises", "municipalités", "Stiftung für das sorbische Volk"]
+    counterpowers: ["États", "administration", "nationalismes"]
+    assessment: >-
+      Elle maintient une identité linguistique minoritaire malgré les
+      pressions.
+    memory: >-
+      Bautzen/Budyšin, théâtre bilingue, commémorations.
+    sources: ["SRC-019"]
+
+places:
+  - id: "PLACE-PROP-001"
+    label_current: "Wittenberg"
+    names_historical: ["Lutherstadt Wittenberg"]
+    geometry_period: "ville de Saxe, électorat de Saxe (XVIe siècle)"
+    hierarchy: "local"
+    functions: ["ville universitaire", "lieu de culte", "lieu de mémoire"]
+    events: ["PROP-001"]
+    contestations: ["historicité de l’affichage des thèses"]
+    sources: ["SRC-002", "SRC-016"]
+  - id: "PLACE-PROP-002"
+    label_current: "Mühlhausen"
+    names_historical: ["Mühlhausen in Thüringen"]
+    geometry_period: "ville libre d’Empire, Thuringe (XVIe siècle)"
+    hierarchy: "local"
+    functions: ["ville", "lieu de prédication", "théâtre de la Guerre des Paysans"]
+    events: ["PROP-002"]
+    contestations: ["rôle de Müntzer"]
+    sources: ["SRC-002"]
+  - id: "PLACE-PROP-003"
+    label_current: "Francfort-sur-le-Main"
+    names_historical: ["Frankfurt am Main", "Freie Stadt Frankfurt"]
+    geometry_period: "ville libre, Confédération germanique (1848)"
+    hierarchy: "national"
+    functions: ["ville de foire", "siège du parlement", "lieu de mémoire"]
+    events: ["PROP-004"]
+    contestations: ["mémoire de 1848 et de la démocratie"]
+    sources: ["SRC-004", "SRC-017"]
+  - id: "PLACE-PROP-004"
+    label_current: "Leipzig"
+    names_historical: ["Leipzig", "Lipsia"]
+    geometry_period: "royaume de Saxe (XIXe siècle), RDA (XXe siècle)"
+    hierarchy: "regional"
+    functions: ["ville de foire", "centre ouvrier", "lieu de mémoire"]
+    events: ["PROP-005", "PROP-006", "PROP-017"]
+    contestations: ["mémoire de 1989"]
+    sources: ["SRC-005", "SRC-017", "SRC-012"]
+  - id: "PLACE-PROP-005"
+    label_current: "Nuremberg"
+    names_historical: ["Nürnberg"]
+    geometry_period: "Bavière (XIXe–XXe siècle)"
+    hierarchy: "national"
+    functions: ["ville industrielle", "ville des congrès nazis", "tribunal"]
+    events: ["PROP-009", "de-nuremberg"]
+    contestations: ["mémoire nazie et procès"]
+    sources: ["SRC-007"]
+  - id: "PLACE-PROP-006"
+    label_current: "Auschwitz-Birkenau"
+    names_historical: ["Oświęcim", "Auschwitz"]
+    geometry_period: "Pologne occupée (1939–1945)"
+    hierarchy: "transnational"
+    functions: ["camp de concentration", "centre d’extermination", "lieu de mémoire"]
+    events: ["PROP-012"]
+    contestations: ["mémoire de la Shoah et du Porajmos"]
+    sources: ["SRC-018"]
+  - id: "PLACE-PROP-007"
+    label_current: "Bad Godesberg / Bonn"
+    names_historical: ["Bad Godesberg", "Bonn"]
+    geometry_period: "RFA (1949–1990)"
+    hierarchy: "national"
+    functions: ["lieu de signature", "capitale provisoire"]
+    events: ["PROP-015"]
+    contestations: ["mémoire de la capitale provisoire"]
+    sources: ["SRC-009"]
+  - id: "PLACE-PROP-008"
+    label_current: "Bautzen / Budyšin"
+    names_historical: ["Bautzen", "Budyšin"]
+    geometry_period: "Saxe (XIXe–XXIe siècle)"
+    hierarchy: "regional"
+    functions: ["centre culturel sorabe", "siège de la Domowina", "théâtre bilingue"]
+    events: []
+    contestations: ["politique linguistique", "aucun événement sorabe dédié dans la sélection actuelle"]
+    sources: ["SRC-019"]
+  - id: "PLACE-PROP-009"
+    label_current: "Berlin"
+    names_historical: ["Berlin", "Berlin-Ouest", "Berlin-Est"]
+    geometry_period: "capitale de l’Empire, de Weimar, du Reich et de la RDA ; capitale de la République fédérale après 1990, Bonn étant la capitale provisoire de 1949 à 1990"
+    hierarchy: "national"
+    functions: ["capitale", "ville divisée", "lieu de mémoire"]
+    events: ["de-wannsee", "PROP-016", "PROP-017"]
+    contestations: ["mémoire du Mur et de la division"]
+    sources: ["SRC-007", "SRC-011", "SRC-012"]
+  - id: "PLACE-PROP-010"
+    label_current: "Wrocław / Breslau"
+    names_historical: ["Breslau", "Wrocław"]
+    geometry_period: "Allemagne (jusqu’en 1945), Pologne (après 1945)"
+    hierarchy: "transnational"
+    functions: ["ville", "point de départ des expulsions", "lieu de mémoire"]
+    events: ["PROP-013"]
+    contestations: ["mémoire allemande et polonaise"]
+    sources: ["SRC-015"]
+  - id: "PLACE-PROP-011"
+    label_current: "Windhoek"
+    names_historical: ["Windhoek", "Windhuk"]
+    geometry_period: "Sud-Ouest africain allemand (1884–1915), Namibie (1990–)"
+    hierarchy: "transnational"
+    functions: ["capitale", "lieu de mémoire", "lieu de négociation"]
+    events: ["PROP-007"]
+    contestations: ["reconnaissance du génocide et réparations"]
+    sources: ["SRC-013", "SRC-020"]
+  - id: "PLACE-PROP-012"
+    label_current: "Essen / Ruhr"
+    names_historical: ["Essen", "Ruhrgebiet"]
+    geometry_period: "Prusse rhénane, puis Rhénanie-du-Nord-Westphalie"
+    hierarchy: "regional"
+    functions: ["bassin industriel", "site sidérurgique", "terre d’immigration"]
+    events: ["PROP-015"]
+    contestations: ["mémoire industrielle et environnementale"]
+    sources: ["SRC-004", "SRC-009"]
+
+claims:
+  - id: "CLAIM-001"
+    subject: "962"
+    predicate: "est une convention historiographique"
+    object: "couronnement impérial d’Otton Ier"
+    text: >-
+      962 est retenu comme point de départ conventionnel : Otton Ier est couronné
+      empereur à Rome le 2 février 962. Cet événement ne crée ni un État
+      allemand ni le titre complet de Saint-Empire romain germanique.
+    confidence: "probable"
+    sources: ["SRC-001"]
+    revisions: []
+  - id: "CLAIM-002"
+    subject: "L’affichage des 95 thèses"
+    predicate: "n’est pas attesté par un témoin oculaire"
+    object: "31 octobre 1517"
+    text: >-
+      Le récit de l’affichage des thèses à la porte de la Schlosskirche repose
+      sur un témoignage tardif de Melanchthon (1546) ; Luther lui-même parle
+      d’un envoi aux évêques. La date reste symbolique.
+    confidence: "probable"
+    sources: ["SRC-016", "SRC-002"]
+    revisions: []
+  - id: "CLAIM-003"
+    subject: "La guerre de Trente Ans"
+    predicate: "est une guerre européenne"
+    object: "1618–1648"
+    text: >-
+      Le conflit implique des puissances extérieures à l’Empire et ne peut être
+      réduit à une guerre civile allemande.
+    confidence: "certain"
+    sources: ["SRC-003"]
+    revisions: []
+  - id: "CLAIM-004"
+    subject: "L’Assemblée nationale de Francfort"
+    predicate: "exclut les femmes du vote et de la représentation"
+    object: "1848–1849"
+    text: >-
+      Les femmes ne votent pas et ne siègent pas à la Paulskirche ; Louise
+      Otto-Peters intervient publiquement sur la condition des ouvrières.
+    confidence: "certain"
+    sources: ["SRC-004", "SRC-017"]
+    revisions: []
+  - id: "CLAIM-005"
+    subject: "L’ADAV"
+    predicate: "est fondé"
+    object: "Leipzig, 1863"
+    text: >-
+      L’Allgemeiner Deutscher Arbeiterverein est fondé à Leipzig en 1863 autour
+      de Ferdinand Lassalle.
+    confidence: "certain"
+    sources: ["SRC-005"]
+    revisions: []
+  - id: "CLAIM-006"
+    subject: "Le droit de vote des femmes"
+    predicate: "est introduit avant la Constitution de Weimar"
+    object: "1918"
+    text: >-
+      Le Conseil des commissaires du peuple annonce le droit de vote des femmes
+      le 12 novembre 1918 ; la loi électorale du 30 novembre 1918 l’applique
+      avant l’adoption de la Constitution de Weimar en août 1919.
+    confidence: "certain"
+    sources: ["SRC-006"]
+    revisions: []
+  - id: "CLAIM-007"
+    subject: "La conférence de Wannsee"
+    predicate: "coordonne un génocide déjà engagé"
+    object: "20 janvier 1942"
+    text: >-
+      La conférence ne décide pas le génocide ; elle organise la coopération
+      administrative pour une extermination déjà en cours.
+    confidence: "certain"
+    sources: ["SRC-007"]
+    revisions: []
+  - id: "CLAIM-008"
+    subject: "Le travail forcé nazi"
+    predicate: "implique plus de douze millions de personnes"
+    object: "1939–1945"
+    text: >-
+      Plus de 12 millions de civils, prisonniers de guerre et détenus sont
+      employés de force dans le Reich ; le pic mensuel atteint 7,8 millions en
+      août 1944.
+    confidence: "probable"
+    sources: ["SRC-008"]
+    revisions: []
+  - id: "CLAIM-009"
+    subject: "Les Gastarbeiter"
+    predicate: "s’installent durablement malgré le principe de rotation"
+    object: "RFA, 1955–1973"
+    text: >-
+      Les accords de recrutement prévoient un retour, mais une partie des
+      travailleurs reste et fait venir sa famille ; l’Anwerbestopp de 1973
+      renforce cette installation.
+    confidence: "certain"
+    sources: ["SRC-009"]
+    revisions: []
+  - id: "CLAIM-010"
+    subject: "La réunification de 1990"
+    predicate: "est une accession"
+    object: "article 23 de la Loi fondamentale"
+    text: >-
+      Les Länder de la RDA rejoignent la RFA le 3 octobre 1990 en vertu de
+      l’article 23 de la Loi fondamentale ; il ne s’agit pas d’une fusion de
+      deux États égaux.
+    confidence: "certain"
+    sources: ["SRC-012"]
+    revisions: []
+  - id: "CLAIM-011"
+    subject: "Le génocide Herero et Nama"
+    predicate: "est reconnu par l’Allemagne"
+    object: "2021"
+    text: >-
+      En mai 2021, le gouvernement allemand qualifie les événements de
+      1904–1908 de génocide « d’aujourd’hui », annonce son intention de
+      demander pardon et un programme de 1,1 milliard d’euros, sans
+      reconnaissance juridique de réparations.
+    confidence: "certain"
+    sources: ["SRC-020"]
+    revisions: []
+  - id: "CLAIM-012"
+    subject: "La sortie du nucléaire"
+    predicate: "est accélérée après Fukushima"
+    object: "2011"
+    text: >-
+      Après l’accident de Fukushima (11 mars 2011), le gouvernement allemand
+      décrète un moratoire et le Bundestag vote en juin 2011 la sortie
+      accélérée du nucléaire civil, inversant la prolongation de 2010.
+    confidence: "certain"
+    sources: ["SRC-014"]
+    revisions: []
+
+source_policy:
+  min_independent_sources: 2
+  grokipedia_role: "point d’entrée de lecture, jamais autorité de validation"
+  generative_ai_role: "aide à la recherche uniquement, vérifiée et signalée"
+  date_roles_required: true
+  license: "unknown — à définir par l’éditeur ; les sources conservent leurs licences propres."
+
+audit:
+  protocol_version: "1.0"
+  double_read:
+    sensitive_share: 1.0
+    other_share: 0.25
+    kappa_target: 0.70
+    kappa_sensitive_target: 0.80
+  delphi:
+    used: false
+    experts: 0
+    rounds: 0
+    consensus_threshold: "75 % de notes 4–5/5 et IQR ≤ 1"
+  scores:
+    coverage: null
+    accuracy: null
+    balance: null
+    provenance: null
+    readability: null
+    weighted_total: null
+  blocking_errors: []
+  disagreements:
+    - "F3 interprétatif — borne de 962 : convention historiographique ou rupture fondatrice ?"
+    - "F3 interprétatif — 1517 : affichage des thèses ou envoi aux évêques ?"
+    - "F3 interprétatif — Wannsee : décision du génocide ou coordination d’un processus déjà engagé ?"
+    - "F3 interprétatif — 1990 : accession des Länder ou annexion de la RDA ?"
+    - "F4 normatif — reconnaissance du génocide Herero/Nama et portée des réparations."
+    - "F4 normatif — usage de « totalitaire » pour qualifier le nazisme et la RDA."
+  verdict: "pending"
+  signoff:
+    date: ""
+    signed_by: []
+
+publication:
+  release: ""
+  date: ""
+  changelog: ""
+  public_quality_note: ""
+  correction_contact: ""
+  archive_url: ""

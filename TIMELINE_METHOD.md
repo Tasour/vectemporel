@@ -470,7 +470,7 @@ Formulation recommandée : « Frise auditée selon le protocole v1.0 le [date] ;
 - Un **audit structurel automatisé** des frises (`npm run audit:timeline`), qui produit `TIMELINE_AUDIT.md`.
 - Des **gabarits opérationnels** dans `templates/` : dossier pays, fiche-événement, matrice de couverture, registre de sources.
 
-**Dernier état mesuré** (audit structurel) : **120/120 contrôles d’intégrité POC**, **6/100 de complétude cible**, **39 % de couverture tags × ères**, **10/10 pays au-dessus du seuil politique/guerre**. Autrement dit : les frises sont cohérentes, mais le schéma de preuve reste à construire.
+**Dernier état mesuré** (audit structurel) : **120/120 contrôles d’intégrité POC**, **17,9/100 de complétude cible**, **39 % de couverture tags × ères**, **10/10 pays au-dessus du seuil politique/guerre**. Les **10 dossiers pays** sont produits : **200 sources enregistrées et testées**, **180 propositions d’événements**, **120 corrections** et **148 omissions**. Autrement dit : la couche documentaire est là, mais le schéma de preuve des fiches-événements reste à construire.
 
 ### 12.2. Ce qui manque pour passer en v2
 
@@ -491,8 +491,14 @@ Formulation recommandée : « Frise auditée selon le protocole v1.0 le [date] ;
 - `templates/coverage-matrix.csv` — matrice de couverture.
 - `templates/source-register.csv` — registre de sources.
 - `templates/omissions.yaml` — registre des omissions explicites.
+- `templates/country-proposals.yaml` — file de revue des propositions.
+- `audits/<pays>/` — dossiers de première version des 10 pays pilotes.
 - `scripts/audit-timeline.mjs` — contrôle structurel et rapport.
+- `scripts/check-audit-dossiers.mjs` — contrôle des six livrables d’un dossier pays.
+- `scripts/verify-sources.mjs` — vérification DOI/URL des registres de sources.
 - `TIMELINE_AUDIT.md` — rapport généré.
+- `SOURCE_VERIFICATION.md` — vérification des 200 sources.
+- `AUDIT_SYNTHESIS.md` — synthèse comparative des 10 dossiers.
 
 ---
 

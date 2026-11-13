@@ -4,7 +4,7 @@
 
 Une frise historique zoomable, pays par pays, avec des événements tagués et un lecteur Grokipedia intégré, **traduit automatiquement en français**. Ce dépôt est un **proof of concept** : il sert à discuter du concept, pas à être déployé tel quel.
 
-> La note de concept complète est dans **[CONCEPT.md](CONCEPT.md)**. La méthode de production d’une frise est dans **[TIMELINE_METHOD.md](TIMELINE_METHOD.md)**. Les audits pays sont dans **[COUNTRY_AUDITS.md](COUNTRY_AUDITS.md)**, l’audit structurel généré dans **[TIMELINE_AUDIT.md](TIMELINE_AUDIT.md)** et la liste des 196 pays dans **[COUNTRIES.md](COUNTRIES.md)**.
+> La note de concept complète est dans **[CONCEPT.md](CONCEPT.md)**. La méthode de production d’une frise est dans **[TIMELINE_METHOD.md](TIMELINE_METHOD.md)**. Les 10 dossiers pays sont dans **[audits/](audits/)** et leur synthèse dans **[AUDIT_SYNTHESIS.md](AUDIT_SYNTHESIS.md)**. Les audits prose sont dans **[COUNTRY_AUDITS.md](COUNTRY_AUDITS.md)**, l’audit structurel généré dans **[TIMELINE_AUDIT.md](TIMELINE_AUDIT.md)** et la liste des 196 pays dans **[COUNTRIES.md](COUNTRIES.md)**.
 
 ![Vectemporel — frise zoomable](screenshots/vectemporel-desktop.png)
 
@@ -116,9 +116,11 @@ L’audit structurel est automatisé :
 ```bash
 npm run audit:timeline          # régénère TIMELINE_AUDIT.md
 npm run audit:timeline:strict   # échoue si la cible v1.0 est < 80/100
+npm run audit:dossiers          # contrôle structurel des dossiers pays
+npm run verify:sources          # vérifie les DOI et URL des 200 sources
 ```
 
-État au dernier audit : **120/120 contrôles d’intégrité POC**, mais **6/100 de complétude du schéma cible**. Les 10 frises sont cohérentes (ères contiguës, liens valides, 189/189 slugs Grokipedia) ; aucune ne porte encore d’acteurs, de lieux, de sources indépendantes, de claims ni de `TimeSpan` explicite. Le détail est dans **[TIMELINE_AUDIT.md](TIMELINE_AUDIT.md)**.
+État au dernier audit : **120/120 contrôles d’intégrité POC**, **17,9/100 de complétude du schéma cible**, **200 sources enregistrées et testées** et **10 dossiers pays complets**. Les 10 frises sont cohérentes (ères contiguës, liens valides, 189/189 slugs Grokipedia) ; les dossiers documentent 180 propositions d’événements, 120 corrections et 148 omissions. En revanche, `data.js` ne porte toujours ni acteurs, ni lieux, ni sources indépendantes, ni claims, ni `TimeSpan`. Le détail est dans **[TIMELINE_AUDIT.md](TIMELINE_AUDIT.md)** et **[AUDIT_SYNTHESIS.md](AUDIT_SYNTHESIS.md)**.
 
 ---
 
@@ -168,12 +170,17 @@ COUNTRY_AUDITS.md   audits des 10 pays pilotes
 COUNTRIES.md        liste complète des pays
 TIMELINE_METHOD.md  méthode de production d’une frise (11 étapes)
 TIMELINE_AUDIT.md   audit structurel généré
+SOURCE_VERIFICATION.md vérification des sources des dossiers
+audits/             dossiers d’audit des 10 pays pilotes
+AUDIT_SYNTHESIS.md  synthèse comparative des 10 audits
 templates/          gabarits pays, événement, couverture, sources
 styles.css          design system + responsive
 app.js              état, frise, recherche, lecteur, URL
 data.js             pays, ères, événements, tags
 server.mjs          serveur statique + proxy Grokipedia
 scripts/audit-timeline.mjs
+scripts/check-audit-dossiers.mjs
+scripts/verify-sources.mjs
 scripts/verify-grok.mjs
 CONCEPT.md          note de concept
 ```
@@ -242,7 +249,7 @@ Sur la frise : molette pour zoomer, glisser pour naviguer, double-clic pour zoom
 - **Pas d’API officielle.** Le lecteur extrait des pages publiques à des fins de démonstration. Une version production devrait passer par un accord, une API ou un contenu sous licence.
 - **Vectemporel n’est pas affilié à Grokipedia.**
 - **Sélection éditoriale.** 189 événements ne constituent pas une histoire exhaustive ; c’est un jeu de données pour valider l’expérience.
-- **Schéma de preuve incomplet.** Le POC ne stocke ni acteurs, ni lieux, ni sources indépendantes, ni claims, ni `TimeSpan`. L’audit structurel le mesure : la cible v1.0 est à 6/100. Une frise publiable selon la méthode doit combler ces champs et documenter ses omissions.
+- **Schéma de preuve incomplet.** Le POC ne stocke ni acteurs, ni lieux, ni sources indépendantes, ni claims, ni `TimeSpan`. L’audit structurel le mesure : la cible v1.0 est à 17,9/100. Les dossiers pays documentent déjà les sources, acteurs, lieux et omissions ; il reste à les intégrer dans les fiches-événements. Une frise publiable selon la méthode doit combler ces champs et documenter ses omissions.
 - **Dépendance réseau.** Sans accès à Grokipedia ou au service de traduction, le lecteur affiche un repli ; la frise reste utilisable.
 
 ---

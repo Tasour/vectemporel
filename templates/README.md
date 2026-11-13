@@ -11,6 +11,7 @@ Ce dossier rend la méthode [`TIMELINE_METHOD.md`](../TIMELINE_METHOD.md) opéra
 | `coverage-matrix.csv` | Matrice `périodes × domaines × échelles`, à remplir pour chaque pays. |
 | `source-register.csv` | Registre des sources, avec indépendance, fiabilité, DOI/URL et usage. |
 | `omissions.yaml` | Registre des omissions explicites, avec raison, justification et sources vérifiées. |
+| `country-proposals.yaml` | File de revue : propositions d’événements, acteurs, lieux, corrections et périodisation. |
 
 ## Convention de dossier
 
