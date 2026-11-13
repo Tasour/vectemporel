@@ -139,6 +139,7 @@ const countries = world
     const appCountry = active ? appCountries.get(active.appId) : null;
     const name = country.translations?.fra?.common || country.name.common;
     const capital = active?.capital || country.capital?.[0] || '';
+    const auditText = active?.audit?.replace(/^\d+\s+périodes?,\s*\d+\s+repères?\.\s*/, '') || '';
     let region = REGION_FR[country.region] || country.region || '';
     if (country.region === 'Americas') {
       if (country.subregion === 'South America') region = 'Amérique du Sud';
@@ -165,7 +166,7 @@ const countries = world
       audit: active
         ? {
             status: 'published',
-            summary: active.audit,
+            summary: `${appCountry.eras.length} périodes, ${appCountry.events.length} repères. ${auditText}`,
             focus: active.focus,
             href: `COUNTRY_AUDITS.md#${auditSlugByName.get(name) || active.appId}`,
           }

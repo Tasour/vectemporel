@@ -19,7 +19,7 @@ Dernière vérification structurelle : **10/10 dossiers complets**, 200 sources,
 | Japon | [`japan/`](japan/) | 20 | 18 | ✅ première version |
 | Égypte | [`egypt/`](egypt/) | 20 | 18 | ✅ première version |
 
-Synthèse comparative : [`AUDIT_SYNTHESIS.md`](../AUDIT_SYNTHESIS.md). Vérification des sources : [`SOURCE_VERIFICATION.md`](../SOURCE_VERIFICATION.md).
+Synthèse comparative : [`AUDIT_SYNTHESIS.md`](../AUDIT_SYNTHESIS.md). Rapport d’intégration : [`INTEGRATION_REPORT.md`](../INTEGRATION_REPORT.md). Vérification des sources : [`SOURCE_VERIFICATION.md`](../SOURCE_VERIFICATION.md).
 
 > Les dossiers sont des **premières versions expertes non signées** : `verdict: pending`, scores `null`, `signoff` vide. Les propositions sont une file de revue, pas un patch automatique de `data.js`.
 
@@ -32,6 +32,7 @@ audits/<pays>/
   source-register.csv      # sources vérifiées, avec indépendance et fiabilité
   omissions.yaml           # omissions explicites, justifiées
   proposals.yaml           # propositions d’événements, acteurs, lieux, corrections
+  fixes.yaml               # patch d’intégration : corrections, ajouts, renommages d’ères
   REPORT.md                # synthèse experte, angles morts, priorités
 ```
 
@@ -49,6 +50,8 @@ audits/<pays>/
 npm run audit:timeline          # audit structurel global
 npm run audit:timeline:strict   # échoue si la cible v1.0 est < 80/100
 npm run audit:dossiers          # contrôle structurel des 10 dossiers pays
+npm run apply:fixes:dry         # simule l’application des patches fixes.yaml
+npm run apply:fixes             # applique les patches à data.js
 npm run verify:sources          # vérifie DOI et URL des sources
 npm run verify                  # vérifie les liens Grokipedia
 ```

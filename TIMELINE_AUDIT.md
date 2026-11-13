@@ -9,36 +9,36 @@
 | Indicateur | Résultat |
 | --- | --- |
 | Pays audités | 10 |
-| Repères | 189 |
+| Repères | 229 |
 | Ères | 56 |
 | Intégrité POC | **120/120 contrôles** (100 %) |
 | Pays avec anomalie d’intégrité | 0 |
-| Couverture tags × ères | 173/448 cellules (39 %) |
+| Couverture tags × ères | 219/448 cellules (49 %) |
 | Matrice pays | 265 couvertes, 332 partielles, 120 justifiées, 67 non traitées |
-| Liens `related` | 276 liens, 0 cassé(s), 67 % réciproques |
-| Grokipedia | 189/189 slugs présents |
+| Liens `related` | 332 liens, 0 cassé(s), 57 % réciproques |
+| Grokipedia | 189/229 slugs directs ; 40 avec fallback recherche |
 | Audits prose | 10/10 sections présentes |
 | Ancres d’audit | 10/10 valides |
-| Complétude cible v1.0 | **17.9/100** |
+| Complétude cible v1.0 | **27.6/100** |
 
 **Verdict.** 
 Les 10 frises sont **cohérentes pour le POC** : ères contiguës, repères dans leur domaine, identifiants, tags et liens valides.
-En revanche, la **cible v1.0 n’est pas atteinte** : le score de 17.9/100 mesure la complétude du schéma, pas la valeur historique. Aucun repère ne porte aujourd’hui d’acteurs, de lieux, de sources indépendantes, de claims ni de `TimeSpan` explicite.
+En revanche, la **cible v1.0 n’est pas atteinte** : le score de 27.6/100 mesure la complétude du schéma, pas la valeur historique. 160/229 repères disposent de références de sources, mais les acteurs, lieux, claims et `TimeSpan` restent absents ou très incomplets.
 
 ## Tableau pays
 
 | Pays | Domaine | Ères | Repères | Couverture | Politique/guerre | Intégrité | Cible | Audit |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | --- |
-| 🇫🇷 France | -600 → 2026 | 9 | 53 | 50 % | 75 % | 12/12 | 19/100 | ✅ |
-| 🇬🇧 Royaume-Uni | 43 → 2026 | 6 | 20 | 38 % | 80 % | 12/12 | 19/100 | ✅ |
-| 🇺🇸 États-Unis | 1607 → 2026 | 6 | 18 | 44 % | 61 % | 12/12 | 17/100 | ✅ |
-| 🇩🇪 Allemagne | 962 → 2026 | 6 | 17 | 27 % | 88 % | 12/12 | 19/100 | ✅ |
-| 🇮🇹 Italie | -753 → 2026 | 5 | 15 | 28 % | 93 % | 12/12 | 16/100 | ✅ |
-| 🇪🇸 Espagne | 711 → 2026 | 5 | 13 | 33 % | 92 % | 12/12 | 19/100 | ✅ |
-| 🇨🇳 Chine | -1600 → 2026 | 5 | 13 | 28 % | 77 % | 12/12 | 16/100 | ✅ |
-| 🇮🇳 Inde | -2600 → 2026 | 4 | 12 | 53 % | 75 % | 12/12 | 19/100 | ✅ |
-| 🇯🇵 Japon | 538 → 2026 | 5 | 13 | 43 % | 69 % | 12/12 | 19/100 | ✅ |
-| 🇪🇬 Égypte | -3100 → 2026 | 5 | 15 | 40 % | 87 % | 12/12 | 18/100 | ✅ |
+| 🇫🇷 France | -600 → 2026 | 9 | 57 | 54 % | 82 % | 12/12 | 22/100 | ✅ |
+| 🇬🇧 Royaume-Uni | 43 → 2026 | 6 | 24 | 44 % | 79 % | 12/12 | 34/100 | ✅ |
+| 🇺🇸 États-Unis | 1607 → 2026 | 6 | 22 | 54 % | 64 % | 12/12 | 23/100 | ✅ |
+| 🇩🇪 Allemagne | 962 → 2026 | 6 | 21 | 29 % | 90 % | 12/12 | 27/100 | ✅ |
+| 🇮🇹 Italie | -753 → 2026 | 5 | 19 | 48 % | 89 % | 12/12 | 23/100 | ✅ |
+| 🇪🇸 Espagne | 711 → 2026 | 5 | 17 | 45 % | 94 % | 12/12 | 34/100 | ✅ |
+| 🇨🇳 Chine | -1600 → 2026 | 5 | 17 | 45 % | 88 % | 12/12 | 29/100 | ✅ |
+| 🇮🇳 Inde | -2600 → 2026 | 4 | 16 | 66 % | 81 % | 12/12 | 36/100 | ✅ |
+| 🇯🇵 Japon | 538 → 2026 | 5 | 17 | 53 % | 71 % | 12/12 | 31/100 | ✅ |
+| 🇪🇬 Égypte | -3100 → 2026 | 5 | 19 | 55 % | 89 % | 12/12 | 31/100 | ✅ |
 
 La colonne **Cible** est un score de complétude structurelle : 0 signifie que le schéma cible est absent, pas que les repères sont faux. La colonne **Audit** vérifie seulement que le lien vers `COUNTRY_AUDITS.md` pointe vers une ancre existante.
 
@@ -47,24 +47,25 @@ La colonne **Cible** est un score de complétude structurelle : 0 signifie que l
 - **Périodisations continues** : chaque ère commence là où la précédente finit, dans le domaine du pays.
 - **Repères rattachés** : chaque événement tombe dans le domaine temporel et dans une ère.
 - **Identifiants et tags** : pas de doublon détecté, tags limités au vocabulaire de l’application.
-- **Liens éditoriaux** : 276 liens `related`, 0 cassé(s).
-- **Grokipedia** : 189/189 slugs structurellement valides. Le contrôle de disponibilité en ligne reste `npm run verify`.
+- **Liens éditoriaux** : 332 liens `related`, 0 cassé(s).
+- **Grokipedia** : 189/229 slugs structurellement valides. Le contrôle de disponibilité en ligne reste `npm run verify`.
 
 ## 2. Lacunes structurelles
 
 | Champ cible | Repères renseignés | Couverture | Conséquence |
 | --- | ---: | ---: | --- |
-| `actors` | 0/189 | 0 % | Impossible de vérifier la place des femmes, des minorités, des classes populaires ou des institutions. |
-| `places` | 0/189 | 0 % | Impossible de vérifier les lieux hors capitale, les échelles et les géographies datées. |
-| `sources` indépendantes | 0/189 | 0 % | Grokipedia reste un point d’entrée, pas une source probante : aucune fiche n’a deux sources indépendantes. |
-| `claims` | 0/189 | 0 % | Les désaccords et les incertitudes ne sont pas modélisés. |
-| `TimeSpan` | 0/189 | 0 % | Le temps est réduit à une année (et parfois `endYear`) ; pas de bornes, de calendrier ni d’incertitude. |
-| `datePrecision` | 0/189 | 0 % | Aucune distinction jour / mois / année / décennie / siècle. |
+| `actors` | 0/229 | 0 % | Impossible de vérifier la place des femmes, des minorités, des classes populaires ou des institutions. |
+| `places` | 0/229 | 0 % | Impossible de vérifier les lieux hors capitale, les échelles et les géographies datées. |
+| `sources` (≥ 1) | 160/229 | 70 % | Références de dossier ; une seule source ne suffit pas à valider une fiche. |
+| `sources` (≥ 2) | 80/229 | 35 % | Deux sources indépendantes par fiche : condition non atteinte pour l’essentiel du corpus. |
+| `claims` | 0/229 | 0 % | Les désaccords et les incertitudes ne sont pas modélisés. |
+| `TimeSpan` | 0/229 | 0 % | Le temps est réduit à une année (et parfois `endYear`) ; pas de bornes, de calendrier ni d’incertitude. |
+| `datePrecision` | 0/229 | 0 % | Aucune distinction jour / mois / année / décennie / siècle. |
 | Registre d’omissions | 10/10 pays | 100 % | Les absences sont documentées au niveau pays ; il reste à les relier à chaque fiche-événement. |
 | Matrice de couverture | 10/10 pays | 100 % | Les 14 domaines sont remplis au niveau pays (265 couvertes, 332 partielles, 120 justifiées, 67 non traitées) ; il reste à les relier aux fiches. |
 | Audit expert signé | 0/10 pays | 0 % | Les audits prose ne sont ni une double lecture ni un sign-off. |
 
-Le score de **17.9/100** est donc cohérent : le POC possède un schéma minimal (année, titre, tags, lien), pas le schéma de preuve de la méthode v1.0.
+Le score de **27.6/100** est donc cohérent : le POC possède un schéma minimal (année, titre, tags, lien), pas le schéma de preuve de la méthode v1.0.
 
 **Matrice, lecture stricte.** Sur 784 cellules : **265 couvertes (34 %)**, 332 partielles, 120 vides justifiées et 67 non traitées. Le sous-score « matrice » récompense le traitement (couvert, partiel ou justifié), pas la couverture stricte.
 
@@ -74,20 +75,20 @@ Les 8 tags actuels ne couvrent pas les 14 domaines de la méthode. Un domaine no
 
 | Domaine méthode | Tag actuel | Repères | Statut |
 | --- | --- | ---: | --- |
-| Politique & institutions | `politique` | 113 | instrumenté |
-| Guerres & diplomatie | `guerre` | 51 | instrumenté |
+| Politique & institutions | `politique` | 157 | instrumenté |
+| Guerres & diplomatie | `guerre` | 68 | instrumenté |
 | Droit & justice | — | 0 | **non instrumenté** |
-| Économie & travail | `economie` | 25 | instrumenté |
-| Société & démographie | `societe` | 36 | instrumenté |
+| Économie & travail | `economie` | 43 | instrumenté |
+| Société & démographie | `societe` | 100 | instrumenté |
 | Femmes, genre, sexualités | — | 0 | **non instrumenté** |
-| Religions & croyances | `religion` | 26 | instrumenté |
-| Sciences, techniques & santé | `sciences` | 16 | instrumenté |
-| Arts & lettres | `arts` | 17 | instrumenté |
+| Religions & croyances | `religion` | 37 | instrumenté |
+| Sciences, techniques & santé | `sciences` | 22 | instrumenté |
+| Arts & lettres | `arts` | 19 | instrumenté |
 | Environnement & territoire | — | 0 | **non instrumenté** |
 | Migrations & diasporas | — | 0 | **non instrumenté** |
 | Peuples autochtones & minorités | — | 0 | **non instrumenté** |
 | Mémoire & patrimoine | — | 0 | **non instrumenté** |
-| Circulations transnationales | `exploration` | 11 | partiel |
+| Circulations transnationales | `exploration` | 10 | partiel |
 
 **Six domaines n’ont aucun tag dédié** : droit et justice, femmes et genre, environnement, migrations et diasporas, peuples autochtones et minorités, mémoire et patrimoine. Le tag `exploration` (« Monde ») ne couvre que partiellement les circulations transnationales.
 
@@ -97,18 +98,18 @@ Seuil de vigilance de la méthode : **≤ 50 %** des repères étiquetés politi
 
 | Pays | Politique/guerre | Part | Statut |
 | --- | ---: | ---: | --- |
-| France | 40/53 | 75 % | ⚠️ au-dessus du seuil |
-| Royaume-Uni | 16/20 | 80 % | ⚠️ au-dessus du seuil |
-| États-Unis | 11/18 | 61 % | ⚠️ au-dessus du seuil |
-| Allemagne | 15/17 | 88 % | ⚠️ au-dessus du seuil |
-| Italie | 14/15 | 93 % | ⚠️ au-dessus du seuil |
-| Espagne | 12/13 | 92 % | ⚠️ au-dessus du seuil |
-| Chine | 10/13 | 77 % | ⚠️ au-dessus du seuil |
-| Inde | 9/12 | 75 % | ⚠️ au-dessus du seuil |
-| Japon | 9/13 | 69 % | ⚠️ au-dessus du seuil |
-| Égypte | 13/15 | 87 % | ⚠️ au-dessus du seuil |
+| France | 47/57 | 82 % | ⚠️ au-dessus du seuil |
+| Royaume-Uni | 19/24 | 79 % | ⚠️ au-dessus du seuil |
+| États-Unis | 14/22 | 64 % | ⚠️ au-dessus du seuil |
+| Allemagne | 19/21 | 90 % | ⚠️ au-dessus du seuil |
+| Italie | 17/19 | 89 % | ⚠️ au-dessus du seuil |
+| Espagne | 16/17 | 94 % | ⚠️ au-dessus du seuil |
+| Chine | 15/17 | 88 % | ⚠️ au-dessus du seuil |
+| Inde | 13/16 | 81 % | ⚠️ au-dessus du seuil |
+| Japon | 12/17 | 71 % | ⚠️ au-dessus du seuil |
+| Égypte | 17/19 | 89 % | ⚠️ au-dessus du seuil |
 
-**10/10 pays** dépassent le seuil : France (75 %), Royaume-Uni (80 %), États-Unis (61 %), Allemagne (88 %), Italie (93 %), Espagne (92 %), Chine (77 %), Inde (75 %), Japon (69 %), Égypte (87 %). Ce n’est pas une erreur factuelle, mais un déséquilibre de sélection à corriger par la matrice de couverture.
+**10/10 pays** dépassent le seuil : France (82 %), Royaume-Uni (79 %), États-Unis (64 %), Allemagne (90 %), Italie (89 %), Espagne (94 %), Chine (88 %), Inde (81 %), Japon (71 %), Égypte (89 %). Ce n’est pas une erreur factuelle, mais un déséquilibre de sélection à corriger par la matrice de couverture.
 
 ## 5. Angles morts non mesurables
 
@@ -125,7 +126,7 @@ Ces angles morts ne sont pas déclarés absents : ils sont **impossibles à audi
 
 ## 6. Liens, audits et cohérence documentaire
 
-- **Liens `related`** : 276 liens, 0 cassé(s), 67 % réciproques.
+- **Liens `related`** : 332 liens, 0 cassé(s), 57 % réciproques.
 - **Ancres d’audit** : 10/10 valides.
 - **Résumés d’audit** : 10/10 cohérents avec le nombre d’ères et de repères.
 - **Audit prose vs audit expert** : les sections de `COUNTRY_AUDITS.md` sont des notes éditoriales ; aucun pays ne dispose de double lecture chiffrée (kappa) ni de sign-off.
@@ -145,115 +146,113 @@ Ces angles morts ne sont pas déclarés absents : ils sont **impossibles à audi
 
 ### 🇫🇷 France (`france`)
 
-- **Périodisation** : 9 ères, -600 → 2026 ; contiguïté ✅ ; 46 repères ponctuels, 7 avec `endYear`.
-- **Couverture tags × ères** : 36/72 cellules (50 %) ; aucune ère vide.
+- **Périodisation** : 9 ères, -600 → 2026 ; contiguïté ✅ ; 50 repères ponctuels, 7 avec `endYear`.
+- **Couverture tags × ères** : 39/72 cellules (54 %) ; aucune ère vide.
 - **Matrice pays** : 30 couvertes, 62 partielles, 34 justifiées, 0 non traitées (126 cellules).
-- **Cellules vides** : Grand Siècle & Lumières × Guerres ; Révolution & Empire × Guerres ; Temps présents × Guerres ; Antiquité × Sciences ; Moyen Âge × Sciences ; Renaissance × Sciences ; Révolution & Empire × Sciences ; XIXe siècle × Sciences ; … (36 au total)
-- **Liens** : 87 `related`, 0 cassé(s), 80 % réciproques ; **Grokipedia** 53/53.
-- **Audit prose** : `COUNTRY_AUDITS.md#france--audit` ✅ ; résumé « 9 périodes, 53 repères. De la Gaule à la Ve République, avec les grandes césures politiques, sociales et culturelles. » ✅.
-- **Champs cible** : acteurs 0 %, lieux 0 %, sources 0 %, claims 0 %, TimeSpan 0 %, précision 0 %.
-- **Équilibre** : politique/guerre 40/53 (75 %) ; **intégrité** 12/12 ; **cible** 18.5/100.
+- **Cellules vides** : Grand Siècle & Lumières × Guerres ; Révolution & Empire × Guerres ; Temps présents × Guerres ; Antiquité × Sciences ; Moyen Âge × Sciences ; Renaissance × Sciences ; Révolution & Empire × Sciences ; XIXe siècle × Sciences ; … (33 au total)
+- **Liens** : 95 `related`, 0 cassé(s), 74 % réciproques ; **Grokipedia** 53/57.
+- **Audit prose** : `COUNTRY_AUDITS.md#france--audit` ✅ ; résumé « 9 périodes, 57 repères. De la Gaule à la Ve République, avec les grandes césures politiques, sociales et culturelles. » ✅.
+- **Champs cible** : acteurs 0 %, lieux 0 %, sources ≥1 25 %, sources ≥2 9 %, claims 0 %, TimeSpan 0 %, précision 0 %.
+- **Équilibre** : politique/guerre 47/57 (82 %) ; **intégrité** 12/12 ; **cible** 21.5/100.
 
 ### 🇬🇧 Royaume-Uni (`uk`)
 
-- **Périodisation** : 6 ères, 43 → 2026 ; contiguïté ✅ ; 16 repères ponctuels, 4 avec `endYear`.
-- **Couverture tags × ères** : 18/48 cellules (38 %) ; aucune ère vide.
+- **Périodisation** : 6 ères, 43 → 2026 ; contiguïté ✅ ; 14 repères ponctuels, 10 avec `endYear`.
+- **Couverture tags × ères** : 21/48 cellules (44 %) ; aucune ère vide.
 - **Matrice pays** : 26 couvertes, 33 partielles, 25 justifiées, 0 non traitées (84 cellules).
-- **Cellules vides** : Empire & industrie × Guerres ; Royaume-Uni contemporain × Guerres ; Antiquité & invasions × Sciences ; Moyen Âge × Sciences ; Renaissance & Réforme × Sciences ; Guerres mondiales × Sciences ; Royaume-Uni contemporain × Sciences ; Antiquité & invasions × Arts & lettres ; … (30 au total)
-- **Liens** : 30 `related`, 0 cassé(s), 77 % réciproques ; **Grokipedia** 20/20.
-- **Audit prose** : `COUNTRY_AUDITS.md#royaume-uni--audit` ✅ ; résumé « 6 périodes, 20 repères. Institutions parlementaires, empire, industrialisation, Brexit. » ✅.
-- **Champs cible** : acteurs 0 %, lieux 0 %, sources 0 %, claims 0 %, TimeSpan 0 %, précision 0 %.
-- **Équilibre** : politique/guerre 16/20 (80 %) ; **intégrité** 12/12 ; **cible** 18.5/100.
+- **Cellules vides** : Empire & industrie × Guerres ; Royaume-Uni contemporain × Guerres ; Bretagne romaine, Anglo-Saxons et Vikings × Sciences ; Moyen Âge des quatre nations × Sciences ; Réforme, guerres des Trois Royaumes et Révolution × Sciences ; Guerres totales et crise impériale × Sciences ; Royaume-Uni contemporain × Sciences ; Bretagne romaine, Anglo-Saxons et Vikings × Arts & lettres ; … (27 au total)
+- **Liens** : 38 `related`, 0 cassé(s), 71 % réciproques ; **Grokipedia** 20/24.
+- **Audit prose** : `COUNTRY_AUDITS.md#royaume-uni--audit` ✅ ; résumé « 6 périodes, 24 repères. Institutions parlementaires, empire, industrialisation, Brexit. » ✅.
+- **Champs cible** : acteurs 0 %, lieux 0 %, sources ≥1 79 %, sources ≥2 79 %, claims 0 %, TimeSpan 0 %, précision 0 %.
+- **Équilibre** : politique/guerre 19/24 (79 %) ; **intégrité** 12/12 ; **cible** 34.3/100.
 
 ### 🇺🇸 États-Unis (`usa`)
 
-- **Périodisation** : 6 ères, 1607 → 2026 ; contiguïté ✅ ; 16 repères ponctuels, 2 avec `endYear`.
-- **Couverture tags × ères** : 21/48 cellules (44 %) ; aucune ère vide.
+- **Périodisation** : 6 ères, 1607 → 2026 ; contiguïté ✅ ; 20 repères ponctuels, 2 avec `endYear`.
+- **Couverture tags × ères** : 26/48 cellules (54 %) ; aucune ère vide.
 - **Matrice pays** : 30 couvertes, 32 partielles, 0 justifiées, 22 non traitées (84 cellules).
-- **Cellules vides** : Colonisation × Politique ; Puissance mondiale × Politique ; Hyperpuissance × Politique ; Colonisation × Guerres ; Naissance d’une nation × Guerres ; Colonisation × Sciences ; Naissance d’une nation × Sciences ; Hyperpuissance × Sciences ; … (27 au total)
-- **Liens** : 30 `related`, 0 cassé(s), 87 % réciproques ; **Grokipedia** 18/18.
-- **Audit prose** : `COUNTRY_AUDITS.md#états-unis--audit` ✅ ; résumé « 6 périodes, 18 repères. Colonisation, indépendance, guerre civile, droits civiques, puissance mondiale. » ✅.
-- **Champs cible** : acteurs 0 %, lieux 0 %, sources 0 %, claims 0 %, TimeSpan 0 %, précision 0 %.
-- **Équilibre** : politique/guerre 11/18 (61 %) ; **intégrité** 12/12 ; **cible** 16.5/100.
+- **Cellules vides** : Colonies atlantiques et empires × Politique ; Après-guerre froide, sécurité et polarisation × Politique ; Colonies atlantiques et empires × Guerres ; Indépendance et république esclavagiste × Guerres ; Colonies atlantiques et empires × Sciences ; Indépendance et république esclavagiste × Sciences ; Après-guerre froide, sécurité et polarisation × Sciences ; Colonies atlantiques et empires × Arts & lettres ; … (22 au total)
+- **Liens** : 38 `related`, 0 cassé(s), 68 % réciproques ; **Grokipedia** 18/22.
+- **Audit prose** : `COUNTRY_AUDITS.md#états-unis--audit` ✅ ; résumé « 6 périodes, 22 repères. Colonisation, indépendance, guerre civile, droits civiques, puissance mondiale. » ✅.
+- **Champs cible** : acteurs 0 %, lieux 0 %, sources ≥1 59 %, sources ≥2 18 %, claims 0 %, TimeSpan 0 %, précision 0 %.
+- **Équilibre** : politique/guerre 14/22 (64 %) ; **intégrité** 12/12 ; **cible** 23.4/100.
 
 ### 🇩🇪 Allemagne (`germany`)
 
-- **Périodisation** : 6 ères, 962 → 2026 ; contiguïté ✅ ; 14 repères ponctuels, 3 avec `endYear`.
-- **Couverture tags × ères** : 13/48 cellules (27 %) ; aucune ère vide.
+- **Périodisation** : 6 ères, 962 → 2026 ; contiguïté ✅ ; 16 repères ponctuels, 5 avec `endYear`.
+- **Couverture tags × ères** : 14/48 cellules (29 %) ; aucune ère vide.
 - **Matrice pays** : 8 couvertes, 38 partielles, 38 justifiées, 0 non traitées (84 cellules).
-- **Cellules vides** : Réforme & guerres × Politique ; Saint-Empire × Guerres ; Deux Allemagnes × Guerres ; Allemagne réunifiée × Guerres ; Saint-Empire × Sciences ; Réforme & guerres × Sciences ; Unification × Sciences ; Guerres & divisions × Sciences ; … (35 au total)
-- **Liens** : 35 `related`, 0 cassé(s), 89 % réciproques ; **Grokipedia** 17/17.
-- **Audit prose** : `COUNTRY_AUDITS.md#allemagne--audit` ✅ ; résumé « 6 périodes, 17 repères. Saint-Empire, Réforme, unification, nazisme, division et réunification. » ✅.
-- **Champs cible** : acteurs 0 %, lieux 0 %, sources 0 %, claims 0 %, TimeSpan 0 %, précision 0 %.
-- **Équilibre** : politique/guerre 15/17 (88 %) ; **intégrité** 12/12 ; **cible** 18.5/100.
+- **Cellules vides** : Réforme & guerres × Politique ; Reich médiéval × Guerres ; Occupation et deux Allemagnes × Guerres ; Allemagne réunifiée × Guerres ; Reich médiéval × Sciences ; Réforme & guerres × Sciences ; Unification × Sciences ; Guerres & divisions × Sciences ; … (34 au total)
+- **Liens** : 39 `related`, 0 cassé(s), 79 % réciproques ; **Grokipedia** 17/21.
+- **Audit prose** : `COUNTRY_AUDITS.md#allemagne--audit` ✅ ; résumé « 6 périodes, 21 repères. Saint-Empire, Réforme, unification, nazisme, division et réunification. » ✅.
+- **Champs cible** : acteurs 0 %, lieux 0 %, sources ≥1 76 %, sources ≥2 24 %, claims 0 %, TimeSpan 0 %, précision 0 %.
+- **Équilibre** : politique/guerre 19/21 (90 %) ; **intégrité** 12/12 ; **cible** 27.5/100.
 
 ### 🇮🇹 Italie (`italy`)
 
-- **Périodisation** : 5 ères, -753 → 2026 ; contiguïté ✅ ; 13 repères ponctuels, 2 avec `endYear`.
-- **Couverture tags × ères** : 11/40 cellules (28 %) ; aucune ère vide.
+- **Périodisation** : 5 ères, -753 → 2026 ; contiguïté ✅ ; 14 repères ponctuels, 5 avec `endYear`.
+- **Couverture tags × ères** : 19/40 cellules (48 %) ; aucune ère vide.
 - **Matrice pays** : 27 couvertes, 18 partielles, 2 justifiées, 23 non traitées (70 cellules).
-- **Cellules vides** : Rome antique × Guerres ; République × Guerres ; Rome antique × Sciences ; Moyen Âge & Renaissance × Sciences ; Guerres & Risorgimento × Sciences ; Italie moderne × Sciences ; République × Sciences ; Rome antique × Arts & lettres ; … (29 au total)
-- **Liens** : 24 `related`, 0 cassé(s), 83 % réciproques ; **Grokipedia** 15/15.
-- **Audit prose** : `COUNTRY_AUDITS.md#italie--audit` ✅ ; résumé « 5 périodes, 15 repères. Rome, Renaissance, Risorgimento, fascisme, République européenne. » ✅.
-- **Champs cible** : acteurs 0 %, lieux 0 %, sources 0 %, claims 0 %, TimeSpan 0 %, précision 0 %.
-- **Équilibre** : politique/guerre 14/15 (93 %) ; **intégrité** 12/12 ; **cible** 16.0/100.
+- **Cellules vides** : Rome antique et Italie romaine × Guerres ; République × Guerres ; Rome antique et Italie romaine × Sciences ; Moyen Âge & Renaissance × Sciences ; Guerres & Risorgimento × Sciences ; Italie libérale et fasciste (1871-1945) × Sciences ; Rome antique et Italie romaine × Arts & lettres ; Guerres & Risorgimento × Arts & lettres ; … (21 au total)
+- **Liens** : 26 `related`, 0 cassé(s), 77 % réciproques ; **Grokipedia** 15/19.
+- **Audit prose** : `COUNTRY_AUDITS.md#italie--audit` ✅ ; résumé « 5 périodes, 19 repères. Rome, Renaissance, Risorgimento, fascisme, République européenne. » ✅.
+- **Champs cible** : acteurs 0 %, lieux 0 %, sources ≥1 68 %, sources ≥2 16 %, claims 0 %, TimeSpan 0 %, précision 0 %.
+- **Équilibre** : politique/guerre 17/19 (89 %) ; **intégrité** 12/12 ; **cible** 23.4/100.
 
 ### 🇪🇸 Espagne (`spain`)
 
-- **Périodisation** : 5 ères, 711 → 2026 ; contiguïté ✅ ; 10 repères ponctuels, 3 avec `endYear`.
-- **Couverture tags × ères** : 13/40 cellules (33 %) ; aucune ère vide.
+- **Périodisation** : 5 ères, 711 → 2026 ; contiguïté ✅ ; 14 repères ponctuels, 3 avec `endYear`.
+- **Couverture tags × ères** : 18/40 cellules (45 %) ; aucune ère vide.
 - **Matrice pays** : 51 couvertes, 7 partielles, 12 justifiées, 0 non traitées (70 cellules).
-- **Cellules vides** : Démocratie × Guerres ; Al-Andalus & Reconquista × Sciences ; Empire espagnol × Sciences ; Crises & nation × Sciences ; Guerre civile & franquisme × Sciences ; Démocratie × Sciences ; Al-Andalus & Reconquista × Arts & lettres ; Empire espagnol × Arts & lettres ; … (27 au total)
-- **Liens** : 21 `related`, 0 cassé(s), 76 % réciproques ; **Grokipedia** 13/13.
-- **Audit prose** : `COUNTRY_AUDITS.md#espagne--audit` ✅ ; résumé « 5 périodes, 13 repères. Al-Andalus, empire, guerre civile, franquisme, transition démocratique. » ✅.
-- **Champs cible** : acteurs 0 %, lieux 0 %, sources 0 %, claims 0 %, TimeSpan 0 %, précision 0 %.
-- **Équilibre** : politique/guerre 12/13 (92 %) ; **intégrité** 12/12 ; **cible** 18.5/100.
+- **Cellules vides** : Démocratie × Guerres ; Al-Andalus et royaumes chrétiens × Sciences ; Empire espagnol × Sciences ; Révolution libérale et nation en crise × Sciences ; Guerre civile & franquisme × Sciences ; Démocratie × Sciences ; Al-Andalus et royaumes chrétiens × Arts & lettres ; Empire espagnol × Arts & lettres ; … (22 au total)
+- **Liens** : 26 `related`, 0 cassé(s), 62 % réciproques ; **Grokipedia** 13/17.
+- **Audit prose** : `COUNTRY_AUDITS.md#espagne--audit` ✅ ; résumé « 5 périodes, 17 repères. Al-Andalus, empire, guerre civile, franquisme, transition démocratique. » ✅.
+- **Champs cible** : acteurs 0 %, lieux 0 %, sources ≥1 100 %, sources ≥2 59 %, claims 0 %, TimeSpan 0 %, précision 0 %.
+- **Équilibre** : politique/guerre 16/17 (94 %) ; **intégrité** 12/12 ; **cible** 33.6/100.
 
 ### 🇨🇳 Chine (`china`)
 
-- **Périodisation** : 5 ères, -1600 → 2026 ; contiguïté ✅ ; 6 repères ponctuels, 7 avec `endYear`.
-- **Couverture tags × ères** : 11/40 cellules (28 %) ; ères vides : République et révolutions.
+- **Périodisation** : 5 ères, -1600 → 2026 ; contiguïté ✅ ; 8 repères ponctuels, 9 avec `endYear`.
+- **Couverture tags × ères** : 18/40 cellules (45 %) ; aucune ère vide.
 - **Matrice pays** : 0 couvertes, 51 partielles, 0 justifiées, 19 non traitées (70 cellules).
-- **Cellules vides** : République et révolutions × Politique ; Réforme et puissance × Politique ; Dynasties fondatrices × Guerres ; République et révolutions × Guerres ; Chine populaire × Guerres ; Réforme et puissance × Guerres ; Dynasties fondatrices × Sciences ; République et révolutions × Sciences ; … (29 au total)
-- **Liens** : 12 `related`, 0 cassé(s), 0 % réciproques ; **Grokipedia** 13/13.
-- **Audit prose** : `COUNTRY_AUDITS.md#chine--audit` ✅ ; résumé « 5 périodes, 13 repères. Dynasties, empire, humiliations coloniales, révolution communiste, réforme économique. » ✅.
-- **Champs cible** : acteurs 0 %, lieux 0 %, sources 0 %, claims 0 %, TimeSpan 0 %, précision 0 %.
-- **Équilibre** : politique/guerre 10/13 (77 %) ; **intégrité** 12/12 ; **cible** 16.5/100.
-- **Avertissements** :
-  - ères sans repère : République et révolutions
+- **Cellules vides** : Shang, Zhou et Royaumes combattants × Guerres ; Réforme et puissance × Guerres ; Shang, Zhou et Royaumes combattants × Sciences ; République et révolutions × Sciences ; Chine populaire × Sciences ; Réforme et puissance × Sciences ; Chine populaire × Arts & lettres ; Réforme et puissance × Arts & lettres ; … (22 au total)
+- **Liens** : 15 `related`, 0 cassé(s), 0 % réciproques ; **Grokipedia** 13/17.
+- **Audit prose** : `COUNTRY_AUDITS.md#chine--audit` ✅ ; résumé « 5 périodes, 17 repères. Dynasties, empire, humiliations coloniales, révolution communiste, réforme économique. » ✅.
+- **Champs cible** : acteurs 0 %, lieux 0 %, sources ≥1 100 %, sources ≥2 41 %, claims 0 %, TimeSpan 0 %, précision 0 %.
+- **Équilibre** : politique/guerre 15/17 (88 %) ; **intégrité** 12/12 ; **cible** 29.4/100.
 
 ### 🇮🇳 Inde (`india`)
 
-- **Périodisation** : 4 ères, -2600 → 2026 ; contiguïté ✅ ; 11 repères ponctuels, 1 avec `endYear`.
-- **Couverture tags × ères** : 17/32 cellules (53 %) ; aucune ère vide.
+- **Périodisation** : 4 ères, -2600 → 2026 ; contiguïté ✅ ; 8 repères ponctuels, 8 avec `endYear`.
+- **Couverture tags × ères** : 21/32 cellules (66 %) ; aucune ère vide.
 - **Matrice pays** : 26 couvertes, 30 partielles, 0 justifiées, 0 non traitées (56 cellules).
-- **Cellules vides** : Civilisations anciennes × Guerres ; Sultanats & Moghols × Guerres ; Inde contemporaine × Guerres ; Sultanats & Moghols × Sciences ; Raj britannique × Sciences ; Inde contemporaine × Sciences ; Raj britannique × Arts & lettres ; Inde contemporaine × Arts & lettres ; … (15 au total)
-- **Liens** : 11 `related`, 0 cassé(s), 0 % réciproques ; **Grokipedia** 12/12.
-- **Audit prose** : `COUNTRY_AUDITS.md#inde--audit` ✅ ; résumé « 4 périodes, 12 repères. Civilisation de l’Indus, empires, domination britannique, indépendance et libéralisation. » ✅.
-- **Champs cible** : acteurs 0 %, lieux 0 %, sources 0 %, claims 0 %, TimeSpan 0 %, précision 0 %.
-- **Équilibre** : politique/guerre 9/12 (75 %) ; **intégrité** 12/12 ; **cible** 18.5/100.
+- **Cellules vides** : Civilisations anciennes × Guerres ; Sultanats, Vijayanagara & Moghols × Sciences ; Compagnie & Raj × Sciences ; Inde contemporaine × Sciences ; Compagnie & Raj × Arts & lettres ; Inde contemporaine × Arts & lettres ; Sultanats, Vijayanagara & Moghols × Société ; Civilisations anciennes × Économie ; … (11 au total)
+- **Liens** : 17 `related`, 0 cassé(s), 0 % réciproques ; **Grokipedia** 12/16.
+- **Audit prose** : `COUNTRY_AUDITS.md#inde--audit` ✅ ; résumé « 4 périodes, 16 repères. Civilisation de l’Indus, empires, domination britannique, indépendance et libéralisation. » ✅.
+- **Champs cible** : acteurs 0 %, lieux 0 %, sources ≥1 100 %, sources ≥2 81 %, claims 0 %, TimeSpan 0 %, précision 0 %.
+- **Équilibre** : politique/guerre 13/16 (81 %) ; **intégrité** 12/12 ; **cible** 36.3/100.
 
 ### 🇯🇵 Japon (`japan`)
 
-- **Périodisation** : 5 ères, 538 → 2026 ; contiguïté ✅ ; 10 repères ponctuels, 3 avec `endYear`.
-- **Couverture tags × ères** : 17/40 cellules (43 %) ; aucune ère vide.
+- **Périodisation** : 5 ères, 538 → 2026 ; contiguïté ✅ ; 9 repères ponctuels, 8 avec `endYear`.
+- **Couverture tags × ères** : 21/40 cellules (53 %) ; aucune ère vide.
 - **Matrice pays** : 35 couvertes, 29 partielles, 6 justifiées, 0 non traitées (70 cellules).
-- **Cellules vides** : Japon contemporain × Politique ; Antiquité & Nara × Guerres ; Époque Edo × Guerres ; Antiquité & Nara × Sciences ; Époque Edo × Sciences ; Empire du Japon × Sciences ; Époque Edo × Arts & lettres ; Empire du Japon × Arts & lettres ; … (23 au total)
-- **Liens** : 12 `related`, 0 cassé(s), 0 % réciproques ; **Grokipedia** 13/13.
-- **Audit prose** : `COUNTRY_AUDITS.md#japon--audit` ✅ ; résumé « 5 périodes, 13 repères. Shoguns, fermeture d’Edo, restauration Meiji, guerre, miracle économique. » ✅.
-- **Champs cible** : acteurs 0 %, lieux 0 %, sources 0 %, claims 0 %, TimeSpan 0 %, précision 0 %.
-- **Équilibre** : politique/guerre 9/13 (69 %) ; **intégrité** 12/12 ; **cible** 18.5/100.
+- **Cellules vides** : Antiquité, Asuka & Nara × Guerres ; Époque Edo × Guerres ; Antiquité, Asuka & Nara × Sciences ; Époque Edo × Sciences ; Empire et guerres mondiales × Sciences ; Époque Edo × Arts & lettres ; Empire et guerres mondiales × Arts & lettres ; Japon contemporain × Arts & lettres ; … (19 au total)
+- **Liens** : 18 `related`, 0 cassé(s), 0 % réciproques ; **Grokipedia** 13/17.
+- **Audit prose** : `COUNTRY_AUDITS.md#japon--audit` ✅ ; résumé « 5 périodes, 17 repères. Shoguns, fermeture d’Edo, restauration Meiji, guerre, miracle économique. » ✅.
+- **Champs cible** : acteurs 0 %, lieux 0 %, sources ≥1 100 %, sources ≥2 35 %, claims 0 %, TimeSpan 0 %, précision 0 %.
+- **Équilibre** : politique/guerre 12/17 (71 %) ; **intégrité** 12/12 ; **cible** 30.7/100.
 
 ### 🇪🇬 Égypte (`egypt`)
 
-- **Périodisation** : 5 ères, -3100 → 2026 ; contiguïté ✅ ; 14 repères ponctuels, 1 avec `endYear`.
-- **Couverture tags × ères** : 16/40 cellules (40 %) ; aucune ère vide.
+- **Périodisation** : 5 ères, -3100 → 2026 ; contiguïté ✅ ; 17 repères ponctuels, 2 avec `endYear`.
+- **Couverture tags × ères** : 22/40 cellules (55 %) ; aucune ère vide.
 - **Matrice pays** : 32 couvertes, 32 partielles, 3 justifiées, 3 non traitées (70 cellules).
-- **Cellules vides** : Égypte pharaonique × Guerres ; Égypte islamique × Guerres ; Égypte moderne × Guerres ; Égypte gréco-romaine × Sciences ; Égypte islamique × Sciences ; Égypte contemporaine × Sciences ; Égypte gréco-romaine × Arts & lettres ; Égypte moderne × Arts & lettres ; … (24 au total)
-- **Liens** : 14 `related`, 0 cassé(s), 0 % réciproques ; **Grokipedia** 15/15.
-- **Audit prose** : `COUNTRY_AUDITS.md#égypte--audit` ✅ ; résumé « 5 périodes, 15 repères. Égypte pharaonique, mondes grec et romain, islam, modernité, révolution de 2011. » ✅.
-- **Champs cible** : acteurs 0 %, lieux 0 %, sources 0 %, claims 0 %, TimeSpan 0 %, précision 0 %.
-- **Équilibre** : politique/guerre 13/15 (87 %) ; **intégrité** 12/12 ; **cible** 18.2/100.
+- **Cellules vides** : Égypte islamique × Guerres ; Égypte islamique × Sciences ; Égypte gréco-romaine × Arts & lettres ; Égypte moderne et coloniale × Arts & lettres ; Égypte contemporaine × Arts & lettres ; Égypte gréco-romaine × Religions ; Égypte moderne et coloniale × Religions ; Égypte contemporaine × Religions ; … (18 au total)
+- **Liens** : 20 `related`, 0 cassé(s), 0 % réciproques ; **Grokipedia** 15/19.
+- **Audit prose** : `COUNTRY_AUDITS.md#égypte--audit` ✅ ; résumé « 5 périodes, 19 repères. Égypte pharaonique, mondes grec et romain, islam, modernité, révolution de 2011. » ✅.
+- **Champs cible** : acteurs 0 %, lieux 0 %, sources ≥1 95 %, sources ≥2 42 %, claims 0 %, TimeSpan 0 %, précision 0 %.
+- **Équilibre** : politique/guerre 17/19 (89 %) ; **intégrité** 12/12 ; **cible** 30.8/100.
 
 ## 9. Reproduire et interpréter
 
@@ -268,7 +267,7 @@ npm run verify                       # vérifie la disponibilité des 189 pages 
 - **Cible v1.0** : part du schéma de preuve effectivement renseignée. Un score faible n’est pas une condamnation des contenus : c’est la mesure de ce qui manque pour rendre les frises auditables.
 - **Couverture tags × ères** : mesure la présence d’au moins un repère par tag et par ère. Elle ne mesure ni la qualité, ni la proportion, ni l’absence de biais.
 
-**Formule de la cible v1.0.** Acteurs 15 % + lieux 15 % + sources 20 % + claims 10 % + temps 15 % (année seule : 40 % du sous-score ; `TimeSpan` : 60 %) + précision 5 % + registre d’omissions 5 % + matrice de couverture 7,5 % (cellules traitées : couvertes, partielles ou justifiées ; la couverture stricte est indiquée séparément) + sign-off 7,5 %.
+**Formule de la cible v1.0.** Acteurs 15 % + lieux 15 % + sources 20 % (≥ 1 source : 40 % du sous-score ; ≥ 2 sources : 60 %) + claims 10 % + temps 15 % (année seule : 40 % du sous-score ; `TimeSpan` : 60 %) + précision 5 % + registre d’omissions 5 % + matrice de couverture 7,5 % (cellules traitées : couvertes, partielles ou justifiées ; la couverture stricte est indiquée séparément) + sign-off 7,5 %.
 
 Méthode complète : [TIMELINE_METHOD.md](TIMELINE_METHOD.md). Gabarits : [templates/](templates/).
 

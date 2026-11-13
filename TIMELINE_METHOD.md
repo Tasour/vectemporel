@@ -463,14 +463,14 @@ Formulation recommandée : « Frise auditée selon le protocole v1.0 le [date] ;
 ### 12.1. Ce qui est déjà en place
 
 - 196 pays dans l’atlas, 10 pays disponibles, 186 audits à venir.
-- 189 événements, 8 tags couvrant 8 des 14 domaines de la méthode ; 6 domaines ne sont pas instrumentés.
+- 229 événements, 8 tags couvrant 8 des 14 domaines de la méthode ; 6 domaines ne sont pas instrumentés.
 - Un audit éditorial prose pour 10 pays dans `COUNTRY_AUDITS.md`.
 - Une liste complète dans `COUNTRIES.md`.
 - Un validateur de liens Grokipedia (`npm run verify`).
 - Un **audit structurel automatisé** des frises (`npm run audit:timeline`), qui produit `TIMELINE_AUDIT.md`.
 - Des **gabarits opérationnels** dans `templates/` : dossier pays, fiche-événement, matrice de couverture, registre de sources.
 
-**Dernier état mesuré** (audit structurel) : **120/120 contrôles d’intégrité POC**, **17,9/100 de complétude cible**, **39 % de couverture tags × ères**, **10/10 pays au-dessus du seuil politique/guerre**. Les **10 dossiers pays** sont produits : **200 sources enregistrées et testées**, **180 propositions d’événements**, **120 corrections** et **148 omissions**. Autrement dit : la couche documentaire est là, mais le schéma de preuve des fiches-événements reste à construire.
+**Dernier état mesuré** (audit structurel) : **229 repères**, **120/120 contrôles d’intégrité**, **27,6/100 de complétude cible**, **49 % de couverture tags × ères**, **10/10 pays au-dessus du seuil politique/guerre**. Les **10 dossiers pays** sont produits : **200 sources enregistrées et testées**, **180 propositions**, **148 omissions** ; **121 corrections et 40 ajouts** sont intégrés. Autrement dit : la couche documentaire et une première passe de correction sont là, mais le schéma de preuve des fiches-événements reste à construire.
 
 ### 12.2. Ce qui manque pour passer en v2
 
@@ -499,6 +499,8 @@ Formulation recommandée : « Frise auditée selon le protocole v1.0 le [date] ;
 - `TIMELINE_AUDIT.md` — rapport généré.
 - `SOURCE_VERIFICATION.md` — vérification des 200 sources.
 - `AUDIT_SYNTHESIS.md` — synthèse comparative des 10 dossiers.
+- `INTEGRATION_REPORT.md` — corrections et ajouts effectivement intégrés.
+- `TODO_INTEGRATION.md` — suivi de l’intégration.
 
 ---
 

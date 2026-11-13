@@ -1,7 +1,7 @@
 # Vectemporel — note de concept
 
 > **L’Histoire, à portée de zoom.**
-> POC v0.1 — novembre 2026
+> POC v0.2 — novembre 2026
 > Nom de travail : **Vectemporel** — vecteur + temporel : un temps orienté, fait de repères et de trajectoires.
 
 ---
@@ -18,9 +18,9 @@
 
 **Ce que le POC démontre.**
 - Une frise réellement zoomable, du millénaire à l’année, avec placement automatique des labels.
-- 10 pays, 189 événements curatés, 8 tags transversaux.
+- 10 pays, 229 événements curatés, 8 tags transversaux.
 - Un atlas de 196 pays, avec 10 frises disponibles et 186 audits à venir.
-- 189/189 pages Grokipedia directes vérifiées.
+- 189/229 pages Grokipedia directes ; 40 repères utilisent la recherche en fallback.
 - Un lecteur Grokipedia intégré, avec résumé français, article source, liens internes et navigation retour.
 - Recherche globale, deep links partageables, interface responsive.
 
@@ -408,7 +408,7 @@ Le pipeline comporte 11 étapes (0 à 10) :
 - `PeriodDefinition` : périodisation comme assertion savante, pas comme conteneur naturel ;
 - `TimelineView` : vue générée, pas stockée comme vérité.
 
-**Audit structurel.** `npm run audit:timeline` produit **[TIMELINE_AUDIT.md](TIMELINE_AUDIT.md)**. Dernier état : **120/120 contrôles d’intégrité POC**, **17,9/100 de complétude cible**, **39 % de couverture tags × ères**, **10/10 pays au-dessus du seuil politique/guerre**. Les **10 dossiers pays** sont produits (**200 sources**, **180 propositions**, **120 corrections**, **148 omissions**), avec leur synthèse dans **[AUDIT_SYNTHESIS.md](AUDIT_SYNTHESIS.md)**. Les gabarits sont dans **[templates/](templates/)**.
+**Audit structurel.** `npm run audit:timeline` produit **[TIMELINE_AUDIT.md](TIMELINE_AUDIT.md)**. Dernier état : **229 repères**, **120/120 contrôles d’intégrité**, **27,6/100 de complétude cible**, **49 % de couverture tags × ères**, **10/10 pays au-dessus du seuil politique/guerre**. Les **10 dossiers pays** sont produits (**200 sources**, **180 propositions**, **148 omissions**) ; **121 corrections et 40 ajouts** sont intégrés. Voir **[INTEGRATION_REPORT.md](INTEGRATION_REPORT.md)** et **[AUDIT_SYNTHESIS.md](AUDIT_SYNTHESIS.md)**. Les gabarits sont dans **[templates/](templates/)**.
 
 **Garde-fous.** Pas de récit téléologique, pas de frontières modernes rétroprojetées, pas de « grands hommes » sans contraintes ni contre-pouvoirs, pas de Grokipedia utilisé comme autorité, pas de date sans rôle ni source, pas d’omission silencieuse.
 
@@ -478,7 +478,7 @@ Navigateur
   index.html
   styles.css
   app.js          → état, frise, recherche, lecteur
-  data.js         → 10 pays, 189 événements
+  data.js         → 10 pays, 229 événements
   globe-engine.js → moteur Three.js (1 sphère, 1 draw call)
   globe-map.png / globe-pick.png → textures visuelle et de picking
         │
@@ -617,7 +617,7 @@ Un **musée de nuit** : fond encre, or discret, typographie éditoriale, papier 
 
 ### M0 — POC (fait)
 
-- 10 pays, 189 événements, 8 tags.
+- 10 pays, 229 événements, 8 tags.
 - Atlas 3D de 196 pays, 10 frises disponibles, 186 audits à venir.
 - Frise zoomable et mini-carte.
 - Filtres, recherche, deep links.
@@ -729,7 +729,7 @@ Un **musée de nuit** : fond encre, or discret, typographie éditoriale, papier 
 | Frise zoomable France | ✅ |
 | 9 autres pays | ✅ |
 | Audits pays | ✅ 10 pays |
-| 189 événements | ✅ |
+| 229 événements | ✅ |
 | 8 tags filtrables | ✅ |
 | Recherche événement / année | ✅ |
 | Lecteur Grokipedia | ✅ |
@@ -745,10 +745,10 @@ Un **musée de nuit** : fond encre, or discret, typographie éditoriale, papier 
 ### 14.2 Chiffres
 
 - **10 pays** : France, Royaume-Uni, États-Unis, Allemagne, Italie, Espagne, Chine, Inde, Japon, Égypte.
-- **189 événements** : France 53, Royaume-Uni 20, États-Unis 18, Allemagne 17, Italie 15, Espagne 13, Chine 13, Inde 12, Japon 13, Égypte 15.
+- **229 événements** : France 57, Royaume-Uni 24, États-Unis 22, Allemagne 21, Italie 19, Espagne 17, Chine 17, Inde 16, Japon 17, Égypte 19.
 - **8 tags**.
 - **9 périodes** pour la France.
-- **189/189** slugs Grokipedia directs validés par `npm run verify`.
+- **189/189** slugs Grokipedia directs validés par `npm run verify` ; 40 repères utilisent la recherche en fallback.
 - **Traduction française à la volée** des articles, avec cache mémoire.
 
 ### 14.3 Lancement

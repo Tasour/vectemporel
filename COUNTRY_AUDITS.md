@@ -40,8 +40,8 @@ L’audit structurel `npm run audit:timeline` mesure deux choses distinctes :
 | Indicateur | Dernier résultat | Lecture |
 | --- | ---: | --- |
 | Intégrité POC | **120/120 contrôles** | Ères contiguës, repères dans leur domaine, identifiants, tags, liens et ancres valides. |
-| Complétude cible v1.0 | **17,9/100** | La couche pays est documentée (10 dossiers, 200 sources), mais les fiches-événements n’ont pas encore acteurs, lieux, sources, claims, `TimeSpan`. |
-| Couverture tags × ères | **39 %** | 173 cellules sur 448 ont au moins un repère ; aucune cellule vide n’est encore justifiée. |
+| Complétude cible v1.0 | **27,6/100** | 121 corrections et 40 ajouts intégrés ; acteurs, lieux, claims et `TimeSpan` restent absents. |
+| Couverture tags × ères | **49 %** | 219 cellules sur 448 ont au moins un repère ; les vides justifiés restent à relier aux fiches. |
 | Équilibre politique/guerre | **10/10 pays > 50 %** | La sélection sur-représente les événements politiques et militaires. |
 
 **Ce que cela signifie.** Les frises sont cohérentes pour une démonstration, pas auditables au niveau académique. La priorité n’est pas d’ajouter des pays, mais de remplir les gabarits pour les 10 pays existants :
@@ -67,16 +67,16 @@ npm run verify                  # vérifie la disponibilité des pages Grokipedi
 
 | Pays | Domaine | Périodes | Repères | Audit |
 | --- | --- | --- | --- | --- |
-| France | 600 av. J.-C. → 2026 | 9 | 53 | ✅ |
-| Royaume-Uni | 43 → 2026 | 6 | 20 | ✅ |
-| États-Unis | 1607 → 2026 | 6 | 18 | ✅ |
-| Allemagne | 962 → 2026 | 6 | 17 | ✅ |
-| Italie | 753 av. J.-C. → 2026 | 5 | 15 | ✅ |
-| Espagne | 711 → 2026 | 5 | 13 | ✅ |
-| Chine | 1600 av. J.-C. → 2026 | 5 | 13 | ✅ |
-| Inde | 2600 av. J.-C. → 2026 | 4 | 12 | ✅ |
-| Japon | 538 → 2026 | 5 | 13 | ✅ |
-| Égypte | 3100 av. J.-C. → 2026 | 5 | 15 | ✅ |
+| France | 600 av. J.-C. → 2026 | 9 | 57 | ✅ |
+| Royaume-Uni | 43 → 2026 | 6 | 24 | ✅ |
+| États-Unis | 1607 → 2026 | 6 | 22 | ✅ |
+| Allemagne | 962 → 2026 | 6 | 21 | ✅ |
+| Italie | 753 av. J.-C. → 2026 | 5 | 19 | ✅ |
+| Espagne | 711 → 2026 | 5 | 17 | ✅ |
+| Chine | 1600 av. J.-C. → 2026 | 5 | 17 | ✅ |
+| Inde | 2600 av. J.-C. → 2026 | 4 | 16 | ✅ |
+| Japon | 538 → 2026 | 5 | 17 | ✅ |
+| Égypte | 3100 av. J.-C. → 2026 | 5 | 19 | ✅ |
 
 ---
 
@@ -92,8 +92,8 @@ npm run verify                  # vérifie la disponibilité des pages Grokipedi
 - Grand Siècle & Lumières (1610 → 1789) : absolutisme, Versailles, Encyclopédie.
 - Révolution & Empire (1789 → 1815) : 1789, Terreur, Napoléon.
 - XIXe siècle (1815 → 1914) : régimes successifs, industrialisation, colonisation, laïcité.
-- Guerres mondiales (1914 → 1945) : 14-18, entre-deux-guerres, Occupation, Libération.
-- Trente Glorieuses (1945 → 1989) : reconstruction, protection sociale, décolonisation.
+- Guerres totales et crise impériale (1914 → 1945) : 14-18, entre-deux-guerres, Occupation, Libération.
+- Après-guerre, croissance et crises (1945 → 1989) : reconstruction, protection sociale, décolonisation.
 - Temps présents (1989 → 2026) : construction européenne, crises, société contemporaine.
 
 **Repères structurants.** Alésia, baptême de Clovis, couronnement de Charlemagne, guerre de Cent Ans, Jeanne d’Arc, Villers-Cotterêts, Saint-Barthélemy, Louis XIV, Révolution, Code civil, guerre de 1870, affaire Dreyfus, loi de 1905, 14-18, Front populaire, 39-45, vote des femmes, Guerre d’Algérie, Ve République, Mai 68, construction européenne.
@@ -105,7 +105,7 @@ npm run verify                  # vérifie la disponibilité des pages Grokipedi
 - La laïcité ne doit pas être présentée comme un consensus intemporel.
 - Éviter une succession téléologique de régimes menant « naturellement » à la Ve République.
 
-**Sources.** Pages Grokipedia liées aux 53 repères, avec vérification des liens. Les synthèses Vectemporel sont des résumés éditoriaux à faire relire.
+**Sources.** Pages Grokipedia liées aux 57 repères, avec vérification des liens. Les synthèses Vectemporel sont des résumés éditoriaux à faire relire.
 
 **Prochaine étape.** Réduire la surreprésentation du XIXe–XXe siècle au niveau d’ensemble, et ajouter un fil « histoire sociale » (travail, femmes, migrations, ruralités).
 
@@ -117,11 +117,11 @@ npm run verify                  # vérifie la disponibilité des pages Grokipedi
 **Domaine.** 43 → 2026. Le pays est un assemblage : Bretagne romaine, royaumes anglo-saxons, Angleterre, pays de Galles, Écosse, Irlande du Nord. « Royaume-Uni » n’existe qu’à partir de 1801.
 
 **Périodisation.**
-- Antiquité & invasions (43 → 1066) : Rome, anglo-saxons, vikings, Normandie.
-- Moyen Âge (1066 → 1485) : féodalité normande, Magna Carta, Parlement, guerre des Deux-Roses.
-- Renaissance & Réforme (1485 → 1688) : Henri VIII, Élisabeth, empire maritime, guerre civile.
+- Bretagne romaine, Anglo-Saxons et Vikings (43 → 1066) : Rome, anglo-saxons, vikings, Normandie.
+- Moyen Âge des quatre nations (1066 → 1485) : féodalité normande, Magna Carta, Parlement, guerre des Deux-Roses.
+- Réforme, guerres des Trois Royaumes et Révolution (1485 → 1688) : Henri VIII, Élisabeth, empire maritime, guerre civile.
 - Empire & industrie (1688 → 1914) : Glorieuse Révolution, union, industrialisation, empire victorien.
-- Guerres mondiales (1914 → 1945) : tranchées, Blitz, déclin impérial.
+- Guerres totales et crise impériale (1914 → 1945) : tranchées, Blitz, déclin impérial.
 - Royaume-Uni contemporain (1945 → 2026) : État-providence, décolonisation, Thatcher, Brexit.
 
 **Repères structurants.** Conquête romaine, Hastings, Magna Carta, peste noire, acte de suprématie, Armada, guerre civile, Glorieuse Révolution, acte d’Union, révolution industrielle, abolition de l’esclavage, Exposition universelle, 14-18, vote des femmes, 39-45, NHS, Thatcher, accord du Vendredi saint, Brexit.
@@ -143,12 +143,12 @@ npm run verify                  # vérifie la disponibilité des pages Grokipedi
 **Domaine.** 1607 → 2026. Le choix commence à Jamestown ; il laisse de côté l’histoire des peuples autochtones avant la colonisation, qui doit être traitée dans un module dédié.
 
 **Périodisation.**
-- Colonisation (1607 → 1776) : colonies anglaises, esclavage, empires rivaux.
-- Naissance d’une nation (1776 → 1861) : indépendance, Constitution, expansion vers l’Ouest.
+- Colonies atlantiques et empires (1607 → 1776) : colonies anglaises, esclavage, empires rivaux.
+- Indépendance et république esclavagiste (1776 → 1861) : indépendance, Constitution, expansion vers l’Ouest.
 - Guerre civile & reconstruction (1861 → 1900) : Union/Confédération, abolition, ségrégation.
 - Puissance mondiale (1900 → 1945) : industrialisation, 14-18, crise de 1929, New Deal, 39-45.
-- Guerre froide & droits civiques (1945 → 1991) : superpuissance, mouvement des droits civiques, Vietnam, course spatiale.
-- Hyperpuissance (1991 → 2026) : 11-Septembre, crises financières, polarisation.
+- Guerre froide, guerres et droits civiques (1945 → 1991) : superpuissance, mouvement des droits civiques, Vietnam, course spatiale.
+- Après-guerre froide, sécurité et polarisation (1991 → 2026) : 11-Septembre, crises financières, polarisation.
 
 **Repères structurants.** Jamestown, Mayflower, Déclaration d’indépendance, Constitution, achat de la Louisiane, guerre de Sécession, 13e amendement, transcontinental, entrée en 14-18, krach de 1929, Pearl Harbor, Hiroshima, Civil Rights Act, Apollo 11, 11-Septembre, crise de 2008.
 
@@ -168,11 +168,11 @@ npm run verify                  # vérifie la disponibilité des pages Grokipedi
 **Domaine.** 962 → 2026. Le Saint-Empire, l’Empire allemand de 1871, Weimar, le Troisième Reich, la RFA/RDA et l’Allemagne réunifiée sont des configurations politiques distinctes.
 
 **Périodisation.**
-- Saint-Empire (962 → 1517) : Ottoniens, empereurs, fragmentation.
+- Reich médiéval (962 → 1517) : Ottoniens, empereurs, fragmentation.
 - Réforme & guerres (1517 → 1815) : Luther, guerre de Trente Ans, Lumières, Napoléon.
 - Unification (1815 → 1914) : Bismarck, Empire, industrialisation.
 - Guerres & divisions (1914 → 1945) : 14-18, Weimar, nazisme, Shoah, 39-45.
-- Deux Allemagnes (1945 → 1990) : occupation, RFA/RDA, mur de Berlin, Guerre froide.
+- Occupation et deux Allemagnes (1945 → 1990) : occupation, RFA/RDA, mur de Berlin, Guerre froide.
 - Allemagne réunifiée (1990 → 2026) : unification, UE, défis contemporains.
 
 **Repères structurants.** Otton Ier, Luther, guerre de Trente Ans, Leipzig, révolution de 1848, unification, 14-18, Weimar, hyperinflation, Hitler, 39-45, Wannsee, Nuremberg, RFA/RDA, mur de Berlin, chute du mur, réunification.
@@ -194,10 +194,10 @@ npm run verify                  # vérifie la disponibilité des pages Grokipedi
 **Domaine.** 753 av. J.-C. → 2026. Rome, les cités-États, les dominations étrangères, le Risorgimento et la République italienne forment des objets politiques très différents.
 
 **Périodisation.**
-- Rome antique (−753 → 476) : royauté, République, Empire, christianisation.
+- Rome antique et Italie romaine (−753 → 476) : royauté, République, Empire, christianisation.
 - Moyen Âge & Renaissance (476 → 1494) : cités, papauté, communes, humanisme.
 - Guerres & Risorgimento (1494 → 1871) : guerres d’Italie, dominations espagnole et autrichienne, unification.
-- Italie moderne (1871 → 1945) : État libéral, colonialisme, fascisme, 39-45.
+- Italie libérale et fasciste (1871 → 1945) : État libéral, colonialisme, fascisme, 39-45.
 - République (1945 → 2026) : Constitution, miracle économique, UE, crises politiques.
 
 **Repères structurants.** Fondation de Rome, République romaine, Empire, chute de Rome, Médicis, guerres d’Italie, unification, prise de Rome, entrée en 14-18, marche sur Rome, 39-45, République, traité de Rome, Tangentopoli, euro.
@@ -219,9 +219,9 @@ npm run verify                  # vérifie la disponibilité des pages Grokipedi
 **Domaine.** 711 → 2026. Le choix commence à la conquête musulmane ; l’Hispanie romaine et les royaumes wisigoths restent des antécédents à traiter.
 
 **Périodisation.**
-- Al-Andalus & Reconquista (711 → 1492) : coexistence, conflits, royaumes chrétiens.
+- Al-Andalus et royaumes chrétiens (711 → 1492) : coexistence, conflits, royaumes chrétiens.
 - Empire espagnol (1492 → 1808) : Rois catholiques, Amérique, Habsbourg, Siècle d’or.
-- Crises & nation (1808 → 1936) : indépendance, colonies, révolutions, République.
+- Révolution libérale et nation en crise (1808 → 1936) : indépendance, colonies, révolutions, République.
 - Guerre civile & franquisme (1936 → 1975) : guerre, dictature, isolement, développement.
 - Démocratie (1975 → 2026) : transition, autonomies, UE, débats mémoriels.
 
@@ -244,8 +244,8 @@ npm run verify                  # vérifie la disponibilité des pages Grokipedi
 **Domaine.** 1600 av. J.-C. → 2026. La continuité dynastique ne signifie pas continuité politique : les territoires, les frontières et les régimes changent profondément.
 
 **Périodisation.**
-- Dynasties fondatrices (−1600 → −221) : Shang, Zhou, royaumes combattants.
-- Empire unifié (−221 → 1912) : Qin, Han, Tang, Song, Yuan, Ming, Qing.
+- Shang, Zhou et Royaumes combattants (−1600 → −221) : Shang, Zhou, royaumes combattants.
+- Empires et divisions (−221 → 1912) : Qin, Han, Tang, Song, Yuan, Ming, Qing.
 - République et révolutions (1912 → 1949) : République, seigneurs de la guerre, guerre sino-japonaise, guerre civile.
 - Chine populaire (1949 → 1978) : RPC, collectivisation, Grande Famine, Révolution culturelle.
 - Réforme et puissance (1978 → 2026) : ouverture, croissance, transformations sociales.
@@ -270,8 +270,8 @@ npm run verify                  # vérifie la disponibilité des pages Grokipedi
 
 **Périodisation.**
 - Civilisations anciennes (−2600 → 1206) : Indus, Védas, Maurya, Gupta, royaumes régionaux.
-- Sultanats & Moghols (1206 → 1757) : Delhi, empire moghol, compagnies européennes.
-- Raj britannique (1757 → 1947) : Compagnie, révolte de 1857, mouvement national.
+- Sultanats, Vijayanagara & Moghols (1206 → 1757) : Delhi, empire moghol, compagnies européennes.
+- Compagnie & Raj (1757 → 1947) : Compagnie, révolte de 1857, mouvement national.
 - Inde contemporaine (1947 → 2026) : indépendance, partition, démocratie, libéralisation.
 
 **Repères structurants.** Indus, Maurya, Gupta, sultanat de Delhi, Moghols, Compagnie des Indes, cipayes, Congrès, Amritsar, indépendance, Gandhi, libéralisation.
@@ -294,10 +294,10 @@ npm run verify                  # vérifie la disponibilité des pages Grokipedi
 **Domaine.** 538 → 2026. Le choix commence à l’arrivée du bouddhisme, qui coïncide avec l’entrée du Japon dans l’histoire écrite ; les périodes Jōmon et Yayoi restent des antécédents.
 
 **Périodisation.**
-- Antiquité & Nara (538 → 794) : bouddhisme, État impérial, capitales.
+- Antiquité, Asuka & Nara (538 → 794) : bouddhisme, État impérial, capitales.
 - Heian & shoguns (794 → 1603) : cour de Kyoto, Kamakura, Muromachi, guerres.
 - Époque Edo (1603 → 1868) : Tokugawa, fermeture, société urbaine.
-- Empire du Japon (1868 → 1945) : Meiji, industrialisation, expansion, guerre.
+- Empire et guerres mondiales (1868 → 1945) : Meiji, industrialisation, expansion, guerre.
 - Japon contemporain (1945 → 2026) : occupation, croissance, crise, Fukushima.
 
 **Repères structurants.** Bouddhisme, Nara, Heian, Kamakura, invasions mongoles, Portugais, Edo, Perry, Meiji, guerre russo-japonaise, Hiroshima, JO de Tokyo, Fukushima.
@@ -322,7 +322,7 @@ npm run verify                  # vérifie la disponibilité des pages Grokipedi
 - Égypte pharaonique (−3100 → −332) : unification, Ancien/Moyen/Nouvel Empire, crises.
 - Égypte gréco-romaine (−332 → 641) : Alexandre, Ptolémées, Rome, christianisation.
 - Égypte islamique (641 → 1798) : conquête arabe, Fatimides, Mamelouks, Ottomans.
-- Égypte moderne (1798 → 1952) : expédition française, Muhammad Ali, canal de Suez, protectorat.
+- Égypte moderne et coloniale (1798 → 1952) : expédition française, Muhammad Ali, canal de Suez, protectorat.
 - Égypte contemporaine (1952 → 2026) : Nasser, paix avec Israël, printemps 2011.
 
 **Repères structurants.** Unification, Khéops, Akhenaton, Ramsès II, Alexandrie, Cléopâtre, conquête arabe, Le Caire, Bonaparte, Suez, indépendance, Nasser, crise de Suez, paix de 1979, Tahrir.

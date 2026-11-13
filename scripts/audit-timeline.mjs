@@ -235,11 +235,13 @@ function analyseCountry(country, atlasEntry, allEventIds, mismatchedSummary) {
       badTags.push(event.id);
     }
     if (![1, 2, 3].includes(event.importance)) badImportance.push(event.id);
+    const hasSourceRefs = Array.isArray(event.sources) && event.sources.length > 0;
     if (
-      typeof event.grok !== 'string' ||
-      !event.grok.trim() ||
-      /\s/.test(event.grok) ||
-      event.grok.includes('://')
+      !hasSourceRefs &&
+      (typeof event.grok !== 'string' ||
+        !event.grok.trim() ||
+        /\s/.test(event.grok) ||
+        event.grok.includes('://'))
     ) {
       badGrok.push(event.id);
     }
@@ -331,6 +333,12 @@ function analyseCountry(country, atlasEntry, allEventIds, mismatchedSummary) {
   const withActors = events.filter((event) => hasField(event, 'actors')).length;
   const withPlaces = events.filter((event) => hasField(event, 'places')).length;
   const withSources = events.filter((event) => hasField(event, 'sources')).length;
+  const withOneSource = events.filter(
+    (event) => Array.isArray(event.sources) && event.sources.length >= 1
+  ).length;
+  const withTwoSources = events.filter(
+    (event) => Array.isArray(event.sources) && event.sources.length >= 2
+  ).length;
   const withClaims = events.filter((event) => hasField(event, 'claims')).length;
   const withTimeSpan = events.filter(
     (event) => hasField(event, 'timeSpan') || (event.time && hasField(event.time, 'edtf'))
@@ -348,7 +356,7 @@ function analyseCountry(country, atlasEntry, allEventIds, mismatchedSummary) {
   const targetScore =
     ratio(withActors, total) * 15 +
     ratio(withPlaces, total) * 15 +
-    ratio(withSources, total) * 20 +
+    (ratio(withOneSource, total) * 0.4 + ratio(withTwoSources, total) * 0.6) * 20 +
     ratio(withClaims, total) * 10 +
     (ratio(withYear, total) * 0.4 + ratio(withTimeSpan, total) * 0.6) * 15 +
     ratio(withPrecision, total) * 5 +
@@ -399,6 +407,8 @@ function analyseCountry(country, atlasEntry, allEventIds, mismatchedSummary) {
       actors: withActors,
       places: withPlaces,
       sources: withSources,
+      sourcesOne: withOneSource,
+      sourcesTwo: withTwoSources,
       claims: withClaims,
       timeSpan: withTimeSpan,
       precision: withPrecision,
@@ -416,6 +426,12 @@ function analyseCountry(country, atlasEntry, allEventIds, mismatchedSummary) {
 function globalAggregate(results, allEvents) {
   const total = allEvents.length;
   const count = (field) => allEvents.filter((event) => hasField(event, field)).length;
+  const withOneSource = allEvents.filter(
+    (event) => Array.isArray(event.sources) && event.sources.length >= 1
+  ).length;
+  const withTwoSources = allEvents.filter(
+    (event) => Array.isArray(event.sources) && event.sources.length >= 2
+  ).length;
   const withTimeSpan = allEvents.filter(
     (event) => hasField(event, 'timeSpan') || (event.time && hasField(event.time, 'edtf'))
   ).length;
@@ -438,7 +454,7 @@ function globalAggregate(results, allEvents) {
   const score =
     ratio(count('actors'), total) * 15 +
     ratio(count('places'), total) * 15 +
-    ratio(count('sources'), total) * 20 +
+    (ratio(withOneSource, total) * 0.4 + ratio(withTwoSources, total) * 0.6) * 20 +
     ratio(count('claims'), total) * 10 +
     (ratio(allEvents.filter((event) => Number.isInteger(event.year)).length, total) * 0.4 +
       ratio(withTimeSpan, total) * 0.6) *
@@ -447,7 +463,7 @@ function globalAggregate(results, allEvents) {
     ratio(omissions, results.length) * 5 +
     ratio(matrixValid, matrixTotal) * 7.5 +
     ratio(signoffs, results.length) * 7.5;
-  return { total, count, withTimeSpan, withPrecision, omissions, matrices, matrixValid, matrixTotal, matrixCounts, signoffs, score };
+  return { total, count, withOneSource, withTwoSources, withTimeSpan, withPrecision, omissions, matrices, matrixValid, matrixTotal, matrixCounts, signoffs, score };
 }
 
 // ---------------------------------------------------------------------------
@@ -523,7 +539,7 @@ push(`| Pays avec anomalie d’intégrité | ${countriesWithIssues.length} |`);
 push(`| Couverture tags × ères | ${coveredCells}/${totalCells} cellules (${pct(coveredCells, totalCells)}) |`);
 push(`| Matrice pays | ${aggregate.matrixCounts.couvert} couvertes, ${aggregate.matrixCounts.partiel} partielles, ${aggregate.matrixCounts['vide justifié']} justifiées, ${aggregate.matrixCounts['vide non traité']} non traitées |`);
 push(`| Liens \`related\` | ${relatedTotal} liens, ${brokenRelated} cassé(s), ${pct(reciprocal, relatedTotal)} réciproques |`);
-push(`| Grokipedia | ${allEvents.filter((event) => event.grok).length}/${aggregate.total} slugs présents |`);
+push(`| Grokipedia | ${allEvents.filter((event) => event.grok).length}/${aggregate.total} slugs directs ; ${allEvents.filter((event) => !event.grok && Array.isArray(event.sources) && event.sources.length > 0).length} avec fallback recherche |`);
 push(`| Audits prose | ${results.filter((result) => result.slug).length}/${results.length} sections présentes |`);
 push(`| Ancres d’audit | ${results.length - brokenAnchors.length}/${results.length} valides |`);
 push(`| Complétude cible v${METHOD_VERSION} | **${aggregate.score.toFixed(1)}/100** |`);
@@ -540,10 +556,14 @@ if (countriesWithIssues.length === 0) {
       .join(', ')}.`
   );
 }
+const sourceSentence =
+  aggregate.withOneSource > 0
+    ? `${aggregate.withOneSource}/${aggregate.total} repères disposent de références de sources, mais les acteurs, lieux, claims et \`TimeSpan\` restent absents ou très incomplets.`
+    : `Aucun repère ne porte aujourd’hui d’acteurs, de lieux, de sources indépendantes, de claims ni de \`TimeSpan\` explicite.`;
 push(
   `En revanche, la **cible v${METHOD_VERSION} n’est pas atteinte** : le score de ${aggregate.score.toFixed(
     1
-  )}/100 mesure la complétude du schéma, pas la valeur historique. Aucun repère ne porte aujourd’hui d’acteurs, de lieux, de sources indépendantes, de claims ni de \`TimeSpan\` explicite.`
+  )}/100 mesure la complétude du schéma, pas la valeur historique. ${sourceSentence}`
 );
 push('');
 push('## Tableau pays');
@@ -581,7 +601,8 @@ push('| Champ cible | Repères renseignés | Couverture | Conséquence |');
 push('| --- | ---: | ---: | --- |');
 push(`| \`actors\` | ${aggregate.count('actors')}/${aggregate.total} | 0 % | Impossible de vérifier la place des femmes, des minorités, des classes populaires ou des institutions. |`);
 push(`| \`places\` | ${aggregate.count('places')}/${aggregate.total} | 0 % | Impossible de vérifier les lieux hors capitale, les échelles et les géographies datées. |`);
-push(`| \`sources\` indépendantes | ${aggregate.count('sources')}/${aggregate.total} | 0 % | Grokipedia reste un point d’entrée, pas une source probante : aucune fiche n’a deux sources indépendantes. |`);
+push(`| \`sources\` (≥ 1) | ${aggregate.withOneSource}/${aggregate.total} | ${pct(aggregate.withOneSource, aggregate.total)} | Références de dossier ; une seule source ne suffit pas à valider une fiche. |`);
+push(`| \`sources\` (≥ 2) | ${aggregate.withTwoSources}/${aggregate.total} | ${pct(aggregate.withTwoSources, aggregate.total)} | Deux sources indépendantes par fiche : condition non atteinte pour l’essentiel du corpus. |`);
 push(`| \`claims\` | ${aggregate.count('claims')}/${aggregate.total} | 0 % | Les désaccords et les incertitudes ne sont pas modélisés. |`);
 push(`| \`TimeSpan\` | ${aggregate.withTimeSpan}/${aggregate.total} | 0 % | Le temps est réduit à une année (et parfois \`endYear\`) ; pas de bornes, de calendrier ni d’incertitude. |`);
 push(`| \`datePrecision\` | ${aggregate.withPrecision}/${aggregate.total} | 0 % | Aucune distinction jour / mois / année / décennie / siècle. |`);
@@ -736,10 +757,12 @@ for (const result of results) {
     `- **Champs cible** : acteurs ${pct(result.fields.actors, result.events.length)}, lieux ${pct(
       result.fields.places,
       result.events.length
-    )}, sources ${pct(result.fields.sources, result.events.length)}, claims ${pct(
-      result.fields.claims,
+    )}, sources ≥1 ${pct(result.fields.sourcesOne, result.events.length)}, sources ≥2 ${pct(
+      result.fields.sourcesTwo,
       result.events.length
-    )}, TimeSpan ${pct(result.fields.timeSpan, result.events.length)}, précision ${pct(
+    )}, claims ${pct(result.fields.claims, result.events.length)}, TimeSpan ${pct(
+      result.fields.timeSpan, result.events.length
+    )}, précision ${pct(
       result.fields.precision,
       result.events.length
     )}.`
@@ -777,7 +800,7 @@ push('- **Intégrité POC** : contrôles de cohérence internes. Un échec est u
 push('- **Cible v1.0** : part du schéma de preuve effectivement renseignée. Un score faible n’est pas une condamnation des contenus : c’est la mesure de ce qui manque pour rendre les frises auditables.');
 push('- **Couverture tags × ères** : mesure la présence d’au moins un repère par tag et par ère. Elle ne mesure ni la qualité, ni la proportion, ni l’absence de biais.');
 push('');
-push('**Formule de la cible v1.0.** Acteurs 15 % + lieux 15 % + sources 20 % + claims 10 % + temps 15 % (année seule : 40 % du sous-score ; `TimeSpan` : 60 %) + précision 5 % + registre d’omissions 5 % + matrice de couverture 7,5 % (cellules traitées : couvertes, partielles ou justifiées ; la couverture stricte est indiquée séparément) + sign-off 7,5 %.');
+push('**Formule de la cible v1.0.** Acteurs 15 % + lieux 15 % + sources 20 % (≥ 1 source : 40 % du sous-score ; ≥ 2 sources : 60 %) + claims 10 % + temps 15 % (année seule : 40 % du sous-score ; `TimeSpan` : 60 %) + précision 5 % + registre d’omissions 5 % + matrice de couverture 7,5 % (cellules traitées : couvertes, partielles ou justifiées ; la couverture stricte est indiquée séparément) + sign-off 7,5 %.');
 push('');
 push(`Méthode complète : [TIMELINE_METHOD.md](TIMELINE_METHOD.md). Gabarits : [templates/](templates/).`);
 push('');

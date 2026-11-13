@@ -1,0 +1,342 @@
+# Vectemporel — patch d’intégration du dossier Allemagne
+# Source : audits/germany/proposals.yaml, REPORT.md et country-audit.yaml.
+# Ce fichier ne modifie pas data.js ; il est destiné à scripts/apply-country-fixes.mjs.
+
+schema_version: "1.0"
+country_id: "germany"
+generated_at: "2026-11-13"
+
+event_updates:
+  - id: "de-otto"
+    set:
+      title: "Otton Ier couronné empereur"
+      subtitle: "Un Empire composite, non un État allemand"
+      summary: >-
+        Le 2 février 962, Otton Ier est couronné empereur à Rome. Sa royauté
+        repose sur un consensus princier et épiscopal ; l’Empire est composite et
+        réunit, au fil des siècles, des composantes germaniques, italiennes et
+        bourguignonnes. Les titulatures « saint », « romain » et « de la nation
+        allemande » ne se fixent que bien plus tard.
+      tags: ["politique"]
+    confidence: "high"
+    rationale: >-
+      La correction retire la projection d’un Empire allemand fondé en 962 et
+      replace le couronnement dans l’histoire d’un Empire composite (SRC-001).
+
+  - id: "de-luther"
+    set:
+      subtitle: "Une controverse théologique devient une rupture européenne"
+      summary: >-
+        Le 31 octobre 1517, Luther adresse ses thèses sur les indulgences à
+        l’archevêque de Mayence et à l’évêque de Brandebourg. Leur diffusion
+        imprimée ouvre une controverse qui devient la Réforme. L’affichage à la
+        porte de la Schlosskirche de Wittenberg est une tradition tardive, non
+        attestée par un témoin oculaire.
+      tags: ["religion", "societe"]
+    confidence: "high"
+    rationale: >-
+      La correction substitue à l’affichage légendaire l’envoi des thèses aux
+      évêques et signale l’absence de témoin oculaire (SRC-002, SRC-016).
+
+  - id: "de-30ans"
+    set:
+      subtitle: "Une guerre européenne dans l’Empire"
+      summary: >-
+        La défenestration de Prague (1618) ouvre un conflit qui implique les
+        Habsbourg, les princes allemands, le Danemark, la Suède et la France.
+        Les populations de l’Empire subissent pillages, épidémies et famines.
+        Les traités de Westphalie (1648) redéfinissent l’ordre impérial et
+        européen.
+      tags: ["guerre", "religion"]
+    confidence: "high"
+    rationale: >-
+      Le sous-titre « L’Allemagne dévastée » nationalisait un conflit européen ;
+      la formulation retenue et le rappel des traités de Westphalie restituent
+      son échelle (SRC-003).
+
+  - id: "de-1848"
+    set:
+      summary: >-
+        Les révolutions de mars réclament liberté et unité nationale. Le
+        Parlement de Francfort, élu au suffrage masculin, rédige une constitution
+        et des droits fondamentaux ; les femmes en sont exclues, tandis que
+        Louise Otto-Peters intervient publiquement sur la condition des
+        ouvrières. La campagne militaire de 1849 met fin aux dernières
+        insurrections et Frédéric-Guillaume IV refuse la couronne impériale.
+      tags: ["politique", "societe"]
+    confidence: "high"
+    rationale: >-
+      La correction ajoute le refus de la couronne, la campagne militaire et
+      l’exclusion des femmes, avec Louise Otto-Peters (SRC-004, SRC-017).
+
+  - id: "de-unification"
+    set:
+      title: "Proclamation de l’Empire allemand"
+      subtitle: "Les princes allemands à Versailles"
+      summary: >-
+        Le 18 janvier 1871, les princes allemands proclament l’Empire allemand à
+        Versailles, après la victoire sur la France. La proclamation couronne un
+        processus diplomatique et militaire de plusieurs années, conduit par
+        Bismarck et les princes allemands. L’Empire est une fédération de
+        monarchies et de villes libres, dotée d’un Reichstag élu au suffrage
+        masculin et d’un pouvoir impérial fort.
+      tags: ["politique", "guerre"]
+    confidence: "high"
+    rationale: >-
+      Le titre et le résumé ne personnalisent plus la fondation de l’Empire ;
+      la proclamation du 18 janvier 1871 et le rôle des princes sont explicités
+      (SRC-004).
+
+  - id: "de-weimar"
+    set:
+      subtitle: "Proclamation et constitution"
+      summary: >-
+        La République est proclamée le 9 novembre 1918, dans une Allemagne
+        vaincue, après l’annonce de l’abdication de Guillaume II. L’Assemblée
+        nationale de Weimar adopte la Constitution le 11 août 1919, dans un pays
+        marqué par la défaite, les réparations et le traité de Versailles.
+        Crises économiques et violences politiques minent la légitimité du
+        régime.
+      tags: ["politique", "societe"]
+    confidence: "high"
+    rationale: >-
+      La correction distingue proclamation et constitution et remplace le
+      vocabulaire de l’humiliation par une description factuelle de la défaite
+      et du traité de Versailles (SRC-006).
+
+  - id: "de-inflation"
+    set:
+      summary: >-
+        L’hyperinflation résulte de causes fiscales, monétaires et politiques :
+        déficits publics, création monétaire et charge des réparations.
+        L’occupation de la Ruhr en janvier 1923 est un déclencheur majeur, non
+        la cause unique. Le mark s’effondre, l’épargne est anéantie et la
+        stabilisation monétaire de novembre 1923 rétablit la monnaie au prix
+        d’une crise sociale et politique.
+      tags: ["economie", "politique"]
+    confidence: "high"
+    rationale: >-
+      La correction replace l’occupation de la Ruhr dans un ensemble de causes
+      fiscales, monétaires et politiques (SRC-006).
+
+  - id: "de-ww2"
+    set:
+      summary: >-
+        L’Allemagne nazie déclenche la guerre et organise l’extermination des
+        Juifs d’Europe ; environ six millions sont assassinés. Le régime
+        persécute et tue aussi les Sinti et Roma, les personnes handicapées et
+        les prisonniers soviétiques, tandis que la guerre totale dévaste
+        l’Europe. La défaite de 1945 laisse un pays occupé, divisé et confronté
+        à la Shoah.
+      tags: ["guerre", "societe"]
+    confidence: "high"
+    rationale: >-
+      La correction ajoute les autres victimes du nazisme sans diluer la Shoah
+      (SRC-007, SRC-018).
+
+  - id: "de-wannsee"
+    set:
+      subtitle: "Coordonner un génocide déjà engagé"
+      summary: >-
+        Le 20 janvier 1942, des hauts responsables nazis se réunissent à
+        Wannsee sous la présidence de Reinhard Heydrich. La conférence ne décide
+        pas le génocide, déjà engagé après l’invasion de l’URSS ; elle coordonne
+        l’administration de la « solution finale » et organise la déportation des
+        Juifs d’Europe. Le protocole rédigé par Adolf Eichmann documente cette
+        planification bureaucratique.
+      tags: ["guerre", "societe"]
+    confidence: "high"
+    rationale: >-
+      La correction précise que la conférence coordonne un génocide déjà engagé
+      et cite le protocole d’Eichmann (SRC-007).
+
+  - id: "de-rfa"
+    set:
+      summary: >-
+        La République fédérale d’Allemagne est fondée le 23 mai 1949 dans les
+        zones d’occupation occidentales ; la République démocratique allemande
+        est proclamée le 7 octobre 1949 dans la zone soviétique. La Sarre reste
+        séparée de la RFA jusqu’à son rattachement en 1957. Les deux États
+        s’inscrivent dans les blocs opposés de la Guerre froide.
+      tags: ["politique"]
+    confidence: "high"
+    rationale: >-
+      La correction donne les dates de fondation des deux États et mentionne la
+      Sarre jusqu’en 1957 (SRC-010).
+
+  - id: "de-1989"
+    set:
+      summary: >-
+        Le 9 octobre 1989, environ 70 000 personnes manifestent à Leipzig après
+        les prières pour la paix. Le 9 novembre, lors d’une conférence de presse,
+        Günter Schabowski annonce une nouvelle réglementation des voyages ; des
+        milliers de personnes se pressent aux postes-frontières et les gardes
+        ouvrent les barrières. Le Mur de Berlin tombe, mais cette ouverture ne
+        résulte pas d’une décision planifiée.
+      tags: ["politique", "societe"]
+    confidence: "high"
+    rationale: >-
+      La correction décrit la conférence de presse de Schabowski et l’afflux aux
+      frontières, au lieu de présenter une ouverture planifiée (SRC-012).
+
+  - id: "de-1990"
+    set:
+      subtitle: "L’accession des Länder de la RDA"
+      summary: >-
+        Après les élections libres du 18 mars 1990, les Länder de la RDA
+        rejoignent la RFA le 3 octobre 1990 en vertu de l’article 23 de la Loi
+        fondamentale. Il s’agit d’une accession, non d’une fusion de deux États
+        égaux. La réunification pose de nouveaux défis économiques et sociaux.
+      tags: ["politique"]
+    confidence: "high"
+    rationale: >-
+      La correction précise le mode d’unification : accession des Länder le
+      3 octobre 1990 au titre de l’article 23 (SRC-012).
+
+event_additions:
+  - id: "de-prop-001"
+    year: 1865
+    end_year: null
+    title: "Fondation de l’ADF"
+    subtitle: "La première organisation nationale du mouvement féministe allemand"
+    tags: ["societe"]
+    importance: 2
+    summary: >-
+      En octobre 1865, une conférence réunit des femmes à Leipzig et fonde le
+      18 octobre l’Allgemeiner Deutscher Frauenverein (ADF). Louise Otto-Peters
+      en devient présidente, avec Auguste Schmidt comme vice-présidente. Le
+      programme porte sur l’éducation, l’accès aux métiers et à l’université,
+      ainsi que le droit des femmes au travail.
+    related: ["de-1848"]
+    sources: ["SRC-017"]
+    confidence: "high"
+    rationale: >-
+      Ajoute une histoire des femmes organisée au XIXe siècle, au-delà du seul
+      droit de vote de 1918 (proposition PROP-006).
+
+  - id: "de-prop-002"
+    year: 1904
+    end_year: 1908
+    title: "Génocide des Herero et Nama"
+    subtitle: "La guerre coloniale du Sud-Ouest africain"
+    tags: ["guerre", "societe"]
+    importance: 3
+    summary: >-
+      Dans le Sud-Ouest africain allemand (aujourd’hui Namibie), les troupes du
+      général Lothar von Trotha mènent une guerre d’extermination contre les
+      Herero et les Nama. Les historiens estiment qu’environ 65 000 Herero et
+      au moins 10 000 Nama ont été tués. En 2021, le gouvernement allemand
+      reconnaît ces événements comme un génocide et annonce son intention de
+      demander pardon, sans reconnaissance juridique de réparations.
+    related: []
+    sources: ["SRC-013", "SRC-020"]
+    confidence: "high"
+    rationale: >-
+      La mémoire coloniale est absente de la frise ; ce repère relie l’histoire
+      impériale aux débats contemporains sur le génocide et les réparations
+      (proposition PROP-007).
+
+  - id: "de-prop-003"
+    year: 1939
+    end_year: 1945
+    title: "Travail forcé dans le Reich nazi"
+    subtitle: "Douze millions de travailleurs déportés"
+    tags: ["economie", "guerre", "societe"]
+    importance: 3
+    summary: >-
+      À partir de 1939, le régime nazi déporte vers le Reich des millions de
+      civils, de prisonniers de guerre et de détenus de camps. Les estimations
+      retiennent plus de 12 millions de personnes, avec un pic de 7,8 millions
+      en août 1944. Les travailleurs polonais et soviétiques sont soumis à une
+      ségrégation et à une violence spécifiques ; des entreprises allemandes en
+      profitent.
+    related: ["de-ww2"]
+    sources: ["SRC-008", "SRC-009"]
+    confidence: "high"
+    rationale: >-
+      Le travail forcé est un angle mort majeur : il relie économie, guerre,
+      racisme et mémoire des victimes (proposition PROP-010).
+
+  - id: "de-prop-004"
+    year: 1944
+    end_year: null
+    title: "Liquidation du camp des familles rom à Auschwitz-Birkenau"
+    subtitle: "Le Porajmos et sa mémoire"
+    tags: ["guerre", "societe"]
+    importance: 3
+    summary: >-
+      Dans la nuit du 2 au 3 août 1944, la SS assassine environ 4 300 Sinti et
+      Roma du « camp des familles » d’Auschwitz-Birkenau. Environ 21 000 des
+      23 000 Sinti et Roma déportés à Auschwitz y sont morts. Les estimations du
+      génocide européen varient de 250 000 à 500 000 victimes ; la date est
+      devenue le jour européen de commémoration du Porajmos.
+    related: ["de-ww2", "de-wannsee"]
+    sources: ["SRC-018"]
+    confidence: "high"
+    rationale: >-
+      Les Sinti et Roma sont absents de la frise, alors que leur génocide est
+      documenté et commémoré (proposition PROP-012).
+
+era_updates:
+  - name: "Saint-Empire"
+    set:
+      name: "Reich médiéval"
+    confidence: "high"
+    rationale: >-
+      La borne 962 est conservée comme convention, mais « Saint-Empire »
+      projette sur le Xe siècle une institution dont le titre se fixe plus tard.
+      « Reich médiéval » évite de faire de 962 la naissance d’un État allemand
+      (SRC-001).
+
+  - name: "Deux Allemagnes"
+    set:
+      name: "Occupation et deux Allemagnes"
+    confidence: "high"
+    rationale: >-
+      La période 1945–1949 est structurante : occupation, dénazification,
+      partitions et expulsions précèdent la fondation de la RFA et de la RDA en
+      1949. Le nouveau nom restitue cette séquence (SRC-010, SRC-015).
+
+unresolved:
+  - id: "era-reforme-1648"
+    reason: >-
+      Scission de l’ère « Réforme & guerres » à 1648 : periodization redesign,
+      non applicable comme simple renommage. Proposition : « Réforme et guerre
+      de Trente Ans (1517–1648) » et « Lumières, absolutisme et réformes
+      (1648–1815) ».
+
+  - id: "era-unification-1871"
+    reason: >-
+      Scission de l’ère « Unification » à 1871 : periodization redesign, non
+      applicable comme simple renommage. Proposition : « Vers l’unité
+      (1815–1871) » et « Empire allemand (1871–1914) ».
+
+  - id: "era-guerres-1933"
+    reason: >-
+      Scission de l’ère « Guerres & divisions » à 1933 : periodization redesign,
+      non applicable comme simple renommage. Proposition : « Guerre, révolution
+      et Weimar (1914–1933) » et « Nazisme et guerre (1933–1945) ».
+
+  - id: "era-fil-migrations"
+    reason: >-
+      Fil transversal migrations (Ruhrpolen, travail forcé, expulsions de 1945,
+      Gastarbeiter, réfugiés de 2015 et 2022) : le schéma actuel ne prévoit que
+      des ères chronologiques. À concevoir comme fil éditorial, hors du champ
+      des era_updates.
+
+  - id: "era-fil-environnement"
+    reason: >-
+      Fil transversal environnement (aménagement des rivières, pollution
+      industrielle, antinucléarisme, Energiewende) : même limite de schéma que
+      le fil migrations.
+
+  - id: "PROP-008"
+    reason: >-
+      Droit de vote des femmes (1918–1919) non retenu dans la limite de quatre
+      ajouts ; proposition prioritaire à programmer dans une seconde passe.
+
+  - id: "PROP-015"
+    reason: >-
+      Accord de recrutement germano-turc et Gastarbeiter (1961) non retenu dans
+      la limite de quatre ajouts ; proposition prioritaire à programmer dans une
+      seconde passe.

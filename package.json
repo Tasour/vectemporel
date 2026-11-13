@@ -1,6 +1,6 @@
 {
   "name": "vectemporel-history-poc",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "Vectemporel — POC de frise historique zoomable, pays par pays, avec filtres par tags et lecteur Grokipedia traduit en français.",
   "type": "module",
@@ -12,7 +12,9 @@
     "audit:timeline:strict": "node scripts/audit-timeline.mjs --strict",
     "audit:dossiers": "node scripts/check-audit-dossiers.mjs",
     "verify": "node scripts/verify-grok.mjs",
-    "verify:sources": "node scripts/verify-sources.mjs"
+    "verify:sources": "node scripts/verify-sources.mjs",
+    "apply:fixes": "node scripts/apply-country-fixes.mjs",
+    "apply:fixes:dry": "node scripts/apply-country-fixes.mjs --dry-run"
   },
   "keywords": [
     "histoire",
@@ -35,6 +37,7 @@
     "three": "^0.152.2",
     "topojson-client": "^3.1.0",
     "world-atlas": "^2.0.2",
-    "world-countries": "^5.1.0"
+    "world-countries": "^5.1.0",
+    "yaml": "^2.9.1"
   }
 }

@@ -4,7 +4,7 @@
 
 Une frise historique zoomable, pays par pays, avec des événements tagués et un lecteur Grokipedia intégré, **traduit automatiquement en français**. Ce dépôt est un **proof of concept** : il sert à discuter du concept, pas à être déployé tel quel.
 
-> La note de concept complète est dans **[CONCEPT.md](CONCEPT.md)**. La méthode de production d’une frise est dans **[TIMELINE_METHOD.md](TIMELINE_METHOD.md)**. Les 10 dossiers pays sont dans **[audits/](audits/)** et leur synthèse dans **[AUDIT_SYNTHESIS.md](AUDIT_SYNTHESIS.md)**. Les audits prose sont dans **[COUNTRY_AUDITS.md](COUNTRY_AUDITS.md)**, l’audit structurel généré dans **[TIMELINE_AUDIT.md](TIMELINE_AUDIT.md)** et la liste des 196 pays dans **[COUNTRIES.md](COUNTRIES.md)**.
+> La note de concept complète est dans **[CONCEPT.md](CONCEPT.md)**. La méthode de production d’une frise est dans **[TIMELINE_METHOD.md](TIMELINE_METHOD.md)**. Les 10 dossiers pays sont dans **[audits/](audits/)** ; leur synthèse est dans **[AUDIT_SYNTHESIS.md](AUDIT_SYNTHESIS.md)** et le rapport d’intégration dans **[INTEGRATION_REPORT.md](INTEGRATION_REPORT.md)**. Les audits prose sont dans **[COUNTRY_AUDITS.md](COUNTRY_AUDITS.md)**, l’audit structurel généré dans **[TIMELINE_AUDIT.md](TIMELINE_AUDIT.md)** et la liste des 196 pays dans **[COUNTRIES.md](COUNTRIES.md)**.
 
 ![Vectemporel — frise zoomable](screenshots/vectemporel-desktop.png)
 
@@ -53,7 +53,7 @@ Aucun build front n’est nécessaire : `index.html`, `styles.css`, `app.js`, `d
 ### La frise
 
 - 10 pays : France, Royaume-Uni, États-Unis, Allemagne, Italie, Espagne, Chine, Inde, Japon, Égypte.
-- 189 événements curatés à la main.
+- 229 événements curatés à la main (189 initiaux + 40 ajouts issus des audits).
 - Un atlas de 196 pays, dont 10 frises disponibles et 186 audits à venir.
 - 8 tags : politique, guerres, sciences, arts & lettres, religions, société, économie, monde.
 - Des ères colorées, cliquables pour zoomer.
@@ -120,7 +120,7 @@ npm run audit:dossiers          # contrôle structurel des dossiers pays
 npm run verify:sources          # vérifie les DOI et URL des 200 sources
 ```
 
-État au dernier audit : **120/120 contrôles d’intégrité POC**, **17,9/100 de complétude du schéma cible**, **200 sources enregistrées et testées** et **10 dossiers pays complets**. Les 10 frises sont cohérentes (ères contiguës, liens valides, 189/189 slugs Grokipedia) ; les dossiers documentent 180 propositions d’événements, 120 corrections et 148 omissions. En revanche, `data.js` ne porte toujours ni acteurs, ni lieux, ni sources indépendantes, ni claims, ni `TimeSpan`. Le détail est dans **[TIMELINE_AUDIT.md](TIMELINE_AUDIT.md)** et **[AUDIT_SYNTHESIS.md](AUDIT_SYNTHESIS.md)**.
+État après intégration : **229 repères**, **120/120 contrôles d’intégrité**, **27,6/100 de complétude cible**, **49 % de couverture tags × ères**, **121 corrections**, **40 ajouts** et **22 renommages d’ères**. Les 189 pages Grokipedia directes restent valides ; 40 nouveaux repères utilisent la recherche Grokipedia en fallback. `data.js` ne porte toujours ni acteurs, ni lieux, ni claims, ni `TimeSpan`. Le détail est dans **[TIMELINE_AUDIT.md](TIMELINE_AUDIT.md)**, **[INTEGRATION_REPORT.md](INTEGRATION_REPORT.md)** et **[AUDIT_SYNTHESIS.md](AUDIT_SYNTHESIS.md)**.
 
 ---
 
@@ -153,7 +153,7 @@ omarchy menu refresh
 npm run verify
 ```
 
-Le script teste les 189 slugs utilisés dans `data.js` et affiche les éventuelles pages manquantes. Au moment de la rédaction : **189/189 valides**.
+Le script teste les 189 slugs Grokipedia directs utilisés dans `data.js` et affiche les éventuelles pages manquantes. Au moment de la rédaction : **189/189 valides**. Les 40 repères ajoutés sans page directe utilisent la recherche Grokipedia.
 
 ---
 
@@ -173,6 +173,7 @@ TIMELINE_AUDIT.md   audit structurel généré
 SOURCE_VERIFICATION.md vérification des sources des dossiers
 audits/             dossiers d’audit des 10 pays pilotes
 AUDIT_SYNTHESIS.md  synthèse comparative des 10 audits
+INTEGRATION_REPORT.md corrections et ajouts appliqués
 templates/          gabarits pays, événement, couverture, sources
 styles.css          design system + responsive
 app.js              état, frise, recherche, lecteur, URL
@@ -248,8 +249,8 @@ Sur la frise : molette pour zoomer, glisser pour naviguer, double-clic pour zoom
 - **Traduction automatique.** L’article est traduit à la volée par un service externe (Google Translate non officiel), ce qui implique d’envoyer le texte de l’article à ce service. La qualité est perfectible et la source originale reste accessible. Une version production devrait utiliser une API contractuelle et une relecture éditoriale.
 - **Pas d’API officielle.** Le lecteur extrait des pages publiques à des fins de démonstration. Une version production devrait passer par un accord, une API ou un contenu sous licence.
 - **Vectemporel n’est pas affilié à Grokipedia.**
-- **Sélection éditoriale.** 189 événements ne constituent pas une histoire exhaustive ; c’est un jeu de données pour valider l’expérience.
-- **Schéma de preuve incomplet.** Le POC ne stocke ni acteurs, ni lieux, ni sources indépendantes, ni claims, ni `TimeSpan`. L’audit structurel le mesure : la cible v1.0 est à 17,9/100. Les dossiers pays documentent déjà les sources, acteurs, lieux et omissions ; il reste à les intégrer dans les fiches-événements. Une frise publiable selon la méthode doit combler ces champs et documenter ses omissions.
+- **Sélection éditoriale.** 229 événements ne constituent pas une histoire exhaustive ; c’est un jeu de données pour valider l’expérience.
+- **Schéma de preuve incomplet.** Le POC ne stocke ni acteurs, ni lieux, ni sources indépendantes, ni claims, ni `TimeSpan`. L’audit structurel le mesure : la cible v1.0 est à 27,6/100. Les 121 corrections et 40 ajouts sont intégrés, mais les acteurs, lieux, claims et `TimeSpan` restent à instrumenter. Une frise publiable selon la méthode doit combler ces champs et documenter ses omissions.
 - **Dépendance réseau.** Sans accès à Grokipedia ou au service de traduction, le lecteur affiche un repli ; la frise reste utilisable.
 
 ---

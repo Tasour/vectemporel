@@ -1,0 +1,173 @@
+schema_version: "1.0"
+country_id: "india"
+generated_at: "2026-11-13"
+
+event_updates:
+  - id: "in-indus"
+    set:
+      summary: "Des cités planifiées et des réseaux d’irrigation caractérisent la civilisation de l’Indus, dont l’écriture n’est pas déchiffrée. Sa dé-urbanisation s’étend entre 1900 et 1300 av. J.-C. ; le climat, les cours d’eau et le commerce figurent parmi les causes discutées, sans disparition brutale des sociétés."
+      endYear: -1300
+    confidence: "high"
+    rationale: "Corrige la confusion entre dé-urbanisation et disparition ; distingue les causes discutées et l’écriture non déchiffrée (SRC-001, SRC-002)."
+
+  - id: "in-maurya"
+    set:
+      subtitle: "Magadha, Kalinga et le dhamma"
+      summary: "Chandragupta renverse les Nanda et bâtit un empire qui prolonge la puissance du Magadha. Ashoka se convertit au bouddhisme et promeut le dhamma, un programme de gouvernement moral, après la conquête meurtrière du Kalinga en 261 av. J.-C. ; son action ne se réduit pas à la non-violence et ses missions bouddhiques touchent surtout l’Asie du Sud et l’Asie centrale."
+    confidence: "high"
+    rationale: "Recadre la place du Magadha et des Nanda, date Kalinga et distingue le dhamma de la non-violence ; limite la portée des missions bouddhiques (SRC-001, SRC-002)."
+
+  - id: "in-gupta"
+    set:
+      subtitle: "Un âge d’or construit"
+      summary: "Les Gupta favorisent les arts, la littérature et les sciences, et leur règne est devenu un « âge d’or » de l’historiographie. Aryabhata compose son traité d’astronomie en 499 ; le zéro et la numération décimale se développent sur plusieurs siècles, sans être des inventions gupta."
+    confidence: "high"
+    rationale: "Retire l’attribution du zéro aux Gupta, date Aryabhata et présente l’« âge d’or » comme une construction historiographique (SRC-001, SRC-002)."
+
+  - id: "in-delhi"
+    set:
+      subtitle: "Cinq dynasties, un sultanat"
+      summary: "De 1206 à 1526, cinq dynasties — Mamelouks, Khalji, Tughlaq, Sayyid et Lodi — gouvernent depuis Delhi. Le sultanat développe l’iqta, la monnaie et une administration persanophone, mais il coexiste avec les sultanats du Deccan, du Bengale et du Gujarat."
+      endYear: 1526
+    confidence: "high"
+    rationale: "Nomme les cinq dynasties, fixe la période 1206-1526 et rappelle les sultanats régionaux (SRC-001, SRC-003)."
+
+  - id: "in-moghol"
+    set:
+      subtitle: "De Babur à Aurangzeb"
+      summary: "Babur fonde l’empire en 1526 ; Akbar le consolide par le mansabdari et des alliances rajputes, tandis que Shah Jahan porte l’apogée culturelle et fait construire le Taj Mahal entre 1632 et 1653. L’expansion territoriale culmine sous Aurangzeb, mais sa mort en 1707 ouvre une crise successorale et un long déclin."
+      endYear: 1707
+    confidence: "high"
+    rationale: "Distingue les règnes d’Akbar, Shah Jahan et Aurangzeb, date le Taj Mahal et marque la rupture de 1707 (SRC-003)."
+
+  - id: "in-eic"
+    set:
+      subtitle: "Du comptoir à la souveraineté"
+      summary: "La Compagnie anglaise des Indes orientales reçoit sa charte en 1600, mais elle n’obtient son premier comptoir qu’à Surat en 1613, puis s’installe à Madras, Bombay et Calcutta. La victoire de Plassey en 1757, celle de Buxar en 1764 et le Diwani de 1765 la transforment en puissance territoriale et fiscale au Bengale."
+      endYear: 1765
+      tags: ["economie", "politique", "guerre"]
+    confidence: "high"
+    rationale: "Décrit la Compagnie comme un processus, du comptoir de Surat à la souveraineté fiscale de 1765 (SRC-003, SRC-004)."
+
+  - id: "in-cipayes"
+    set:
+      title: "Révolte de 1857-1858"
+      subtitle: "Une révolte, une répression"
+      summary: "La révolte éclate en 1857 parmi les sepoys du Bengale et s’étend aux paysans, aux villes et à plusieurs princes, avec des violences des deux camps. La répression britannique est massive et fait de nombreuses victimes civiles ; en 1858, Londres retire ses pouvoirs à la Compagnie et place l’Inde sous l’administration directe de la Couronne."
+      endYear: 1858
+      tags: ["guerre", "politique", "societe"]
+    confidence: "high"
+    rationale: "Renomme la révolte, en précise l’ampleur et la répression, et date le passage à la Couronne (SRC-004, SRC-005)."
+
+  - id: "in-congres"
+    set:
+      subtitle: "Des notables au parti de masse"
+      summary: "Fondé à Bombay en 1885, le Congrès rassemble d’abord avocats, journalistes, propriétaires et marchands, dans une phase modérée de pétitions et de réformes. Il devient un parti de masse après 1920, sous l’impulsion de Gandhi, et doit compter avec la concurrence de la Ligue musulmane."
+      tags: ["politique", "societe"]
+    confidence: "high"
+    rationale: "Précise la composition sociale du premier Congrès, sa massification après 1920 et la concurrence de la Ligue musulmane (SRC-005)."
+
+  - id: "in-amritsar"
+    set:
+      summary: "Le 13 avril 1919, le général Dyer fait tirer sur une foule réunie à Jallianwala Bagh, à Amritsar, en marge des protestations contre le Rowlatt Act. Les estimations vont de 379 à plus de 1 500 morts et environ 1 200 blessés ; la commission Hunter, instituée en 1919, critique dans son rapport la conduite de l’armée, et le massacre discrédite le Raj."
+    confidence: "high"
+    rationale: "Remplace « des centaines » par une fourchette, cite Dyer, la commission Hunter et le Rowlatt Act (SRC-005)."
+
+  - id: "in-independance"
+    set:
+      subtitle: "La fin du Raj britannique"
+      summary: "L’Inde devient indépendante le 15 août 1947, au terme de négociations constitutionnelles et de décennies de mobilisations. La Partition du sous-continent, tracée par la ligne Radcliffe en août 1947, constitue un événement distinct, avec ses propres réfugiés et ses propres violences."
+    confidence: "high"
+    rationale: "Sépare l’indépendance de la Partition ; la Partition et le Cachemire font l’objet d’un ajout distinct (SRC-007, SRC-008, SRC-009)."
+
+  - id: "in-gandhi"
+    set:
+      summary: "Mohandas Gandhi est assassiné le 30 janvier 1948 à Delhi par Nathuram Godse, ancien militant du RSS. Figure centrale de la non-violence et du mouvement national, il est aussi critiqué pour ses positions sur la caste et pour son rôle dans les négociations de 1942-1947, notamment face à la Ligue musulmane ; son héritage reste contesté."
+      tags: ["politique", "religion", "societe"]
+    confidence: "high"
+    rationale: "Nomme Godse et date l’assassinat ; remplace le jugement sur son héritage par les critiques documentées (SRC-005, SRC-006)."
+
+  - id: "in-liberalisation"
+    set:
+      subtitle: "Une crise, des réformes, des inégalités"
+      summary: "En 1991, une crise de balance des paiements pousse le gouvernement Rao et son ministre des Finances Manmohan Singh à engager des réformes sous conditions du FMI. La libéralisation, partielle et progressive, s’étend sur les années 1990 et se poursuit après 2000 ; elle accélère la croissance des services mais laisse subsister de fortes inégalités sociales et régionales."
+      endYear: 2000
+      tags: ["economie", "societe"]
+    confidence: "high"
+    rationale: "Décrit un processus de réformes et ses effets sociaux, au-delà du point de 1991 (SRC-006, SRC-014)."
+
+event_additions:
+  - id: "in-prop-001"
+    year: 1927
+    end_year: null
+    title: "Satyagraha de Mahad"
+    subtitle: "Ambedkar et le droit à l’eau"
+    tags: ["politique", "societe", "religion"]
+    importance: 3
+    summary: "Le 20 mars 1927, Ambedkar et des milliers de Dalits boivent l’eau du réservoir Chavdar à Mahad pour affirmer l’égalité d’accès aux espaces publics. La campagne ouvre une décennie de luttes pour les droits des intouchables et nourrit la politisation dalite."
+    related: ["in-gandhi"]
+    sources: ["SRC-019", "SRC-011"]
+    confidence: "high"
+    rationale: "Introduit les Dalits et Ambedkar comme acteurs autonomes de l’histoire politique, absents de la frise (PROP-010)."
+
+  - id: "in-prop-002"
+    year: 1930
+    end_year: null
+    title: "Marche du sel"
+    subtitle: "Gandhi, Dandi et la désobéissance civile"
+    tags: ["politique", "societe", "economie"]
+    importance: 3
+    summary: "Du 12 mars au 6 avril 1930, Gandhi et ses compagnons marchent de Sabarmati à Dandi pour produire du sel illégalement, en défi au monopole britannique. Sarojini Naidu et des milliers de femmes rejoignent le mouvement ; la répression touche environ 60 000 personnes."
+    related: ["in-amritsar", "in-independance"]
+    sources: ["SRC-005", "SRC-012"]
+    confidence: "high"
+    rationale: "Donne un repère de non-violence de masse, hors Delhi, et documente la participation des femmes (PROP-011)."
+
+  - id: "in-prop-003"
+    year: 1947
+    end_year: 1948
+    title: "Partition"
+    subtitle: "Ligne Radcliffe, réfugiés et Cachemire"
+    tags: ["politique", "societe", "guerre"]
+    importance: 3
+    summary: "La ligne Radcliffe, publiée en août 1947, partage le Pendjab et le Bengale entre l’Inde et le Pakistan ; les transferts de population et les violences déplacent entre 12 et 20 millions de personnes et font entre 200 000 et 2 millions de morts selon les estimations. Le conflit du Cachemire, né de l’accession contestée de 1947, débouche sur la première guerre indo-pakistanaise de 1947-1948."
+    related: ["in-independance", "in-gandhi"]
+    sources: ["SRC-007", "SRC-008", "SRC-009"]
+    confidence: "high"
+    rationale: "Scinde la correction in-independance : la Partition devient un événement distinct, avec ses bilans et le Cachemire (SRC-007, SRC-008, SRC-009)."
+
+  - id: "in-prop-004"
+    year: 2006
+    end_year: null
+    title: "Loi sur les droits forestiers"
+    subtitle: "Adivasis, gram sabhas et environnement"
+    tags: ["politique", "societe", "economie"]
+    importance: 3
+    summary: "La loi de 2006 reconnaît les droits individuels et collectifs des communautés forestières, notamment des Adivasis, sur les terres et les ressources qu’elles occupent. Son application reste inégale ; le conflit de Niyamgiri, où les gram sabhas rejettent en 2013 le projet minier, en devient un cas emblématique."
+    related: ["in-liberalisation"]
+    sources: ["SRC-018", "SRC-016"]
+    confidence: "high"
+    rationale: "Introduit les Adivasis, les gram sabhas et la justice environnementale, absents de la frise (PROP-018)."
+
+era_updates:
+  - name: "Sultanats & Moghols"
+    set:
+      name: "Sultanats, Vijayanagara & Moghols"
+    confidence: "high"
+    rationale: "Le label actuel réduit l’ère à Delhi ; Vijayanagara, les sultanats du Deccan et du Bengale, puis les Marathes structurent aussi le sous-continent (SRC-003)."
+
+  - name: "Raj britannique"
+    set:
+      name: "Compagnie & Raj"
+    confidence: "high"
+    rationale: "Le label « Raj » est anachronique pour 1757-1858, période de domination de la Compagnie ; « Compagnie & Raj » distingue les deux régimes (SRC-004, SRC-005)."
+
+unresolved:
+  - id: "era-civilisations-anciennes"
+    reason: "periodization redesign : la scission en « Indus & Védique » (-2600/-600) et « Empires classiques & régionaux » (-600/1200) modifie les bornes et la matrice ; elle n’entre pas dans le périmètre des renommages autorisés."
+
+  - id: "era-couche-environnementale"
+    reason: "periodization redesign : la couche environnementale (moussons et famines, État colonial extractif, Révolution verte et barrages, crise climatique et eau) est une périodisation alternative, pas une ère politique."
+
+  - id: "era-couche-sociale-economique"
+    reason: "periodization redesign : la lecture 1757/1947/1991/2026 (extraction coloniale, État développementaliste, libéralisation) ne peut pas être ajoutée comme ère sans refonte du schéma."

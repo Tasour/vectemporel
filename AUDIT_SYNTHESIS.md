@@ -2,7 +2,7 @@
 
 > **Date.** 13 novembre 2026.
 > **Source.** Les 10 dossiers de [`audits/`](audits/), produits par des agents experts avec la méthode [`TIMELINE_METHOD.md`](TIMELINE_METHOD.md).
-> **Statut.** Premières versions expertes, **non signées**. `verdict: pending`, scores `null`, `signoff` vide. Les propositions sont une file de revue, pas un patch automatique de `data.js`.
+> **Statut.** Premières versions expertes, **non signées**. `verdict: pending`, scores `null`, `signoff` vide. Les propositions sont une file de revue ; **121 corrections et 40 ajouts ont été intégrés** dans `data.js` lors de la première passe (voir [INTEGRATION_REPORT.md](INTEGRATION_REPORT.md)).
 
 ---
 
@@ -26,7 +26,7 @@
 | Cellules vides justifiées | 120 (15 %) |
 | Cellules non traitées | **67 (9 %)** |
 | Intégrité POC des frises | **120/120 contrôles** |
-| Complétude cible v1.0 | **17,9/100** (contre 6,0 avant les dossiers) |
+| Complétude cible v1.0 | **17,9/100 après dossiers ; 27,6/100 après intégration** |
 | Audits signés | **0/10** |
 
 **Lecture.** Les dossiers ne rendent pas les frises « complètes » : ils rendent leurs lacunes **visibles, localisées et argumentées**. La couche pays est désormais documentée ; la couche événement reste à instrumenter dans `data.js` (acteurs, lieux, sources, claims, `TimeSpan`).
@@ -93,7 +93,7 @@ Moyenne : **79,7 %**. Le problème n’est pas seulement quantitatif : les tags 
 
 ### 2.4. Corrections factuelles à fort enjeu
 
-Les 120 corrections ne sont pas toutes du même niveau. Une trentaine touchent des formulations qui peuvent induire en erreur :
+Les 120 corrections documentées dans les dossiers ne sont pas toutes du même niveau. Une trentaine touchent des formulations qui peuvent induire en erreur :
 
 - **Allemagne** : « Naissance du Saint-Empire » en 962 ; l’affichage des 95 thèses en 1517 ; Wannsee comme décision du génocide ; « ouverture » planifiée de la frontière en 1989 ; modalité d’unification de 1990.
 - **Italie** : `it-ww2` commence en 1939 alors que l’Italie entre en guerre en juin 1940 ; la République est datée de 1946 alors que la Constitution entre en vigueur en 1948 ; la CEE est datée de 1957 alors que les traités entrent en vigueur en 1958.
@@ -316,4 +316,4 @@ npm run verify                  # vérifie les 189 pages Grokipedia
 
 ---
 
-**Conclusion.** Les 10 pays pilotes disposent désormais d’une **première version experte, sourcée et auditables**. Le résultat majeur n’est pas le score de 17,9/100 : c’est que les 148 omissions, 120 corrections et 180 propositions sont nommées, localisées et vérifiables. La frise peut maintenant être corrigée sans prétendre qu’elle était complète.
+**Conclusion.** Les 10 pays pilotes disposent désormais d’une **première version experte, sourcée et auditable**. Le résultat majeur n’est pas le score de 17,9/100 : c’est que les 148 omissions, 120 corrections et 180 propositions sont nommées, localisées et vérifiables. **121 corrections et 40 ajouts** ont depuis été intégrés dans `data.js` ; le détail est dans [INTEGRATION_REPORT.md](INTEGRATION_REPORT.md). La frise peut maintenant être corrigée sans prétendre qu’elle était complète.

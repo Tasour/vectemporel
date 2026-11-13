@@ -1,0 +1,171 @@
+schema_version: "1.0"
+country_id: "italy"
+generated_at: "2026-11-13"
+
+event_updates:
+  - id: "it-476"
+    set:
+      title: "Chute de Rome"
+      subtitle: "Une césure conventionnelle"
+      summary: "En 476, Odoacre dépose Romulus Augustulus, dernier empereur d'Occident, et renvoie les insignes impériaux à Constantinople. La date est une convention historiographique: l'Empire d'Orient subsiste et les dominations ostrogothe, byzantine puis lombarde assurent la continuité des institutions et des sociétés italiennes."
+      year: 476
+      tags: ["politique", "guerre"]
+    confidence: "high"
+    rationale: "476 est requalifié en convention historiographique: la déposition de Romulus Augustulus n'interrompt ni l'Empire d'Orient ni les continuités ostrogothe, byzantine et lombarde (SRC-003)."
+
+  - id: "it-medicis"
+    set:
+      title: "Cosme de Médicis à Florence"
+      subtitle: "Banque, pouvoir et mécénat"
+      summary: "En 1434, Cosme de Médicis rentre d'exil et consolide à Florence un pouvoir fondé sur la banque, les réseaux de clientèle et le contrôle des institutions. Son mécénat accompagne cette domination politique et ne résume pas la Renaissance, qui se développe dans plusieurs cours et cités italiennes."
+      year: 1434
+      tags: ["politique", "economie", "arts"]
+    confidence: "high"
+    rationale: "Le titre vague « Médicis » et le sous-titre « capitale de la Renaissance » surestiment un moment de politique florentine; 1434 est un retour d'exil et une consolidation du pouvoir, où le mécénat sert la domination (SRC-004)."
+
+  - id: "it-guerres"
+    set:
+      title: "Guerres d'Italie"
+      subtitle: "L'Italie, champ de bataille européen"
+      summary: "De 1494 à 1559, Charles VIII, Louis XII et François Ier interviennent en Italie, tandis que Charles Quint et les papes disputent Naples, Milan et Florence. La paix de Cateau-Cambrésis, en 1559, consacre la prépondérance espagnole dans la péninsule. Les guerres révèlent la richesse culturelle des cités italiennes autant que la fragilité de leurs États."
+      year: 1494
+      endYear: 1559
+      tags: ["guerre", "politique"]
+    confidence: "high"
+    rationale: "La fiche réduisait les guerres à un choc culturel; la correction nomme les souverains, les papes, les villes disputées et la paix de Cateau-Cambrésis (1559), qui fixe la prépondérance espagnole (SRC-004)."
+
+  - id: "it-unification"
+    set:
+      title: "Unification italienne"
+      subtitle: "Une unité inachevée, 1861-1870"
+      summary: "En 1861, Victor-Emmanuel II est proclamé roi d'Italie après les campagnes de Garibaldi et la diplomatie de Cavour, au terme de plébiscites et de combats de volontaires. L'unité reste incomplète: la Vénétie est annexée en 1866 et Rome en 1870. Dans le Mezzogiorno, l'annexion s'accompagne d'une répression du brigandage et de violences qui pèsent durablement sur la mémoire de l'Unité."
+      year: 1861
+      endYear: 1870
+      tags: ["politique", "guerre", "societe"]
+    confidence: "high"
+    rationale: "1861 est la proclamation du royaume, pas l'achèvement de l'Unité; la fiche doit dire 1866 pour la Vénétie, 1870 pour Rome, et la guerre civile du Mezzogiorno (SRC-009, SRC-010)."
+
+  - id: "it-rome-capitale"
+    set:
+      title: "Rome capitale"
+      subtitle: "La prise de Rome et la question romaine"
+      summary: "Le 20 septembre 1870, les troupes italiennes entrent dans Rome après la défaite française à Sedan; la capitale est transférée de Florence à Rome en 1871. La fin de l'État pontifical ne règle pas la question romaine, réglée seulement par les accords du Latran de 1929. Le pape refuse alors de reconnaître le royaume et se déclare prisonnier au Vatican."
+      year: 1870
+      tags: ["politique", "religion"]
+    confidence: "high"
+    rationale: "La « fin du pouvoir temporel » de 1870 ne règle pas la question romaine; la correction date l'entrée des troupes, le transfert de la capitale et renvoie le règlement à 1929 (SRC-009)."
+
+  - id: "it-mussolini"
+    set:
+      title: "Marche sur Rome"
+      subtitle: "La nomination royale et la construction de la dictature"
+      summary: "Du 27 au 29 octobre 1922, les chemises noires convergent vers Rome; le 30, Victor-Emmanuel III nomme Mussolini président du Conseil sans que l'armée intervienne. La violence squadriste et la loi Acerbo de 1923 consolident le pouvoir; après le meurtre de Matteotti et la sécession de l'Aventin en 1924, les lois fascistissimes de 1925-1926 achèvent la suppression des libertés politiques."
+      year: 1922
+      tags: ["politique"]
+    confidence: "high"
+    rationale: "« Mussolini prend le pouvoir » masque la nomination royale et la construction progressive de la dictature; la correction date la marche, l'Aventin et les lois fascistissimes (SRC-012, SRC-013)."
+
+  - id: "it-ww2"
+    set:
+      title: "Seconde Guerre mondiale"
+      subtitle: "De l'entrée en guerre à la Libération"
+      summary: "L'Italie entre en guerre le 10 juin 1940 aux côtés de l'Allemagne. Après l'armistice du 8 septembre 1943, l'occupation allemande et la République sociale italienne ouvrent une guerre civile et une Résistance armée, jusqu'à la Libération du 25 avril 1945."
+      year: 1940
+      endYear: 1945
+      tags: ["guerre", "politique", "societe"]
+    confidence: "high"
+    rationale: "La fiche commence en 1939 alors que l'Italie n'entre en guerre qu'en juin 1940; elle doit distinguer l'armistice de 1943, l'occupation, la guerre civile et la Libération de 1945 (SRC-014, SRC-015)."
+
+  - id: "it-republique"
+    set:
+      title: "République"
+      subtitle: "Référendum, Constituante et Constitution"
+      summary: "Le 2 juin 1946, les électeurs abolissent la monarchie par référendum et élisent une Assemblée constituante; les femmes votent pour la première fois lors d'élections nationales. La Constitution est promulguée le 27 décembre 1947 et entre en vigueur le 1er janvier 1948. La République naît ainsi d'un double vote, avant que ses institutions ne soient pleinement établies."
+      year: 1946
+      tags: ["politique", "societe"]
+    confidence: "high"
+    rationale: "Le référendum de 1946, l'élection de la Constituante, la promulgation de 1947 et l'entrée en vigueur de 1948 sont quatre moments distincts; la fiche les confondait (SRC-015)."
+
+  - id: "it-rome-traite"
+    set:
+      title: "Traité de Rome"
+      subtitle: "Signature en 1957, entrée en vigueur en 1958"
+      summary: "Le 25 mars 1957, six États signent à Rome les traités instituant la Communauté économique européenne et Euratom, après une négociation marquée par le rapport Spaak, Jean Monnet et Konrad Adenauer. La CEE entre en vigueur le 1er janvier 1958 et s'inscrit aux côtés de l'OECE et de l'OTAN dans le bloc occidental. L'Italie, engagée de longue date dans la construction européenne avec De Gasperi, figure parmi les membres fondateurs."
+      year: 1957
+      tags: ["politique", "economie"]
+    confidence: "high"
+    rationale: "Les traités sont signés le 25 mars 1957 mais la CEE n'entre en vigueur que le 1er janvier 1958; la correction ajoute les acteurs et l'articulation avec l'OECE et l'OTAN (SRC-015)."
+
+event_additions:
+  - id: "it-prop-004"
+    year: 1378
+    end_year: null
+    title: "Révolte des Ciompi"
+    subtitle: "Les ouvriers de la laine à Florence"
+    tags: ["politique", "economie", "societe"]
+    importance: 2
+    summary: "En juillet 1378, les ouvriers non qualifiés de la laine, les Ciompi, se soulèvent à Florence et obtiennent la création de trois arts populaires. Leur pouvoir est bref: la révolte est réprimée et les conquêtes annulées. L'épisode reste un cas majeur de conflit du travail dans l'Europe médiévale."
+    related: ["it-medicis"]
+    sources: ["SRC-004"]
+    confidence: "high"
+    rationale: "Comble le vide du travail urbain et des conflits sociaux dans l'ère 2; reprend PROP-004 (SRC-004)."
+
+  - id: "it-prop-005"
+    year: 1377
+    end_year: 1380
+    title: "Catherine de Sienne"
+    subtitle: "Une femme entre papauté et politique"
+    tags: ["religion", "politique", "societe"]
+    importance: 2
+    summary: "Tertiaire dominicaine, Catherine de Sienne (1347-1380) intervient par ses lettres et ses réseaux dans la politique des cités toscanes et de l'Église. Elle joue un rôle dans le retour de Grégoire XI d'Avignon à Rome en 1377, avant de mourir en 1380. Son autorité, exercée hors des institutions sacerdotales, montre les marges d'action des femmes religieuses."
+    related: []
+    sources: ["SRC-005"]
+    confidence: "high"
+    rationale: "Comble l'absence totale de femmes dans la frise et relie autorité religieuse, genre et politique; reprend PROP-005 (SRC-005)."
+
+  - id: "it-prop-009"
+    year: 1861
+    end_year: 1865
+    title: "Brigandage post-unitaire"
+    subtitle: "La répression dans le Mezzogiorno"
+    tags: ["guerre", "politique", "societe"]
+    importance: 3
+    summary: "Après l'unification, des bandes armées et des révoltes paysannes se multiplient dans le Mezzogiorno; l'armée italienne répond par une répression massive, des exécutions et des déportations. Le « brigandage » devient un stéréotype national opposant un Nord moderne à un Sud arriéré. Cette violence de 1861-1865 pèse durablement sur la mémoire de l'Unité."
+    related: ["it-unification"]
+    sources: ["SRC-010"]
+    confidence: "high"
+    rationale: "Révèle la face violente de l'Unité et la construction du stéréotype méridional; reprend PROP-009 (SRC-010)."
+
+  - id: "it-prop-017"
+    year: 1963
+    end_year: null
+    title: "Catastrophe du Vajont"
+    subtitle: "La montagne, le barrage et l'État"
+    tags: ["sciences", "societe", "economie"]
+    importance: 3
+    summary: "Le 9 octobre 1963, une masse rocheuse se détache du mont Toc et s'abat dans le lac artificiel du Vajont. L'onde submerge Longarone et plusieurs villages, faisant 1 917 victimes selon les chiffres officiels. Le désastre, précédé d'avertissements ignorés, devient un symbole des risques industriels et de la responsabilité publique."
+    related: []
+    sources: ["SRC-019"]
+    confidence: "high"
+    rationale: "Comble le vide environnemental et technique de la République et inscrit un lieu de mémoire hors capitale; reprend PROP-017 (SRC-019)."
+
+era_updates:
+  - name: "Rome antique"
+    set:
+      name: "Rome antique et Italie romaine"
+    confidence: "high"
+    rationale: "Le libellé actuel confond l'histoire de Rome avec celle de la péninsule; le nouveau nom signale les populations italiques, grecques et étrusques."
+
+  - name: "Italie moderne"
+    set:
+      name: "Italie libérale et fasciste (1871-1945)"
+    confidence: "high"
+    rationale: "« Italie moderne » masque la nature du régime libéral et la rupture fasciste de 1922; le nouveau libellé explicite la séquence 1871-1945."
+
+unresolved:
+  - id: "era-2-split"
+    reason: "periodization redesign — scinder « Moyen Âge & Renaissance » à 1348 (peste noire) ou à 1000 (communes) exige une refonte des bornes, hors du périmètre des renommages autorisés."
+  - id: "era-3-split"
+    reason: "periodization redesign — scinder « Guerres & Risorgimento » à 1796 (invasion napoléonienne) en « Domination étrangère (1494-1796) » et « Risorgimento (1796-1871) »."
+  - id: "era-5-boundary"
+    reason: "periodization redesign — déplacer le début de « République » de 1945 à 1946 (référendum) ou 1948 (Constitution) n'est pas un renommage; décision de comité requise."

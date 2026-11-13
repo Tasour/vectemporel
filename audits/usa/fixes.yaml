@@ -1,0 +1,171 @@
+# Vectemporel — patch d’intégration États-Unis (méthode v1.0)
+# Généré depuis audits/usa/proposals.yaml, REPORT.md et country-audit.yaml.
+# Ne modifie ni data.js ni les fichiers partagés.
+
+schema_version: "1.0"
+country_id: "usa"
+generated_at: "2026-11-13"
+
+event_updates:
+  - id: "us-jamestown"
+    set:
+      subtitle: "Première colonie anglaise durable en Amérique du Nord"
+      summary: "Des colons anglais fondent Jamestown en 1607, première colonie anglaise durable en Amérique du Nord. La colonie survit difficilement, portée par le tabac et le travail forcé, tandis que les Powhatans occupent déjà la région. Saint Augustine (1565) et Santa Fe (1610) rappellent que la présence européenne précède Jamestown et que l’histoire du territoire ne commence pas avec elle."
+    confidence: "high"
+    rationale: "La fiche faisait de 1607 l’origine nationale et omettait les empires rivaux et les Powhatans. Le nouveau texte distingue Jamestown de l’histoire impériale et autochtone du territoire."
+
+  - id: "us-independance"
+    set:
+      summary: "Les treize colonies proclament leur indépendance de la Grande-Bretagne le 4 juillet 1776. La Déclaration affirme des droits naturels et l’égalité des hommes, mais plusieurs signataires possèdent des esclaves et les nations autochtones sont exclues de cet univers de droits. Le texte fonde une république où l’esclavage et l’expansion territoriale restent centraux."
+      tags: ["politique", "societe"]
+    confidence: "high"
+    rationale: "La fiche séparait les droits proclamés de leurs usages sociaux. Le nouveau texte rappelle que des signataires étaient propriétaires d’esclaves et que les nations autochtones étaient exclues."
+
+  - id: "us-constitution"
+    set:
+      subtitle: "Compromis fondateurs et exclusions"
+      summary: "La Convention de Philadelphie rédige en 1787 une Constitution fédérale qui organise la séparation des pouvoirs et le fédéralisme. Le texte intègre le compromis des trois cinquièmes, qui compte les personnes réduites en esclavage pour une partie de la représentation sans leur donner de droits, et protège l’esclavage par plusieurs dispositions. Les femmes, les peuples autochtones et les personnes esclavisées sont exclus de la citoyenneté politique; la Constitution ne fonde pas une démocratie achevée."
+      tags: ["politique", "societe"]
+    confidence: "high"
+    rationale: "La fiche présentait la Constitution comme un modèle de démocratie sans nommer les compromis esclavagistes ni les exclusions. Le nouveau texte expose le prix politique de l’union et distingue le texte de ses usages."
+
+  - id: "us-louisiane"
+    set:
+      subtitle: "Haïti, esclavage et expansion"
+      summary: "Napoléon vend la Louisiane aux États-Unis en 1803, alors que l’expédition de Saint-Domingue échoue face à la révolution haïtienne et que les ambitions françaises sur l’île sont perdues. Le territoire double la superficie du pays et accélère l’expansion de la plantation esclavagiste et la dépossession des peuples autochtones. La vente ne se réduit donc pas à un besoin de financement militaire."
+      tags: ["politique", "exploration", "economie"]
+    confidence: "medium"
+    rationale: "La fiche expliquait la vente par les seules guerres napoléoniennes. Le nouveau texte y ajoute Haïti, l’esclavage et la dépossession autochtone, et relie l’achat à l’expansion de la plantation."
+
+  - id: "us-civil-war"
+    set:
+      subtitle: "L’Union, l’esclavage et l’émancipation"
+      summary: "La sécession des États esclavagistes déclenche en 1861 une guerre civile meurtrière. La Proclamation d’émancipation de 1863 et le 13e amendement de 1865 inscrivent l’abolition dans un processus politique, mais la victoire de l’Union ne suffit pas à reconstruire la nation. La Reconstruction (1865-1877) est renversée par la violence blanche et les compromis politiques de 1877, puis les lois Jim Crow consolident la ségrégation."
+      tags: ["guerre", "politique", "societe"]
+    confidence: "high"
+    rationale: "La fiche confondait la victoire militaire, l’émancipation et la Reconstruction. Le nouveau texte distingue les trois séquences et rappelle que la Reconstruction a été renversée, non qu’elle a échoué par fatalité. La création d’une fiche Reconstruction distincte reste en unresolved."
+
+  - id: "us-13e"
+    set:
+      summary: "Le 13e amendement est ratifié en décembre 1865; il abolit l’esclavage sauf comme sanction pénale, une exception qui permet le travail forcé des condamnés. Les Black Codes, le travail forcé des prisonniers (convict leasing) et les lois Jim Crow prolongent ensuite la ségrégation légale et le désfranchisement des Afro-Américains. L’abolition ne met donc pas fin à la domination raciale dans le Sud."
+    confidence: "high"
+    rationale: "La fiche mentionnait l’exception pénale sans ses usages ni la ségrégation qui suit. Le nouveau texte ajoute les Black Codes, le convict leasing, Jim Crow et le désfranchisement."
+
+  - id: "us-railroad"
+    set:
+      subtitle: "Travail, dépossession et expansion"
+      summary: "Le premier chemin de fer transcontinental est achevé à Promontory Summit en 1869. Sa construction mobilise des travailleurs chinois et irlandais dans des conditions dangereuses; elle ouvre à la colonisation des terres autochtones et accélère la destruction des bisons. Le chemin de fer relie les deux océans et transforme l’économie de l’Ouest, mais son coût humain et écologique est indissociable de la dépossession."
+      tags: ["economie", "sciences", "societe"]
+    confidence: "high"
+    rationale: "La fiche parlait de « colonisation de l’Ouest » sans nommer les travailleurs, les nations autochtones ni la destruction des bisons. Le nouveau texte expose les coûts humains et environnementaux du transcontinental."
+
+  - id: "us-cold-war"
+    set:
+      subtitle: "Rivalité nucléaire et guerres réelles"
+      summary: "États-Unis et Union soviétique se disputent le monde à partir de 1947, mais la rivalité nucléaire n’exclut pas les guerres réelles — Corée (1950-1953), Vietnam (1955-1975) —, les interventions par procuration ni les dictatures soutenues. Un réseau mondial de bases et d’alliances soutient la projection de puissance américaine. La course aux armements et la rivalité idéologique structurent quatre décennies."
+    confidence: "medium"
+    rationale: "La formule « sans conflit direct » effaçait la Corée, le Vietnam et les interventions. Le nouveau texte distingue la rivalité nucléaire des guerres réelles et mentionne le réseau de bases; les interventions secrètes restent à documenter dans une fiche distincte (OM-012)."
+
+  - id: "us-civil-rights"
+    set:
+      subtitle: "Fin de la ségrégation dans les lieux publics et l’emploi"
+      summary: "La loi de 1964 interdit la discrimination fondée sur la race, la couleur, la religion, le sexe ou l’origine dans les lieux publics, l’emploi et les programmes fédéraux. Elle ne met pas fin à la ségrégation de fait dans le logement, les écoles ni aux violences policières, et le Voting Rights Act de 1965 reste nécessaire pour garantir le vote. La loi couronne des années de mobilisation, mais son application rencontre une résistance durable."
+    confidence: "high"
+    rationale: "La fiche présentait la loi comme la fin de la ségrégation légale. Le nouveau texte limite sa portée aux lieux publics, à l’emploi et aux programmes fédéraux, et ajoute le Voting Rights Act de 1965 et les limites de son application."
+
+event_additions:
+  - id: "us-prop-001"
+    year: 1619
+    end_year: null
+    title: "Premiers Africains en Virginie"
+    subtitle: "Point Comfort, août 1619"
+    tags: ["societe", "economie"]
+    importance: 3
+    summary: "À la fin du mois d’août 1619, une vingtaine d’Africains capturés par le White Lion sont vendus à Point Comfort, en Virginie. Leur statut initial n’est pas uniformément l’esclavage héréditaire, codifié plus tard dans la colonie, mais leur arrivée ouvre la longue histoire de l’esclavage racial en Amérique du Nord britannique. Elle s’inscrit dans la traite atlantique et dans l’économie coloniale qui se met en place depuis Jamestown."
+    related: ["us-jamestown", "us-13e"]
+    sources: ["SRC-007"]
+    confidence: "medium"
+    rationale: "La frise passe de 1607 à 1620 sans 1619, alors que l’arrivée forcée d’Africains structure l’économie et la société coloniales. L’ajout donne un repère à l’esclavage avant 1776 et relie Jamestown à l’abolition."
+
+  - id: "us-prop-003"
+    year: 1830
+    end_year: null
+    title: "Indian Removal Act"
+    subtitle: "La déportation des nations de l’Est"
+    tags: ["politique", "societe"]
+    importance: 3
+    summary: "Le président Andrew Jackson signe le 28 mai 1830 une loi qui autorise la négociation de traités d’échange de terres à l’est du Mississippi contre des terres à l’ouest. Environ 100 000 personnes sont visées par les traités de déplacement; la déportation des Cherokees de 1838-1839 devient la Trail of Tears. La loi fait de la dépossession autochtone une politique fédérale et ouvre la voie à l’expansion territoriale des États-Unis."
+    related: ["us-louisiane", "us-railroad"]
+    sources: ["SRC-006"]
+    confidence: "medium"
+    rationale: "La conquête de l’Ouest est présentée comme une colonisation, sans la politique juridique qui l’organise. L’ajout nomme la dépossession, les nations de l’Est et la Trail of Tears, et donne un repère autochtone avant 1861."
+
+  - id: "us-prop-005"
+    year: 1848
+    end_year: null
+    title: "Convention de Seneca Falls"
+    subtitle: "La Déclaration des sentiments"
+    tags: ["societe", "politique"]
+    importance: 3
+    summary: "Les 19 et 20 juillet 1848, Elizabeth Cady Stanton, Lucretia Mott, Frederick Douglass et d’autres réclament l’égalité des droits, dont le vote, à Seneca Falls, dans l’État de New York. La convention est un moment fondateur du mouvement des femmes, mais son universalisme exclut de fait les femmes noires et autochtones. Le droit de vote des femmes n’est reconnu au niveau fédéral qu’en 1920 avec le 19e amendement, et les femmes noires du Sud restent soumises à de nombreux obstacles."
+    related: ["us-independance", "us-civil-rights"]
+    sources: ["SRC-013"]
+    confidence: "medium"
+    rationale: "La frise n’a aucun repère sur les femmes avant 1920. L’ajout ouvre la séquence du suffrage, nomme Stanton, Mott et Douglass, et rappelle les exclusions raciales du mouvement."
+
+  - id: "us-prop-010"
+    year: 1921
+    end_year: null
+    title: "Massacre de Tulsa"
+    subtitle: "La destruction de Greenwood"
+    tags: ["societe", "politique"]
+    importance: 3
+    summary: "Les 31 mai et 1er juin 1921, une foule blanche attaque le quartier noir de Greenwood, à Tulsa, et détruit 35 pâtés de maisons. Le bilan officiel de l’époque est de 36 morts, mais les historiens estiment aujourd’hui qu’il a pu atteindre 300 personnes; aucune réparation collective d’ampleur n’a été versée. Le massacre est longtemps occulté dans la mémoire publique avant de devenir un enjeu de reconnaissance."
+    related: ["us-13e", "us-civil-rights"]
+    sources: ["SRC-015"]
+    confidence: "medium"
+    rationale: "La violence raciale de masse et sa mémoire sont absentes de la frise. L’ajout documente Greenwood, le bilan disputé et l’absence de réparations, entre Jim Crow et le mouvement des droits civiques."
+
+era_updates:
+  - name: "Colonisation"
+    set:
+      name: "Colonies atlantiques et empires"
+    confidence: "high"
+    rationale: "Le singulier « Colonisation » masque la pluralité des empires espagnol, français, anglais et néerlandais et des sociétés autochtones. Le renommage reprend la proposition de périodisation sans déplacer la borne de 1607."
+
+  - name: "Naissance d’une nation"
+    set:
+      name: "Indépendance et république esclavagiste"
+    confidence: "high"
+    rationale: "La proposition demande de préciser « république esclavagiste » dans le sous-titre; le modèle de données ne dispose pas de sous-titre d’ère. Le renommage inscrit l’esclavage dans le label sans changer les bornes 1776-1861."
+
+  - name: "Hyperpuissance"
+    set:
+      name: "Après-guerre froide, sécurité et polarisation"
+    confidence: "medium"
+    rationale: "« Hyperpuissance » est un jugement triumphaliste et ne décrit pas la période 2001-2026. Le renommage retire le label sans scinder l’ère; la division 1991-2001 / 2001-2026 et le label « Sécurité, crise et polarisation » restent en unresolved."
+
+  - name: "Guerre froide & droits civiques"
+    set:
+      name: "Guerre froide, guerres et droits civiques"
+    confidence: "high"
+    rationale: "« Droits civiques » ne résume pas la période : les guerres par procuration, la Corée, le Vietnam et les interventions secrètes sont centrales. Le renommage ne déplace pas les bornes 1945-1991."
+
+unresolved:
+  - id: "us-era-pre-1607"
+    reason: "Ajout d’un module pré-1607 ou déplacement de la borne de 1607 à 1565 (Saint Augustine) : periodization redesign. La frise actuelle commence à 1607; l’extension du domaine et la création d’une ère autochtone et impériale restent à arbitrer. L’événement us-jamestown est corrigé sans déplacer la borne."
+
+  - id: "us-era-civil-war-split"
+    reason: "Scission de « Guerre civile & reconstruction » (1861-1900) en 1861-1877 et 1877-1900 : periodization redesign, hors du périmètre des renommages autorisés. L’ère n’est pas scindée dans ce patch; us-civil-war distingue guerre, émancipation et Reconstruction."
+
+  - id: "us-era-hyperpower-split"
+    reason: "Scission de « Hyperpuissance » (1991-2026) en 1991-2001 et 2001-2026 : periodization redesign. L’ère est renommée « Après-guerre froide, sécurité et polarisation » sans modification de bornes; le label « Sécurité, crise et polarisation » pour 2001-2026 reste à arbitrer."
+
+  - id: "us-civil-war-reconstruction-event"
+    reason: "La correction de us-civil-war demande une fiche Reconstruction distincte (1865-1877). Le résumé distingue désormais les séquences, mais l’ajout d’un événement autonome n’est pas retenu dans la limite de quatre ajouts; à créer dans une passe ultérieure."
+
+  - id: "us-om-012-cold-war-interventions"
+    reason: "La correction de us-cold-war renvoie les interventions secrètes (Iran 1953, Guatemala 1954, Cuba 1961, Chili 1973) à une fiche distincte (OM-012). Elles sont mentionnées dans le résumé, mais aucune fiche autonome n’est ajoutée dans la limite de quatre ajouts."
+
+  - id: "us-proposals-deferred"
+    reason: "Limite de quatre ajouts. Les propositions PROP-002 (Révolte des Pueblo), PROP-004 (Guadalupe Hidalgo), PROP-006 (Chinese Exclusion Act), PROP-007 (Haymarket), PROP-008 (guerre hispano-américaine), PROP-009 (19e amendement), PROP-011 (Dust Bowl), PROP-012 (internement des Japonais-Américains), PROP-013 (Bracero), PROP-014 (Montgomery), PROP-015 (Silent Spring), PROP-016 (Voting Rights Act), PROP-017 (Stonewall) et PROP-018 (Katrina) restent dans la file de revue. Le 19e amendement est mentionné dans la fiche Seneca Falls; le Voting Rights Act dans la fiche Civil Rights Act."
