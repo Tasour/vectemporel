@@ -458,7 +458,7 @@ actors:
   - id: "ACTOR-PROP-001"
     label: "Emmeline Pankhurst"
     type: "individual"
-    period_ids: ["ERA-4", "ERA-5"]
+    period_ids: ["PERIOD-4", "PERIOD-5"]
     why: >-
       Figure de la WSPU, utile pour expliquer la mobilisation suffragiste, à
       condition de la replacer dans un mouvement plus large et de ne pas
@@ -467,7 +467,7 @@ actors:
   - id: "ACTOR-PROP-002"
     label: "Jayaben Desai"
     type: "individual"
-    period_ids: ["ERA-6"]
+    period_ids: ["PERIOD-6"]
     why: >-
       Porte-parole de la grève de Grunwick, elle incarne l'intersection entre
       classe, race et genre dans le syndicalisme britannique.
@@ -475,7 +475,7 @@ actors:
   - id: "ACTOR-PROP-003"
     label: "Margaret Thatcher"
     type: "individual"
-    period_ids: ["ERA-6"]
+    period_ids: ["PERIOD-6"]
     why: >-
       Première ministre de 1979 à 1990, elle est indispensable pour comprendre
       le tournant néolibéral, la désindustrialisation et les divisions
@@ -484,7 +484,7 @@ actors:
   - id: "ACTOR-PROP-004"
     label: "Doreen Lawrence"
     type: "individual"
-    period_ids: ["ERA-6"]
+    period_ids: ["PERIOD-6"]
     why: >-
       Sa campagne après le meurtre de Stephen Lawrence a conduit au rapport
       Macpherson et à la reconnaissance du racisme institutionnel.
@@ -492,7 +492,7 @@ actors:
   - id: "ACTOR-PROP-005"
     label: "Selina Cooper"
     type: "individual"
-    period_ids: ["ERA-4", "ERA-5"]
+    period_ids: ["PERIOD-4", "PERIOD-5"]
     why: >-
       Suffragiste radicale et ouvrière du textile, elle montre que le suffrage
       s'est aussi construit dans le Lancashire, loin de Londres.
@@ -500,7 +500,7 @@ actors:
   - id: "ACTOR-PROP-006"
     label: "Chartistes"
     type: "collective"
-    period_ids: ["ERA-4"]
+    period_ids: ["PERIOD-4"]
     why: >-
       Mouvement de masse pour le suffrage universel masculin, il relie les
       classes populaires, la presse radicale et le Parlement.
@@ -508,7 +508,7 @@ actors:
   - id: "ACTOR-PROP-007"
     label: "Women Against Pit Closures"
     type: "collective"
-    period_ids: ["ERA-6"]
+    period_ids: ["PERIOD-6"]
     why: >-
       Organisation de femmes des communautés minières, elle politise la grève
       de 1984–1985 et transforme les rapports de genre dans les villages.
@@ -516,7 +516,7 @@ actors:
   - id: "ACTOR-PROP-008"
     label: "Trades Union Congress"
     type: "collective"
-    period_ids: ["ERA-4", "ERA-6"]
+    period_ids: ["PERIOD-4", "PERIOD-6"]
     why: >-
       Confédération syndicale centrale, elle est un acteur du compromis
       d'après-guerre et un contre-pouvoir, mais aussi un frein à la solidarité
@@ -525,7 +525,7 @@ actors:
   - id: "ACTOR-PROP-009"
     label: "East India Company"
     type: "institution"
-    period_ids: ["ERA-3", "ERA-4"]
+    period_ids: ["PERIOD-3", "PERIOD-4"]
     why: >-
       Compagnie chartée et administration coloniale, elle relie Londres, l'Inde
       et la Chine et précède le Raj.
@@ -533,7 +533,7 @@ actors:
   - id: "ACTOR-PROP-010"
     label: "Indian National Congress"
     type: "collective"
-    period_ids: ["ERA-4", "ERA-5"]
+    period_ids: ["PERIOD-4", "PERIOD-5"]
     why: >-
       Acteur étranger/transnational indispensable pour comprendre la fin de
       l'empire indien et la partition.
@@ -541,7 +541,7 @@ actors:
   - id: "ACTOR-PROP-011"
     label: "Génération Windrush"
     type: "collective"
-    period_ids: ["ERA-6"]
+    period_ids: ["PERIOD-6"]
     why: >-
       Acteur collectif de la reconstruction d'après-guerre et de la société
       multiculturelle, dont la citoyenneté a été contestée jusqu'au scandale
@@ -550,7 +550,7 @@ actors:
   - id: "ACTOR-PROP-012"
     label: "William Beveridge"
     type: "individual"
-    period_ids: ["ERA-5", "ERA-6"]
+    period_ids: ["PERIOD-5", "PERIOD-6"]
     why: >-
       Auteur du rapport de 1942, il fixe le cadre intellectuel de
       l'État-providence et du NHS.

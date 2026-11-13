@@ -54,7 +54,7 @@ L’ère 3 est vide, alors qu’elle contient : la chute des Qing, la Républiqu
 
 ### 2.3. Le saut 1978-2026
 
-Une seule fiche pour 48 ans. Manquent 1989, la rétrocession de Hong Kong, l’entrée à l’OMC, les Jeux de 2008, le séisme du Sichuan, la Belt and Road, la pandémie de 2020, les protestations de 2022 et la répression au Xinjiang/Hong Kong. La frise donne donc l’image d’une croissance sans ruptures, ce qui est un biais téléologique majeur.
+Une seule fiche pour 48 ans. Manquent 1989, la rétrocession de Hong Kong, l’entrée à l’OMC, les Jeux de 2008, le séisme du Sichuan, la Belt and Road, la pandémie de 2020, les protestations de 2022 et les politiques de sécurité contestées au Xinjiang et à Hong Kong. La frise donne donc l’image d’une croissance sans ruptures, ce qui est un biais téléologique majeur.
 
 ### 2.4. Les récits à ne pas naturaliser
 

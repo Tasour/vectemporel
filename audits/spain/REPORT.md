@@ -64,7 +64,7 @@ La frise actuelle est massivement politique et militaire. Sur 13 repères, **12 
 
 **Avant 711.** Aucun repère sur l’Ibérie préromaine, l’Hispanie romaine ou le royaume wisigoth. La frise commence par une conquête extérieure, ce qui naturalise l’idée que l’Espagne commencerait avec l’islam. C’est le biais le plus structurant.
 
-**Al-Andalus.** Un seul repère (711), complété par Covadonga. Rien sur le califat de Cordoue (929-1031), les taïfas, les Almoravides, les Almohades, le royaume nasride, les Berbères, les muladíes, les mozárabes ou les esclaves. Al-Andalus apparaît comme un bloc adverse, pas comme une société.
+**Al-Andalus.** Un seul repère (711), complété par Covadonga. Rien sur le califat de Cordoue (929-1031), les taïfas, les Almoravides, les Almohades, le royaume nasride, les Berbères, les muladíes, les mozárabes ou les esclaves. Al-Andalus apparaît surtout comme un adversaire militaire, malgré la mention de foyer culturel, pas comme une société.
 
 **Juifs, musulmans et Roms.** L’expulsion des Juifs est mentionnée dans le résumé de 1492, mais elle n’a pas de fiche propre. Les mudéjars et les morisques sont absents, alors que l’expulsion de 1609-1614 est un événement majeur (SRC-006). Les Roms/Calé sont totalement absents, y compris la Grande Rafle de 1749 (SRC-007). La diversité religieuse est réduite à une opposition binaire.
 
@@ -80,7 +80,7 @@ La frise actuelle est massivement politique et militaire. Sur 13 repères, **12 
 
 **Catalogne et Pays basque.** La crise catalane de 2017 est le seul repère périphérique. Rien sur 1714, la Renaixença, la Semaine tragique, la guerre civile en Catalogne, le statut basque, ETA ou le cessez-le-feu de 2011. La plurinationalité de l’Espagne est un point de débat politique et historiographique, mais elle n’est pas documentée dans la frise.
 
-**15-M et environnement.** Aucun repère sur le mouvement des Indignés de 2011 (SRC-017) ni sur le Prestige de 2002 (SRC-019). L’histoire récente est réduite à la crise catalane.
+**15-M et environnement.** Aucun repère sur le mouvement des Indignés de 2011 (SRC-017) ni sur le Prestige de 2002 (SRC-019). L’histoire post-2000 est réduite à la crise catalane.
 
 **Culture et sciences.** Aucun repère sur le Siècle d’or, les traductions de Tolède, Averroès, Maimonide, Cajal, le CSIC, le cinéma ou la littérature. La frise est une histoire politique sans production culturelle.
 
@@ -148,7 +148,7 @@ La matrice de couverture compte **51 cellules couvertes, 7 partielles, 12 vides 
 | es-cee | Modernisation téléologique | OTAN 1982 ; référendum 1986 ; fonds structurels ; ajustements industriels | SRC-011 |
 
 **Priorités de correction.**
-1. **es-711** : la formulation actuelle est la plus dommageable, parce qu’elle fonde la frise sur une rupture et efface un millénaire.
+1. **es-711** : la formulation actuelle est la plus dommageable, parce qu’elle fonde la frise sur une rupture et efface l’histoire antérieure.
 2. **es-grenade** : le résumé confond trois événements et empêche de comprendre 1492.
 3. **es-1898** : l’expression « dernières colonies » est factuellement fausse.
 4. **es-franco** : « quarante ans » est faux et le bilan est trop favorable.

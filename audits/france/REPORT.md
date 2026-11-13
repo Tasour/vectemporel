@@ -50,7 +50,7 @@ L’audit structurel compte **40 repères politique/guerre sur 53 (75 %)**, au-d
 | Économie & travail | Faible | Industrialisation, chemins de fer, crise de 1975, chômage, précarité | Corrections `fr-trente`, `fr-euro` ; à compléter |
 | Société & démographie | Partiel | Banlieues, classes populaires, ruralités, vieillissement | PROP-013, PROP-016 |
 | Femmes, genre, sexualités | 2 repères (1944, 1975) | Olympe de Gouges, Curie, Morisot, contraception, IVG 2024, LGBTQ+ | PROP-002, PROP-004, PROP-005, PROP-012, PROP-018 |
-| Religions & croyances | 10 repères, surtout médiévaux et modernes (1572, 1598, 1685, 1905) | Islam, judaïsme, laïcité conflictuelle, sécularisation | PROP-007, PROP-015 |
+| Religions & croyances | 10 repères, surtout médiévaux, puis 1572, 1598, 1685 et 1905 | Islam, judaïsme, laïcité conflictuelle, sécularisation | PROP-007, PROP-015 |
 | Sciences, techniques & santé | 2 repères (1666, 2020) | Pasteur, Curie, radiologie, VIH, TGV, Concorde, santé publique | PROP-005 ; à compléter |
 | Arts & lettres | 3 repères (1144, 1635, 1968) | Impressionnisme, surréalisme, Malraux, Pompidou, cinéma, littérature | PROP-004, PROP-006 |
 | Environnement & territoire | **0 repère** | Parcs nationaux, ministère de l’Environnement, COP21, canicule, nucléaire | PROP-011, PROP-017 |
@@ -63,7 +63,7 @@ L’audit structurel compte **40 repères politique/guerre sur 53 (75 %)**, au-d
 
 C’est le plus structurant. La frise ne donne à l’empire qu’un seul événement explicitement colonial : la **guerre d’Algérie (1954-1962)**. Elle ne contient ni le **Code noir (1685)**, ni la **prise d’Alger (1830)**, ni l’**Exposition coloniale de 1931**, ni l’Indochine, ni l’Afrique subsaharienne, ni les Caraïbes, ni l’océan Indien, ni le Pacifique. La colonisation apparaît donc comme une **annexe tardive et militaire**, pas comme un fait économique, juridique, culturel et social qui a duré plusieurs siècles. Les populations colonisées ne sont jamais actrices ; elles sont au mieux un contexte de guerre.
 
-Cette omission fausse plusieurs lectures : la citoyenneté (qui est Français ?), la nationalité (droit du sol, 1889), les migrations postcoloniales, la mémoire (Vichy, Algérie, esclavage), la laïcité (islam colonial et postcolonial), l’économie (sucre, coton, plantations) et les guerres mondiales (tirailleurs, travailleurs indochinois). Les propositions PROP-001, PROP-003, PROP-006, PROP-009 et PROP-010 ne suffisent pas : elles ouvrent la porte, elles ne remplacent pas une histoire impériale.
+Cette omission fausse plusieurs lectures : la citoyenneté (qui est Français ?), la nationalité (loi de 1889), les migrations postcoloniales, la mémoire (Vichy, Algérie, esclavage), la laïcité (islam colonial et postcolonial), l’économie (sucre, coton, plantations) et les guerres mondiales (tirailleurs, travailleurs indochinois). Les propositions PROP-001, PROP-003, PROP-006, PROP-009 et PROP-010 ne suffisent pas : elles ouvrent la porte, elles ne remplacent pas une histoire impériale.
 
 ### 2.4. L’angle mort des femmes
 
@@ -79,7 +79,7 @@ La période 1989-2026 ne contient que **5 repères** : Maastricht, l’euro, Cha
 
 Les résumés existants sont massivement parisiens : Bastille, Commune, Front populaire, Mai 68, Charlie, JO. Les lieux hors Paris existent (Massalia, Alésia, Lyon, Reims, Rouen, Alger, Verdun), mais ils ne sont pas structurés comme lieux datés. Les propositions apportent **11 lieux hors Paris sur 12** : Alésia, Marseille, Lyon, Versailles, Fort-de-France, Alger, Évian, Vanoise, Clichy-sous-Bois, Creil, Le Bourget. C’est un correctif, pas une solution : la carte reste dominée par l’Île-de-France.
 
-Le biais présentiste est réel : la frise se termine sur les JO 2024 et le Covid, deux événements médiatiques, alors que des transformations plus lentes (désindustrialisation, précarisation, vieillissement, ségrégation urbaine, transition écologique) sont absentes. Les propositions 016, 017 et 018 introduisent des événements récents, mais elles doivent être lues avec la distance critique qui manque aux deux dernières.
+Le biais présentiste est réel : la frise se termine sur les JO 2024 et le Covid, deux événements médiatiques, alors que des transformations plus lentes (désindustrialisation, précarisation, vieillissement, ségrégation urbaine, transition écologique) sont absentes. Les propositions 016, 017 et 018 introduisent des événements récents, mais elles doivent être lues avec la distance critique qui manque aux deux derniers repères.
 
 ## 3. Propositions d’événements (12–18)
 

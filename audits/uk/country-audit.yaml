@@ -305,7 +305,8 @@ coverage:
     de l'audit, pas l'état publié de data.js : « couvert » signale une cellule
     adossée à une proposition sourcée avec acteurs et/ou lieux identifiés ;
     « partiel » signale un repère existant sans acteur, lieu ou source
-    structurés. Aucune fiche n'est encore publiée.
+    structurés. Aucune fiche n'est encore publiée. Les identifiants ERA-1…6
+    de coverage-matrix.csv correspondent aux PERIOD-1…6 de ce dossier.
   status_summary:
     covered: 26
     partial: 33
