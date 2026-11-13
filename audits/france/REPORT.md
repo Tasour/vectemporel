@@ -83,7 +83,7 @@ Le biais présentiste est réel : la frise se termine sur les JO 2024 et le Covi
 
 ## 3. Propositions d’événements (12–18)
 
-Les 18 propositions sont détaillées dans `proposals.yaml`. Chaque proposition a au moins une source du registre ; la plupart en ont deux. `confidence: high` signifie que l’événement est attesté, pas que son interprétation est consensuelle.
+Les 18 propositions sont détaillées dans `proposals.yaml`. Chaque proposition a au moins une source du registre ; neuf en ont deux. `confidence: high` signifie que l’événement est attesté, pas que son interprétation est consensuelle.
 
 | ID | Date | Titre | Domaine / échelle | Sources | Pourquoi |
 | --- | --- | --- | --- | --- | --- |

@@ -8,9 +8,9 @@
 
 ## 1. Verdict de périodisation
 
-La périodisation actuelle est **cohérente mais insuffisante**. Les six ères sont contiguës et couvrent 43–2026 sans trou, mais trois problèmes structurants apparaissent.
+La périodisation actuelle est **cohérente mais insuffisante**. Les six ères sont contiguës et couvrent 43–2026 sans trou, mais quatre problèmes structurants apparaissent.
 
-**1.1. « Empire & industrie » (1688–1914) est une ère-dépotoir.** 226 ans en une seule case confondent l’union de 1707, la traite atlantique, la perte des Treize Colonies, les guerres napoléoniennes, l’industrialisation, la famine irlandaise, l’empire victorien et la naissance du suffrage. Le récit qui en sort est Londres-centré et téléologique : il fait de l’industrialisation le centre du monde britannique, alors que l’Écosse, le pays de Galles, l’Irlande et les colonies ont des chronologies propres [SRC-002, SRC-009]. La césure de **1815** (fin des guerres napoléoniennes) ou de **1832** (Reform Act) est plus opérante que 1688–1914. Le dossier propose de scinder en « Grande-Bretagne et premier empire (1688–1815) » et « Industrialisation et empire victorien (1815–1914) ».
+**1.1. « Empire & industrie » (1688–1914) est une ère fourre-tout.** 226 ans en une seule case confondent l’union de 1707, la traite atlantique, la perte des Treize Colonies, les guerres napoléoniennes, l’industrialisation, la famine irlandaise, l’empire victorien et la naissance du suffrage. Le récit qui en sort est Londres-centré et téléologique : il fait de l’industrialisation le centre du monde britannique, alors que l’Écosse, le pays de Galles, l’Irlande et les colonies ont des chronologies propres [SRC-002, SRC-009]. La césure de **1815** (fin des guerres napoléoniennes) ou de **1832** (Reform Act) est plus opérante que 1688–1914. Le dossier propose de scinder en « Grande-Bretagne et premier empire (1688–1815) » et « Industrialisation et empire victorien (1815–1914) ».
 
 **1.2. « Royaume-Uni contemporain » (1945–2026) est trop large.** 81 ans confondent l’État-providence, la décolonisation, la guerre froide, le tournant thatchérien, la dévolution, les sociétés multiculturelles et le Brexit. La césure de **1979** (élection de Margaret Thatcher) est la plus utilisée, mais **1973** (choc pétrolier, entrée dans la CEE) et **2008** (crise financière) sont des alternatives défendables [SRC-012]. Le dossier propose de scinder en « État-providence, décolonisation et guerre froide (1945–1979) » et « Néolibéralisme, nations et Brexit (1979–2026) ».
 
@@ -82,7 +82,7 @@ Les 15 corrections sont dans `proposals.yaml`. Les plus urgentes :
 7. **`uk-industrie` — le récit technologique anglais est trop étroit.** La période 1760–1840 sous-estime les continuités, le charbon, le travail des femmes et des enfants, l’esclavage et les marchés impériaux ; la géographie est régionale (Lancashire, West Riding, Clyde, Midlands) [SRC-007, SRC-009].
 8. **`uk-esclavage` — « Abolition » est trop large.** L’acte de 1833 reçoit l’assentiment royal le 28 août 1833, entre en vigueur le 1er août 1834, vise les colonies britanniques avec des exceptions et impose un apprentissage jusqu’en 1838. Les propriétaires reçoivent £20 millions ; les personnes asservies ne reçoivent rien [SRC-020, SRC-008].
 9. **`uk-vote` — 1918 n’est pas l’égalité.** Le vote est accordé aux femmes de plus de 30 ans remplissant une condition de propriété, et aux hommes de plus de 21 ans ; l’égalité est atteinte en 1928. Les suffragistes radicales du Lancashire et la National Union of Women's Suffrage Societies (NUWSS) sont absentes du récit [SRC-014, SRC-001].
-10. **`uk-ww2` — « résiste seul » est faux au sens strict.** Le Royaume-Uni et son empire, avec les dominions et les Alliés, résistent ; le Blitz dure de septembre 1940 à mai 1941, suivi des V1/V2 en 1944–1945. « Résistance » est inapproprié pour un pays non occupé (sauf les îles Anglo-Normandes) [SRC-012, SRC-001].
+10. **`uk-ww2` — « résiste seul » est faux au sens strict.** Le Royaume-Uni et son empire, avec les dominions et les Alliés, résistent ; le Blitz dure de septembre 1940 à mai 1941, suivi des V1/V2 en 1944–1945. Le terme « résistance » est inapproprié pour un pays non occupé (sauf les îles Anglo-Normandes) [SRC-012, SRC-001].
 11. **`uk-nhs` — « accessible à tous » simplifie.** Le NHS est gratuit au point d’usage et financé principalement par l’impôt, mais des charges sont introduites dès 1951 ; le personnel vient aussi du Commonwealth [SRC-012, SRC-001].
 12. **`uk-thatcher` — « tournant néolibéral » est une étiquette.** Elle est utile, mais il faut préciser le 4 mai 1979, les privatisations des années 1980, le monétarisme, la grève des mineurs, la poll tax, la Section 28 et la démission de novembre 1990 [SRC-012, SRC-001].
 13. **`uk-good-friday` — « met fin » est téléologique.** L’accord du 10 avril 1998 ouvre un processus ; il est approuvé par référendums le 22 mai 1998, mais l’attentat d’Omagh (15 août 1998) et les suspensions de l’Assemblée (2002–2007) montrent que la paix n’est pas linéaire [SRC-001].
@@ -108,7 +108,7 @@ Les 15 corrections sont dans `proposals.yaml`. Les plus urgentes :
 - **Génération Windrush** : migration caribéenne, travail, citoyenneté contestée [SRC-012].
 - **William Beveridge** : cadre intellectuel de l’État-providence [SRC-012].
 
-**Lieux (12).** Onze hors de Londres : Manchester, Liverpool, Glasgow, Belfast, Cardiff, Bristol, Édimbourg, Dublin, Kolkata, Amritsar, Capel Celyn/Tryweryn ; Londres reste présent comme capitale impériale. Les lieux sont datés : Manchester industrialo-portuaire du XIXe siècle, Liverpool port atlantique des XVIIIe–XIXe siècles, Glasgow des chantiers navals, Belfast du lin et de la partition, Cardiff du charbon, Bristol du commerce colonial, Édimbourg de l’union et des Lumières, Dublin de 1801 et 1916, Kolkata de la famine de 1943, Amritsar de 1919, Capel Celyn avant 1965.
+**Lieux (12).** Onze hors de Londres : Manchester, Liverpool, Glasgow, Belfast, Cardiff, Bristol, Édimbourg, Dublin, Kolkata, Amritsar, Capel Celyn/Tryweryn ; Londres reste présent comme capitale impériale. Les lieux sont datés : Manchester industrielle du XIXe siècle, Liverpool port atlantique des XVIIIe–XIXe siècles, Glasgow des chantiers navals, Belfast du lin et de la partition, Cardiff du charbon, Bristol du commerce colonial, Édimbourg de l’union et des Lumières, Dublin de 1801 et 1916, Kolkata de la famine de 1943, Amritsar de 1919, Capel Celyn avant 1965.
 
 **Pourquoi ces lieux.** Ils corrigent le biais de capitale et permettent de traiter des histoires régionales sans les réduire à des « provinces ». Ils sont aussi des lieux de mémoire : Peterloo à Manchester, Colston à Bristol, Tryweryn au pays de Galles, Jallianwala Bagh à Amritsar.
 
@@ -124,9 +124,9 @@ Les 15 corrections sont dans `proposals.yaml`. Les plus urgentes :
 
 **6.4. L’Irlande du Nord est un sujet sensible.** « Met fin au conflit » est téléologique ; l’accord de 1998 n’a pas supprimé toute violence (Omagh), et les institutions ont été suspendues. La partition de 1922, les discriminations, les grèves de la faim et les commémorations doivent être traités avec précision [SRC-005, SRC-001].
 
-**6.5. L’Écosse et le pays de Galles ne sont pas des variantes de l’Angleterre.** La dévolution n’est pas l’indépendance ; le référendum de 2014 et le Brexit ont recomposé les clivages. Le pays de Galles n’est pas réductible au Labour ou au nationalisme ; la langue, les valleys et les migrations ont leurs histoires [SRC-004, SRC-006].
+**6.5. L’Écosse et le pays de Galles ne sont pas des variantes de l’Angleterre.** La dévolution n’est pas l’indépendance ; le référendum de 2014 et le Brexit ont recomposé les clivages. Le pays de Galles n’est pas réductible au Labour ou au nationalisme ; la langue, les vallées industrielles et les migrations ont leurs histoires [SRC-004, SRC-006].
 
-**6.6. Thatcher est un objet polarisé.** « Néolibéralisme » est une étiquette utile mais réductrice ; il faut distinguer le programme, les résultats, les résistances et les effets régionaux. La grève des mineurs, la poll tax et la Section 28 sont des points de conflictualité, pas des illustrations [SRC-012].
+**6.6. Thatcher est un objet polarisé.** « Néolibéralisme » est une étiquette utile mais réductrice ; il faut distinguer le programme, les résultats, les résistances et les effets régionaux. La grève des mineurs, la poll tax (capitation) et la Section 28 sont des points de conflictualité, pas des illustrations [SRC-012].
 
 **6.7. Le Brexit n’est pas un événement unique.** Le référendum de 2016 est un moment d’un processus plus long : euroscepticisme, crise de 2008, austérité, campagne, article 50, négociations, accord de commerce, protocole nord-irlandais. Le résultat est étroit (51,9 %) et divise l’Écosse et l’Irlande du Nord [SRC-013].
 
@@ -163,7 +163,7 @@ Les 15 corrections sont dans `proposals.yaml`. Les plus urgentes :
 9. **Sources locales** : Manchester, Liverpool, Glasgow, Belfast, Cardiff, Bristol, Édimbourg et Dublin manquent de monographies locales dans le registre.
 10. **Sources spécialisées manquantes** : Webster pour le NHS, Brown pour la sécularisation, ONS pour les statistiques ethniques, National Library of Wales pour Tryweryn, archives WAPC pour les mineurs.
 11. **Label « Renaissance » et borne 1485** : à discuter avec les historiens des quatre nations ; 1485 est une borne anglaise.
-12. **Split de « Empire & industrie »** : 1815 ou 1832 ; les deux sont documentés, mais le choix doit être explicité.
+12. **Scission de « Empire & industrie »** : 1815 ou 1832 ; les deux sont documentés, mais le choix doit être explicité.
 13. **Place de l’Irlande du Nord dans la période 1914–1945** : la partition de 1922 est présente dans les propositions, mais pas encore dans la matrice actuelle.
 14. **Mémoire impériale** : statues, musées, restitutions et commémorations ne sont pas encore des fiches ; l’audit les signale sans les traiter.
 15. **Signature et double lecture** : aucune. Le dossier reste `pending`.
