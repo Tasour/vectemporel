@@ -7,6 +7,21 @@ const readJson = (file) => JSON.parse(fs.readFileSync(path.join(root, file), 'ut
 
 const world = readJson('node_modules/world-countries/countries.json');
 
+function githubSlug(text) {
+  return text
+    .toLowerCase()
+    .trim()
+    .replace(/<[^>]*>/g, '')
+    .replace(/[^\p{L}\p{M}\p{N}\p{Pc} _-]/gu, '')
+    .replace(/ /g, '-');
+}
+
+const auditSlugByName = new Map();
+for (const line of fs.readFileSync(path.join(root, 'COUNTRY_AUDITS.md'), 'utf8').split('\n')) {
+  const match = line.match(/^##\s+(.+?)\s+—\s+audit\s*$/);
+  if (match) auditSlugByName.set(match[1].trim(), githubSlug(line.replace(/^##\s+/, '')));
+}
+
 const appContext = { window: {} };
 vm.createContext(appContext);
 vm.runInContext(fs.readFileSync(path.join(root, 'data.js'), 'utf8'), appContext);
@@ -152,7 +167,7 @@ const countries = world
             status: 'published',
             summary: active.audit,
             focus: active.focus,
-            href: `COUNTRY_AUDITS.md#${active.appId}`,
+            href: `COUNTRY_AUDITS.md#${auditSlugByName.get(name) || active.appId}`,
           }
         : {
             status: 'queued',

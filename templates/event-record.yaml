@@ -1,0 +1,112 @@
+# Vectemporel — fiche-événement (méthode v1.0)
+# Une fiche = un fait, un processus ou une commémoration, jamais un mélange.
+# Copier dans audits/<country-id>/events/<event-id>.yaml.
+# Toute date doit avoir un rôle et une source. Aucune date nue.
+
+schema_version: "1.0"
+id: ""                       # identifiant stable, ex. fr-revolution
+country_id: ""               # ex. france
+title: ""
+subtitle: ""
+record_type: "event"         # event | process | institution | commemoration | place_event
+
+time:
+  # EDTF : 1789, 1789-07, 1789-07-14, 1789/1799, 1789~, 1789?, -0052
+  edtf: ""
+  start: ""                  # ISO 8601 ou EDTF
+  end: ""
+  precision: "unknown"       # day | month | year | decade | century | unknown
+  certainty: "unknown"       # certain | probable | possible | uncertain | disputed
+  calendar: "gregorian"      # gregorian | julian | other
+  calendar_original: ""
+  date_role: "event"         # event | source_creation | publication | facsimile | commemoration | claim_validity | place_attestation | geometry_validity
+  inner_start: ""
+  inner_end: ""
+  outer_start: ""
+  outer_end: ""
+  sources: []                # identifiants du registre de sources
+
+actors:
+  # Individus, collectifs, institutions. Inclure les acteurs sans pouvoir et les absents.
+  - actor_id: ""
+    role: ""                 # initiateur | opposant | témoin | victime | institution | bénéficiaire
+    sources: []
+  # - actor_id: ""
+  #   role: ""
+  #   sources: []
+
+places:
+  # Lieu attesté à la date de l'événement, pas la géographie moderne.
+  - place_id: ""
+    role: ""                 # lieu principal | périphérie | frontière | diaspora | lieu de mémoire
+    geometry_period: ""
+    sources: []
+  # - place_id: ""
+  #   role: ""
+  #   geometry_period: ""
+  #   sources: []
+
+classification:
+  tags: []                   # tags de l'application, ex. [politique, societe]
+  method_domains: []         # domaines de la matrice v1.0
+  scales: []                 # local | regional | national | imperial | transnational
+  importance: 1              # 1 | 2 | 3
+  selection_criteria:
+    impact: 0                # 0–4
+    reach: 0
+    duration: 0
+    rupture: 0
+    resonance: 0
+    explanatory_value: 0
+    rationale: ""
+
+summary: ""                  # 2–3 phrases, faits et contexte, pas de jugement anachronique
+
+claims:
+  # Une claim est une affirmation sourcée, révisable. Deux claims contradictoires coexistent.
+  - id: "CLAIM-1"
+    text: ""
+    subject: ""
+    predicate: ""
+    object: ""
+    confidence: "unknown"    # certain | probable | possible | uncertain | disputed
+    sources: []
+    revisions: []
+  # - id: "CLAIM-2"
+  #   ...
+
+sources:
+  # Deux sources indépendantes minimum, ou exception documentée.
+  - source_id: ""
+    supports: []             # claims ou parties de la fiche soutenues
+    pages: ""
+    independence: ""         # independent | same_institution | primary
+    notes: ""
+  # - source_id: ""
+  #   supports: []
+  #   pages: ""
+  #   independence: ""
+  #   notes: ""
+
+relations:
+  causes: []                 # documentées, jamais déduites automatiquement
+  consequences: []
+  part_of: []                # processus ou période
+  parallels: []              # même période, autre pays ou domaine
+  commemorates: []           # lien vers l'événement commémoré
+  contested_by: []           # claims ou récits concurrents
+  related: []                # liens éditoriaux de la frise
+
+memory:
+  commemorations: []         # dates, monuments, musées, lois mémorielles
+  controversies: []
+  public_uses: []
+
+editorial:
+  status: "draft"            # draft | review | published | disputed
+  author: ""
+  reviewers: []
+  created: ""
+  updated: ""
+  version: "0.1.0"
+  change_log: []

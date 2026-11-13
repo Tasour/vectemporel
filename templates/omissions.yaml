@@ -1,0 +1,39 @@
+# Vectemporel — registre des omissions (méthode v1.0)
+# Copier dans audits/<country-id>/omissions.yaml.
+# Une omission est une décision documentée, pas un oubli silencieux.
+# Aucune justification ne doit inventer une source : si la source manque, l'écrire.
+
+schema_version: "1.0"
+country_id: ""
+reviewed_at: ""
+reviewer: ""
+
+# Périodes et domaines examinés avant de conclure à une omission.
+reviewed_scope:
+  period_ids: []
+  domains: []
+  scales: []
+
+omissions:
+  - id: "OM-001"
+    period_id: ""
+    domain: ""               # domaine de la matrice v1.0
+    scale: ""                # local | regional | national | imperial | transnational
+    what_is_missing: ""      # formulation factuelle, sans jugement
+    reason: "unknown"        # source_absent | not_applicable | out_of_scope | access_restricted | not_yet_researched | disputed
+    justification: ""        # pourquoi l'absence est acceptable, ou pourquoi elle reste une dette
+    evidence_checked: []     # sources consultées, même si elles n'ont rien donné
+    status: "documented"     # documented | to_fill | accepted
+    reviewer: ""
+    review_date: ""
+  # - id: "OM-002"
+  #   period_id: ""
+  #   domain: ""
+  #   scale: ""
+  #   what_is_missing: ""
+  #   reason: "unknown"
+  #   justification: ""
+  #   evidence_checked: []
+  #   status: "documented"
+  #   reviewer: ""
+  #   review_date: ""

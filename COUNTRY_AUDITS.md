@@ -4,10 +4,14 @@
 > **Portée.** Les 10 pays ci-dessous sont audités et disponibles dans l’application. Les 186 autres pays sont listés dans [COUNTRIES.md](COUNTRIES.md) avec le statut « à auditer ».
 >
 > **Honnêteté éditoriale.** Ces audits sont des travaux de conception éditoriale, pas des validations académiques signées. Une version publique devra les faire relire par des historiens spécialistes de chaque aire.
+>
+> **Méthode complète.** Le pipeline en 11 étapes (0 à 10), les portes qualité, la matrice de couverture et le protocole de double lecture sont dans **[TIMELINE_METHOD.md](TIMELINE_METHOD.md)**. Les gabarits opérationnels sont dans **[templates/](templates/)**. L’audit structurel généré est dans **[TIMELINE_AUDIT.md](TIMELINE_AUDIT.md)**.
 
 ---
 
-## Méthode d’audit
+## Méthode d’audit (niveau POC)
+
+Cette grille est l’audit **éditorial prose** utilisé pour les 10 frises du POC. Elle ne remplace pas la méthode v1.0 : elle ne documente ni les acteurs, ni les lieux datés, ni les sources indépendantes, ni les `TimeSpan`.
 
 Pour chaque pays, la grille comporte :
 
@@ -28,6 +32,32 @@ Pour chaque pays, la grille comporte :
 - Signaler les dates approximatives, les débats historiographiques et les sources contestées.
 - Éviter une lecture téléologique (« tout menait à l’État-nation »).
 - Pour les pays non démocratiques ou à forte censure, croiser les sources officielles avec des sources indépendantes.
+
+### Passage à la méthode v1.0
+
+L’audit structurel `npm run audit:timeline` mesure deux choses distinctes :
+
+| Indicateur | Dernier résultat | Lecture |
+| --- | ---: | --- |
+| Intégrité POC | **120/120 contrôles** | Ères contiguës, repères dans leur domaine, identifiants, tags, liens et ancres valides. |
+| Complétude cible v1.0 | **6/100** | Le schéma de preuve est presque entièrement absent : acteurs, lieux, sources indépendantes, claims, `TimeSpan`, omissions. |
+| Couverture tags × ères | **39 %** | 173 cellules sur 448 ont au moins un repère ; aucune cellule vide n’est encore justifiée. |
+| Équilibre politique/guerre | **10/10 pays > 50 %** | La sélection sur-représente les événements politiques et militaires. |
+
+**Ce que cela signifie.** Les frises sont cohérentes pour une démonstration, pas auditables au niveau académique. La priorité n’est pas d’ajouter des pays, mais de remplir les gabarits pour les 10 pays existants :
+
+1. `audits/<pays>/country-audit.yaml` — périmètre, historiographie, périodisations, audit.
+2. `audits/<pays>/coverage-matrix.csv` — 14 domaines × périodes, avec justification des vides.
+3. `audits/<pays>/omissions.yaml` — omissions explicites, jamais silencieuses.
+4. `audits/<pays>/source-register.csv` — deux sources indépendantes par fiche.
+
+Commandes :
+
+```bash
+npm run audit:timeline          # régénère TIMELINE_AUDIT.md
+npm run audit:timeline:strict   # échoue si la cible v1.0 est < 80/100
+npm run verify                  # vérifie la disponibilité des pages Grokipedia
+```
 
 ---
 

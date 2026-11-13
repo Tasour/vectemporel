@@ -294,6 +294,8 @@ Un événement n’est pas une date. C’est un **repère** avec :
 
 ### 7.2 Modèle TypeScript cible
 
+> Ce modèle est celui du **POC**. Le modèle de preuve complet — acteurs, lieux datés, sources indépendantes, claims, `TimeSpan`, omissions — est décrit au **7.6** et dans **[TIMELINE_METHOD.md](TIMELINE_METHOD.md)**.
+
 ```ts
 type Year = number; // négatif = av. J.-C. ; 0 = convention interne
 
@@ -375,6 +377,40 @@ La taxonomie doit rester **petite et stable**. Huit tags suffisent pour le POC. 
 - les zones grises (dates approximatives, bilans contestés) sont explicites.
 
 **Validation.** Pour le POC, les données ont été écrites à la main. En production : double lecture (historien + éditeur), versionnage, journal des modifications, sources affichées.
+
+### 7.6 Méthode de production et audit
+
+La méthode complète est dans **[TIMELINE_METHOD.md](TIMELINE_METHOD.md)**. Elle part d’un constat : une frise nationale ne peut pas être exhaustive. Elle peut en revanche être **systématique** et rendre chaque omission visible.
+
+Le pipeline comporte 11 étapes (0 à 10) :
+
+| Étape | Question | Livrable |
+| --- | --- | --- |
+| 0. Cadrage | Quel pays, quel territoire, quelles populations, quelles bornes ? | Charte de périmètre |
+| 1. Historiographie | Quels récits, quelles écoles, quelles controverses ? | Carte des récits |
+| 2. Corpus | Quelles sources, avec quelle indépendance ? | Registre de sources |
+| 3. Inventaire | Quels événements, processus, acteurs, lieux, institutions ? | Base multi-échelles |
+| 4. Périodisation | Quelles ruptures, et quelles alternatives ? | 3 périodisations candidates |
+| 5. Couverture | Quels domaines et quelles échelles restent vides ? | Matrice 14 domaines + omissions |
+| 6. Sélection | Quels repères centraux, avec quels critères ? | 10–20 centraux, 20–40 étendus |
+| 7. Qualification | Quelles dates, incertitudes, claims, provenances ? | Fiches `TimeSpan` / claims |
+| 8. Audit | Quels désaccords, quels scores, quel sign-off ? | Double lecture + rapport |
+| 9. Mise en scène | Quels niveaux de lecture, quels labels, quelle accessibilité ? | Frise sémantique testée |
+| 10. Publication | Quelle version, quelle maintenance ? | Release, changelog, note publique |
+
+**Modèle de preuve.** Le POC stocke une année, un titre, des tags et un lien Grokipedia. La cible distingue :
+
+- `TimeSpan` : bornes, calendrier, précision, certitude, rôle de la date ;
+- `Actor` : individus, collectifs, institutions, avec ressources, contraintes et réseaux ;
+- `Place` : noms et géométries datés, hiérarchie, fonctions ;
+- `Source` : type, indépendance, fiabilité, DOI/URL, usage ;
+- `Claim` : affirmation sourcée, révisable, avec statut `disputed` conservé ;
+- `PeriodDefinition` : périodisation comme assertion savante, pas comme conteneur naturel ;
+- `TimelineView` : vue générée, pas stockée comme vérité.
+
+**Audit structurel.** `npm run audit:timeline` produit **[TIMELINE_AUDIT.md](TIMELINE_AUDIT.md)**. Dernier état : **120/120 contrôles d’intégrité POC**, **6/100 de complétude cible**, **39 % de couverture tags × ères**, **10/10 pays au-dessus du seuil politique/guerre**. Les gabarits sont dans **[templates/](templates/)**.
+
+**Garde-fous.** Pas de récit téléologique, pas de frontières modernes rétroprojetées, pas de « grands hommes » sans contraintes ni contre-pouvoirs, pas de Grokipedia utilisé comme autorité, pas de date sans rôle ni source, pas d’omission silencieuse.
 
 ---
 

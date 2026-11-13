@@ -1,6 +1,6 @@
 /* Généré par scripts/build-atlas.mjs — ne pas éditer à la main. */
 window.VECTEMPOREL_ATLAS = {
-  "generatedAt": "2026-11-13T11:05:45.189Z",
+  "generatedAt": "2026-11-13T11:56:44.652Z",
   "counts": {
     "total": 196,
     "available": 10,
@@ -329,7 +329,7 @@ window.VECTEMPOREL_ATLAS = {
         "status": "published",
         "summary": "5 périodes, 15 repères. Égypte pharaonique, mondes grec et romain, islam, modernité, révolution de 2011.",
         "focus": "Continuité du Nil, carrefour méditerranéen, panarabisme, transition politique.",
-        "href": "COUNTRY_AUDITS.md#egypt"
+        "href": "COUNTRY_AUDITS.md#égypte--audit"
       }
     },
     {
@@ -1459,7 +1459,7 @@ window.VECTEMPOREL_ATLAS = {
         "status": "published",
         "summary": "6 périodes, 18 repères. Colonisation, indépendance, guerre civile, droits civiques, puissance mondiale.",
         "focus": "Fédéralisme, esclavage et ségrégation, frontières, interventionnisme.",
-        "href": "COUNTRY_AUDITS.md#usa"
+        "href": "COUNTRY_AUDITS.md#états-unis--audit"
       }
     },
     {
@@ -2014,7 +2014,7 @@ window.VECTEMPOREL_ATLAS = {
         "status": "published",
         "summary": "5 périodes, 13 repères. Dynasties, empire, humiliations coloniales, révolution communiste, réforme économique.",
         "focus": "Continuité impériale, inventions, relations avec le monde, périodes maoïste et post-maoïste.",
-        "href": "COUNTRY_AUDITS.md#china"
+        "href": "COUNTRY_AUDITS.md#chine--audit"
       }
     },
     {
@@ -2132,7 +2132,7 @@ window.VECTEMPOREL_ATLAS = {
         "status": "published",
         "summary": "4 périodes, 12 repères. Civilisation de l’Indus, empires, domination britannique, indépendance et libéralisation.",
         "focus": "Diversité religieuse, partition, non-violence, démocratie et développement.",
-        "href": "COUNTRY_AUDITS.md#india"
+        "href": "COUNTRY_AUDITS.md#inde--audit"
       }
     },
     {
@@ -2250,7 +2250,7 @@ window.VECTEMPOREL_ATLAS = {
         "status": "published",
         "summary": "5 périodes, 13 repères. Shoguns, fermeture d’Edo, restauration Meiji, guerre, miracle économique.",
         "focus": "Absorption des influences extérieures, militarisme, mémoire de 1945, Fukushima.",
-        "href": "COUNTRY_AUDITS.md#japan"
+        "href": "COUNTRY_AUDITS.md#japon--audit"
       }
     },
     {
@@ -3219,7 +3219,7 @@ window.VECTEMPOREL_ATLAS = {
         "status": "published",
         "summary": "6 périodes, 17 repères. Saint-Empire, Réforme, unification, nazisme, division et réunification.",
         "focus": "Fragmentation politique, mémoire de la Shoah, Guerre froide.",
-        "href": "COUNTRY_AUDITS.md#germany"
+        "href": "COUNTRY_AUDITS.md#allemagne--audit"
       }
     },
     {
@@ -3475,7 +3475,7 @@ window.VECTEMPOREL_ATLAS = {
         "status": "published",
         "summary": "5 périodes, 13 repères. Al-Andalus, empire, guerre civile, franquisme, transition démocratique.",
         "focus": "Coexistence religieuse, colonialisme, mémoire de la guerre civile.",
-        "href": "COUNTRY_AUDITS.md#spain"
+        "href": "COUNTRY_AUDITS.md#espagne--audit"
       }
     },
     {
@@ -3547,7 +3547,7 @@ window.VECTEMPOREL_ATLAS = {
         "status": "published",
         "summary": "9 périodes, 53 repères. De la Gaule à la Ve République, avec les grandes césures politiques, sociales et culturelles.",
         "focus": "État, religion, révolutions, construction européenne.",
-        "href": "COUNTRY_AUDITS.md#france"
+        "href": "COUNTRY_AUDITS.md#france--audit"
       }
     },
     {
@@ -3665,7 +3665,7 @@ window.VECTEMPOREL_ATLAS = {
         "status": "published",
         "summary": "5 périodes, 15 repères. Rome, Renaissance, Risorgimento, fascisme, République européenne.",
         "focus": "Ville et nation, papauté, régionalismes, mémoire du fascisme.",
-        "href": "COUNTRY_AUDITS.md#italy"
+        "href": "COUNTRY_AUDITS.md#italie--audit"
       }
     },
     {
@@ -4013,7 +4013,7 @@ window.VECTEMPOREL_ATLAS = {
         "status": "published",
         "summary": "6 périodes, 20 repères. Institutions parlementaires, empire, industrialisation, Brexit.",
         "focus": "Constitution, empire, classes sociales, relation à l’Europe.",
-        "href": "COUNTRY_AUDITS.md#uk"
+        "href": "COUNTRY_AUDITS.md#royaume-uni--audit"
       }
     },
     {

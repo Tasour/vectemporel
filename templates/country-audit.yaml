@@ -1,0 +1,183 @@
+# Vectemporel — dossier pays (méthode v1.0)
+# Copier ce fichier dans audits/<country-id>/country-audit.yaml, puis remplir.
+# Les valeurs entre guillemets sont des espaces à renseigner, pas des données.
+# Ne jamais inventer une date, un acteur, un lieu ou une source.
+
+schema_version: "1.0"
+country:
+  id: ""                     # identifiant stable, ex. france
+  iso2: ""                   # ex. FR
+  iso3: ""                   # ex. FRA
+  name_current: ""
+  names_historical: []       # endonymes, exonymes, noms d'époque
+  flag: ""
+
+scope:
+  # La nation est une hypothèse de travail, pas une évidence.
+  territory_current: ""
+  territories_historical: [] # colonies, protectorats, États prédécesseurs, territoires contestés
+  regions_autonomous: []
+  populations_included: []
+  populations_excluded: []
+  diasporas: []
+  temporal:
+    start_edtf: ""           # ex. -600, 0043, 1607
+    end_edtf: ""             # ex. 2026
+    start_rationale: ""
+    end_rationale: ""
+  unit_of_analysis: "fiche-événement"  # événement, processus, institution, lieu
+  inclusion_criteria: []
+  exclusion_criteria: []
+  audience: []               # grand public, scolaire, diasporas, recherche
+  evidence_threshold: "deux sources indépendantes par fiche, ou exception documentée"
+
+governance:
+  editor: ""
+  country_reader: ""         # expertise historiographique et factualité
+  method_reader: ""          # chronologie, sources, incertitude
+  arbiter: ""                # tranche les désaccords, ne rédige pas
+  data_steward: ""
+  sensitivity_expert: ""     # colonisation, génocides, frontières, minorités
+  responsible_editor: ""     # décision de publication
+  conflicts_of_interest: []
+
+historiography:
+  schools: []                # Annales, histoire sociale, genre, globale, environnementale, subaltern studies…
+  national_narratives: []    # fondation, âge d'or, décadence, renaissance, unification, indépendance
+  counter_narratives: []     # régionalismes, minorités, diasporas, mémoires contestées
+  structuring_debates: []
+  blind_spots: []            # classes populaires, femmes, autochtones, handicap, migrations…
+  key_syntheses: []          # identifiants du registre de sources
+
+periodizations:
+  # Au moins trois périodisations candidates : politique, sociale/économique, culturelle/religieuse/environnementale.
+  # Une seule est choisie pour le récit principal ; les autres restent dans le dossier.
+  - id: "POL-1"
+    label: ""
+    type: "political"        # political | social_economic | cultural_religious_environmental
+    start_edtf: ""
+    end_edtf: ""
+    rationale: ""
+    sources: []              # ex. [SRC-001, SRC-014]
+    selected: true
+  - id: "SOC-1"
+    label: ""
+    type: "social_economic"
+    start_edtf: ""
+    end_edtf: ""
+    rationale: ""
+    sources: []
+    selected: false
+  - id: "CULT-1"
+    label: ""
+    type: "cultural_religious_environmental"
+    start_edtf: ""
+    end_edtf: ""
+    rationale: ""
+    sources: []
+    selected: false
+
+periods:
+  # Périodisation éditoriale retenue. Chaque borne doit être sourcée et discutable.
+  - id: "PERIOD-1"
+    label: ""
+    start_edtf: ""
+    end_edtf: ""
+    boundary_type: ""        # political | economic | cultural | religious | environmental | military
+    boundary_rationale: ""
+    alternatives_considered: []
+    sources: []
+  # - id: "PERIOD-2"
+  #   ...
+
+coverage:
+  matrix_file: "coverage-matrix.csv"
+  omissions_file: "omissions.yaml"
+  target_threshold: "90 % des cellules couvertes ou justifiées"
+  status_summary:
+    covered: 0
+    partial: 0
+    justified_empty: 0
+    untreated_empty: 0
+  known_omissions: []        # renvoi vers omissions.yaml, pas de justification inline
+
+actors:
+  # Dirigeants, institutions, collectifs, femmes, minorités, acteurs étrangers.
+  # Un dirigeant se documente par ses ressources, contraintes, réseaux, contre-pouvoirs et postérité.
+  - id: "ACTOR-1"
+    label: ""
+    type: "individual"       # individual | collective | institution
+    roles: []
+    period_ids: []
+    places: []
+    resources: []
+    constraints: []
+    networks: []
+    counterpowers: []
+    assessment: ""
+    memory: ""
+    sources: []
+
+places:
+  # Un lieu n'est pas un point moderne : noms et géométries sont datés.
+  - id: "PLACE-1"
+    label_current: ""
+    names_historical: []
+    geometry_period: ""
+    hierarchy: ""            # local | regional | national | imperial | transnational
+    functions: []            # capitale, port, frontière, site industriel, culte, mémoire
+    events: []
+    contestations: []
+    sources: []
+
+claims:
+  # Les désaccords ne se gomment pas : ils se publient comme disputed.
+  - id: "CLAIM-1"
+    subject: ""
+    predicate: ""
+    object: ""
+    text: ""
+    confidence: "unknown"    # certain | probable | possible | uncertain | disputed
+    sources: []
+    revisions: []
+
+source_policy:
+  min_independent_sources: 2
+  grokipedia_role: "point d'entrée de lecture, jamais autorité de validation"
+  generative_ai_role: "aide à la recherche uniquement, vérifiée et signalée"
+  date_roles_required: true  # événement, source, publication, fac-similé, commémoration, validité
+  license: ""
+
+audit:
+  protocol_version: "1.0"
+  double_read:
+    sensitive_share: 1.0
+    other_share: 0.25
+    kappa_target: 0.70
+    kappa_sensitive_target: 0.80
+  delphi:
+    used: false
+    experts: 0
+    rounds: 0
+    consensus_threshold: "75 % de notes 4–5/5 et IQR ≤ 1"
+  scores:
+    coverage: null           # /100
+    accuracy: null           # /100
+    balance: null            # /100
+    provenance: null         # /100
+    readability: null        # /100
+    weighted_total: null     # 0,20 C + 0,30 E + 0,15 B + 0,20 P + 0,15 L
+  blocking_errors: []        # S1 : fait inventé, date fausse, citation non soutenante, plagiat…
+  disagreements: []          # F1 factuel | F2 sources divergentes | F3 interprétatif | F4 normatif | F5 éditorial
+  verdict: "pending"         # pending | conditional | passed | failed
+  signoff:
+    date: ""
+    signed_by: []
+
+publication:
+  release: ""                # ex. 2026.11.0
+  date: ""
+  changelog: ""
+  public_quality_note: ""    # « auditée selon le protocole v1.0 le… ; X fiches relues ; points disputés signalés »
+  correction_contact: ""
+  archive_url: ""

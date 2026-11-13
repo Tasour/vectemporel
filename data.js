@@ -569,6 +569,12 @@
         related: ['us-louisiane', 'us-industry'],
       },
       {
+        id: 'us-industry', year: 1900, title: 'Puissance industrielle', subtitle: 'L’Amérique entre dans le XXe siècle',
+        tags: ['economie', 'sciences'], importance: 1, grok: 'Industrial_Revolution',
+        summary: 'Au tournant du siècle, les États-Unis deviennent la première puissance industrielle mondiale. Acier, pétrole et électricité nourrissent une croissance rapide.',
+        related: ['us-railroad', 'us-crash'],
+      },
+      {
         id: 'us-ww1', year: 1917, title: 'Entrée en guerre', subtitle: 'Les États-Unis basculent le conflit',
         tags: ['guerre'], importance: 2, grok: 'American_entry_into_World_War_I',
         summary: 'Après des attaques de sous-marins allemands, les États-Unis rejoignent les Alliés. Leur puissance industrielle et humaine pèse sur l’issue de la guerre.',
@@ -593,6 +599,12 @@
         related: ['us-pearl', 'us-cold-war'],
       },
       {
+        id: 'us-cold-war', year: 1947, endYear: 1991, title: 'Guerre froide', subtitle: 'L’Amérique face à l’URSS',
+        tags: ['politique', 'guerre'], importance: 3, grok: 'Cold_War',
+        summary: 'États-Unis et Union soviétique se disputent le monde sans conflit direct. La course aux armements et la rivalité idéologique structurent quatre décennies.',
+        related: ['us-apollo', 'us-hiroshima'],
+      },
+      {
         id: 'us-civil-rights', year: 1964, title: 'Civil Rights Act', subtitle: 'Fin de la ségrégation légale',
         tags: ['societe', 'politique'], importance: 3, grok: 'Civil_Rights_Act_of_1964',
         summary: 'La loi interdit la discrimination fondée sur la race, la couleur, la religion, le sexe ou l’origine. Elle couronne des années de mobilisation du mouvement des droits civiques.',
@@ -615,18 +627,6 @@
         tags: ['economie'], importance: 2, grok: '2007–2008_financial_crisis',
         summary: 'La faillite de Lehman Brothers déclenche une crise financière mondiale. Les États interviennent massivement pour sauver le système bancaire.',
         related: ['us-crash'],
-      },
-      {
-        id: 'us-cold-war', year: 1947, endYear: 1991, title: 'Guerre froide', subtitle: 'L’Amérique face à l’URSS',
-        tags: ['politique', 'guerre'], importance: 3, grok: 'Cold_War',
-        summary: 'États-Unis et Union soviétique se disputent le monde sans conflit direct. La course aux armements et la rivalité idéologique structurent quatre décennies.',
-        related: ['us-apollo', 'us-hiroshima'],
-      },
-      {
-        id: 'us-industry', year: 1900, title: 'Puissance industrielle', subtitle: 'L’Amérique entre dans le XXe siècle',
-        tags: ['economie', 'sciences'], importance: 1, grok: 'Industrial_Revolution',
-        summary: 'Au tournant du siècle, les États-Unis deviennent la première puissance industrielle mondiale. Acier, pétrole et électricité nourrissent une croissance rapide.',
-        related: ['us-railroad', 'us-crash'],
       },
     ],
   };
