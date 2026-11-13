@@ -176,7 +176,7 @@ Les propositions ne sont pas un ajout uniforme : elles se répartissent en grand
 - **Angles morts.** Ère 1912–1949 vide, femmes, minorités ethniques (Tibet, Xinjiang, Mongols, Zhuang), paysans, famine, Révolution culturelle, environnement, migrations et hukou, traités inégaux, ports ouverts.
 - **Priorités.** République de Chine et Seconde Révolution (1912), Nouvelle Culture (1915), 4 Mai (1919), fondation du PCC (1921), purge de Shanghai (1927), Mukden (1931), Longue Marche (1934), Nanjing (1937), crue du fleuve Jaune (1938), loi sur le mariage (1950), Tibet (1951), Grand Bond et famine (1958), Révolution culturelle (1966), enfant unique (1979), Tiananmen (1989), Hong Kong (1997), OMC (2001), Wuhan (2020).
 - **Corrections.** `cn-shang`, `cn-zhou`, `cn-qin`, `cn-han`, `cn-tang`, `cn-song`, `cn-yuan`, `cn-ming`, `cn-qing`, `cn-opium`, `cn-1911`, `cn-1949`, `cn-deng`.
-- **Chiffres.** 20 sources, 18 propositions, 12 acteurs, 12 lieux, 15 omissions, matrice 0/50/0/20 sur 70 cellules. **Aucune cellule strictement couverte ; 20 non traitées.**
+- **Chiffres.** 20 sources, 18 propositions, 12 acteurs, 12 lieux, 15 omissions, matrice 0/51/0/19 sur 70 cellules. **Aucune cellule strictement couverte ; 19 non traitées.**
 
 ### Inde
 
