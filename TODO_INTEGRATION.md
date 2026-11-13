@@ -40,7 +40,7 @@
 
 - [x] Mettre à jour `README.md`, `AUDIT_SYNTHESIS.md`, `COUNTRY_AUDITS.md`, `CONCEPT.md`, `TIMELINE_METHOD.md`.
 - [x] Écrire `INTEGRATION_REPORT.md` : corrections appliquées, ajouts, restes.
-- [ ] Commit et push sur `main`.
+- [x] Commit et push sur `main` : `901383c`.
 
 ## Restes assumés
 
