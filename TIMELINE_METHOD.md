@@ -409,6 +409,8 @@ Une frise n’est pas un dump de données. La méthode distingue :
 | **Vue zoom** | événements secondaires, processus, sources, incertitudes |
 | **Vue inventaire** | corpus complet, exportable, filtrable |
 
+**Mode narratif (optionnel).** Deux vues racontent la frise sans la remplacer : la spirale narrative, une étape par ère (`SPIRAL_TIMELINE.md`), et la **queue du dragon**, un canevas zoomable où le zoom est le temps et où chaque écaille est un repère illustré (`DRAGON_TIMELINE.md`). La frise linéaire reste l’outil de recherche.
+
 Règles :
 
 - labels prioritaires, pas de collision ;
@@ -499,6 +501,9 @@ Formulation recommandée : « Frise auditée selon le protocole v1.0 le [date] ;
 - `TIMELINE_AUDIT.md` — rapport généré.
 - `SOURCE_VERIFICATION.md` — vérification des 200 sources.
 - `AUDIT_SYNTHESIS.md` — synthèse comparative des 10 dossiers.
+- `SPIRAL_TIMELINE.md` — recherche sur la forme narrative.
+- `DRAGON_TIMELINE.md` — design du canevas zoomable.
+- `EVENT_IMAGES.md` — registre des images vérifiées et de leurs licences.
 - `INTEGRATION_REPORT.md` — corrections et ajouts effectivement intégrés.
 - `TODO_INTEGRATION.md` — suivi de l’intégration.
 

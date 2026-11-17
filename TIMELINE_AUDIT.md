@@ -1,6 +1,6 @@
 # Audit structurel des frises — Vectemporel
 
-> Généré par `npm run audit:timeline` le **2026-11-13**. Méthode cible : **v1.0**.
+> Généré par `npm run audit:timeline` le **2026-11-17**. Méthode cible : **v1.0**.
 >
 > **Ce que cet audit mesure.** La cohérence des ères, des repères, des tags, des liens et des audits prose, puis la **complétude du schéma cible**. Il ne mesure pas la qualité historique, la justesse des dates ni l’équilibre réel des récits : ces vérifications exigent une double lecture humaine.
 

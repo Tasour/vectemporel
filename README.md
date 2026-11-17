@@ -4,13 +4,19 @@
 
 Une frise historique zoomable, pays par pays, avec des événements tagués et un lecteur Grokipedia intégré, **traduit automatiquement en français**. Ce dépôt est un **proof of concept** : il sert à discuter du concept, pas à être déployé tel quel.
 
-> La note de concept complète est dans **[CONCEPT.md](CONCEPT.md)**. La méthode de production d’une frise est dans **[TIMELINE_METHOD.md](TIMELINE_METHOD.md)**. Les 10 dossiers pays sont dans **[audits/](audits/)** ; leur synthèse est dans **[AUDIT_SYNTHESIS.md](AUDIT_SYNTHESIS.md)** et le rapport d’intégration dans **[INTEGRATION_REPORT.md](INTEGRATION_REPORT.md)**. Les audits prose sont dans **[COUNTRY_AUDITS.md](COUNTRY_AUDITS.md)**, l’audit structurel généré dans **[TIMELINE_AUDIT.md](TIMELINE_AUDIT.md)** et la liste des 196 pays dans **[COUNTRIES.md](COUNTRIES.md)**.
+> La note de concept complète est dans **[CONCEPT.md](CONCEPT.md)**. La méthode de production d’une frise est dans **[TIMELINE_METHOD.md](TIMELINE_METHOD.md)** et la recherche sur la forme narrative dans **[SPIRAL_TIMELINE.md](SPIRAL_TIMELINE.md)** et le design du canevas zoomable dans **[DRAGON_TIMELINE.md](DRAGON_TIMELINE.md)**. Les 10 dossiers pays sont dans **[audits/](audits/)** ; leur synthèse est dans **[AUDIT_SYNTHESIS.md](AUDIT_SYNTHESIS.md)** et le rapport d’intégration dans **[INTEGRATION_REPORT.md](INTEGRATION_REPORT.md)**. Les audits prose sont dans **[COUNTRY_AUDITS.md](COUNTRY_AUDITS.md)**, l’audit structurel généré dans **[TIMELINE_AUDIT.md](TIMELINE_AUDIT.md)** et la liste des 196 pays dans **[COUNTRIES.md](COUNTRIES.md)**.
 
 ![Vectemporel — frise zoomable](screenshots/vectemporel-desktop.png)
 
 ![Vectemporel — globe 3D](screenshots/vectemporel-globe.png)
 
 ![Vectemporel — lecteur Grokipedia traduit en français](screenshots/vectemporel-reader.png)
+
+![Vectemporel — queue du dragon, canevas zoomable](screenshots/vectemporel-dragon.png)
+
+![Vectemporel — écaille illustrée par une image documentaire](screenshots/vectemporel-dragon-image.png)
+
+![Vectemporel — canevas sur mobile](screenshots/vectemporel-dragon-mobile-spiral.png)
 
 ---
 
@@ -22,6 +28,8 @@ Prérequis : **Node.js 20+** et un accès réseau à Grokipedia et au service de
 npm install
 npm run build:atlas   # régénère countries.js / COUNTRIES.md
 npm run build:globe   # régénère les textures du globe 3D
+npm run build:spiral-meta  # régénère les acteurs/lieux par ère
+npm run build:event-images # régénère les images documentaires vérifiées
 npm run audit:timeline  # régénère TIMELINE_AUDIT.md
 npm start
 ```
@@ -34,11 +42,22 @@ Le serveur peut aussi écouter sur un autre port :
 PORT=8080 npm start
 ```
 
-Aucun build front n’est nécessaire : `index.html`, `styles.css`, `app.js`, `data.js`, `countries.js`, `globe-engine.js` et les textures du globe sont servis directement.
+Aucun build front n’est nécessaire : `index.html`, `styles.css`, `app.js`, `data.js`, `countries.js`, `globe-engine.js`, `dragon.js`, `spiral-meta.js`, `event-images.js` et les images du globe sont servis directement.
 
 ---
 
 ## Ce que contient le POC
+
+### La queue du dragon
+
+- Un **canevas zoomable** de type Prezi : le zoom fait avancer ou reculer dans le temps.
+- Une spirale logarithmique auto-similaire : chaque écaille est ~10 % plus petite que la précédente.
+- 10 pays, 229 repères : une écaille = un repère, avec ère, tags, figures et lieux.
+- Des **images** : 10 photographies/œuvres vérifiées sur Wikimedia Commons (crédit et licence affichés) et un motif génératif signalé « non documentaire » pour les autres.
+- Navigation : molette, pincement, glisser, flèches, rail de profondeur, clic sur une écaille.
+- Three.js à la demande : scène statique, 15 écailles DOM recyclées, rendu arrêté au repos.
+- La frise linéaire reste l’outil de recherche ; le dragon est le mode narratif.
+- Design complet : **[DRAGON_TIMELINE.md](DRAGON_TIMELINE.md)**. Images : **[EVENT_IMAGES.md](EVENT_IMAGES.md)**.
 
 ### L’atlas 3D
 
@@ -165,10 +184,15 @@ countries.js        registre des 196 pays
 globe-map.png       texture visuelle du globe
 globe-pick.png      texture de sélection pays
 globe-engine.js     moteur Three.js optimisé
+dragon.js           canevas zoomable Three.js
+spiral-meta.js      acteurs et lieux par ère
 vendor/three.min.js Three.js r152 (UMD)
 COUNTRY_AUDITS.md   audits des 10 pays pilotes
 COUNTRIES.md        liste complète des pays
 TIMELINE_METHOD.md  méthode de production d’une frise (11 étapes)
+SPIRAL_TIMELINE.md  recherche sur la forme narrative
+DRAGON_TIMELINE.md  design du canevas zoomable
+EVENT_IMAGES.md     registre des images et licences
 TIMELINE_AUDIT.md   audit structurel généré
 SOURCE_VERIFICATION.md vérification des sources des dossiers
 audits/             dossiers d’audit des 10 pays pilotes
@@ -181,6 +205,8 @@ data.js             pays, ères, événements, tags
 server.mjs          serveur statique + proxy Grokipedia
 scripts/audit-timeline.mjs
 scripts/check-audit-dossiers.mjs
+scripts/build-spiral-meta.mjs
+scripts/build-event-images.mjs
 scripts/verify-sources.mjs
 scripts/verify-grok.mjs
 CONCEPT.md          note de concept

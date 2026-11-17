@@ -74,6 +74,14 @@
             <kbd>/</kbd>
             <div class="search-results" id="search-results" role="listbox" hidden></div>
           </div>
+          <button class="ghost-button spiral-button" id="spiral-btn" type="button" aria-label="Ouvrir la queue du dragon">
+            <span class="spiral-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 12a2 2 0 1 1 2 2 4 4 0 0 1-4-4 6 6 0 0 1 6-6 8 8 0 0 1 8 8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+            </span>
+            <span>Dragon</span>
+          </button>
           <button class="ghost-button" id="about-btn" type="button" aria-label="Le concept">
             <span class="about-dot"></span>
             <span>Le concept</span>
@@ -253,6 +261,74 @@
 
     <div class="tooltip" id="tooltip" role="tooltip" hidden></div>
 
+    <div class="spiral-overlay dragon-overlay" id="spiral-overlay" hidden>
+      <div class="spiral-backdrop dragon-backdrop" data-close-spiral></div>
+      <section class="dragon-shell" role="dialog" aria-modal="true" aria-labelledby="spiral-title">
+        <header class="dragon-bar">
+          <div class="dragon-brand">
+            <span class="dragon-mark" aria-hidden="true">
+              <svg viewBox="0 0 26 26">
+                <path d="M13 13a2.2 2.2 0 1 1 2.2 2.2 4.4 4.4 0 0 1-4.4-4.4 6.6 6.6 0 0 1 6.6-6.6 8.8 8.8 0 0 1 8.8 8.8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+              </svg>
+            </span>
+            <span class="dragon-brand-name">Queue du dragon</span>
+            <span class="dragon-context" id="spiral-context"></span>
+          </div>
+          <div class="dragon-actions">
+            <span class="dragon-readout" id="dragon-readout">Échelle 1 / 1</span>
+            <select class="dragon-select" id="spiral-country" aria-label="Choisir un pays"></select>
+            <button class="dragon-icon-button" id="spiral-close" type="button" aria-label="Fermer la queue du dragon">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" /></svg>
+            </button>
+          </div>
+        </header>
+
+        <div class="dragon-canvas" id="spiral-stage">
+          <div class="dragon-atmosphere" aria-hidden="true"></div>
+          <div class="dragon-era-label" id="dragon-era-label" hidden></div>
+          <svg class="dragon-links" id="dragon-links" aria-hidden="true"></svg>
+          <div class="dragon-tiles" id="dragon-tiles"></div>
+          <div class="dragon-depth" id="dragon-depth" role="navigation" aria-label="Profondeur temporelle"></div>
+
+          <div class="dragon-zoom" aria-hidden="true">
+            <button class="dragon-zoom-button" id="dragon-zoom-in" type="button" aria-label="Avancer dans le temps">
+              <svg viewBox="0 0 20 20"><path d="M10 5v10M5 10h10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /></svg>
+            </button>
+            <button class="dragon-zoom-button" id="dragon-zoom-out" type="button" aria-label="Reculer dans le temps">
+              <svg viewBox="0 0 20 20"><path d="M5 10h10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /></svg>
+            </button>
+          </div>
+
+          <div class="dragon-hint" id="dragon-hint">
+            Molette ou pincement : avancer dans le temps · glisser : parcourir · clic : ouvrir la fiche
+          </div>
+
+          <aside class="dragon-card" id="dragon-card" aria-live="polite">
+            <div class="dragon-media" id="dragon-media"></div>
+            <div class="dragon-card-body">
+              <div class="dragon-kicker">
+                <span class="dragon-era" id="dragon-era"></span>
+                <span class="dragon-position" id="dragon-position"></span>
+              </div>
+              <h2 id="spiral-title">L’Histoire</h2>
+              <div class="dragon-year" id="dragon-year"></div>
+              <p class="dragon-summary" id="dragon-summary"></p>
+              <div class="dragon-tags" id="dragon-tags"></div>
+              <div class="dragon-figures" id="dragon-figures"></div>
+              <div class="dragon-card-actions">
+                <button class="dragon-open" id="dragon-open" type="button">Lire la fiche</button>
+                <button class="dragon-step" id="dragon-prev" type="button" aria-label="Repère précédent">←</button>
+                <button class="dragon-step" id="dragon-next" type="button" aria-label="Repère suivant">→</button>
+              </div>
+              <div class="dragon-credit" id="dragon-credit"></div>
+            </div>
+          </aside>
+
+          <div class="dragon-rail" aria-hidden="true"><span id="dragon-rail-bar"></span></div>
+        </div>
+      </section>
+    </div>
+
     <div class="reader-overlay" id="reader-overlay" hidden>
       <div class="reader-backdrop" data-close-reader></div>
       <aside class="reader" id="reader" role="dialog" aria-modal="true" aria-labelledby="reader-title">
@@ -323,7 +399,7 @@
         <button class="modal-close" id="modal-close" type="button" aria-label="Fermer">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" /></svg>
         </button>
-        <div class="concept-eyebrow">Note de concept · POC v0.1</div>
+        <div class="concept-eyebrow">Note de concept · POC v0.2</div>
         <h2 id="concept-title">L’Histoire n’est pas une liste.<br />C’est un territoire.</h2>
         <p class="concept-lead">
           Vectemporel est une frise historique zoomable, pays par pays. On commence par la France, on dézoome pour comprendre les grandes périodes, on zoome pour lire un événement, puis on ouvre son article Grokipedia sans quitter l’application.
@@ -344,6 +420,11 @@
             <span class="concept-number">03</span>
             <h3>Le lecteur</h3>
             <p>Chaque repère ouvre directement son article : titre, hashtags, puis texte traduit. Les événements voisins sont proposés en bas de lecture.</p>
+          </article>
+          <article class="concept-card">
+            <span class="concept-number">04</span>
+            <h3>La spirale</h3>
+            <p>Une lecture en spirale dorée : le temps part du centre et s’enroule vers le présent. Chaque étape ouvre une ère et relie événements, tags, acteurs et lieux.</p>
           </article>
         </div>
 
@@ -391,6 +472,9 @@
     <script src="countries.js"></script>
     <script src="vendor/three.min.js"></script>
     <script src="globe-engine.js"></script>
+    <script src="spiral-meta.js"></script>
+    <script src="event-images.js"></script>
+    <script src="dragon.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

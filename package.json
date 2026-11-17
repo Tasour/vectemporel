@@ -14,7 +14,9 @@
     "verify": "node scripts/verify-grok.mjs",
     "verify:sources": "node scripts/verify-sources.mjs",
     "apply:fixes": "node scripts/apply-country-fixes.mjs",
-    "apply:fixes:dry": "node scripts/apply-country-fixes.mjs --dry-run"
+    "apply:fixes:dry": "node scripts/apply-country-fixes.mjs --dry-run",
+    "build:spiral-meta": "node scripts/build-spiral-meta.mjs",
+    "build:event-images": "node scripts/build-event-images.mjs"
   },
   "keywords": [
     "histoire",

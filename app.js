@@ -1111,6 +1111,7 @@
   }
 
   function onGlobalKeydown(event) {
+    if (!document.getElementById('spiral-overlay')?.hidden) return;
     const target = event.target;
     const typing = target instanceof HTMLElement && (
       target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.tagName === 'SELECT' || target.isContentEditable
@@ -2453,6 +2454,11 @@
       }
     });
   }
+
+  window.VECTEMPOREL_APP = {
+    openEvent,
+    getCountryId: () => state.countryId,
+  };
 
   boot();
 })();
