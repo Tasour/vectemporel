@@ -863,6 +863,7 @@
     els.close = document.getElementById('story-close');
     els.openBtn = document.getElementById('story-btn');
     els.storyCountry = document.getElementById('story-country');
+    els.storySystemBtn = document.getElementById('story-system-btn');
     els.storyDragonBtn = document.getElementById('story-dragon-btn');
     els.help = document.getElementById('story-help');
     els.helpGrid = document.getElementById('story-help-grid');
@@ -884,6 +885,18 @@
   function bind() {
     els.openBtn?.addEventListener('click', () => open());
     els.storyDragonBtn?.addEventListener('click', close);
+    els.storySystemBtn?.addEventListener('click', () => {
+      const snapshot = {
+        countryId: state.story?.country.id,
+        eraIndex: state.eraIndex,
+        planetIndex: state.eventIndex,
+      };
+      close({ restoreFocus: false });
+      window.setTimeout(() => {
+        window.VECTEMPOREL_SOLAR?.open(snapshot.countryId);
+        window.VECTEMPOREL_SOLAR?.setSelection(snapshot);
+      }, 60);
+    });
     els.close?.addEventListener('click', close);
     els.overlay?.querySelector('[data-close-story]')?.addEventListener('click', close);
     els.prev?.addEventListener('click', previous);
@@ -942,6 +955,11 @@
       state.eventIndex = 0;
       render();
     },
+    selection: () => ({
+      countryId: state.story?.country.id,
+      eraIndex: state.eraIndex,
+      planetIndex: state.eventIndex,
+    }),
     state: () => ({
       mode: state.mode,
       era: state.eraIndex,

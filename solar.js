@@ -668,9 +668,11 @@
     els.recitBtn?.addEventListener('click', () => {
       window.VECTEMPOREL_STORY?.setSelection?.(state.countryId, state.eraIndex, state.planetIndex);
       state.open = false;
-      els.overlay.classList.add('is-open');
-      window.VECTEMPOREL_STORY?.open(state.countryId, 'panorama');
-      window.setTimeout(() => { if (!state.open) els.overlay.hidden = true; }, 300);
+      els.overlay.classList.remove('is-open');
+      window.setTimeout(() => {
+        els.overlay.hidden = true;
+        window.VECTEMPOREL_STORY?.open(state.countryId, 'panorama');
+      }, 300);
     });
     const syncScopeButtons = () => {
       if (els.scope) {
@@ -758,6 +760,19 @@
     open,
     close,
     fit,
+    setSelection: ({ countryId, eraIndex, planetIndex } = {}) => {
+      if (countryId && countryId !== state.countryId && state.system) {
+        const country = COUNTRIES.find((item) => item.id === countryId);
+        if (country) {
+          state.system = buildSystem(countryId);
+          state.countryId = countryId;
+        }
+      }
+      const era = clamp(eraIndex || 0, 0, state.system.eras.length - 1);
+      const planets = state.system.eras[era].planets;
+      const planet = clamp(planetIndex || 0, 0, Math.max(0, planets.length - 1));
+      select('planet', era, planet, 0);
+    },
     state: () => ({ ...state, countryId: state.countryId }),
   };
 })();

@@ -201,7 +201,7 @@ Aucune vue ne lit un fichier autre que ceux-ci. Aucune vue n’écrit dans `data
 | **P3 — Frise & globe** | Sélecteur de pays intégré, recherche, retour Plan | La frise n’est plus qu’un outil de consultation, pas un labyrinthe. |
 | **P4 — Évaluation** | Test utilisateur, kappa, sign-off | 20 participants, tâches « trouver / raconter / situer ». |
 
-**État actuel : nouvelle structure livrée + chantiers 1, 2 et 3 de l'audit externe (`UX_EXPERT_AUDIT.md`) ; chantiers 4 et 5 partiels.** Le Monde 3D est le menu principal ; un pays ouvre le Système solaire (soleils, planètes, lunes). Le Récit et sa carte satellite restent accessibles depuis le Système. L'ancien tourbillon est conservé dans le code mais retiré du parcours principal.
+**État actuel : nouvelle structure livrée + chantiers 1, 2 et 3 de l'audit externe (`UX_EXPERT_AUDIT.md`) ; chantiers 4 et 5 livrés.** Le Monde 3D est le menu principal ; un pays ouvre le Système solaire (soleils, planètes, lunes). Le Récit et sa carte satellite restent accessibles depuis le Système. L'ancien tourbillon est conservé dans le code mais retiré du parcours principal.
 
 ---
 

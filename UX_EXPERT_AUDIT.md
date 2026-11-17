@@ -51,10 +51,10 @@ Rôles ARIA `tree`/`treeitem`, `aria-selected`, focus visible, `aria-pressed` su
 Acceptation : WCAG 2.1.1 / 2.4.7 / 1.1.1 ; parcours complet clavier souris éteinte, 0 erreur.
 *Statut : partiel — rôles `tree`/`treeitem`, `aria-selected`, `role=status`, `aria-pressed`, focus visible et alternatives textuelles en place ; relecture lecteur d’écran à faire.*
 
-### Chantier 5 — Cohérence des trois modes (partiel)
+### Chantier 5 — Cohérence des trois modes (fait)
 Un seul état partagé entre Monde, Système et Récit ; même fil d'Ariane, même sélection, même vocabulaire (ère / événement / détail). Aiguillage par intention : « suivre la chronologie », « écouter le récit », « voir la carte ».
 Acceptation : changer de mode conserve pays, ère et événement ; l'utilisateur peut énoncer où il est dans n'importe quel mode.
-*Statut : partiel — le Système transmet pays, ère et événement au Récit ; le retour Récit → Système reste à synchroniser.*
+*Statut : livré — le Système transmet pays, ère et événement au Récit ; l'onglet « Système » du Récit rouvre la même planète.*
 
 ## 4. Ordre recommandé
 
