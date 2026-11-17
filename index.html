@@ -275,9 +275,12 @@
             <span class="dragon-context" id="spiral-context"></span>
           </div>
           <div class="dragon-actions">
-            <button class="dragon-story-btn" id="story-btn" type="button" aria-label="Ouvrir le récit (touche R)">
-              <span>Récit</span><kbd>R</kbd>
-            </button>
+            <div class="mode-tabs">
+              <span class="mode-tab is-active">Dragon</span>
+              <button class="dragon-story-btn" id="story-btn" type="button" aria-label="Ouvrir le récit (touche R)">
+                <span>Récit</span><kbd>R</kbd>
+              </button>
+            </div>
             <span class="dragon-readout" id="dragon-readout">Échelle 1 / 1</span>
             <select class="dragon-select" id="spiral-country" aria-label="Choisir un pays"></select>
             <button class="dragon-icon-button" id="spiral-close" type="button" aria-label="Fermer la queue du dragon">
@@ -383,6 +386,11 @@
             <span class="story-breadcrumb" id="story-breadcrumb"></span>
           </div>
           <div class="story-actions">
+            <div class="mode-tabs">
+              <span class="mode-tab is-active">Récit</span>
+              <button class="mode-tab" id="story-dragon-btn" type="button" aria-label="Passer à la queue du dragon">Dragon</button>
+            </div>
+            <select class="dragon-select" id="story-country" aria-label="Choisir un pays"></select>
             <span class="story-context" id="story-context"></span>
             <button class="story-icon-button" id="story-help-btn" type="button" aria-label="Aide clavier" title="Aide clavier (?)">?</button>
             <button class="story-icon-button" id="story-close" type="button" aria-label="Fermer le récit">
@@ -558,6 +566,7 @@
     <script src="event-images.js"></script>
     <script src="place-atlas.js"></script>
     <script src="dragon.js"></script>
+    <script src="satellite-map.js"></script>
     <script src="story.js"></script>
     <script src="app.js"></script>
   </body>

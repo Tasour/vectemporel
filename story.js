@@ -15,6 +15,29 @@
   const IMAGES = window.VECTEMPOREL_EVENT_IMAGES || {};
   const PLACES = window.VECTEMPOREL_PLACES || {};
   const OUTLINES = window.VECTEMPOREL_OUTLINES || {};
+  const PREFIX = { france: 'fr', uk: 'uk', usa: 'us', germany: 'de', italy: 'it', spain: 'es', china: 'cn', india: 'in', japan: 'jp', egypt: 'eg' };
+  function placeIdsForEvent(era, eventId) {
+    return (era.places || []).filter((place) => place.eventIds?.includes(eventId)).map((place) => place.id);
+  }
+
+  const normalizeEventId = (id, prefix) => {
+    const value = String(id || '');
+    return /^PROP-/i.test(value) ? `${prefix}-prop-${value.slice(5)}`.toLowerCase() : value.toLowerCase();
+  };
+  function countryBounds(countryId) {
+    const outline = OUTLINES[countryId];
+    if (!outline || !outline.rings.length) return null;
+    // On garde le contour principal (le plus détaillé) : les territoires
+    // d'outre-mer ne doivent pas élargir la bbox du pays au point d'y
+    // inclure des lieux extérieurs au récit.
+    const mainRing = outline.rings.reduce((best, ring) => (ring.length > best.length ? ring : best), outline.rings[0]);
+    const lons = mainRing.map((point) => point[0]);
+    const lats = mainRing.map((point) => point[1]);
+    return {
+      minLon: Math.min(...lons) - 1.5, maxLon: Math.max(...lons) + 1.5,
+      minLat: Math.min(...lats) - 1.5, maxLat: Math.max(...lats) + 1.5,
+    };
+  }
   const TAGS = DATA?.tags || {};
   const COUNTRIES = (DATA?.countries || []).filter((country) => country.events?.length);
   const SVG_NS = 'http://www.w3.org/2000/svg';
@@ -31,6 +54,7 @@
     playing: false,
     playTimer: 0,
     helpOpen: false,
+    showCountryPlaces: false,
     lastFocus: null,
     hideTimer: 0,
   };
@@ -76,14 +100,18 @@
           eventIds.add(event.id);
           return event;
         });
+      const prefix = PREFIX[country.id] || '';
+      const bounds = countryBounds(country.id);
       const allPlaces = Object.values(placeAtlas).map((place) => ({
         ...place,
-        eventIds: place.events.filter((id) => eventIds.has(id)),
+        eventIds: place.events.map((id) => normalizeEventId(id, prefix)).filter((id) => eventIds.has(id)),
       }));
-      let places = allPlaces.filter((place) => place.eventIds.length);
-      if (!places.length) places = allPlaces;
-      const located = places.filter((place) => place.lat !== null && place.lon !== null);
-      return { ...era, index, events, places, located };
+      const inside = (place) => !bounds || (place.lon >= bounds.minLon && place.lon <= bounds.maxLon
+        && place.lat >= bounds.minLat && place.lat <= bounds.maxLat);
+      const places = allPlaces.filter((place) => place.eventIds.length && inside(place));
+      const extraPlaces = allPlaces.filter((place) => place.eventIds.length && !inside(place));
+      const countryPlaces = allPlaces.filter(inside);
+      return { ...era, index, events, places, extraPlaces, countryPlaces };
     });
     return { country, eras };
   }
@@ -96,8 +124,13 @@
     return currentEra()?.events[state.eventIndex] || null;
   }
 
+  function displayPlaces(era) {
+    if (!era) return [];
+    return state.showCountryPlaces ? era.countryPlaces : era.places;
+  }
+
   function currentPlace() {
-    return currentEra()?.places[state.placeIndex] || null;
+    return displayPlaces(currentEra())[state.placeIndex] || null;
   }
 
   function make(tag, className, text) {
@@ -323,149 +356,148 @@
     };
   }
 
+  function buildPlacePanel(era, places) {
+    const panel = make('div', 'story-place-panel');
+    const place = places[state.placeIndex];
+    if (!place) {
+      panel.appendChild(make('p', 'story-place-history', 'Aucun lieu sélectionné.'));
+      return panel;
+    }
+    const scope = state.showCountryPlaces ? 'Contexte du pays' : 'Lieu lié à la période';
+    panel.appendChild(make('div', 'story-place-index', `Lieu ${state.placeIndex + 1} / ${places.length} · ${scope}`));
+    const title = make('h2', 'story-place-name', place.label);
+    title.id = 'story-page-title';
+    panel.appendChild(title);
+    if (place.historical?.length) {
+      panel.appendChild(make('p', 'story-place-history', `Anciens noms : ${place.historical.join(' · ')}`));
+    }
+    const functions = make('div', 'story-place-section');
+    functions.appendChild(make('h3', '', 'Fonctions'));
+    functions.appendChild(make('p', '', place.functions?.join(' · ') || 'Non renseigné'));
+    panel.appendChild(functions);
+    if (place.contestations?.length) {
+      const debates = make('div', 'story-place-section');
+      debates.appendChild(make('h3', '', 'Mémoires & contestations'));
+      debates.appendChild(make('p', '', place.contestations.join(' · ')));
+      panel.appendChild(debates);
+    }
+    const linked = era.events.filter((item) => place.eventIds?.includes(item.id));
+    if (linked.length) {
+      const section = make('div', 'story-place-section');
+      section.appendChild(make('h3', '', 'Repères ici'));
+      linked.forEach((item) => {
+        const button = make('button', 'story-event-link');
+        button.type = 'button';
+        button.append(make('b', '', formatYear(item.year)), document.createTextNode(item.title));
+        button.addEventListener('click', () => {
+          state.eventIndex = era.events.indexOf(item);
+          setMode('panorama');
+        });
+        section.appendChild(button);
+      });
+      panel.appendChild(section);
+    }
+    if (place.source) {
+      const source = make('div', 'story-place-section');
+      source.appendChild(make('h3', '', 'Position vérifiée'));
+      const link = make('a', '', 'Source Wikipedia ↗');
+      link.href = place.source;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      source.appendChild(link);
+      source.appendChild(make('p', '', `${place.lat?.toFixed(4)}, ${place.lon?.toFixed(4)}`));
+      panel.appendChild(source);
+    }
+    const back = make('button', 'story-back-link', '← Retour au récit');
+    back.type = 'button';
+    back.addEventListener('click', () => setMode('panorama'));
+    panel.appendChild(back);
+    return panel;
+  }
+
   function renderPlaces() {
     const era = currentEra();
-    const event = currentEvent();
     if (!era) return;
+    const places = displayPlaces(era);
     const stage = els.stage;
     stage.className = 'story-stage is-places';
     stage.innerHTML = '';
+    if (state.satellite) {
+      state.satellite.destroy();
+      state.satellite = null;
+    }
 
-    const map = make('div', 'story-map');
-    map.appendChild(make('div', 'story-map-label', `${era.name} · ${formatRange(era.start, era.end)}`));
-    const W = 1000;
-    const H = 700;
-    const projection = projectPlaces(era.places, W, H);
-    const svgRoot = svg('svg', { viewBox: `0 0 ${W} ${H}`, preserveAspectRatio: 'xMidYMid meet', 'aria-hidden': 'true' });
-    const layer = svg('g', { class: 'story-map-layer' });
-    if (projection) {
-      const outline = OUTLINES[state.story.country.id];
-      if (outline) {
-        for (const ring of outline.rings) {
-          const points = ring
-            .map(([lon, lat]) => projection.point({ lon, lat }))
-            .map((point) => `${point.x.toFixed(1)},${point.y.toFixed(1)}`)
-            .join(' ');
-          layer.appendChild(svg('polygon', { class: 'story-map-outline', points }));
-        }
-      }
-      const grid = svg('g', { class: 'story-map-grid' });
-      for (let i = 1; i < 8; i += 1) {
-        grid.appendChild(svg('line', { x1: (W / 8) * i, y1: 0, x2: (W / 8) * i, y2: H }));
-      }
-      for (let i = 1; i < 6; i += 1) {
-        grid.appendChild(svg('line', { x1: 0, y1: (H / 6) * i, x2: W, y2: (H / 6) * i }));
-      }
-      layer.appendChild(grid);
-
-      const ordered = era.located.slice().sort((a, b) => {
-        const ay = a.events.find((id) => era.events.some((eventItem) => eventItem.id === id)) || '';
-        const by = b.events.find((id) => era.events.some((eventItem) => eventItem.id === id)) || '';
-        return ay.localeCompare(by);
+    if (!places.length) {
+      const empty = make('div', 'story-empty-places');
+      empty.appendChild(make('strong', '', 'Aucun lieu documenté pour cette période'));
+      empty.appendChild(make('p', '', 'Les dossiers pays n’associent pas de lieu directement aux repères de cette ère. Vous pouvez tout de même voir la géographie du pays, sans prétendre que ces lieux appartiennent à la période.'));
+      const button = make('button', 'story-place-action', 'Voir les lieux du pays →');
+      button.type = 'button';
+      button.addEventListener('click', () => {
+        state.showCountryPlaces = true;
+        state.placeIndex = 0;
+        renderPlaces();
       });
-      const pathPoints = ordered.map((place) => projection.point(place));
-      if (pathPoints.length > 1) {
-        layer.appendChild(svg('polyline', {
-          class: 'story-map-path',
-          points: pathPoints.map((point) => `${point.x.toFixed(1)},${point.y.toFixed(1)}`).join(' '),
-        }));
-      }
-      ordered.forEach((place) => {
-        const point = projection.point(place);
-        const index = era.located.indexOf(place);
-        const group = svg('g', { class: `story-place-marker${place === currentPlace() ? ' is-active' : ''}` });
-        group.appendChild(svg('circle', { cx: point.x.toFixed(1), cy: point.y.toFixed(1), r: place === currentPlace() ? 7 : 4.5 }));
-        const label = svg('text', { x: (point.x + 10).toFixed(1), y: (point.y + 3).toFixed(1) });
-        label.textContent = place.label;
-        group.appendChild(label);
-        group.addEventListener('click', () => {
-          state.placeIndex = era.places.indexOf(place);
-          renderPlaces();
-          updateChrome();
-        });
-        layer.appendChild(group);
-        place._index = index;
-      });
+      empty.appendChild(button);
+      stage.appendChild(empty);
+      return;
     }
-    svgRoot.appendChild(layer);
-    map.appendChild(svgRoot);
-    if (!projection) {
-      const empty = make('div', 'story-place-history', 'Aucune coordonnée vérifiée pour les lieux de cette période.');
-      empty.style.position = 'absolute';
-      empty.style.top = '45%';
-      empty.style.left = '10%';
-      map.appendChild(empty);
-    }
-    stage.appendChild(map);
 
-    const panel = make('div', 'story-place-panel');
-    const place = currentPlace();
-    if (place) {
-      panel.appendChild(make('div', 'story-place-index', `Lieu ${state.placeIndex + 1} / ${era.places.length} · ${place.hierarchy || 'lieu'}`));
-      const title = make('h2', 'story-place-name', place.label);
-      title.id = 'story-page-title';
-      panel.appendChild(title);
-      if (place.historical?.length) {
-        panel.appendChild(make('p', 'story-place-history', `Anciens noms : ${place.historical.join(' · ')}`));
-      }
-      const functions = make('div', 'story-place-section');
-      functions.appendChild(make('h3', '', 'Fonctions'));
-      functions.appendChild(make('p', '', place.functions?.join(' · ') || 'Non renseigné'));
-      panel.appendChild(functions);
-      if (place.contestations?.length) {
-        const debates = make('div', 'story-place-section');
-        debates.appendChild(make('h3', '', 'Mémoires & contestations'));
-        debates.appendChild(make('p', '', place.contestations.join(' · ')));
-        panel.appendChild(debates);
-      }
-      const linked = era.events.filter((item) => place.eventIds?.includes(item.id));
-      if (linked.length) {
-        const section = make('div', 'story-place-section');
-        section.appendChild(make('h3', '', 'Repères ici'));
-        linked.forEach((item) => {
-          const button = make('button', 'story-event-link');
-          button.type = 'button';
-          const year = make('b', '', formatYear(item.year));
-          button.append(year, document.createTextNode(item.title));
-          button.addEventListener('click', () => {
-            state.eventIndex = era.events.indexOf(item);
-            setMode('panorama');
-          });
-          section.appendChild(button);
-        });
-        panel.appendChild(section);
-      }
-      if (place.source) {
-        const source = make('div', 'story-place-section');
-        source.appendChild(make('h3', '', 'Coordonnée'));
-        const link = make('a', '', 'Voir la source Wikipedia ↗');
-        link.href = place.source;
-        link.target = '_blank';
-        link.rel = 'noopener noreferrer';
-        source.appendChild(link);
-        source.appendChild(make('p', '', `${place.lat?.toFixed(4)}, ${place.lon?.toFixed(4)}`));
-        panel.appendChild(source);
-      }
-      const back = make('button', 'story-back-link', '← Retour au récit');
-      back.type = 'button';
-      back.addEventListener('click', () => setMode('panorama'));
-      panel.appendChild(back);
-    } else {
-      panel.appendChild(make('p', 'story-place-history', 'Aucun lieu associé à cette période dans le corpus.'));
-    }
+    state.placeIndex = clamp(state.placeIndex, 0, places.length - 1);
+    const primaryIds = new Set(era.events.flatMap((event) => placeIdsForEvent(era, event.id)));
+    const display = places
+      .filter((place) => place.lat !== null && place.lon !== null)
+      .map((place) => ({ ...place, sourceIndex: places.indexOf(place), primary: state.showCountryPlaces ? primaryIds.has(place.id) : true }));
+
+    const host = make('div', 'story-satellite-host');
+    stage.appendChild(host);
+    const panel = buildPlacePanel(era, places);
     stage.appendChild(panel);
 
-    if (projection && place && place.lat !== null) {
-      const point = projection.point(place);
-      const zoom = 1.25;
-      const tx = W / 2 - point.x * zoom;
-      const ty = H / 2 - point.y * zoom;
-      requestAnimationFrame(() => {
-        layer.style.transformOrigin = '0 0';
-        layer.style.transform = `translate(${tx.toFixed(1)}px, ${ty.toFixed(1)}px) scale(${zoom})`;
-      });
+    if (display.length) {
+      const Satellite = window.VECTEMPOREL_SATELLITE;
+      if (Satellite) {
+        state.satellite = Satellite.create(host, {
+          onSelect: (index) => {
+            const place = display[index];
+            if (!place) return;
+            state.placeIndex = place.sourceIndex;
+            const replacement = buildPlacePanel(era, places);
+            panel.replaceWith(replacement);
+            updateChrome();
+          },
+        });
+        state.satellite.setPlaces(display, display.findIndex((place) => place.sourceIndex === state.placeIndex));
+      }
     }
-    state.mapLayer = layer;
+
+    const scope = make('div', 'story-scope-toggle');
+    scope.style.position = 'absolute';
+    scope.style.top = '14px';
+    scope.style.right = '14px';
+    scope.style.zIndex = '6';
+    const exact = make('button', state.showCountryPlaces ? '' : 'is-active', 'Lieux de la période');
+    const country = make('button', state.showCountryPlaces ? 'is-active' : '', 'Tous les lieux du pays');
+    exact.addEventListener('click', () => {
+      state.showCountryPlaces = false;
+      state.placeIndex = 0;
+      renderPlaces();
+    });
+    country.addEventListener('click', () => {
+      state.showCountryPlaces = true;
+      state.placeIndex = 0;
+      renderPlaces();
+    });
+    scope.append(exact, country);
+    stage.appendChild(scope);
+
+    if (era.extraPlaces?.length) {
+      const note = make('div', 'satellite-attribution', `${era.extraPlaces.length} lieu(x) lié(s) hors territoire non affiché(s)`);
+      note.style.left = '14px';
+      note.style.right = 'auto';
+      note.style.bottom = '14px';
+      stage.appendChild(note);
+    }
   }
 
   /* ---------------------------------------------------------------------- */
@@ -481,6 +513,7 @@
         ['Échap', 'Retour à la queue'],
       ]],
       ['Général', [
+        ['Maj 1–3', 'Aller à une étape'],
         ['?', 'Aide clavier'],
         ['Tab', 'Parcourir les boutons'],
       ]],
@@ -494,6 +527,7 @@
         ['Échap', 'Choisir une période'],
       ]],
       ['Général', [
+        ['Maj 1–3', 'Aller à une étape'],
         ['?', 'Aide clavier'],
         ['Tab', 'Parcourir les boutons'],
       ]],
@@ -505,6 +539,7 @@
         ['Échap', 'Retour au récit'],
       ]],
       ['Général', [
+        ['Maj 1–3', 'Aller à une étape'],
         ['?', 'Aide clavier'],
         ['Tab', 'Parcourir les boutons'],
       ]],
@@ -532,7 +567,10 @@
     els.breadcrumb.innerHTML = '';
     Object.entries(modeNames).forEach(([mode, label], index) => {
       if (index > 0) els.breadcrumb.appendChild(make('span', '', ' › '));
-      els.breadcrumb.appendChild(mode === state.mode ? make('b', '', label) : make('span', '', label));
+      const button = make('button', `story-crumb${mode === state.mode ? ' is-active' : ''}`, label);
+      button.type = 'button';
+      button.addEventListener('click', () => setMode(mode));
+      els.breadcrumb.appendChild(button);
     });
     els.context.textContent = `${state.story.country.name} · ${era ? era.name : ''}`;
 
@@ -561,7 +599,7 @@
         els.dots.appendChild(make('span', `story-dot${index === state.eventIndex ? ' is-active' : ''}`));
       });
     } else {
-      era.places.forEach((item, index) => {
+      displayPlaces(era).forEach((item, index) => {
         els.dots.appendChild(make('span', `story-dot${index === state.placeIndex ? ' is-active' : ''}`));
       });
     }
@@ -594,6 +632,11 @@
   }
 
   function setMode(mode) {
+    if (state.mode !== mode && mode !== 'places') state.showCountryPlaces = false;
+    if (state.mode !== 'places' && state.satellite) {
+      state.satellite.destroy();
+      state.satellite = null;
+    }
     state.mode = mode;
     stopPlay();
     render();
@@ -633,7 +676,7 @@
   function previous() {
     if (state.mode === 'eras') state.eraIndex = clamp(state.eraIndex - 1, 0, state.story.eras.length - 1);
     else if (state.mode === 'panorama') state.eventIndex = clamp(state.eventIndex - 1, 0, currentEra().events.length - 1);
-    else if (currentEra().places.length) state.placeIndex = clamp(state.placeIndex - 1, 0, currentEra().places.length - 1);
+    else if (displayPlaces(currentEra()).length) state.placeIndex = clamp(state.placeIndex - 1, 0, displayPlaces(currentEra()).length - 1);
     render();
     if (state.mode === 'eras') focusSelected(state.eraRefs);
   }
@@ -641,7 +684,7 @@
   function next() {
     if (state.mode === 'eras') state.eraIndex = clamp(state.eraIndex + 1, 0, state.story.eras.length - 1);
     else if (state.mode === 'panorama') state.eventIndex = clamp(state.eventIndex + 1, 0, currentEra().events.length - 1);
-    else if (currentEra().places.length) state.placeIndex = clamp(state.placeIndex + 1, 0, currentEra().places.length - 1);
+    else if (displayPlaces(currentEra()).length) state.placeIndex = clamp(state.placeIndex + 1, 0, displayPlaces(currentEra()).length - 1);
     render();
     if (state.mode === 'eras') focusSelected(state.eraRefs);
   }
@@ -678,6 +721,7 @@
       state.eventIndex = 0;
       state.placeIndex = 0;
     }
+    if (els.storyCountry) els.storyCountry.value = state.story.country.id;
     state.lastFocus = document.activeElement;
     clearTimeout(state.hideTimer);
     els.overlay.hidden = false;
@@ -733,6 +777,11 @@
       else close();
       return;
     }
+    if (event.shiftKey && /^Digit[1-3]$/.test(event.code || '')) {
+      event.preventDefault();
+      setMode(['eras', 'panorama', 'places'][Number((event.code || '').slice(5)) - 1]);
+      return;
+    }
     if (state.mode === 'eras' && /^[1-9]$/.test(event.key)) {
       const index = Number(event.key) - 1;
       if (index < state.story.eras.length) {
@@ -773,6 +822,13 @@
       } else setMode('panorama');
       return;
     }
+    if (state.mode === 'places' && (event.key === '+' || event.key === '=' || event.key === '-' || event.key === '0')) {
+      event.preventDefault();
+      if (event.key === '0') state.satellite?.overview();
+      else if (event.key === '-') state.satellite?.zoomOut();
+      else state.satellite?.zoomIn();
+      return;
+    }
     if (event.key === ' ' && state.mode === 'panorama') {
       event.preventDefault();
       togglePlay();
@@ -806,14 +862,37 @@
     els.play = document.getElementById('story-play');
     els.close = document.getElementById('story-close');
     els.openBtn = document.getElementById('story-btn');
+    els.storyCountry = document.getElementById('story-country');
+    els.storyDragonBtn = document.getElementById('story-dragon-btn');
     els.help = document.getElementById('story-help');
     els.helpGrid = document.getElementById('story-help-grid');
     els.helpBtn = document.getElementById('story-help-btn');
     els.helpClose = document.getElementById('story-help-close');
   }
 
+  function populateCountries() {
+    if (!els.storyCountry) return;
+    els.storyCountry.innerHTML = '';
+    for (const country of COUNTRIES) {
+      const option = document.createElement('option');
+      option.value = country.id;
+      option.textContent = `${country.flag || ''} ${country.name}`.trim();
+      els.storyCountry.appendChild(option);
+    }
+  }
+
   function bind() {
     els.openBtn?.addEventListener('click', () => open());
+    els.storyDragonBtn?.addEventListener('click', close);
+    els.storyCountry?.addEventListener('change', () => {
+      state.story = buildStory(els.storyCountry.value);
+      state.countryId = els.storyCountry.value;
+      state.eraIndex = 0;
+      state.eventIndex = 0;
+      state.placeIndex = 0;
+      state.showCountryPlaces = false;
+      render();
+    });
     els.close?.addEventListener('click', close);
     els.overlay?.querySelector('[data-close-story]')?.addEventListener('click', close);
     els.prev?.addEventListener('click', previous);
@@ -829,6 +908,7 @@
     cacheElements();
     if (!els.overlay || !DATA) return;
     state.initialized = true;
+    populateCountries();
     bind();
   }
 

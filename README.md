@@ -54,9 +54,9 @@ Aucun build front n’est nécessaire : `index.html`, `styles.css`, `app.js`, `d
 - Parcours en trois étapes : **choisir une période**, parcourir le **panorama** des repères, naviguer de **lieu en lieu**.
 - **Clavier complet** : flèches, `1`–`9`, `Entrée`, `Espace`, `Échap`, `?` pour l’aide.
 - Mini-film : grande image, résumé découpé en phrases animées, pellicule des repères, lecture automatique.
-- Carte des lieux avec **coordonnées vérifiées** (114/120) et contours du pays ; aucun point inventé.
+- Carte **satellite réelle** (Esri World Imagery) avec coordonnées vérifiées (114/120), chemin chronologique et attribution ; aucun point inventé.
 - Aucune anecdote fabriquée : le récit met en scène les repères vérifiés.
-- Design : **[STORY_MODE.md](STORY_MODE.md)**. Lieux : **[PLACE_ATLAS.md](PLACE_ATLAS.md)**.
+- Design : **[STORY_MODE.md](STORY_MODE.md)**, **[UX_REDESIGN.md](UX_REDESIGN.md)**. Lieux : **[PLACE_ATLAS.md](PLACE_ATLAS.md)**.
 
 ### La queue du dragon
 
@@ -197,6 +197,7 @@ globe-pick.png      texture de sélection pays
 globe-engine.js     moteur Three.js optimisé
 dragon.js           canevas zoomable Three.js
 story.js            récit périodes/panorama/lieux
+satellite-map.js    fond satellite et marqueurs
 place-atlas.js      coordonnées et contours des lieux
 spiral-meta.js      acteurs et lieux par ère
 vendor/three.min.js Three.js r152 (UMD)

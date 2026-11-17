@@ -68,7 +68,9 @@ Une pellicule en bas donne accès à tous les repères de l’ère. La lecture a
 
 ## 5. Étape 3 — lieux
 
-`place-atlas.js` est généré depuis les dossiers d’audit et les **coordonnées de l’API Wikipedia** (fr puis en). **114 lieux sur 120** sont localisés ; les 6 autres gardent leur fiche mais n’ont pas de point, aucune position n’étant inventée. Le fond affiche le contour du pays issu de *world-atlas* (Natural Earth, domaine public).
+`place-atlas.js` est généré depuis les dossiers d’audit et les **coordonnées de l’API Wikipedia** (fr puis en). **114 lieux sur 120** sont localisés ; les 6 autres gardent leur fiche mais n’ont pas de point, aucune position n’étant inventée.
+
+La vue utilise un **fond satellite réel** (Esri World Imagery, avec attribution visible) exporté pour la zone courante. Les marqueurs viennent de l’atlas vérifié. L’emprise est calculée sur le **contour principal** du pays : les territoires d’outre-mer n’élargissent pas la carte et n’attirent pas de lieux extérieurs. Trois périmètres sont distingués : lieux liés à l’ère, contexte du pays, lieux hors territoire (non affichés par défaut).
 
 La carte projette les lieux de l’ère, trace un chemin pointillé chronologique et anime un zoom de 1,25× vers le lieu sélectionné. Le panneau latéral donne :
 
@@ -83,7 +85,8 @@ Quand une ère n’a aucun lieu associé dans le corpus, l’atlas du pays entie
 
 ## 6. Fichiers
 
-- `story.js` — trois modes, clavier, animation, projection ;
+- `story.js` — trois modes, clavier, animation, périmètres ;
+- `satellite-map.js` — fond satellite, marqueurs, chemin, zoom ;
 - `place-atlas.js` — coordonnées et contours générés ;
 - `scripts/build-place-atlas.mjs` — générateur (`npm run build:places`) ;
 - `PLACE_ATLAS.md` — couverture et lieux non localisés ;
