@@ -1,15 +1,15 @@
 # Vérification des sources — dossiers pays
 
-> Vérification automatisée le **2026-11-13**.
+> Vérification automatisée le **2026-11-17**.
 > Les DOI sont résolus via l’API Handle de `doi.org`. Les URL sont testées en HEAD puis GET. Un statut « protégé » signifie que la page existe probablement mais refuse les requêtes automatisées ; il ne vaut pas validation du contenu.
 
 ## Synthèse
 
 | Statut | Nombre |
 | --- | ---: |
-| DOI/URL valides | 154 |
-| Protégés mais joignables | 4 |
-| Non concluants | 42 |
+| DOI/URL valides | 184 |
+| Protégés mais joignables | 5 |
+| Non concluants | 11 |
 | DOI non résolus | 0 |
 | Introuvables (404/410) | 0 |
 | Sans DOI ni URL | 0 |
@@ -27,19 +27,19 @@
 | SRC-004 | ✅ valid | DOI résolu | [By Sword and Plow: France and the Conquest of Algeria](doi:10.7591/cornell/9780801449758.001.0001) |
 | SRC-005 | ✅ valid | DOI résolu | [Berthe Morisot](doi:10.1525/9780520916579) |
 | SRC-006 | ✅ valid | HTTP 200 | [Marie Curie – Facts](https://www.nobelprize.org/prizes/physics/1903/marie-curie/facts/) |
-| SRC-007 | ⚠️ uncertain | HTTP 503 | [Hybrid Modernities: Architecture and Representation at the 1931 Colonial Exposition, Paris](https://catalogue.bnf.fr/ark:/12148/cb388400778) |
+| SRC-007 | ⚠️ uncertain | timeout | [Hybrid Modernities: Architecture and Representation at the 1931 Colonial Exposition, Paris](https://catalogue.bnf.fr/ark:/12148/cb388400778) |
 | SRC-008 | ⚠️ uncertain | timeout | [Vichy France: Old Guard and New Order, 1940-1944](https://catalogue.bnf.fr/ark:/12148/cb35315375q) |
-| SRC-009 | ✅ valid | HTTP 200 | [Le Syndrome de Vichy de 1944 à nos jours](https://catalogue.bnf.fr/ark:/12148/cb366403257) |
+| SRC-009 | ⚠️ uncertain | HTTP 503 | [Le Syndrome de Vichy de 1944 à nos jours](https://catalogue.bnf.fr/ark:/12148/cb366403257) |
 | SRC-010 | ⚠️ uncertain | HTTP 503 | [The European Rescue of the Nation-State](https://catalogue.bnf.fr/ark:/12148/cb35691422m) |
 | SRC-011 | ✅ valid | DOI résolu | [Paris 1961: Algerians, State Terror, and Memory](doi:10.1093/oso/9780199247257.001.0001) |
 | SRC-012 | ⚠️ uncertain | timeout | [The Invention of Decolonization: The Algerian War and the Remaking of France](https://catalogue.bnf.fr/ark:/12148/cb40143083q) |
 | SRC-013 | ⚠️ uncertain | HTTP 503 | [The Light-Green Society: Ecology and Technological Modernity in France, 1960-2000](https://catalogue.bnf.fr/ark:/12148/cb39117144k) |
 | SRC-014 | ⚠️ uncertain | HTTP 503 | [Si je veux, quand je veux: contraception et avortement dans la société française (1956-1979)](https://catalogue.bnf.fr/ark:/12148/cb42743382h) |
 | SRC-015 | ✅ valid | DOI résolu | [Multi-Ethnic France: Immigration, Politics, Culture and Society](doi:10.4324/9780203962794) |
-| SRC-016 | ⚠️ uncertain | HTTP 503 | [La Force de l'ordre: une anthropologie de la police des quartiers](https://catalogue.bnf.fr/ark:/12148/cb42542152f) |
+| SRC-016 | ⚠️ uncertain | timeout | [La Force de l'ordre: une anthropologie de la police des quartiers](https://catalogue.bnf.fr/ark:/12148/cb42542152f) |
 | SRC-017 | ✅ valid | DOI résolu | [Why the French Don't Like Headscarves: Islam, the State, and Public Space](doi:10.2307/j.ctt7rrd5) |
 | SRC-018 | ✅ valid | HTTP 200 | [The Paris Agreement](https://unfccc.int/process-and-meetings/the-paris-agreement) |
-| SRC-019 | ⚠️ uncertain | HTTP 503 | [Les Trente Glorieuses, ou la révolution invisible de 1946 à 1975](https://catalogue.bnf.fr/ark:/12148/cb34619374q) |
+| SRC-019 | ⚠️ uncertain | timeout | [Les Trente Glorieuses, ou la révolution invisible de 1946 à 1975](https://catalogue.bnf.fr/ark:/12148/cb34619374q) |
 | SRC-020 | ✅ valid | DOI résolu | [Constitutional enshrinement as a way of safeguarding abortion rights: The case of France](doi:10.1016/j.healthpol.2024.105124) |
 
 ### uk — 20 sources, 0 problème(s)
@@ -76,21 +76,21 @@
 | SRC-003 | ✅ valid | HTTP 200 | [Executive Order 9066: Authorizing the Secretary of War to Prescribe Military Areas](https://www.archives.gov/milestone-documents/executive-order-9066) |
 | SRC-004 | ✅ valid | HTTP 200 | [Civil Rights Act of 1964](https://www.archives.gov/milestone-documents/civil-rights-act) |
 | SRC-005 | ✅ valid | HTTP 200 | [Voting Rights Act of 1965](https://www.archives.gov/milestone-documents/voting-rights-act) |
-| SRC-006 | ⚠️ uncertain | fetch failed | [An Indigenous Peoples' History of the United States](https://openlibrary.org/works/OL17640485W) |
-| SRC-007 | ⚠️ uncertain | fetch failed | [The Half Has Never Been Told: Slavery and the Making of American Capitalism](https://openlibrary.org/works/OL17069294W) |
-| SRC-008 | ⚠️ uncertain | fetch failed | [Reconstruction: America's Unfinished Revolution, 1863-1877](https://openlibrary.org/works/OL1805114W) |
-| SRC-009 | ⚠️ uncertain | fetch failed | [How to Hide an Empire: A History of the Greater United States](https://openlibrary.org/books/OL27912554M) |
-| SRC-010 | ⚠️ uncertain | fetch failed | [Strangers from a Different Shore: A History of Asian Americans](https://openlibrary.org/works/OL85716W) |
-| SRC-011 | ⚠️ uncertain | fetch failed | [Impossible Subjects: Illegal Aliens and the Making of Modern America](https://openlibrary.org/works/OL8328160W) |
-| SRC-012 | ⚠️ uncertain | fetch failed | [Harvest of Empire: A History of Latinos in America](https://openlibrary.org/works/OL464466W) |
-| SRC-013 | ⚠️ uncertain | fetch failed | [Suffrage: Women's Long Battle for the Vote](https://openlibrary.org/books/OL27998147M) |
-| SRC-014 | ⚠️ uncertain | fetch failed | [Death in the Haymarket: A Story of Chicago, the First Labor Movement and the Bombing that Divided Gi](https://openlibrary.org/works/OL2745881W) |
+| SRC-006 | ✅ valid | HTTP 200 | [An Indigenous Peoples' History of the United States](https://openlibrary.org/works/OL17640485W) |
+| SRC-007 | ✅ valid | HTTP 200 | [The Half Has Never Been Told: Slavery and the Making of American Capitalism](https://openlibrary.org/works/OL17069294W) |
+| SRC-008 | ✅ valid | HTTP 200 | [Reconstruction: America's Unfinished Revolution, 1863-1877](https://openlibrary.org/works/OL1805114W) |
+| SRC-009 | ✅ valid | HTTP 200 | [How to Hide an Empire: A History of the Greater United States](https://openlibrary.org/books/OL27912554M) |
+| SRC-010 | ✅ valid | HTTP 200 | [Strangers from a Different Shore: A History of Asian Americans](https://openlibrary.org/works/OL85716W) |
+| SRC-011 | ✅ valid | HTTP 200 | [Impossible Subjects: Illegal Aliens and the Making of Modern America](https://openlibrary.org/works/OL8328160W) |
+| SRC-012 | ✅ valid | HTTP 200 | [Harvest of Empire: A History of Latinos in America](https://openlibrary.org/works/OL464466W) |
+| SRC-013 | ✅ valid | HTTP 200 | [Suffrage: Women's Long Battle for the Vote](https://openlibrary.org/books/OL27998147M) |
+| SRC-014 | ✅ valid | HTTP 200 | [Death in the Haymarket: A Story of Chicago, the First Labor Movement and the Bombing that Divided Gi](https://openlibrary.org/works/OL2745881W) |
 | SRC-015 | ✅ valid | HTTP 200 | [Tulsa Race Riot: A Report by the Oklahoma Commission to Study the Tulsa Race Riot of 1921](https://archive.org/details/ReportOnTulsaRaceRiotOf1921) |
-| SRC-016 | ⚠️ uncertain | fetch failed | [Dust Bowl: The Southern Plains in the 1930s](https://openlibrary.org/works/OL3939924W) |
-| SRC-017 | ⚠️ uncertain | fetch failed | [The Rebellious Life of Mrs. Rosa Parks](https://openlibrary.org/works/OL17568457W) |
-| SRC-018 | ⚠️ uncertain | fetch failed | [Silent Spring](https://openlibrary.org/works/OL1884862W) |
-| SRC-019 | ⚠️ uncertain | fetch failed | [Stonewall](https://openlibrary.org/works/OL1918301W) |
-| SRC-020 | ⚠️ uncertain | fetch failed | [Katrina: A History, 1915-2015](https://openlibrary.org/books/OL29460234M) |
+| SRC-016 | ✅ valid | HTTP 200 | [Dust Bowl: The Southern Plains in the 1930s](https://openlibrary.org/works/OL3939924W) |
+| SRC-017 | ✅ valid | HTTP 200 | [The Rebellious Life of Mrs. Rosa Parks](https://openlibrary.org/works/OL17568457W) |
+| SRC-018 | ✅ valid | HTTP 200 | [Silent Spring](https://openlibrary.org/works/OL1884862W) |
+| SRC-019 | ✅ valid | HTTP 200 | [Stonewall](https://openlibrary.org/works/OL1918301W) |
+| SRC-020 | ✅ valid | HTTP 200 | [Katrina: A History, 1915-2015](https://openlibrary.org/books/OL29460234M) |
 
 ### germany — 20 sources, 0 problème(s)
 
@@ -152,7 +152,7 @@
 | SRC-004 | ✅ valid | DOI résolu | [Beyond convivencia: critical reflections on the historiography of interfaith relations in Christian ](doi:10.1080/17546550802700335) |
 | SRC-005 | ✅ valid | DOI résolu | [After Expulsion: 1492 and the Making of Sephardic Jewry](doi:10.18574/nyu/9780814729113.001.0001) |
 | SRC-006 | ✅ valid | DOI résolu | [The Expulsion of the Moriscos from Spain: A Mediterranean Diaspora](doi:10.1163/9789004279353) |
-| SRC-007 | ⚠️ uncertain | fetch failed | [La gran redada de gitanos: España, la prisión general de gitanos en 1749](https://dialnet.unirioja.es/servlet/libro?codigo=237554) |
+| SRC-007 | ✅ valid | HTTP 200 | [La gran redada de gitanos: España, la prisión general de gitanos en 1749](https://dialnet.unirioja.es/servlet/libro?codigo=237554) |
 | SRC-008 | ✅ valid | HTTP 200 | [Imperial Spain 1469–1716](https://www.penguin.co.uk/books/54107/imperial-spain-1469-1716-by-jh-elliott/9780141007038) |
 | SRC-009 | ✅ valid | DOI résolu | [Deadly Embrace: Morocco and the Road to the Spanish Civil War](doi:10.1093/oso/9780199252961.001.0001) |
 | SRC-010 | 🔒 protected | HTTP 403 | [War and Genocide in Cuba, 1895–1898](https://uncpress.org/book/9780807859261/war-and-genocide-in-cuba-1895-1898) |
@@ -171,24 +171,24 @@
 
 | ID | Statut | Détail | Référence |
 | --- | --- | --- | --- |
-| SRC-001 | ⚠️ uncertain | fetch failed | [The Search for Modern China](https://openlibrary.org/books/OL27674657M) |
+| SRC-001 | ✅ valid | HTTP 200 | [The Search for Modern China](https://openlibrary.org/books/OL27674657M) |
 | SRC-002 | ✅ valid | DOI résolu | [China in War and Revolution, 1895-1949](doi:10.4324/9780203015629) |
-| SRC-003 | ⚠️ uncertain | fetch failed | [A Bitter Revolution: China's Struggle with the Modern World](https://openlibrary.org/books/OL3302014M) |
-| SRC-004 | ⚠️ uncertain | fetch failed | [Forgotten Ally: China's World War II, 1937-1945](https://openlibrary.org/books/OL26889206M) |
+| SRC-003 | ✅ valid | HTTP 200 | [A Bitter Revolution: China's Struggle with the Modern World](https://openlibrary.org/books/OL3302014M) |
+| SRC-004 | ✅ valid | HTTP 200 | [Forgotten Ally: China's World War II, 1937-1945](https://openlibrary.org/books/OL26889206M) |
 | SRC-005 | ✅ valid | DOI résolu | [The Nanjing Massacre in History and Historiography](doi:10.1525/california/9780520220065.001.0001) |
-| SRC-006 | ⚠️ uncertain | fetch failed | [The Yenan Way in Revolutionary China](https://openlibrary.org/books/OL4467599M) |
+| SRC-006 | ✅ valid | HTTP 200 | [The Yenan Way in Revolutionary China](https://openlibrary.org/books/OL4467599M) |
 | SRC-007 | ✅ valid | DOI résolu | [Mao's Last Revolution](doi:10.4159/9780674040410) |
 | SRC-008 | ✅ valid | DOI résolu | [China Under Mao: A Revolution Derailed](doi:10.4159/9780674286689) |
-| SRC-009 | ⚠️ uncertain | fetch failed | [Mao's Great Famine: The History of China's Most Devastating Catastrophe, 1958-1962](https://openlibrary.org/books/OL48626010M) |
+| SRC-009 | ✅ valid | HTTP 200 | [Mao's Great Famine: The History of China's Most Devastating Catastrophe, 1958-1962](https://openlibrary.org/books/OL48626010M) |
 | SRC-010 | ✅ valid | DOI résolu | [Famine in China, 1958-61](doi:10.2307/1973284) |
 | SRC-011 | ✅ valid | DOI résolu | [The Gender of Memory: Rural Women and China's Collective Past](doi:10.1525/9780520950344) |
 | SRC-012 | ✅ valid | DOI résolu | [Just One Child: Science and Policy in Deng's China](doi:10.1525/california/9780520253384.001.0001) |
 | SRC-013 | ✅ valid | DOI résolu | [Deng Xiaoping and the Transformation of China](doi:10.4159/harvard.9780674062832) |
-| SRC-014 | ⚠️ uncertain | fetch failed | [The Chinese Economy: Adaptation and Growth](https://openlibrary.org/books/OL26956063M) |
+| SRC-014 | ✅ valid | HTTP 200 | [The Chinese Economy: Adaptation and Growth](https://openlibrary.org/books/OL26956063M) |
 | SRC-015 | ✅ valid | DOI résolu | [Eurasian Crossroads: A History of Xinjiang](doi:10.7312/mill20454) |
-| SRC-016 | ⚠️ uncertain | fetch failed | [The Dragon in the Land of Snows: A History of Modern Tibet since 1947](https://openlibrary.org/books/OL13626300M) |
+| SRC-016 | ✅ valid | HTTP 200 | [The Dragon in the Land of Snows: A History of Modern Tibet since 1947](https://openlibrary.org/books/OL13626300M) |
 | SRC-017 | ✅ valid | DOI résolu | [China: An Environmental History](doi:10.5040/9798216407034) |
-| SRC-018 | ⚠️ uncertain | fetch failed | [The People's Republic of Amnesia: Tiananmen Revisited](https://openlibrary.org/books/OL29701218M) |
+| SRC-018 | ✅ valid | HTTP 200 | [The People's Republic of Amnesia: Tiananmen Revisited](https://openlibrary.org/books/OL29701218M) |
 | SRC-019 | ✅ valid | HTTP 200 | [Report of the WHO-China Joint Mission on Coronavirus Disease 2019 (COVID-19)](https://www.who.int/docs/default-source/coronaviruse/who-china-joint-mission-on-covid-19-final-report.pdf) |
 | SRC-020 | ✅ valid | DOI résolu | [Coming to Terms with the Nation: Ethnic Classification in Modern China](doi:10.1525/9780520947634) |
 
@@ -196,24 +196,24 @@
 
 | ID | Statut | Détail | Référence |
 | --- | --- | --- | --- |
-| SRC-001 | ⚠️ uncertain | fetch failed | [The Penguin History of Early India: From the Origins to AD 1300](https://openlibrary.org/works/OL360007W) |
-| SRC-002 | ⚠️ uncertain | fetch failed | [A History of Ancient and Early Medieval India: From the Stone Age to the 12th Century](https://openlibrary.org/works/OL1077895W) |
+| SRC-001 | ✅ valid | HTTP 200 | [The Penguin History of Early India: From the Origins to AD 1300](https://openlibrary.org/works/OL360007W) |
+| SRC-002 | ✅ valid | HTTP 200 | [A History of Ancient and Early Medieval India: From the Stone Age to the 12th Century](https://openlibrary.org/works/OL1077895W) |
 | SRC-003 | ✅ valid | DOI résolu | [India in the Persianate Age, 1000-1765](doi:10.1525/9780520974234) |
 | SRC-004 | ✅ valid | DOI résolu | [Indian Society and the Making of the British Empire](doi:10.1017/chol9780521250924) |
-| SRC-005 | ⚠️ uncertain | fetch failed | [Modern India, 1885-1947](https://openlibrary.org/works/OL36514380W) |
-| SRC-006 | ⚠️ uncertain | fetch failed | [India After Gandhi: The History of the World's Largest Democracy](https://openlibrary.org/works/OL15858520W) |
-| SRC-007 | ⚠️ uncertain | fetch failed | [The Other Side of Silence: Voices from the Partition of India](https://openlibrary.org/works/OL86482W) |
-| SRC-008 | ⚠️ uncertain | fetch failed | [The Long Partition and the Making of Modern South Asia: Refugees, Boundaries, Histories](https://openlibrary.org/works/OL9349423W) |
+| SRC-005 | ✅ valid | HTTP 200 | [Modern India, 1885-1947](https://openlibrary.org/works/OL36514380W) |
+| SRC-006 | ✅ valid | HTTP 200 | [India After Gandhi: The History of the World's Largest Democracy](https://openlibrary.org/works/OL15858520W) |
+| SRC-007 | ✅ valid | HTTP 200 | [The Other Side of Silence: Voices from the Partition of India](https://openlibrary.org/works/OL86482W) |
+| SRC-008 | ✅ valid | HTTP 200 | [The Long Partition and the Making of Modern South Asia: Refugees, Boundaries, Histories](https://openlibrary.org/works/OL9349423W) |
 | SRC-009 | ✅ valid | DOI résolu | [The Sole Spokesman: Jinnah, the Muslim League and the Demand for Pakistan](doi:10.1017/cbo9780511558856) |
 | SRC-010 | ✅ valid | DOI résolu | [Castes of Mind: Colonialism and the Making of Modern India](doi:10.2307/j.ctt7rq9d) |
-| SRC-011 | ⚠️ uncertain | fetch failed | [India's Silent Revolution: The Rise of the Lower Castes in North India](https://openlibrary.org/works/OL2122936W) |
+| SRC-011 | ✅ valid | HTTP 200 | [India's Silent Revolution: The Rise of the Lower Castes in North India](https://openlibrary.org/works/OL2122936W) |
 | SRC-012 | ✅ valid | DOI résolu | [Women in Modern India](doi:10.1017/chol9780521268127) |
-| SRC-013 | ⚠️ uncertain | fetch failed | [Late Victorian Holocausts: El Niño Famines and the Making of the Third World](https://openlibrary.org/works/OL150679W) |
+| SRC-013 | ✅ valid | HTTP 200 | [Late Victorian Holocausts: El Niño Famines and the Making of the Third World](https://openlibrary.org/works/OL150679W) |
 | SRC-014 | ✅ valid | DOI résolu | [Poverty and Famines: An Essay on Entitlement and Deprivation](doi:10.1093/0198284632.001.0001) |
 | SRC-015 | ✅ valid | DOI résolu | [Crossing the Bay of Bengal: The Furies of Nature and the Fortunes of Migrants](doi:10.2307/j.ctt6wpmb1) |
 | SRC-016 | ✅ valid | DOI résolu | [This Fissured Land: An Ecological History of India](doi:10.1093/acprof:oso/9780198077442.001.0001) |
 | SRC-017 | ✅ valid | DOI résolu | [Hungry Bengal: War, Famine and the End of Empire](doi:10.1093/acprof:oso/9780190209889.001.0001) |
-| SRC-018 | ⚠️ uncertain | fetch failed | [The Burning Forest: India's War in Bastar](https://openlibrary.org/works/OL28795605W) |
+| SRC-018 | ✅ valid | HTTP 200 | [The Burning Forest: India's War in Bastar](https://openlibrary.org/works/OL28795605W) |
 | SRC-019 | ✅ valid | HTTP 200 | [Annihilation of Caste: The Annotated Critical Edition](https://archive.org/details/ambedkar-annihilation-of-castes) |
 | SRC-020 | ✅ valid | HTTP 200 | [The Constitution of India](https://www.india.gov.in/my-government/constitution-of-india) |
 
@@ -240,7 +240,7 @@
 | SRC-017 | ✅ valid | DOI résolu | [Islands of Discontent: Okinawan Responses to Japanese and American Power](doi:10.5771/9781461637929) |
 | SRC-018 | ✅ valid | HTTP 200 | [The Fukushima Daiichi Accident: Report by the Director General](https://www-pub.iaea.org/MTCD/publications/PDF/Pub1710-ReportByTheDG-Web.pdf) |
 | SRC-019 | ✅ valid | HTTP 200 | [Current Population Estimates as of October 1, 2024](https://www.stat.go.jp/english/data/jinsui/2024np/index.html) |
-| SRC-020 | ✅ valid | HTTP 200 | [Act on Promoting Measures to Achieve a Society in which the Pride of Ainu People is Respected (Act N](https://www.japaneselawtranslation.go.jp/en/laws/view/4538/en) |
+| SRC-020 | 🔒 protected | HTTP 403 | [Act on Promoting Measures to Achieve a Society in which the Pride of Ainu People is Respected (Act N](https://www.japaneselawtranslation.go.jp/en/laws/view/4538/en) |
 
 ### egypt — 20 sources, 0 problème(s)
 

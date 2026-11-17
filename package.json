@@ -19,7 +19,8 @@
     "build:event-images": "node scripts/build-event-images.mjs",
     "build:images:all": "npm run build:event-images && node scripts/fetch-wiki-images.mjs && node scripts/fetch-search-images.mjs && node scripts/optimize-images.mjs",
     "build:places": "node scripts/build-place-atlas.mjs",
-    "test:e2e": "node scripts/e2e-keyboard.mjs"
+    "test:e2e": "node scripts/e2e-keyboard.mjs",
+    "verify:all": "npm run audit:timeline && npm run audit:dossiers && npm run verify:sources && npm run test:e2e"
   },
   "keywords": [
     "histoire",
