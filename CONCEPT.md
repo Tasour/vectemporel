@@ -272,7 +272,11 @@ Cela encode le pays, la fenêtre temporelle et, éventuellement, l’événement
 - notifications ;
 - monétisation.
 
-### 6.9 Queue du dragon
+### 6.9 Récit et queue du dragon
+
+Le **Récit** est la porte d’entrée : période → panorama → lieux, entièrement au clavier (`STORY_MODE.md`). La touche `Échap` mène à la queue du dragon, canevas libre où plonger remonte le temps.
+
+#### Queue du dragon
 
 La queue du dragon est la **vue principale et unique** de Vectemporel : un canevas zoomable de type Prezi, ouvert au chargement. Plonger vers le centre remonte le temps ; remonter vers l’extérieur avance vers le présent. Chaque écaille est un repère avec son image, son ère, ses tags, ses figures et ses lieux. La frise linéaire reste accessible via `?classic=1`.
 
@@ -494,6 +498,8 @@ Navigateur
   app.js          → état, frise, recherche, lecteur
   data.js         → 10 pays, 229 événements
   globe-engine.js → moteur Three.js (1 sphère, 1 draw call)
+  story.js       → récit période/panorama/lieux
+  place-atlas.js → coordonnées vérifiées des lieux
   dragon.js      → canevas zoomable Three.js
   dragon art     → motifs génératifs SVG
   event-images.js → 229 images vérifiées avec crédits

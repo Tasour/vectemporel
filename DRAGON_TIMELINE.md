@@ -1,7 +1,7 @@
 # Queue du dragon — canevas temporel zoomable
 
 > **Note de design v1.1 — 17 novembre 2026.**
-> **Vue principale et unique de Vectemporel** : un canevas vectoriel zoomable où le zoom est le temps. Chaque écaille de la queue est un repère daté, illustré, relié à son ère, à des figures et à des lieux. La frise historique reste accessible uniquement avec `?classic=1`.
+> **Vue libre de Vectemporel**, accessible depuis le Récit (touche `Échap`) : un canevas vectoriel zoomable où le zoom est le temps. Chaque écaille de la queue est un repère daté, illustré, relié à son ère, à des figures et à des lieux. Le **Récit** s’ouvre au chargement (`STORY_MODE.md`) ; la frise historique reste accessible uniquement avec `?classic=1`.
 
 ---
 

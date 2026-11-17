@@ -275,6 +275,9 @@
             <span class="dragon-context" id="spiral-context"></span>
           </div>
           <div class="dragon-actions">
+            <button class="dragon-story-btn" id="story-btn" type="button" aria-label="Ouvrir le récit (touche R)">
+              <span>Récit</span><kbd>R</kbd>
+            </button>
             <span class="dragon-readout" id="dragon-readout">Échelle 1 / 1</span>
             <select class="dragon-select" id="spiral-country" aria-label="Choisir un pays"></select>
             <button class="dragon-icon-button" id="spiral-close" type="button" aria-label="Fermer la queue du dragon">
@@ -365,6 +368,47 @@
           </article>
         </div>
       </section>
+    </div>
+
+    <div class="story-overlay" id="story-overlay" hidden>
+      <div class="story-backdrop" data-close-story></div>
+      <section class="story-shell" role="dialog" aria-modal="true" aria-labelledby="story-heading">
+        <header class="story-bar">
+          <div class="story-brand">
+            <span class="story-mark" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 12h16M8 8l-4 4 4 4m8-8 4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </span>
+            <span class="story-brand-name" id="story-heading">Récit</span>
+            <span class="story-separator">/</span>
+            <span class="story-breadcrumb" id="story-breadcrumb"></span>
+          </div>
+          <div class="story-actions">
+            <span class="story-context" id="story-context"></span>
+            <button class="story-icon-button" id="story-help-btn" type="button" aria-label="Aide clavier" title="Aide clavier (?)">?</button>
+            <button class="story-icon-button" id="story-close" type="button" aria-label="Fermer le récit">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></svg>
+            </button>
+          </div>
+        </header>
+        <div class="story-stage" id="story-stage"></div>
+        <footer class="story-footer">
+          <div class="story-keys" id="story-keys"></div>
+          <div class="story-dots" id="story-dots" aria-hidden="true"></div>
+          <div class="story-controls">
+            <button class="story-control" id="story-prev" type="button" aria-label="Élément précédent">←</button>
+            <button class="story-control is-play" id="story-play" type="button" aria-label="Lecture automatique">▶</button>
+            <button class="story-control" id="story-next" type="button" aria-label="Élément suivant">→</button>
+          </div>
+        </footer>
+      </section>
+      <div class="story-help" id="story-help" hidden>
+        <div class="story-help-sheet" role="dialog" aria-modal="true" aria-labelledby="story-help-title">
+          <button class="story-help-close" id="story-help-close" type="button" aria-label="Fermer l’aide">×</button>
+          <h2 id="story-help-title">Naviguer sans souris</h2>
+          <p>Le récit se parcourt entièrement au clavier. Aucune action ne nécessite la souris.</p>
+          <div class="story-help-grid" id="story-help-grid"></div>
+        </div>
+      </div>
     </div>
 
     <div class="reader-overlay" id="reader-overlay" hidden>
@@ -512,7 +556,9 @@
     <script src="globe-engine.js"></script>
     <script src="spiral-meta.js"></script>
     <script src="event-images.js"></script>
+    <script src="place-atlas.js"></script>
     <script src="dragon.js"></script>
+    <script src="story.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

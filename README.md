@@ -30,11 +30,12 @@ npm run build:atlas   # régénère countries.js / COUNTRIES.md
 npm run build:globe   # régénère les textures du globe 3D
 npm run build:spiral-meta  # régénère les acteurs/lieux par ère
 npm run build:images:all    # régénère les 229 images vérifiées
+npm run build:places        # régénère les coordonnées et contours des lieux
 npm run audit:timeline  # régénère TIMELINE_AUDIT.md
 npm start
 ```
 
-Ouvrir **http://localhost:4173** : la queue du dragon s’ouvre directement et reste la vue principale. La frise classique n’est accessible qu’avec `?classic=1`.
+Ouvrir **http://localhost:4173** : le **Récit** s’ouvre directement (période → panorama → lieux), avec un pilotage complet au clavier. La touche `Échap` mène à la queue du dragon ; la frise classique n’est accessible qu’avec `?classic=1`.
 
 Le serveur peut aussi écouter sur un autre port :
 
@@ -42,11 +43,20 @@ Le serveur peut aussi écouter sur un autre port :
 PORT=8080 npm start
 ```
 
-Aucun build front n’est nécessaire : `index.html`, `styles.css`, `app.js`, `data.js`, `countries.js`, `globe-engine.js`, `dragon.js`, `spiral-meta.js`, `event-images.js` et les images du globe sont servis directement.
+Aucun build front n’est nécessaire : `index.html`, `styles.css`, `app.js`, `data.js`, `countries.js`, `globe-engine.js`, `dragon.js`, `story.js`, `spiral-meta.js`, `event-images.js`, `place-atlas.js` et les images sont servis directement.
 
 ---
 
 ## Ce que contient le POC
+
+### Le Récit (vue d’accueil)
+
+- Parcours en trois étapes : **choisir une période**, parcourir le **panorama** des repères, naviguer de **lieu en lieu**.
+- **Clavier complet** : flèches, `1`–`9`, `Entrée`, `Espace`, `Échap`, `?` pour l’aide.
+- Mini-film : grande image, résumé découpé en phrases animées, pellicule des repères, lecture automatique.
+- Carte des lieux avec **coordonnées vérifiées** (114/120) et contours du pays ; aucun point inventé.
+- Aucune anecdote fabriquée : le récit met en scène les repères vérifiés.
+- Design : **[STORY_MODE.md](STORY_MODE.md)**. Lieux : **[PLACE_ATLAS.md](PLACE_ATLAS.md)**.
 
 ### La queue du dragon
 
@@ -186,6 +196,8 @@ globe-map.png       texture visuelle du globe
 globe-pick.png      texture de sélection pays
 globe-engine.js     moteur Three.js optimisé
 dragon.js           canevas zoomable Three.js
+story.js            récit périodes/panorama/lieux
+place-atlas.js      coordonnées et contours des lieux
 spiral-meta.js      acteurs et lieux par ère
 vendor/three.min.js Three.js r152 (UMD)
 COUNTRY_AUDITS.md   audits des 10 pays pilotes
@@ -193,6 +205,8 @@ COUNTRIES.md        liste complète des pays
 TIMELINE_METHOD.md  méthode de production d’une frise (11 étapes)
 SPIRAL_TIMELINE.md  recherche sur la forme narrative
 DRAGON_TIMELINE.md  design du canevas zoomable
+STORY_MODE.md       parcours narratif et clavier
+PLACE_ATLAS.md      atlas des lieux vérifiés
 EVENT_IMAGES.md     registre des images et licences
 TIMELINE_AUDIT.md   audit structurel généré
 SOURCE_VERIFICATION.md vérification des sources des dossiers
@@ -211,6 +225,7 @@ scripts/build-event-images.mjs
 scripts/fetch-wiki-images.mjs
 scripts/fetch-search-images.mjs
 scripts/optimize-images.mjs
+scripts/build-place-atlas.mjs
 scripts/verify-sources.mjs
 scripts/verify-grok.mjs
 CONCEPT.md          note de concept

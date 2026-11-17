@@ -17,7 +17,8 @@
     "apply:fixes:dry": "node scripts/apply-country-fixes.mjs --dry-run",
     "build:spiral-meta": "node scripts/build-spiral-meta.mjs",
     "build:event-images": "node scripts/build-event-images.mjs",
-    "build:images:all": "npm run build:event-images && node scripts/fetch-wiki-images.mjs && node scripts/fetch-search-images.mjs && node scripts/optimize-images.mjs"
+    "build:images:all": "npm run build:event-images && node scripts/fetch-wiki-images.mjs && node scripts/fetch-search-images.mjs && node scripts/optimize-images.mjs",
+    "build:places": "node scripts/build-place-atlas.mjs"
   },
   "keywords": [
     "histoire",

@@ -1182,6 +1182,7 @@
 
   function onKeyDown(event) {
     if (!state.open) return;
+    if (!document.getElementById('story-overlay')?.hidden) return;
     if (state.detailOpen) {
       if (event.key === 'Escape') {
         event.preventDefault();
@@ -1223,6 +1224,9 @@
     } else if (event.key === 'End') {
       event.preventDefault();
       goTo(state.story.items.length - 1);
+    } else if (event.key.toLowerCase() === 'r') {
+      event.preventDefault();
+      window.VECTEMPOREL_STORY?.open();
     } else if (event.key === 'Tab') {
       const focusable = [...els.overlay.querySelectorAll('button:not([disabled]), select, a[href], [tabindex]:not([tabindex="-1"])')]
         .filter((element) => element.offsetParent !== null);
@@ -1362,6 +1366,7 @@
   const start = () => {
     if (!new URLSearchParams(window.location.search).has('classic')) {
       window.setTimeout(() => open(undefined, { permanent: true }), 160);
+      window.setTimeout(() => window.VECTEMPOREL_STORY?.open(), 520);
     }
   };
   if (document.readyState === 'complete') start();

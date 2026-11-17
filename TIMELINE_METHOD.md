@@ -409,7 +409,7 @@ Une frise n’est pas un dump de données. La méthode distingue :
 | **Vue zoom** | événements secondaires, processus, sources, incertitudes |
 | **Vue inventaire** | corpus complet, exportable, filtrable |
 
-**Vue principale.** La **queue du dragon** est la visualisation par défaut et unique : un canevas zoomable où plonger vers le centre remonte le temps, et où chaque écaille est un repère illustré (`DRAGON_TIMELINE.md`). La frise linéaire reste disponible via `?classic=1` pour la recherche rapide ; la spirale narrative est un prototype documenté dans `SPIRAL_TIMELINE.md`.
+**Vue principale.** Le **Récit** s’ouvre par défaut : période → panorama → lieux (`STORY_MODE.md`). Il débouche sur la **queue du dragon**, canevas zoomable où plonger vers le centre remonte le temps : un canevas zoomable où plonger vers le centre remonte le temps, et où chaque écaille est un repère illustré (`DRAGON_TIMELINE.md`). La frise linéaire reste disponible via `?classic=1` pour la recherche rapide ; la spirale narrative est un prototype documenté dans `SPIRAL_TIMELINE.md`.
 
 Règles :
 
@@ -501,6 +501,8 @@ Formulation recommandée : « Frise auditée selon le protocole v1.0 le [date] ;
 - `TIMELINE_AUDIT.md` — rapport généré.
 - `SOURCE_VERIFICATION.md` — vérification des 200 sources.
 - `AUDIT_SYNTHESIS.md` — synthèse comparative des 10 dossiers.
+- `STORY_MODE.md` — parcours narratif et navigation clavier.
+- `PLACE_ATLAS.md` — atlas des lieux vérifiés.
 - `SPIRAL_TIMELINE.md` — recherche sur la forme narrative.
 - `DRAGON_TIMELINE.md` — design du canevas zoomable.
 - `EVENT_IMAGES.md`, `WIKI_IMAGES.md`, `SEARCH_IMAGES.md` — registre des 229 images vérifiées et de leurs licences.
