@@ -1,0 +1,20 @@
+{
+  "name": "vectemporel-v2",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "V-ATLAS — atlas hiérarchique vérifié, généré depuis les audits locaux.",
+  "scripts": {
+    "build:data": "node scripts/build-dataset.mjs",
+    "start": "node scripts/serve.mjs",
+    "verify": "node scripts/verify.mjs",
+    "test:e2e": "node tests/e2e.mjs",
+    "check": "npm run verify && npm run test:e2e"
+  },
+  "dependencies": {
+    "yaml": "^2.9.1"
+  },
+  "devDependencies": {
+    "puppeteer-core": "^23.11.1"
+  }
+}
