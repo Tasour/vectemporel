@@ -541,12 +541,14 @@
               <button id="solar-dashboard-toggle" type="button" aria-label="Réduire le tableau de bord">−</button>
             </div>
             <nav class="solar-crumbs" id="solar-crumbs" aria-label="Fil d’Ariane"></nav>
-            <div class="solar-rank" id="solar-rank"></div>
+            <div class="solar-rank" id="solar-rank" role="status" aria-live="polite"></div>
             <div class="solar-tree" id="solar-tree"></div>
             <div class="solar-decision-actions">
               <button id="solar-prev" type="button">← Précédent</button>
               <button id="solar-next" type="button">Suivant →</button>
               <button id="solar-up" type="button">↑ Remonter</button>
+              <button id="solar-scope" type="button" aria-pressed="false">Une ère</button>
+              <button id="solar-moons-toggle" type="button" aria-pressed="true">Lunes</button>
             </div>
           </aside>
           <div class="solar-world" id="solar-world"></div>
@@ -584,6 +586,7 @@
             <li><kbd>Espace</kbd> : afficher / masquer les lunes</li>
             <li><kbd>↑</kbd> : remonter d’un niveau</li>
             <li><kbd>0</kbd> : vue d’ensemble</li>
+            <li>Le rail permet de choisir « Une ère » ou « Toutes les ères »</li>
             <li><kbd>Échap</kbd> : revenir au monde 3D</li>
           </ul>
           <p class="solar-help-note">Tout est rangé autour de son ère : aucune donnée n’est inventée.</p>

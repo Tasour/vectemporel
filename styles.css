@@ -7855,3 +7855,37 @@ button.mode-tab:hover {
     transform: translateY(calc(100% + 12px));
   }
 }
+
+/* Divulgation progressive et focus ---------------------------------------- */
+
+.sun-distant {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border: 1px solid rgba(230, 185, 111, 0.34);
+  border-radius: 50%;
+  background: rgba(230, 185, 111, 0.13);
+  cursor: pointer;
+}
+
+.sun-distant:hover {
+  background: rgba(230, 185, 111, 0.45);
+  box-shadow: 0 0 12px rgba(230, 185, 111, 0.35);
+}
+
+.sun-core:focus-visible,
+.planet:focus-visible,
+.moon:focus-visible,
+.solar-tree-item:focus-visible,
+.solar-decision-actions button:focus-visible,
+.solar-crumbs button:focus-visible {
+  outline: 2px solid var(--gold-bright);
+  outline-offset: 3px;
+}
+
+.solar-decision-actions button[aria-pressed="true"] {
+  border-color: rgba(230, 185, 111, 0.55);
+  background: rgba(230, 185, 111, 0.1);
+  color: var(--gold-bright);
+}

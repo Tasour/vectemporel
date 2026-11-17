@@ -41,17 +41,20 @@ Rail gauche avec fil d'Ariane cliquable, rang (« 2 / 3 événements · 52 av. J
 Acceptation : 100 % des événements atteignables sans la carte ; l'actif est visible dans l'arbre ; navigation à l'événement suivant en ≤ 2 s.
 *Statut : livré.*
 
-### Chantier 3 — Divulgation progressive (à faire)
+### Chantier 3 — Divulgation progressive (fait)
 Ne plus afficher qu'une ère à la fois dans la carte ; les autres êtres réduits à des points ; un bouton « une seule ère » par défaut, « toutes les ères » optionnel. Cible : ≤ 15 objets nommés simultanément.
-Acceptation : moins de 15 libellés visibles ; enhancement du zoom par défaut ; test utilisateur : trouver un repère nommé en ≤ 5 s.
+Acceptation : moins de 15 libellés visibles ; zoom resserré par défaut ; test utilisateur : trouver un repère nommé en ≤ 5 s.
+*Statut : livré — une seule ère nommée par défaut, les huit autres réduites à des points ; bascule « Toutes les ères ».*
 
-### Chantier 4 — Accessibilité et équivalent textuel (à faire)
+### Chantier 4 — Accessibilité et équivalent textuel (partiel)
 Rôles ARIA `tree`/`treeitem`, `aria-selected`, focus visible, `aria-pressed` sur le basculement des lunes, alternatives textuelles sur les images des planètes, annonce du rang à la sélection.
 Acceptation : WCAG 2.1.1 / 2.4.7 / 1.1.1 ; parcours complet clavier souris éteinte, 0 erreur.
+*Statut : partiel — rôles `tree`/`treeitem`, `aria-selected`, `role=status`, `aria-pressed`, focus visible et alternatives textuelles en place ; relecture lecteur d’écran à faire.*
 
-### Chantier 5 — Cohérence des trois modes (à faire)
+### Chantier 5 — Cohérence des trois modes (partiel)
 Un seul état partagé entre Monde, Système et Récit ; même fil d'Ariane, même sélection, même vocabulaire (ère / événement / détail). Aiguillage par intention : « suivre la chronologie », « écouter le récit », « voir la carte ».
 Acceptation : changer de mode conserve pays, ère et événement ; l'utilisateur peut énoncer où il est dans n'importe quel mode.
+*Statut : partiel — le Système transmet pays, ère et événement au Récit ; le retour Récit → Système reste à synchroniser.*
 
 ## 4. Ordre recommandé
 

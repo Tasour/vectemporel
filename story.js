@@ -912,6 +912,13 @@
   window.VECTEMPOREL_STORY = {
     open,
     close,
+    setSelection: (countryId, eraIndex, eventIndex) => {
+      if (!state.story || state.story.country.id !== countryId) state.story = buildStory(countryId);
+      state.countryId = countryId;
+      state.eraIndex = clamp(eraIndex || 0, 0, state.story.eras.length - 1);
+      state.eventIndex = clamp(eventIndex || 0, 0, Math.max(0, state.story.eras[state.eraIndex].events.length - 1));
+      state.placeIndex = 0;
+    },
     setCountry: (id) => {
       state.story = buildStory(id);
       state.countryId = id;
