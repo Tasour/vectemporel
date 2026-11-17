@@ -274,7 +274,7 @@ Cela encode le pays, la fenêtre temporelle et, éventuellement, l’événement
 
 ### 6.9 Récit et queue du dragon
 
-Le **Récit** est la porte d’entrée : période → panorama → lieux, entièrement au clavier (`STORY_MODE.md`). La touche `Échap` mène à la queue du dragon, canevas libre où plonger remonte le temps.
+Le **Plan** est la porte d’entrée ; le **Récit** en est la première destination : période → panorama → lieux, entièrement au clavier (`STORY_MODE.md`). La touche `Échap` mène à la queue du dragon, canevas libre où plonger remonte le temps.
 
 #### Queue du dragon
 

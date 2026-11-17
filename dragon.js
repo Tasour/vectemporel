@@ -1361,14 +1361,7 @@
     state: () => ({ p: state.p, target: state.target, detailOpen: state.detailOpen }),
   };
 
-  // Le dragon est la visualisation principale : il s'ouvre au chargement.
-  // `?classic=1` garde un accès discret à la frise historique.
-  const start = () => {
-    if (!new URLSearchParams(window.location.search).has('classic')) {
-      window.setTimeout(() => open(undefined, { permanent: true }), 160);
-      window.setTimeout(() => window.VECTEMPOREL_STORY?.open(), 520);
-    }
-  };
-  if (document.readyState === 'complete') start();
-  else window.addEventListener('load', start, { once: true });
+  // Le Plan est le point d'entrée. Le dragon ne s'ouvre plus automatiquement :
+  // il reste accessible depuis la grille, la touche D et l'onglet du Récit.
+  // `?classic=1` ouvre directement la frise historique.
 })();

@@ -4,7 +4,7 @@
 
 Une **queue de dragon** zoomable, pays par pays : chaque écaille est un repère illustré, relié à son ère, à des figures et à des lieux. Un lecteur Grokipedia intégré, **traduit automatiquement en français**. Ce dépôt est un **proof of concept** : il sert à discuter du concept, pas à être déployé tel quel.
 
-> La note de concept complète est dans **[CONCEPT.md](CONCEPT.md)**. La méthode de production d’une frise est dans **[TIMELINE_METHOD.md](TIMELINE_METHOD.md)** et la recherche sur la forme narrative dans **[SPIRAL_TIMELINE.md](SPIRAL_TIMELINE.md)** et le design du canevas zoomable dans **[DRAGON_TIMELINE.md](DRAGON_TIMELINE.md)**. Les 10 dossiers pays sont dans **[audits/](audits/)** ; leur synthèse est dans **[AUDIT_SYNTHESIS.md](AUDIT_SYNTHESIS.md)** et le rapport d’intégration dans **[INTEGRATION_REPORT.md](INTEGRATION_REPORT.md)**. Les audits prose sont dans **[COUNTRY_AUDITS.md](COUNTRY_AUDITS.md)**, l’audit structurel généré dans **[TIMELINE_AUDIT.md](TIMELINE_AUDIT.md)** et la liste des 196 pays dans **[COUNTRIES.md](COUNTRIES.md)**.
+> Le **plan directeur unique** est dans **[APP_PLAN.md](APP_PLAN.md)**. La note de concept complète est dans **[CONCEPT.md](CONCEPT.md)**. La méthode de production d’une frise est dans **[TIMELINE_METHOD.md](TIMELINE_METHOD.md)** et la recherche sur la forme narrative dans **[SPIRAL_TIMELINE.md](SPIRAL_TIMELINE.md)** et le design du canevas zoomable dans **[DRAGON_TIMELINE.md](DRAGON_TIMELINE.md)**. Les 10 dossiers pays sont dans **[audits/](audits/)** ; leur synthèse est dans **[AUDIT_SYNTHESIS.md](AUDIT_SYNTHESIS.md)** et le rapport d’intégration dans **[INTEGRATION_REPORT.md](INTEGRATION_REPORT.md)**. Les audits prose sont dans **[COUNTRY_AUDITS.md](COUNTRY_AUDITS.md)**, l’audit structurel généré dans **[TIMELINE_AUDIT.md](TIMELINE_AUDIT.md)** et la liste des 196 pays dans **[COUNTRIES.md](COUNTRIES.md)**.
 
 ![Vectemporel — frise zoomable](screenshots/vectemporel-desktop.png)
 
@@ -196,6 +196,7 @@ globe-map.png       texture visuelle du globe
 globe-pick.png      texture de sélection pays
 globe-engine.js     moteur Three.js optimisé
 dragon.js           canevas zoomable Three.js
+plan.js             point d’entrée, grille 2 × 2
 story.js            récit périodes/panorama/lieux
 satellite-map.js    fond satellite et marqueurs
 place-atlas.js      coordonnées et contours des lieux
