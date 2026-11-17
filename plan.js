@@ -27,6 +27,7 @@
     els.help = document.getElementById('plan-help');
     els.helpBtn = document.getElementById('plan-help-btn');
     els.helpClose = document.getElementById('plan-help-close');
+    els.close = document.getElementById('plan-close');
     els.mainBtn = document.getElementById('plan-main-btn');
     els.storyPlanBtn = document.getElementById('story-plan-btn');
     els.dragonPlanBtn = document.getElementById('dragon-plan-btn');
@@ -53,6 +54,7 @@
     if (!id) return;
     if (els.storyCountry) {
       els.storyCountry.value = id;
+      window.VECTEMPOREL_APP?.setCountry(id);
       window.VECTEMPOREL_STORY?.setCountry(id);
     }
     if (els.dragonCountry) {
@@ -80,6 +82,9 @@
     state.open = false;
     closeHelp();
     els.overlay.hidden = true;
+    if (state.lastFocus?.isConnected) {
+      window.setTimeout(() => state.lastFocus.focus({ preventScroll: true }), 40);
+    }
   }
 
   function openHelp() {
@@ -104,11 +109,13 @@
     if (!VIEWS.includes(view)) return;
     closeHelp();
     if (view === 'recit') {
+      close();
       syncTabs('recit');
       window.VECTEMPOREL_STORY?.open();
       return;
     }
     if (view === 'dragon') {
+      close();
       syncTabs('dragon');
       window.VECTEMPOREL_DRAGON?.open(undefined, { permanent: false });
       return;
@@ -130,7 +137,21 @@
       if (event.key === 'Escape' || event.key === '?') {
         event.preventDefault();
         closeHelp();
+      } else if (event.key === 'Tab') {
+        const focusable = [...els.help.querySelectorAll('button')];
+        if (focusable.length && event.shiftKey && document.activeElement === focusable[0]) {
+          event.preventDefault();
+          focusable[focusable.length - 1].focus();
+        } else if (focusable.length && !event.shiftKey && document.activeElement === focusable[focusable.length - 1]) {
+          event.preventDefault();
+          focusable[0].focus();
+        }
       }
+      return;
+    }
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      close();
       return;
     }
     if (event.key === '?') {
@@ -196,6 +217,8 @@
     });
     els.helpBtn?.addEventListener('click', openHelp);
     els.helpClose?.addEventListener('click', closeHelp);
+    els.close?.addEventListener('click', close);
+    els.overlay?.querySelector('[data-close-plan]')?.addEventListener('click', close);
     els.mainBtn?.addEventListener('click', () => open());
     els.storyPlanBtn?.addEventListener('click', () => {
       window.VECTEMPOREL_STORY?.close();
@@ -226,7 +249,7 @@
     init();
   }
 
-  window.VECTEMPOREL_PLAN = { open, close, goTo, state: () => ({ ...state }) };
+  window.VECTEMPOREL_PLAN = { open, close, goTo, handleKey: onKeyDown, state: () => ({ ...state }) };
 
   // Le MONDE 3D est le menu principal. Le Plan reste accessible par le
   // bouton de la barre et par la touche Plan, mais il ne s'ouvre plus au

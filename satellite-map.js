@@ -84,6 +84,8 @@
       width: 0,
       height: 0,
       token: 0,
+      controller: null,
+      cache: new Map(),
     };
 
     function project(place, bounds, width, height) {
@@ -131,13 +133,27 @@
     async function loadImage() {
       if (!state.bounds || state.width < 20) return;
       const token = ++state.token;
+      state.controller?.abort();
+      state.controller = new AbortController();
       const url = exportUrl(state.bounds, state.width, state.height);
+      const key = url;
       const next = images[1];
       status.hidden = false;
       try {
-        const response = await fetch(url, { headers: { Accept: 'image/jpeg' } });
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        const blob = await response.blob();
+        let blob = state.cache.get(key);
+        if (!blob) {
+          const response = await fetch(url, {
+            headers: { Accept: 'image/jpeg' },
+            signal: state.controller.signal,
+          });
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          blob = await response.blob();
+          if (state.cache.size > 12) {
+            const first = state.cache.keys().next().value;
+            state.cache.delete(first);
+          }
+          state.cache.set(key, blob);
+        }
         if (token !== state.token) return;
         const objectUrl = URL.createObjectURL(blob);
         next.onload = () => {
@@ -149,13 +165,20 @@
           images[0].classList.remove('is-visible');
           root.classList.add('has-image');
           window.setTimeout(() => {
+            if (token !== state.token) {
+              URL.revokeObjectURL(objectUrl);
+              return;
+            }
+            const previous = images[0].src;
             images[0].src = objectUrl;
             images[0].classList.add('is-visible');
             next.classList.remove('is-visible');
+            if (previous?.startsWith('blob:')) URL.revokeObjectURL(previous);
           }, 620);
         };
         next.src = objectUrl;
       } catch (error) {
+        if (error.name === 'AbortError') return;
         root.classList.add('has-fallback');
         status.textContent = 'Fond satellite indisponible — vue schématique';
       } finally {
@@ -216,7 +239,17 @@
     const observer = new ResizeObserver(() => render({ reload: false }));
     observer.observe(container);
 
-    return { setPlaces, select, render, zoomIn, zoomOut, overview, destroy: () => observer.disconnect(), state: () => ({ ...state }) };
+    return {
+      setPlaces, select, render, zoomIn, zoomOut, overview,
+      destroy: () => {
+        observer.disconnect();
+        state.controller?.abort();
+        for (const img of images) {
+          if (img.src?.startsWith('blob:')) URL.revokeObjectURL(img.src);
+        }
+      },
+      state: () => ({ ...state }),
+    };
   }
 
   window.VECTEMPOREL_SATELLITE = { create };

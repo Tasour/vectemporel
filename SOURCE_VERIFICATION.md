@@ -7,9 +7,9 @@
 
 | Statut | Nombre |
 | --- | ---: |
-| DOI/URL valides | 184 |
+| DOI/URL valides | 191 |
 | Protégés mais joignables | 5 |
-| Non concluants | 11 |
+| Non concluants | 4 |
 | DOI non résolus | 0 |
 | Introuvables (404/410) | 0 |
 | Sans DOI ni URL | 0 |
@@ -27,19 +27,19 @@
 | SRC-004 | ✅ valid | DOI résolu | [By Sword and Plow: France and the Conquest of Algeria](doi:10.7591/cornell/9780801449758.001.0001) |
 | SRC-005 | ✅ valid | DOI résolu | [Berthe Morisot](doi:10.1525/9780520916579) |
 | SRC-006 | ✅ valid | HTTP 200 | [Marie Curie – Facts](https://www.nobelprize.org/prizes/physics/1903/marie-curie/facts/) |
-| SRC-007 | ⚠️ uncertain | timeout | [Hybrid Modernities: Architecture and Representation at the 1931 Colonial Exposition, Paris](https://catalogue.bnf.fr/ark:/12148/cb388400778) |
-| SRC-008 | ⚠️ uncertain | timeout | [Vichy France: Old Guard and New Order, 1940-1944](https://catalogue.bnf.fr/ark:/12148/cb35315375q) |
-| SRC-009 | ⚠️ uncertain | HTTP 503 | [Le Syndrome de Vichy de 1944 à nos jours](https://catalogue.bnf.fr/ark:/12148/cb366403257) |
+| SRC-007 | ✅ valid | HTTP 200 | [Hybrid Modernities: Architecture and Representation at the 1931 Colonial Exposition, Paris](https://catalogue.bnf.fr/ark:/12148/cb388400778) |
+| SRC-008 | ✅ valid | HTTP 200 | [Vichy France: Old Guard and New Order, 1940-1944](https://catalogue.bnf.fr/ark:/12148/cb35315375q) |
+| SRC-009 | ✅ valid | HTTP 200 | [Le Syndrome de Vichy de 1944 à nos jours](https://catalogue.bnf.fr/ark:/12148/cb366403257) |
 | SRC-010 | ⚠️ uncertain | HTTP 503 | [The European Rescue of the Nation-State](https://catalogue.bnf.fr/ark:/12148/cb35691422m) |
 | SRC-011 | ✅ valid | DOI résolu | [Paris 1961: Algerians, State Terror, and Memory](doi:10.1093/oso/9780199247257.001.0001) |
-| SRC-012 | ⚠️ uncertain | timeout | [The Invention of Decolonization: The Algerian War and the Remaking of France](https://catalogue.bnf.fr/ark:/12148/cb40143083q) |
-| SRC-013 | ⚠️ uncertain | HTTP 503 | [The Light-Green Society: Ecology and Technological Modernity in France, 1960-2000](https://catalogue.bnf.fr/ark:/12148/cb39117144k) |
-| SRC-014 | ⚠️ uncertain | HTTP 503 | [Si je veux, quand je veux: contraception et avortement dans la société française (1956-1979)](https://catalogue.bnf.fr/ark:/12148/cb42743382h) |
+| SRC-012 | ⚠️ uncertain | HTTP 503 | [The Invention of Decolonization: The Algerian War and the Remaking of France](https://catalogue.bnf.fr/ark:/12148/cb40143083q) |
+| SRC-013 | ✅ valid | HTTP 200 | [The Light-Green Society: Ecology and Technological Modernity in France, 1960-2000](https://catalogue.bnf.fr/ark:/12148/cb39117144k) |
+| SRC-014 | ✅ valid | HTTP 200 | [Si je veux, quand je veux: contraception et avortement dans la société française (1956-1979)](https://catalogue.bnf.fr/ark:/12148/cb42743382h) |
 | SRC-015 | ✅ valid | DOI résolu | [Multi-Ethnic France: Immigration, Politics, Culture and Society](doi:10.4324/9780203962794) |
-| SRC-016 | ⚠️ uncertain | timeout | [La Force de l'ordre: une anthropologie de la police des quartiers](https://catalogue.bnf.fr/ark:/12148/cb42542152f) |
+| SRC-016 | ✅ valid | HTTP 200 | [La Force de l'ordre: une anthropologie de la police des quartiers](https://catalogue.bnf.fr/ark:/12148/cb42542152f) |
 | SRC-017 | ✅ valid | DOI résolu | [Why the French Don't Like Headscarves: Islam, the State, and Public Space](doi:10.2307/j.ctt7rrd5) |
 | SRC-018 | ✅ valid | HTTP 200 | [The Paris Agreement](https://unfccc.int/process-and-meetings/the-paris-agreement) |
-| SRC-019 | ⚠️ uncertain | timeout | [Les Trente Glorieuses, ou la révolution invisible de 1946 à 1975](https://catalogue.bnf.fr/ark:/12148/cb34619374q) |
+| SRC-019 | ✅ valid | HTTP 200 | [Les Trente Glorieuses, ou la révolution invisible de 1946 à 1975](https://catalogue.bnf.fr/ark:/12148/cb34619374q) |
 | SRC-020 | ✅ valid | DOI résolu | [Constitutional enshrinement as a way of safeguarding abortion rights: The case of France](doi:10.1016/j.healthpol.2024.105124) |
 
 ### uk — 20 sources, 0 problème(s)

@@ -136,7 +136,7 @@ Ces angles morts ne sont pas déclarés absents : ils sont **impossibles à audi
 | Priorité | Action | Livrable |
 | --- | --- | --- |
 | P0 | Définir le schéma v2 : `Actor`, `Place`, `Source`, `Claim`, `TimeSpan`, `datePrecision`. | Spécification + migration de `data.js`. |
-| P0 | Ajouter un `TimeSpan` minimal à chaque repère, avec rôle de date et source. | 189 fiches avec bornes, précision et certitude. |
+| P0 | Ajouter un `TimeSpan` minimal à chaque repère, avec rôle de date et source. | 229 repères avec bornes, précision et certitude. |
 | P1 | Remplir `templates/country-audit.yaml` pour les 10 pays pilotes. | `audits/<pays>/country-audit.yaml`. |
 | P1 | Remplir la matrice de couverture et le registre d’omissions. | `coverage-matrix.csv` + `omissions.yaml` par pays. |
 | P1 | Ajouter deux sources indépendantes par fiche-événement. | `source-register.csv` + `sources` dans les fiches. |

@@ -6,11 +6,35 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import YAML from 'yaml';
+import vm from 'node:vm';
 import { feature } from 'topojson-client';
 
 const ROOT = path.resolve(new URL('..', import.meta.url).pathname);
+
+function loadEventIds() {
+  const context = { window: {} };
+  vm.createContext(context);
+  vm.runInContext(fs.readFileSync(path.join(ROOT, 'data.js'), 'utf8'), context);
+  return new Set(context.window.VECTEMPOREL_DATA.countries.flatMap((country) => country.events.map((event) => event.id)));
+}
+const EVENT_IDS = loadEventIds();
+const PREFIXES = { france: 'fr', uk: 'uk', usa: 'us', germany: 'de', italy: 'it', spain: 'es', china: 'cn', india: 'in', japan: 'jp', egypt: 'eg' };
+function normalizeEvents(events, countryId) {
+  return [...new Set(events.map((id) => {
+    const match = String(id).match(/^PROP-(\d+)$/i);
+    if (!match) return id;
+    return `${PREFIXES[countryId] || 'xx'}-prop-${match[1].padStart(3, '0')}`;
+  }))].filter((id) => EVENT_IDS.has(id));
+}
 const UA = 'Vectemporel/0.2 (https://github.com/Tasour/vectemporel; prototype pédagogique)';
 const COUNTRIES = ['france', 'uk', 'usa', 'germany', 'italy', 'spain', 'china', 'india', 'japan', 'egypt'];
+const MANUAL_COORDINATES = {
+  'india:Dandi': {
+    lat: 20.89,
+    lon: 72.92,
+    source: 'https://fr.wikipedia.org/wiki/Dandi_(Gujarat)',
+  },
+};
 const WORLD_NAMES = {
   france: 'France', uk: 'United Kingdom', usa: 'United States of America',
   germany: 'Germany', italy: 'Italy', spain: 'Spain', china: 'China',
@@ -95,6 +119,7 @@ for (const countryId of COUNTRIES) {
   }
   atlas[countryId] = {};
   for (const place of places) {
+    const override = MANUAL_COORDINATES[`${countryId}:${clean(place.label_current)}`];
     total += 1;
     const record = {
       id: place.id,
@@ -102,7 +127,7 @@ for (const countryId of COUNTRIES) {
       historical: place.names_historical || [],
       hierarchy: place.hierarchy || '',
       functions: place.functions || [],
-      events: place.events || [],
+      events: normalizeEvents(place.events || [], countryId),
       contestations: place.contestations || [],
       lat: null,
       lon: null,
@@ -114,6 +139,9 @@ for (const countryId of COUNTRIES) {
         Object.assign(record, { lat: point.lat, lon: point.lon, source: point.source });
         break;
       }
+    }
+    if (override) {
+      Object.assign(record, { lat: override.lat, lon: override.lon, source: override.source });
     }
     if (record.lat !== null) located += 1;
     else report.push(`- ${countryId} / ${place.label_current}`);

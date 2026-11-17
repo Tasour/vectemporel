@@ -6,7 +6,7 @@
   --ink: #f1ece2;
   --ink-soft: #c9c2b5;
   --muted: #8a919c;
-  --muted-2: #666e79;
+  --muted-2: #7f8791;
   --line: rgba(241, 236, 226, 0.1);
   --line-strong: rgba(241, 236, 226, 0.18);
   --gold: #e6b96f;
@@ -4245,6 +4245,12 @@ body.globe-open {
   border-color: rgba(230, 185, 111, 0.35);
 }
 
+.dragon-select:focus-visible,
+#story-country:focus-visible {
+  outline: 2px solid var(--gold-bright);
+  outline-offset: 2px;
+}
+
 .dragon-icon-button {
   display: flex;
   align-items: center;
@@ -6415,6 +6421,8 @@ body.globe-open {
   display: flex;
   align-items: center;
   gap: 7px;
+  min-width: 24px;
+  min-height: 24px;
   padding: 0;
   border: 0;
   background: none;
@@ -7343,18 +7351,27 @@ button.mode-tab:hover {
 }
 
 .moon {
-  width: 9px;
-  height: 9px;
-  margin: -4.5px 0 0 -4.5px;
+  position: relative;
+  width: 24px;
+  height: 24px;
+  margin: -12px 0 0 -12px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.moon::before {
+  position: absolute;
+  inset: 7px;
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-radius: 50%;
   background: var(--moon-color, #e6b96f);
   box-shadow: 0 0 8px var(--moon-color, #e6b96f);
-  cursor: pointer;
+  content: "";
 }
 
-.moon.is-active {
-  transform: scale(1.5);
+.moon.is-active::before {
+  inset: 4px;
   box-shadow: 0 0 14px var(--moon-color, #e6b96f);
 }
 
@@ -7860,13 +7877,21 @@ button.mode-tab:hover {
 
 .sun-distant {
   position: absolute;
-  width: 10px;
-  height: 10px;
-  margin: -5px 0 0 -5px;
+  width: 24px;
+  height: 24px;
+  margin: -12px 0 0 -12px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.sun-distant::before {
+  position: absolute;
+  inset: 7px;
   border: 1px solid rgba(230, 185, 111, 0.34);
   border-radius: 50%;
   background: rgba(230, 185, 111, 0.13);
-  cursor: pointer;
+  content: "";
 }
 
 .sun-distant:hover {
@@ -7888,4 +7913,25 @@ button.mode-tab:hover {
   border-color: rgba(230, 185, 111, 0.55);
   background: rgba(230, 185, 111, 0.1);
   color: var(--gold-bright);
+}
+
+/* mouvement reduit — complement global ----------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .solar-orbit,
+  .planet,
+  .planet-body,
+  .moon,
+  .moon-orbit,
+  .sun-core,
+  .dragon-atmosphere,
+  .dragon-canvas::before {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.plan-backdrop {
+  position: absolute;
+  inset: 0;
 }

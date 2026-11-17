@@ -958,7 +958,7 @@
 
   function frame(now) {
     state.raf = 0;
-    if (!state.open) return;
+    if (!state.open || document.hidden) return;
     const diff = state.target - state.p;
     if (Math.abs(diff) > 0.0004) {
       state.p += diff * 0.16;
@@ -1352,6 +1352,7 @@
   window.VECTEMPOREL_SPIRAL = { open, close };
   window.VECTEMPOREL_DRAGON = {
     open,
+    handleKey: onKeyDown,
     close: (options) => close({ ...options, force: true }),
     goto: (index) => goTo(index),
     setCountry: (id) => {

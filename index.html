@@ -388,6 +388,7 @@
     </div>
 
     <div class="plan-overlay" id="plan-overlay" hidden>
+      <div class="plan-backdrop" data-close-plan></div>
       <div class="plan-shell" role="dialog" aria-modal="true" aria-labelledby="plan-title">
         <header class="plan-bar">
           <div class="plan-brand">
@@ -399,6 +400,7 @@
           </div>
           <div class="plan-actions">
             <button class="plan-help-btn" id="plan-help-btn" type="button" aria-label="Aide clavier">?</button>
+            <button class="plan-help-btn" id="plan-close" type="button" aria-label="Fermer le plan">×</button>
           </div>
         </header>
         <main class="plan-main">
@@ -735,6 +737,7 @@
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
+    <script src="keyboard-router.js"></script>
     <script src="data.js"></script>
     <script src="countries.js"></script>
     <script src="vendor/three.min.js"></script>

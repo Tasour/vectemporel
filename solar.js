@@ -541,12 +541,15 @@
     state.showMoons = true;
     state.scope = 'era';
     clearTimeout(state.hideTimer);
+    state.lastFocus = document.activeElement;
     state.open = true;
     els.overlay.hidden = false;
     render();
     requestAnimationFrame(() => {
       els.overlay.classList.add('is-open');
       fit();
+      if (window.innerWidth < 900) els.dashboard?.classList.add('is-collapsed');
+      els.close?.focus({ preventScroll: true });
     });
   }
 
@@ -558,6 +561,9 @@
     state.hideTimer = window.setTimeout(() => {
       if (!state.open) els.overlay.hidden = true;
     }, 300);
+    if (state.lastFocus?.isConnected) {
+      window.setTimeout(() => state.lastFocus.focus({ preventScroll: true }), 40);
+    }
     if (toGlobe) window.VECTEMPOREL_APP?.openGlobe?.();
   }
 
@@ -580,6 +586,15 @@
       if (event.key === 'Escape' || event.key === '?') {
         event.preventDefault();
         closeHelp();
+      } else if (event.key === 'Tab') {
+        const focusable = [...els.help.querySelectorAll('button')];
+        if (focusable.length && event.shiftKey && document.activeElement === focusable[0]) {
+          event.preventDefault();
+          focusable[focusable.length - 1].focus();
+        } else if (focusable.length && !event.shiftKey && document.activeElement === focusable[focusable.length - 1]) {
+          event.preventDefault();
+          focusable[0].focus();
+        }
       }
       return;
     }
@@ -765,6 +780,7 @@
     open,
     close,
     fit,
+    handleKey: onKeyDown,
     setSelection: ({ countryId, eraIndex, planetIndex } = {}) => {
       if (countryId && countryId !== state.countryId && state.system) {
         const country = COUNTRIES.find((item) => item.id === countryId);

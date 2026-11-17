@@ -707,7 +707,7 @@ push('');
 push('| Priorité | Action | Livrable |');
 push('| --- | --- | --- |');
 push('| P0 | Définir le schéma v2 : `Actor`, `Place`, `Source`, `Claim`, `TimeSpan`, `datePrecision`. | Spécification + migration de `data.js`. |');
-push('| P0 | Ajouter un `TimeSpan` minimal à chaque repère, avec rôle de date et source. | 189 fiches avec bornes, précision et certitude. |');
+push('| P0 | Ajouter un `TimeSpan` minimal à chaque repère, avec rôle de date et source. | 229 repères avec bornes, précision et certitude. |');
 push('| P1 | Remplir `templates/country-audit.yaml` pour les 10 pays pilotes. | `audits/<pays>/country-audit.yaml`. |');
 push('| P1 | Remplir la matrice de couverture et le registre d’omissions. | `coverage-matrix.csv` + `omissions.yaml` par pays. |');
 push('| P1 | Ajouter deux sources indépendantes par fiche-événement. | `source-register.csv` + `sources` dans les fiches. |');

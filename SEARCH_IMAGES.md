@@ -7,7 +7,8 @@ résultat recevable est retenu ; la taille, l'auteur et la licence sont lus dans
 l'API. Les filtres écartent drapeaux, cartes, logos, schémas et icônes.
 
 - Repères illustrés au total : **229/229**
-- Images ajoutées : **2**
+- Images ajoutées par recherche : **64**
+- Ajouts manuels ciblés : **2**
 - Échecs : **0**
 
 | Repère | Fichier Commons | Crédit | Licence |

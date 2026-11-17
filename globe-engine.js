@@ -255,6 +255,14 @@
     clearTimeout(state.autoRotateTimer);
   }
 
+  function prefersReducedMotion() {
+    try {
+      return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    } catch {
+      return false;
+    }
+  }
+
   function scheduleAutoRotate(delay = 3800) {
     clearTimeout(state.autoRotateTimer);
     state.autoRotateTimer = setTimeout(() => {
@@ -352,9 +360,13 @@
 
   function frame() {
     if (!state.visible) return;
+    if (document.hidden) return;
     const dt = Math.min(0.05, state.clock.getDelta());
-    if (state.autoRotate) state.globeGroup.rotation.y += dt * 0.065;
-    state.renderer.render(state.scene, state.camera);
+    const moving = state.autoRotate || state.dragging || state.pinching || state.hovering;
+    if (moving) {
+      if (state.autoRotate && !prefersReducedMotion()) state.globeGroup.rotation.y += dt * 0.065;
+      state.renderer.render(state.scene, state.camera);
+    }
     state.lastFrame = dt;
   }
 

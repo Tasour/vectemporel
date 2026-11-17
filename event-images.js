@@ -1,4 +1,4 @@
-/* Généré par npm run build:images:all — images vérifiées et compressées.
+/* Images vérifiées — généré par le pipeline d'images.
  * 2026-11-17
  */
 window.VECTEMPOREL_EVENT_IMAGES = {
@@ -1159,16 +1159,15 @@ window.VECTEMPOREL_EVENT_IMAGES = {
     "kind": "wiki"
   },
   "de-unification": {
-    "src": "images/wiki/de-unification.jpg",
-    "alt": "Map of German Reich 1871–1918. Search terms (selection): Helgoland, Flensburg, Schleswig, Kiel, Provinz Schleswig Holstein, Old, Hansestadt Lübeck, Bremerhaven, Hansestadt Hambürg,",
-    "caption": "Map of German Reich 1871–1918. Search terms (selection): Helgoland, Flensburg, Schleswig, Kiel, Provinz Schleswig Holstein, Old, Hansestadt Lübeck, Br",
-    "credit": "Deutsches_Reich1.png : kgberger derivative work: Wiggy! ( talk )",
-    "license": "CC BY-SA 3.0",
-    "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
-    "source": "https://commons.wikimedia.org/wiki/File:Deutsches_Reich_(1871-1918)-en.png",
-    "origin": "https://en.wikipedia.org/wiki/Unification_of_Germany",
-    "file": "Deutsches_Reich_(1871-1918)-en.png",
-    "kind": "wiki"
+    "src": "images/events/de-unification.jpg",
+    "alt": "Tableau de la proclamation de l’Empire allemand",
+    "caption": "Proclamation de l’Empire allemand à Versailles, 1871",
+    "credit": "Anton von Werner",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "source": "https://commons.wikimedia.org/wiki/1871_Proclamation_of_the_German_Empire.jpg",
+    "file": "File:1871 Proclamation of the German Empire.jpg",
+    "kind": "curated"
   },
   "de-wannsee": {
     "src": "images/wiki/de-wannsee.jpg",
@@ -1399,16 +1398,15 @@ window.VECTEMPOREL_EVENT_IMAGES = {
     "kind": "wiki"
   },
   "es-711": {
-    "src": "images/wiki/es-711.jpg",
-    "alt": "Carte de la péninsule ibérique en 1195 illustrant les principaux évènements de la période",
-    "caption": "Carte de la péninsule ibérique en 1195 illustrant les principaux évènements de la période",
-    "credit": "Elryck",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Péninsule_ibérique_en_1195.png",
-    "origin": "https://fr.wikipedia.org/wiki/Al-Andalus",
-    "file": "Péninsule_ibérique_en_1195.png",
-    "kind": "wiki"
+    "src": "images/events/es-711.jpg",
+    "alt": "L’Alhambra de Grenade",
+    "caption": "L’Alhambra, héritage d’Al-Andalus",
+    "credit": "Jebulon",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "source": "https://commons.wikimedia.org/wiki/Alhambra_in_the_evening.jpg",
+    "file": "File:Alhambra in the evening.jpg",
+    "kind": "curated"
   },
   "es-colomb": {
     "src": "images/wiki/es-colomb.jpg",
@@ -1603,16 +1601,15 @@ window.VECTEMPOREL_EVENT_IMAGES = {
     "kind": "wiki"
   },
   "in-cipayes": {
-    "src": "images/wiki/in-cipayes.jpg",
-    "alt": "Map, \"North India: The Mutiny 1857-9\" from \"The Cambridge Modern History Atlas\". Cambridge University Press; London. 1912. Editors were Sir Adolphus William Ward ( †1924 ), G.W. Pr",
-    "caption": "Map, \"North India: The Mutiny 1857-9\" from \"The Cambridge Modern History Atlas\". Cambridge University Press; London. 1912. Editors were Sir Adolphus W",
+    "src": "images/events/in-cipayes.jpg",
+    "alt": "Illustration de la révolte de 1857",
+    "caption": "Révolte de 1857",
     "credit": "Unknown author Unknown author Cambridge University Press; Stanford's Geogl. Estabt..",
     "license": "Public domain",
     "licenseUrl": null,
-    "source": "https://commons.wikimedia.org/wiki/File:Indian_Rebellion_of_1857.jpg",
-    "origin": "https://en.wikipedia.org/wiki/Indian_Rebellion_of_1857",
-    "file": "Indian_Rebellion_of_1857.jpg",
-    "kind": "wiki"
+    "source": "https://commons.wikimedia.org/wiki/Indian_Rebellion_of_1857.jpg",
+    "file": "File:Indian Rebellion of 1857.jpg",
+    "kind": "curated"
   },
   "in-prop-002": {
     "src": "images/wiki/in-prop-002.jpg",
@@ -1627,16 +1624,15 @@ window.VECTEMPOREL_EVENT_IMAGES = {
     "kind": "wiki"
   },
   "in-independance": {
-    "src": "images/wiki/in-independance.jpg",
-    "alt": "Map \"Prevailing Religions of the British Indian Empire, 1909\" Key: Pink Hindu Green Muslim Diagonal lines Sikh (small area in Punjab) Yellow Buddhist (Burma and Chittagong Hill Tra",
-    "caption": "Map \"Prevailing Religions of the British Indian Empire, 1909\" Key: Pink Hindu Green Muslim Diagonal lines Sikh (small area in Punjab) Yellow Buddhist ",
-    "credit": "John George Bartholomew",
+    "src": "images/events/in-independance.jpg",
+    "alt": "Portrait de Gandhi",
+    "caption": "Gandhi",
+    "credit": "Wikimedia Commons",
     "license": "Public domain",
     "licenseUrl": null,
-    "source": "https://commons.wikimedia.org/wiki/File:Brit_IndianEmpireReligions3.jpg",
-    "origin": "https://en.wikipedia.org/wiki/Partition_of_India",
-    "file": "Brit_IndianEmpireReligions3.jpg",
-    "kind": "wiki"
+    "source": "https://commons.wikimedia.org/wiki/Gandhi_1944.jpg",
+    "file": "File:Gandhi 1944.jpg",
+    "kind": "curated"
   },
   "in-indus": {
     "src": "images/wiki/in-indus.jpg",
@@ -2060,15 +2056,15 @@ window.VECTEMPOREL_EVENT_IMAGES = {
     "kind": "search"
   },
   "uk-prop-009": {
-    "src": "images/search/uk-prop-009.jpg",
-    "alt": "Close-up of a map of British India superimposed with the Radcliffe Line that partitioned India in 1947 and created East and West Pakistan, created by artist Pritika Chowdhry.",
-    "caption": "Close-up of a map of British India superimposed with the Radcliffe Line that partitioned India in 1947 and created East and West Pakistan, created by ",
-    "credit": "Pritika Chowdhry",
-    "license": "CC BY-SA 4.0",
-    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-    "source": "https://commons.wikimedia.org/wiki/File:Partition_Anti-Memorial_Project_close-up.webp",
-    "file": "File:Partition Anti-Memorial Project close-up.webp",
-    "kind": "search"
+    "src": "images/events/uk-prop-009.jpg",
+    "alt": "Illustration de la partition de l’Inde",
+    "caption": "Partition de l’Inde, 1947",
+    "credit": "Unknown author Unknown author",
+    "license": "Public domain",
+    "licenseUrl": null,
+    "source": "https://commons.wikimedia.org/wiki/Partition_of_Punjab,_India_1947.jpg",
+    "file": "File:Partition of Punjab, India 1947.jpg",
+    "kind": "curated"
   },
   "uk-nhs": {
     "src": "images/search/uk-nhs.jpg",
@@ -2335,15 +2331,15 @@ window.VECTEMPOREL_EVENT_IMAGES = {
     "kind": "search"
   },
   "in-gupta": {
-    "src": "images/search/in-gupta.jpg",
-    "alt": "Map of Gupta Empire",
-    "caption": "Map of Gupta Empire",
-    "credit": "Prabhash2513",
-    "license": "CC0",
-    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-    "source": "https://commons.wikimedia.org/wiki/File:Imperial_Gupta_Empire.png",
-    "file": "File:Imperial Gupta Empire.png",
-    "kind": "search"
+    "src": "images/events/in-gupta.jpg",
+    "alt": "Peintures des grottes d’Ajanta",
+    "caption": "Grottes d’Ajanta, art gupta",
+    "credit": "Danial Chitnis",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "source": "https://commons.wikimedia.org/wiki/Ajanta_Caves.jpg",
+    "file": "File:Ajanta Caves.jpg",
+    "kind": "curated"
   },
   "in-delhi": {
     "src": "images/search/in-delhi.jpg",

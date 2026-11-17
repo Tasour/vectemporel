@@ -1,6 +1,6 @@
 # Images trouvées automatiquement
 
-> Généré par `npm run build:images:all`. 2026-11-17.
+> Généré par `npm run build:images:all` (passe Wikipedia). La passe suivante a remplacé certaines images ; `event-images.js` fait foi. 2026-11-17.
 
 Méthode : pageimages sur fr/en.wikipedia à partir du slug Grokipedia et du titre
 français, puis imageinfo sur Wikimedia Commons pour le crédit et la licence.

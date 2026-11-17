@@ -22,11 +22,8 @@ window.VECTEMPOREL_PLACES = {
         "fr-commune",
         "fr-ww2",
         "fr-mai68",
-        "PROP-002",
-        "PROP-005",
-        "PROP-008",
-        "PROP-009",
-        "PROP-014"
+        "fr-prop-002",
+        "fr-prop-009"
       ],
       "contestations": [
         "mémoires coloniales",
@@ -73,8 +70,7 @@ window.VECTEMPOREL_PLACES = {
         "lieu de mémoire"
       ],
       "events": [
-        "fr-massalia",
-        "PROP-013"
+        "fr-massalia"
       ],
       "contestations": [
         "récit colonial",
@@ -122,8 +118,7 @@ window.VECTEMPOREL_PLACES = {
       ],
       "events": [
         "fr-louis14",
-        "PROP-001",
-        "PROP-018"
+        "fr-prop-001"
       ],
       "contestations": [
         "mémoire monarchique",
@@ -147,7 +142,7 @@ window.VECTEMPOREL_PLACES = {
         "lieu de mémoire"
       ],
       "events": [
-        "PROP-001"
+        "fr-prop-001"
       ],
       "contestations": [
         "mémoire de l'esclavage",
@@ -170,10 +165,7 @@ window.VECTEMPOREL_PLACES = {
         "port",
         "lieu de mémoire"
       ],
-      "events": [
-        "PROP-003",
-        "PROP-010"
-      ],
+      "events": [],
       "contestations": [
         "mémoire coloniale",
         "guerre d'indépendance"
@@ -192,9 +184,7 @@ window.VECTEMPOREL_PLACES = {
       "functions": [
         "lieu de négociation"
       ],
-      "events": [
-        "PROP-010"
-      ],
+      "events": [],
       "contestations": [
         "mémoire des accords",
         "rapatriés"
@@ -216,9 +206,7 @@ window.VECTEMPOREL_PLACES = {
         "tourisme",
         "pastoralisme"
       ],
-      "events": [
-        "PROP-011"
-      ],
+      "events": [],
       "contestations": [
         "conflits d'usage",
         "station de ski",
@@ -240,9 +228,7 @@ window.VECTEMPOREL_PLACES = {
         "lieu de révolte",
         "lieu de mémoire"
       ],
-      "events": [
-        "PROP-016"
-      ],
+      "events": [],
       "contestations": [
         "ségrégation",
         "mémoire des révoltes"
@@ -263,9 +249,7 @@ window.VECTEMPOREL_PLACES = {
         "collège",
         "lieu de débat"
       ],
-      "events": [
-        "PROP-015"
-      ],
+      "events": [],
       "contestations": [
         "laïcité",
         "islam",
@@ -287,9 +271,7 @@ window.VECTEMPOREL_PLACES = {
         "aéroport",
         "lieu de mémoire climatique"
       ],
-      "events": [
-        "PROP-017"
-      ],
+      "events": [],
       "contestations": [
         "accord non contraignant",
         "justice climatique"
@@ -313,10 +295,7 @@ window.VECTEMPOREL_PLACES = {
         "centre cotonnier",
         "lieu de mobilisation politique"
       ],
-      "events": [
-        "PROP-003",
-        "PROP-004"
-      ],
+      "events": [],
       "contestations": [
         "Mémoire de Peterloo, longtemps minimisée dans le récit national.",
         "Rôle de Manchester dans le commerce du coton et l'esclavage."
@@ -338,9 +317,7 @@ window.VECTEMPOREL_PLACES = {
         "ville d'immigration"
       ],
       "events": [
-        "PROP-002",
-        "PROP-005",
-        "PROP-011"
+        "uk-prop-005"
       ],
       "contestations": [
         "Rôle du port dans la traite atlantique et la mémoire publique.",
@@ -363,10 +340,7 @@ window.VECTEMPOREL_PLACES = {
         "centre industriel",
         "ville d'empire"
       ],
-      "events": [
-        "PROP-006",
-        "PROP-013"
-      ],
+      "events": [],
       "contestations": [
         "Mémoire de l'empire et de la traite écossaise.",
         "Désindustrialisation et déclin des chantiers."
@@ -390,7 +364,6 @@ window.VECTEMPOREL_PLACES = {
         "capitale dévolue"
       ],
       "events": [
-        "PROP-016",
         "uk-good-friday"
       ],
       "contestations": [
@@ -414,11 +387,7 @@ window.VECTEMPOREL_PLACES = {
         "commerce du charbon",
         "capitale dévolue"
       ],
-      "events": [
-        "PROP-011",
-        "PROP-013",
-        "PROP-015"
-      ],
+      "events": [],
       "contestations": [
         "Mémoire de la grève des mineurs et de la désindustrialisation.",
         "Place de la langue galloise dans la ville."
@@ -439,9 +408,7 @@ window.VECTEMPOREL_PLACES = {
         "commerce colonial",
         "ville d'immigration"
       ],
-      "events": [
-        "PROP-002"
-      ],
+      "events": [],
       "contestations": [
         "Déboulonnage de la statue d'Edward Colston (2020) et mémoire de l'esclavage."
       ],
@@ -464,8 +431,7 @@ window.VECTEMPOREL_PLACES = {
         "Parlement dévolu"
       ],
       "events": [
-        "uk-union",
-        "PROP-015"
+        "uk-union"
       ],
       "contestations": [
         "Mémoire de l'union de 1707 et du référendum de 2014.",
@@ -489,8 +455,7 @@ window.VECTEMPOREL_PLACES = {
         "centre politique et culturel"
       ],
       "events": [
-        "PROP-001",
-        "PROP-016"
+        "uk-prop-001"
       ],
       "contestations": [
         "Mémoire de 1916, de la guerre d'indépendance et de la partition.",
@@ -520,9 +485,7 @@ window.VECTEMPOREL_PLACES = {
         "uk-ww2",
         "uk-nhs",
         "uk-thatcher",
-        "uk-brexit",
-        "PROP-012",
-        "PROP-014"
+        "uk-brexit"
       ],
       "contestations": [
         "Mémoire impériale, statues et musées.",
@@ -546,8 +509,7 @@ window.VECTEMPOREL_PLACES = {
         "centre industriel de guerre"
       ],
       "events": [
-        "PROP-008",
-        "PROP-009"
+        "uk-prop-009"
       ],
       "contestations": [
         "Mémoire de la famine de 1943 et des émeutes de 1946.",
@@ -571,7 +533,7 @@ window.VECTEMPOREL_PLACES = {
         "lieu de massacre"
       ],
       "events": [
-        "PROP-007"
+        "uk-prop-007"
       ],
       "contestations": [
         "Bilan officiel (379 morts) contre estimations; mémoire et gestes de repentance britanniques."
@@ -593,9 +555,7 @@ window.VECTEMPOREL_PLACES = {
         "communauté galloisante",
         "réservoir"
       ],
-      "events": [
-        "PROP-011"
-      ],
+      "events": [],
       "contestations": [
         "Inondation du village pour alimenter Liverpool; mémoire nationaliste galloise."
       ],
@@ -619,7 +579,7 @@ window.VECTEMPOREL_PLACES = {
         "fort"
       ],
       "events": [
-        "PROP-001"
+        "us-prop-001"
       ],
       "contestations": [
         "premiers Africains ou premiers esclaves? le statut initial est débattu"
@@ -641,9 +601,7 @@ window.VECTEMPOREL_PLACES = {
         "centre politique pueblo",
         "site de la révolte de 1680"
       ],
-      "events": [
-        "PROP-002"
-      ],
+      "events": [],
       "contestations": [
         "récit colonial espagnol contre souveraineté pueblo"
       ],
@@ -666,8 +624,7 @@ window.VECTEMPOREL_PLACES = {
         "site de Katrina"
       ],
       "events": [
-        "us-louisiane",
-        "PROP-018"
+        "us-louisiane"
       ],
       "contestations": [
         "Katrina comme catastrophe naturelle ou catastrophe politique et raciale"
@@ -689,9 +646,7 @@ window.VECTEMPOREL_PLACES = {
         "laboratoire ouvrier",
         "destination de la Grande Migration"
       ],
-      "events": [
-        "PROP-007"
-      ],
+      "events": [],
       "contestations": [
         "mémoire de Haymarket",
         "violence policière",
@@ -714,7 +669,7 @@ window.VECTEMPOREL_PLACES = {
         "site de mémoire"
       ],
       "events": [
-        "PROP-010"
+        "us-prop-010"
       ],
       "contestations": [
         "émeute ou massacre",
@@ -736,9 +691,7 @@ window.VECTEMPOREL_PLACES = {
         "capitale d’État",
         "site du boycott"
       ],
-      "events": [
-        "PROP-014"
-      ],
+      "events": [],
       "contestations": [
         "Parks comme icône ou mouvement collectif",
         "mémoire confédérée"
@@ -758,9 +711,7 @@ window.VECTEMPOREL_PLACES = {
         "camp d’incarcération",
         "site de mémoire"
       ],
-      "events": [
-        "PROP-012"
-      ],
+      "events": [],
       "contestations": [
         "internement ou incarcération",
         "réparations de 1988"
@@ -782,9 +733,7 @@ window.VECTEMPOREL_PLACES = {
         "point de recrutement",
         "carrefour migratoire"
       ],
-      "events": [
-        "PROP-013"
-      ],
+      "events": [],
       "contestations": [
         "frontière comme lieu de contrôle et de circulation",
         "droits des migrants"
@@ -806,9 +755,7 @@ window.VECTEMPOREL_PLACES = {
         "port",
         "centre politique"
       ],
-      "events": [
-        "PROP-008"
-      ],
+      "events": [],
       "contestations": [
         "statut colonial ou commonwealth",
         "droit de vote fédéral"
@@ -829,9 +776,7 @@ window.VECTEMPOREL_PLACES = {
         "port",
         "centre de souveraineté kanaka maoli"
       ],
-      "events": [
-        "PROP-008"
-      ],
+      "events": [],
       "contestations": [
         "annexion contestée",
         "souveraineté hawaïenne",
@@ -852,7 +797,7 @@ window.VECTEMPOREL_PLACES = {
         "site de la convention des droits des femmes"
       ],
       "events": [
-        "PROP-005"
+        "us-prop-005"
       ],
       "contestations": [
         "universalité du suffrage",
@@ -898,7 +843,7 @@ window.VECTEMPOREL_PLACES = {
         "lieu de mémoire"
       ],
       "events": [
-        "PROP-001"
+        "de-prop-001"
       ],
       "contestations": [
         "historicité de l’affichage des thèses"
@@ -920,7 +865,7 @@ window.VECTEMPOREL_PLACES = {
         "théâtre de la Guerre des Paysans"
       ],
       "events": [
-        "PROP-002"
+        "de-prop-002"
       ],
       "contestations": [
         "rôle de Müntzer"
@@ -943,7 +888,7 @@ window.VECTEMPOREL_PLACES = {
         "lieu de mémoire"
       ],
       "events": [
-        "PROP-004"
+        "de-prop-004"
       ],
       "contestations": [
         "mémoire de 1848 et de la démocratie"
@@ -965,11 +910,7 @@ window.VECTEMPOREL_PLACES = {
         "centre ouvrier",
         "lieu de mémoire"
       ],
-      "events": [
-        "PROP-005",
-        "PROP-006",
-        "PROP-017"
-      ],
+      "events": [],
       "contestations": [
         "mémoire de 1989"
       ],
@@ -990,7 +931,6 @@ window.VECTEMPOREL_PLACES = {
         "tribunal"
       ],
       "events": [
-        "PROP-009",
         "de-nuremberg"
       ],
       "contestations": [
@@ -1013,9 +953,7 @@ window.VECTEMPOREL_PLACES = {
         "centre d’extermination",
         "lieu de mémoire"
       ],
-      "events": [
-        "PROP-012"
-      ],
+      "events": [],
       "contestations": [
         "mémoire de la Shoah et du Porajmos"
       ],
@@ -1035,9 +973,7 @@ window.VECTEMPOREL_PLACES = {
         "lieu de signature",
         "capitale provisoire"
       ],
-      "events": [
-        "PROP-015"
-      ],
+      "events": [],
       "contestations": [
         "mémoire de la capitale provisoire"
       ],
@@ -1082,9 +1018,7 @@ window.VECTEMPOREL_PLACES = {
         "lieu de mémoire"
       ],
       "events": [
-        "de-wannsee",
-        "PROP-016",
-        "PROP-017"
+        "de-wannsee"
       ],
       "contestations": [
         "mémoire du Mur et de la division"
@@ -1106,9 +1040,7 @@ window.VECTEMPOREL_PLACES = {
         "point de départ des expulsions",
         "lieu de mémoire"
       ],
-      "events": [
-        "PROP-013"
-      ],
+      "events": [],
       "contestations": [
         "mémoire allemande et polonaise"
       ],
@@ -1129,9 +1061,7 @@ window.VECTEMPOREL_PLACES = {
         "lieu de mémoire",
         "lieu de négociation"
       ],
-      "events": [
-        "PROP-007"
-      ],
+      "events": [],
       "contestations": [
         "reconnaissance du génocide et réparations"
       ],
@@ -1152,9 +1082,7 @@ window.VECTEMPOREL_PLACES = {
         "site sidérurgique",
         "terre d’immigration"
       ],
-      "events": [
-        "PROP-015"
-      ],
+      "events": [],
       "contestations": [
         "mémoire industrielle et environnementale"
       ],
@@ -1181,8 +1109,7 @@ window.VECTEMPOREL_PLACES = {
         "it-rome",
         "it-rep-romaine",
         "it-empire",
-        "it-rome-capitale",
-        "PROP-015"
+        "it-rome-capitale"
       ],
       "contestations": [
         "Fondation légendaire",
@@ -1206,11 +1133,7 @@ window.VECTEMPOREL_PLACES = {
         "centre industriel",
         "ville ouvrière"
       ],
-      "events": [
-        "PROP-002",
-        "PROP-013",
-        "PROP-014"
-      ],
+      "events": [],
       "contestations": [
         "Mémoire de l'édit de Milan",
         "déindustrialisation"
@@ -1235,9 +1158,7 @@ window.VECTEMPOREL_PLACES = {
       ],
       "events": [
         "it-medicis",
-        "PROP-003",
-        "PROP-004",
-        "PROP-008"
+        "it-prop-004"
       ],
       "contestations": [
         "Renaissance élitiste",
@@ -1260,9 +1181,7 @@ window.VECTEMPOREL_PLACES = {
         "port",
         "ghetto"
       ],
-      "events": [
-        "PROP-006"
-      ],
+      "events": [],
       "contestations": [
         "Ghetto",
         "mémoire impériale"
@@ -1285,8 +1204,7 @@ window.VECTEMPOREL_PLACES = {
         "centre culturel"
       ],
       "events": [
-        "PROP-009",
-        "PROP-010"
+        "it-prop-009"
       ],
       "contestations": [
         "Stéréotypes méridionaux",
@@ -1309,9 +1227,7 @@ window.VECTEMPOREL_PLACES = {
         "port",
         "lieu du maxi-procès"
       ],
-      "events": [
-        "PROP-016"
-      ],
+      "events": [],
       "contestations": [
         "Mafia",
         "maxi-procès",
@@ -1335,9 +1251,7 @@ window.VECTEMPOREL_PLACES = {
         "ville ouvrière"
       ],
       "events": [
-        "it-unification",
-        "PROP-013",
-        "PROP-014"
+        "it-unification"
       ],
       "contestations": [
         "Mémoire FIAT",
@@ -1359,9 +1273,7 @@ window.VECTEMPOREL_PLACES = {
         "ville conciliaire",
         "centre alpin"
       ],
-      "events": [
-        "PROP-007"
-      ],
+      "events": [],
       "contestations": [
         "Mémoire du concile",
         "autonomie du Trentin"
@@ -1383,7 +1295,7 @@ window.VECTEMPOREL_PLACES = {
         "ville de Catherine"
       ],
       "events": [
-        "PROP-005"
+        "it-prop-005"
       ],
       "contestations": [
         "Mémoire religieuse"
@@ -1404,7 +1316,7 @@ window.VECTEMPOREL_PLACES = {
         "lieu de mémoire"
       ],
       "events": [
-        "PROP-017"
+        "it-prop-017"
       ],
       "contestations": [
         "Responsabilité de la catastrophe",
@@ -1425,9 +1337,7 @@ window.VECTEMPOREL_PLACES = {
         "frontière",
         "lieu d'accueil"
       ],
-      "events": [
-        "PROP-018"
-      ],
+      "events": [],
       "contestations": [
         "Politique migratoire",
         "mémoire des naufrages"
@@ -1449,10 +1359,7 @@ window.VECTEMPOREL_PLACES = {
         "émigration",
         "industrie"
       ],
-      "events": [
-        "PROP-010",
-        "PROP-013"
-      ],
+      "events": [],
       "contestations": [
         "Mémoire portuaire",
         "déindustrialisation"
@@ -1483,8 +1390,7 @@ window.VECTEMPOREL_PLACES = {
       "events": [
         "es-constitution",
         "es-civile",
-        "es-franco",
-        "PROP-017"
+        "es-franco"
       ],
       "contestations": [
         "capitalité contestée par les nationalismes périphériques",
@@ -1565,7 +1471,7 @@ window.VECTEMPOREL_PLACES = {
         "centre savant"
       ],
       "events": [
-        "PROP-003"
+        "es-prop-003"
       ],
       "contestations": [
         "mémoire de la Mezquita",
@@ -1591,8 +1497,8 @@ window.VECTEMPOREL_PLACES = {
         "primatie ecclésiastique"
       ],
       "events": [
-        "PROP-002",
-        "PROP-004"
+        "es-prop-002",
+        "es-prop-004"
       ],
       "contestations": [
         "mémoire de la convivencia",
@@ -1644,7 +1550,6 @@ window.VECTEMPOREL_PLACES = {
         "agriculture irriguée"
       ],
       "events": [
-        "PROP-007",
         "es-civile"
       ],
       "contestations": [
@@ -1670,8 +1575,7 @@ window.VECTEMPOREL_PLACES = {
         "siège de 1937"
       ],
       "events": [
-        "es-civile",
-        "PROP-016"
+        "es-civile"
       ],
       "contestations": [
         "mémoire de la guerre",
@@ -1766,9 +1670,7 @@ window.VECTEMPOREL_PLACES = {
         "zone sinistrée",
         "lieu de mémoire environnementale"
       ],
-      "events": [
-        "PROP-015"
-      ],
+      "events": [],
       "contestations": [
         "responsabilité de l'État et de la compagnie",
         "mémoire de la marée noire"
@@ -1799,8 +1701,7 @@ window.VECTEMPOREL_PLACES = {
       "events": [
         "cn-ming",
         "cn-qing",
-        "cn-1949",
-        "PROP-013"
+        "cn-1949"
       ],
       "contestations": [
         "Capitale impériale, puis capitale de la RPC ; les mémoires impériales et révolutionnaires coexistent."
@@ -1827,8 +1728,7 @@ window.VECTEMPOREL_PLACES = {
       ],
       "events": [
         "cn-1911",
-        "PROP-001",
-        "PROP-008"
+        "cn-prop-001"
       ],
       "contestations": [
         "Mémoire du massacre de Nanjing : chiffres et qualification disputés entre historiographies chinoise, japonaise et occidentale."
@@ -1853,10 +1753,8 @@ window.VECTEMPOREL_PLACES = {
       ],
       "events": [
         "cn-opium",
-        "PROP-002",
-        "PROP-004",
-        "PROP-005",
-        "PROP-017"
+        "cn-prop-002",
+        "cn-prop-004"
       ],
       "contestations": [
         "Ville cosmopolite et coloniale ; mémoires des concessions, de l'industrialisation et des violences politiques."
@@ -1882,8 +1780,7 @@ window.VECTEMPOREL_PLACES = {
         "lieu du confinement de 2020"
       ],
       "events": [
-        "PROP-001",
-        "PROP-018"
+        "cn-prop-001"
       ],
       "contestations": [
         "Mémoire du confinement de Wuhan et de la crise sanitaire : récits officiels et témoignages divergent."
@@ -1905,9 +1802,7 @@ window.VECTEMPOREL_PLACES = {
         "centre industriel de l'arrière",
         "cible des bombardements japonais"
       ],
-      "events": [
-        "PROP-006"
-      ],
+      "events": [],
       "contestations": [
         "Mémoire des bombardements et de la capitale de guerre, peu présente dans les manuels."
       ],
@@ -1955,7 +1850,7 @@ window.VECTEMPOREL_PLACES = {
       "events": [
         "cn-opium",
         "cn-1911",
-        "PROP-001"
+        "cn-prop-001"
       ],
       "contestations": [
         "Mémoire du commerce colonial et du nationalisme ; récits concurrents sur les concessions."
@@ -1977,9 +1872,7 @@ window.VECTEMPOREL_PLACES = {
         "capitale symbolique de la révolution",
         "lieu de la rectification de 1942"
       ],
-      "events": [
-        "PROP-007"
-      ],
+      "events": [],
       "contestations": [
         "Lieu saint du récit officiel ; l'histoire sociale de la base et des purges de Yan'an est moins commémorée."
       ],
@@ -2002,8 +1895,7 @@ window.VECTEMPOREL_PLACES = {
         "lieu de la rétrocession de 1997"
       ],
       "events": [
-        "cn-opium",
-        "PROP-016"
+        "cn-opium"
       ],
       "contestations": [
         "Mémoire coloniale, rétrocession, mouvements de 2019 et loi de sécurité nationale de 2020 : récits fortement disputés."
@@ -2046,9 +1938,7 @@ window.VECTEMPOREL_PLACES = {
         "centre religieux",
         "lieu de l'accord de 1951 et du soulèvement de 1959"
       ],
-      "events": [
-        "PROP-011"
-      ],
+      "events": [],
       "contestations": [
         "Statut du Tibet, rôle du dalaï-lama et mémoire de 1959 : récits chinois et tibétains inconciliables."
       ],
@@ -2146,7 +2036,7 @@ window.VECTEMPOREL_PLACES = {
         "centre fiscal"
       ],
       "events": [
-        "PROP-004"
+        "in-prop-004"
       ],
       "contestations": [
         "chronologie des temples",
@@ -2169,9 +2059,7 @@ window.VECTEMPOREL_PLACES = {
         "centre commercial",
         "lieu de culte"
       ],
-      "events": [
-        "PROP-005"
-      ],
+      "events": [],
       "contestations": [
         "date de la fondation",
         "interprétation de Talikota"
@@ -2218,8 +2106,6 @@ window.VECTEMPOREL_PLACES = {
         "ville de la Partition"
       ],
       "events": [
-        "PROP-009",
-        "PROP-012",
         "in-independance"
       ],
       "contestations": [
@@ -2344,16 +2230,14 @@ window.VECTEMPOREL_PLACES = {
         "village côtier",
         "lieu de mémoire de la marche du sel"
       ],
-      "events": [
-        "PROP-011"
-      ],
+      "events": [],
       "contestations": [
         "patrimonialisation",
         "usages politiques de Gandhi"
       ],
-      "lat": 11.844167,
-      "lon": 3.808611,
-      "source": "https://fr.wikipedia.org/wiki/Dandi"
+      "lat": 20.89,
+      "lon": 72.92,
+      "source": "https://fr.wikipedia.org/wiki/Dandi_(Gujarat)"
     },
     "PLACE-012": {
       "id": "PLACE-012",
@@ -2368,9 +2252,7 @@ window.VECTEMPOREL_PLACES = {
         "conflit minier",
         "gram sabha"
       ],
-      "events": [
-        "PROP-018"
-      ],
+      "events": [],
       "contestations": [
         "extraction de bauxite",
         "droits adivasis",
@@ -2394,9 +2276,7 @@ window.VECTEMPOREL_PLACES = {
         "site archéologique",
         "patrimoine"
       ],
-      "events": [
-        "PROP-001"
-      ],
+      "events": [],
       "contestations": [
         "interprétation des sociétés Jōmon",
         "datation des occupations"
@@ -2443,9 +2323,7 @@ window.VECTEMPOREL_PLACES = {
         "patrimoine"
       ],
       "events": [
-        "jp-heian",
-        "PROP-003",
-        "PROP-004"
+        "jp-heian"
       ],
       "contestations": [
         "centralité politique après 1185",
@@ -2542,10 +2420,7 @@ window.VECTEMPOREL_PLACES = {
         "base militaire",
         "lieu de mémoire"
       ],
-      "events": [
-        "PROP-007",
-        "PROP-016"
-      ],
+      "events": [],
       "contestations": [
         "souveraineté",
         "bases américaines",
@@ -2571,7 +2446,7 @@ window.VECTEMPOREL_PLACES = {
         "patrimoine"
       ],
       "events": [
-        "PROP-006"
+        "jp-prop-006"
       ],
       "contestations": [
         "dépossession foncière",
@@ -2594,7 +2469,7 @@ window.VECTEMPOREL_PLACES = {
         "lieu de mémoire"
       ],
       "events": [
-        "PROP-015"
+        "jp-prop-015"
       ],
       "contestations": [
         "responsabilité de Chisso",
@@ -2621,9 +2496,7 @@ window.VECTEMPOREL_PLACES = {
       "events": [
         "jp-edo",
         "jp-meiji",
-        "PROP-012",
-        "PROP-014",
-        "PROP-017"
+        "jp-prop-014"
       ],
       "contestations": [
         "centralisation",
@@ -2645,9 +2518,7 @@ window.VECTEMPOREL_PLACES = {
         "filature",
         "patrimoine industriel"
       ],
-      "events": [
-        "PROP-008"
-      ],
+      "events": [],
       "contestations": [
         "travail des femmes",
         "patrimoine industriel"
@@ -2671,8 +2542,7 @@ window.VECTEMPOREL_PLACES = {
         "résistance"
       ],
       "events": [
-        "PROP-005",
-        "PROP-010"
+        "jp-prop-010"
       ],
       "contestations": [
         "colonialisme",
@@ -2702,8 +2572,7 @@ window.VECTEMPOREL_PLACES = {
       "events": [
         "eg-alexandrie",
         "eg-cleopatre",
-        "PROP-005",
-        "PROP-012"
+        "eg-prop-012"
       ],
       "contestations": [
         "localisation du tombeau d'Alexandre",
@@ -2730,8 +2599,7 @@ window.VECTEMPOREL_PLACES = {
         "lieu de mémoire nubien"
       ],
       "events": [
-        "PROP-004",
-        "PROP-015"
+        "eg-prop-015"
       ],
       "contestations": [
         "déplacement nubien",
@@ -2758,8 +2626,6 @@ window.VECTEMPOREL_PLACES = {
         "tourisme"
       ],
       "events": [
-        "PROP-002",
-        "PROP-003",
         "eg-ramses"
       ],
       "contestations": [
@@ -2832,10 +2698,7 @@ window.VECTEMPOREL_PLACES = {
         "front",
         "ville ouvrière"
       ],
-      "events": [
-        "PROP-017",
-        "PROP-016"
-      ],
+      "events": [],
       "contestations": [
         "mémoire de la guerre",
         "déplacement",
@@ -2856,9 +2719,7 @@ window.VECTEMPOREL_PLACES = {
         "ville de bataille",
         "marché agricole"
       ],
-      "events": [
-        "PROP-008"
-      ],
+      "events": [],
       "contestations": [
         "mémoire de la bataille",
         "patrimoine"
@@ -2879,9 +2740,7 @@ window.VECTEMPOREL_PLACES = {
         "village ouvrier",
         "nécropole royale"
       ],
-      "events": [
-        "PROP-003"
-      ],
+      "events": [],
       "contestations": [
         "interprétation de la grève",
         "conditions de travail"
@@ -2904,7 +2763,7 @@ window.VECTEMPOREL_PLACES = {
         "agriculture"
       ],
       "events": [
-        "PROP-013"
+        "eg-prop-013"
       ],
       "contestations": [
         "mémoire copte",
@@ -2929,7 +2788,6 @@ window.VECTEMPOREL_PLACES = {
         "ressources"
       ],
       "events": [
-        "PROP-016",
         "eg-paix"
       ],
       "contestations": [
@@ -2962,9 +2820,8 @@ window.VECTEMPOREL_PLACES = {
         "eg-independance",
         "eg-nasser",
         "eg-tahrir",
-        "PROP-013",
-        "PROP-014",
-        "PROP-018"
+        "eg-prop-013",
+        "eg-prop-014"
       ],
       "contestations": [
         "patrimoine",
@@ -2991,7 +2848,7 @@ window.VECTEMPOREL_PLACES = {
         "diaspora"
       ],
       "events": [
-        "PROP-015"
+        "eg-prop-015"
       ],
       "contestations": [
         "déplacement",

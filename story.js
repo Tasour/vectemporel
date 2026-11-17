@@ -91,7 +91,8 @@
   function buildStory(countryId) {
     const country = COUNTRIES.find((item) => item.id === countryId) || COUNTRIES[0];
     const placeAtlas = PLACES[country.id] || {};
-    const eras = country.eras.map((era, index) => {
+    const eras = [];
+    country.eras.forEach((era, index) => {
       const eventIds = new Set();
       const events = country.events
         .filter((event) => eraIndexForYear(country, event.year) === index)
@@ -111,7 +112,7 @@
       const places = allPlaces.filter((place) => place.eventIds.length && inside(place));
       const extraPlaces = allPlaces.filter((place) => place.eventIds.length && !inside(place));
       const countryPlaces = allPlaces.filter(inside);
-      return { ...era, index, events, places, extraPlaces, countryPlaces };
+      eras.push({ ...era, index: eras.length, events, places, extraPlaces, countryPlaces });
     });
     return { country, eras };
   }
@@ -664,7 +665,7 @@
       state.playing = true;
       state.playTimer = window.setInterval(() => {
         const era = currentEra();
-        if (!era) return;
+        if (!era || !era.events.length || document.hidden) return;
         state.eventIndex = (state.eventIndex + 1) % era.events.length;
         renderPanorama();
         updateChrome();
@@ -733,7 +734,7 @@
     });
   }
 
-  function close() {
+  function close(options = {}) {
     if (!state.open) return;
     state.open = false;
     stopPlay();
@@ -742,7 +743,7 @@
     state.hideTimer = window.setTimeout(() => {
       if (!state.open) els.overlay.hidden = true;
     }, 300);
-    if (state.lastFocus?.isConnected) {
+    if (options.restoreFocus !== false && state.lastFocus?.isConnected) {
       window.setTimeout(() => state.lastFocus.focus({ preventScroll: true }), 40);
     }
   }
@@ -930,6 +931,7 @@
   window.VECTEMPOREL_STORY = {
     open,
     close,
+    handleKey: onKeyDown,
     setSelection: (countryId, eraIndex, eventIndex) => {
       if (!state.story || state.story.country.id !== countryId) state.story = buildStory(countryId);
       state.countryId = countryId;

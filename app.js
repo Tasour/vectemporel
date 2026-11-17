@@ -2465,6 +2465,7 @@
     setCountry,
     openGlobe,
     closeGlobe,
+    handleKey: onGlobalKeydown,
   };
 
   boot();

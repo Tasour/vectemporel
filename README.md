@@ -61,7 +61,7 @@ Aucun build front n’est nécessaire : `index.html`, `styles.css`, `app.js`, `d
 - Mini-film : grande image, résumé découpé en phrases animées, pellicule des repères, lecture automatique.
 - Carte **satellite réelle** (Esri World Imagery) avec coordonnées vérifiées (114/120), chemin chronologique et attribution ; aucun point inventé.
 - Aucune anecdote fabriquée : le récit met en scène les repères vérifiés.
-- Évaluation automatique : **[E2E_REPORT.md](E2E_REPORT.md)**. Audits et design : **[UX_EXPERT_AUDIT.md](UX_EXPERT_AUDIT.md)**, **[UX_REDESIGN.md](UX_REDESIGN.md)**, **[SOLAR_SYSTEM.md](SOLAR_SYSTEM.md)**, **[STORY_MODE.md](STORY_MODE.md)**. Lieux : **[PLACE_ATLAS.md](PLACE_ATLAS.md)**.
+- Évaluation et correctifs : **[BUG_AUDIT.md](BUG_AUDIT.md)**, **[E2E_REPORT.md](E2E_REPORT.md)**. Audits et design : **[UX_EXPERT_AUDIT.md](UX_EXPERT_AUDIT.md)**, **[UX_REDESIGN.md](UX_REDESIGN.md)**, **[SOLAR_SYSTEM.md](SOLAR_SYSTEM.md)**, **[STORY_MODE.md](STORY_MODE.md)**. Lieux : **[PLACE_ATLAS.md](PLACE_ATLAS.md)**.
 
 ### La queue du dragon
 
@@ -235,6 +235,7 @@ scripts/fetch-search-images.mjs
 scripts/optimize-images.mjs
 scripts/build-place-atlas.mjs
 scripts/e2e-keyboard.mjs
+scripts/keyboard-router.js
 scripts/verify-sources.mjs
 scripts/verify-grok.mjs
 CONCEPT.md          note de concept
