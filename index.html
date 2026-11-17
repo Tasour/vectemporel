@@ -511,6 +511,71 @@
       </div>
     </div>
 
+    <div class="solar-overlay" id="solar-overlay" hidden>
+      <div class="solar-backdrop" data-close-solar></div>
+      <section class="solar-shell" role="dialog" aria-modal="true" aria-labelledby="solar-title">
+        <header class="solar-bar">
+          <div class="solar-brand">
+            <span class="solar-mark" aria-hidden="true">
+              <svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="4" fill="currentColor"/><ellipse cx="14" cy="14" rx="12" ry="5.5" fill="none" stroke="currentColor" stroke-width="1" transform="rotate(-25 14 14)"/><circle cx="24" cy="9" r="1.8" fill="currentColor"/></svg>
+            </span>
+            <span class="solar-brand-name" id="solar-title">Système</span>
+            <span class="solar-context" id="solar-context"></span>
+          </div>
+          <div class="solar-actions">
+            <div class="mode-tabs">
+              <button class="mode-tab" id="solar-world-btn" data-view-tab="monde" type="button">Monde</button>
+              <span class="mode-tab is-active" data-view-tab="systeme">Système</span>
+              <button class="mode-tab" id="solar-recit-btn" data-view-tab="recit" type="button">Récit</button>
+            </div>
+            <button class="solar-icon-button" id="solar-help-btn" type="button" aria-label="Aide clavier">?</button>
+            <button class="solar-icon-button" id="solar-close" type="button" aria-label="Retour au monde">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </header>
+        <div class="solar-stage" id="solar-stage">
+          <div class="solar-world" id="solar-world"></div>
+          <aside class="solar-panel" id="solar-panel" aria-live="polite"></aside>
+          <div class="solar-zoom">
+            <button id="solar-zoom-in" type="button" aria-label="Zoomer">+</button>
+            <button id="solar-zoom-out" type="button" aria-label="Dézoomer">−</button>
+            <button id="solar-zoom-fit" type="button" aria-label="Vue d’ensemble">⤢</button>
+          </div>
+        </div>
+        <footer class="solar-footer">
+          <div class="solar-keys">
+            <span><kbd>←</kbd><kbd>→</kbd> période</span>
+            <span><kbd>↑</kbd><kbd>↓</kbd> événement</span>
+            <span><kbd>Entrée</kbd> ouvrir</span>
+            <span><kbd>Espace</kbd> lunes</span>
+            <span><kbd>?</kbd> aide</span>
+          </div>
+          <div class="solar-legend">
+            <span class="solar-legend-sun">Période</span>
+            <span class="solar-legend-planet">Événement</span>
+            <span class="solar-legend-moon">Figure · lieu · repère</span>
+          </div>
+        </footer>
+      </section>
+      <div class="solar-help" id="solar-help" hidden>
+        <div class="solar-help-sheet" role="dialog" aria-modal="true" aria-labelledby="solar-help-title">
+          <button id="solar-help-close" type="button" aria-label="Fermer l’aide">×</button>
+          <h2 id="solar-help-title">Lire le système</h2>
+          <p>Chaque <b>soleil</b> est une période. Les <b>planètes</b> qui l’entourent sont les événements. Chaque planète porte des <b>lunes</b> : personnages, lieux et repères-clés (édits, traités, lois).</p>
+          <ul>
+            <li><kbd>←</kbd> <kbd>→</kbd> : changer de période</li>
+            <li><kbd>↑</kbd> <kbd>↓</kbd> : changer d’événement dans la période</li>
+            <li><kbd>Entrée</kbd> : ouvrir la fiche de l’événement</li>
+            <li><kbd>Espace</kbd> : afficher / masquer les lunes</li>
+            <li><kbd>0</kbd> : vue d’ensemble</li>
+            <li><kbd>Échap</kbd> : revenir au monde 3D</li>
+          </ul>
+          <p class="solar-help-note">Tout est rangé autour de son ère : aucune donnée n’est inventée.</p>
+        </div>
+      </div>
+    </div>
+
     <div class="reader-overlay" id="reader-overlay" hidden>
       <div class="reader-backdrop" data-close-reader></div>
       <aside class="reader" id="reader" role="dialog" aria-modal="true" aria-labelledby="reader-title">
@@ -661,6 +726,7 @@
     <script src="satellite-map.js"></script>
     <script src="story.js"></script>
     <script src="plan.js"></script>
+    <script src="solar.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

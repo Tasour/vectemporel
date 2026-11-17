@@ -8,8 +8,8 @@
 
 ## 1. Les cinq règles du plan
 
-1. **Un seul point d’entrée.** L’application s’ouvre sur le **Plan** : une grille carrée qui montre les quatre destinations possibles.
-2. **Trois verbes, pas sept modes.** Raconter · Explorer · Consulter. Le lecteur est une sortie, pas une destination.
+1. **Un seul point d’entrée.** L’application s’ouvre sur le **Monde 3D**. Cliquer un pays mène au **Système solaire** de ce pays.
+2. **Trois verbes.** Raconter (Récit) · Explorer (Système solaire) · Consulter (Frise). Le lecteur est une sortie.
 3. **Un seul état partagé.** Le pays, l’ère, le repère et le lieu sont possédés par une seule couche et visibles partout.
 4. **Densité progressive.** Un écran = une question. On ne montre jamais le récit, la carte et la frise en même temps.
 5. **Rien n’est inventé.** Aucune date, citation, coordonnée ou anecdote hors des données vérifiées.
@@ -21,22 +21,21 @@
 ```text
 VECTEMPOREL
 │
-├── 00 · PLAN ............................ entrée unique, grille 2 × 2
-│   ├── 01 · RÉCIT ....................... raconter
-│   │   ├── 01a · Périodes ............... choisir une ère
-│   │   ├── 01b · Panorama ............... vivre les repères de l’ère
-│   │   └── 01c · Lieux .................. carte satellite, lieu par lieu
-│   ├── 02 · DRAGON ...................... explorer librement la queue
-│   │   └── 02a · Fiche détaillée ........ image, récit, figures, lieux
-│   ├── 03 · FRISE ....................... consulter / chercher une date
-│   │   ├── Globe (sélecteur de pays)
-│   │   ├── Recherche et filtres
-│   │   └── Mini-carte
-│   └── 04 · LECTEUR ..................... sortie commune (Grokipedia traduit)
+├── 00 · MONDE 3D ........................ menu principal, choix du pays
+│   └── 01 · SYSTÈME SOLAIRE ............. vue centrale après le pays
+│       ├── soleil ....................... période / ère
+│       ├── planète ...................... événement (image vérifiée)
+│       ├── lune ......................... personnage, lieu, repère-clé
+│       ├── fiche détaillée .............. récit + figures + lieux
+│       └── Récit ......................... période → panorama → lieux satellite
+│
+├── 02 · FRISE ........................... consultation (`?classic=1`)
+└── 03 · LECTEUR ......................... sortie commune (Grokipedia traduit)
 ```
 
-Le **globe** n’est plus un mode : c’est un outil de sélection à l’intérieur de la frise.
-Le **lecteur** n’est plus un mode : c’est une porte de sortie depuis 01b, 02a et 03.
+Le globe est le menu : un clic sur un pays ouvre son système. Le système
+solaire remplace l'ancienne queue en tourbillon : ère → événement → détails.
+Le lecteur reste une sortie, jamais une destination.
 
 ---
 
@@ -198,11 +197,11 @@ Aucune vue ne lit un fichier autre que ceux-ci. Aucune vue n’écrit dans `data
 | --- | --- | --- |
 | **P0 — Plan** | Grille 2 × 2, coque, raccourcis, retour Plan depuis partout | On peut atteindre les 4 vues au clavier depuis le chargement et revenir au Plan. |
 | **P1 — Coque unique** | Barre et pied identiques dans Récit/Dragon, pays partagé | Changer de pays dans une vue le change dans l’autre. |
-| **P2 — Scènes** | Périodes/Panorama/Lieux et Dragon conformes à la grammaire | Une seule question par scène, jamais deux panneaux concurrents. |
+| **P2 — Scènes** | Système solaire + Récit conformes à la grammaire | Une seule question par scène, jamais deux panneaux concurrents. |
 | **P3 — Frise & globe** | Sélecteur de pays intégré, recherche, retour Plan | La frise n’est plus qu’un outil de consultation, pas un labyrinthe. |
 | **P4 — Évaluation** | Test utilisateur, kappa, sign-off | 20 participants, tâches « trouver / raconter / situer ». |
 
-**État actuel : P1 livré.** P0 (Plan) et P1 (coque unique) sont en place : onglets synchronisés, sélecteur de pays partagé entre Récit et Dragon, pied de navigation identique. P2 à P4 restent à réaliser.
+**État actuel : nouvelle structure livrée.** Le Monde 3D est le menu principal ; un pays ouvre le Système solaire (soleils, planètes, lunes). Le Récit et sa carte satellite restent accessibles depuis le Système. L'ancien tourbillon est conservé dans le code mais retiré du parcours principal.
 
 ---
 

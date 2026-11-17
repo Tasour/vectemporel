@@ -922,6 +922,13 @@
       if (els.storyCountry) els.storyCountry.value = id;
       render();
     },
+    openPlaces: (countryId, eraIndex) => {
+      open(countryId, 'places');
+      state.eraIndex = clamp(eraIndex, 0, state.story.eras.length - 1);
+      state.showCountryPlaces = false;
+      state.placeIndex = 0;
+      render();
+    },
     openEra: (countryId, eraIndex) => {
       open(countryId, 'panorama');
       state.eraIndex = clamp(eraIndex, 0, state.story.eras.length - 1);

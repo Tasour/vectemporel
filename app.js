@@ -2170,7 +2170,11 @@
     closeGlobe();
     if (entry.appId && COUNTRY_BY_ID.has(entry.appId)) {
       setCountry(entry.appId, { resetView: true });
-      toast(`${entry.name} · ${entry.events} repères`);
+      if (window.VECTEMPOREL_SOLAR) {
+        window.VECTEMPOREL_SOLAR.open(entry.appId);
+      } else {
+        toast(`${entry.name} · ${entry.events} repères`);
+      }
       if (window.innerWidth < 760) {
         setTimeout(() => els.stageWrap.scrollIntoView({ behavior: 'smooth', block: 'start' }), 240);
       }
@@ -2458,6 +2462,9 @@
   window.VECTEMPOREL_APP = {
     openEvent,
     getCountryId: () => state.countryId,
+    setCountry,
+    openGlobe,
+    closeGlobe,
   };
 
   boot();

@@ -228,11 +228,12 @@
 
   window.VECTEMPOREL_PLAN = { open, close, goTo, state: () => ({ ...state }) };
 
-  // Le Plan est le point de départ : il remplace l'ouverture automatique
-  // du Récit et du Dragon au chargement.
+  // Le MONDE 3D est le menu principal. Le Plan reste accessible par le
+  // bouton de la barre et par la touche Plan, mais il ne s'ouvre plus au
+  // chargement : on commence par le globe, puis un pays mène au système.
   const start = () => {
     if (new URLSearchParams(window.location.search).has('classic')) return;
-    window.setTimeout(() => open(), 180);
+    window.setTimeout(() => window.VECTEMPOREL_APP?.openGlobe?.(), 180);
   };
   if (document.readyState === 'complete') start();
   else window.addEventListener('load', start, { once: true });

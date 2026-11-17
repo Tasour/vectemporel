@@ -6,6 +6,10 @@ Une **queue de dragon** zoomable, pays par pays : chaque écaille est un repère
 
 > Le **plan directeur unique** est dans **[APP_PLAN.md](APP_PLAN.md)**. La note de concept complète est dans **[CONCEPT.md](CONCEPT.md)**. La méthode de production d’une frise est dans **[TIMELINE_METHOD.md](TIMELINE_METHOD.md)** et la recherche sur la forme narrative dans **[SPIRAL_TIMELINE.md](SPIRAL_TIMELINE.md)** et le design du canevas zoomable dans **[DRAGON_TIMELINE.md](DRAGON_TIMELINE.md)**. Les 10 dossiers pays sont dans **[audits/](audits/)** ; leur synthèse est dans **[AUDIT_SYNTHESIS.md](AUDIT_SYNTHESIS.md)** et le rapport d’intégration dans **[INTEGRATION_REPORT.md](INTEGRATION_REPORT.md)**. Les audits prose sont dans **[COUNTRY_AUDITS.md](COUNTRY_AUDITS.md)**, l’audit structurel généré dans **[TIMELINE_AUDIT.md](TIMELINE_AUDIT.md)** et la liste des 196 pays dans **[COUNTRIES.md](COUNTRIES.md)**.
 
+![Vectemporel — monde 3D, menu principal](screenshots/vectemporel-world.png)
+
+![Vectemporel — système solaire des périodes](screenshots/vectemporel-solar.png)
+
 ![Vectemporel — frise zoomable](screenshots/vectemporel-desktop.png)
 
 ![Vectemporel — globe 3D](screenshots/vectemporel-globe.png)
@@ -49,7 +53,7 @@ Aucun build front n’est nécessaire : `index.html`, `styles.css`, `app.js`, `d
 
 ## Ce que contient le POC
 
-### Le Récit (vue d’accueil)
+### Le système solaire (vue centrale)
 
 - Parcours en trois étapes : **choisir une période**, parcourir le **panorama** des repères, naviguer de **lieu en lieu**.
 - **Clavier complet** : flèches, `1`–`9`, `Entrée`, `Espace`, `Échap`, `?` pour l’aide.
@@ -196,7 +200,8 @@ globe-map.png       texture visuelle du globe
 globe-pick.png      texture de sélection pays
 globe-engine.js     moteur Three.js optimisé
 dragon.js           canevas zoomable Three.js
-plan.js             point d’entrée, grille 2 × 2
+plan.js             accès Plan (aide)
+solar.js            système solaire 2D
 story.js            récit périodes/panorama/lieux
 satellite-map.js    fond satellite et marqueurs
 place-atlas.js      coordonnées et contours des lieux
