@@ -782,6 +782,11 @@
       setMode(['eras', 'panorama', 'places'][Number((event.code || '').slice(5)) - 1]);
       return;
     }
+    if (event.shiftKey && event.code === 'Digit4') {
+      event.preventDefault();
+      els.storySystemBtn?.click();
+      return;
+    }
     if (state.mode === 'eras' && /^[1-9]$/.test(event.key)) {
       const index = Number(event.key) - 1;
       if (index < state.story.eras.length) {

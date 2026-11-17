@@ -35,6 +35,7 @@ npm run build:globe   # régénère les textures du globe 3D
 npm run build:spiral-meta  # régénère les acteurs/lieux par ère
 npm run build:images:all    # régénère les 229 images vérifiées
 npm run build:places        # régénère les coordonnées et contours des lieux
+npm run test:e2e           # parcours intégral au clavier (14 contrôles)
 npm run audit:timeline  # régénère TIMELINE_AUDIT.md
 npm start
 ```
@@ -60,7 +61,7 @@ Aucun build front n’est nécessaire : `index.html`, `styles.css`, `app.js`, `d
 - Mini-film : grande image, résumé découpé en phrases animées, pellicule des repères, lecture automatique.
 - Carte **satellite réelle** (Esri World Imagery) avec coordonnées vérifiées (114/120), chemin chronologique et attribution ; aucun point inventé.
 - Aucune anecdote fabriquée : le récit met en scène les repères vérifiés.
-- Audits et design : **[UX_EXPERT_AUDIT.md](UX_EXPERT_AUDIT.md)**, **[UX_REDESIGN.md](UX_REDESIGN.md)**, **[SOLAR_SYSTEM.md](SOLAR_SYSTEM.md)**, **[STORY_MODE.md](STORY_MODE.md)**. Lieux : **[PLACE_ATLAS.md](PLACE_ATLAS.md)**.
+- Évaluation automatique : **[E2E_REPORT.md](E2E_REPORT.md)**. Audits et design : **[UX_EXPERT_AUDIT.md](UX_EXPERT_AUDIT.md)**, **[UX_REDESIGN.md](UX_REDESIGN.md)**, **[SOLAR_SYSTEM.md](SOLAR_SYSTEM.md)**, **[STORY_MODE.md](STORY_MODE.md)**. Lieux : **[PLACE_ATLAS.md](PLACE_ATLAS.md)**.
 
 ### La queue du dragon
 
@@ -233,6 +234,7 @@ scripts/fetch-wiki-images.mjs
 scripts/fetch-search-images.mjs
 scripts/optimize-images.mjs
 scripts/build-place-atlas.mjs
+scripts/e2e-keyboard.mjs
 scripts/verify-sources.mjs
 scripts/verify-grok.mjs
 CONCEPT.md          note de concept

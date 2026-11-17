@@ -18,7 +18,8 @@
     "build:spiral-meta": "node scripts/build-spiral-meta.mjs",
     "build:event-images": "node scripts/build-event-images.mjs",
     "build:images:all": "npm run build:event-images && node scripts/fetch-wiki-images.mjs && node scripts/fetch-search-images.mjs && node scripts/optimize-images.mjs",
-    "build:places": "node scripts/build-place-atlas.mjs"
+    "build:places": "node scripts/build-place-atlas.mjs",
+    "test:e2e": "node scripts/e2e-keyboard.mjs"
   },
   "keywords": [
     "histoire",
@@ -38,6 +39,7 @@
   "devDependencies": {
     "@napi-rs/canvas": "^1.1.1",
     "d3-geo": "^3.1.2",
+    "puppeteer-core": "^23.11.1",
     "three": "^0.152.2",
     "topojson-client": "^3.1.0",
     "world-atlas": "^2.0.2",

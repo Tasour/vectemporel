@@ -593,6 +593,11 @@
       close();
       return;
     }
+    if (event.key.toLowerCase() === 'r') {
+      event.preventDefault();
+      els.recitBtn.click();
+      return;
+    }
     if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
       event.preventDefault();
       const delta = event.key === 'ArrowRight' ? 1 : -1;
