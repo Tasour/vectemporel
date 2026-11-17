@@ -2,7 +2,7 @@
 
 **L’Histoire, à portée de zoom.**
 
-Une frise historique zoomable, pays par pays, avec des événements tagués et un lecteur Grokipedia intégré, **traduit automatiquement en français**. Ce dépôt est un **proof of concept** : il sert à discuter du concept, pas à être déployé tel quel.
+Une **queue de dragon** zoomable, pays par pays : chaque écaille est un repère illustré, relié à son ère, à des figures et à des lieux. Un lecteur Grokipedia intégré, **traduit automatiquement en français**. Ce dépôt est un **proof of concept** : il sert à discuter du concept, pas à être déployé tel quel.
 
 > La note de concept complète est dans **[CONCEPT.md](CONCEPT.md)**. La méthode de production d’une frise est dans **[TIMELINE_METHOD.md](TIMELINE_METHOD.md)** et la recherche sur la forme narrative dans **[SPIRAL_TIMELINE.md](SPIRAL_TIMELINE.md)** et le design du canevas zoomable dans **[DRAGON_TIMELINE.md](DRAGON_TIMELINE.md)**. Les 10 dossiers pays sont dans **[audits/](audits/)** ; leur synthèse est dans **[AUDIT_SYNTHESIS.md](AUDIT_SYNTHESIS.md)** et le rapport d’intégration dans **[INTEGRATION_REPORT.md](INTEGRATION_REPORT.md)**. Les audits prose sont dans **[COUNTRY_AUDITS.md](COUNTRY_AUDITS.md)**, l’audit structurel généré dans **[TIMELINE_AUDIT.md](TIMELINE_AUDIT.md)** et la liste des 196 pays dans **[COUNTRIES.md](COUNTRIES.md)**.
 
@@ -29,12 +29,12 @@ npm install
 npm run build:atlas   # régénère countries.js / COUNTRIES.md
 npm run build:globe   # régénère les textures du globe 3D
 npm run build:spiral-meta  # régénère les acteurs/lieux par ère
-npm run build:event-images # régénère les images documentaires vérifiées
+npm run build:images:all    # régénère les 229 images vérifiées
 npm run audit:timeline  # régénère TIMELINE_AUDIT.md
 npm start
 ```
 
-Ouvrir **http://localhost:4173**.
+Ouvrir **http://localhost:4173** : la queue du dragon s’ouvre directement et reste la vue principale. La frise classique n’est accessible qu’avec `?classic=1`.
 
 Le serveur peut aussi écouter sur un autre port :
 
@@ -50,14 +50,15 @@ Aucun build front n’est nécessaire : `index.html`, `styles.css`, `app.js`, `d
 
 ### La queue du dragon
 
-- Un **canevas zoomable** de type Prezi : le zoom fait avancer ou reculer dans le temps.
+- Un **canevas zoomable** de type Prezi, vue principale unique : plonger vers le centre remonte le temps, remonter vers l’extérieur avance vers le présent.
 - Une spirale logarithmique auto-similaire : chaque écaille est ~10 % plus petite que la précédente.
 - 10 pays, 229 repères : une écaille = un repère, avec ère, tags, figures et lieux.
-- Des **images** : 10 photographies/œuvres vérifiées sur Wikimedia Commons (crédit et licence affichés) et un motif génératif signalé « non documentaire » pour les autres.
-- Navigation : molette, pincement, glisser, flèches, rail de profondeur, clic sur une écaille.
+- **229/229 repères illustrés** par des images vérifiées via les API Wikipedia et Wikimedia Commons, avec crédit, licence et lien source ; motifs génératifs seulement en secours.
+- Clic sur une écaille → **fiche détaillée** (grande image, titre 48 px, résumé complet, figures, lieux) ; clic sur « Lire la fiche » → lecteur.
+- Navigation : molette, pincement, glisser, flèches, rail de profondeur ; pas de tuile « hors corpus ».
 - Three.js à la demande : scène statique, 15 écailles DOM recyclées, rendu arrêté au repos.
 - La frise linéaire reste l’outil de recherche ; le dragon est le mode narratif.
-- Design complet : **[DRAGON_TIMELINE.md](DRAGON_TIMELINE.md)**. Images : **[EVENT_IMAGES.md](EVENT_IMAGES.md)**.
+- Design complet : **[DRAGON_TIMELINE.md](DRAGON_TIMELINE.md)**. Images : **[EVENT_IMAGES.md](EVENT_IMAGES.md)**, **[WIKI_IMAGES.md](WIKI_IMAGES.md)**, **[SEARCH_IMAGES.md](SEARCH_IMAGES.md)**.
 
 ### L’atlas 3D
 
@@ -207,6 +208,9 @@ scripts/audit-timeline.mjs
 scripts/check-audit-dossiers.mjs
 scripts/build-spiral-meta.mjs
 scripts/build-event-images.mjs
+scripts/fetch-wiki-images.mjs
+scripts/fetch-search-images.mjs
+scripts/optimize-images.mjs
 scripts/verify-sources.mjs
 scripts/verify-grok.mjs
 CONCEPT.md          note de concept

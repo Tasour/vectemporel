@@ -274,15 +274,15 @@ Cela encode le pays, la fenêtre temporelle et, éventuellement, l’événement
 
 ### 6.9 Queue du dragon
 
-La frise linéaire reste l’outil de **recherche**. La queue du dragon est un mode de **narration** : un canevas zoomable de type Prezi, où le zoom est le déplacement dans le temps. Chaque écaille est un repère avec son image, son ère, ses tags, ses figures et ses lieux.
+La queue du dragon est la **vue principale et unique** de Vectemporel : un canevas zoomable de type Prezi, ouvert au chargement. Plonger vers le centre remonte le temps ; remonter vers l’extérieur avance vers le présent. Chaque écaille est un repère avec son image, son ère, ses tags, ses figures et ses lieux. La frise linéaire reste accessible via `?classic=1`.
 
-- **Géométrie** : spirale logarithmique auto-similaire `r = e^(−b·Δθ·u)` ; une écaille est ~10 % plus petite que la précédente.
-- **Zoom = temps** : la caméra suit `r(u)`, donc avancer d’une écaille revient exactement à zoomer ; il n’y a pas de saut d’échelle.
+- **Géométrie** : spirale logarithmique auto-similaire `r = e^(b·Δθ·u)` ; le passé est au centre, le présent à l’extérieur.
+- **Zoom = temps** : la caméra suit `r(u)` ; zoomer vers le centre recule d’une écaille sans saut d’échelle.
 - **Rendu** : Three.js statique (ruban, bandes d’ères, vertèbres) + écailles DOM recyclées et connecteurs SVG ; rendu arrêté au repos.
-- **Images** : fichiers Wikimedia Commons vérifiés avec crédit/licence, sinon motif génératif explicitement non documentaire.
-- **Interaction** : molette, pincement, glisser, flèches, rail de profondeur, clic sur une écaille → lecteur.
+- **Images** : 229/229 repères illustrés par des fichiers vérifiés via les API Wikipedia/Commons, avec crédit et licence ; motif génératif seulement en secours.
+- **Interaction** : molette, pincement, glisser, flèches, rail de profondeur, clic sur une écaille → fiche détaillée → lecteur.
 - **Systémique** : le même algorithme s’applique aux 10 pays ; seules les données changent.
-- **Limite** : la queue n’est pas adaptée à la recherche rapide ; elle ne remplace pas la frise.
+- **Limite** : la navigation est bornée aux repères vérifiés ; aucune écaille vide ni continuation fictive.
 
 Les notes complètes sont dans **[SPIRAL_TIMELINE.md](SPIRAL_TIMELINE.md)** (recherche sur la forme) et **[DRAGON_TIMELINE.md](DRAGON_TIMELINE.md)** (design du canevas).
 
@@ -496,7 +496,7 @@ Navigateur
   globe-engine.js → moteur Three.js (1 sphère, 1 draw call)
   dragon.js      → canevas zoomable Three.js
   dragon art     → motifs génératifs SVG
-  event-images.js → images Commons vérifiées
+  event-images.js → 229 images vérifiées avec crédits
   spiral-meta.js → acteurs et lieux par ère
   globe-map.png / globe-pick.png → textures visuelle et de picking
         │
@@ -632,13 +632,13 @@ Un **musée de nuit** : fond encre, or discret, typographie éditoriale, lecteur
 ### 10.4 Queue du dragon
 
 - **Temps → angle** : `θ(u) = φ₀ + Δθ·u`, avec `Δθ = 0,58 rad` et `φ₀ = −1,74 rad`.
-- **Rayon logarithmique** : `r(u) = e^(−b·Δθ·u)`, avec `b = ln(φ)/(π/2) × 0,55`.
+- **Rayon logarithmique** : `r(u) = e^(b·Δθ·u)`, avec `b = ln(φ)/(π/2) × 0,55` ; le centre est l’origine la plus ancienne.
 - **Zoom = temps** : hauteur de vue `h(p) = 2·VIEW·r(p)` ; la taille écran d’une écaille ne dépend que de `j − p`.
-- **Écailles** : tuiles DOM alternées autour du ruban, reliées par des connecteurs SVG ; l’écaille courante est cerclée d’or.
+- **Écailles** : tuiles DOM alternées autour du ruban, reliées par des connecteurs SVG ; l’écaille sélectionnée est agrandie et cerclée d’or.
 - **Contenu** : image vérifiée ou motif génératif signalé, ère, repère, tags, figures et lieux.
-- **Étapes** : une écaille par repère ; la fiche donne le récit, le résumé, les tags, les figures et les lieux.
+- **Étapes** : une écaille par repère ; le clic ouvre une fiche détaillée (grande image, résumé, tags, figures, lieux) avant le lecteur Grokipedia.
 - **Performance** : scène Three.js statique, 15 écailles recyclées, rendu à la demande et arrêté au repos.
-- **Accessibilité** : clavier, contraste, `prefers-reduced-motion`, focus piégé dans l’overlay.
+- **Accessibilité** : clavier, contraste, `prefers-reduced-motion`, focus piégé dans l’overlay et dans la fiche détaillée.
 
 ---
 

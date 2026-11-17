@@ -291,16 +291,16 @@
           <div class="dragon-depth" id="dragon-depth" role="navigation" aria-label="Profondeur temporelle"></div>
 
           <div class="dragon-zoom" aria-hidden="true">
-            <button class="dragon-zoom-button" id="dragon-zoom-in" type="button" aria-label="Avancer dans le temps">
+            <button class="dragon-zoom-button" id="dragon-zoom-in" type="button" aria-label="Plonger vers les origines">
               <svg viewBox="0 0 20 20"><path d="M10 5v10M5 10h10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /></svg>
             </button>
-            <button class="dragon-zoom-button" id="dragon-zoom-out" type="button" aria-label="Reculer dans le temps">
+            <button class="dragon-zoom-button" id="dragon-zoom-out" type="button" aria-label="Remonter vers le présent">
               <svg viewBox="0 0 20 20"><path d="M5 10h10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" /></svg>
             </button>
           </div>
 
           <div class="dragon-hint" id="dragon-hint">
-            Molette ou pincement : avancer dans le temps · glisser : parcourir · clic : ouvrir la fiche
+            Molette ou pincement : plonger vers les origines · glisser : parcourir · clic : ouvrir l’écaille
           </div>
 
           <aside class="dragon-card" id="dragon-card" aria-live="polite">
@@ -316,15 +316,53 @@
               <div class="dragon-tags" id="dragon-tags"></div>
               <div class="dragon-figures" id="dragon-figures"></div>
               <div class="dragon-card-actions">
-                <button class="dragon-open" id="dragon-open" type="button">Lire la fiche</button>
-                <button class="dragon-step" id="dragon-prev" type="button" aria-label="Repère précédent">←</button>
-                <button class="dragon-step" id="dragon-next" type="button" aria-label="Repère suivant">→</button>
+                <button class="dragon-open" id="dragon-open" type="button">Voir en détail</button>
+                <button class="dragon-step is-read" id="dragon-read" type="button" aria-label="Lire la fiche">Fiche</button>
+                <button class="dragon-step" id="dragon-prev" type="button" aria-label="Écaille plus ancienne">←</button>
+                <button class="dragon-step" id="dragon-next" type="button" aria-label="Écaille plus récente">→</button>
               </div>
               <div class="dragon-credit" id="dragon-credit"></div>
             </div>
           </aside>
 
           <div class="dragon-rail" aria-hidden="true"><span id="dragon-rail-bar"></span></div>
+        </div>
+
+        <div class="dragon-detail" id="dragon-detail" hidden>
+          <div class="dragon-detail-backdrop" data-close-detail></div>
+          <article class="dragon-detail-sheet" role="dialog" aria-modal="true" aria-labelledby="detail-title">
+            <button class="dragon-detail-close" id="dragon-detail-close" type="button" aria-label="Fermer le détail">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" /></svg>
+            </button>
+            <div class="dragon-detail-media" id="dragon-detail-media"></div>
+            <div class="dragon-detail-body">
+              <div class="dragon-detail-kicker">
+                <span id="detail-era"></span>
+                <span id="detail-position"></span>
+              </div>
+              <h2 id="detail-title"></h2>
+              <div class="dragon-detail-year" id="detail-year"></div>
+              <p class="dragon-detail-summary" id="detail-summary"></p>
+              <section class="dragon-detail-section">
+                <h3>Domaines</h3>
+                <div class="dragon-detail-tags" id="detail-tags"></div>
+              </section>
+              <section class="dragon-detail-section">
+                <h3>Figures & lieux</h3>
+                <div class="dragon-detail-figures" id="detail-figures"></div>
+              </section>
+              <section class="dragon-detail-section">
+                <h3>Période</h3>
+                <p class="dragon-detail-context" id="detail-context"></p>
+              </section>
+              <div class="dragon-detail-actions">
+                <button class="dragon-detail-read" id="detail-read" type="button">Lire la fiche</button>
+                <button class="dragon-detail-step" id="detail-prev" type="button">← plus ancien</button>
+                <button class="dragon-detail-step" id="detail-next" type="button">plus récent →</button>
+              </div>
+              <div class="dragon-detail-credit" id="detail-credit"></div>
+            </div>
+          </article>
         </div>
       </section>
     </div>

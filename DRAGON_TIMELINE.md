@@ -1,7 +1,7 @@
 # Queue du dragon — canevas temporel zoomable
 
-> **Note de design v1.0 — 17 novembre 2026.**
-> Mode de narration de Vectemporel : un canevas vectoriel infini où le zoom est le temps. Chaque écaille de la queue est un repère daté, illustré, relié à son ère, à des figures et à des lieux.
+> **Note de design v1.1 — 17 novembre 2026.**
+> **Vue principale et unique de Vectemporel** : un canevas vectoriel zoomable où le zoom est le temps. Chaque écaille de la queue est un repère daté, illustré, relié à son ère, à des figures et à des lieux. La frise historique reste accessible uniquement avec `?classic=1`.
 
 ---
 
@@ -16,7 +16,7 @@ Vectemporel reprend ce principe, mais le contraint par les données historiques 
 - chaque tuile est un **repère vérifié** du corpus ;
 - le zoom n’est pas un effet : c’est **le déplacement dans le temps**.
 
-La métaphore est celle d’une **queue de dragon** : une colonne vertébrale dorée, des écailles alternées, et une tête qui se déplace vers le présent quand on zoome. La queue se déplie à l’infini ; les écailles non documentées sont explicitement marquées comme telles.
+La métaphore est celle d’une **queue de dragon** : une colonne vertébrale dorée, des écailles alternées, et une tête qui se déplace **vers le passé quand on zoome**. Le point le plus profond de la queue est donc le plus ancien. La navigation est strictement limitée aux 229 repères vérifiés : il n’y a pas d’écaille vide ni de zone « hors corpus ».
 
 ---
 
@@ -26,11 +26,11 @@ La frise linéaire de Vectemporel reste l’outil de **recherche** : trouver une
 
 Cette séparation vient de la recherche sur la narration visuelle (Segel & Heer, 2010) et sur les frises (Brehmer et al., 2017) : un même dispositif ne peut pas optimiser également la lecture rapide et l’immersion narrative. Le modèle du **slideshow interactif** de Segel et Heer s’applique ici : une suite de cadres guidés, mais avec interaction locale et sortie possible vers l’exploration.
 
-| Mode | Question servie | Forme | Action dominante |
-| --- | --- | --- | --- |
-| Frise | « Quand ? Comparer. » | ligne horizontale | chercher, filtrer |
-| Spirale narrative | « Quelles ruptures ? » | spirale dorée amortie | avancer par ère |
-| Queue du dragon | « Raconte-moi, écaille par écaille. » | canevas zoomable | zoomer dans le temps |
+| Mode | Question servie | Statut |
+| --- | --- | --- |
+| Queue du dragon | « Raconte-moi, écaille par écaille. » | **vue principale unique** |
+| Frise | « Quand ? Comparer. » | accessible via `?classic=1` uniquement |
+| Spirale narrative | « Quelles ruptures ? » | prototype documenté dans `SPIRAL_TIMELINE.md` |
 
 ---
 
@@ -42,22 +42,22 @@ Pour un repère d’indice `u` :
 
 ```text
 θ(u) = φ₀ + Δθ · u
-r(u) = e^(−b · Δθ · u)
+r(u) = e^(b · Δθ · u)
 P(u) = r(u) · (cos θ(u), sin θ(u))
 ```
 
 - `Δθ = 0,58` rad : un repère tous les 33° ;
 - `b = 0,55 · ln(φ)/(π/2) ≈ 0,168` : croissance dorée amortie ;
 - `φ₀ = −1,74` rad : le repère courant part avec une tangente horizontale ; le futur est à droite, le passé à gauche ;
-- `r` décroît avec le temps : **le futur est vers le centre de la spirale, le passé vers l’extérieur**.
+- `r` **croît avec le temps** : **le passé est au centre (le plus profond), le présent à l’extérieur**. Plonger dans la queue, c’est remonter le temps.
 
 Le facteur d’échelle entre deux écailles consécutives est :
 
 ```text
-r(u+1)/r(u) = e^(−b·Δθ) ≈ 0,906
+r(u+1)/r(u) = e^(b·Δθ) ≈ 1,104
 ```
 
-Chaque écaille est donc environ 10 % plus petite que la précédente : c’est cette décroissance geométrique qui produit la sensation de zoom infini.
+Chaque écaille est donc environ 10 % plus grande que la précédente : en plongeant vers le centre, les écailles deviennent plus petites et le temps recule. C’est cette progression géométrique qui produit la sensation de zoom sans fin.
 
 ### 3.2 Le zoom est le temps
 
@@ -70,10 +70,10 @@ h(p) = 2 · VIEW · r(p)
 Ainsi la taille à l’écran d’une écaille `j` ne dépend que de `j − p` :
 
 ```text
-taille_écran(j) ∝ r(j)/r(p) = e^(−b·Δθ·(j−p))
+taille_écran(j) ∝ r(j)/r(p) = e^(b·Δθ·(j−p))
 ```
 
-Conséquence importante : **la disposition des écailles autour du repère courant est invariante**. Avancer d’une écaille revient exactement à zoomer d’un facteur `e^(b·Δθ) ≈ 1,10` et à translater la caméra. Il n’y a pas de saut d’échelle, pas de rechargement, pas de transition entre « niveaux de détail » : la même géométrie se répète à l’infini.
+Conséquence importante : **la disposition des écailles autour du repère courant est invariante**. Reculer d’une écaille revient exactement à zoomer d’un facteur `e^(b·Δθ) ≈ 1,10` et à translater la caméra. Il n’y a pas de saut d’échelle, pas de rechargement, pas de transition entre « niveaux de détail » : la même géométrie se répète. Le zoom avant mène aux origines, le zoom arrière au présent.
 
 ### 3.3 Écailles et colonne vertébrale
 
@@ -91,40 +91,41 @@ Le fond est un dégradé sombre avec halo or, halo couleur pays, grain animé et
 
 Chaque écaille contient, dans l’ordre de lecture :
 
-1. **une image** : photographie ou œuvre vérifiée, sinon motif génératif signalé ;
+1. **une image** : photographie ou œuvre vérifiée pour **tous les repères** ; motif génératif uniquement en secours technique ;
 2. **une ère** et sa plage de dates ;
 3. **un repère** : titre, année, sous-titre, résumé ;
 4. **des tags** ;
 5. **des figures et des lieux** issus du dossier pays (maximum 2 + 2 dans la fiche).
 
-C’est la réponse à la demande « lier personnages, lieux, époques, événements, tags en un seul objet » : l’écaille est l’unité de connaissance. Le clic ouvre la fiche Grokipedia intégrée.
+C’est la réponse à la demande « lier personnages, lieux, époques, événements, tags en un seul objet » : l’écaille est l’unité de connaissance. Le clic sur l’écaille sélectionnée ouvre une **fiche détaillée** : image en grand, titre en 48 px, résumé complet, domaines, figures et lieux, contexte d’ère, et bouton vers la fiche Grokipedia intégrée. Les flèches permettent de changer d’écaille sans quitter le détail.
 
 ---
 
-## 5. Images : règle d’or
+## 5. Images : une pour chaque repère
 
-Grokipedia publiant peu ou pas d’images, Vectemporel doit imager lui-même. Deux sources sont autorisées :
+Les 229 repères ont une image associée. Aucune n’est inventée : chaque fichier est confirmé par l’API Wikimedia Commons, avec auteur, licence et page source. Trois passes complémentaires sont appliquées dans cet ordre :
 
-### 5.1 Images documentaires vérifiées
+| Passe | Méthode | Repères |
+| --- | --- | ---: |
+| Curation | Fichiers choisis un par un dans `images/event-images.curation.json` | 10 |
+| Wikipedia | `pageimages` fr/en à partir du slug Grokipedia et du titre français, puis `imageinfo` Commons | 153 |
+| Recherche | Recherche Commons pour les repères restants, avec requêtes manuelles ciblées pour 16 cas | 64 + 2 |
+| **Total** | | **229/229** |
 
-`images/event-images.curation.json` liste des fichiers Wikimedia Commons choisis un par un. `scripts/build-event-images.mjs` :
+Le pipeline complet est :
 
-1. interroge l’API Commons pour **confirmer le fichier** ;
-2. lit le nom de licence, l’auteur et l’URL de licence dans `extmetadata` ;
-3. télécharge une vignette de 800 px ;
-4. écrit `event-images.js` avec `src`, `alt`, `caption`, `credit`, `license`, `licenseUrl`, `source`.
+```bash
+npm run build:images:all
+```
 
-**10 repères** sont ainsi illustrés par des images documentaires : Révolution et 1944 (France), Révolution industrielle (Royaume-Uni), Civil Rights Act (États-Unis), chute du Mur (Allemagne), Grenade (Espagne), Qin (Chine), Moghols (Inde), Edo (Japon), Khéops (Égypte). Le registre complet est dans `EVENT_IMAGES.md`.
+Il enchaîne `build-event-images.mjs`, `fetch-wiki-images.mjs`, `fetch-search-images.mjs` et `optimize-images.mjs` (vignettes JPEG 520 px, qualité 74). Les résultats sont consignés dans `EVENT_IMAGES.md`, `WIKI_IMAGES.md` et `SEARCH_IMAGES.md`.
 
-### 5.2 Motifs génératifs
+### Règles
 
-Les autres repères reçoivent un **motif SVG déterministe** : palette du tag, couleur de l’ère, couleur du pays, année en typographie, et un motif par domaine (colonnes, chevrons, orbites, arches, réseaux, compas…). Il est affine par hachage de l’identifiant : même repère, même image.
-
-> Ces motifs sont explicitement étiquetés **« motif génératif · non documentaire »**. Aucune image historique n’est fabriquée, aucun crédit n’est supposé.
-
-Cette distinction est essentielle : la beauté du canevas ne doit jamais faire croire à une source qui n’existe pas.
-
----
+- Un fichier n’est retenu que si l’API Commons confirme son existence, sa taille, son auteur et sa licence.
+- Les fichiers SVG, PDF, cartes, drapeaux, logos, schémas et icônes sont écartés, sauf rares cas documentés un par un.
+- La légende décrit **ce que montre l’image**, pas ce que raconte l’événement. Un lien « source » mène à la fiche du fichier, un lien « article » à la page Wikipedia d’origine quand elle existe.
+- Si une image ne charge pas, un motif génératif déterministe prend le relais et est étiqueté **« motif génératif · non documentaire »**.
 
 ## 6. Algorithme systémique (tous pays)
 
@@ -138,8 +139,9 @@ Cette distinction est essentielle : la beauté du canevas ne doit jamais faire c
      position = P(p+d) − P(p), projetée à l’échelle r(p)
      taille ∝ r(j)/r(p)
 5. Pour l’écaille courante : image, ère, résumé, tags, figures, lieux.
-6. Animer p vers la cible ; recalculer les 15 écailles visibles.
-7. Arrêter le rendu dès que p est stabilisé.
+6. Borner p à `[0, N−1]` : aucun repère hors corpus, aucune tuile vide.
+7. Animer p vers la cible ; recalculer les 15 écailles visibles.
+8. Arrêter le rendu dès que p est stabilisé.
 ```
 
 L’algorithme est identique pour les 10 pays. Seules changent les données.
@@ -163,16 +165,16 @@ L’algorithme est identique pour les 10 pays. Seules changent les données.
 
 | Geste | Effet |
 | --- | --- |
-| Molette vers le haut | zoom avant, une fraction d’écaille vers le présent |
-| Molette vers le bas | zoom arrière vers le passé |
-| Pincement | même navigation sur mobile |
-| Glisser verticalement | parcourir la queue |
-| `+` / `-`, flèches | avancer / reculer d’une écaille |
-| `Début` / `Fin` | première / dernière écaille |
+| Molette vers le haut / pincement | plonger vers les origines (le temps recule) |
+| Molette vers le bas | remonter vers le présent |
+| Glisser vers le haut | plonger vers les origines |
+| `+` / flèche gauche | écaille plus ancienne |
+| `−` / flèche droite | écaille plus récente |
+| `Début` / `Fin` | origine la plus ancienne / présent |
 | Clic sur une écaille lointaine | la rejoindre |
-| Clic sur l’écaille courante | ouvrir la fiche |
+| Clic sur l’écaille courante | ouvrir sa fiche détaillée |
 | Clic sur une bande du rail | sauter à l’ère |
-| `Échap` | fermer |
+| `Échap` | fermer le détail ; le dragon reste ouvert |
 
 La barre de droite est une **carte de profondeur** : chaque segment est une ère, proportionnelle au nombre de repères ; le curseur doré indique l’écaille courante.
 
@@ -193,10 +195,10 @@ Le facteur limitant reste la fréquence de l’écran : 60 fps sur 60 Hz, 120 fp
 
 ## 9. Limites
 
-- Le zoom infini est **géométrique**, pas documentaire : la queue continue au-delà du corpus, avec des écailles « hors corpus » explicitement marquées.
+- La queue s’arrête aux 229 repères vérifiés : pas de tuile vide ni de continuation fictive au-delà du corpus.
 - Une écaille ne prétend pas résumer toute une ère : elle est un repère, avec son contexte.
 - Les acteurs et lieux proviennent des dossiers et restent incomplets pour certaines ères.
-- 10 repères seulement ont une image documentaire vérifiée ; les autres ont un motif génératif signalé.
+- Les 229 repères ont une image vérifiée ; les motifs génératifs ne servent que de secours en cas d’échec de chargement.
 - La lecture rapide reste le rôle de la frise linéaire.
 - Le mode n’a pas encore été évalué auprès d’utilisateurs.
 
@@ -216,9 +218,10 @@ Le facteur limitant reste la fréquence de l’écran : 60 fps sur 60 Hz, 120 fp
 ## 11. Fichiers
 
 - `dragon.js` — moteur du canevas, géométrie, images, fiche, navigation ;
-- `event-images.js` — images documentaires générées (`npm run build:event-images`) ;
-- `images/event-images.curation.json` — curation des fichiers Commons ;
+- `event-images.js` — 229 images documentaires générées (`npm run build:images:all`) ;
+- `images/*.json` — curation, requêtes manuelles et fichiers ciblés ;
+- `scripts/fetch-wiki-images.mjs`, `scripts/fetch-search-images.mjs`, `scripts/optimize-images.mjs` — pipeline d’images ;
 - `EVENT_IMAGES.md` — registre des crédits et licences ;
 - `spiral-meta.js` — figures et lieux par ère (`npm run build:spiral-meta`) ;
 - `styles.css` — thème du canevas, écailles, fiche, rail, responsive ;
-- `index.html` — bouton « Dragon » et overlay.
+- `index.html` — vue Dragon, overlay et fiche détaillée ; ouverture automatique au chargement.

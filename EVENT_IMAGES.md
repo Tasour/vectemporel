@@ -1,6 +1,9 @@
 # Images documentaires des repères
 
-> Généré par `npm run build:event-images`. 2026-11-17.
+> Généré par `npm run build:event-images` (passe de curation). 2026-11-17.
+>
+> **Vue d’ensemble : 229/229 repères illustrés** après les passes Wikipedia et
+> recherche (`WIKI_IMAGES.md`, `SEARCH_IMAGES.md`). Pipeline complet : `npm run build:images:all`.
 
 10 images vérifiées sur 10 entrées curatées.
 Chaque image est décrite par sa fiche Wikimedia Commons : le crédit et la licence

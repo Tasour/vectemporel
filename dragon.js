@@ -10,9 +10,9 @@
  * donc être parcourue sans discontinuité, et le zoom est exactement un
  * déplacement dans le temps.
  *
- * Aucune donnée n’est inventée : les écailles hors corpus sont explicitement
- * marquées « hors corpus » ; les visuels non photographiques sont signalés
- * comme motifs génératifs non documentaires.
+ * Aucune donnée n’est inventée : la navigation est strictement limitée aux
+ * repères vérifiés, et les visuels sans source confirmée sont signalés comme
+ * motifs génératifs non documentaires.
  */
 (() => {
   'use strict';
@@ -66,6 +66,10 @@
     used: false,
     labelEra: -1,
     lastSceneRender: 0,
+    permanent: false,
+    detailOpen: false,
+    detailIndex: -1,
+    lastDetailFocus: null,
   };
 
   const els = {};
@@ -310,7 +314,7 @@
 
   function pointAt(u) {
     const theta = u * DTHETA;
-    const r = Math.exp(-B * theta);
+    const r = Math.exp(B * theta);
     const angle = theta + PHI0;
     return { x: r * Math.cos(angle), y: r * Math.sin(angle), r, theta, angle };
   }
@@ -408,8 +412,8 @@
 
     const { items, eras } = state.story;
     const count = items.length;
-    const start = -PAD - 0.6;
-    const end = count - 1 + PAD + 0.6;
+    const start = -0.35;
+    const end = count - 1 + 0.35;
     const samples = clamp(Math.ceil((end - start) * 70), 700, 2400);
 
     const strips = [
@@ -493,7 +497,7 @@
 
   function tileScreenPosition(index, focus, unit, cx, cy) {
     const d = index - focus;
-    const ratio = Math.exp(-B * DTHETA * d);
+    const ratio = Math.exp(B * DTHETA * d);
     const angle = DTHETA * d;
     const frame = focus * DTHETA + PHI0;
     const cosFrame = Math.cos(frame);
@@ -518,9 +522,7 @@
     el.className = 'dragon-tile';
     el.dataset.index = String(index);
     if (!item) {
-      el.classList.add('is-void');
-      el.setAttribute('aria-label', 'Écaille hors corpus documenté');
-      el.innerHTML = '<span class="dragon-tile-art"><span class="dragon-void-mark">···</span></span><span class="dragon-tile-foot"><span class="dragon-tile-year">—</span><span class="dragon-tile-title">Hors corpus</span></span>';
+      el.setAttribute('aria-label', 'Écaille indisponible');
       return el;
     }
     const event = item.event;
@@ -567,7 +569,7 @@
     const to = Math.ceil(focus) + 11;
     const valid = new Set();
 
-    for (let index = Math.max(-PAD, from); index <= Math.min(count - 1 + PAD, to); index += 1) {
+    for (let index = Math.max(0, from); index <= Math.min(count - 1, to); index += 1) {
       valid.add(index);
       let el = state.tileEls.get(index);
       if (!el) {
@@ -598,7 +600,8 @@
         link.dot.setAttribute('cx', sx.toFixed(1));
         link.dot.setAttribute('cy', sy.toFixed(1));
       }
-      const size = (TILE_W * ratio * unit) / BASE_W;
+      const isFocus = index === Math.round(focus) && Math.abs(focus - index) < 0.5;
+      const size = ((TILE_W * ratio * unit) / BASE_W) * (isFocus ? 1.18 : 1);
       const opacity = clamp(1 - Math.max(0, Math.abs(d) - 0.55) * 0.17, 0.16, 1);
       el.style.transform = `translate3d(${x.toFixed(2)}px, ${y.toFixed(2)}px, 0) translate(-50%, -50%) scale(${size.toFixed(4)})`;
       el.style.opacity = opacity.toFixed(3);
@@ -607,15 +610,9 @@
         el._z = z;
         el.style.zIndex = String(z);
       }
-      const isFocus = index === Math.round(focus) && Math.abs(focus - index) < 0.5;
       if (el._isFocus !== isFocus) {
         el._isFocus = isFocus;
         el.classList.toggle('is-focus', isFocus);
-      }
-      const isOut = index < 0 || index >= count;
-      if (el._isOut !== isOut) {
-        el._isOut = isOut;
-        el.classList.toggle('is-out', isOut);
       }
       const isPast = index < focus - 0.5;
       if (el._isPast !== isPast) {
@@ -662,12 +659,7 @@
   function setMedia(item) {
     const holder = els.media;
     holder.innerHTML = '';
-    if (!item) {
-      holder.classList.add('is-void');
-      holder.innerHTML = '<div class="dragon-void-card"><span>Hors corpus</span><strong>Documentation à poursuivre</strong></div>';
-      return;
-    }
-    holder.classList.remove('is-void');
+    if (!item) return;
     const real = IMAGES[item.event.id];
     if (real?.src) {
       const img = document.createElement('img');
@@ -699,24 +691,36 @@
     }
   }
 
-  function setCredit(item) {
+  function creditInto(item, target) {
     const real = item ? IMAGES[item.event.id] : null;
-    els.credit.innerHTML = '';
+    target.innerHTML = '';
     if (!real) {
-      els.credit.textContent = 'Motif génératif dérivé des métadonnées · non documentaire';
+      target.textContent = 'Motif génératif dérivé des métadonnées · non documentaire';
       return;
     }
     const line = document.createElement('span');
     line.textContent = [real.credit, real.license].filter(Boolean).join(' · ') || 'Wikimedia Commons';
-    els.credit.appendChild(line);
+    target.appendChild(line);
     if (real.source) {
       const link = document.createElement('a');
       link.href = real.source;
       link.target = '_blank';
       link.rel = 'noopener noreferrer';
       link.textContent = 'source';
-      els.credit.append(document.createTextNode(' · '), link);
+      target.append(document.createTextNode(' · '), link);
     }
+    if (real.origin) {
+      const link = document.createElement('a');
+      link.href = real.origin;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.textContent = 'article';
+      target.append(document.createTextNode(' · '), link);
+    }
+  }
+
+  function setCredit(item) {
+    creditInto(item, els.credit);
   }
 
   function updateCard() {
@@ -730,24 +734,7 @@
     }
     state.cardIndex = rounded;
     const item = itemAt(index);
-    const outside = state.p < -0.5 || state.p > count - 0.5;
-    if (outside || !item) {
-      els.card.classList.add('is-void');
-      els.era.textContent = 'Hors corpus documenté';
-      els.position.textContent = '—';
-      els.title.textContent = 'La queue continue';
-      els.year.textContent = '';
-      els.summary.textContent = 'Cette écaille n’est pas documentée dans le corpus actuel. Elle reste visible pour montrer que la queue du dragon continue au-delà des repères vérifiés.';
-      els.tags.innerHTML = '';
-      els.figures.innerHTML = '';
-      els.credit.textContent = 'Aucun contenu inventé';
-      els.media.classList.add('is-void');
-      els.media.innerHTML = '<div class="dragon-void-card"><span>Hors corpus</span><strong>Documentation à poursuivre</strong></div>';
-      els.open.disabled = true;
-      els.card.dataset.event = '';
-      return;
-    }
-    els.card.classList.remove('is-void');
+    if (!item) return;
     els.open.disabled = false;
     els.card.dataset.event = item.event.id;
     setMedia(item);
@@ -790,6 +777,113 @@
     els.card.classList.remove('is-enter');
     void els.card.offsetWidth;
     els.card.classList.add('is-enter');
+    if (state.detailOpen) renderDetail(item);
+  }
+
+  /* ---------------------------------------------------------------------- */
+  /* Fiche détaillée de l'écaille sélectionnée                              */
+  /* ---------------------------------------------------------------------- */
+
+  function fillDetailMedia(item) {
+    const holder = els.detailMedia;
+    holder.innerHTML = '';
+    const real = IMAGES[item.event.id];
+    const addCaption = (text) => {
+      const caption = document.createElement('span');
+      caption.className = 'dragon-detail-media-caption';
+      caption.textContent = text;
+      holder.appendChild(caption);
+    };
+    if (real?.src) {
+      const img = document.createElement('img');
+      img.src = real.src;
+      img.alt = real.alt || real.caption || `Illustration associée à ${item.event.title}`;
+      img.decoding = 'async';
+      img.draggable = false;
+      holder.appendChild(img);
+      addCaption(real.caption || item.event.title);
+      img.addEventListener('error', () => {
+        holder.innerHTML = artSvg(item, false);
+        holder.classList.add('is-generated');
+        addCaption('Motif génératif · non documentaire');
+      }, { once: true });
+    } else {
+      holder.classList.add('is-generated');
+      holder.innerHTML = artSvg(item, false);
+      addCaption('Motif génératif · non documentaire');
+    }
+  }
+
+  function renderDetail(item) {
+    if (!item || !state.story) return;
+    state.detailIndex = item.index;
+    fillDetailMedia(item);
+    creditInto(item, els.detailCredit);
+    els.detailEra.textContent = item.era.name;
+    els.detailPosition.textContent = `Écaille ${item.index + 1} / ${state.story.items.length}`;
+    els.detailTitle.textContent = item.event.title;
+    els.detailYear.innerHTML = '';
+    const year = document.createElement('strong');
+    year.textContent = formatYear(item.event.year);
+    const subtitle = document.createElement('span');
+    subtitle.textContent = item.event.subtitle || '';
+    els.detailYear.append(year, subtitle);
+    els.detailSummary.textContent = item.event.summary || '';
+    els.detailTags.innerHTML = '';
+    for (const tag of item.event.tags || []) {
+      const chip = document.createElement('span');
+      chip.className = 'dragon-detail-tag';
+      chip.style.setProperty('--tag', tagColor(tag));
+      chip.textContent = tagLabel(tag);
+      els.detailTags.appendChild(chip);
+    }
+    els.detailFigures.innerHTML = '';
+    const figures = [
+      ...(item.era.actors || []).slice(0, 3).map((actor) => ({ kind: 'actor', label: actor.label, role: actor.roles?.join(' · ') || '' })),
+      ...(item.era.places || []).slice(0, 3).map((place) => ({ kind: 'place', label: place.label, role: [place.hierarchy, ...(place.functions || []).slice(0, 2)].filter(Boolean).join(' · ') })),
+    ];
+    if (!figures.length) {
+      const empty = document.createElement('span');
+      empty.className = 'dragon-detail-context';
+      empty.textContent = 'Aucune figure ou lieu renseigné pour cette ère dans le corpus actuel.';
+      els.detailFigures.appendChild(empty);
+    }
+    for (const figure of figures) {
+      const chip = document.createElement('span');
+      chip.className = `dragon-detail-figure is-${figure.kind}`;
+      chip.textContent = figure.label;
+      if (figure.role) chip.title = figure.role;
+      els.detailFigures.appendChild(chip);
+    }
+    els.detailContext.textContent = `${item.era.name} · ${formatRange(item.era.start, item.era.end)}. ${item.era.count} repère${item.era.count > 1 ? 's' : ''} dans cette ère. Plus on plonge, plus on remonte le temps.`;
+    els.detailPrev.disabled = item.index === 0;
+    els.detailNext.disabled = item.index === state.story.items.length - 1;
+  }
+
+  function openDetail() {
+    if (!state.story || state.detailOpen) return;
+    const item = itemAt(clamp(Math.round(state.p), 0, state.story.items.length - 1));
+    if (!item) return;
+    state.detailOpen = true;
+    state.lastDetailFocus = document.activeElement;
+    renderDetail(item);
+    els.detail.hidden = false;
+    requestAnimationFrame(() => {
+      els.detail.classList.add('is-open');
+      els.detailClose.focus({ preventScroll: true });
+    });
+  }
+
+  function closeDetail(options = {}) {
+    if (!state.detailOpen) return;
+    state.detailOpen = false;
+    els.detail.classList.remove('is-open');
+    window.setTimeout(() => {
+      if (!state.detailOpen) els.detail.hidden = true;
+    }, 280);
+    if (options.restoreFocus !== false && state.lastDetailFocus?.isConnected) {
+      window.setTimeout(() => state.lastDetailFocus.focus({ preventScroll: true }), 40);
+    }
   }
 
   /* ---------------------------------------------------------------------- */
@@ -890,7 +984,7 @@
   /* ---------------------------------------------------------------------- */
 
   function clampedTarget(value) {
-    return clamp(value, -PAD + 0.2, state.story.items.length - 1 + PAD - 0.2);
+    return clamp(value, 0, state.story.items.length - 1);
   }
 
   function setTarget(value) {
@@ -916,7 +1010,7 @@
     event.preventDefault();
     const factor = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? 400 : 1;
     const speed = event.ctrlKey ? 0.02 : 0.0055;
-    setTarget(state.target - event.deltaY * factor * speed);
+    setTarget(state.target + event.deltaY * factor * speed);
   }
 
   function onPointerDown(event) {
@@ -944,7 +1038,7 @@
       const [a, b] = [...state.pointers.values()];
       const dist = Math.hypot(a.x - b.x, a.y - b.y);
       if (state.pinchDist > 0) {
-        setTarget(state.target + Math.log(dist / state.pinchDist) * 2.4);
+        setTarget(state.target - Math.log(dist / state.pinchDist) * 2.4);
       }
       state.pinchDist = dist;
       state.suppressClick = true;
@@ -955,7 +1049,7 @@
     const dy = event.clientY - state.drag.y;
     if (Math.abs(dx) + Math.abs(dy) > 4) state.drag.moved = true;
     if (state.drag.moved) {
-      setTarget(state.target - dy * 0.007 + dx * 0.0016);
+      setTarget(state.target + dy * 0.007 - dx * 0.0016);
       state.suppressClick = true;
       els.stage.classList.add('is-dragging');
     }
@@ -986,11 +1080,11 @@
       goTo(index);
       return;
     }
-    openEvent(item.event.id);
+    openDetail();
   }
 
   function openEvent(id) {
-    close({ restoreFocus: false, immediate: true });
+    if (state.detailOpen) closeDetail({ restoreFocus: false });
     if (window.VECTEMPOREL_APP?.openEvent) {
       window.VECTEMPOREL_APP.openEvent(id);
     } else {
@@ -1037,7 +1131,7 @@
     requestRender();
   }
 
-  function open(countryId) {
+  function open(countryId, options = {}) {
     if (!state.initialized) init();
     if (!els.overlay || !THREE || !DATA) return;
     ensureRenderer();
@@ -1050,6 +1144,10 @@
       render();
     }
     state.open = true;
+    if (options.permanent) {
+      state.permanent = true;
+      els.overlay.classList.add('is-permanent');
+    }
     state.lastFocus = document.activeElement;
     clearTimeout(state.hideTimer);
     els.overlay.hidden = false;
@@ -1062,7 +1160,7 @@
   }
 
   function close(options = {}) {
-    if (!state.open) return;
+    if (!state.open || (state.permanent && !options.force)) return;
     state.open = false;
     els.overlay.classList.remove('is-open');
     if (state.raf) {
@@ -1084,13 +1182,39 @@
 
   function onKeyDown(event) {
     if (!state.open) return;
+    if (state.detailOpen) {
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeDetail();
+      } else if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+        event.preventDefault();
+        step(1);
+      } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+        event.preventDefault();
+        step(-1);
+      } else if (event.key === 'Tab') {
+        const focusable = [...els.detail.querySelectorAll('button:not([disabled]), a[href]')]
+          .filter((element) => element.offsetParent !== null);
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+      return;
+    }
     if (event.key === 'Escape') {
       event.preventDefault();
       close();
-    } else if (event.key === 'ArrowRight' || event.key === 'ArrowDown' || event.key === '+' || event.key === '=') {
+    } else if (event.key === 'ArrowRight' || event.key === 'ArrowDown' || event.key === '-') {
       event.preventDefault();
       step(1);
-    } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp' || event.key === '-') {
+    } else if (event.key === 'ArrowLeft' || event.key === 'ArrowUp' || event.key === '+' || event.key === '=') {
       event.preventDefault();
       step(-1);
     } else if (event.key === 'Home') {
@@ -1149,6 +1273,22 @@
     els.depth = document.getElementById('dragon-depth');
     els.rail = document.getElementById('dragon-rail-bar');
     els.readout = document.getElementById('dragon-readout');
+    els.read = document.getElementById('dragon-read');
+    els.detail = document.getElementById('dragon-detail');
+    els.detailClose = document.getElementById('dragon-detail-close');
+    els.detailMedia = document.getElementById('dragon-detail-media');
+    els.detailEra = document.getElementById('detail-era');
+    els.detailPosition = document.getElementById('detail-position');
+    els.detailTitle = document.getElementById('detail-title');
+    els.detailYear = document.getElementById('detail-year');
+    els.detailSummary = document.getElementById('detail-summary');
+    els.detailTags = document.getElementById('detail-tags');
+    els.detailFigures = document.getElementById('detail-figures');
+    els.detailContext = document.getElementById('detail-context');
+    els.detailCredit = document.getElementById('detail-credit');
+    els.detailRead = document.getElementById('detail-read');
+    els.detailPrev = document.getElementById('detail-prev');
+    els.detailNext = document.getElementById('detail-next');
     els.openBtn = document.getElementById('spiral-btn');
   }
 
@@ -1158,12 +1298,21 @@
     els.overlay?.querySelector('[data-close-spiral]')?.addEventListener('click', close);
     els.prev?.addEventListener('click', () => step(-1));
     els.next?.addEventListener('click', () => step(1));
-    els.zoomIn?.addEventListener('click', () => step(1));
-    els.zoomOut?.addEventListener('click', () => step(-1));
-    els.open?.addEventListener('click', () => {
+    els.zoomIn?.addEventListener('click', () => step(-1));
+    els.zoomOut?.addEventListener('click', () => step(1));
+    els.open?.addEventListener('click', openDetail);
+    els.read?.addEventListener('click', () => {
       const id = els.card.dataset.event;
       if (id) openEvent(id);
     });
+    els.detailClose?.addEventListener('click', closeDetail);
+    els.detail?.querySelector('[data-close-detail]')?.addEventListener('click', closeDetail);
+    els.detailRead?.addEventListener('click', () => {
+      const id = els.card.dataset.event;
+      if (id) openEvent(id);
+    });
+    els.detailPrev?.addEventListener('click', () => step(-1));
+    els.detailNext?.addEventListener('click', () => step(1));
     els.country?.addEventListener('change', () => {
       loadCountry(els.country.value);
       requestRender();
@@ -1199,5 +1348,22 @@
   }
 
   window.VECTEMPOREL_SPIRAL = { open, close };
-  window.VECTEMPOREL_DRAGON = { open, close, goto: (index) => goTo(index) };
+  window.VECTEMPOREL_DRAGON = {
+    open,
+    close: (options) => close({ ...options, force: true }),
+    goto: (index) => goTo(index),
+    openDetail,
+    closeDetail,
+    state: () => ({ p: state.p, target: state.target, detailOpen: state.detailOpen }),
+  };
+
+  // Le dragon est la visualisation principale : il s'ouvre au chargement.
+  // `?classic=1` garde un accès discret à la frise historique.
+  const start = () => {
+    if (!new URLSearchParams(window.location.search).has('classic')) {
+      window.setTimeout(() => open(undefined, { permanent: true }), 160);
+    }
+  };
+  if (document.readyState === 'complete') start();
+  else window.addEventListener('load', start, { once: true });
 })();
