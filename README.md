@@ -8,7 +8,7 @@ Une **queue de dragon** zoomable, pays par pays : chaque écaille est un repère
 
 ![Vectemporel — monde 3D, menu principal](screenshots/vectemporel-world.png)
 
-![Vectemporel — système solaire des périodes](screenshots/vectemporel-solar.png)
+![Vectemporel — tableau de décision et système solaire](screenshots/vectemporel-solar-dashboard.png)
 
 ![Vectemporel — frise zoomable](screenshots/vectemporel-desktop.png)
 
@@ -60,7 +60,7 @@ Aucun build front n’est nécessaire : `index.html`, `styles.css`, `app.js`, `d
 - Mini-film : grande image, résumé découpé en phrases animées, pellicule des repères, lecture automatique.
 - Carte **satellite réelle** (Esri World Imagery) avec coordonnées vérifiées (114/120), chemin chronologique et attribution ; aucun point inventé.
 - Aucune anecdote fabriquée : le récit met en scène les repères vérifiés.
-- Design : **[STORY_MODE.md](STORY_MODE.md)**, **[UX_REDESIGN.md](UX_REDESIGN.md)**. Lieux : **[PLACE_ATLAS.md](PLACE_ATLAS.md)**.
+- Audits et design : **[UX_EXPERT_AUDIT.md](UX_EXPERT_AUDIT.md)**, **[UX_REDESIGN.md](UX_REDESIGN.md)**, **[SOLAR_SYSTEM.md](SOLAR_SYSTEM.md)**, **[STORY_MODE.md](STORY_MODE.md)**. Lieux : **[PLACE_ATLAS.md](PLACE_ATLAS.md)**.
 
 ### La queue du dragon
 

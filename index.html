@@ -535,6 +535,20 @@
           </div>
         </header>
         <div class="solar-stage" id="solar-stage">
+          <aside class="solar-dashboard" id="solar-dashboard" aria-label="Tableau de décision">
+            <div class="solar-dashboard-head">
+              <span>Décision</span>
+              <button id="solar-dashboard-toggle" type="button" aria-label="Réduire le tableau de bord">−</button>
+            </div>
+            <nav class="solar-crumbs" id="solar-crumbs" aria-label="Fil d’Ariane"></nav>
+            <div class="solar-rank" id="solar-rank"></div>
+            <div class="solar-tree" id="solar-tree"></div>
+            <div class="solar-decision-actions">
+              <button id="solar-prev" type="button">← Précédent</button>
+              <button id="solar-next" type="button">Suivant →</button>
+              <button id="solar-up" type="button">↑ Remonter</button>
+            </div>
+          </aside>
           <div class="solar-world" id="solar-world"></div>
           <aside class="solar-panel" id="solar-panel" aria-live="polite"></aside>
           <div class="solar-zoom">
@@ -562,12 +576,13 @@
         <div class="solar-help-sheet" role="dialog" aria-modal="true" aria-labelledby="solar-help-title">
           <button id="solar-help-close" type="button" aria-label="Fermer l’aide">×</button>
           <h2 id="solar-help-title">Lire le système</h2>
-          <p>Chaque <b>soleil</b> est une période. Les <b>planètes</b> qui l’entourent sont les événements. Chaque planète porte des <b>lunes</b> : personnages, lieux et repères-clés (édits, traités, lois).</p>
+          <p>Le <b>tableau de décision</b> à gauche est la voie de navigation : ère, puis événement, puis lunes. La carte à droite n’est qu’un aperçu figé, sans rotation.</p>
           <ul>
             <li><kbd>←</kbd> <kbd>→</kbd> : changer de période</li>
             <li><kbd>↑</kbd> <kbd>↓</kbd> : changer d’événement dans la période</li>
             <li><kbd>Entrée</kbd> : ouvrir la fiche de l’événement</li>
             <li><kbd>Espace</kbd> : afficher / masquer les lunes</li>
+            <li><kbd>↑</kbd> : remonter d’un niveau</li>
             <li><kbd>0</kbd> : vue d’ensemble</li>
             <li><kbd>Échap</kbd> : revenir au monde 3D</li>
           </ul>

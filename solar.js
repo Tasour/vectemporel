@@ -296,16 +296,122 @@
     panel.appendChild(list);
   }
 
+  function renderDashboard() {
+    if (!state.system || !els.tree) return;
+    const eraNode = currentEraNode();
+    const planetNode = currentPlanetNode();
+    const moon = currentMoon();
+
+    // Fil d’Ariane
+    els.crumbs.innerHTML = '';
+    const crumbs = [
+      { label: state.system.country.name, action: () => close() },
+      { label: eraNode.era.name, action: () => select('sun', state.eraIndex, 0, 0) },
+      ...(state.level !== 'sun' ? [{ label: planetNode.event.title, action: () => select('planet', state.eraIndex, state.planetIndex, 0) }] : []),
+      ...(state.level === 'moon' ? [{ label: moon.label, action: () => {} }] : []),
+    ];
+    crumbs.forEach((item, index) => {
+      if (index) els.crumbs.appendChild(document.createTextNode(' › '));
+      const button = make('button', index === crumbs.length - 1 ? 'is-current' : '', item.label);
+      button.type = 'button';
+      button.addEventListener('click', item.action);
+      els.crumbs.appendChild(button);
+    });
+
+    // Rang
+    els.rank.innerHTML = '';
+    if (state.level === 'moon') {
+      els.rank.append(make('b', '', String(state.moonIndex + 1)), document.createTextNode(` / ${planetNode.moons.length} lunes · ${moon.kind}`));
+    } else if (state.level === 'planet') {
+      els.rank.append(make('b', '', String(state.planetIndex + 1)), document.createTextNode(` / ${eraNode.planets.length} événements · ${formatYear(planetNode.event.year)}`));
+    } else {
+      els.rank.append(make('b', '', String(state.eraIndex + 1)), document.createTextNode(` / ${state.system.eras.length} périodes · ${formatRange(eraNode.era.start, eraNode.era.end)}`));
+    }
+
+    // Arbre décisionnel
+    els.tree.innerHTML = '';
+    els.tree.setAttribute('role', 'tree');
+    const addGroup = (label) => {
+      const group = make('div', 'solar-tree-level');
+      group.appendChild(make('div', 'solar-tree-label', label));
+      els.tree.appendChild(group);
+      return group;
+    };
+    const addItem = (group, opts) => {
+      const button = make('button', `solar-tree-item${opts.active ? ' is-active' : ''}${opts.kind === 'moon' ? ' solar-tree-moon' : ''}`);
+      button.type = 'button';
+      button.setAttribute('role', 'treeitem');
+      button.setAttribute('aria-level', String(opts.level || 1));
+      button.setAttribute('aria-selected', opts.active ? 'true' : 'false');
+      button.append(make('i', '', opts.index), make('span', '', opts.label));
+      if (opts.suffix) button.appendChild(make('small', '', opts.suffix));
+      button.addEventListener('click', opts.onClick);
+      group.appendChild(button);
+      return button;
+    };
+
+    const eraGroup = addGroup('Périodes · ordre chronologique');
+    state.system.eras.forEach((node, index) => {
+      const active = index === state.eraIndex;
+      const button = addItem(eraGroup, {
+        index: String(index + 1).padStart(2, '0'),
+        label: node.era.name,
+        suffix: `${node.planets.length}`,
+        active,
+        level: 1,
+        onClick: () => select('sun', index, 0, 0),
+      });
+      if (active) button.setAttribute('aria-expanded', 'true');
+    });
+
+    const eventGroup = addGroup(`Événements · ${eraNode.era.name}`);
+    eraNode.planets.forEach((node, index) => {
+      addItem(eventGroup, {
+        index: String(index + 1).padStart(2, '0'),
+        label: node.event.title,
+        suffix: formatYear(node.event.year),
+        active: state.level !== 'sun' && index === state.planetIndex,
+        level: 2,
+        onClick: () => select('planet', state.eraIndex, index, 0),
+      });
+    });
+
+    if (state.level !== 'sun') {
+      const moonGroup = addGroup('Lunes · figures, lieux, repères');
+      planetNode.moons.forEach((node, index) => {
+        addItem(moonGroup, {
+          index: '·', label: node.label, suffix: node.kind,
+          active: state.level === 'moon' && index === state.moonIndex,
+          level: 3, kind: 'moon',
+          onClick: () => select('moon', state.eraIndex, state.planetIndex, index),
+        });
+      });
+    }
+
+    // Actions
+    els.prev.disabled = state.level === 'sun' ? state.eraIndex === 0 : state.planetIndex === 0;
+    els.next.disabled = state.level === 'sun'
+      ? state.eraIndex === state.system.eras.length - 1
+      : state.planetIndex >= eraNode.planets.length - 1;
+    els.up.disabled = state.level === 'sun';
+    els.prev.title = state.level === 'sun' ? 'Période précédente' : 'Événement précédent';
+    els.next.title = state.level === 'sun' ? 'Période suivante' : 'Événement suivant';
+  }
+
   function fit() {
     if (!state.system) return;
     const widths = state.system.eras.map((node) => node.x);
     const worldW = Math.max(...widths) + 620;
     const worldH = 1180;
     const rect = els.stage.getBoundingClientRect();
-    const scale = clamp(Math.min(rect.width / worldW, rect.height / worldH) * 0.92, 0.16, 1.1);
+    const mobile = window.innerWidth < 900;
+    const left = mobile ? 20 : 330;
+    const right = mobile ? rect.width - 20 : rect.width - 380;
+    const available = Math.max(320, right - left);
+    const scale = clamp(Math.min(available / worldW, rect.height / worldH) * 0.92, 0.16, 1.1);
     state.camera = {
       scale,
-      x: (rect.width - worldW * scale) / 2,
+      x: left + (available - worldW * scale) / 2,
       y: (rect.height - worldH * scale) / 2,
     };
     applyCamera();
@@ -322,10 +428,14 @@
       y += -Math.sin(planet.angle) * planet.orbit;
     }
     const rect = els.stage.getBoundingClientRect();
+    const mobile = window.innerWidth < 900;
+    const left = mobile ? 20 : 330;
+    const right = mobile ? rect.width - 20 : rect.width - 380;
+    const centerX = (left + right) / 2;
     const scale = state.level === 'sun' ? 0.82 : 1.05;
     state.camera = {
       scale,
-      x: rect.width / 2 - x * scale - 120,
+      x: centerX - x * scale,
       y: rect.height / 2 - y * scale,
     };
     applyCamera();
@@ -357,12 +467,14 @@
     state.moonIndex = clamp(moonIndex, 0, Math.max(0, planet?.moons.length - 1));
     updateHighlights();
     renderPanel();
+    renderDashboard();
     focusNode();
   }
 
   function render() {
     renderWorld();
     renderPanel();
+    renderDashboard();
     const country = state.system.country;
     els.context.textContent = `${country.name} · ${state.system.eras.length} systèmes · ${country.events.length} repères`;
   }
@@ -439,12 +551,21 @@
       select('sun', state.eraIndex + delta, 0, 0);
       return;
     }
-    if (event.key === 'ArrowUp' || event.key === 'ArrowDown') {
+    if (event.key === 'ArrowDown') {
       event.preventDefault();
-      const planet = currentEraNode().planets;
-      const delta = event.key === 'ArrowDown' ? 1 : -1;
-      select('planet', state.eraIndex, state.planetIndex + delta, 0);
-      if (!planet.length) select('sun', state.eraIndex, 0, 0);
+      select('planet', state.eraIndex, state.planetIndex + 1, 0);
+      return;
+    }
+    if (event.key === 'ArrowUp') {
+      event.preventDefault();
+      if (state.level === 'moon') select('planet', state.eraIndex, state.planetIndex, 0);
+      else if (state.level === 'planet') select('sun', state.eraIndex, 0, 0);
+      return;
+    }
+    if (event.key === 'Backspace') {
+      event.preventDefault();
+      if (state.level === 'moon') select('planet', state.eraIndex, state.planetIndex, 0);
+      else if (state.level === 'planet') select('sun', state.eraIndex, 0, 0);
       return;
     }
     if (event.key === 'Enter') {
@@ -477,6 +598,14 @@
     els.helpBtn = document.getElementById('solar-help-btn');
     els.worldBtn = document.getElementById('solar-world-btn');
     els.recitBtn = document.getElementById('solar-recit-btn');
+    els.dashboard = document.getElementById('solar-dashboard');
+    els.dashToggle = document.getElementById('solar-dashboard-toggle');
+    els.crumbs = document.getElementById('solar-crumbs');
+    els.rank = document.getElementById('solar-rank');
+    els.tree = document.getElementById('solar-tree');
+    els.prev = document.getElementById('solar-prev');
+    els.next = document.getElementById('solar-next');
+    els.up = document.getElementById('solar-up');
   }
 
   function bind() {
@@ -490,6 +619,24 @@
       els.overlay.classList.add('is-open');
       window.VECTEMPOREL_STORY?.open(state.countryId);
       window.setTimeout(() => { if (!state.open) els.overlay.hidden = true; }, 300);
+    });
+    els.dashToggle?.addEventListener('click', () => {
+      els.dashboard.classList.toggle('is-collapsed');
+      els.dashToggle.textContent = els.dashboard.classList.contains('is-collapsed') ? '+' : '−';
+      setTimeout(fit, 300);
+    });
+    els.prev?.addEventListener('click', () => {
+      if (state.level === 'sun') select('sun', state.eraIndex - 1, 0, 0);
+      else select('planet', state.eraIndex, state.planetIndex - 1, 0);
+    });
+    els.next?.addEventListener('click', () => {
+      if (state.level === 'sun') select('sun', state.eraIndex + 1, 0, 0);
+      else select('planet', state.eraIndex, state.planetIndex + 1, 0);
+    });
+    els.up?.addEventListener('click', () => {
+      if (state.level === 'moon') select('planet', state.eraIndex, state.planetIndex, 0);
+      else if (state.level === 'planet') select('sun', state.eraIndex, 0, 0);
+      else close();
     });
     document.getElementById('solar-zoom-in')?.addEventListener('click', () => zoom(1.35));
     document.getElementById('solar-zoom-out')?.addEventListener('click', () => zoom(1 / 1.35));
