@@ -7007,3 +7007,65 @@ button.mode-tab:hover {
     display: none;
   }
 }
+
+/* Pied unifié du Dragon --------------------------------------------------- */
+
+.dragon-footer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  flex: none;
+  height: 46px;
+  padding: 0 18px;
+  border-top: 1px solid var(--line);
+  background: rgba(8, 11, 15, 0.96);
+}
+
+.dragon-keys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 14px;
+  color: var(--muted-2);
+  font-size: 8px;
+}
+
+.dragon-keys kbd {
+  display: inline-block;
+  min-width: 16px;
+  margin-right: 2px;
+  padding: 2px 4px;
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  color: var(--gold);
+  font-family: var(--sans);
+  font-size: 8px;
+  text-align: center;
+}
+
+.dragon-progress {
+  width: 150px;
+  height: 2px;
+  overflow: hidden;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.dragon-progress span {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--gold);
+  box-shadow: 0 0 10px rgba(230, 185, 111, 0.5);
+  transition: width 0.3s var(--ease);
+}
+
+@media (max-width: 760px) {
+  .dragon-keys {
+    display: none;
+  }
+
+  .dragon-footer {
+    grid-template-columns: 1fr;
+    padding: 0 14px;
+  }
+}

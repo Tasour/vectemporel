@@ -30,6 +30,9 @@
     els.mainBtn = document.getElementById('plan-main-btn');
     els.storyPlanBtn = document.getElementById('story-plan-btn');
     els.dragonPlanBtn = document.getElementById('dragon-plan-btn');
+    els.storyDragonBtn = document.getElementById('story-dragon-btn');
+    els.storyCountry = document.getElementById('story-country');
+    els.dragonCountry = document.getElementById('spiral-country');
     els.cards = [...document.querySelectorAll('.plan-card')];
     state.cards = els.cards;
   }
@@ -39,6 +42,25 @@
     els.cards[state.selected]?.focus({ preventScroll: true });
   }
 
+  function syncTabs(view) {
+    document.querySelectorAll('[data-view-tab]').forEach((node) => node.classList.remove('is-active'));
+    if (view) {
+      document.querySelectorAll(`[data-view-tab="${view}"]`).forEach((node) => node.classList.add('is-active'));
+    }
+  }
+
+  function syncCountry(id) {
+    if (!id) return;
+    if (els.storyCountry) {
+      els.storyCountry.value = id;
+      window.VECTEMPOREL_STORY?.setCountry(id);
+    }
+    if (els.dragonCountry) {
+      els.dragonCountry.value = id;
+      window.VECTEMPOREL_DRAGON?.setCountry(id);
+    }
+  }
+
   function open(options = {}) {
     if (!state.initialized) init();
     if (!els.overlay) return;
@@ -46,6 +68,7 @@
     state.lastFocus = document.activeElement;
     els.overlay.hidden = false;
     if (options.selected !== undefined) state.selected = Math.max(0, Math.min(3, options.selected));
+    syncTabs('plan');
     requestAnimationFrame(() => {
       updateSelection();
       if (options.help) openHelp();
@@ -81,10 +104,12 @@
     if (!VIEWS.includes(view)) return;
     closeHelp();
     if (view === 'recit') {
+      syncTabs('recit');
       window.VECTEMPOREL_STORY?.open();
       return;
     }
     if (view === 'dragon') {
+      syncTabs('dragon');
       window.VECTEMPOREL_DRAGON?.open(undefined, { permanent: false });
       return;
     }
@@ -92,6 +117,7 @@
     window.VECTEMPOREL_DRAGON?.close({ force: true });
     window.VECTEMPOREL_STORY?.close();
     close();
+    syncTabs(null);
     if (view === 'lecteur') {
       const id = firstEventId();
       if (id) window.VECTEMPOREL_APP?.openEvent(id);
@@ -159,6 +185,8 @@
   }
 
   function bind() {
+    els.storyCountry?.addEventListener('change', () => syncCountry(els.storyCountry.value));
+    els.dragonCountry?.addEventListener('change', () => syncCountry(els.dragonCountry.value));
     els.cards.forEach((card, index) => {
       card.addEventListener('mouseenter', () => {
         state.selected = index;
@@ -172,6 +200,10 @@
     els.storyPlanBtn?.addEventListener('click', () => {
       window.VECTEMPOREL_STORY?.close();
       open();
+    });
+    els.storyDragonBtn?.addEventListener('click', () => {
+      window.VECTEMPOREL_STORY?.close();
+      goTo('dragon');
     });
     els.dragonPlanBtn?.addEventListener('click', () => {
       window.VECTEMPOREL_DRAGON?.close({ force: true });

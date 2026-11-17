@@ -202,7 +202,7 @@ Aucune vue ne lit un fichier autre que ceux-ci. Aucune vue n’écrit dans `data
 | **P3 — Frise & globe** | Sélecteur de pays intégré, recherche, retour Plan | La frise n’est plus qu’un outil de consultation, pas un labyrinthe. |
 | **P4 — Évaluation** | Test utilisateur, kappa, sign-off | 20 participants, tâches « trouver / raconter / situer ». |
 
-**État actuel : P0 livré.** Le Plan s’ouvre au chargement, les quatre destinations sont accessibles au clavier et l’onglet Plan ramène à l’accueil depuis le Récit, le Dragon et la frise. P1 à P4 restent à réaliser.
+**État actuel : P1 livré.** P0 (Plan) et P1 (coque unique) sont en place : onglets synchronisés, sélecteur de pays partagé entre Récit et Dragon, pied de navigation identique. P2 à P4 restent à réaliser.
 
 ---
 

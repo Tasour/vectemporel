@@ -884,15 +884,6 @@
   function bind() {
     els.openBtn?.addEventListener('click', () => open());
     els.storyDragonBtn?.addEventListener('click', close);
-    els.storyCountry?.addEventListener('change', () => {
-      state.story = buildStory(els.storyCountry.value);
-      state.countryId = els.storyCountry.value;
-      state.eraIndex = 0;
-      state.eventIndex = 0;
-      state.placeIndex = 0;
-      state.showCountryPlaces = false;
-      render();
-    });
     els.close?.addEventListener('click', close);
     els.overlay?.querySelector('[data-close-story]')?.addEventListener('click', close);
     els.prev?.addEventListener('click', previous);
@@ -921,6 +912,16 @@
   window.VECTEMPOREL_STORY = {
     open,
     close,
+    setCountry: (id) => {
+      state.story = buildStory(id);
+      state.countryId = id;
+      state.eraIndex = 0;
+      state.eventIndex = 0;
+      state.placeIndex = 0;
+      state.showCountryPlaces = false;
+      if (els.storyCountry) els.storyCountry.value = id;
+      render();
+    },
     openEra: (countryId, eraIndex) => {
       open(countryId, 'panorama');
       state.eraIndex = clamp(eraIndex, 0, state.story.eras.length - 1);

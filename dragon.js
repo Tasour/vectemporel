@@ -927,6 +927,7 @@
     marker.style.top = `${ratio * 100}%`;
     marker.style.setProperty('--era', itemAt(clamp(Math.round(state.p), 0, count - 1))?.era.color || '#e6b96f');
     els.rail.style.width = `${ratio * 100}%`;
+    if (els.footerBar) els.footerBar.style.width = `${ratio * 100}%`;
     const index = clamp(Math.round(state.p), 0, count - 1);
     els.readout.textContent = `Écaille ${index + 1} / ${count}`;
   }
@@ -1294,6 +1295,7 @@
     els.detailPrev = document.getElementById('detail-prev');
     els.detailNext = document.getElementById('detail-next');
     els.openBtn = document.getElementById('spiral-btn');
+    els.footerBar = document.getElementById('dragon-footer-bar');
   }
 
   function bind() {
@@ -1317,10 +1319,6 @@
     });
     els.detailPrev?.addEventListener('click', () => step(-1));
     els.detailNext?.addEventListener('click', () => step(1));
-    els.country?.addEventListener('change', () => {
-      loadCountry(els.country.value);
-      requestRender();
-    });
     els.tiles?.addEventListener('click', onTileClick);
     els.stage?.addEventListener('wheel', onWheel, { passive: false });
     els.stage?.addEventListener('pointerdown', onPointerDown);
@@ -1356,6 +1354,11 @@
     open,
     close: (options) => close({ ...options, force: true }),
     goto: (index) => goTo(index),
+    setCountry: (id) => {
+      if (!state.story || state.story.country.id !== id) loadCountry(id);
+      else render();
+      requestRender();
+    },
     openDetail,
     closeDetail,
     state: () => ({ p: state.p, target: state.target, detailOpen: state.detailOpen }),

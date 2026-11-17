@@ -279,9 +279,9 @@
           </div>
           <div class="dragon-actions">
             <div class="mode-tabs">
-              <button class="mode-tab" id="dragon-plan-btn" type="button" aria-label="Retour au plan">Plan</button>
-              <span class="mode-tab is-active">Dragon</span>
-              <button class="dragon-story-btn" id="story-btn" type="button" aria-label="Ouvrir le récit (touche R)">
+              <button class="mode-tab" id="dragon-plan-btn" data-view-tab="plan" type="button" aria-label="Retour au plan">Plan</button>
+              <span class="mode-tab" data-view-tab="dragon">Dragon</span>
+              <button class="dragon-story-btn" id="story-btn" data-view-tab="recit" type="button" aria-label="Ouvrir le récit (touche R)">
                 <span>Récit</span><kbd>R</kbd>
               </button>
             </div>
@@ -337,6 +337,16 @@
 
           <div class="dragon-rail" aria-hidden="true"><span id="dragon-rail-bar"></span></div>
         </div>
+
+        <footer class="dragon-footer">
+          <div class="dragon-keys">
+            <span><kbd>←</kbd><kbd>→</kbd> écaille</span>
+            <span><kbd>+</kbd><kbd>−</kbd> zoom</span>
+            <span><kbd>R</kbd> récit</span>
+            <span><kbd>Échap</kbd> plan</span>
+          </div>
+          <div class="dragon-progress"><span id="dragon-footer-bar"></span></div>
+        </footer>
 
         <div class="dragon-detail" id="dragon-detail" hidden>
           <div class="dragon-detail-backdrop" data-close-detail></div>
@@ -468,9 +478,9 @@
           </div>
           <div class="story-actions">
             <div class="mode-tabs">
-              <button class="mode-tab" id="story-plan-btn" type="button" aria-label="Retour au plan">Plan</button>
-              <span class="mode-tab is-active">Récit</span>
-              <button class="mode-tab" id="story-dragon-btn" type="button" aria-label="Passer à la queue du dragon">Dragon</button>
+              <button class="mode-tab" id="story-plan-btn" data-view-tab="plan" type="button" aria-label="Retour au plan">Plan</button>
+              <span class="mode-tab" data-view-tab="recit">Récit</span>
+              <button class="mode-tab" id="story-dragon-btn" data-view-tab="dragon" type="button" aria-label="Passer à la queue du dragon">Dragon</button>
             </div>
             <select class="dragon-select" id="story-country" aria-label="Choisir un pays"></select>
             <span class="story-context" id="story-context"></span>
