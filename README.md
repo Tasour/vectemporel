@@ -1,6 +1,8 @@
 # Vectemporel — Atlas
 
-Application neuve, reconstruite de zéro selon le plan `/home/tasour/.opencode/plan/V_ATLAS_PLAN.md`.
+**Application unique.** L'ancien POC est archivé dans `~/Projects/_archive/vectemporel-poc` ; ses données sources (audits, repères, images) sont rapatriées dans `source/` pour que l'app soit autonome. Un seul service : `vectemporel-atlas.service` (port 4181).
+
+Application reconstruite de zéro selon le plan `/home/tasour/.opencode/plan/V_ATLAS_PLAN.md`.
 
 **Règle principale :** aucun lien Grokipedia, aucun service externe dans l’interface. Les points de connaissance sont générés depuis les audits locaux.
 
@@ -78,6 +80,10 @@ Version du modèle : **`m4.2`** (`window.VATLAS.taxonomyVersion`). La navigation
 | 6 | `points` | Points | `6` / `p` | Quels points vérifiés isoler ? |
 
 L’**identifiant** est la forme canonique : `1`, `m` et `Monde` résolvent tous vers `globe` via `window.VATLAS.resolveView`. Règle de mise à jour : tout changement de libellé ou de raccourci doit être répercuté dans `VIEW_TAXONOMY` (`src/app.js`), dans la coque (`src/ui/shell.js`), dans le routeur (`src/platform/keyboard.js`) et dans le présent tableau — puis la version incrémentée.
+
+## Globe — drapeau dans le contour et zoom de transition
+
+Au survol d'un pays (sphère, flèches ou liste), son **vrai drapeau vectoriel** est dessiné directement dans le shader, à la place de la surbrillance, découpé par la texture de picking et positionné depuis les coordonnées du pays. Les 10 fichiers `public/flags/<code>.svg` sont des drapeaux officiels téléchargés depuis [FlagCDN](https://flagcdn.com/) (drapeaux de domaine public) et stockés localement : **aucun appel réseau à l'exécution**. Au clic, l'overlay DOM zoome pendant que la vue suivante (Chronologie) apparaît à l'intérieur, puis l'état bascule sans attendre l'animation. `prefers-reduced-motion` supprime l'animation ; l'effet reste utilisable au clavier.
 
 ## Navigation
 

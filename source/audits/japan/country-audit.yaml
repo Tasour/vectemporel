@@ -1,0 +1,584 @@
+schema_version: "1.0"
+country:
+  id: "japan"
+  iso2: "JP"
+  iso3: "JPN"
+  name_current: "Japon"
+  names_historical:
+    - "Nihon / Nippon (日本)"
+    - "Wa (倭)"
+    - "Yamato (大和)"
+    - "Dai-Nippon Teikoku (大日本帝国), 1889–1947"
+    - "Nippon-koku (日本国), depuis 1947"
+  flag: "🇯🇵"
+
+scope:
+  territory_current: "Archipel japonais: Honshū, Hokkaidō, Kyūshū, Shikoku, Okinawa et des milliers d'îles. Différends territoriaux non tranchés avec la Russie (Kouriles du Sud), la Chine/Taïwan (Senkaku/Diaoyu) et la Corée du Sud (Takeshima/Dokdo)."
+  territories_historical:
+    - "Royaume de Ryūkyū, annexé en 1879 (préfecture d'Okinawa)"
+    - "Taïwan et Pescadores, 1895–1945"
+    - "Corée, 1910–1945"
+    - "Karafuto / Sakhaline du Sud, 1905–1945"
+    - "Territoire loué du Kwantung, 1905–1945"
+    - "Mandchourie / Mandchoukouo, État fantoche de 1932 à 1945"
+    - "Mandat des mers du Sud, 1919–1945"
+  regions_autonomous: []
+  populations_included:
+    - "nationaux japonais"
+    - "Ainu (peuple autochtone de Hokkaidō et du nord de Honshū)"
+    - "Ryūkyūens / Okinawaïens"
+    - "résidents coréens au Japon (Zainichi), y compris les résidents permanents spéciaux"
+    - "burakumin (groupe discriminé, citoyens japonais)"
+    - "résidents étrangers et naturalisés"
+    - "rapatriés et Nikkei revenus au Japon"
+  populations_excluded:
+    - "diasporas nikkei installées hors archipel, traitées comme circulations transnationales"
+    - "populations des anciennes colonies après 1945, sauf rapatriés et résidents au Japon"
+  diasporas:
+    - "Nikkei du Brésil, du Pérou, des États-Unis, du Canada et d'Hawaï"
+    - "communautés japonaises en Asie et en Océanie"
+    - "rapatriés de Mandchourie, de Corée et de Sakhaline après 1945"
+    - "Zainichi coréens et leurs descendants"
+  temporal:
+    start_edtf: "538"
+    end_edtf: "2026"
+    start_rationale: "Borne actuelle de l'application, choisie pour l'arrivée traditionnelle du bouddhisme. L'audit recommande une extension à la préhistoire (Jōmon, Yayoi, Kofun), car 538 n'est ni le début du peuplement ni celui de l'écriture; le Nihon Shoki donne aussi 552."
+    end_rationale: "2026, année de l'audit; la période contemporaine est ouverte et doit être mise à jour à chaque release."
+  unit_of_analysis: "fiche-événement; fiches-processus pour la préhistoire, l'industrialisation, la colonisation et le vieillissement"
+  inclusion_criteria:
+    - "événement ou processus qui modifie les institutions, le territoire, les rapports sociaux ou les mémoires"
+    - "au moins un acteur identifié, un lieu daté et une source vérifiée"
+    - "au moins une connexion transfrontalière par période"
+    - "au moins un acteur non élitaire par grande période, sans tokenisme"
+  exclusion_criteria:
+    - "anecdote sans effet structurel documenté"
+    - "événement étranger sans lien japonais explicite"
+    - "date ou acteur non vérifiable"
+    - "commémoration confondue avec l'événement commémoré"
+  audience:
+    - "grand public"
+    - "scolaire"
+    - "diasporas"
+    - "recherche"
+  evidence_threshold: "deux sources indépendantes par fiche, ou exception documentée"
+
+governance:
+  editor: "à désigner"
+  country_reader: "à désigner"
+  method_reader: "à désigner"
+  arbiter: "à désigner"
+  data_steward: "à désigner"
+  sensitivity_expert: "à désigner"
+  responsible_editor: "à désigner"
+  conflicts_of_interest: []
+
+historiography:
+  schools:
+    - "histoire politique et institutionnelle (Cambridge History of Japan)"
+    - "histoire sociale et du travail (Andrew Gordon)"
+    - "histoire du genre et des femmes (Vera Mackie)"
+    - "histoire postcoloniale et des minorités (Peter Duus, Tessa Morris-Suzuki, Richard Siddle)"
+    - "histoire environnementale (Brett Walker, Timothy George)"
+    - "histoire de la mémoire et de l'empire (John Dower, Laura Hein, Mark Selden)"
+    - "histoire régionale (Okinawa, Hokkaidō, Tōhoku, Kansai)"
+  national_narratives:
+    - "continuité impériale et récit de la fondation Yamato"
+    - "ouverture forcée puis modernisation réussie de Meiji"
+    - "miracle économique et pacifisme d'après-guerre"
+    - "déclin et « décennies perdues » depuis les années 1990"
+    - "exception culturelle japonaise (Nihonjinron)"
+  counter_narratives:
+    - "colonisation de Hokkaidō et de Ryūkyū, dépossession ainu et okinawaïenne"
+    - "sujets coloniaux coréens et taïwanais, travail forcé et migrations"
+    - "discrimination des burakumin et des résidents coréens"
+    - "violences de guerre, femmes de réconfort, Nanjing, mémoire de l'empire"
+    - "pollution industrielle et victimes de Minamata, Ashio, Fukushima"
+    - "luttes ouvrières, paysannes et féministes"
+  structuring_debates:
+    - "date de l'introduction du bouddhisme: 538 ou 552"
+    - "date de fondation du bakufu de Kamakura: 1185 ou 1192"
+    - "Meiji: révolution, restauration ou réforme oligarchique"
+    - "responsabilité japonaise dans la guerre d'Asie-Pacifique"
+    - "bilans de Nanjing et du massacre du Kantō"
+    - "caractère coercitif du système des femmes de réconfort"
+    - "causes et responsabilités de l'accident de Fukushima"
+    - "statut des Ainu et des Ryūkyūens dans la nation"
+  blind_spots:
+    - "femmes ordinaires, paysannes, ouvrières et prostituées"
+    - "paysans, artisans et classes populaires urbaines"
+    - "Ainu, Ryūkyūens/Okinawaïens, Coréens, burakumin"
+    - "migrations, diasporas et rapatriés"
+    - "handicap, maladie de Hansen et santé publique"
+    - "environnement, catastrophes et résilience"
+    - "travail, syndicats et mouvements sociaux"
+    - "mémoires contestées de l'empire et de la guerre"
+  key_syntheses: ["SRC-001", "SRC-002", "SRC-003", "SRC-004", "SRC-005", "SRC-006", "SRC-007", "SRC-008", "SRC-009", "SRC-010", "SRC-011", "SRC-012", "SRC-013", "SRC-014", "SRC-015", "SRC-016", "SRC-017"]
+
+periodizations:
+  - id: "POL-1"
+    label: "Périodisation politique par régimes et souveraineté"
+    type: "political"
+    start_edtf: "538"
+    end_edtf: "2026"
+    rationale: "Asuka/Nara (538–794), Heian (794–1185), Kamakura (1185–1333), Muromachi (1336–1573), Azuchi-Momoyama (1573–1603), Edo (1603–1868), Empire (1868–1945), occupation et après-guerre (1945–2026). Récit principal actuel, mais il commence trop tard et fusionne 809 ans de Moyen Âge."
+    sources: ["SRC-001", "SRC-002", "SRC-003", "SRC-004", "SRC-005", "SRC-006", "SRC-007"]
+    selected: true
+  - id: "SOC-1"
+    label: "Périodisation sociale et économique"
+    type: "social_economic"
+    start_edtf: "-14000"
+    end_edtf: "2026"
+    rationale: "Chasseurs-cueilleurs Jōmon; riziculture et hiérarchies Yayoi; aristocratie agraire et fiscalité ritsuryō; féodalité guerrière et manoirs; commercialisation préindustrielle et villes Edo; capitalisme industriel et empire; haute croissance et société salariale; société post-industrielle vieillissante. Cette lecture déplace les bornes vers l'économie et le travail."
+    sources: ["SRC-001", "SRC-004", "SRC-005", "SRC-006", "SRC-007", "SRC-008", "SRC-019"]
+    selected: false
+  - id: "CULT-1"
+    label: "Périodisation culturelle, religieuse et environnementale"
+    type: "cultural_religious_environmental"
+    start_edtf: "-14000"
+    end_edtf: "2026"
+    rationale: "Animismes et cultures Jōmon; bouddhisme d'État et capitales; culture de cour Heian; sectes médiévales; néo-confucianisme et culture urbaine Edo; culte impérial Meiji; sécularisation et société de consommation; crise environnementale de l'ère industrielle à Fukushima. Cette lecture fait apparaître des continuités qui traversent les régimes."
+    sources: ["SRC-001", "SRC-002", "SRC-003", "SRC-004", "SRC-008", "SRC-018"]
+    selected: false
+
+periods:
+  - id: "PERIOD-1"
+    label: "Préhistoire & Protohistoire"
+    start_edtf: "-14000"
+    end_edtf: "538"
+    boundary_type: "cultural"
+    boundary_rationale: "La borne de 538 marque l'arrivée traditionnelle du bouddhisme, pas le début du peuplement ni de l'histoire humaine. Jōmon, Yayoi et Kofun précèdent la période historique; la date de début est débattue (poterie ancienne vers 14 000 av. J.-C., chronologies régionales)."
+    alternatives_considered: ["10 500 av. J.-C.", "300 av. J.-C. pour le début de Yayoi", "250 apr. J.-C. pour le début de Kofun"]
+    sources: ["SRC-001"]
+  - id: "PERIOD-2"
+    label: "Antiquité, Asuka & Nara"
+    start_edtf: "538"
+    end_edtf: "794"
+    boundary_type: "religious"
+    boundary_rationale: "Introduction du bouddhisme (538/552), formation de l'État ritsuryō, capitales de Fujiwara, Nara et Nagaoka. La date de 538 est conventionnelle; le Nihon Shoki donne 552."
+    alternatives_considered: ["552 (Nihon Shoki)", "710–784 pour la seule période Nara", "794 pour l'installation à Heian-kyō"]
+    sources: ["SRC-001"]
+  - id: "PERIOD-3"
+    label: "Heian"
+    start_edtf: "794"
+    end_edtf: "1185"
+    boundary_type: "political"
+    boundary_rationale: "Capitale à Heian-kyō, régence Fujiwara, culture de cour; la période s'achève avec la mise en place du bakufu de Kamakura, datée 1185 ou 1192."
+    alternatives_considered: ["1185 (bakufu)", "1192 (titre de shogun)", "1333 (chute de Kamakura)"]
+    sources: ["SRC-002", "SRC-003"]
+  - id: "PERIOD-4"
+    label: "Japon médiéval"
+    start_edtf: "1185"
+    end_edtf: "1603"
+    boundary_type: "political"
+    boundary_rationale: "Kamakura, Muromachi, guerre d'Ōnin, Sengoku et Azuchi-Momoyama; la période s'achève avec Sekigahara (1600) et le shogunat Tokugawa (1603)."
+    alternatives_considered: ["1333 (restauration de Kenmu)", "1467 (début d'Ōnin)", "1573 (chute de Muromachi)"]
+    sources: ["SRC-003", "SRC-004"]
+  - id: "PERIOD-5"
+    label: "Époque Edo"
+    start_edtf: "1603"
+    end_edtf: "1868"
+    boundary_type: "political"
+    boundary_rationale: "Shogunat Tokugawa, contrôle des échanges, société urbaine et paix relative; la période s'achève avec la restauration de Meiji."
+    alternatives_considered: ["1600 (Sekigahara)", "1853 (Perry)", "1867 (abdication de Yoshinobu)"]
+    sources: ["SRC-004", "SRC-005"]
+  - id: "PERIOD-6"
+    label: "Empire et guerres mondiales"
+    start_edtf: "1868"
+    end_edtf: "1945"
+    boundary_type: "political"
+    boundary_rationale: "Meiji, Taishō et Shōwa; industrialisation, empire colonial, guerres et capitulation. La borne de 1945 est militaire et politique."
+    alternatives_considered: ["1912 (fin de Meiji)", "1931 (Mandchourie)", "1945 (capitulation)"]
+    sources: ["SRC-005", "SRC-006", "SRC-007"]
+  - id: "PERIOD-7"
+    label: "Japon contemporain"
+    start_edtf: "1945"
+    end_edtf: "2026"
+    boundary_type: "military"
+    boundary_rationale: "Occupation, Constitution, haute croissance, crises et vieillissement; période ouverte, avec des sous-périodes possibles (1945–1952, 1952–1973, 1973–1991, 1991–2011, 2011–2026)."
+    alternatives_considered: ["1952 (fin de l'occupation)", "1973 (choc pétrolier)", "1991 (éclatement de la bulle)", "2011 (Fukushima)"]
+    sources: ["SRC-007", "SRC-018", "SRC-019"]
+
+coverage:
+  matrix_file: "coverage-matrix.csv"
+  omissions_file: "omissions.yaml"
+  target_threshold: "90 % des cellules couvertes ou justifiées"
+  status_summary:
+    covered: 35
+    partial: 29
+    justified_empty: 6
+    untreated_empty: 0
+  known_omissions: ["OM-001", "OM-002", "OM-003", "OM-004", "OM-005", "OM-006", "OM-007", "OM-008", "OM-009", "OM-010", "OM-011", "OM-012", "OM-013", "OM-014", "OM-015"]
+
+actors:
+  - id: "ACTOR-1"
+    label: "Murasaki Shikibu"
+    type: "individual"
+    roles: ["dame de cour", "écrivaine"]
+    period_ids: ["ERA-2"]
+    places: ["PLACE-3"]
+    resources: ["éducation lettrée", "réseau de la cour", "protection de Fujiwara no Michinaga"]
+    constraints: ["normes de genre", "politique de cour", "dépendance des mécènes"]
+    networks: ["impératrice Shōshi", "Fujiwara no Michinaga", "cercles littéraires de Heian"]
+    counterpowers: []
+    assessment: "Son œuvre témoigne de l'autonomie culturelle des femmes de cour et des limites de leur pouvoir politique."
+    memory: "Canon littéraire national, traductions et adaptations; figure souvent isolée de son contexte social."
+    sources: ["SRC-002"]
+  - id: "ACTOR-2"
+    label: "Hōjō Masako"
+    type: "individual"
+    roles: ["épouse de shogun", "nonne bouddhiste", "actrice politique"]
+    period_ids: ["ERA-2"]
+    places: ["PLACE-4"]
+    resources: ["réseau du clan Hōjō", "parenté", "autorité morale"]
+    constraints: ["normes de genre", "rivalités de clan", "tutelle des successions"]
+    networks: ["Minamoto no Yoritomo", "Hōjō Yoshitoki", "ses fils Yoriie et Sanetomo"]
+    counterpowers: ["cour impériale", "clans rivaux"]
+    assessment: "A exercé une influence durable sur les successions et la régence de Kamakura; surnommée « nonne shogun »."
+    memory: "Figure du théâtre et de la littérature; usages nationalistes et féministes contrastés."
+    sources: ["SRC-003"]
+  - id: "ACTOR-3"
+    label: "Toyotomi Hideyoshi"
+    type: "individual"
+    roles: ["unificateur", "régent"]
+    period_ids: ["ERA-2", "ERA-3"]
+    places: ["PLACE-5", "PLACE-3"]
+    resources: ["armée", "châteaux", "cadastre", "réseau de daimyos"]
+    constraints: ["absence de titre de shogun", "coalition de daimyos", "question successorale"]
+    networks: ["Oda Nobunaga", "daimyos ralliés", "Ishida Mitsunari"]
+    counterpowers: ["daimyos autonomes", "révoltes paysannes", "Ming et Corée"]
+    assessment: "Unification du Japon et invasions de Corée; centralisation militaire et fiscale."
+    memory: "Figure ambivalente, héros national et envahisseur dans les mémoires coréennes."
+    sources: ["SRC-004"]
+  - id: "ACTOR-4"
+    label: "Tokugawa Ieyasu"
+    type: "individual"
+    roles: ["daimyo", "shogun"]
+    period_ids: ["ERA-3"]
+    places: ["PLACE-10"]
+    resources: ["domaine du Kantō", "victoire de Sekigahara", "réseau de vassaux"]
+    constraints: ["autonomie des daimyos", "légitimité impériale", "succession"]
+    networks: ["Tokugawa retainers", "daimyos ralliés", "cour impériale"]
+    counterpowers: ["cour impériale", "daimyos", "paysans"]
+    assessment: "Fondation de l'ordre Edo et contrôle des échanges; institutionnalisation du shogunat."
+    memory: "Tōshōgū de Nikkō; figure fondatrice de la paix Tokugawa."
+    sources: ["SRC-004"]
+  - id: "ACTOR-5"
+    label: "Tanaka Shōzō"
+    type: "individual"
+    roles: ["homme politique", "militant environnemental"]
+    period_ids: ["ERA-4"]
+    places: ["PLACE-10"]
+    resources: ["mandat local", "réseau de journalistes", "pétitions"]
+    constraints: ["répression policière", "pouvoir industriel", "isolement politique"]
+    networks: ["pêcheurs et paysans d'Ashio", "journalistes", "parlementaires"]
+    counterpowers: ["compagnie minière de Furukawa", "gouvernement"]
+    assessment: "Dénonciation de la pollution de la rivière Watarase; pétition directe à l'empereur en 1901."
+    memory: "Pionnier de l'écologie politique japonaise; commémorations à Ashio et dans la préfecture de Tochigi."
+    sources: ["SRC-008"]
+  - id: "ACTOR-6"
+    label: "Hiratsuka Raichō"
+    type: "individual"
+    roles: ["écrivaine", "féministe", "éditrice"]
+    period_ids: ["ERA-4"]
+    places: ["PLACE-10"]
+    resources: ["revue Seitō", "éducation", "réseaux intellectuels"]
+    constraints: ["censure", "normes de genre", "contrôle familial"]
+    networks: ["femmes de lettres", "socialistes", "mouvements féministes"]
+    counterpowers: ["État", "presse conservatrice"]
+    assessment: "Fondation de Seitō en 1911; revendication de l'autonomie des femmes et de la maternité choisie."
+    memory: "Pionnière du féminisme japonais; figure des manuels scolaires."
+    sources: ["SRC-012"]
+  - id: "ACTOR-7"
+    label: "Ichikawa Fusae"
+    type: "individual"
+    roles: ["militante suffragiste", "élue"]
+    period_ids: ["ERA-4", "ERA-5"]
+    places: ["PLACE-10"]
+    resources: ["organisation", "presse", "réseaux politiques"]
+    constraints: ["système électoral masculin", "guerre", "opposition conservatrice"]
+    networks: ["Fusen Kakutoku Dōmei", "syndicats", "femmes politiques"]
+    counterpowers: ["gouvernement", "partis conservateurs"]
+    assessment: "Campagne pour le suffrage féminin; élue à la Chambre des conseillers après 1953."
+    memory: "Figure du suffrage féminin et de la participation politique des femmes."
+    sources: ["SRC-012"]
+  - id: "ACTOR-8"
+    label: "Peuple ainu et Ainu Association of Hokkaido"
+    type: "collective"
+    roles: ["peuple autochtone", "organisation politique"]
+    period_ids: ["ERA-3", "ERA-4", "ERA-5"]
+    places: ["PLACE-8"]
+    resources: ["réseaux communautaires", "mémoire orale", "advocacy"]
+    constraints: ["assimilation", "dépossession foncière", "discrimination"]
+    networks: ["associations ainu", "universités", "instances internationales"]
+    counterpowers: ["État japonais", "collectivités locales"]
+    assessment: "Organisation historique du mouvement ainu; reconnaissance légale de 2019, sans règlement complet des revendications foncières."
+    memory: "Upopoy et revitalisation de la langue; mémoire de la colonisation de Hokkaidō."
+    sources: ["SRC-016", "SRC-020"]
+  - id: "ACTOR-9"
+    label: "Coréens du Japon (Zainichi) et organisations communautaires"
+    type: "collective"
+    roles: ["minorité postcoloniale", "travailleurs", "organisations communautaires"]
+    period_ids: ["ERA-4", "ERA-5"]
+    places: ["PLACE-5", "PLACE-10", "PLACE-12"]
+    resources: ["réseaux associatifs", "écoles", "entreprises"]
+    constraints: ["statut de résidence", "discrimination", "apatridie"]
+    networks: ["Mindan", "Chongryon", "syndicats", "mouvements de droits"]
+    counterpowers: ["État japonais", "lois sur l'immigration"]
+    assessment: "Communauté issue de la colonisation; mémoires du travail forcé et du massacre de 1923."
+    memory: "Monuments, procès et commémorations; enjeu des registres et de la nationalité."
+    sources: ["SRC-010", "SRC-009", "SRC-014"]
+  - id: "ACTOR-10"
+    label: "Burakumin et mouvement Suiheisha"
+    type: "collective"
+    roles: ["groupe discriminé", "mouvement de libération"]
+    period_ids: ["ERA-4", "ERA-5"]
+    places: ["PLACE-3", "PLACE-5"]
+    resources: ["réseaux communautaires", "Buraku Liberation League", "actions judiciaires"]
+    constraints: ["discrimination au mariage et à l'emploi", "registres familiaux", "stigmate"]
+    networks: ["syndicats", "mouvements de droits humains", "élus"]
+    counterpowers: ["État", "employeurs", "collectivités"]
+    assessment: "Édit de libération de 1871; fondation du Suiheisha en 1922; lois Dōwa de 1969 à 2002."
+    memory: "Musée de la libération à Osaka; commémorations et luttes contre les listes discriminatoires."
+    sources: ["SRC-011"]
+  - id: "ACTOR-11"
+    label: "Matthew Perry"
+    type: "individual"
+    roles: ["officier de marine", "diplomate"]
+    period_ids: ["ERA-3"]
+    places: ["PLACE-10"]
+    resources: ["flotte américaine", "pression militaire", "diplomatie"]
+    constraints: ["instructions de Washington", "résistance japonaise"]
+    networks: ["gouvernement américain", "négociateurs japonais"]
+    counterpowers: ["bakufu", "daimyos"]
+    assessment: "Expédition de 1853 et convention de Kanagawa en 1854; ouverture coercitive du Japon."
+    memory: "« Black Ships »; figure de l'ouverture dans les récits japonais et américains."
+    sources: ["SRC-005"]
+
+places:
+  - id: "PLACE-1"
+    label_current: "Site de Sannai-Maruyama (Aomori)"
+    names_historical: ["Sannai-Maruyama"]
+    geometry_period: "Jōmon moyen (dates débattues)"
+    hierarchy: "local"
+    functions: ["habitat", "site archéologique", "patrimoine"]
+    events: ["PROP-001"]
+    contestations: ["interprétation des sociétés Jōmon", "datation des occupations"]
+    sources: ["SRC-001"]
+  - id: "PLACE-2"
+    label_current: "Nara"
+    names_historical: ["Heijō-kyō", "Nara"]
+    geometry_period: "710–784"
+    hierarchy: "national"
+    functions: ["capitale", "culte bouddhique", "patrimoine"]
+    events: ["jp-nara"]
+    contestations: ["Nara comme première capitale permanente", "date de fondation"]
+    sources: ["SRC-001"]
+  - id: "PLACE-3"
+    label_current: "Kyoto"
+    names_historical: ["Heian-kyō", "Kyoto"]
+    geometry_period: "794–1868"
+    hierarchy: "national"
+    functions: ["capitale impériale", "culture", "patrimoine"]
+    events: ["jp-heian", "PROP-003", "PROP-004"]
+    contestations: ["centralité politique après 1185", "patrimoine et tourisme"]
+    sources: ["SRC-002", "SRC-003", "SRC-011"]
+  - id: "PLACE-4"
+    label_current: "Kamakura"
+    names_historical: ["Kamakura"]
+    geometry_period: "1185–1333"
+    hierarchy: "regional"
+    functions: ["capitale du bakufu", "port", "culte"]
+    events: ["jp-kamakura"]
+    contestations: ["date de fondation 1185/1192", "rôle des régents Hōjō"]
+    sources: ["SRC-003"]
+  - id: "PLACE-5"
+    label_current: "Osaka"
+    names_historical: ["Naniwa", "Osaka"]
+    geometry_period: "XVIIe–XIXe siècle"
+    hierarchy: "regional"
+    functions: ["port", "marché", "château", "industrie"]
+    events: ["jp-edo"]
+    contestations: ["rôle dans la centralisation Tokugawa", "mémoire marchande"]
+    sources: ["SRC-004"]
+  - id: "PLACE-6"
+    label_current: "Hiroshima"
+    names_historical: ["Hiroshima"]
+    geometry_period: "1945"
+    hierarchy: "local"
+    functions: ["ville", "port", "lieu de mémoire"]
+    events: ["jp-hiroshima"]
+    contestations: ["mémoire des bombardements", "responsabilité et récit de la capitulation"]
+    sources: ["SRC-007"]
+  - id: "PLACE-7"
+    label_current: "Okinawa"
+    names_historical: ["Ryūkyū", "Okinawa", "Naha", "Shuri"]
+    geometry_period: "1429–1879; 1879–1945; 1945–1972; 1972–"
+    hierarchy: "regional"
+    functions: ["royaume", "préfecture", "base militaire", "lieu de mémoire"]
+    events: ["PROP-007", "PROP-016"]
+    contestations: ["souveraineté", "bases américaines", "mémoire de la bataille de 1945"]
+    sources: ["SRC-017", "SRC-010"]
+  - id: "PLACE-8"
+    label_current: "Hokkaidō"
+    names_historical: ["Ezo", "Hokkaidō", "Ainu Mosir"]
+    geometry_period: "XIXe–XXIe siècle"
+    hierarchy: "regional"
+    functions: ["territoire ainu", "colonisation", "ressources", "patrimoine"]
+    events: ["PROP-006"]
+    contestations: ["dépossession foncière", "reconnaissance de 2019"]
+    sources: ["SRC-016", "SRC-020"]
+  - id: "PLACE-9"
+    label_current: "Minamata"
+    names_historical: ["Minamata"]
+    geometry_period: "1956–1973"
+    hierarchy: "local"
+    functions: ["ville industrielle", "pêche", "lieu de mémoire"]
+    events: ["PROP-015"]
+    contestations: ["responsabilité de Chisso", "indemnisations", "stigmatisation"]
+    sources: ["SRC-015", "SRC-008"]
+  - id: "PLACE-10"
+    label_current: "Tokyo"
+    names_historical: ["Edo", "Tokyo"]
+    geometry_period: "1603–"
+    hierarchy: "national"
+    functions: ["capitale", "siège du bakufu", "métropole"]
+    events: ["jp-edo", "jp-meiji", "PROP-012", "PROP-014", "PROP-017"]
+    contestations: ["centralisation", "mémoire de l'incendie de 1923", "JO de 1964"]
+    sources: ["SRC-004", "SRC-005", "SRC-014"]
+  - id: "PLACE-11"
+    label_current: "Tomioka"
+    names_historical: ["Tomioka"]
+    geometry_period: "1872–"
+    hierarchy: "local"
+    functions: ["filature", "patrimoine industriel"]
+    events: ["PROP-008"]
+    contestations: ["travail des femmes", "patrimoine industriel"]
+    sources: ["SRC-005", "SRC-006"]
+  - id: "PLACE-12"
+    label_current: "Séoul"
+    names_historical: ["Hanseong", "Keijō", "Séoul"]
+    geometry_period: "1910–1945"
+    hierarchy: "imperial"
+    functions: ["capitale coloniale", "administration", "résistance"]
+    events: ["PROP-005", "PROP-010"]
+    contestations: ["colonialisme", "mémoire des invasions et de l'annexion"]
+    sources: ["SRC-009", "SRC-010"]
+
+claims:
+  - id: "CLAIM-1"
+    subject: "Introduction du bouddhisme au Japon"
+    predicate: "est datée"
+    object: "538 ou 552"
+    text: "La date de 538 est conventionnelle; le Nihon Shoki donne 552. Les deux dates doivent être présentées comme des traditions historiographiques, non comme un fait unique."
+    confidence: "disputed"
+    sources: ["SRC-001"]
+    revisions: []
+  - id: "CLAIM-2"
+    subject: "Ainu"
+    predicate: "sont reconnus comme peuple autochtone"
+    object: "loi de 2019"
+    text: "La loi de 2019 reconnaît les Ainu comme peuple autochtone; elle ne règle pas les revendications foncières ni les discriminations."
+    confidence: "certain"
+    sources: ["SRC-020", "SRC-016"]
+    revisions: []
+  - id: "CLAIM-3"
+    subject: "Massacre du Kantō"
+    predicate: "a tué"
+    object: "des milliers de Coréens, de Chinois et de Japonais"
+    text: "Après le séisme de 1923, des policiers, des soldats et des groupes d'autodéfense ont tué des milliers de Coréens, de Chinois et de Japonais confondus avec eux; les chiffres restent disputés."
+    confidence: "disputed"
+    sources: ["SRC-014", "SRC-010"]
+    revisions: []
+  - id: "CLAIM-4"
+    subject: "Massacre de Nanjing"
+    predicate: "a fait"
+    object: "un nombre de victimes disputé"
+    text: "Le massacre de Nanjing est attesté; les bilans chiffrés varient fortement et restent un objet de controverse mémorielle entre le Japon et la Chine."
+    confidence: "disputed"
+    sources: ["SRC-006"]
+    revisions: []
+  - id: "CLAIM-5"
+    subject: "Femmes de réconfort"
+    predicate: "ont été soumises à"
+    object: "un système de bordels militaires coercitif"
+    text: "Le système des bordels militaires japonais a impliqué des dizaines de milliers de femmes, majoritairement coréennes; le caractère coercitif est documenté, mais sa qualification et ses chiffres sont publiquement disputés."
+    confidence: "probable"
+    sources: ["SRC-013", "SRC-012"]
+    revisions: []
+  - id: "CLAIM-6"
+    subject: "Accident de Fukushima Daiichi"
+    predicate: "résulte de"
+    object: "séisme, tsunami et défaillances de sûreté"
+    text: "L'accident résulte du séisme et du tsunami de mars 2011, mais les enquêtes soulignent aussi des défaillances de conception, de préparation et de régulation."
+    confidence: "disputed"
+    sources: ["SRC-018"]
+    revisions: []
+  - id: "CLAIM-7"
+    subject: "Population japonaise"
+    predicate: "compte"
+    object: "29,3 % de 65 ans et plus en 2024"
+    text: "Au 1er octobre 2024, la population totale est de 123,80 millions d'habitants, dont 29,3 % ont 65 ans ou plus."
+    confidence: "certain"
+    sources: ["SRC-019"]
+    revisions: []
+  - id: "CLAIM-8"
+    subject: "Population japonaise"
+    predicate: "diminue"
+    object: "depuis la fin des années 2000"
+    text: "La population totale diminue depuis la fin des années 2000; le vieillissement et la faible natalité en sont les principaux moteurs."
+    confidence: "certain"
+    sources: ["SRC-019", "SRC-006"]
+    revisions: []
+
+source_policy:
+  min_independent_sources: 2
+  grokipedia_role: "point d'entrée de lecture, jamais autorité de validation"
+  generative_ai_role: "aide à la recherche uniquement, vérifiée et signalée"
+  date_roles_required: true
+  license: "à définir"
+
+audit:
+  protocol_version: "1.0"
+  double_read:
+    sensitive_share: 1.0
+    other_share: 0.25
+    kappa_target: 0.70
+    kappa_sensitive_target: 0.80
+  delphi:
+    used: false
+    experts: 0
+    rounds: 0
+    consensus_threshold: "75 % de notes 4–5/5 et IQR ≤ 1"
+  scores:
+    coverage: null
+    accuracy: null
+    balance: null
+    provenance: null
+    readability: null
+    weighted_total: null
+  blocking_errors: []
+  disagreements:
+    - type: "F2"
+      object: "date d'introduction du bouddhisme"
+      status: "open"
+      note: "538 (tradition) contre 552 (Nihon Shoki); conserver les deux et expliciter la convention."
+    - type: "F4"
+      object: "usage du terme sakoku"
+      status: "open"
+      note: "Terme du XIXe siècle; ne pas l'utiliser comme description neutre de la politique Tokugawa."
+    - type: "F3"
+      object: "bilans de Nanjing et du massacre du Kantō"
+      status: "open"
+      note: "Chiffres disputés; publier des fourchettes et des sources, jamais un chiffre unique présenté comme certain. Nanjing repose sur une source unique de synthèse (SRC-006) et Fukushima sur le rapport AIEA (SRC-018): corroboration à prévoir."
+  verdict: "pending"
+  signoff:
+    date: ""
+    signed_by: []
+
+publication:
+  release: ""
+  date: ""
+  changelog: ""
+  public_quality_note: ""
+  correction_contact: ""
+  archive_url: ""

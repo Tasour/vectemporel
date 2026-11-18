@@ -1,0 +1,817 @@
+# Vectemporel — propositions d’enrichissement du Royaume-Uni (méthode v1.0)
+# File de revue éditoriale : aucune proposition n’est publiée automatiquement.
+# Toute proposition cite au moins une source vérifiée du source-register.csv.
+
+schema_version: "1.0"
+country_id: "uk"
+generated_at: "2026-11-13"
+author: ""
+
+periodization:
+  current_verdict: >-
+    La périodisation actuelle (6 ères) est cohérente et contiguë, mais elle
+    souffre de trois défauts : la période 1688–1914 est trop large et
+    Londres-centrée; la période 1945–2026 est trop large et confond État-providence,
+    décolonisation, thatchérisme et Brexit; les libellés « Antiquité & invasions »
+    et « Renaissance & Réforme » sont eurocentrés et anglais. La césure de 1922
+    (partition irlandaise) n'est pas nommée. Les bornes 43, 1066, 1485, 1688,
+    1914 et 1945 restent défendables, mais doivent être explicitées.
+  proposed_changes:
+    - action: "rename"
+      era_name: "Antiquité & invasions"
+      proposal: "Renommer « Bretagne romaine, Anglo-Saxons et Vikings (43–1066) »."
+      rationale: >-
+        Le mot « invasions » met au même plan la conquête romaine, les
+        installations anglo-saxonnes et les raids vikings, et masque la
+        continuité des sociétés bretonnes. Le nouveau libellé décrit les acteurs
+        sans les hiérarchiser.
+      sources: ["SRC-001", "SRC-002"]
+    - action: "rename"
+      era_name: "Moyen Âge"
+      proposal: "Renommer « Moyen Âge des quatre nations (1066–1485) »."
+      rationale: >-
+        1066 et 1485 sont des bornes anglaises; les histoires écossaise,
+        galloise et irlandaise ont leurs propres césures. Le libellé doit
+        expliciter le cadre plurinational sans prétendre à une chronologie unique.
+      sources: ["SRC-002", "SRC-004", "SRC-005", "SRC-006"]
+    - action: "rename"
+      era_name: "Renaissance & Réforme"
+      proposal: "Renommer « Réforme, guerres des Trois Royaumes et Révolution (1485–1688) »."
+      rationale: >-
+        « Renaissance » est peu adapté aux îles Britanniques; la période est
+        structurée par la Réforme, les guerres des Trois Royaumes, la
+        colonisation de l'Irlande et la Glorieuse Révolution.
+      sources: ["SRC-001", "SRC-002", "SRC-005"]
+    - action: "split"
+      era_name: "Empire & industrie"
+      proposal: "Scinder en « Grande-Bretagne et premier empire (1688–1815) » et « Industrialisation et empire victorien (1815–1914) »."
+      rationale: >-
+        226 ans en une seule ère confondent l'union de 1707, la traite, la perte
+        des Treize Colonies, les guerres napoléoniennes, l'industrialisation et
+        l'empire victorien. 1815 marque la fin des guerres européennes et le
+        début d'un ordre impérial différent; 1832 (Reform Act) est une
+        alternative politique.
+      sources: ["SRC-003", "SRC-007", "SRC-009"]
+    - action: "rename"
+      era_name: "Guerres mondiales"
+      proposal: "Renommer « Guerres totales et crise impériale (1914–1945) »."
+      rationale: >-
+        Le libellé actuel masque la révolution irlandaise (1916–1922), la
+        partition de l'Irlande, la famine du Bengale (1943) et l'État-providence
+        de guerre. « Guerres totales » décrit mieux la mobilisation des sociétés
+        et des empires.
+      sources: ["SRC-001", "SRC-012", "SRC-016"]
+    - action: "split"
+      era_name: "Royaume-Uni contemporain"
+      proposal: "Scinder en « État-providence, décolonisation et guerre froide (1945–1979) » et « Néolibéralisme, nations et Brexit (1979–2026) »."
+      rationale: >-
+        81 ans en une seule ère empêchent de distinguer le consensus
+        d'après-guerre, la décolonisation, la crise des années 1970, le tournant
+        thatchérien, la dévolution et le Brexit. 1979 est la césure politique la
+        plus utilisée; 1973 (choc pétrolier, CEE) et 2008 (crise financière)
+        restent des alternatives.
+      sources: ["SRC-012", "SRC-001", "SRC-013"]
+    - action: "add"
+      era_name: "Couche Irlande"
+      proposal: "Ajouter une couche transversale « Irlande, 1801–1998 »."
+      rationale: >-
+        L'Irlande traverse les ères (Union de 1801, famine, révolution,
+        partition, Troubles, accord de 1998) et ne peut pas être traitée comme
+        une simple région périphérique. Une couche thématique rend visibles les
+        continuités et les violences.
+      sources: ["SRC-005", "SRC-001"]
+    - action: "add"
+      era_name: "Couche Empire et populations colonisées"
+      proposal: "Ajouter une couche transversale « Empire et populations colonisées »."
+      rationale: >-
+        L'empire n'est pas une ère : il est une dimension de l'histoire
+        britannique du XVIIe au XXe siècle. Une couche dédiée permet d'intégrer
+        Amritsar, la famine du Bengale, la partition, le Kenya et les
+        circulations impériales sans les diluer dans le récit national.
+      sources: ["SRC-009", "SRC-015", "SRC-016", "SRC-010"]
+    - action: "keep"
+      era_name: "Borne 43"
+      proposal: "Conserver 43 comme borne de départ de la frise."
+      rationale: >-
+        La conquête romaine est une césure conventionnelle et documentée;
+        l'extension préromaine est traitée comme une omission de périmètre
+        (OM-001), pas comme un motif de déplacement de la borne.
+      sources: ["SRC-001", "SRC-002"]
+    - action: "move_boundary"
+      era_name: "Royaume-Uni contemporain"
+      proposal: "Tester le déplacement de la borne de 1979 à 1973 ou 2008 avant validation."
+      rationale: >-
+        1979 est une césure politique (Thatcher); 1973 est une césure
+        économique et européenne (choc pétrolier, entrée dans la CEE); 2008 est
+        une césure financière. Le choix doit être explicité et discuté, pas
+        imposé par la date la plus commode.
+      sources: ["SRC-012", "SRC-013"]
+
+events:
+  - id: "PROP-001"
+    action: "add"
+    existing_id: null
+    year: 1801
+    end_year: null
+    title: "Union avec l'Irlande"
+    subtitle: "Naissance du Royaume-Uni de Grande-Bretagne et d'Irlande"
+    tags: ["politique", "religion"]
+    importance: 3
+    summary: >-
+      Les Actes d'Union de 1800, adoptés par les parlements de Grande-Bretagne
+      et d'Irlande, entrent en vigueur le 1er janvier 1801. L'Irlande perd son
+      parlement; 100 députés irlandais siègent à Westminster. L'union est
+      contestée, notamment par les catholiques et les patriotes irlandais.
+    sources: ["SRC-005", "SRC-002", "SRC-003"]
+    confidence: "high"
+    rationale: >-
+      Comble l'absence de 1801, explique la formation du Royaume-Uni et
+      l'histoire irlandaise; fournit un acteur (Parlement) et un lieu (Dublin,
+      Westminster).
+  - id: "PROP-002"
+    action: "add"
+    existing_id: null
+    year: 1833
+    end_year: 1838
+    title: "Abolition de l'esclavage"
+    subtitle: "Loi, compensation et apprentissage"
+    tags: ["societe", "politique", "economie"]
+    importance: 3
+    summary: >-
+      Après des décennies de campagnes abolitionnistes, le Parlement vote
+      l'abolition de l'esclavage dans les colonies britanniques en 1833. L'acte
+      entre en vigueur le 1er août 1834; les personnes asservies passent par une
+      période d'apprentissage avant 1838. Les propriétaires reçoivent
+      £20 millions, les personnes asservies aucune indemnisation.
+    sources: ["SRC-008", "SRC-020"]
+    confidence: "high"
+    rationale: >-
+      Transforme l'événement de 1833 en processus 1833–1838; rend visibles la
+      compensation, l'apprentissage et les limites de l'émancipation.
+  - id: "PROP-003"
+    action: "add"
+    existing_id: null
+    year: 1819
+    end_year: null
+    title: "Peterloo"
+    subtitle: "La cavalerie charge une réunion réformiste à Manchester"
+    tags: ["politique", "societe"]
+    importance: 2
+    summary: >-
+      Le 16 août 1819, une foule estimée à 60 000 personnes se réunit à
+      St Peter's Fields, Manchester, pour demander une réforme parlementaire.
+      La yeomanry charge; au moins 18 personnes sont tuées et plusieurs
+      centaines blessées. L'événement devient un symbole de la répression et de
+      la mobilisation ouvrière.
+    sources: ["SRC-007", "SRC-001"]
+    confidence: "high"
+    rationale: >-
+      Ancre l'histoire sociale et régionale; Manchester hors capitale; femmes
+      victimes et militantes; lien avec le chartisme.
+  - id: "PROP-004"
+    action: "add"
+    existing_id: null
+    year: 1838
+    end_year: 1848
+    title: "Chartisme"
+    subtitle: "Le mouvement pour le suffrage universel masculin"
+    tags: ["politique", "societe"]
+    importance: 3
+    summary: >-
+      La Charte du peuple de 1838 réclame six réformes, dont le suffrage
+      universel masculin, le vote secret et des circonscriptions égales. Les
+      pétitions de 1839, 1842 et 1848 sont rejetées; le mouvement décline après
+      1848, mais plusieurs de ses demandes sont adoptées au XXe siècle.
+    sources: ["SRC-007", "SRC-001"]
+    confidence: "high"
+    rationale: >-
+      Mouvement collectif de masse; histoire des classes populaires; hors
+      Londres; complète le récit parlementaire.
+  - id: "PROP-005"
+    action: "add"
+    existing_id: null
+    year: 1845
+    end_year: 1852
+    title: "Grande famine irlandaise"
+    subtitle: "Mortalité, émigration et responsabilité impériale"
+    tags: ["societe", "economie"]
+    importance: 3
+    summary: >-
+      La maladie de la pomme de terre détruit les récoltes à partir de 1845.
+      Environ un million de personnes meurent et plus d'un million émigrent. La
+      gestion britannique, les marchés et l'aide publique sont au cœur des
+      débats historiographiques.
+    sources: ["SRC-011", "SRC-005"]
+    confidence: "high"
+    rationale: >-
+      Événement majeur de l'histoire irlandaise et impériale; migration;
+      absence totale de la frise.
+  - id: "PROP-006"
+    action: "add"
+    existing_id: null
+    year: 1882
+    end_year: 1886
+    title: "Agitation crofters"
+    subtitle: "La question de la terre dans les Highlands"
+    tags: ["societe", "economie", "politique"]
+    importance: 2
+    summary: >-
+      Les crofters des Highlands et des îles se mobilisent contre les loyers et
+      les expulsions. La commission Napier (1883) enquête; le Crofters Holdings
+      (Scotland) Act de 1886 accorde la sécurité d'occupation et des loyers
+      équitables. L'épisode s'inscrit dans la longue histoire des clearances.
+    sources: ["SRC-004", "SRC-002"]
+    confidence: "high"
+    rationale: >-
+      Écosse rurale et classes populaires; corrige le récit industriel/urbain;
+      hors Londres.
+  - id: "PROP-007"
+    action: "add"
+    existing_id: null
+    year: 1919
+    end_year: null
+    title: "Amritsar"
+    subtitle: "Le massacre de Jallianwala Bagh"
+    tags: ["guerre", "politique"]
+    importance: 3
+    summary: >-
+      Le 13 avril 1919, le général Dyer ordonne de tirer sur une foule réunie à
+      Jallianwala Bagh, Amritsar. Le bilan officiel est de 379 morts, mais les
+      estimations sont plus élevées. L'événement nourrit le mouvement
+      nationaliste indien et la critique de l'empire.
+    sources: ["SRC-015", "SRC-009"]
+    confidence: "high"
+    rationale: >-
+      Violence coloniale; populations colonisées; mémoire; absent de la frise.
+  - id: "PROP-008"
+    action: "add"
+    existing_id: null
+    year: 1943
+    end_year: null
+    title: "Famine du Bengale"
+    subtitle: "Guerre, empire et mortalité de masse"
+    tags: ["societe", "guerre", "economie"]
+    importance: 3
+    summary: >-
+      La famine frappe le Bengale en 1943, dans le contexte de la guerre contre
+      le Japon, des réquisitions, des transports et de la politique coloniale.
+      Les estimations de mortalité vont d'environ 2 à 3 millions. L'événement
+      est central dans la critique de l'empire britannique.
+    sources: ["SRC-016", "SRC-009"]
+    confidence: "high"
+    rationale: >-
+      Événement impérial majeur; environnement et guerre; populations
+      colonisées; absent.
+  - id: "PROP-009"
+    action: "add"
+    existing_id: null
+    year: 1947
+    end_year: null
+    title: "Partition de l'Inde"
+    subtitle: "Indépendance, partition et déplacements"
+    tags: ["politique", "societe"]
+    importance: 3
+    summary: >-
+      L'Inde et le Pakistan deviennent indépendants en août 1947. La partition
+      de la province du Bengale et du Pendjab provoque le déplacement de 10 à
+      15 millions de personnes et des violences qui tuent peut-être un million
+      de personnes. Le Royaume-Uni met fin à son empire indien dans une
+      précipitation controversée.
+    sources: ["SRC-010", "SRC-005"]
+    confidence: "high"
+    rationale: >-
+      Décolonisation; migrations et diasporas; minorités; mémoire; absent.
+  - id: "PROP-010"
+    action: "add"
+    existing_id: null
+    year: 1948
+    end_year: null
+    title: "Windrush"
+    subtitle: "Citoyenneté impériale et migration caribéenne"
+    tags: ["societe", "politique"]
+    importance: 2
+    summary: >-
+      Le HMT Empire Windrush arrive à Tilbury le 22 juin 1948 avec environ
+      1 000 passagers, dont plus de 800 Caribéens. Le British Nationality Act
+      1948 réorganise la nationalité impériale; le voyage devient le symbole de
+      la migration caribéenne et de la société multiculturelle.
+    sources: ["SRC-012", "SRC-001"]
+    confidence: "high"
+    rationale: >-
+      Migration; société multiculturelle; citoyenneté; mémoire; absent.
+  - id: "PROP-011"
+    action: "add"
+    existing_id: null
+    year: 1965
+    end_year: null
+    title: "Tryweryn"
+    subtitle: "Le village de Capel Celyn englouti"
+    tags: ["societe", "politique"]
+    importance: 2
+    summary: >-
+      Le Liverpool Corporation Act de 1957 autorise la construction d'un
+      réservoir dans la vallée de Tryweryn. Malgré les protestations, le village
+      gallois de Capel Celyn est inondé en 1965. L'événement devient un symbole
+      du rapport de force entre Londres/Liverpool et le pays de Galles et
+      stimule le nationalisme gallois.
+    sources: ["SRC-006", "SRC-002"]
+    confidence: "high"
+    rationale: >-
+      Pays de Galles; environnement et mémoire; hors Londres; absent.
+  - id: "PROP-012"
+    action: "add"
+    existing_id: null
+    year: 1976
+    end_year: 1978
+    title: "Grunwick"
+    subtitle: "Les ouvrières sud-asiatiques se mettent en grève"
+    tags: ["economie", "societe"]
+    importance: 2
+    summary: >-
+      À Willesden, dans le nord de Londres, des ouvrières majoritairement
+      sud-asiatiques quittent l'usine Grunwick pour protester contre les
+      conditions de travail et demander la reconnaissance syndicale. La grève
+      dure de 1976 à 1978 et se termine par une défaite, mais elle transforme la
+      place des femmes migrantes dans le mouvement syndical.
+    sources: ["SRC-017", "SRC-012"]
+    confidence: "high"
+    rationale: >-
+      Femmes, migration, travail; intersectionnalité; mémoire.
+  - id: "PROP-013"
+    action: "add"
+    existing_id: null
+    year: 1984
+    end_year: 1985
+    title: "Grève des mineurs"
+    subtitle: "Communautés, femmes et défaite syndicale"
+    tags: ["economie", "societe", "politique"]
+    importance: 3
+    summary: >-
+      La grève nationale des mineurs commence le 12 mars 1984 contre les
+      fermetures de puits. Elle dure un an et se termine par la défaite du
+      National Union of Mineworkers (NUM) en mars 1985. Les groupes Women Against
+      Pit Closures organisent le soutien
+      aux familles et donnent une visibilité nouvelle aux femmes des communautés
+      minières.
+    sources: ["SRC-018", "SRC-012"]
+    confidence: "high"
+    rationale: >-
+      Classes populaires; femmes; désindustrialisation; régions hors Londres.
+  - id: "PROP-014"
+    action: "add"
+    existing_id: null
+    year: 1993
+    end_year: 1999
+    title: "Stephen Lawrence"
+    subtitle: "Meurtre raciste et enquête Macpherson"
+    tags: ["societe", "politique"]
+    importance: 3
+    summary: >-
+      Stephen Lawrence, adolescent noir, est assassiné à Londres le 22 avril
+      1993. L'enquête policière est critiquée; le rapport Macpherson, publié en
+      1999, conclut à un racisme institutionnel et recommande des réformes.
+      L'affaire devient un moment clé de l'histoire raciale britannique.
+    sources: ["SRC-019", "SRC-012"]
+    confidence: "high"
+    rationale: >-
+      Minorités; justice; mémoire; société multiculturelle.
+  - id: "PROP-015"
+    action: "add"
+    existing_id: null
+    year: 1997
+    end_year: 1999
+    title: "Dévolution"
+    subtitle: "Parlement écossais et Assemblée galloise"
+    tags: ["politique"]
+    importance: 3
+    summary: >-
+      Les référendums du 11 septembre 1997 en Écosse et du 18 septembre 1997 au
+      pays de Galles approuvent la création d'un Parlement écossais et d'une
+      Assemblée galloise. Les lois de 1998 organisent la dévolution; les
+      institutions entrent en fonction en 1999. L'Irlande du Nord reçoit une
+      assemblée dans le cadre de l'accord de 1998.
+    sources: ["SRC-004", "SRC-006", "SRC-001"]
+    confidence: "high"
+    rationale: >-
+      Écosse et pays de Galles; institutions; corrige le récit centralisé;
+      absent.
+  - id: "PROP-016"
+    action: "add"
+    existing_id: null
+    year: 1916
+    end_year: 1922
+    title: "Révolution irlandaise"
+    subtitle: "Insurrection, guerre d'indépendance et partition"
+    tags: ["guerre", "politique"]
+    importance: 3
+    summary: >-
+      L'insurrection de Pâques 1916, la guerre d'indépendance (1919–1921) et le
+      traité anglo-irlandais de 1921 aboutissent à la création de l'État libre
+      d'Irlande en 1922. L'Irlande du Nord reste au Royaume-Uni. La partition et
+      la guerre civile qui suit structurent durablement l'histoire irlandaise.
+    sources: ["SRC-005", "SRC-001"]
+    confidence: "high"
+    rationale: >-
+      Irlande; partition; violence; absent; complète l'accord de 1998.
+  - id: "PROP-017"
+    action: "correct"
+    existing_id: "uk-brexit"
+    year: 2016
+    end_year: 2020
+    title: "Brexit"
+    subtitle: "Référendum, retrait et accord de commerce"
+    tags: ["politique", "economie"]
+    importance: 3
+    summary: >-
+      Le référendum du 23 juin 2016 donne 51,9 % des voix au Leave, avec une
+      participation de 72,2 %. Le Royaume-Uni quitte l'Union européenne le
+      31 janvier 2020 et termine sa période de transition le 31 décembre 2020.
+      Le processus divise le pays et pose la question de l'Irlande du Nord.
+    sources: ["SRC-013", "SRC-001"]
+    confidence: "high"
+    rationale: >-
+      Corrige la réduction du Brexit au seul référendum; processus; divisions
+      territoriales; l'Écosse et l'Irlande du Nord votent Remain.
+  - id: "PROP-018"
+    action: "correct"
+    existing_id: "uk-nhs"
+    year: 1948
+    end_year: 1951
+    title: "National Health Service"
+    subtitle: "Fondation, financement et premières charges"
+    tags: ["societe", "sciences"]
+    importance: 3
+    summary: >-
+      Le NHS ouvre le 5 juillet 1948 sous la direction du ministre de la Santé
+      Aneurin Bevan, financé principalement par l'impôt et gratuit au point
+      d'usage. Des charges pour les prescriptions, les lunettes et les soins
+      dentaires sont introduites à partir de 1951. La profession médicale, les
+      hôpitaux volontaires et les personnels du Commonwealth sont des acteurs
+      clés de sa construction.
+    sources: ["SRC-012", "SRC-001"]
+    confidence: "high"
+    rationale: >-
+      Transforme un acte de naissance en processus 1948–1951; corrige la vision
+      d'un service intemporellement gratuit et universel.
+
+actors:
+  - id: "ACTOR-PROP-001"
+    label: "Emmeline Pankhurst"
+    type: "individual"
+    period_ids: ["PERIOD-4", "PERIOD-5"]
+    why: >-
+      Figure de la WSPU, utile pour expliquer la mobilisation suffragiste, à
+      condition de la replacer dans un mouvement plus large et de ne pas
+      l'isoler des ouvrières du Lancashire.
+    sources: ["SRC-014", "SRC-001"]
+  - id: "ACTOR-PROP-002"
+    label: "Jayaben Desai"
+    type: "individual"
+    period_ids: ["PERIOD-6"]
+    why: >-
+      Porte-parole de la grève de Grunwick, elle incarne l'intersection entre
+      classe, race et genre dans le syndicalisme britannique.
+    sources: ["SRC-017", "SRC-012"]
+  - id: "ACTOR-PROP-003"
+    label: "Margaret Thatcher"
+    type: "individual"
+    period_ids: ["PERIOD-6"]
+    why: >-
+      Première ministre de 1979 à 1990, elle est indispensable pour comprendre
+      le tournant néolibéral, la désindustrialisation et les divisions
+      territoriales.
+    sources: ["SRC-012", "SRC-001"]
+  - id: "ACTOR-PROP-004"
+    label: "Doreen Lawrence"
+    type: "individual"
+    period_ids: ["PERIOD-6"]
+    why: >-
+      Sa campagne après le meurtre de Stephen Lawrence a conduit au rapport
+      Macpherson et à la reconnaissance du racisme institutionnel.
+    sources: ["SRC-019", "SRC-012"]
+  - id: "ACTOR-PROP-005"
+    label: "Selina Cooper"
+    type: "individual"
+    period_ids: ["PERIOD-4", "PERIOD-5"]
+    why: >-
+      Suffragiste radicale et ouvrière du textile, elle montre que le suffrage
+      s'est aussi construit dans le Lancashire, loin de Londres.
+    sources: ["SRC-014", "SRC-001"]
+  - id: "ACTOR-PROP-006"
+    label: "Chartistes"
+    type: "collective"
+    period_ids: ["PERIOD-4"]
+    why: >-
+      Mouvement de masse pour le suffrage universel masculin, il relie les
+      classes populaires, la presse radicale et le Parlement.
+    sources: ["SRC-007", "SRC-001"]
+  - id: "ACTOR-PROP-007"
+    label: "Women Against Pit Closures"
+    type: "collective"
+    period_ids: ["PERIOD-6"]
+    why: >-
+      Organisation de femmes des communautés minières, elle politise la grève
+      de 1984–1985 et transforme les rapports de genre dans les villages.
+    sources: ["SRC-018", "SRC-012"]
+  - id: "ACTOR-PROP-008"
+    label: "Trades Union Congress"
+    type: "collective"
+    period_ids: ["PERIOD-4", "PERIOD-6"]
+    why: >-
+      Confédération syndicale centrale, elle est un acteur du compromis
+      d'après-guerre et un contre-pouvoir, mais aussi un frein à la solidarité
+      avec les travailleuses migrantes à Grunwick.
+    sources: ["SRC-017", "SRC-012"]
+  - id: "ACTOR-PROP-009"
+    label: "East India Company"
+    type: "institution"
+    period_ids: ["PERIOD-3", "PERIOD-4"]
+    why: >-
+      Compagnie chartée et administration coloniale, elle relie Londres, l'Inde
+      et la Chine et précède le Raj.
+    sources: ["SRC-009", "SRC-015"]
+  - id: "ACTOR-PROP-010"
+    label: "Indian National Congress"
+    type: "collective"
+    period_ids: ["PERIOD-4", "PERIOD-5"]
+    why: >-
+      Acteur étranger/transnational indispensable pour comprendre la fin de
+      l'empire indien et la partition.
+    sources: ["SRC-010", "SRC-009"]
+  - id: "ACTOR-PROP-011"
+    label: "Génération Windrush"
+    type: "collective"
+    period_ids: ["PERIOD-6"]
+    why: >-
+      Acteur collectif de la reconstruction d'après-guerre et de la société
+      multiculturelle, dont la citoyenneté a été contestée jusqu'au scandale
+      Windrush.
+    sources: ["SRC-012", "SRC-001"]
+  - id: "ACTOR-PROP-012"
+    label: "William Beveridge"
+    type: "individual"
+    period_ids: ["PERIOD-5", "PERIOD-6"]
+    why: >-
+      Auteur du rapport de 1942, il fixe le cadre intellectuel de
+      l'État-providence et du NHS.
+    sources: ["SRC-012", "SRC-001"]
+
+places:
+  - id: "PLACE-PROP-001"
+    label: "Manchester"
+    hierarchy: "regional"
+    why: >-
+      Ville cotonnière et lieu de Peterloo, elle permet de sortir d'un récit
+      londonien et d'ancrer l'histoire ouvrière.
+    sources: ["SRC-007", "SRC-014"]
+  - id: "PLACE-PROP-002"
+    label: "Liverpool"
+    hierarchy: "regional"
+    why: >-
+      Port atlantique, ville d'immigration irlandaise et point de départ de
+      l'approvisionnement en eau de Tryweryn.
+    sources: ["SRC-008", "SRC-011"]
+  - id: "PLACE-PROP-003"
+    label: "Glasgow"
+    hierarchy: "regional"
+    why: >-
+      Chantiers navals, industrie et empire : un lieu clé pour l'Écosse
+      industrielle et impériale.
+    sources: ["SRC-004", "SRC-009"]
+  - id: "PLACE-PROP-004"
+    label: "Belfast"
+    hierarchy: "regional"
+    why: >-
+      Ville industrielle et capitale dévolue, au cœur de la partition et de
+      l'accord de 1998.
+    sources: ["SRC-005", "SRC-001"]
+  - id: "PLACE-PROP-005"
+    label: "Cardiff"
+    hierarchy: "regional"
+    why: >-
+      Port charbonnier et capitale galloise, elle relie industrialisation,
+      grève des mineurs et dévolution.
+    sources: ["SRC-006", "SRC-018"]
+  - id: "PLACE-PROP-006"
+    label: "Bristol"
+    hierarchy: "regional"
+    why: >-
+      Port négrier et lieu de mémoire de l'esclavage, notamment après le
+      déboulonnage de la statue de Colston en 2020.
+    sources: ["SRC-008", "SRC-012"]
+  - id: "PLACE-PROP-007"
+    label: "Édimbourg"
+    hierarchy: "national"
+    why: >-
+      Capitale écossaise, lieu de l'union de 1707, des Lumières et du Parlement
+      dévolu.
+    sources: ["SRC-004", "SRC-003"]
+  - id: "PLACE-PROP-008"
+    label: "Dublin"
+    hierarchy: "national"
+    why: >-
+      Capitale irlandaise, lieu de l'union de 1801, de l'insurrection de 1916 et
+      de la partition.
+    sources: ["SRC-005", "SRC-001"]
+  - id: "PLACE-PROP-009"
+    label: "Londres"
+    hierarchy: "national"
+    why: >-
+      Capitale impériale, port, siège du Parlement et lieu de Grunwick, du
+      Blitz, du NHS et du Brexit.
+    sources: ["SRC-001", "SRC-012"]
+  - id: "PLACE-PROP-010"
+    label: "Kolkata (Calcutta)"
+    hierarchy: "imperial"
+    why: >-
+      Capitale de l'Inde britannique, port et centre de la famine de 1943 et des
+      émeutes de 1946.
+    sources: ["SRC-016", "SRC-009"]
+  - id: "PLACE-PROP-011"
+    label: "Amritsar"
+    hierarchy: "imperial"
+    why: >-
+      Lieu du massacre de Jallianwala Bagh, central pour l'histoire de la
+      violence coloniale et de la mémoire impériale.
+    sources: ["SRC-015"]
+  - id: "PLACE-PROP-012"
+    label: "Capel Celyn / Tryweryn"
+    hierarchy: "local"
+    why: >-
+      Village gallois inondé en 1965, symbole de l'environnement, de la langue
+      galloise et du rapport de force avec l'Angleterre.
+    sources: ["SRC-006", "SRC-001"]
+
+corrections:
+  - existing_id: "uk-410"
+    issue: >-
+      La date de 410 est traitée comme une fin ponctuelle; le retrait romain est
+      un processus et l'installation germanique n'est pas un événement unique.
+    proposal: >-
+      Reformuler « vers 410, l'autorité romaine cesse de manière durable; les
+      sociétés locales se recomposent; l'installation anglo-saxonne s'étale sur
+      les Ve–VIe siècles ». Ajouter un TimeSpan 410~ et des acteurs.
+    sources: ["SRC-001", "SRC-002"]
+    confidence: "high"
+  - existing_id: "uk-magna"
+    issue: >-
+      Présenter Magna Carta comme une « charte de droits » est anachronique; le
+      texte de 1215 est un règlement féodal, annulé puis réédité.
+    proposal: >-
+      Parler de « charte négociée entre Jean sans Terre et les barons »; préciser
+      le 15 juin 1215, l'annulation par Innocent III, les rééditions de 1216,
+      1217 et 1225; distinguer le texte et sa mémoire.
+    sources: ["SRC-001", "SRC-002"]
+    confidence: "high"
+  - existing_id: "uk-peste"
+    issue: >-
+      Le sous-titre « Un tiers de la population disparaît » est une estimation
+      basse présentée comme certitude; l'origine portuaire est incertaine.
+    proposal: >-
+      Écrire « mortalité massive, estimations de 30 à 60 % »; préciser
+      1348–1349; éviter le port unique.
+    sources: ["SRC-001", "SRC-002"]
+    confidence: "high"
+  - existing_id: "uk-civil"
+    issue: >-
+      L'expression « guerre civile » au singulier masque les guerres des Trois
+      Royaumes (Écosse, Irlande, Angleterre) et la conquête cromwellienne de
+      l'Irlande.
+    proposal: >-
+      Renommer « Guerres des Trois Royaumes (1639–1653) »; distinguer les
+      théâtres; ajouter l'exécution de Charles Ier (1649), la république, le
+      Protectorat et la restauration de 1660.
+    sources: ["SRC-002", "SRC-005", "SRC-001"]
+    confidence: "high"
+  - existing_id: "uk-glorieuse"
+    issue: >-
+      « Déclaration des droits de 1689 » est une traduction inexacte; le Bill of
+      Rights est une loi; la révolution est aussi une invasion hollandaise et un
+      compromis.
+    proposal: >-
+      Écrire « Bill of Rights (1689) »; préciser la déclaration de février 1689
+      et la loi de décembre; mentionner l'armée hollandaise, le soutien
+      protestant et les limites du consentement.
+    sources: ["SRC-001", "SRC-003"]
+    confidence: "high"
+  - existing_id: "uk-union"
+    issue: >-
+      L'événement de 1707 est parfois confondu avec le Royaume-Uni de 1801;
+      l'union est présentée comme consensuelle.
+    proposal: >-
+      Titrer « Actes d'Union (1707) » et préciser « Royaume de Grande-Bretagne »;
+      mentionner l'opposition populaire, les émeutes, le vote du Parlement
+      écossais et la persistance d'institutions écossaises (Église, droit).
+    sources: ["SRC-003", "SRC-004", "SRC-002"]
+    confidence: "high"
+  - existing_id: "uk-industrie"
+    issue: >-
+      La période 1760–1840 et le récit technologique anglais sous-estiment les
+      continuités, le rôle de l'empire, du charbon, des femmes et des enfants,
+      et la géographie régionale.
+    proposal: >-
+      Reformuler comme processus 1750–1850; préciser Lancashire, West Riding,
+      Clyde, Midlands; inclure le travail des enfants, les femmes,
+      l'urbanisation, l'esclavage et les marchés impériaux; signaler que
+      « révolution industrielle » est une métaphore contestée.
+    sources: ["SRC-007", "SRC-009", "SRC-001"]
+    confidence: "high"
+  - existing_id: "uk-esclavage"
+    issue: >-
+      Le titre « Abolition » est trop large; l'acte de 1833 prend effet en 1834,
+      vise les colonies britanniques avec des exceptions et impose un
+      apprentissage.
+    proposal: >-
+      Titrer « Abolition de l'esclavage (1833–1838) »; préciser l'assentiment
+      royal du 28 août 1833, l'entrée en vigueur du 1er août 1834, l'apprentissage
+      jusqu'en 1838, les £20 millions aux propriétaires et l'absence
+      d'indemnisation des personnes asservies.
+    sources: ["SRC-020", "SRC-008"]
+    confidence: "high"
+  - existing_id: "uk-ww1"
+    issue: >-
+      Le résumé « s'épuise » et « déclin relatif » sont téléologiques; la
+      mobilisation de l'empire et les divisions irlandaises sont absentes.
+    proposal: >-
+      Décrire la mobilisation, la conscription de 1916, les pertes, le front
+      intérieur, les munitions, l'Irlande (1916) et les contributions de
+      l'empire; présenter le déclin relatif comme une thèse à discuter, pas comme
+      un fait.
+    sources: ["SRC-012", "SRC-001"]
+    confidence: "high"
+  - existing_id: "uk-vote"
+    issue: >-
+      Le suffrage de 1918 est présenté comme l'égalité; il est limité aux femmes
+      de plus de 30 ans avec qualification; le rôle des suffragistes radicales
+      est omis.
+    proposal: >-
+      Préciser le 6 février 1918, 8,5 millions d'électrices, les conditions de
+      propriété, l'âge de 30 ans, le droit de se présenter en 1918 et l'égalité
+      de 1928; mentionner WSPU, NUWSS et suffragistes radicales.
+    sources: ["SRC-014", "SRC-001"]
+    confidence: "high"
+  - existing_id: "uk-ww2"
+    issue: >-
+      « Résiste seul » ignore l'empire, le Commonwealth et les Alliés;
+      « résistance » est inapproprié pour le Royaume-Uni; le Blitz est daté
+      approximativement.
+    proposal: >-
+      Écrire « Le Royaume-Uni et son empire »; préciser 1940–1941, la bataille
+      d'Angleterre, le Blitz (septembre 1940–mai 1941), les V1/V2 (1944–1945),
+      les îles Anglo-Normandes occupées, le rapport Beveridge (1942) et la
+      famine du Bengale (1943).
+    sources: ["SRC-012", "SRC-016", "SRC-001"]
+    confidence: "high"
+  - existing_id: "uk-nhs"
+    issue: >-
+      « Financé par l'impôt et accessible à tous » simplifie; des charges sont
+      introduites dès 1951; le personnel vient aussi du Commonwealth.
+    proposal: >-
+      Écrire « gratuit au point d'usage, financé principalement par l'impôt »;
+      préciser le 5 juillet 1948, Bevan, les charges de 1951, le rôle des
+      personnels migrateurs.
+    sources: ["SRC-012", "SRC-001"]
+    confidence: "high"
+  - existing_id: "uk-thatcher"
+    issue: >-
+      « Tournant néolibéral » est une étiquette interprétative; la date et les
+      politiques sont trop compressées.
+    proposal: >-
+      Préciser le 4 mai 1979, les privatisations des années 1980, le
+      monétarisme, la grève des mineurs, la poll tax, la Section 28, la
+      démission de novembre 1990; distinguer le programme et ses effets
+      régionaux.
+    sources: ["SRC-012", "SRC-001"]
+    confidence: "high"
+  - existing_id: "uk-good-friday"
+    issue: >-
+      « Met fin à des décennies de conflit » est téléologique; l'accord n'a pas
+      mis fin à toute violence et les institutions ont été suspendues.
+    proposal: >-
+      Écrire « ouvre un processus de paix »; préciser le 10 avril 1998, les
+      référendums du 22 mai 1998, l'attentat d'Omagh du 15 août 1998, les
+      suspensions de l'Assemblée (2002–2007) et le partage du pouvoir.
+    sources: ["SRC-001", "SRC-005"]
+    confidence: "high"
+  - existing_id: "uk-brexit"
+    issue: >-
+      Le Brexit est réduit au référendum; le processus 2016–2020, les divisions
+      territoriales et le statut de l'Irlande du Nord sont absents.
+    proposal: >-
+      Décrire le référendum du 23 juin 2016 (51,9 % Leave, 72,2 % de
+      participation), le vote écossais et nord-irlandais Remain, l'article 50
+      (2017), l'élection de 2019, le retrait du 31 janvier 2020 et la fin de la
+      transition du 31 décembre 2020.
+    sources: ["SRC-013", "SRC-001"]
+    confidence: "high"
+
+review:
+  status: "draft"
+  unresolved:
+    - "Vérifier le statut juridique exact du référendum de 2016 et la chronologie de l'article 50 avec une source institutionnelle (Electoral Commission, House of Commons Library)."
+    - "Trancher la césure de la période contemporaine : 1979, 1973 ou 2008."
+    - "Vérifier les chiffres de la famine du Bengale (2–3 millions) et d'Amritsar (379 officiels, estimations supérieures) avec une seconde lecture."
+    - "Vérifier la date exacte de l'ouverture du réservoir de Tryweryn (21 ou 28 octobre 1965 selon les sources)."
+    - "Documenter la légalité de l'entrée des passagers du Windrush avant le British Nationality Act 1948."
+    - "Ajouter une source institutionnelle pour le NHS (Webster ou NHS England) et pour la dévolution (Scotland Act 1998, Government of Wales Act 1998)."
+    - "Compléter les sources sur l'Écosse, le pays de Galles et l'Irlande au-delà des synthèses générales."

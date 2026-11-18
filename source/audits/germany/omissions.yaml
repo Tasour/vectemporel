@@ -1,0 +1,280 @@
+# Vectemporel — registre des omissions (méthode v1.0)
+# Dossier Allemagne — omissions explicites, non silencieuses.
+
+schema_version: "1.0"
+country_id: "germany"
+reviewed_at: "2026-11-13"
+reviewer: ""
+
+reviewed_scope:
+  period_ids: ["ERA-1", "ERA-2", "ERA-3", "ERA-4", "ERA-5", "ERA-6"]
+  domains:
+    - "Politique & institutions"
+    - "Guerres & diplomatie"
+    - "Droit & justice"
+    - "Économie & travail"
+    - "Société & démographie"
+    - "Femmes, genre, sexualités"
+    - "Religions & croyances"
+    - "Sciences, techniques & santé"
+    - "Arts & lettres"
+    - "Environnement & territoire"
+    - "Migrations & diasporas"
+    - "Peuples autochtones & minorités"
+    - "Mémoire & patrimoine"
+    - "Circulations transnationales"
+  scales: ["local", "regional", "national", "imperial", "transnational"]
+
+omissions:
+  - id: "OM-001"
+    period_id: "ERA-1"
+    domain: "Guerres & diplomatie"
+    scale: "imperial"
+    what_is_missing: >-
+      Guerres ottoniennes, conflit des Investitures, expéditions impériales en
+      Italie et campagnes contre les Slaves.
+    reason: "not_yet_researched"
+    justification: >-
+      La frise ne retient que le couronnement de 962 ; les guerres médiévales
+      ne sont pas documentées dans le corpus actuel. Une fiche sur la querelle
+      des Investitures (1076–1122) est la priorité.
+    evidence_checked: ["SRC-001"]
+    status: "documented"
+    reviewer: ""
+    review_date: "2026-11-13"
+
+  - id: "OM-002"
+    period_id: "ERA-1"
+    domain: "Économie & travail"
+    scale: "regional"
+    what_is_missing: >-
+      Économie agraire, essor urbain, Hanse, mines et commerce à longue
+      distance.
+    reason: "not_yet_researched"
+    justification: >-
+      Aucun repère économique médiéval n’est présent. La Hanse et les villes
+      d’Allemagne du Nord sont un angle mort majeur, faute de source dans le
+      registre.
+    evidence_checked: ["SRC-001"]
+    status: "to_fill"
+    reviewer: ""
+    review_date: "2026-11-13"
+
+  - id: "OM-003"
+    period_id: "ERA-1"
+    domain: "Femmes, genre, sexualités"
+    scale: "national"
+    what_is_missing: >-
+      Hildegarde de Bingen, femmes nobles, monastères féminins, travail des
+      femmes et normes de genre.
+    reason: "not_yet_researched"
+    justification: >-
+      La période médiévale n’a aucune entrée sur les femmes. Le silence est
+      d’autant plus problématique que des sources existent (Hildegarde,
+      chartes, coutumiers), mais elles ne sont pas dans le corpus vérifié.
+    evidence_checked: ["SRC-001"]
+    status: "to_fill"
+    reviewer: ""
+    review_date: "2026-11-13"
+
+  - id: "OM-004"
+    period_id: "ERA-1"
+    domain: "Sciences, techniques & santé"
+    scale: "transnational"
+    what_is_missing: >-
+      Imprimerie de Gutenberg (vers 1450), universités, astronomie et
+      circulation des savoirs.
+    reason: "not_yet_researched"
+    justification: >-
+      L’imprimerie est l’un des apports majeurs de l’espace germanique à
+      l’histoire mondiale ; son absence est une dette documentaire, non un
+      jugement de valeur.
+    evidence_checked: ["SRC-001"]
+    status: "to_fill"
+    reviewer: ""
+    review_date: "2026-11-13"
+
+  - id: "OM-005"
+    period_id: "ERA-2"
+    domain: "Droit & justice"
+    scale: "imperial"
+    what_is_missing: >-
+      Chambre impériale de justice (Reichskammergericht), Caroline (1532),
+      droit coutumier et procédures de tolérance confessionnelle.
+    reason: "not_yet_researched"
+    justification: >-
+      La frise traite la Réforme et la guerre, mais pas la construction d’un
+      ordre juridique impérial. Le sujet exige des sources juridiques
+      spécifiques, absentes du registre.
+    evidence_checked: ["SRC-003"]
+    status: "to_fill"
+    reviewer: ""
+    review_date: "2026-11-13"
+
+  - id: "OM-006"
+    period_id: "ERA-2"
+    domain: "Économie & travail"
+    scale: "regional"
+    what_is_missing: >-
+      Proto-industrialisation, crises agraires, mines d’argent, manufactures et
+      circuits commerciaux.
+    reason: "not_yet_researched"
+    justification: >-
+      La période 1517–1815 est représentée par la religion et la guerre ; son
+      histoire économique n’est pas instrumentée.
+    evidence_checked: ["SRC-003"]
+    status: "to_fill"
+    reviewer: ""
+    review_date: "2026-11-13"
+
+  - id: "OM-007"
+    period_id: "ERA-2"
+    domain: "Femmes, genre, sexualités"
+    scale: "national"
+    what_is_missing: >-
+      Femmes dans la Réforme, fermeture des couvents, procès en sorcellerie,
+      travail féminin et normes sexuelles.
+    reason: "not_yet_researched"
+    justification: >-
+      La Réforme transforme les institutions féminines et les normes de genre ;
+      aucune entrée ne le documente. Une fiche sur les couvents et la
+      sorcellerie est à prévoir.
+    evidence_checked: ["SRC-002"]
+    status: "to_fill"
+    reviewer: ""
+    review_date: "2026-11-13"
+
+  - id: "OM-008"
+    period_id: "ERA-2"
+    domain: "Migrations & diasporas"
+    scale: "transnational"
+    what_is_missing: >-
+      Huguenots après l’édit de Potsdam (1685), protestants de Salzbourg,
+      Juifs d’Europe centrale, migrations de travail saisonnières.
+    reason: "not_yet_researched"
+    justification: >-
+      Les migrations de l’époque moderne sont absentes, alors qu’elles
+      structurent des territoires entiers (Brandebourg, Prusse, villes
+      rhénanes).
+    evidence_checked: ["SRC-003"]
+    status: "to_fill"
+    reviewer: ""
+    review_date: "2026-11-13"
+
+  - id: "OM-009"
+    period_id: "ERA-3"
+    domain: "Religions & croyances"
+    scale: "national"
+    what_is_missing: >-
+      Kulturkampf (1871–1887), émancipation juive, catholicisme politique et
+      développement du protestantisme libéral.
+    reason: "not_yet_researched"
+    justification: >-
+      La période 1815–1914 n’a aucune entrée religieuse, alors que le
+      Kulturkampf et les débats sur l’émancipation juive sont centraux dans la
+      construction de l’Empire.
+    evidence_checked: ["SRC-004", "SRC-005"]
+    status: "to_fill"
+    reviewer: ""
+    review_date: "2026-11-13"
+
+  - id: "OM-010"
+    period_id: "ERA-3"
+    domain: "Sciences, techniques & santé"
+    scale: "national"
+    what_is_missing: >-
+      Robert Koch, Siemens, chimie industrielle, universités de recherche,
+      médecine sociale et hygiène urbaine.
+    reason: "not_yet_researched"
+    justification: >-
+      L’Allemagne du XIXe siècle est un pôle scientifique majeur ; la frise
+      n’en porte aucune trace. Le registre ne contient pas encore de source
+      spécialisée.
+    evidence_checked: ["SRC-004"]
+    status: "to_fill"
+    reviewer: ""
+    review_date: "2026-11-13"
+
+  - id: "OM-011"
+    period_id: "ERA-3"
+    domain: "Migrations & diasporas"
+    scale: "transnational"
+    what_is_missing: >-
+      Ruhrpolen, émigration allemande vers les Amériques, migrations internes
+      d’industrialisation, minorités danoise et polonaise.
+    reason: "not_yet_researched"
+    justification: >-
+      La frise ne traite ni l’immigration polonaise dans la Ruhr ni l’émigration
+      massive vers les Amériques, deux phénomènes majeurs de la période.
+    evidence_checked: ["SRC-004", "SRC-009"]
+    status: "to_fill"
+    reviewer: ""
+    review_date: "2026-11-13"
+
+  - id: "OM-012"
+    period_id: "ERA-4"
+    domain: "Religions & croyances"
+    scale: "national"
+    what_is_missing: >-
+      Église confessante, résistances catholiques, Églises et persécution des
+      minorités religieuses.
+    reason: "not_yet_researched"
+    justification: >-
+      La période nazie est couverte par la politique et la guerre ; les
+      positions religieuses et les résistances chrétiennes ne sont pas
+      documentées.
+    evidence_checked: ["SRC-007"]
+    status: "to_fill"
+    reviewer: ""
+    review_date: "2026-11-13"
+
+  - id: "OM-013"
+    period_id: "ERA-4"
+    domain: "Arts & lettres"
+    scale: "national"
+    what_is_missing: >-
+      Bauhaus, culture de Weimar, cinéma, littérature de l’exil, musique et
+      arts sous le nazisme.
+    reason: "not_yet_researched"
+    justification: >-
+      Aucune entrée artistique n’est présente pour 1914–1945, alors que la
+      période est l’une des plus inventives et des plus répressives de
+      l’histoire culturelle allemande.
+    evidence_checked: ["SRC-006"]
+    status: "to_fill"
+    reviewer: ""
+    review_date: "2026-11-13"
+
+  - id: "OM-014"
+    period_id: "ERA-5"
+    domain: "Environnement & territoire"
+    scale: "regional"
+    what_is_missing: >-
+      Pollution industrielle de la RDA (Bitterfeld, Wismut), politique
+      environnementale de la RFA, mouvement antinucléaire.
+    reason: "not_yet_researched"
+    justification: >-
+      L’environnement est absent de la période 1945–1990, alors que la
+      pollution de la RDA et l’antinucléarisme ouest-allemand sont des enjeux
+      politiques majeurs.
+    evidence_checked: ["SRC-010", "SRC-014"]
+    status: "to_fill"
+    reviewer: ""
+    review_date: "2026-11-13"
+
+  - id: "OM-015"
+    period_id: "ERA-6"
+    domain: "Migrations & diasporas"
+    scale: "transnational"
+    what_is_missing: >-
+      Réfugiés de 2015, Ukrainiens après 2022, politique d’asile et débats sur
+      l’intégration.
+    reason: "not_yet_researched"
+    justification: >-
+      La période récente est représentée par la réunification et l’énergie ;
+      les migrations de 2015 et 2022 ne sont pas documentées. Leur traitement
+      exige des sources statistiques et juridiques spécifiques.
+    evidence_checked: ["SRC-012"]
+    status: "to_fill"
+    reviewer: ""
+    review_date: "2026-11-13"

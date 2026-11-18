@@ -1,15 +1,15 @@
 /* Généré par scripts/build-dataset.mjs et scripts/merge-points.mjs. */
 export const DATASET = {
   "meta": {
-    "name": "Vectemporel — Atlas",
-    "system": "V-ATLAS",
+    "name": "Vectemporel",
+    "system": "Vectemporel",
     "version": "0.1.0",
     "generated": "2026-11-18",
     "source": "audits locaux + data.js curaté",
     "externalLinks": false,
     "countries": 10,
     "events": 229,
-    "points": 3407,
+    "points": 1746,
     "validatedPoints": 845
   },
   "countries": [

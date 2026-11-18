@@ -1,0 +1,683 @@
+# Vectemporel — dossier pays (méthode v1.0)
+# Égypte — audit de première version, non signé.
+# Les scores restent null et le verdict pending : aucune double lecture humaine n'a eu lieu.
+
+schema_version: "1.0"
+country:
+  id: "egypt"
+  iso2: "EG"
+  iso3: "EGY"
+  name_current: "Égypte"
+  names_historical:
+    - "Kemet (nom égyptien ancien)"
+    - "Miṣr (nom arabe)"
+    - "Aegyptus (nom latin)"
+    - "Égypte ottomane"
+    - "Khédivat d'Égypte"
+    - "Sultanat d'Égypte"
+    - "Royaume d'Égypte"
+    - "République arabe unie (1958–1971)"
+    - "République arabe d'Égypte"
+  flag: "🇪🇬"
+
+scope:
+  territory_current: "Égypte contemporaine : vallée du Nil et delta, déserts occidental et oriental, Sinaï, oasis, côtes méditerranéenne et rouge ; frontières terrestres avec la Libye, le Soudan, Israël et Gaza."
+  territories_historical:
+    - "Égypte pharaonique (v. 3100–332 av. J.-C.)"
+    - "Royaume ptolémaïque (305–30 av. J.-C.)"
+    - "Province romaine d'Égypte (30 av. J.-C.–641)"
+    - "Égypte islamique (641–1517)"
+    - "Province ottomane d'Égypte (1517–1805)"
+    - "Khédivat d'Égypte (1867–1914)"
+    - "Protectorat britannique (1914–1922)"
+    - "Royaume d'Égypte et du Soudan (1922–1953)"
+    - "République arabe unie (1958–1961)"
+    - "Sinaï occupé par Israël (1967–1982)"
+  regions_autonomous:
+    - "Aucune région autonome dans l'État actuel ; la Nubie et le Sinaï sont des espaces historiques à statut variable."
+  scope_note: "Les listes populations_included et populations_excluded distinguent le récit national des couches transnationales ; aucune population n'est exclue de l'histoire."
+  populations_included:
+    - "Égyptiens"
+    - "Coptes"
+    - "Nubiens"
+    - "Bedouins"
+    - "Siwis"
+    - "Communautés juives historiques"
+    - "Grecs, Italiens et Arméniens historiques"
+    - "Soudanais et réfugiés installés en Égypte"
+  populations_excluded:
+    - "Diasporas égyptiennes du Golfe, d'Europe, d'Amérique du Nord et d'Australie (hors cadre territorial, à traiter en couche transnationale)"
+    - "Populations transfrontalières égypto-soudanaises (hors cadre national, à traiter en couche régionale)"
+    - "Palestiniens de Gaza et réfugiés palestiniens en Égypte (non nationaux, à traiter comme acteurs transfrontaliers)"
+    - "Travailleurs migrants sans statut (non nationaux, à traiter comme acteurs transfrontaliers)"
+  diasporas:
+    - "Diaspora égyptienne du Golfe"
+    - "Diaspora copte"
+    - "Diaspora nubienne"
+    - "Diaspora juive d'Égypte"
+    - "Étudiants et professionnels en Europe et en Amérique du Nord"
+  temporal:
+    start_edtf: "-3100"
+    end_edtf: "2026"
+    start_rationale: "Date conventionnelle de l'unification de la Haute et de la Basse-Égypte ; les spécialistes proposent une fourchette de part et d'autre de 3100 av. J.-C. La borne est retenue pour la lisibilité, pas comme certitude."
+    end_rationale: "Année de travail de l'audit ; la période contemporaine est ouverte et doit être mise à jour chaque année."
+  unit_of_analysis: "fiche-événement"
+  inclusion_criteria:
+    - "Événement, processus ou institution qui modifie durablement les institutions, les rapports de force, les conditions de vie ou les représentations d'une partie significative des populations."
+    - "Connexion transfrontalière, impériale ou diasporique ayant des effets sur le territoire égyptien ou sur les Égyptiens."
+    - "Fait attesté par au moins une source savante ou primaire vérifiée, avec acteur, lieu et date."
+  exclusion_criteria:
+    - "Date isolée sans acteur, lieu ou source."
+    - "Événement purement dynastique ou anecdotique sans effet structurel documenté."
+    - "Événement étranger sans implication égyptienne directe."
+    - "Commémoration sans événement historique distinct, sauf si elle est elle-même objet d'histoire."
+  audience:
+    - "grand public"
+    - "scolaire"
+    - "diasporas"
+    - "recherche"
+  evidence_threshold: "deux sources indépendantes par fiche, ou exception documentée"
+
+governance:
+  editor: "à désigner"
+  country_reader: "à désigner"
+  method_reader: "à désigner"
+  arbiter: "à désigner"
+  data_steward: "à désigner"
+  sensitivity_expert: "à désigner"
+  responsible_editor: "à désigner"
+  conflicts_of_interest: []
+
+historiography:
+  schools:
+    - "Histoire politique et dynastique classique"
+    - "Histoire sociale et économique"
+    - "Histoire culturelle et religieuse"
+    - "Histoire du genre"
+    - "Histoire environnementale"
+    - "Histoire globale et connectée"
+    - "Études postcoloniales"
+    - "Études mameloukes et ottomanes"
+    - "Égyptologie savante et archéologie"
+  national_narratives:
+    - "Âge d'or pharaonique et continuité nilotique"
+    - "Conquête arabe comme entrée dans l'islam"
+    - "Le Caire comme capitale impériale"
+    - "1919 et 1952 comme libérations successives"
+    - "Panarabisme nassérien et leadership arabe de l'Égypte"
+    - "1973 comme victoire militaire et renaissance nationale"
+    - "2011 comme révolution du peuple"
+  counter_narratives:
+    - "Récits coptes de coexistence et de persécution"
+    - "Récits nubiens du déplacement et de la perte"
+    - "Récits bédouins et siwis de marginalisation"
+    - "Histoire ouvrière et paysanne"
+    - "Histoire des femmes et du féminisme"
+    - "Critiques islamistes et de gauche de l'État nassérien"
+    - "Récits régionalistes d'Alexandrie et de Haute-Égypte"
+    - "Mémoires des disparus et des violences d'État"
+  structuring_debates:
+    - "1952 : coup d'État militaire ou révolution sociale ?"
+    - "Nasser : modernisation et justice sociale ou autoritarisme et répression ?"
+    - "Infitah et néolibéralisation : croissance ou paupérisation ?"
+    - "Camp David et 1979 : paix ou trahison arabe ?"
+    - "2011–2013 : révolution confisquée, transition ou guerre civile larvée ?"
+    - "Coptes : coexistence, dhimma et discriminations."
+    - "Déplacement nubien : développement national ou violence d'État ?"
+    - "Chronologie pharaonique : conventions, biais dynastiques, archéologie."
+  blind_spots:
+    - "Femmes non élitaires, travail domestique et agricole"
+    - "Paysans sans terre et ouvriers agricoles"
+    - "Nubiens, Bedouins, Siwis"
+    - "Coptes après 641"
+    - "Juifs, Grecs, Italiens, Arméniens"
+    - "Handicap, enfance, sexualités"
+    - "Migrations vers le Golfe et réfugiés"
+    - "Environnement, eau, pollution et climat"
+    - "Culture populaire, cinéma, musique et sport"
+  key_syntheses:
+    - "SRC-001"
+    - "SRC-007"
+    - "SRC-011"
+    - "SRC-019"
+
+periodizations:
+  - id: "POL-1"
+    label: "Périodisation politique éditoriale (5 ères, avec scission recommandée de l'ère islamique)"
+    type: "political"
+    start_edtf: "-3100"
+    end_edtf: "2026"
+    rationale: "Récit principal actuel : unification pharaonique, mondes grec et romain, islam, modernité coloniale, république. Il est lisible mais agrège 1 157 ans d'histoire islamique et surestime la césure de 1798."
+    sources: ["SRC-001", "SRC-007", "SRC-011", "SRC-019"]
+    selected: true
+  - id: "SOC-1"
+    label: "Périodisation sociale et économique"
+    type: "social_economic"
+    start_edtf: "-3100"
+    end_edtf: "2026"
+    rationale: "Succession de régimes agraires et fiscaux : économie nilotique et corvée, ordre agraire-commercial islamique, ordre fiscal ottoman, coton et dette, État développementiste, restructuration néolibérale, économie militarisée. Elle fait apparaître les paysans, les artisans et les marchés que la périodisation politique masque."
+    sources: ["SRC-002", "SRC-007", "SRC-008", "SRC-010", "SRC-011", "SRC-017"]
+    selected: false
+  - id: "CULT-1"
+    label: "Périodisation culturelle, religieuse et environnementale"
+    type: "cultural_religious_environmental"
+    start_edtf: "-3100"
+    end_edtf: "2026"
+    rationale: "Ordre polythéiste et temple, christianisation et Alexandrie tardive, islamisation et coexistence copte, ordre confessionnel ottoman, réformes et Nahda, nationalismes et cultures de masse, islamismes et mémoires. Elle met au premier plan les croyances, les langues et les milieux."
+    sources: ["SRC-005", "SRC-006", "SRC-007", "SRC-019"]
+    selected: false
+
+periods:
+  - id: "PERIOD-1"
+    label: "Égypte pharaonique"
+    start_edtf: "-3100"
+    end_edtf: "-332"
+    boundary_type: "political"
+    boundary_rationale: "Convention chronologique : unification et effondrement de l'État pharaonique. La borne -332 correspond à la conquête d'Alexandre, pas à une fin culturelle brutale."
+    alternatives_considered:
+      - "-3200/-3000 pour l'unification"
+      - "-343 pour la fin de la XXXe dynastie"
+      - "-30 pour l'annexion romaine"
+    sources: ["SRC-001", "SRC-002"]
+  - id: "PERIOD-2"
+    label: "Égypte gréco-romaine"
+    start_edtf: "-332"
+    end_edtf: "641"
+    boundary_type: "political"
+    boundary_rationale: "Conquête d'Alexandre et intégration romaine. La borne 641 est conventionnelle : la conquête arabe s'étend de 639 à 642 et l'islamisation est un processus long."
+    alternatives_considered:
+      - "-331 pour la fondation d'Alexandrie"
+      - "-30 pour l'annexion romaine"
+      - "451 pour la rupture copte"
+    sources: ["SRC-001", "SRC-006"]
+  - id: "PERIOD-3"
+    label: "Égypte islamique"
+    start_edtf: "641"
+    end_edtf: "1798"
+    boundary_type: "political"
+    boundary_rationale: "De la conquête arabe à l'expédition française. Période trop longue : elle agrège les Tulunides, les Fatimides, les Ayyubides, les Mamelouks et les Ottomans, dont les régimes, les élites et les institutions diffèrent."
+    alternatives_considered:
+      - "641–1517 (Égypte islamique médiévale) + 1517–1798 (Égypte ottomane)"
+      - "969–1517 (Caire impérial)"
+      - "1250–1517 (sultanat mamelouk)"
+    sources: ["SRC-007", "SRC-008"]
+  - id: "PERIOD-4"
+    label: "Égypte moderne"
+    start_edtf: "1798"
+    end_edtf: "1952"
+    boundary_type: "political"
+    boundary_rationale: "Expédition française, Muhammad Ali, occupation britannique et monarchie. La borne 1798 est un marqueur européen ; 1805 et 1882 sont des alternatives plus structurantes pour l'histoire sociale et impériale."
+    alternatives_considered:
+      - "1805 (Muhammad Ali)"
+      - "1882 (occupation britannique)"
+      - "1919/1922 (révolution et indépendance)"
+    sources: ["SRC-010", "SRC-011", "SRC-012"]
+  - id: "PERIOD-5"
+    label: "Égypte contemporaine"
+    start_edtf: "1952"
+    end_edtf: "2026"
+    boundary_type: "political"
+    boundary_rationale: "République, Nasser, Sadate, Moubarak, 2011 et 2013. Période ouverte ; les sous-périodes 1952–1970, 1970–1981, 1981–2011 et 2011–2026 sont plus explicatives que l'unité actuelle."
+    alternatives_considered:
+      - "1970 (mort de Nasser)"
+      - "1981 (assassinat de Sadate)"
+      - "2011 (révolution)"
+      - "2013 (coup militaire)"
+    sources: ["SRC-015", "SRC-019", "SRC-020"]
+
+coverage:
+  matrix_file: "coverage-matrix.csv"
+  omissions_file: "omissions.yaml"
+  target_threshold: "90 % des cellules couvertes ou justifiées"
+  status_summary:
+    covered: 32
+    partial: 32
+    justified_empty: 3
+    untreated_empty: 3
+  known_omissions:
+    - "OM-001"
+    - "OM-002"
+    - "OM-003"
+    - "OM-004"
+    - "OM-005"
+    - "OM-006"
+    - "OM-007"
+    - "OM-008"
+    - "OM-009"
+    - "OM-010"
+    - "OM-011"
+    - "OM-012"
+    - "OM-013"
+    - "OM-014"
+    - "OM-015"
+
+actors:
+  - id: "ACTOR-001"
+    label: "Hatshepsout"
+    type: "individual"
+    roles: ["pharaon", "régente", "commanditaire"]
+    period_ids: ["PERIOD-1"]
+    places: ["PLACE-003"]
+    resources: ["légitimité royale", "temple de Deir el-Bahari", "réseau du clergé d'Amon", "flotte de la mer Rouge"]
+    constraints: ["normes de genre", "régence au nom de Thoutmosis III", "dépendance au clergé d'Amon"]
+    networks: ["Sénenmout", "Néhésy", "prêtres d'Amon"]
+    counterpowers: ["faction de Thoutmosis III", "effacement mémoriel après sa mort"]
+    assessment: "Règne de c. 1479–1458 av. J.-C. ; expédition au pays de Pount en l'an 9 ; programme architectural à Deir el-Bahari. Son pouvoir s'appuie sur la légitimité amonienne et sur une mise en scène royale masculine."
+    memory: "Damnatio memoriae partielle ; redécouverte par l'égyptologie au XIXe siècle ; icône moderne, parfois surexploitée."
+    sources: ["SRC-003", "SRC-001"]
+  - id: "ACTOR-002"
+    label: "Shajar al-Durr"
+    type: "individual"
+    roles: ["sultane", "régente", "épouse de sultan"]
+    period_ids: ["PERIOD-3"]
+    places: ["PLACE-011"]
+    resources: ["trésor", "réseau mamelouk", "légitimité par le fils Khalil"]
+    constraints: ["reconnaissance califale", "normes de genre", "factions mameloukes"]
+    networks: ["al-Salih Ayyub", "Izz al-Din Aybak", "mamelouks bahri"]
+    counterpowers: ["émirs syriens", "calife abbasside", "Aybak"]
+    assessment: "Régence de fait dès 1249, sultanat de mai à juillet 1250, transition des Ayyubides aux Mamelouks ; morte en 1257. Son pouvoir est documenté par les chroniques, mais sa légitimité reste contestée."
+    memory: "Figure marginalisée puis réhabilitée ; tombeau au Caire ; usages nationalistes et féministes."
+    sources: ["SRC-007"]
+  - id: "ACTOR-003"
+    label: "Hoda Shaarawi"
+    type: "individual"
+    roles: ["féministe", "nationaliste", "présidente de l'Union féministe égyptienne"]
+    period_ids: ["PERIOD-4"]
+    places: ["PLACE-011", "PLACE-001"]
+    resources: ["réseau de femmes de l'élite", "presse", "relations internationales"]
+    constraints: ["normes de genre", "tutelle masculine", "répression coloniale"]
+    networks: ["Wafd", "Comité central des femmes wafdistes", "Alliance internationale pour le suffrage des femmes"]
+    counterpowers: ["Wafd", "autorités britanniques", "conservateurs religieux"]
+    assessment: "Marche des femmes en 1919, fondation de l'Union féministe égyptienne en mars 1923, revendication du suffrage et de la réforme du statut personnel. Le suffrage n'est obtenu qu'en 1956, et de façon restrictive."
+    memory: "Figure fondatrice du féminisme égyptien ; usages nationaux et panarabes."
+    sources: ["SRC-014", "SRC-013"]
+  - id: "ACTOR-004"
+    label: "Muhammad Ali"
+    type: "individual"
+    roles: ["gouverneur ottoman", "pacha", "fondateur de dynastie"]
+    period_ids: ["PERIOD-4"]
+    places: ["PLACE-011", "PLACE-001", "PLACE-002"]
+    resources: ["armée", "monopoles agricoles", "fiscalité", "appui des notables"]
+    constraints: ["suzeraineté ottomane", "puissances européennes", "traité de Londres de 1840"]
+    networks: ["famille", "officiers albanais", "oulémas", "consuls"]
+    counterpowers: ["Porte ottomane", "mamelouks", "Grande-Bretagne"]
+    assessment: "Prise du pouvoir en 1805, massacre des mamelouks en 1811, réformes militaires et agricoles, expédition du Soudan, défaite en Syrie, règne héréditaire en 1841. Modernisateur autoritaire et grand conscripteur."
+    memory: "Père de l'Égypte moderne ; controverse sur la conscription, les monopoles et la violence d'État."
+    sources: ["SRC-010", "SRC-011"]
+  - id: "ACTOR-005"
+    label: "Saad Zaghloul"
+    type: "individual"
+    roles: ["dirigeant nationaliste", "fondateur du Wafd", "Premier ministre"]
+    period_ids: ["PERIOD-4"]
+    places: ["PLACE-011", "PLACE-001"]
+    resources: ["réseau notabiliaire", "presse", "mobilisation de masse"]
+    constraints: ["occupation britannique", "monarchie", "élites concurrentes"]
+    networks: ["Wafd", "oulémas", "syndicats", "paysans"]
+    counterpowers: ["Britanniques", "palais", "minorités"]
+    assessment: "Délégation à Versailles, exil, révolution de 1919, Premier ministre en 1924. Sa stratégie obtient l'indépendance de 1922, mais avec quatre points réservés."
+    memory: "Père de l'indépendance ; commémorations officielles."
+    sources: ["SRC-013", "SRC-011"]
+  - id: "ACTOR-006"
+    label: "Gamal Abdel Nasser"
+    type: "individual"
+    roles: ["officier", "président", "leader panarabe"]
+    period_ids: ["PERIOD-5"]
+    places: ["PLACE-011", "PLACE-001", "PLACE-002"]
+    resources: ["armée", "appareil d'État", "nationalisations", "médias", "aide soviétique"]
+    constraints: ["guerre froide", "défaite de 1967", "opposition islamiste et communiste", "dépendance économique"]
+    networks: ["officiers libres", "Union arabe socialiste", "intellectuels", "pays arabes"]
+    counterpowers: ["Frères musulmans", "communistes", "armée", "États-Unis et URSS"]
+    assessment: "Coup de 1952, présidence de 1956 à 1970, nationalisation du canal, barrage d'Assouan, panarabisme, défaite de 1967. Bilan social réel mais régime répressif."
+    memory: "Figure tutélaire du nationalisme arabe ; mémoire contestée entre émancipation et autoritarisme."
+    sources: ["SRC-015", "SRC-011"]
+  - id: "ACTOR-007"
+    label: "Anouar el-Sadate"
+    type: "individual"
+    roles: ["président", "officier", "artisan de la paix"]
+    period_ids: ["PERIOD-5"]
+    places: ["PLACE-011", "PLACE-010"]
+    resources: ["armée", "aide américaine", "infitah", "médias"]
+    constraints: ["opposition islamiste et de gauche", "dépendance extérieure", "héritage de Nasser"]
+    networks: ["armée", "États-Unis", "Israël", "pays arabes modérés"]
+    counterpowers: ["Frères musulmans", "gauche", "syndicats", "OLP"]
+    assessment: "Guerre de 1973, infitah, visite à Jérusalem en 1977, Camp David en 1978, traité de 1979, assassinat en 1981. Paix séparée et libéralisation économique inégale."
+    memory: "Héros de la paix pour certains, traître pour d'autres ; commémorations divisées."
+    sources: ["SRC-011", "SRC-017"]
+  - id: "ACTOR-008"
+    label: "Église copte orthodoxe"
+    type: "institution"
+    roles: ["Église", "minorité religieuse", "institution patriarcale"]
+    period_ids: ["PERIOD-2", "PERIOD-3", "PERIOD-4", "PERIOD-5"]
+    places: ["PLACE-001", "PLACE-011", "PLACE-009"]
+    resources: ["hiérarchie patriarcale", "monastères", "réseau diasporique", "propriétés"]
+    constraints: ["dhimma", "discriminations", "pressions à la conversion", "tutelle étatique"]
+    networks: ["patriarcat d'Alexandrie", "monastères du Wadi Natroun", "diaspora copte"]
+    counterpowers: ["État", "islamisme", "concurrence des autres Églises"]
+    assessment: "Séparation après Chalcédoine (451), coexistence durable, réformes ottomanes et modernes, tensions sectaires contemporaines. L'Église est à la fois minorité protégée, acteur politique et institution transnationale."
+    memory: "Martyrs, monastères et patrimoine ; mémoire de la dhimma et des violences."
+    sources: ["SRC-006", "SRC-007"]
+  - id: "ACTOR-009"
+    label: "Nubiens"
+    type: "collective"
+    roles: ["peuple autochtone", "communauté déplacée", "minorité"]
+    period_ids: ["PERIOD-1", "PERIOD-3", "PERIOD-4", "PERIOD-5"]
+    places: ["PLACE-002", "PLACE-012"]
+    resources: ["langues nubiennes", "réseaux de parenté", "terres agricoles", "diaspora"]
+    constraints: ["déplacement forcé", "marginalisation", "reconnaissance autochtone limitée"]
+    networks: ["villages de la vallée du Nil", "associations nubiennes", "diaspora"]
+    counterpowers: ["État égyptien", "haut barrage", "administration"]
+    assessment: "Présence millénaire entre Assouan et Wadi Halfa ; déplacement d'environ 50 000 personnes en 1963–1964 ; revendications foncières et culturelles persistantes."
+    memory: "Villages engloutis, patrimoine déplacé, mémoire de la noyade et du relogement."
+    sources: ["SRC-018", "SRC-011"]
+  - id: "ACTOR-010"
+    label: "Frères musulmans"
+    type: "collective"
+    roles: ["mouvement islamiste", "organisation politique", "association"]
+    period_ids: ["PERIOD-4", "PERIOD-5"]
+    places: ["PLACE-011", "PLACE-005"]
+    resources: ["réseau associatif", "mosquées", "clientèles", "médias"]
+    constraints: ["répression", "interdiction", "concurrence salafiste"]
+    networks: ["Hassan al-Banna", "branches régionales", "syndicats", "étudiants"]
+    counterpowers: ["État", "armée", "partis laïcs"]
+    assessment: "Fondé en 1928 à Ismailia ; acteur majeur de la vie politique, de l'assassinat de Sadate à la présidence de Morsi (2012–2013), puis cible d'une répression massive."
+    memory: "Victimes et acteurs de violences ; mémoire divisée entre mouvement social, parti et organisation clandestine."
+    sources: ["SRC-011", "SRC-019"]
+  - id: "ACTOR-011"
+    label: "Officiers libres"
+    type: "collective"
+    roles: ["junte militaire", "mouvement révolutionnaire"]
+    period_ids: ["PERIOD-5"]
+    places: ["PLACE-011"]
+    resources: ["armée", "réseaux d'officiers", "appui populaire"]
+    constraints: ["légitimité", "guerre froide", "opposition civile"]
+    networks: ["Nasser", "Naguib", "Sadat", "Amer"]
+    counterpowers: ["Frères musulmans", "communistes", "syndicats", "anciennes élites"]
+    assessment: "Coup du 23 juillet 1952, abolition de la monarchie en 1953, répression des oppositions, réformes sociales. Le régime se présente comme une révolution, mais conserve une structure militaire."
+    memory: "Révolution fondatrice ; mémoire officielle et critiques des historiens."
+    sources: ["SRC-015", "SRC-011"]
+  - id: "ACTOR-012"
+    label: "Napoléon Bonaparte"
+    type: "individual"
+    roles: ["général français", "chef d'expédition"]
+    period_ids: ["PERIOD-4"]
+    places: ["PLACE-001", "PLACE-011"]
+    resources: ["armée expéditionnaire", "savants", "marine"]
+    constraints: ["isolement", "flotte britannique", "logistique", "résistance égyptienne"]
+    networks: ["Commission des sciences et des arts", "officiers", "consuls"]
+    counterpowers: ["Ottomans", "Britanniques", "mamelouks", "population"]
+    assessment: "Expédition de 1798–1801, occupation, Description de l'Égypte, retrait. Impact durable sur l'égyptologie et l'imaginaire colonial, mais échec militaire et politique."
+    memory: "Figure de la campagne d'Égypte ; usages orientalistes et nationalistes."
+    sources: ["SRC-011"]
+
+places:
+  - id: "PLACE-001"
+    label_current: "Alexandrie"
+    names_historical: ["Rhakotis", "Alexandreia", "al-Iskandariyya"]
+    geometry_period: "Site antique autour du promontoire du Pharos et de la baie ; extension moderne le long de la corniche."
+    hierarchy: "regional"
+    functions: ["port", "capitale ptolémaïque", "centre intellectuel", "lieu de mémoire"]
+    events: ["eg-alexandrie", "eg-cleopatre", "PROP-005", "PROP-012"]
+    contestations: ["localisation du tombeau d'Alexandre", "mythe de la bibliothèque", "mémoire coloniale"]
+    sources: ["SRC-001", "SRC-005", "SRC-011"]
+  - id: "PLACE-002"
+    label_current: "Assouan"
+    names_historical: ["Syene", "Souan", "Aswan"]
+    geometry_period: "Première cataracte, frontière méridionale de l'Égypte antique ; ville moderne et haut barrage."
+    hierarchy: "regional"
+    functions: ["frontière", "commerce", "barrage", "lieu de mémoire nubien"]
+    events: ["PROP-004", "PROP-015"]
+    contestations: ["déplacement nubien", "patrimoine englouti", "partage de l'eau"]
+    sources: ["SRC-018", "SRC-011"]
+  - id: "PLACE-003"
+    label_current: "Louxor"
+    names_historical: ["Waset", "Thebai", "al-Uqsur"]
+    geometry_period: "Rive droite du Nil, temples de Karnak et de Louxor ; nécropoles de la rive gauche."
+    hierarchy: "regional"
+    functions: ["capitale religieuse", "nécropole", "site archéologique", "tourisme"]
+    events: ["PROP-002", "PROP-003", "eg-ramses"]
+    contestations: ["restauration", "tourisme de masse", "fouilles"]
+    sources: ["SRC-002", "SRC-003"]
+  - id: "PLACE-004"
+    label_current: "Port-Saïd"
+    names_historical: ["Port-Saïd"]
+    geometry_period: "Embouchure méditerranéenne du canal, fondée en 1859."
+    hierarchy: "regional"
+    functions: ["port", "ville ouvrière", "canal"]
+    events: ["eg-suez", "eg-suez-crise"]
+    contestations: ["mémoire ouvrière", "logement", "canal"]
+    sources: ["SRC-011", "SRC-012"]
+  - id: "PLACE-005"
+    label_current: "Ismaïlia"
+    names_historical: ["Ismailia"]
+    geometry_period: "Rive ouest du lac Timsah, fondée en 1863."
+    hierarchy: "regional"
+    functions: ["siège de la Compagnie du canal", "port", "ville de garnison"]
+    events: ["eg-suez", "eg-suez-crise"]
+    contestations: ["mémoire coloniale", "canal"]
+    sources: ["SRC-011", "SRC-012"]
+  - id: "PLACE-006"
+    label_current: "Suez"
+    names_historical: ["al-Suways"]
+    geometry_period: "Extrémité sud du canal, golfe de Suez."
+    hierarchy: "regional"
+    functions: ["port", "front", "ville ouvrière"]
+    events: ["PROP-017", "PROP-016"]
+    contestations: ["mémoire de la guerre", "déplacement", "canal"]
+    sources: ["SRC-017", "SRC-011"]
+  - id: "PLACE-007"
+    label_current: "Mansourah"
+    names_historical: ["al-Mansura"]
+    geometry_period: "Delta du Nil, bras de Damiette."
+    hierarchy: "regional"
+    functions: ["ville de bataille", "marché agricole"]
+    events: ["PROP-008"]
+    contestations: ["mémoire de la bataille", "patrimoine"]
+    sources: ["SRC-007"]
+  - id: "PLACE-008"
+    label_current: "Deir el-Médineh"
+    names_historical: ["Set Maat", "Deir el-Médineh"]
+    geometry_period: "Village des artisans, rive gauche de Thèbes, Nouvel Empire."
+    hierarchy: "local"
+    functions: ["village ouvrier", "nécropole royale"]
+    events: ["PROP-003"]
+    contestations: ["interprétation de la grève", "conditions de travail"]
+    sources: ["SRC-002"]
+  - id: "PLACE-009"
+    label_current: "Assiout"
+    names_historical: ["Asyut", "Lycopolis"]
+    geometry_period: "Moyenne-Égypte, rive ouest du Nil."
+    hierarchy: "regional"
+    functions: ["ville carrefour", "communauté copte", "agriculture"]
+    events: ["PROP-013"]
+    contestations: ["mémoire copte", "islamisme"]
+    sources: ["SRC-013", "SRC-006"]
+  - id: "PLACE-010"
+    label_current: "Sinaï"
+    names_historical: ["Sinai", "Tur Sina"]
+    geometry_period: "Péninsule entre les golfes de Suez et d'Aqaba ; occupée par Israël de 1967 à 1982."
+    hierarchy: "regional"
+    functions: ["frontière", "lieu saint", "tourisme", "ressources"]
+    events: ["PROP-016", "eg-paix"]
+    contestations: ["souveraineté", "sécurité", "Bedouins"]
+    sources: ["SRC-016", "SRC-011"]
+  - id: "PLACE-011"
+    label_current: "Le Caire"
+    names_historical: ["Fustat", "al-Qahira", "Le Caire"]
+    geometry_period: "Vallée du Nil, rive droite ; noyau fatimide autour d'al-Azhar, extensions mameloukes et modernes."
+    hierarchy: "national"
+    functions: ["capitale", "centre religieux", "marché", "lieu de mémoire"]
+    events: ["eg-caire", "eg-bonaparte", "eg-independance", "eg-nasser", "eg-tahrir", "PROP-013", "PROP-014", "PROP-018"]
+    contestations: ["patrimoine", "gentrification", "mémoire"]
+    sources: ["SRC-007", "SRC-011", "SRC-019"]
+  - id: "PLACE-012"
+    label_current: "Nubie / Wadi Halfa"
+    names_historical: ["Nubia", "Wadi Halfa", "Nouvelle Nubie"]
+    geometry_period: "Vallée du Nil entre Assouan et la frontière soudanaise ; partiellement engloutie par le lac Nasser après 1964."
+    hierarchy: "transnational"
+    functions: ["frontière", "terres agricoles", "lieu de mémoire", "diaspora"]
+    events: ["PROP-015"]
+    contestations: ["déplacement", "compensation", "retour"]
+    sources: ["SRC-018"]
+
+claims:
+  - id: "CLAIM-001"
+    subject: "Unification de l'Égypte"
+    predicate: "est datée"
+    object: "vers 3100 av. J.-C."
+    text: "La date de -3100 est une convention chronologique pour un processus d'unification, pas la date certaine d'un événement unique."
+    confidence: "probable"
+    sources: ["SRC-001"]
+    revisions: []
+  - id: "CLAIM-002"
+    subject: "Islamisation de l'Égypte"
+    predicate: "est un processus"
+    object: "pluriséculaire"
+    text: "La conquête arabe de 641 ne marque pas une islamisation immédiate ; les coptes restent majoritaires pendant plusieurs siècles et les estimations de bascule varient."
+    confidence: "probable"
+    sources: ["SRC-007", "SRC-006"]
+    revisions: []
+  - id: "CLAIM-003"
+    subject: "Mortalité des travailleurs du canal de Suez"
+    predicate: "est"
+    object: "disputée"
+    text: "Le chiffre de 120 000 morts, souvent cité pour la construction du canal de Suez, n'est pas documenté de façon fiable ; les estimations varient fortement."
+    confidence: "disputed"
+    sources: ["SRC-011", "SRC-012"]
+    revisions: []
+  - id: "CLAIM-004"
+    subject: "Révolution de 1919"
+    predicate: "a impliqué"
+    object: "paysans, ouvriers, femmes et chrétiens"
+    text: "La révolution de 1919 dépasse les élites du Wafd : des paysans, des ouvriers, des femmes et des chrétiens y participent, avec des violences rurales importantes."
+    confidence: "probable"
+    sources: ["SRC-013"]
+    revisions: []
+  - id: "CLAIM-005"
+    subject: "Coup de 1952"
+    predicate: "est qualifié"
+    object: "de révolution par le régime"
+    text: "Le 23 juillet 1952 est un coup d'État militaire qui se présente comme une révolution ; la qualification reste un enjeu historiographique."
+    confidence: "disputed"
+    sources: ["SRC-015"]
+    revisions: []
+  - id: "CLAIM-006"
+    subject: "Traité de paix égypto-israélien"
+    predicate: "est signé"
+    object: "le 26 mars 1979"
+    text: "Les accords de Camp David datent de septembre 1978 ; le traité de paix est signé à Washington le 26 mars 1979. Le prix Nobel de la paix est attribué à Sadate et Begin en 1978."
+    confidence: "certain"
+    sources: ["SRC-011"]
+    revisions: []
+  - id: "CLAIM-007"
+    subject: "Déplacement des Nubiens"
+    predicate: "a concerné"
+    object: "environ 50 000 personnes en Égypte"
+    text: "Le déplacement de 1963–1964 concerne environ 50 000 Nubiens égyptiens, relogés à Kom Ombo ; les chiffres varient selon les sources et les modes de comptage."
+    confidence: "probable"
+    sources: ["SRC-018"]
+    revisions: []
+  - id: "CLAIM-008"
+    subject: "Massacre de Rabaa"
+    predicate: "a tué"
+    object: "au moins 817 personnes"
+    text: "Human Rights Watch documente au moins 817 morts lors de la dispersion du sit-in de Rabaa le 14 août 2013, et probablement plus de 1 000 ; les chiffres officiels sont inférieurs."
+    confidence: "probable"
+    sources: ["SRC-020"]
+    revisions: []
+  - id: "CLAIM-009"
+    subject: "Révolution de 2011"
+    predicate: "a conduit"
+    object: "à une transition conflictuelle"
+    text: "La révolution de 2011 provoque la chute de Moubarak, puis une transition marquée par l'élection de Morsi, le coup militaire de 2013 et la répression."
+    confidence: "certain"
+    sources: ["SRC-019"]
+    revisions: []
+  - id: "CLAIM-010"
+    subject: "Période islamique"
+    predicate: "n'est pas"
+    object: "une unité politique"
+    text: "La période 641–1798 agrège des régimes distincts : Tulunides, Fatimides, Ayyubides, Mamelouks et Ottomans. La traiter comme une seule ère masque des ruptures majeures."
+    confidence: "certain"
+    sources: ["SRC-007", "SRC-008"]
+    revisions: []
+
+source_policy:
+  min_independent_sources: 2
+  grokipedia_role: "point d'entrée de lecture, jamais autorité de validation"
+  generative_ai_role: "aide à la recherche uniquement, vérifiée et signalée"
+  date_roles_required: true
+  license: "à définir"
+
+audit:
+  protocol_version: "1.0"
+  double_read:
+    sensitive_share: 1.0
+    other_share: 0.25
+    kappa_target: 0.70
+    kappa_sensitive_target: 0.80
+  delphi:
+    used: false
+    experts: 0
+    rounds: 0
+    consensus_threshold: "75 % de notes 4–5/5 et IQR ≤ 1"
+  scores:
+    coverage: null
+    accuracy: null
+    balance: null
+    provenance: null
+    readability: null
+    weighted_total: null
+  blocking_errors:
+    - id: "S1-CANDIDATE-001"
+      event_id: "eg-alexandrie"
+      issue: "La fiche date la fondation d'Alexandrie de -332 ; la fondation est généralement datée de -331, après l'entrée d'Alexandre en Égypte."
+      status: "à corriger"
+    - id: "S1-CANDIDATE-002"
+      event_id: "eg-nasser"
+      issue: "La fiche présente 1952 comme la prise de pouvoir de Nasser ; Naguib devient président en 1953 et Nasser en 1956."
+      status: "à corriger"
+    - id: "S1-CANDIDATE-003"
+      event_id: "eg-paix"
+      issue: "La fiche associe le prix Nobel au traité de 1979 ; le prix est attribué en 1978 pour Camp David, le traité est signé en 1979."
+      status: "à corriger"
+    - id: "S1-CANDIDATE-004"
+      event_id: "eg-arabes"
+      issue: "Le sous-titre « L'Égypte devient musulmane » en 641 surestime la rapidité de l'islamisation et sous-estime la persistance copte."
+      status: "à corriger"
+  disagreements:
+    - type: "F1"
+      object: "eg-alexandrie"
+      description: "Date de fondation -332 contre -331."
+      resolution: "Vérification à la source ; retenir -331 avec certitude probable."
+    - type: "F1"
+      object: "eg-nasser"
+      description: "Date d'accès de Nasser à la présidence : 1954, 1956 ou 1952."
+      resolution: "Distinguer le coup de 1952, la présidence de Naguib (1953) et l'élection de Nasser (1956)."
+    - type: "F3"
+      object: "eg-nasser"
+      description: "Qualification de 1952 comme révolution ou coup d'État."
+      resolution: "Conserver les deux termes, expliciter les usages."
+    - type: "F2"
+      object: "eg-suez"
+      description: "Mortalité des travailleurs du canal : chiffres divergents."
+      resolution: "Ne pas publier de chiffre unique ; signaler l'incertitude."
+    - type: "F4"
+      object: "PERIOD-3"
+      description: "Nommage « Égypte islamique » pour 641–1798."
+      resolution: "Scinder en période islamique médiévale et période ottomane."
+    - type: "F3"
+      object: "eg-tahrir"
+      description: "Portée démocratique de 2011 et qualification de 2013."
+      resolution: "Présenter les interprétations concurrentes, ne pas téléologiser."
+  verdict: "pending"
+  signoff:
+    date: ""
+    signed_by: []
+
+publication:
+  release: ""
+  date: ""
+  changelog: ""
+  public_quality_note: ""
+  correction_contact: ""
+  archive_url: ""

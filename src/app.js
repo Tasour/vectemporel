@@ -9,6 +9,7 @@ import {
 } from './domain/store.js';
 import { initKeyboard } from './platform/keyboard.js';
 import { DATASET } from './data/dataset.js';
+import { mondeDiagnostics } from './views/monde/index.js';
 
 /* Version du modèle de navigation. Toute modification d'un libellé ou d'un
  * raccourci doit être répercutée ici, dans la coque, dans le routeur et dans
@@ -39,7 +40,7 @@ export const VOCABULARY = Object.freeze({
 
 /* Table de navigation lisible par machine : jumeau de la table du README. */
 const NAV_SHORTCUTS = Object.freeze([
-  Object.freeze({ key: '1–5 / r c g s m', action: 'changer de vue', scope: 'partout' }),
+  Object.freeze({ key: '1–6 / r c g s m p', action: 'changer de vue', scope: 'partout' }),
   Object.freeze({ key: '← →', action: 'repère, point ou lieu précédent / suivant', scope: 'hors globe et modale' }),
   Object.freeze({ key: '↑ ↓', action: 'ère précédente / suivante ; en Récit et Géographie, comme ← →', scope: 'Chronologie / Constellation ; Récit / Géographie' }),
   Object.freeze({ key: 'Entrée', action: 'ouvrir le détail du repère', scope: 'hors globe et modale' }),
@@ -103,9 +104,12 @@ export function countries() {
 /* Situation sémantique : l'équivalent programmatique du fil et de l'annonce. */
 export function position() {
   const info = BY_ID.get(state.view) || null;
-  const country = DATASET.countries.find((item) => item.id === state.countryId) || null;
-  const era = country?.eras?.[state.eraIndex] || null;
-  const event = country?.events?.[state.eventIndex] || null;
+  // Sur le Monde, le contexte pays/ère/repère n'appartient pas à la vue :
+  // le fil d'Ariane ne doit pas afficher la sélection d'une vue précédente.
+  const atRoot = state.view === 'globe';
+  const country = !atRoot ? DATASET.countries.find((item) => item.id === state.countryId) || null : null;
+  const era = !atRoot ? country?.eras?.[state.eraIndex] || null : null;
+  const event = !atRoot ? country?.events?.[state.eventIndex] || null : null;
   return {
     view: state.view,
     label: info?.label || state.view,
@@ -143,6 +147,7 @@ window.VATLAS = {
   countries,
   position,
   getState: () => ({ ...state }),
+  mondeDiagnostics,
   openCountry: (id) => Promise.resolve(selectCountry(String(id))),
   goView: (view) => {
     const id = resolveView(view);

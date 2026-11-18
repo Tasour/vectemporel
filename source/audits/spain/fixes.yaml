@@ -1,0 +1,194 @@
+# Vectemporel — patch d'intégration Espagne (méthode v1.0)
+# Généré depuis audits/spain/proposals.yaml, REPORT.md et country-audit.yaml.
+# Ne modifie ni data.js ni les fichiers partagés.
+
+schema_version: "1.0"
+country_id: "spain"
+generated_at: "2026-11-13"
+
+event_updates:
+  - id: "es-711"
+    set:
+      title: "Conquête musulmane"
+      subtitle: "Guadalete et la conquête progressive"
+      summary: "En juillet 711, une armée arabo-berbère venue du Maghreb bat le roi wisigoth Rodéric à la bataille de Guadalete. La conquête ne se réduit pas à ce combat : elle progresse par accords, capitulations et installations militaires pendant des décennies, jusqu'à couvrir l'essentiel de la péninsule. Elle met fin au royaume wisigoth et ouvre la période d'al-Andalus."
+    confidence: "high"
+    rationale: "Correction es-711 : remplacer le débarquement unique par la bataille de Guadalete et un processus de conquête ; préciser les forces arabo-berbères et la durée de l'installation. Le prologue antérieur est porté par es-prop-001 et reste à arbitrer en périodisation."
+
+  - id: "es-covadonga"
+    set:
+      subtitle: "Vers 722, selon une tradition tardive"
+      summary: "Vers 722, selon une tradition tardive, une victoire chrétienne dans les montagnes asturiennes est attribuée à Pelage et à ses partisans. L'épisode, connu par des récits postérieurs, fonde le royaume des Asturies dans la mémoire médiévale. Son rôle de « début de la Reconquista » relève d'une construction historiographique, non d'un fait contemporain."
+    confidence: "high"
+    rationale: "Correction es-covadonga : marquer l'incertitude de la date et de l'événement, et requalifier la « Reconquista » sans en faire une origine nationale."
+
+  - id: "es-mariage"
+    set:
+      subtitle: "Valladolid, 1469 : deux couronnes distinctes"
+      summary: "Le 19 octobre 1469, Isabelle de Castille épouse Ferdinand d'Aragon à Valladolid. Les deux couronnes restent distinctes, avec leurs institutions, leurs lois et leurs finances ; le mariage ne réalise pas l'unification politique de l'Espagne. Leurs règnes sont marqués par la création de l'Inquisition en 1478 et par la conquête de Grenade en 1492."
+    confidence: "high"
+    rationale: "Correction es-mariage : dater le mariage, distinguer Castille et Aragon, remplacer « prépare l'unification » et replacer l'Inquisition en 1478."
+
+  - id: "es-grenade"
+    set:
+      subtitle: "2 janvier 1492 : la capitulation nasride"
+      summary: "Le 2 janvier 1492, le royaume nasride de Grenade capitule devant les Rois catholiques, mettant fin au dernier État musulman de la péninsule. La reddition ouvre une politique de confessionnalisation, avec le décret d'expulsion des Juifs le 31 mars et la conversion forcée des musulmans de Castille en 1502. L'arrivée de Colomb aux Caraïbes, le 12 octobre, relève d'un autre événement de la même année."
+    confidence: "high"
+    rationale: "Correction es-grenade : cantonner la fiche à la capitulation du 2 janvier, distinguer les trois repères de 1492 et ajouter la conversion forcée de 1502. L'expulsion des Juifs est désormais une fiche autonome (es-prop-002)."
+
+  - id: "es-colomb"
+    set:
+      subtitle: "Guanahani, 12 octobre 1492"
+      tags: ["exploration", "societe"]
+      summary: "Le 12 octobre 1492, Colomb atteint Guanahani, dans l'archipel des Bahamas, puis les Grandes Antilles. Les Taïnos qu'il rencontre subissent rapidement la domination des colons, les maladies et les déplacements forcés ; l'expédition ouvre la colonisation européenne des Amériques. Colomb, convaincu d'atteindre l'Asie, meurt sans avoir compris qu'il avait abordé un autre continent."
+    confidence: "high"
+    rationale: "Correction es-colomb : nommer Guanahani et les Caraïbes plutôt que « l'Amérique », rendre visibles les Taïnos et le début de la colonisation, éviter le mot « découverte »."
+
+  - id: "es-armada"
+    set:
+      subtitle: "L'expédition de 1588 et son échec"
+      summary: "En 1588, Philippe II lance une grande expédition navale contre l'Angleterre, destinée à débarquer une armée venue des Flandres. La flotte est malmenée par les combats, les tempêtes et les difficultés logistiques, et l'opération échoue. Cet échec n'arrête pas la puissance maritime espagnole, qui reste active dans l'Atlantique et en Méditerranée pendant des décennies."
+    confidence: "high"
+    rationale: "Correction es-armada : abandonner le surnom anglais et l'idée d'un coup d'arrêt définitif à la puissance navale espagnole."
+
+  - id: "es-independance"
+    set:
+      subtitle: "Guerre, guérilla et révolution libérale"
+      summary: "L'invasion napoléonienne de 1808 provoque un soulèvement général, une guérilla longue et une crise de la monarchie. Les Cortès de Cadix adoptent la Constitution de 1812 tandis que les afrancesados soutiennent le régime de Joseph Bonaparte. La guerre affaiblit durablement la monarchie espagnole et ouvre la crise des empires américains."
+    confidence: "high"
+    rationale: "Correction es-independance : ajouter la guérilla, les afrancesados, les Cortès de Cadix et la dimension coloniale de la crise de 1808."
+
+  - id: "es-1898"
+    set:
+      subtitle: "Cuba, Porto Rico, Philippines et Guam"
+      summary: "La défaite face aux États-Unis en 1898 coûte à l'Espagne Cuba, Porto Rico, les Philippines et Guam. L'Espagne conserve le Río de Oro et la Guinée équatoriale, puis établit un protectorat au Maroc en 1912 : 1898 ne marque donc pas la fin de l'empire. Le mot « Désastre », employé en Espagne, désigne une crise nationale autant qu'une défaite militaire."
+    confidence: "high"
+    rationale: "Correction es-1898 : remplacer « dernières colonies », lister les quatre pertes, distinguer l'empire africain et contextualiser le label « Désastre »."
+
+  - id: "es-civile"
+    set:
+      subtitle: "17 juillet 1936 – 1er avril 1939"
+      tags: ["guerre", "politique", "societe"]
+      summary: "Le 17 juillet 1936, un soulèvement militaire contre la République échoue partiellement et débouche sur une guerre de près de trois ans, jusqu'à la victoire de Franco le 1er avril 1939. L'Allemagne et l'Italie soutiennent les nationalistes, tandis que l'URSS et les Brigades internationales aident la République. Les deux camps mènent une répression violente, qui touche aussi les femmes et les populations civiles."
+    confidence: "high"
+    rationale: "Correction es-civile : dater la guerre, remplacer le cliché du « laboratoire », documenter les interventions étrangères et la répression dans les deux camps."
+
+  - id: "es-franco"
+    set:
+      subtitle: "1939-1975 : trente-six ans de dictature"
+      tags: ["politique", "economie"]
+      summary: "De 1939 à 1975, Franco gouverne un régime autoritaire fondé sur l'armée, l'Église et le parti unique, qui réprime les opposants et emprisonne des milliers de personnes. Après l'autarcie des années 1940, l'entrée à l'ONU en 1955 et le Plan de stabilisation de 1959 accompagnent une croissance rapide, financée aussi par l'émigration et le tourisme. Ce développement s'accompagne de répression, d'inégalités et de migrations massives."
+    confidence: "high"
+    rationale: "Correction es-franco : corriger « quarante ans » en 36 ans, distinguer autarcie, reconnaissance de 1955, Plan de 1959, émigration et tourisme, et ne pas présenter le développement comme neutre."
+
+  - id: "es-constitution"
+    set:
+      subtitle: "6 décembre 1978 : référendum et État des autonomies"
+      summary: "Le 6 décembre 1978, une Constitution démocratique est approuvée par référendum et organise une monarchie parlementaire et l'État des autonomies. Elle s'inscrit dans une transition négociée, marquée par la loi d'amnistie de 1977 et les pactes de la Moncloa sur la crise économique. La tentative de coup d'État du 23 février 1981 éprouve le régime sans l'interrompre."
+    confidence: "high"
+    rationale: "Correction es-constitution : dater le référendum, ajouter la loi d'amnistie de 1977, les pactes de la Moncloa et le 23-F."
+
+  - id: "es-catalogne"
+    set:
+      subtitle: "Le référendum suspendu et ses suites"
+      summary: "Le 1er octobre 2017, la Catalogne organise malgré la suspension du Tribunal constitutionnel un référendum d'indépendance, dans un climat de forte tension et d'affrontements avec la police. Le Parlement catalan proclame l'indépendance le 27 octobre, sans reconnaissance internationale ; Madrid répond par l'article 155 et la convocation d'élections en décembre. La crise se poursuit depuis dans le cadre européen."
+    confidence: "high"
+    rationale: "Correction es-catalogne : préciser la suspension constitutionnelle, la déclaration du 27 octobre, l'article 155, les élections de décembre 2017 et la dimension européenne."
+
+  - id: "es-cee"
+    set:
+      subtitle: "La CEE après l'OTAN"
+      summary: "En 1986, l'Espagne adhère à la Communauté économique européenne, après son entrée à l'OTAN en 1982, confirmée par référendum en 1986. Les fonds structurels européens soutiennent des infrastructures et des régions en retard, tandis que l'ouverture expose l'industrie et l'agriculture à une concurrence nouvelle. L'intégration accélère la transformation économique sans en effacer les coûts sociaux."
+    confidence: "medium"
+    rationale: "Correction es-cee : replacer l'adhésion dans la séquence OTAN 1982, référendum de 1986, fonds structurels et ajustements industriels ; éviter le récit d'une modernisation sans coûts."
+
+event_additions:
+  - id: "es-prop-001"
+    year: 1492
+    end_year: null
+    title: "Expulsion des Juifs"
+    subtitle: "Le décret de l'Alhambra, 31 mars 1492"
+    tags: ["religion", "societe", "politique"]
+    importance: 3
+    summary: "Le 31 mars 1492, les Rois catholiques signent à Grenade le décret d'expulsion des Juifs de leurs royaumes, qui doit prendre effet avant la fin du mois de juillet. Des dizaines de milliers de personnes partent, se convertissent ou périssent en route ; les estimations varient fortement. La diaspora séfarade qui en résulte s'installe en Méditerranée, aux Pays-Bas et plus tard dans les Amériques."
+    related: ["es-grenade", "es-colomb"]
+    sources: ["SRC-005", "SRC-008"]
+    confidence: "high"
+    rationale: "PROP-005 : séparer le décret du 31 mars de la capitulation de Grenade et de l'arrivée de Colomb, et rendre visible la diaspora séfarade. Les chiffres sont laissés ouverts."
+
+  - id: "es-prop-002"
+    year: 1749
+    end_year: null
+    title: "Grande Rafle des Roms"
+    subtitle: "La prison générale de 1749"
+    tags: ["societe", "politique"]
+    importance: 2
+    summary: "Le 30 juillet 1749, une opération générale ordonnée sous Ferdinand VI arrête des milliers de Roms à travers l'Espagne. Hommes, femmes et enfants sont envoyés dans des prisons et des arsenaux, et l'épisode devient central dans l'histoire de l'antitsiganisme espagnol. Les estimations du nombre de personnes arrêtées varient fortement selon les sources."
+    related: []
+    sources: ["SRC-007"]
+    confidence: "high"
+    rationale: "PROP-009 : rendre visible une minorité totalement absente de la frise et documenter une politique de persécution. Source unique spécialisée (SRC-007), exception documentée."
+
+  - id: "es-prop-003"
+    year: 1931
+    end_year: null
+    title: "Suffrage féminin"
+    subtitle: "Clara Campoamor et le vote du 1er octobre 1931"
+    tags: ["politique", "societe"]
+    importance: 3
+    summary: "Le 1er octobre 1931, les Cortès constituantes adoptent le droit de vote des femmes après un débat tendu. Clara Campoamor, députée radicale, défend le texte face à une partie de la gauche qui craint le poids des femmes catholiques. Le suffrage est exercé pour la première fois aux élections de 1933."
+    related: ["es-civile"]
+    sources: ["SRC-013", "SRC-011"]
+    confidence: "high"
+    rationale: "PROP-012 : documenter les femmes comme actrices politiques et corriger l'absence de genre dans la frise."
+
+  - id: "es-prop-004"
+    year: 2022
+    end_year: null
+    title: "Loi de mémoire démocratique"
+    subtitle: "Reconnaître les victimes du franquisme"
+    tags: ["politique", "societe"]
+    importance: 2
+    summary: "La loi 20/2022, promulguée le 19 octobre 2022, renforce les politiques publiques de mémoire de la guerre civile et du franquisme. Elle reconnaît les victimes, prévoit des mesures sur le Valle de los Caídos et encadre les exhumations des fosses communes. Elle prolonge un débat ouvert sur l'amnistie de 1977 et la place de la mémoire dans la démocratie espagnole."
+    related: ["es-franco", "es-constitution"]
+    sources: ["SRC-020", "SRC-015"]
+    confidence: "high"
+    rationale: "PROP-018 : documenter les mémoires concurrentes et l'action publique contemporaine, et éviter que la crise catalane soit le seul repère récent."
+
+era_updates:
+  - name: "Al-Andalus & Reconquista"
+    set:
+      name: "Al-Andalus et royaumes chrétiens"
+    confidence: "high"
+    rationale: "Renommage demandé par la proposition de périodisation : « Reconquista » est un concept téléologique. La scission 711-1212 / 1212-1492 reste en unresolved."
+
+  - name: "Crises & nation"
+    set:
+      name: "Révolution libérale et nation en crise"
+    confidence: "high"
+    rationale: "Renommage demandé par la proposition de périodisation : le label actuel est vague et masque la construction de l'État libéral. La scission 1808-1874 / 1874-1936 reste en unresolved."
+
+unresolved:
+  - id: "era-prologue"
+    reason: "Ajout d'une ère -218/711 (Ibérie préromaine, Hispanie romaine, royaume wisigoth) : periodization redesign. Implique une sixième ère et l'extension du domaine [711, 2026] de data.js à -218. Les événements Hispanie romaine (PROP-001, -218) et IIIe concile de Tolède (PROP-002, 589) ne peuvent pas être intégrés avant cette extension ; le résumé de es-711 est corrigé en attendant."
+
+  - id: "era-al-andalus-split"
+    reason: "Scission de « Al-Andalus & Reconquista » en 711-1212 (émirat, califat, taïfas, royaumes chrétiens) et 1212-1492 (conquêtes chrétiennes, royaume nasride, Castille et Aragon) : periodization redesign, hors du périmètre des renommages. Le renommage de l'ère est appliqué séparément."
+
+  - id: "era-empire-split"
+    reason: "Scission de « Empire espagnol » en 1492-1700 (Habsbourg) et 1700-1808 (Bourbons, réformes, Lumières) : periodization redesign, non applicable en era_updates."
+
+  - id: "era-crises-split"
+    reason: "Scission de « Crises & nation » en 1808-1874 (révolution libérale, guerres carlistes) et 1874-1936 (Restauration, République) : periodization redesign. Le renommage de l'ère est appliqué séparément."
+
+  - id: "era-guerre-franquisme-split"
+    reason: "Scission de « Guerre civile & franquisme » en 1936-1939 et 1939-1975 : periodization redesign, non applicable en era_updates."
+
+  - id: "era-democratie-split"
+    reason: "Scission de « Démocratie » en 1975-1986 (transition, Constitution, OTAN/CEE) et 1986-2026 (consolidation européenne, crises, 15-M, Catalogne) : periodization redesign, non applicable en era_updates."
+
+  - id: "era-1978-boundary"
+    reason: "Ajout d'une borne constitutionnelle interne en 1978 dans « Démocratie » : periodization redesign. 1975 (mort de Franco) et 1978 (Constitution) ne peuvent pas être confondus, mais l'ajout d'une borne déplace la structure des ères et doit être arbitré avec la scission 1975-1986 / 1986-2026."
+
+  - id: "proposals-deferred"
+    reason: "Autres propositions non retenues dans la limite de quatre ajouts : Morisques (PROP-007), Retirada (PROP-013), 15-M (PROP-017), califat de Cordoue (PROP-003), traductions de Tolède (PROP-004), Nueva Planta (PROP-008), Comuneros (PROP-006), abolition de l'esclavage (PROP-010), Seconde République (PROP-011), émigration des années 1960 (PROP-014), Prestige (PROP-015), cessez-le-feu d'ETA (PROP-016). File de revue, pas refus éditorial."

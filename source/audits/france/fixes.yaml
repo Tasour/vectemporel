@@ -1,0 +1,161 @@
+schema_version: "1.0"
+country_id: "france"
+generated_at: "2026-11-13"
+
+event_updates:
+  - id: "fr-code-civil"
+    set:
+      subtitle: "L’égalité civile et ses limites"
+      summary: "Le Code civil des Français unifie le droit, garantit la propriété et organise le mariage civil. L’égalité civile qu’il consacre est celle des hommes majeurs ; les femmes restent sous l’autorité de leur mari et l’esclavage colonial demeure hors de son champ. Il inspire encore de nombreux systèmes juridiques."
+    confidence: "high"
+    rationale: "Le résumé actuel présente l’égalité civile comme générale. La correction en précise les limites genrées et coloniales, documentées par Scott (SRC-003) et Sala-Molins (SRC-002)."
+
+  - id: "fr-revolution"
+    set:
+      summary: "La crise financière et politique provoque la réunion des États généraux, puis la prise de la Bastille le 14 juillet 1789. La Déclaration des droits de l’homme proclame l’égalité et la souveraineté nationale, mais la citoyenneté exclut les femmes et l’esclavage subsiste dans les colonies. L’abolition de 1794 est suivie du rétablissement de l’esclavage par Bonaparte en 1802."
+    confidence: "high"
+    rationale: "Le résumé fait des droits de l’homme un acquis universel. La correction rappelle l’exclusion des femmes et l’histoire de l’esclavage, de l’abolition de 1794 au rétablissement de 1802."
+
+  - id: "fr-ww2"
+    set:
+      subtitle: "Occupation, Vichy, Shoah, Libération"
+      summary: "La défaite de 1940 conduit à l’Occupation et au régime de Vichy, qui prend part à la persécution des Juifs. Les 16 et 17 juillet 1942, la police française organise, avec l’occupant allemand, la rafle du Vél’ d’Hiv ; en 1944, la Résistance, les Alliés et les troupes coloniales contribuent à la libération du pays. La guerre révèle l’ampleur des crimes nazis et de la collaboration."
+      tags: ["guerre", "politique", "societe"]
+    confidence: "high"
+    rationale: "La fiche fondait Occupation, Vichy, Résistance et Shoah. La correction distingue 1940, 1942 et 1944, et rappelle le rôle des Alliés et des troupes coloniales."
+
+  - id: "fr-trente"
+    set:
+      summary: "La reconstruction et l’industrialisation transforment la France en société de consommation entre 1945 et 1975. Les villes, les transports et les modes de vie changent profondément. La croissance s’essouffle avec la crise de 1973-1975, qui ouvre une période de chômage de masse et de désindustrialisation."
+      tags: ["economie", "societe"]
+    confidence: "high"
+    rationale: "L’événement est daté 1945-1975 alors que l’ère du même nom court jusqu’en 1989. Le résumé distingue la croissance de l’après-guerre de la crise ouverte en 1973-1975."
+
+  - id: "fr-veil"
+    set:
+      subtitle: "L’IVG autorisée sous conditions"
+      summary: "La loi du 17 janvier 1975, portée par Simone Veil, autorise l’interruption volontaire de grossesse sous conditions, pour une durée de cinq ans. Elle est reconduite et rendue définitive. Elle marque une étape majeure des droits des femmes en France."
+      tags: ["societe", "politique"]
+    confidence: "high"
+    rationale: "Le résumé disait que la loi « dépénalise » l’IVG sans mentionner ses conditions ni sa durée. La correction rétablit le caractère conditionnel et temporaire de la loi de 1975."
+
+  - id: "fr-algerie"
+    set:
+      summary: "La guerre d’indépendance algérienne oppose l’armée française au FLN et à ses réseaux, et touche aussi les civils algériens. La torture, les déplacements de populations et la répression policière en métropole, dont celle du 17 octobre 1961, divisent durablement la France. Les accords d’Évian mettent fin au conflit en 1962 ; l’exode des pieds-noirs et l’arrivée des harkis recomposent la société française."
+      tags: ["guerre", "politique", "societe"]
+    confidence: "high"
+    rationale: "La fiche ne mentionnait ni le FLN, ni les civils algériens, ni la torture, ni les harkis, ni les effets métropolitains. La correction ajoute ces acteurs et distingue la guerre d’indépendance de son histoire métropolitaine."
+
+  - id: "fr-laicite"
+    set:
+      summary: "La loi du 9 décembre 1905 met fin au régime des cultes reconnus et garantit la liberté de conscience. Son application est progressive et souvent conflictuelle, notamment lors des inventaires de 1906. La laïcité devient un principe structurant de la République, réactivé par les débats sur le voile à Creil en 1989 et par la loi de 2004 sur les signes religieux à l’école."
+      tags: ["religion", "politique", "societe"]
+    confidence: "high"
+    rationale: "Le résumé présentait la laïcité comme un consensus intemporel. La correction rappelle les conflits de 1905, l’application progressive et les débats sur le voile de 1989 et 2004."
+
+  - id: "fr-maastricht"
+    set:
+      subtitle: "Le traité et le référendum de 1992"
+      summary: "Le traité de Maastricht crée l’Union européenne et prépare la monnaie unique. Approuvé de justesse par référendum le 20 septembre 1992, il révèle un clivage durable entre partisans de l’intégration et défenseurs de la souveraineté nationale. Sa ratification ne va pas de soi et divise partis et électorats."
+    confidence: "high"
+    rationale: "Le résumé présentait l’approbation comme une évidence. La correction mentionne le référendum du 20 septembre 1992 et les clivages qu’il révèle."
+
+  - id: "fr-euro"
+    set:
+      summary: "Le 1er janvier 2002, les pièces et billets en euros remplacent le franc. La monnaie unique prolonge un choix de politique économique et monétaire discuté, qui implique de renoncer à une part de souveraineté nationale. Elle approfondit l’intégration européenne mais reste associée à des débats sur la croissance, l’inflation et les règles budgétaires."
+      tags: ["economie", "politique"]
+    confidence: "medium"
+    rationale: "Le résumé présentait l’euro comme une continuité technique. La correction rappelle qu’il prolonge un choix de politique économique et monétaire discuté."
+
+  - id: "fr-charlie"
+    set:
+      subtitle: "Les attentats de janvier 2015"
+      summary: "Du 7 au 9 janvier 2015, les attentats contre Charlie Hebdo et l’Hyper Cacher, ainsi que le meurtre d’une policière à Montrouge, font dix-sept victimes. Une immense marche républicaine défend la liberté d’expression, tandis que les débats portent aussi sur l’antisémitisme et la laïcité. Les attentats relancent les questions sur la place de l’islam et sur les libertés publiques."
+      tags: ["societe", "politique", "religion"]
+    confidence: "medium"
+    rationale: "Le résumé réduisait les attentats à la liberté d’expression. La correction mentionne Charlie Hebdo, Montrouge, l’Hyper Cacher, le meurtre de la policière, l’antisémitisme et la laïcité."
+
+event_additions:
+  - id: "fr-prop-001"
+    year: 1685
+    end_year: null
+    title: "Code noir"
+    subtitle: "L’esclavage codifié dans les colonies"
+    tags: ["politique", "religion", "societe"]
+    importance: 3
+    summary: "L’édit de mars 1685, dit Code noir, fixe le statut des esclaves dans les colonies françaises : police des plantations, châtiments, obligations religieuses et restrictions de déplacement. Dans la continuité de la politique coloniale de Colbert, il est promulgué par Louis XIV et s’applique notamment aux Antilles, où il structure l’économie sucrière et inscrit l’esclavage dans le droit royal."
+    related: ["fr-revocation", "fr-1848"]
+    sources: ["SRC-002"]
+    confidence: "high"
+    rationale: "La frise ne donne à l’empire qu’un seul repère explicite, la guerre d’Algérie. Le Code noir documente la codification juridique de l’esclavage, l’économie sucrière antillaise et l’échelle impériale dès 1685 ; il complète la révocation de l’édit de Nantes, présente la même année."
+
+  - id: "fr-prop-002"
+    year: 1791
+    end_year: null
+    title: "Olympe de Gouges"
+    subtitle: "La Déclaration des droits de la femme"
+    tags: ["societe", "politique", "arts"]
+    importance: 2
+    summary: "En septembre 1791, Olympe de Gouges publie la Déclaration des droits de la femme et de la citoyenne, qui reprend et retourne la Déclaration de 1789. Elle y réclame l’égalité civile et politique des femmes, critique le mariage et l’esclavage ; elle est guillotinée en 1793."
+    related: ["fr-revolution", "fr-terreur"]
+    sources: ["SRC-003"]
+    confidence: "high"
+    rationale: "La Révolution est racontée par les institutions et les guerres, sans les femmes qui discutent ses principes. Cette fiche documente un texte, une actrice et un lieu, et prépare les débats de 1944, 1967 et 2024."
+
+  - id: "fr-prop-009"
+    year: 1961
+    end_year: null
+    title: "17 octobre 1961"
+    subtitle: "La répression de la manifestation du FLN"
+    tags: ["guerre", "societe", "politique"]
+    importance: 3
+    summary: "Le 17 octobre 1961, des dizaines de milliers d’Algériens manifestent à Paris contre le couvre-feu imposé par la préfecture de police. La répression, conduite sous l’autorité de Maurice Papon, fait plusieurs dizaines de morts ; le bilan exact reste disputé. L’événement est longtemps occulté avant de devenir un enjeu majeur de mémoire."
+    related: ["fr-algerie", "fr-ve-rep"]
+    sources: ["SRC-011", "SRC-015"]
+    confidence: "high"
+    rationale: "La guerre d’Algérie est racontée à l’échelle algérienne, pas dans ses effets métropolitains. Cette fiche documente les immigrés algériens comme acteurs, Paris comme lieu de répression et la mémoire coloniale comme enjeu."
+
+  - id: "fr-prop-012"
+    year: 1967
+    end_year: null
+    title: "Loi Neuwirth"
+    subtitle: "La contraception autorisée"
+    tags: ["societe", "politique", "sciences"]
+    importance: 3
+    summary: "La loi du 28 décembre 1967, portée par le député Lucien Neuwirth, autorise la contraception et met fin à l’interdiction héritée de 1920. Elle ne garantit ni l’accès réel ni le remboursement, et son application se heurte à l’opposition catholique et aux résistances administratives."
+    related: ["fr-vote-femmes", "fr-veil"]
+    sources: ["SRC-014"]
+    confidence: "high"
+    rationale: "La frise saute de 1944 à 1975 sans la contraception, qui transforme la vie des femmes et les rapports de genre. Cette fiche documente une loi, un acteur et les résistances à son application."
+
+era_updates:
+  - name: "Trente Glorieuses"
+    set:
+      name: "Après-guerre, croissance et crises"
+    confidence: "high"
+    rationale: "Fourastié borne les Trente Glorieuses à 1946-1975 ; l’ère actuelle court jusqu’en 1989 et inclut les crises de 1975-1989. Le renommage supprime l’étiquette anachronique sans toucher aux bornes ; la scission reste un arbitrage de périodisation."
+
+unresolved:
+  - id: "fr-era-trente-split"
+    reason: "Scission 1945-1975 / 1975-1989 non appliquée : periodization redesign. L’ère est renommée « Après-guerre, croissance et crises » ; le choix des bornes et l’ajout d’une seconde séquence restent à arbitrer."
+
+  - id: "fr-era-grand-siecle-split"
+    reason: "Scission « Absolutisme (1610-1715) » / « Lumières et crise de l’Ancien Régime (1715-1789) » : periodization redesign, hors du champ des renommages autorisés."
+
+  - id: "fr-era-renaissance"
+    reason: "Renommage « Guerres d’Italie et Réforme » et déplacement de la borne de 1492 à 1494 : periodization redesign. Un renommage seul laisserait une borne non française."
+
+  - id: "fr-era-temps-presents"
+    reason: "Renommage de « Temps présents » et déplacement de la borne de 1989 à 1981 ou 1992 : periodization redesign. La frise ne contient toujours aucun repère français daté de 1989."
+
+  - id: "fr-era-antiquite"
+    reason: "Substitution de 486 (Soissons) à 476 comme borne française alternative : periodization redesign ; 476 reste la convention européenne."
+
+  - id: "fr-era-guerres-mondiales"
+    reason: "Scission 1914-1918 / 1919-1939 / 1939-1945 : periodization redesign. Le renommage en « Guerres, crises et occupations » n’a pas été appliqué sans arbitrage sur la scission."
+
+  - id: "fr-proposals-colonial-layer"
+    reason: "Les propositions PROP-003 (prise d’Alger, 1830), PROP-006 (Exposition coloniale, 1931) et PROP-010 (indépendance de l’Algérie, 1962) ne sont pas ajoutées : limite de quatre ajouts. La couche coloniale est ouverte par le Code noir et le 17 octobre 1961 ; fr-algerie couvre 1954-1962."
+
+  - id: "fr-proposals-other"
+    reason: "Les autres propositions ne sont pas intégrées dans ce patch : PROP-004 (impressionnisme), PROP-005 (Curie), PROP-007 (rafle du Vél’ d’Hiv), PROP-008 (Schuman), PROP-011 (Vanoise), PROP-013 (marche de 1983), PROP-014 (Chirac), PROP-015 (Creil), PROP-016 (2005), PROP-017 (accord de Paris) et PROP-018 (IVG 2024). Elles restent dans la file de revue, la limite étant de quatre ajouts."

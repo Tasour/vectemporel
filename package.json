@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "V-ATLAS — atlas hiérarchique vérifié, généré depuis les audits locaux.",
+  "description": "Vectemporel — atlas hiérarchique vérifié, généré depuis les audits locaux.",
   "scripts": {
     "build:data": "node scripts/build-dataset.mjs",
     "start": "node scripts/serve.mjs",

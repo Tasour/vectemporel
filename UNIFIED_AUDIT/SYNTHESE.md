@@ -1,6 +1,6 @@
 # Synthèse maître — audit unifié Vectemporel (V1 + Atlas)
 
-> Hub : `~/Projects/vectemporel/UNIFIED_AUDIT/`
+> Hub : `~/Projects/vectemporel-atlas/UNIFIED_AUDIT/`
 > 13 vues · 13 sous-agents experts · 10 chantiers par vue · 10 chantiers implémentés par vue.
 > Mis à jour par l'agent maître au fil des retours de sous-agents.
 

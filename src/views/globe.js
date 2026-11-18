@@ -5,6 +5,8 @@
  * UNIFIED_AUDIT/NAVIGATION/views/c2-orientation-atlas.md (C2-01 à C2-10). */
 import { DATASET } from '../data/dataset.js';
 import { state, subscribe, countryByCode, selectCountry } from '../domain/store.js';
+import { attachReveal } from './globe-reveal.js';
+import { runMondeEnhancements, flushMondeReady, notifyMondeHover, notifyMondeLeave, mondeDiagnostics } from './monde/index.js';
 
 let host = null;
 let initialized = false;
@@ -13,7 +15,7 @@ let engine = null;
 /* État local de la vue : rien n'est permanent, tout est dérivé du store. */
 let inView = true;          //IntersectionObserver (ATLAS-GLOBE-01)
 let engineRunning = false;  //miroir de open()/close() (ATLAS-GLOBE-01, 06)
-let paused = false;         //mouvement réduit / pause explicite (ATLAS-GLOBE-06)
+let paused = true;          //rotation off par défaut, activation explicite seulement (ATLAS-GLOBE-06)
 let currentCode = null;     //pays issu de state.countryId (ATLAS-GLOBE-09)
 let hoverIndex = -1;        //index du pays mis en évidence au clavier (ATLAS-GLOBE-03)
 let lastFocusIndex = null;  //focus à restaurer après re-render (ATLAS-GLOBE-05)
@@ -21,16 +23,16 @@ let statusNode = null;
 let readoutNode = null;
 let liveNode = null;
 let pauseButton = null;
+let reveal = null;        // drapeau dans le contour + zoom de transition
 
 const NAV_STYLE_ID = 'nav-c2b';
 const GLOBE_LIVE_ID = 'globe-live';
 const GLOBE_HELP_ID = 'globe-help';
 
-const REDUCED_MOTION = (() => {
-  try { return window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
-  catch { return false; }
-})();
-paused = REDUCED_MOTION;
+/* Rotation automatique désactivée par défaut : activation exclusivement
+   explicite via le bouton « Rotation » (M24 : touche v). `paused` est la
+   source de vérité ; le mouvement réduit ne peut que confirmer l'arrêt. */
+paused = true;
 document.documentElement.dataset.globeActive = '0';
 
 /* ATLAS-GLOBE-04, 06, 10 : CSS injecté, aucun fichier partagé modifié. */
@@ -146,10 +148,22 @@ function say(message) {
   if (liveNode) liveNode.textContent = message;
 }
 
+/* Rotation : répercute `paused` sur le moteur. setAutoRotate(false) coupe
+   aussi la reprise interne ; publie l'état pour le garde de M07. */
+function syncAutoRotate() {
+  if (host) host.dataset.globeRotation = paused ? '0' : '1';
+  if (!engine || !engine.ready || typeof engine.setAutoRotate !== 'function') return;
+  engine.setAutoRotate(!paused);
+}
+
 /* ATLAS-GLOBE-01 et 06 : unique point de décision open()/close(). */
 function syncEngine() {
   if (!engine || !engine.ready) return;
-  const want = inView && !paused && state.view === 'globe';
+  syncAutoRotate();
+  // Le moteur reste ouvert dès que la vue est visible : c'est lui qui porte
+  // les interactions (drag, zoom, picking). `paused` ne commande plus que la
+  // rotation automatique, via syncAutoRotate().
+  const want = inView && state.view === 'globe';
   document.documentElement.dataset.globeActive = want ? '1' : '0';
   if (host) {
     host.dataset.globeActive = want ? '1' : '0';
@@ -167,16 +181,12 @@ function syncEngine() {
 
 /* ATLAS-GLOBE-06 : une seule frame statique puis arrêt, en mouvement réduit. */
 function drawStaticFrame() {
-  if (!engine || !engine.ready || !paused) return;
-  engine.open(currentCode || undefined);
-  engineRunning = true;
-  requestAnimationFrame(() => requestAnimationFrame(() => {
-    if (paused) {
-      engine.close();
-      engineRunning = false;
-      if (host) host.dataset.globeActive = '0';
-    }
-  }));
+  if (!engine || !engine.ready) return;
+  syncAutoRotate();
+  if (!engineRunning) {
+    engine.open(currentCode || undefined);
+    engineRunning = true;
+  }
 }
 
 /* ATLAS-GLOBE-03 : parcours des pays, miroir visuel setHover et annonce live. */
@@ -186,6 +196,8 @@ function highlight(index) {
   if (!country) return;
   hoverIndex = index;
   if (engine && engine.ready) engine.setHover(country.code);
+  if (reveal) reveal.hover(country);
+  if (country) notifyMondeHover(country, country.code); else notifyMondeLeave();
   if (readoutNode) readoutNode.textContent = describe(country);
   if (host) {
     host.setAttribute('aria-label',
@@ -210,8 +222,14 @@ function onHostKeyDown(event) {
       event.preventDefault(); index = 0; break;
     case 'End':
       event.preventDefault(); index = countries.length - 1; break;
-    case 'Enter':
-      event.preventDefault(); highlight(index); selectCountry(countries[index].id); return;
+    case 'Enter': {
+      event.preventDefault();
+      const country = countries[index];
+      highlight(index);
+      if (reveal) reveal.reveal(country, () => selectCountry(country.id));
+      else selectCountry(country.id);
+      return;
+    }
     default:
       return; //1-5, ?, Échap restent gérés par le routeur unique.
   }
@@ -267,7 +285,9 @@ function ensure() {
   host.setAttribute('aria-describedby', GLOBE_HELP_ID);
   host.dataset.globeActive = '0';
   host.dataset.globeSelected = '';
+  host.dataset.globeRotation = paused ? '0' : '1';
   host.addEventListener('keydown', onHostKeyDown);
+  host.addEventListener('pointerleave', () => { if (reveal) reveal.leave(); });
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
       const entry = entries[entries.length - 1];
@@ -282,6 +302,7 @@ function ensure() {
 /* ATLAS-GLOBE-05 : l'abonnement du module est enregistré avant celui de app.js. */
 subscribe(() => {
   syncEngine();
+  if (reveal && state.view !== 'globe' && !reveal.isRevealing()) reveal.leave();
   if (state.view === 'globe' && lastFocusIndex !== null) {
     const index = lastFocusIndex;
     requestAnimationFrame(() => {
@@ -304,6 +325,7 @@ export function renderGlobe(stage) {
   const scene = el('div', 'globe-scene');
   const hostNode = ensure();
   scene.appendChild(hostNode);
+  reveal = attachReveal(scene);
 
   const hud = el('div', 'globe-hud');
   const ready = engine?.ready;
@@ -340,6 +362,7 @@ export function renderGlobe(stage) {
   pauseButton.setAttribute('aria-pressed', String(!paused));
   pauseButton.addEventListener('click', () => {
     paused = !paused;
+    syncAutoRotate();
     pauseButton.textContent = paused ? 'Rotation inactive' : 'Rotation active';
     pauseButton.setAttribute('aria-label', paused ? 'Activer la rotation' : 'Mettre la rotation en pause');
     pauseButton.setAttribute('aria-pressed', String(!paused));
@@ -398,8 +421,12 @@ export function renderGlobe(stage) {
     button.appendChild(el('span', 'globe-country-meta', meta.line));
     button.appendChild(el('span', 'globe-country-cover', meta.cover));
     if (current && current.id === country.id) button.setAttribute('aria-current', 'true');
-    button.addEventListener('click', () => selectCountry(country.id));
+    button.addEventListener('click', () => {
+      if (reveal) reveal.reveal(country, () => selectCountry(country.id));
+      else selectCountry(country.id);
+    });
     button.addEventListener('focus', () => highlight(index));
+    button.addEventListener('pointerleave', () => { if (reveal) reveal.leave(); });
     li.appendChild(button);
     choices.appendChild(li);
   });
@@ -410,6 +437,19 @@ export function renderGlobe(stage) {
 
   if (current && engine && engine.ready) engine.setSelected(current.code);
 
+  /* 50 lentilles d'amélioration : chacune possède son module, aucune n'écrit
+     dans les fichiers partagés. Le registre neutralise une lentille défaillante. */
+  const mondeCtx = {
+    stage, scene, host: hostNode, selected, countries: DATASET.countries,
+    state, selectCountry, reveal,
+    reducedMotion: () => {
+      try { return window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
+      catch { return false; }
+    },
+    say,
+  };
+  runMondeEnhancements(mondeCtx);
+
   if (!initialized && window.THREE && window.VECTEMPOREL_GLOBE) {
     initialized = true;
     engine = window.VECTEMPOREL_GLOBE;
@@ -417,15 +457,29 @@ export function renderGlobe(stage) {
     engine.init(hostNode, {
       onHover: (code) => {
         const country = code ? countryByCode(code) : null;
+        if (reveal) {
+          if (country) reveal.hover(country);
+          else reveal.leave();
+        }
+        if (country) notifyMondeHover(country, country.code); else notifyMondeLeave();
         if (readoutNode) readoutNode.textContent = describe(country);
       },
       onSelect: (code) => {
         const country = countryByCode(code);
-        if (country) selectCountry(country.id);
+        if (country) {
+          if (reveal) reveal.reveal(country, () => selectCountry(country.id));
+          else selectCountry(country.id);
+        }
       },
-      onReady: () => setStatus('Globe local chargé · textures et palette locales, aucun service externe.', 'ready'),
+      onReady: () => {
+        setStatus('Globe local chargé · textures et palette locales, aucun service externe.', 'ready');
+        flushMondeReady({ engine, host: hostNode, selected });
+      },
       onError: () => setStatus('Globe 3D indisponible : utilisez la liste des pays ou les flèches au clavier.', 'error'),
     }).then(() => {
+      if (typeof engine.registerCountries === 'function') {
+        engine.registerCountries(DATASET.countries);
+      }
       if (paused) drawStaticFrame();
       else syncEngine();
       const live = document.getElementById(GLOBE_LIVE_ID);

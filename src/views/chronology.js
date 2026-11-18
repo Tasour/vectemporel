@@ -4,6 +4,7 @@
    Refonte navigation C2 : repères de situation — voir
    UNIFIED_AUDIT/NAVIGATION/views/c2-orientation-atlas.md (C2-01 à C2-10). */
 import { state, currentCountry, selectEra, selectEvent, set, goView } from '../domain/store.js';
+import { runEnhancements } from './chronology/index.js';
 
 const STYLE_ID = 'atlas-chronologie-css';
 const NAV_STYLE_ID = 'nav-c2a';
@@ -535,5 +536,6 @@ export function renderChronology(stage) {
 
   layout.append(main, aside);
   stage.appendChild(layout);
+  runEnhancements({ viewId: 'chronology', stage, layout });
   applyFocusIntent();
 }

@@ -1,4 +1,4 @@
-/* État unique de V-ATLAS. Aucune vue ne possède son propre état permanent.
+/* État unique de Vectemporel. Aucune vue ne possède son propre état permanent.
  * Machine à états — audit T4 (UNIFIED_AUDIT/NAVIGATION/views/t4-etat-atlas.md).
  * T4-01 : une seule porte d'écriture (set), validée et journalisée.
  */

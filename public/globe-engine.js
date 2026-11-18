@@ -40,6 +40,12 @@
     uniforms: null,
     palette: [],
     paletteByCode: new Map(),
+    flagTextures: new Map(),   // code ISO -> CanvasTexture (drapeaux locaux)
+    flagImages: new Map(),     // code ISO -> Image SVG source
+    flagMasks: new Map(),      // `${code}:${tier}` -> CanvasTexture (contour vectoriel)
+    flagBounds: new Map(),     // code ISO -> { bounds, centroid, outline }
+    zoomTarget: 4.05,          // zoom visé, interpolé dans frame()
+    flagTierCurrent: 0,     // palier de résolution du masque/drapeau
     pickData: null,
     pickWidth: 0,
     pickHeight: 0,
@@ -60,6 +66,7 @@
     autoRotateEnabled: true,   // préférence utilisateur (setAutoRotate)
     autoRotateTimer: 0,
     hovering: false,           // pointeur au-dessus du canvas
+    hoverCheckAt: 0,           // throttle du picking au survol (45 ms)
     dirty: false,              // une frame de rendu est demandée
     idleFrames: 0,
     reducedMotion: false,
@@ -77,6 +84,14 @@
 
   function clamp(value, min, max) {
     return Math.min(max, Math.max(min, value));
+  }
+
+  // Un glisser n'est valide que si le bouton/contact principal est toujours
+  // enfoncé. `state.dragging` seul peut rester vrai après un pointerup étouffé
+  // ou une capture perdue : un simple survol serait alors pris pour un glisser
+  // (saut), puis le vrai geste ramènerait la sphère (retour).
+  function primaryHeld(event) {
+    return typeof event.buttons !== 'number' || (event.buttons & 1) !== 0;
   }
 
   function paletteColor(code) {
@@ -114,6 +129,27 @@
         color ? color[1] / 255 : -1,
         color ? color[2] / 255 : -1
       );
+      const texture = code ? flagTextureFor(code, flagTier()) : null;
+      const box = code ? flagBox(code) : null;
+      if (texture && box && color) {
+        const mask = buildFlagMask(code, box);
+        state.uniforms.uFlagTex.value = texture;
+        state.uniforms.uFlagColor.value.set(color[0] / 255, color[1] / 255, color[2] / 255);
+        state.uniforms.uFlagMin.value.set(box.minU, box.minV);
+        state.uniforms.uFlagSize.value.set(box.sizeU, box.sizeV);
+        state.uniforms.uFlagMask.value = mask;
+        state.uniforms.uFlagMaskOn.value = mask ? 1 : 0;
+        // Cover : ratio du drapeau préservé, centré, recadré pour couvrir
+        // tout le rectangle du pays (pas de marge, pas d'étirement).
+        const cosLat = Math.max(0.25, Math.cos((state.flagBounds.get(code)?.centroid?.[1] || 0) * Math.PI / 180));
+        const boxAspect = (box.sizeU * 360 * cosLat) / (box.sizeV * 180);
+        if (boxAspect > FLAG_ASPECT) state.uniforms.uFlagCover.value.set(1, FLAG_ASPECT / boxAspect);
+        else state.uniforms.uFlagCover.value.set(boxAspect / FLAG_ASPECT, 1);
+        state.uniforms.uFlagActive.value = 1;
+      } else {
+        state.uniforms.uFlagActive.value = 0;
+        state.uniforms.uFlagMaskOn.value = 0;
+      }
     }
     invalidate();
     state.callbacks.onHover(code);
@@ -123,6 +159,175 @@
     state.selectedCode = code;
     applySelectedUniform();
     invalidate();
+  }
+
+  /* Drapeaux locaux : un CanvasTexture par pays, étiré sur la boîte
+     équirectangulaire du pays relevée dans la texture de picking. */
+  const FLAG_CODES = ['FR', 'GB', 'US', 'DE', 'IT', 'ES', 'CN', 'IN', 'JP', 'EG'];
+
+  /* Rectangle équirectangulaire du drapeau, centré sur le pays et dont le
+     ratio 3:2 est préservé en degrés (correction du cosinus de latitude).
+     Le drapeau n'est plus étiré sur la boîte englobante, ce qui déformait
+     les étoiles chinoises ou le disque indien. */
+  const FLAG_ASPECT = 1.5;
+  const FLAG_FIT = 0.86;
+
+  /* Centre géométrique du contour métropolitain (centroïde aires pondérées).
+     On l'utilise comme origine du drapeau, pas le milieu de la boîte. */
+  function polygonCentroid(points) {
+    if (!Array.isArray(points) || points.length < 3) return null;
+    let area = 0;
+    let cx = 0;
+    let cy = 0;
+    for (let i = 0; i < points.length; i += 1) {
+      const [x0, y0] = points[i];
+      const [x1, y1] = points[(i + 1) % points.length];
+      if (![x0, y0, x1, y1].every(Number.isFinite)) return null;
+      const cross = x0 * y1 - x1 * y0;
+      area += cross;
+      cx += (x0 + x1) * cross;
+      cy += (y0 + y1) * cross;
+    }
+    if (Math.abs(area) < 1e-9) return null;
+    return [cx / (3 * area), cy / (3 * area)];
+  }
+
+  function flagBox(code) {
+    const record = state.flagBounds.get(code);
+    if (!record) return null;
+    const { bounds, centroid } = record;
+    const { minLon, maxLon, minLat, maxLat } = bounds;
+    if (![minLon, maxLon, minLat, maxLat].every(Number.isFinite)) return null;
+    const centerLon = centroid ? centroid[0] : (minLon + maxLon) / 2;
+    const centerLat = centroid ? centroid[1] : (minLat + maxLat) / 2;
+    // Rectangle COUVRE-TOUT : centré sur le centroïde, assez grand pour
+    // envelopper tout le pays. Le drapeau sera découpé sur ce rectangle, donc
+    // il remplira toute la surface du pays sans marge.
+    const pad = 1.03;
+    const halfLon = Math.max(0.25, Math.max(centerLon - minLon, maxLon - centerLon)) * pad;
+    const halfLat = Math.max(0.25, Math.max(centerLat - minLat, maxLat - centerLat)) * pad;
+    return {
+      minU: (centerLon - halfLon + 180) / 360,
+      minV: (centerLat - halfLat + 90) / 180,
+      sizeU: (2 * halfLon) / 360,
+      sizeV: (2 * halfLat) / 180,
+    };
+  }
+
+  async function prepareFlags() {
+    await Promise.all(FLAG_CODES.map((code) => new Promise((resolve) => {
+      const image = new Image();
+      image.onload = () => {
+        state.flagImages.set(code, image);
+        const canvas = document.createElement('canvas');
+        canvas.width = 1024;
+        canvas.height = Math.round(1024 / FLAG_ASPECT);
+        const ctx = canvas.getContext('2d');
+        ctx.imageSmoothingEnabled = true;
+        ctx.imageSmoothingQuality = 'high';
+        ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+        const texture = new THREE.CanvasTexture(canvas);
+        texture.colorSpace = THREE.SRGBColorSpace;
+        texture.minFilter = THREE.LinearMipmapLinearFilter;
+        texture.magFilter = THREE.LinearFilter;
+        texture.generateMipmaps = true;
+        texture.anisotropy = Math.min(4, state.renderer.capabilities.getMaxAnisotropy());
+        state.flagTextures.set(code, texture);
+        resolve();
+      };
+      image.onerror = () => resolve();
+      image.src = `public/flags/${code}.svg`;
+    })));
+  }
+
+  /* Masque vectoriel du pays, rasterisé uniquement pour le pays survolé et à
+     une résolution adaptée au zoom. L'antialiasing du canvas remplace les
+     marches d'escalier du picking 2048×1024. */
+  function flagTier() {
+    const z = state.zoomTarget;
+    return z <= 2.2 ? 2048 : z <= 3.0 ? 1024 : 512;
+  }
+
+  function buildFlagMask(code, box) {
+    const rgb = state.paletteByCode.get(code);
+    if (!rgb || !box || !state.pickData) return null;
+    const tier = flagTier();
+    const key = `${code}:${tier}`;
+    if (state.flagMasks.has(key)) return state.flagMasks.get(key);
+    const width = tier;
+    const height = Math.max(1, Math.round(tier * box.sizeV / box.sizeU));
+    const canvas = document.createElement('canvas');
+    canvas.width = width;
+    canvas.height = height;
+    const ctx = canvas.getContext('2d');
+    const out = ctx.createImageData(width, height);
+    const data = state.pickData;
+    const pw = state.pickWidth;
+    const ph = state.pickHeight;
+    const sample = (px, py) => {
+      const x0 = Math.max(0, Math.min(pw - 1, Math.floor(px)));
+      const y0 = Math.max(0, Math.min(ph - 1, Math.floor(py)));
+      const x1 = Math.min(pw - 1, x0 + 1);
+      const y1 = Math.min(ph - 1, y0 + 1);
+      const fx = Math.max(0, Math.min(1, px - x0));
+      const fy = Math.max(0, Math.min(1, py - y0));
+      const result = [0, 0, 0];
+      for (let c = 0; c < 3; c += 1) {
+        const a = data[(y0 * pw + x0) * 4 + c];
+        const b = data[(y0 * pw + x1) * 4 + c];
+        const d = data[(y1 * pw + x0) * 4 + c];
+        const e = data[(y1 * pw + x1) * 4 + c];
+        result[c] = (a * (1 - fx) + b * fx) * (1 - fy) + (d * (1 - fx) + e * fx) * fy;
+      }
+      return result;
+    };
+    for (let y = 0; y < height; y += 1) {
+      for (let x = 0; x < width; x += 1) {
+        const u = box.minU + ((x + 0.5) / width) * box.sizeU;
+        const v = box.minV + (1 - (y + 0.5) / height) * box.sizeV;
+        const [r, g, b] = sample(u * pw - 0.5, (1 - v) * ph - 0.5);
+        const dist = Math.sqrt((r - rgb[0]) ** 2 + (g - rgb[1]) ** 2 + (b - rgb[2]) ** 2);
+        const alpha = Math.max(0, Math.min(1, (0.16 - dist) / 0.1));
+        const i = (y * width + x) * 4;
+        out.data[i] = 255;
+        out.data[i + 1] = 255;
+        out.data[i + 2] = 255;
+        out.data[i + 3] = Math.round(alpha * 255);
+      }
+    }
+    ctx.putImageData(out, 0, 0);
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.colorSpace = THREE.NoColorSpace;
+    texture.minFilter = THREE.LinearFilter;
+    texture.magFilter = THREE.LinearFilter;
+    texture.generateMipmaps = false;
+    state.flagMasks.set(key, texture);
+    return texture;
+  }
+
+  /* Texture du drapeau à la résolution du palier de zoom. Seul le pays
+     survolé est reconstruit en haute définition, pas les 10 à la fois. */
+  function flagTextureFor(code, tier) {
+    const base = state.flagTextures.get(code);
+    if (tier <= 1024 || !state.flagImages.has(code)) return base;
+    const key = `${code}:${tier}`;
+    if (state.flagTextures.has(key)) return state.flagTextures.get(key);
+    const image = state.flagImages.get(code);
+    const canvas = document.createElement('canvas');
+    canvas.width = tier;
+    canvas.height = Math.round(tier / FLAG_ASPECT);
+    const ctx = canvas.getContext('2d');
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.colorSpace = THREE.SRGBColorSpace;
+    texture.minFilter = THREE.LinearMipmapLinearFilter;
+    texture.magFilter = THREE.LinearFilter;
+    texture.generateMipmaps = true;
+    texture.anisotropy = Math.min(4, state.renderer.capabilities.getMaxAnisotropy());
+    state.flagTextures.set(key, texture);
+    return texture;
   }
 
   function buildScene(pickTexture, mapTexture) {
@@ -140,6 +345,14 @@
       uHover: { value: new THREE.Vector3(-1, -1, -1) },
       uSelected: { value: new THREE.Vector3(-1, -1, -1) },
       uLightDir: { value: new THREE.Vector3(-0.42, 0.62, 0.72).normalize() },
+      uFlagTex: { value: null },
+      uFlagColor: { value: new THREE.Vector3(-1, -1, -1) },
+      uFlagMin: { value: new THREE.Vector2(0, 0) },
+      uFlagSize: { value: new THREE.Vector2(1, 1) },
+      uFlagActive: { value: 0 },
+      uFlagMask: { value: null },
+      uFlagMaskOn: { value: 0 },
+      uFlagCover: { value: new THREE.Vector2(1, 1) },
     };
 
     const material = new THREE.ShaderMaterial({
@@ -161,6 +374,14 @@
         uniform vec3 uHover;
         uniform vec3 uSelected;
         uniform vec3 uLightDir;
+        uniform sampler2D uFlagTex;
+        uniform vec3 uFlagColor;
+        uniform vec2 uFlagMin;
+        uniform vec2 uFlagSize;
+        uniform float uFlagActive;
+        uniform sampler2D uFlagMask;
+        uniform float uFlagMaskOn;
+        uniform vec2 uFlagCover;
         varying vec2 vUv;
         varying vec3 vNormal;
 
@@ -173,7 +394,22 @@
           float rim = pow(1.0 - clamp(dot(normalize(vNormal), vec3(0.0, 0.0, 1.0)), 0.0, 1.0), 3.0);
           color += vec3(0.22, 0.15, 0.06) * rim * 0.3;
 
-          if (distance(pickColor, uHover) < 0.018) {
+          if (uFlagActive > 0.5) {
+            vec2 rawUv = (vUv - uFlagMin) / uFlagSize;
+            vec2 flagUv = clamp(rawUv, 0.0, 1.0);
+            float inside = step(0.0, rawUv.x) * step(rawUv.x, 1.0)
+                         * step(0.0, rawUv.y) * step(rawUv.y, 1.0);
+            // Masque vectoriel haute résolution pour le pays survolé : des
+            // bords nets même en zoomant, au lieu du picking pixelisé.
+            float mask = uFlagMaskOn > 0.5 ? texture2D(uFlagMask, flagUv).a : step(0.02, 1.0 - distance(pickColor, uFlagColor));
+            if (inside > 0.5 && mask > 0.04) {
+              vec2 texUv = (flagUv - 0.5) * uFlagCover + 0.5;
+              vec3 flag = texture2D(uFlagTex, texUv).rgb;
+              color = mix(color, flag * light, 0.94 * mask);
+            } else if (distance(pickColor, uHover) < 0.018) {
+              color = mix(color, vec3(0.98, 0.87, 0.62), 0.54);
+            }
+          } else if (distance(pickColor, uHover) < 0.018) {
             color = mix(color, vec3(0.98, 0.87, 0.62), 0.54);
           }
           if (distance(pickColor, uSelected) < 0.018) {
@@ -199,7 +435,8 @@
     const height = state.container.clientHeight;
     if (width < 20 || height < 20) return;
 
-    const pixelBudget = 2200000;
+    // Plus de budget de pixels uniquement quand la scène visible est zoomée.
+    const pixelBudget = state.zoomTarget <= 2.8 ? 3600000 : 2200000;
     const budgetDpr = Math.sqrt(pixelBudget / Math.max(1, width * height));
     const dpr = clamp(Math.min(window.devicePixelRatio || 1, 1.5, budgetDpr), 0.7, 1.5);
 
@@ -295,8 +532,12 @@
   function scheduleAutoRotate(delay = 3800) {
     clearTimeout(state.autoRotateTimer);
     state.autoRotateTimer = setTimeout(() => {
-      if (state.visible && !state.dragging && !state.pinching &&
-          state.autoRotateEnabled && !state.reducedMotion) {
+      if (state.dragging || state.pinching) {
+        // Geste encore en cours : on reprogramme au lieu de perdre la reprise.
+        scheduleAutoRotate(delay);
+        return;
+      }
+      if (state.visible && state.autoRotateEnabled && !state.reducedMotion) {
         state.autoRotate = true;
         invalidate(); // la boucle a pu s'arrêter entre-temps
       }
@@ -308,7 +549,8 @@
     state.autoRotateEnabled = !!enabled;
     if (!state.autoRotateEnabled) {
       pauseAutoRotate();
-    } else if (state.visible && !state.reducedMotion) {
+    } else if (state.visible && !state.reducedMotion &&
+               !state.dragging && !state.pinching) {
       state.autoRotate = true;
       invalidate();
     }
@@ -331,7 +573,12 @@
     event.preventDefault();
     pauseAutoRotate();
     invalidate();
-    state.renderer.domElement.setPointerCapture(event.pointerId);
+    // Un pointeur synthétique n'a pas de capture active : setPointerCapture()
+    // peut lever NotFoundError. Le glisser reste valide sans capture, on ne
+    // laisse donc pas une exception interrompre l'initialisation du geste.
+    try {
+      state.renderer.domElement.setPointerCapture(event.pointerId);
+    } catch { /* capture indisponible : le glisser reste géré sur le canvas */ }
     state.pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
 
     if (state.pointers.size === 1) {
@@ -359,7 +606,7 @@
     if (state.pointers.size >= 2 && state.pinching) {
       const points = [...state.pointers.values()].slice(0, 2);
       const distance = Math.hypot(points[0].x - points[1].x, points[0].y - points[1].y);
-      state.camera.position.z = clamp(
+      state.zoomTarget = clamp(
         state.pinching.cameraZ * (state.pinching.distance / Math.max(20, distance)),
         1.8,
         4.8
@@ -369,6 +616,13 @@
     }
 
     if (state.dragging && event.pointerId === state.dragPointerId) {
+      if (!primaryHeld(event)) {
+        // Survol (bouton relâché) : on resynchronise l'origine sans tourner.
+        // C'est ce décalage d'origine qui faisait sauter puis revenir la sphère.
+        state.lastX = event.clientX;
+        state.lastY = event.clientY;
+        return;
+      }
       const dx = event.clientX - state.lastX;
       const dy = event.clientY - state.lastY;
       state.lastX = event.clientX;
@@ -399,7 +653,8 @@
   function onPointerUp(event) {
     // Le clic n'est reconnu que sur un pointerup « propre » (jamais sur un
     // pointercancel, qui reste une annulation et ne doit rien sélectionner).
-    const wasClick = state.pointers.size === 1 && !state.dragMoved && !state.pinching;
+    const wasClick = state.pointers.size === 1 &&
+      event.pointerId === state.dragPointerId && !state.dragMoved && !state.pinching;
     releasePointer(event);
     if (wasClick) {
       const code = pickAtClient(event.clientX, event.clientY);
@@ -419,6 +674,16 @@
     scheduleAutoRotate();
   }
 
+  function onLostPointerCapture(event) {
+    // Capture perdue avant le pointerup (changement de vue, annulation natif) :
+    // sans ce nettoyage, state.dragging resterait vrai et le prochain survol
+    // ferait tourner la sphère à partir d'une origine périmée.
+    if (!state.dragging || event.pointerId !== state.dragPointerId) return;
+    state.dragMoved = true;
+    releasePointer(event);
+    scheduleAutoRotate();
+  }
+
   function onPointerLeave() {
     state.hovering = false;
     if (!state.dragging && !state.pinching) setHover(null);
@@ -429,7 +694,7 @@
   function onWheel(event) {
     event.preventDefault();
     pauseAutoRotate();
-    state.camera.position.z = clamp(state.camera.position.z + event.deltaY * 0.0014, 1.8, 4.8);
+    state.zoomTarget = clamp(state.zoomTarget + event.deltaY * 0.0014, 1.8, 4.8);
     invalidate();
     scheduleAutoRotate();
   }
@@ -451,8 +716,23 @@
     const dt = Math.min(0.05, state.clock.getDelta());
     state.lastFrame = dt;
 
-    const spinning = state.autoRotate && !state.reducedMotion;
-    const moving = spinning || state.dragging || !!state.pinching;
+    // L'auto-rotation ne doit jamais s'additionner au geste en cours : sinon
+    // la sphère repart toute seule dès qu'un timer la réactive pendant un drag.
+    const spinning = state.autoRotate && !state.reducedMotion &&
+      !state.dragging && !state.pinching;
+    const dz = state.zoomTarget - state.camera.position.z;
+    const zooming = Math.abs(dz) > 0.002;
+    if (zooming) {
+      state.camera.position.z += dz * Math.min(1, dt * 12);
+      state.dirty = true;
+      const tier = flagTier();
+      if (tier !== state.flagTierCurrent) {
+        state.flagTierCurrent = tier;
+        resize(); // plus de pixels uniquement quand on est zoomé sur la scène visible
+        if (state.hoverCode) { const code = state.hoverCode; setHover(null); setHover(code); }
+      }
+    }
+    const moving = spinning || state.dragging || !!state.pinching || zooming;
     if (spinning) state.globeGroup.rotation.y += dt * 0.065;
 
     if (moving || state.dirty) {
@@ -502,6 +782,7 @@
     canvas.addEventListener('pointermove', onPointerMove);
     canvas.addEventListener('pointerup', onPointerUp);
     canvas.addEventListener('pointercancel', onPointerCancel);
+    canvas.addEventListener('lostpointercapture', onLostPointerCapture);
     canvas.addEventListener('pointerenter', pauseAutoRotate);
     canvas.addEventListener('pointerleave', onPointerLeave);
     canvas.addEventListener('wheel', onWheel, { passive: false });
@@ -530,6 +811,7 @@
     canvas.removeEventListener('pointermove', onPointerMove);
     canvas.removeEventListener('pointerup', onPointerUp);
     canvas.removeEventListener('pointercancel', onPointerCancel);
+    canvas.removeEventListener('lostpointercapture', onLostPointerCapture);
     canvas.removeEventListener('pointerenter', pauseAutoRotate);
     canvas.removeEventListener('pointerleave', onPointerLeave);
     canvas.removeEventListener('wheel', onWheel, { passive: false });
@@ -620,7 +902,7 @@
       mapTexture.colorSpace = THREE.SRGBColorSpace;
       mapTexture.minFilter = THREE.LinearMipmapLinearFilter;
       mapTexture.magFilter = THREE.LinearFilter;
-      mapTexture.anisotropy = Math.min(4, renderer.capabilities.getMaxAnisotropy());
+      mapTexture.anisotropy = Math.min(4, state.renderer.capabilities.getMaxAnisotropy());
       mapTexture.generateMipmaps = true;
 
       pickTexture.colorSpace = THREE.NoColorSpace;
@@ -642,6 +924,8 @@
       pickContext.drawImage(pickTexture.image, 0, 0);
       state.pickData = pickContext.getImageData(0, 0, palette.width, palette.height).data;
 
+      await prepareFlags();
+      state.flagTierCurrent = flagTier();
       buildScene(pickTexture, mapTexture);
       attachInteractions();
       resize();
@@ -660,11 +944,20 @@
   function open(selectedCode) {
     if (!state.ready) return;
     if (selectedCode !== undefined) setSelected(selectedCode);
+    // Sans code à réappliquer, l'uniforme uSelected garderait la couleur du
+    // pays précédemment choisi : la surbrillance resterait affichée sur un
+    // autre pays que celui de la vue réouverte. On aligne uSelected sur
+    // uHover, déjà remis à -1 plus bas.
+    else if (state.selectedCode !== null) setSelected(null);
     resize();
-    state.autoRotate = state.autoRotateEnabled && !state.reducedMotion;
+    state.autoRotate = state.autoRotateEnabled && !state.reducedMotion &&
+      !state.dragging && !state.pinching;
     state.hoverCode = null;
     state.hovering = false;
-    if (state.uniforms) state.uniforms.uHover.value.set(-1, -1, -1);
+    if (state.uniforms) {
+      state.uniforms.uHover.value.set(-1, -1, -1);
+      state.uniforms.uFlagActive.value = 0;
+    }
     start();
   }
 
@@ -685,6 +978,21 @@
     invalidate,
     dispose,
     debugPick,
+    getFlagMaskPng() { return state.uniforms?.uFlagMask.value?.image?.toDataURL?.('image/png') || null; },
+    registerCountries(list) {
+      if (!Array.isArray(list)) return;
+      list.forEach((country) => {
+        if (country && country.code && country.bounds) {
+          state.flagBounds.set(country.code, {
+            bounds: country.bounds,
+            centroid: polygonCentroid(country.outline),
+            outline: country.outline,
+          });
+        }
+      });
+      const current = state.hoverCode;
+      if (current) { setHover(null); setHover(current); }
+    },
     get ready() {
       return state.ready;
     },
@@ -699,6 +1007,17 @@
         pixelRatio: state.renderer.getPixelRatio(),
         width: state.renderer.domElement.width,
         height: state.renderer.domElement.height,
+        pointers: state.pointers.size,
+        dragging: state.dragging,
+        pinching: Boolean(state.pinching),
+        rotationY: state.globeGroup.rotation.y,
+        flagActive: state.uniforms?.uFlagActive.value,
+        maskOn: state.uniforms?.uFlagMaskOn.value,
+        cameraZ: state.camera.position.z,
+        zoomTarget: state.zoomTarget,
+        outlines: state.flagBounds.size,
+        flagMin: state.uniforms ? [...state.uniforms.uFlagMin.value.toArray()] : null,
+        flagSize: state.uniforms ? [...state.uniforms.uFlagSize.value.toArray()] : null,
       };
     },
   };

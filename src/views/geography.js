@@ -5,6 +5,7 @@
  * valeurs de src/data/dataset.js sont projetées.
  */
 import { state, currentCountry, currentEra, currentPlaces, set, goView } from '../domain/store.js';
+import { runEnhancements } from './geography/index.js';
 
 const MAP_W = 900;
 const MAP_H = 620;
@@ -508,4 +509,5 @@ export function renderGeography(stage) {
 
   layout.append(map, panel);
   stage.appendChild(layout);
+  runEnhancements({ viewId: 'geography', stage, layout });
 }

@@ -10,7 +10,7 @@ import vm from 'node:vm';
 import YAML from 'yaml';
 
 const ROOT = path.resolve(new URL('..', import.meta.url).pathname);
-const OLD = path.resolve(ROOT, '..', 'vectemporel');
+const OLD = path.join(ROOT, 'source');
 const OUT = path.join(ROOT, 'src', 'data', 'dataset.js');
 const IMG_OUT = path.join(ROOT, 'public', 'images');
 
@@ -274,8 +274,8 @@ for (const country of oldData.countries) {
 
 const dataset = {
   meta: {
-    name: 'Vectemporel — Atlas',
-    system: 'V-ATLAS',
+    name: 'Vectemporel',
+    system: 'Vectemporel',
     version: '0.1.0',
     generated: new Date().toISOString().slice(0, 10),
     source: 'audits locaux + data.js curaté',

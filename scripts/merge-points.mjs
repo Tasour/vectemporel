@@ -10,7 +10,7 @@ import { parseCsv } from './lib/csv.mjs';
 const ROOT = path.resolve(new URL('..', import.meta.url).pathname);
 const DOMAIN_ALIASES = { '"Femmes': 'Femmes, genre, sexualités', '"Sciences': 'Sciences, techniques & santé' };
 const normalizeDomain = (value) => DOMAIN_ALIASES[value] || value;
-const OLD = path.resolve(ROOT, '..', 'vectemporel');
+const OLD = path.join(ROOT, 'source');
 const FILE = path.join(ROOT, 'src/data/dataset.js');
 const CONTEXT = { window: {} };
 vm.createContext(CONTEXT);

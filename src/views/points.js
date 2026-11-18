@@ -1,5 +1,6 @@
 /* Vue dédiée à l'isolation de tous les points validés. */
 import { state, currentCountry, selectEra } from '../domain/store.js';
+import { runEnhancements } from './points/index.js';
 
 function el(tag, className, text) {
   const node = document.createElement(tag);
@@ -122,4 +123,5 @@ export function renderPoints(stage) {
 
   layout.append(matrix, detail);
   stage.appendChild(layout);
+  runEnhancements({ viewId: 'points', stage, layout });
 }

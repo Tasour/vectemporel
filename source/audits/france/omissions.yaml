@@ -1,0 +1,236 @@
+schema_version: '1.0'
+country_id: france
+reviewed_at: '2026-11-13'
+reviewer: ''
+reviewed_scope:
+  period_ids:
+  - ERA-1
+  - ERA-2
+  - ERA-3
+  - ERA-4
+  - ERA-5
+  - ERA-6
+  - ERA-7
+  - ERA-8
+  - ERA-9
+  domains:
+  - Politique & institutions
+  - Guerres & diplomatie
+  - Droit & justice
+  - Économie & travail
+  - Société & démographie
+  - Femmes, genre, sexualités
+  - Religions & croyances
+  - Sciences, techniques & santé
+  - Arts & lettres
+  - Environnement & territoire
+  - Migrations & diasporas
+  - Peuples autochtones & minorités
+  - Mémoire & patrimoine
+  - Circulations transnationales
+  scales:
+  - local
+  - regional
+  - national
+  - imperial
+  - transnational
+omissions:
+- id: OM-001
+  period_id: ERA-1
+  domain: Femmes, genre, sexualités
+  scale: national
+  what_is_missing: Aucun repère daté sur les femmes en Gaule préromaine et romaine.
+  reason: source_absent
+  justification: Les sources écrites sont masculines et les données archéologiques (par exemple la tombe de Vix) ne constituent
+    pas des événements datés. La cellule reste une dette, pas une absence naturalisée.
+  evidence_checked:
+  - SRC-001
+  status: to_fill
+  reviewer: ''
+  review_date: ''
+- id: OM-002
+  period_id: ERA-2
+  domain: Droit & justice
+  scale: national
+  what_is_missing: Aucun repère sur la justice royale, les coutumes et les ordonnances médiévales.
+  reason: not_yet_researched
+  justification: Le droit médiéval est traité comme un processus, faute de repère daté et de source spécifique dans le registre.
+    Une fiche sur les enquêtes de Louis IX ou le Parlement de Paris est à instruire.
+  evidence_checked: []
+  status: to_fill
+  reviewer: ''
+  review_date: ''
+- id: OM-003
+  period_id: ERA-3
+  domain: Femmes, genre, sexualités
+  scale: national
+  what_is_missing: Aucun repère genré sur la Renaissance ; Catherine de Médicis et Diane de Poitiers ne sont pas traitées
+    comme actrices.
+  reason: not_yet_researched
+  justification: La Renaissance est racontée par les guerres, la langue et la religion. L'absence de repère genré est une
+    dette, non une preuve que les femmes seraient absentes de l'histoire.
+  evidence_checked: []
+  status: to_fill
+  reviewer: ''
+  review_date: ''
+- id: OM-004
+  period_id: ERA-3
+  domain: Arts & lettres
+  scale: national
+  what_is_missing: Aucun repère sur la Pléiade, les châteaux de la Loire ou la Renaissance artistique.
+  reason: not_yet_researched
+  justification: La frise saute de Saint-Denis (1144) à l'Académie française (1635). Le domaine artistique est quasi vide
+    pour les XVIe-XVIIe siècles ; une fiche sur la Défense et illustration de la langue française (1549) est à instruire.
+  evidence_checked: []
+  status: to_fill
+  reviewer: ''
+  review_date: ''
+- id: OM-005
+  period_id: ERA-4
+  domain: Environnement & territoire
+  scale: national
+  what_is_missing: Aucun repère sur l'ordonnance des Eaux et Forêts (1669), les défrichements ou les transformations agraires.
+  reason: not_yet_researched
+  justification: L'histoire environnementale de l'Ancien Régime est absente. La source Sala-Molins ne couvre pas ce domaine
+    ; une source spécifique sur la politique forestière de Colbert manque.
+  evidence_checked:
+  - SRC-002
+  status: to_fill
+  reviewer: ''
+  review_date: ''
+- id: OM-006
+  period_id: ERA-5
+  domain: Économie & travail
+  scale: national
+  what_is_missing: Aucun repère sur les assignats, le maximum, le Blocus continental ou l'économie de guerre.
+  reason: not_yet_researched
+  justification: L'économie révolutionnaire et impériale est absente, alors qu'elle structure les pénuries, les prix et les
+    mobilisations. Une fiche sur le maximum de 1793 est à instruire.
+  evidence_checked:
+  - SRC-003
+  status: to_fill
+  reviewer: ''
+  review_date: ''
+- id: OM-007
+  period_id: ERA-6
+  domain: Migrations & diasporas
+  scale: national
+  what_is_missing: Aucun repère sur l'immigration belge, italienne, polonaise ou sur la loi de 1889 sur la nationalité.
+  reason: not_yet_researched
+  justification: L'immigration n'apparaît dans la frise qu'en 1961. Hargreaves couvre l'histoire longue de l'immigration,
+    mais aucune fiche datée n'a été retenue pour le XIXe siècle.
+  evidence_checked:
+  - SRC-015
+  status: to_fill
+  reviewer: ''
+  review_date: ''
+- id: OM-008
+  period_id: ERA-6
+  domain: Environnement & territoire
+  scale: national
+  what_is_missing: Aucun repère sur l'industrialisation, la pollution urbaine, les forêts ou l'haussmannisation.
+  reason: not_yet_researched
+  justification: L'environnement du XIXe siècle est absent. Bess couvre surtout l'après-1960 ; une source sur l'hygiénisme
+    et les transformations urbaines manque.
+  evidence_checked:
+  - SRC-013
+  status: to_fill
+  reviewer: ''
+  review_date: ''
+- id: OM-009
+  period_id: ERA-7
+  domain: Sciences, techniques & santé
+  scale: national
+  what_is_missing: Aucun repère sur la médecine de guerre, la radiologie ou les sciences du front.
+  reason: not_yet_researched
+  justification: Marie Curie n'apparaît pas dans la frise et la radiologie de guerre n'est pas traitée. La source Nobel couvre
+    les prix, pas l'organisation sanitaire de 1914-1918.
+  evidence_checked:
+  - SRC-006
+  status: to_fill
+  reviewer: ''
+  review_date: ''
+- id: OM-010
+  period_id: ERA-7
+  domain: Arts & lettres
+  scale: national
+  what_is_missing: Pas de repère sur le surréalisme (1924), le cinéma des années 1930 ou la culture de masse ; les arts de
+    l'entre-deux-guerres ne sont représentés que par l'Exposition coloniale.
+  reason: not_yet_researched
+  justification: L'entre-deux-guerres est réduit au politique et à la diplomatie. Une fiche sur le Manifeste du surréalisme
+    ou le Front populaire culturel est à instruire.
+  evidence_checked:
+  - SRC-007
+  status: to_fill
+  reviewer: ''
+  review_date: ''
+- id: OM-011
+  period_id: ERA-8
+  domain: Religions & croyances
+  scale: national
+  what_is_missing: Aucun repère sur la sécularisation, le catholicisme social ou les effets de Vatican II.
+  reason: not_yet_researched
+  justification: La religion disparaît de la frise entre 1905 et 1989, alors que les recompositions du catholicisme et l'installation
+    de l'islam sont majeures. Bowen couvre l'après-1989, pas la période 1945-1989.
+  evidence_checked:
+  - SRC-017
+  status: to_fill
+  reviewer: ''
+  review_date: ''
+- id: OM-012
+  period_id: ERA-8
+  domain: Arts & lettres
+  scale: national
+  what_is_missing: Pas de repère sur le ministère Malraux (1959), le Centre Pompidou (1977), la littérature et le cinéma de
+    l'après-guerre ; Mai 68 est le seul repère culturel de la période.
+  reason: not_yet_researched
+  justification: Mai 68 est le seul repère culturel de la période. Une fiche sur la politique culturelle de Malraux ou l'ouverture
+    du Centre Pompidou est à instruire.
+  evidence_checked:
+  - SRC-013
+  status: to_fill
+  reviewer: ''
+  review_date: ''
+- id: OM-013
+  period_id: ERA-9
+  domain: Guerres & diplomatie
+  scale: transnational
+  what_is_missing: 'Aucun repère sur les engagements militaires extérieurs : guerre du Golfe (1991), Kosovo (1999), Afghanistan
+    (2001-2014), Mali (2013).'
+  reason: not_yet_researched
+  justification: La frise ne contient plus aucune guerre après 1962, alors que la France intervient militairement à plusieurs
+    reprises. Shepard couvre 1962, pas les opérations postérieures ; une source spécifique manque.
+  evidence_checked:
+  - SRC-012
+  status: to_fill
+  reviewer: ''
+  review_date: ''
+- id: OM-014
+  period_id: ALL
+  domain: Peuples autochtones & minorités
+  scale: imperial
+  what_is_missing: Les colonies (Indochine, Afrique subsaharienne, Caraïbes, océan Indien, Pacifique) ne sont représentées
+    que par l'Algérie ; les populations colonisées sont absentes comme acteurs.
+  reason: out_of_scope
+  justification: 'Le périmètre actuel privilégie la France métropolitaine et l''Algérie. Cette omission est documentée mais
+    reste une dette majeure : elle fausse l''échelle impériale et la compréhension des migrations postcoloniales.'
+  evidence_checked:
+  - SRC-002
+  - SRC-004
+  - SRC-012
+  status: to_fill
+  reviewer: ''
+  review_date: ''
+- id: OM-015
+  period_id: ALL
+  domain: Peuples autochtones & minorités
+  scale: transnational
+  what_is_missing: Absence de repères sur le handicap, les sexualités minoritaires et les diasporas autres qu'algériennes
+    (arménienne, juive, chinoise, vietnamienne, antillaise, etc.).
+  reason: not_yet_researched
+  justification: 'Ces absences ne sont pas justifiées par une non-pertinence : elles résultent d''un corpus de sources encore
+    trop étroit. Elles doivent être comblées avant publication, sans tokenisme.'
+  evidence_checked: []
+  status: to_fill
+  reviewer: ''
+  review_date: ''

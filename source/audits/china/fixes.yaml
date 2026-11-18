@@ -1,0 +1,356 @@
+schema_version: "1.0"
+country_id: "china"
+generated_at: "2026-11-13"
+
+event_updates:
+  - id: "cn-shang"
+    set:
+      subtitle: "Anyang, os oraculaires et bronze"
+      summary: >-
+        Vers -1600, les Shang constituent la première dynastie chinoise dont
+        l'écriture est abondamment attestée, mais la datation reste
+        conventionnelle. Les inscriptions oraculaires d'Anyang, vers -1250, et les
+        bronzes rituels documentent une royauté et un culte des ancêtres ;
+        l'identification d'Erlitou à une capitale Xia ou Shang reste débattue.
+      tags: ["politique", "arts", "religion"]
+    confidence: "high"
+    rationale: >-
+      Corrige la certitude de -1600, ajoute Anyang et les os oraculaires, et
+      mentionne Erlitou sans trancher le débat Xia/Shang.
+
+  - id: "cn-zhou"
+    set:
+      subtitle: "Muye, mandat du Ciel et Zhou orientaux"
+      summary: >-
+        Vers -1046, les Zhou renversent les Shang à Muye et légitiment leur
+        pouvoir par le mandat du Ciel. Après le sac de Hao en -771, les Zhou
+        orientaux ne contrôlent plus qu'un domaine réduit, tandis que les
+        principautés s'affrontent jusqu'aux Royaumes combattants.
+      tags: ["politique", "religion"]
+    confidence: "high"
+    rationale: >-
+      Distingue Zhou occidentaux et orientaux, ajoute la bataille de Muye et la
+      rupture de -771, et présente le mandat du Ciel comme une légitimation.
+
+  - id: "cn-qin"
+    set:
+      subtitle: "Unification, standardisation et murs reliés"
+      summary: >-
+        En -221, Qin Shi Huang achève l'unification et impose une administration
+        centralisée, l'écriture, la monnaie et les mesures standardisées, ainsi
+        qu'un recensement et un réseau routier. Il relie et étend des murs
+        défensifs antérieurs ; le régime, très coercitif, s'effondre en -206, peu
+        après sa mort en -210.
+      tags: ["politique", "guerre"]
+    confidence: "high"
+    rationale: >-
+      Précise que Qin relie des murs antérieurs, ajoute la standardisation, le
+      recensement et les routes, et rappelle la brièveté du régime.
+
+  - id: "cn-han"
+    set:
+      subtitle: "Han occidentaux et orientaux, Route de la soie"
+      summary: >-
+        Les Han occidentaux consolident l'empire ; les missions de Zhang Qian,
+        de -138 à -126, ouvrent vers -130 les routes commerciales d'Asie
+        centrale. Après l'usurpation de Wang Mang (9-23) et la restauration des
+        Han orientaux en 25, l'administration lettrée se diffuse ; le papier est
+        généralement associé à Cai Lun (vers 105), qui en perfectionne la
+        fabrication.
+      tags: ["economie", "exploration", "sciences"]
+    confidence: "high"
+    rationale: >-
+      Distingue Han occidentaux et orientaux, date l'ouverture des routes vers
+      -130 et précise l'histoire du papier associée à Cai Lun vers 105.
+
+  - id: "cn-tang"
+    set:
+      subtitle: "Chang'an, An Lushan et la chute de 907"
+      summary: >-
+        Chang'an, capitale cosmopolite ouverte aux marchands et aux religions,
+        est souvent décrite comme un âge d'or de la poésie et des échanges, un
+        label historiographique plus qu'une réalité uniforme. L'empire est ravagé par la
+        rébellion d'An Lushan (755-763), puis par des raids tibétains et des
+        révoltes régionales ; la dynastie s'effondre en 907.
+      tags: ["arts", "politique", "guerre"]
+    confidence: "high"
+    rationale: >-
+      Qualifie l'« âge d'or » comme label historiographique et ajoute la
+      rébellion d'An Lushan, les raids tibétains et la chute de 907.
+
+  - id: "cn-song"
+    set:
+      subtitle: "Song du Nord et du Sud, techniques diffusées"
+      summary: >-
+        Les Song du Nord (960-1127) gouvernent une partie de la Chine, tandis
+        que les Liao puis les Jin contrôlent le Nord et que les Xia occidentaux
+        tiennent le Nord-Ouest. L'imprimerie, la poudre et la boussole sont
+        perfectionnées et diffusées à grande échelle ; après 1127, les Song du
+        Sud poursuivent à Hangzhou une
+        économie urbaine et marchande jusqu'à la conquête mongole de 1279.
+      tags: ["sciences", "economie"]
+    confidence: "high"
+    rationale: >-
+      Remplace « développent » par « perfectionnent et diffusent » et distingue
+      Song du Nord, Song du Sud, Liao, Jin et Xia occidentaux.
+
+  - id: "cn-yuan"
+    set:
+      subtitle: "Khanat mongol et conquête de 1279"
+      summary: >-
+        Kubilai Khan proclame le khanat Yuan en 1271, successeur de l'empire
+        mongol alors fragmenté, et achève la conquête de la Chine du Sud en 1279.
+        Les Mongols occupent les postes militaires et une partie de
+        l'administration, tandis que des lettrés chinois et des intermédiaires
+        d'Asie centrale dirigent les finances ; les révoltes paysannes renversent
+        le régime en 1368.
+      tags: ["politique", "guerre"]
+    confidence: "high"
+    rationale: >-
+      Écrit « khanat Yuan, successeur de l'empire mongol », ajoute 1279 et la
+      place des Mongols dans l'administration.
+
+  - id: "cn-ming"
+    set:
+      subtitle: "Cité interdite, Zheng He et commerce maritime"
+      summary: >-
+        Les Ming chassent les Mongols et reconstruisent un État centralisé, tout
+        en héritant de plusieurs institutions Yuan. La Cité interdite est édifiée
+        de 1406 à 1420 et les expéditions de Zheng He se déploient de 1405 à
+        1433 ; l'interdiction du commerce maritime n'empêche pas les échanges
+        côtiers et clandestins.
+      tags: ["politique", "arts", "exploration"]
+    confidence: "high"
+    rationale: >-
+      Nuance la « restauration » han, date la Cité interdite (1406-1420) et les
+      expéditions de Zheng He (1405-1433), et distingue interdiction maritime et
+      commerce réel.
+
+  - id: "cn-qing"
+    set:
+      subtitle: "Conquêtes, réformes et fin de l'empire"
+      summary: >-
+        La conquête mandchoue prend 1644-1662 en Chine propre et s'achève à
+        Taïwan en 1683 ; elle est marquée par des violences et des mesures de
+        coercition. Les Qing conquièrent le Xinjiang en 1755-1759, puis tentent
+        l'autorenforcement (1861-1895) et les Nouvelles Politiques (1901-1911),
+        sans enrayer les pressions coloniales et les révoltes.
+      tags: ["politique", "guerre"]
+    confidence: "high"
+    rationale: >-
+      Ajoute 1683, la conquête du Xinjiang (1755-1759), l'autorenforcement
+      (1861-1895) et les Nouvelles Politiques (1901-1911), et qualifie la
+      conquête mandchoue.
+
+  - id: "cn-opium"
+    set:
+      subtitle: "Canton, traité de Nanjing et cinq ports"
+      summary: >-
+        En 1839, Lin Zexu fait détruire l'opium saisi à Canton ; le Royaume-Uni
+        riposte par la force (1839-1842) et impose le traité de Nanjing. Celui-ci
+        ouvre cinq ports, cède Hong Kong et fixe une indemnité, mais l'opium
+        n'est légalisé qu'en 1858 ; le récit du « siècle d'humiliation » est une
+        catégorie nationale chinoise, pas un cadre neutre.
+      tags: ["guerre", "economie"]
+    confidence: "high"
+    rationale: >-
+      Date la guerre (1839-1842), précise les clauses du traité de Nanjing,
+      mentionne Lin Zexu et l'initiative chinoise, et attribue le récit du
+      « siècle d'humiliation ».
+
+  - id: "cn-1911"
+    set:
+      title: "Révolution de 1911-1912"
+      subtitle: "Wuchang, République et abdication"
+      summary: >-
+        Le soulèvement de Wuchang, le 10 octobre 1911, déclenche la chute des
+        Qing. La République de Chine est proclamée à Nanjing le 1er janvier 1912,
+        avec Sun Yat-sen comme président provisoire ; Puyi abdique le 12 février
+        1912 et Yuan Shikai devient président. La mort de Yuan en 1916 ouvre la
+        fragmentation des seigneurs de la guerre.
+      year: 1911
+      endYear: 1912
+      tags: ["politique", "guerre"]
+      importance: 3
+    confidence: "high"
+    rationale: >-
+      Corrige la confusion entre Wuchang (10 octobre 1911), la proclamation de
+      la République (1er janvier 1912) et l'abdication de Puyi (12 février 1912),
+      et étend la fiche à 1911-1912.
+
+  - id: "cn-1949"
+    set:
+      subtitle: "Fondation de la RPC, guerre civile et consolidation"
+      summary: >-
+        Le 1er octobre 1949, Mao Zedong proclame la République populaire à Pékin ;
+        le gouvernement nationaliste se replie à Taïwan et la guerre civile
+        continue, avec la prise de Hainan en 1950. La consolidation comprend la
+        réforme agraire (1950-1952), la loi sur le mariage (1950) et l'accord en
+        dix-sept points sur le Tibet (1951), après l'entrée de l'armée populaire
+        au Tibet en 1950. Le Grand Bond en avant, la famine de 1959-1961 et la
+        Révolution culturelle marquent ensuite la période maoïste.
+      tags: ["politique", "guerre", "societe"]
+      importance: 3
+    confidence: "high"
+    rationale: >-
+      Date le 1er octobre 1949, ajoute la retraite du KMT à Taïwan, la réforme
+      agraire, la loi sur le mariage et l'accord sur le Tibet, et rappelle que la
+      famine et la Révolution culturelle exigent des fiches distinctes.
+
+  - id: "cn-deng"
+    set:
+      subtitle: "Troisième plénum, zones spéciales et ouverture"
+      summary: >-
+        En décembre 1978, le troisième plénum du XIe Comité central lance les
+        réformes : le démantèlement progressif des communes, le système de
+        responsabilité familiale et les zones économiques spéciales (Shenzhen,
+        Zhuhai, Shantou, Xiamen). L'ouverture attire les investissements et
+        accélère la croissance, tandis
+        que la répression de 1989, la rétrocession de Hong Kong (1997), l'entrée
+        à l'OMC (2001) et le confinement de Wuhan (2020) scandent la période. La
+        trajectoire s'accompagne d'inégalités, de migrations massives et de
+        coûts environnementaux.
+      tags: ["economie", "politique"]
+      importance: 3
+    confidence: "high"
+    rationale: >-
+      Date le troisième plénum (décembre 1978), décrit les zones spéciales, et
+      remplace la conclusion téléologique par les bifurcations de 1989, 1997,
+      2001 et 2020.
+
+event_additions:
+  - id: "cn-prop-001"
+    year: 1919
+    end_year: null
+    title: "Mouvement du 4 Mai"
+    subtitle: "Étudiants, Versailles et nation"
+    tags: ["politique", "arts", "societe"]
+    importance: 3
+    summary: >-
+      Le 4 mai 1919, des étudiants de Pékin manifestent contre le transfert au
+      Japon des concessions allemandes du Shandong décidé à Versailles. Le
+      mouvement gagne les villes, les ouvriers et les femmes, et devient un
+      moment fondateur du nationalisme chinois et de la Nouvelle Culture.
+    related: ["cn-1911"]
+    sources: ["SRC-003", "SRC-001"]
+    confidence: "high"
+    rationale: >-
+      Comble l'ère 1912-1949 vide et intègre étudiants, ouvriers et femmes dans
+      un événement politique et culturel.
+
+  - id: "cn-prop-002"
+    year: 1921
+    end_year: null
+    title: "Fondation du Parti communiste chinois"
+    subtitle: "Shanghai, Komintern et organisation centralisée"
+    tags: ["politique"]
+    importance: 3
+    summary: >-
+      En juillet 1921, treize délégués environ tiennent à Shanghai le premier
+      congrès du Parti communiste chinois, avec l'aide du Komintern. Le parti
+      adopte une organisation centralisée et s'implante dans les milieux ouvriers
+      et intellectuels.
+    related: ["cn-prop-001"]
+    sources: ["SRC-002", "SRC-001"]
+    confidence: "high"
+    rationale: >-
+      Origine du parti-État, absente de la frise ; acteur collectif central du
+      XXe siècle.
+
+  - id: "cn-prop-003"
+    year: 1937
+    end_year: 1938
+    title: "Massacre de Nanjing"
+    subtitle: "Violences de masse et mémoires disputées"
+    tags: ["guerre", "societe"]
+    importance: 3
+    summary: >-
+      Après la prise de Nanjing en décembre 1937, l'armée japonaise commet des
+      massacres, des viols et des pillages pendant plusieurs semaines. Le
+      tribunal militaire international de Tokyo retient environ 200 000 morts ;
+      des travaux récents proposent 100 000 à 200 000 et les mémoires chinoises
+      vont jusqu'à 300 000. Les catégories de victimes et les méthodes de
+      comptage restent disputées.
+    related: []
+    sources: ["SRC-005", "SRC-004"]
+    confidence: "high"
+    rationale: >-
+      Événement central de la guerre et de la mémoire ; les estimations de
+      victimes sont présentées comme disputées, sans chiffre unique.
+
+  - id: "cn-prop-004"
+    year: 1950
+    end_year: null
+    title: "Loi sur le mariage"
+    subtitle: "Égalité des époux et fin du mariage arrangé"
+    tags: ["politique", "societe"]
+    importance: 3
+    summary: >-
+      Le 1er mai 1950, la loi sur le mariage interdit le mariage arrangé, la
+      polygamie et le concubinage, et proclame l'égalité des époux. Sa mise en
+      œuvre se heurte aux pratiques locales et aux campagnes de propagande, et
+      son application varie selon les régions.
+    related: ["cn-1949"]
+    sources: ["SRC-011", "SRC-001"]
+    confidence: "high"
+    rationale: >-
+      Comble l'absence des femmes et du droit dans la Chine populaire ; événement
+      majeur de genre et de société.
+
+era_updates:
+  - name: "Dynasties fondatrices"
+    set:
+      name: "Shang, Zhou et Royaumes combattants"
+    confidence: "high"
+    rationale: >-
+      Retire le label téléologique « fondatrices » et nomme les formations
+      politiques couvertes, sans modifier les bornes.
+
+  - name: "Empire unifié"
+    set:
+      name: "Empires et divisions"
+    confidence: "high"
+    rationale: >-
+      Le label « unifié » masque les périodes de division (220-589, 907-960,
+      1127-1279) ; le nouveau nom ne change ni les bornes ni le nombre d'ères.
+
+unresolved:
+  - id: "era-chine-populaire-split"
+    reason: >-
+      Scission de « Chine populaire (1949-1978) » en « Chine maoïste
+      (1949-1976) » et « Transition (1976-1978) » : periodization redesign, non
+      autorisé dans era_updates ; à traiter dans une refonte de la périodisation.
+
+  - id: "era-reforme-puissance-split"
+    reason: >-
+      Scission de « Réforme et puissance (1978-2026) » en « Réformes
+      (1978-2001) » et « Puissance et tensions (2001-2026) » : periodization
+      redesign, non autorisé dans era_updates ; à traiter dans une refonte de la
+      périodisation.
+
+  - id: "cn-prop-tibet"
+    reason: >-
+      PROP-011 (accord en dix-sept points sur le Tibet, 1951) n'est pas ajouté
+      comme fiche autonome : plafond de 4 ajouts et source principale (SRC-016)
+      critique, sans contrepartie institutionnelle chinoise dans le registre.
+      L'accord est mentionné dans cn-1949 ; une fiche dédiée exige des sources
+      institutionnelles chinoises et tibétaines croisées.
+
+  - id: "cn-1949-fiches-distinctes"
+    reason: >-
+      La correction de cn-1949 demande des fiches distinctes pour la réforme
+      agraire (1950-1952), la famine (1959-1961) et la Révolution culturelle
+      (1966-1976). Elles ne sont pas ajoutées faute de place ; le résumé les
+      mentionne et les propositions PROP-012 et PROP-013 restent en file.
+
+  - id: "cn-deng-fiches-distinctes"
+    reason: >-
+      La correction de cn-deng demande des fiches pour 1989, 1997, 2001 et 2020.
+      Elles ne sont pas ajoutées faute de place ; le résumé les mentionne et les
+      propositions PROP-015 à PROP-018 restent en file.
+
+  - id: "sources-imperiales"
+    reason: >-
+      Les corrections cn-shang à cn-ming reposent sur SRC-001 seul ; une seconde
+      synthèse (Cambridge History of China) est nécessaire avant publication,
+      conformément aux dettes du rapport.

@@ -1,0 +1,515 @@
+# Vectemporel — propositions d'enrichissement (méthode v1.0)
+# File de revue : aucune proposition n'est publiée automatiquement.
+# Audit Espagne, 2026-11-13. Auteur non renseigné : dossier non signé.
+
+schema_version: "1.0"
+country_id: "spain"
+generated_at: "2026-11-13"
+author: ""
+
+periodization:
+  current_verdict: "La périodisation actuelle est lisible mais politique et téléologique : 711 efface l'histoire antérieure, 1492 confond trois événements, 1808, 1936 et 1975 sont des bornes politiques, et les 781 ans d'Al-Andalus sont traités comme un bloc."
+  proposed_changes:
+    - action: "add"
+      era_name: "Prologue"
+      proposal: "Ajouter une ère -218/711 : Ibérie préromaine, Hispania romaine et royaume wisigoth."
+      rationale: "La borne de 711 coupe l'histoire ibérique et fait d'al-Andalus une simple étape de la Reconquista. Un prologue documenté restaure les continuités romaines et wisigothes."
+      sources: ["SRC-001", "SRC-002"]
+    - action: "split"
+      era_name: "Al-Andalus & Reconquista"
+      proposal: "Scinder 711-1212 (émirat, califat, taïfas, royaumes chrétiens) et 1212-1492 (conquêtes chrétiennes, royaume nasride, Castille et Aragon)."
+      rationale: "La période actuelle couvre 781 ans et mêle des systèmes politiques très différents ; la bataille de Las Navas de Tolosa (1212) constitue une charnière militaire et territoriale."
+      sources: ["SRC-001", "SRC-003"]
+    - action: "rename"
+      era_name: "Al-Andalus & Reconquista"
+      proposal: "Renommer « Al-Andalus et royaumes chrétiens »."
+      rationale: "« Reconquista » est un concept historiographique téléologique ; le renommer ne nie pas les conflits, mais évite d'en faire une origine nationale."
+      sources: ["SRC-001", "SRC-004"]
+    - action: "split"
+      era_name: "Empire espagnol"
+      proposal: "Scinder 1492-1700 (Habsbourg) et 1700-1808 (Bourbons, réformes, Lumières)."
+      rationale: "L'empire des Habsbourg et la monarchie bourbonienne n'ont ni la même fiscalité, ni la même politique étrangère, ni les mêmes élites."
+      sources: ["SRC-008"]
+    - action: "split"
+      era_name: "Crises & nation"
+      proposal: "Scinder 1808-1874 (révolution libérale, guerres carlistes) et 1874-1936 (Restauration, masse politique, République)."
+      rationale: "La construction de l'État libéral et la crise de la Restauration sont deux séquences distinctes, avec des acteurs et des conflits propres."
+      sources: ["SRC-011"]
+    - action: "rename"
+      era_name: "Crises & nation"
+      proposal: "Renommer « Révolution libérale et nation en crise »."
+      rationale: "« Crises & nation » est vague et ne dit pas que la période est d'abord celle de la construction de l'État libéral et de ses contestations."
+      sources: ["SRC-011"]
+    - action: "split"
+      era_name: "Guerre civile & franquisme"
+      proposal: "Scinder 1936-1939 (guerre civile) et 1939-1975 (franquisme)."
+      rationale: "La guerre et la dictature n'ont ni les mêmes temporalités, ni les mêmes acteurs, ni les mêmes sources ; les fusionner brouille l'analyse de la répression et de la transition."
+      sources: ["SRC-013", "SRC-014"]
+    - action: "split"
+      era_name: "Démocratie"
+      proposal: "Scinder 1975-1986 (transition, Constitution, OTAN/CEE) et 1986-2026 (consolidation européenne, crises, 15-M, Catalogne)."
+      rationale: "La transition et l'Espagne européenne sont deux séquences distinctes ; la seconde est marquée par la décentralisation, la croissance, puis la crise de 2008."
+      sources: ["SRC-015", "SRC-018"]
+    - action: "move_boundary"
+      era_name: "Démocratie"
+      proposal: "Conserver 1975 comme borne de la transition, mais ajouter 1978 comme borne constitutionnelle interne."
+      rationale: "1975 est la mort de Franco ; 1978 est l'adoption de la Constitution. Les deux dates n'ont pas la même fonction et ne doivent pas être confondues."
+      sources: ["SRC-015", "SRC-011"]
+    - action: "keep"
+      era_name: "Ensemble"
+      proposal: "Conserver les cinq grandes scansions comme récit principal, avec les sous-périodes proposées."
+      rationale: "La structure actuelle reste lisible pour le grand public ; les sous-périodes corrigent la téléologie sans imposer une refonte complète."
+      sources: ["SRC-011", "SRC-015"]
+
+events:
+  - id: "PROP-001"
+    action: "add"
+    existing_id: null
+    year: -218
+    end_year: -19
+    title: "Hispania romaine"
+    subtitle: "Rome soumet et organise la péninsule"
+    tags: ["politique", "guerre"]
+    importance: 2
+    summary: "Entre 218 av. J.-C. et la fin du Ier siècle av. J.-C., Rome soumet progressivement les peuples ibères, celtibères et lusitaniens et organise les provinces d'Hispanie. La romanisation transforme les villes, le droit, la langue et les réseaux commerciaux bien avant 711."
+    sources: ["SRC-001", "SRC-002"]
+    confidence: "high"
+    rationale: "Corrige l'effacement de l'histoire pré-711 et fournit un prologue aux royaumes wisigoths."
+  - id: "PROP-002"
+    action: "add"
+    existing_id: null
+    year: 589
+    end_year: null
+    title: "IIIe concile de Tolède"
+    subtitle: "Le royaume wisigoth devient catholique"
+    tags: ["religion", "politique"]
+    importance: 2
+    summary: "Réuni en 589 sous le roi Récarède, le IIIe concile de Tolède scelle la conversion du royaume wisigoth au catholicisme nicéen. L'événement renforce l'alliance entre monarchie et Église et donne un cadre religieux durable à la péninsule."
+    sources: ["SRC-001"]
+    confidence: "high"
+    rationale: "Documente le royaume wisigoth, absent de la frise, et le rôle du christianisme avant 711."
+  - id: "PROP-003"
+    action: "add"
+    existing_id: null
+    year: 929
+    end_year: 1031
+    title: "Califat de Cordoue"
+    subtitle: "Abd al-Rahman III proclame le califat"
+    tags: ["politique", "sciences", "arts"]
+    importance: 3
+    summary: "En 929, Abd al-Rahman III se proclame calife à Cordoue et détache al-Andalus de l'obéissance abbasside. Cordoue devient un pôle politique, savant et artistique majeur jusqu'à la crise du califat au XIe siècle."
+    sources: ["SRC-003", "SRC-001"]
+    confidence: "high"
+    rationale: "Donne à al-Andalus une fiche politique et culturelle positive, au lieu de la seule conquête de 711."
+  - id: "PROP-004"
+    action: "add"
+    existing_id: null
+    year: 1140
+    end_year: 1280
+    title: "Traductions de Tolède"
+    subtitle: "Les savoirs grecs et arabes passent en latin"
+    tags: ["sciences", "arts", "religion"]
+    importance: 2
+    summary: "Aux XIIe et XIIIe siècles, des équipes de traducteurs travaillant à Tolède font passer en latin des textes grecs, arabes et hébreux, notamment philosophiques et scientifiques. Ce mouvement connecte les savoirs d'al-Andalus, du monde chrétien et de l'Europe latine."
+    sources: ["SRC-003", "SRC-004"]
+    confidence: "medium"
+    rationale: "Documente les circulations savantes et évite de réduire al-Andalus à la guerre."
+  - id: "PROP-005"
+    action: "add"
+    existing_id: null
+    year: 1492
+    end_year: null
+    title: "Expulsion des Juifs"
+    subtitle: "Le décret de l'Alhambra"
+    tags: ["religion", "societe", "politique"]
+    importance: 3
+    summary: "Le 31 mars 1492, les Rois catholiques signent le décret d'expulsion des Juifs de leurs royaumes. Des dizaines de milliers de personnes partent ou se convertissent, formant une diaspora séfarade durable."
+    sources: ["SRC-005", "SRC-008"]
+    confidence: "high"
+    rationale: "Sépare l'expulsion de la capitulation de Grenade et documente la diaspora séfarade."
+  - id: "PROP-006"
+    action: "add"
+    existing_id: null
+    year: 1520
+    end_year: 1521
+    title: "Révolte des Comuneros"
+    subtitle: "Les villes de Castille contre Charles Quint"
+    tags: ["politique", "guerre"]
+    importance: 2
+    summary: "En 1520-1521, les villes de Castille se soulèvent contre la fiscalité et le gouvernement de Charles Quint. La défaite de Villalar (23 avril 1521) renforce la monarchie, mais la révolte devient un symbole de liberté municipale."
+    sources: ["SRC-008"]
+    confidence: "high"
+    rationale: "Ajoute un conflit social et politique interne à l'empire, absent de la frise."
+  - id: "PROP-007"
+    action: "add"
+    existing_id: null
+    year: 1609
+    end_year: 1614
+    title: "Expulsion des Morisques"
+    subtitle: "La monarchie expulse les descendants des musulmans"
+    tags: ["religion", "societe", "politique"]
+    importance: 3
+    summary: "Entre 1609 et 1614, la monarchie de Philippe III ordonne l'expulsion des Morisques de Valence, d'Aragon et de Castille. L'opération déplace des centaines de milliers de personnes et prolonge la politique de confessionnalisation commencée en 1492."
+    sources: ["SRC-006", "SRC-008"]
+    confidence: "high"
+    rationale: "Documente les mudéjars et morisques et la diversité religieuse après 1492."
+  - id: "PROP-008"
+    action: "add"
+    existing_id: null
+    year: 1707
+    end_year: 1716
+    title: "Décrets de Nueva Planta"
+    subtitle: "Les Bourbons réorganisent la monarchie"
+    tags: ["politique", "societe"]
+    importance: 2
+    summary: "Après la guerre de Succession, Philippe V supprime les institutions et les fors de Valence, d'Aragon, de Majorque et de Catalogne par les décrets de Nueva Planta (1707-1716). La mesure uniformise l'administration et nourrit une mémoire périphérique durable."
+    sources: ["SRC-008"]
+    confidence: "high"
+    rationale: "Explique la construction de l'État central et la mémoire de 1714 en Catalogne."
+  - id: "PROP-009"
+    action: "add"
+    existing_id: null
+    year: 1749
+    end_year: null
+    title: "Grande Rafle des Roms"
+    subtitle: "La prison générale de 1749"
+    tags: ["societe", "politique"]
+    importance: 2
+    summary: "Le 30 juillet 1749, une opération générale ordonnée sous Ferdinand VI arrête des milliers de Roms à travers l'Espagne. Hommes, femmes et enfants sont envoyés dans des prisons et des arsenaux ; l'épisode est central dans l'histoire de l'antitsiganisme espagnol."
+    sources: ["SRC-007"]
+    confidence: "high"
+    rationale: "Rend visible une minorité absente de la frise et documente une politique de persécution."
+  - id: "PROP-010"
+    action: "add"
+    existing_id: null
+    year: 1873
+    end_year: 1886
+    title: "Abolition de l'esclavage"
+    subtitle: "Cuba et Porto Rico"
+    tags: ["economie", "politique"]
+    importance: 2
+    summary: "L'Espagne abolit l'esclavage à Porto Rico en 1873 et à Cuba en 1886, après un long processus de réformes et de pressions abolitionnistes. La mesure met fin à un système central dans l'économie coloniale et dans les hiérarchies raciales de l'empire."
+    sources: ["SRC-011"]
+    confidence: "medium"
+    rationale: "Documente l'économie coloniale, l'esclavage et les populations afrodescendantes, absents de la frise ; les chiffres et les étapes de l'abolition demandent une source spécialisée supplémentaire."
+  - id: "PROP-011"
+    action: "add"
+    existing_id: null
+    year: 1931
+    end_year: null
+    title: "Seconde République"
+    subtitle: "La République est proclamée le 14 avril 1931"
+    tags: ["politique", "societe"]
+    importance: 3
+    summary: "Après la victoire des républicains aux élections municipales, la Seconde République est proclamée le 14 avril 1931. Elle ouvre une période de réformes (suffrage, laïcité, autonomies) et de conflits qui conduit à la guerre civile."
+    sources: ["SRC-013", "SRC-011"]
+    confidence: "high"
+    rationale: "La Seconde République est absente de la frise alors qu'elle constitue le laboratoire politique de 1931-1936 et le prélude direct de la guerre civile."
+  - id: "PROP-012"
+    action: "add"
+    existing_id: null
+    year: 1931
+    end_year: null
+    title: "Suffrage féminin"
+    subtitle: "Clara Campoamor et les Cortès"
+    tags: ["politique", "societe"]
+    importance: 3
+    summary: "Le 1er octobre 1931, les Cortès constituantes adoptent le suffrage féminin après un débat tendu. Clara Campoamor, députée radicale, joue un rôle décisif face à une partie de la gauche qui craignait le vote des femmes catholiques."
+    sources: ["SRC-013", "SRC-011"]
+    confidence: "high"
+    rationale: "Documente les femmes comme actrices politiques et corrige l'absence de genre dans la frise."
+  - id: "PROP-013"
+    action: "add"
+    existing_id: null
+    year: 1939
+    end_year: null
+    title: "La Retirada"
+    subtitle: "L'exil républicain vers la France"
+    tags: ["guerre", "societe", "politique"]
+    importance: 3
+    summary: "En janvier-février 1939, la chute de la Catalogne pousse des centaines de milliers de républicains à franchir les Pyrénées. Les camps d'internement français, la Résistance et l'exil durable transforment l'histoire de l'Espagne et de la France."
+    sources: ["SRC-016", "SRC-014"]
+    confidence: "high"
+    rationale: "Documente l'exil, les migrations forcées et la mémoire transnationale de la guerre civile."
+  - id: "PROP-014"
+    action: "add"
+    existing_id: null
+    year: 1960
+    end_year: 1973
+    title: "Émigration des années 1960"
+    subtitle: "Les Espagnols partent travailler en Europe"
+    tags: ["economie", "societe"]
+    importance: 2
+    summary: "Dans les années 1960, des centaines de milliers d'Espagnols quittent l'Andalousie, la Galice et d'autres régions pour travailler en France, en Allemagne et en Suisse. Les remises des émigrés soutiennent la croissance et transforment les villages de départ."
+    sources: ["SRC-011"]
+    confidence: "medium"
+    rationale: "Ajoute une histoire sociale et migratoire majeure, absente de la frise ; les volumes et les régions de départ doivent être précisés par une source statistique."
+  - id: "PROP-015"
+    action: "add"
+    existing_id: null
+    year: 2002
+    end_year: null
+    title: "Marée noire du Prestige"
+    subtitle: "La Galice touchée par le fioul"
+    tags: ["societe", "economie"]
+    importance: 2
+    summary: "En novembre 2002, le pétrolier Prestige sombre au large de la Galice et libère une marée noire qui ravage les côtes et la pêche. La catastrophe devient un symbole des conflits environnementaux et de la responsabilité des autorités."
+    sources: ["SRC-019"]
+    confidence: "high"
+    rationale: "Introduit l'environnement et un lieu hors Madrid dans la frise."
+  - id: "PROP-016"
+    action: "add"
+    existing_id: null
+    year: 2011
+    end_year: null
+    title: "Cessez-le-feu d'ETA"
+    subtitle: "La fin de l'activité armée"
+    tags: ["politique", "societe"]
+    importance: 2
+    summary: "Le 20 octobre 2011, ETA annonce la cessation définitive de son activité armée après plus de quarante ans de violence. La décision ouvre une nouvelle phase pour le Pays basque, sans résoudre immédiatement la question des victimes, des prisonniers et de la mémoire."
+    sources: ["SRC-011"]
+    confidence: "high"
+    rationale: "Documente le Pays basque et les mémoires concurrentes, absents de la frise."
+  - id: "PROP-017"
+    action: "add"
+    existing_id: null
+    year: 2011
+    end_year: null
+    title: "15-M"
+    subtitle: "Les Indignés occupent les places"
+    tags: ["politique", "societe"]
+    importance: 2
+    summary: "Le 15 mai 2011, des manifestants occupent la Puerta del Sol à Madrid et essaimment dans les villes espagnoles. Le mouvement des Indignés dénonce la crise, la corruption et le bipartisme, et recompose la gauche politique espagnole."
+    sources: ["SRC-017"]
+    confidence: "high"
+    rationale: "Documente les mouvements sociaux contemporains et la crise de représentation."
+  - id: "PROP-018"
+    action: "add"
+    existing_id: null
+    year: 2022
+    end_year: null
+    title: "Loi de mémoire démocratique"
+    subtitle: "L'État reconnaît les victimes du franquisme"
+    tags: ["politique", "societe"]
+    importance: 2
+    summary: "La loi 20/2022 du 19 octobre 2022 renforce les politiques de mémoire sur la guerre civile et le franquisme. Elle prévoit la reconnaissance des victimes, des mesures sur le Valle de los Caídos et un cadre pour les exhumations."
+    sources: ["SRC-020", "SRC-015"]
+    confidence: "high"
+    rationale: "Documente les mémoires concurrentes et l'action publique contemporaine."
+
+actors:
+  - id: "ACTOR-PROP-001"
+    label: "Isabelle Ire de Castille"
+    type: "individual"
+    period_ids: ["PERIOD-1", "PERIOD-2"]
+    why: "Reine de Castille en titre, actrice du mariage de 1469, de la conquête de Grenade et de l'expulsion des Juifs ; elle permet de documenter le pouvoir féminin et la confessionnalisation."
+    sources: ["SRC-008", "SRC-005"]
+  - id: "ACTOR-PROP-002"
+    label: "Christophe Colomb"
+    type: "individual"
+    period_ids: ["PERIOD-2"]
+    why: "Navigateur au service des Rois catholiques ; son expédition de 1492 ouvre la colonisation européenne des Amériques et doit être documentée sans hagiographie."
+    sources: ["SRC-008"]
+  - id: "ACTOR-PROP-003"
+    label: "Philippe II"
+    type: "individual"
+    period_ids: ["PERIOD-2"]
+    why: "Roi de la monarchie catholique, acteur de l'Armada, de l'empire américain et de la répression religieuse ; il incarne les ressources et les limites de la puissance impériale."
+    sources: ["SRC-008"]
+  - id: "ACTOR-PROP-004"
+    label: "Averroès (Ibn Rushd)"
+    type: "individual"
+    period_ids: ["PERIOD-1"]
+    why: "Philosophe, juriste et médecin de Cordoue ; il documente la vie savante d'al-Andalus et les circulations intellectuelles."
+    sources: ["SRC-003"]
+  - id: "ACTOR-PROP-005"
+    label: "Clara Campoamor"
+    type: "individual"
+    period_ids: ["PERIOD-3"]
+    why: "Avocate et députée, actrice décisive du suffrage féminin de 1931 ; elle permet de documenter les femmes en politique."
+    sources: ["SRC-013", "SRC-011"]
+  - id: "ACTOR-PROP-006"
+    label: "Federica Montseny"
+    type: "individual"
+    period_ids: ["PERIOD-3", "PERIOD-4"]
+    why: "Première femme ministre en Espagne, anarchiste et membre de la CNT ; elle relie mouvement ouvrier, genre et guerre civile."
+    sources: ["SRC-013", "SRC-011"]
+  - id: "ACTOR-PROP-007"
+    label: "Dolores Ibárruri"
+    type: "individual"
+    period_ids: ["PERIOD-3", "PERIOD-4"]
+    why: "Dirigeante communiste et oratrice de la République ; elle documente la mobilisation politique et l'internationalisation de la guerre civile."
+    sources: ["SRC-013", "SRC-014"]
+  - id: "ACTOR-PROP-008"
+    label: "Francisco Franco"
+    type: "individual"
+    period_ids: ["PERIOD-4"]
+    why: "Chef de l'État et dictateur ; il doit être documenté par ses ressources, ses contraintes, ses réseaux et sa postérité, pas comme une vignette héroïque."
+    sources: ["SRC-014", "SRC-013"]
+  - id: "ACTOR-PROP-009"
+    label: "Juan Carlos Ier"
+    type: "individual"
+    period_ids: ["PERIOD-5"]
+    why: "Roi de la transition ; son rôle est central pour comprendre la monarchie parlementaire, ses ambiguïtés et ses contestations."
+    sources: ["SRC-015", "SRC-011"]
+  - id: "ACTOR-PROP-010"
+    label: "CNT (Confédération nationale du travail)"
+    type: "collective"
+    period_ids: ["PERIOD-3", "PERIOD-4"]
+    why: "Syndicat anarcho-syndicaliste majeur ; il documente le mouvement ouvrier, les grèves et les dilemmes de la guerre civile."
+    sources: ["SRC-012", "SRC-013"]
+  - id: "ACTOR-PROP-011"
+    label: "Mujeres Libres"
+    type: "collective"
+    period_ids: ["PERIOD-3", "PERIOD-4"]
+    why: "Organisation féminine anarchiste ; elle documente l'émancipation des femmes et les hiérarchies de genre dans le mouvement libertaire."
+    sources: ["SRC-013", "SRC-011"]
+  - id: "ACTOR-PROP-012"
+    label: "Diaspora séfarade"
+    type: "collective"
+    period_ids: ["PERIOD-2", "PERIOD-3", "PERIOD-4", "PERIOD-5"]
+    why: "Diaspora transnationale née de l'expulsion de 1492 ; elle documente les migrations, les réseaux et les mémoires séfarades."
+    sources: ["SRC-005"]
+
+places:
+  - id: "PLACE-PROP-001"
+    label: "Madrid"
+    hierarchy: "national"
+    why: "Capitale de la monarchie puis de l'État contemporain ; lieu de la Constitution, de la guerre civile, du franquisme et du 15-M."
+    sources: ["SRC-011", "SRC-015"]
+  - id: "PLACE-PROP-002"
+    label: "Barcelone"
+    hierarchy: "regional"
+    why: "Capitale catalane, port industriel, centre de l'anarchisme et de la Semaine tragique ; lieu de la crise de 2017."
+    sources: ["SRC-011", "SRC-018"]
+  - id: "PLACE-PROP-003"
+    label: "Grenade"
+    hierarchy: "regional"
+    why: "Capitale nasride et lieu de la capitulation de 1492 ; elle permet de traiter la fin d'al-Andalus sans téléologie."
+    sources: ["SRC-003", "SRC-008"]
+  - id: "PLACE-PROP-004"
+    label: "Cordoue"
+    hierarchy: "regional"
+    why: "Capitale du califat omeyyade ; lieu de la vie savante et artistique d'al-Andalus."
+    sources: ["SRC-003"]
+  - id: "PLACE-PROP-005"
+    label: "Tolède"
+    hierarchy: "regional"
+    why: "Capitale wisigothe, ville des conciles et des traductions ; elle relie Antiquité tardive, al-Andalus et Castille."
+    sources: ["SRC-001", "SRC-003"]
+  - id: "PLACE-PROP-006"
+    label: "Séville"
+    hierarchy: "regional"
+    why: "Port colonial et siège de la Casa de Contratación ; lieu de l'économie atlantique et des archives impériales."
+    sources: ["SRC-008", "SRC-010"]
+  - id: "PLACE-PROP-007"
+    label: "Valence"
+    hierarchy: "regional"
+    why: "Royaume médiéval, ville morisque, capitale républicaine en 1936-1937 ; elle relie plusieurs séquences politiques."
+    sources: ["SRC-006", "SRC-011"]
+  - id: "PLACE-PROP-008"
+    label: "Bilbao"
+    hierarchy: "regional"
+    why: "Port industriel et centre du nationalisme basque ; lieu de la guerre civile et de la mémoire d'ETA."
+    sources: ["SRC-011", "SRC-014"]
+  - id: "PLACE-PROP-009"
+    label: "Guernica"
+    hierarchy: "local"
+    why: "Lieu du bombardement du 26 avril 1937 et de la mémoire de la guerre civile ; objet de controverses et d'usages politiques."
+    sources: ["SRC-014", "SRC-013"]
+  - id: "PLACE-PROP-010"
+    label: "Cadix"
+    hierarchy: "regional"
+    why: "Port atlantique et lieu de la Constitution de 1812 ; il documente la révolution libérale et le monde colonial."
+    sources: ["SRC-011", "SRC-010"]
+  - id: "PLACE-PROP-011"
+    label: "Palos de la Frontera"
+    hierarchy: "local"
+    why: "Port de départ de l'expédition de Colomb en 1492 ; lieu de mémoire et de controverse sur la colonisation."
+    sources: ["SRC-008"]
+  - id: "PLACE-PROP-012"
+    label: "A Coruña / côte galicienne"
+    hierarchy: "regional"
+    why: "Zone affectée par la marée noire du Prestige en 2002 ; lieu de mémoire environnementale et de conflit social."
+    sources: ["SRC-019"]
+
+corrections:
+  - existing_id: "es-711"
+    issue: "La formulation « les Omeyyades débarquent » et la date unique de 711 donnent l'image d'un événement ponctuel ; le royaume wisigoth et l'Hispanie romaine disparaissent."
+    proposal: "Écrire « bataille de Guadalete (juillet 711) et conquête progressive » ; préciser que les forces sont arabo-berbères et que la conquête s'étend sur des décennies ; ajouter un prologue -218/711."
+    sources: ["SRC-001", "SRC-003"]
+    confidence: "high"
+  - existing_id: "es-covadonga"
+    issue: "La date de 722 et le rôle de « début de la Reconquista » sont présentés comme des faits, alors que l'événement est connu par des sources tardives et que la Reconquista est une construction historiographique."
+    proposal: "Écrire « vers 722, selon une tradition tardive » ; requalifier la Reconquista de concept historiographique ; ne pas en faire une origine nationale."
+    sources: ["SRC-001"]
+    confidence: "high"
+  - existing_id: "es-mariage"
+    issue: "« Prépare l'unification politique » est téléologique ; l'Inquisition est créée en 1478 et les deux couronnes restent distinctes."
+    proposal: "Préciser le mariage de Valladolid (19 octobre 1469), la distinction Castille/Aragon, la création de l'Inquisition en 1478 et la conquête de Grenade en 1492."
+    sources: ["SRC-008", "SRC-005"]
+    confidence: "high"
+  - existing_id: "es-grenade"
+    issue: "Le résumé confond la capitulation de Grenade (2 janvier), le décret d'expulsion des Juifs (31 mars) et l’arrivée de Colomb aux Caraïbes (12 octobre) ; il ignore la conversion forcée des musulmans de Castille en 1502."
+    proposal: "Scinder en trois repères ou corriger le résumé ; ajouter 1502 et distinguer la fin du royaume nasride de la politique de confessionnalisation."
+    sources: ["SRC-005", "SRC-008"]
+    confidence: "high"
+  - existing_id: "es-colomb"
+    issue: "« L'Amérique entre dans l'histoire européenne » est eurocentré ; Colomb atteint les Caraïbes, pas le continent, et les populations taïnos sont absentes."
+    proposal: "Écrire « Colomb atteint Guanahani et les Caraïbes » ; mentionner les Taïnos et le début de la colonisation ; éviter le mot « découverte »."
+    sources: ["SRC-008"]
+    confidence: "high"
+  - existing_id: "es-armada"
+    issue: "« Invincible Armada » est un surnom anglais ; « coup d'arrêt à la domination maritime espagnole » surestime l'effet de l'échec de 1588."
+    proposal: "Parler de l'expédition de 1588 et de son échec ; rappeler que la puissance navale espagnole continue après 1588."
+    sources: ["SRC-008"]
+    confidence: "high"
+  - existing_id: "es-independance"
+    issue: "Le résumé est centré sur la révolution politique et omet la guérilla, les afrancesados et la crise des empires américains."
+    proposal: "Ajouter la guérilla, les afrancesados, les Cortès de Cadix et la dimension coloniale de la crise de 1808."
+    sources: ["SRC-011"]
+    confidence: "high"
+  - existing_id: "es-1898"
+    issue: "« Perte des dernières colonies » est faux : l'Espagne conserve le Río de Oro/Sahara occidental et la Guinée équatoriale et établit plus tard un protectorat au Maroc ; « Désastre » est un label espagnol."
+    proposal: "Écrire « perte de Cuba, Porto Rico, des Philippines et de Guam » ; distinguer 1898 de l'empire africain (Río de Oro, Guinée, protectorat marocain de 1912) ; contextualiser le mot « Désastre »."
+    sources: ["SRC-010", "SRC-009"]
+    confidence: "high"
+  - existing_id: "es-civile"
+    issue: "« Laboratoire des tensions européennes » est un cliché ; la répression des deux camps, les femmes et les dates précises sont absentes."
+    proposal: "Préciser 17 juillet 1936-1er avril 1939 ; ajouter l'intervention allemande, italienne et soviétique, les Brigades internationales et la répression."
+    sources: ["SRC-013", "SRC-014"]
+    confidence: "high"
+  - existing_id: "es-franco"
+    issue: "« Quarante ans » est faux (36 ans) ; « isolement puis développement » masque le prix social et la répression."
+    proposal: "Écrire 1939-1975 ; distinguer autarcie, reconnaissance internationale (1955), Plan de stabilisation (1959), émigration et tourisme ; ne pas présenter le développement comme une réussite neutre."
+    sources: ["SRC-014", "SRC-011"]
+    confidence: "high"
+  - existing_id: "es-constitution"
+    issue: "« Consolide la transition » est vague ; la loi d'amnistie de 1977, les pactes de la Moncloa et le 23-F sont absents."
+    proposal: "Ajouter le référendum du 6 décembre 1978, la loi d'amnistie de 1977, les pactes de 1977 et le coup d'État manqué de 1981."
+    sources: ["SRC-015", "SRC-011"]
+    confidence: "high"
+  - existing_id: "es-catalogne"
+    issue: "Le résumé ne dit pas que le référendum a été suspendu par le Tribunal constitutionnel ; la crise est réduite à un seul jour."
+    proposal: "Préciser le 1er octobre 2017, la suspension constitutionnelle, la déclaration du 27 octobre, les élections de décembre 2017 et la dimension européenne."
+    sources: ["SRC-018"]
+    confidence: "high"
+  - existing_id: "es-cee"
+    issue: "« Modernisation » est téléologique ; l'adhésion à la CEE est présentée comme une réussite sans coûts."
+    proposal: "Ajouter l'adhésion à l'OTAN (1982), le référendum de 1986, les fonds structurels et les ajustements industriels."
+    sources: ["SRC-011"]
+    confidence: "medium"
+
+review:
+  status: "draft"
+  unresolved:
+    - "Date exacte et qualification de la bataille de Guadalete (juillet 711) : les sources divergent sur le jour."
+    - "Historicity de Covadonga : la tradition de 722 n'est pas contemporaine."
+    - "Nombre de Juifs expulsés en 1492 : les estimations varient fortement."
+    - "Nombre de Morisques expulsés (1609-1614) : les estimations varient selon les régions."
+    - "Nombre de victimes de la Grande Rafle de 1749 : les chiffres de 9 000 à 12 000 circulent."
+    - "Bilan exact de l'esclavage et de l'abolition à Cuba : nécessite une source spécialisée supplémentaire."
+    - "Frontière entre autoritarisme et fascisme pour le franquisme : débat historiographique non tranché."
+    - "Bilan mémoriel de la transition : les thèses de l'amnésie et du pacte de silence sont discutées."
+    - "Articulation entre mémoire catalane, mémoire basque et mémoire nationale : nécessite un second lecteur."
+    - "Sources absentes pour l'histoire des femmes avant 1931 et après 1975, pour les sciences et pour l'environnement médiéval."

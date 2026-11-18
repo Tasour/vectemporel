@@ -434,8 +434,8 @@ function renderTrail(parent) {
     }
     trail.appendChild(node);
   });
-  const country = currentCountry();
-  const event = currentEvent();
+  const country = state.view === rootView().id ? null : currentCountry();
+  const event = country ? currentEvent() : null;
   if (country && event) {
     trail.appendChild(el('span', 'rank', `${state.eventIndex + 1} / ${country.events.length} · ${formatYear(event.year)}`));
   }

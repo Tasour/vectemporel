@@ -1,0 +1,180 @@
+schema_version: "1.0"
+country_id: "egypt"
+generated_at: "2026-11-13"
+
+event_updates:
+  - id: "eg-unification"
+    set:
+      subtitle: "Naissance de l’Égypte pharaonique, vers 3100 av. J.-C."
+      summary: "Vers 3100 av. J.-C., la Haute et la Basse-Égypte sont réunies sous un même souverain, au terme d’un processus politique progressif. La date de 3100 av. J.-C. est une convention des égyptologues, qui situent l’unification dans une fourchette de 3200 à 3000 av. J.-C. L’écriture hiéroglyphique, l’administration et l’idéologie pharaonique structurent ensuite une civilisation de trois millénaires."
+    confidence: "high"
+    rationale: "Présente l’unification comme un processus et explicite la convention chronologique, sans modifier la borne de lisibilité de la frise."
+
+  - id: "eg-alexandrie"
+    set:
+      year: -331
+      subtitle: "Fondation d’Alexandre, essor ptolémaïque"
+      summary: "Alexandre le Grand fonde Alexandrie en 331 av. J.-C., après son entrée en Égypte à la fin de 332 av. J.-C. La ville devient un grand centre culturel et commercial sous les Ptolémées, qui y développent la bibliothèque et le phare. Ces institutions sont postérieures à la fondation et ne doivent pas être attribuées à Alexandre."
+      tags: ["politique", "exploration", "sciences"]
+    confidence: "high"
+    rationale: "Corrige la datation de -332 à -331 et distingue la fondation de la ville du développement ptolémaïque de la bibliothèque et du phare."
+
+  - id: "eg-cleopatre"
+    set:
+      title: "Mort de Cléopâtre et annexion romaine de l’Égypte"
+      subtitle: "Actium, Alexandrie et la fin du royaume ptolémaïque"
+      summary: "La flotte de Cléopâtre et d’Antoine est défaite à Actium en 31 av. J.-C. En 30 av. J.-C., Octave prend Alexandrie ; Cléopâtre se donne la mort et l’Égypte devient une province romaine. La défaite navale, la prise de la capitale et l’annexion sont trois moments distincts."
+    confidence: "high"
+    rationale: "Renomme la fiche en événement et sépare Actium, la prise d’Alexandrie et l’annexion romaine."
+
+  - id: "eg-arabes"
+    set:
+      subtitle: "L’Égypte entre dans l’empire arabe"
+      summary: "Les armées arabes entrent en Égypte en 639 et achèvent la conquête en 642 ; la prise d’Alexandrie en 641 en est un épisode. L’Égypte devient une province de l’empire arabe, mais l’islamisation et l’arabisation restent des processus pluriséculaires. Les estimations de bascule démographique entre coptes et musulmans varient selon les méthodes, du IXe au XIVe siècle."
+    confidence: "high"
+    rationale: "Corrige le sous-titre téléologique et précise que la conquête s’étend de 639 à 642 et que l’islamisation est un processus long."
+
+  - id: "eg-caire"
+    set:
+      subtitle: "Fondation fatimide, capitale et al-Azhar"
+      summary: "Les Fatimides fondent al-Qahira en 969 et al-Azhar l’année suivante. En 973, le calife al-Muizz s’y installe et la ville devient la capitale du califat fatimide. Fondation urbaine, capitale califale et institution religieuse sont trois faits distincts."
+      tags: ["politique", "arts", "religion"]
+    confidence: "high"
+    rationale: "Ajoute al-Azhar (970) et l’installation d’al-Muizz (973) et distingue la fondation de la capitale califale."
+
+  - id: "eg-bonaparte"
+    set:
+      subtitle: "Expédition militaire et savante, 1798-1801"
+      summary: "Bonaparte débarque en Égypte en 1798 avec une expédition militaire et scientifique. La pierre de Rosette est découverte en 1799 à Rachid, puis cédée aux Britanniques en 1801 après la capitulation française. L’expédition se retire la même année, mais ses savants et leurs publications nourrissent durablement l’égyptologie."
+    confidence: "high"
+    rationale: "Sépare l’expédition de 1798, la découverte de la pierre en 1799, son transfert et le retrait français de 1801."
+
+  - id: "eg-suez"
+    set:
+      subtitle: "Inauguration du canal, corvée et dette"
+      summary: "Le canal de Suez est inauguré en 1869 ; il raccourcit la route maritime entre l’Europe et l’Asie, sans la créer. Sa construction mobilise la corvée de travailleurs égyptiens, dans des conditions sanitaires dures, avec une mortalité mal documentée. La dette du khédivat conduit à la vente des actions égyptiennes en 1875, puis à l’occupation britannique en 1882."
+      tags: ["economie", "sciences", "politique"]
+    confidence: "high"
+    rationale: "Retire la formulation téléologique sur la route des Indes et intègre la corvée, les travailleurs, la dette, la vente des actions et l’occupation de 1882. Le chiffre de 120 000 morts souvent cité reste invérifiable ; le résumé signale une mortalité mal documentée."
+
+  - id: "eg-independance"
+    set:
+      subtitle: "Fin du protectorat et quatre points réservés"
+      summary: "Le 28 février 1922, Londres proclame unilatéralement la fin du protectorat et l’Égypte devient un royaume indépendant. Quatre matières restent réservées à la Grande-Bretagne : les communications impériales, la défense, la protection des intérêts étrangers et des minorités, et le Soudan. La souveraineté reste incomplète jusqu’en 1936, et la présence militaire britannique se maintient dans la zone du canal jusqu’en 1956."
+    confidence: "high"
+    rationale: "Précise la déclaration unilatérale du 28 février 1922 et les quatre points réservés, au lieu de présenter une indépendance pleine."
+
+  - id: "eg-nasser"
+    set:
+      title: "Les officiers libres au pouvoir"
+      subtitle: "Coup d’État, réforme agraire et avènement de Nasser"
+      summary: "Le 23 juillet 1952, les Officiers libres renversent le roi Farouk ; le régime présente l’opération comme une révolution, tandis que les historiens la qualifient de coup d’État. Le général Naguib devient président de la République en 1953, puis Nasser s’impose après la crise de 1954 et est confirmé président par référendum en 1956. La réforme agraire de septembre 1952 plafonne les propriétés à 200 feddans, tandis que les femmes obtiennent le droit de vote en 1956."
+      tags: ["politique", "societe"]
+    confidence: "high"
+    rationale: "Distingue le coup de 1952, la présidence de Naguib en 1953, la crise de 1954 et l’élection de Nasser en 1956 ; ajoute la réforme agraire et le suffrage féminin."
+
+  - id: "eg-suez-crise"
+    set:
+      subtitle: "Nationalisation, invasion et retrait"
+      summary: "Le 26 juillet 1956, Nasser nationalise le canal de Suez. Israël envahit le Sinaï le 29 octobre ; la France et le Royaume-Uni débarquent à Port-Saïd en novembre. Les pressions américaine et soviétique imposent un retrait de décembre 1956 à mars 1957, qui renforce Nasser."
+    confidence: "high"
+    rationale: "Ajoute la date de la nationalisation et le calendrier précis de l’intervention et du retrait."
+
+  - id: "eg-paix"
+    set:
+      subtitle: "Camp David, prix Nobel et traité de Washington"
+      summary: "Les accords de Camp David sont signés en septembre 1978 et valent à Sadate et Begin le prix Nobel de la paix la même année. Le traité de paix égypto-israélien est signé à Washington le 26 mars 1979. Cette paix séparée isole l’Égypte dans le monde arabe et entraîne sa suspension de la Ligue arabe."
+    confidence: "high"
+    rationale: "Distingue Camp David (septembre 1978), le prix Nobel (1978) et le traité de Washington (26 mars 1979), et qualifie la paix de séparée."
+
+  - id: "eg-tahrir"
+    set:
+      subtitle: "Révolution, transition et coup militaire"
+      summary: "Des manifestations massives place Tahrir provoquent la chute de Hosni Moubarak en février 2011. Mohamed Morsi, élu président en 2012 et premier civil à occuper la fonction, est déposé par l’armée le 3 juillet 2013. Le 14 août, les forces de sécurité dispersent le sit-in de Rabaa al-Adawiya, tuant au moins 817 personnes selon Human Rights Watch."
+    confidence: "high"
+    rationale: "Prolonge la fiche jusqu’en 2013 et distingue la chute de Moubarak, l’élection de Morsi, le coup militaire et la dispersion de Rabaa. Le chiffre de 817 morts est celui de Human Rights Watch ; les bilans officiels et associatifs divergent."
+
+  - id: "eg-ramses"
+    set:
+      subtitle: "Qadesh, Abou Simbel et le traité hittite"
+      summary: "Ramsès II règne de 1279 à 1213 av. J.-C., soit environ 66 ans. Il affronte les Hittites à Qadesh vers 1274, puis conclut avec eux un traité de paix, et fait construire de nombreux monuments, dont Abou Simbel. Son règne est marqué par une propagande royale intense et par les limites de la puissance égyptienne en Syrie."
+      tags: ["politique", "guerre", "arts"]
+    confidence: "high"
+    rationale: "Présente la durée du règne comme approximative, ajoute Qadesh et le traité hittite, et remplace le jugement d’apogée par une description des réalisations et des limites."
+
+  - id: "eg-akhenaton"
+    set:
+      subtitle: "Aton, Amarna et le débat sur le monothéisme"
+      summary: "Vers 1350 av. J.-C., Akhenaton impose le culte du disque solaire Aton et fonde une nouvelle capitale, Akhetaton, sur le site d’Amarna. Son règne religieux radical est suivi d’un retour à l’ordre traditionnel. Les historiens discutent de la nature exacte de ce culte et du bien-fondé du terme monothéisme."
+    confidence: "high"
+    rationale: "Rend la datation approximative, précise Akhetaton/Amarna et présente le débat sur le monothéisme atonien."
+
+event_additions:
+  - id: "eg-prop-012"
+    year: 1882
+    end_year: null
+    title: "Occupation britannique de l’Égypte"
+    subtitle: "Urabi, Alexandrie et Tell el-Kebir"
+    tags: ["guerre", "politique", "economie"]
+    importance: 3
+    summary: "Le mouvement d’Ahmed Urabi conteste la tutelle européenne et l’absolutisme khédivial. En juillet 1882, les Britanniques bombardent Alexandrie ; le 13 septembre, ils écrasent l’armée égyptienne à Tell el-Kebir. L’occupation britannique commence et dure, sous des formes variables, jusqu’au retrait de 1956."
+    related: ["eg-suez", "eg-independance"]
+    sources: ["SRC-011", "SRC-012"]
+    confidence: "high"
+    rationale: "Comble la rupture impériale majeure entre 1869 et 1922 et relie la dette, le canal et le nationalisme égyptien."
+
+  - id: "eg-prop-013"
+    year: 1919
+    end_year: null
+    title: "Révolution de 1919"
+    subtitle: "Le Wafd, les paysans et la rue égyptienne"
+    tags: ["politique", "societe", "economie"]
+    importance: 3
+    summary: "L’arrestation de Saad Zaghloul et des dirigeants du Wafd en mars 1919 déclenche une révolution nationale. Étudiants, ouvriers, paysans, femmes et coptes participent au mouvement ; la répression tue au moins 800 personnes. La révolution force Londres à proclamer l’indépendance en 1922, avec quatre points réservés."
+    related: ["eg-independance"]
+    sources: ["SRC-013", "SRC-011"]
+    confidence: "high"
+    rationale: "Événement central absent de la frise, qui explique 1922, la Constitution de 1923 et la mobilisation des paysans et des femmes. Le bilan de 800 morts est le chiffre officiel ; d’autres estimations vont jusqu’à 3 000."
+
+  - id: "eg-prop-014"
+    year: 1923
+    end_year: null
+    title: "Union féministe égyptienne"
+    subtitle: "Suffrage, statut personnel et nationalisme"
+    tags: ["societe", "politique"]
+    importance: 2
+    summary: "En mars 1923, Hoda Shaarawi et des femmes de l’élite fondent l’Union féministe égyptienne. L’organisation revendique le droit de vote, la réforme du statut personnel et l’éducation des filles. La Constitution de 1923 ne garantit pas le suffrage des femmes, qui ne l’obtiennent qu’en 1956, de façon restrictive jusqu’en 1979."
+    related: ["eg-independance", "eg-nasser"]
+    sources: ["SRC-014", "SRC-013"]
+    confidence: "high"
+    rationale: "Ajoute une histoire des femmes organisée et explique le retard du suffrage, au-delà des seules figures monarchiques."
+
+  - id: "eg-prop-015"
+    year: 1963
+    end_year: 1964
+    title: "Déplacement des Nubiens"
+    subtitle: "Le haut barrage d’Assouan et la fin de la Nubie égyptienne"
+    tags: ["societe", "economie", "sciences"]
+    importance: 2
+    summary: "La construction du haut barrage d’Assouan inonde la vallée nubienne entre Assouan et la frontière soudanaise. Environ 50 000 Nubiens égyptiens sont relogés à Kom Ombo en 1963-1964 ; 44 villages et des millions de palmiers disparaissent. L’UNESCO sauve les monuments, mais pas les villages."
+    related: ["eg-nasser"]
+    sources: ["SRC-018", "SRC-011"]
+    confidence: "high"
+    rationale: "Comble l’angle mort nubien et relie infrastructure, environnement et minorités, avec un lieu hors capitale. Le chiffre d’environ 50 000 Nubiens égyptiens est celui du dossier ; les estimations varient selon les périmètres."
+
+era_updates:
+  - name: "Égypte moderne"
+    set:
+      name: "Égypte moderne et coloniale"
+    confidence: "high"
+    rationale: "Le nom actuel masque la dimension impériale et coloniale de 1798-1952 ; le renommage est demandé par l’audit sans modifier les bornes."
+
+unresolved:
+  - id: "periodization-islamic-split"
+    reason: "Scission de l’ère islamique en 641-1517 et 1517-1798 proposée par l’audit, avec une variante en trois parties ; elle relève d’un periodization redesign, interdit dans era_updates."
+  - id: "periodization-contemporary-subperiods"
+    reason: "Sous-périodes 1952-1970, 1970-1981, 1981-2011 et 2011-2026 à ajouter, avec la question de 2011 ou 2013 comme borne ; elles exigent un periodization redesign et ne peuvent pas être créées par un simple renommage."
+  - id: "periodization-modern-boundary"
+    reason: "Débat sur la borne de 1798 et les alternatives 1805 et 1882 ; tout déplacement de borne demande un periodization redesign."
+  - id: "eg-proposals-deferred"
+    reason: "PROP-016 (1967) et PROP-017 (1977) ne sont pas des ajouts autonomes : le plafond de quatre ajouts est atteint. PROP-018 (Rabaa, 2013) est intégré à la fiche eg-tahrir sans fiche séparée."

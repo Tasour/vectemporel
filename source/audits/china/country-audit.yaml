@@ -1,0 +1,1046 @@
+# Vectemporel — dossier pays Chine (méthode v1.0)
+# Audit de première version, non signé. Les scores restent null et le verdict pending.
+# Aucune source n'est inventée : les identifiants renvoient à source-register.csv.
+
+schema_version: "1.0"
+
+country:
+  id: "china"
+  iso2: "CN"
+  iso3: "CHN"
+  name_current: "République populaire de Chine"
+  names_historical:
+    - "中国 (Zhōngguó)"
+    - "中华人民共和国 (Zhōnghuá Rénmín Gònghéguó, 1949-)"
+    - "中華民國 (Zhōnghuá Mínguó, 1912-1949 ; continue à Taïwan après 1949)"
+    - "大清 (Dà Qīng, 1644-1912)"
+    - "Chine / China (exonymes européens)"
+  flag: "🇨🇳"
+
+scope:
+  territory_current: >-
+    République populaire de Chine : Chine continentale, Hong Kong et Macao (régions
+    administratives spéciales). Taïwan, revendiquée par la RPC, est gouvernée séparément
+    par la République de Chine ; elle est traitée dans ce dossier comme une histoire
+    distincte à documenter, sans préjuger de son statut politique. Les frontières
+    terrestres et maritimes contestées (Aksai Chin, Doklam, mer de Chine méridionale)
+    sont signalées, pas résolues.
+  territories_historical:
+    - "Empire Qing (1644-1912), y compris la Mandchourie, la Mongolie-Intérieure, le Tibet dans l'orbite Qing et le Xinjiang conquis en 1755-1759"
+    - "Taïwan sous administration Qing (1683-1895), colonie japonaise (1895-1945), puis administration de la République de Chine (1945-)"
+    - "Hong Kong britannique (1842-1997) et Macao portugais (1557-1999)"
+    - "Ports ouverts et concessions étrangères (1842-1945)"
+    - "Mandchoukouo (1932-1945)"
+    - "République de Chine (1912-1949), dont les territoires revendiqués dépassent les frontières actuelles"
+  regions_autonomous:
+    - "Tibet (région autonome, 1965)"
+    - "Xinjiang ouïghour (1955)"
+    - "Mongolie-Intérieure (1947)"
+    - "Guangxi zhuang (1958)"
+    - "Ningxia hui (1958)"
+  populations_included:
+    - "Han et 55 groupes ethniques reconnus par la RPC"
+    - "Populations rurales et urbaines, travailleurs migrants (nongmingong), jeunes instruits (zhiqing)"
+    - "Femmes, minorités religieuses, populations frontalières"
+    - "Diasporas chinoises et communautés de Hong Kong, Macao et Taïwan"
+  populations_excluded:
+    - "Taïwan : hors du périmètre étatique de la RPC, traitée comme histoire distincte, à documenter séparément"
+    - "Territoires contestés dont les populations ne sont pas couvertes faute de sources croisées"
+    - "Personnes sans statut hukou, sous-représentées dans les sources statistiques"
+  diasporas:
+    - "Asie du Sud-Est (Malaisie, Indonésie, Singapour, Thaïlande, Vietnam)"
+    - "Amérique du Nord, Europe, Afrique, Océanie"
+    - "Diasporas taïwanaises et hongkongaises"
+  temporal:
+    start_edtf: "-1600"
+    end_edtf: "2026"
+    start_rationale: >-
+      Date conventionnelle du début des Shang. La datation est débattue : les plus
+      anciennes écritures chinoises abondantes proviennent d'Anyang (vers -1250), et
+      l'identification d'Erlitou comme capitale Xia ou Shang reste contestée. La borne
+      -1600 est conservée comme repère éditorial, avec une certitude « probable ».
+    end_rationale: >-
+      2026 est l'année de l'audit. Les événements postérieurs à 2024 sont provisoires,
+      soumis à révision et à des sources indépendantes supplémentaires.
+  unit_of_analysis: "fiche-événement et fiche-processus"
+  inclusion_criteria:
+    - "Événements qui modifient les institutions, le territoire, les rapports sociaux ou les représentations"
+    - "Processus longs découpés en fiches datées (famine, Révolution culturelle, réformes)"
+    - "Au moins un lieu hors de la capitale par période"
+    - "Femmes, minorités, classes populaires, environnement et migrations documentés explicitement"
+  exclusion_criteria:
+    - "Faits locaux sans résonance documentaire ou mémorielle"
+    - "Rumeurs, chiffres non corroborés, contenus génératifs non vérifiés"
+    - "Événements récents sans source indépendante ; ils restent en file de revue"
+    - "Détails biographiques sans portée structurelle"
+  audience:
+    - "grand public"
+    - "scolaire"
+    - "diasporas"
+    - "recherche"
+  evidence_threshold: "deux sources indépendantes par fiche, ou exception documentée"
+
+governance:
+  editor: ""
+  country_reader: ""
+  method_reader: ""
+  arbiter: ""
+  data_steward: ""
+  sensitivity_expert: ""
+  responsible_editor: ""
+  conflicts_of_interest: []
+
+historiography:
+  schools:
+    - "Histoire politique et dynastique (chronologie impériale, institutions)"
+    - "Histoire marxiste chinoise (formation sociale, luttes de classes, téléologie révolutionnaire)"
+    - "New Qing History (historicisation de la conquête mandchoue et des frontières)"
+    - "Histoire sociale (paysans, ouvriers, familles, vie quotidienne)"
+    - "Histoire des femmes et du genre"
+    - "Histoire environnementale"
+    - "Histoire globale et connectée (Asie centrale, routes maritimes, diasporas)"
+    - "Études tibétaines, ouïghoures, mongoles et taiwanaises"
+    - "Histoire de la mémoire et des usages politiques du passé"
+  national_narratives:
+    - "Cinq mille ans de civilisation continue"
+    - "Cycle dynastique et mandat du Ciel"
+    - "Siècle d'humiliation (1842-1949) et renaissance nationale"
+    - "Unification d'un État multiethnique sous direction du PCC"
+    - "Grande renaissance de la nation chinoise"
+    - "Socialisme à caractéristiques chinoises"
+  counter_narratives:
+    - "Histoires régionales et provinciales contre le récit de la capitale"
+    - "Histoires tibétaine, ouïghoure, mongole et zhuang"
+    - "Histoire de Taïwan et de Hong Kong"
+    - "Mémoires de la famine, de la Révolution culturelle et de 1989"
+    - "Histoire des femmes et critique du patriarcat"
+    - "Histoire environnementale et critique de la croissance"
+    - "Histoires des diasporas et des populations frontalières"
+    - "Critique de l'orientalisme et du nationalisme méthodologique"
+  structuring_debates:
+    - "Datation des Shang et statut de la Xia / Erlitou"
+    - "Périodisation de l'Empire : unité dynastique ou succession de régimes et de divisions"
+    - "New Qing History contre historiographie officielle chinoise"
+    - "Bilan humain de la famine de 1958-1961"
+    - "Interprétation de la Révolution culturelle : chaos ou projet politique"
+    - "Bilan et qualification de 1989"
+    - "Statut du Tibet et du Xinjiang"
+    - "Statut de Taïwan et de Hong Kong"
+    - "Great Divergence et explication de la croissance chinoise"
+    - "Construction coloniale des catégories ethniques (56 nationalités)"
+  blind_spots:
+    - "Femmes ordinaires, travail domestique, sexualités"
+    - "Paysans, ouvriers, migrants et populations sans hukou"
+    - "Minorités ethniques et religieuses"
+    - "Handicap et santé mentale"
+    - "Environnement, catastrophes et résilience"
+    - "Mémoire de la famine, de la Révolution culturelle et de 1989"
+    - "Taïwan, Hong Kong, Tibet et Xinjiang dans la longue durée"
+    - "Diasporas et circulations transfrontalières"
+    - "Histoire locale hors Pékin et hors capitales impériales"
+  key_syntheses:
+    - "SRC-001"
+    - "SRC-002"
+    - "SRC-003"
+    - "SRC-008"
+    - "SRC-013"
+    - "SRC-017"
+
+periodizations:
+  - id: "POL-1"
+    label: "Cinq ères Vectemporel (périodisation éditoriale actuelle)"
+    type: "political"
+    start_edtf: "-1600"
+    end_edtf: "2026"
+    rationale: >-
+      Macro-périodisation lisible pour la navigation : fondation dynastique, empire,
+      République, Chine populaire, réforme. Elle privilégie la souveraineté et les
+      régimes, au prix d'une sous-périodisation des divisions impériales et de la
+      période 1912-1949.
+    sources: ["SRC-001", "SRC-002", "SRC-008", "SRC-013"]
+    selected: true
+  - id: "POL-2"
+    label: "Périodisation dynastique et impériale"
+    type: "political"
+    start_edtf: "-1600"
+    end_edtf: "1912"
+    rationale: >-
+      Découpe par dynasties (Shang, Zhou, Qin, Han, divisions, Sui-Tang, Song, Yuan,
+      Ming, Qing). Plus fidèle aux institutions et aux légitimités impériales, mais
+      elle masque les continuités sociales et les périodes de fragmentation.
+    sources: ["SRC-001", "SRC-020"]
+    selected: false
+  - id: "POL-3"
+    label: "République et révolutions (1895-1949)"
+    type: "political"
+    start_edtf: "1895"
+    end_edtf: "1949"
+    rationale: >-
+      Périodisation centrée sur la crise impériale, la révolution de 1911, la
+      construction du parti-État, la guerre sino-japonaise et la guerre civile.
+      Elle permet de traiter 1912-1949 comme une séquence autonome, aujourd'hui vide.
+    sources: ["SRC-002", "SRC-003", "SRC-004"]
+    selected: false
+  - id: "SOC-1"
+    label: "Croissance agraire, pression démographique, industrialisation"
+    type: "social_economic"
+    start_edtf: "1000"
+    end_edtf: "2026"
+    rationale: >-
+      Périodisation par les régimes démographiques et économiques : révolution
+      commerciale Song, croissance démographique Qing, industrialisation tardive,
+      collectivisation, réformes et urbanisation. Elle fait apparaître les paysans,
+      les migrants et les inégalités, absents du récit politique.
+    sources: ["SRC-001", "SRC-014", "SRC-017"]
+    selected: false
+  - id: "CULT-1"
+    label: "Bouddhisme, néo-confucianisme, sécularisation, révolution culturelle"
+    type: "cultural_religious_environmental"
+    start_edtf: "0100"
+    end_edtf: "2026"
+    rationale: >-
+      Périodisation par les configurations religieuses et culturelles : diffusion du
+      bouddhisme, synthèse néo-confucéenne, crises et sécularisations du XXe siècle,
+      Révolution culturelle, recompositions religieuses contemporaines. Elle inclut
+      aussi les ruptures environnementales (fleuve Jaune, déforestation, pollution).
+    sources: ["SRC-001", "SRC-017"]
+    selected: false
+
+periods:
+  - id: "PERIOD-1"
+    label: "Dynasties fondatrices"
+    start_edtf: "-1600"
+    end_edtf: "-221"
+    boundary_type: "political"
+    boundary_rationale: >-
+      Borne conventionnelle : début des Shang selon la chronologie traditionnelle,
+      puis unification Qin en -221. La borne est discutée (Anyang vers -1250, Erlitou,
+      projet Xia-Shang-Zhou) et le label « fondatrices » est téléologique.
+    alternatives_considered:
+      - "-1250 (premières inscriptions abondantes à Anyang)"
+      - "-1046 (bataille de Muye, changement dynastique Zhou)"
+      - "-771 (fin des Zhou occidentaux)"
+      - "-453 (début conventionnel des Royaumes combattants)"
+    sources: ["SRC-001"]
+  - id: "PERIOD-2"
+    label: "Empire unifié"
+    start_edtf: "-221"
+    end_edtf: "1912"
+    boundary_type: "political"
+    boundary_rationale: >-
+      De l'unification Qin à l'abdication Qing. La continuité du label masque les
+      périodes de division (Trois Royaumes, dynasties du Nord et du Sud, Cinq
+      Dynasties, partition Song-Jin) et la nature changeante de l'empire.
+    alternatives_considered:
+      - "220 (fin des Han, début des divisions)"
+      - "589 (réunification Sui)"
+      - "907 (fin des Tang)"
+      - "1279 (conquête Yuan de la Chine du Sud)"
+      - "1644 (entrée des Qing à Pékin)"
+    sources: ["SRC-001"]
+  - id: "PERIOD-3"
+    label: "République et révolutions"
+    start_edtf: "1912"
+    end_edtf: "1949"
+    boundary_type: "political"
+    boundary_rationale: >-
+      De la proclamation de la République de Chine à la fondation de la RPC. La
+      période est la plus mal couverte : aucune fiche existante, alors qu'elle
+      concentre la chute de l'empire, la construction du parti-État, la guerre et
+      la révolution.
+    alternatives_considered:
+      - "1895 (défaite sino-japonaise, réformes et révolution)"
+      - "1927 (rupture KMT-PCC, décennie de Nanjing)"
+      - "1937 (guerre totale sino-japonaise)"
+      - "1945 (fin de la guerre, reprise de la guerre civile)"
+    sources: ["SRC-002", "SRC-003", "SRC-004"]
+  - id: "PERIOD-4"
+    label: "Chine populaire"
+    start_edtf: "1949"
+    end_edtf: "1978"
+    boundary_type: "political"
+    boundary_rationale: >-
+      De la fondation de la RPC au troisième plénum du XIe Comité central (décembre
+      1978). La borne de 1978 est politique et économique ; elle ne coïncide pas avec
+      la fin des politiques maoïstes dans tous les domaines.
+    alternatives_considered:
+      - "1958 (Grand Bond en avant)"
+      - "1966 (Révolution culturelle)"
+      - "1976 (mort de Mao)"
+    sources: ["SRC-007", "SRC-008"]
+  - id: "PERIOD-5"
+    label: "Réforme et puissance"
+    start_edtf: "1978"
+    end_edtf: "2026"
+    boundary_type: "political"
+    boundary_rationale: >-
+      Du troisième plénum à 2026. La période est trop longue pour un seul repère :
+      elle contient 1989, 1997, 2001, 2008 et 2020, qui ne sont pas dans la frise.
+    alternatives_considered:
+      - "1989 (répression de Tiananmen)"
+      - "1992 (voyage de Deng dans le Sud)"
+      - "2001 (entrée à l'OMC)"
+      - "2012 (arrivée de Xi Jinping)"
+    sources: ["SRC-013", "SRC-014"]
+
+coverage:
+  matrix_file: "coverage-matrix.csv"
+  omissions_file: "omissions.yaml"
+  target_threshold: "90 % des cellules couvertes ou justifiées"
+  status_summary:
+    covered: 0
+    partial: 51
+    justified_empty: 0
+    untreated_empty: 19
+  known_omissions:
+    - "OM-001"
+    - "OM-002"
+    - "OM-003"
+    - "OM-004"
+    - "OM-005"
+    - "OM-006"
+    - "OM-007"
+    - "OM-008"
+    - "OM-009"
+    - "OM-010"
+    - "OM-011"
+    - "OM-012"
+    - "OM-013"
+    - "OM-014"
+    - "OM-015"
+
+actors:
+  - id: "ACTOR-001"
+    label: "Sun Yat-sen (1866-1925)"
+    type: "individual"
+    roles: ["révolutionnaire", "président provisoire de la République (1912)", "fondateur du Kuomintang"]
+    period_ids: ["ERA-3"]
+    places: ["PLACE-002", "PLACE-003", "PLACE-007"]
+    resources:
+      - "Réseaux de la Tongmenghui et du Kuomintang"
+      - "Soutien des Chinois d'outre-mer et de militants japonais"
+      - "Légitimité de père de la République"
+    constraints:
+      - "Absence d'armée propre face à Yuan Shikai et aux seigneurs de la guerre"
+      - "Dépendance financière et diplomatique"
+      - "Fragmentation du mouvement révolutionnaire"
+    networks:
+      - "Huang Xing, Song Jiaoren, Hu Hanmin"
+      - "Communautés chinoises de Honolulu, Tokyo, Singapour"
+      - "Cercles libéraux et chrétiens"
+    counterpowers:
+      - "Yuan Shikai et l'armée de Beiyang"
+      - "Loyalistes Qing, puis gouvernements de Pékin"
+      - "Puissances étrangères"
+    assessment: >-
+      Figure fondatrice du républicanisme chinois, mais son pouvoir fut fragile et
+      dépendant de compromis. La République de 1912 est moins une œuvre achevée
+      qu'un compromis entre révolutionnaires, élites provinciales et armée.
+    memory: >-
+      Commémoré à Taïwan comme père de la nation et en RPC comme révolutionnaire
+      précurseur ; les usages politiques divergent.
+    sources: ["SRC-001", "SRC-002"]
+  - id: "ACTOR-002"
+    label: "Soong Ching-ling / Song Qingling (1893-1981)"
+    type: "individual"
+    roles: ["épouse de Sun Yat-sen", "dirigeante de la gauche du Kuomintang", "haute responsable de la RPC"]
+    period_ids: ["ERA-3", "ERA-4"]
+    places: ["PLACE-003", "PLACE-001"]
+    resources:
+      - "Prestige lié à Sun Yat-sen"
+      - "Réseaux familiaux Soong et internationaux"
+      - "Engagement dans les organisations de femmes et d'enfance"
+    constraints:
+      - "Marginalisation par la droite du KMT"
+      - "Discipline de parti et contrôle politique en RPC"
+      - "Rôle largement symbolique"
+    networks:
+      - "Sun Yat-sen, KMT de gauche, PCC"
+      - "Organisations de bienfaisance et de femmes"
+      - "Milieux internationalistes"
+    counterpowers:
+      - "Chiang Kai-shek et la droite du KMT"
+      - "Appareil du PCC"
+    assessment: >-
+      Passeuse entre le républicanisme et la RPC, elle est utilisée comme symbole
+      d'unité. Son influence réelle fut limitée par les contraintes de parti et de genre.
+    memory: >-
+      Présidente honoraire de la RPC en 1981 ; commémorations officielles, usages
+      dans les récits de front uni.
+    sources: ["SRC-001", "SRC-008"]
+  - id: "ACTOR-003"
+    label: "Qiu Jin (1875-1907)"
+    type: "individual"
+    roles: ["révolutionnaire", "féministe", "écrivaine", "martyre républicaine"]
+    period_ids: ["ERA-2", "ERA-3"]
+    places: []
+    resources:
+      - "Réseaux d'étudiantes et d'exilés au Japon"
+      - "Sociétés secrètes et groupes révolutionnaires"
+      - "Production littéraire et journalisme"
+    constraints:
+      - "Normes de genre et contrôle familial"
+      - "Police impériale Qing"
+      - "Faible base militaire"
+    networks:
+      - "Xu Xilin, groupes révolutionnaires de Shaoxing"
+      - "Étudiantes chinoises à Tokyo"
+      - "Tongmenghui"
+    counterpowers:
+      - "État Qing"
+      - "Patriarcat familial et élites lettrées"
+    assessment: >-
+      Figure de la révolution et du féminisme naissant, exécutée après une tentative
+      d'insurrection. Son action précède 1911 et ne se réduit pas à une icône.
+      Shaoxing et Tokyo, ses principaux lieux d'action, manquent dans la liste des
+      douze lieux proposés : dette à corriger.
+    memory: >-
+      Martyre commémorée en RPC ; tombeau à Hangzhou, usages scolaires et féministes.
+    sources: ["SRC-001", "SRC-002"]
+  - id: "ACTOR-004"
+    label: "Ding Ling (1904-1986)"
+    type: "individual"
+    roles: ["écrivaine", "militante communiste", "figure du féminisme littéraire"]
+    period_ids: ["ERA-3", "ERA-4"]
+    places: ["PLACE-003", "PLACE-001"]
+    resources:
+      - "Notoriété littéraire"
+      - "Réseaux intellectuels et féminins"
+      - "Adhésion au PCC"
+    constraints:
+      - "Discipline de parti et campagnes de rectification"
+      - "Censure et purges"
+      - "Exil intérieur et prison"
+    networks:
+      - "Hu Yepin, Lu Xun, cercles littéraires de Shanghai"
+      - "Appareil culturel du PCC"
+    counterpowers:
+      - "KMT et censure nationaliste"
+      - "Directions du PCC lors des campagnes"
+    assessment: >-
+      Autrice majeure des années 1920-1930, elle incarne les tensions entre
+      émancipation féminine et discipline révolutionnaire. Purge en 1955, exil,
+      prison pendant la Révolution culturelle, réhabilitée en 1979.
+    memory: >-
+      Réhabilitée et célébrée comme écrivaine progressiste ; son féminisme est
+      souvent édulcoré dans les commémorations officielles.
+    sources: ["SRC-001", "SRC-007"]
+  - id: "ACTOR-005"
+    label: "Mao Zedong (1893-1976)"
+    type: "individual"
+    roles: ["fondateur de la RPC", "président du PCC", "théoricien politique"]
+    period_ids: ["ERA-3", "ERA-4"]
+    places: ["PLACE-008", "PLACE-001", "PLACE-003"]
+    resources:
+      - "Parti, armée rouge, bases rurales"
+      - "Légitimité révolutionnaire et propagande"
+      - "Culte de la personnalité"
+    constraints:
+      - "Concurrence du KMT et du Japon"
+      - "Factions du parti et contraintes soviétiques"
+      - "Économie agraire et pénurie de cadres"
+    networks:
+      - "Zhou Enlai, Liu Shaoqi, Zhu De, Lin Biao"
+      - "Jiang Qing et cercles radicaux"
+      - "Réseaux paysans et militaires"
+    counterpowers:
+      - "KMT, États-Unis, URSS"
+      - "Oppositions internes au parti"
+      - "Résistances paysannes et ouvrières"
+    assessment: >-
+      Artisan de la révolution et de l'État-parti, il porte aussi la responsabilité
+      du Grand Bond, de la famine et de la Révolution culturelle. Le bilan est
+      indissociablement constitutif et destructeur.
+    memory: >-
+      Mausolée à Pékin, pensée Mao Zedong au centre du canon officiel ; mémoires
+      critiques et commémorations contestées.
+    sources: ["SRC-001", "SRC-008", "SRC-009"]
+  - id: "ACTOR-006"
+    label: "Chiang Kai-shek (1887-1975)"
+    type: "individual"
+    roles: ["chef du Kuomintang", "président de la République de Chine", "commandant militaire"]
+    period_ids: ["ERA-3", "ERA-4"]
+    places: ["PLACE-002", "PLACE-005", "PLACE-003"]
+    resources:
+      - "Académie militaire de Whampoa"
+      - "Parti-État du KMT et armée"
+      - "Aide américaine"
+    constraints:
+      - "Seigneurs de la guerre et fragmentation"
+      - "PCC et opposition de gauche"
+      - "Corruption, inflation et érosion du soutien populaire"
+    networks:
+      - "Famille Soong, frères Chen, généraux du KMT"
+      - "États-Unis, diplomatie alliée"
+      - "Élites provinciales"
+    counterpowers:
+      - "PCC et armées communistes"
+      - "Wang Jingwei et la gauche du KMT"
+      - "Étudiants, ouvriers, régions autonomes"
+    assessment: >-
+      Bâtisseur d'un parti-État autoritaire et modernisateur inégal, il perd la
+      guerre civile et installe le régime du KMT à Taïwan. Son bilan inclut la
+      répression politique et les compromis avec les élites locales.
+    memory: >-
+      Commémoré à Taïwan, contesté en RPC ; les récits divergent sur la guerre,
+      la terreur blanche et la modernisation.
+    sources: ["SRC-001", "SRC-002"]
+  - id: "ACTOR-007"
+    label: "Deng Xiaoping (1904-1997)"
+    type: "individual"
+    roles: ["dirigeant suprême", "architecte des réformes", "ancien secrétaire général du PCC"]
+    period_ids: ["ERA-4", "ERA-5"]
+    places: ["PLACE-001", "PLACE-003"]
+    resources:
+      - "Réseaux du parti et de l'armée"
+      - "Légitimité de vétéran révolutionnaire"
+      - "Coalition réformiste"
+    constraints:
+      - "Héritage maoïste et elders conservateurs"
+      - "Crise de 1989 et légitimité du parti"
+      - "Inégalités et tensions sociales"
+    networks:
+      - "Zhao Ziyang, Hu Yaobang, Chen Yun"
+      - "Investisseurs étrangers et technocrates"
+      - "Cadres provinciaux"
+    counterpowers:
+      - "Aile conservatrice du parti"
+      - "Mouvements étudiants et ouvriers"
+      - "Armée et sécurité"
+    assessment: >-
+      Il engage l'ouverture et la croissance, mais maintient le monopole du parti
+      et ordonne la répression de 1989. Le « miracle » économique est inséparable
+      d'inégalités, de migrations massives et de coûts environnementaux.
+    memory: >-
+      « Architecte de la Chine moderne » dans le récit officiel ; mémoire critique
+      chez les victimes de 1989 et les militants des droits.
+    sources: ["SRC-013", "SRC-014"]
+  - id: "ACTOR-008"
+    label: "14e dalaï-lama (Tenzin Gyatso, né en 1935)"
+    type: "individual"
+    roles: ["chef religieux tibétain", "ancien dirigeant temporel du Tibet", "figure de l'exil"]
+    period_ids: ["ERA-4", "ERA-5"]
+    places: ["PLACE-011"]
+    resources:
+      - "Autorité religieuse et prestige international"
+      - "Institutions tibétaines en exil"
+      - "Réseaux de soutien occidentaux"
+    constraints:
+      - "Non-reconnaissance par la RPC"
+      - "Division de la communauté tibétaine en exil"
+      - "Absence de souveraineté étatique reconnue"
+    networks:
+      - "Administration centrale tibétaine à Dharamsala"
+      - "Gouvernements et ONG occidentaux"
+      - "Communauté tibétaine transnationale"
+    counterpowers:
+      - "État chinois et cadres tibétains"
+      - "Panchen Lama reconnu par Pékin"
+      - "Nationalismes concurrents"
+    assessment: >-
+      Autorité religieuse majeure et acteur politique de l'exil, il défend une
+      autonomie négociée et la non-violence. Son statut et celui du Tibet restent
+      profondément contestés.
+    memory: >-
+      Icône internationale des droits humains ; dénoncé par la RPC comme séparatiste.
+    sources: ["SRC-016", "SRC-001"]
+  - id: "ACTOR-009"
+    label: "Parti communiste chinois (PCC)"
+    type: "collective"
+    roles: ["parti-État", "organisation dirigeante", "appareil idéologique et administratif"]
+    period_ids: ["ERA-3", "ERA-4", "ERA-5"]
+    places: ["PLACE-003", "PLACE-008", "PLACE-001"]
+    resources:
+      - "Monopole politique et militaire"
+      - "Appareil de propagande et de cadres"
+      - "Contrôle de l'économie et de la sécurité"
+    constraints:
+      - "Légitimation par la croissance et la stabilité"
+      - "Factions et héritages de campagne"
+      - "Pression internationale et contestations locales"
+    networks:
+      - "Armée populaire de libération"
+      - "Organisations de masse (femmes, jeunesse, syndicats)"
+      - "Entreprises d'État et administrations"
+    counterpowers:
+      - "Société civile, minorités, mouvements de protestation"
+      - "Puissances étrangères et opinions publiques"
+    assessment: >-
+      Acteur central de la vie politique depuis 1921, le PCC a construit un État
+      capable de mobilisation et de répression. Son histoire inclut la révolution,
+      la famine, la Révolution culturelle, les réformes et la gestion autoritaire.
+    memory: >-
+      Récit officiel continu ; contre-mémoires et archives interdites.
+    sources: ["SRC-001", "SRC-008", "SRC-013"]
+  - id: "ACTOR-010"
+    label: "Travailleurs migrants (nongmingong)"
+    type: "collective"
+    roles: ["main-d'œuvre industrielle et urbaine", "acteur des migrations intérieures"]
+    period_ids: ["ERA-5"]
+    places: ["PLACE-003", "PLACE-007", "PLACE-001"]
+    resources:
+      - "Force de travail et réseaux familiaux"
+      - "Transferts financiers vers les campagnes"
+      - "Savoir-faire industriel"
+    constraints:
+      - "Hukou et accès limité aux services urbains"
+      - "Précarité, accidents du travail, salaires impayés"
+      - "Séparation familiale"
+    networks:
+      - "Réseaux villageois et provinciaux"
+      - "Agences de travail et sous-traitants"
+      - "Associations informelles"
+    counterpowers:
+      - "Employeurs et autorités locales"
+      - "Syndicat officiel unique"
+    assessment: >-
+      Acteurs centraux de l'industrialisation et de l'urbanisation, ils sont
+      longtemps restés invisibles dans les statistiques et la citoyenneté urbaine.
+    memory: >-
+      Peu de commémorations ; représentations culturelles récentes et débats sur
+      les droits sociaux.
+    sources: ["SRC-014", "SRC-013"]
+  - id: "ACTOR-011"
+    label: "Femmes rurales"
+    type: "collective"
+    roles: ["productrices agricoles", "gardiennes des mémoires familiales", "actrices des politiques de genre"]
+    period_ids: ["ERA-4", "ERA-5"]
+    places: ["PLACE-006", "PLACE-008"]
+    resources:
+      - "Travail agricole et domestique"
+      - "Réseaux de voisinage et de parenté"
+      - "Mémoires orales"
+    constraints:
+      - "Patriarcat, division sexuée du travail"
+      - "Politiques étatiques (collectivisation, enfant unique)"
+      - "Accès inégal à la propriété et à la parole"
+    networks:
+      - "Familles, villages, brigades de production"
+      - "Organisations de femmes du PCC"
+    counterpowers:
+      - "État, cadres locaux, normes familiales"
+    assessment: >-
+      Leur travail et leurs mémoires sont centraux pour comprendre la
+      collectivisation, la famine et les recompositions rurales, mais ils sont
+      rarement traités comme histoire politique.
+    memory: >-
+      Histoire orale et littérature ; faible place dans les musées nationaux.
+    sources: ["SRC-011", "SRC-008"]
+  - id: "ACTOR-012"
+    label: "Komintern (Internationale communiste)"
+    type: "institution"
+    roles: ["organisation transnationale", "soutien à la fondation du PCC", "relais idéologique"]
+    period_ids: ["ERA-3"]
+    places: ["PLACE-003", "PLACE-007"]
+    resources:
+      - "Réseaux internationaux et financements"
+      - "Cadres et conseillers"
+      - "Autorité idéologique"
+    constraints:
+      - "Distance et faible connaissance de la Chine"
+      - "Priorités soviétiques"
+      - "Répression des États"
+    networks:
+      - "Agents envoyés en Chine (Borodine, Voitinsky)"
+      - "Partis communistes asiatiques"
+    counterpowers:
+      - "Gouvernements nationalistes et impérialismes"
+      - "Factions chinoises"
+    assessment: >-
+      Acteur transnational de la fondation du PCC et de l'organisation du
+      mouvement ouvrier, mais son influence fut médiée par les réseaux locaux et
+      les conflits de factions.
+    memory: >-
+      Peu commémoré en Chine ; archives soviétiques et histoires du communisme
+      international.
+    sources: ["SRC-001", "SRC-002"]
+
+places:
+  - id: "PLACE-001"
+    label_current: "Pékin (Beijing)"
+    names_historical: ["蓟 (Ji)", "燕京 (Yanjing)", "中都 (Zhongdu)", "大都 (Dadu)", "北平 (Beiping)", "北京 (Beijing)"]
+    geometry_period: "1271-1368 (Dadu) ; 1421-1912 (capitale impériale) ; 1949-2026 (capitale de la RPC)"
+    hierarchy: "national"
+    functions: ["capitale impériale", "capitale de la RPC", "centre administratif et politique"]
+    events: ["cn-ming", "cn-qing", "cn-1949", "PROP-013"]
+    contestations:
+      - "Capitale impériale, puis capitale de la RPC ; les mémoires impériales et révolutionnaires coexistent."
+    sources: ["SRC-001", "SRC-008"]
+  - id: "PLACE-002"
+    label_current: "Nanjing"
+    names_historical: ["金陵 (Jinling)", "建康 (Jiankang)", "应天 (Yingtian)", "江宁 (Jiangning)", "南京 (Nanjing)"]
+    geometry_period: "1368-1421 (capitale Ming) ; 1853-1864 (capitale Taiping) ; 1927-1937 et 1946-1949 (capitale de la République)"
+    hierarchy: "national"
+    functions: ["capitale", "centre culturel", "lieu de mémoire du massacre de 1937"]
+    events: ["cn-1911", "PROP-001", "PROP-008"]
+    contestations:
+      - "Mémoire du massacre de Nanjing : chiffres et qualification disputés entre historiographies chinoise, japonaise et occidentale."
+    sources: ["SRC-001", "SRC-002", "SRC-005"]
+  - id: "PLACE-003"
+    label_current: "Shanghai"
+    names_historical: ["上海 (Shanghai)", "松江 (Songjiang, région)"]
+    geometry_period: "1842-1943 (ports et concessions) ; 1927-1949 (municipalité spéciale) ; 1949-2026 (municipalité)"
+    hierarchy: "national"
+    functions: ["port ouvert", "centre industriel et financier", "lieu de fondation du PCC", "ville de la purge de 1927"]
+    events: ["cn-opium", "PROP-002", "PROP-004", "PROP-005", "PROP-017"]
+    contestations:
+      - "Ville cosmopolite et coloniale ; mémoires des concessions, de l'industrialisation et des violences politiques."
+    sources: ["SRC-001", "SRC-002", "SRC-013"]
+  - id: "PLACE-004"
+    label_current: "Wuhan (Wuchang, Hankou, Hanyang)"
+    names_historical: ["武昌 (Wuchang)", "汉口 (Hankou)", "汉阳 (Hanyang)", "武汉 (Wuhan)"]
+    geometry_period: "1927-2026 (agglomération de Wuhan) ; 1911 (triple ville)"
+    hierarchy: "regional"
+    functions: ["lieu du soulèvement de 1911", "centre industriel", "capitale provisoire en 1927", "lieu du confinement de 2020"]
+    events: ["PROP-001", "PROP-018"]
+    contestations:
+      - "Mémoire du confinement de Wuhan et de la crise sanitaire : récits officiels et témoignages divergent."
+    sources: ["SRC-001", "SRC-002", "SRC-019"]
+  - id: "PLACE-005"
+    label_current: "Chongqing"
+    names_historical: ["重庆 (Chongqing)", "陪都 (Peidu, capitale secondaire)"]
+    geometry_period: "1937-1946 (capitale de guerre du gouvernement nationaliste)"
+    hierarchy: "national"
+    functions: ["capitale de guerre", "centre industriel de l'arrière", "cible des bombardements japonais"]
+    events: ["PROP-006"]
+    contestations:
+      - "Mémoire des bombardements et de la capitale de guerre, peu présente dans les manuels."
+    sources: ["SRC-004", "SRC-001"]
+  - id: "PLACE-006"
+    label_current: "Xi'an"
+    names_historical: ["长安 (Chang'an)", "西安 (Xi'an)"]
+    geometry_period: "618-907 (capitale Tang) ; 1936 (incident de Xi'an)"
+    hierarchy: "regional"
+    functions: ["capitale impériale Tang", "carrefour de l'Asie centrale", "lieu de l'incident de 1936"]
+    events: ["cn-tang"]
+    contestations:
+      - "Patrimoine Tang et mémoire de la capitale cosmopolite ; usages touristiques et nationalistes."
+    sources: ["SRC-001", "SRC-002"]
+  - id: "PLACE-007"
+    label_current: "Guangzhou (Canton)"
+    names_historical: ["番禺 (Panyu)", "广州 (Guangzhou)", "Canton"]
+    geometry_period: "1757-1842 (système de Canton) ; 1842-1949 (port ouvert) ; 1924-1927 (gouvernement nationaliste)"
+    hierarchy: "regional"
+    functions: ["port du commerce maritime", "centre révolutionnaire du KMT", "ville de la grève de 1925-1926"]
+    events: ["cn-opium", "cn-1911", "PROP-001"]
+    contestations:
+      - "Mémoire du commerce colonial et du nationalisme ; récits concurrents sur les concessions."
+    sources: ["SRC-001", "SRC-002"]
+  - id: "PLACE-008"
+    label_current: "Yan'an"
+    names_historical: ["延安 (Yan'an)", "肤施 (Fushi)"]
+    geometry_period: "1935-1947 (base du PCC)"
+    hierarchy: "regional"
+    functions: ["base communiste", "capitale symbolique de la révolution", "lieu de la rectification de 1942"]
+    events: ["PROP-007"]
+    contestations:
+      - "Lieu saint du récit officiel ; l'histoire sociale de la base et des purges de Yan'an est moins commémorée."
+    sources: ["SRC-006", "SRC-001"]
+  - id: "PLACE-009"
+    label_current: "Hong Kong"
+    names_historical: ["香港 (Xianggang)", "Hong Kong"]
+    geometry_period: "1842-1997 (colonie britannique) ; 1997-2026 (région administrative spéciale)"
+    hierarchy: "transnational"
+    functions: ["port et entrepôt", "colonie britannique", "interface financière", "lieu de la rétrocession de 1997"]
+    events: ["cn-opium", "PROP-016"]
+    contestations:
+      - "Mémoire coloniale, rétrocession, mouvements de 2019 et loi de sécurité nationale de 2020 : récits fortement disputés."
+    sources: ["SRC-001", "SRC-013"]
+  - id: "PLACE-010"
+    label_current: "Nanning"
+    names_historical: ["邕州 (Yongzhou)", "南宁 (Nanning)"]
+    geometry_period: "1958-2026 (capitale de la région autonome zhuang du Guangxi)"
+    hierarchy: "regional"
+    functions: ["capitale provinciale", "centre de la région autonome zhuang", "carrefour commercial avec le Vietnam"]
+    events: []
+    contestations:
+      - "La date de création de la région autonome (1958) est attestée par des ouvrages de référence ; la documentation locale zhuang reste à approfondir."
+    sources: ["SRC-020", "SRC-001"]
+  - id: "PLACE-011"
+    label_current: "Lhassa (Lhasa)"
+    names_historical: ["拉萨 (Lhasa)", "逻些 (Luoxie)"]
+    geometry_period: "XVIIe siècle-1951 (capitale du Tibet) ; 1965-2026 (capitale de la région autonome)"
+    hierarchy: "regional"
+    functions: ["capitale tibétaine", "centre religieux", "lieu de l'accord de 1951 et du soulèvement de 1959"]
+    events: ["PROP-011"]
+    contestations:
+      - "Statut du Tibet, rôle du dalaï-lama et mémoire de 1959 : récits chinois et tibétains inconciliables."
+    sources: ["SRC-016", "SRC-001"]
+  - id: "PLACE-012"
+    label_current: "Ürümqi"
+    names_historical: ["乌鲁木齐 (Wulumuqi)", "迪化 (Dihua)"]
+    geometry_period: "1884-1955 (capitale provinciale du Xinjiang) ; 1955-2026 (capitale de la région autonome ouïghoure)"
+    hierarchy: "regional"
+    functions: ["capitale du Xinjiang", "centre administratif et militaire", "lieu des émeutes de 2009"]
+    events: []
+    contestations:
+      - "Politiques des années 2010 (internement, surveillance) : qualifications et chiffres fortement disputés."
+    sources: ["SRC-015", "SRC-001"]
+
+claims:
+  - id: "CLAIM-001"
+    subject: "Shang"
+    predicate: "datation conventionnelle"
+    object: "vers -1600"
+    text: >-
+      La date de -1600 est une convention chronologique pour le début des Shang ;
+      les premières écritures abondantes proviennent d'Anyang (vers -1250) et
+      l'identification d'Erlitou reste débattue.
+    confidence: "disputed"
+    sources: ["SRC-001"]
+    revisions:
+      - "Source unique (synthèse) ; corroboration par une seconde synthèse à ajouter."
+  - id: "CLAIM-002"
+    subject: "Qin"
+    predicate: "unification et standardisation"
+    object: "-221"
+    text: >-
+      L'unification Qin de -221 est associée à la standardisation de l'écriture,
+      des poids, des mesures et de la monnaie, ainsi qu'à une administration
+      centralisée ; ces mesures furent imposées par la conquête et la coercition.
+    confidence: "certain"
+    sources: ["SRC-001"]
+    revisions:
+      - "Source unique (synthèse) ; corroboration par une seconde synthèse à ajouter."
+  - id: "CLAIM-003"
+    subject: "Empire chinois"
+    predicate: "continuité et divisions"
+    object: "-221/1912"
+    text: >-
+      L'expression « Empire unifié » masque des périodes prolongées de division
+      (220-589, 907-960, 1127-1279) et des régimes concurrents ; l'unité est une
+      prétention récurrente, pas une donnée continue.
+    confidence: "certain"
+    sources: ["SRC-001"]
+    revisions:
+      - "Source unique (synthèse) ; corroboration par une seconde synthèse à ajouter."
+  - id: "CLAIM-004"
+    subject: "Révolution de 1911"
+    predicate: "séquence"
+    object: "1911-1912"
+    text: >-
+      Le soulèvement de Wuchang du 10 octobre 1911 déclenche la chute des Qing ;
+      la République de Chine est proclamée à Nanjing le 1er janvier 1912 et
+      l'abdication de Puyi intervient le 12 février 1912.
+    confidence: "certain"
+    sources: ["SRC-001", "SRC-002"]
+    revisions: []
+  - id: "CLAIM-005"
+    subject: "Mouvement du 4 Mai"
+    predicate: "date et portée"
+    object: "1919-05-04"
+    text: >-
+      Le 4 mai 1919, des étudiants manifestent à Pékin contre le traitement de la
+      Chine à Versailles ; le mouvement s'étend aux villes et aux milieux ouvriers
+      et devient un moment fondateur du nationalisme et de la Nouvelle Culture.
+    confidence: "certain"
+    sources: ["SRC-003", "SRC-001"]
+    revisions: []
+  - id: "CLAIM-006"
+    subject: "PCC"
+    predicate: "fondation"
+    object: "juillet 1921"
+    text: >-
+      Le premier congrès du Parti communiste chinois se tient à Shanghai en
+      juillet 1921, avec une aide du Komintern ; les récits sur le nombre exact de
+      participants et le lieu de clôture varient.
+    confidence: "probable"
+    sources: ["SRC-002", "SRC-001"]
+    revisions: []
+  - id: "CLAIM-007"
+    subject: "Massacre de Nanjing"
+    predicate: "bilan humain"
+    object: "1937-1938"
+    text: >-
+      Les estimations du nombre de victimes varient fortement : le tribunal
+      militaire international de Tokyo retient environ 200 000 morts ; des travaux
+      récents proposent 100 000 à 200 000 ; les mémoires chinoises vont jusqu'à
+      300 000. Les catégories de victimes et les méthodes de comptage sont disputées.
+    confidence: "disputed"
+    sources: ["SRC-005", "SRC-004"]
+    revisions: []
+  - id: "CLAIM-008"
+    subject: "Crue du fleuve Jaune"
+    predicate: "bilan humain"
+    object: "1938"
+    text: >-
+      La destruction des digues de Huayuankou en juin 1938 par l'armée nationaliste
+      provoque une crue qui tue immédiatement des dizaines de milliers de personnes
+      et fait environ 400 000 à 500 000 morts au total, avec des millions de
+      déplacés.
+    confidence: "probable"
+    sources: ["SRC-017", "SRC-004"]
+    revisions: []
+  - id: "CLAIM-009"
+    subject: "Grande famine"
+    predicate: "bilan humain"
+    object: "1959-1961"
+    text: >-
+      Les estimations de surmortalité varient d'environ 15 à 46 millions de morts ;
+      Ashton et al. proposent environ 30 millions, Dikötter au moins 45 millions.
+      La famine résulte des politiques du Grand Bond, des réquisitions, de la
+      gestion agricole et de conditions climatiques.
+    confidence: "disputed"
+    sources: ["SRC-009", "SRC-010", "SRC-008"]
+    revisions: []
+  - id: "CLAIM-010"
+    subject: "Révolution culturelle"
+    predicate: "chronologie et violences"
+    object: "1966-1976"
+    text: >-
+      La Révolution culturelle est lancée par Mao en 1966 et se termine avec sa
+      mort en 1976 ; elle entraîne persécutions, violences de masse, destructions
+      culturelles et militarisation de la société. Le bilan humain reste disputé.
+    confidence: "certain"
+    sources: ["SRC-007", "SRC-008"]
+    revisions: []
+  - id: "CLAIM-011"
+    subject: "Politique de l'enfant unique"
+    predicate: "chronologie et mise en œuvre"
+    object: "1979-2015"
+    text: >-
+      La politique de l'enfant unique est annoncée en 1979, généralisée en 1980,
+      inscrite dans la Constitution en 1982, assouplie en 2013 et remplacée par une
+      politique de deux enfants en 2015. Des exceptions rurales et minoritaires
+      existaient.
+    confidence: "certain"
+    sources: ["SRC-012", "SRC-001"]
+    revisions: []
+  - id: "CLAIM-012"
+    subject: "Tiananmen 1989"
+    predicate: "répression"
+    object: "1989-06-04"
+    text: >-
+      Les manifestations étudiantes et ouvrières de printemps 1989 sont réprimées
+      par l'armée dans la nuit du 3 au 4 juin ; le bilan humain est disputé et
+      l'événement est censuré en RPC.
+    confidence: "disputed"
+    sources: ["SRC-018", "SRC-001"]
+    revisions: []
+  - id: "CLAIM-013"
+    subject: "Hong Kong"
+    predicate: "rétrocession"
+    object: "1997-07-01"
+    text: >-
+      Hong Kong passe de la souveraineté britannique à la RPC le 1er juillet 1997,
+      sous le régime « un pays, deux systèmes » ; la négociation sino-britannique
+      est menée dans les années 1980.
+    confidence: "certain"
+    sources: ["SRC-013", "SRC-001"]
+    revisions: []
+  - id: "CLAIM-014"
+    subject: "Chine et OMC"
+    predicate: "accession"
+    object: "2001-12-11"
+    text: >-
+      La Chine devient membre de l'Organisation mondiale du commerce le 11 décembre
+      2001, après des négociations commencées en 1986 ; l'accession accélère les
+      réformes et l'intégration aux chaînes de valeur mondiales.
+    confidence: "certain"
+    sources: ["SRC-014", "SRC-013"]
+    revisions: []
+  - id: "CLAIM-015"
+    subject: "Confinement de Wuhan"
+    predicate: "date et mesure"
+    object: "2020-01-23"
+    text: >-
+      Le 23 janvier 2020, les autorités chinoises imposent des restrictions de
+      circulation strictes à Wuhan pour contenir l'épidémie de COVID-19 ; l'OMS
+      qualifie l'épidémie d'urgence de santé publique internationale le 30 janvier.
+    confidence: "certain"
+    sources: ["SRC-019"]
+    revisions:
+      - "Source institutionnelle unique (rapport conjoint OMS-Chine) ; corroboration indépendante à ajouter."
+  - id: "CLAIM-016"
+    subject: "Classification ethnique"
+    predicate: "construction administrative"
+    object: "années 1950"
+    text: >-
+      La classification ethnique menée dans les années 1950 fixe progressivement
+      56 nationalités officielles ; elle transforme des appartenances locales et
+      des identités fluides en catégories administratives, notamment pour les
+      Zhuang du Guangxi.
+    confidence: "probable"
+    sources: ["SRC-020", "SRC-001"]
+    revisions: []
+
+source_policy:
+  min_independent_sources: 2
+  grokipedia_role: "point d'entrée de lecture, jamais autorité de validation"
+  generative_ai_role: "aide à la recherche uniquement, vérifiée et signalée"
+  date_roles_required: true
+  license: "MIT pour le dépôt ; licence des contenus à définir"
+
+audit:
+  protocol_version: "1.0"
+  double_read:
+    sensitive_share: 1.0
+    other_share: 0.25
+    kappa_target: 0.70
+    kappa_sensitive_target: 0.80
+  delphi:
+    used: false
+    experts: 0
+    rounds: 0
+    consensus_threshold: "75 % de notes 4–5/5 et IQR ≤ 1"
+  scores:
+    coverage: null
+    accuracy: null
+    balance: null
+    provenance: null
+    readability: null
+    weighted_total: null
+  blocking_errors:
+    - id: "S1-001"
+      event_id: "cn-1911"
+      issue: >-
+        Le résumé situe la proclamation de la République en 1911 ; elle a lieu
+        le 1er janvier 1912, après le soulèvement de Wuchang du 10 octobre 1911.
+      correction: "Remplacer par PROP-001 ou corriger la fiche cn-1911."
+      sources: ["SRC-002", "SRC-001"]
+      status: "to_correct"
+  disagreements:
+    - type: "F2"
+      object: "Bilan humain de la famine de 1958-1961"
+      positions:
+        - "Dikötter : au moins 45 millions de morts (SRC-009)"
+        - "Ashton et al. : environ 30 millions de morts (SRC-010)"
+        - "Walder : fourchette et mécanismes, sans chiffre unique (SRC-008)"
+      status: "documented"
+    - type: "F2"
+      object: "Bilan humain du massacre de Nanjing"
+      positions:
+        - "Tribunal militaire international de Tokyo : environ 200 000 morts (SRC-005)"
+        - "Travaux récents : 100 000 à 200 000 (SRC-005)"
+        - "Mémoires chinoises : jusqu'à 300 000 (SRC-005)"
+      status: "documented"
+    - type: "F3"
+      object: "Périodisation impériale et label « Empire unifié »"
+      positions:
+        - "Périodisation éditoriale actuelle : une ère -221/1912 (POL-1)"
+        - "Périodisation par divisions et régimes concurrents (POL-2)"
+      status: "documented"
+    - type: "F4"
+      object: "Nommage du Tibet et du Xinjiang"
+      positions:
+        - "Sources chinoises : régions autonomes intégrées à la RPC"
+        - "Sources tibétaines et ouïghoures : territoires sous domination contestée"
+      status: "documented"
+    - type: "F3"
+      object: "Qualification de 1989"
+      positions:
+        - "Récit officiel chinois : troubles politiques"
+        - "Sources indépendantes : manifestations et répression militaire (SRC-018)"
+      status: "documented"
+  verdict: "pending"
+  signoff:
+    date: ""
+    signed_by: []
+
+publication:
+  release: ""
+  date: ""
+  changelog: ""
+  public_quality_note: ""
+  correction_contact: ""
+  archive_url: ""
