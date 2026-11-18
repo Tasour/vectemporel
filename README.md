@@ -66,7 +66,7 @@ Il produit **229 repères** et **901 points** : phrases des résumés vérifiés
 
 ## Modèle mental et taxonomie des vues
 
-Version du modèle : **`m4.1`** (`window.VATLAS.taxonomyVersion`). La navigation est une échelle macro → micro : chaque vue répond à une question et ajoute un niveau de précision. Ce catalogue figé est exposé tel quel par `window.VATLAS.taxonomy` ; c’est la référence adressable, les libellés de la coque en sont la source d’exécution.
+Version du modèle : **`m4.2`** (`window.VATLAS.taxonomyVersion`). La navigation est une échelle macro → micro : chaque vue répond à une question et ajoute un niveau de précision. Ce catalogue figé est exposé tel quel par `window.VATLAS.taxonomy` ; c’est la référence adressable, les libellés de la coque en sont la source d’exécution.
 
 | Niveau | Vue | Libellé | Raccourci | Question servie |
 | --- | --- | --- | --- | --- |
@@ -75,6 +75,7 @@ Version du modèle : **`m4.1`** (`window.VATLAS.taxonomyVersion`). La navigation
 | 3 | `recit` | Récit | `3` / `r` | Que disent les points vérifiés ? |
 | 4 | `geography` | Géographie | `4` / `g` | Où se situent les lieux ? |
 | 5 | `constellation` | Constellation | `5` / `s` | Comment l’ensemble se synthétise-t-il ? |
+| 6 | `points` | Points | `6` / `p` | Quels points vérifiés isoler ? |
 
 L’**identifiant** est la forme canonique : `1`, `m` et `Monde` résolvent tous vers `globe` via `window.VATLAS.resolveView`. Règle de mise à jour : tout changement de libellé ou de raccourci doit être répercuté dans `VIEW_TAXONOMY` (`src/app.js`), dans la coque (`src/ui/shell.js`), dans le routeur (`src/platform/keyboard.js`) et dans le présent tableau — puis la version incrémentée.
 

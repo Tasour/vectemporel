@@ -7,6 +7,9 @@
  *   sur des centaines de meshes ;
  * - aucun post-processing, aucune lumière dynamique, aucun shadow map ;
  * - DPR plafonné par un budget de pixels, rendu suspendu hors overlay ;
+ * - rendu à la demande : la boucle s'arrête après quelques frames sans
+ *   mouvement (invalidate() la réveille) ;
+ * - texture allégée sur petit écran / peu de mémoire / économie de données ;
  * - aucune allocation dans la boucle de rendu.
  */
 (() => {
@@ -17,6 +20,9 @@
     console.error('Vectemporel : Three.js est absent.');
     return;
   }
+
+  // Nombre de frames sans mouvement avant d'arrêter complètement la boucle rAF.
+  const IDLE_FRAMES_BEFORE_STOP = 10;
 
   const state = {
     ready: false,
@@ -50,9 +56,17 @@
     lastX: 0,
     lastY: 0,
     pinching: null,
-    autoRotate: true,
+    autoRotate: true,          // état actif (mis en pause pendant les interactions)
+    autoRotateEnabled: true,   // préférence utilisateur (setAutoRotate)
     autoRotateTimer: 0,
-    hoverCheckAt: 0,
+    hovering: false,           // pointeur au-dessus du canvas
+    dirty: false,              // une frame de rendu est demandée
+    idleFrames: 0,
+    reducedMotion: false,
+    interactionsAttached: false,
+    onVisibilityChange: null,
+    onMotionChange: null,
+    motionQuery: null,
     clock: null,
     resizeObserver: null,
     lastFrame: 0,
@@ -79,6 +93,17 @@
     );
   }
 
+  // Réveille la boucle pour quelques frames, puis la laisse se rendormir.
+  function invalidate() {
+    state.dirty = true;
+    if (!state.running && state.visible && state.renderer && !document.hidden) {
+      state.running = true;
+      state.idleFrames = 0;
+      state.clock.start();
+      state.renderer.setAnimationLoop(frame);
+    }
+  }
+
   function setHover(code) {
     if (state.hoverCode === code) return;
     state.hoverCode = code;
@@ -90,12 +115,14 @@
         color ? color[2] / 255 : -1
       );
     }
+    invalidate();
     state.callbacks.onHover(code);
   }
 
   function setSelected(code) {
     state.selectedCode = code;
     applySelectedUniform();
+    invalidate();
   }
 
   function buildScene(pickTexture, mapTexture) {
@@ -180,6 +207,7 @@
     state.renderer.setSize(width, height, false);
     state.camera.aspect = width / height;
     state.camera.updateProjectionMatrix();
+    invalidate();
   }
 
   function codeAtLocalPoint(point) {
@@ -244,6 +272,7 @@
   }
 
   function updateHoverFromPointer(clientX, clientY) {
+    state.hovering = true;
     const now = performance.now();
     if (now - state.hoverCheckAt < 45) return;
     state.hoverCheckAt = now;
@@ -266,14 +295,42 @@
   function scheduleAutoRotate(delay = 3800) {
     clearTimeout(state.autoRotateTimer);
     state.autoRotateTimer = setTimeout(() => {
-      if (state.visible && !state.dragging && !state.pinching) state.autoRotate = true;
+      if (state.visible && !state.dragging && !state.pinching &&
+          state.autoRotateEnabled && !state.reducedMotion) {
+        state.autoRotate = true;
+        invalidate(); // la boucle a pu s'arrêter entre-temps
+      }
     }, delay);
+  }
+
+  // Préférence utilisateur : setAutoRotate(false) désactive aussi la reprise.
+  function setAutoRotate(enabled) {
+    state.autoRotateEnabled = !!enabled;
+    if (!state.autoRotateEnabled) {
+      pauseAutoRotate();
+    } else if (state.visible && !state.reducedMotion) {
+      state.autoRotate = true;
+      invalidate();
+    }
+  }
+
+  function onMotionChange(event) {
+    state.reducedMotion = !!event.matches;
+    if (state.reducedMotion) {
+      // Coupure « à chaud » : arrêt immédiat de la rotation et de sa reprise.
+      pauseAutoRotate();
+      invalidate();
+    } else if (state.autoRotateEnabled && state.visible) {
+      state.autoRotate = true;
+      invalidate();
+    }
   }
 
   function onPointerDown(event) {
     if (event.button !== 0 && event.pointerType === 'mouse') return;
     event.preventDefault();
     pauseAutoRotate();
+    invalidate();
     state.renderer.domElement.setPointerCapture(event.pointerId);
     state.pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
 
@@ -307,6 +364,7 @@
         1.8,
         4.8
       );
+      invalidate();
       return;
     }
 
@@ -318,14 +376,14 @@
       if (Math.abs(dx) + Math.abs(dy) > 2) state.dragMoved = true;
       state.globeGroup.rotation.y += dx * 0.0042;
       state.globeGroup.rotation.x = clamp(state.globeGroup.rotation.x + dy * 0.0042, -1.15, 1.15);
+      invalidate();
       return;
     }
 
     if (event.pointerType !== 'touch') updateHoverFromPointer(event.clientX, event.clientY);
   }
 
-  function onPointerUp(event) {
-    const wasClick = state.pointers.size === 1 && !state.dragMoved && !state.pinching;
+  function releasePointer(event) {
     state.pointers.delete(event.pointerId);
     if (state.renderer.domElement.hasPointerCapture(event.pointerId)) {
       state.renderer.domElement.releasePointerCapture(event.pointerId);
@@ -335,7 +393,14 @@
       state.dragging = false;
       state.dragPointerId = null;
     }
+    invalidate();
+  }
 
+  function onPointerUp(event) {
+    // Le clic n'est reconnu que sur un pointerup « propre » (jamais sur un
+    // pointercancel, qui reste une annulation et ne doit rien sélectionner).
+    const wasClick = state.pointers.size === 1 && !state.dragMoved && !state.pinching;
+    releasePointer(event);
     if (wasClick) {
       const code = pickAtClient(event.clientX, event.clientY);
       if (code) {
@@ -346,8 +411,18 @@
     scheduleAutoRotate();
   }
 
+  function onPointerCancel(event) {
+    // Annulation (interruption système, sortie de capture, geste avorté) :
+    // on nettoie l'état sans jamais déclencher de sélection fantôme.
+    state.dragMoved = true;
+    releasePointer(event);
+    scheduleAutoRotate();
+  }
+
   function onPointerLeave() {
+    state.hovering = false;
     if (!state.dragging && !state.pinching) setHover(null);
+    invalidate();
     scheduleAutoRotate(2200);
   }
 
@@ -355,58 +430,143 @@
     event.preventDefault();
     pauseAutoRotate();
     state.camera.position.z = clamp(state.camera.position.z + event.deltaY * 0.0014, 1.8, 4.8);
+    invalidate();
     scheduleAutoRotate();
   }
 
+  function onContextMenu(event) {
+    event.preventDefault();
+  }
+
+  function stopLoop() {
+    state.running = false;
+    if (state.renderer) state.renderer.setAnimationLoop(null);
+  }
+
   function frame() {
-    if (!state.visible) return;
-    if (document.hidden) return;
-    const dt = Math.min(0.05, state.clock.getDelta());
-    const moving = state.autoRotate || state.dragging || state.pinching || state.hovering;
-    if (moving) {
-      if (state.autoRotate && !prefersReducedMotion()) state.globeGroup.rotation.y += dt * 0.065;
-      state.renderer.render(state.scene, state.camera);
+    if (!state.visible || !state.renderer || document.hidden) {
+      stopLoop();
+      return;
     }
+    const dt = Math.min(0.05, state.clock.getDelta());
     state.lastFrame = dt;
+
+    const spinning = state.autoRotate && !state.reducedMotion;
+    const moving = spinning || state.dragging || !!state.pinching;
+    if (spinning) state.globeGroup.rotation.y += dt * 0.065;
+
+    if (moving || state.dirty) {
+      state.renderer.render(state.scene, state.camera);
+      state.dirty = false;
+      state.idleFrames = 0;
+      return;
+    }
+
+    // Plus de rotation, plus de geste, plus de rendu demandé : on compte les
+    // frames inutiles puis on arrête la boucle rAF (au repos, 0 render()).
+    state.idleFrames += 1;
+    if (state.idleFrames >= IDLE_FRAMES_BEFORE_STOP) stopLoop();
   }
 
   function start() {
     if (state.running) return;
     state.running = true;
     state.visible = true;
+    state.idleFrames = 0;
+    state.dirty = true;
+    attachInteractions();
     state.clock.start();
     state.renderer.setAnimationLoop(frame);
   }
 
   function stop() {
     state.visible = false;
-    state.running = false;
-    if (state.renderer) state.renderer.setAnimationLoop(null);
+    stopLoop();
     clearTimeout(state.autoRotateTimer);
   }
 
-  function setupInteractions() {
+  function onVisibilityChange() {
+    if (!state.ready) return;
+    if (document.hidden) {
+      stopLoop();
+      clearTimeout(state.autoRotateTimer);
+    } else if (state.visible) {
+      invalidate();
+    }
+  }
+
+  function attachInteractions() {
+    if (state.interactionsAttached || !state.renderer) return;
     const canvas = state.renderer.domElement;
     canvas.addEventListener('pointerdown', onPointerDown);
     canvas.addEventListener('pointermove', onPointerMove);
     canvas.addEventListener('pointerup', onPointerUp);
-    canvas.addEventListener('pointercancel', onPointerUp);
+    canvas.addEventListener('pointercancel', onPointerCancel);
     canvas.addEventListener('pointerenter', pauseAutoRotate);
     canvas.addEventListener('pointerleave', onPointerLeave);
     canvas.addEventListener('wheel', onWheel, { passive: false });
-    canvas.addEventListener('contextmenu', (event) => event.preventDefault());
-    state.resizeObserver = new ResizeObserver(() => resize());
+    canvas.addEventListener('contextmenu', onContextMenu);
+
+    if (!state.resizeObserver) state.resizeObserver = new ResizeObserver(() => resize());
     state.resizeObserver.observe(state.container);
-    document.addEventListener('visibilitychange', () => {
-      if (!state.ready) return;
-      if (document.hidden) {
-        state.running = false;
-        state.renderer.setAnimationLoop(null);
-      } else if (state.visible) {
-        state.running = true;
-        state.renderer.setAnimationLoop(frame);
+    document.addEventListener('visibilitychange', onVisibilityChange);
+
+    if (state.motionQuery && state.onMotionChange) {
+      if (state.motionQuery.addEventListener) {
+        state.motionQuery.addEventListener('change', state.onMotionChange);
+      } else if (state.motionQuery.addListener) {
+        state.motionQuery.addListener(state.onMotionChange);
       }
-    });
+    }
+    state.interactionsAttached = true;
+  }
+
+  // Retire tous les écouteurs sans détruire la scène : une réouverture
+  // (open()) rappelle attachInteractions() et tout est réinstallé.
+  function detachInteractions() {
+    if (!state.interactionsAttached || !state.renderer) return;
+    const canvas = state.renderer.domElement;
+    canvas.removeEventListener('pointerdown', onPointerDown);
+    canvas.removeEventListener('pointermove', onPointerMove);
+    canvas.removeEventListener('pointerup', onPointerUp);
+    canvas.removeEventListener('pointercancel', onPointerCancel);
+    canvas.removeEventListener('pointerenter', pauseAutoRotate);
+    canvas.removeEventListener('pointerleave', onPointerLeave);
+    canvas.removeEventListener('wheel', onWheel, { passive: false });
+    canvas.removeEventListener('contextmenu', onContextMenu);
+
+    if (state.resizeObserver) state.resizeObserver.disconnect();
+    document.removeEventListener('visibilitychange', onVisibilityChange);
+    if (state.motionQuery && state.onMotionChange) {
+      if (state.motionQuery.removeEventListener) {
+        state.motionQuery.removeEventListener('change', state.onMotionChange);
+      } else if (state.motionQuery.removeListener) {
+        state.motionQuery.removeListener(state.onMotionChange);
+      }
+    }
+    state.interactionsAttached = false;
+  }
+
+  // « Dispose » léger et réversible : on libère les écouteurs et l'observateur
+  // mais on garde renderer/textures/géométrie pour permettre une réouverture.
+  function dispose() {
+    stop();
+    detachInteractions();
+    state.hovering = false;
+    state.pointers.clear();
+    state.dragging = false;
+    state.pinching = null;
+    state.dragPointerId = null;
+  }
+
+  function chooseMapUrl(maxTexture) {
+    const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    const saveData = !!(connection && connection.saveData);
+    const lowMemory = typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 4;
+    const smallScreen = window.innerWidth < 700;
+    const canUseHighResolution =
+      maxTexture >= 4096 && !smallScreen && !lowMemory && !saveData;
+    return canUseHighResolution ? 'globe-map.png' : 'globe-map-2k.png';
   }
 
   async function init(container, callbacks = {}) {
@@ -417,6 +577,17 @@
     state.callbacks = { ...state.callbacks, ...callbacks };
 
     state.initPromise = (async () => {
+      state.reducedMotion = prefersReducedMotion();
+      state.autoRotateEnabled = true;
+      state.autoRotate = !state.reducedMotion;
+      try {
+        state.motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+        state.onMotionChange = onMotionChange;
+      } catch {
+        state.motionQuery = null;
+        state.onMotionChange = null;
+      }
+
       const renderer = new THREE.WebGLRenderer({
         antialias: false,
         alpha: true,
@@ -434,9 +605,7 @@
 
       state.clock = new THREE.Clock(false);
 
-      const maxTexture = renderer.capabilities.maxTextureSize;
-      const useHighResolution = maxTexture >= 4096 && window.innerWidth >= 700;
-      const mapUrl = useHighResolution ? 'globe-map.png' : 'globe-map-2k.png';
+      const mapUrl = chooseMapUrl(renderer.capabilities.maxTextureSize);
 
       const loader = new THREE.TextureLoader();
       const [mapTexture, pickTexture, palette] = await Promise.all([
@@ -474,7 +643,7 @@
       state.pickData = pickContext.getImageData(0, 0, palette.width, palette.height).data;
 
       buildScene(pickTexture, mapTexture);
-      setupInteractions();
+      attachInteractions();
       resize();
       state.ready = true;
       state.callbacks.onReady();
@@ -492,8 +661,9 @@
     if (!state.ready) return;
     if (selectedCode !== undefined) setSelected(selectedCode);
     resize();
-    state.autoRotate = true;
+    state.autoRotate = state.autoRotateEnabled && !state.reducedMotion;
     state.hoverCode = null;
+    state.hovering = false;
     if (state.uniforms) state.uniforms.uHover.value.set(-1, -1, -1);
     start();
   }
@@ -501,9 +671,7 @@
   function close() {
     stop();
     setHover(null);
-    state.pointers.clear();
-    state.dragging = false;
-    state.pinching = null;
+    dispose();
   }
 
   window.VECTEMPOREL_GLOBE = {
@@ -513,6 +681,9 @@
     resize,
     setSelected,
     setHover,
+    setAutoRotate,
+    invalidate,
+    dispose,
     debugPick,
     get ready() {
       return state.ready;

@@ -35,25 +35,10 @@ document.documentElement.dataset.globeActive = '0';
 
 /* ATLAS-GLOBE-04, 06, 10 : CSS injecté, aucun fichier partagé modifié. */
 const CSS = `
-  .globe-view { position: relative; }
   .globe-view .globe-host:focus-visible { outline: 3px solid var(--gold-bright); outline-offset: -3px; }
-  .globe-view .globe-list button { min-height: 44px; font-size: 12px; }
-  .globe-view .globe-list button[aria-current="true"] {
-    border-color: var(--gold); background: rgba(230,185,111,.14);
-    color: var(--gold-bright); font-weight: 600;
-  }
-  .globe-view .globe-list button:focus-visible { outline: 3px solid var(--gold-bright); outline-offset: 2px; }
-  .globe-controls { position: absolute; top: 12px; left: 12px; z-index: 5; display: flex; flex-wrap: wrap; gap: 6px; max-width: calc(100% - 24px); }
-  .globe-controls button { flex: 1 1 auto; width: auto; min-width: 44px; min-height: 44px; padding: 6px 8px; }
-  .globe-status { margin: 0 0 12px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; color: var(--muted); font-size: 11px; line-height: 1.45; }
-  .globe-status[data-kind="error"] { border-color: var(--red); color: var(--ink); }
-  .globe-status[data-kind="ready"] { border-color: var(--line-strong); color: var(--ink-soft); }
-  .globe-hover-readout { min-height: 18px; margin: 0 0 12px; color: var(--gold-bright); font-size: 11px; font-variant-numeric: tabular-nums; }
+  .globe-country:focus-visible { outline: 3px solid var(--gold-bright); outline-offset: 2px; }
+  .globe-country[aria-current="true"] { border-color: var(--gold); background: rgba(230,185,111,.12); color: var(--gold-bright); }
   .globe-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
-  @media (max-width: 620px) {
-    .globe-view .globe-host { min-height: 45vh; }
-    .globe-view .globe-list button { min-height: 48px; font-size: 13px; }
-  }
 `;
 
 function injectCSS() {
@@ -70,20 +55,13 @@ function injectNavStyle() {
   const style = document.createElement('style');
   style.id = NAV_STYLE_ID;
   style.textContent = `
-.nav-c2-sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
-.globe-list .nav-c2b-title{margin:0 0 8px;font-family:var(--serif);font-size:22px;font-weight:450}
-.nav-c2-orientation{margin:0 0 14px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.02)}
-.nav-c2-here{margin:0 0 5px;color:var(--gold);font-size:8px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;line-height:1.5}
-.nav-c2-trail{margin:0}
-.nav-c2-trail-list{display:flex;flex-wrap:wrap;gap:2px;margin:0;padding:0;list-style:none;color:var(--muted);font-size:10px;line-height:1.6}
-.nav-c2-trail-item{display:flex;gap:3px;min-width:0}
-.nav-c2-sep{color:rgba(255,255,255,.28)}
-.nav-c2-crumb.is-current{color:var(--gold-bright);font-weight:600}
-.nav-c2-progress{margin:6px 0 0;color:var(--muted-2);font-size:9px;line-height:1.5;font-variant-numeric:tabular-nums}
-.nav-c2-choice-list{list-style:none;margin:0;padding:0}
-.nav-c2-choice-item{margin:0}
-.nav-c2-choice-num{margin-right:6px;color:var(--gold);font-variant-numeric:tabular-nums}
-@media (max-width:620px){.nav-c2-orientation{padding:7px 8px}.nav-c2-trail-list{font-size:9px}}`;
+.globe-list .globe-title{font-size:30px}
+.globe-orientation{display:block}
+.globe-here{font-size:12px}
+.globe-progress{font-size:12px}
+.globe-country{min-height:86px}
+@media (max-width:900px){.globe-country{min-height:66px}}
+`;
   document.head.appendChild(style);
 }
 
@@ -134,7 +112,25 @@ function el(tag, className, text) {
 }
 
 function describe(country) {
-  return country ? `${country.name} · ${country.events.length} repères` : 'Aucun pays sous le pointeur';
+  if (!country) return 'Survol : aucun pays sous le pointeur';
+  const eras = country.eras.length;
+  const points = (country.points || []).length;
+  return `${country.name} · ${eras} ères · ${points} points`;
+}
+
+function countryMeta(country) {
+  const years = [country.domain[0], country.domain[1]];
+  const points = (country.points || []).length;
+  const domains = new Set((country.points || []).map((point) => point.domain)).size;
+  return {
+    range: `${formatYear(years[0])} → ${formatYear(years[1])}`,
+    line: `${country.eras.length} ères · ${country.events.length} repères · ${points} points`,
+    cover: `${domains}/14 domaines`,
+  };
+}
+
+function formatYear(year) {
+  return year < 0 ? `${Math.abs(year)} av. J.-C.` : String(year);
 }
 
 /* ATLAS-GLOBE-08 : statut auditable, idempotent (init() appelle onError puis rejette). */
@@ -303,48 +299,30 @@ export function renderGlobe(stage) {
   injectNavStyle();
   const selected = DATASET.countries.find((country) => country.id === state.countryId) || null;
   const wrapper = el('div', 'globe-view');
+
+  /* Scène spatiale : le globe occupe toute la colonne, le HUD flotte dessus. */
+  const scene = el('div', 'globe-scene');
   const hostNode = ensure();
-  wrapper.appendChild(hostNode);
+  scene.appendChild(hostNode);
 
-  /* ATLAS-GLOBE-02 + C2-06 : région live persistante et statut visible sans
-     role=status, pour éviter les annonces doublées avec shell.js:73. */
-  ensureLiveNode();
-
-  statusNode = el('p', 'globe-status', 'Chargement du globe local…');
+  const hud = el('div', 'globe-hud');
+  const ready = engine?.ready;
+  const statusText = ready
+    ? 'Globe local chargé · textures et palette locales, aucun service externe.'
+    : initialized && !window.THREE
+      ? 'Moteur 3D indisponible : utilisez la liste des pays.'
+      : 'Chargement du globe local…';
+  statusNode = el('p', 'globe-status', statusText);
   statusNode.id = 'globe-status';
-  statusNode.dataset.kind = 'busy';
-  wrapper.appendChild(statusNode);
+  statusNode.dataset.kind = ready ? 'ready' : initialized && !window.THREE ? 'error' : 'busy';
+  statusNode.setAttribute('role', 'status');
+  hud.appendChild(statusNode);
 
-  const list = el('div', 'globe-list');
-  const listTitle = el('h1', 'nav-c2b-title', `Monde · ${DATASET.countries.length} pays documentés`);
-  listTitle.id = 'nav-c2b-title';
-  list.appendChild(listTitle);
-
-  /* C2-03/-05/-09 : situation textuelle et compteurs réels du jeu de données,
-     lisibles sans couleur, sans survol, sans WebGL et sans annonce vocale. */
-  const orientation = el('div', 'nav-c2-orientation');
-  const here = el('p', 'nav-c2-here', selected
-    ? `Vous êtes ici : Monde › ${selected.name}`
-    : 'Vous êtes ici : Monde · aucun pays sélectionné — choisissez un pays dans la liste ou sur le globe.');
-  here.id = 'nav-c2b-here';
-  orientation.appendChild(here);
-  orientation.appendChild(buildGlobeTrail(selected));
-  const progress = el('p', 'nav-c2-progress');
-  progress.id = 'nav-c2b-progress';
-  progress.textContent = `${DATASET.countries.length} pays · ${DATASET.meta.events} repères · ${DATASET.meta.points} points référencés dans le jeu de données local.`
-    + (selected ? ` Sélection : ${selected.name} · ${selected.events.length} repères.` : ' Aucun pays sélectionné.');
-  orientation.appendChild(progress);
-  list.appendChild(orientation);
-
-  list.appendChild(el('p', '',
-    'Tournez le globe à la souris ou au doigt. Au clavier : Tab jusqu au globe, flèches pour parcourir les pays, Entrée pour ouvrir. La liste ci-dessous offre le même accès.'));
-
-  /* ATLAS-GLOBE-07 : retour textuel du survol (jamais la seule couleur). */
-  readoutNode = el('p', 'globe-hover-readout', 'Survol : aucun pays sous le pointeur.');
+  readoutNode = el('p', 'globe-hover-readout', 'Survol : aucun pays sous le pointeur');
   readoutNode.id = 'globe-hover-readout';
-  list.appendChild(readoutNode);
+  hud.appendChild(readoutNode);
+  scene.appendChild(hud);
 
-  /* ATLAS-GLOBE-06 et 10 : commandes visibles, cibles >= 44 px. */
   const controls = el('div', 'globe-controls');
   controls.setAttribute('role', 'group');
   controls.setAttribute('aria-label', 'Commandes du globe');
@@ -356,25 +334,40 @@ export function renderGlobe(stage) {
   zoomOut.type = 'button';
   zoomOut.setAttribute('aria-label', 'Dézoomer sur le globe');
   zoomOut.addEventListener('click', () => zoom(240));
-  pauseButton = el('button', 'globe-control', paused ? 'Activer la rotation' : 'Mettre la rotation en pause');
+  pauseButton = el('button', 'globe-control', paused ? 'Rotation inactive' : 'Rotation active');
   pauseButton.type = 'button';
-  pauseButton.setAttribute('aria-label', pauseButton.textContent);
+  pauseButton.setAttribute('aria-label', paused ? 'Activer la rotation' : 'Mettre la rotation en pause');
   pauseButton.setAttribute('aria-pressed', String(!paused));
   pauseButton.addEventListener('click', () => {
     paused = !paused;
-    pauseButton.textContent = paused ? 'Activer la rotation' : 'Mettre la rotation en pause';
-    pauseButton.setAttribute('aria-label', pauseButton.textContent);
+    pauseButton.textContent = paused ? 'Rotation inactive' : 'Rotation active';
+    pauseButton.setAttribute('aria-label', paused ? 'Activer la rotation' : 'Mettre la rotation en pause');
     pauseButton.setAttribute('aria-pressed', String(!paused));
     syncEngine();
     say(paused ? 'Rotation en pause.' : 'Rotation automatique active.');
   });
   controls.append(zoomIn, zoomOut, pauseButton);
-  wrapper.appendChild(controls);
+  scene.appendChild(controls);
+  wrapper.appendChild(scene);
 
-  /* ATLAS-GLOBE-04, 05, 09 : liste = barre d'outils reflétant l'état partagé. */
-  const choices = el('ol', 'globe-choices nav-c2-choice-list');
+  /* Panneau de décision : une seule orientation, puis les dix pays en grille. */
+  ensureLiveNode();
+  const list = el('div', 'globe-list');
+  const title = el('h1', 'globe-title', 'Choisir un pays');
+  title.id = 'globe-title';
+  list.appendChild(title);
+  list.appendChild(el('p', 'globe-subtitle', 'Dix histoires documentées, 784 cellules de couverture vérifiées. Sélectionnez un pays pour entrer dans son système.'));
+
+  const orientation = el('div', 'globe-orientation');
+  orientation.appendChild(el('p', 'globe-here', selected
+    ? `Sélection courante : ${selected.name}`
+    : 'Aucun pays sélectionné'));
+  orientation.appendChild(el('p', 'globe-progress',
+    `${DATASET.countries.length} pays · ${DATASET.meta.events} repères · ${DATASET.meta.validatedPoints || 0} points d’audit validés`));
+  list.appendChild(orientation);
+
+  const choices = el('ol', 'globe-choices');
   choices.id = 'globe-choices';
-  choices.setAttribute('role', 'toolbar');
   choices.setAttribute('aria-label', 'Choisir un pays documenté');
   choices.addEventListener('keydown', onChoicesKeyDown);
   choices.addEventListener('focusin', (event) => {
@@ -385,15 +378,25 @@ export function renderGlobe(stage) {
   const current = selected;
   currentCode = current ? current.code : null;
   hostNode.dataset.globeSelected = currentCode || '';
-  DATASET.countries.forEach((country, index) => {
-    const li = el('li', 'nav-c2-choice-item');
-    const button = el('button', '', `${country.flag || ''} ${country.name} · ${country.events.length} repères`);
+  const ordered = [...DATASET.countries].sort((a, b) => a.name.localeCompare(b.name, 'fr'));
+  ordered.forEach((country) => {
+    const index = DATASET.countries.indexOf(country);
+    const meta = countryMeta(country);
+    const li = el('li');
+    const button = el('button', 'globe-country');
     button.type = 'button';
     button.dataset.index = String(index);
-    /* C2-05 : position visible dans une liste ordonnée, sans JS d'annonce. */
-    const number = el('span', 'nav-c2-choice-num', String(index + 1).padStart(2, '0'));
-    number.setAttribute('aria-hidden', 'true');
-    button.prepend(number, document.createTextNode(' '));
+    button.tabIndex = index === (current ? DATASET.countries.indexOf(current) : 0) ? 0 : -1;
+    const top = el('span', 'globe-country-top');
+    const num = el('span', 'globe-country-num', String(index + 1).padStart(2, '0'));
+    num.setAttribute('aria-hidden', 'true');
+    const flag = el('span', 'globe-country-flag', country.flag || '');
+    flag.setAttribute('aria-hidden', 'true');
+    const name = el('span', 'globe-country-name', country.name);
+    top.append(num, flag, name);
+    button.appendChild(top);
+    button.appendChild(el('span', 'globe-country-meta', meta.line));
+    button.appendChild(el('span', 'globe-country-cover', meta.cover));
     if (current && current.id === country.id) button.setAttribute('aria-current', 'true');
     button.addEventListener('click', () => selectCountry(country.id));
     button.addEventListener('focus', () => highlight(index));
@@ -401,12 +404,12 @@ export function renderGlobe(stage) {
     choices.appendChild(li);
   });
   list.appendChild(choices);
+  list.appendChild(el('p', 'globe-help', 'Au clavier : Tab jusqu’au globe ou à la liste, flèches pour parcourir les pays, Entrée pour ouvrir. Survolez la sphère pour voir le nom d’un pays.'));
   wrapper.appendChild(list);
   stage.appendChild(wrapper);
 
   if (current && engine && engine.ready) engine.setSelected(current.code);
 
-  /* ATLAS-GLOBE-08 : chargement, callbacks complets et repli sans écraser le host. */
   if (!initialized && window.THREE && window.VECTEMPOREL_GLOBE) {
     initialized = true;
     engine = window.VECTEMPOREL_GLOBE;
@@ -420,11 +423,13 @@ export function renderGlobe(stage) {
         const country = countryByCode(code);
         if (country) selectCountry(country.id);
       },
-      onReady: () => setStatus('Globe local chargé : textures et palette locales, aucun service externe.', 'ready'),
+      onReady: () => setStatus('Globe local chargé · textures et palette locales, aucun service externe.', 'ready'),
       onError: () => setStatus('Globe 3D indisponible : utilisez la liste des pays ou les flèches au clavier.', 'error'),
     }).then(() => {
       if (paused) drawStaticFrame();
       else syncEngine();
+      const live = document.getElementById(GLOBE_LIVE_ID);
+      if (live) live.textContent = '';
     }).catch(() => {
       setStatus('Globe 3D indisponible : utilisez la liste des pays ou les flèches au clavier.', 'error');
     });
@@ -433,5 +438,8 @@ export function renderGlobe(stage) {
     setStatus('Moteur 3D non disponible : sélection par la liste des pays.', 'error');
   } else if (engine && engine.ready) {
     syncEngine();
+    const live = document.getElementById(GLOBE_LIVE_ID);
+    if (live) live.textContent = '';
   }
 }
+

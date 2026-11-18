@@ -23,7 +23,12 @@ await new Promise((resolve) => setTimeout(resolve, 1200));
 check('accueil = globe', await page.evaluate(() => window.VATLAS.getState().view === 'globe'));
 check('10 pays listés', (await page.$$('.globe-list button')).length === 10);
 const buttons = await page.$$('.globe-list button');
-await buttons[0].click();
+let franceIndex = 0;
+for (let i = 0; i < buttons.length; i += 1) {
+  const text = await buttons[i].evaluate((node) => node.textContent || '');
+  if (text.includes('France')) { franceIndex = i; break; }
+}
+await buttons[franceIndex].click();
 await new Promise((resolve) => setTimeout(resolve, 600));
 check('pays → chronologie', await page.evaluate(() => window.VATLAS.getState().view === 'chronology' && Boolean(window.VATLAS.getState().countryId)));
 check('repères affichés', (await page.$$('.event-card')).length > 0);

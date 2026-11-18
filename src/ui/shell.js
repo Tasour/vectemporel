@@ -69,8 +69,10 @@ function ensureCss() {
     @media (max-width: 620px) {
       .shell-brand { min-width: 0; }
       .shell-brand strong { font-size: 9px; }
-      .shell-tabs { gap: 2px; min-width: 0; }
-      .shell-tab { min-height: 36px; min-width: 0; padding: 0 4px; font-size: 9px; flex: 1 1 0; overflow: hidden; }
+      .shell-tabs { gap: 1px; min-width: 0; }
+      .shell-tab { min-height: 36px; min-width: 0; padding: 0 2px; font-size: 8px; flex: 1 1 0; overflow: hidden; letter-spacing: -.02em; }
+      .shell-tab .tab-num { display: none; }
+      .shell-tab { font-size: 8px; }
       .tab-num { display: none; }
       .shell-icon { width: 36px; height: 36px; flex: none; }
       .help-sheet, .detail-sheet { padding: 18px 16px; }
@@ -252,6 +254,10 @@ function manageFocus(captured, reason) {
   const modalNow = state.helpOpen ? 'help' : state.detailOpen ? 'detail' : null;
   const passive = reason === 'play' || reason === 'autoplay';
   const initial = reason === undefined;
+  // Un clic pays (reason 'country') mène au titre du repère de la chronologie.
+  // L'annonce reste portée par la seule région live de la coque (updateLive) :
+  // aucun message supplémentaire n'est écrit ici, et le contenu existant est conservé.
+  const countryTitle = reason === 'country' ? findByKey('country-title') : null;
   if (modalNow) {
     if (modalNow !== lastModal) {
       detailTrigger = key;
@@ -260,6 +266,9 @@ function manageFocus(captured, reason) {
     const close = findByKey(`${modalNow}-close`);
     if (close) close.focus({ preventScroll: true });
     else root.querySelector('.help-overlay, .detail-overlay')?.focus?.({ preventScroll: true });
+  } else if (countryTitle) {
+    // Le titre du repère est la cible dédiée ; sinon la chaîne historique est reprise telle quelle.
+    countryTitle.focus({ preventScroll: true });
   } else if (lastModal) {
     const triggerKey = lastModal === 'help' ? 'help-toggle' : detailTrigger;
     const target = (modalTriggerSig && findBySignature(modalTriggerSig)) || findByKey(triggerKey);

@@ -421,6 +421,10 @@ export function renderChronology(stage) {
 
     const title = el('h2', 'aside-title', event.title);
     title.id = 'atlas-chrono-event-title';
+    // Cible de focus explicite après un clic pays : le titre du repère courant
+    // plutôt que le conteneur générique #atlas-stage (voir shell.js manageFocus).
+    title.tabIndex = -1;
+    title.dataset.fk = 'country-title';
     aside.appendChild(title);
     aside.appendChild(el('p', 'aside-year', `${formatYear(event.year)} · ${event.subtitle}`));
 

@@ -13,16 +13,16 @@ import { DATASET } from './data/dataset.js';
 /* Version du modèle de navigation. Toute modification d'un libellé ou d'un
  * raccourci doit être répercutée ici, dans la coque, dans le routeur et dans
  * le README (voir UNIFIED_AUDIT/NAVIGATION/views/m4-taxonomie-atlas.md). */
-export const TAXONOMY_VERSION = 'm4.1';
+export const TAXONOMY_VERSION = 'm4.2';
 
 /* Catalogue ordonné macro → micro. `level` = profondeur dans le modèle mental,
  * `role` = la question que la vue rend visible. Figé : c'est un contrat. */
 export const VIEW_TAXONOMY = Object.freeze([
   Object.freeze({ id: 'globe', label: 'Monde', digit: '1', letter: 'm', level: 1, role: 'Quels pays sont documentés ?' }),
-  Object.freeze({ id: 'chronology', label: 'Chronologie', digit: '2', letter: 'c', level: 2, role: 'Quelles ères et quels repères ?' }),
+  Object.freeze({ id: 'chronology', label: 'Chrono', digit: '2', letter: 'c', level: 2, role: 'Quelles ères et quels repères ?' }),
   Object.freeze({ id: 'recit', label: 'Récit', digit: '3', letter: 'r', level: 3, role: 'Que disent les points vérifiés ?' }),
-  Object.freeze({ id: 'geography', label: 'Géographie', digit: '4', letter: 'g', level: 4, role: 'Où se situent les lieux ?' }),
-  Object.freeze({ id: 'constellation', label: 'Constellation', digit: '5', letter: 's', level: 5, role: 'Comment l’ensemble se synthétise-t-il ?' }),
+  Object.freeze({ id: 'geography', label: 'Géo', digit: '4', letter: 'g', level: 4, role: 'Où se situent les lieux ?' }),
+  Object.freeze({ id: 'constellation', label: 'Const', digit: '5', letter: 's', level: 5, role: 'Comment l’ensemble se synthétise-t-il ?' }),
   Object.freeze({ id: 'points', label: 'Points', digit: '6', letter: 'p', level: 6, role: 'Quels points vérifiés isoler ?' }),
 ]);
 
