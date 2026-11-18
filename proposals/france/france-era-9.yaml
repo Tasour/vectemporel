@@ -1,0 +1,293 @@
+- id: fr-era9-pol-001
+  era_id: france-era-9
+  domain: "Politique & institutions"
+  scale: transnational
+  subject: "Traité de Maastricht"
+  predicate: "crée l'Union européenne et prépare la monnaie unique ; approuvé de justesse par référendum le 20 septembre 1992"
+  object: "l'intégration européenne ; ratification divisant partisans de l'intégration et défenseurs de la souveraineté nationale"
+  time: "1992-09-20"
+  time_precision: day
+  families: [evenement, repere_normatif]
+  actors: []
+  places: []
+  groups: []
+  institutions: ["Union européenne"]
+  normative: ["Traité de Maastricht", "Référendum du 20 septembre 1992"]
+  memory: []
+  sources: ["SRC-010"]
+  confidence: certain
+  justification: "Repère fr-maastricht (1992) de l'ère. SRC-010 (Milward) interprète la construction européenne comme consolidation des États-nations ; la correction auditée de fr-maastricht retient cette source et le clivage référendaire. Le fait est daté et attribué ; le sens de l'intégration reste discuté dans l'audit."
+  status: validated
+
+- id: fr-era9-dip-001
+  era_id: france-era-9
+  domain: "Guerres & diplomatie"
+  scale: transnational
+  subject: "Diplomatie européenne de la France"
+  predicate: "négocie et ratifie le traité de Maastricht"
+  object: "la création de l'Union européenne et la préparation de la monnaie unique, approuvées par référendum le 20 septembre 1992"
+  time: "1992"
+  time_precision: year
+  families: [evenement, institution]
+  actors: []
+  places: []
+  groups: []
+  institutions: ["Union européenne"]
+  normative: ["Traité de Maastricht"]
+  memory: []
+  sources: ["SRC-010"]
+  confidence: certain
+  justification: "La matrice marque la cellule « vide justifié » pour les engagements militaires extérieurs (Golfe 1991, Kosovo 1999, Afghanistan, Mali 2013) : aucune source du registre ne les documente et aucun point militaire n'est avancé. Le volet diplomatique de l'ère est attesté par SRC-010, déjà retenu pour la correction de fr-maastricht. Ce point ne comble que la diplomatie ; le vide militaire reste ouvert et explicite."
+  status: validated
+
+- id: fr-era9-dro-001
+  era_id: france-era-9
+  domain: "Droit & justice"
+  scale: national
+  subject: "Loi constitutionnelle du 8 mars 2024"
+  predicate: "insère dans l'article 34 de la Constitution"
+  object: "la liberté garantie à la femme de recourir à l'interruption volontaire de grossesse"
+  time: "2024-03-08"
+  time_precision: day
+  families: [evenement, repere_normatif]
+  actors: []
+  places: ["Versailles"]
+  groups: []
+  institutions: ["Parlement français réuni en Congrès"]
+  normative: ["Loi constitutionnelle du 8 mars 2024", "Article 34 de la Constitution"]
+  memory: []
+  sources: ["SRC-020", "SRC-014"]
+  confidence: certain
+  justification: "PROP-018 et CLAIM-008 du country-audit : SRC-020 (Bojovic et Stanisljevic, Health Policy) analyse la loi du 8 mars 2024 ; SRC-014 (Pavard) documente la continuité avec la loi Veil de 1975. La portée juridique exacte — liberté garantie ou droit subjectif — reste débattue et signalée par l'audit."
+  status: validated
+
+- id: fr-era9-eco-001
+  era_id: france-era-9
+  domain: "Économie & travail"
+  scale: transnational
+  subject: "Passage à l'euro"
+  predicate: "remplace le franc comme monnaie unique"
+  object: "les pièces et billets en euros entrent en circulation le 1er janvier 2002, au terme d'un choix de politique économique et monétaire discuté"
+  time: "2002-01-01"
+  time_precision: day
+  families: [evenement, processus]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-010"]
+  confidence: certain
+  justification: "Repère fr-euro (2002) de l'ère. SRC-010 (Milward), retenu pour la correction auditée de fr-euro, permet de lire le passage à l'euro comme un choix discuté de politique économique et monétaire, et non comme une simple continuité technique. Le débat sur la croissance, l'inflation et les règles budgétaires reste ouvert."
+  status: validated
+
+- id: fr-era9-soc-001
+  era_id: france-era-9
+  domain: "Société & démographie"
+  scale: local
+  subject: "Révoltes des banlieues de 2005"
+  predicate: "éclatent après la mort de Zyed Benna et Bouna Traoré"
+  object: "à Clichy-sous-Bois et dans de nombreuses banlieues ; elles expriment ségrégation urbaine, chômage et contrôles policiers"
+  time: "2005-10-27"
+  time_precision: day
+  families: [evenement, groupe_social, acteur]
+  actors: ["Habitants de Clichy-sous-Bois"]
+  places: ["Clichy-sous-Bois", "Seine-Saint-Denis"]
+  groups: ["jeunes des quartiers populaires", "familles"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-016", "SRC-015"]
+  confidence: disputed
+  justification: "PROP-016 : SRC-016 (Fassin) étudie la police des quartiers, SRC-015 (Hargreaves) l'histoire de l'immigration. L'événement est attesté, mais sa causalité est multiple et disputée (CLAIM-011) : la notion de « crise des banlieues » est réductrice. L'état d'urgence du 8 novembre 2005 est rapporté par PROP-016."
+  status: validated
+
+- id: fr-era9-fem-001
+  era_id: france-era-9
+  domain: "Femmes, genre, sexualités"
+  scale: national
+  subject: "Inscription de la liberté d'IVG dans la Constitution"
+  predicate: "garantit l'accès à l'interruption volontaire de grossesse"
+  object: "la continuité entre la loi Veil de 1975 et la réforme constitutionnelle du 8 mars 2024"
+  time: "2024-03-08"
+  time_precision: day
+  families: [repere_normatif, evenement]
+  actors: []
+  places: ["Versailles"]
+  groups: []
+  institutions: ["Parlement français réuni en Congrès"]
+  normative: ["Loi constitutionnelle du 8 mars 2024"]
+  memory: ["Simone Veil et la loi du 17 janvier 1975"]
+  sources: ["SRC-020", "SRC-014"]
+  confidence: certain
+  justification: "Cellule « couvert » de la matrice, PROP-018 avec SRC-020 et SRC-014. SRC-014 (Pavard) couvre la période 1956-1979 et permet d'établir la continuité avec 1975 ; SRC-020 analyse la garantie de 2024. La qualification de « liberté » plutôt que de « droit » est un point non résolu de l'audit."
+  status: validated
+
+- id: fr-era9-rel-001
+  era_id: france-era-9
+  domain: "Religions & croyances"
+  scale: local
+  subject: "Affaire des foulards de Creil"
+  predicate: "ouvre un débat national sur la laïcité, l'islam et le genre à l'école"
+  object: "trois collégiennes exclues de leur établissement en octobre 1989 pour avoir refusé d'ôter leur foulard en classe"
+  time: "1989-10"
+  time_precision: month
+  families: [evenement, groupe_social, acteur]
+  actors: ["trois collégiennes de Creil"]
+  places: ["Creil"]
+  groups: ["élèves", "acteurs de l'islam de France"]
+  institutions: ["collège de Creil", "école publique"]
+  normative: []
+  memory: []
+  sources: ["SRC-017", "SRC-015"]
+  confidence: certain
+  justification: "PROP-015 et CLAIM-010 du country-audit : SRC-017 (Bowen) reconstitue l'affaire de Creil, SRC-015 (Hargreaves) la place dans l'histoire de l'immigration et des minorités. L'affaire donne un contenu français à la borne 1989 et décentre le débat de Paris."
+  status: validated
+
+- id: fr-era9-sci-001
+  era_id: france-era-9
+  domain: "Sciences, techniques & santé"
+  scale: national
+  subject: "Garantie constitutionnelle de l'accès à l'interruption volontaire de grossesse"
+  predicate: "constitue une mesure de santé publique inscrite dans la Constitution"
+  object: "la loi du 8 mars 2024 garantit la liberté de recourir à l'IVG, dans le champ de la santé et du droit"
+  time: "2024-03-08"
+  time_precision: day
+  families: [repere_normatif, evenement]
+  actors: []
+  places: ["Versailles"]
+  groups: []
+  institutions: ["Parlement français réuni en Congrès"]
+  normative: ["Loi constitutionnelle du 8 mars 2024"]
+  memory: []
+  sources: ["SRC-020", "SRC-014"]
+  confidence: certain
+  justification: "La matrice classe la cellule « partiel » avec fr-covid (2020) : le registre ne contient aucune source sur la pandémie, aucun point Covid n'est donc avancé. La mesure de santé publique datée et sourcée de l'ère est la loi du 8 mars 2024 (SRC-020, article évalué dans Health Policy ; SRC-014 pour la continuité avec 1975). La dette documentaire sur les sciences et la crise sanitaire reste ouverte."
+  status: validated
+
+- id: fr-era9-art-001
+  era_id: france-era-9
+  domain: "Arts & lettres"
+  scale: national
+  subject: "Attentats contre Charlie Hebdo et marche républicaine de janvier 2015"
+  predicate: "font de la presse satirique et de la liberté d'expression un enjeu culturel national"
+  object: "une marche républicaine défend la liberté d'expression tandis que les débats portent sur l'antisémitisme et la laïcité"
+  time: "2015-01"
+  time_precision: month
+  families: [evenement, memoire]
+  actors: []
+  places: ["Paris"]
+  groups: []
+  institutions: ["Charlie Hebdo"]
+  normative: []
+  memory: []
+  sources: ["SRC-017"]
+  confidence: probable
+  justification: "Repère fr-charlie (2015) de l'ère. La correction auditée de fr-charlie retient SRC-017 (Bowen) avec une confiance moyenne pour le cadrage laïcité et antisémitisme : la confiance reste donc « probable ». Ce point documente la presse satirique et la mobilisation culturelle ; la littérature, le cinéma et la musique contemporains restent absents du registre (OM-015 tel que cité par la matrice)."
+  status: validated
+
+- id: fr-era9-env-001
+  era_id: france-era-9
+  domain: "Environnement & territoire"
+  scale: transnational
+  subject: "COP21 et accord de Paris"
+  predicate: "adopte l'accord de Paris le 12 décembre 2015 au Bourget"
+  object: "limiter le réchauffement bien en dessous de 2 °C et inviter les États à réviser leurs engagements"
+  time: "2015-12-12"
+  time_precision: day
+  families: [evenement, repere_normatif, institution]
+  actors: []
+  places: ["Le Bourget"]
+  groups: []
+  institutions: ["Conférence des parties (COP21)", "UNFCCC"]
+  normative: ["Accord de Paris (12 décembre 2015)"]
+  memory: []
+  sources: ["SRC-018", "SRC-013"]
+  confidence: certain
+  justification: "PROP-017 : SRC-018 est la source primaire institutionnelle de l'UNFCCC pour le texte et la date d'adoption ; SRC-013 (Bess) situe la COP21 dans l'histoire de l'écologie française. L'accord est salué comme un tournant mais critiqué pour la faiblesse de ses obligations."
+  status: validated
+
+- id: fr-era9-mig-001
+  era_id: france-era-9
+  domain: "Migrations & diasporas"
+  scale: national
+  subject: "Révoltes de 2005 et descendants de migrations"
+  predicate: "rendent visibles les inégalités sociales et raciales dans les banlieues"
+  object: "les quartiers populaires après la mort de Zyed Benna et Bouna Traoré à Clichy-sous-Bois"
+  time: "2005-10-27"
+  time_precision: day
+  families: [evenement, groupe_social]
+  actors: ["Habitants de Clichy-sous-Bois"]
+  places: ["Clichy-sous-Bois"]
+  groups: ["descendants de migrations", "jeunes des quartiers populaires"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-016", "SRC-015"]
+  confidence: disputed
+  justification: "PROP-016 : SRC-016 (Fassin) et SRC-015 (Hargreaves) cadrent le traitement différencié des jeunes issus de l'immigration. La matrice signale que Calais et d'autres lieux restent absents ; la causalité des révoltes est multiple et disputée (CLAIM-011)."
+  status: validated
+
+- id: fr-era9-min-001
+  era_id: france-era-9
+  domain: "Peuples autochtones & minorités"
+  scale: local
+  subject: "Foulards de Creil et habitants de Clichy-sous-Bois"
+  predicate: "font des minorités religieuses et des descendants de migrations des acteurs du débat public"
+  object: "l'affaire de Creil (octobre 1989) et les révoltes de Clichy-sous-Bois (octobre 2005)"
+  time: "1989-10"
+  time_precision: month
+  families: [evenement, groupe_social, acteur]
+  actors: ["trois collégiennes de Creil", "Habitants de Clichy-sous-Bois"]
+  places: ["Creil", "Clichy-sous-Bois"]
+  groups: ["minorités religieuses", "descendants de migrations"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-017", "SRC-015", "SRC-016"]
+  confidence: certain
+  justification: "La matrice cite PROP-015 et PROP-016 pour cette cellule : Creil (SRC-017, SRC-015) et Clichy-sous-Bois (SRC-016, SRC-015). L'échelle locale et l'ancrage en 1989 sont ceux de PROP-015. Les diasporas non algériennes, le handicap et les sexualités minoritaires restent des dettes documentées (OM-015)."
+  status: validated
+
+- id: fr-era9-mem-001
+  era_id: france-era-9
+  domain: "Mémoire & patrimoine"
+  scale: national
+  subject: "Discours de Jacques Chirac du 16 juillet 1995"
+  predicate: "reconnaît la responsabilité de l'État français dans la déportation des Juifs"
+  object: "une rupture avec la mémoire gaullienne qui assimilait Vichy à une parenthèse"
+  time: "1995-07-16"
+  time_precision: day
+  families: [evenement, acteur, memoire]
+  actors: ["Jacques Chirac"]
+  places: ["Paris"]
+  groups: []
+  institutions: ["État français"]
+  normative: []
+  memory: ["reconnaissance officielle de la responsabilité de l'État", "commémoration de la rafle du Vél' d'Hiv"]
+  sources: ["SRC-009", "SRC-008"]
+  confidence: certain
+  justification: "PROP-014 : SRC-009 (Rousso) analyse les usages mémoriels de Vichy jusqu'à la reconnaissance de 1995 ; SRC-008 (Paxton) établit la responsabilité propre de Vichy dans les persécutions. Il faut distinguer l'événement de 1942 de l'acte mémoriel de 1995."
+  status: validated
+
+- id: fr-era9-cir-001
+  era_id: france-era-9
+  domain: "Circulations transnationales"
+  scale: transnational
+  subject: "Accord de Paris, Maastricht et euro"
+  predicate: "font circuler des normes climatiques et européennes entre les États"
+  object: "l'accord du 12 décembre 2015, le traité de Maastricht (1992) et la monnaie unique (2002)"
+  time: "2015-12-12"
+  time_precision: day
+  families: [evenement, processus, repere_normatif]
+  actors: []
+  places: ["Le Bourget"]
+  groups: []
+  institutions: ["UNFCCC", "Union européenne"]
+  normative: ["Accord de Paris", "Traité de Maastricht"]
+  memory: []
+  sources: ["SRC-018", "SRC-013", "SRC-010"]
+  confidence: certain
+  justification: "La matrice cite PROP-017, fr-maastricht et fr-euro pour cette cellule. SRC-018 (source primaire) et SRC-013 (Bess) pour la COP21 ; SRC-010 (Milward) pour la circulation des normes européennes. Aucun lien externe, aucune source inventée."
+  status: validated

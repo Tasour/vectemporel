@@ -1,0 +1,379 @@
+# France — ère 2 « Moyen Âge » (476 → 1492)
+# Points proposés à partir des repères curatés de src/data/dataset.js et des audits/france/*.
+# Aucune source du registre ne couvre le Moyen Âge (REPORT.md §7.2) : les champs `sources`
+# restent vides et le repère d'origine est nommé dans chaque `justification`.
+# Aucun lien externe, aucune date ni aucun fait hors de l'ère.
+
+- id: fr2-pol-001
+  era_id: france-era-2
+  domain: "Politique & institutions"
+  scale: national
+  subject: "Hugues Capet"
+  predicate: "est élu roi des Francs après la mort de Louis V"
+  object: "la royauté des Francs, ouverte par une dynastie qui règne près de huit siècles"
+  time: "987"
+  time_precision: year
+  families: [evenement, acteur, institution]
+  actors: ["Hugues Capet", "Louis V"]
+  places: []
+  groups: ["Capétiens"]
+  institutions: ["royauté des Francs"]
+  normative: []
+  memory: []
+  sources: []
+  confidence: certain
+  status: validated
+  justification: "Fait tiré du repère fr-capet (dataset.js, 987). La matrice ERA-2 classe la cellule en « partiel » : acteurs, lieux et sources non structurés dans la fiche d'origine. Les Capétiens et la durée de la dynastie sont énoncés dans le résumé, sans invention. Aucune source académique médiévale au registre (REPORT.md §7.2), d'où sources vide et ancrage par l'identifiant du repère."
+  TODO: []
+
+- id: fr2-pol-002
+  era_id: france-era-2
+  domain: "Politique & institutions"
+  scale: national
+  subject: "Philippe IV le Bel"
+  predicate: "réunit pour la première fois les représentants du clergé, de la noblesse et des villes"
+  object: "les États généraux, assemblée qui soutient le roi face au pape"
+  time: "1302"
+  time_precision: year
+  families: [evenement, acteur, groupe, institution]
+  actors: ["Philippe IV le Bel"]
+  places: []
+  groups: ["clergé", "noblesse", "villes"]
+  institutions: ["États généraux"]
+  normative: []
+  memory: []
+  sources: []
+  confidence: certain
+  status: validated
+  justification: "Fait tiré du repère fr-etats-generaux (dataset.js, 1302), l'un des cinq repères politiques cités par la matrice. Les trois ordres et le soutien au roi sont dans le résumé ; aucun lieu n'est ajouté car la fiche n'en précise pas. Aucune source du registre ne documente les institutions médiévales (REPORT.md §7.2)."
+  TODO: []
+
+- id: fr2-gue-001
+  era_id: france-era-2
+  domain: "Guerres & diplomatie"
+  scale: national
+  subject: "Charles Martel"
+  predicate: "remporte une victoire sur une armée omeyyade venue d'Al-Andalus"
+  object: "un événement devenu symbole de la défense du royaume franc"
+  time: "732"
+  time_precision: year
+  families: [evenement, acteur, groupe, lieu]
+  actors: ["Charles Martel"]
+  places: ["Poitiers"]
+  groups: ["armée omeyyade"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: certain
+  status: validated
+  justification: "Fait tiré du repère fr-poitiers (dataset.js, 732). Le lieu est le titre même du repère ; l'acteur et le groupe adverse sont nommés dans le résumé. La portée symbolique est rapportée comme telle par le résumé, sans quantification inventée. Aucune source de guerre médiévale au registre (REPORT.md §7.2)."
+  TODO: []
+
+- id: fr2-gue-002
+  era_id: france-era-2
+  domain: "Guerres & diplomatie"
+  scale: national
+  subject: "Guerre de Cent Ans"
+  predicate: "naît d'une querelle successorale autour du trône de France et dégénère en un conflit de plus d'un siècle"
+  object: "la transformation des armées et des impôts du royaume"
+  time: "1337"
+  time_precision: year
+  families: [evenement, processus, institution]
+  actors: []
+  places: []
+  groups: []
+  institutions: ["trône de France"]
+  normative: []
+  memory: []
+  sources: []
+  confidence: certain
+  status: validated
+  justification: "Fait tiré du repère fr-cent-ans (dataset.js, 1337). La querelle successorale, la durée et la transformation des armées et des impôts sont textuelles dans le résumé. L'expression « sentiment national » est délibérément écartée : REPORT.md §4 la classe parmi les points non résolus faute de source au registre."
+  TODO: []
+
+- id: fr2-dro-001
+  era_id: france-era-2
+  domain: "Droit & justice"
+  scale: national
+  subject: "Justice royale, coutumes et ordonnances médiévales"
+  predicate: "sont enregistrées comme dette documentaire, sans repère daté dans la frise"
+  object: "des pistes à instruire : enquêtes de Louis IX, Parlement de Paris (OM-002)"
+  time: "476-1492"
+  time_precision: interval
+  families: [processus, repere_normatif]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["OM-002"]
+  confidence: certain
+  status: validated
+  justification: "Cellule « vide justifié » de la matrice ERA-2/Droit & justice. OM-002 (omissions.yaml) documente explicitement l'absence de repère daté et propose des fiches à instruire, non des faits attestés : aucune date ni institution n'est affirmée ici. La matrice renvoie à OM-003 par erreur ; OM-003 concerne l'ère 3 dans omissions.yaml. La certitude porte sur la dette documentée, non sur un événement juridique."
+  TODO: []
+
+- id: fr2-eco-001
+  era_id: france-era-2
+  domain: "Économie & travail"
+  scale: national
+  subject: "Économie médiévale (expansion agraire, foires)"
+  predicate: "est enregistrée comme dette, sans repère daté, hors l'impôt mentionné par la guerre de Cent Ans"
+  object: "l'impôt transformation attestée dans fr-cent-ans (1337) ; expansion agraire et foires non datées"
+  time: "476-1492"
+  time_precision: interval
+  families: [processus, evenement]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: certain
+  status: validated
+  justification: "Cellule « vide justifié » de la matrice ERA-2/Économie & travail : « expansion agraire et foires médiévales non datées ; dette économique ». Aucun OM dédié n'existe pour cette cellule dans omissions.yaml : sources vide et dette explicitement nommée, sans inventer d'ID. Le seul fait économique daté de l'ère est l'impôt dans le repère fr-cent-ans."
+  TODO: []
+
+- id: fr2-soc-001
+  era_id: france-era-2
+  domain: "Société & démographie"
+  scale: national
+  subject: "Peste noire"
+  predicate: "atteint la France par le port de Marseille et emporte une part considérable de la population européenne"
+  object: "une dépopulation rapide, sans chiffre avancé"
+  time: "1348"
+  time_precision: year
+  families: [evenement, processus, lieu]
+  actors: []
+  places: ["Marseille"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: probable
+  status: validated
+  justification: "Fait tiré du repère fr-peste (dataset.js, 1348), seul repère de la cellule « partiel ». REPORT.md §4 et §6.2 signalent que la date de la peste noire doit être vérifiée sur une source spécifique absente du registre : aucun chiffre de mortalité n'est introduit et la certitude reste probable."
+  TODO: []
+
+- id: fr2-fem-001
+  era_id: france-era-2
+  domain: "Femmes, genre, sexualités"
+  scale: national
+  subject: "Jeanne d'Arc"
+  predicate: "délivre Orléans et conduit Charles VII à Reims pour son sacre, avant d'être brûlée à Rouen"
+  object: "une action militaire et religieuse documentée, seul repère genré daté de l'ère"
+  time: "1429"
+  time_precision: year
+  families: [acteur, evenement, lieu]
+  actors: ["Jeanne d'Arc", "Charles VII"]
+  places: ["Orléans", "Reims", "Rouen"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: certain
+  status: validated
+  justification: "Fait tiré du repère fr-jeanne (dataset.js, 1429 ; mort à Rouen en 1431). REPORT.md §5 relève que la fiche traite Jeanne comme figure militaire et religieuse, non comme histoire des femmes : le point comble le domaine avec le seul acteur féminin daté du corpus, sans lui prêter une revendication genrée non attestée. Aucune source de genre médiéval au registre."
+  TODO: []
+
+- id: fr2-rel-001
+  era_id: france-era-2
+  domain: "Religions & croyances"
+  scale: national
+  subject: "Clovis"
+  predicate: "se fait baptiser à Reims, probablement vers 496"
+  object: "un rapprochement du pouvoir franc avec l'Église et l'héritage romain"
+  time: "496"
+  time_precision: approximate
+  families: [evenement, acteur, lieu, institution]
+  actors: ["Clovis"]
+  places: ["Reims"]
+  groups: ["Francs saliens"]
+  institutions: ["Église"]
+  normative: []
+  memory: []
+  sources: []
+  confidence: disputé
+  status: validated
+  justification: "Fait tiré du repère fr-clovis (dataset.js). REPORT.md §6.2 et §7.2 : la date est disputée (496, 498 ou 499) et aucune correction n'est retenue faute de source au registre ; le résumé dit lui-même « probablement vers 496 ». La certitude disputée porte sur l'année, non sur le baptême."
+  TODO: []
+
+- id: fr2-rel-002
+  era_id: france-era-2
+  domain: "Religions & croyances"
+  scale: national
+  subject: "Innocent III"
+  predicate: "lance une croisade contre les cathares du Languedoc"
+  object: "une croisade de vingt ans qui renforce le pouvoir royal dans le Midi"
+  time: "1209"
+  time_precision: year
+  families: [acteur, evenement, groupe, lieu]
+  actors: ["Innocent III"]
+  places: ["Languedoc"]
+  groups: ["cathares"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: certain
+  status: validated
+  justification: "Fait tiré du repère fr-albigeois (dataset.js, 1209), cité par la matrice dans Religions & croyances et dans Peuples autochtones & minorités. Le pape, le groupe visé, la durée et l'effet sur le pouvoir royal sont énoncés dans le résumé. Aucune source de police religieuse médiévale au registre."
+  TODO: []
+
+- id: fr2-sci-001
+  era_id: france-era-2
+  domain: "Sciences, techniques & santé"
+  scale: national
+  subject: "Savoirs techniques et scientifiques médiévaux"
+  predicate: "sont renvoyés au domaine Arts, sans repère scientifique séparé"
+  object: "les voûtes brisées de Saint-Denis (1144) ne sont pas documentées comme science"
+  time: "476-1492"
+  time_precision: interval
+  families: [processus]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: certain
+  status: validated
+  justification: "Cellule « vide justifié » de la matrice ERA-2/Sciences, techniques & santé : « savoirs techniques gothiques traités dans Arts ; aucun repère scientifique séparé ». REPORT.md §7.4 classe le Moyen Âge scientifique comme « faible / à instruire ». La certitude porte sur l'absence de repère, non sur une hypothétique découverte."
+  TODO: []
+
+- id: fr2-art-001
+  era_id: france-era-2
+  domain: "Arts & lettres"
+  scale: national
+  subject: "Suger"
+  predicate: "consacre le chœur de la basilique de Saint-Denis"
+  object: "la lumière et les voûtes brisées inaugurent un style qui gagne toute l'Europe"
+  time: "1144"
+  time_precision: year
+  families: [acteur, evenement, lieu, institution]
+  actors: ["Suger"]
+  places: ["Saint-Denis"]
+  groups: []
+  institutions: ["basilique de Saint-Denis"]
+  normative: []
+  memory: []
+  sources: []
+  confidence: probable
+  status: validated
+  justification: "Fait tiré du repère fr-gothique (dataset.js, 1144). REPORT.md §4 : les « voûtes brisées » sont à vérifier sur une source spécifique avant correction, et §7.2 note l'absence de source d'art médiéval au registre (Woolf couvre la Gaule romaine, pas les cathédrales). La consécration par Suger est le fait documenté ; le détail stylistique reste probable."
+  TODO: []
+
+- id: fr2-env-001
+  era_id: france-era-2
+  domain: "Environnement & territoire"
+  scale: national
+  subject: "Climat, famines et défrichements médiévaux"
+  predicate: "sont enregistrés comme dette environnementale, sans repère daté"
+  object: "aucune donnée de climat, de famine ou de défrichement dans la frise de l'ère"
+  time: "476-1492"
+  time_precision: interval
+  families: [processus]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: certain
+  status: validated
+  justification: "Cellule « vide justifié » de la matrice ERA-2/Environnement & territoire : « climat, famines et défrichements non datés ; dette environnementale ». Aucun OM dédié et aucune source d'histoire environnementale médiévale au registre (SRC-013 couvre 1960-2000) : aucun chiffre climatique n'est introduit. La certitude porte sur la dette documentée."
+  TODO: []
+
+- id: fr2-mig-001
+  era_id: france-era-2
+  domain: "Migrations & diasporas"
+  scale: national
+  subject: "Installations franques et vikings"
+  predicate: "sont enregistrées comme dette migratoire, sans date d'installation dans le corpus"
+  object: "aucun repère de migration daté pour l'ère"
+  time: "476-1492"
+  time_precision: interval
+  families: [processus, groupe]
+  actors: []
+  places: []
+  groups: ["Francs saliens", "Vikings"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: certain
+  status: validated
+  justification: "Cellule « vide justifié » de la matrice ERA-2/Migrations & diasporas : « installations franques et vikings non datées ; dette migratoire ». Les Francs saliens sont nommés dans le repère fr-clovis et les Vikings dans la justification de la cellule ; aucun mouvement ni date n'est affirmé. La certitude porte sur la dette documentée."
+  TODO: []
+
+- id: fr2-min-001
+  era_id: france-era-2
+  domain: "Peuples autochtones & minorités"
+  scale: regional
+  subject: "Cathares du Languedoc"
+  predicate: "sont la cible d'une croisade lancée par Innocent III"
+  object: "vingt ans de croisade et un renforcement du pouvoir royal dans le Midi"
+  time: "1209"
+  time_precision: year
+  families: [groupe, evenement, lieu, acteur]
+  actors: ["Innocent III"]
+  places: ["Languedoc"]
+  groups: ["cathares"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: certain
+  status: validated
+  justification: "Fait tiré du repère fr-albigeois (dataset.js, 1209), seul repère de la cellule « partiel ». La matrice précise que juifs et autres minorités sont absents : aucune autre minorité n'est ajoutée. Échelle régionale imposée par la cellule (Languedoc, Midi) et par le résumé."
+  TODO: []
+
+- id: fr2-mem-001
+  era_id: france-era-2
+  domain: "Mémoire & patrimoine"
+  scale: national
+  subject: "Jeanne d'Arc comme figure de la résistance"
+  predicate: "est qualifiée de figure de la résistance par le récit du repère"
+  object: "une mise en récit contemporaine des faits d'Orléans, Reims et Rouen (1431)"
+  time: "1431"
+  time_precision: year
+  families: [memoire, acteur]
+  actors: ["Jeanne d'Arc"]
+  places: ["Rouen"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: ["figure de la résistance"]
+  sources: []
+  confidence: certain
+  status: validated
+  justification: "Fait tiré du repère fr-jeanne : « figure de la résistance » est le seul énoncé mémoriel daté de l'ère. La matrice signale l'absence d'objet mémoriel distinct ; aucune commémoration postérieure à 1492 (statues, canonisation) n'est introduite, conformément à la règle hors-ère."
+  TODO: []
+
+- id: fr2-cir-001
+  era_id: france-era-2
+  domain: "Circulations transnationales"
+  scale: transnational
+  subject: "Appel de Clermont"
+  predicate: "le pape Urbain II appelle les chrétiens d'Occident à partir en Terre sainte"
+  object: "une prédication qui mobilise des seigneurs venus de toute la France"
+  time: "1095"
+  time_precision: year
+  families: [evenement, acteur, groupe, institution]
+  actors: ["Urbain II"]
+  places: ["Clermont", "Terre sainte"]
+  groups: ["chrétiens d'Occident", "seigneurs français"]
+  institutions: ["papauté"]
+  normative: []
+  memory: []
+  sources: []
+  confidence: certain
+  status: validated
+  justification: "Fait tiré du repère fr-croisade (dataset.js, 1095), cité par la matrice dans Guerres & diplomatie, Religions & croyances et Circulations transnationales. L'appel, le concile, la destination et la mobilisation des seigneurs sont énoncés dans le résumé ; aucun trajet ni effectif n'est inventé. Échelle transnationale imposée par la cellule."
+  TODO: []

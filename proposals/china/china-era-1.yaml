@@ -1,0 +1,316 @@
+# Points de l'ère Chine / Shang, Zhou et Royaumes combattants (china-era-1, -1600 → -221).
+# Sources : uniquement le registre audits/china/source-register.csv (SRC-001) et les
+# silences documentés de audits/china/coverage-matrix.csv. Aucune date, source, DOI ou
+# citation inventée. Aucun lien externe. Aucun contenu hors de l'ère : les repères
+# Qin (-221, cn-qin) appartiennent à china-era-2 et ne sont pas traités ici.
+# Faits ancrés dans src/data/dataset.js (cn-shang, cn-zhou), audits/china/fixes.yaml,
+# audits/china/proposals.yaml (corrections cn-shang/cn-zhou), country-audit.yaml
+# (CLAIM-001, PERIOD-1) et omissions.yaml (aucune omission ERA-1 n'y est enregistrée).
+
+- id: cn-era1-pol-001
+  era_id: china-era-1
+  domain: "Politique & institutions"
+  scale: national
+  subject: "Royauté Shang"
+  predicate: "constitue, selon une datation conventionnelle, la première dynastie chinoise dont l'écriture est abondamment attestée"
+  object: "le royaume Shang, avec Anyang (vers -1250) comme principal site archéologique"
+  time: "-1600"
+  time_precision: approximate
+  families: [evenement, acteur, institution, lieu]
+  actors: ["royauté Shang"]
+  places: ["Anyang"]
+  groups: []
+  institutions: ["dynastie Shang", "royauté Shang"]
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: disputé
+  status: validated
+  justification: "Repère cn-shang (dataset.js) et correction cn-shang (fixes.yaml, proposals.yaml) : vers -1600, première dynastie à écriture abondante, datation conventionnelle. CLAIM-001 (country-audit.yaml) qualifie la date de « disputed » et rappelle le débat Erlitou/Xia ; le disputé reste donc disputé. SRC-001 est la synthèse utilisée par l'audit pour les dates dynastiques. Ancre -1600 = borne de début de l'ère, conforme à -1600/-221 ; aucun fait hors ère."
+  TODO: []
+
+- id: cn-era1-guer-002
+  era_id: china-era-1
+  domain: "Guerres & diplomatie"
+  scale: national
+  subject: "Zhou"
+  predicate: "renversent les Shang à Muye et légitiment leur victoire par le mandat du Ciel, avant le sac de Hao en -771"
+  object: "la bataille de Muye (vers -1046) et la rupture avec les Zhou occidentaux"
+  time: "-1046"
+  time_precision: approximate
+  families: [evenement, acteur, lieu, normatif]
+  actors: ["Zhou", "Shang"]
+  places: ["Muye", "Hao"]
+  groups: ["Zhou", "Shang"]
+  institutions: ["royauté Zhou"]
+  normative: ["mandat du Ciel comme légitimation du pouvoir Zhou"]
+  memory: []
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "Repère cn-zhou (dataset.js) et correction cn-zhou (fixes.yaml, proposals.yaml) : vers -1046, renversement des Shang à Muye, légitimation par le mandat du Ciel, puis sac de Hao en -771. La matrice signalait l'absence de fiche de bataille (Muye), d'acteurs et de lieux ; ils sont ici renseignés. La date de Muye est conventionnelle, d'où « probable ». -1046 et -771 sont dans l'ère -1600/-221 ; aucune invention."
+  TODO: []
+
+- id: cn-era1-droit-003
+  era_id: china-era-1
+  domain: "Droit & justice"
+  scale: national
+  subject: "Droit et justice Shang-Zhou"
+  predicate: "ne font l'objet d'aucune fiche datée dans le corpus de cette ère"
+  object: "les serments et règles attribués aux Zhou ; les codes Qin relèvent de l'ère suivante"
+  time: "-1600/-221"
+  time_precision: interval
+  families: [processus]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide non traité » de coverage-matrix.csv (ERA-1, Droit & justice) : « aucune fiche sur le droit Zhou, les serments, les codes Qin ou la justice locale ». Le registre omissions.yaml n'enregistre aucune omission pour ERA-1 : silence explicite, sans ID d'omission à citer, conformément à la règle 7 de POINT_METHODOLOGY.md. Les codes Qin sont associés à cn-qin (-221, china-era-2) et ne sont pas introduits ici pour éviter tout hors-ère. Aucune date ni source inventée ; ancre = intervalle de l'ère."
+  TODO: []
+
+- id: cn-era1-econ-004
+  era_id: china-era-1
+  domain: "Économie & travail"
+  scale: national
+  subject: "Production et échanges de bronze Shang"
+  predicate: "sont attestés par les bronzes rituels, sans fiche dédiée à l'agriculture ou à la fiscalité"
+  object: "les matières (bronze, jade, coquillages) et le travail artisanal documentés à Anyang"
+  time: "-1250"
+  time_precision: approximate
+  families: [processus, lieu, groupe_social]
+  actors: []
+  places: ["Anyang"]
+  groups: ["artisans Shang"]
+  institutions: ["bronzes rituels"]
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "Repère cn-shang (dataset.js) : les bronzes rituels et les inscriptions d'Anyang (vers -1250) documentent royauté et culte des ancêtres. La matrice précise que les échanges de bronze, jade et coquillages sont suggérés et que l'agriculture/fiscalité ne font pas l'objet de fiche ; ces silences sont signalés, non comblés par invention. -1250 est dans l'ère. SRC-001 est la synthèse de référence de l'audit pour ce repère."
+  TODO: []
+
+- id: cn-era1-soc-005
+  era_id: china-era-1
+  domain: "Société & démographie"
+  scale: national
+  subject: "Lignages et sacrifices Shang"
+  predicate: "structurent la société documentée par l'archéologie d'Anyang"
+  object: "les inscriptions oraculaires et les bronzes rituels d'Anyang (vers -1250)"
+  time: "-1250"
+  time_precision: approximate
+  families: [processus, groupe_social, lieu, institution]
+  actors: []
+  places: ["Anyang"]
+  groups: ["lignages Shang", "communauté d'Anyang"]
+  institutions: ["culte des ancêtres", "royauté Shang"]
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "La justification de la cellule (coverage-matrix.csv, ERA-1, Société & démographie) indique explicitement que « l'archéologie d'Anyang documente lignages et sacrifices », tout en déplorant l'absence de traitement de la société comme objet historique ; le point comble cette cellule avec les seuls éléments présents dans le corpus (cn-shang). Interprétation archéologique -> « probable », sans chiffre démographique inventé."
+  TODO: []
+
+- id: cn-era1-genre-006
+  era_id: china-era-1
+  domain: "Femmes, genre, sexualités"
+  scale: national
+  subject: "Femmes et rapports de genre Shang-Zhou"
+  predicate: "ne font l'objet d'aucune fiche datée dans le corpus de cette ère"
+  object: "les rôles féminins dans les sources archéologiques et écrites de la période"
+  time: "-1600/-221"
+  time_precision: interval
+  families: [groupe_social]
+  actors: []
+  places: ["Anyang"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide non traité » de coverage-matrix.csv (ERA-1, Femmes, genre, sexualités) : la matrice cite explicitement Fu Hao, les reines Shang et les rapports de genre comme absents de la frise. Ces noms ne sont repris que comme exemples de silence documenté, jamais comme faits attestés : aucune affirmation inventée. Aucun OM ERA-1 dans omissions.yaml ; silence explicite. Aucune date ni source inventée ; ancre = intervalle de l'ère."
+  TODO: []
+
+- id: cn-era1-relig-007
+  era_id: china-era-1
+  domain: "Religions & croyances"
+  scale: national
+  subject: "Culte des ancêtres Shang et mandat du Ciel Zhou"
+  predicate: "sont documentés par les os oraculaires et servent de légitimation au pouvoir royal"
+  object: "les inscriptions d'Anyang (vers -1250) et la victoire Zhou de Muye (vers -1046)"
+  time: "-1600/-221"
+  time_precision: interval
+  families: [processus, lieu, institution, normatif]
+  actors: ["royauté Shang", "royauté Zhou"]
+  places: ["Anyang", "Muye"]
+  groups: []
+  institutions: ["culte des ancêtres", "royauté Shang", "royauté Zhou"]
+  normative: ["mandat du Ciel comme légitimation du pouvoir Zhou"]
+  memory: []
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "Repères cn-shang et cn-zhou (dataset.js) : os oraculaires d'Anyang, culte des ancêtres, mandat du Ciel. La matrice notait ces deux éléments comme seuls couverts (« partiel ») ; ils sont ici traités comme points à part entière. L'intervalle -1600/-221 est utilisé comme ancre pour ne pas forcer une date unique sur deux phénomènes distincts ; les dates « vers -1250 » et « vers -1046 » sont données dans l'objet avec leur rôle. SRC-001 est la synthèse de l'audit pour les deux repères."
+  TODO: []
+
+- id: cn-era1-sci-008
+  era_id: china-era-1
+  domain: "Sciences, techniques & santé"
+  scale: national
+  subject: "Métallurgie du bronze Shang"
+  predicate: "est attestée par les bronzes rituels, sans fiche sur l'astronomie, le calendrier ou la médecine"
+  object: "les savoirs techniques mis en œuvre à Anyang (vers -1250)"
+  time: "-1250"
+  time_precision: approximate
+  families: [processus, lieu]
+  actors: []
+  places: ["Anyang"]
+  groups: []
+  institutions: ["bronzes rituels"]
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "La justification de la cellule (coverage-matrix.csv, ERA-1, Sciences, techniques & santé) indique que « la métallurgie du bronze est évoquée, mais sans fiche sur l'astronomie, le calendrier ou la médecine ». Seule la métallurgie, présente dans cn-shang (dataset.js), est affirmée ; les autres savoirs sont signalés comme absents, non inventés. Ancre -1250 = horizon d'Anyang, dans l'ère."
+  TODO: []
+
+- id: cn-era1-arts-009
+  era_id: china-era-1
+  domain: "Arts & lettres"
+  scale: national
+  subject: "Écriture oraculaire et bronzes rituels Shang"
+  predicate: "constituent les formes d'écriture et d'art les plus anciennes attestées du corpus de cette ère"
+  object: "les inscriptions d'Anyang (vers -1250) et les bronzes rituels"
+  time: "-1250"
+  time_precision: approximate
+  families: [processus, lieu, institution]
+  actors: []
+  places: ["Anyang"]
+  groups: []
+  institutions: ["écriture oraculaire", "bronzes rituels"]
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "Repère cn-shang (dataset.js) : « première dynastie chinoise dont l'écriture est abondamment attestée », inscriptions oraculaires et bronzes rituels. La matrice notait que la poésie, la calligraphie et les textes n'étaient pas traités ; l'écriture oraculaire, elle, est documentée et c'est elle qui est affirmée ici. Aucune œuvre, titre ou auteur inventé. Ancre -1250 conforme à l'ère."
+  TODO: []
+
+- id: cn-era1-env-010
+  era_id: china-era-1
+  domain: "Environnement & territoire"
+  scale: national
+  subject: "Fleuve Jaune, agriculture et climat Shang-Zhou"
+  predicate: "ne font l'objet d'aucune fiche datée dans le corpus de cette ère"
+  object: "le milieu du fleuve Jaune et les transformations agraires de la période"
+  time: "-1600/-221"
+  time_precision: interval
+  families: [processus]
+  actors: []
+  places: ["vallée du fleuve Jaune", "Anyang"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide non traité » de coverage-matrix.csv (ERA-1, Environnement & territoire) : « aucune fiche sur le fleuve Jaune, la déforestation, l'agriculture ou le climat ». Aucun OM ERA-1 dans omissions.yaml ; silence explicite, non masqué. Aucune catastrophe, date ou chiffre inventé ; l'intervalle -1600/-221 sert d'ancre et aucun événement environnemental n'est affirmé."
+  TODO: []
+
+- id: cn-era1-migr-011
+  era_id: china-era-1
+  domain: "Migrations & diasporas"
+  scale: national
+  subject: "Passage des Zhou occidentaux aux Zhou orientaux"
+  predicate: "est traité dans le corpus comme un changement dynastique, non comme une migration"
+  object: "le sac de Hao en -771 et le domaine réduit des Zhou orientaux"
+  time: "-771"
+  time_precision: approximate
+  families: [evenement, acteur, groupe_social, lieu]
+  actors: ["Zhou"]
+  places: ["Hao"]
+  groups: ["Zhou occidentaux", "Zhou orientaux", "principautés"]
+  institutions: ["royauté Zhou orientale"]
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "Repère cn-zhou (dataset.js) : après le sac de Hao en -771, les Zhou orientaux ne contrôlent plus qu'un domaine réduit et les principautés s'affrontent jusqu'aux Royaumes combattants. La matrice signalait que la conquête Zhou était traitée comme changement dynastique « pas comme migration ou expansion territoriale » : le point documente ce traitement sans inventer de récit migratoire. -771 est dans l'ère ; SRC-001 est la synthèse de l'audit pour ce repère."
+  TODO: []
+
+- id: cn-era1-peuples-012
+  era_id: china-era-1
+  domain: "Peuples autochtones & minorités"
+  scale: national
+  subject: "Peuples non-Han (Chu, Yue, nomades des steppes)"
+  predicate: "ne font pas l'objet de fiches dédiées dans le corpus de cette ère"
+  object: "les populations extérieures au domaine Shang-Zhou pendant les Royaumes combattants"
+  time: "-1600/-221"
+  time_precision: interval
+  families: [groupe_social]
+  actors: []
+  places: []
+  groups: ["Chu", "Yue", "nomades des steppes"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide non traité » de coverage-matrix.csv (ERA-1, Peuples autochtones & minorités) : la matrice énumère explicitement Chu, Yue et les nomades des steppes comme absents de la frise. Ces noms ne sont repris que pour documenter le silence ; aucun rattachement, date ou événement n'est affirmé. Aucun OM ERA-1 dans omissions.yaml ; ancre = intervalle de l'ère, sans invention."
+  TODO: []
+
+- id: cn-era1-memoire-013
+  era_id: china-era-1
+  domain: "Mémoire & patrimoine"
+  scale: national
+  subject: "Anyang et l'archéologie Shang"
+  predicate: "ne sont pas traités comme objets de mémoire ou de patrimoine dans le corpus de cette ère"
+  object: "les usages mémoriels et patrimoniaux d'Anyang, postérieurs à l'ère -1600/-221"
+  time: "-1600/-221"
+  time_precision: interval
+  families: [memoire, lieu]
+  actors: []
+  places: ["Anyang"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide non traité » de coverage-matrix.csv (ERA-1, Mémoire & patrimoine) : « Anyang et l'archéologie Shang ne sont pas traités comme objets de mémoire ou de patrimoine ». La patrimonialisation d'Anyang est postérieure à l'ère et n'est pas décrite comme un fait de l'ère. Aucun OM ERA-1 dans omissions.yaml ; silence explicite, aucune date ni source inventée."
+  TODO: []
+
+- id: cn-era1-circ-014
+  era_id: china-era-1
+  domain: "Circulations transnationales"
+  scale: regional
+  subject: "Échanges de bronze, jade et coquillages Shang"
+  predicate: "sont suggérés par le corpus, sans fiche dédiée aux circulations eurasiennes"
+  object: "les réseaux d'échange mentionnés autour d'Anyang (vers -1250)"
+  time: "-1250"
+  time_precision: approximate
+  families: [processus, lieu]
+  actors: []
+  places: ["Anyang"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "Cellule « partiel » de coverage-matrix.csv (ERA-1, Circulations transnationales, échelle regional) : « les échanges de bronze, jade et coquillages sont suggérés, mais aucune fiche sur les circulations eurasiennes ». Le point reprend exactement ce qui est suggéré (cn-shang, dataset.js) et signale l'absence de fiche sur les circulations eurasiennes, sans transformer une suggestion en fait certain ni inventer de route. Ancre -1250 = horizon d'Anyang, dans l'ère ; SRC-001 est la synthèse de l'audit pour cn-shang."
+  TODO: []

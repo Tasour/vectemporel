@@ -1,0 +1,403 @@
+# France — france-era-5 « Révolution & Empire » (1789 → 1815)
+# Points extraits du corpus (dataset.js, audits/france/*) sans invention ni hors-ère.
+# Sources : uniquement SRC-002, SRC-003 et OM-006/OM-014 du registre des audits.
+# Un point par domaine de coverage-matrix.csv (14 domaines), status: validated.
+
+- id: fr-era5-pol-001
+  era_id: france-era-5
+  domain: Politique & institutions
+  scale: national
+  subject: "La Révolution française de 1789"
+  predicate: "renverse l'Ancien Régime et proclame la souveraineté nationale"
+  object: "la réunion des États généraux, la prise de la Bastille le 14 juillet 1789 et la Déclaration des droits de l'homme"
+  time: 1789
+  time_precision: year
+  families: [evenement, institution, repere_normatif]
+  actors: []
+  places: ["Paris", "Bastille"]
+  groups: []
+  institutions: ["États généraux"]
+  normative: ["Déclaration des droits de l'homme (1789)"]
+  memory: []
+  sources: ["SRC-003"]
+  confidence: certain
+  justification: "Repère attesté dans fr-revolution (dataset.js) : crise financière et politique, États généraux, Bastille le 14 juillet 1789, Déclaration proclamant l'égalité et la souveraineté nationale. SRC-003 (Scott, Only Paradoxes to Offer) couvre les paradoxes des droits de l'homme et de la citoyenneté. 1789 est la borne de début de l'ère (country-audit.yaml)."
+  status: validated
+
+- id: fr-era5-pol-002
+  era_id: france-era-5
+  domain: Politique & institutions
+  scale: national
+  subject: "La Convention et le gouvernement révolutionnaire"
+  predicate: "radicalisent le pouvoir et multiplient les exécutions"
+  object: "la Terreur, l'exécution de Louis XVI en janvier 1793 et la fin de la Terreur en 1794"
+  time: 1793
+  time_precision: year
+  families: [evenement, institution, acteur]
+  actors: ["Louis XVI"]
+  places: ["Paris"]
+  groups: []
+  institutions: ["Convention"]
+  normative: []
+  memory: []
+  sources: []
+  confidence: probable
+  justification: "La fiche fr-terreur atteste la Convention, un gouvernement révolutionnaire, l'exécution de Louis XVI en janvier 1793 et la fin de la Terreur en 1794. Aucun ID du registre SRC-001 à SRC-020 ne documente spécifiquement la radicalisation de 1793 ; SRC-003 n'atteste dans cette fiche que la figure d'Olympe de Gouges. Silence explicite, non une négation du fait ; aucune date inventée."
+  status: validated
+
+- id: fr-era5-pol-003
+  era_id: france-era-5
+  domain: Politique & institutions
+  scale: national
+  subject: "Le général Bonaparte"
+  predicate: "renverse le Directoire et installe le Consulat"
+  object: "le coup d'État du 18 brumaire (1799) et la concentration progressive du pouvoir"
+  time: 1799
+  time_precision: year
+  families: [evenement, acteur, institution]
+  actors: ["Bonaparte"]
+  places: ["Paris"]
+  groups: []
+  institutions: ["Directoire", "Consulat", "Conseil des Cinq-Cents"]
+  normative: []
+  memory: []
+  sources: []
+  confidence: probable
+  justification: "La fiche fr-brumaire atteste le coup d'État du 18 brumaire, le renversement du Directoire par le général Bonaparte et l'instauration du Consulat ; le Conseil des Cinq-Cents figure dans la légende de l'image. 1799 est une alternative de borne citée dans country-audit.yaml. Aucun ID du registre ne couvre spécifiquement Brumaire : silence explicitement documenté."
+  status: validated
+
+- id: fr-era5-gue-001
+  era_id: france-era-5
+  domain: Guerres & diplomatie
+  scale: transnational
+  subject: "La France révolutionnaire puis impériale"
+  predicate: "mène des guerres contre les coalitions européennes"
+  object: "les guerres de la Révolution et de l'Empire"
+  time: "1789-1815"
+  time_precision: interval
+  families: [processus, evenement]
+  actors: []
+  places: []
+  groups: ["coalitions européennes"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: probable
+  justification: "La matrice de couverture (ERA-5, Guerres & diplomatie et Circulations transnationales) atteste les « guerres de la Révolution et de l'Empire » et les « coalitions », sans source structurée. L'intervalle reprend les bornes de l'ère. fr-waterloo est rattaché à france-era-6 dans dataset.js : il n'est pas utilisé comme repère ici, pour éviter tout hors-ère. Aucun ID du registre ne couvre ce domaine pour ERA-5 : silence explicite."
+  status: validated
+
+- id: fr-era5-dro-001
+  era_id: france-era-5
+  domain: Droit & justice
+  scale: national
+  subject: "Olympe de Gouges"
+  predicate: "publie et revendique l'égalité juridique et politique des femmes"
+  object: "la Déclaration des droits de la femme et de la citoyenne (septembre 1791)"
+  time: 1791
+  time_precision: year
+  families: [repere_normatif, acteur, evenement]
+  actors: ["Olympe de Gouges"]
+  places: ["Paris"]
+  groups: ["femmes"]
+  institutions: []
+  normative: ["Déclaration des droits de la femme et de la citoyenne (1791)"]
+  memory: []
+  sources: ["SRC-003"]
+  confidence: certain
+  justification: "PROP-002 et fr-prop-002 (dataset.js ; proposals.yaml) attestent la publication en septembre 1791 d'un texte qui reprend et retourne la Déclaration de 1789 et réclame l'égalité civile et politique. SRC-003 (Scott, Only Paradoxes to Offer : French Feminists and the Rights of Man) est la source canonique du registre (REPORT.md, PROP-002)."
+  status: validated
+
+- id: fr-era5-dro-002
+  era_id: france-era-5
+  domain: Droit & justice
+  scale: national
+  subject: "Le Code civil des Français"
+  predicate: "unifie le droit, garantit la propriété et organise le mariage civil"
+  object: "l'égalité civile limitée aux hommes majeurs, les femmes restant sous l'autorité de leur mari et l'esclavage colonial hors de son champ"
+  time: 1804
+  time_precision: year
+  families: [repere_normatif, institution]
+  actors: []
+  places: []
+  groups: ["femmes", "esclaves des colonies"]
+  institutions: []
+  normative: ["Code civil des Français (1804)"]
+  memory: []
+  sources: ["SRC-003", "SRC-002"]
+  confidence: certain
+  justification: "La fiche fr-code-civil atteste l'unification du droit, la propriété, le mariage civil et leurs limites genrées et coloniales. fixes.yaml rattache explicitement cette correction à Scott (SRC-003) et Sala-Molins (SRC-002). 1804 est une alternative de borne de l'ère (country-audit.yaml)."
+  status: validated
+
+- id: fr-era5-eco-001
+  era_id: france-era-5
+  domain: Économie & travail
+  scale: national
+  subject: "L'économie révolutionnaire et impériale"
+  predicate: "constitue une dette de sourcing explicite pour l'ère"
+  object: "les assignats, le maximum et le Blocus continental, non datés dans le corpus"
+  time: "1789-1815"
+  time_precision: interval
+  families: [processus]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["OM-006"]
+  confidence: non documenté
+  justification: "Cellule « vide justifié » de la matrice (ERA-5, Économie & travail) : assignats, maximum et Blocus continental non datés. OM-006 dans omissions.yaml documente l'omission et propose une fiche sur le maximum de 1793 à instruire (la matrice cite OM-007 par décalage de numérotation). Point de silence : aucun repère chiffré ni aucun ID SRC attesté ; aucun montant ni date inventé."
+  status: validated
+
+- id: fr-era5-soc-001
+  era_id: france-era-5
+  domain: Société & démographie
+  scale: national
+  subject: "La citoyenneté révolutionnaire"
+  predicate: "proclame l'égalité mais exclut une partie de la population"
+  object: "les femmes et les esclaves des colonies, tandis que l'ordre civil se réorganise"
+  time: 1789
+  time_precision: year
+  families: [processus, repere_normatif, groupe_social]
+  actors: []
+  places: ["Paris", "colonies"]
+  groups: ["femmes", "esclaves des colonies"]
+  institutions: []
+  normative: ["Déclaration des droits de l'homme (1789)"]
+  memory: []
+  sources: ["SRC-003", "SRC-002"]
+  confidence: certain
+  justification: "fr-revolution (point 2) et fixes.yaml attestent que la Déclaration de 1789 proclame l'égalité mais que la citoyenneté exclut les femmes et que l'esclavage subsiste dans les colonies ; le Code civil (1804) organise le nouvel ordre civil. SRC-003 et SRC-002 sont les deux sources attachées à ERA-5 dans country-audit.yaml."
+  status: validated
+
+- id: fr-era5-fem-001
+  era_id: france-era-5
+  domain: Femmes, genre, sexualités
+  scale: national
+  subject: "Olympe de Gouges"
+  predicate: "réclame des droits civils et politiques et critique le mariage et l'esclavage"
+  object: "la Déclaration des droits de la femme et de la citoyenne (septembre 1791)"
+  time: 1791
+  time_precision: year
+  families: [acteur, repere_normatif, evenement]
+  actors: ["Olympe de Gouges"]
+  places: ["Paris"]
+  groups: ["femmes"]
+  institutions: []
+  normative: ["Déclaration des droits de la femme et de la citoyenne (1791)"]
+  memory: []
+  sources: ["SRC-003"]
+  confidence: certain
+  justification: "PROP-002 et fr-prop-002 attestent qu'en septembre 1791 Olympe de Gouges publie la Déclaration des droits de la femme et de la citoyenne, réclame l'égalité civile et politique, critique le mariage et l'esclavage. SRC-003 est la source canonique du registre (REPORT.md, PROP-002 ; ACTOR-PROP-002)."
+  status: validated
+
+- id: fr-era5-fem-002
+  era_id: france-era-5
+  domain: Femmes, genre, sexualités
+  scale: national
+  subject: "Olympe de Gouges"
+  predicate: "est guillotinée après s'être opposée à la radicalisation révolutionnaire"
+  object: "sa condamnation à mort en 1793"
+  time: 1793
+  time_precision: year
+  families: [acteur, evenement]
+  actors: ["Olympe de Gouges"]
+  places: ["Paris"]
+  groups: ["femmes"]
+  institutions: ["Convention"]
+  normative: []
+  memory: []
+  sources: ["SRC-003"]
+  confidence: certain
+  justification: "fr-prop-002 et fr-terreur attestent qu'Olympe de Gouges est guillotinée en 1793 ; la notice de figure du corpus (france-actor-2-point, avec SRC-003) figure dans fr-revolution et fr-terreur. Point distinct du texte de 1791 pour rendre compte de la répression politique, sans confondre les deux moments."
+  status: validated
+
+- id: fr-era5-rel-001
+  era_id: france-era-5
+  domain: Religions & croyances
+  scale: national
+  subject: "La politique religieuse de la Révolution"
+  predicate: "s'engage dans la déchristianisation"
+  object: "la rupture avec l'ordre religieux d'Ancien Régime dans fr-revolution et fr-terreur"
+  time: "1793-1794"
+  time_precision: interval
+  families: [processus, evenement]
+  actors: []
+  places: ["Paris"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: probable
+  justification: "La matrice (ERA-5, Religions & croyances) atteste une « politique religieuse et déchristianisation » dans fr-revolution et fr-terreur, sans sources structurées. Les bornes 1793 (Terreur) et 1794 (fin de la Terreur) sont toutes deux dans le corpus. Aucun ID du registre ne documente ce domaine pour ERA-5 : silence explicite, sans invention de texte ni de date."
+  status: validated
+
+- id: fr-era5-sci-001
+  era_id: france-era-5
+  domain: Sciences, techniques & santé
+  scale: national
+  subject: "L'histoire des sciences pendant la Révolution"
+  predicate: "constitue une dette de sourcing explicite pour l'ère"
+  object: "Lavoisier, Monge et l'École polytechnique, non datés dans le corpus"
+  time: "1789-1815"
+  time_precision: interval
+  families: [processus]
+  actors: ["Lavoisier", "Monge"]
+  places: ["Paris"]
+  groups: []
+  institutions: ["École polytechnique"]
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  justification: "Cellule « vide justifié » de la matrice : « Lavoisier, Monge et l'École polytechnique ne sont pas datés ; dette scientifique. » Aucun repère daté ni aucun ID du registre ne couvrent ces acteurs pour ERA-5. Point de silence, non une négation de leur importance ; aucune date ni attribution inventée."
+  status: validated
+
+- id: fr-era5-art-001
+  era_id: france-era-5
+  domain: Arts & lettres
+  scale: national
+  subject: "Olympe de Gouges"
+  predicate: "agit comme autrice et dramaturge au service de la polémique révolutionnaire"
+  object: "sa Déclaration des droits de la femme et de la citoyenne (1791), seul repère artistique et littéraire de l'ère dans le corpus"
+  time: 1791
+  time_precision: year
+  families: [acteur, evenement]
+  actors: ["Olympe de Gouges"]
+  places: ["Paris"]
+  groups: []
+  institutions: []
+  normative: ["Déclaration des droits de la femme et de la citoyenne (1791)"]
+  memory: []
+  sources: ["SRC-003"]
+  confidence: certain
+  justification: "PROP-002 et fr-prop-002 qualifient Olympe de Gouges d'autrice et de dramaturge (tags « societe », « politique », « arts ») ; la matrice précise qu'il n'existe « aucun repère artistique autonome » pour l'ère. SRC-003 la documente. Aucune œuvre ni date inventée."
+  status: validated
+
+- id: fr-era5-env-001
+  era_id: france-era-5
+  domain: Environnement & territoire
+  scale: national
+  subject: "L'histoire environnementale de la Révolution et de l'Empire"
+  predicate: "constitue un silence documenté du corpus pour l'ère"
+  object: "l'absence de tout repère environnemental daté"
+  time: "1789-1815"
+  time_precision: interval
+  families: [processus]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  justification: "Cellule « vide justifié » de la matrice (ERA-5, Environnement & territoire) : « Aucun repère environnemental ; dette. » SRC-013 (Bess) porte sur 1960-2000 et non sur cette ère. Point de silence explicite, sans date, territoire ni transformation environnementale inventés."
+  status: validated
+
+- id: fr-era5-mig-001
+  era_id: france-era-5
+  domain: Migrations & diasporas
+  scale: transnational
+  subject: "Les émigrés et réfugiés de la Révolution"
+  predicate: "sont évoqués comme acteurs mobiles sans chiffres ni source dans le corpus"
+  object: "les déplacements liés à la Révolution"
+  time: "1789-1815"
+  time_precision: interval
+  families: [processus, groupe_social]
+  actors: []
+  places: ["Paris"]
+  groups: ["émigrés", "réfugiés"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: probable
+  justification: "La matrice (ERA-5, Migrations & diasporas) atteste des « émigrés et réfugiés évoqués, sans source ni chiffres » dans fr-revolution. L'image de fr-terreur mentionne par ailleurs le supplice d'émigrés en 1792. Aucun effectif, aucune destination et aucun ID du registre ne sont attestés : silence explicite, sans chiffre inventé."
+  status: validated
+
+- id: fr-era5-peu-001
+  era_id: france-era-5
+  domain: Peuples autochtones & minorités
+  scale: imperial
+  subject: "Les esclaves des colonies françaises"
+  predicate: "voient l'esclavage aboli par la République"
+  object: "l'abolition de 1794"
+  time: 1794
+  time_precision: year
+  families: [evenement, repere_normatif, groupe_social]
+  actors: []
+  places: ["colonies"]
+  groups: ["esclaves des colonies"]
+  institutions: []
+  normative: ["Abolition de l'esclavage (1794)"]
+  memory: []
+  sources: ["SRC-002", "SRC-003", "OM-014"]
+  confidence: certain
+  justification: "fr-revolution (point 3) et fixes.yaml attestent l'abolition de 1794, présentée comme une rupture dans l'histoire coloniale. SRC-002 (Sala-Molins, droit colonial) et SRC-003 (droits de l'homme) sont les deux sources attachées à ERA-5 dans country-audit.yaml et à la correction de fr-revolution dans REPORT.md. OM-014 documente la dette plus large sur les populations colonisées."
+  status: validated
+
+- id: fr-era5-peu-002
+  era_id: france-era-5
+  domain: Peuples autochtones & minorités
+  scale: imperial
+  subject: "Bonaparte"
+  predicate: "rétablit l'esclavage dans les colonies"
+  object: "le rétablissement de l'esclavage de 1802"
+  time: 1802
+  time_precision: year
+  families: [evenement, acteur, repere_normatif]
+  actors: ["Bonaparte"]
+  places: ["colonies"]
+  groups: ["esclaves des colonies"]
+  institutions: []
+  normative: ["Rétablissement de l'esclavage (1802)"]
+  memory: []
+  sources: ["SRC-002", "OM-014"]
+  confidence: certain
+  justification: "fr-revolution (point 3) atteste « le rétablissement de l'esclavage par Bonaparte en 1802 », année présente dans le corpus. SRC-002 et SRC-003 sourcent la correction de fr-revolution (REPORT.md) ; OM-014 documente la dette impériale sur les colonisés, absents comme acteurs."
+  status: validated
+
+- id: fr-era5-mem-001
+  era_id: france-era-5
+  domain: Mémoire & patrimoine
+  scale: national
+  subject: "La Bastille et le 14 juillet"
+  predicate: "deviennent un lieu de mémoire fondateur de la Révolution"
+  object: "la commémoration de la prise de la Bastille"
+  time: 1789
+  time_precision: year
+  families: [memoire, lieu, evenement]
+  actors: []
+  places: ["Paris", "Bastille"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: ["Bastille comme lieu de mémoire fondateur", "14 juillet"]
+  sources: []
+  confidence: certain
+  justification: "La matrice (ERA-5, Mémoire & patrimoine) qualifie la Révolution de « lieu de mémoire fondateur, sans objet distinct » ; la Bastille et le 14 juillet 1789 sont attestés dans fr-revolution et dans sa légende d'image. Aucun objet mémoriel daté propre à l'ère ni ID du registre ne sont attestés : silence partiel documenté, sans monument ni commémoration inventés."
+  status: validated
+
+- id: fr-era5-cir-001
+  era_id: france-era-5
+  domain: Circulations transnationales
+  scale: transnational
+  subject: "La Révolution française"
+  predicate: "exerce un impact européen et provoque des coalitions"
+  object: "les coalitions européennes contre la France révolutionnaire puis impériale"
+  time: "1789-1815"
+  time_precision: interval
+  families: [processus, evenement]
+  actors: []
+  places: []
+  groups: ["coalitions européennes"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: probable
+  justification: "La matrice (ERA-5, Circulations transnationales) atteste un « impact européen et coalitions » rattaché à fr-revolution et fr-waterloo, « sans source structurée ». L'intervalle reprend les bornes de l'ère ; fr-waterloo appartenant à france-era-6, il n'est pas utilisé comme repère. Aucun ID du registre : silence explicite, sans invention de traité ni de date."
+  status: validated

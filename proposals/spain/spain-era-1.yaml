@@ -1,0 +1,316 @@
+# Points de l'ère Espagne / Al-Andalus et royaumes chrétiens (spain-era-1, 711 → 1492).
+# Sources : uniquement le registre audits/spain/source-register.csv (SRC-001 à SRC-008)
+# et les omissions documentées audits/spain/omissions.yaml (OM-002, OM-004).
+# Aucune date, source, DOI ou citation inventée. Aucun lien Grokipedia. Aucun contenu
+# hors de l'ère : PROP-001 (-218), PROP-002 (589) et les repères postérieurs à 1492
+# (1502, 1503, Colomb en era-2) ne sont pas utilisés comme points.
+# Faits ancrés dans src/data/dataset.js (es-711, es-covadonga, es-mariage, es-grenade),
+# audits/spain/country-audit.yaml et audits/spain/proposals.yaml (PROP-003, PROP-004, PROP-005).
+
+- id: es-era1-pol-001
+  era_id: spain-era-1
+  domain: "Politique & institutions"
+  scale: national
+  subject: "Royaume wisigoth et forces arabo-berbères"
+  predicate: "la bataille de Guadalete met fin au royaume wisigoth et ouvre la période d'al-Andalus"
+  object: "la péninsule Ibérique, avec une conquête progressive par accords et capitulations"
+  time: "711"
+  time_precision: year
+  families: [evenement, acteur, lieu, institution]
+  actors: ["Rodéric"]
+  places: ["Guadalete"]
+  groups: ["armée arabo-berbère venue du Maghreb"]
+  institutions: ["royaume wisigoth", "al-Andalus"]
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-003"]
+  confidence: certain
+  status: validated
+  justification: "Bataille de Guadalete en juillet 711 et conquête progressive documentées dans le corpus (dataset.js, es-711) et par SRC-001 (Collins) et SRC-003 (Kennedy). La thèse d'une conquête comme processus et la critique de 711 comme rupture nette sont dans country-audit.yaml (CLAIM-1). Aucune date hors de l'ère."
+  TODO: []
+
+- id: es-era1-guer-002
+  era_id: spain-era-1
+  domain: "Guerres & diplomatie"
+  scale: regional
+  subject: "Pelage et ses partisans"
+  predicate: "une victoire chrétienne dans les montagnes asturiennes leur est attribuée, selon une tradition tardive"
+  object: "la fondation du royaume des Asturies dans la mémoire médiévale"
+  time: "722"
+  time_precision: approximate
+  families: [evenement, acteur, lieu, groupe_social]
+  actors: ["Pelage"]
+  places: ["Covadonga", "montagnes asturiennes"]
+  groups: ["partisans de Pelage"]
+  institutions: ["royaume des Asturies"]
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: disputé
+  status: validated
+  justification: "« Vers 722, selon une tradition tardive » : dataset.js (es-covadonga) et SRC-001 (Collins). L'historicité de l'épisode et son rôle de « début de la Reconquista », construction historiographique, sont marqués disputés dans country-audit.yaml (CLAIM-2). Datation approximative et conforme à l'ère ; aucune date de tradition non sourcée n'est avancée."
+  TODO: []
+
+- id: es-era1-droit-003
+  era_id: spain-era-1
+  domain: "Droit & justice"
+  scale: national
+  subject: "Inquisition"
+  predicate: "est créée par les Rois catholiques comme juridiction ecclésiastique nouvelle"
+  object: "les royaumes de Castille et d'Aragon, institutions distinctes"
+  time: "1478"
+  time_precision: year
+  families: [evenement, institution, normatif]
+  actors: ["Isabelle de Castille", "Ferdinand d'Aragon"]
+  places: ["Castille", "Aragon"]
+  groups: []
+  institutions: ["Inquisition", "monarchie composite de Castille et d'Aragon"]
+  normative: ["création de l'Inquisition en 1478"]
+  memory: []
+  sources: ["SRC-008", "SRC-005"]
+  confidence: certain
+  status: validated
+  justification: "La création de l'Inquisition en 1478 est documentée dans le corpus (dataset.js, es-mariage ; audits/spain/proposals.yaml, correction es-mariage) et par SRC-008 (Elliott) et SRC-005 (Ray). La matrice note l'absence de codification juridique interne proposée ; ce point apporte un repère de justice daté et in-era. Aucune invention."
+  TODO: []
+
+- id: es-era1-econ-004
+  era_id: spain-era-1
+  domain: "Économie & travail"
+  scale: national
+  subject: "Cordoue califale"
+  predicate: "devient un pôle artisanal, commercial et fiscal d'al-Andalus"
+  object: "l'économie du califat omeyyade jusqu'à la crise du XIe siècle"
+  time: "929/1031"
+  time_precision: interval
+  families: [processus, lieu, institution, groupe_social]
+  actors: ["Abd al-Rahman III"]
+  places: ["Cordoue"]
+  groups: ["artisans et commerçants de Cordoue"]
+  institutions: ["califat de Cordoue"]
+  normative: []
+  memory: []
+  sources: ["SRC-003", "SRC-001"]
+  confidence: certain
+  status: validated
+  justification: "En 929, Abd al-Rahman III se proclame calife à Cordoue ; la ville reste un pôle politique, savant et économique jusqu'à la crise du califat (PROP-003, audits/spain/proposals.yaml). SRC-003 (Kennedy) et SRC-001 (Collins) ; la matrice rattache artisanat, commerce et fiscalité à ce repère. Intervalle strictement in-era."
+  TODO: []
+
+- id: es-era1-soc-005
+  era_id: spain-era-1
+  domain: "Société & démographie"
+  scale: regional
+  subject: "Société d'al-Andalus"
+  predicate: "se structure par l'installation de populations arabo-berbères et par l'urbanisme des centres andalous"
+  object: "la population de Cordoue et des villes d'al-Andalus"
+  time: "711/1031"
+  time_precision: interval
+  families: [processus, groupe_social, lieu]
+  actors: []
+  places: ["Cordoue"]
+  groups: ["Berbères et Arabes installés dans la péninsule", "population d'al-Andalus"]
+  institutions: ["al-Andalus"]
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-003"]
+  confidence: probable
+  status: validated
+  justification: "Conquête et société d'al-Andalus : acteurs berbères et arabes, lieu Cordoue, SRC-001 et SRC-003, conformément à la cellule « Société & démographie » de coverage-matrix.csv. Aucun chiffre démographique inventé ; intervalle ancré sur 711 et sur la fin du califat (1031), tous deux in-era."
+  TODO: []
+
+- id: es-era1-genre-006
+  era_id: spain-era-1
+  domain: "Femmes, genre, sexualités"
+  scale: national
+  subject: "Isabelle Ire de Castille"
+  predicate: "exerce le pouvoir comme reine en titre et est actrice du mariage de 1469"
+  object: "la monarchie composite de Castille et d'Aragon"
+  time: "1469"
+  time_precision: year
+  families: [acteur, evenement, institution]
+  actors: ["Isabelle de Castille", "Ferdinand d'Aragon"]
+  places: ["Valladolid"]
+  groups: []
+  institutions: ["couronne de Castille", "monarchie composite de Castille et d'Aragon"]
+  normative: []
+  memory: []
+  sources: ["SRC-008", "SRC-005"]
+  confidence: certain
+  status: validated
+  justification: "Mariage de Valladolid, 19 octobre 1469, et statut d'Isabelle comme reine de Castille (1474-1504) : dataset.js (es-mariage), country-audit.yaml (ACTOR-1), SRC-008 (Elliott) et SRC-005 (Ray). La matrice marque la cellule partielle : aucune fiche sur le travail ou le droit des femmes médiévales n'est inventée ici ; seul le repère documenté d'une femme actrice politique est retenu."
+  TODO: []
+
+- id: es-era1-relig-007
+  era_id: spain-era-1
+  domain: "Religions & croyances"
+  scale: national
+  subject: "Décret d'expulsion des Juifs"
+  predicate: "est signé par les Rois catholiques et ouvre une politique de confessionnalisation"
+  object: "les communautés juives des royaumes de Castille et d'Aragon"
+  time: "1492"
+  time_precision: year
+  families: [normatif, evenement, acteur, groupe_social]
+  actors: ["Isabelle de Castille", "Ferdinand d'Aragon"]
+  places: ["Grenade", "Tolède"]
+  groups: ["Juifs des royaumes de Castille et d'Aragon"]
+  institutions: ["monarchie des Rois catholiques"]
+  normative: ["décret d'expulsion des Juifs du 31 mars 1492"]
+  memory: []
+  sources: ["SRC-005", "SRC-008"]
+  confidence: certain
+  status: validated
+  justification: "Décret du 31 mars 1492 (PROP-005, es-prop-001), distinct de la capitulation de Grenade du 2 janvier, documenté par SRC-005 (Ray) et SRC-008 (Elliott). Les trois religions et la critique du modèle de convivencia sont dans SRC-004, non utilisée ici comme source directe de la date. Aucun effectif chiffré n'est avancé."
+  TODO: []
+
+- id: es-era1-sci-008
+  era_id: spain-era-1
+  domain: "Sciences, techniques & santé"
+  scale: regional
+  subject: "Équipes de traducteurs de Tolède"
+  predicate: "font passer en latin des textes grecs, arabes et hébreux"
+  object: "les savoirs philosophiques et scientifiques vers l'Europe latine"
+  time: "1140/1280"
+  time_precision: interval
+  families: [processus, groupe_social, lieu, institution]
+  actors: []
+  places: ["Tolède"]
+  groups: ["traducteurs de Tolède", "savants d'al-Andalus"]
+  institutions: ["équipes de traducteurs de Tolède"]
+  normative: []
+  memory: []
+  sources: ["SRC-003", "SRC-004"]
+  confidence: probable
+  status: validated
+  justification: "PROP-004 (audits/spain/proposals.yaml) : aux XIIe et XIIIe siècles, des équipes de traducteurs à Tolède font passer en latin des textes grecs, arabes et hébreux ; SRC-003 (Kennedy) et SRC-004 (Soifer). Confiance probable, comme la proposition. Aucun nom de traducteur ni titre d'ouvrage inventé ; intervalle in-era."
+  TODO: []
+
+- id: es-era1-arts-009
+  era_id: spain-era-1
+  domain: "Arts & lettres"
+  scale: regional
+  subject: "Averroès (Ibn Rushd)"
+  predicate: "commente Aristote et voit ses commentaires circuler en latin et en hébreu"
+  object: "la vie savante et littéraire d'al-Andalus et la scolastique latine"
+  time: "1140/1280"
+  time_precision: interval
+  families: [acteur, processus, lieu, institution]
+  actors: ["Averroès (Ibn Rushd)"]
+  places: ["Cordoue", "Tolède"]
+  groups: ["philosophes andalous", "milieux savants juifs et chrétiens"]
+  institutions: ["milieux savants d'al-Andalus"]
+  normative: []
+  memory: []
+  sources: ["SRC-003", "SRC-004"]
+  confidence: certain
+  status: validated
+  justification: "ACTOR-4 (country-audit.yaml) : philosophe, juriste malikite et médecin de Cordoue, dont les commentaires d'Aristote circulent en latin et en hébreu ; SRC-003 (Kennedy), SRC-004 (Soifer). La matrice rattache à ce domaine architecture, arts, traductions et acteur Averroès. L'intervalle est celui du mouvement de traduction (PROP-004), non une biographie inventée."
+  TODO: []
+
+- id: es-era1-env-010
+  era_id: spain-era-1
+  domain: "Environnement & territoire"
+  scale: national
+  subject: "Histoire environnementale médiévale d'al-Andalus"
+  predicate: "ne fait l'objet d'aucune fiche datée dans le corpus"
+  object: "l'irrigation, les forêts et les usages agraires de la période"
+  time: "711/1492"
+  time_precision: interval
+  families: [processus]
+  actors: []
+  places: ["al-Andalus", "péninsule Ibérique"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["OM-004"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Environnement & territoire, national) ; omission OM-004 (source_absent) dans audits/spain/omissions.yaml, qui cite SRC-001, SRC-003 et SRC-008 comme sources vérifiées sans fiche environnementale. Silence explicite conformément à la règle 7 de POINT_METHODOLOGY.md ; aucune date ni source inventée, ancre = intervalle de l'ère."
+  TODO: []
+
+- id: es-era1-migr-011
+  era_id: spain-era-1
+  domain: "Migrations & diasporas"
+  scale: transnational
+  subject: "Juifs séfarades expulsés en 1492"
+  predicate: "forment une diaspora durable en Méditerranée et aux Pays-Bas"
+  object: "les communautés issues de l'expulsion des royaumes de Castille et d'Aragon"
+  time: "1492"
+  time_precision: year
+  families: [evenement, groupe_social, processus]
+  actors: ["Juifs séfarades"]
+  places: ["Tolède", "Méditerranée", "Pays-Bas"]
+  groups: ["diaspora séfarade", "Juifs expulsés d'Espagne"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-005", "SRC-008"]
+  confidence: certain
+  status: validated
+  justification: "PROP-005 : la diaspora séfarade issue de l'expulsion du 31 mars 1492 s'installe en Méditerranée, aux Pays-Bas et plus tard dans les Amériques ; SRC-005 (Ray) et SRC-008 (Elliott). ACTOR-12 et la liste des diasporas de country-audit.yaml confirment le groupe. Aucun effectif chiffré retenu, les estimations étant divergentes dans le dossier."
+  TODO: []
+
+- id: es-era1-peuples-012
+  era_id: spain-era-1
+  domain: "Peuples autochtones & minorités"
+  scale: national
+  subject: "Diversité interne d'al-Andalus"
+  predicate: "est documentée dans la littérature savante mais n'est pas encore intégrée à la frise"
+  object: "les Berbères, muladíes, mozárabes, esclaves et mudéjars d'al-Andalus"
+  time: "711/1492"
+  time_precision: interval
+  families: [groupe_social, processus]
+  actors: []
+  places: ["al-Andalus", "Tolède"]
+  groups: ["Berbères", "muladíes", "mozárabes", "esclaves", "mudéjars"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-003", "SRC-004"]
+  confidence: probable
+  status: validated
+  justification: "OM-002 (audits/spain/omissions.yaml) documente explicitement la dette sur la diversité interne d'al-Andalus et cite SRC-003 (Kennedy) et SRC-004 (Soifer) comme littérature savante existante. Les noms de groupes proviennent d'OM-002 et de la liste des angles morts de country-audit.yaml, sans invention. Intervalle de l'ère ; aucun effectif avancé."
+  TODO: []
+
+- id: es-era1-memoire-013
+  era_id: spain-era-1
+  domain: "Mémoire & patrimoine"
+  scale: national
+  subject: "Covadonga"
+  predicate: "est érigée en récit de « début de la Reconquista », une construction historiographique"
+  object: "la mémoire médiévale et moderne du royaume des Asturies"
+  time: "722"
+  time_precision: approximate
+  families: [memoire, evenement, lieu]
+  actors: ["Pelage"]
+  places: ["Covadonga"]
+  groups: []
+  institutions: ["royaume des Asturies"]
+  normative: []
+  memory: ["Covadonga comme « début de la Reconquista »", "construction historiographique de la Reconquista"]
+  sources: ["SRC-001"]
+  confidence: disputé
+  status: validated
+  justification: "CLAIM-2 (country-audit.yaml) qualifie de disputé le rôle de Covadonga comme « début de la Reconquista », connu par des sources tardives ; dataset.js (es-covadonga) et SRC-001 (Collins). La matrice marque la cellule partielle : Covadonga et Grenade sont des lieux de mémoire sans fiche de controverse mémorielle. Le disputé reste disputé, conformément à la règle 6 de POINT_METHODOLOGY.md."
+  TODO: []
+
+- id: es-era1-circ-014
+  era_id: spain-era-1
+  domain: "Circulations transnationales"
+  scale: transnational
+  subject: "Traductions de Tolède (XIIe-XIIIe siècles)"
+  predicate: "connectent les savoirs d'al-Andalus, du monde chrétien et de l'Europe latine"
+  object: "la circulation des textes grecs, arabes et hébreux mis en latin"
+  time: "1140/1280"
+  time_precision: interval
+  families: [processus, groupe_social, lieu, institution]
+  actors: []
+  places: ["Tolède", "Cordoue"]
+  groups: ["traducteurs de Tolède", "savants juifs et chrétiens"]
+  institutions: ["équipes de traducteurs de Tolède"]
+  normative: []
+  memory: []
+  sources: ["SRC-003", "SRC-004"]
+  confidence: probable
+  status: validated
+  justification: "PROP-004 (audits/spain/proposals.yaml) décrit un mouvement qui connecte al-Andalus, le monde chrétien et l'Europe latine ; SRC-003 (Kennedy) et SRC-004 (Soifer). Cellule « Circulations transnationales » de coverage-matrix.csv : PROP-004 y est citée pour l'ERA-1 (le voyage de Colomb relevant de l'era-2 et n'étant pas repris ici). Aucun contenu hors de l'ère."
+  TODO: []

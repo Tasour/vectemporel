@@ -1,0 +1,312 @@
+# Italie — ère 5 : République (1945 → 2026)
+# Un point par domaine de la matrice, champs complets, statut validé.
+# Sources : registre /home/tasour/Projects/vectemporel/audits/italy/source-register.csv
+# Aucun lien externe, aucune invention de date, d'auteur, de titre ou de DOI.
+
+- id: it-era5-pol-001
+  era_id: italy-era-5
+  domain: Politique & institutions
+  scale: national
+  subject: "République italienne"
+  predicate: "est proclamée puis se dote d'une Constitution"
+  object: "référendum de 1946 mettant fin à la monarchie; Constitution entrée en vigueur en 1948"
+  time: "1946-1948"
+  time_precision: interval
+  families: [evenement, institution]
+  actors: []
+  places: ["Rome"]
+  groups: []
+  institutions: ["Assemblée constituante"]
+  normative: ["Constitution de 1948"]
+  memory: []
+  sources: ["SRC-015", "SRC-014"]
+  confidence: certain
+  status: validated
+  justification: "Comble le statut « partiel » de la cellule: la frise ne distingue pas la fin de la guerre (1945), le référendum (1946) et la Constitution (1948), tous documentés dans SRC-014 et SRC-015."
+  TODO: []
+
+- id: it-era5-dip-001
+  era_id: italy-era-5
+  domain: Guerres & diplomatie
+  scale: national
+  subject: "Politique étrangère de l'Italie républicaine"
+  predicate: "ancre le pays dans le bloc occidental et la construction européenne"
+  object: "sous Alcide De Gasperi, ministre des Affaires étrangères et leader démocrate-chrétien, avec le soutien américain et face à l'opposition communiste"
+  time: "1946-1948"
+  time_precision: interval
+  families: [acteur, evenement]
+  actors: ["Alcide De Gasperi"]
+  places: ["Rome", "Paris", "Washington"]
+  groups: []
+  institutions: ["Démocratie chrétienne"]
+  normative: []
+  memory: []
+  sources: ["SRC-015"]
+  confidence: certain
+  status: validated
+  justification: "La cellule est marquée « vide justifié » pour l'absence de guerre sur le territoire national après 1945; elle est renseignée ici par la diplomatie documentée de De Gasperi (SRC-015), sans inventer de conflit ni d'opération extérieure."
+  TODO: ["Ne pas étendre ce point aux opérations extérieures et à la mémoire coloniale, hors de cette ère selon coverage-matrix.csv."]
+
+- id: it-era5-dro-001
+  era_id: italy-era-5
+  domain: Droit & justice
+  scale: national
+  subject: "Loi 5 février 1992, n. 91"
+  predicate: "réorganise la citoyenneté italienne"
+  object: "critère du jus sanguinis, naturalisation et droits des résidents étrangers"
+  time: "1992"
+  time_precision: year
+  families: [repère normatif]
+  actors: []
+  places: ["Rome"]
+  groups: []
+  institutions: []
+  normative: ["Legge 5 febbraio 1992, n. 91"]
+  memory: []
+  sources: ["SRC-020"]
+  confidence: certain
+  status: validated
+  justification: "Source primaire du registre (Normattiva), déjà signalée par PROP-018 mais non intégrée; donne un repère normatif daté à la cellule « Droit & justice »."
+  TODO: []
+
+- id: it-era5-eco-001
+  era_id: italy-era-5
+  domain: Économie & travail
+  scale: national
+  subject: "Miracle économique italien"
+  predicate: "entraîne une croissance industrielle rapide"
+  object: "automobile, chimie et électroménager; des centaines de milliers de personnes quittent le Mezzogiorno pour Turin, Milan et Gênes"
+  time: "1958-1963"
+  time_precision: interval
+  families: [processus]
+  actors: []
+  places: ["Turin", "Milan", "Gênes", "Mezzogiorno"]
+  groups: ["migrants internes", "ouvriers"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-015"]
+  confidence: probable
+  status: validated
+  justification: "Reprend PROP-013 (SRC-015), proposition non intégrée; la certitude reste « probable », conformément au niveau « medium » de l'audit."
+  TODO: []
+
+- id: it-era5-soc-001
+  era_id: italy-era-5
+  domain: Société & démographie
+  scale: national
+  subject: "Migrations internes du Mezzogiorno"
+  predicate: "transforment la démographie et l'urbanisation de l'Italie"
+  object: "arrivée dans les villes industrielles du Nord, bidonvilles et nouvelle question méridionale"
+  time: "1958-1963"
+  time_precision: interval
+  families: [processus, groupe social]
+  actors: []
+  places: ["Mezzogiorno", "Turin", "Milan", "Gênes", "Rome"]
+  groups: ["Migranti meridionali"]
+  institutions: []
+  normative: []
+  memory: ["mémoire familiale, littérature, cinéma et musées de l'émigration"]
+  sources: ["SRC-015", "SRC-011"]
+  confidence: certain
+  status: validated
+  justification: "L'audit associe déjà PROP-013 à cette cellule; le point ajoute le groupe social, les lieux et la mémoire documentés dans ACTOR-006, sans nouvelle assertion."
+  TODO: []
+
+- id: it-era5-gen-001
+  era_id: italy-era-5
+  domain: Femmes, genre, sexualités
+  scale: national
+  subject: "Nilde Iotti"
+  predicate: "devient la première femme à présider la Chambre des députés"
+  object: "en 1979, après un mandat de députée constituante et un engagement au sein du Parti communiste italien"
+  time: "1979"
+  time_precision: year
+  families: [acteur]
+  actors: ["Nilde Iotti"]
+  places: ["Reggio Emilia", "Rome"]
+  groups: []
+  institutions: ["Chambre des députés", "Parti communiste italien"]
+  normative: []
+  memory: ["rues et écoles nommées d'après elle"]
+  sources: ["SRC-015"]
+  confidence: certain
+  status: validated
+  justification: "Donne une actrice nommée à une cellule jusqu'ici couverte seulement par le mouvement des femmes de PROP-014; tous les éléments proviennent de ACTOR-003 (SRC-015)."
+  TODO: []
+
+- id: it-era5-rel-001
+  era_id: italy-era-5
+  domain: Religions & croyances
+  scale: national
+  subject: "Catholicisme politique et Démocratie chrétienne"
+  predicate: "pèsent sur les fondations de la République"
+  object: "Alcide De Gasperi, leader démocrate-chrétien, s'appuie sur l'Église et le soutien américain dans un contexte de guerre froide et d'opposition communiste"
+  time: "1946-1948"
+  time_precision: interval
+  families: [institution, acteur]
+  actors: ["Alcide De Gasperi"]
+  places: ["Rome"]
+  groups: []
+  institutions: ["Démocratie chrétienne", "Église catholique"]
+  normative: []
+  memory: []
+  sources: ["SRC-015"]
+  confidence: probable
+  status: validated
+  justification: "Cellule marquée « vide non traité » (sécularisation, Concordat 1984, pluralisme). Le point ne s'appuie que sur le rôle de l'Église et de la DC documenté dans ACTOR-010 (SRC-015); il n'affirme pas la révision concordataire, faute de source du registre."
+  TODO: ["Sécularisation et révision du Concordat (1984): aucune source du registre; cf. coverage-matrix.csv.", "Pluralisme religieux: source du registre à trouver avant passage en certitude « certain »."]
+
+- id: it-era5-scs-001
+  era_id: italy-era-5
+  domain: Sciences, techniques & santé
+  scale: local
+  subject: "Barrage du Vajont"
+  predicate: "illustre le risque industriel et les limites de l'ingénierie"
+  object: "avertissements ignorés avant l'effondrement du 9 octobre 1963 dans le lac artificiel"
+  time: "1963"
+  time_precision: year
+  families: [lieu, evenement]
+  actors: []
+  places: ["Vajont", "Longarone", "Mont Toc"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-019"]
+  confidence: certain
+  status: validated
+  justification: "Reprend le volet ingénierie/risque de PROP-017, dont SRC-019 est la source institutionnelle; la santé publique et la loi Basaglia restent des omissions documentées et ne sont pas affirmées ici."
+  TODO: ["Loi Basaglia (1978) et désinstitutionnalisation psychiatrique: OM-013, aucune source du registre vérifiée.", "COVID-19 et Bergame 2020: OM-014, dette documentaire."]
+
+- id: it-era5-art-001
+  era_id: italy-era-5
+  domain: Arts & lettres
+  scale: national
+  subject: "Cinéma, design et littérature de la République"
+  predicate: "constituent une lacune documentaire explicite"
+  object: "le néoréalisme, le design et la littérature ne sont pas traités dans la frise pour la période 1945-2026"
+  time: "1945-2026"
+  time_precision: interval
+  families: [memoire]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: ["absence de traitement du cinéma, du néoréalisme, du design et de la littérature dans la frise"]
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide non traité » dans coverage-matrix.csv. Aucune source du registre italien ne documente ce domaine pour l'ère; le silence est explicite plutôt que masqué, et aucun lien externe n'est employé."
+  TODO: ["Ajouter une source du registre pour le cinéma et la littérature républicains avant de convertir ce point en affirmation positive."]
+
+- id: it-era5-env-001
+  era_id: italy-era-5
+  domain: Environnement & territoire
+  scale: local
+  subject: "Catastrophe du Vajont"
+  predicate: "dévaste Longarone et plusieurs villages voisins"
+  object: "une masse rocheuse du mont Toc s'abat dans le lac artificiel le 9 octobre 1963; 1 917 victimes selon les chiffres officiels et 400 disparus"
+  time: "1963"
+  time_precision: year
+  families: [evenement, lieu]
+  actors: []
+  places: ["Vajont", "Longarone", "Mont Toc"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-019"]
+  confidence: certain
+  status: validated
+  justification: "Reprend PROP-017 pour le volet environnement et territoire (SRC-019). La divergence documentée entre 1 917 victimes (protection civile) et 1 910 (anagrafe) n'est pas tranchée ici."
+  TODO: ["ILVA de Tarente et Terra dei Fuochi: OM-015, dette documentaire sans source du registre."]
+
+- id: it-era5-mig-001
+  era_id: italy-era-5
+  domain: Migrations & diasporas
+  scale: transnational
+  subject: "Immigration étrangère en Italie"
+  predicate: "fait de l'Italie un pays d'accueil"
+  object: "travailleurs africains, asiatiques et est-européens s'installent dans les villes et les campagnes à partir des années 1980"
+  time: "1980-2000"
+  time_precision: interval
+  families: [processus, groupe social]
+  actors: []
+  places: []
+  groups: ["travailleurs immigrés"]
+  institutions: []
+  normative: ["Legge 5 febbraio 1992, n. 91"]
+  memory: []
+  sources: ["SRC-018"]
+  confidence: probable
+  status: validated
+  justification: "Reprend le volet migrations de PROP-018 (SRC-018); la certitude « probable » respecte le niveau « medium » de l'audit et évite de transformer une synthèse en source primaire."
+  TODO: []
+
+- id: it-era5-min-001
+  era_id: italy-era-5
+  domain: Peuples autochtones & minorités
+  scale: regional
+  subject: "Minorités linguistiques historiques de la République"
+  predicate: "constituent une lacune explicite de la frise"
+  object: "germanophones du Südtirol, slovènes, arbëreshë, grecs, ladins et francoprovençaux ne sont pas traités, alors que la loi 482/1999 les reconnaît"
+  time: "1999"
+  time_precision: year
+  families: [repère normatif, groupe social]
+  actors: []
+  places: ["Haut-Adige / Südtirol", "Trieste"]
+  groups: ["minorité germanophone", "minorité slovène", "arbëreshë", "minorité grecque", "ladins", "francoprovençaux"]
+  institutions: []
+  normative: ["Legge 482/1999"]
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "OM-012 est marquée « to_fill » avec evidence_checked vide et la loi 482/1999 n'est pas dans le registre; la certitude « non documenté » évite d'inventer une source tout en rendant le silence visible."
+  TODO: ["Ajouter une source du registre pour la loi 482/1999 et les minorités avant passage en certitude « certain »."]
+
+- id: it-era5-mem-001
+  era_id: italy-era-5
+  domain: Mémoire & patrimoine
+  scale: national
+  subject: "Mémoire des années de plomb et de la mafia"
+  predicate: "structure le débat public républicain"
+  object: "affaire Moro (1978), maxi-procès de Palerme (1986-1987) et assassinats de Falcone et Borsellino (1992)"
+  time: "1978-1992"
+  time_precision: interval
+  families: [memoire, evenement]
+  actors: ["Aldo Moro", "Giovanni Falcone", "Paolo Borsellino"]
+  places: ["Rome", "Palerme"]
+  groups: ["Brigades rouges", "Cosa Nostra"]
+  institutions: ["Démocratie chrétienne"]
+  normative: []
+  memory: ["journées de commémoration et fondation Falcone"]
+  sources: ["SRC-016", "SRC-015", "SRC-017"]
+  confidence: certain
+  status: validated
+  justification: "Reprend PROP-015 et PROP-016, propositions non intégrées; la cellule était marquée « couvert » sans acteurs ni lieux dans la frise."
+  TODO: []
+
+- id: it-era5-cir-001
+  era_id: italy-era-5
+  domain: Circulations transnationales
+  scale: transnational
+  subject: "Traité de Rome"
+  predicate: "fait de l'Italie un membre fondateur de la construction européenne"
+  object: "signature en 1957 à Rome des traités instituant la Communauté économique européenne et Euratom, entrés en vigueur en 1958"
+  time: "1957"
+  time_precision: year
+  families: [repère normatif, evenement]
+  actors: []
+  places: ["Rome"]
+  groups: []
+  institutions: ["Communauté économique européenne", "Euratom"]
+  normative: ["Traité de Rome (1957)"]
+  memory: []
+  sources: ["SRC-015"]
+  confidence: certain
+  status: validated
+  justification: "L'événement it-rome-traite figure déjà dans la frise mais sans source; SRC-015 documente explicitement le traité de Rome et l'intégration européenne."
+  TODO: []

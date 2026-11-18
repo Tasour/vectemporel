@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* Génère vectemporel-v2/src/data/dataset.js depuis les audits locaux.
+/* Génère vectemporel-atlas/src/data/dataset.js depuis les audits locaux.
  * Aucun contenu externe : ni Grokipedia, ni traduction, ni API distante.
  * Les « points » sont des affirmations extraites des résumés vérifiés et
  * des claims des dossiers d'audit, avec leurs sources et leur certitude.
@@ -252,7 +252,7 @@ for (const country of oldData.countries) {
     name: country.name,
     flag: country.flag || '',
     color: country.color || '#e6b96f',
-    code: ({ france: 'FRA', uk: 'GBR', usa: 'USA', germany: 'DEU', italy: 'ITA', spain: 'ESP', china: 'CHN', india: 'IND', japan: 'JPN', egypt: 'EGY' })[country.id] || '',
+    code: ({ france: 'FR', uk: 'GB', usa: 'US', germany: 'DE', italy: 'IT', spain: 'ES', china: 'CN', india: 'IN', japan: 'JP', egypt: 'EG' })[country.id] || '',
     domain: country.domain,
     outline: mainRing,
     bounds,
@@ -274,7 +274,7 @@ for (const country of oldData.countries) {
 
 const dataset = {
   meta: {
-    name: 'Vectemporel V2',
+    name: 'Vectemporel — Atlas',
     system: 'V-ATLAS',
     version: '0.1.0',
     generated: new Date().toISOString().slice(0, 10),

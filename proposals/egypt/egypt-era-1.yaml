@@ -1,0 +1,315 @@
+# Points de l'ère Égypte / Égypte pharaonique (egypt-era-1, -3100 → -332).
+# Sources : uniquement le registre audits/egypt/source-register.csv (SRC-001 à SRC-004)
+# et les propositions auditées audits/egypt/proposals.yaml (PROP-001 à PROP-004) ainsi que
+# audits/egypt/country-audit.yaml, audits/egypt/fixes.yaml et audits/egypt/coverage-matrix.csv.
+# Aucune date, source, DOI ou citation inventée. Aucun lien Grokipedia. Aucun contenu hors de l'ère.
+# Les faits datés sont ancrés dans src/data/dataset.js (eg-unification, eg-kheops,
+# eg-akhenaton, eg-ramses) et dans les corrections validées de fixes.yaml.
+
+- id: eg-era1-pol-001
+  era_id: egypt-era-1
+  domain: "Politique & institutions"
+  scale: national
+  subject: "La royauté pharaonique issue de l'unification de la Haute et de la Basse-Égypte"
+  predicate: "unifie les deux terres sous un même souverain au terme d'un processus politique progressif"
+  object: "la naissance de l'État pharaonique et de son idéologie royale"
+  time: "-3100"
+  time_precision: approximate
+  families: [evenement, processus, acteur, institution]
+  actors: ["souverain réunificateur non nommé dans le corpus"]
+  places: ["vallée du Nil", "Haute-Égypte", "Basse-Égypte"]
+  groups: ["population de la Haute et de la Basse-Égypte"]
+  institutions: ["royauté pharaonique", "administration", "écriture hiéroglyphique"]
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "Unification vers -3100 av. J.-C. documentée dans le corpus (dataset.js, eg-unification ; fixes.yaml, eg-unification) et par SRC-001 (Shaw, Oxford History of Ancient Egypt). La date -3100 est une convention des égyptologues, qui situent le processus dans une fourchette de -3200 à -3000 (CLAIM-001, pays) : certitude ramenée à probable, sans transformer la convention en événement unique. Aucune date hors de l'ère -3100/-332."
+  TODO: []
+
+- id: eg-era1-guer-002
+  era_id: egypt-era-1
+  domain: "Guerres & diplomatie"
+  scale: national
+  subject: "Ramsès II, pharaon de la XIXe dynastie"
+  predicate: "affronte les Hittites à Qadesh puis conclut avec eux un traité de paix"
+  object: "la frontière syrienne et les limites de la puissance égyptienne"
+  time: "-1274"
+  time_precision: approximate
+  families: [evenement, acteur, lieu, institution]
+  actors: ["Ramsès II", "Hittites"]
+  places: ["Qadesh", "Syrie"]
+  groups: ["armée égyptienne", "Hittites"]
+  institutions: ["traité de paix avec les Hittites"]
+  normative: ["traité de paix égypto-hittite"]
+  memory: []
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "Bataille de Qadesh vers -1274 av. J.-C. et traité de paix ultérieur avec les Hittites, documentés dans le corpus (dataset.js, eg-ramses ; fixes.yaml, eg-ramses) et par SRC-001 (Shaw). Ramsès II règne de -1279 à -1213, soit environ 66 ans ; la bataille est datée « vers 1274 », d'où une certitude probable et non certaine. Aucun chiffre ni événement inventé ; conformité avec l'ère -3100/-332."
+  TODO: []
+
+- id: eg-era1-droit-003
+  era_id: egypt-era-1
+  domain: "Droit & justice"
+  scale: local
+  subject: "Les artisans de Deir el-Médineh en grève sous Ramsès III"
+  predicate: "réclament le retard de leurs rations et ont recours aux autorités, sans fiche dédiée aux institutions judiciaires pharaoniques"
+  object: "le conflit sur les rations documenté par le papyrus de Turin"
+  time: "-1157"
+  time_precision: approximate
+  families: [evenement, groupe_social, lieu, normatif]
+  actors: ["artisans de Deir el-Médineh", "scribe Amennakhte", "Ramsès III"]
+  places: ["Deir el-Médineh (rive gauche de Thèbes)"]
+  groups: ["artisans des tombes royales"]
+  institutions: ["autorités pharaoniques saisies par les artisans"]
+  normative: ["recours aux autorités pour le paiement des rations"]
+  memory: []
+  sources: ["SRC-002"]
+  confidence: probable
+  status: validated
+  justification: "Cellule partielle de coverage-matrix.csv (ERA-1, Droit & justice, local) : d'après sa justification, « conflit sur les rations et recours aux autorités, mais pas de fiche sur les institutions judiciaires pharaoniques ». Faits ancrés dans PROP-003 (proposals.yaml) et SRC-002 (McDowell, Village Life in Ancient Egypt), qui documente la grève et les rations à partir des ostraca et papyrus. Le recours aux autorités est signalé sans inventer de code ni de tribunal ; échelle locale conforme à la matrice."
+  TODO: []
+
+- id: eg-era1-econ-004
+  era_id: egypt-era-1
+  domain: "Économie & travail"
+  scale: local
+  subject: "La main-d'œuvre des tombes royales à Deir el-Médineh"
+  predicate: "reçoit des rations et interrompt le travail pour en réclamer le paiement"
+  object: "l'organisation du travail et de la subsistance dans le village des artisans"
+  time: "-1157"
+  time_precision: approximate
+  families: [evenement, groupe_social, lieu, processus]
+  actors: ["artisans de Deir el-Médineh"]
+  places: ["Deir el-Médineh"]
+  groups: ["artisans des tombes", "familles des artisans"]
+  institutions: ["ravitaillement en rations des artisans"]
+  normative: []
+  memory: []
+  sources: ["SRC-002", "SRC-001"]
+  confidence: certain
+  status: validated
+  justification: "Rations, corvée et travail des tombes documentés par PROP-003 (proposals.yaml, confiance high), SRC-002 (McDowell) et SRC-001 (Shaw) ; cellule « couvert » de coverage-matrix.csv (ERA-1, Économie & travail, local). Le papyrus de Turin, rédigé par le scribe Amennakhte, documente plusieurs épisodes de grève sous Ramsès III. Aucune donnée de production chiffrée inventée ; échelle locale conforme à la matrice."
+  TODO: []
+
+- id: eg-era1-soc-005
+  era_id: egypt-era-1
+  domain: "Société & démographie"
+  scale: local
+  subject: "La communauté d'artisans de Deir el-Médineh"
+  predicate: "vit dans un village ouvrier structuré par des familles et une hiérarchie du travail"
+  object: "la société locale d'une nécropole royale du Nouvel Empire"
+  time: "-1157"
+  time_precision: approximate
+  families: [groupe_social, lieu, institution]
+  actors: ["artisans de Deir el-Médineh", "scribe Amennakhte"]
+  places: ["Deir el-Médineh (rive gauche de Thèbes)"]
+  groups: ["artisans", "familles des artisans", "scribes"]
+  institutions: ["village ouvrier de Deir el-Médineh", "nécropole royale"]
+  normative: []
+  memory: []
+  sources: ["SRC-002"]
+  confidence: certain
+  status: validated
+  justification: "Village d'artisans, familles et hiérarchies de travail documentés par SRC-002 (McDowell) et signalés dans la cellule « couvert » de coverage-matrix.csv (ERA-1, Société & démographie, local). SRC-002 est une étude fondée sur les ostraca et papyrus, à échantillon local non représentatif de toute l'Égypte : l'énoncé reste circonscrit à Deir el-Médineh, sans extrapolation démographique."
+  TODO: []
+
+- id: eg-era1-genre-006
+  era_id: egypt-era-1
+  domain: "Femmes, genre, sexualités"
+  scale: national
+  subject: "Hatshepsout, femme devenue pharaon"
+  predicate: "exerce le pouvoir royal et légitime son règne par une mise en scène et une expédition commanditée"
+  object: "le pouvoir au féminin dans l'Égypte du Nouvel Empire"
+  time: "-1470"
+  time_precision: approximate
+  families: [acteur, evenement, institution]
+  actors: ["Hatshepsout"]
+  places: ["Deir el-Bahari (Thèbes)", "pays de Pount"]
+  groups: ["clergé d'Amon", "flotte de la mer Rouge"]
+  institutions: ["royauté pharaonique", "temple de Deir el-Bahari"]
+  normative: []
+  memory: ["damnatio memoriae partielle", "redécouverte par l'égyptologie au XIXe siècle (hors ère)"]
+  sources: ["SRC-003", "SRC-001"]
+  confidence: certain
+  status: validated
+  justification: "Règne de c. -1479 à -1458 av. J.-C., expédition au pays de Pount en l'an 9 et programme architectural de Deir el-Bahari, documentés dans le corpus (dataset.js, eg-unification et autres points de figure ; country-audit.yaml, ACTOR-001) et par SRC-003 (Roehrig, Hatshepsut: From Queen to Pharaoh) et SRC-001. PROP-002 est coté high dans proposals.yaml ; la datation « c. -1470 » reste approximative. La contrainte de genre et la dépendance au clergé d'Amon sont documentées dans country-audit.yaml ; aucune reconstruction inventée."
+  TODO: []
+
+- id: eg-era1-relig-007
+  era_id: egypt-era-1
+  domain: "Religions & croyances"
+  scale: national
+  subject: "Akhenaton et le culte du disque solaire Aton"
+  predicate: "impose un culte réformateur et fonde une capitale nouvelle, avant un retour à l'ordre traditionnel"
+  object: "la cité d'Akhetaton (Amarna) et le débat sur le monothéisme atonien"
+  time: "-1350"
+  time_precision: approximate
+  families: [evenement, acteur, lieu, processus]
+  actors: ["Akhenaton"]
+  places: ["Akhetaton (Amarna)"]
+  groups: ["prêtres et fidèles du culte d'Aton"]
+  institutions: ["culte d'Aton", "capitale d'Akhetaton"]
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "Réforme atonienne vers -1350 av. J.-C., Akhetaton/Amarna et débat sur le qualificatif de monothéisme, documentés dans le corpus (dataset.js, eg-akhenaton ; fixes.yaml, eg-akhenaton) et par SRC-001 (Shaw). La date est approximative et la nature du culte est discutée : certitude probable, conformément à la règle 6 (le disputé reste disputé). Cellule partielle de coverage-matrix.csv (ERA-1, Religions & croyances, national), acteurs, lieux et sources ici renseignés."
+  TODO: []
+
+- id: eg-era1-sci-008
+  era_id: egypt-era-1
+  domain: "Sciences, techniques & santé"
+  scale: national
+  subject: "La Grande Pyramide de Khéops à Gizeh"
+  predicate: "témoigne d'une maîtrise de l'organisation et de la géométrie dans sa conception et sa construction"
+  object: "l'ouvrage pyramidal de Gizeh"
+  time: "-2560"
+  time_precision: approximate
+  families: [evenement, lieu, processus]
+  actors: ["Khéops"]
+  places: ["Gizeh"]
+  groups: ["ouvriers et géomètres de la construction"]
+  institutions: ["Grande Pyramide de Gizeh"]
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "Pyramide de Khéops édifiée à Gizeh, conception et construction témoignant d'une maîtrise de l'organisation et de la géométrie : faits ancrés dans le corpus (dataset.js, eg-kheops) et dans SRC-001 (Shaw). La cellule partielle de coverage-matrix.csv (ERA-1, Sciences, techniques & santé, national) signale l'absence de fiche sur la médecine, l'astronomie ou les papyrus techniques : cette dette est explicite dans la justification, sans inventer de contenu pour ces domaines."
+  TODO: []
+
+- id: eg-era1-arts-009
+  era_id: egypt-era-1
+  domain: "Arts & lettres"
+  scale: national
+  subject: "Le programme architectural de Deir el-Bahari sous Hatshepsout"
+  predicate: "exprime la mise en scène royale par un grand chantier de temples"
+  object: "les temples de Deir el-Bahari, à Thèbes"
+  time: "-1470"
+  time_precision: approximate
+  families: [evenement, acteur, lieu, institution]
+  actors: ["Hatshepsout"]
+  places: ["Deir el-Bahari (Thèbes)"]
+  groups: ["artisans et tailleurs de pierre", "clergé d'Amon"]
+  institutions: ["temple de Deir el-Bahari"]
+  normative: []
+  memory: []
+  sources: ["SRC-003", "SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "Programme architectural de Deir el-Bahari documenté par SRC-003 (Roehrig) et SRC-001 (Shaw), et enregistré dans country-audit.yaml (ACTOR-001). La cellule partielle de coverage-matrix.csv (ERA-1, Arts & lettres, national) mentionne l'architecture et la propagande monumentales de eg-kheops et eg-ramses ; le chantier de Deir el-Bahari fournit un ancrage complémentaire. L'absence de fiche sur la littérature, la musique ou l'artisanat est signalée comme dette, sans invention."
+  TODO: []
+
+- id: eg-era1-env-010
+  era_id: egypt-era-1
+  domain: "Environnement & territoire"
+  scale: national
+  subject: "Les crues insuffisantes du Nil et les sécheresses régionales"
+  predicate: "coïncident avec l'affaiblissement de l'Ancien Empire et l'entrée dans la Première Période intermédiaire"
+  object: "la crise climatique et politique de -2200 à -2050 av. J.-C."
+  time: "-2200/-2050"
+  time_precision: interval
+  families: [processus, evenement]
+  actors: []
+  places: ["vallée du Nil"]
+  groups: ["populations de l'Ancien Empire"]
+  institutions: ["Ancien Empire"]
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "Crise du Nil de -2200 à -2050 av. J.-C. et effondrement de l'Ancien Empire, proposés dans PROP-001 (proposals.yaml), couverts dans coverage-matrix.csv (ERA-1, Environnement & territoire, national) et fondés sur SRC-001 (Shaw). La causalité unique est exclue par proposals.yaml : la crise éclaire les famines, migrations et décentralisations sans tout expliquer, d'où une certitude probable. Exception documentée dans proposals.yaml : la dimension paléoclimatique repose sur une synthèse générale."
+  TODO: []
+
+- id: eg-era1-migr-011
+  era_id: egypt-era-1
+  domain: "Migrations & diasporas"
+  scale: transnational
+  subject: "L'expédition d'Hatshepsout vers le pays de Pount"
+  predicate: "établit un contact avec des populations étrangères de la corne de l'Afrique"
+  object: "les échanges avec le pays de Pount par la mer Rouge"
+  time: "-1470"
+  time_precision: approximate
+  families: [evenement, acteur, lieu, groupe_social, processus]
+  actors: ["Hatshepsout"]
+  places: ["pays de Pount", "mer Rouge", "Deir el-Bahari"]
+  groups: ["équipages de la flotte de la mer Rouge", "populations du pays de Pount"]
+  institutions: ["flotte de la mer Rouge"]
+  normative: []
+  memory: []
+  sources: ["SRC-003", "SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "Cellule partielle de coverage-matrix.csv (ERA-1, Migrations & diasporas, transnational) : sa justification mentionne les contacts avec Pount et les populations étrangères, mais pas de fiche sur les migrations nubiennes, libyennes ou asiatiques. L'expédition est documentée par PROP-002, SRC-003 et SRC-001 ; la localisation de Pount reste débattue (REPORT.md), d'où une certitude probable. La dette sur les autres migrations est explicite, sans invention."
+  TODO: []
+
+- id: eg-era1-peuples-012
+  era_id: egypt-era-1
+  domain: "Peuples autochtones & minorités"
+  scale: local
+  subject: "La communauté juive d'Éléphantine"
+  predicate: "dispose d'un temple dédié à YHW, détruit en 410 av. J.-C. avec l'appui de prêtres de Khnum et d'un officier perse"
+  object: "la minorité religieuse d'Éléphantine près d'Assouan"
+  time: "-410"
+  time_precision: year
+  families: [evenement, groupe_social, lieu, institution]
+  actors: ["communauté juive d'Éléphantine", "prêtres de Khnum", "officier perse"]
+  places: ["Éléphantine", "Assouan"]
+  groups: ["juifs d'Éléphantine"]
+  institutions: ["temple YHW d'Éléphantine"]
+  normative: []
+  memory: []
+  sources: ["SRC-004", "SRC-001"]
+  confidence: certain
+  status: validated
+  justification: "Destruction du temple juif d'Éléphantine en -410 av. J.-C., documentée par PROP-004 (proposals.yaml, confiance high), par SRC-004 (Porten, The Elephantine Papyri in English, édition de sources primaires) et par SRC-001. Les lettres de -407 demandent la reconstruction du temple. SRC-004 précise que l'interprétation de la destruction reste discutée ; le fait de la destruction est certain, son interprétation n'est pas figée. Cellule « couvert » de coverage-matrix.csv (ERA-1, Peuples autochtones & minorités, local)."
+  TODO: []
+
+- id: eg-era1-memoire-013
+  era_id: egypt-era-1
+  domain: "Mémoire & patrimoine"
+  scale: national
+  subject: "Le patrimoine monumental de la nécropole de Gizeh"
+  predicate: "est présent dans le corpus comme monument, sans fiche sur les usages mémoriels, les fouilles ou le tourisme pour cette ère"
+  object: "les pyramides de Gizeh et la pyramide de Khéops"
+  time: "-2560"
+  time_precision: approximate
+  families: [memoire, lieu]
+  actors: ["Khéops"]
+  places: ["Gizeh"]
+  groups: []
+  institutions: ["nécropole de Gizeh"]
+  normative: []
+  memory: ["patrimoine monumental antique"]
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "Cellule partielle de coverage-matrix.csv (ERA-1, Mémoire & patrimoine, national) : « patrimoine monumental présent, mais pas de fiche sur usages mémoriels, fouilles ou tourisme ». La pyramide de Khéops à Gizeh est documentée dans le corpus (dataset.js, eg-kheops, avec un visuel de la nécropole) et par SRC-001 (Shaw). Le silence sur les usages mémoriels postérieurs est explicite : conformément à la règle 7 de POINT_METHODOLOGY.md, aucun usage touristique ou fouille n'est projeté dans l'ère -3100/-332."
+  TODO: []
+
+- id: eg-era1-circ-014
+  era_id: egypt-era-1
+  domain: "Circulations transnationales"
+  scale: transnational
+  subject: "L'expédition au pays de Pount sous Hatshepsout"
+  predicate: "exporte et importe des produits, dont la myrrhe et des arbres à myrrhe transplantés"
+  object: "les échanges entre l'Égypte et le pays de Pount via la mer Rouge"
+  time: "-1470"
+  time_precision: approximate
+  families: [evenement, acteur, lieu, processus]
+  actors: ["Hatshepsout"]
+  places: ["pays de Pount", "mer Rouge", "Deir el-Bahari"]
+  groups: ["équipages de la flotte de la mer Rouge", "marchands de Pount"]
+  institutions: ["flotte de la mer Rouge"]
+  normative: []
+  memory: []
+  sources: ["SRC-003"]
+  confidence: certain
+  status: validated
+  justification: "Expédition au pays de Pount en l'an 9 du règne d'Hatshepsout : les reliefs de Deir el-Bahari montrent le voyage, les produits rapportés et les arbres à myrrhe transplantés. Faits documentés par PROP-002 (proposals.yaml, confiance high), SRC-003 (Roehrig, catalogue d'exposition savant) et SRC-001 ; cellule « couvert » de coverage-matrix.csv (ERA-1, Circulations transnationales, transnational). La localisation de Pount reste débattue et n'est pas tranchée ici."
+  TODO: []

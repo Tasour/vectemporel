@@ -1,0 +1,315 @@
+# États-Unis — usa-era-4 — Puissance mondiale (1900 → 1945)
+# Points tirés du corpus audité : audits/usa/proposals.yaml (PROP-009 à PROP-013),
+# country-audit.yaml (ACTOR, PLACE, CLAIM-003, PERIOD-5), coverage-matrix.csv,
+# omissions.yaml (OM-010, OM-015), fixes.yaml, source-register.csv (SRC-003,
+# SRC-009 à SRC-013, SRC-015, SRC-016) et src/data/dataset.js (repères us-industry,
+# us-ww1, us-prop-010, us-crash, us-pearl). Aucune source hors registre, aucun
+# lien externe, aucune date ni aucun chiffre hors du corpus audité.
+
+- id: us-era4-pol-001
+  era_id: usa-era-4
+  domain: "Politique & institutions"
+  scale: national
+  subject: "Le 19e amendement à la Constitution des États-Unis"
+  predicate: "est ratifié et interdit de refuser le vote"
+  object: "pour motif de sexe ; ratifié le 18 août 1920 et certifié le 26 août, il ne garantit pas le vote aux femmes noires du Sud"
+  time: "1920-08-18"
+  time_precision: day
+  families: [evenement, repère normatif]
+  actors: []
+  places: []
+  groups: []
+  institutions: ["National American Woman Suffrage Association (NAWSA)", "National Woman's Party (NWP)"]
+  normative: ["19e amendement de la Constitution des États-Unis (1920)"]
+  memory: []
+  sources: ["SRC-013"]
+  confidence: probable
+  status: validated
+  justification: "PROP-009 du registre des propositions et SRC-013 (DuBois, Suffrage, 2020) dans le registre des sources. La matrice ERA-4 / Politique & institutions est « partiel » (us-crash, New Deal sans acteur ni institution) : le 19e amendement fournit un repère normatif daté, une institution et une source. Dates du 18 et 26 août 1920 telles qu'enregistrées dans PROP-009. Certitude « probable » reprise du degré « medium » de la proposition, sans reclassification."
+  TODO: []
+
+- id: us-era4-guer-001
+  era_id: usa-era-4
+  domain: "Guerres & diplomatie"
+  scale: national
+  subject: "L'Executive Order 9066"
+  predicate: "autorise le secrétaire à la Guerre à prescrire des zones d'exclusion militaire"
+  object: "mesure de guerre signée le 19 février 1942 par Franklin Roosevelt et appliquée pendant la Seconde Guerre mondiale"
+  time: "1942-02-19"
+  time_precision: day
+  families: [evenement, institution, repère normatif]
+  actors: ["Franklin D. Roosevelt"]
+  places: []
+  groups: []
+  institutions: ["armée américaine", "secrétariat à la Guerre des États-Unis"]
+  normative: ["Executive Order 9066 (19 février 1942)"]
+  memory: []
+  sources: ["SRC-003"]
+  confidence: certain
+  status: validated
+  justification: "SRC-003 (Executive Order 9066, National Archives, document primaire) et PROP-012 du registre des auditeurs, où l'ordre est classé « guerre ». La matrice ERA-4 / Guerres & diplomatie signale deux repères (us-ww1, us-pearl) sans acteur, lieu ni source et note l'absence des conséquences impériales ; le texte primaire apporte ici un acteur, une institution et une date précise. Degré « certain » conforme au document primaire et au degré « high » de la proposition."
+  TODO: []
+
+- id: us-era4-droit-001
+  era_id: usa-era-4
+  domain: "Droit & justice"
+  scale: national
+  subject: "L'Executive Order 9066"
+  predicate: "ouvre la voie à l'incarcération de civils"
+  object: "environ 122 000 Japonais-Américains, dont près de 70 000 citoyens, déplacés dans dix camps dont Manzanar"
+  time: "1942"
+  time_precision: year
+  families: [repère normatif, acteur, groupe social]
+  actors: ["Franklin D. Roosevelt"]
+  places: ["Manzanar, Californie"]
+  groups: ["Japonais-Américains incarcérés"]
+  institutions: ["armée américaine", "centres de relocalisation"]
+  normative: ["Executive Order 9066 (1942)"]
+  memory: []
+  sources: ["SRC-003", "SRC-010"]
+  confidence: certain
+  status: validated
+  justification: "PROP-012, PLACE-007 (Manzanar) et SRC-003 + SRC-010 du registre ; la matrice ERA-4 / Droit & justice est « couvert » via PROP-012. Les trois grandeurs chiffrées (122 000 personnes, près de 70 000 citoyens, dix camps) sont celles du corpus audité et ne sont pas recalculées ailleurs. L'ordre ne nommait pas d'ethnie mais a été appliqué overwhelmingly aux Japonais-Américains (note SRC-003). Les excuses et réparations de 1988 sont hors de l'ère 1900-1945 et ne sont pas affirmées ici."
+  TODO: []
+
+- id: us-era4-econ-001
+  era_id: usa-era-4
+  domain: "Économie & travail"
+  scale: national
+  families: [processus, institution, groupe social]
+  subject: "Le programme Bracero"
+  predicate: "organise l'importation de travailleurs mexicains sous contrat"
+  object: "pour l'agriculture et le chemin de fer à partir de 1942 ; 4,6 millions de contrats sur l'ensemble du programme, avec salaires impayés et logements précaires"
+  time: "1942"
+  time_precision: year
+  actors: []
+  places: ["El Paso (Texas) / Ciudad Juárez (Chihuahua)"]
+  groups: ["travailleurs agricoles mexicains sous contrat (braceros)"]
+  institutions: ["programme Bracero"]
+  normative: []
+  memory: []
+  sources: ["SRC-012", "SRC-011"]
+  confidence: certain
+  status: validated
+  justification: "PROP-013 et SRC-012 (González, Harvest of Empire) + SRC-011 (Ngai, Impossible Subjects) ; la matrice ERA-4 / Économie & travail est « partiel » (us-industry, us-crash, sans fordisme ni syndicats). Le rapport d'audit précise que les 4,6 millions sont des contrats, non des personnes, et que les expériences varient ; le chiffre est donc présenté comme tel, sans extrapolation. Degré « high » de la proposition conservé."
+  TODO: []
+
+- id: us-era4-soc-001
+  era_id: usa-era-4
+  domain: "Société & démographie"
+  scale: national
+  subject: "Le quartier noir de Greenwood à Tulsa"
+  predicate: "est attaqué et détruit par une foule blanche"
+  object: "les 31 mai et 1er juin 1921 ; 35 pâtés de maisons détruits, bilan officiel de 36 morts et estimations ultérieures jusqu'à 300"
+  time: "1921-05-31"
+  time_precision: day
+  families: [evenement, lieu, groupe social]
+  actors: []
+  places: ["Tulsa, Oklahoma (quartier Greenwood)"]
+  groups: ["communauté noire de Greenwood", "foule blanche"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-015"]
+  confidence: probable
+  status: validated
+  justification: "PROP-010, PLACE-005 et SRC-015 (rapport de l'Oklahoma Commission, 2001) ; la matrice ERA-4 / Société & démographie est « couvert » via PROP-010 et PROP-011. Le bilan officiel de 36 morts et les estimations jusqu'à 300 sont rapportés comme deux valeurs documentées, non arbitrées (point de vigilance du rapport). Degré « medium » de la proposition conservé tel quel."
+  TODO: []
+
+- id: us-era4-femmes-001
+  era_id: usa-era-4
+  domain: "Femmes, genre, sexualités"
+  scale: national
+  subject: "Le 19e amendement"
+  predicate: "ne garantit pas le vote aux femmes noires du Sud"
+  object: "celles-ci restent soumises aux mêmes obstacles que les hommes noirs malgré l'interdiction du refus de vote pour motif de sexe"
+  time: "1920"
+  time_precision: year
+  families: [repère normatif, groupe social]
+  actors: []
+  places: []
+  groups: ["femmes noires du Sud", "militantes du suffrage"]
+  institutions: ["National Woman's Party (NWP)", "National American Woman Suffrage Association (NAWSA)"]
+  normative: ["19e amendement (1920)"]
+  memory: []
+  sources: ["SRC-013"]
+  confidence: probable
+  status: validated
+  justification: "PROP-009 et SRC-013 (DuBois, Suffrage, 2020) ; la matrice ERA-4 / Femmes, genre, sexualités est « couvert » via PROP-009. Lecture genrée distincte du point politique : l'universalisme formel de 1920 laisse dehors les femmes noires. OM-008 documente le vide sur le mouvement suffragiste de 1865 à 1920 ; aucune militante n'est nommée ici faute d'actrice datée dans le corpus pour cette ère."
+  TODO: []
+
+- id: us-era4-rel-001
+  era_id: usa-era-4
+  domain: "Religions & croyances"
+  scale: national
+  subject: "Le vide documentaire sur les religions des États-Unis entre 1900 et 1945"
+  predicate: "est explicitement signalé par la matrice de couverture"
+  object: "aucun repère ni proposition sur le fondamentalisme, le pentecôtisme ni la religion de guerre, et aucune source du registre ne couvre ces questions"
+  time: "1900-1945"
+  time_precision: interval
+  families: [processus]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "coverage-matrix.csv, ligne ERA-4 / Religions & croyances : « vide non traité ». Aucune proposition dans proposals.yaml, aucun OM dédié dans omissions.yaml et aucune source du registre : ce point enregistre le silence explicite sans inventer de fait religieux. Le degré « non documenté » et les sources vides sont déclarés, conformément à la règle des silences comme données."
+  TODO: ["Instrumenter le fondamentalisme, le pentecôtisme et la religion de guerre (1900-1945) après ajout de sources au registre."]
+
+- id: us-era4-sci-001
+  era_id: usa-era-4
+  domain: "Sciences, techniques & santé"
+  scale: national
+  subject: "L'agriculture intensive des Grandes Plaines du Sud"
+  predicate: "épuise les sols et aggrave les tempêtes de poussière"
+  object: "dans les années 1930 ; la sécheresse et les pratiques culturales transforment la région en Dust Bowl, selon Donald Worster"
+  time: "1930-1939"
+  time_precision: interval
+  families: [processus, lieu]
+  actors: []
+  places: ["Grandes Plaines du Sud"]
+  groups: ["agriculteurs des Grandes Plaines"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-016"]
+  confidence: probable
+  status: validated
+  justification: "PROP-011 et SRC-016 (Worster, Dust Bowl, 1979) : « capitalist agriculture and soil exhaustion ; federal relief and resettlement ». La matrice ERA-4 / Sciences, techniques & santé est « partiel » ; lecture agronomique distincte du point environnemental us-era4-env-001. OM-015 documente l'absence d'instrumentation de l'eugénisme, des stérilisations forcées et du handicap, sans aucune source au registre : aucun chiffre ni institution n'est inventé pour ce vide."
+  TODO: ["Documenter l'eugénisme, les stérilisations forcées et l'histoire du handicap (OM-015) après ajout de sources au registre."]
+
+- id: us-era4-arts-001
+  era_id: usa-era-4
+  domain: "Arts & lettres"
+  scale: national
+  subject: "Le vide documentaire sur les arts et les lettres des États-Unis entre 1900 et 1945"
+  predicate: "est explicitement signalé par la matrice de couverture"
+  object: "Harlem Renaissance, jazz et cinéma n'ont ni repère ni proposition, et aucune source du registre ne les couvre"
+  time: "1900-1945"
+  time_precision: interval
+  families: [processus]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "coverage-matrix.csv, ligne ERA-4 / Arts & lettres : « vide non traité ». Le rapport d'audit confirme l'absence de tout repère culturel pour cette ère et le registre ne contient aucune source d'histoire culturelle 1900-1945 : le silence est documenté, aucun nom ni œuvre n'est avancé."
+  TODO: ["Instrumenter la Harlem Renaissance, le jazz et le cinéma (1900-1945) après ajout de sources au registre."]
+
+- id: us-era4-env-001
+  era_id: usa-era-4
+  domain: "Environnement & territoire"
+  scale: regional
+  subject: "Les Grandes Plaines du Sud"
+  predicate: "deviennent la Dust Bowl"
+  object: "sous l'effet de la sécheresse et de l'agriculture intensive dans les années 1930 ; des centaines de milliers de personnes migrent, notamment vers la Californie, et le New Deal répond par la conservation des sols et la relocalisation"
+  time: "1930-1939"
+  time_precision: interval
+  families: [processus, lieu]
+  actors: []
+  places: ["Grandes Plaines du Sud", "Californie"]
+  groups: ["migrants des Grandes Plaines"]
+  institutions: ["New Deal"]
+  normative: []
+  memory: []
+  sources: ["SRC-016"]
+  confidence: probable
+  status: validated
+  justification: "PROP-011 (1930-1939) et SRC-016 (Worster) ; la matrice ERA-4 / Environnement & territoire est « couvert » via PROP-011. L'expression « des centaines de milliers » est celle du résumé de la proposition : aucun chiffre précis n'est introduit. Degré « medium » de la proposition conservé."
+  TODO: []
+
+- id: us-era4-migr-001
+  era_id: usa-era-4
+  domain: "Migrations & diasporas"
+  scale: transnational
+  subject: "Le programme Bracero"
+  predicate: "canalise une migration de travail mexicaine vers les États-Unis"
+  object: "avec un point de recrutement dans la région d'El Paso / Ciudad Juárez ; 4,6 millions de contrats sur l'ensemble du programme, distincts du nombre de personnes"
+  time: "1942"
+  time_precision: year
+  families: [processus, lieu, groupe social]
+  actors: []
+  places: ["El Paso (Texas) / Ciudad Juárez (Chihuahua)"]
+  groups: ["travailleurs mexicains sous contrat (braceros)"]
+  institutions: ["programme Bracero"]
+  normative: []
+  memory: []
+  sources: ["SRC-012", "SRC-011"]
+  confidence: certain
+  status: validated
+  justification: "PROP-013, PLACE-008 / PLACE-PROP-008 et SRC-012 + SRC-011 ; la matrice ERA-4 / Migrations & diasporas est « couvert » via PROP-012 et PROP-013. Lecture migratoire distincte du point Économie & travail us-era4-econ-001 : ici la frontière et le recrutement transnational sont au centre. La distinction contrats / personnes est explicitement exigée par la revue du rapport d'audit."
+  TODO: []
+
+- id: us-era4-peuples-001
+  era_id: usa-era-4
+  domain: "Peuples autochtones & minorités"
+  scale: national
+  subject: "Les Japonais-Américains"
+  predicate: "sont déplacés et incarcérés"
+  object: "environ 122 000 personnes, dont près de 70 000 citoyens américains, dans dix camps dont Manzanar, après l'Executive Order 9066"
+  time: "1942"
+  time_precision: year
+  families: [evenement, groupe social, lieu]
+  actors: []
+  places: ["Manzanar, Californie"]
+  groups: ["Japonais-Américains"]
+  institutions: ["centres de relocalisation"]
+  normative: ["Executive Order 9066 (1942)"]
+  memory: []
+  sources: ["SRC-003", "SRC-010"]
+  confidence: certain
+  status: validated
+  justification: "PROP-012, PLACE-007 (Manzanar, contestation « internement ou incarcération ») et SRC-003 + SRC-010 (Takaki, Strangers from a Different Shore) ; la matrice ERA-4 / Peuples autochtones & minorités est « couvert » via PROP-010 et PROP-012. Le degré « high » de la proposition est conservé. Aucune autre minorité n'est attribuée à cette ère sans source : les politiques indiennes ne sont pas traitées dans le corpus pour 1900-1945."
+  TODO: []
+
+- id: us-era4-memoire-001
+  era_id: usa-era-4
+  domain: "Mémoire & patrimoine"
+  scale: local
+  subject: "La mémoire du massacre de Tulsa"
+  predicate: "est longtemps occultée avant de devenir un enjeu de reconnaissance"
+  object: "le rapport de 2001 parle de « riot » alors que les historiens disent « massacre » ; le bilan reste disputé entre 36 morts officiels et jusqu'à 300 estimations"
+  time: "1921"
+  time_precision: year
+  families: [mémoire, lieu]
+  actors: []
+  places: ["Tulsa, Oklahoma (quartier Greenwood)"]
+  groups: []
+  institutions: ["Oklahoma Commission to Study the Tulsa Race Riot of 1921"]
+  normative: []
+  memory: ["occultation puis reconnaissance du massacre de 1921", "qualification « riot » ou « massacre » et bilan de 36 à 300 morts disputés"]
+  sources: ["SRC-015"]
+  confidence: disputé
+  status: validated
+  justification: "PROP-010, PLACE-005 et SRC-015 (rapport de la commission de 2001) ; la matrice ERA-4 / Mémoire & patrimoine est « partiel » via PROP-010 et demande un lieu de mémoire, ici Greenwood/Tulsa. La contestation sur le nom et le bilan est documentée dans les notes de SRC-015, dans proposals.yaml et dans REPORT.md : le disputé reste disputé, aucune valeur n'est tranchée."
+  TODO: []
+
+- id: us-era4-circ-001
+  era_id: usa-era-4
+  domain: "Circulations transnationales"
+  scale: imperial
+  subject: "Les territoires non incorporés et le réseau de bases des États-Unis"
+  predicate: "structurent la projection de puissance américaine"
+  object: "Porto Rico, Guam, les Philippines, Hawaï et les îles Vierges, avec San Juan et Honolulu comme capitales impériales, sans représentation fédérale complète"
+  time: "1900-1945"
+  time_precision: interval
+  families: [processus, institution, lieu]
+  actors: []
+  places: ["San Juan, Porto Rico", "Honolulu, Hawaï"]
+  groups: []
+  institutions: ["territoires non incorporés"]
+  normative: []
+  memory: []
+  sources: ["SRC-009"]
+  confidence: probable
+  status: validated
+  justification: "CLAIM-003 du country-audit (degré « probable », SRC-009) et SRC-009 (Immerwahr, How to Hide an Empire) : différence entre territoires incorporés et non incorporés et réseau mondial de bases. PLACE-009 (San Juan) et PLACE-010 (Honolulu). La matrice ERA-4 / Circulations transnationales est « partiel » (us-ww1, us-pearl sans réseaux impériaux) ; OM-010 documente le vide sur le statut de Porto Rico (Foraker Act 1900, Jones-Shafroth Act 1917). Aucune date de loi ni de transfert n'est ajoutée au-delà de celles déjà enregistrées dans l'audit."
+  TODO: []

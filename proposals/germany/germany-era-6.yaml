@@ -1,0 +1,375 @@
+# Vectemporel — points validés — Allemagne, ère 6 (1990 → 2026)
+# Un point par domaine de la matrice ; aucun fait ni identifiant de source inventé.
+# Aucun lien externe. Les silences sont enregistrés comme omissions explicites.
+
+- id: de-era6-pol-001
+  era_id: germany-era-6
+  domain: "Politique & institutions"
+  scale: national
+  subject: "Les Länder de la République démocratique allemande"
+  predicate: "rejoignent la République fédérale d'Allemagne par accession, et non par fusion de deux États égaux"
+  object: "le 3 octobre 1990, après les élections libres du 18 mars 1990"
+  time: "1990"
+  time_precision: year
+  families: [evenement, institution]
+  actors: ["Les Länder de la RDA", "République fédérale d'Allemagne"]
+  places: ["Berlin"]
+  groups: []
+  institutions: ["Loi fondamentale"]
+  normative: ["Article 23 de la Loi fondamentale"]
+  memory: []
+  sources: ["SRC-012", "SRC-010"]
+  confidence: certain
+  status: validated
+  justification: >-
+    PROP-017 et la correction de de-1990 documentent l'accession du 3 octobre
+    1990, les élections du 18 mars et le recours à l'article 23. SRC-012
+    (Jarausch) et SRC-010 (Fulbrook) sont deux synthèses indépendantes. La
+    qualification juridique reste disputée (accession ou annexion, REPORT.md §6) :
+    le débat est signalé sans être tranché par la frise.
+  TODO: []
+
+- id: de-era6-dip-001
+  era_id: germany-era-6
+  domain: "Guerres & diplomatie"
+  scale: transnational
+  subject: "Le gouvernement allemand"
+  predicate: "reconnaît officiellement le génocide des Herero et Nama et annonce un programme de 1,1 milliard d'euros"
+  object: "à l'issue des négociations avec la Namibie, en 2021"
+  time: "2021"
+  time_precision: year
+  families: [evenement, acteur]
+  actors: ["Gouvernement allemand", "Namibie", "Herero et Nama"]
+  places: ["Windhoek"]
+  groups: ["Herero et Nama"]
+  institutions: ["Auswärtiges Amt"]
+  normative: []
+  memory: []
+  sources: ["SRC-020", "SRC-013"]
+  confidence: certain
+  status: validated
+  justification: >-
+    SRC-020 est le communiqué officiel de l'Auswärtiges Amt sur la conclusion
+    des négociations avec la Namibie : reconnaissance, excuse et programme de
+    1,1 milliard d'euros. SRC-013 documente la guerre coloniale de 1904-1908.
+    PROP-007 précise que cette reconnaissance n'emporte pas de reconnaissance
+    juridique de réparations : aucun montant n'est présenté comme une réparation.
+  TODO: []
+
+- id: de-era6-droit-001
+  era_id: germany-era-6
+  domain: "Droit & justice"
+  scale: national
+  subject: "L'article 23 de la Loi fondamentale"
+  predicate: "sert de base juridique à l'accession des Länder de la RDA"
+  object: "à la République fédérale d'Allemagne en 1990"
+  time: "1990"
+  time_precision: year
+  families: [institution, evenement]
+  actors: ["Les Länder de la RDA", "République fédérale d'Allemagne"]
+  places: []
+  groups: []
+  institutions: ["Loi fondamentale"]
+  normative: ["Article 23 de la Loi fondamentale"]
+  memory: []
+  sources: ["SRC-012"]
+  confidence: certain
+  status: validated
+  justification: >-
+    La correction de de-1990 et PROP-017 précisent que l'accession du 3 octobre
+    1990 se fait en vertu de l'article 23 de la Loi fondamentale. Aucune autre
+    procédure constitutionnelle n'est affirmée. La controverse accession/annexion
+    signalée dans REPORT.md §6 est un débat d'interprétation, non une incertitude
+    sur le texte mobilisé.
+  TODO: []
+
+- id: de-era6-econ-001
+  era_id: germany-era-6
+  domain: "Économie & travail"
+  scale: national
+  subject: "La politique énergétique de la République fédérale"
+  predicate: "est réorientée par la sortie accélérée du nucléaire civil, qui inverse la prolongation des centrales adoptée en 2010"
+  object: "par le vote du Bundestag en juin 2011"
+  time: "2011"
+  time_precision: year
+  families: [evenement, institution]
+  actors: ["Bundestag", "Gouvernement allemand"]
+  places: []
+  groups: []
+  institutions: ["Bundestag"]
+  normative: []
+  memory: []
+  sources: ["SRC-014"]
+  confidence: certain
+  status: validated
+  justification: >-
+    PROP-018 et SRC-014 (Uekötter) documentent le moratoire consécutif à
+    Fukushima (11 mars 2011), le vote de juin 2011 et l'inversion de la
+    prolongation décidée en 2010. La décision est décrite comme un pilier de la
+    politique énergétique ; aucun chiffre économique n'est avancé ici.
+  TODO: []
+
+- id: de-era6-soc-001
+  era_id: germany-era-6
+  domain: "Société & démographie"
+  scale: national
+  subject: "Les populations de la RDA et de la RFA"
+  predicate: "sont réunies dans un même État après l'accession des Länder de la RDA"
+  object: "le 3 octobre 1990"
+  time: "1990"
+  time_precision: year
+  families: [processus, groupe]
+  actors: ["Les Länder de la RDA", "République fédérale d'Allemagne"]
+  places: ["Berlin"]
+  groups: ["Population de la RDA", "Population de la RFA"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-012", "SRC-010"]
+  confidence: certain
+  status: validated
+  justification: >-
+    SRC-012 documente l'unification de 1990 ; SRC-010 documente la société de
+    RDA jusqu'en 1989. Le point se limite à la fin de la séparation institutionnelle
+    des deux sociétés : aucun chiffre démographique n'est affirmé, conformément à
+    la coverage-matrix (ERA-6, Société & démographie : « pas de démographie »).
+  TODO: ["Documenter les séries démographiques 1990-2026 avec une source statistique vérifiée."]
+
+- id: de-era6-femmes-001
+  era_id: germany-era-6
+  domain: "Femmes, genre, sexualités"
+  scale: national
+  subject: "L'histoire des femmes, du genre et des sexualités dans l'Allemagne réunifiée"
+  predicate: "constitue un silence explicitement documenté du registre de sources"
+  object: "pour l'intervalle 1990-2026"
+  time: "1990-2026"
+  time_precision: interval
+  families: [processus]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: >-
+    La coverage-matrix (ERA-6, Femmes, genre, sexualités) porte « vide justifié » :
+    « aucune entrée ; Merkel, égalité et genre non traités ». REPORT.md §2 et §7
+    confirment cette dette documentaire. Aucune affirmation historique n'est
+    avancée : ce point enregistre l'omission, conformément à la règle « les
+    silences sont des données ». Aucun ID d'omission dédié n'existe dans
+    omissions.yaml pour cette cellule.
+  TODO: ["Créer un ID d'omission dédié et sourcer l'égalité et le genre après 1990."]
+
+- id: de-era6-rel-001
+  era_id: germany-era-6
+  domain: "Religions & croyances"
+  scale: national
+  subject: "La sécularisation, l'islam et la vie juive dans l'Allemagne réunifiée"
+  predicate: "constituent un silence explicitement documenté du registre de sources"
+  object: "pour l'intervalle 1990-2026"
+  time: "1990-2026"
+  time_precision: interval
+  families: [processus]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: >-
+    La coverage-matrix (ERA-6, Religions & croyances) porte « vide justifié » :
+    « aucune entrée ; sécularisation, islam et vie juive non traités ». Aucune
+    affirmation concernant ces phénomènes n'est avancée faute de source dans le
+    registre vérifié. Ce point enregistre l'omission et ne la masque pas.
+  TODO: ["Ajouter des sources vérifiées sur la religion en Allemagne réunifiée."]
+
+- id: de-era6-sci-001
+  era_id: germany-era-6
+  domain: "Sciences, techniques & santé"
+  scale: national
+  subject: "La technique nucléaire civile en Allemagne"
+  predicate: "est l'objet d'un moratoire puis d'une décision de sortie accélérée après l'accident de Fukushima"
+  object: "le 11 mars 2011, suivi du vote du Bundestag en juin 2011"
+  time: "2011"
+  time_precision: year
+  families: [evenement]
+  actors: ["Bundestag", "Gouvernement allemand"]
+  places: ["Fukushima"]
+  groups: []
+  institutions: ["Bundestag"]
+  normative: []
+  memory: []
+  sources: ["SRC-014"]
+  confidence: certain
+  status: validated
+  justification: >-
+    PROP-018 et SRC-014 documentent l'accident du 11 mars 2011, le moratoire et
+    le vote de juin 2011. Le point porte sur la décision relative à une technique ;
+    aucun effet sanitaire n'est affirmé, le registre ne documentant pas la santé
+    pour cette ère au-delà du nucléaire.
+  TODO: []
+
+- id: de-era6-arts-001
+  era_id: germany-era-6
+  domain: "Arts & lettres"
+  scale: national
+  subject: "La culture et les lettres de la République de Berlin"
+  predicate: "constituent un silence explicitement documenté du registre de sources"
+  object: "pour l'intervalle 1990-2026"
+  time: "1990-2026"
+  time_precision: interval
+  families: [processus]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: >-
+    La coverage-matrix (ERA-6, Arts & lettres) porte « vide justifié » :
+    « aucune entrée ; culture de la République de Berlin non traitée ». Aucun nom,
+    aucune œuvre ni aucune date n'est avancé sans source vérifiée. Ce point
+    enregistre l'omission plutôt que de la combler par du texte générique.
+  TODO: ["Sourcer la culture et les lettres de l'Allemagne réunifiée."]
+
+- id: de-era6-env-001
+  era_id: germany-era-6
+  domain: "Environnement & territoire"
+  scale: national
+  subject: "La transition énergétique (Energiewende)"
+  predicate: "devient un pilier de la politique énergétique, dans le prolongement d'une histoire de l'environnementalisme allemand"
+  object: "après la sortie accélérée du nucléaire votée en 2011"
+  time: "2011"
+  time_precision: year
+  families: [processus, institution]
+  actors: ["Gouvernement allemand", "Bundestag"]
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-014"]
+  confidence: certain
+  status: validated
+  justification: >-
+    PROP-018 et SRC-014 (Uekötter, The Greenest Nation?) inscrivent la sortie du
+    nucléaire de 2011 dans une histoire plus longue de l'antinucléarisme et de
+    l'environnementalisme allemand. SRC-014 s'arrête en 2014 : aucune évaluation
+    postérieure de la transition n'est affirmée ici.
+  TODO: []
+
+- id: de-era6-migr-001
+  era_id: germany-era-6
+  domain: "Migrations & diasporas"
+  scale: transnational
+  subject: "Les réfugiés de 2015 et les Ukrainiens arrivés après 2022"
+  predicate: "sont enregistrés comme omission documentée, faute de source statistique ou juridique vérifiée au registre"
+  object: "pour l'intervalle 1990-2026"
+  time: "1990-2026"
+  time_precision: interval
+  families: [processus, groupe]
+  actors: []
+  places: []
+  groups: ["Réfugiés de 2015", "Ukrainiens arrivés après 2022"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["OM-015"]
+  confidence: non documenté
+  status: validated
+  justification: >-
+    OM-015 (omissions.yaml) documente explicitement ce silence pour ERA-6 et
+    précise que son traitement exige des sources statistiques et juridiques
+    spécifiques, absentes du registre. Aucun chiffre ni aucune date d'arrivée
+    n'est affirmé au-delà de ceux déjà inscrits dans l'omission.
+  TODO: ["Ajouter des sources vérifiées sur 2015 et 2022, puis lever OM-015."]
+
+- id: de-era6-min-001
+  era_id: germany-era-6
+  domain: "Peuples autochtones & minorités"
+  scale: national
+  subject: "Les Sorbs"
+  predicate: "sont reconnus comme minorité nationale en Allemagne et disposent de droits bilingues"
+  object: "avec Bautzen/Budyšin comme centre culturel et la Domowina comme organisation"
+  time: "1990-2026"
+  time_precision: interval
+  families: [groupe, institution]
+  actors: ["Domowina", "Sorbs"]
+  places: ["Bautzen / Budyšin"]
+  groups: ["Sorbs"]
+  institutions: ["Domowina"]
+  normative: []
+  memory: []
+  sources: ["SRC-019"]
+  confidence: certain
+  status: validated
+  justification: >-
+    SRC-019 (portail officiel du Land de Saxe, consulté le 13 novembre 2026)
+    documente la reconnaissance des Sorbs comme minorité nationale, environ
+    60 000 personnes en Allemagne, Bautzen/Budyšin comme centre culturel, la
+    Domowina et les droits bilingues. Page non datée : les faits sont donnés
+    pour l'état actuel, sans datation d'événement inventée.
+  TODO: []
+
+- id: de-era6-mem-001
+  era_id: germany-era-6
+  domain: "Mémoire & patrimoine"
+  scale: transnational
+  subject: "La mémoire du génocide des Herero et Nama"
+  predicate: "est au centre d'un débat public allemand sur la reconnaissance et les réparations"
+  object: "à la suite de la déclaration allemande de 2021 et de la guerre coloniale de 1904-1908"
+  time: "2021"
+  time_precision: year
+  families: [memoire, acteur]
+  actors: ["Herero et Nama", "Gouvernement allemand"]
+  places: ["Windhoek"]
+  groups: ["Herero et Nama"]
+  institutions: []
+  normative: []
+  memory: ["Génocide des Herero et Nama", "Reconnaissance de 2021"]
+  sources: ["SRC-013", "SRC-020"]
+  confidence: certain
+  status: validated
+  justification: >-
+    PROP-007 et PLACE-PROP-011 (Windhoek) documentent le lien entre la guerre
+    coloniale de 1904-1908, la reconnaissance de 2021 et la mémoire contemporaine.
+    SRC-013 couvre la violence coloniale et sa mémoire, SRC-020 la déclaration
+    officielle. La portée de la reconnaissance reste disputée (REPORT.md §6) :
+    le point ne tranche pas la question des réparations.
+  TODO: []
+
+- id: de-era6-circ-001
+  era_id: germany-era-6
+  domain: "Circulations transnationales"
+  scale: transnational
+  subject: "Les négociations entre l'Allemagne et la Namibie"
+  predicate: "font circuler entre les deux pays la reconnaissance du génocide des Herero et Nama"
+  object: "et aboutissent à la déclaration officielle de 2021"
+  time: "2021"
+  time_precision: year
+  families: [processus, evenement]
+  actors: ["Gouvernement allemand", "Namibie", "Herero et Nama"]
+  places: ["Windhoek", "Berlin"]
+  groups: ["Herero et Nama"]
+  institutions: ["Auswärtiges Amt"]
+  normative: []
+  memory: []
+  sources: ["SRC-020", "SRC-013"]
+  confidence: certain
+  status: validated
+  justification: >-
+    SRC-020 est le communiqué de l'Auswärtiges Amt sur la conclusion des
+    négociations avec la Namibie ; SRC-013 replace ces échanges dans l'histoire
+    du génocide colonial et de sa mémoire. Le point documente la circulation
+    diplomatique et mémorielle entre les deux pays, sans affirmer de détail de
+    négociation absent des sources.
+  TODO: []

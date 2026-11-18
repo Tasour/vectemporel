@@ -1,0 +1,318 @@
+# Points de l'ère Égypte / Égypte gréco-romaine (egypt-era-2, -332 → 641).
+# Sources : uniquement le registre audits/egypt/source-register.csv (SRC-001 à SRC-007),
+# le dossier audits/egypt/country-audit.yaml, la matrice audits/egypt/coverage-matrix.csv
+# (lignes ERA-2), les propositions et corrections audits/egypt/proposals.yaml,
+# les correctifs audits/egypt/fixes.yaml, les omissions audits/egypt/omissions.yaml
+# et audits/egypt/REPORT.md. Aucune date, source, doi, citation ni acteur inventé.
+# Aucun lien Grokipedia. Aucun contenu hors de l'ère (-332/641) : la conquête arabe
+# (639–642) relève d'ERA-3 et n'est pas traitée ici.
+# Les cases « vide justifié » d'ERA-2 n'ont pas d'ID d'omission dédié dans omissions.yaml
+# (OM-001 à OM-015 concernent PERIOD-3 à PERIOD-5) : le silence est explicite, sources vides.
+
+- id: eg-era2-pol-001
+  era_id: egypt-era-2
+  domain: "Politique & institutions"
+  scale: national
+  subject: "Alexandre le Grand"
+  predicate: "fonde Alexandrie en -331 après son entrée en Égypte à la fin de -332 ; la ville devient la capitale du royaume ptolémaïque"
+  object: "Alexandrie (Alexandreia / Rhakotis), capitale ptolémaïque puis ville intégrée à la province romaine d'Égypte"
+  time: "-331"
+  time_precision: approximate
+  families: [evenement, acteur, lieu, institution]
+  actors: ["Alexandre le Grand"]
+  places: ["Alexandrie (Alexandreia / Rhakotis)"]
+  groups: ["Ptolémées", "Grecs d'Égypte"]
+  institutions: ["royaume ptolémaïque (305–30 av. J.-C.)", "capitale ptolémaïque"]
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "Fondation d'Alexandrie en -331 après l'entrée d'Alexandre en Égypte à la fin de -332 : correction documentée de la date -332 portée par la fiche eg-alexandrie (fixes.yaml, eg-alexandrie ; proposals.yaml, corrections ; REPORT.md). La certitude reste probable, la date étant « généralement placée en -331 ». Le royaume ptolémaïque (305–30 av. J.-C.) et la province romaine d'Égypte (30 av. J.-C.–641) sont ancrés dans country-audit.yaml ; SRC-001 est source de PERIOD-2 et de PLACE-001. Date dans l'ère -332/641 ; aucun acteur, lieu ou chiffre inventé."
+  TODO: []
+
+- id: eg-era2-guer-002
+  era_id: egypt-era-2
+  domain: "Guerres & diplomatie"
+  scale: national
+  subject: "Flotte de Cléopâtre et d'Antoine"
+  predicate: "est défaite à Actium en -31 ; Octave prend Alexandrie en -30, Cléopâtre se donne la mort et l'Égypte devient une province romaine"
+  object: "la fin du royaume ptolémaïque et l'annexion romaine de l'Égypte"
+  time: "-30"
+  time_precision: year
+  families: [evenement, acteur, lieu, institution]
+  actors: ["Cléopâtre", "Antoine", "Octave"]
+  places: ["Actium", "Alexandrie"]
+  groups: ["flotte de Cléopâtre et d'Antoine"]
+  institutions: ["royaume ptolémaïque", "province romaine d'Égypte"]
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: certain
+  status: validated
+  justification: "Défaite navale d'Actium (-31), prise d'Alexandrie par Octave (-30), mort de Cléopâtre et annexion : trois moments distincts que la fiche eg-cleopatre confondait, correction documentée (fixes.yaml, eg-cleopatre ; proposals.yaml, corrections ; REPORT.md). SRC-001 est la source attachée à cette correction et à PERIOD-2. Ce point comble la case « Guerres & diplomatie » (ERA-2, partiel), qui signalait « Actium et annexion évoqués, mais pas de fiche militaire détaillée ». Aucune date hors de l'ère ni citation inventée."
+  TODO: []
+
+- id: eg-era2-droit-003
+  era_id: egypt-era-2
+  domain: "Droit & justice"
+  scale: national
+  subject: "Droit provincial romain et statuts personnels en Égypte gréco-romaine"
+  predicate: "ne sont pas instrumentés dans le corpus : la case est un vide justifié, une dette documentaire et non une absence historique"
+  object: "les règles juridiques et les statuts personnels de l'Égypte ptolémaïque et romaine"
+  time: "-332/641"
+  time_precision: interval
+  families: [processus, normatif]
+  actors: []
+  places: ["Égypte gréco-romaine"]
+  groups: []
+  institutions: []
+  normative: ["droit provincial romain et statuts personnels non instrumentés dans le corpus"]
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Case « vide justifié » de coverage-matrix.csv (ERA-2, Droit & justice, national) : « Droit provincial romain et statuts personnels non instrumentés ; dette documentaire, pas absence historique. » Aucun ID d'omission dédié n'existe pour PERIOD-2 dans omissions.yaml (OM-001 à OM-015 concernent PERIOD-3 à PERIOD-5) ; conformément à la règle 7 de POINT_METHODOLOGY.md, le silence est explicite et sources est vide. Aucune date, source ni citation inventée ; ancre = intervalle de l'ère (-332/641)."
+  TODO: []
+
+- id: eg-era2-econ-004
+  era_id: egypt-era-2
+  domain: "Économie & travail"
+  scale: regional
+  subject: "Port d'Alexandrie"
+  predicate: "devient un grand centre commercial sous les Ptolémées, intégré aux échanges méditerranéens"
+  object: "le commerce du port alexandrin, relais de l'Égypte gréco-romaine"
+  time: "-331"
+  time_precision: approximate
+  families: [lieu, institution, processus]
+  actors: []
+  places: ["Alexandrie"]
+  groups: []
+  institutions: ["port d'Alexandrie"]
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "Le port et le commerce alexandrins sont documentés dans le corpus (fixes.yaml, eg-alexandrie : « La ville devient un grand centre culturel et commercial sous les Ptolémées » ; country-audit.yaml, PLACE-001, fonction « port ») et par SRC-001. La matrice ERA-2 (Économie & travail, régional) classe la case « partiel » et signale l'absence de fiche sur le blé, la fiscalité ou la monnaie : ces dimensions ne sont pas inventées ici. Aucun chiffre de production, de prix ou de tonnage avancé."
+  TODO: []
+
+- id: eg-era2-soc-005
+  era_id: egypt-era-2
+  domain: "Société & démographie"
+  scale: regional
+  subject: "Alexandrie, ville cosmopolite de l'Égypte gréco-romaine"
+  predicate: "est évoquée comme une ville cosmopolite, sans fiche dédiée à la démographie, à l'esclavage ou aux classes populaires"
+  object: "les populations d'Alexandrie, Grecs, Juifs et Romains"
+  time: "-332/641"
+  time_precision: interval
+  families: [lieu, groupe_social, processus]
+  actors: []
+  places: ["Alexandrie"]
+  groups: ["Grecs d'Alexandrie", "Juifs d'Alexandrie", "Romains d'Alexandrie"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "La matrice ERA-2 (Société & démographie, régional) classe la case « partiel » : « Ville cosmopolite évoquée ; pas de fiche sur démographie, esclavage ou classes populaires. » Les diasporas grecque, juive et romaine sont documentées dans la case Migrations & diasporas de la même matrice ; SRC-001 est source de PLACE-001 (country-audit.yaml). Aucun effectif, aucune proportion et aucune date non documentée ne sont avancés ; ancre = intervalle de l'ère."
+  TODO: []
+
+- id: eg-era2-genre-006
+  era_id: egypt-era-2
+  domain: "Femmes, genre, sexualités"
+  scale: regional
+  subject: "Hypatie, mathématicienne et philosophe néoplatonicienne"
+  predicate: "est assassinée par une foule chrétienne à Alexandrie en mars 415, dans un conflit entre le préfet Orestes et l'évêque Cyrille"
+  object: "la mort d'Hypatie, devenue un symbole durable mais qui n'est ni la fin du paganisme ni le martyre de la science moderne"
+  time: "415"
+  time_precision: year
+  families: [evenement, acteur, lieu, groupe_social]
+  actors: ["Hypatie", "Orestes", "Cyrille"]
+  places: ["Alexandrie"]
+  groups: ["foule chrétienne d'Alexandrie", "école néoplatonicienne"]
+  institutions: ["école néoplatonicienne d'Alexandrie"]
+  normative: []
+  memory: ["devenue un symbole durable ; ne pas en faire une martyre de la science moderne ni la fin du paganisme"]
+  sources: ["SRC-005", "SRC-006"]
+  confidence: certain
+  status: validated
+  justification: "Meurtre d'Hypatie en mars 415 documenté par SRC-005 (Dzielska) et SRC-006 (Davis) ; PROP-005 dans proposals.yaml et la matrice ERA-2 (Femmes, genre, sexualités, régional, « couvert »). Le récit suit fixes.yaml et REPORT.md : le meurtre s'inscrit dans le conflit entre Orestes et Cyrille et ne doit être lu ni comme la fin du paganisme ni comme le martyre de la science moderne. Aucune date, acteur ou citation inventé."
+  TODO: []
+
+- id: eg-era2-relig-007
+  era_id: egypt-era-2
+  domain: "Religions & croyances"
+  scale: national
+  subject: "Concile de Chalcédoine (451)"
+  predicate: "définit le Christ en deux natures ; l'Église d'Alexandrie refuse la formule et se reconnaît dans la christologie miaphysite"
+  object: "la séparation progressive de l'Église égyptienne d'avec Byzance"
+  time: "451"
+  time_precision: year
+  families: [evenement, institution, normatif, groupe_social, processus]
+  actors: []
+  places: ["Alexandrie", "Égypte"]
+  groups: ["Église d'Alexandrie", "Coptes non-chalcédoniens"]
+  institutions: ["Église d'Alexandrie", "patriarcat d'Alexandrie"]
+  normative: ["formule chalcédonienne : le Christ en deux natures", "christologie miaphysite"]
+  memory: []
+  sources: ["SRC-006", "SRC-007"]
+  confidence: certain
+  status: validated
+  justification: "Concile de Chalcédoine (451) et refus de la formule par l'Église d'Alexandrie, documentés par SRC-006 (Davis) et SRC-007 (Petry) ; PROP-006 et la matrice ERA-2 (Religions & croyances, national, « couvert »). La séparation est progressive et structure durablement l'identité copte, comme le confirme ACTOR-008 (Église copte orthodoxe, PERIOD-2) dans country-audit.yaml. Aucun anachronisme, ni date ni citation inventée."
+  TODO: []
+
+- id: eg-era2-sci-008
+  era_id: egypt-era-2
+  domain: "Sciences, techniques & santé"
+  scale: regional
+  subject: "École néoplatonicienne d'Alexandrie"
+  predicate: "est illustrée par Hypatie, mathématicienne et philosophe, dont l'enseignement et la mort en 415 sont documentés"
+  object: "l'activité philosophique et mathématique d'Alexandrie au Ve siècle"
+  time: "415"
+  time_precision: year
+  families: [institution, acteur, evenement, processus]
+  actors: ["Hypatie"]
+  places: ["Alexandrie"]
+  groups: ["philosophes néoplatoniciens d'Alexandrie"]
+  institutions: ["école néoplatonicienne d'Alexandrie"]
+  normative: []
+  memory: []
+  sources: ["SRC-005"]
+  confidence: certain
+  status: validated
+  justification: "SRC-005 (Dzielska) documente la vie, l'école néoplatonicienne et la mort d'Hypatie à Alexandrie en 415 ; la matrice ERA-2 (Sciences, techniques & santé, régional, « couvert ») cite PROP-005 et Dzielska. Ce point porte sur l'école et l'enseignement ; le meurtre est traité séparément dans le domaine Femmes, genre, sexualités pour éviter la duplication. Aucune découverte scientifique non documentée n'est attribuée à Hypatie."
+  TODO: []
+
+- id: eg-era2-arts-009
+  era_id: egypt-era-2
+  domain: "Arts & lettres"
+  scale: regional
+  subject: "Bibliothèque et Phare d'Alexandrie"
+  predicate: "sont développés sous les Ptolémées, postérieurement à la fondation de la ville par Alexandre"
+  object: "le programme culturel et architectural ptolémaïque d'Alexandrie"
+  time: "-305/-30"
+  time_precision: interval
+  families: [institution, lieu, processus]
+  actors: ["Ptolémées"]
+  places: ["Alexandrie"]
+  groups: []
+  institutions: ["bibliothèque d'Alexandrie", "Phare d'Alexandrie"]
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "fixes.yaml (eg-alexandrie) et proposals.yaml (corrections) documentent que la bibliothèque et le phare sont postérieurs à la fondation par Alexandre et relèvent du programme ptolémaïque ; country-audit.yaml (PLACE-001) relève le « mythe de la bibliothèque » et donne SRC-001 comme source. La matrice ERA-2 (Arts & lettres, régional) classe la case « partiel » : absence de fiche sur l'art copte, la mosaïque ou la littérature, non inventés ici. L'intervalle -305/-30 est le royaume ptolémaïque documenté dans country-audit.yaml."
+  TODO: []
+
+- id: eg-era2-env-010
+  era_id: egypt-era-2
+  domain: "Environnement & territoire"
+  scale: national
+  subject: "Crues du Nil et histoire du delta en Égypte gréco-romaine"
+  predicate: "ne sont pas instrumentées dans le corpus pour cette période : vide justifié, dette documentaire"
+  object: "les crues du Nil et les transformations du delta entre -332 et 641"
+  time: "-332/641"
+  time_precision: interval
+  families: [processus]
+  actors: []
+  places: ["vallée du Nil", "delta du Nil"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Case « vide justifié » de coverage-matrix.csv (ERA-2, Environnement & territoire, national) : « Crues du Nil et histoire du delta non instrumentées pour la période ; dette. » Aucun ID d'omission dédié pour PERIOD-2 dans omissions.yaml ; silence explicite conformément à la règle 7 de POINT_METHODOLOGY.md, sources vide. Aucune crue, date, sécheresse ou chiffre non documenté n'est avancé ; ancre = intervalle de l'ère."
+  TODO: []
+
+- id: eg-era2-migr-011
+  era_id: egypt-era-2
+  domain: "Migrations & diasporas"
+  scale: transnational
+  subject: "Diasporas grecque, juive et romaine à Alexandrie"
+  predicate: "sont évoquées indirectement dans le corpus, sans fiche spécifique pour cette ère"
+  object: "les communautés d'origine grecque, juive et romaine installées en Égypte"
+  time: "-332/641"
+  time_precision: interval
+  families: [groupe_social, processus, lieu]
+  actors: []
+  places: ["Alexandrie", "Égypte gréco-romaine"]
+  groups: ["diaspora grecque", "diaspora juive", "diaspora romaine"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "La matrice ERA-2 (Migrations & diasporas, transnational) classe la case « partiel » : « Diasporas grecque, juive et romaine évoquées indirectement ; pas de fiche spécifique. » country-audit.yaml inclut les « Grecs, Italiens et Arméniens historiques » et la « Diaspora juive d'Égypte » parmi les populations prises en compte, et SRC-001 figure parmi les sources de PLACE-001. Aucun effectif, aucune date d'arrivée ni assertion de composition non documentée ne sont avancés."
+  TODO: []
+
+- id: eg-era2-peuples-012
+  era_id: egypt-era-2
+  domain: "Peuples autochtones & minorités"
+  scale: national
+  subject: "Coptes et non-chalcédoniens d'Égypte"
+  predicate: "forment la principale minorité religieuse structurée après la rupture de Chalcédoine (451)"
+  object: "l'identité copte miaphysite et l'Église d'Alexandrie"
+  time: "451"
+  time_precision: year
+  families: [groupe_social, institution, processus, evenement]
+  actors: []
+  places: ["Alexandrie", "Égypte"]
+  groups: ["Coptes", "non-chalcédoniens"]
+  institutions: ["Église copte orthodoxe", "Église d'Alexandrie"]
+  normative: ["christologie miaphysite"]
+  memory: []
+  sources: ["SRC-006"]
+  confidence: certain
+  status: validated
+  justification: "La matrice ERA-2 (Peuples autochtones & minorités, national, « couvert ») cite PROP-006 et Davis (SRC-006) pour « Coptes et non-chalcédoniens ». ACTOR-008 (Église copte orthodoxe, period_ids incluant PERIOD-2, sources SRC-006 et SRC-007) documente la séparation après Chalcédoine (451). L'étiquette « autochtones » est employée avec prudence et aucun chiffre de population non documenté n'est avancé."
+  TODO: []
+
+- id: eg-era2-memoire-013
+  era_id: egypt-era-2
+  domain: "Mémoire & patrimoine"
+  scale: regional
+  subject: "Patrimoine et mythe de la bibliothèque d'Alexandrie"
+  predicate: "sont évoqués dans le corpus sans fiche critique, la fondation de la ville et les institutions ptolémaïques étant souvent confondues"
+  object: "les récits sur la bibliothèque, le Phare et le tombeau d'Alexandre"
+  time: "-332/641"
+  time_precision: interval
+  families: [memoire, lieu, institution]
+  actors: []
+  places: ["Alexandrie"]
+  groups: []
+  institutions: ["bibliothèque d'Alexandrie", "Phare d'Alexandrie"]
+  normative: []
+  memory: ["mythe de la bibliothèque d'Alexandrie", "localisation contestée du tombeau d'Alexandre"]
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "country-audit.yaml (PLACE-001) relève « localisation du tombeau d'Alexandre » et « mythe de la bibliothèque » parmi les contestations d'Alexandrie, avec SRC-001 comme source ; la matrice ERA-2 (Mémoire & patrimoine, régional) classe la case « partiel » : « Mythe de la bibliothèque et patrimoine alexandrin ; pas de fiche critique. » Aucun récit de destruction, aucune date ni localisation non documentée ne sont affirmés."
+  TODO: []
+
+- id: eg-era2-circ-014
+  era_id: egypt-era-2
+  domain: "Circulations transnationales"
+  scale: transnational
+  subject: "Alexandrie, carrefour méditerranéen de l'Égypte gréco-romaine"
+  predicate: "est présentée comme un carrefour méditerranéen, sans fiche dédiée aux routes commerciales dans cette ère"
+  object: "les échanges maritimes reliant l'Égypte au monde méditerranéen"
+  time: "-332/641"
+  time_precision: interval
+  families: [lieu, institution, processus]
+  actors: []
+  places: ["Alexandrie", "Méditerranée"]
+  groups: ["marchands méditerranéens"]
+  institutions: ["port d'Alexandrie"]
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "La matrice ERA-2 (Circulations transnationales, transnational) classe la case « partiel » : « Carrefour méditerranéen présent ; pas de fiche sur routes commerciales. » country-audit.yaml (PLACE-001) documente la fonction « port » d'Alexandrie et donne SRC-001 comme source. Ce point ne nomme aucune route, aucun volume ni aucune date non attestés dans le corpus ; ancre = intervalle de l'ère."
+  TODO: []

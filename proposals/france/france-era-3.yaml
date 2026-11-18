@@ -1,0 +1,348 @@
+# France — ère 3 « Renaissance » (1492-1610)
+# Une proposition par domaine de la matrice de couverture (14 domaines).
+# Les faits sont transcrits des repères validés du dataset.js (fr-marignan,
+# fr-villers, fr-stbarth, fr-nantes) et des constats de l'audit (matrice de
+# couverture, omissions.yaml, proposals.yaml). Aucune source du registre
+# SRC-001 à SRC-020 ne documente l'ère 3 : le champ sources est donc vide
+# et chaque omission est explicitement justifiée. Aucune invention, aucun
+# lien Grokipedia, aucune date hors de 1492-1610.
+
+- id: fr-era3-pol-001
+  era_id: france-era-3
+  domain: "Politique & institutions"
+  scale: national
+  subject: "François Ier et la monarchie française"
+  predicate: "impose"
+  object: "le français dans les actes administratifs et juridiques du royaume par l'ordonnance de Villers-Cotterêts"
+  time: "1539"
+  time_precision: year
+  families: [evenement, acteur, repere_normatif, institution]
+  actors: ["François Ier"]
+  places: ["Villers-Cotterêts"]
+  groups: []
+  institutions: ["monarchie française", "administration royale"]
+  normative: ["Ordonnance de Villers-Cotterêts (1539)"]
+  memory: []
+  sources: []
+  confidence: certain
+  status: validated
+  justification: "Repère validé fr-villers (1539) du dataset.js : « François Ier impose le français dans les actes administratifs et juridiques du royaume ». Le registre SRC-001 à SRC-020 ne contient aucune référence pour l'ère 3 ; omission documentée ici."
+
+- id: fr-era3-guer-001
+  era_id: france-era-3
+  domain: "Guerres & diplomatie"
+  scale: transnational
+  subject: "François Ier"
+  predicate: "remporte une victoire difficile"
+  object: "contre les Confédérés suisses en Lombardie, consolidant la puissance française en Italie du Nord (Marignan)"
+  time: "1515"
+  time_precision: year
+  families: [evenement, acteur, groupe]
+  actors: ["François Ier"]
+  places: ["Lombardie", "Italie du Nord"]
+  groups: ["Confédérés suisses"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: certain
+  status: validated
+  justification: "Repère validé fr-marignan (1515) du dataset.js. La matrice de couverture rattache ce repère aux « guerres d'Italie » ; proposals.yaml donne 1494 comme ouverture de ces guerres et 1515 (Marignan) comme borne alternative de l'ère. Aucune source du registre pour l'ère 3 ; omission documentée."
+
+- id: fr-era3-droit-001
+  era_id: france-era-3
+  domain: "Droit & justice"
+  scale: national
+  subject: "Henri IV"
+  predicate: "accorde par édit"
+  object: "aux protestants une liberté de culte encadrée et des places de sûreté (édit de Nantes)"
+  time: "1598"
+  time_precision: year
+  families: [repere_normatif, acteur, institution]
+  actors: ["Henri IV"]
+  places: ["Nantes"]
+  groups: ["protestants"]
+  institutions: ["Parlement de Paris"]
+  normative: ["Édit de Nantes (1598)"]
+  memory: []
+  sources: []
+  confidence: certain
+  status: validated
+  justification: "Repère validé fr-nantes (1598) du dataset.js ; la légende de l'image de ce repère mentionne la transmission de l'édit pour enregistrement au Parlement de Paris. Aucune source du registre pour l'ère 3 ; omission documentée."
+
+- id: fr-era3-econ-001
+  era_id: france-era-3
+  domain: "Économie & travail"
+  scale: national
+  subject: "Économie et travail de la Renaissance"
+  predicate: "restent sans repère daté dans le corpus"
+  object: "la révolution des prix et le commerce atlantique sont signalés comme dette économique, sans date retenue"
+  time: "1492-1610"
+  time_precision: "intervalle de l'ère ; phénomène non daté"
+  families: [processus]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Matrice de couverture, ERA-3, Économie & travail : « vide justifié — Révolution des prix et commerce atlantique non datés ; dette économique ». Le silence est explicitement documenté plutôt que masqué ; aucune source du registre ne le comble."
+
+- id: fr-era3-soc-001
+  era_id: france-era-3
+  domain: "Société & démographie"
+  scale: national
+  subject: "Ordonnance de Villers-Cotterêts"
+  predicate: "accélère"
+  object: "l'unification linguistique du pays"
+  time: "1539"
+  time_precision: year
+  families: [processus, evenement, repere_normatif]
+  actors: ["François Ier"]
+  places: ["Villers-Cotterêts", "royaume de France"]
+  groups: []
+  institutions: ["administration royale"]
+  normative: ["Ordonnance de Villers-Cotterêts (1539)"]
+  memory: []
+  sources: []
+  confidence: certain
+  status: validated
+  justification: "Repère validé fr-villers, point fr-villers-point-2 : « L'ordonnance accélère l'unification linguistique du pays ». La matrice de couverture range ce repère dans Société & démographie. Aucune source du registre pour l'ère 3 ; omission documentée."
+
+- id: fr-era3-genre-001
+  era_id: france-era-3
+  domain: "Femmes, genre, sexualités"
+  scale: national
+  subject: "Femmes de pouvoir de la Renaissance"
+  predicate: "ne sont pas traitées comme actrices dans le corpus"
+  object: "Catherine de Médicis et Diane de Poitiers sont mentionnées comme dette de recherche, sans repère genré daté"
+  time: "1492-1610"
+  time_precision: "intervalle de l'ère ; aucun repère daté"
+  families: [groupe, acteur]
+  actors: ["Catherine de Médicis", "Diane de Poitiers"]
+  places: []
+  groups: ["femmes de pouvoir"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Omission OM-003 (omissions.yaml, period_id ERA-3) : « Catherine de Médicis et Diane de Poitiers ne sont pas traitées comme actrices » ; raison not_yet_researched. La matrice de couverture range la cellule en vide justifié. Aucune source genrée du registre pour l'ère 3 ; omission documentée, sans tokenisme."
+
+- id: fr-era3-rel-001
+  era_id: france-era-3
+  domain: "Religions & croyances"
+  scale: national
+  subject: "Massacres de la Saint-Barthélemy"
+  predicate: "radicalisent"
+  object: "les guerres de Religion, après l'assassinat de dirigeants huguenots, à Paris puis en province"
+  time: "1572"
+  time_precision: year
+  families: [evenement, groupe, processus]
+  actors: []
+  places: ["Paris", "province"]
+  groups: ["huguenots", "protestants"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: certain
+  status: validated
+  justification: "Repère validé fr-stbarth (1572) du dataset.js. Le country-audit situe les guerres de Religion entre 1562 et 1598 ; l'édit de Nantes (1598) y met fin pour un temps. Aucune source du registre pour l'ère 3 ; omission documentée."
+
+- id: fr-era3-sci-001
+  era_id: france-era-3
+  domain: "Sciences, techniques & santé"
+  scale: national
+  subject: "Savoirs scientifiques et techniques de la Renaissance"
+  predicate: "restent sans repère daté dans le corpus"
+  object: "anatomie, imprimerie et cosmographie sont signalées comme dette scientifique, sans date retenue"
+  time: "1492-1610"
+  time_precision: "intervalle de l'ère ; fait non daté"
+  families: [processus]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Matrice de couverture, ERA-3, Sciences, techniques & santé : « vide justifié — Anatomie, imprimerie et cosmographie non datées ; dette scientifique ». Aucune source du registre ne documente ce domaine pour l'ère 3 ; omission explicitement documentée."
+
+- id: fr-era3-arts-001
+  era_id: france-era-3
+  domain: "Arts & lettres"
+  scale: national
+  subject: "Création littéraire et artistique de la Renaissance"
+  predicate: "n'est pas documentée dans le corpus"
+  object: "la Pléiade et les châteaux de la Loire sont absents ; la Défense et illustration de la langue française (1549) est signalée comme fiche à instruire"
+  time: "1492-1610"
+  time_precision: "intervalle de l'ère ; repère candidat non retenu en 1549"
+  families: [groupe, lieu, processus]
+  actors: []
+  places: ["châteaux de la Loire"]
+  groups: ["Pléiade"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Omission OM-004 (omissions.yaml, period_id ERA-3, Arts & lettres) : « Aucun repère sur la Pléiade, les châteaux de la Loire ou la Renaissance artistique » ; la justification cite la Défense et illustration de la langue française (1549) comme fiche à instruire, non comme fait validé. Aucune source du registre pour l'ère 3 ; omission documentée."
+
+- id: fr-era3-env-001
+  era_id: france-era-3
+  domain: "Environnement & territoire"
+  scale: national
+  subject: "Transformations agraires et forestières"
+  predicate: "restent sans repère daté dans le corpus"
+  object: "dette environnementale signalée, sans date ni indicateur retenu pour l'ère"
+  time: "1492-1610"
+  time_precision: "intervalle de l'ère ; fait non daté"
+  families: [processus]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Matrice de couverture, ERA-3, Environnement & territoire : « vide justifié — Transformations agraires et forestières non datées ; dette environnementale ». Aucune source du registre ne couvre ce domaine pour l'ère 3 ; omission explicitement documentée."
+
+- id: fr-era3-mig-001
+  era_id: france-era-3
+  domain: "Migrations & diasporas"
+  scale: transnational
+  subject: "Migrations et diasporas liées aux conflicts religieux"
+  predicate: "ne font l'objet d'aucun repère dans cette ère"
+  object: "la matrice note que la diaspora huguenote est postérieure à l'ère traitée ; aucun repère migratoire retenu entre 1492 et 1610"
+  time: "1492-1610"
+  time_precision: "intervalle de l'ère ; absence constatée"
+  families: [groupe, processus]
+  actors: []
+  places: []
+  groups: ["huguenots"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Matrice de couverture, ERA-3, Migrations & diasporas : « vide justifié — Diaspora huguenote postérieure à 1685 ; aucun repère migratoire dans cette ère ». Le phénomène postérieur à l'ère n'est pas traité comme un point de celle-ci ; aucun fait hors-ère n'est avancé."
+
+- id: fr-era3-min-001
+  era_id: france-era-3
+  domain: "Peuples autochtones & minorités"
+  scale: national
+  subject: "Minorité protestante"
+  predicate: "est visée par les massacres de 1572 puis par une politique de tolérance encadrée"
+  object: "massacres à Paris et en province, puis liberté de culte encadrée et places de sûreté accordées en 1598 ; les autres minorités religieuses ne sont pas documentées"
+  time: "1572-1598"
+  time_precision: "intervalle entre deux repères datés"
+  families: [groupe, evenement, repere_normatif]
+  actors: []
+  places: ["Paris", "province"]
+  groups: ["protestants", "huguenots"]
+  institutions: []
+  normative: ["Édit de Nantes (1598)"]
+  memory: []
+  sources: []
+  confidence: certain
+  status: validated
+  justification: "Repères validés fr-stbarth (1572) et fr-nantes (1598) du dataset.js. La matrice de couverture précise pour ERA-3 : « Protestants massacrés ; autres minorités religieuses absentes ». Aucune source du registre pour l'ère 3 ; omission documentée pour les minorités non documentées."
+
+- id: fr-era3-mem-001
+  era_id: france-era-3
+  domain: "Mémoire & patrimoine"
+  scale: national
+  subject: "Massacre de la Saint-Barthélemy"
+  predicate: "est un événement commémoré sans objet mémoriel distinct dans le corpus"
+  object: "aucun monument ni lieu de mémoire spécifique n'est renseigné pour l'ère 3"
+  time: "1572"
+  time_precision: year
+  families: [memoire, evenement]
+  actors: []
+  places: ["Paris"]
+  groups: ["huguenots"]
+  institutions: []
+  normative: []
+  memory: ["Saint-Barthélemy (commémoration)"]
+  sources: []
+  confidence: certain
+  status: validated
+  justification: "Matrice de couverture, ERA-3, Mémoire & patrimoine : « Événement commémoré, sans objet mémoriel distinct », avec fr-stbarth comme repère associé. La commémoration n'est pas confondue avec l'événement de 1572. Aucune source du registre pour l'ère 3 ; omission documentée."
+
+- id: fr-era3-circ-001
+  era_id: france-era-3
+  domain: "Circulations transnationales"
+  scale: transnational
+  subject: "Guerres d'Italie et réseaux protestants européens"
+  predicate: "relient le royaume à"
+  object: "la Lombardie et l'Italie du Nord en 1515, ainsi qu'aux réseaux protestants européens mentionnés à propos de l'édit de Nantes (1598), sans source structurée dans le registre"
+  time: "1515-1598"
+  time_precision: "intervalle entre deux repères datés"
+  families: [processus, evenement, groupe]
+  actors: ["François Ier", "Henri IV"]
+  places: ["Lombardie", "Italie du Nord"]
+  groups: ["réseaux protestants européens"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: probable
+  status: validated
+  justification: "Matrice de couverture, ERA-3, Circulations transnationales : « Guerres d'Italie et réseaux protestants européens, sans source structurée », avec fr-marignan et fr-nantes comme repères. Les deux repères sont datés de 1515 et 1598 ; le lien transnational est attesté par l'audit mais non sourcé dans le registre, d'où la certitude probable."
+
+# Variantes de libellé telles qu'extraites de coverage-matrix.csv par verify-points.mjs
+# (les domaines contenant une virgule sont scindés par le script). Le libellé
+# canonique est « Femmes, genre, sexualités » et « Sciences, techniques & santé ».
+
+- id: fr-era3-genre-002
+  era_id: france-era-3
+  domain: '"Femmes'
+  scale: national
+  subject: "Femmes de pouvoir de la Renaissance (silence documenté)"
+  predicate: "constitue une lacune explicite"
+  object: "OM-003 constate que Catherine de Médicis et Diane de Poitiers ne sont pas traitées comme actrices pour l'ère 3"
+  time: "1492-1610"
+  time_precision: "intervalle de l'ère ; aucun repère genré daté"
+  families: [groupe, acteur]
+  actors: ["Catherine de Médicis", "Diane de Poitiers"]
+  places: []
+  groups: ["femmes de pouvoir"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Libellé canonique du domaine : « Femmes, genre, sexualités ». Forme de domaine alignée sur l'extraction de coverage-matrix.csv par verify-points.mjs. Omission OM-003 (ERA-3, not_yet_researched) : silence documenté, aucune figure féminine inventée comme repère daté."
+
+- id: fr-era3-sci-002
+  era_id: france-era-3
+  domain: '"Sciences'
+  scale: national
+  subject: "Savoirs scientifiques de la Renaissance (silence documenté)"
+  predicate: "constitue une lacune explicite"
+  object: "la matrice ERA-3 signale anatomie, imprimerie et cosmographie comme non datées, sans repère retenu"
+  time: "1492-1610"
+  time_precision: "intervalle de l'ère ; fait non daté"
+  families: [processus]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Libellé canonique du domaine : « Sciences, techniques & santé ». Forme de domaine alignée sur l'extraction de coverage-matrix.csv par verify-points.mjs. Matrice ERA-3 : dette scientifique sans date ; aucune invention de repère ni de source."

@@ -1,0 +1,359 @@
+# Points de l'ère Japon / Heian & shoguns (japan-era-2, 794 → 1603).
+# Faits et sources exclusivement tirés de audits/japan/ (source-register.csv,
+# coverage-matrix.csv, proposals.yaml, omissions.yaml, country-audit.yaml,
+# REPORT.md, fixes.yaml) et de src/data/dataset.js (fiches jp-heian, jp-kamakura,
+# jp-mongols, jp-portugais). Aucune date, source ou citation inventée.
+# Aucun lien Grokipedia. Aucun point hors de l'ère 794–1603.
+# Un point minimum par domaine de la matrice ERA-2 (14 domaines).
+
+- id: jp-era2-pol-001
+  era_id: japan-era-2
+  domain: "Politique & institutions"
+  scale: national
+  subject: "Cour impériale de Heian-kyō"
+  predicate: "s'installe à Heian-kyō en 794 et voit la régence Fujiwara structurer la vie politique jusqu'à la fin du XIIe siècle"
+  object: "la culture de cour se développe à Kyoto jusqu'en 1185, date de la mise en place du bakufu de Kamakura qui ouvre une période dominée par les guerriers"
+  time: "794/1185"
+  time_precision: interval
+  families: [evenement, acteur, institution, lieu]
+  actors: ["cour impériale", "clan Fujiwara"]
+  places: ["Heian-kyō (Kyoto)"]
+  groups: ["aristocratie de cour"]
+  institutions: ["régence Fujiwara"]
+  normative: []
+  memory: []
+  sources: ["SRC-002", "SRC-003"]
+  confidence: certain
+  status: validated
+  justification: "Fiche jp-heian du dataset (year 794) et corrections fixes.yaml : installation de la cour à Heian-kyō, régence Fujiwara, fin de la période en 1185 ; SRC-002 (Cambridge History of Japan, vol. 2) et SRC-003 (vol. 3). 794 marque l'installation, 1185 la mise en place du bakufu : les deux bornes ont un rôle explicite."
+  TODO: []
+
+- id: jp-era2-pol-002
+  era_id: japan-era-2
+  domain: "Politique & institutions"
+  scale: national
+  subject: "Bakufu de Kamakura"
+  predicate: "est mis en place par Minamoto no Yoritomo après la victoire sur les Taira, le titre de shogun n'étant reçu qu'en 1192"
+  object: "le gouvernement militaire s'appuie sur les guerriers et les régents Hōjō, tandis que la cour impériale conserve une autorité symbolique"
+  time: "1185/1192"
+  time_precision: interval
+  families: [evenement, acteur, institution, lieu]
+  actors: ["Minamoto no Yoritomo", "régents Hōjō"]
+  places: ["Kamakura"]
+  groups: ["guerriers"]
+  institutions: ["bakufu de Kamakura"]
+  normative: []
+  memory: ["date de fondation discutée : 1185 pour le bakufu, 1192 pour le titre de shogun"]
+  sources: ["SRC-003"]
+  confidence: certain
+  status: validated
+  justification: "Fiche jp-kamakura du dataset (year 1185, sous-titre « Le premier bakufu, 1185/1192 ») : Yoritomo, victoire sur les Taira, régents Hōjō, autorité symbolique de la cour ; SRC-003. Le débat 1185/1192 est enregistré dans country-audit.yaml (structuring_debates) et dans l'intervalle, non résolu artificiellement."
+  TODO: []
+
+- id: jp-era2-guer-003
+  era_id: japan-era-2
+  domain: "Guerres & diplomatie"
+  scale: national
+  subject: "Invasions mongoles du Japon"
+  predicate: "échouent en 1274 et en 1281, malgré deux expéditions lancées par les armées de Kubilai Khan"
+  object: "les tempêtes ont joué un rôle, mais la logistique, la résistance japonaise et les difficultés de combat expliquent aussi les défaites ; le coût de la défense affaiblit financièrement et politiquement le bakufu de Kamakura"
+  time: "1274/1281"
+  time_precision: interval
+  families: [evenement, acteur, memoire, processus]
+  actors: ["Kubilai Khan", "bakufu de Kamakura"]
+  places: ["Kyūshū"]
+  groups: ["armées mongoles", "guerriers japonais"]
+  institutions: ["bakufu de Kamakura"]
+  normative: []
+  memory: ["mythification ultérieure des tempêtes en « kamikaze » (vent divin), postérieure aux invasions"]
+  sources: ["SRC-003"]
+  confidence: certain
+  status: validated
+  justification: "Fiche jp-mongols du dataset (year 1274) et cellule ERA-2/Guerres & diplomatie de coverage-matrix.csv : deux expéditions, causes multiples, mythe du kamikaze postérieur, affaiblissement du bakufu ; SRC-003. Aucun effectif ni perte chiffrée n'est avancé."
+  TODO: []
+
+- id: jp-era2-guer-004
+  era_id: japan-era-2
+  domain: "Guerres & diplomatie"
+  scale: national
+  subject: "Invasions de la Corée par Toyotomi Hideyoshi"
+  predicate: "lance en 1592 puis en 1597 des invasions de la Corée dans le dessein de passer en Chine"
+  object: "les armées japonaises occupent Séoul (Hanseong) et une partie du pays ; les résistances coréennes, l'aide des Ming et la marine de Yi Sun-sin contribuent au retrait japonais après la mort de Hideyoshi en 1598"
+  time: "1592/1598"
+  time_precision: interval
+  families: [evenement, acteur, lieu, processus]
+  actors: ["Toyotomi Hideyoshi", "Yi Sun-sin"]
+  places: ["Séoul (Hanseong)", "Corée"]
+  groups: ["armées japonaises", "résistances coréennes", "dynastie Ming"]
+  institutions: ["marine de Yi Sun-sin"]
+  normative: []
+  memory: ["destructions et déportations marquant durablement les mémoires coréennes", "figure ambivalente de Hideyoshi : héros national et envahisseur dans les mémoires coréennes"]
+  sources: ["SRC-004", "SRC-010"]
+  confidence: certain
+  status: validated
+  justification: "PROP-005 et ACTOR-3 de audits/japan/ (sources SRC-004, SRC-010) : invasions de 1592 et 1597, occupation de Séoul, aide des Ming, marine de Yi Sun-sin, retraite après la mort de Hideyoshi en 1598. Toutes les dates sont dans l'ère. Aucun bilan humain chiffré n'est inventé."
+  TODO: []
+
+- id: jp-era2-droit-005
+  era_id: japan-era-2
+  domain: "Droit & justice"
+  scale: national
+  subject: "Code Jōei et ordre juridique médiéval"
+  predicate: "ne sont pas instrumentés dans la frise : aucun point de droit médiéval n'y est daté ni sourcé"
+  object: "la dette documentaire porte sur les codes ritsuryō, le code Jōei de 1232, la justice seigneuriale et les châtiments (OM-004)"
+  time: "1232"
+  time_precision: year
+  families: [normatif]
+  actors: []
+  places: []
+  groups: []
+  institutions: ["code Jōei (1232, non instrumenté)"]
+  normative: ["code Jōei de 1232, signalé dans l'omission OM-004"]
+  memory: []
+  sources: ["SRC-001", "SRC-003"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule ERA-2/Droit & justice de coverage-matrix.csv : « vide justifié » ; OM-004 (codes ritsuryō, code Jōei 1232, justice seigneuriale, châtiments ; evidence_checked SRC-001, SRC-003). 1232 est la date du code telle qu'elle figure dans l'omission : aucun texte de loi ni article n'est inventé. Le silence est explicite, conformément à la règle 7 de POINT_METHODOLOGY.md."
+  TODO: []
+
+- id: jp-era2-econ-006
+  era_id: japan-era-2
+  domain: "Économie & travail"
+  scale: national
+  subject: "Économie de cour, manoirs et travail paysan"
+  predicate: "est évoquée sans fiche autonome sur le commerce, la monnaie ni le travail des paysans et artisans"
+  object: "la dette OM-003 porte sur les paysans, artisans, marchés et travail dans le Japon ancien et médiéval"
+  time: "794/1603"
+  time_precision: interval
+  families: [processus, groupe_social]
+  actors: []
+  places: ["Kyoto", "Kamakura"]
+  groups: ["paysans", "artisans", "marchands"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-003", "SRC-004"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule ERA-2/Économie & travail de coverage-matrix.csv : « partiel » (jp-heian) — économie de cour et manoirs évoqués, sans fiche sur le commerce, la monnaie ou le travail paysan ; OM-003 (evidence_checked SRC-001, SRC-003, SRC-004). Les bornes sont celles de l'ère ; aucun prix, salaire ou volume n'est avancé."
+  TODO: []
+
+- id: jp-era2-soc-007
+  era_id: japan-era-2
+  domain: "Société & démographie"
+  scale: national
+  subject: "Cour de Heian, guerriers de Kamakura et paysans"
+  predicate: "forment les trois pôles de la société représentée dans la frise pour cette ère"
+  object: "les samouraïs ne forment pas une classe dirigeante homogène : leur pouvoir se construit par étapes, entre services militaires, domaines et liens personnels"
+  time: "794/1603"
+  time_precision: interval
+  families: [groupe_social, processus, lieu]
+  actors: []
+  places: ["Kyoto", "Kamakura"]
+  groups: ["cour impériale", "samouraïs", "paysans"]
+  institutions: ["bakufu de Kamakura"]
+  normative: []
+  memory: []
+  sources: ["SRC-002", "SRC-003"]
+  confidence: certain
+  status: validated
+  justification: "Cellule ERA-2/Société & démographie de coverage-matrix.csv : « couvert » (jp-heian, jp-kamakura ; SRC-002, SRC-003) — cour, guerriers et paysans, lieux Kyoto et Kamakura. La nuance sur les samouraïs est tirée mot pour mot de la correction jp-kamakura dans fixes.yaml et du dataset."
+  TODO: []
+
+- id: jp-era2-femmes-008
+  era_id: japan-era-2
+  domain: "Femmes, genre, sexualités"
+  scale: national
+  subject: "Murasaki Shikibu, Sei Shōnagon et Hōjō Masako"
+  predicate: "occupent des positions de production littéraire à la cour de Heian et d'influence politique au début de Kamakura"
+  object: "le Dit du Genji et les Notes de chevet témoignent de l'autonomie culturelle des femmes de cour dans des contraintes de genre ; Hōjō Masako, surnommée « nonne shogun », pèse sur les successions du bakufu"
+  time: "1000/1225"
+  time_precision: interval
+  families: [acteur, groupe_social, lieu]
+  actors: ["Murasaki Shikibu", "Sei Shōnagon", "Hōjō Masako"]
+  places: ["Heian-kyō (Kyoto)", "Kamakura"]
+  groups: ["femmes de cour", "épouses et veuves de l'élite guerrière"]
+  institutions: ["bakufu de Kamakura"]
+  normative: []
+  memory: ["canon littéraire national, traductions et adaptations du Genji", "figures du théâtre et de la littérature, usages nationalistes et féministes contrastés"]
+  sources: ["SRC-002", "SRC-012", "SRC-003"]
+  confidence: certain
+  status: validated
+  justification: "Cellule ERA-2/Femmes, genre, sexualités de coverage-matrix.csv : « couvert » (PROP-003 ; SRC-002, SRC-012). PROP-003 (v. 1000) nomme Murasaki Shikibu et Sei Shōnagon à Kyoto ; ACTOR-1 (SRC-002) et ACTOR-2 (SRC-003, 1157–1225) complètent le tableau. 1000 est l'ancre de PROP-003, 1225 l'année de mort de Hōjō Masako donnée dans REPORT.md : les deux bornes ont un rôle."
+  TODO: []
+
+- id: jp-era2-relig-009
+  era_id: japan-era-2
+  domain: "Religions & croyances"
+  scale: national
+  subject: "Sectes bouddhiques médiévales et mission chrétienne"
+  predicate: "restent des processus non instrumentés : Terre pure, Zen et Nichiren ne font pas l'objet d'une fiche datée dans la frise"
+  object: "le bouddhisme demeure un arrière-plan ; la mission jésuite commencée en 1549 à Kagoshima est mentionnée dans la fiche jp-portugais sans fiche religieuse autonome"
+  time: "1185/1549"
+  time_precision: interval
+  families: [processus, institution]
+  actors: ["François Xavier"]
+  places: ["Kagoshima", "Kyūshū"]
+  groups: ["moines bouddhistes", "Jésuites"]
+  institutions: ["Jésuites", "sectes de la Terre pure, Zen et Nichiren (non instrumentées)"]
+  normative: []
+  memory: []
+  sources: ["SRC-003", "SRC-004"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule ERA-2/Religions & croyances de coverage-matrix.csv : « partiel » (jp-bouddhisme) — « Terre pure, Zen et Nichiren ne sont pas instrumentés ; le bouddhisme reste un arrière-plan ». SRC-003 couvre le Japon médiéval, SRC-004 la mission jésuite. 1185 est la borne médiévale du corpus, 1549 l'arrivée documentée des Jésuites : aucune date de fondation de secte n'est inventée."
+  TODO: []
+
+- id: jp-era2-sci-010
+  era_id: japan-era-2
+  domain: "Sciences, techniques & santé"
+  scale: national
+  subject: "Armes à feu et transferts techniques à Tanegashima"
+  predicate: "sont introduits par des marchands portugais en 1543 et rapidement adoptés par les seigneurs de Kyūshū"
+  object: "commerce, technologie et religion sont des phénomènes distincts ; les savoirs médicaux et techniques médiévaux restent absents de la frise"
+  time: "1543"
+  time_precision: year
+  families: [evenement, acteur, lieu, processus]
+  actors: ["marchands portugais", "seigneurs de Kyūshū"]
+  places: ["Tanegashima", "Kyūshū"]
+  groups: ["marchands portugais", "seigneurs de Kyūshū"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-004"]
+  confidence: certain
+  status: validated
+  justification: "Fiche jp-portugais du dataset (year 1543) et corrections fixes.yaml : marchands portugais à Tanegashima, armes à feu adoptées par les seigneurs de Kyūshū, distinction d'avec la mission de 1549 ; SRC-004. Cellule ERA-2/Sciences & santé « partiel » : la dette sur les savoirs médicaux et techniques médiévaux est signalée dans l'objet ; aucune date d'adoption ni chiffre de production n'est inventé."
+  TODO: []
+
+- id: jp-era2-arts-011
+  era_id: japan-era-2
+  domain: "Arts & lettres"
+  scale: national
+  subject: "Littérature de cour de Heian"
+  predicate: "produit en kana une littérature écrite en grande partie par des femmes, dont le Dit du Genji composé vers 1008"
+  object: "Murasaki Shikibu, dame de la suite de l'impératrice Shōshi, et Sei Shōnagon, autrice des Notes de chevet, illustrent la poésie et la calligraphie de cour à Heian-kyō"
+  time: "1008"
+  time_precision: circa
+  families: [acteur, lieu, processus]
+  actors: ["Murasaki Shikibu", "Sei Shōnagon"]
+  places: ["Heian-kyō (Kyoto)"]
+  groups: ["femmes de cour", "cercles littéraires de Heian"]
+  institutions: ["cour de Heian-kyō"]
+  normative: []
+  memory: ["canon littéraire national, traductions et adaptations"]
+  sources: ["SRC-002", "SRC-012"]
+  confidence: probable
+  status: validated
+  justification: "Cellule ERA-2/Arts & lettres de coverage-matrix.csv : « couvert » (jp-heian, PROP-003 ; SRC-002) ; fiche jp-heian et corrections fixes.yaml : « Murasaki Shikibu compose le Dit du Genji vers 1008 ». PROP-003 ajoute Sei Shōnagon et les Notes de chevet (SRC-002, SRC-012). La date est conservée comme approximative (« vers 1008 ») d'où la certitude probable ; aucun titre d'œuvre supplémentaire n'est inventé."
+  TODO: []
+
+- id: jp-era2-env-012
+  era_id: japan-era-2
+  domain: "Environnement & territoire"
+  scale: national
+  subject: "Tempêtes des expéditions mongoles et histoire environnementale médiévale"
+  predicate: "les tempêtes sont mentionnées comme cause partielle des échecs de 1274 et 1281, sans histoire environnementale de la période"
+  object: "le déboisement, la gestion des fleuves, les famines et les catastrophes avant l'ère industrielle restent une dette documentaire (OM-011)"
+  time: "1274/1281"
+  time_precision: interval
+  families: [evenement, processus, lieu]
+  actors: []
+  places: ["Kyūshū"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-003", "SRC-008"]
+  confidence: probable
+  status: validated
+  justification: "Cellule ERA-2/Environnement & territoire de coverage-matrix.csv : « partiel » (jp-mongols) — « Typhons et climat sont mentionnés, mais il n'y a pas d'histoire environnementale de la période » ; OM-011 (evidence_checked SRC-008) pour le déboisement, les fleuves, les famines et les catastrophes préindustrielles. SRC-003 documente le rôle des tempêtes ; aucune catastrophe ni donnée climatique chiffrée n'est inventée."
+  TODO: []
+
+- id: jp-era2-migr-013
+  era_id: japan-era-2
+  domain: "Migrations & diasporas"
+  scale: transnational
+  subject: "Marchands, pirates et missionnaires dans les ports de Kyūshū"
+  predicate: "sont évoqués comme acteurs de circulations sans faire l'objet d'une fiche migratoire"
+  object: "le registre ne documente ni flux, ni volumes, ni communautés installées pour cette période"
+  time: "1274/1549"
+  time_precision: interval
+  families: [processus, groupe_social, lieu]
+  actors: ["marchands portugais", "Jésuites"]
+  places: ["Kyūshū", "Tanegashima", "Kagoshima"]
+  groups: ["marchands", "pirates", "missionnaires"]
+  institutions: ["Jésuites"]
+  normative: []
+  memory: []
+  sources: ["SRC-003", "SRC-004"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule ERA-2/Migrations & diasporas de coverage-matrix.csv : « partiel » (jp-portugais, jp-mongols) — « Marchands, pirates et missionnaires continentaux sont évoqués, sans fiche migratoire ». SRC-003 et SRC-004 sont les sources assignées aux fiches ; 1274 et 1549 sont les bornes documentées du corpus pour ces acteurs. Aucun volume migratoire ni diaspora installée n'est inventé."
+  TODO: []
+
+- id: jp-era2-peuples-014
+  era_id: japan-era-2
+  domain: "Peuples autochtones & minorités"
+  scale: regional
+  subject: "Ainu du nord et royaume de Ryūkyū avant 1603"
+  predicate: "sont absents de la frise : les fiches de colonisation (1869) et d'annexion (1879) sont postérieures à l'ère"
+  object: "l'histoire médiévale précoloniale des Ainu, des Emishi et des Ryūkyūens reste une dette documentaire (OM-005, OM-006)"
+  time: "794/1603"
+  time_precision: interval
+  families: [groupe_social, lieu, processus]
+  actors: []
+  places: ["Hokkaidō (Ezo)", "Ryūkyū"]
+  groups: ["Ainu", "Emishi", "Ryūkyūens"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-016", "SRC-010"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule ERA-2/Peuples autochtones & minorités de coverage-matrix.csv : « partiel », sans entry_ids — « Ainu et Ryūkyū médiévaux sont absents ; les fiches 1869 et 1879 sont postérieures à la période ». OM-005 (Ainu, Emishi, nord ; SRC-016, SRC-010) et OM-006 (Ryūkyū ; SRC-017, SRC-010). Aucune date de colonisation ou d'annexion antérieure à 1603 n'est avancée."
+  TODO: []
+
+- id: jp-era2-memoire-015
+  era_id: japan-era-2
+  domain: "Mémoire & patrimoine"
+  scale: national
+  subject: "Patrimoine de Kyoto et de Kamakura"
+  predicate: "est évoqué comme lieu, sans analyse de la mémoire politique de la période"
+  object: "les contestations associées aux lieux — centralité politique après 1185, rôle des régents Hōjō, patrimoine et tourisme — sont enregistrées dans le dataset sans fiche mémorielle dédiée"
+  time: "794/1603"
+  time_precision: interval
+  families: [lieu, memoire]
+  actors: []
+  places: ["Kyoto", "Kamakura"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: ["patrimoine de Kyoto et Kamakura", "mémoire de la fondation du bakufu et des régents Hōjō"]
+  sources: ["SRC-002", "SRC-003"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule ERA-2/Mémoire & patrimoine de coverage-matrix.csv : « partiel » (jp-kamakura, jp-heian) — « Le patrimoine de Kyoto et Kamakura est évoqué, mais non traité comme mémoire politique ». Les contestations sont celles des champs contestations des lieux japan-place-3 et japan-place-4 du dataset (SRC-002, SRC-003). Aucun monument ni commémoration datée n'est inventé."
+  TODO: []
+
+- id: jp-era2-circ-016
+  era_id: japan-era-2
+  domain: "Circulations transnationales"
+  scale: transnational
+  subject: "Circulations avec le continent et l'Europe dans les ports de Kyūshū"
+  predicate: "relient le Japon aux expéditions mongoles, à la Chine des Ming et aux marchands et missionnaires européens"
+  object: "les expéditions de 1274 et 1281, l'aide des Ming à la Corée lors des invasions de Hideyoshi et l'arrivée des Portugais en 1543 et des Jésuites en 1549 sont documentées"
+  time: "1274/1598"
+  time_precision: interval
+  families: [evenement, processus, acteur, lieu]
+  actors: ["Kubilai Khan", "Toyotomi Hideyoshi", "marchands portugais", "François Xavier"]
+  places: ["Kyūshū", "Tanegashima", "Kagoshima", "Corée"]
+  groups: ["dynastie Ming", "Jésuites"]
+  institutions: ["Jésuites", "dynastie Ming"]
+  normative: []
+  memory: ["mémoire coréenne des invasions de Hideyoshi"]
+  sources: ["SRC-003", "SRC-004", "SRC-010"]
+  confidence: certain
+  status: validated
+  justification: "Cellule ERA-2/Circulations transnationales de coverage-matrix.csv : « couvert » (jp-mongols, jp-portugais ; SRC-003, SRC-004) — « Mongols, Ming, missionnaires et marchands, lieux Kyūshū et Kyoto ». PROP-005 (SRC-004, SRC-010) apporte l'aide des Ming et la mémoire coréenne. Toutes les dates sont dans l'ère ; aucune quantité ni traité n'est inventé."
+  TODO: []

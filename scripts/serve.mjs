@@ -36,4 +36,4 @@ http.createServer((request, response) => {
     });
     response.end(data);
   });
-}).listen(PORT, () => console.log(`V-ATLAS sur http://127.0.0.1:${PORT}`));
+}).listen(PORT, () => console.log(`Vectemporel — Atlas sur http://127.0.0.1:${PORT}`));

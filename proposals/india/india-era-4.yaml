@@ -1,0 +1,513 @@
+# Points de l'ère Inde / Inde contemporaine (india-era-4, 1947 → 2026).
+# Sources : uniquement le registre audits/india/source-register.csv (SRC-001 à SRC-020),
+# les omissions audits/india/omissions.yaml (OM-001 à OM-015) et les propositions/corrections
+# audits/india/proposals.yaml (PROP-013 à PROP-018, corrections in-*), ainsi que
+# audits/india/country-audit.yaml (acteurs, lieux, claims). Aucune date, source, DOI,
+# titre, chiffre ou citation inventé. Aucun lien externe. Aucun contenu hors de l'ère.
+# 14 domaines couverts, au moins un point validé par domaine.
+
+- id: in-era4-pol-001
+  era_id: india-era-4
+  domain: "Politique & institutions"
+  scale: national
+  subject: "Assemblée constituante de l'Inde"
+  predicate: "adopte la Constitution de la République le 26 novembre 1949, entrée en vigueur le 26 janvier 1950"
+  object: "un État-nation républicain fondé sur le suffrage universel et l'égalité juridique"
+  time: "1950-01-26"
+  time_precision: day
+  families: [evenement, acteur, repere_normatif, institution]
+  actors: ["B. R. Ambedkar"]
+  places: ["Delhi"]
+  groups: ["Assemblée constituante"]
+  institutions: ["République de l'Inde", "Assemblée constituante", "Constitution de l'Inde"]
+  normative: ["Constitution de la République (26 janvier 1950)", "Suffrage universel", "Abolition de l'intouchabilité"]
+  memory: []
+  sources: ["SRC-020", "SRC-006", "SRC-019"]
+  confidence: certain
+  justification: "PROP-013 : l'Assemblée constituante adopte la Constitution le 26 novembre 1949, en vigueur le 26 janvier 1950 ; SRC-020 (texte institutionnel primaire), SRC-006 (Guha) et SRC-019 (Ambedkar) documentent le suffrage universel, l'égalité devant la loi, l'abolition de l'intouchabilité et les quotas pour les castes et tribus répertoriées. Ambedkar préside le comité de rédaction (ACTOR-005). Dates conformes à l'ère 1947/2026 ; aucune source inventée."
+  status: validated
+  TODO: []
+
+- id: in-era4-pol-002
+  era_id: india-era-4
+  domain: "Politique & institutions"
+  scale: national
+  subject: "Indira Gandhi, Première ministre"
+  predicate: "fait proclamer l'état d'urgence le 25 juin 1975, levé le 21 mars 1977"
+  object: "la suspension des libertés, la censure de la presse et l'arrestation de l'opposition"
+  time: "1975-06-25"
+  time_precision: day
+  families: [evenement, acteur, repere_normatif]
+  actors: ["Indira Gandhi", "Sanjay Gandhi"]
+  places: ["Delhi"]
+  groups: ["opposition arrêtée"]
+  institutions: ["Gouvernement de l'Inde", "Congrès"]
+  normative: ["État d'urgence (1975-1977)"]
+  memory: []
+  sources: ["SRC-006", "SRC-020"]
+  confidence: certain
+  justification: "PROP-016 : le 25 juin 1975, Indira Gandhi fait proclamer l'état d'urgence, levé le 21 mars 1977 ; SRC-006 (Guha) et SRC-020 (Constitution) documentent la rupture institutionnelle. Le programme de stérilisation de Sanjay Gandhi est signalé par PROP-016 avec des estimations divergentes (point non résolu du review de proposals.yaml) : aucun chiffre n'est avancé ici. Dates conformes à l'ère."
+  status: validated
+  TODO: []
+
+- id: in-era4-gue-001
+  era_id: india-era-4
+  domain: "Guerres & diplomatie"
+  scale: transnational
+  subject: "Guerre du Cachemire de 1947-1948"
+  predicate: "oppose l'Inde et le Pakistan dans la suite immédiate de la Partition"
+  object: "le statut contesté du Cachemire, après la ligne Radcliffe d'août 1947"
+  time: "1947/1948"
+  time_precision: interval
+  families: [evenement, acteur, lieu]
+  actors: []
+  places: ["Cachemire"]
+  groups: []
+  institutions: []
+  normative: ["Ligne Radcliffe (août 1947)"]
+  memory: []
+  sources: ["SRC-007", "SRC-008", "SRC-009"]
+  confidence: certain
+  justification: "La correction auditée de in-independance demande de scinder indépendance et Partition et d'ajouter la guerre de 1947-1948 au Cachemire ; sources SRC-007 (Butalia), SRC-008 (Zamindar) et SRC-009 (Jalal). L'indépendance (15 août 1947) et la Partition (ligne Radcliffe, août 1947) sont distinguées. OM-010 signale que les autres guerres (1962, 1965, 1971, 1999) restent absentes de la frise. Aucune date ni source inventée."
+  status: validated
+  TODO: []
+
+- id: in-era4-gue-002
+  era_id: india-era-4
+  domain: "Guerres & diplomatie"
+  scale: transnational
+  subject: "Guerres de 1962, 1965, 1971 et 1999"
+  predicate: "ne font l'objet d'aucune fiche dans la frise"
+  object: "la guerre de 1962 avec la Chine, celles de 1965 et 1971 avec le Pakistan, Kargil en 1999, ainsi que la crise du Bangladesh et les réfugiés"
+  time: "1962/1999"
+  time_precision: interval
+  families: [evenement, processus]
+  actors: []
+  places: ["Cachemire"]
+  groups: ["réfugiés du Bangladesh"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["OM-010"]
+  confidence: non documenté
+  justification: "OM-010 (ERA-4, Guerres & diplomatie, transnational) documente l'absence de fiches sur ces guerres et sur la crise du Bangladesh ; SRC-006 (Guha) est la source à croiser avant publication. Aucune date de bilan, mortalité ou source supplémentaire n'est avancée ; le silence est explicite conformément à la règle 7 de POINT_METHODOLOGY.md. L'intervalle 1962/1999 reprend les seules années citées par l'omission, sans invention."
+  status: validated
+  TODO: []
+
+- id: in-era4-dro-001
+  era_id: india-era-4
+  domain: "Droit & justice"
+  scale: national
+  subject: "Droit constitutionnel de la République"
+  predicate: "abolit l'intouchabilité et garantit l'égalité devant la loi avec des quotas pour les castes et tribus répertoriées"
+  object: "le droit positif de l'Inde, entré en vigueur le 26 janvier 1950"
+  time: "1950-01-26"
+  time_precision: day
+  families: [repere_normatif, evenement, institution]
+  actors: ["B. R. Ambedkar"]
+  places: ["Delhi"]
+  groups: ["Dalits (Scheduled Castes)", "Adivasis (Scheduled Tribes)"]
+  institutions: ["République de l'Inde", "Constitution de l'Inde"]
+  normative: ["Abolition de l'intouchabilité", "Quotas pour les Scheduled Castes et Scheduled Tribes"]
+  memory: []
+  sources: ["SRC-020", "SRC-019"]
+  confidence: certain
+  justification: "PROP-013 : la Constitution établit le suffrage universel, l'égalité devant la loi, l'abolition de l'intouchabilité et des quotas pour les castes et tribus répertoriées ; SRC-020 est le texte primaire, SRC-019 (Ambedkar) le texte de référence du mouvement dalit. Entrée en vigueur le 26 janvier 1950 après adoption le 26 novembre 1949. Aucun numéro d'article n'est avancé : les repères sont décrits par leur contenu sourcé, non par une référence inventée."
+  status: validated
+  TODO: []
+
+- id: in-era4-dro-002
+  era_id: india-era-4
+  domain: "Droit & justice"
+  scale: national
+  subject: "Arrêt Shah Bano de la Cour suprême"
+  predicate: "accorde une pension à une divorcée musulmane le 23 avril 1985, avant une loi de 1986 qui limite cette obligation"
+  object: "le conflit entre égalité civile et droit personnel musulman"
+  time: "1985-04-23"
+  time_precision: day
+  families: [repere_normatif, evenement, acteur, groupe_social]
+  actors: ["Shah Bano"]
+  places: ["Indore"]
+  groups: ["femmes musulmanes divorcées"]
+  institutions: ["Cour suprême de l'Inde", "Gouvernement de l'Inde"]
+  normative: ["Code de procédure pénale", "Loi de 1986 limitant l'obligation de pension"]
+  memory: []
+  sources: ["SRC-006", "SRC-012"]
+  confidence: certain
+  justification: "PROP-017 : le 23 avril 1985, la Cour suprême accorde à Shah Bano, divorcée musulmane d'Indore, une pension au titre du Code de procédure pénale ; le gouvernement fait voter en 1986 une loi qui limite cette obligation. Sources SRC-006 (Guha) et SRC-012 (Forbes). Le cas articule genre, religion et droit ; la loi de 1986 est décrite par son effet, sans titre officiel inventé."
+  status: validated
+  TODO: []
+
+- id: in-era4-eco-001
+  era_id: india-era-4
+  domain: "Économie & travail"
+  scale: national
+  subject: "Révolution verte"
+  predicate: "transforme l'agriculture du Panjab et de l'Haryana entre 1966 et 1970 par des variétés de blé à haut rendement, l'irrigation et les engrais"
+  object: "une hausse de la production, au prix de la dégradation des nappes phréatiques et des inégalités sociales"
+  time: "1966/1970"
+  time_precision: interval
+  families: [processus, acteur, groupe_social]
+  actors: ["M. S. Swaminathan"]
+  places: ["Panjab", "Haryana"]
+  groups: ["paysans du Panjab et de l'Haryana"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-006", "SRC-016"]
+  confidence: certain
+  justification: "PROP-015 : variétés de blé à haut rendement, irrigation et engrais transforment le Panjab et l'Haryana (1966-1970) ; M. S. Swaminathan joue un rôle clé ; la production augmente tandis que les nappes phréatiques et les inégalités se dégradent. Sources SRC-006 (Guha) et SRC-016 (Gadgil & Guha). Aucune donnée de rendement chiffrée n'est inventée."
+  status: validated
+  TODO: []
+
+- id: in-era4-eco-002
+  era_id: india-era-4
+  domain: "Économie & travail"
+  scale: national
+  subject: "Libéralisation économique de 1991"
+  predicate: "engage un processus de libéralisation partielle dans un contexte de crise de la balance des paiements"
+  object: "la croissance inégale de l'économie indienne dans les années 1990-2000"
+  time: "1991"
+  time_precision: year
+  families: [processus, evenement, acteur]
+  actors: ["Rao", "Manmohan Singh"]
+  places: ["Delhi"]
+  groups: []
+  institutions: ["Gouvernement de l'Inde", "FMI"]
+  normative: []
+  memory: []
+  sources: ["SRC-006", "SRC-014"]
+  confidence: probable
+  justification: "La correction auditée de in-liberalisation précise que 1991 n'est pas un point unique : crise de la balance des paiements, gouvernement Rao, Manmohan Singh, conditions du FMI, libéralisation partielle et croissance inégale, à lire comme un processus 1991-2000s. Sources SRC-006 (Guha) et SRC-014 (Sen) pour le cadre analytique. Le review signale que ces deux ouvrages ne fournissent pas les données post-1991 et demande une corroboration par une source économique spécialisée : la confiance reste « probable » et aucun indicateur chiffré n'est avancé."
+  status: validated
+  TODO: []
+
+- id: in-era4-soc-001
+  era_id: india-era-4
+  domain: "Société & démographie"
+  scale: national
+  subject: "Loi de réorganisation des États de 1956"
+  predicate: "redessine les États sur une base linguistique après les mobilisations, notamment telougou"
+  object: "14 États et 6 territoires, stabilisant un fédéralisme qui crée aussi de nouvelles minorités"
+  time: "1956"
+  time_precision: year
+  families: [repere_normatif, evenement, processus, groupe_social]
+  actors: []
+  places: []
+  groups: ["mobilisation linguistique telougou"]
+  institutions: ["Union indienne"]
+  normative: ["Loi de réorganisation des États (1956)"]
+  memory: []
+  sources: ["SRC-006", "SRC-020"]
+  confidence: certain
+  justification: "PROP-014 : la loi de 1956 redessine les États sur des bases linguistiques, créant 14 États et 6 territoires, à la suite des mobilisations linguistiques notamment telougou ; elle stabilise le fédéralisme au prix de nouvelles minorités. Sources SRC-006 (Guha) et SRC-020 (Constitution). Aucune date ni nombre supplémentaire n'est inventé."
+  status: validated
+  TODO: []
+
+- id: in-era4-soc-002
+  era_id: india-era-4
+  domain: "Société & démographie"
+  scale: national
+  subject: "Partition de 1947"
+  predicate: "déplace entre 12 et 20 millions de personnes et cause entre 200 000 et 2 millions de morts selon des estimations divergentes"
+  object: "la recomposition démographique de l'Inde et du Pakistan indépendants"
+  time: "1947"
+  time_precision: year
+  families: [evenement, processus, groupe_social]
+  actors: []
+  places: ["Pendjab", "Bengale"]
+  groups: ["réfugiés", "déplacés de la Partition"]
+  institutions: []
+  normative: ["Ligne Radcliffe (août 1947)"]
+  memory: ["Mémoires concurrentes Inde/Pakistan de la Partition"]
+  sources: ["SRC-007", "SRC-008", "SRC-009"]
+  confidence: disputé
+  justification: "CLAIM-003 du country-audit : la Partition de 1947 déplace entre 12 et 20 millions de personnes et cause entre 200 000 et 2 millions de morts, selon des estimations divergentes (qualification « disputé ») ; sources SRC-007 (Butalia), SRC-008 (Zamindar), SRC-009 (Jalal). La correction de in-independance distingue l'indépendance (15 août 1947) de la Partition. Aucun chiffre n'est tranché ni inventé."
+  status: validated
+  TODO: []
+
+- id: in-era4-fem-001
+  era_id: india-era-4
+  domain: "Femmes, genre, sexualités"
+  scale: national
+  subject: "Shah Bano, divorcée musulmane d'Indore"
+  predicate: "obtient de la Cour suprême une pension le 23 avril 1985, avant que la loi de 1986 ne limite ce droit"
+  object: "un cas emblématique des droits des femmes et du droit personnel musulman"
+  time: "1985-04-23"
+  time_precision: day
+  families: [acteur, evenement, repere_normatif, groupe_social]
+  actors: ["Shah Bano"]
+  places: ["Indore"]
+  groups: ["femmes musulmanes", "femmes divorcées"]
+  institutions: ["Cour suprême de l'Inde"]
+  normative: ["Arrêt Shah Bano (23 avril 1985)"]
+  memory: []
+  sources: ["SRC-006", "SRC-012"]
+  confidence: certain
+  justification: "PROP-017 et cellule « couvert » de la matrice (ERA-4, Femmes, genre, sexualités) : SRC-006 (Guha) et SRC-012 (Forbes, Women in Modern India) documentent l'affaire et le débat sur l'égalité et les droits personnels. Le cas est proposé avec acteur, lieu et sources ; aucune intention, citation ou date supplémentaire n'est inventée."
+  status: validated
+  TODO: []
+
+- id: in-era4-rel-001
+  era_id: india-era-4
+  domain: "Religions & croyances"
+  scale: national
+  subject: "Conversion de Dalits au bouddhisme en 1956"
+  predicate: "est conduite par Ambedkar à Nagpur"
+  object: "un acte politique et religieux majeur de l'histoire dalit"
+  time: "1956"
+  time_precision: year
+  families: [evenement, acteur, groupe_social, processus]
+  actors: ["B. R. Ambedkar"]
+  places: ["Nagpur"]
+  groups: ["Dalits (Scheduled Castes)"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-019", "SRC-011"]
+  confidence: certain
+  justification: "OM-009 (ERA-4, Religions & croyances, national) documente la conversion massive de Dalits au bouddhisme en 1956, conduite par Ambedkar à Nagpur ; sources vérifiées SRC-019 (Ambedkar) et SRC-011 (Jaffrelot). L'ACTOR-005 précise que la conversion de 1956 est un acte politique et religieux. Aucune date ni nombre de convertis n'est inventé."
+  status: validated
+  TODO: []
+
+- id: in-era4-rel-002
+  era_id: india-era-4
+  domain: "Religions & croyances"
+  scale: national
+  subject: "Démolition de la mosquée de Babri à Ayodhya"
+  predicate: "a lieu le 6 décembre 1992, au terme du mouvement Ram Janmabhoomi, avant la construction d'un temple en 2024"
+  object: "un objet de mémoires et de qualifications concurrentes"
+  time: "1992-12-06"
+  time_precision: day
+  families: [evenement, lieu, memoire, acteur]
+  actors: []
+  places: ["Ayodhya"]
+  groups: ["mouvement Ram Janmabhoomi"]
+  institutions: []
+  normative: []
+  memory: ["Mémoires et qualifications concurrentes"]
+  sources: ["SRC-006", "OM-012"]
+  confidence: disputé
+  justification: "OM-012 (ERA-4, Religions & croyances, national, raison « disputed ») : démolition de la mosquée de Babri le 6 décembre 1992, mouvement Ram Janmabhoomi et construction du temple en 2024 ; SRC-006 (Guha) est la source à croiser. Conformément à l'omission, les faits, les décisions judiciaires et les récits des deux côtés doivent être présentés sans arbitrage militant : la qualification reste « disputé », aucun jugement ni bilan n'est avancé."
+  status: validated
+  TODO: []
+
+- id: in-era4-sci-001
+  era_id: india-era-4
+  domain: "Sciences, techniques & santé"
+  scale: national
+  subject: "Recherche agronomique de la Révolution verte"
+  predicate: "met au point des variétés de blé à haut rendement diffusées à partir de 1966 avec l'irrigation et les engrais"
+  object: "la transformation productive du Panjab et de l'Haryana, avec M. S. Swaminathan comme figure clé"
+  time: "1966"
+  time_precision: year
+  families: [processus, acteur, lieu]
+  actors: ["M. S. Swaminathan"]
+  places: ["Panjab", "Haryana"]
+  groups: ["agronomes", "paysans"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-006", "SRC-016"]
+  confidence: certain
+  justification: "PROP-015 : les variétés de blé à haut rendement, l'irrigation et les engrais transforment le Panjab et l'Haryana à partir de 1966 ; M. S. Swaminathan joue un rôle clé. Sources SRC-006 (Guha) et SRC-016 (Gadgil & Guha). La matrice signale que l'espace et le nucléaire manquent encore (cellule « partiel ») : cette dette reste ouverte et n'est pas comblée par une source inventée."
+  status: validated
+  TODO: []
+
+- id: in-era4-art-001
+  era_id: india-era-4
+  domain: "Arts & lettres"
+  scale: national
+  subject: "Cinéma, littérature et musique de l'Inde indépendante"
+  predicate: "ne disposent d'aucune fiche ni d'aucune source dédiée dans le registre pour cette ère"
+  object: "un angle mort documenté malgré le rayonnement de ces productions"
+  time: "1947/2026"
+  time_precision: interval
+  families: [processus, groupe_social]
+  actors: []
+  places: ["Mumbai"]
+  groups: ["artistes et écrivains indiens"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  justification: "Cellule « partiel » de la matrice (ERA-4, Arts & lettres, national, entry_ids in-liberalisation) : « Cinéma, littérature et musique sont absents, malgré leur rayonnement. » Aucune omission portant un ID dédié n'existe dans omissions.yaml pour cette cellule : le silence est donc documenté par la matrice seule, sans ID d'omission, conformément au modèle des points « non documenté » du corpus. Mumbai est enregistrée dans le country-audit comme centre de cinéma et de presse (PLACE-007). Aucune œuvre, date ni source n'est inventée."
+  status: validated
+  TODO: []
+
+- id: in-era4-env-001
+  era_id: india-era-4
+  domain: "Environnement & territoire"
+  scale: national
+  subject: "Loi sur les droits forestiers de 2006"
+  predicate: "reconnaît les droits individuels et collectifs des communautés forestières, notamment des Adivasis"
+  object: "les terres et ressources qu'elles occupent, avec une application inégale ; Niyamgiri (2013) devient un cas emblématique"
+  time: "2006"
+  time_precision: year
+  families: [repere_normatif, evenement, groupe_social, lieu]
+  actors: []
+  places: ["Niyamgiri"]
+  groups: ["communautés forestières", "Adivasis", "Dongria Kondh"]
+  institutions: ["Gram sabha"]
+  normative: ["Loi sur les droits forestiers (2006)"]
+  memory: []
+  sources: ["SRC-018", "SRC-016"]
+  confidence: certain
+  justification: "PROP-018 : la loi de 2006 reconnaît les droits individuels et collectifs des communautés forestières, notamment des Adivasis ; l'application reste inégale et Niyamgiri (2013) devient un cas emblématique (PLACE-012, collines sacrées des Dongria Kondh, gram sabha). Sources SRC-018 (Sundar) et SRC-016 (Gadgil & Guha). Aucune date ni donnée d'application n'est inventée."
+  status: validated
+  TODO: []
+
+- id: in-era4-env-002
+  era_id: india-era-4
+  domain: "Environnement & territoire"
+  scale: local
+  subject: "Catastrophe de Bhopal"
+  predicate: "résulte d'une fuite de méthylisocyanate les 2 et 3 décembre 1984"
+  object: "des morts, des handicaps et une lutte judiciaire aux bilans contestés"
+  time: "1984-12-02"
+  time_precision: day
+  families: [evenement, lieu, groupe_social, processus]
+  actors: []
+  places: ["Bhopal"]
+  groups: ["habitants de Bhopal", "victimes de la catastrophe"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-006", "SRC-016", "SRC-018"]
+  confidence: disputé
+  justification: "OM-011 (ERA-4, Environnement & territoire, local) : catastrophe de Bhopal les 2-3 décembre 1984, fuite de méthylisocyanate, morts, handicaps et lutte judiciaire ; les bilans de mortalité sont contestés. Sources à croiser SRC-006, SRC-016 et SRC-018. Aucun bilan chiffré n'est avancé et la qualification reste prudente, conformément à l'omission."
+  status: validated
+  TODO: []
+
+- id: in-era4-mig-001
+  era_id: india-era-4
+  domain: "Migrations & diasporas"
+  scale: transnational
+  subject: "Réfugiés de la Partition"
+  predicate: "franchissent la nouvelle frontière indo-pakistanaise à partir d'août 1947"
+  object: "une « Partition longue » faite de permis, de frontières et de citoyennetés contestées"
+  time: "1947"
+  time_precision: year
+  families: [processus, evenement, groupe_social, lieu]
+  actors: []
+  places: ["Pendjab", "Bengale", "Lahore"]
+  groups: ["réfugiés", "déplacés de la Partition"]
+  institutions: []
+  normative: ["Ligne Radcliffe (août 1947)"]
+  memory: ["Mémoires concurrentes Inde/Pakistan"]
+  sources: ["SRC-007", "SRC-008", "SRC-009"]
+  confidence: disputé
+  justification: "SRC-008 (Zamindar, The Long Partition) documente les réfugiés, les permis, les frontières et la citoyenneté ; SRC-007 (Butalia) et SRC-009 (Jalal) complètent le cadre de la Partition de 1947. Lahore est enregistrée comme ville frontière en 1947 (PLACE-005). La matrice marque la cellule « partiel » et signale que le Golfe et le COVID manquent (OM-014) : cette dette reste ouverte. Les ordres de grandeur sont disputés (CLAIM-003), aucun chiffre n'est tranché."
+  status: validated
+  TODO: []
+
+- id: in-era4-mig-002
+  era_id: india-era-4
+  domain: "Migrations & diasporas"
+  scale: transnational
+  subject: "Migrations de travail vers le Golfe et crise des migrants de 2020"
+  predicate: "ne peuvent pas être quantifiées dans la frise"
+  object: "des données fragmentaires et contestées sur les flux, les retours massifs et l'absence de recensement"
+  time: "2020"
+  time_precision: year
+  families: [processus, groupe_social]
+  actors: []
+  places: ["Golfe"]
+  groups: ["travailleurs migrants indiens"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["OM-014"]
+  confidence: non documenté
+  justification: "OM-014 (ERA-4, Migrations & diasporas, transnational) : migrations de travail vers le Golfe et crise des migrants pendant le confinement de 2020, retours massifs et absence de recensement ; les données sont fragmentaires et contestées. Sources vérifiées SRC-006 et SRC-015 (Amrith, circulations du golfe du Bengale). La frise ne peut pas encore quantifier les flux ni les morts : aucun chiffre n'est avancé."
+  status: validated
+  TODO: []
+
+- id: in-era4-min-001
+  era_id: india-era-4
+  domain: "Peuples autochtones & minorités"
+  scale: national
+  subject: "Dalit Panthers"
+  predicate: "fondent un mouvement politique et littéraire à Bombay en 1972"
+  object: "la radicalisation de la politique dalit par la poésie, la rue et la dénonciation des atrocités de caste"
+  time: "1972"
+  time_precision: year
+  families: [acteur, groupe_social, evenement]
+  actors: ["Namdeo Dhasal", "J. V. Pawar"]
+  places: ["Bombay", "Maharashtra"]
+  groups: ["Dalits", "Dalit Panthers"]
+  institutions: ["Dalit Panthers"]
+  normative: []
+  memory: ["Icône de la fierté dalite"]
+  sources: ["SRC-011", "SRC-019"]
+  confidence: certain
+  justification: "ACTOR-010 (ACTOR-PROP-010 dans proposals.yaml) : mouvement fondé à Bombay en 1972, qui radicalise la politique dalit par la poésie, la rue et la dénonciation des atrocités ; réseaux Namdeo Dhasal, J. V. Pawar, Arun Kamble ; sources SRC-011 (Jaffrelot) et SRC-019 (Ambedkar). L'évaluation enregistre ses divisions, sa répression et son héritage littéraire. Aucune date ni action supplémentaire n'est inventée."
+  status: validated
+  TODO: []
+
+- id: in-era4-min-002
+  era_id: india-era-4
+  domain: "Peuples autochtones & minorités"
+  scale: regional
+  subject: "Opération Blue Star (1984), violences anti-sikhes de 1984 et violences du Gujarat en 2002"
+  predicate: "sont documentées comme des épisodes contestés, sans bilan arrêté dans la frise"
+  object: "des morts, des déplacements, des procès et des mémoires concurrentes"
+  time: "1984/2002"
+  time_precision: interval
+  families: [evenement, groupe_social, memoire, lieu]
+  actors: []
+  places: ["Amritsar", "Gujarat"]
+  groups: ["Sikhs", "violences de 2002 au Gujarat"]
+  institutions: []
+  normative: []
+  memory: ["Mémoires contestées des violences de 1984 et 2002"]
+  sources: ["SRC-006", "OM-013"]
+  confidence: disputé
+  justification: "OM-013 (ERA-4, Peuples autochtones & minorités, régional, raison « disputed ») : opération Blue Star (1984), violences anti-sikhes de 1984 et violences de 2002 au Gujarat ; morts, déplacements, procès et mémoires. SRC-006 (Guha) est la source à croiser. L'omission exige des sources indépendantes, des décisions judiciaires datées et une qualification prudente : la confiance reste « disputé », aucun bilan ni responsabilité n'est avancé. Amritsar est enregistrée comme lieu de l'opération Blue Star (PLACE-010)."
+  status: validated
+  TODO: []
+
+- id: in-era4-mem-001
+  era_id: india-era-4
+  domain: "Mémoire & patrimoine"
+  scale: national
+  subject: "Assassinat de M. K. Gandhi"
+  predicate: "a lieu le 30 janvier 1948, commis par Nathuram Godse, ancien militant du RSS"
+  object: "une figure dont les héritages, notamment ses positions sur la caste, restent contestés"
+  time: "1948-01-30"
+  time_precision: day
+  families: [evenement, acteur, memoire]
+  actors: ["M. K. Gandhi", "Nathuram Godse"]
+  places: ["Delhi"]
+  groups: []
+  institutions: ["RSS"]
+  normative: []
+  memory: ["Héritages contestés de Gandhi", "Père de la nation", "Critiques de ses positions sur la caste"]
+  sources: ["SRC-005", "SRC-006"]
+  confidence: certain
+  justification: "La correction auditée de in-gandhi nomme l'assassin Nathuram Godse, ancien militant du RSS, et date l'assassinat du 30 janvier 1948 ; sources SRC-005 (Sarkar) et SRC-006 (Guha). La matrice cite in-gandhi pour la cellule « partiel » (ERA-4, Mémoire & patrimoine). L'ACTOR-006 enregistre une « mémoire contestée par les Dalits et les nationalistes hindous » et la figure du « Père de la nation » ; le jugement de la fiche (« continue d'inspirer ») est précisément ce que la correction demande de remplacer par une analyse des héritages contestés. Aucun propos ni date n'est inventé."
+  status: validated
+  TODO: []
+
+- id: in-era4-cir-001
+  era_id: india-era-4
+  domain: "Circulations transnationales"
+  scale: transnational
+  subject: "Libéralisation de 1991 et ouverture de l'économie indienne"
+  predicate: "intensifient les circulations de capitaux, de normes et de personnes entre l'Inde et l'étranger"
+  object: "une intégration discutée, au fil d'un processus 1991-2000s et de conditions du FMI"
+  time: "1991"
+  time_precision: year
+  families: [processus, evenement, acteur]
+  actors: ["Rao", "Manmohan Singh"]
+  places: ["Delhi"]
+  groups: ["diaspora indienne"]
+  institutions: ["FMI", "Gouvernement de l'Inde"]
+  normative: []
+  memory: []
+  sources: ["SRC-006", "SRC-014", "SRC-015"]
+  confidence: probable
+  justification: "La correction de in-liberalisation décrit un processus 1991-2000s avec crise de la balance des paiements, gouvernement Rao, Manmohan Singh et conditions du FMI ; la matrice cite in-liberalisation et PROP-008 pour la cellule « partiel » (ERA-4, Circulations transnationales). PROP-008 (engagisme 1834-1917) est hors de cette ère et n'est donc pas repris comme point. SRC-015 (Amrith) cadre les circulations et diasporas ; SRC-006 et SRC-014 fournissent le cadre analytique. Le review demandant une corroboration économique spécialisée pour l'après-1991, la confiance reste « probable » et aucun flux chiffré n'est avancé."
+  status: validated
+  TODO: []

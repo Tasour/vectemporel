@@ -1,0 +1,337 @@
+# Points de l'ère Chine / Empires et divisions (china-era-2, -221 → 1912).
+# Sources : uniquement le registre audits/china/source-register.csv (SRC-001, SRC-002, SRC-015)
+# et l'omission documentée audits/china/omissions.yaml (OM-015). Aucune date, source, DOI,
+# auteur ou citation inventée. Aucun lien Grokipedia. Aucun contenu hors de l'ère.
+# Les faits sont ancrés dans src/data/dataset.js (cn-qin, cn-han, cn-tang, cn-song, cn-ming,
+# cn-qing, cn-opium), audits/china/country-audit.yaml (CLAIM-002, CLAIM-003, ACTOR-003,
+# PLACE-001, PLACE-006) et audits/china/coverage-matrix.csv (ERA-2).
+
+- id: cn-era2-pol-001
+  era_id: china-era-2
+  domain: "Politique & institutions"
+  scale: imperial
+  subject: "Qin Shi Huang, premier empereur Qin"
+  predicate: "achève l'unification et impose une administration centralisée"
+  object: "l'empire unifié de -221"
+  time: "-221"
+  time_precision: year
+  families: [evenement, acteur, institution]
+  actors: ["Qin Shi Huang"]
+  places: []
+  groups: []
+  institutions: ["administration centralisée Qin"]
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: certain
+  status: validated
+  justification: "L'unification Qin de -221 et l'administration centralisée sont documentées dans le corpus (dataset.js, cn-qin) et dans CLAIM-002 (country-audit.yaml, certitude certaine, SRC-001). La matrice ERA-2, Politique & institutions (cn-qin, cn-han, cn-tang, cn-song, cn-yuan, cn-ming, cn-qing) signale sept repères dynastiques sans acteurs structurés ; OM-015 rappelle l'absence d'archives primaires consultées pour cette ère. Aucune date ni source inventée."
+  TODO: []
+
+- id: cn-era2-pol-002
+  era_id: china-era-2
+  domain: "Politique & institutions"
+  scale: imperial
+  subject: "Empire chinois"
+  predicate: "est une prétention récurrente, non une unité continue"
+  object: "les divisions de 220-589, 907-960 et 1127-1279 et les régimes concurrents"
+  time: "-221/1912"
+  time_precision: interval
+  families: [processus, institution]
+  actors: []
+  places: []
+  groups: ["régimes concurrents"]
+  institutions: ["empire chinois"]
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: certain
+  status: validated
+  justification: "CLAIM-003 (country-audit.yaml) qualifie de certaine l'alternance d'unité et de divisions sur -221/1912, avec SRC-001 ; la proposition de renommage de l'ère 2 dans audits/china/proposals.yaml documente les sous-périodes Qin-Han, Division, Sui-Tang, Song-Yuan, Ming-Qing. L'ancre est l'intervalle complet de l'ère ; aucune date ni source inventée."
+  TODO: []
+
+- id: cn-era2-guer-003
+  era_id: china-era-2
+  domain: "Guerres & diplomatie"
+  scale: national
+  subject: "Lin Zexu, commissaire impérial Qing"
+  predicate: "fait détruire l'opium saisi à Canton, provoquant l'intervention britannique et le traité de Nanjing"
+  object: "Canton (1839), la guerre de 1839-1842 et le traité de Nanjing (1842)"
+  time: "1839/1842"
+  time_precision: interval
+  families: [evenement, acteur, lieu, normatif]
+  actors: ["Lin Zexu"]
+  places: ["Canton (Guangzhou)", "Nanjing"]
+  groups: ["forces britanniques", "autorités Qing"]
+  institutions: ["traité de Nanjing"]
+  normative: ["traité de Nanjing (1842) : cinq ports ouverts, cession de Hong Kong, indemnité"]
+  memory: ["récit du « siècle d'humiliation » : catégorie nationale chinoise, non un cadre neutre"]
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "Fait daté dans le corpus (dataset.js, cn-opium) : destruction de l'opium à Canton en 1839, riposte britannique de 1839 à 1842, traité de Nanjing ouvrant cinq ports, cédant Hong Kong et fixant une indemnité ; l'opium n'est légalisé qu'en 1858. SRC-001 couvre la Chine des Qing au XIXe siècle et la matrice ERA-2, Guerres & diplomatie cite cn-opium. Certitude probable, le registre ne comportant pas d'étude dédiée au traité."
+  TODO: []
+
+- id: cn-era2-droit-004
+  era_id: china-era-2
+  domain: "Droit & justice"
+  scale: imperial
+  subject: "Standardisation Qin"
+  predicate: "impose par la conquête une règle uniforme"
+  object: "l'écriture, la monnaie, les poids et les mesures de l'empire unifié"
+  time: "-221"
+  time_precision: year
+  families: [evenement, normatif, institution]
+  actors: ["Qin Shi Huang"]
+  places: []
+  groups: []
+  institutions: ["administration centralisée Qin"]
+  normative: ["standardisation de l'écriture, de la monnaie, des poids et des mesures (-221)"]
+  memory: []
+  sources: ["SRC-001"]
+  confidence: certain
+  status: validated
+  justification: "CLAIM-002 (country-audit.yaml, certain, SRC-001) et le corpus (dataset.js, cn-qin) documentent la standardisation imposée en -221 avec l'administration centralisée. La matrice ERA-2, Droit & justice (cn-qin) note l'absence de fiche sur le droit Tang, les examens ou la justice impériale : ces silences ne sont pas comblés ici. Aucune règle ni date inventée."
+  TODO: []
+
+- id: cn-era2-econ-005
+  era_id: china-era-2
+  domain: "Économie & travail"
+  scale: imperial
+  subject: "Missions de Zhang Qian"
+  predicate: "ouvrent les routes commerciales d'Asie centrale"
+  object: "les échanges vers -130, après les missions de -138 à -126"
+  time: "-138/-126"
+  time_precision: interval
+  families: [evenement, acteur, groupe_social, processus]
+  actors: ["Zhang Qian"]
+  places: ["Asie centrale"]
+  groups: ["missions diplomatiques Han"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-015"]
+  confidence: probable
+  status: validated
+  justification: "Le corpus (dataset.js, cn-han, « vérifié ») date les missions de Zhang Qian de -138 à -126 et l'ouverture des routes commerciales d'Asie centrale vers -130 ; la matrice ERA-2, Économie & travail cite cn-han pour la route de la soie. SRC-015 fournit le cadre de longue durée du Xinjiang et des circulations d'Asie centrale ; le registre n'a pas de monographie dédiée aux Han, d'où la certitude probable, et OM-015 documente l'absence d'archives primaires. Aucune date ni source inventée."
+  TODO: []
+
+- id: cn-era2-soc-006
+  era_id: china-era-2
+  domain: "Société & démographie"
+  scale: national
+  subject: "Démographie, famille et hiérarchies sociales de la Chine impériale"
+  predicate: "ne font l'objet d'aucune fiche datée dans le corpus"
+  object: "les populations, les familles, les famines et les hiérarchies de -221 à 1912"
+  time: "-221/1912"
+  time_precision: interval
+  families: [processus, groupe_social]
+  actors: []
+  places: []
+  groups: ["populations de la Chine impériale", "familles", "hiérarchies sociales"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide non traité » de coverage-matrix.csv (ERA-2, Société & démographie, national) : aucune fiche sur la démographie, la famille, les famines ou les hiérarchies sociales impériales. Silence explicite conformément à la règle 7 de POINT_METHODOLOGY.md ; aucun ID d'omission dédié n'existe dans omissions.yaml pour cette cellule, OM-015 documentant seulement l'absence d'archives primaires. Aucune date, source ou donnée chiffrée inventée."
+  TODO: []
+
+- id: cn-era2-genre-007
+  era_id: china-era-2
+  domain: "Femmes, genre, sexualités"
+  scale: national
+  subject: "Qiu Jin (1875-1907), révolutionnaire et féministe"
+  predicate: "meurt exécutée après une tentative d'insurrection et devient une martyre du féminisme naissant"
+  object: "le mouvement révolutionnaire à la fin de l'empire Qing"
+  time: "1907"
+  time_precision: year
+  families: [acteur, groupe_social, memoire]
+  actors: ["Qiu Jin"]
+  places: ["Shaoxing", "Tokyo"]
+  groups: ["étudiantes chinoises à Tokyo", "Tongmenghui"]
+  institutions: ["Tongmenghui"]
+  normative: []
+  memory: ["martyre commémorée en RPC ; tombeau à Hangzhou, usages scolaires et féministes"]
+  sources: ["SRC-001", "SRC-002"]
+  confidence: probable
+  status: validated
+  justification: "ACTOR-003 de country-audit.yaml (périodes ERA-2 et ERA-3) documente Qiu Jin (1875-1907), révolutionnaire, féministe et écrivaine, exécutée après une tentative d'insurrection, avec SRC-001 et SRC-002 ; ses lieux d'action Shaoxing et Tokyo et son réseau d'étudiantes y sont nommés. La matrice ERA-2, Femmes signale l'absence de fiche dédiée : ce point la comble sans inventer de date. Certitude probable faute d'étude dédiée dans le registre."
+  TODO: []
+
+- id: cn-era2-relig-008
+  era_id: china-era-2
+  domain: "Religions & croyances"
+  scale: national
+  subject: "Religions à Chang'an (Xi'an) sous les Tang"
+  predicate: "coexistent dans une capitale ouverte aux marchands et aux cultes"
+  object: "Chang'an, capitale Tang de 618 à 907"
+  time: "618/907"
+  time_precision: interval
+  families: [processus, lieu, groupe_social]
+  actors: []
+  places: ["Chang'an (Xi'an)"]
+  groups: ["marchands et fidèles de Chang'an", "communautés religieuses"]
+  institutions: []
+  normative: []
+  memory: ["patrimoine Tang et mémoire de la capitale cosmopolite, usages touristiques et nationalistes"]
+  sources: ["SRC-001", "SRC-002"]
+  confidence: probable
+  status: validated
+  justification: "Le corpus (dataset.js, cn-tang) décrit Chang'an comme capitale cosmopolite ouverte aux marchands et aux religions ; PLACE-006 (country-audit.yaml) enregistre la fonction de carrefour de l'Asie centrale et les contestations mémorielles, avec SRC-001 et SRC-002. La matrice ERA-2, Religions & croyances signale l'absence de fiches sur le taoïsme, l'islam, le christianisme et les religions populaires : ces silences ne sont pas comblés ici."
+  TODO: []
+
+- id: cn-era2-sci-009
+  era_id: china-era-2
+  domain: "Sciences, techniques & santé"
+  scale: national
+  subject: "Imprimerie, poudre et boussole sous les Song"
+  predicate: "sont perfectionnées et diffusées à grande échelle"
+  object: "les techniques des Song du Nord et du Sud (960-1279)"
+  time: "960/1279"
+  time_precision: interval
+  families: [processus, institution]
+  actors: []
+  places: ["Chine des Song", "Hangzhou"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "Le corpus (dataset.js, cn-song, « vérifié ») rapporte que l'imprimerie, la poudre et la boussole sont perfectionnées et diffusées à grande échelle sous les Song, et que les Song du Sud poursuivent à Hangzhou une économie urbaine et marchande après 1127. La matrice ERA-2, Sciences, techniques & santé cite cn-song ; SRC-001 cadre les dates dynastiques, mais le registre n'a pas de source dédiée aux techniques Song, d'où la certitude probable."
+  TODO: []
+
+- id: cn-era2-arts-010
+  era_id: china-era-2
+  domain: "Arts & lettres"
+  scale: national
+  subject: "Poésie et échanges de la capitale Tang"
+  predicate: "sont décrits comme un âge d'or, label historiographique plus qu'une réalité uniforme"
+  object: "Chang'an (Xi'an), capitale des Tang (618-907)"
+  time: "618/907"
+  time_precision: interval
+  families: [processus, lieu, memoire]
+  actors: []
+  places: ["Chang'an (Xi'an)"]
+  groups: ["poètes Tang"]
+  institutions: []
+  normative: []
+  memory: ["âge d'or Tang : label historiographique, non une réalité uniforme"]
+  sources: ["SRC-001", "SRC-002"]
+  confidence: probable
+  status: validated
+  justification: "Le corpus (dataset.js, cn-tang) qualifie l'époque de Chang'an d'âge d'or de la poésie et des échanges, en précisant qu'il s'agit d'un label historiographique ; PLACE-006 confirme le rôle de carrefour et les usages mémoriels, avec SRC-001 et SRC-002. La matrice ERA-2, Arts & lettres cite cn-tang et cn-ming ; peinture, théâtre et calligraphie restent absents du corpus et ne sont pas inventés ici."
+  TODO: []
+
+- id: cn-era2-env-011
+  era_id: china-era-2
+  domain: "Environnement & territoire"
+  scale: national
+  subject: "Crues du fleuve Jaune, déforestation, climat et Grand Canal"
+  predicate: "ne font l'objet d'aucune fiche datée dans le corpus pour cette ère"
+  object: "le territoire de la Chine impériale (-221/1912)"
+  time: "-221/1912"
+  time_precision: interval
+  families: [processus]
+  actors: []
+  places: ["fleuve Jaune"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide non traité » de coverage-matrix.csv (ERA-2, Environnement & territoire, national) : aucune fiche sur les crues du fleuve Jaune, la déforestation, le climat ou le Grand Canal. SRC-017 (China: An Environmental History) couvre la longue durée, mais aucun repère environnemental daté n'a été rédigé pour l'ère dans le corpus ; aucun ID d'omission dédié n'existe dans omissions.yaml. Silence explicite, aucune date ou donnée inventée."
+  TODO: []
+
+- id: cn-era2-migr-012
+  era_id: china-era-2
+  domain: "Migrations & diasporas"
+  scale: national
+  subject: "Conquête mandchoue"
+  predicate: "étend le pouvoir Qing de la Chine propre à Taïwan, puis au Xinjiang"
+  object: "la Chine propre (1644-1662), Taïwan (1683) et le Xinjiang (1755-1759)"
+  time: "1644/1683"
+  time_precision: interval
+  families: [evenement, processus, groupe_social]
+  actors: []
+  places: ["Chine propre", "Taïwan", "Xinjiang"]
+  groups: ["Mandchous", "populations conquises"]
+  institutions: ["empire Qing"]
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-015"]
+  confidence: probable
+  status: validated
+  justification: "Le corpus (dataset.js, cn-qing, « vérifié ») date la conquête mandchoue de 1644-1662 en Chine propre, son achèvement à Taïwan en 1683 et la conquête du Xinjiang en 1755-1759, avec violences et mesures de coercition. SRC-001 couvre la Chine Qing et SRC-015 l'histoire du Xinjiang ; la matrice ERA-2, Migrations & diasporas classe ces conquêtes comme dynasties et signale l'absence de fiche sur les migrations han vers le sud et la diaspora, qui ne sont pas inventées ici."
+  TODO: []
+
+- id: cn-era2-peuples-013
+  era_id: china-era-2
+  domain: "Peuples autochtones & minorités"
+  scale: imperial
+  subject: "Conquête Qing du Xinjiang"
+  predicate: "intègre le Xinjiang à l'empire"
+  object: "la campagne de 1755 à 1759"
+  time: "1755/1759"
+  time_precision: interval
+  families: [evenement, lieu, groupe_social]
+  actors: []
+  places: ["Xinjiang"]
+  groups: ["populations du Xinjiang"]
+  institutions: ["empire Qing"]
+  normative: []
+  memory: []
+  sources: ["SRC-015", "SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "Le corpus (dataset.js, cn-qing) date la conquête Qing du Xinjiang de 1755 à 1759 ; SRC-015 est une synthèse universitaire de l'histoire du Xinjiang de l'Antiquité au XXIe siècle et SRC-001 cadre la Chine Qing. La matrice ERA-2, Peuples autochtones & minorités (échelle impériale, cn-yuan ; cn-qing) signale l'absence de fiches sur le Tibet et les peuples du sud : ce point ne les invente pas. L'étiquette « autochtones » est conservée telle quelle dans la matrice, sans projection anachronique."
+  TODO: []
+
+- id: cn-era2-memoire-014
+  era_id: china-era-2
+  domain: "Mémoire & patrimoine"
+  scale: national
+  subject: "Cité interdite de Pékin"
+  predicate: "est édifiée comme palais impérial puis devient un patrimoine"
+  object: "le complexe de Pékin, construit de 1406 à 1420"
+  time: "1406/1420"
+  time_precision: interval
+  families: [evenement, lieu, memoire]
+  actors: []
+  places: ["Cité interdite (Pékin)"]
+  groups: []
+  institutions: ["Cité interdite"]
+  normative: []
+  memory: ["mémoires impériales et révolutionnaires coexistantes à Pékin ; usages touristiques et nationalistes"]
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "Le corpus (dataset.js, cn-ming) date la construction de la Cité interdite de 1406 à 1420 ; PLACE-001 (country-audit.yaml) documente Pékin comme capitale impériale et la coexistence des mémoires impériales et révolutionnaires, avec SRC-001. La matrice ERA-2, Mémoire & patrimoine (cn-ming) précise qu'aucune fiche sur les commémorations ou les usages politiques du passé n'existe : ces objets ne sont pas inventés ici."
+  TODO: []
+
+- id: cn-era2-circ-015
+  era_id: china-era-2
+  domain: "Circulations transnationales"
+  scale: transnational
+  subject: "Expéditions de Zheng He"
+  predicate: "déploient des circulations maritimes malgré l'interdiction du commerce maritime Ming"
+  object: "les voyages de 1405 à 1433 et les échanges côtiers clandestins"
+  time: "1405/1433"
+  time_precision: interval
+  families: [evenement, acteur, lieu, processus]
+  actors: ["Zheng He"]
+  places: ["côtes de la Chine Ming"]
+  groups: ["équipages des expéditions", "marchands côtiers"]
+  institutions: ["expéditions maritimes Ming"]
+  normative: ["interdiction du commerce maritime Ming"]
+  memory: []
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "Le corpus (dataset.js, cn-ming, « vérifié ») date les expéditions de Zheng He de 1405 à 1433 et note que l'interdiction du commerce maritime n'empêche pas les échanges côtiers et clandestins ; SRC-001 cadre les dates dynastiques Ming. La matrice ERA-2, Circulations transnationales cite cn-han (route de la soie) et cn-tang (Chang'an cosmopolite) ; missions, pèlerinages et tributs restent non traités et ne sont pas inventés ici."
+  TODO: []

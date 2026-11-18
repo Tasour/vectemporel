@@ -1,0 +1,315 @@
+# Points de l'ère Inde / Civilisations anciennes (india-era-1, -2600 → 1206).
+# Sources : uniquement le registre audits/india/source-register.csv (SRC-001, SRC-002)
+# et les omissions documentées audits/india/omissions.yaml (OM-002, OM-003, OM-004).
+# Faits ancrés dans src/data/dataset.js (in-indus, in-maurya, in-gupta), dans
+# audits/india/country-audit.yaml, audits/india/proposals.yaml (PROP-001 à PROP-004)
+# et audits/india/fixes.yaml. Aucune date, source, DOI ou citation inventée.
+# Aucun lien Grokipedia. Aucun contenu hors de l'ère (-2600/1206).
+
+- id: in-era1-pol-001
+  era_id: india-era-1
+  domain: "Politique & institutions"
+  scale: imperial
+  subject: "Chandragupta Maurya, fondateur de la dynastie maurya"
+  predicate: "renverse les Nanda et bâtit un empire qui prolonge la puissance du Magadha, depuis Pataliputra"
+  object: "l'empire maurya et sa capitale Pataliputra (Patna)"
+  time: "-322"
+  time_precision: year
+  families: [evenement, acteur, institution, lieu]
+  actors: ["Chandragupta Maurya", "les Nanda"]
+  places: ["Pataliputra (Patna)", "Magadha"]
+  groups: ["Maurya"]
+  institutions: ["empire maurya", "capitale de Pataliputra"]
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-002"]
+  confidence: certain
+  status: validated
+  justification: "Fondation de l'empire maurya en -322 par Chandragupta, documentée dans le corpus (dataset.js, in-maurya ; country-audit.yaml, ACTOR-001 et PLACE-002) et par SRC-001 (Thapar) et SRC-002 (Singh). La correction in-maurya nuance le label de « premier grand empire » par les précédents du Magadha et des Nanda ; aucun « premier empire » non documenté n'est affirmé. Date -322 conforme à l'ère -2600/1206."
+  TODO: []
+
+- id: in-era1-guer-002
+  era_id: india-era-1
+  domain: "Guerres & diplomatie"
+  scale: imperial
+  subject: "Ashoka, empereur maurya"
+  predicate: "mène la conquête meurtrière du Kalinga, après laquelle il promeut le dhamma"
+  object: "le Kalinga, conquis en 261 av. J.-C. par l'empire maurya"
+  time: "-261"
+  time_precision: year
+  families: [evenement, acteur, lieu]
+  actors: ["Ashoka"]
+  places: ["Kalinga"]
+  groups: ["empire maurya"]
+  institutions: ["armée maurya"]
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-002"]
+  confidence: certain
+  status: validated
+  justification: "Conquête du Kalinga en 261 av. J.-C. documentée dans le corpus (dataset.js, in-maurya ; fixes.yaml, in-maurya) et par SRC-001 et SRC-002 (ACTOR-001 : « violence de la conquête de Kalinga (261 av. J.-C.) »). Le dhamma est un programme de gouvernement moral, non un pacifisme absolu ; la violence de la conquête est conservée. Aucune date hors de l'ère."
+  TODO: []
+
+- id: in-era1-droit-003
+  era_id: india-era-1
+  domain: "Droit & justice"
+  scale: national
+  subject: "Droit royal maurya (édits d'Ashoka et Arthashastra)"
+  predicate: "est documenté par des édits rupestres et sur piliers diffusant le dhamma, programme de gouvernement moral"
+  object: "les édits d'Ashoka et l'Arthashastra, dans l'empire maurya"
+  time: "-268/-232"
+  time_precision: interval
+  families: [normatif, institution, acteur]
+  actors: ["Ashoka"]
+  places: ["Pataliputra (Patna)", "empire maurya"]
+  groups: ["sujets de l'empire maurya"]
+  institutions: ["édits rupestres et sur piliers", "dhamma"]
+  normative: ["dhamma, programme de gouvernement moral", "édits d'Ashoka", "Arthashastra"]
+  memory: []
+  sources: ["SRC-001", "SRC-002"]
+  confidence: certain
+  status: validated
+  justification: "Cellule « partiel » de coverage-matrix.csv (ERA-1, Droit & justice, national) : « Les édits d'Ashoka et l'Arthashastra documentent un droit royal, sans fiche juridique dédiée ». Les édits figurent parmi les ressources d'ACTOR-001 (country-audit.yaml) ; SRC-001 et SRC-002 sont les synthèses de référence. Ancrage par le règne d'Ashoka (268-232 av. J.-C., ACTOR-001), sans dater précisément chaque édit ni l'Arthashastra ; aucune règle de droit inventée."
+  TODO: []
+
+- id: in-era1-econ-004
+  era_id: india-era-1
+  domain: "Économie & travail"
+  scale: transnational
+  subject: "Ports du Tamilakam (côte de Coromandel)"
+  predicate: "commercent avec Rome et l'Asie du Sud-Est"
+  object: "le commerce maritime tamil, attesté par la littérature sangam"
+  time: "-300/300"
+  time_precision: interval
+  families: [processus, lieu, groupe_social]
+  actors: []
+  places: ["Madurai", "Tamilakam", "côte de Coromandel"]
+  groups: ["marchands tamils"]
+  institutions: ["ports de la côte de Coromandel"]
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-002"]
+  confidence: probable
+  status: validated
+  justification: "PROP-003 (audits/india/proposals.yaml) : « Les ports de la côte de Coromandel commercent avec Rome et l'Asie du Sud-Est. » Confiance probable car les datations du corpus sangam sont débattues (PROP-003, confidence medium) ; SRC-001 et SRC-002. Aucun volume, prix ou chiffre commercial inventé."
+  TODO: []
+
+- id: in-era1-soc-005
+  era_id: india-era-1
+  domain: "Société & démographie"
+  scale: national
+  subject: "Cités de la civilisation de l'Indus"
+  predicate: "se développent comme des centres urbains planifiés avant la dé-urbanisation"
+  object: "Harappa et Mohenjo-daro, villes de la phase urbaine mature"
+  time: "-2600"
+  time_precision: year
+  families: [processus, lieu, groupe_social]
+  actors: []
+  places: ["Harappa", "Mohenjo-daro"]
+  groups: ["habitants des cités de l'Indus"]
+  institutions: ["cités planifiées de l'Indus"]
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-002"]
+  confidence: certain
+  status: validated
+  justification: "in-indus (dataset.js) : « Des cités planifiées et des réseaux d'irrigation caractérisent la civilisation de l'Indus » ; phase urbaine mature à partir de -2600, borne de l'ère (country-audit.yaml, start_rationale). PLACE-001 enregistre Mohenjo-daro comme ville, centre artisanal et carrefour fluvial. SRC-001, SRC-002. Aucun chiffre de population inventé."
+  TODO: []
+
+- id: in-era1-genre-006
+  era_id: india-era-1
+  domain: "Femmes, genre, sexualités"
+  scale: national
+  subject: "Poétesses de la littérature sangam"
+  predicate: "composent des poèmes d'amour et héroïques dans le Tamilakam"
+  object: "le corpus tamil, dont des femmes sont les auteures, à Madurai"
+  time: "-300/300"
+  time_precision: interval
+  families: [acteur, groupe_social]
+  actors: ["poétesses tamiles"]
+  places: ["Madurai", "Tamilakam"]
+  groups: ["femmes poètes tamiles"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-002"]
+  confidence: probable
+  status: validated
+  justification: "PROP-003 : « Des poètes tamils, dont des femmes, composent à Madurai et dans le Tamilakam un corpus de poésie amoureuse et héroïque. » Confiance probable car les datations du corpus sont débattues (PROP-003, confidence medium) ; l'omission OM-003 rappelle que les rôles de genre restent sous-documentés. Le corpus ne nomme pas ces femmes : elles sont désignées collectivement, sans invention de nom ni de biographie."
+  TODO: []
+
+- id: in-era1-relig-007
+  era_id: india-era-1
+  domain: "Religions & croyances"
+  scale: national
+  subject: "Corpus védique, Bouddha, Mahavira et dhamma d'Ashoka"
+  predicate: "fondent des traditions qui critiquent l'ordre brahmanique et essaiment en Asie"
+  object: "Rigveda, bouddhisme, jaïnisme et dhamma maurya"
+  time: "-1500/-400"
+  time_precision: interval
+  families: [processus, acteur, institution]
+  actors: ["Siddhartha Gautama", "Mahavira", "Ashoka", "poètes et prêtres védiques"]
+  places: ["Sapta Sindhu (Panjab)", "Magadha", "Kosala"]
+  groups: ["brahmanes", "ascètes", "moines bouddhistes"]
+  institutions: ["corpus védique", "sangha bouddhique", "dhamma"]
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-002"]
+  confidence: certain
+  status: validated
+  justification: "PROP-001 (corpus védique, Rigveda au Sapta Sindhu), PROP-002 (Bouddha et Mahavira au Magadha et au Kosala) et in-maurya (dhamma) dans dataset.js. SRC-001 et SRC-002. Les missions bouddhiques touchent surtout l'Asie du Sud et l'Asie centrale (correction in-maurya), sans « toute l'Asie ». Aucune date de naissance de Bouddha ni de Mahavira inventée ; les migrations indo-européennes, disputées, sont traitées dans la cellule Migrations."
+  TODO: []
+
+- id: in-era1-sci-008
+  era_id: india-era-1
+  domain: "Sciences, techniques & santé"
+  scale: national
+  subject: "Aryabhata et les mathématiques gupta"
+  predicate: "compose un traité d'astronomie en 499 et contribue au développement de la numération décimale"
+  object: "l'astronomie et les mathématiques de l'époque gupta"
+  time: "499"
+  time_precision: year
+  families: [acteur, processus, institution]
+  actors: ["Aryabhata"]
+  places: ["empire Gupta"]
+  groups: ["savants gupta"]
+  institutions: ["traité d'astronomie d'Aryabhata"]
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-002"]
+  confidence: certain
+  status: validated
+  justification: "in-gupta (dataset.js) et fixes.yaml : « Aryabhata compose son traité d'astronomie en 499 ; le zéro et la numération décimale se développent sur plusieurs siècles, sans être des inventions gupta. » SRC-001, SRC-002. CLAIM-006 précise que l'« âge d'or » est une construction historiographique, non une réalité naturalisée ; aucune attribution du zéro aux Gupta. L'omission OM-001 (préhistoire antérieure à -2600) confirme la borne de l'ère."
+  TODO: []
+
+- id: in-era1-arts-009
+  era_id: india-era-1
+  domain: "Arts & lettres"
+  scale: national
+  subject: "Arts gupta et littérature sangam"
+  predicate: "produisent des œuvres littéraires et artistiques, dont les peintures des grottes d'Ajanta"
+  object: "la poésie tamile et les arts de l'époque gupta"
+  time: "-300/499"
+  time_precision: interval
+  families: [processus, lieu, groupe_social]
+  actors: []
+  places: ["grottes d'Ajanta", "Madurai", "Tamilakam"]
+  groups: ["artistes et poètes"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-002"]
+  confidence: certain
+  status: validated
+  justification: "in-gupta (dataset.js : image « Peintures des grottes d'Ajanta », art gupta) et PROP-003 (littérature sangam). SRC-001 et SRC-002. L'omission OM-002 (écriture de l'Indus non déchiffrée, reason source_absent) est documentée et explique qu'aucun texte de l'Indus n'est cité. Intervalle -300/499 entièrement dans l'ère."
+  TODO: []
+
+- id: in-era1-env-010
+  era_id: india-era-1
+  domain: "Environnement & territoire"
+  scale: regional
+  subject: "Réseaux d'irrigation et cours d'eau de l'Indus"
+  predicate: "structurent l'urbanisation, tandis que climat, cours d'eau et commerce sont discutés comme causes de la dé-urbanisation"
+  object: "la dé-urbanisation de l'Indus entre 1900 et 1300 av. J.-C."
+  time: "-1900/-1300"
+  time_precision: interval
+  families: [processus, lieu]
+  actors: []
+  places: ["vallée de l'Indus", "Mohenjo-daro", "Harappa"]
+  groups: ["communautés agraires de l'Indus"]
+  institutions: ["réseaux d'irrigation de l'Indus"]
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-002"]
+  confidence: probable
+  status: validated
+  justification: "in-indus (dataset.js et fixes.yaml) : « réseaux d'irrigation », « sa dé-urbanisation s'étend entre 1900 et 1300 av. J.-C. », « le climat, les cours d'eau et le commerce figurent parmi les causes discutées ». Confiance probable car les causes sont discutées et la correction in-indus refuse l'idée d'une disparition brutale. SRC-001, SRC-002. Aucune catastrophe climatique datée précisément inventée."
+  TODO: []
+
+- id: in-era1-migr-011
+  era_id: india-era-1
+  domain: "Migrations & diasporas"
+  scale: transnational
+  subject: "Migrations indo-européennes vers le sous-continent"
+  predicate: "sont proposées pour expliquer le corpus védique, mais leur chronologie et leurs modalités restent discutées"
+  object: "la question des langues indo-européennes et du corpus védique"
+  time: "-1500/-1200"
+  time_precision: interval
+  families: [processus, groupe_social]
+  actors: []
+  places: ["Sapta Sindhu (Panjab)"]
+  groups: ["locuteurs indo-européens", "poètes védiques"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-002"]
+  confidence: disputé
+  status: validated
+  justification: "PROP-001 et CLAIM-002 (country-audit.yaml) : « Les migrations indo-européennes vers le sous-continent sont discutées à partir de la linguistique et de l'archéologie ; leur chronologie, leurs modalités et leur lien avec les Védas sont disputés. » Confidence disputé conforme à CLAIM-002 et à la règle 6 (le disputé reste disputé) ; deux sources indépendantes SRC-001 et SRC-002. Intervalle -1500/-1200 issu de PROP-001, sans trancher le débat."
+  TODO: []
+
+- id: in-era1-peuples-012
+  era_id: india-era-1
+  domain: "Peuples autochtones & minorités"
+  scale: national
+  subject: "Peuples forestiers et non étatiques de l'Inde ancienne"
+  predicate: "ne sont pas traités comme acteurs autonomes dans le corpus de cette ère"
+  object: "l'absence de fiche dédiée aux sociétés forestières avant 1800"
+  time: "-2600/1206"
+  time_precision: interval
+  families: [groupe_social, processus]
+  actors: []
+  places: ["forêts du sous-continent"]
+  groups: ["peuples forestiers", "chasseurs-cueilleurs et pasteurs"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["OM-004"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « partiel » de coverage-matrix.csv (ERA-1, Peuples autochtones & minorités) : « Les peuples forestiers et non étatiques ne sont pas traités comme acteurs autonomes. » Omission documentée OM-004 (reason not_yet_researched, status to_fill, evidence SRC-016/SRC-018) : la catégorie « Adivasi » est contemporaine et une fiche doit éviter la rétroprojection. OM-004 est enregistrée à l'échelle régionale ; le silence vaut ici pour la cellule nationale de la matrice. Silence explicite conformément aux règles 7 et 9 de POINT_METHODOLOGY.md : aucun acteur, nom ou date inventé ; seul l'intervalle de l'ère sert d'ancre."
+  TODO: []
+
+- id: in-era1-memoire-013
+  era_id: india-era-1
+  domain: "Mémoire & patrimoine"
+  scale: national
+  subject: "Mohenjo-daro comme objet archéologique et mémoriel"
+  predicate: "est un site dont le nom antique est inconnu et l'écriture non déchiffrée"
+  object: "la phase urbaine mature de l'Indus (Mohenjo-daro et Harappa)"
+  time: "-2600/-1900"
+  time_precision: interval
+  families: [lieu, memoire]
+  actors: []
+  places: ["Mohenjo-daro", "Harappa"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: ["site archéologique de Mohenjo-daro", "nom antique inconnu", "écriture non déchiffrée"]
+  sources: ["SRC-001", "SRC-002"]
+  confidence: certain
+  status: validated
+  justification: "Cellule « partiel » de coverage-matrix.csv (ERA-1, Mémoire & patrimoine) : « Harappa et Mohenjo-daro sont des objets archéologiques et mémoriels, sans fiche de patrimoine. » PLACE-001 (country-audit.yaml) enregistre le nom antique inconnu et l'écriture non déchiffrée ; CLAIM-001 (certain) confirme le non-déchiffrement ; OM-002 documente cette incertitude. SRC-001, SRC-002. Les désignations patrimoniales modernes (classements) sont hors de l'ère et ne sont pas décrites."
+  TODO: []
+
+- id: in-era1-circ-014
+  era_id: india-era-1
+  domain: "Circulations transnationales"
+  scale: transnational
+  subject: "Expédition maritime de Rajendra I vers Srivijaya"
+  predicate: "témoigne d'un pouvoir naval et fiscal de l'empire chola et connecte l'océan Indien"
+  object: "Srivijaya, dans l'Asie du Sud-Est maritime"
+  time: "1025"
+  time_precision: year
+  families: [evenement, acteur, lieu, processus]
+  actors: ["Rajendra I", "Rajaraja I"]
+  places: ["Thanjavur", "Srivijaya"]
+  groups: ["marins et marchands chola"]
+  institutions: ["empire chola", "temple de Brihadeeswarar"]
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-002"]
+  confidence: certain
+  status: validated
+  justification: "PROP-004 : « l'expédition maritime de 1025 vers Srivijaya témoigne d'un pouvoir naval et fiscal » ; PLACE-003 (country-audit.yaml) et PLACE-PROP-003 (proposals.yaml) font de Thanjavur la capitale chola. SRC-001, SRC-002. Date 1025 conforme à l'ère -2600/1206 ; la fin de l'empire chola (1279) est postérieure à la borne et n'est pas traitée ici. Les missions bouddhiques maurya et le commerce sangam complètent les circulations de l'ère."
+  TODO: []

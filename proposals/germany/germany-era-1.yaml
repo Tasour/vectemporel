@@ -1,0 +1,315 @@
+# Points de l'ère Allemagne / Reich médiéval (germany-era-1, 962 → 1517).
+# Sources : uniquement le registre audits/germany/source-register.csv (SRC-001) et les
+# omissions documentées audits/germany/omissions.yaml (OM-001 à OM-004). Aucune date,
+# source, DOI ou citation inventée. Aucun lien Grokipedia. Aucun contenu hors de l'ère.
+# Les faits datés sont ancrés dans src/data/dataset.js (de-otto) et dans
+# audits/germany/country-audit.yaml (PERIOD-1, ACTOR-PROP-001, CLAIM-001).
+# Un point par domaine de audits/germany/coverage-matrix.csv (ERA-1, 14 domaines).
+
+- id: de-era1-pol-001
+  era_id: germany-era-1
+  domain: "Politique & institutions"
+  scale: imperial
+  subject: "Otton Ier, roi de Germanie"
+  predicate: "est couronné empereur à Rome, scellant un Empire composite et non un État allemand"
+  object: "le couronnement impérial du 2 février 962"
+  time: "962"
+  time_precision: year
+  families: [evenement, acteur, institution]
+  actors: ["Otton Ier"]
+  places: ["Rome"]
+  groups: []
+  institutions: ["Empire (Saint-Empire)"]
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: certain
+  status: validated
+  justification: "Couronnement d'Otton Ier à Rome le 2 février 962, documenté dans le corpus (dataset.js, de-otto) et par SRC-001 (Reuter, Germany in the Early Middle Ages), qui cadre le consensus princier et épiscopal et la structure composite de l'Empire. proposals.yaml corrige le cadrage « Naissance du Saint-Empire » : ni État allemand ni titulature complète en 962 (CLAIM-001). Date 962 conforme à l'ère 962/1517."
+  TODO: []
+
+- id: de-era1-guer-002
+  era_id: germany-era-1
+  domain: "Guerres & diplomatie"
+  scale: imperial
+  subject: "Guerres ottoniennes, querelle des Investitures et expéditions impériales en Italie"
+  predicate: "ne font l'objet d'aucun repère daté dans le corpus"
+  object: "la matrice désigne la querelle des Investitures (1076–1122) comme fiche prioritaire"
+  time: "962/1517"
+  time_precision: interval
+  families: [processus, evenement]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["OM-001"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Guerres & diplomatie, impérial) : aucune entrée médiévale ; omission documentée OM-001 cite les guerres ottoniennes, la querelle des Investitures, les expéditions en Italie et les campagnes contre les Slaves, avec SRC-001 comme evidence_checked. Silence explicite conformément à la règle 7 de POINT_METHODOLOGY.md ; seule l'ancre de l'ère (962/1517) est utilisée, aucune date ni source inventée."
+  TODO: []
+
+- id: de-era1-droit-003
+  era_id: germany-era-1
+  domain: "Droit & justice"
+  scale: imperial
+  subject: "Droit impérial médiéval"
+  predicate: "n'est pas instrumenté dans le corpus pour cette ère"
+  object: "aucune entrée juridique entre 962 et 1517 ; la matrice renvoie à OM-005 pour l'ère suivante"
+  time: "962/1517"
+  time_precision: interval
+  families: [processus, normatif]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Droit & justice, impérial) : aucune entrée ; le droit impérial médiéval n'est pas instrumenté et aucun ID d'omission dédié n'existe dans omissions.yaml pour cette cellule (OM-005 concerne ERA-2). Silence explicitement documenté dans la matrice ; aucune date, source ou citation inventée."
+  TODO: []
+
+- id: de-era1-econ-004
+  era_id: germany-era-1
+  domain: "Économie & travail"
+  scale: regional
+  subject: "Économie agraire, essor urbain, Hanse, mines et commerce à longue distance"
+  predicate: "ne sont documentés par aucun repère dans le corpus"
+  object: "la Hanse et les villes d'Allemagne du Nord sont désignées comme angle mort majeur"
+  time: "962/1517"
+  time_precision: interval
+  families: [processus, groupe_social, lieu]
+  actors: []
+  places: ["villes d'Allemagne du Nord"]
+  groups: ["Hanse", "marchands et paysans médiévaux"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["OM-002"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Économie & travail, régional) : aucun repère économique médiéval ; omission documentée OM-002 cite l'économie agraire, l'essor urbain, la Hanse, les mines et le commerce à longue distance, avec SRC-001 comme evidence_checked. Silence explicite ; seule l'ancre de l'ère (962/1517) est utilisée, aucun chiffre ni source inventé."
+  TODO: []
+
+- id: de-era1-soc-005
+  era_id: germany-era-1
+  domain: "Société & démographie"
+  scale: imperial
+  subject: "Élite impériale et épiscopale du Reich ottonien"
+  predicate: "est le seul volet de la société documenté par le repère de 962"
+  object: "la société rurale et la démographie font défaut dans le corpus"
+  time: "962"
+  time_precision: year
+  families: [groupe_social, acteur, institution]
+  actors: ["Otton Ier"]
+  places: []
+  groups: ["princes", "évêques"]
+  institutions: ["Empire (Saint-Empire)", "réseau épiscopal"]
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "La matrice ERA-1 (Société & démographie, impérial, partiel) note que le repère de-otto ne documente que l'élite impériale. SRC-001 atteste le consensus princier et épiscopal sur lequel repose la royauté d'Otton Ier. Aucune donnée démographique ni chiffre de population n'est avancé : silence documenté pour le volet rural, ancre 962 conforme à l'ère."
+  TODO: []
+
+- id: de-era1-genre-006
+  era_id: germany-era-1
+  domain: "Femmes, genre, sexualités"
+  scale: national
+  subject: "Hildegarde de Bingen, femmes nobles et monastères féminins"
+  predicate: "ne font l'objet d'aucune entrée dans le corpus pour cette ère"
+  object: "les normes de genre médiévales et le travail des femmes ne sont pas documentés"
+  time: "962/1517"
+  time_precision: interval
+  families: [groupe_social, acteur, processus]
+  actors: []
+  places: []
+  groups: ["femmes nobles", "monastères féminins"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["OM-003"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Femmes, genre, sexualités, national) : aucune entrée ; omission documentée OM-003 nomme Hildegarde de Bingen, les femmes nobles, les monastères féminins, le travail des femmes et les normes de genre, avec SRC-001 comme evidence_checked. Silence explicite ; aucune date ni source inventée."
+  TODO: []
+
+- id: de-era1-relig-007
+  era_id: germany-era-1
+  domain: "Religions & croyances"
+  scale: imperial
+  subject: "Légitimation chrétienne du pouvoir impérial"
+  predicate: "est le seul volet religieux représenté par le repère de 962"
+  object: "la religion vécue et les dissidences font défaut dans le corpus"
+  time: "962"
+  time_precision: year
+  families: [institution, normatif]
+  actors: ["Otton Ier"]
+  places: ["Rome"]
+  groups: ["évêques"]
+  institutions: ["réseau épiscopal", "Église"]
+  normative: ["sacre impérial"]
+  memory: []
+  sources: ["SRC-001"]
+  confidence: certain
+  status: validated
+  justification: "La matrice ERA-1 (Religions & croyances, impérial, partiel) précise que seule la légitimation chrétienne du pouvoir est représentée, pas la religion vécue ni les dissidences. SRC-001 documente le réseau épiscopal et le legs carolingien comme ressources d'Otton Ier. Le point se limite à ce volet documenté ; ancre 962 conforme à l'ère."
+  TODO: []
+
+- id: de-era1-sci-008
+  era_id: germany-era-1
+  domain: "Sciences, techniques & santé"
+  scale: transnational
+  subject: "Imprimerie de Gutenberg, universités et astronomie"
+  predicate: "ne sont documentées par aucun repère dans le corpus"
+  object: "l'imprimerie vers 1450 est qualifiée de dette documentaire majeure"
+  time: "962/1517"
+  time_precision: interval
+  families: [processus, acteur]
+  actors: []
+  places: []
+  groups: []
+  institutions: ["universités médiévales"]
+  normative: []
+  memory: []
+  sources: ["OM-004"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Sciences, techniques & santé, transnational) : aucune entrée ; omission documentée OM-004 cite l'imprimerie de Gutenberg (vers 1450), les universités, l'astronomie et la circulation des savoirs, avec SRC-001 comme evidence_checked. Silence explicite ; aucune date précise ni source inventée, seule l'ancre de l'ère (962/1517) est utilisée."
+  TODO: []
+
+- id: de-era1-arts-009
+  era_id: germany-era-1
+  domain: "Arts & lettres"
+  scale: national
+  subject: "Art roman et art gothique"
+  predicate: "sont traités comme un processus, sans repère daté dans le corpus"
+  object: "les productions artistiques du Reich médiéval ne sont pas instrumentées"
+  time: "962/1517"
+  time_precision: interval
+  families: [processus]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Arts & lettres, national) : aucune entrée ; art roman et gothique non instrumentés. Omission documentée dans la matrice, aucun ID dédié n'existant dans omissions.yaml pour cette cellule. Aucune date, œuvre ou citation inventée ; ancre = intervalle de l'ère."
+  TODO: []
+
+- id: de-era1-env-010
+  era_id: germany-era-1
+  domain: "Environnement & territoire"
+  scale: regional
+  subject: "Paysage et territoire du Reich médiéval"
+  predicate: "ne sont documentés par aucune source environnementale dans le registre"
+  object: "les transformations environnementales de l'ère 962/1517 sont absentes du corpus"
+  time: "962/1517"
+  time_precision: interval
+  families: [processus, lieu]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Environnement & territoire, régional) : aucune entrée ; pas de source environnementale médiévale dans le registre. Omission documentée dans la matrice, sans ID dédié dans omissions.yaml. Aucune date ni source inventée ; ancre = intervalle de l'ère."
+  TODO: []
+
+- id: de-era1-migr-011
+  era_id: germany-era-1
+  domain: "Migrations & diasporas"
+  scale: transnational
+  subject: "Ostsiedlung et expulsions de Juifs"
+  predicate: "ne sont pas traitées dans le corpus pour cette ère"
+  object: "aucun repère migratoire médiéval n'est instrumenté"
+  time: "962/1517"
+  time_precision: interval
+  families: [processus, groupe_social]
+  actors: []
+  places: []
+  groups: ["colons de l'Ostsiedlung", "communautés juives"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Migrations & diasporas, transnational) : aucune entrée ; l'Ostsiedlung et les expulsions de Juifs ne sont pas traitées. Omission documentée dans la matrice, sans ID dédié dans omissions.yaml pour cette cellule. Silence explicite ; aucune date ni source inventée, ancre = intervalle de l'ère."
+  TODO: []
+
+- id: de-era1-peuples-012
+  era_id: germany-era-1
+  domain: "Peuples autochtones & minorités"
+  scale: national
+  subject: "Juifs, Slaves et Sorbs médiévaux"
+  predicate: "ne sont pas traités dans le corpus pour cette ère"
+  object: "aucune entrée sur les minorités de l'Empire entre 962 et 1517"
+  time: "962/1517"
+  time_precision: interval
+  families: [groupe_social]
+  actors: []
+  places: []
+  groups: ["Juifs", "Slaves", "Sorbs"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Peuples autochtones & minorités, national) : aucune entrée ; Juifs, Slaves et Sorbs médiévaux non traités. Omission documentée dans la matrice, sans ID dédié dans omissions.yaml. L'étiquette « autochtones » est employée avec la réserve de la matrice ; aucun fait ni source inventé, ancre = intervalle de l'ère."
+  TODO: []
+
+- id: de-era1-memoire-013
+  era_id: germany-era-1
+  domain: "Mémoire & patrimoine"
+  scale: national
+  subject: "962 comme lieu de mémoire impérial"
+  predicate: "ne fait l'objet d'aucune fiche mémorielle ni source dans le corpus"
+  object: "le repère de-otto fonctionne comme référence impériale sans instrument mémoriel dédié"
+  time: "962/1517"
+  time_precision: interval
+  families: [memoire]
+  actors: []
+  places: ["Rome"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Cellule partielle de coverage-matrix.csv (ERA-1, Mémoire & patrimoine, national) : 962 fonctionne comme lieu de mémoire impérial, mais sans fiche mémorielle ni source. ACTOR-PROP-001 note une figure fondatrice mobilisée par des récits nationaux postérieurs ; aucune commémoration datée n'est avancée ici, afin de ne pas introduire de contenu hors de l'ère. Ancre = intervalle 962/1517."
+  TODO: []
+
+- id: de-era1-circ-014
+  era_id: germany-era-1
+  domain: "Circulations transnationales"
+  scale: transnational
+  subject: "Couronnement d'Otton Ier à Rome (962)"
+  predicate: "implique une circulation entre la Germanie, l'Italie et Rome"
+  object: "le déplacement impérial et le réseau épiscopal, encore centrés sur l'Empire"
+  time: "962"
+  time_precision: year
+  families: [evenement, lieu, processus]
+  actors: ["Otton Ier"]
+  places: ["Rome", "Italie", "Germanie"]
+  groups: ["évêques"]
+  institutions: ["réseau épiscopal", "Empire (Saint-Empire)"]
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "La matrice ERA-1 (Circulations transnationales, transnational, partiel) note que le couronnement à Rome implique une circulation italienne mais que le repère reste centré sur l'Empire. SRC-001 documente le déplacement d'Otton Ier à Rome et son réseau épiscopal. Aucun échange commercial ou culturel précis n'est inventé ; ancre 962 conforme à l'ère."
+  TODO: []

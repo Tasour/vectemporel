@@ -17,7 +17,7 @@ const page = await browser.newPage();
 await page.setViewport({ width: 1440, height: 900 });
 page.on('pageerror', (error) => errors.push(error.message));
 page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
-await page.goto(BASE, { waitUntil: 'networkidle0' });
+await page.goto(BASE, { waitUntil: 'load', timeout: 60000 });
 await new Promise((resolve) => setTimeout(resolve, 1200));
 
 check('accueil = globe', await page.evaluate(() => window.VATLAS.getState().view === 'globe'));
@@ -47,6 +47,9 @@ check('marqueurs présents', (await page.$$('.geo-marker')).length > 0);
 await page.keyboard.press('5');
 await new Promise((resolve) => setTimeout(resolve, 300));
 check('5 = constellation', await page.evaluate(() => window.VATLAS.getState().view === 'constellation'));
+await page.keyboard.press('6');
+await new Promise((resolve) => setTimeout(resolve, 300));
+check('6 = points', await page.evaluate(() => window.VATLAS.getState().view === 'points'));
 check('orbites figées', await page.evaluate(() => !document.querySelector('.constellation-field')?.querySelector('[style*="animation"]')));
 await page.keyboard.press('1');
 await new Promise((resolve) => setTimeout(resolve, 300));

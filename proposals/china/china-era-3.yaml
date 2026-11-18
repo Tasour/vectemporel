@@ -1,0 +1,316 @@
+# Vectemporel — points validés pour china-era-3 (République et révolutions, 1912-1949).
+# Un point par domaine de audits/china/coverage-matrix.csv (ERA-3), avec le domaine exact,
+# virgules comprises. Ancrage : audits/china/proposals.yaml (PROP-001 à PROP-009),
+# country-audit.yaml (CLAIM-004 à CLAIM-008, ACTOR-001, ACTOR-006, ACTOR-012, PLACE-002),
+# omissions.yaml (OM-001, OM-002, OM-003) et source-register.csv (SRC-001 à SRC-005, SRC-011, SRC-017).
+# Faits exposés de façon factuelle et sobre : aucun détail graphique, aucune date, source,
+# titre ou chiffre non attesté dans le dossier d'audit, aucun lien externe ni lien Grokipedia,
+# aucun fait hors de l'ère 1912-1949.
+
+- id: cn-era3-pol-001
+  era_id: china-era-3
+  domain: "Politique & institutions"
+  scale: national
+  subject: "Proclamation de la République de Chine"
+  predicate: "est proclamée le 1er janvier 1912 puis obtient l'abdication du dernier empereur Qing"
+  object: "Sun Yat-sen proclame la République de Chine à Nanjing le 1er janvier 1912 et en prend la présidence provisoire. L'abdication de Puyi, le 12 février 1912, met fin à la dynastie Qing ; Yuan Shikai est l'autre acteur de cette transition selon le dossier d'audit."
+  time: "1912"
+  time_precision: year
+  families: [evenement, acteur, institution]
+  actors: ["Sun Yat-sen", "Puyi", "Yuan Shikai"]
+  places: ["Nanjing"]
+  groups: []
+  institutions: ["République de Chine"]
+  normative: []
+  memory: []
+  sources: ["SRC-002", "SRC-001"]
+  confidence: certain
+  status: validated
+  justification: "PROP-001 (proposals.yaml) et CLAIM-004 (country-audit.yaml), avec SRC-002 et SRC-001. La cellule ERA-3 / Politique & institutions de la matrice renvoie au repère corrigé cn-1911, qui distingue la proclamation du 1er janvier 1912 de l'abdication du 12 février 1912. ACTOR-001 enregistre Sun Yat-sen comme président provisoire en 1912 et ACTOR-006 associe Yuan Shikai à l'ère. Aucun événement antérieur à 1912 n'est traité comme point dans ce fichier."
+  TODO: []
+
+- id: cn-era3-gue-001
+  era_id: china-era-3
+  domain: "Guerres & diplomatie"
+  scale: national
+  subject: "Guerre sino-japonaise (1931-1945)"
+  predicate: "commence par l'incident de Mukden et s'achève par la capitulation du Japon"
+  object: "Le 18 septembre 1931, l'armée japonaise du Guandong provoque l'incident de Mukden et occupe la Mandchourie ; le Mandchoukouo est proclamé en 1932. La guerre totale débute en juillet 1937 et touche Shanghai, Nanjing et Chongqing ; le Japon capitule en 1945."
+  time: "1931-1945"
+  time_precision: interval
+  families: [evenement, processus]
+  actors: ["Armée japonaise du Guandong", "Gouvernement nationaliste"]
+  places: ["Mukden", "Mandchourie", "Shanghai", "Nanjing", "Chongqing"]
+  groups: []
+  institutions: ["Mandchoukouo", "Gouvernement nationaliste"]
+  normative: []
+  memory: []
+  sources: ["SRC-004", "SRC-002"]
+  confidence: certain
+  status: validated
+  justification: "PROP-006 (proposals.yaml), phases datées 1931, 1932, 1937 et 1945, avec SRC-004 et SRC-002 ; PROP-008 et PROP-009 en sont des épisodes traités dans leurs propres domaines. Aucun bilan humain chiffré n'est repris dans ce point : le massacre de Nanjing fait l'objet de cn-era3-mem-001 et la crue de 1938 de cn-era3-env-001."
+  TODO: []
+
+- id: cn-era3-dro-001
+  era_id: china-era-3
+  domain: "Droit & justice"
+  scale: national
+  subject: "Droit et justice de la République (1912-1949)"
+  predicate: "sont signalés dans la matrice comme rattachés à la séquence républicaine, sans fiche dédiée"
+  object: "La cellule Droit & justice de l'ère 1912-1949 indique que l'ordre constitutionnel républicain est abordé via la proposition sur la République de 1912, mais que le droit républicain n'a pas de fiche propre dans le corpus audité."
+  time: "1912-1949"
+  time_precision: interval
+  families: [repere_normatif, institution]
+  actors: []
+  places: ["Nanjing"]
+  groups: []
+  institutions: ["République de Chine"]
+  normative: ["ordre constitutionnel républicain de 1912"]
+  memory: []
+  sources: ["SRC-002", "SRC-001"]
+  confidence: certain
+  status: validated
+  justification: "Cellule ERA-3 / Droit & justice de coverage-matrix.csv et PROP-001 (proposals.yaml) sourcé SRC-002 et SRC-001. Aucun texte de loi daté, aucun article de constitution et aucune décision de justice n'étant explicitement référencés dans le registre, ils ne sont pas introduits ici : le silence est documenté plutôt que comblé par une affirmation non sourcée."
+  TODO: []
+
+- id: cn-era3-eco-001
+  era_id: china-era-3
+  domain: "Économie & travail"
+  scale: national
+  subject: "Économie et travail sous la République (1912-1949)"
+  predicate: "constituent une omission documentée du corpus audité"
+  object: "L'omission OM-001 recense l'absence de fiche sur l'industrie, la finance, l'inflation, les ports ouverts, le travail ouvrier et l'économie de guerre pour la période 1912-1949. Les synthèses de Zarrow et Spence y sont citées comme points d'appui, sans fiche rédigée."
+  time: "1912-1949"
+  time_precision: interval
+  families: [processus]
+  actors: []
+  places: []
+  groups: ["Ouvriers"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["OM-001", "SRC-002", "SRC-001"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule ERA-3 / Économie & travail de la matrice marquée « vide non traité » et omission OM-001 de omissions.yaml (statut to_fill, evidence_checked SRC-002 et SRC-001). Aucune réforme monétaire, aucun établissement bancaire et aucune donnée de prix n'étant nommés dans le registre, ils ne sont pas avancés."
+  TODO: []
+
+- id: cn-era3-soc-001
+  era_id: china-era-3
+  domain: "Société & démographie"
+  scale: national
+  subject: "Mouvement du 4 Mai"
+  predicate: "transforme une manifestation étudiante en mouvement national"
+  object: "Le 4 mai 1919, des étudiants de Pékin manifestent contre le transfert au Japon des concessions allemandes du Shandong décidé à Versailles. Le mouvement gagne les villes, les ouvriers et les femmes et devient un moment fondateur du nationalisme chinois."
+  time: "1919"
+  time_precision: year
+  families: [evenement, groupe, acteur]
+  actors: ["Étudiants de Pékin"]
+  places: ["Pékin"]
+  groups: ["Étudiants", "Ouvriers", "Femmes"]
+  institutions: []
+  normative: ["traité de Versailles"]
+  memory: []
+  sources: ["SRC-003", "SRC-001"]
+  confidence: certain
+  status: validated
+  justification: "PROP-003 et CLAIM-005 (SRC-003, SRC-001), ainsi que le repère cn-prop-001 du dataset.js. Traitement sobre : le motif de la manifestation et son extension aux groupes sociaux sont seuls retenus. Aucune université, aucun nom d'étudiant et aucune date de signature du traité non attestés dans le dossier ne sont introduits."
+  TODO: []
+
+- id: cn-era3-fem-001
+  era_id: china-era-3
+  domain: "Femmes, genre, sexualités"
+  scale: national
+  subject: "Participation des femmes à la Nouvelle Culture et au Mouvement du 4 Mai"
+  predicate: "associe des femmes intellectuelles aux débats d'idées et aux manifestations"
+  object: "La revue Nouvelle Jeunesse et le Mouvement du 4 Mai associent des femmes intellectuelles aux débats et aux manifestations de 1919. L'omission OM-002 précise que le suffrage, le mariage et le statut légal des femmes restent sans fiche dédiée."
+  time: "1919"
+  time_precision: year
+  families: [processus, groupe]
+  actors: []
+  places: ["Pékin"]
+  groups: ["Femmes intellectuelles", "Étudiantes"]
+  institutions: ["Revue Nouvelle Jeunesse"]
+  normative: []
+  memory: []
+  sources: ["SRC-003", "SRC-011", "OM-002"]
+  confidence: certain
+  status: validated
+  justification: "PROP-002 (rationale : « femmes intellectuelles ») et PROP-003 (extension du mouvement aux femmes), avec SRC-003 ; cn-prop-001 du dataset.js mentionne également les femmes. OM-002 (evidence_checked SRC-003 et SRC-011) documente l'absence de fiche sur le suffrage, le mariage et le travail féminin : aucun droit acquis n'est affirmé."
+  TODO: []
+
+- id: cn-era3-rel-001
+  era_id: china-era-3
+  domain: "Religions & croyances"
+  scale: national
+  subject: "Critique du confucianisme dans la Nouvelle Culture (1915-1923)"
+  predicate: "constitue le principal fait religieux documenté de l'ère"
+  object: "La matrice rattache ce domaine à la critique du confucianisme menée dans le sillon de la revue Nouvelle Jeunesse à partir de 1915. Les missions chrétiennes, l'islam et le bouddhisme n'ont pas de fiche pour cette ère."
+  time: "1915-1923"
+  time_precision: interval
+  families: [processus, acteur]
+  actors: ["Chen Duxiu", "Hu Shi", "Lu Xun"]
+  places: []
+  groups: ["Intellectuels"]
+  institutions: ["Revue Nouvelle Jeunesse"]
+  normative: []
+  memory: []
+  sources: ["SRC-003", "SRC-001"]
+  confidence: certain
+  status: validated
+  justification: "Cellule ERA-3 / Religions & croyances de la matrice (« La critique du confucianisme est au cœur de la Nouvelle Culture ; missions, islam et bouddhisme absents ») et PROP-002, sourcé SRC-003 et SRC-001. Aucune campagne anti-chrétienne datée n'est introduite, faute de référence explicite dans le registre."
+  TODO: []
+
+- id: cn-era3-sci-001
+  era_id: china-era-3
+  domain: "Sciences, techniques & santé"
+  scale: national
+  subject: "Slogan « science et démocratie » dans la Nouvelle Culture"
+  predicate: "est le seul repère scientifique enregistré pour l'ère"
+  object: "La matrice rattache le domaine Sciences, techniques & santé de 1912-1949 au slogan « science et démocratie » diffusé par la revue Nouvelle Jeunesse à partir de 1915. Les institutions scientifiques n'ont pas de fiche dédiée."
+  time: "1915-1923"
+  time_precision: interval
+  families: [processus, acteur]
+  actors: ["Chen Duxiu", "Hu Shi", "Lu Xun"]
+  places: []
+  groups: ["Intellectuels"]
+  institutions: ["Revue Nouvelle Jeunesse"]
+  normative: []
+  memory: []
+  sources: ["SRC-003", "SRC-001"]
+  confidence: certain
+  status: validated
+  justification: "Cellule ERA-3 / Sciences, techniques & santé de la matrice et PROP-002 (sous-titre « Nouvelle Jeunesse, langue vernaculaire, science et démocratie », tag sciences), sourcé SRC-003 et SRC-001. Aucune société savante, aucune publication périodique spécialisée et aucune invention technique non nommées dans le registre ne sont avancées."
+  TODO: []
+
+- id: cn-era3-art-001
+  era_id: china-era-3
+  domain: "Arts & lettres"
+  scale: national
+  subject: "Littérature, revues et débats intellectuels de la Nouvelle Culture"
+  predicate: "font de la langue vernaculaire et du débat d'idées un enjeu public"
+  object: "La matrice rattache ce domaine à la littérature, aux revues et aux débats intellectuels de la Nouvelle Culture et du 4 Mai. Chen Duxiu, Hu Shi et Lu Xun y sont associés ; le cinéma et la peinture n'ont pas de fiche pour cette ère."
+  time: "1915-1923"
+  time_precision: interval
+  families: [processus, acteur]
+  actors: ["Chen Duxiu", "Hu Shi", "Lu Xun"]
+  places: []
+  groups: ["Intellectuels", "Écrivains"]
+  institutions: ["Revue Nouvelle Jeunesse"]
+  normative: []
+  memory: []
+  sources: ["SRC-003", "SRC-001"]
+  confidence: certain
+  status: validated
+  justification: "Cellule ERA-3 / Arts & lettres de la matrice et PROP-002, sourcé SRC-003 et SRC-001. Aucun titre d'œuvre et aucune année de publication non attestés dans le dossier ne sont introduits ; le point porte sur les revues et les débats, non sur un jugement littéraire."
+  TODO: []
+
+- id: cn-era3-env-001
+  era_id: china-era-3
+  domain: "Environnement & territoire"
+  scale: national
+  subject: "Crue du fleuve Jaune de 1938 (Huayuankou)"
+  predicate: "résulte de la destruction des digues et touche trois provinces"
+  object: "En juin 1938, l'armée nationaliste détruit les digues de Huayuankou, dans le Henan, pour ralentir l'avance japonaise. La crue affecte le Henan, l'Anhui et le Jiangsu ; les estimations du bilan humain varient et sont qualifiées de « probables » dans l'audit."
+  time: "1938"
+  time_precision: year
+  families: [evenement, processus, groupe]
+  actors: ["Armée nationaliste", "Armée japonaise"]
+  places: ["Huayuankou", "Henan", "Anhui", "Jiangsu"]
+  groups: ["Déplacés"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-017", "SRC-004"]
+  confidence: certain
+  status: validated
+  justification: "PROP-009 (SRC-017, SRC-004) et CLAIM-008 de country-audit.yaml : la destruction des digues et les provinces touchées sont documentées, tandis que le bilan humain y est qualifié « probable ». En conséquence, aucun chiffre de mortalité n'est repris comme fait certain dans ce point."
+  TODO: []
+
+- id: cn-era3-mig-001
+  era_id: china-era-3
+  domain: "Migrations & diasporas"
+  scale: national
+  subject: "Déplacements de population pendant la guerre et la crue de 1938"
+  predicate: "sont évoqués dans les propositions sans faire l'objet d'une fiche de migration dédiée"
+  object: "Les propositions sur la guerre sino-japonaise et la crue du fleuve Jaune de 1938 mentionnent des millions de déplacés. La cellule Migrations & diasporas de l'ère 1912-1949 reste « vide non traité » : aucun repère sur les migrants de Shanghai, les Chinois d'outre-mer ou les réfugiés de guerre n'y est enregistré."
+  time: "1912-1949"
+  time_precision: interval
+  families: [processus, groupe]
+  actors: []
+  places: ["Shanghai"]
+  groups: ["Déplacés", "Réfugiés de guerre"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-004", "SRC-017"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule ERA-3 / Migrations & diasporas de la matrice marquée « vide non traité » et PROP-006, PROP-009 (SRC-004, SRC-017) pour les déplacements mentionnés. omissions.yaml n'enregistre aucune omission pour ce domaine et cette ère : silence explicite, sans ID d'omission à citer, conformément à la règle 7 de POINT_METHODOLOGY.md."
+  TODO: []
+
+- id: cn-era3-min-001
+  era_id: china-era-3
+  domain: "Peuples autochtones & minorités"
+  scale: national
+  subject: "Peuples minoritaires et régions frontalières sous la République (1912-1949)"
+  predicate: "sont signalés comme angle mort, la Longue Marche traversant des régions minoritaires"
+  object: "La matrice rattache ce domaine au passage de la Longue Marche (PROP-007) dans des régions minoritaires. L'omission OM-003 recense l'absence de fiche sur le Tibet, le Xinjiang, la Mongolie-Intérieure et le Guangxi zhuang pour la période républicaine, ainsi que sur les politiques de frontière du KMT."
+  time: "1912-1949"
+  time_precision: interval
+  families: [processus, groupe, lieu]
+  actors: []
+  places: ["Tibet", "Xinjiang", "Mongolie-Intérieure", "Guangxi"]
+  groups: ["Tibétains", "Ouïghours", "Mongols", "Zhuang"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["OM-003", "SRC-006", "SRC-001"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule ERA-3 / Peuples autochtones & minorités de la matrice (PROP-007, sourcé SRC-006 et SRC-001) et omission OM-003 de omissions.yaml (evidence_checked SRC-015, SRC-016, SRC-020). Le point documente l'angle mort sans attribuer de politique ou de chiffre non sourcé à ces populations."
+  TODO: []
+
+- id: cn-era3-mem-001
+  era_id: china-era-3
+  domain: "Mémoire & patrimoine"
+  scale: national
+  subject: "Massacre de Nanjing et ses mémoires disputées"
+  predicate: "donne lieu à des récits et des commémorations contradictoires"
+  object: "Après la prise de Nanjing en décembre 1937, les forces japonaises commettent des violences de masse pendant plusieurs semaines. Le bilan humain reste disputé : le tribunal militaire international de Tokyo retient environ 200 000 morts, tandis que d'autres estimations varient. La mémoire de l'événement est disputée entre historiographies chinoise, japonaise et occidentale."
+  time: "1937-1938"
+  time_precision: interval
+  families: [evenement, memoire, groupe]
+  actors: ["Armée japonaise"]
+  places: ["Nanjing"]
+  groups: ["Population civile de Nanjing"]
+  institutions: ["Tribunal militaire international pour l'Extrême-Orient (Tokyo)"]
+  normative: []
+  memory: ["Mémoire du massacre de Nanjing", "Procès de Tokyo"]
+  sources: ["SRC-005", "SRC-004"]
+  confidence: disputé
+  status: validated
+  justification: "PROP-008 (SRC-005, SRC-004), CLAIM-007 de country-audit.yaml qualifié « disputed » et PLACE-002 (contestations : « chiffres et qualification disputés entre historiographies chinoise, japonaise et occidentale »). Le désaccord sur le bilan est maintenu comme tel, sans chiffre unique présenté comme consensus et sans description graphique."
+  TODO: []
+
+- id: cn-era3-cir-001
+  era_id: china-era-3
+  domain: "Circulations transnationales"
+  scale: transnational
+  subject: "Fondation du Parti communiste chinois avec l'appui du Komintern"
+  predicate: "relie la Chine au réseau communiste international"
+  object: "En juillet 1921, le premier congrès du Parti communiste chinois se tient à Shanghai avec l'aide du Komintern. Le nombre exact de participants et le lieu de clôture varient selon les récits ; le parti adopte une organisation centralisée et s'implante dans les milieux ouvriers et intellectuels."
+  time: "1921"
+  time_precision: year
+  families: [evenement, institution, acteur]
+  actors: ["Komintern", "Délégués au 1er congrès du PCC"]
+  places: ["Shanghai"]
+  groups: ["Militants ouvriers", "Intellectuels"]
+  institutions: ["Parti communiste chinois", "Komintern"]
+  normative: []
+  memory: []
+  sources: ["SRC-002", "SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "PROP-004 et ACTOR-012 (Komintern, ERA-3), sourcés SRC-002 et SRC-001. CLAIM-006 qualifie la fondation de « probable » et signale la variation sur le nombre de participants et le lieu de clôture : la certitude est alignée sur ce niveau, et le lieu de clôture n'est pas fixé dans ce point."
+  TODO: []

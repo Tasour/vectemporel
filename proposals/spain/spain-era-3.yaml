@@ -1,0 +1,315 @@
+# Points de l'ère Espagne / Révolution libérale et nation en crise (spain-era-3, 1808 → 1936).
+# Sources : uniquement le registre audits/spain/source-register.csv (SRC-009 à SRC-016).
+# Aucune date, source, DOI ou citation inventée. Aucun lien Grokipedia. Aucun contenu
+# hors de l'ère : la guerre civile (1936-1939) et le franquisme relèvent de spain-era-4
+# et ne sont pas traités comme points ici.
+# Faits ancrés dans coverage-matrix.csv (ERA-3), country-audit.yaml et proposals.yaml
+# (PROP-010 à PROP-013) du dossier audits/spain, complétés par les synthèses du registre.
+
+- id: es-era3-pol-001
+  era_id: spain-era-3
+  domain: "Politique & institutions"
+  scale: national
+  subject: "Seconde République espagnole"
+  predicate: "est proclamée le 14 avril 1931, à la suite des élections municipales d'avril, et met fin à la monarchie d'Alphonse XIII"
+  object: "le régime politique de l'Espagne, remplacé par un gouvernement provisoire républicain"
+  time: "1931-04-14"
+  time_precision: day
+  families: [evenement, acteur, institution]
+  actors: ["Alphonse XIII", "Niceto Alcalá-Zamora"]
+  places: ["Madrid"]
+  groups: ["républicains"]
+  institutions: ["Gouvernement provisoire de la République", "Cortès constituantes"]
+  normative: []
+  memory: []
+  sources: ["SRC-013", "SRC-011"]
+  confidence: certain
+  status: validated
+  justification: "Proclamation du 14 avril 1931 après les élections municipales du 12 avril, documentée par SRC-013 (Casanova, The Spanish Republic and Civil War) et SRC-011 (Radcliff, Modern Spain: 1808 to the Present) ; repère politique central de la cellule « Politique & institutions » d'ERA-3. Aucune date ni nom de ministre inventé."
+  TODO: []
+
+- id: es-era3-guer-002
+  era_id: spain-era-3
+  domain: "Guerres & diplomatie"
+  scale: national
+  subject: "Guerre d'indépendance espagnole"
+  predicate: "oppose de 1808 à 1814 les juntes et l'armée espagnoles, alliées au Portugal et au Royaume-Uni, aux troupes napoléoniennes"
+  object: "l'occupation de la péninsule Ibérique par les forces françaises"
+  time: "1808/1814"
+  time_precision: interval
+  families: [evenement, acteur, institution, lieu]
+  actors: ["Napoléon Ier"]
+  places: ["Madrid", "Cadix"]
+  groups: ["juntes provinciales", "guérilleros espagnols"]
+  institutions: ["Junte centrale suprême", "armée espagnole"]
+  normative: []
+  memory: []
+  sources: ["SRC-011"]
+  confidence: certain
+  status: validated
+  justification: "Guerre d'indépendance (1808-1814) et occupation napoléonienne ancrées dans SRC-011 (Radcliff), synthèse de référence de la période 1808-2016. Les deux bornes sont incluses dans l'ère ; aucun épisode de la guerre civile (postérieur à 1936) n'est introduit."
+  TODO: []
+
+- id: es-era3-droit-003
+  era_id: spain-era-3
+  domain: "Droit & justice"
+  scale: national
+  subject: "Constitution de Cadix"
+  predicate: "est adoptée le 19 mars 1812 par les Cortès réunies à Cadix, établissant la souveraineté nationale et une monarchie constitutionnelle"
+  object: "l'ordre juridique de la monarchie espagnole en guerre"
+  time: "1812-03-19"
+  time_precision: day
+  families: [evenement, normatif, institution, lieu]
+  actors: []
+  places: ["Cadix"]
+  groups: ["députés des Cortès de Cadix"]
+  institutions: ["Cortès de Cadix"]
+  normative: ["Constitution politique de la monarchie espagnole du 19 mars 1812"]
+  memory: []
+  sources: ["SRC-011"]
+  confidence: certain
+  status: validated
+  justification: "Constitution de 1812 ancrée dans la cellule « Droit & justice » d'ERA-3 de coverage-matrix.csv et dans SRC-011 (Radcliff). Date précise et titre de texte conservés ; aucun article ni contenu normatif non vérifié n'est avancé."
+  TODO: []
+
+- id: es-era3-eco-004
+  era_id: spain-era-3
+  domain: "Économie & travail"
+  scale: imperial
+  subject: "Abolition de l'esclavage dans les colonies espagnoles"
+  predicate: "est décidée à Porto Rico en 1873 puis à Cuba en 1886, mettant fin à un pilier de l'économie sucrière coloniale"
+  object: "le travail forcé dans les possessions espagnoles des Caraïbes"
+  time: "1873/1886"
+  time_precision: interval
+  families: [processus, normatif, groupe_social, lieu]
+  actors: []
+  places: ["Cuba", "Porto Rico"]
+  groups: ["esclaves", "colons sucriers", "abolitionnistes"]
+  institutions: ["Cortès"]
+  normative: ["abolition de l'esclavage à Porto Rico (1873)", "abolition de l'esclavage à Cuba (1886)"]
+  memory: []
+  sources: ["SRC-010", "SRC-011"]
+  confidence: certain
+  status: validated
+  justification: "Abolition à Porto Rico en 1873 et à Cuba en 1886 : PROP-010 et cellule « Économie & travail » d'ERA-3 (coverage-matrix.csv), SRC-011 (Radcliff) et SRC-010 (Tone, War and Genocide in Cuba, 1895-1898). Aucun effectif chiffré ni nom d'abolitionniste non attesté n'est ajouté."
+  TODO: []
+
+- id: es-era3-soc-005
+  era_id: spain-era-3
+  domain: "Société & démographie"
+  scale: national
+  subject: "Réforme agraire de la Seconde République"
+  predicate: "est votée par les Cortès en 1932 pour redistribuer des terres aux paysans pauvres, sans résoudre pleinement la question agraire"
+  object: "les campagnes espagnoles et les rapports entre paysans sans terre et grands propriétaires"
+  time: "1932"
+  time_precision: year
+  families: [evenement, normatif, groupe_social, institution]
+  actors: []
+  places: ["Espagne rurale"]
+  groups: ["paysans sans terre", "grands propriétaires fonciers"]
+  institutions: ["Cortès constituantes", "Institut de la réforme agraire"]
+  normative: ["loi de réforme agraire de 1932"]
+  memory: []
+  sources: ["SRC-013", "SRC-011"]
+  confidence: certain
+  status: validated
+  justification: "Loi de réforme agraire de 1932 et limites de son application documentées par SRC-013 (Casanova) et SRC-011 (Radcliff), dont la synthèse couvre la société et les réformes de la République. Aucune surface redistribuée ni nombre de bénéficiaires inventé."
+  TODO: []
+
+- id: es-era3-genre-006
+  era_id: spain-era-3
+  domain: "Femmes, genre, sexualités"
+  scale: national
+  subject: "Suffrage féminin en Espagne"
+  predicate: "est adopté par les Cortès constituantes le 1er octobre 1931, au terme d'un débat auquel Clara Campoamor prend une part décisive"
+  object: "le droit de vote des femmes espagnoles, inscrit dans la Constitution de 1931"
+  time: "1931-10-01"
+  time_precision: day
+  families: [evenement, acteur, normatif, groupe_social]
+  actors: ["Clara Campoamor"]
+  places: ["Madrid"]
+  groups: ["femmes espagnoles"]
+  institutions: ["Cortès constituantes"]
+  normative: ["suffrage féminin inscrit dans la Constitution de 1931"]
+  memory: []
+  sources: ["SRC-013", "SRC-011"]
+  confidence: certain
+  status: validated
+  justification: "Vote du 1er octobre 1931 et rôle de Clara Campoamor : PROP-012, cellule « Femmes, genre, sexualités » d'ERA-3 (coverage-matrix.csv), SRC-013 (Casanova) et SRC-011 (Radcliff). Aucun effectif ni contre-argument partisan non documenté n'est avancé."
+  TODO: []
+
+- id: es-era3-relig-007
+  era_id: spain-era-3
+  domain: "Religions & croyances"
+  scale: national
+  subject: "Régime de laïcité de la Seconde République"
+  predicate: "est instauré par la Constitution de 1931, qui sépare l'Église de l'État et autorise le divorce et le mariage civil, au prix d'un conflit avec les catholiques"
+  object: "les rapports entre l'Église catholique et l'État espagnol"
+  time: "1931"
+  time_precision: year
+  families: [processus, normatif, institution, groupe_social]
+  actors: []
+  places: ["Madrid"]
+  groups: ["catholiques espagnols", "républicains anticléricaux"]
+  institutions: ["Église catholique", "Cortès constituantes"]
+  normative: ["séparation de l'Église et de l'État dans la Constitution de 1931"]
+  memory: []
+  sources: ["SRC-011", "SRC-013"]
+  confidence: certain
+  status: validated
+  justification: "Séparation Église-État et mesures laïques de la Constitution de 1931, cellule « Religions & croyances » d'ERA-3 et SRC-011 (Radcliff), complété par SRC-013 (Casanova) pour les conflits politiques de la République. Aucun épisode de violence religieuse postérieur à 1936 n'est inclus."
+  TODO: []
+
+- id: es-era3-sci-008
+  era_id: spain-era-3
+  domain: "Sciences, techniques & santé"
+  scale: national
+  subject: "Politique éducative de la Seconde République"
+  predicate: "engage une réforme de l'instruction publique et des missions éducatives en milieu rural à partir de 1931"
+  object: "l'accès à l'instruction des populations scolaires espagnoles"
+  time: "1931/1936"
+  time_precision: interval
+  families: [processus, institution, groupe_social]
+  actors: []
+  places: ["Espagne rurale"]
+  groups: ["enseignants", "enfants scolarisés"]
+  institutions: ["Ministère de l'Instruction publique"]
+  normative: []
+  memory: []
+  sources: ["SRC-011"]
+  confidence: certain
+  status: validated
+  justification: "Réforme de l'instruction et missions éducatives de la République documentées dans la synthèse SRC-011 (Radcliff), qui couvre la période 1808-2016 et la dimension sociale. La matrice signalait une cellule sans source spécialisée : aucune donnée chiffrée, aucun nom de savant ni titre d'ouvrage n'est avancé au-delà de cette synthèse."
+  TODO: []
+
+- id: es-era3-arts-009
+  era_id: spain-era-3
+  domain: "Arts & lettres"
+  scale: national
+  subject: "Génération de 98"
+  predicate: "émerge comme courant littéraire et intellectuel de jeunes écrivains espagnols marqués par la défaite de 1898"
+  object: "la recherche d'une identité nationale dans la littérature et la pensée espagnoles"
+  time: "1898"
+  time_precision: year
+  families: [groupe_social, processus, acteur]
+  actors: ["Miguel de Unamuno", "Azorín", "Ramón María del Valle-Inclán"]
+  places: ["Madrid"]
+  groups: ["écrivains de la génération de 98"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-011"]
+  confidence: certain
+  status: validated
+  justification: "Lien entre le désastre de 1898 et la génération de 98, cellule « Arts & lettres » d'ERA-3 de coverage-matrix.csv et SRC-011 (Radcliff). Les noms d'écrivains sont ceux canoniquement rattachés au courant ; aucun titre d'œuvre ni date de publication non vérifiée n'est ajouté."
+  TODO: []
+
+- id: es-era3-env-010
+  era_id: spain-era-3
+  domain: "Environnement & territoire"
+  scale: regional
+  subject: "Latifundios d'Andalousie"
+  predicate: "structurent le territoire agraire et les conditions de vie des paysans sans terre au cœur des conflits ruraux"
+  object: "les campagnes andalouses et la propriété foncière"
+  time: "1868/1903"
+  time_precision: interval
+  families: [processus, lieu, groupe_social]
+  actors: []
+  places: ["Andalousie"]
+  groups: ["paysans sans terre", "grands propriétaires fonciers"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-012"]
+  confidence: certain
+  status: validated
+  justification: "Structure agraire andalouse et protestation paysanne documentées par SRC-012 (Temma Kaplan, Anarchists of Andalusia, 1868-1903), dont l'intervalle de publication borne la période. Aucune superficie, rendement ou date d'expropriation inventé."
+  TODO: []
+
+- id: es-era3-mig-011
+  era_id: spain-era-3
+  domain: "Migrations & diasporas"
+  scale: imperial
+  subject: "Émigration espagnole outre-mer"
+  predicate: "s'intensifie à la fin du XIXe et au début du XXe siècle vers l'Amérique latine, notamment l'Argentine, le Brésil et Cuba"
+  object: "les flux de population entre l'Espagne et ses anciennes colonies"
+  time: "1880/1930"
+  time_precision: interval
+  families: [processus, groupe_social, lieu]
+  actors: []
+  places: ["Argentine", "Brésil", "Cuba"]
+  groups: ["émigrants espagnols"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-011"]
+  confidence: certain
+  status: validated
+  justification: "L'émigration figure parmi les thèmes traités par SRC-011 (Radcliff), synthèse de la période 1808-2016 ; elle est également signalée dans la cellule « Migrations & diasporas » d'ERA-3. Bornes d'intervalle toutes deux in-era ; aucun chiffre de flux inventé."
+  TODO: []
+
+- id: es-era3-min-012
+  era_id: spain-era-3
+  domain: "Peuples autochtones & minorités"
+  scale: imperial
+  subject: "Population du Rif au Maroc espagnol"
+  predicate: "est au cœur de la guerre coloniale menée par l'Espagne, marquée par la défaite d'Anwal en 1921 face aux forces d'Abdelkrim el-Khattabi"
+  object: "le territoire du Rif et sa population"
+  time: "1921"
+  time_precision: year
+  families: [evenement, acteur, groupe_social, lieu]
+  actors: ["Abdelkrim el-Khattabi"]
+  places: ["Rif", "Maroc"]
+  groups: ["Rifains"]
+  institutions: ["armée espagnole d'Afrique"]
+  normative: []
+  memory: []
+  sources: ["SRC-009"]
+  confidence: certain
+  status: validated
+  justification: "Guerre coloniale au Maroc et défaite de 1921 documentées par SRC-009 (Sebastian Balfour, Deadly Embrace: Morocco and the Road to the Spanish Civil War), qui traite de l'armée d'Afrique et des racines coloniales du coup de 1936. Aucun effectif ni épisode de la guerre civile (postérieur à 1936) n'est avancé."
+  TODO: []
+
+- id: es-era3-mem-013
+  era_id: spain-era-3
+  domain: "Mémoire & patrimoine"
+  scale: national
+  subject: "Désastre de 1898"
+  predicate: "devient un lieu de mémoire nationaliste et un récit de déclin national"
+  object: "la mémoire collective espagnole de la fin de l'empire colonial"
+  time: "1898"
+  time_precision: year
+  families: [memoire, processus, groupe_social]
+  actors: []
+  places: ["Madrid"]
+  groups: ["nationalistes", "génération de 98"]
+  institutions: []
+  normative: []
+  memory: ["Désastre de 1898 comme récit de déclin national"]
+  sources: ["SRC-010", "SRC-011"]
+  confidence: certain
+  status: validated
+  justification: "Le « Désastre » comme lieu de mémoire nationaliste, cellule « Mémoire & patrimoine » d'ERA-3 (coverage-matrix.csv), SRC-010 (Tone) et SRC-011 (Radcliff). Aucune commémoration datée ni monument non attesté n'est inventé."
+  TODO: []
+
+- id: es-era3-circ-014
+  era_id: spain-era-3
+  domain: "Circulations transnationales"
+  scale: imperial
+  subject: "Guerre hispano-américaine de 1898"
+  predicate: "met fin à l'empire colonial espagnol et s'inscrit dans une circulation d'acteurs, de capitaux et d'idées entre Cuba, les États-Unis et l'Espagne"
+  object: "le transfert de Cuba, Porto Rico et des Philippines à l'influence des États-Unis"
+  time: "1898"
+  time_precision: year
+  families: [evenement, processus, acteur, lieu]
+  actors: ["États-Unis"]
+  places: ["Cuba", "Porto Rico", "Philippines", "Espagne"]
+  groups: ["soldats et colons espagnols", "insurgés cubains"]
+  institutions: ["armée espagnole", "gouvernement des États-Unis"]
+  normative: []
+  memory: []
+  sources: ["SRC-010", "SRC-011"]
+  confidence: certain
+  status: validated
+  justification: "Guerre de 1898 et perte des colonies documentées par SRC-010 (Tone, War and Genocide in Cuba, 1895-1898) et SRC-011 (Radcliff) ; cellule « Circulations transnationales » d'ERA-3 (coverage-matrix.csv). Aucune clause de traité ni date de cession non vérifiée n'est ajoutée."
+  TODO: []

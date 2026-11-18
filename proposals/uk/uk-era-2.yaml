@@ -1,0 +1,316 @@
+# Points de l'ère Royaume-Uni / Moyen Âge des quatre nations (uk-era-2, 1066 → 1485).
+# Sources : uniquement le registre audits/uk/source-register.csv (SRC-001, SRC-002,
+# SRC-004, SRC-005, SRC-006) et les omissions documentées audits/uk/omissions.yaml
+# (OM-004, OM-005, OM-006). Aucune date, source, DOI ou citation inventée.
+# Aucun lien Grokipedia. Aucun contenu hors de l'ère.
+# Faits ancrés dans src/data/dataset.js (uk-hastings, uk-magna, uk-peste),
+# audits/uk/coverage-matrix.csv (ERA-2), audits/uk/country-audit.yaml (PERIOD-2),
+# audits/uk/omissions.yaml et audits/uk/proposals.yaml (corrections uk-magna, uk-peste).
+
+- id: uk-era2-pol-001
+  era_id: uk-era-2
+  domain: "Politique & institutions"
+  scale: national
+  subject: "Guillaume, duc de Normandie"
+  predicate: "bat Harold II à Hastings et transforme la noblesse, la langue et l'administration du royaume"
+  object: "le royaume d'Angleterre après la conquête normande"
+  time: "1066"
+  time_precision: year
+  families: [evenement, acteur, institution]
+  actors: ["Guillaume, duc de Normandie", "Harold II"]
+  places: ["Hastings"]
+  groups: ["noblesse anglaise"]
+  institutions: ["royauté anglaise", "administration royale"]
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-002"]
+  confidence: certain
+  status: validated
+  justification: "Repère uk-hastings de dataset.js (1066) : victoire de Guillaume de Normandie sur Harold II et transformation de la noblesse, de la langue et de l'administration. SRC-001 (Oxford History of Britain) et SRC-002 (Kearney, A History of Four Nations) cadrent la conquête dans une histoire des quatre nations. 1066 est la borne d'entrée de l'ère (PERIOD-2) ; aucune date hors de l'ère."
+  TODO: []
+
+- id: uk-era2-guer-002
+  era_id: uk-era-2
+  domain: "Guerres & diplomatie"
+  scale: national
+  subject: "Guillaume de Normandie et Harold II"
+  predicate: "s'affrontent à Hastings, bataille de conquête qui ouvre la période médiévale anglaise"
+  object: "le royaume d'Angleterre, dans un espace anglo-normand"
+  time: "1066"
+  time_precision: year
+  families: [evenement, acteur, lieu]
+  actors: ["Guillaume, duc de Normandie", "Harold II"]
+  places: ["Hastings"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-002"]
+  confidence: certain
+  status: validated
+  justification: "Bataille de Hastings en 1066, documentée dans dataset.js (uk-hastings) et cadrée par SRC-001 et SRC-002. La matrice ERA-2 signale que les guerres d'Écosse, du pays de Galles et d'Irlande sont absentes (OM-006) ; country-audit.yaml ne cite 1283 (pays de Galles) et 1314 (Bannockburn) que comme bornes internes envisagées, pas comme repères du corpus. Aucun événement ni date supplémentaire avancé."
+  TODO: []
+
+- id: uk-era2-droit-003
+  era_id: uk-era-2
+  domain: "Droit & justice"
+  scale: national
+  subject: "Jean sans Terre et les barons"
+  predicate: "négocient une charte de griefs féodaux, annulée puis rééditée"
+  object: "Magna Carta acceptée le 15 juin 1215"
+  time: "1215"
+  time_precision: year
+  families: [evenement, acteur, normatif]
+  actors: ["Jean sans Terre", "les barons", "Innocent III"]
+  places: ["Angleterre"]
+  groups: ["barons"]
+  institutions: ["royauté anglaise", "papauté"]
+  normative: ["charte du 15 juin 1215", "rééditions de 1216, 1217 et 1225"]
+  memory: []
+  sources: ["SRC-001", "SRC-002"]
+  confidence: certain
+  status: validated
+  justification: "Dataset.js (uk-magna, points 1 et 2) : charte négociée le 15 juin 1215, annulation par Innocent III, rééditions en 1216, 1217 et 1225 ; correction de proposals.yaml (uk-magna) contre l'anachronisme de la « charte de droits ». SRC-001 et SRC-002 soutiennent le cadre institutionnel. 1215 est dans l'ère 1066-1485."
+  TODO: []
+
+- id: uk-era2-econ-004
+  era_id: uk-era-2
+  domain: "Économie & travail"
+  scale: national
+  subject: "L'épidémie de peste de 1348-1349"
+  predicate: "bouleverse l'économie agraire et le travail dans les îles Britanniques"
+  object: "les rapports sociaux et l'économie agraire"
+  time: "1348"
+  time_precision: year
+  families: [evenement, processus, groupe_social]
+  actors: []
+  places: ["îles Britanniques"]
+  groups: ["populations touchées par la peste"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-002"]
+  confidence: certain
+  status: validated
+  justification: "Dataset.js (uk-peste, point 3) : « L'épidémie bouleverse l'économie agraire, le travail et les rapports sociaux ». La matrice ERA-2 classe uk-peste dans cette cellule tout en signalant l'absence de fiche économique dédiée. SRC-001 et SRC-002 cadrent la période. 1348 est conforme à l'ère ; aucune quantification ni cause économique non documentée n'est ajoutée."
+  TODO: []
+
+- id: uk-era2-soc-005
+  era_id: uk-era-2
+  domain: "Société & démographie"
+  scale: national
+  subject: "La peste noire"
+  predicate: "frappe les îles Britanniques en 1348-1349 avec une mortalité estimée entre 30 et 60 %"
+  object: "la population, avec des variations régionales et une origine portuaire incertaine"
+  time: "1348"
+  time_precision: year
+  families: [evenement, processus, groupe_social]
+  actors: []
+  places: ["îles Britanniques"]
+  groups: ["populations des îles Britanniques"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-002"]
+  confidence: disputé
+  status: validated
+  justification: "Dataset.js (uk-peste, points 1 et 2) : peste en 1348 prolongée en 1349, origine portuaire incertaine, estimations de 30 à 60 % avec variations régionales. La correction de proposals.yaml (uk-peste) rejette le « tiers de la population » présenté comme certitude : le chiffre reste disputé, l'événement est certain. SRC-001 et SRC-002 sont les synthèses de référence. Aucune date hors de l'ère."
+  TODO: []
+
+- id: uk-era2-genre-006
+  era_id: uk-era-2
+  domain: "Femmes, genre, sexualités"
+  scale: national
+  subject: "Histoire des femmes et du genre au Moyen Âge"
+  predicate: "constitue une omission documentée du corpus : mariage, travail, religion, veuvage et voix féminines n'ont aucune fiche"
+  object: "les îles Britanniques, 1066-1485"
+  time: "1066/1485"
+  time_precision: interval
+  families: [processus, groupe_social]
+  actors: []
+  places: []
+  groups: ["femmes médiévales"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["OM-004"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Femmes, genre, sexualités) : OM-004 documente l'absence de fiche sur les femmes, le mariage, le travail, la religion, le veuvage, les voix féminines et les normes de genre ; evidence_checked SRC-001 et SRC-002. Seul le silence du corpus est décrit, aucun fait historique n'est inventé. L'intervalle 1066/1485 est la borne de l'ère, non une date d'événement."
+  TODO: []
+
+- id: uk-era2-relig-007
+  era_id: uk-era-2
+  domain: "Religions & croyances"
+  scale: national
+  subject: "Innocent III"
+  predicate: "annule la charte de 1215, rééditée ensuite en 1216, 1217 et 1225"
+  object: "Magna Carta, acceptée par Jean sans Terre le 15 juin 1215"
+  time: "1215"
+  time_precision: year
+  families: [evenement, acteur, institution, normatif]
+  actors: ["Innocent III", "Jean sans Terre"]
+  places: ["Angleterre"]
+  groups: []
+  institutions: ["papauté", "royauté anglaise"]
+  normative: ["annulation de la charte de 1215", "rééditions de 1216, 1217 et 1225"]
+  memory: []
+  sources: ["SRC-001", "SRC-002"]
+  confidence: certain
+  status: validated
+  justification: "Dataset.js (uk-magna, point 2) et correction de proposals.yaml (uk-magna) : annulation par Innocent III puis rééditions, ce qui donne une ancre de fait religieux-institutionnel dans un domaine que la matrice jugeait seulement évoqué indirectement. SRC-001 et SRC-002 soutiennent le cadre. 1215 est la date de la charte, pas celle des rééditions."
+  TODO: []
+
+- id: uk-era2-tech-008
+  era_id: uk-era-2
+  domain: "Sciences, techniques & santé"
+  scale: national
+  subject: "Médecine, savoirs techniques et santé au Moyen Âge"
+  predicate: "constituent une omission documentée du corpus, sans fiche dédiée"
+  object: "la période 1066-1485 dans les îles Britanniques"
+  time: "1066/1485"
+  time_precision: interval
+  families: [processus, institution]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["OM-005"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Sciences, techniques & santé) : OM-005 documente l'absence de fiche sur la médecine médiévale, les savoirs techniques et les sciences ; evidence_checked SRC-001 et SRC-002. Dette documentaire explicite, pas absence de sources ; aucun savoir, praticien ni date n'est inventé. L'intervalle est la borne de l'ère."
+  TODO: []
+
+- id: uk-era2-arts-009
+  era_id: uk-era-2
+  domain: "Arts & lettres"
+  scale: national
+  subject: "Architecture, littérature et arts médiévaux"
+  predicate: "constituent une omission documentée du corpus, sans fiche dédiée"
+  object: "la période 1066-1485 dans les îles Britanniques"
+  time: "1066/1485"
+  time_precision: interval
+  families: [processus]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["OM-005"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Arts & lettres) : OM-005 nomme explicitement l'architecture et les arts médiévaux parmi les domaines sans fiche ; evidence_checked SRC-001 et SRC-002. Aucun artiste, œuvre ou jalon artistique n'est avancé sans source. L'intervalle 1066/1485 est la borne de l'ère, non une date d'événement."
+  TODO: []
+
+- id: uk-era2-env-010
+  era_id: uk-era-2
+  domain: "Environnement & territoire"
+  scale: national
+  subject: "L'épidémie de 1348-1349"
+  predicate: "a une origine portuaire incertaine et des effets régionaux inégaux, sans histoire agraire ni climat documentés"
+  object: "le territoire des îles Britanniques"
+  time: "1348"
+  time_precision: year
+  families: [evenement, lieu, processus]
+  actors: []
+  places: ["îles Britanniques"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-002"]
+  confidence: probable
+  status: validated
+  justification: "Dataset.js (uk-peste, points 1 et 2) : origine portuaire exacte incertaine et variations régionales de la mortalité. La matrice ERA-2 rattache uk-peste à Environnement & territoire tout en signalant l'absence d'histoire agraire et de climat (OM-005). SRC-001 et SRC-002 cadrent la période. Aucun port d'entrée ni donnée climatique n'est affirmé."
+  TODO: []
+
+- id: uk-era2-migr-011
+  era_id: uk-era-2
+  domain: "Migrations & diasporas"
+  scale: national
+  subject: "Migrations normandes, flamandes, galloises et irlandaises au Moyen Âge"
+  predicate: "constituent une omission documentée du corpus, sans fiche dédiée"
+  object: "l'espace des îles Britanniques, 1066-1485"
+  time: "1066/1485"
+  time_precision: interval
+  families: [processus, groupe_social]
+  actors: []
+  places: []
+  groups: ["migrants normands", "migrants flamands", "Gallois", "Irlandais"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["OM-006"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Migrations & diasporas) : migrations normandes, flamandes, galloises et irlandaises explicitement non traitées ; OM-006 documente l'absence, avec evidence_checked SRC-002, SRC-004, SRC-005 et SRC-006. Aucun flux, date ni groupe supplémentaire n'est inventé : les groupes nommés sont ceux de la matrice. L'intervalle est la borne de l'ère."
+  TODO: []
+
+- id: uk-era2-minor-012
+  era_id: uk-era-2
+  domain: "Peuples autochtones & minorités"
+  scale: regional
+  subject: "La conquête normande de 1066"
+  predicate: "est le seul repère du corpus pour les quatre nations, Gallois, Irlandais, Écossais et Juifs médiévaux restant sans fiche"
+  object: "l'Angleterre, l'Écosse, le pays de Galles et l'Irlande médiévaux"
+  time: "1066"
+  time_precision: year
+  families: [acteur, groupe_social, lieu]
+  actors: ["Guillaume, duc de Normandie", "Harold II"]
+  places: ["Hastings", "Angleterre", "pays de Galles", "Écosse", "Irlande"]
+  groups: ["Gallois", "Irlandais", "Écossais", "Juifs médiévaux"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-002", "SRC-004", "SRC-005", "SRC-006"]
+  confidence: certain
+  status: validated
+  justification: "Matrice ERA-2 (échelle regional) : la conquête normande est présente via uk-hastings, tandis que Gallois, Irlandais, Écossais et Juifs médiévaux sont absents (OM-006). Les quatre SRC sont ceux que OM-006 déclare avoir vérifiés (SRC-002, SRC-004, SRC-005, SRC-006) ; le caractère plurinational est cadré par SRC-002. 1066 est la borne d'entrée de l'ère ; aucune chronologie propre non sourcée n'est projetée sur l'Écosse, le pays de Galles ou l'Irlande."
+  TODO: []
+
+- id: uk-era2-mem-013
+  era_id: uk-era-2
+  domain: "Mémoire & patrimoine"
+  scale: national
+  subject: "La mémoire de Magna Carta"
+  predicate: "comme charte des libertés se construit bien après 1215, dans les conflits politiques des siècles suivants"
+  object: "la postérité du texte de 1215, distincte du texte lui-même"
+  time: "1215"
+  time_precision: year
+  families: [memoire, evenement, normatif]
+  actors: []
+  places: ["Angleterre"]
+  groups: []
+  institutions: []
+  normative: ["texte de 1215 et rééditions de 1216, 1217 et 1225"]
+  memory: ["Magna Carta comme charte des libertés"]
+  sources: ["SRC-001", "SRC-002"]
+  confidence: certain
+  status: validated
+  justification: "Dataset.js (uk-magna, point 3) et correction de proposals.yaml (uk-magna) : distinction explicite entre le règlement féodal de 1215 et sa mémoire ultérieure ; la matrice ERA-2 note que la distinction texte/postérité manque. SRC-001 et SRC-002 soutiennent le cadre. La date 1215 mesure le texte, non la réception, qui est postérieure et non datée ici."
+  TODO: []
+
+- id: uk-era2-circ-014
+  era_id: uk-era-2
+  domain: "Circulations transnationales"
+  scale: transnational
+  subject: "L'espace normand et angevin"
+  predicate: "est évoqué par la conquête de 1066, sans réseau ni échange documenté"
+  object: "les liens entre l'Angleterre et le continent"
+  time: "1066"
+  time_precision: year
+  families: [evenement, acteur, lieu, processus]
+  actors: ["Guillaume, duc de Normandie"]
+  places: ["Hastings", "Normandie"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-002"]
+  confidence: certain
+  status: validated
+  justification: "Matrice ERA-2 (échelle transnational) : « l'espace normand et angevin est évoqué, sans réseaux ni échanges ». Dataset.js (uk-hastings) ancre le lien anglo-normand en 1066 par Guillaume, duc de Normandie ; SRC-001 et SRC-002 cadrent la conquête et ses relations continentales. Aucune route commerciale, noyau angevin ni date de circulation n'est ajouté."
+  TODO: []

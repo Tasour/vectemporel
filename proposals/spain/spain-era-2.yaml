@@ -1,0 +1,317 @@
+# Points de l'ère Espagne / Empire espagnol (spain-era-2, 1492 → 1808).
+# Sources : uniquement le registre audits/spain/source-register.csv (SRC-005 à SRC-008)
+# et les omissions documentées audits/spain/omissions.yaml (OM-004, OM-005, OM-007).
+# Aucune date, source, DOI ou citation inventée. Aucun lien Grokipedia. Aucun contenu
+# hors de l'ère : les repères antérieurs à 1492 et postérieurs à 1808 (notamment 1812,
+# 1898 et 1931, traités en spain-era-3) ne sont pas utilisés comme points.
+# Faits ancrés dans src/data/dataset.js (es-colomb, es-prop-001, es-grenade, es-armada,
+# es-prop-002) et audits/spain/proposals.yaml (PROP-006 à PROP-009), complétés par les
+# synthèses du registre (SRC-006, SRC-007, SRC-008).
+
+- id: es-era2-pol-001
+  era_id: spain-era-2
+  domain: "Politique & institutions"
+  scale: imperial
+  subject: "Révolte des Comuneros"
+  predicate: "les villes de Castille se soulèvent contre la fiscalité et le gouvernement de Charles Quint"
+  object: "l'autorité de la monarchie de Charles Quint en Castille"
+  time: "1520/1521"
+  time_precision: interval
+  families: [evenement, acteur, groupe_social, lieu, institution]
+  actors: ["Charles Quint"]
+  places: ["Castille", "Villalar"]
+  groups: ["comuneros", "villes de Castille"]
+  institutions: ["monarchie de Charles Quint", "conseils municipaux"]
+  normative: []
+  memory: []
+  sources: ["SRC-008"]
+  confidence: certain
+  status: validated
+  justification: "PROP-006 (audits/spain/proposals.yaml) : en 1520-1521, les villes de Castille se soulèvent contre la fiscalité et le gouvernement de Charles Quint ; la défaite de Villalar, le 23 avril 1521, renforce la monarchie. SRC-008 (Elliott, Imperial Spain 1469-1716) couvre la période et les institutions. Cellule « Politique & institutions » d'ERA-2 de coverage-matrix.csv. Intervalle strictement in-era."
+  TODO: []
+
+- id: es-era2-guer-002
+  era_id: spain-era-2
+  domain: "Guerres & diplomatie"
+  scale: imperial
+  subject: "Armada espagnole de 1588"
+  predicate: "Philippe II lance une grande expédition navale contre l'Angleterre, qui échoue après les combats, les tempêtes et les difficultés logistiques"
+  object: "le débarquement d'une armée venue des Flandres, qui n'a pas lieu"
+  time: "1588"
+  time_precision: year
+  families: [evenement, acteur, institution, lieu]
+  actors: ["Philippe II"]
+  places: ["Angleterre", "Flandres", "A Coruña"]
+  groups: []
+  institutions: ["Armada espagnole", "monarchie de Philippe II"]
+  normative: []
+  memory: []
+  sources: ["SRC-008"]
+  confidence: certain
+  status: validated
+  justification: "Repère es-armada de src/data/dataset.js : en 1588, Philippe II lance une expédition navale contre l'Angleterre destinée à débarquer une armée des Flandres ; la flotte est malmenée et l'opération échoue, sans arrêter la puissance maritime espagnole. SRC-008 (Elliott). Cellule « Guerres & diplomatie » d'ERA-2. Aucun effectif de navires ou de combattants inventé."
+  TODO: []
+
+- id: es-era2-droit-003
+  era_id: spain-era-2
+  domain: "Droit & justice"
+  scale: national
+  subject: "Décrets de Nueva Planta"
+  predicate: "Philippe V supprime les institutions et les fors de Valence, d'Aragon, de Majorque et de Catalogne après la guerre de Succession"
+  object: "l'ordre juridique et administratif de la monarchie, uniformisé"
+  time: "1707/1716"
+  time_precision: interval
+  families: [evenement, acteur, normatif, institution]
+  actors: ["Philippe V"]
+  places: ["Valence", "Aragon", "Majorque", "Catalogne", "Barcelone"]
+  groups: []
+  institutions: ["monarchie de Philippe V", "généralités de Valence, d'Aragon, de Majorque et de Catalogne"]
+  normative: ["décrets de Nueva Planta (1707-1716)"]
+  memory: []
+  sources: ["SRC-008"]
+  confidence: certain
+  status: validated
+  justification: "PROP-008 (audits/spain/proposals.yaml) et cellule « Droit & justice » d'ERA-2 (coverage-matrix.csv, qui cite le repère par erreur sous l'ID PROP-009) : décrets de Nueva Planta de 1707-1716, acteur Philippe V, lieux Barcelone et Valence, SRC-008 (Elliott). Aucun article de décret ni date de publication non vérifiée avancé ; intervalle in-era."
+  TODO: []
+
+- id: es-era2-econ-004
+  era_id: spain-era-2
+  domain: "Économie & travail"
+  scale: imperial
+  subject: "Expédition de Colomb et économie coloniale"
+  predicate: "l'ouverture de la route atlantique en 1492 s'accompagne du développement du commerce et de la fiscalité impériale"
+  object: "les circulations entre la Castille, Séville et les Amériques"
+  time: "1492"
+  time_precision: year
+  families: [evenement, acteur, processus, lieu]
+  actors: ["Christophe Colomb"]
+  places: ["Séville", "Amériques", "Caraïbes"]
+  groups: ["commerçants et navigateurs"]
+  institutions: ["monarchie des Rois catholiques"]
+  normative: []
+  memory: []
+  sources: ["SRC-008"]
+  confidence: certain
+  status: validated
+  justification: "Cellule « Économie & travail » d'ERA-2 de coverage-matrix.csv : économie coloniale et fiscalité impériale, acteur Colomb, lieu Séville. Repère es-colomb de src/data/dataset.js (12 octobre 1492, arrivée aux Caraïbes) et SRC-008 (Elliott, dont l'ouvrage couvre la cour et l'économie de l'Espagne impériale). SRC-010, bien que cité dans la matrice, concerne Cuba en 1895-1898 et n'est donc pas retenu pour une fiche in-era. Aucun montant ou chiffre de commerce inventé."
+  TODO: []
+
+- id: es-era2-soc-005
+  era_id: spain-era-2
+  domain: "Société & démographie"
+  scale: national
+  subject: "Société de la monarchie espagnole"
+  predicate: "les villes castillanes et les Morisques sont au cœur des tensions sociales de la monarchie"
+  object: "la société de Castille et des royaumes de Valence et d'Aragon"
+  time: "1520/1614"
+  time_precision: interval
+  families: [processus, groupe_social, acteur, lieu]
+  actors: ["Charles Quint", "Philippe III"]
+  places: ["Castille", "Villalar", "Valence"]
+  groups: ["comuneros", "Morisques", "villes de Castille"]
+  institutions: ["monarchie espagnole"]
+  normative: []
+  memory: []
+  sources: ["SRC-008", "SRC-006"]
+  confidence: certain
+  status: validated
+  justification: "Cellule « Société & démographie » d'ERA-2 (coverage-matrix.csv) : Comuneros (PROP-006) et Morisques (PROP-007), lieux Villalar et Valence, SRC-008 (Elliott) et SRC-006 (García-Arenal et Wiegers, The Expulsion of the Moriscos from Spain). Intervalle 1520-1614 entièrement in-era ; aucun effectif démographique inventé."
+  TODO: []
+
+- id: es-era2-genre-006
+  era_id: spain-era-2
+  domain: "Femmes, genre, sexualités"
+  scale: national
+  subject: "Histoire des femmes à l'époque moderne"
+  predicate: "ne fait l'objet d'aucune fiche documentée dans le corpus"
+  object: "le travail, la famille, la sexualité et les droits des femmes entre 1492 et 1808"
+  time: "1492/1808"
+  time_precision: interval
+  families: [processus]
+  actors: []
+  places: ["Espagne"]
+  groups: ["femmes espagnoles"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["OM-005"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Femmes, genre, sexualités, national) : aucune source du registre ne permet une fiche documentée sur les femmes à l'époque moderne ; dette OM-005 (audits/spain/omissions.yaml, reason not_yet_researched, qui couvre l'histoire des femmes avant 1931). Silence explicite conformément à la règle 7 de POINT_METHODOLOGY.md ; aucune date ni source inventée, ancre = intervalle de l'ère."
+  TODO: []
+
+- id: es-era2-relig-007
+  era_id: spain-era-2
+  domain: "Religions & croyances"
+  scale: imperial
+  subject: "Expulsion des Morisques"
+  predicate: "Philippe III ordonne l'expulsion des descendants des musulmans convertis de Valence, d'Aragon et de Castille, prolongeant la politique de confessionnalisation commencée en 1492"
+  object: "les Morisques des royaumes de la monarchie"
+  time: "1609/1614"
+  time_precision: interval
+  families: [evenement, acteur, groupe_social, normatif, institution]
+  actors: ["Philippe III"]
+  places: ["Valence", "Aragon", "Castille"]
+  groups: ["Morisques", "descendants de musulmans convertis"]
+  institutions: ["monarchie de Philippe III"]
+  normative: ["expulsion des Morisques (1609-1614)"]
+  memory: []
+  sources: ["SRC-006", "SRC-008"]
+  confidence: certain
+  status: validated
+  justification: "PROP-007 (audits/spain/proposals.yaml) et cellule « Religions & croyances » d'ERA-2 : entre 1609 et 1614, Philippe III ordonne l'expulsion des Morisques ; SRC-006 (García-Arenal et Wiegers, 2014) et SRC-008 (Elliott). OM-003 (convertis de 1502 et mudéjars) n'est pas comblé ici par invention. Aucun effectif de personnes déplacées retenu, les estimations variant dans le dossier."
+  TODO: []
+
+- id: es-era2-sci-008
+  era_id: spain-era-2
+  domain: "Sciences, techniques & santé"
+  scale: national
+  subject: "Navigation et cartographie au service de l'empire"
+  predicate: "les techniques de navigation permettent les traversées atlantiques et l'arrivée de Colomb aux Caraïbes en 1492"
+  object: "la route maritime entre l'Europe et les Amériques"
+  time: "1492"
+  time_precision: year
+  families: [processus, acteur, lieu, institution]
+  actors: ["Christophe Colomb"]
+  places: ["Séville", "Guanahani", "Caraïbes"]
+  groups: ["navigateurs et cartographes"]
+  institutions: ["monarchie des Rois catholiques"]
+  normative: []
+  memory: []
+  sources: ["SRC-008"]
+  confidence: certain
+  status: validated
+  justification: "Cellule « Sciences, techniques & santé » d'ERA-2 (coverage-matrix.csv) : navigation et cartographie au service de l'empire, acteur Colomb, lieu Séville, SRC-008 (Elliott). Repère es-colomb de src/data/dataset.js (Guanahani, 12 octobre 1492). Aucun instrument, traité ou nom de cartographe non attesté avancé."
+  TODO: []
+
+- id: es-era2-arts-009
+  era_id: spain-era-2
+  domain: "Arts & lettres"
+  scale: national
+  subject: "Siècle d'or"
+  predicate: "ne fait l'objet d'aucune fiche artistique documentée dans le corpus"
+  object: "la littérature et les arts de l'Espagne des XVIe et XVIIe siècles"
+  time: "1492/1808"
+  time_precision: interval
+  families: [processus]
+  actors: []
+  places: ["Espagne"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["OM-007"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Arts & lettres, national) : le corpus n'a aucun repère artistique précis ; dette OM-007 (audits/spain/omissions.yaml, reason not_yet_researched, cite SRC-008 et SRC-011 comme sources non intégrées). Silence explicite selon la règle 7 de POINT_METHODOLOGY.md ; aucun nom d'artiste ni titre d'œuvre inventé."
+  TODO: []
+
+- id: es-era2-env-010
+  era_id: spain-era-2
+  domain: "Environnement & territoire"
+  scale: national
+  subject: "Histoire environnementale de l'Espagne moderne"
+  predicate: "ne fait l'objet d'aucune fiche datée dans le corpus"
+  object: "l'irrigation, les forêts, la Mesta, les mines et la pollution"
+  time: "1492/1808"
+  time_precision: interval
+  families: [processus]
+  actors: []
+  places: ["Espagne"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["OM-004"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Environnement & territoire, national) : pas de fiche sur les forêts, l'irrigation ou la Mesta ; dette OM-004 (audits/spain/omissions.yaml, reason source_absent, dont le libellé couvre l'histoire environnementale « médiévale et moderne » et cite SRC-001, SRC-003 et SRC-008). Silence explicite conformément à la règle 7 ; aucune date ni mesure environnementale inventée."
+  TODO: []
+
+- id: es-era2-migr-011
+  era_id: spain-era-2
+  domain: "Migrations & diasporas"
+  scale: imperial
+  subject: "Morisques expulsés d'Espagne"
+  predicate: "forment une diaspora en Méditerranée après l'expulsion de 1609-1614"
+  object: "les populations déplacées de Valence, d'Aragon et de Castille"
+  time: "1609/1614"
+  time_precision: interval
+  families: [evenement, groupe_social, processus, lieu]
+  actors: ["Morisques"]
+  places: ["Valence", "Aragon", "Castille", "Méditerranée"]
+  groups: ["diaspora morisque", "Morisques expulsés"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-006", "SRC-008"]
+  confidence: certain
+  status: validated
+  justification: "Cellule « Migrations & diasporas » d'ERA-2 (coverage-matrix.csv) : émigration coloniale et expulsion des Morisques, acteurs Colomb et morisques, lieux Séville et Valence, SRC-006 et SRC-008. SRC-006 documente explicitement la diaspora méditerranéenne issue de l'expulsion de 1609-1614. Aucun effectif chiffré retenu."
+  TODO: []
+
+- id: es-era2-peuples-012
+  era_id: spain-era-2
+  domain: "Peuples autochtones & minorités"
+  scale: imperial
+  subject: "Grande Rafle des Roms"
+  predicate: "une opération générale ordonnée sous Ferdinand VI arrête des milliers de Roms à travers l'Espagne, hommes, femmes et enfants étant envoyés dans des prisons et des arsenaux"
+  object: "la communauté rom d'Espagne"
+  time: "1749"
+  time_precision: year
+  families: [evenement, acteur, groupe_social, institution]
+  actors: ["Ferdinand VI"]
+  places: ["Espagne"]
+  groups: ["Roms", "communauté rom"]
+  institutions: ["prisons et arsenaux"]
+  normative: []
+  memory: []
+  sources: ["SRC-007", "SRC-008"]
+  confidence: certain
+  status: validated
+  justification: "PROP-009 (audits/spain/proposals.yaml) et repère es-prop-002 de src/data/dataset.js : le 30 juillet 1749, une opération générale ordonnée sous Ferdinand VI arrête des milliers de Roms ; SRC-007 (Gómez Alfaro, La gran redada de gitanos, 1993) et SRC-008 (Elliott). Cellule « Peuples autochtones & minorités » d'ERA-2 (Morisques et Roms, SRC-006, SRC-007). Aucun effectif précis avancé, les estimations variant selon les sources."
+  TODO: []
+
+- id: es-era2-memoire-013
+  era_id: spain-era-2
+  domain: "Mémoire & patrimoine"
+  scale: national
+  subject: "Grenade"
+  predicate: "capitule le 2 janvier 1492 devant les Rois catholiques et devient un lieu de mémoire de la fin d'al-Andalus"
+  object: "la mémoire de la monarchie des Rois catholiques et de la politique de confessionnalisation"
+  time: "1492-01-02"
+  time_precision: day
+  families: [memoire, evenement, acteur, lieu, institution]
+  actors: ["Isabelle de Castille", "Ferdinand d'Aragon"]
+  places: ["Grenade", "Alhambra"]
+  groups: []
+  institutions: ["royaume nasride de Grenade", "monarchie des Rois catholiques"]
+  normative: []
+  memory: ["Grenade comme lieu de mémoire de la fin d'al-Andalus", "capitulation du 2 janvier 1492"]
+  sources: ["SRC-008", "SRC-005"]
+  confidence: certain
+  status: validated
+  justification: "Repère es-grenade de src/data/dataset.js : le 2 janvier 1492, le royaume nasride de Grenade capitule, mettant fin au dernier État musulman de la péninsule et ouvrant une politique de confessionnalisation. Cellule « Mémoire & patrimoine » d'ERA-2 (coverage-matrix.csv) : Grenade et Armada comme objets de mémoire, sources Elliott (SRC-008) et Ray (SRC-005). Aucune commémoration datée non attestée inventée."
+  TODO: []
+
+- id: es-era2-circ-014
+  era_id: spain-era-2
+  domain: "Circulations transnationales"
+  scale: imperial
+  subject: "Premier voyage de Christophe Colomb"
+  predicate: "atteint Guanahani dans l'archipel des Bahamas le 12 octobre 1492, puis les Grandes Antilles, ouvrant la circulation atlantique"
+  object: "la route entre l'Europe et les Caraïbes"
+  time: "1492-10-12"
+  time_precision: day
+  families: [evenement, acteur, lieu, processus]
+  actors: ["Christophe Colomb"]
+  places: ["Guanahani", "Bahamas", "Grandes Antilles", "Séville"]
+  groups: ["Taïnos", "équipage de l'expédition"]
+  institutions: ["monarchie des Rois catholiques"]
+  normative: []
+  memory: []
+  sources: ["SRC-008"]
+  confidence: certain
+  status: validated
+  justification: "Repère es-colomb de src/data/dataset.js : le 12 octobre 1492, Colomb atteint Guanahani puis les Grandes Antilles ; les Taïnos rencontrés subissent la domination des colons, les maladies et les déplacements forcés. Cellule « Circulations transnationales » d'ERA-2 (coverage-matrix.csv) : circulation atlantique et coloniale, acteur Colomb, lieu Séville, SRC-008. SRC-010, cité dans la matrice, concerne Cuba en 1895-1898 et n'est pas retenu ici. Aucune date d'étape non attestée avancée."
+  TODO: []

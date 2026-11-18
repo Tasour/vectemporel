@@ -1,0 +1,313 @@
+# Era usa-era-3 — Guerre civile & reconstruction (1861-1900)
+# Un point par domaine de la matrice. Aucune invention : chaque fait est tiré
+# du registre de sources USA (SRC-001…SRC-020), des propositions d’audit
+# (PROP-…), des acteurs/lieux/claims du country-audit ou du dataset généré.
+# Aucun lien externe ni référence à une source absente du registre.
+
+- id: us-era3-pol-001
+  era_id: usa-era-3
+  domain: "Politique & institutions"
+  scale: national
+  subject: "Congrès des États-Unis et Union"
+  predicate: "ratifient et inscrivent dans la Constitution"
+  object: "l’abolition de l’esclavage par le 13e amendement (décembre 1865), suivie de la Reconstruction (1865-1877)"
+  time: 1865
+  time_precision: year
+  families: [evenement, repere_normatif]
+  actors: []
+  places: []
+  groups: ["Afro-Américains", "propriétaires d’esclaves"]
+  institutions: ["Congrès des États-Unis", "Union"]
+  normative: ["13e amendement de la Constitution (1865)"]
+  memory: []
+  sources: ["SRC-008"]
+  confidence: certain
+  status: validated
+  justification: "Le 13e amendement est ratifié en décembre 1865 (fiche us-13e du dataset); la Reconstruction (1865-1877) est une séquence politique distincte, documentée par SRC-008 et les claims CLAIM-004 et CLAIM-005."
+  TODO: []
+
+- id: us-era3-gue-001
+  era_id: usa-era-3
+  domain: "Guerres & diplomatie"
+  scale: imperial
+  subject: "États-Unis et Espagne"
+  predicate: "concluent le traité de Paris qui clôt"
+  object: "la guerre hispano-américaine de 1898: Porto Rico, Guam et les Philippines passent sous contrôle américain, Cuba sous tutelle, et Hawaï est annexée le 7 juillet 1898"
+  time: 1898
+  time_precision: year
+  families: [evenement]
+  actors: []
+  places: ["Porto Rico", "Guam", "Philippines", "Cuba", "Hawaï"]
+  groups: []
+  institutions: []
+  normative: ["Traité de Paris (10 décembre 1898)"]
+  memory: []
+  sources: ["SRC-009"]
+  confidence: probable
+  status: validated
+  justification: "PROP-008 du registre d’audit, source SRC-009. La guerre américano-philippine (1899-1902, OM-009) est traitée séparément dans le point de circulations transnationales."
+  TODO: []
+
+- id: us-era3-dro-001
+  era_id: usa-era-3
+  domain: "Droit & justice"
+  scale: national
+  subject: "Congrès fédéral des États-Unis"
+  predicate: "institue par la loi du 6 mai 1882"
+  object: "une suspension de dix ans de l’entrée des travailleurs chinois et leur refuse la naturalisation"
+  time: 1882
+  time_precision: year
+  families: [repere_normatif, evenement]
+  actors: []
+  places: []
+  groups: ["travailleurs chinois"]
+  institutions: ["Congrès des États-Unis"]
+  normative: ["Chinese Exclusion Act (6 mai 1882)", "Geary Act (1892)"]
+  memory: []
+  sources: ["SRC-002", "SRC-010"]
+  confidence: certain
+  status: validated
+  justification: "PROP-006 porte une confiance high dans l’audit; SRC-002 est la source primaire NARA et SRC-010 fournit le contexte asiatique-américain. La date de signature (6 mai 1882) est celle du registre."
+  TODO: []
+
+- id: us-era3-eco-001
+  era_id: usa-era-3
+  domain: "Économie & travail"
+  scale: local
+  subject: "Mouvement ouvrier de Chicago"
+  predicate: "est frappé par la bombe du 4 mai 1886 lors d’un meeting pour la journée de huit heures"
+  object: "la police ouvre le feu; huit anarchistes sont condamnés, dont quatre exécutés en 1887, sans preuve directe"
+  time: 1886
+  time_precision: year
+  families: [evenement, groupe_social]
+  actors: ["Albert Parsons"]
+  places: ["Chicago, Illinois"]
+  groups: ["ouvriers de Chicago", "anarchistes"]
+  institutions: []
+  normative: []
+  memory: ["Haymarket", "1er mai"]
+  sources: ["SRC-014"]
+  confidence: probable
+  status: validated
+  justification: "PROP-007 (confiance medium) et ACTOR-006, source SRC-014; le bilan (huit condamnés, quatre exécutés en 1887) est celui du registre."
+  TODO: []
+
+- id: us-era3-soc-001
+  era_id: usa-era-3
+  domain: "Société & démographie"
+  scale: national
+  subject: "Société du Sud des États-Unis après 1865"
+  predicate: "voit l’abolition ne pas mettre fin à"
+  object: "la domination raciale: Black Codes, convict leasing, lois Jim Crow et désfranchisement prolongent la ségrégation légale"
+  time: 1865
+  time_precision: year
+  families: [processus, groupe_social]
+  actors: []
+  places: []
+  groups: ["Afro-Américains", "propriétaires d’esclaves"]
+  institutions: []
+  normative: ["Black Codes", "lois Jim Crow"]
+  memory: []
+  sources: ["SRC-008"]
+  confidence: certain
+  status: validated
+  justification: "Fiche us-13e du dataset et correction proposée sur us-13e; SRC-008 (Foner) documente la violence blanche et le renversement de la Reconstruction (CLAIM-005)."
+  TODO: []
+
+- id: us-era3-fem-001
+  era_id: usa-era-3
+  domain: "Femmes, genre, sexualités"
+  scale: national
+  subject: "Ida B. Wells et le mouvement suffragiste d’après-guerre"
+  predicate: "relient dans la presse noire"
+  object: "la lutte contre le lynchage et le droit de vote des femmes, malgré l’exclusion des militantes noires des organisations blanches"
+  time: 1865
+  time_precision: year
+  families: [acteur, groupe_social, processus]
+  actors: ["Ida B. Wells"]
+  places: ["Memphis", "Chicago"]
+  groups: ["militantes noires", "mouvement suffragiste", "clubs de femmes noires"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-013"]
+  confidence: probable
+  status: validated
+  justification: "OM-008 et ACTOR-005: SRC-013 (DuBois) couvre Ida B. Wells-Barnett et la longue bataille du suffrage; l’ancre 1865 est le début de la période d’après-guerre signalée par OM-008 (1865-1920)."
+  TODO: []
+
+- id: us-era3-rel-001
+  era_id: usa-era-3
+  domain: "Religions & croyances"
+  scale: national
+  subject: "Sojourner Truth"
+  predicate: "prédicatrice et abolitionniste, utilise la parole publique pour relier"
+  object: "abolition, foi et droits des femmes dans les conventions de l’après-guerre"
+  time: "1861-1877"
+  time_precision: intervalle
+  families: [acteur]
+  actors: ["Sojourner Truth"]
+  places: ["New York", "Washington"]
+  groups: ["abolitionnistes", "militantes des droits des femmes"]
+  institutions: ["conventions pour les droits des femmes"]
+  normative: []
+  memory: []
+  sources: ["SRC-013"]
+  confidence: probable
+  status: validated
+  justification: "ACTOR-003 (PERIOD-2 et PERIOD-3) la décrit comme prédicatrice; SRC-013 documente son rôle. L’intervalle 1861-1877 correspond à PERIOD-3 du country-audit, sans date d’activité inventée; son discours de 1851 à Akron, à transcription tardive, reste hors de cette ère."
+  TODO: []
+
+- id: us-era3-sci-001
+  era_id: usa-era-3
+  domain: "Sciences, techniques & santé"
+  scale: national
+  subject: "Premier chemin de fer transcontinental"
+  predicate: "est achevé en 1869 à Promontory Summit et relie"
+  object: "les deux océans, transformant l’économie de l’Ouest par une infrastructure d’ingénierie"
+  time: 1869
+  time_precision: year
+  families: [evenement]
+  actors: []
+  places: ["Promontory Summit, Utah"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-010"]
+  confidence: certain
+  status: validated
+  justification: "Fiche us-railroad du dataset et PLACE-012, source SRC-010; la date de jonction (1869) est celle du registre."
+  TODO: []
+
+- id: us-era3-art-001
+  era_id: usa-era-3
+  domain: "Arts & lettres"
+  scale: national
+  subject: "Frederick Douglass"
+  predicate: "écrivain, orateur et homme d’État, produit"
+  object: "des autobiographies devenues des classiques de la littérature américaine, qui relient l’émancipation à la mémoire de la guerre civile"
+  time: "1861-1877"
+  time_precision: intervalle
+  families: [acteur]
+  actors: ["Frederick Douglass"]
+  places: ["Baltimore", "Rochester", "Washington"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: ["autobiographies classiques", "mémoire de la guerre civile"]
+  sources: ["SRC-008"]
+  confidence: probable
+  status: validated
+  justification: "ACTOR-002 (PERIOD-2 et PERIOD-3), source SRC-008: ses autobiographies sont des classiques et il a relié abolition, droits civiques et mémoire de la guerre civile. L’intervalle 1861-1877 est PERIOD-3; aucune date de publication n’est avancée."
+  TODO: []
+
+- id: us-era3-env-001
+  era_id: usa-era-3
+  domain: "Environnement & territoire"
+  scale: regional
+  subject: "Chemin de fer transcontinental et nations des Plaines"
+  predicate: "ouvrent en 1869 à la colonisation des terres autochtones et accélèrent"
+  object: "la destruction des bisons et la dépossession des Lakota et des Cheyennes"
+  time: 1869
+  time_precision: year
+  families: [processus, groupe_social]
+  actors: []
+  places: ["Promontory Summit, Utah", "Little Bighorn", "Standing Rock"]
+  groups: ["Lakota", "Cheyennes"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-010", "SRC-006"]
+  confidence: probable
+  status: validated
+  justification: "Fiche us-railroad du dataset (SRC-010) et ACTOR-004 / SRC-006 pour la dépossession; la contestation de PLACE-012 oppose célébration du progrès et dépossession autochtone."
+  TODO: []
+
+- id: us-era3-mig-001
+  era_id: usa-era-3
+  domain: "Migrations & diasporas"
+  scale: transnational
+  subject: "Travailleurs chinois aux États-Unis"
+  predicate: "recrutés pour les mines et le chemin de fer, sont soumis à partir du 6 mai 1882 à"
+  object: "une exclusion fédérale durable qui leur refuse la naturalisation"
+  time: 1882
+  time_precision: year
+  families: [processus, repere_normatif]
+  actors: []
+  places: ["Promontory Summit, Utah"]
+  groups: ["travailleurs chinois", "communautés asiatiques-américaines"]
+  institutions: []
+  normative: ["Chinese Exclusion Act (1882)"]
+  memory: []
+  sources: ["SRC-010", "SRC-002"]
+  confidence: certain
+  status: validated
+  justification: "OM-006 et PROP-006: SRC-010 documente le travail chinois du transcontinental (1869), SRC-010 et SRC-002 l’exclusion de 1882. Confiance high dans l’audit."
+  TODO: []
+
+- id: us-era3-aut-001
+  era_id: usa-era-3
+  domain: "Peuples autochtones & minorités"
+  scale: national
+  subject: "Sitting Bull et l’alliance lakota-cheyenne"
+  predicate: "infligent en 1876 une défaite à Custer et sont ensuite soumis à l’internement"
+  object: "Little Bighorn, puis la mort de Sitting Bull en 1890, marquent la résistance à l’internement et aux agences indiennes"
+  time: 1876
+  time_precision: year
+  families: [evenement, acteur]
+  actors: ["Sitting Bull", "Crazy Horse"]
+  places: ["Little Bighorn", "Standing Rock"]
+  groups: ["Lakota", "Cheyennes"]
+  institutions: ["Bureau of Indian Affairs", "U.S. Army"]
+  normative: []
+  memory: ["figure de la résistance autochtone"]
+  sources: ["SRC-006"]
+  confidence: probable
+  status: validated
+  justification: "ACTOR-004 (PERIOD-3), source SRC-006: victoire sur Custer en 1876, négociation puis mort en 1890. La réappropriation par Standing Rock en 2016 est hors de cette ère et n’est pas affirmée ici."
+  TODO: []
+
+- id: us-era3-mem-001
+  era_id: usa-era-3
+  domain: "Mémoire & patrimoine"
+  scale: national
+  subject: "Mémoire de Haymarket"
+  predicate: "transforme le procès de 1886 en symbole ouvrier durable"
+  object: "le 1er mai et la figure d’Albert Parsons, accusé sans preuve directe"
+  time: 1886
+  time_precision: year
+  families: [memoire]
+  actors: ["Albert Parsons"]
+  places: ["Chicago, Illinois"]
+  groups: ["mouvement ouvrier"]
+  institutions: []
+  normative: []
+  memory: ["Haymarket", "1er mai", "figure du mouvement ouvrier"]
+  sources: ["SRC-014"]
+  confidence: probable
+  status: validated
+  justification: "SRC-014 (Green) documente explicitement la mémoire de Haymarket et du 1er mai; ACTOR-006 (memory) confirme le symbole. L’identité du poseur de bombe reste non résolue: aucun nom n’est avancé."
+  TODO: []
+
+- id: us-era3-cir-001
+  era_id: usa-era-3
+  domain: "Circulations transnationales"
+  scale: imperial
+  subject: "Empire insulaire des États-Unis après 1898"
+  predicate: "s’étend à des territoires non incorporés et à un réseau mondial de bases"
+  object: "Porto Rico, Guam, les Philippines et Hawaï; l’annexion des Philippines ouvre la guerre américano-philippine (1899-1902)"
+  time: 1898
+  time_precision: year
+  families: [processus, evenement]
+  actors: []
+  places: ["Porto Rico", "Guam", "Philippines", "Hawaï", "San Juan, Porto Rico", "Honolulu, Hawaï"]
+  groups: []
+  institutions: []
+  normative: ["Traité de Paris (10 décembre 1898)"]
+  memory: []
+  sources: ["SRC-009"]
+  confidence: probable
+  status: validated
+  justification: "SRC-009 (Immerwahr) documente la distinction entre territoires incorporés et non incorporés et le réseau mondial de bases; OM-009 et la revue unresolved signalent la guerre américano-philippine (1899-1902) et les camps de reconcentration comme éléments à vérifier."
+  TODO: ["Vérifier dans SRC-009 les dates de la guerre américano-philippine (1899-1902) et l’usage du terme « camps de reconcentration »."]

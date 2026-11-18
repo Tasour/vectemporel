@@ -1,0 +1,312 @@
+# Vectemporel — propositions de points pour usa-era-5 (1945-1991)
+# Source : audits/usa/* (country-audit.yaml, coverage-matrix.csv, source-register.csv,
+# proposals.yaml, omissions.yaml, fixes.yaml, REPORT.md) et proposals/MANIFEST.md.
+# Un point par domaine de la matrice (14 domaines). Aucune source inventée, aucun lien externe.
+
+- id: usa-era5-pol-001
+  era_id: usa-era-5
+  domain: "Politique & institutions"
+  scale: national
+  subject: "États-Unis et Union soviétique"
+  predicate: "structurent la période par une rivalité politique et idéologique à partir de 1947, appuyée sur un réseau mondial de bases et d'alliances"
+  object: "projection de puissance américaine et course aux armements, 1947-1991"
+  time: 1947
+  time_precision: year
+  families: [evenement, institution, processus]
+  actors: []
+  places: []
+  groups: []
+  institutions: ["réseau mondial de bases et d'alliances"]
+  normative: []
+  memory: []
+  sources: ["SRC-009"]
+  confidence: certain
+  status: validated
+  justification: "fixes.yaml (correction de us-cold-war) : « États-Unis et Union soviétique se disputent le monde à partir de 1947 » et « un réseau mondial de bases et d'alliances soutient la projection de puissance américaine ». SRC-009 (Immerwahr, How to Hide an Empire) documente le réseau de bases. La formulation « sans conflit direct » est ainsi corrigée."
+  TODO: []
+
+- id: usa-era5-gue-001
+  era_id: usa-era-5
+  domain: "Guerres & diplomatie"
+  scale: transnational
+  subject: "États-Unis"
+  predicate: "mènent des guerres réelles en Corée et au Vietnam, parallèlement à la rivalité nucléaire et aux interventions par procuration"
+  object: "Corée (1950-1953), Vietnam (1955-1975)"
+  time: 1950
+  time_precision: year
+  families: [evenement, processus]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-009"]
+  confidence: certain
+  status: validated
+  justification: "fixes.yaml (correction de us-cold-war) nomme explicitement la Corée (1950-1953) et le Vietnam (1955-1975) ; coverage-matrix.csv ERA-5 signale que ces guerres n'étaient pas nommées. Les interventions secrètes (Iran 1953, Guatemala 1954, Cuba 1961, Chili 1973) sont documentées comme dette dans OM-012 et ne sont pas traitées comme un événement distinct ici."
+  TODO: []
+
+- id: usa-era5-dro-001
+  era_id: usa-era-5
+  domain: "Droit & justice"
+  scale: national
+  subject: "Civil Rights Act of 1964"
+  predicate: "interdit la discrimination fondée sur la race, la couleur, la religion, le sexe ou l'origine dans les lieux publics, l'emploi et les programmes fédéraux"
+  object: "Fin de la ségrégation légale dans les lieux publics et l'emploi ; création de l'EEOC ; limites pour le logement, les écoles de fait et la police"
+  time: 1964
+  time_precision: year
+  families: [repere_normatif, evenement]
+  actors: []
+  places: []
+  groups: []
+  institutions: ["EEOC"]
+  normative: ["Civil Rights Act of 1964"]
+  memory: []
+  sources: ["SRC-004"]
+  confidence: certain
+  status: validated
+  justification: "SRC-004 (National Archives, Civil Rights Act of 1964) : titres II, VI et VII, EEOC, signé le 2 juillet 1964. La correction de us-civil-rights dans fixes.yaml limite sa portée aux lieux publics, à l'emploi et aux programmes fédéraux et rappelle les limites d'application."
+  TODO: []
+
+- id: usa-era5-eco-001
+  era_id: usa-era-5
+  domain: "Économie & travail"
+  scale: regional
+  subject: "United Farm Workers (UFW) et Dolores Huerta"
+  predicate: "organisent la grève et le boycott des travailleurs agricoles latinos et obtiennent des contrats et une reconnaissance syndicale"
+  object: "Grèves de Delano et boycott des raisins, Californie, à partir de 1962"
+  time: 1962
+  time_precision: year
+  families: [acteur, groupe_social, institution, evenement]
+  actors: ["Dolores Huerta", "Cesar Chavez"]
+  places: ["Delano", "Stockton"]
+  groups: ["travailleurs agricoles latinos"]
+  institutions: ["United Farm Workers (UFW)", "AFL-CIO"]
+  normative: []
+  memory: []
+  sources: ["SRC-012"]
+  confidence: certain
+  status: validated
+  justification: "country-audit.yaml ACTOR-007 et ACTOR-012 : « A cofondé l'UFW en 1962 et joué un rôle central dans les grèves de Delano et le boycott des raisins ; a popularisé « Sí, se puede » » ; l'UFW « a obtenu des contrats et une reconnaissance syndicale dans les années 1960-1970 ». SRC-012 (González, Harvest of Empire) couvre le travail latino."
+  TODO: []
+
+- id: usa-era5-soc-001
+  era_id: usa-era-5
+  domain: "Société & démographie"
+  scale: national
+  subject: "Boycott des bus de Montgomery"
+  predicate: "mobilise la communauté noire de Montgomery pendant 381 jours et obtient la fin de la ségrégation dans les transports publics"
+  object: "Montgomery, 5 décembre 1955 - 20 décembre 1956 ; Browder v. Gayle"
+  time: 1955
+  time_precision: year
+  families: [evenement, groupe_social, acteur]
+  actors: ["Rosa Parks", "Martin Luther King Jr.", "E. D. Nixon"]
+  places: ["Montgomery, Alabama"]
+  groups: ["communauté noire de Montgomery", "Montgomery Improvement Association (MIA)"]
+  institutions: ["NAACP", "Highlander Folk School"]
+  normative: []
+  memory: []
+  sources: ["SRC-017"]
+  confidence: certain
+  status: validated
+  justification: "PROP-014 de proposals.yaml : après l'arrestation de Rosa Parks le 1er décembre 1955, le boycott dure du 5 décembre 1955 au 20 décembre 1956 ; la MIA dirigée par Martin Luther King Jr. obtient la fin de la ségrégation après Browder v. Gayle. SRC-017 (Theoharis) corrige le mythe de la « couturière fatiguée »."
+  TODO: []
+
+- id: usa-era5-gen-001
+  era_id: usa-era-5
+  domain: "Femmes, genre, sexualités"
+  scale: national
+  subject: "Émeute de Stonewall"
+  predicate: "déclenche une révolte contre une descente de police et devient le symbole du mouvement LGBTQ+ et de la Pride"
+  object: "Stonewall Inn, Greenwich Village, New York, nuit du 28 juin 1969"
+  time: 1969
+  time_precision: year
+  families: [evenement, acteur, memoire]
+  actors: ["Marsha P. Johnson", "Sylvia Rivera"]
+  places: ["Greenwich Village", "New York"]
+  groups: ["militant·es trans et queers", "Gay Liberation Front", "STAR"]
+  institutions: []
+  normative: []
+  memory: ["Stonewall Inn", "Pride"]
+  sources: ["SRC-019"]
+  confidence: disputé
+  status: validated
+  justification: "PROP-017 de proposals.yaml et ACTOR-010 : dans la nuit du 28 juin 1969, une descente au Stonewall Inn déclenche une émeute ; Marsha P. Johnson, Sylvia Rivera et d'autres y participent. SRC-019 (Duberman, Stonewall). Le rôle exact de Marsha P. Johnson dans le déclenchement et l'attribution de la « première brique » sont disputés (REPORT.md §6) : le degré de certitude reste disputé."
+  TODO: []
+
+- id: usa-era5-rel-001
+  era_id: usa-era-5
+  domain: "Religions & croyances"
+  scale: national
+  subject: "Clergé catholique et réseaux religieux de l'United Farm Workers"
+  predicate: "appuient la mobilisation syndicale des travailleurs agricoles par des réseaux religieux et étudiants"
+  object: "Delano et Californie, dans le sillage de la fondation de l'UFW en 1962"
+  time: 1962
+  time_precision: year
+  families: [groupe_social, acteur, institution]
+  actors: ["Dolores Huerta", "Cesar Chavez"]
+  places: ["Delano", "Californie"]
+  groups: ["clergé catholique", "étudiants", "travailleurs agricoles latinos"]
+  institutions: ["United Farm Workers (UFW)"]
+  normative: []
+  memory: []
+  sources: ["SRC-012"]
+  confidence: probable
+  status: validated
+  justification: "country-audit.yaml ACTOR-012 (United Farm Workers) : ressources « grèves, boycotts, réseaux religieux et étudiants, presse » et réseaux « Cesar Chavez, Dolores Huerta, AFL-CIO, clergé catholique, boycotts de consommateurs », avec SRC-012 pour source. La coverage-matrix.csv notait ce domaine comme « vide non traité » ; le point comble la cellule à partir des réseaux documentés de l'acteur collectif. Degré probable, car synthèse d'acteur et non document primaire."
+  TODO: []
+
+- id: usa-era5-sci-001
+  era_id: usa-era-5
+  domain: "Sciences, techniques & santé"
+  scale: national
+  subject: "Rachel Carson et la controverse scientifique sur les pesticides"
+  predicate: "publie Silent Spring, qui documente la pollution par les pesticides et l'interdépendance écologique, et déclenche une controverse publique sur la santé et l'environnement"
+  object: "DDT, pesticides, écosystèmes ; réaction de l'industrie chimique, 27 septembre 1962"
+  time: 1962
+  time_precision: year
+  families: [acteur, evenement, processus]
+  actors: ["Rachel Carson"]
+  places: ["Springdale (Pennsylvanie)", "Silver Spring (Maryland)"]
+  groups: ["industrie chimique", "conservationnistes"]
+  institutions: ["U.S. Fish and Wildlife Service"]
+  normative: []
+  memory: []
+  sources: ["SRC-018"]
+  confidence: certain
+  status: validated
+  justification: "SRC-018 (Carson, Silent Spring, 1962, Houghton Mifflin) : « Pesticide pollution; DDT; ecological interdependence; chemical-industry backlash ». PROP-015 et ACTOR-008 datent la publication du 27 septembre 1962. La note de registre précise qu'il s'agit d'une source primaire historique pour le mouvement environnemental, non d'une référence toxicologique actuelle : la portée du point est donc la controverse publique et scientifique, pas une assertion toxicologique."
+  TODO: []
+
+- id: usa-era5-art-001
+  era_id: usa-era-5
+  domain: "Arts & lettres"
+  scale: national
+  subject: "Rachel Carson, écrivaine"
+  predicate: "publie un ouvrage de non-fiction, Silent Spring, qui devient une référence du débat public américain"
+  object: "Silent Spring, 1962"
+  time: 1962
+  time_precision: year
+  families: [acteur, evenement]
+  actors: ["Rachel Carson"]
+  places: []
+  groups: []
+  institutions: ["Houghton Mifflin"]
+  normative: []
+  memory: []
+  sources: ["SRC-018"]
+  confidence: certain
+  status: validated
+  justification: "ACTOR-008 qualifie Rachel Carson de « biologiste, écrivaine, environnementaliste » et SRC-018 enregistre Silent Spring (1962, Houghton Mifflin) comme source primaire. PROP-015 note que l'ouvrage nourrit la création de l'EPA en 1970. La coverage-matrix.csv avait ce domaine « vide non traité » ; le point s'appuie uniquement sur la qualité d'ouvrage écrit et sur sa réception publique documentée, sans inventer d'œuvre littéraire ou artistique supplémentaire."
+  TODO: []
+
+- id: usa-era5-env-001
+  era_id: usa-era-5
+  domain: "Environnement & territoire"
+  scale: national
+  subject: "Mouvement environnemental américain"
+  predicate: "se constitue autour de la controverse sur les pesticides et aboutit à la création de l'EPA en 1970"
+  object: "Conséquences écologiques de Silent Spring ; Environmental Protection Agency, 1970"
+  time: 1962
+  time_precision: year
+  families: [processus, evenement, institution]
+  actors: ["Rachel Carson"]
+  places: []
+  groups: ["mouvement environnemental"]
+  institutions: ["Environmental Protection Agency (EPA)"]
+  normative: []
+  memory: []
+  sources: ["SRC-018"]
+  confidence: certain
+  status: validated
+  justification: "PROP-015 et coverage-matrix.csv ERA-5 (cellule Environnement & territoire « couvert », PROP-015) : « Silent Spring est documenté par Carson (SRC-018), avec la controverse sur les pesticides. » SRC-018 note l'influence sur le mouvement environnemental et la création de l'EPA en 1970."
+  TODO: []
+
+- id: usa-era5-mig-001
+  era_id: usa-era-5
+  domain: "Migrations & diasporas"
+  scale: transnational
+  subject: "Programme Bracero"
+  predicate: "organise l'importation sous contrat de travailleurs agricoles et ferroviaires mexicains, avec des abus et des salaires impayés documentés"
+  object: "Environ 4,6 millions de contrats signés entre 1942 et 1964 ; point de recrutement d'El Paso / Ciudad Juárez"
+  time: 1964
+  time_precision: year
+  families: [processus, groupe_social, institution]
+  actors: []
+  places: ["El Paso (Texas) / Ciudad Juárez (Chihuahua)"]
+  groups: ["braceros", "travailleurs mexicains sous contrat"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-012", "SRC-011"]
+  confidence: certain
+  status: validated
+  justification: "PROP-013 de proposals.yaml : de 1942 à 1964, environ 4,6 millions de contrats, avec abus, salaires impayés et logements précaires ; PLACE-PROP-008 situe un point de recrutement à El Paso / Ciudad Juárez. SRC-012 (González) et SRC-011 (Ngai, Impossible Subjects) documentent le programme. L'année retenue, 1964, est la borne finale du programme et appartient à l'ère 1945-1991 ; la période 1942-1964 est donnée dans l'objet. Les 4,6 millions sont des contrats, non des personnes distinctes (REPORT.md §3)."
+  TODO: []
+
+- id: usa-era5-aut-001
+  era_id: usa-era-5
+  domain: "Peuples autochtones & minorités"
+  scale: national
+  subject: "Voting Rights Act of 1965"
+  predicate: "abolit les tests d'alphabétisation, institue des examinateurs fédéraux et la surveillance préalable de certaines juridictions, provoquant une hausse immédiate de l'inscription des électeurs noirs"
+  object: "Environ 250 000 nouveaux électeurs noirs inscrits dès la fin de 1965 ; Section 5 preclearance"
+  time: 1965
+  time_precision: year
+  families: [repere_normatif, evenement, groupe_social]
+  actors: []
+  places: []
+  groups: ["électeurs noirs", "minorités raciales"]
+  institutions: ["examinateurs fédéraux"]
+  normative: ["Voting Rights Act of 1965"]
+  memory: []
+  sources: ["SRC-005"]
+  confidence: certain
+  status: validated
+  justification: "PROP-016 de proposals.yaml et SRC-005 (National Archives, Voting Rights Act of 1965) : loi signée le 6 août 1965, abolition des tests d'alphabétisation, examinateurs fédéraux, Section 5, environ 250 000 nouveaux électeurs noirs fin 1965. La coverage-matrix.csv ERA-5 indique que le Voting Rights Act documente la déségrégation pour ce domaine ; le point est centré sur les minorités, la cellule Femmes, genre, sexualités étant traitée séparément par Stonewall."
+  TODO: []
+
+- id: usa-era5-mem-001
+  era_id: usa-era-5
+  domain: "Mémoire & patrimoine"
+  scale: national
+  subject: "Manzanar et le dédommagement des Japonais-Américains"
+  predicate: "devient un site de mémoire de l'incarcération et fait l'objet d'excuses et de réparations partielles de la part du gouvernement fédéral"
+  object: "Manzanar War Relocation Center ; apology and partial restitution, 1988"
+  time: 1988
+  time_precision: year
+  families: [memoire, lieu, repere_normatif]
+  actors: []
+  places: ["Manzanar, Californie"]
+  groups: ["Japonais-Américains incarcérés"]
+  institutions: []
+  normative: []
+  memory: ["Manzanar War Relocation Center", "réparations de 1988", "internement ou incarcération"]
+  sources: ["SRC-003", "SRC-010"]
+  confidence: certain
+  status: validated
+  justification: "PLACE-007 et PROP-012 : Manzanar est un « camp d'incarcération, site de mémoire » avec pour contestation « réparations de 1988 » ; « le gouvernement présente des excuses et verse des réparations partielles en 1988 ». SRC-003 (NARA, Executive Order 9066) confirme « 1988 apology and partial restitution » ; SRC-010 (Takaki) couvre l'histoire asiatique-américaine. La coverage-matrix.csv notait le domaine « vide non traité » ; le point s'appuie sur les elements de mémoire déjà présents dans le dossier, sans ajouter de lieu de mémoire non sourcé."
+  TODO: []
+
+- id: usa-era5-cir-001
+  era_id: usa-era-5
+  domain: "Circulations transnationales"
+  scale: transnational
+  subject: "Réseau mondial de bases et d'alliances des États-Unis"
+  predicate: "soutient la projection de puissance américaine et structure les circulations militaires, diplomatiques et impériales de la guerre froide"
+  object: "Bases et alliances à l'étranger, 1947-1991"
+  time: 1947
+  time_precision: year
+  families: [institution, processus, evenement]
+  actors: []
+  places: ["San Juan, Porto Rico", "Honolulu, Hawaï"]
+  groups: []
+  institutions: ["réseau mondial de bases et d'alliances"]
+  normative: []
+  memory: []
+  sources: ["SRC-009"]
+  confidence: certain
+  status: validated
+  justification: "fixes.yaml (correction de us-cold-war) : « Un réseau mondial de bases et d'alliances soutient la projection de puissance américaine ». SRC-009 (Immerwahr, How to Hide an Empire) documente le « global base network » et les territoires non incorporés ; PLACE-009 (San Juan) et PLACE-010 (Honolulu) donnent des lieux impériaux datés du dossier. La coverage-matrix.csv signalait le caractère partiel de cette cellule."
+  TODO: []

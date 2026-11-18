@@ -1,0 +1,293 @@
+- id: cn-era4-pol-001
+  era_id: china-era-4
+  domain: "Politique & institutions"
+  scale: national
+  subject: "République populaire de Chine"
+  predicate: "est proclamée"
+  object: "à Pékin en 1949 par Mao Zedong après la victoire du Parti communiste chinois sur le Kuomintang, instaurant un État-parti"
+  time: "1949"
+  time_precision: year
+  families: [evenement, acteur, institution]
+  actors: ["Mao Zedong", "Parti communiste chinois"]
+  places: ["Pékin"]
+  groups: []
+  institutions: ["Parti communiste chinois", "République populaire de Chine"]
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-008"]
+  confidence: certain
+  status: validated
+  justification: "Le repère cn-1949 et ACTOR-005 documentent la fondation de la RPC en 1949. Spence (SRC-001) et Walder (SRC-008) situent la prise du pouvoir par le PCC et la mise en place du nouvel État. La borne de 1949 est la borne politique de l'ère (PERIOD-4)."
+
+- id: cn-era4-guerre-001
+  era_id: china-era-4
+  domain: "Guerres & diplomatie"
+  scale: transnational
+  subject: "Intervention chinoise dans la guerre de Corée"
+  predicate: "engage"
+  object: "l'Armée populaire de libération en Corée à partir de 1950, contre les forces des Nations unies et en soutien à la Corée du Nord"
+  time: "1950"
+  time_precision: year
+  families: [evenement]
+  actors: ["Mao Zedong", "Armée populaire de libération"]
+  places: ["Corée"]
+  groups: []
+  institutions: ["Armée populaire de libération"]
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-008", "OM-004"]
+  confidence: probable
+  status: validated
+  justification: "La matrice ERA-4 classe ce domaine en « vide non traité » et OM-004 enregistre l'absence de sources militaires et diplomatiques dédiées, avec SRC-001 et SRC-008 comme evidence_checked. Spence et Walder situent l'entrée en guerre de la RPC en 1950 ; la certitude reste probable faute de monographie spécialisée dans le registre."
+
+- id: cn-era4-droit-001
+  era_id: china-era-4
+  domain: "Droit & justice"
+  scale: national
+  subject: "Loi sur le mariage du 1er mai 1950"
+  predicate: "interdit"
+  object: "le mariage arrangé, la polygamie et le concubinage, et proclame l'égalité des époux, malgré les résistances des pratiques locales"
+  time: "1950"
+  time_precision: year
+  families: [normatif, acteur]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: ["Loi sur le mariage du 1er mai 1950"]
+  memory: []
+  sources: ["SRC-011", "SRC-001"]
+  confidence: certain
+  status: validated
+  justification: "PROP-010 et la matrice ERA-4 (cellule « Droit & justice », partiel) documentent la loi du 1er mai 1950. Hershatter (SRC-011) analyse sa mise en œuvre et ses résistances locales ; Spence (SRC-001) fournit le contexte législatif de la première décennie de la RPC."
+
+- id: cn-era4-economie-001
+  era_id: china-era-4
+  domain: "Économie & travail"
+  scale: national
+  subject: "Grand Bond en avant"
+  predicate: "crée"
+  object: "les communes populaires à partir de 1958, avec des quotas de production irréalistes et des réquisitions de grain qui provoquent une crise économique et alimentaire"
+  time: "1958"
+  time_precision: year
+  families: [evenement, processus, institution]
+  actors: []
+  places: []
+  groups: ["paysans"]
+  institutions: ["Commune populaire"]
+  normative: []
+  memory: []
+  sources: ["SRC-009", "SRC-008", "SRC-010"]
+  confidence: certain
+  status: validated
+  justification: "PROP-012 et CLAIM-009 datent le lancement du Grand Bond de 1958. Dikötter (SRC-009), Walder (SRC-008) et l'analyse démographique d'Ashton et al. (SRC-010) documentent communes, quotas, réquisitions et leurs effets. Le bilan humain, disputé, est traité séparément dans le point cn-era4-societe-001."
+
+- id: cn-era4-societe-001
+  era_id: china-era-4
+  domain: "Société & démographie"
+  scale: national
+  subject: "Grande famine de 1959-1961"
+  predicate: "provoque"
+  object: "une surmortalité estimée entre 15 et 46 millions de morts : environ 30 millions selon Ashton et al., au moins 45 millions selon Dikötter"
+  time: "1959"
+  time_precision: interval
+  families: [processus, evenement]
+  actors: []
+  places: []
+  groups: ["paysans"]
+  institutions: []
+  normative: []
+  memory: ["Estimations de mortalité contestées et archives partielles"]
+  sources: ["SRC-009", "SRC-010", "SRC-008"]
+  confidence: disputé
+  status: validated
+  justification: "CLAIM-009 et PROP-012 donnent la fourchette de 15 à 46 millions et les estimations divergentes d'Ashton et al. (SRC-010, évalué par les pairs) et Dikötter (SRC-009). Walder (SRC-008) complète le cadre social. Le chiffre reste disputé : il est cité comme estimation, jamais comme consensus."
+
+- id: cn-era4-femmes-001
+  era_id: china-era-4
+  domain: "Femmes, genre, sexualités"
+  scale: national
+  subject: "Femmes rurales"
+  predicate: "sont mobilisées comme"
+  object: "productrices agricoles dans les communes et les brigades de production, avec une division sexuée du travail et un accès inégal à la propriété qui persistent"
+  time: "1958"
+  time_precision: year
+  families: [groupe_social, processus]
+  actors: []
+  places: []
+  groups: ["femmes rurales"]
+  institutions: ["Brigade de production"]
+  normative: []
+  memory: ["Mémoires orales de femmes rurales, peu présentes dans les musées nationaux"]
+  sources: ["SRC-011", "SRC-008"]
+  confidence: certain
+  status: validated
+  justification: "ACTOR-011 (période ERA-4) décrit le travail des femmes rurales dans les brigades de production et leurs contraintes. Hershatter (SRC-011) repose sur des mémoires de femmes rurales et le travail collectif des années 1950 ; Walder (SRC-008) situe cette mobilisation dans la collectivisation. La matrice ERA-4 notait l'absence de ce volet genre au-delà de la loi de 1950."
+
+- id: cn-era4-religion-001
+  era_id: china-era-4
+  domain: "Religions & croyances"
+  scale: regional
+  subject: "Soulèvement de Lhassa"
+  predicate: "marque"
+  object: "la remise en cause des institutions religieuses tibétaines en 1959, l'exil du 14e dalaï-lama et l'imposition de l'administration de la RPC au Tibet"
+  time: "1959"
+  time_precision: year
+  families: [evenement, memoire]
+  actors: ["14e dalaï-lama"]
+  places: ["Lhassa"]
+  groups: ["Tibétains"]
+  institutions: []
+  normative: []
+  memory: ["Statut du Tibet et mémoire de 1959 : récits chinois et tibétains inconciliables"]
+  sources: ["SRC-016", "SRC-001"]
+  confidence: certain
+  status: validated
+  justification: "PROP-011, ACTOR-008 et PLACE-011 documentent l'accord de 1951, le soulèvement de 1959 et l'exil. Shakya (SRC-016) est la synthèse de référence sur le Tibet depuis 1947 ; Spence (SRC-001) fournit le contexte de la RPC. Le point de vue reste disputé, ce qui est explicite dans le champ memory."
+
+- id: cn-era4-sciences-001
+  era_id: china-era-4
+  domain: "Sciences, techniques & santé"
+  scale: national
+  subject: "Communauté scientifique et universitaire"
+  predicate: "est frappée par"
+  object: "les purges de la Révolution culturelle (1966-1976) : intellectuels et scientifiques persécutés, universités fermées, recherche interrompue"
+  time: "1966"
+  time_precision: year
+  families: [processus, groupe_social]
+  actors: []
+  places: ["Pékin"]
+  groups: ["intellectuels", "scientifiques"]
+  institutions: ["Universités"]
+  normative: []
+  memory: []
+  sources: ["SRC-007", "SRC-008", "OM-006"]
+  confidence: probable
+  status: validated
+  justification: "La matrice ERA-4 classe ce domaine en « vide non traité » et OM-006 enregistre l'absence de source dédiée aux sciences et à la santé maoïstes. MacFarquhar et Schoenhals (SRC-007) et Walder (SRC-008) documentent la persécution des intellectuels et la fermeture des universités pendant la Révolution culturelle. La certitude reste probable faute de monographie spécialisée."
+
+- id: cn-era4-arts-001
+  era_id: china-era-4
+  domain: "Arts & lettres"
+  scale: national
+  subject: "Littérature et arts"
+  predicate: "sont soumis à"
+  object: "au réalisme socialiste et aux campagnes de rectification ; la Révolution culturelle détruit des œuvres et purge des écrivains comme Ding Ling"
+  time: "1966"
+  time_precision: year
+  families: [processus, acteur, memoire]
+  actors: ["Ding Ling"]
+  places: ["Pékin"]
+  groups: ["écrivains", "intellectuels"]
+  institutions: []
+  normative: []
+  memory: ["Réhabilitation de Ding Ling en 1979 ; féminisme souvent édulcoré dans les commémorations officielles"]
+  sources: ["SRC-007", "SRC-001"]
+  confidence: certain
+  status: validated
+  justification: "PROP-013 et la matrice ERA-4 signalent les destructions culturelles de la Révolution culturelle. ACTOR-004 documente le parcours de Ding Ling (purge en 1955, prison pendant la Révolution culturelle, réhabilitation en 1979). MacFarquhar et Schoenhals (SRC-007) et Spence (SRC-001) couvrent la répression culturelle et intellectuelle."
+
+- id: cn-era4-environnement-001
+  era_id: china-era-4
+  domain: "Environnement & territoire"
+  scale: national
+  subject: "Campagne des quatre nuisibles"
+  predicate: "vise à"
+  object: "éliminer moineaux, rats, mouches et moustiques ; l'abattage des moineaux en 1958 illustre une intervention de l'État sur le vivant dans un contexte de sécheresse"
+  time: "1958"
+  time_precision: year
+  families: [processus, evenement]
+  actors: []
+  places: []
+  groups: ["paysans"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-017", "SRC-009"]
+  confidence: probable
+  status: validated
+  justification: "La matrice ERA-4 note l'absence de fiche sur l'irrigation et les moineaux et relie la famine à l'écologie et aux campagnes agricoles. Marks (SRC-017) traite l'histoire environnementale de la Chine et Dikötter (SRC-009) les campagnes du Grand Bond ; CLAIM-009 mentionne les conditions climatiques. La certitude reste probable faute de monographie dédiée à cette campagne."
+
+- id: cn-era4-migrations-001
+  era_id: china-era-4
+  domain: "Migrations & diasporas"
+  scale: national
+  subject: "Hukou"
+  predicate: "est instauré"
+  object: "en 1958, système d'enregistrement des ménages qui distingue résidents urbains et ruraux et encadre les migrations intérieures"
+  time: "1958"
+  time_precision: year
+  families: [institution, normatif, processus]
+  actors: []
+  places: []
+  groups: ["résidents ruraux", "résidents urbains"]
+  institutions: ["Hukou"]
+  normative: []
+  memory: []
+  sources: ["SRC-014", "SRC-008", "OM-005"]
+  confidence: probable
+  status: validated
+  justification: "OM-005 date la mise en place du hukou de 1958 et donne SRC-014 et SRC-008 comme evidence_checked. La matrice ERA-4 signalait l'absence de fiche sur le hukou et les migrations forcées. Naughton (SRC-014) et Walder (SRC-008) documentent le mécanisme et son rôle de contrôle social ; la certitude reste probable faute d'histoire sociale dédiée."
+
+- id: cn-era4-minorites-001
+  era_id: china-era-4
+  domain: "Peuples autochtones & minorités"
+  scale: regional
+  subject: "Région autonome ouïghoure du Xinjiang"
+  predicate: "est créée"
+  object: "en 1955, transformant la province en entité autonome administrée par la RPC, avec Ürümqi pour capitale"
+  time: "1955"
+  time_precision: year
+  families: [evenement, institution, normatif]
+  actors: []
+  places: ["Ürümqi"]
+  groups: ["Ouïghours"]
+  institutions: ["Région autonome ouïghoure du Xinjiang"]
+  normative: []
+  memory: []
+  sources: ["SRC-015", "SRC-001"]
+  confidence: certain
+  status: validated
+  justification: "La matrice ERA-4 notait l'absence du Xinjiang, de la Mongolie-Intérieure et des Zhuang. Millward (SRC-015) atteste l'autonomie de 1955 et PLACE-012 donne Ürümqi comme capitale de la région autonome depuis 1955 ; Spence (SRC-001) fournit le cadre de la politique des minorités de la RPC."
+
+- id: cn-era4-memoire-001
+  era_id: china-era-4
+  domain: "Mémoire & patrimoine"
+  scale: national
+  subject: "Mémoire de la Révolution culturelle"
+  predicate: "reste"
+  object: "un enjeu contesté, entre récit officiel, contre-mémoires et bilan humain disputé, avec des archives encore fermées"
+  time: "1976"
+  time_precision: year
+  families: [memoire]
+  actors: []
+  places: ["Pékin"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: ["Récit officiel et contre-mémoires", "Bilan humain contesté (OM-014)", "Mausolée de Mao à Pékin"]
+  sources: ["SRC-007", "SRC-008", "OM-014"]
+  confidence: certain
+  status: validated
+  justification: "CLAIM-010 et PROP-013 datent la fin de la Révolution culturelle de 1976 et notent un bilan humain disputé. OM-014 documente explicitement l'absence de bilan quantitatif fiable. MacFarquhar et Schoenhals (SRC-007) et Walder (SRC-008) fournissent le cadre factuel de la mémoire et de la violence de masse."
+
+- id: cn-era4-circulations-001
+  era_id: china-era-4
+  domain: "Circulations transnationales"
+  scale: transnational
+  subject: "République populaire de Chine"
+  predicate: "obtient"
+  object: "le siège de la Chine aux Nations unies en 1971, en remplacement de la République de Chine, puis voit la visite de Nixon en 1972"
+  time: "1971"
+  time_precision: year
+  families: [evenement, institution]
+  actors: []
+  places: ["New York"]
+  groups: []
+  institutions: ["Organisation des Nations unies"]
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: certain
+  status: validated
+  justification: "La matrice ERA-4 classe ce domaine en « vide non traité » et cite explicitement « l'ONU en 1971 » et « la visite de Nixon en 1972 ». Spence (SRC-001), synthèse de référence, couvre la diplomatie de la RPC dans les années 1970. La certitude est celle du repère chronologique, non d'un jugement sur le régime."

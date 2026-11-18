@@ -1,0 +1,312 @@
+# Points de l'ère germany-era-3 — Unification (1815 → 1914)
+# Source : audits/germany/ (country-audit.yaml, coverage-matrix.csv,
+# source-register.csv, omissions.yaml, proposals.yaml, fixes.yaml, REPORT.md).
+# Un point par domaine de la matrice (14 domaines). Aucune invention, aucun lien Grokipedia.
+
+- id: de-era3-pol-001
+  era_id: germany-era-3
+  domain: Politique & institutions
+  scale: national
+  subject: Assemblée nationale de Francfort
+  predicate: se réunit à la Paulskirche et adopte une constitution
+  object: "Environ 600 députés ; constitution adoptée en mars 1849 ; Frédéric-Guillaume IV refuse la couronne impériale"
+  time: "1848"
+  time_precision: year
+  families: [evenement, institution, acteur]
+  actors: ["Frédéric-Guillaume IV"]
+  places: ["Francfort-sur-le-Main", "Paulskirche"]
+  groups: []
+  institutions: ["Assemblée nationale de Francfort"]
+  normative: ["Constitution de Francfort (mars 1849)"]
+  memory: ["Paulskirche, haut lieu de la mémoire démocratique allemande (PLACE-PROP-003)"]
+  sources: ["SRC-004", "SRC-017"]
+  confidence: certain
+  status: validated
+  justification: "PROP-004, CLAIM-004 et la correction de de-1848 (SRC-004, SRC-017) documentent la réunion de l'Assemblée, la constitution de mars 1849, l'exclusion des femmes et le refus de la couronne. La borne impériale est documentée par la correction de de-unification : proclamation le 18 janvier 1871 à Versailles (SRC-004)."
+  TODO: []
+
+- id: de-era3-gue-001
+  era_id: germany-era-3
+  domain: Guerres & diplomatie
+  scale: national
+  subject: Proclamation de l'Empire allemand
+  predicate: couronne un processus diplomatique et militaire
+  object: "18 janvier 1871 à Versailles, après la victoire sur la France, par les princes allemands"
+  time: "1871"
+  time_precision: year
+  families: [evenement, acteur]
+  actors: []
+  places: ["Versailles"]
+  groups: ["princes allemands"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-004"]
+  confidence: certain
+  status: validated
+  justification: "La correction de de-unification dans fixes.yaml et proposals.yaml (SRC-004) donne la date du 18 janvier 1871, le lieu de Versailles et le rôle des princes ; PROP-004 de country-audit.yaml rattache la proclamation à la guerre franco-prussienne. de-leipzig (1813) renseigne l'autre borne militaire de l'ère."
+  TODO: []
+
+- id: de-era3-dro-001
+  era_id: germany-era-3
+  domain: Droit & justice
+  scale: national
+  subject: Loi antisocialiste
+  predicate: est adoptée et réprime la social-démocratie
+  object: "1878–1890 ; interdiction des organisations socialistes ; SPD et figures documentées August Bebel et Bismarck"
+  time: "1878"
+  time_precision: year
+  families: [normatif, evenement]
+  actors: ["August Bebel", "Bismarck"]
+  places: []
+  groups: ["social-démocratie", "SPD"]
+  institutions: ["SPD"]
+  normative: ["Loi antisocialiste (1878–1890)"]
+  memory: []
+  sources: ["SRC-005"]
+  confidence: certain
+  status: validated
+  justification: "PROP-005 et l'usage de SRC-005 dans le registre (Anti-Socialist Law, 1878) documentent la loi antisocialiste et la répression du parti ; la matrice ERA-3 Droit & justice est classée partiel via PROP-005, sans fiche juridique dédiée."
+  TODO: ["Créer une fiche juridique dédiée (matrice ERA-3 Droit & justice)."]
+
+- id: de-era3-eco-001
+  era_id: germany-era-3
+  domain: Économie & travail
+  scale: national
+  subject: Allgemeiner Deutscher Arbeiterverein (ADAV)
+  predicate: est fondé
+  object: "Leipzig, 1863, autour de Ferdinand Lassalle"
+  time: "1863"
+  time_precision: year
+  families: [institution, evenement, acteur]
+  actors: ["Ferdinand Lassalle"]
+  places: ["Leipzig"]
+  groups: ["mouvement ouvrier"]
+  institutions: ["ADAV"]
+  normative: []
+  memory: []
+  sources: ["SRC-005"]
+  confidence: certain
+  status: validated
+  justification: "CLAIM-005 et PROP-005 (SRC-005) documentent la fondation de l'ADAV à Leipzig en 1863 ; la même source documente le SDAP (1869), la fusion de Gotha (1875) et le programme d'Erfurt (1891)."
+  TODO: []
+
+- id: de-era3-soc-001
+  era_id: germany-era-3
+  domain: Société & démographie
+  scale: national
+  subject: Social-démocratie allemande
+  predicate: devient un parti de masse intégré au système impérial
+  object: "Programme d'Erfurt (1891) ; principale force de la gauche allemande et l'un des plus grands partis socialistes d'Europe"
+  time: "1891"
+  time_precision: year
+  families: [processus, acteur, groupe]
+  actors: ["August Bebel", "Wilhelm Liebknecht"]
+  places: ["Leipzig", "Gotha"]
+  groups: ["mouvement ouvrier", "SPD"]
+  institutions: ["SPD", "SDAP"]
+  normative: ["Programme d'Erfurt (1891)"]
+  memory: ["Figure fondatrice de la social-démocratie allemande (ACTOR-PROP-004)"]
+  sources: ["SRC-005"]
+  confidence: certain
+  status: validated
+  justification: "PROP-005 et ACTOR-PROP-004 (SRC-005) documentent la transformation du mouvement ouvrier en parti de masse ; la matrice ERA-3 Société & démographie reste partielle, faute de démographie chiffrée dans le registre."
+  TODO: ["Démographie chiffrée non documentée dans le registre (matrice ERA-3)."]
+
+- id: de-era3-fem-001
+  era_id: germany-era-3
+  domain: Femmes, genre, sexualités
+  scale: national
+  subject: Allgemeiner Deutscher Frauenverein (ADF)
+  predicate: est fondé
+  object: "Leipzig, 18 octobre 1865 ; Louise Otto-Peters présidente, Auguste Schmidt vice-présidente ; programme éducation, métiers, université et droit au travail"
+  time: "1865"
+  time_precision: year
+  families: [institution, evenement, acteur]
+  actors: ["Louise Otto-Peters", "Auguste Schmidt"]
+  places: ["Leipzig"]
+  groups: ["mouvement féminin allemand"]
+  institutions: ["ADF"]
+  normative: []
+  memory: ["Pionnière de la Frauenbewegung, redécouverte par l'histoire des femmes (ACTOR-PROP-003)"]
+  sources: ["SRC-017"]
+  confidence: certain
+  status: validated
+  justification: "PROP-006, CLAIM-004 et ACTOR-PROP-003 (SRC-017) documentent la fondation de l'ADF le 18 octobre 1865 et le programme de Louise Otto-Peters ; la matrice ERA-3 marque ce domaine couvert."
+  TODO: []
+
+- id: de-era3-rel-001
+  era_id: germany-era-3
+  domain: Religions & croyances
+  scale: national
+  subject: Kulturkampf et émancipation juive
+  predicate: sont recensés par l'audit comme angle mort de l'ère 1815–1914
+  object: "OM-009 : Kulturkampf (1871–1887), catholicisme politique, protestantisme libéral, émancipation juive"
+  time: "1871"
+  time_precision: year
+  families: [processus]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-004", "SRC-005"]
+  confidence: non documenté
+  status: validated
+  justification: "Aucune entrée religieuse dans la matrice ERA-3 ; omission OM-009, dont les sources vérifiées sont SRC-004 et SRC-005. Le point enregistre le silence documenté et sa borne de 1871, sans combler le vide par une affirmation non sourcée."
+  TODO: ["Documenter le Kulturkampf et l'émancipation juive par une source dédiée (OM-009)."]
+
+- id: de-era3-sci-001
+  era_id: germany-era-3
+  domain: Sciences, techniques & santé
+  scale: national
+  subject: Robert Koch, Siemens, chimie industrielle et hygiène urbaine
+  predicate: sont recensés par l'audit comme angle mort de l'ère 1815–1914
+  object: "OM-010 : universités de recherche, médecine sociale, hygiène urbaine ; aucun événement scientifique daté dans le registre"
+  time: "1815"
+  time_precision: year
+  families: [processus]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-004"]
+  confidence: non documenté
+  status: validated
+  justification: "La matrice ERA-3 est vide justifiée pour ce domaine ; omission OM-010, dont la source vérifiée est SRC-004. L'ancre 1815 est la borne de l'ère, non un événement scientifique : aucun fait daté n'est inventé."
+  TODO: ["Ajouter une source spécialisée au registre (OM-010)."]
+
+- id: de-era3-art-001
+  era_id: germany-era-3
+  domain: Arts & lettres
+  scale: national
+  subject: Arts et lettres du XIXe siècle
+  predicate: sont signalés comme non instrumentés dans la matrice ERA-3
+  object: "Absence d'entrée artistique datée pour 1815–1914"
+  time: "1815"
+  time_precision: year
+  families: [processus]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-004"]
+  confidence: non documenté
+  status: validated
+  justification: "La matrice ERA-3 Arts & lettres est vide justifiée : aucun événement artistique daté n'est enregistré dans le dossier d'audit. SRC-004 couvre l'histoire culturelle et quotidienne du long XIXe siècle, sans fiche dédiée. L'ancre 1815 est la borne de l'ère."
+  TODO: ["Rechercher et sourcer une entrée artistique datée pour 1815–1914."]
+
+- id: de-era3-env-001
+  era_id: germany-era-3
+  domain: Environnement & territoire
+  scale: regional
+  subject: Assainissement urbain et foresterie
+  predicate: sont signalés comme non traités dans la matrice ERA-3
+  object: "Absence d'entrée environnementale datée pour 1815–1914 ; l'omission OM-014 concerne la période 1945–1990, non cette ère"
+  time: "1815"
+  time_precision: year
+  families: [processus]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-004"]
+  confidence: non documenté
+  status: validated
+  justification: "La matrice ERA-3 Environnement & territoire est vide justifiée (assainissement urbain, foresterie) ; aucun événement environnemental daté n'est enregistré. SRC-004 est la seule source du registre couvrant le long XIXe siècle. L'ancre 1815 est la borne de l'ère."
+  TODO: ["Ajouter une source environnementale pour le XIXe siècle au registre."]
+
+- id: de-era3-mig-001
+  era_id: germany-era-3
+  domain: Migrations & diasporas
+  scale: transnational
+  subject: Ruhrpolen, émigration vers les Amériques et migrations internes
+  predicate: sont recensés par l'audit comme angle mort de l'ère 1815–1914
+  object: "OM-011 : migrations d'industrialisation, minorités danoise et polonaise ; aucun événement migratoire daté retenu dans la frise"
+  time: "1880"
+  time_precision: year
+  families: [processus]
+  actors: []
+  places: ["Essen / Ruhr"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-004", "SRC-009"]
+  confidence: non documenté
+  status: validated
+  justification: "L'omission OM-011 (sources vérifiées SRC-004 et SRC-009) recense Ruhrpolen et émigration vers les Amériques ; la frise ne retient aucun événement migratoire daté. L'ancre 1880 est la borne inférieure de la période couverte par SRC-009 (1880–1980), telle qu'indiquée dans le registre."
+  TODO: ["Dater et sourcer une fiche Ruhrpolen / émigration (OM-011)."]
+
+- id: de-era3-min-001
+  era_id: germany-era-3
+  domain: Peuples autochtones & minorités
+  scale: imperial
+  subject: Génocide des Herero et Nama
+  predicate: est commis par les troupes coloniales allemandes
+  object: "Sud-Ouest africain allemand, 1904–1908 ; ordre d'extermination du général Lothar von Trotha"
+  time: "1904"
+  time_precision: year
+  families: [evenement, acteur, groupe]
+  actors: ["Lothar von Trotha", "Herero et Nama"]
+  places: ["Sud-Ouest africain allemand", "Windhoek"]
+  groups: ["Herero", "Nama"]
+  institutions: ["troupes coloniales allemandes"]
+  normative: []
+  memory: ["Reconnaissance par l'Allemagne en 2021 et débats sur les réparations (SRC-020)"]
+  sources: ["SRC-013", "SRC-020"]
+  confidence: certain
+  status: validated
+  justification: "PROP-007, ACTOR-PROP-007, ACTOR-PROP-008 et CLAIM-011 (SRC-013, SRC-020) documentent la guerre d'extermination de 1904–1908, l'ordre de von Trotha et la reconnaissance de 2021 ; la matrice ERA-3 classe ce domaine partiel via PROP-007."
+  TODO: []
+
+- id: de-era3-mem-001
+  era_id: germany-era-3
+  domain: Mémoire & patrimoine
+  scale: national
+  subject: Paulskirche
+  predicate: devient un lieu de mémoire démocratique
+  object: "Siège de l'Assemblée nationale de 1848 à Francfort-sur-le-Main"
+  time: "1848"
+  time_precision: year
+  families: [memoire, lieu, institution]
+  actors: []
+  places: ["Francfort-sur-le-Main", "Paulskirche"]
+  groups: []
+  institutions: ["Assemblée nationale de Francfort"]
+  normative: []
+  memory: ["Haut lieu de la mémoire démocratique allemande (PLACE-PROP-003)"]
+  sources: ["SRC-004", "SRC-017"]
+  confidence: certain
+  status: validated
+  justification: "PROP-004 et PLACE-PROP-003 (SRC-004, SRC-017) documentent la Paulskirche comme siège de 1848 et haut lieu mémoriel ; la matrice ERA-3 signale une mémoire présente sans fiche dédiée."
+  TODO: ["Créer une fiche mémorielle dédiée (matrice ERA-3)."]
+
+- id: de-era3-cir-001
+  era_id: germany-era-3
+  domain: Circulations transnationales
+  scale: transnational
+  subject: Réseaux socialistes internationaux et guerre coloniale
+  predicate: sont signalés comme dimension transnationale non encore documentée
+  object: "ADAV/SDAP (Bebel, Liebknecht) et guerre du Sud-Ouest africain ; aucune circulation datée retenue dans la frise"
+  time: "1869"
+  time_precision: year
+  families: [processus, groupe]
+  actors: ["August Bebel", "Wilhelm Liebknecht"]
+  places: ["Leipzig", "Sud-Ouest africain allemand"]
+  groups: ["mouvement ouvrier", "Herero et Nama"]
+  institutions: ["SDAP"]
+  normative: []
+  memory: []
+  sources: ["SRC-005", "SRC-013"]
+  confidence: probable
+  status: validated
+  justification: "La matrice ERA-3 note « guerre coloniale et socialisme international, mais pas de circulation documentée » ; PROP-005 (SRC-005) fournit l'ancre 1869 (fondation du SDAP par Bebel et Liebknecht) et PROP-007 (SRC-013) le cadre colonial. Aucune fiche de circulation dédiée n'existe dans le dossier d'audit."
+  TODO: ["Documenter une circulation transnationale datée pour 1815–1914."]

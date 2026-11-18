@@ -1,4 +1,4 @@
-# V-ATLAS — Vectemporel V2
+# Vectemporel — Atlas
 
 Application neuve, reconstruite de zéro selon le plan `/home/tasour/.opencode/plan/V_ATLAS_PLAN.md`.
 
@@ -9,6 +9,7 @@ Application neuve, reconstruite de zéro selon le plan `/home/tasour/.opencode/p
 ```bash
 npm install
 npm run build:data
+npm run build:points   # fusionne les 56 dossiers d'ères
 npm start
 ```
 
@@ -17,11 +18,13 @@ Ouvrir `http://127.0.0.1:4181`.
 ## Vérifier
 
 ```bash
-npm run verify
-npm run test:e2e
+node --check src/app.js
+npm run check
 ```
 
+- `node --check` valide la syntaxe du point de composition et de la taxonomie publique.
 - `verify` contrôle le jeu de données, les images, les identifiants et l’absence de lien externe.
+- `verify:points` contrôle la couverture 100 % des 14 domaines × 56 ères.
 - `test:e2e` parcourt le globe, la chronologie, le détail, le récit, la géographie et la constellation au clavier.
 
 ## Structure
@@ -40,12 +43,15 @@ src/
   views/recit.js               lecture guidée des points
   views/geography.js           carte schématique locale
   views/constellation.js       vue optionnelle, figée
+  views/points.js              isolation de tous les points
 scripts/
   build-dataset.mjs            génère le dataset depuis les audits
   serve.mjs                    serveur statique local
   verify.mjs                   contrôles de cohérence
 tests/e2e.mjs                  parcours clavier complet
 ```
+
+**Lecture des couches (sens de la dépendance).** `data → domain → platform → ui/views → app.js`. `data` fournit les faits générés, `domain` possède seul l’état, `platform` porte l’unique routeur clavier, `ui/views` rendent, `app.js` assemble sans posséder d’état. Aucune couche amont n’importe une couche aval. Le vocabulaire public de navigation vit dans `src/app.js` (`VIEW_TAXONOMY`) ; les littéraux d’exécution restent dans la coque et le routeur.
 
 ## Génération des points
 
@@ -58,17 +64,70 @@ tests/e2e.mjs                  parcours clavier complet
 
 Il produit **229 repères** et **901 points** : phrases des résumés vérifiés, affirmations des audits, figures et lieux documentés. Chaque point garde son degré de certitude et ses identifiants de source.
 
+## Modèle mental et taxonomie des vues
+
+Version du modèle : **`m4.1`** (`window.VATLAS.taxonomyVersion`). La navigation est une échelle macro → micro : chaque vue répond à une question et ajoute un niveau de précision. Ce catalogue figé est exposé tel quel par `window.VATLAS.taxonomy` ; c’est la référence adressable, les libellés de la coque en sont la source d’exécution.
+
+| Niveau | Vue | Libellé | Raccourci | Question servie |
+| --- | --- | --- | --- | --- |
+| 1 | `globe` | Monde | `1` / `m` | Quels pays sont documentés ? |
+| 2 | `chronology` | Chronologie | `2` / `c` | Quelles ères et quels repères ? |
+| 3 | `recit` | Récit | `3` / `r` | Que disent les points vérifiés ? |
+| 4 | `geography` | Géographie | `4` / `g` | Où se situent les lieux ? |
+| 5 | `constellation` | Constellation | `5` / `s` | Comment l’ensemble se synthétise-t-il ? |
+
+L’**identifiant** est la forme canonique : `1`, `m` et `Monde` résolvent tous vers `globe` via `window.VATLAS.resolveView`. Règle de mise à jour : tout changement de libellé ou de raccourci doit être répercuté dans `VIEW_TAXONOMY` (`src/app.js`), dans la coque (`src/ui/shell.js`), dans le routeur (`src/platform/keyboard.js`) et dans le présent tableau — puis la version incrémentée.
+
 ## Navigation
 
-| Touche | Action |
+| Touche | Action | Portée |
+| --- | --- | --- |
+| `1`–`6` | Monde, Chronologie, Récit, Géographie, Constellation, Points | partout (équivalent à `m c r g s`) |
+| `r` `c` `g` `s` `m` | mêmes vues, par initiale | partout |
+| `←` `→` | repère / point / lieu précédent ou suivant | hors globe et modale |
+| `↑` `↓` | ère précédente / suivante en Chronologie et Constellation ; en Récit et Géographie, mêmes effets que `← →` | hors globe et modale |
+| `Entrée` | ouvrir le détail d’un repère | hors globe et modale |
+| `Espace` | lecture du récit ou changement de périmètre géographique | Récit / Géographie |
+| `Échap` | fermer l’aide ou le détail, puis revenir au Monde | partout |
+| `?` | ouvrir / fermer l’aide | partout |
+
+La table lisible par machine est `window.VATLAS.shortcuts()`. Les boutons « ← Chronologie » des vues sont des raccourcis locaux : la commande unique de retour reste `Échap`.
+
+## Lexique
+
+| Terme | Définition |
 | --- | --- |
-| `1`–`5` | Monde, Chronologie, Récit, Géographie, Constellation |
-| `←` `→` | repère / point / lieu précédent ou suivant |
-| `↑` `↓` | période précédente / suivante |
-| `Entrée` | ouvrir le détail d’un repère |
-| `Espace` | lecture du récit ou changement de périmètre géographique |
-| `Échap` | fermer le détail ou revenir au monde |
-| `?` | aide |
+| **pays** | Une des 10 entrées documentées par les audits locaux. |
+| **ère** | Période d’un pays, porteuse de repères. |
+| **repère** | Événement daté rattaché à une ère ; 229 au total. |
+| **point** | Assertion vérifiée attachée à un repère ; 901 au total. |
+| **lieu** | Repère géographique documenté, avec coordonnées locales. |
+| **certitude** | Degré repris de l’audit : vérifié, certain, probable, contesté. |
+| **source** | Référence du registre local, affichée sans lien externe. |
+
+Le même lexique figé est exposé par `window.VATLAS.lexicon`. Aucun terme n’est défini autrement dans une vue.
+
+## API publique — `window.VATLAS`
+
+| Membre | Contrat |
+| --- | --- |
+| `meta` | Métadonnées du jeu de données généré. |
+| `taxonomyVersion` | Version du catalogue de navigation (`m4.1`). |
+| `taxonomy` | Les 5 vues ordonnées et figées : `id`, `label`, `digit`, `letter`, `level`, `role`. |
+| `lexicon` | Définitions du lexique ci-dessus. |
+| `views()` | Copie de la liste des identifiants de vues. |
+| `isValidView(id)` | `true` si l’identifiant appartient à la taxonomie. |
+| `resolveView(x)` | Identifiant canonique depuis un `id`, un chiffre, une initiale ou un libellé ; `null` sinon. |
+| `viewInfo(id)` | Entrée figée de la taxonomie, ou `null`. |
+| `shortcutFor(id)` / `viewForShortcut(key)` | Raccourcis d’une vue / vue d’un raccourci. |
+| `shortcuts()` | Copie de la table de navigation complète (`key`, `action`, `scope`). |
+| `countries()` | `{ id, code, name, events }` pour les 10 pays. |
+| `position()` | Situation sémantique : vue, libellé, niveau, pays, ère, repère `i/n`, point, lieu. |
+| `getState()` | Copie superficielle de l’état brut (diagnostic). |
+| `openCountry(id)` | Sélectionne le pays et ouvre la Chronologie ; Promesse du résultat. |
+| `goView(x)` | Accepte toute forme résolue par `resolveView` ; Promesse du résultat. |
+
+Cette API est additive : aucun membre existant n’a été retiré. Les modules internes peuvent changer ; ces noms sont le contrat stable.
 
 ## État de validation
 

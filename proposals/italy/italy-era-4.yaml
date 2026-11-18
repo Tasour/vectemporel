@@ -1,0 +1,316 @@
+# Points de l'ère Italie / Italie libérale et fasciste (italy-era-4, 1871 → 1945).
+# Une proposition par domaine de la matrice (14 cellules ERA-4 de coverage-matrix.csv).
+# Sources : uniquement le registre audits/italy/source-register.csv (SRC-009 à SRC-015)
+# et les omissions documentées audits/italy/omissions.yaml. Aucune date, source, DOI,
+# auteur ou titre inventé. Aucun lien vers une source non enregistrée.
+# Aucun contenu hors de l'ère 1871-1945.
+# Faits ancrés dans audits/italy/country-audit.yaml, coverage-matrix.csv, proposals.yaml,
+# omissions.yaml et src/data/dataset.js (it-ww1, it-mussolini, it-ww2).
+
+- id: it-era4-pol-001
+  era_id: italy-era-4
+  domain: "Politique & institutions"
+  scale: national
+  subject: "Benito Mussolini et le fascisme italien"
+  predicate: "s'installent au pouvoir par la nomination royale du 30 octobre 1922 et achèvent la suppression des libertés politiques par les lois fascistissimes de 1925-1926"
+  object: "le gouvernement du royaume d'Italie, sous Victor-Emmanuel III"
+  time: "1922/1926"
+  time_precision: interval
+  families: [evenement, acteur, institution, normatif]
+  actors: ["Benito Mussolini", "Victor-Emmanuel III"]
+  places: ["Rome"]
+  groups: ["chemises noires", "fascistes"]
+  institutions: ["présidence du Conseil", "Parti national fasciste", "monarchie savoyarde"]
+  normative: ["lois fascistissimes de 1925-1926"]
+  memory: []
+  sources: ["SRC-012", "SRC-013"]
+  confidence: certain
+  status: validated
+  justification: "Marche sur Rome (27-29 octobre 1922), nomination de Mussolini le 30 octobre et lois fascistissimes de 1925-1926 : faits enregistrés dans src/data/dataset.js (it-mussolini) et dans la correction it-mussolini de audits/italy/proposals.yaml, sourcée SRC-012 et SRC-013 ; acteur ACTOR-009 du country-audit. Échelle nationale conforme à coverage-matrix.csv ; aucune date ni source inventée."
+  TODO: []
+
+- id: it-era4-guer-002
+  era_id: italy-era-4
+  domain: "Guerres & diplomatie"
+  scale: imperial
+  subject: "le royaume d'Italie"
+  predicate: "entre en guerre le 10 juin 1940, puis se fracture après l'armistice du 8 septembre 1943 jusqu'à la Libération du 25 avril 1945"
+  object: "la Seconde Guerre mondiale, l'occupation allemande et la République sociale italienne"
+  time: "1940/1945"
+  time_precision: interval
+  families: [evenement, acteur, institution, groupe_social]
+  actors: ["Benito Mussolini"]
+  places: ["Italie du Nord", "Alpes", "Apennins"]
+  groups: ["partisans", "forces d'occupation allemandes"]
+  institutions: ["armée italienne", "République sociale italienne"]
+  normative: []
+  memory: []
+  sources: ["SRC-014", "SRC-015"]
+  confidence: certain
+  status: validated
+  justification: "Entrée en guerre le 10 juin 1940, armistice du 8 septembre 1943, occupation allemande, guerre civile et Libération du 25 avril 1945 : src/data/dataset.js (it-ww2) et correction it-ww2 de proposals.yaml, sourcée SRC-014 et SRC-015 ; CLAIM-005 et ACTOR-004 du country-audit. Échelle impériale conforme à coverage-matrix.csv."
+  TODO: []
+
+- id: it-era4-droit-003
+  era_id: italy-era-4
+  domain: "Droit & justice"
+  scale: national
+  subject: "les lois raciales fascistes de 1938"
+  predicate: "excluent les Juifs de l'école, de la fonction publique et du mariage mixte et préparent les persécutions de 1943-1945"
+  object: "la population juive d'Italie"
+  time: "1938"
+  time_precision: year
+  families: [evenement, normatif, groupe_social]
+  actors: []
+  places: ["Rome"]
+  groups: ["Juifs italiens"]
+  institutions: ["État fasciste", "fonction publique", "école"]
+  normative: ["lois raciales de 1938"]
+  memory: []
+  sources: ["SRC-013"]
+  confidence: certain
+  status: validated
+  justification: "PROP-011 de audits/italy/proposals.yaml et CLAIM-004 (certain) du country-audit : lois raciales de 1938, exclusion civile et sociale, genèse italienne propre, sourcées SRC-013 (Sarfatti, The Jews in Mussolini's Italy). Cellule « couvert » de coverage-matrix.csv ; aucune date ni citation inventée."
+  TODO: []
+
+- id: it-era4-econ-004
+  era_id: italy-era-4
+  domain: "Économie & travail"
+  scale: national
+  subject: "les remises des émigrés italiens"
+  predicate: "soutiennent des régions entières pendant l'émigration de masse"
+  object: "l'économie des villages d'origine, connectée aux marchés du travail des Amériques et de l'Europe"
+  time: "1876/1915"
+  time_precision: interval
+  families: [processus, groupe_social, lieu]
+  actors: []
+  places: ["Mezzogiorno", "Gênes", "Naples"]
+  groups: ["émigrés italiens", "familles d'émigrés"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-011"]
+  confidence: certain
+  status: validated
+  justification: "PROP-010 de audits/italy/proposals.yaml, sourcée SRC-011 (Gabaccia, Italy's Many Diasporas) : « Les remises des migrants soutiennent des régions entières ». Période 1876-1915 et ports de Gênes et de Naples documentés dans le registre SRC-011 et dans PLACE-005/PLACE-012 du country-audit. Cellule « couvert » de la matrice ; aucun chiffre inventé."
+  TODO: []
+
+- id: it-era4-soc-005
+  era_id: italy-era-4
+  domain: "Société & démographie"
+  scale: national
+  subject: "les familles et les villages de l'émigration de masse"
+  predicate: "sont recomposés par des départs massifs et des séparations prolongées"
+  object: "les foyers du Mezzogiorno et les communautés de la diaspora"
+  time: "1876/1915"
+  time_precision: interval
+  families: [processus, groupe_social, lieu]
+  actors: []
+  places: ["Mezzogiorno", "Naples"]
+  groups: ["familles d'émigrés", "femmes, enfants et migrants"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-011"]
+  confidence: certain
+  status: validated
+  justification: "PROP-010 (SRC-011) : « L'émigration est aussi une histoire de femmes, d'enfants et de familles séparées » ; la cellule ERA-4 « Société & démographie » de coverage-matrix.csv renvoie à PROP-010 pour « familles, villages et diasporas de l'émigration ». Aucune donnée démographique chiffrée inventée."
+  TODO: []
+
+- id: it-era4-genre-006
+  era_id: italy-era-4
+  domain: "Femmes, genre, sexualités"
+  scale: national
+  subject: "les femmes sous le régime fasciste"
+  predicate: "sont encadrées par des politiques de travail et de maternité, tout en participant à la Résistance"
+  object: "la société italienne de 1922 à 1945"
+  time: "1922/1945"
+  time_precision: interval
+  families: [processus, groupe_social, evenement]
+  actors: ["Partigiane e partigiani"]
+  places: ["Italie du Nord", "villes industrielles"]
+  groups: ["femmes italiennes", "partigiane"]
+  institutions: ["État fasciste"]
+  normative: []
+  memory: ["rôles des femmes dans la Résistance"]
+  sources: ["SRC-012", "SRC-014"]
+  confidence: certain
+  status: validated
+  justification: "SRC-012 (De Grazia, How Fascism Ruled Women: Italy, 1922-1945) documente les politiques fascistes de genre, le travail et la maternité ; SRC-014 (Pavone) et PROP-012 documentent la participation des femmes à la Résistance ; acteur collectif ACTOR-004 (ERA-4) du country-audit. Cellule « couvert » de la matrice."
+  TODO: []
+
+- id: it-era4-relig-007
+  era_id: italy-era-4
+  domain: "Religions & croyances"
+  scale: national
+  subject: "la question romaine et les rapports entre le royaume d'Italie et la papauté"
+  predicate: "ne sont réglés qu'en 1929 par les accords du Latran, après la prise de Rome de 1870"
+  object: "les relations entre l'État italien et le Saint-Siège"
+  time: "1929"
+  time_precision: year
+  families: [evenement, institution, normatif]
+  actors: []
+  places: ["Rome", "Vatican"]
+  groups: ["catholiques italiens"]
+  institutions: ["papauté", "Saint-Siège", "royaume d'Italie"]
+  normative: ["accords du Latran (1929)"]
+  memory: []
+  sources: ["SRC-009"]
+  confidence: certain
+  status: validated
+  justification: "La correction it-rome-capitale de audits/italy/proposals.yaml précise, avec SRC-009 (Riall), que « la question romaine n'est réglée qu'en 1929 » ; la cellule « Religions & croyances » de coverage-matrix.csv signale explicitement les accords du Latran (1929) comme contenu absent à combler. Événement et date dans l'ère 1871-1945 ; aucun contenu inventé."
+  TODO: []
+
+- id: it-era4-sci-008
+  era_id: italy-era-4
+  domain: "Sciences, techniques & santé"
+  scale: national
+  subject: "l'industrialisation et le dualisme Nord-Sud"
+  predicate: "constituent un processus structurel de l'ère, sans repère sanitaire ou scientifique daté dans le corpus"
+  object: "le triangle industriel du Nord et le Mezzogiorno"
+  time: "1871/1945"
+  time_precision: interval
+  families: [processus, lieu, groupe_social]
+  actors: []
+  places: ["Nord industriel", "Mezzogiorno"]
+  groups: ["ouvriers", "paysans du Mezzogiorno"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-010", "SRC-011"]
+  confidence: probable
+  status: validated
+  justification: "La périodisation SOC-1 de audits/italy/country-audit.yaml nomme la phase 1871-1945 « triangle industriel, émigration de masse et dualisme Nord-Sud » et cite SRC-010 et SRC-011 ; la cellule « Sciences, techniques & santé » de coverage-matrix.csv relève l'absence d'industrialisation, de médecine et de prix Nobel documentés. Certitude prudente (probable) ; aucune date ni chiffre inventé."
+  TODO: []
+
+- id: it-era4-arts-009
+  era_id: italy-era-4
+  domain: "Arts & lettres"
+  scale: national
+  subject: "le futurisme, le cinéma et la littérature italiens de l'entre-deux-guerres"
+  predicate: "ne font l'objet d'aucun repère daté dans le corpus"
+  object: "la culture de masse de l'Italie libérale et fasciste"
+  time: "1871/1945"
+  time_precision: interval
+  families: [processus]
+  actors: []
+  places: ["Italie"]
+  groups: ["écrivains", "cinéastes"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide non traité » de coverage-matrix.csv (ERA-4, Arts & lettres, national) : futurisme, cinéma et littérature absents du corpus ; aucun ID d'omission dédié dans omissions.yaml pour cette cellule (OM-004 concerne ERA-2). Silence explicite selon la règle 7 de POINT_METHODOLOGY.md ; ancre = intervalle de l'ère, aucune date, source ou citation inventée."
+  TODO: []
+
+- id: it-era4-env-010
+  era_id: italy-era-4
+  domain: "Environnement & territoire"
+  scale: national
+  subject: "la bonifica et les transformations environnementales de l'Italie libérale et fasciste"
+  predicate: "ne sont documentées par aucun repère daté dans le corpus de cette ère"
+  object: "les paysages et les risques environnementaux du territoire italien"
+  time: "1871/1945"
+  time_precision: interval
+  families: [processus, lieu]
+  actors: []
+  places: ["Italie"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide non traité » de coverage-matrix.csv (ERA-4, Environnement & territoire, national) : bonifica, industrialisation et catastrophes environnementales absentes ; aucun ID d'omission dédié dans omissions.yaml pour cette ère et ce domaine (OM-015 concerne ERA-5). La catastrophe du Vajont (SRC-019) est postérieure à 1945 et n'est donc pas décrite ici. Aucune date ni source inventée."
+  TODO: []
+
+- id: it-era4-migr-011
+  era_id: italy-era-4
+  domain: "Migrations & diasporas"
+  scale: transnational
+  subject: "les émigrés italiens de 1876-1915"
+  predicate: "quittent la péninsule par les ports de Gênes et de Naples vers les Amériques et l'Europe"
+  object: "les diasporas italiennes et les réseaux transatlantiques de travail"
+  time: "1876/1915"
+  time_precision: interval
+  families: [processus, groupe_social, lieu]
+  actors: []
+  places: ["Gênes", "Naples", "Amériques", "Europe"]
+  groups: ["émigrés italiens", "diaspora italienne"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-011"]
+  confidence: certain
+  status: validated
+  justification: "PROP-010 de audits/italy/proposals.yaml, sourcée SRC-011 (Gabaccia, Italy's Many Diasporas) ; registre SRC-011 : « Émigration italienne de masse (1876-1915), diasporas, familles et travail des migrantes » ; PLACE-012 (Gênes) et PLACE-005 (Naples) du country-audit. Échelle transnationale conforme à coverage-matrix.csv."
+  TODO: []
+
+- id: it-era4-peuples-012
+  era_id: italy-era-4
+  domain: "Peuples autochtones & minorités"
+  scale: national
+  subject: "la minorité juive d'Italie"
+  predicate: "est exclue des droits civils en 1938 puis persécutée et déportée sous l'occupation allemande"
+  object: "les Juifs italiens, victimes des lois raciales et de la guerre civile de 1943-1945"
+  time: "1938/1945"
+  time_precision: interval
+  families: [evenement, groupe_social, normatif]
+  actors: []
+  places: ["Rome", "Italie du Nord"]
+  groups: ["Juifs italiens"]
+  institutions: ["État fasciste"]
+  normative: ["lois raciales de 1938"]
+  memory: []
+  sources: ["SRC-013", "SRC-014"]
+  confidence: certain
+  status: validated
+  justification: "SRC-013 (Sarfatti) couvre les lois raciales de 1938, la persécution antisémite et les déportations de 1943-1945 ; CLAIM-004 (certain) du country-audit et OM-010 de omissions.yaml signalent la Shoah en Italie comme dette mémorielle. Aucune donnée numérique inventée."
+  TODO: []
+
+- id: it-era4-memoire-013
+  era_id: italy-era-4
+  domain: "Mémoire & patrimoine"
+  scale: national
+  subject: "la mémoire de la Résistance et des lois raciales"
+  predicate: "s'élabore dans les récits de la guerre civile et de la persécution de 1943-1945"
+  object: "la légitimité morale revendiquée ensuite par la République"
+  time: "1943/1945"
+  time_precision: interval
+  families: [memoire, evenement, groupe_social]
+  actors: ["Partigiane e partigiani"]
+  places: ["Italie du Nord", "Alpes", "Apennins"]
+  groups: ["partisans", "Juifs persécutés"]
+  institutions: ["Comité de libération nationale"]
+  normative: []
+  memory: ["mémoire de la Résistance", "mémoire des lois raciales"]
+  sources: ["SRC-013", "SRC-014", "SRC-015"]
+  confidence: probable
+  status: validated
+  justification: "PROP-012 (SRC-014, SRC-015) : « Elle fonde ensuite une partie de la légitimité de la République » ; CLAIM-005 qualifie la Résistance de probable combinaison d'une guerre patriotique, civile et de classe ; la cellule ERA-4 « Mémoire & patrimoine » de coverage-matrix.csv renvoie à PROP-011 et PROP-012. Mémoire traitée comme récit contemporain des événements de l'ère, sans projection postérieure."
+  TODO: []
+
+- id: it-era4-circ-014
+  era_id: italy-era-4
+  domain: "Circulations transnationales"
+  scale: transnational
+  subject: "les réseaux de la diaspora italienne"
+  predicate: "relient la péninsule aux Amériques et à l'Europe par les départs, les remises et les liens entretenus avec les émigrés"
+  object: "les circulations transatlantiques de personnes, de capitaux et d'informations"
+  time: "1876/1915"
+  time_precision: interval
+  families: [processus, groupe_social, lieu]
+  actors: []
+  places: ["Gênes", "Naples", "Amériques", "Europe"]
+  groups: ["émigrés italiens", "diaspora italienne"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-011"]
+  confidence: probable
+  status: validated
+  justification: "PROP-010 et la cellule ERA-4 « Circulations transnationales » de coverage-matrix.csv (« diasporas et circulations transatlantiques ») ; SRC-011 documente l'émigration de masse (1876-1915) et les diasporas ; l'État cherche à conserver un lien avec les émigrés selon PROP-010. Échelle transnationale conforme à la matrice ; aucun chiffre inventé."
+  TODO: []

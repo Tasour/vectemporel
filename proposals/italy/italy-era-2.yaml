@@ -1,0 +1,316 @@
+# Vectemporel — propositions de points, ère italy-era-2 (Moyen Âge & Renaissance, 476 → 1494).
+# Une proposition par domaine de audits/italy/coverage-matrix.csv (14 domaines ERA-2).
+# Faits ancrés dans audits/italy/country-audit.yaml, coverage-matrix.csv, proposals.yaml,
+# omissions.yaml, source-register.csv (SRC-003 à SRC-005) et src/data/dataset.js.
+# Les points dont les sources sont vides explicitent un silence documenté par la matrice
+# ou par omissions.yaml: ils sont validés pour la couverture, avec confiance « non documenté »,
+# et n'affirment aucun fait non attesté par le dossier italien.
+# Aucune date, source, titre, auteur ou DOI inventé. Aucun lien externe non vérifié. Aucun contenu hors de 476-1494.
+
+- id: it-era2-pol-001
+  era_id: italy-era-2
+  domain: "Politique & institutions"
+  scale: regional
+  subject: "Cosme de Médicis à Florence"
+  predicate: "rentre d'exil en 1434 et consolide un pouvoir fondé sur la banque, les réseaux de clientèle et le contrôle des institutions"
+  object: "le gouvernement de la commune de Florence"
+  time: "1434"
+  time_precision: year
+  families: [evenement, acteur, institution]
+  actors: ["Cosme de Médicis"]
+  places: ["Florence"]
+  groups: []
+  institutions: ["commune de Florence", "banque Médicis"]
+  normative: []
+  memory: []
+  sources: ["SRC-004"]
+  confidence: certain
+  status: validated
+  justification: "Fait enregistré dans src/data/dataset.js (it-medicis, 1434) et dans la correction it-medicis de audits/italy/proposals.yaml, sourcée SRC-004 (Najemy, A History of Florence, 1200-1575). OM-001 signale que le Haut Moyen Âge (476-1000) reste non documenté pour cette même cellule. Échelle régionale conforme à la matrice."
+  TODO: ["Compléter OM-001 sur le Haut Moyen Âge italien (476-1000)"]
+
+- id: it-era2-guer-002
+  era_id: italy-era-2
+  domain: "Guerres & diplomatie"
+  scale: regional
+  subject: "Guerres médiévales italiennes (ERA-2)"
+  predicate: "ne sont documentées par aucune fiche ni aucune source du registre italien"
+  object: "guerres entre communes, conflits guelfes et gibelins, interventions angevines et expéditions impériales entre 476 et 1494"
+  time: "476"
+  time_precision: interval
+  families: [memoire]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Reprend OM-002 (ERA-2, Guerres & diplomatie, regional, reason not_yet_researched, evidence_checked SRC-004): aucune guerre médiévale n'est présente entre 476 et 1494. La matrice qualifie la cellule de « vide non traité — Aucune guerre communale, guelfe/gibeline ou angevine n'est documentée. » Silence explicite, sans invention de bataille ni de date."
+  TODO: ["Dépouiller SRC-004 pour documenter les conflits communaux et guelfes/gibelins", "Compléter OM-002"]
+
+- id: it-era2-droit-003
+  era_id: italy-era-2
+  domain: "Droit & justice"
+  scale: regional
+  subject: "Droit et tribunaux de l'Italie médiévale (ERA-2)"
+  predicate: "ne sont documentés par aucune fiche ni aucune source du registre italien"
+  object: "statuts communaux, droit canon et tribunaux entre 476 et 1494"
+  time: "476"
+  time_precision: interval
+  families: [repere_normatif, memoire]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: ["statuts communaux", "droit canon"]
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Matrice ERA-2/Droit & justice: « vide non traité — Statuts communaux, droit canon et tribunaux ne sont pas traités. » Aucun ID d'omission dédié dans omissions.yaml pour cette cellule (OM-003 concerne ERA-1). Silence explicite; les objets cités sont ceux nommés par la matrice, non des faits attestés ici."
+  TODO: ["Créer une omission ERA-2/Droit & justice", "Ajouter une source sur les statuts communaux et le droit canon"]
+
+- id: it-era2-econ-004
+  era_id: italy-era-2
+  domain: "Économie & travail"
+  scale: regional
+  subject: "Ouvriers de la laine florentins (Ciompi)"
+  predicate: "se soulèvent en juillet 1378 et obtiennent temporairement la création de trois arts populaires"
+  object: "la révolte est réprimée et les conquêtes annulées, dans le cadre des conflits du travail de l'Italie médiévale"
+  time: "1378"
+  time_precision: year
+  families: [evenement, groupe_social, processus]
+  actors: []
+  places: ["Florence"]
+  groups: ["Ciompi", "ouvriers de la laine"]
+  institutions: ["arts populaires"]
+  normative: []
+  memory: []
+  sources: ["SRC-004"]
+  confidence: certain
+  status: validated
+  justification: "PROP-004 de audits/italy/proposals.yaml et dataset.js (it-prop-004, 1378), sourcés SRC-004 (Najemy): juillet 1378, ouvriers non qualifiés de la laine, trois arts populaires, répression. La matrice ERA-2 désigne PROP-003 et PROP-004 comme entrées de la cellule Économie & travail. Aucun chiffre inventé."
+  TODO: []
+
+- id: it-era2-soc-005
+  era_id: italy-era-2
+  domain: "Société & démographie"
+  scale: regional
+  subject: "Mortalité de la peste noire en Italie"
+  predicate: "bouleverse la démographie et les rapports de travail entre 1347 et 1351"
+  object: "la peste arrive en Sicile en 1347 et ravage l'Italie jusqu'en 1351"
+  time: "1347/1351"
+  time_precision: interval
+  families: [evenement, processus, groupe_social]
+  actors: []
+  places: ["Sicile", "Italie"]
+  groups: ["populations touchées"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-004"]
+  confidence: certain
+  status: validated
+  justification: "PROP-003 de audits/italy/proposals.yaml (SRC-004) et CLAIM-002 (certain) du country-audit: la peste noire de 1347-1351 modifie en profondeur démographie, prix, salaires et rapports de travail. La matrice ERA-2/Société & démographie renvoie à PROP-003. Aucun chiffre de mortalité inventé."
+  TODO: []
+
+- id: it-era2-genre-006
+  era_id: italy-era-2
+  domain: "Femmes, genre, sexualités"
+  scale: regional
+  subject: "Catherine de Sienne"
+  predicate: "intervient par ses lettres et ses réseaux dans la politique des cités toscanes et de l'Église"
+  object: "tertiaire dominicaine (1347-1380), elle agit hors des institutions sacerdotales"
+  time: "1377"
+  time_precision: year
+  families: [acteur, evenement, groupe_social]
+  actors: ["Catherine de Sienne"]
+  places: ["Sienne", "Rome"]
+  groups: ["femmes religieuses"]
+  institutions: ["ordre dominicain"]
+  normative: []
+  memory: []
+  sources: ["SRC-005"]
+  confidence: probable
+  status: validated
+  justification: "ACTOR-001 du country-audit et PROP-005 (SRC-005, Luongo, The Saintly Politics of Catherine of Siena), repris dans dataset.js (it-prop-005, 1377). Son autorité hors institution est documentée; son rôle précis dans le retour de la papauté en 1377 est décrit comme discuté dans ACTOR-001, d'où la confiance « probable ». Cellule « couvert » de la matrice."
+  TODO: []
+
+- id: it-era2-rel-007
+  era_id: italy-era-2
+  domain: "Religions & croyances"
+  scale: regional
+  subject: "Retour de la papauté d'Avignon à Rome"
+  predicate: "s'accomplit en 1377 avec le retour de Grégoire XI"
+  object: "la papauté quitte Avignon pour Rome"
+  time: "1377"
+  time_precision: year
+  families: [evenement, acteur, institution]
+  actors: ["Grégoire XI"]
+  places: ["Avignon", "Rome"]
+  groups: []
+  institutions: ["papauté"]
+  normative: []
+  memory: []
+  sources: ["SRC-005"]
+  confidence: certain
+  status: validated
+  justification: "PROP-005 (SRC-005) et ACTOR-001 documentent le retour de Grégoire XI d'Avignon à Rome en 1377; la matrice ERA-2/Religions & croyances qualifie la cellule de « couvert » via PROP-005 (« papauté d'Avignon et retour à Rome en 1377 »). Aucune date inventée."
+  TODO: []
+
+- id: it-era2-sci-008
+  era_id: italy-era-2
+  domain: "Sciences, techniques & santé"
+  scale: regional
+  subject: "Mesures sanitaires urbaines pendant la peste noire"
+  predicate: "sont multipliées par les autorités urbaines avec des registres pendant l'épidémie de 1347-1351"
+  object: "la gestion de la peste dans les villes italiennes"
+  time: "1347/1351"
+  time_precision: interval
+  families: [processus, institution, lieu]
+  actors: []
+  places: ["Italie"]
+  groups: []
+  institutions: ["autorités urbaines"]
+  normative: []
+  memory: []
+  sources: ["SRC-004"]
+  confidence: probable
+  status: validated
+  justification: "PROP-003 (SRC-004): « les autorités urbaines multiplient les mesures sanitaires et les registres ». La matrice ERA-2/Sciences, techniques & santé qualifie la cellule de « partiel » via PROP-003 et note que médecine et universités restent absentes. Certitude prudente: ce sont les seuls repères sanitaires du corpus."
+  TODO: ["Documenter la médecine et les universités médiévales italiennes"]
+
+- id: it-era2-arts-009
+  era_id: italy-era-2
+  domain: "Arts & lettres"
+  scale: regional
+  subject: "Mécénat médicéen à Florence"
+  predicate: "accompagne la domination politique de Cosme de Médicis sans résumer la Renaissance"
+  object: "le mécénat médicéen et les cours et cités italiennes où se développe la Renaissance"
+  time: "1434"
+  time_precision: year
+  families: [evenement, acteur, memoire]
+  actors: ["Cosme de Médicis"]
+  places: ["Florence"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-004"]
+  confidence: certain
+  status: validated
+  justification: "dataset.js (it-medicis, point-2) et la correction it-medicis de proposals.yaml (SRC-004): « Son mécénat accompagne cette domination politique et ne résume pas la Renaissance, qui se développe dans plusieurs cours et cités italiennes. » La matrice ERA-2/Arts & lettres qualifie la cellule de « partiel » via it-medicis; OM-004 signale que le reste de la Renaissance artistique et littéraire n'est pas instrumenté."
+  TODO: ["Compléter OM-004 sur la Renaissance au-delà du mécénat médicéen"]
+
+- id: it-era2-env-010
+  era_id: italy-era-2
+  domain: "Environnement & territoire"
+  scale: regional
+  subject: "Cadre urbain de la peste noire en Italie"
+  predicate: "est le contexte territorial de l'épidémie de 1347-1351"
+  object: "la Sicile puis les villes de la péninsule touchées par la peste"
+  time: "1347/1351"
+  time_precision: interval
+  families: [lieu, evenement, processus]
+  actors: []
+  places: ["Sicile", "Italie"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-004"]
+  confidence: probable
+  status: validated
+  justification: "PROP-003 (SRC-004): la peste arrive en Sicile en 1347 et ravage l'Italie jusqu'en 1351; les autorités urbaines multiplient les mesures sanitaires. La matrice ERA-2/Environnement & territoire relie la peste aux conditions urbaines et note l'absence d'histoire agraire. Aucun lien de causalité environnementale non sourcé n'est affirmé."
+  TODO: ["Documenter l'histoire agraire de l'Italie médiévale"]
+
+- id: it-era2-migr-011
+  era_id: italy-era-2
+  domain: "Migrations & diasporas"
+  scale: transnational
+  subject: "Diasporas et migrations urbaines en Italie (ERA-2)"
+  predicate: "ne sont documentées par aucune fiche ni aucune source du registre italien"
+  object: "diasporas juives, grecques, albanaises et migrations urbaines entre 476 et 1494"
+  time: "476"
+  time_precision: interval
+  families: [processus, memoire]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Matrice ERA-2/Migrations & diasporas (échelle transnationale): « vide non traité — Diasporas juives, grecques, albanaises et migrations urbaines absentes. » Aucun ID d'omission dédié. Silence explicite, sans invention de flux ni de date."
+  TODO: ["Créer une omission ERA-2/Migrations & diasporas", "Ajouter une source sur les diasporas médiévales italiennes"]
+
+- id: it-era2-peuples-012
+  era_id: italy-era-2
+  domain: "Peuples autochtones & minorités"
+  scale: regional
+  subject: "Minorités juives et musulmanes de Sicile et d'Italie du Sud (ERA-2)"
+  predicate: "ne sont documentées par aucune fiche ni aucune source du registre italien"
+  object: "les minorités juives et musulmanes de Sicile et d'Italie du Sud entre 476 et 1494"
+  time: "476"
+  time_precision: interval
+  families: [groupe_social, memoire]
+  actors: []
+  places: ["Sicile", "Italie du Sud"]
+  groups: ["minorité juive", "minorité musulmane"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Matrice ERA-2/Peuples autochtones & minorités: « vide non traité — Minorités juives et musulmanes de Sicile et d'Italie du Sud non traitées. » Aucun ID d'omission dédié pour cette ère (OM-012 concerne ERA-5, OM-010 ERA-4). Silence explicite; aucun fait historique n'est ajouté."
+  TODO: ["Créer une omission ERA-2/Peuples autochtones & minorités", "Ajouter une source sur les minorités médiévales siciliennes"]
+
+- id: it-era2-mem-013
+  era_id: italy-era-2
+  domain: "Mémoire & patrimoine"
+  scale: regional
+  subject: "Florence, lieu de mémoire médicéen"
+  predicate: "est un lieu de mémoire médicéen dont le récit est contesté"
+  object: "les contestations « Renaissance élitiste » et « mémoire des Ciompi » associées à Florence"
+  time: "1434"
+  time_precision: year
+  families: [memoire, lieu]
+  actors: []
+  places: ["Florence"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: ["mémoire médicéenne", "Renaissance élitiste", "mémoire des Ciompi"]
+  sources: ["SRC-004"]
+  confidence: disputé
+  status: validated
+  justification: "PLACE-003 (Florence) du country-audit porte les contestations « Renaissance élitiste » et « mémoire des Ciompi », sourcées SRC-004/SRC-008; la matrice ERA-2/Mémoire & patrimoine qualifie la cellule de « partiel » via it-medicis (« Florence est un lieu de mémoire médicéen, sans analyse critique »). Conflit de récits maintenu comme disputé."
+  TODO: ["Analyse critique de la mémoire médicéenne et des Ciompi"]
+
+- id: it-era2-circ-014
+  era_id: italy-era-2
+  domain: "Circulations transnationales"
+  scale: transnational
+  subject: "Réseaux marchands et artistiques européens de la Florence médicéenne"
+  predicate: "sont évoqués dans le corpus sans documentation structurée"
+  object: "les réseaux de la banque et du mécénat reliant Florence aux cours et cités italiennes et européennes"
+  time: "1434"
+  time_precision: year
+  families: [processus, groupe_social, lieu]
+  actors: []
+  places: ["Florence", "Italie"]
+  groups: ["réseaux marchands", "réseaux artistiques"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-004"]
+  confidence: probable
+  status: validated
+  justification: "La matrice ERA-2/Circulations transnationales qualifie la cellule de « partiel » via it-medicis: « Réseaux marchands et artistiques européens évoqués, non documentés. » dataset.js (it-medicis) mentionne la banque et les réseaux de clientèle; SRC-004 (Najemy) couvre la Florence communale et médicéenne. Aucune route, expédition ni date de circulation inventée."
+  TODO: ["Documenter les réseaux marchands et artistiques européens de la Renaissance"]

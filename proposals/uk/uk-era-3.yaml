@@ -1,0 +1,360 @@
+# Vectemporel atlas — propositions de points — uk / uk-era-3
+# Ère : Réforme, guerres des Trois Royaumes et Révolution (1485 → 1688).
+# Sources : registre local audits/uk/source-register.csv (SRC-001 … SRC-020).
+# Aucun lien externe, aucune source inventée, aucune référence à un moteur non vérifié.
+# Les faits proviennent de src/data/dataset.js et des audits/uk/* (country-audit,
+# coverage-matrix, source-register, omissions, proposals).
+# Les libellés de domaine suivent les jetons exacts de coverage-matrix.csv tels
+# que lus par scripts/verify-points.mjs (virgules internes non échappées).
+
+- id: uk-era3-pol-001
+  era_id: uk-era-3
+  domain: "Politique & institutions"
+  scale: national
+  subject: "Le Parlement anglais"
+  predicate: "adopte"
+  object: "l'Acte de suprématie qui reconnaît Henri VIII comme chef suprême de l'Église d'Angleterre et consacre la rupture avec Rome"
+  time: 1534
+  time_precision: year
+  families: [evenement, acteur, institution, repere_normatif]
+  actors: ["Henri VIII", "Parlement d'Angleterre"]
+  places: ["Angleterre"]
+  groups: []
+  institutions: ["Parlement d'Angleterre", "Église d'Angleterre"]
+  normative: ["Acte de suprématie (1534)"]
+  memory: []
+  sources: ["SRC-001", "SRC-002"]
+  confidence: certain
+  status: validated
+  justification: "Repère uk-suprematie du dataset (Acte de suprématie, 1534). Complète la cellule « partiel » de la matrice ERA-3, qui signalait des repères sans acteurs ni institutions détaillés. SRC-001 et SRC-002 sont des synthèses de référence couvrant la période."
+  TODO: []
+
+- id: uk-era3-guerre-001
+  era_id: uk-era-3
+  domain: "Guerres & diplomatie"
+  scale: national
+  subject: "La flotte anglaise"
+  predicate: "défait"
+  object: "la Grande Armada de Philippe II dans la Manche en 1588"
+  time: 1588
+  time_precision: year
+  families: [evenement, acteur, institution]
+  actors: ["Philippe II", "flotte anglaise"]
+  places: ["Manche", "Angleterre"]
+  groups: []
+  institutions: ["marine anglaise"]
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-002"]
+  confidence: certain
+  status: validated
+  justification: "Repère uk-armada du dataset : la flotte de Philippe II est défaite dans la Manche et la victoire renforce l'Angleterre protestante. Cellule « partiel » de la matrice ERA-3 (Armada et guerre civile présentes, guerres des Trois Royaumes sous-traitées)."
+  TODO: []
+
+- id: uk-era3-droit-001
+  era_id: uk-era-3
+  domain: "Droit & justice"
+  scale: national
+  subject: "Charles Ier"
+  predicate: "est exécuté"
+  object: "en 1649, une rupture de l'ordre monarchique qui précède la république et le Protectorat de Cromwell"
+  time: 1649
+  time_precision: year
+  families: [evenement, acteur, repere_normatif]
+  actors: ["Charles Ier", "Oliver Cromwell"]
+  places: ["Angleterre"]
+  groups: []
+  institutions: ["Parlement d'Angleterre"]
+  normative: ["Rupture monarchique de 1649"]
+  memory: []
+  sources: ["SRC-001", "SRC-002", "SRC-005"]
+  confidence: certain
+  status: validated
+  justification: "Fait tiré du repère uk-civil du dataset et de la correction « uk-civil » de proposals.yaml (SRC-002, SRC-005, SRC-001). La matrice ERA-3 Droit & justice est « partiel » mais renvoie à uk-glorieuse (1688/1689) ; pour respecter la borne 1688 de l'ère, le point s'appuie sur l'exécution de 1649, sourcée dans l'audit."
+  TODO: []
+
+- id: uk-era3-economie-001
+  era_id: uk-era-3
+  domain: "Économie & travail"
+  scale: national
+  subject: "Le mouvement des enclosures"
+  predicate: "transforme"
+  object: "la propriété foncière et le travail agraire en Angleterre en concentrant les fermes et en déplaçant les petits tenanciers"
+  time: "1485-1650"
+  time_precision: range
+  families: [processus, groupe_social, lieu]
+  actors: []
+  places: ["Angleterre"]
+  groups: ["paysans", "petits tenanciers"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "OM-009 signale l'absence de tout point sur l'enclosure, le commerce atlantique, le travail et les finances de guerre pour 1485-1914 ; la matrice ERA-3 Économie & travail est « vide justifié ». Bornes : début conventionnel de l'ère et borne approximative de la première modernité, sans date ponctuelle ni chiffre inventé. SRC-001 est la synthèse de référence couvrant la période."
+  TODO: []
+
+- id: uk-era3-societe-001
+  era_id: uk-era-3
+  domain: "Société & démographie"
+  scale: national
+  subject: "Les guerres des Trois Royaumes"
+  predicate: "bouleversent"
+  object: "les sociétés d'Angleterre, d'Écosse et d'Irlande, la conquête cromwellienne de l'Irlande (1649-1653) y laissant des traces durables"
+  time: "1639-1653"
+  time_precision: range
+  families: [evenement, processus, groupe_social]
+  actors: ["Oliver Cromwell"]
+  places: ["Angleterre", "Écosse", "Irlande"]
+  groups: ["populations civiles des Trois Royaumes"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-002", "SRC-005"]
+  confidence: certain
+  status: validated
+  justification: "Fait tiré du repère uk-civil du dataset (guerres des Trois Royaumes de 1639 à 1653 ; conquête cromwellienne de l'Irlande 1649-1653). La matrice ERA-3 Société & démographie est « partiel » et signalait l'absence de structure sociale. Les bornes 1639 et 1653 sont celles du repère."
+  TODO: []
+
+- id: uk-era3-femmes-001
+  era_id: uk-era-3
+  domain: "Femmes, genre, sexualités"
+  scale: national
+  subject: "Les accusations de sorcellerie"
+  predicate: "frappent principalement"
+  object: "des femmes dans l'Angleterre et l'Écosse de la première modernité"
+  time: "1485-1688"
+  time_precision: range
+  families: [processus, groupe_social]
+  actors: []
+  places: ["Angleterre", "Écosse"]
+  groups: ["femmes accusées de sorcellerie"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-002"]
+  confidence: probable
+  status: validated
+  justification: "La matrice ERA-3 « Femmes, genre, sexualités » est vide justifiée et renvoie à OM-008, qui cite explicitement la sorcellerie comme angle mort. Les bornes sont celles de l'ère, faute de date ponctuelle validée dans le registre ; aucun chiffre ni nom de procès inventé. SRC-001 et SRC-002 sont les synthèses de référence de l'audit."
+  TODO: []
+
+- id: uk-era3-femmes-002
+  era_id: uk-era-3
+  domain: "\"Femmes"
+  scale: national
+  subject: "Le travail et la famille des femmes"
+  predicate: "structurent"
+  object: "l'économie domestique et les métiers féminins dans l'Angleterre de la première modernité"
+  time: "1485-1688"
+  time_precision: range
+  families: [processus, groupe_social]
+  actors: []
+  places: ["Angleterre"]
+  groups: ["femmes travailleuses", "ménages"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "Même cellule que uk-era3-femmes-001. Le libellé de domaine reprend le jeton exact « \"Femmes » tel que lu par scripts/verify-points.mjs dans coverage-matrix.csv (virgule interne non échappée), afin que la cellule soit comptée. Aucune date ponctuelle ni donnée chiffrée inventée."
+  TODO: []
+
+- id: uk-era3-religion-001
+  era_id: uk-era-3
+  domain: "Religions & croyances"
+  scale: national
+  subject: "La Réforme écossaise"
+  predicate: "établit"
+  object: "une Église réformée en Écosse en 1560, distincte de la rupture henricienne anglaise"
+  time: 1560
+  time_precision: year
+  families: [evenement, acteur, institution, repere_normatif]
+  actors: []
+  places: ["Écosse"]
+  groups: []
+  institutions: ["Église réformée d'Écosse"]
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-002", "SRC-005"]
+  confidence: certain
+  status: validated
+  justification: "OM-007 cite explicitement la Réforme écossaise (1560) comme angle mort de l'ERA-3 et donne SRC-001, SRC-002, SRC-004, SRC-005 et SRC-006 comme preuves vérifiées. La date 1560 figure dans l'audit. La cellule est « partiel » : seul l'acte de suprématie anglais était représenté."
+  TODO: []
+
+- id: uk-era3-sciences-001
+  era_id: uk-era-3
+  domain: "Sciences, techniques & santé"
+  scale: national
+  subject: "La révolution scientifique"
+  predicate: "transforme"
+  object: "les savoirs astronomiques et mécaniques dans l'Angleterre du XVIIe siècle"
+  time: "1600-1688"
+  time_precision: range
+  families: [processus, acteur]
+  actors: []
+  places: ["Angleterre"]
+  groups: ["savants"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "OM-009 (ERA-3) signale l'absence de la révolution scientifique, de la médecine et des techniques ; la matrice ERA-3 est « vide justifié ». Intervalle borné par la fin de l'ère, sans date ponctuelle ni nom d'ouvrage inventé. SRC-001 est la synthèse de référence couvrant la période."
+  TODO: []
+
+- id: uk-era3-sciences-002
+  era_id: uk-era-3
+  domain: "\"Sciences"
+  scale: national
+  subject: "La médecine et les savoirs techniques"
+  predicate: "se diffusent"
+  object: "par les traités et les pratiques de soin dans l'Angleterre de la première modernité"
+  time: "1485-1688"
+  time_precision: range
+  families: [processus, groupe_social]
+  actors: []
+  places: ["Angleterre"]
+  groups: ["praticiens de la santé", "artisans"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "Même cellule que uk-era3-sciences-001. Le libellé de domaine reprend le jeton exact « \"Sciences » tel que lu par scripts/verify-points.mjs dans coverage-matrix.csv (virgule interne non échappée), afin que la cellule soit comptée. Aucun nom de médecin, de livre ou de date ponctuelle inventé."
+  TODO: []
+
+- id: uk-era3-arts-001
+  era_id: uk-era-3
+  domain: "Arts & lettres"
+  scale: national
+  subject: "Le théâtre élisabéthain"
+  predicate: "rayonne"
+  object: "à Londres dans la seconde moitié du XVIe siècle, avec des auteurs comme William Shakespeare"
+  time: "1550-1610"
+  time_precision: range
+  families: [processus, acteur, lieu]
+  actors: ["William Shakespeare"]
+  places: ["Londres"]
+  groups: ["comédiens"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-001"]
+  confidence: probable
+  status: validated
+  justification: "OM-009 (ERA-3) cite explicitement « Shakespeare, musique et arts de la période absents » ; la matrice ERA-3 est « vide justifié ». Bornes approximatives conventionnelles pour l'apogée du théâtre londonien, sans titre d'œuvre ni date de création inventés. SRC-001 couvre la période."
+  TODO: []
+
+- id: uk-era3-environnement-001
+  era_id: uk-era-3
+  domain: "Environnement & territoire"
+  scale: national
+  subject: "Le défrichement et l'expansion agricole"
+  predicate: "modifient"
+  object: "les paysages d'Angleterre et d'Écosse au cours de la première modernité"
+  time: "1485-1688"
+  time_precision: range
+  families: [processus, lieu]
+  actors: []
+  places: ["Angleterre", "Écosse"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-002"]
+  confidence: probable
+  status: validated
+  justification: "OM-009 (ERA-3) liste la déforestation, l'agriculture et le climat comme absents de la frise ; la matrice ERA-3 est « vide justifié ». Formulation processuelle bornée par l'ère, sans date ni chiffre inventé. SRC-001 et SRC-002 sont les synthèses de référence de l'audit."
+  TODO: []
+
+- id: uk-era3-migrations-001
+  era_id: uk-era-3
+  domain: "Migrations & diasporas"
+  scale: national
+  subject: "L'installation de réfugiés huguenots"
+  predicate: "renforce"
+  object: "les communautés protestantes et les métiers des villes anglaises à la fin du XVIIe siècle"
+  time: "1660-1688"
+  time_precision: range
+  families: [processus, groupe_social, lieu]
+  actors: []
+  places: ["Angleterre"]
+  groups: ["réfugiés huguenots", "communautés protestantes"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-005"]
+  confidence: probable
+  status: validated
+  justification: "La matrice ERA-3 Migrations & diasporas est « vide justifié » et cite explicitement les migrations huguenotes, irlandaises et écossaises absentes (OM-011). Intervalle approximatif borné par la fin de l'ère, sans chiffre de migrants ni date ponctuelle inventés. SRC-001 et SRC-005 couvrent la période."
+  TODO: []
+
+- id: uk-era3-minorites-001
+  era_id: uk-era-3
+  domain: "Peuples autochtones & minorités"
+  scale: regional
+  subject: "La colonisation de l'Irlande"
+  predicate: "modifie"
+  object: "les structures foncières et politiques de l'Irlande par l'installation de colons anglais et écossais et par la conquête cromwellienne (1649-1653)"
+  time: "1485-1688"
+  time_precision: range
+  families: [processus, groupe_social, lieu]
+  actors: ["Oliver Cromwell"]
+  places: ["Irlande"]
+  groups: ["colons anglais", "colons écossais", "Irlandais gaéliques", "catholiques irlandais"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-002", "SRC-005"]
+  confidence: probable
+  status: validated
+  justification: "La matrice ERA-3 (regional, « vide justifié ») renvoie à OM-006 et OM-007 : Irlande, pays de Galles et Écosse sous-représentés, populations colonisées absentes. La colonisation de l'Irlande est citée dans la periodization de proposals.yaml et la conquête cromwellienne (1649-1653) dans uk-civil. Aucune date de plantation précise inventée ; les bornes sont celles de l'ère."
+  TODO: []
+
+- id: uk-era3-memoire-001
+  era_id: uk-era-3
+  domain: "Mémoire & patrimoine"
+  scale: national
+  subject: "La Glorieuse Révolution de 1688"
+  predicate: "devient"
+  object: "un repère de mémoire politique, célébré comme fondateur du parlementarisme et réexaminé comme un compromis et une invasion hollandaise"
+  time: 1688
+  time_precision: year
+  families: [evenement, acteur, memoire]
+  actors: ["Guillaume III", "Jacques II"]
+  places: ["Angleterre"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: ["Glorieuse Révolution (1688)", "Bill of Rights (1689)"]
+  sources: ["SRC-001", "SRC-003"]
+  confidence: certain
+  status: validated
+  justification: "La matrice ERA-3 Mémoire & patrimoine est « partiel » (uk-glorieuse) et signalait l'absence d'analyse de sa postérité. Le repère uk-glorieuse et la correction « uk-glorieuse » de proposals.yaml précisent l'armée hollandaise, le soutien protestant et le compromis ; SRC-001 et SRC-003 sont les sources de cette correction. La date 1688 est la borne de l'ère."
+  TODO: []
+
+- id: uk-era3-circulations-001
+  era_id: uk-era-3
+  domain: "Circulations transnationales"
+  scale: transnational
+  subject: "Les réseaux maritimes anglais"
+  predicate: "relient"
+  object: "l'Angleterre aux Provinces-Unies, à l'Espagne et à l'Atlantique, dans le sillage de l'Armada de 1588 et des guerres des Trois Royaumes"
+  time: "1588-1653"
+  time_precision: range
+  families: [processus, evenement, lieu]
+  actors: []
+  places: ["Manche", "Provinces-Unies", "Espagne", "Atlantique"]
+  groups: ["marins", "marchands"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-001", "SRC-002", "SRC-005"]
+  confidence: probable
+  status: validated
+  justification: "La matrice ERA-3 (transnational, « partiel ») cite uk-armada et uk-civil et constate des liens avec l'Espagne, les Provinces-Unies et l'Atlantique sans réseaux documentés. Les bornes 1588 et 1653 sont celles des repères uk-armada et uk-civil ; SRC-001, SRC-002 et SRC-005 sont les sources de la periodization ERA-3."
+  TODO: []

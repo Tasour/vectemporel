@@ -1,0 +1,381 @@
+# Allemagne — germany-era-2 « Réforme & guerres » (1517 → 1815).
+# Un point par domaine de coverage-matrix.csv (ERA-2, 14 domaines), status: validated.
+# Faits ancrés dans src/data/dataset.js (de-luther, de-30ans, de-leipzig),
+# audits/germany/country-audit.yaml (PERIOD-2, PERIOD-3, ACTOR-PROP-002, PLACE-PROP-001/002, CLAIM-002/003),
+# audits/germany/proposals.yaml (PROP-001 à PROP-003) et audits/germany/omissions.yaml (OM-005 à OM-008).
+# Sources : uniquement SRC-002, SRC-003, SRC-004, SRC-016 et les omissions documentées du dossier.
+# Aucune date, source, DOI, titre ou acteur inventé ; aucun lien Grokipedia ; aucun contenu hors de l'ère.
+
+- id: de-era2-pol-001
+  era_id: germany-era-2
+  domain: "Politique & institutions"
+  scale: imperial
+  subject: "La paix d'Augsbourg (1555)"
+  predicate: "stabilise provisoirement la coexistence confessionnelle dans l'Empire"
+  object: "la coexistence entre catholiques et protestants après la Réforme"
+  time: 1555
+  time_precision: year
+  families: [evenement, repere_normatif, institution]
+  actors: []
+  places: []
+  groups: ["catholiques", "protestants"]
+  institutions: ["Empire"]
+  normative: ["paix d'Augsbourg (1555)"]
+  memory: []
+  sources: ["SRC-002"]
+  confidence: certain
+  status: validated
+  justification: "PROP-001 (audits/germany/proposals.yaml) atteste que la paix d'Augsbourg (1555) stabilise provisoirement la coexistence confessionnelle dans l'Empire ; SRC-002 (Scribner, The German Reformation) est la synthèse de référence de ce processus. 1555 est une borne interne de la Réforme, dans l'ère 1517/1815."
+  TODO: []
+
+- id: de-era2-pol-002
+  era_id: germany-era-2
+  domain: "Politique & institutions"
+  scale: imperial
+  subject: "La clôture des guerres napoléoniennes (1815)"
+  predicate: "réorganise l'Allemagne en Confédération germanique"
+  object: "la Confédération germanique, après la défaite de Napoléon à Leipzig en 1813"
+  time: 1815
+  time_precision: year
+  families: [evenement, institution, repere_normatif]
+  actors: []
+  places: ["Leipzig"]
+  groups: []
+  institutions: ["Confédération germanique"]
+  normative: []
+  memory: []
+  sources: ["SRC-003", "SRC-004"]
+  confidence: certain
+  status: validated
+  justification: "Le dossier pays (PERIOD-3, country-audit.yaml) fixe à 1815 la clôture des guerres napoléoniennes et la réorganisation de l'Allemagne en Confédération germanique ; le repère de-leipzig (dataset.js) atteste la défaite de Napoléon en 1813 et le réveil des nationalismes allemands. SRC-003 et SRC-004 sont les sources de cette borne de période. 1815 est la borne de fin de l'ère ; aucun contenu hors-ère."
+  TODO: []
+
+- id: de-era2-guer-001
+  era_id: germany-era-2
+  domain: "Guerres & diplomatie"
+  scale: imperial
+  subject: "La guerre de Trente Ans (1618–1648)"
+  predicate: "ouvre un conflit européen dans l'Empire, clos par les traités de Westphalie"
+  object: "la défenestration de Prague (1618), les Habsbourg, les princes allemands, le Danemark, la Suède et la France"
+  time: "1618/1648"
+  time_precision: interval
+  families: [evenement, processus, acteur, institution, repere_normatif]
+  actors: ["Habsbourg", "princes allemands", "Danemark", "Suède", "France"]
+  places: ["Prague"]
+  groups: []
+  institutions: ["Empire"]
+  normative: ["traités de Westphalie (1648)"]
+  memory: []
+  sources: ["SRC-003"]
+  confidence: certain
+  status: validated
+  justification: "Le repère de-30ans (dataset.js) et PROP-003 attestent la défenestration de Prague (1618), l'implication des Habsbourg, des princes allemands, du Danemark, de la Suède et de la France, et les traités de Westphalie (1648). CLAIM-003 (country-audit.yaml) qualifie le conflit de guerre européenne, non de simple guerre civile allemande, avec certitude. SRC-003 est la synthèse de référence. Intervalle conforme à l'ère 1517/1815."
+  TODO: []
+
+- id: de-era2-guer-002
+  era_id: germany-era-2
+  domain: "Guerres & diplomatie"
+  scale: imperial
+  subject: "La coalition prussienne, russe, autrichienne et suédoise"
+  predicate: "écrase Napoléon à Leipzig et accélère la fin de l'Empire français"
+  object: "la bataille de Leipzig (1813) et le réveil des nationalismes allemands"
+  time: 1813
+  time_precision: year
+  families: [evenement, acteur, groupe_social]
+  actors: ["Napoléon"]
+  places: ["Leipzig"]
+  groups: ["coalition prussienne, russe, autrichienne et suédoise"]
+  institutions: ["Empire français"]
+  normative: []
+  memory: []
+  sources: ["SRC-004"]
+  confidence: probable
+  status: validated
+  justification: "Le repère de-leipzig (dataset.js) atteste que la coalition prussienne, russe, autrichienne et suédoise écrase Napoléon en 1813, que la défaite accélère la fin de l'Empire français et qu'elle réveille les nationalismes allemands. SRC-004 (Blackbourn, History of Germany 1780–1918) couvre la séquence 1780–1815 ; le repère ne porte pas d'ID de source propre, d'où le degré probable. 1813 est dans l'ère."
+  TODO: []
+
+- id: de-era2-droit-001
+  era_id: germany-era-2
+  domain: "Droit & justice"
+  scale: imperial
+  subject: "L'ordre juridique impérial (Reichskammergericht, Caroline de 1532)"
+  predicate: "n'est documenté par aucun repère dans le corpus"
+  object: "la Chambre impériale de justice, la Caroline (1532), le droit coutumier et les procédures de tolérance confessionnelle"
+  time: "1517/1815"
+  time_precision: interval
+  families: [processus, institution, repere_normatif]
+  actors: []
+  places: []
+  groups: []
+  institutions: ["Reichskammergericht"]
+  normative: []
+  memory: []
+  sources: ["OM-005"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Droit & justice, impérial) : l'omission OM-005 (audits/germany/omissions.yaml) précise que la Chambre impériale de justice, la Caroline (1532), le droit coutumier et les procédures de tolérance confessionnelle ne sont pas instrumentés et exigent des sources juridiques absentes du registre (evidence_checked : SRC-003). Silence explicite, non une négation du fait ; aucune date ni norme inventée, ancre = intervalle de l'ère."
+  TODO: []
+
+- id: de-era2-econ-001
+  era_id: germany-era-2
+  domain: "Économie & travail"
+  scale: regional
+  subject: "Proto-industrialisation, crises agraires et circuits commerciaux"
+  predicate: "ne sont documentés par aucun repère dans le corpus"
+  object: "les mines d'argent, les manufactures et les circuits commerciaux de l'Empire"
+  time: "1517/1815"
+  time_precision: interval
+  families: [processus, groupe_social]
+  actors: []
+  places: []
+  groups: ["paysans", "artisans", "mineurs"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["OM-006"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Économie & travail, régional) : l'omission OM-006 (audits/germany/omissions.yaml) documente l'absence de repères sur la proto-industrialisation, les crises agraires, les mines d'argent, les manufactures et les circuits commerciaux (evidence_checked : SRC-003). Aucun chiffre de production ni date inventé ; ancre = intervalle de l'ère."
+  TODO: []
+
+- id: de-era2-soc-001
+  era_id: germany-era-2
+  domain: "Société & démographie"
+  scale: national
+  subject: "La guerre des Paysans (1524–1525)"
+  predicate: "révèle une crise sociale de la Réforme, réprimée par les princes"
+  object: "le soulèvement de paysans et d'artisans dans plusieurs territoires de l'Empire, le rôle de Thomas Müntzer à Mühlhausen et la condamnation de la révolte par Luther"
+  time: "1524/1525"
+  time_precision: interval
+  families: [evenement, processus, acteur, groupe_social, lieu]
+  actors: ["Thomas Müntzer", "Martin Luther"]
+  places: ["Mühlhausen"]
+  groups: ["paysans", "artisans"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-002"]
+  confidence: certain
+  status: validated
+  justification: "PROP-002 (audits/germany/proposals.yaml) et PLACE-PROP-002 (Mühlhausen, country-audit.yaml) attestent le soulèvement de 1524–1525, le rôle de Müntzer à Mühlhausen, l'écrasement du mouvement par les princes et la condamnation par Luther ; SRC-002 (Scribner) couvre la Guerre des Paysans et sa répression. La certitude reprend le niveau « high » de PROP-002. Intervalle dans l'ère 1517/1815."
+  TODO: []
+
+- id: de-era2-soc-002
+  era_id: germany-era-2
+  domain: "Société & démographie"
+  scale: national
+  subject: "Les populations de l'Empire pendant la guerre de Trente Ans"
+  predicate: "subissent pillages, épidémies et famines"
+  object: "les conséquences sociales et démographiques du conflit (1618–1648)"
+  time: "1618/1648"
+  time_precision: interval
+  families: [processus, groupe_social, evenement]
+  actors: []
+  places: []
+  groups: ["populations de l'Empire"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-003"]
+  confidence: certain
+  status: validated
+  justification: "Le repère de-30ans (dataset.js) et PROP-003 attestent que les populations de l'Empire subissent pillages, épidémies et famines ; SRC-003 (Wilson, The Thirty Years War: Europe's Tragedy) documente la dévastation démographique. Aucun chiffre de population n'est avancé : aucun nombre n'est inventé. Intervalle conforme à l'ère."
+  TODO: []
+
+- id: de-era2-genre-001
+  era_id: germany-era-2
+  domain: "Femmes, genre, sexualités"
+  scale: national
+  subject: "Femmes de la Réforme, couvents, sorcellerie et normes sexuelles"
+  predicate: "ne font l'objet d'aucun repère daté dans le corpus"
+  object: "les transformations des institutions féminines et des normes de genre dans l'Empire"
+  time: "1517/1815"
+  time_precision: interval
+  families: [groupe_social, processus]
+  actors: []
+  places: []
+  groups: ["femmes", "religieuses"]
+  institutions: ["couvents"]
+  normative: []
+  memory: []
+  sources: ["OM-007"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Femmes, genre, sexualités, national) : l'omission OM-007 (audits/germany/omissions.yaml) documente l'absence d'entrées sur les femmes de la Réforme, la fermeture des couvents, les procès en sorcellerie, le travail féminin et les normes sexuelles (evidence_checked : SRC-002). Silence explicite ; aucune date, actrice ou source inventée, ancre = intervalle de l'ère."
+  TODO: []
+
+- id: de-era2-relig-001
+  era_id: germany-era-2
+  domain: "Religions & croyances"
+  scale: national
+  subject: "Martin Luther et les 95 thèses sur les indulgences"
+  predicate: "adresse ses thèses aux évêques le 31 octobre 1517 ; leur diffusion imprimée ouvre la Réforme"
+  object: "l'archevêque de Mayence et l'évêque de Brandebourg, depuis Wittenberg"
+  time: 1517
+  time_precision: year
+  families: [evenement, acteur, lieu, institution, processus]
+  actors: ["Martin Luther"]
+  places: ["Wittenberg"]
+  groups: ["augustins", "princes saxons"]
+  institutions: ["université de Wittenberg", "Église catholique"]
+  normative: ["95 thèses sur les indulgences (1517)"]
+  memory: []
+  sources: ["SRC-002", "SRC-016"]
+  confidence: certain
+  status: validated
+  justification: "Le repère de-luther (dataset.js), PROP-001, ACTOR-PROP-002 et CLAIM-002 attestent l'envoi des thèses le 31 octobre 1517 à l'archevêque de Mayence et à l'évêque de Brandebourg et la diffusion imprimée qui ouvre la Réforme ; SRC-002 et SRC-016 sont les sources du registre. L'affichage à la Schlosskirche est une tradition tardive non attestée par un témoin oculaire (CLAIM-002) : aucune certitude ne lui est accordée ici."
+  TODO: []
+
+- id: de-era2-sci-001
+  era_id: germany-era-2
+  domain: "Sciences, techniques & santé"
+  scale: transnational
+  subject: "Kepler, Leibniz et les académies"
+  predicate: "ne sont pas traités dans le corpus pour cette ère"
+  object: "les savoirs scientifiques et les institutions savantes de l'Empire (1517–1815)"
+  time: "1517/1815"
+  time_precision: interval
+  families: [processus, institution]
+  actors: []
+  places: []
+  groups: ["savants", "académies"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Sciences, techniques & santé, transnational) : la matrice mentionne explicitement Kepler, Leibniz et les académies comme non traités, sans ID dédié dans omissions.yaml. Silence explicite, non une négation du fait ; aucun nom de science, d'institution ou de date supplémentaire n'est inventé, ancre = intervalle de l'ère."
+  TODO: []
+
+- id: de-era2-arts-001
+  era_id: germany-era-2
+  domain: "Arts & lettres"
+  scale: national
+  subject: "Baroque, musique et lettres"
+  predicate: "ne sont documentés par aucun repère dans le corpus"
+  object: "les productions artistiques et littéraires de l'Empire (1517–1815)"
+  time: "1517/1815"
+  time_precision: interval
+  families: [processus]
+  actors: []
+  places: []
+  groups: ["artistes", "écrivains", "musiciens"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Arts & lettres, national) : la matrice indique que baroque, musique et lettres ne sont pas traités, sans ID dédié dans omissions.yaml. Silence explicite ; aucune œuvre, date ou source inventée, ancre = intervalle de l'ère."
+  TODO: []
+
+- id: de-era2-env-001
+  era_id: germany-era-2
+  domain: "Environnement & territoire"
+  scale: regional
+  subject: "Petit âge glaciaire et déforestation"
+  predicate: "ne sont documentés par aucun repère dans le corpus"
+  object: "les transformations environnementales des territoires de l'Empire (1517–1815)"
+  time: "1517/1815"
+  time_precision: interval
+  families: [processus]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Environnement & territoire, régional) : la matrice indique que le petit âge glaciaire et la déforestation ne sont pas traités, sans ID dédié dans omissions.yaml. Silence explicite ; aucune mesure climatique ou date inventée, ancre = intervalle de l'ère."
+  TODO: []
+
+- id: de-era2-migr-001
+  era_id: germany-era-2
+  domain: "Migrations & diasporas"
+  scale: transnational
+  subject: "Huguenots, protestants de Salzbourg, Juifs et migrations de travail saisonnières"
+  predicate: "ne sont documentés par aucun repère dans le corpus"
+  object: "les migrations de l'époque moderne dans l'Empire et vers ses territoires"
+  time: "1517/1815"
+  time_precision: interval
+  families: [processus, groupe_social]
+  actors: []
+  places: []
+  groups: ["huguenots", "protestants de Salzbourg", "Juifs", "travailleurs saisonniers"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["OM-008"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Migrations & diasporas, transnational) : l'omission OM-008 (audits/germany/omissions.yaml) documente l'absence de repères sur les huguenots après l'édit de Potsdam (1685), les protestants de Salzbourg, les Juifs d'Europe centrale et les migrations de travail saisonnières (evidence_checked : SRC-003). Ces groupes sont cités comme omissions, non comme événements datés inventés ; ancre = intervalle de l'ère."
+  TODO: []
+
+- id: de-era2-peuples-001
+  era_id: germany-era-2
+  domain: "Peuples autochtones & minorités"
+  scale: national
+  subject: "Juifs, anabaptistes et Sorbs"
+  predicate: "ne sont documentés par aucun repère dans le corpus"
+  object: "les minorités et groupes non catholiques des territoires de l'Empire (1517–1815)"
+  time: "1517/1815"
+  time_precision: interval
+  families: [groupe_social, processus]
+  actors: []
+  places: []
+  groups: ["Juifs", "anabaptistes", "Sorbs"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Peuples autochtones & minorités, national) : la matrice indique que Juifs, anabaptistes et Sorbs ne sont pas traités, sans ID dédié dans omissions.yaml. L'étiquette « autochtones » est anachronique pour l'époque et n'est pas affirmée ici ; aucun fait, lieu ou date inventé, ancre = intervalle de l'ère."
+  TODO: []
+
+- id: de-era2-memoire-001
+  era_id: germany-era-2
+  domain: "Mémoire & patrimoine"
+  scale: national
+  subject: "Martin Luther comme lieu de mémoire"
+  predicate: "est une figure confessionnelle et nationale, dont la date du 31 octobre reste symbolique"
+  object: "Wittenberg et la contestation de l'historicité de l'affichage des thèses"
+  time: 1517
+  time_precision: year
+  families: [memoire, acteur, lieu]
+  actors: ["Martin Luther"]
+  places: ["Wittenberg"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: ["figure confessionnelle et nationale de Luther", "31 octobre comme date symbolique", "historicité contestée de l'affichage des thèses"]
+  sources: ["SRC-002", "SRC-016"]
+  confidence: certain
+  status: validated
+  justification: "ACTOR-PROP-002 (country-audit.yaml) décrit Luther comme figure confessionnelle et nationale instrumentalisée du XVIe au XXe siècle ; PLACE-PROP-001 (Wittenberg) porte la contestation « historicité de l'affichage des thèses » ; CLAIM-002 et SRC-016 rappellent que la date du 31 octobre reste symbolique et que l'affichage n'est pas attesté par un témoin oculaire. Aucune commémoration datée inventée."
+  TODO: []
+
+- id: de-era2-circ-001
+  era_id: germany-era-2
+  domain: "Circulations transnationales"
+  scale: transnational
+  subject: "La diffusion imprimée des thèses de Luther (1517)"
+  predicate: "transforme une controverse locale en circulation d'idées au-delà de Wittenberg"
+  object: "les réseaux d'imprimeurs, de mécènes et de princes saxons qui diffusent les thèses dans l'Empire"
+  time: 1517
+  time_precision: year
+  families: [processus, evenement, acteur, lieu, institution]
+  actors: ["Martin Luther", "Philipp Melanchthon"]
+  places: ["Wittenberg"]
+  groups: ["princes saxons", "imprimeurs"]
+  institutions: ["réseau d'imprimerie"]
+  normative: []
+  memory: []
+  sources: ["SRC-002", "SRC-016"]
+  confidence: certain
+  status: validated
+  justification: "Le repère de-luther (dataset.js) et PROP-001 attestent la diffusion imprimée des thèses et la circulation imprimée qui ouvre la Réforme ; ACTOR-PROP-002 relie Luther à Philipp Melanchthon, aux princes saxons et aux imprimeurs. SRC-002 et SRC-016 sont les sources du registre pour cette circulation. Aucun trajet, titre imprimé ou tirage inventé."
+  TODO: []

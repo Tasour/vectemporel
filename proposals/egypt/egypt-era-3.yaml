@@ -1,0 +1,315 @@
+# Points de l'ère Égypte islamique (egypt-era-3, 641 → 1798, PERIOD-3).
+# Sources : uniquement le registre audits/egypt/source-register.csv (SRC-006 à SRC-009)
+# et les omissions documentées audits/egypt/omissions.yaml (OM-001 à OM-006).
+# Faits ancrés dans audits/egypt/country-audit.yaml (ACTOR-002, ACTOR-008, ACTOR-009,
+# CLAIM-002, CLAIM-010), audits/egypt/proposals.yaml (PROP-007 à PROP-010) et
+# audits/egypt/coverage-matrix.csv (ERA-3). Aucune date, source, DOI ou citation
+# inventée. Aucun lien externe ni URL non vérifiée. Aucun contenu hors de l'ère.
+
+- id: eg-era3-pol-001
+  era_id: egypt-era-3
+  domain: "Politique & institutions"
+  scale: imperial
+  subject: "Selim I, sultan ottoman"
+  predicate: "vainc les Mamelouks à Ridaniya et fait tomber Le Caire, intégrant l'Égypte à l'Empire ottoman"
+  object: "la fin du sultanat mamelouk et l'Égypte comme province ottomane"
+  time: "1517"
+  time_precision: year
+  families: [evenement, acteur, lieu, institution]
+  actors: ["Selim I"]
+  places: ["Ridaniya", "Le Caire"]
+  groups: ["Mamelouks"]
+  institutions: ["sultanat mamelouk", "province ottomane d'Égypte"]
+  normative: []
+  memory: []
+  sources: ["SRC-007", "SRC-008"]
+  confidence: certain
+  status: validated
+  justification: "Conquête ottomane de janvier 1517, documentée dans le corpus (proposals.yaml, PROP-010 ; country-audit.yaml, CLAIM-010) par SRC-008 (Winter) et SRC-007 (Petry), deux synthèses indépendantes. Borne interne majeure de l'ère 641/1798 ; aucune date ni acteur inventé."
+  TODO: []
+
+- id: eg-era3-guer-002
+  era_id: egypt-era-3
+  domain: "Guerres & diplomatie"
+  scale: imperial
+  subject: "Louis IX, roi de France"
+  predicate: "débarque à Damiette, est arrêté à Mansourah puis capturé à Fariskur, scellant l'échec de la septième croisade"
+  object: "la défaite des croisés et la transition des Ayyubides aux Mamelouks"
+  time: "1249/1250"
+  time_precision: interval
+  families: [evenement, acteur, lieu, groupe_social]
+  actors: ["Louis IX", "Shajar al-Durr", "al-Salih Ayyub"]
+  places: ["Damiette", "Mansourah", "Fariskur"]
+  groups: ["croisés", "Mamelouks"]
+  institutions: ["dynastie ayyubide"]
+  normative: []
+  memory: []
+  sources: ["SRC-007", "SRC-011"]
+  confidence: certain
+  status: validated
+  justification: "Septième croisade, Mansourah et capture de Louis IX en 1249–1250, documentées dans le corpus (proposals.yaml, PROP-008 ; country-audit.yaml, ACTOR-002, PLACE-007) par SRC-007 et SRC-011. Intervalle conforme à l'ère ; aucun chiffre ni date inventé."
+  TODO: []
+
+- id: eg-era3-droit-003
+  era_id: egypt-era-3
+  domain: "Droit & justice"
+  scale: imperial
+  subject: "Droit islamique, statut de dhimma et kanun ottoman"
+  predicate: "ne sont pas instrumentés dans le corpus, sans repère daté"
+  object: "les tribunaux qadi, le statut de dhimma et les juridictions consulaires de l'Égypte islamique"
+  time: "641/1798"
+  time_precision: interval
+  families: [normatif, institution, processus]
+  actors: []
+  places: ["Égypte islamique"]
+  groups: ["dhimmis", "qadis", "oulémas"]
+  institutions: ["tribunaux qadi", "kanun ottoman", "juridictions consulaires"]
+  normative: ["droit islamique", "statut de dhimma", "kanun ottoman"]
+  memory: []
+  sources: ["OM-002"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-3, Droit & justice, impérial) et omission OM-002 (PERIOD-3, Droit & justice, impérial) : droit islamique, dhimma, tribunaux qadi, kanun ottoman et juridictions consulaires non fichés ; dette documentaire, pas non-pertinence. Aucune date ni source directe inventée ; ancre = intervalle de l'ère."
+  TODO: []
+
+- id: eg-era3-econ-004
+  era_id: egypt-era-3
+  domain: "Économie & travail"
+  scale: national
+  subject: "La grande famine fatimide sous le calife al-Mustansir"
+  predicate: "provoque la hausse des prix, des épidémies et l'effondrement de l'ordre public"
+  object: "des crues insuffisantes du Nil et la guerre entre factions militaires, puis le rétablissement par Badr al-Jamali"
+  time: "1065/1072"
+  time_precision: interval
+  families: [evenement, processus, groupe_social]
+  actors: ["al-Mustansir", "Badr al-Jamali"]
+  places: ["Égypte fatimide", "Le Caire"]
+  groups: ["factions militaires", "population du Caire"]
+  institutions: ["califat fatimide"]
+  normative: []
+  memory: []
+  sources: ["SRC-007"]
+  confidence: probable
+  status: validated
+  justification: "Grande famine fatimide de 1065–1072, documentée dans le corpus (proposals.yaml, PROP-007 ; coverage-matrix.csv, ERA-3 Économie & travail) par SRC-007 (Petry). Exception documentée dans proposals.yaml : synthèse unique à compléter par une étude spécialisée ; d'où « probable ». Aucun chiffre de prix ni de mortalité inventé."
+  TODO: []
+
+- id: eg-era3-soc-005
+  era_id: egypt-era-3
+  domain: "Société & démographie"
+  scale: national
+  subject: "La peste noire en Égypte"
+  predicate: "frappe Alexandrie, Le Caire et la Haute-Égypte, provoquant une mortalité massive"
+  object: "des villages désertés et des crises agricoles, avec des récurrences jusqu'en 1517"
+  time: "1347/1349"
+  time_precision: interval
+  families: [evenement, processus, groupe_social, lieu]
+  actors: []
+  places: ["Alexandrie", "Le Caire", "Haute-Égypte"]
+  groups: ["population égyptienne", "paysans"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-009", "SRC-007"]
+  confidence: certain
+  status: validated
+  justification: "Peste noire de 1347–1349, documentée dans le corpus (proposals.yaml, PROP-009 ; coverage-matrix.csv, ERA-3 Société & démographie) par SRC-009 (Dols) et SRC-007 (Petry), deux sources indépendantes. Aucun pourcentage de mortalité avancé : le chiffre reste non tranché dans proposals.yaml (review.unresolved)."
+  TODO: []
+
+- id: eg-era3-genre-006
+  era_id: egypt-era-3
+  domain: "Femmes, genre, sexualités"
+  scale: imperial
+  subject: "Shajar al-Durr, sultane et régente"
+  predicate: "dissimule la mort d'al-Salih Ayyub et exerce le sultanat lors de la transition aux Mamelouks"
+  object: "la fin de la dynastie ayyubide et l'avènement des Mamelouks"
+  time: "1250"
+  time_precision: year
+  families: [acteur, evenement, institution]
+  actors: ["Shajar al-Durr", "al-Salih Ayyub", "Aybak"]
+  places: ["Le Caire", "Mansourah"]
+  groups: ["mamelouks bahri"]
+  institutions: ["sultanat", "dynastie ayyubide"]
+  normative: []
+  memory: ["tombeau au Caire", "réhabilitation nationaliste et féministe"]
+  sources: ["SRC-007"]
+  confidence: certain
+  status: validated
+  justification: "Régence de fait dès 1249 et sultanat de mai à juillet 1250, documentés dans le corpus (country-audit.yaml, ACTOR-002 ; proposals.yaml, PROP-008, ACTOR-PROP-002) par SRC-007. La légitimité contestée de Shajar al-Durr est signalée, non résolue, conformément à la règle 6 ; aucune date inventée."
+  TODO: []
+
+- id: eg-era3-relig-007
+  era_id: egypt-era-3
+  domain: "Religions & croyances"
+  scale: imperial
+  subject: "L'islamisation de l'Égypte"
+  predicate: "est un processus pluriséculaire : la conquête arabe de 641 n'entraîne pas une conversion immédiate"
+  object: "la persistance copte majoritaire pendant plusieurs siècles et des estimations de bascule divergentes"
+  time: "641/1517"
+  time_precision: interval
+  families: [processus, groupe_social, institution]
+  actors: []
+  places: ["Égypte"]
+  groups: ["Coptes", "musulmans", "juifs d'Égypte"]
+  institutions: ["Église copte orthodoxe", "al-Azhar"]
+  normative: []
+  memory: []
+  sources: ["SRC-007", "SRC-006"]
+  confidence: probable
+  status: validated
+  justification: "CLAIM-002 (country-audit.yaml) qualifie l'islamisation de processus pluriséculaire, avec SRC-007 et SRC-006 ; ACTOR-008 confirme le rôle de l'Église copte (PERIOD-3). La date de bascule démographique reste non tranchée (IXe, XIe ou XIVe siècle dans proposals.yaml, review.unresolved) : certitude « probable » conservée, controverse non résolue."
+  TODO: []
+
+- id: eg-era3-sci-008
+  era_id: egypt-era-3
+  domain: "Sciences, techniques & santé"
+  scale: imperial
+  subject: "Savoirs, médecine et astronomie en Égypte islamique"
+  predicate: "sont évoqués comme « Caire intellectuel » sans fiche datée dans le corpus"
+  object: "Ibn al-Haytham, la médecine et l'astronomie ne sont pas instrumentés"
+  time: "641/1798"
+  time_precision: interval
+  families: [processus, institution]
+  actors: []
+  places: ["Le Caire"]
+  groups: ["oulémas", "savants"]
+  institutions: ["al-Azhar", "Caire intellectuel"]
+  normative: []
+  memory: []
+  sources: ["SRC-007", "SRC-008"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « partiel » de coverage-matrix.csv (ERA-3, Sciences, techniques & santé, impérial) : Caire intellectuel évoqué, aucune fiche sur Ibn al-Haytham, médecine ou astronomie. SRC-007 (Petry) et SRC-008 (Winter, oulémas et vie urbaine) cadrent le contexte sans fournir de repère daté. Silence explicite ; aucune date, œuvre ou citation inventée."
+  TODO: []
+
+- id: eg-era3-arts-009
+  era_id: egypt-era-3
+  domain: "Arts & lettres"
+  scale: imperial
+  subject: "Architecture fatimide du Caire"
+  predicate: "est évoquée sans fiche dédiée, tout comme les arts mamelouks, les textiles et la céramique absents du corpus"
+  object: "al-Azhar (fondée en 970) et Le Caire capitale califale (973) comme repères architecturaux"
+  time: "641/1798"
+  time_precision: interval
+  families: [processus, lieu, institution]
+  actors: []
+  places: ["Le Caire"]
+  groups: ["artisans", "architectes"]
+  institutions: ["al-Azhar"]
+  normative: []
+  memory: []
+  sources: ["SRC-007"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « partiel » de coverage-matrix.csv (ERA-3, Arts & lettres, impérial) : architecture fatimide évoquée ; pas de fiche sur arts mamelouks, textiles ou céramique. Les repères 970 (al-Azhar) et 973 (capitale califale) proviennent des corrections de proposals.yaml (eg-caire, SRC-007). Aucune date ni œuvre inventée."
+  TODO: []
+
+- id: eg-era3-env-010
+  era_id: egypt-era-3
+  domain: "Environnement & territoire"
+  scale: national
+  subject: "Crues insuffisantes du Nil sous les Fatimides"
+  predicate: "provoquent la grande famine de 1065–1072 et fragilisent l'ordre fatimide"
+  object: "la vallée du Nil et Le Caire, avec hausse des prix et épidémies"
+  time: "1065/1072"
+  time_precision: interval
+  families: [evenement, processus, lieu]
+  actors: ["al-Mustansir"]
+  places: ["vallée du Nil", "Le Caire"]
+  groups: ["population égyptienne"]
+  institutions: ["califat fatimide"]
+  normative: []
+  memory: []
+  sources: ["SRC-007"]
+  confidence: probable
+  status: validated
+  justification: "Cellule « couvert » de coverage-matrix.csv (ERA-3, Environnement & territoire, national) : famine de 1065–1072 liée aux crues du Nil, documentée par PROP-007 et SRC-007 (Petry). Exception documentée : synthèse unique à compléter, d'où « probable ». Aucune donnée climatique chiffrée inventée."
+  TODO: []
+
+- id: eg-era3-migr-011
+  era_id: egypt-era-3
+  domain: "Migrations & diasporas"
+  scale: imperial
+  subject: "La conquête arabe et la migration arabe en Égypte"
+  predicate: "ouvrent une ère de peuplement et de circulations, sans fiche dédiée aux Turcs, Circassiens, Bédouins ou marchands italiens"
+  object: "l'entrée de l'Égypte dans l'empire arabe (conquête de 639 à 642) et le peuplement arabe"
+  time: "641"
+  time_precision: approximate
+  families: [processus, groupe_social, evenement]
+  actors: []
+  places: ["Égypte", "Fustat"]
+  groups: ["Arabes", "Turcs", "Circassiens", "Bédouins", "marchands italiens"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-007", "SRC-008"]
+  confidence: probable
+  status: validated
+  justification: "Cellule « partiel » de coverage-matrix.csv (ERA-3, Migrations & diasporas, impérial) et omission OM-005 (groupes non fichés). Les corrections de proposals.yaml (eg-arabes) et CLAIM-010 donnent 639–642 pour la conquête et 641 comme borne conventionnelle ; d'où « probable ». SRC-007 et SRC-008 ; aucun groupe ni date inventé."
+  TODO: []
+
+- id: eg-era3-peuples-012
+  era_id: egypt-era-3
+  domain: "Peuples autochtones & minorités"
+  scale: imperial
+  subject: "Coptes, Nubiens, Bédouins et Juifs d'Égypte"
+  predicate: "sont des minorités mentionnées sans fiche dédiée à la dhimma, aux conversions ou à leur histoire sur la longue durée"
+  object: "les communautés non musulmanes et frontalières de l'Égypte islamique"
+  time: "641/1798"
+  time_precision: interval
+  families: [groupe_social, processus, institution]
+  actors: []
+  places: ["Égypte", "Nubie", "Le Caire", "Alexandrie"]
+  groups: ["Coptes", "Nubiens", "Bédouins", "Juifs d'Égypte"]
+  institutions: ["Église copte orthodoxe"]
+  normative: ["dhimma"]
+  memory: []
+  sources: ["SRC-006", "SRC-007", "SRC-008"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « partiel » de coverage-matrix.csv (ERA-3, Peuples autochtones & minorités, impérial) et omission OM-005 (PERIOD-3, régional). Présence documentée dans country-audit.yaml (ACTOR-008 Église copte, ACTOR-009 Nubiens, period_ids PERIOD-3), mais aucune fiche dédiée ; silence explicite, aucune date ni source inventée."
+  TODO: []
+
+- id: eg-era3-memoire-013
+  era_id: egypt-era-3
+  domain: "Mémoire & patrimoine"
+  scale: imperial
+  subject: "Patrimoine et mémoire urbaine du Caire islamique"
+  predicate: "sont évoqués par le patrimoine fatimide, sans fiche sur al-Maqrizi ni sur la mémoire urbaine"
+  object: "al-Azhar, le Caire fatimide et les récits de la ville"
+  time: "641/1798"
+  time_precision: interval
+  families: [memoire, lieu, institution]
+  actors: ["al-Maqrizi"]
+  places: ["Le Caire"]
+  groups: ["habitants du Caire", "oulémas"]
+  institutions: ["al-Azhar"]
+  normative: []
+  memory: ["patrimoine fatimide", "mémoire urbaine du Caire"]
+  sources: ["SRC-007"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « partiel » de coverage-matrix.csv (ERA-3, Mémoire & patrimoine, impérial) : patrimoine fatimide présent (SRC-007), aucune fiche sur al-Maqrizi ni mémoire urbaine. Aucune datation de la vie d'al-Maqrizi n'est avancée : seul son nom, tel que cité dans la matrice, est repris."
+  TODO: []
+
+- id: eg-era3-circ-014
+  era_id: egypt-era-3
+  domain: "Circulations transnationales"
+  scale: transnational
+  subject: "Le Caire, carrefour commercial de l'Égypte islamique"
+  predicate: "est évoqué comme carrefour, sans fiche dédiée à la mer Rouge, au pèlerinage ou au commerce indien"
+  object: "les réseaux commerciaux reliant l'Égypte à la mer Rouge, au pèlerinage et à l'océan Indien"
+  time: "641/1798"
+  time_precision: interval
+  families: [processus, lieu, groupe_social]
+  actors: []
+  places: ["Le Caire", "Alexandrie", "mer Rouge"]
+  groups: ["marchands", "pèlerins"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-007", "SRC-008"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule « partiel » de coverage-matrix.csv (ERA-3, Circulations transnationales, transnational) : Caire carrefour commercial évoqué ; pas de fiche sur mer Rouge, pèlerinage ou commerce indien. Omission OM-006 cite le commerce de la mer Rouge et du pèlerinage. SRC-007 et SRC-008 ; aucune route, date ou citation inventée."
+  TODO: []

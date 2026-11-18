@@ -1,0 +1,60 @@
+# Manifestes des ères
+
+Chaque agent traite une ère et écrit dans le fichier indiqué.
+
+- france | france-era-1 | Antiquité | -600 → 476 | proposals/france/france-era-1.yaml
+- france | france-era-2 | Moyen Âge | 476 → 1492 | proposals/france/france-era-2.yaml
+- france | france-era-3 | Renaissance | 1492 → 1610 | proposals/france/france-era-3.yaml
+- france | france-era-4 | Grand Siècle & Lumières | 1610 → 1789 | proposals/france/france-era-4.yaml
+- france | france-era-5 | Révolution & Empire | 1789 → 1815 | proposals/france/france-era-5.yaml
+- france | france-era-6 | XIXe siècle | 1815 → 1914 | proposals/france/france-era-6.yaml
+- france | france-era-7 | Guerres mondiales | 1914 → 1945 | proposals/france/france-era-7.yaml
+- france | france-era-8 | Après-guerre, croissance et crises | 1945 → 1989 | proposals/france/france-era-8.yaml
+- france | france-era-9 | Temps présents | 1989 → 2026 | proposals/france/france-era-9.yaml
+- uk | uk-era-1 | Bretagne romaine, Anglo-Saxons et Vikings | 43 → 1066 | proposals/uk/uk-era-1.yaml
+- uk | uk-era-2 | Moyen Âge des quatre nations | 1066 → 1485 | proposals/uk/uk-era-2.yaml
+- uk | uk-era-3 | Réforme, guerres des Trois Royaumes et Révolution | 1485 → 1688 | proposals/uk/uk-era-3.yaml
+- uk | uk-era-4 | Empire & industrie | 1688 → 1914 | proposals/uk/uk-era-4.yaml
+- uk | uk-era-5 | Guerres totales et crise impériale | 1914 → 1945 | proposals/uk/uk-era-5.yaml
+- uk | uk-era-6 | Royaume-Uni contemporain | 1945 → 2026 | proposals/uk/uk-era-6.yaml
+- usa | usa-era-1 | Colonies atlantiques et empires | 1607 → 1776 | proposals/usa/usa-era-1.yaml
+- usa | usa-era-2 | Indépendance et république esclavagiste | 1776 → 1861 | proposals/usa/usa-era-2.yaml
+- usa | usa-era-3 | Guerre civile & reconstruction | 1861 → 1900 | proposals/usa/usa-era-3.yaml
+- usa | usa-era-4 | Puissance mondiale | 1900 → 1945 | proposals/usa/usa-era-4.yaml
+- usa | usa-era-5 | Guerre froide, guerres et droits civiques | 1945 → 1991 | proposals/usa/usa-era-5.yaml
+- usa | usa-era-6 | Après-guerre froide, sécurité et polarisation | 1991 → 2026 | proposals/usa/usa-era-6.yaml
+- germany | germany-era-1 | Reich médiéval | 962 → 1517 | proposals/germany/germany-era-1.yaml
+- germany | germany-era-2 | Réforme & guerres | 1517 → 1815 | proposals/germany/germany-era-2.yaml
+- germany | germany-era-3 | Unification | 1815 → 1914 | proposals/germany/germany-era-3.yaml
+- germany | germany-era-4 | Guerres & divisions | 1914 → 1945 | proposals/germany/germany-era-4.yaml
+- germany | germany-era-5 | Occupation et deux Allemagnes | 1945 → 1990 | proposals/germany/germany-era-5.yaml
+- germany | germany-era-6 | Allemagne réunifiée | 1990 → 2026 | proposals/germany/germany-era-6.yaml
+- italy | italy-era-1 | Rome antique et Italie romaine | -753 → 476 | proposals/italy/italy-era-1.yaml
+- italy | italy-era-2 | Moyen Âge & Renaissance | 476 → 1494 | proposals/italy/italy-era-2.yaml
+- italy | italy-era-3 | Guerres & Risorgimento | 1494 → 1871 | proposals/italy/italy-era-3.yaml
+- italy | italy-era-4 | Italie libérale et fasciste (1871-1945) | 1871 → 1945 | proposals/italy/italy-era-4.yaml
+- italy | italy-era-5 | République | 1945 → 2026 | proposals/italy/italy-era-5.yaml
+- spain | spain-era-1 | Al-Andalus et royaumes chrétiens | 711 → 1492 | proposals/spain/spain-era-1.yaml
+- spain | spain-era-2 | Empire espagnol | 1492 → 1808 | proposals/spain/spain-era-2.yaml
+- spain | spain-era-3 | Révolution libérale et nation en crise | 1808 → 1936 | proposals/spain/spain-era-3.yaml
+- spain | spain-era-4 | Guerre civile & franquisme | 1936 → 1975 | proposals/spain/spain-era-4.yaml
+- spain | spain-era-5 | Démocratie | 1975 → 2026 | proposals/spain/spain-era-5.yaml
+- china | china-era-1 | Shang, Zhou et Royaumes combattants | -1600 → -221 | proposals/china/china-era-1.yaml
+- china | china-era-2 | Empires et divisions | -221 → 1912 | proposals/china/china-era-2.yaml
+- china | china-era-3 | République et révolutions | 1912 → 1949 | proposals/china/china-era-3.yaml
+- china | china-era-4 | Chine populaire | 1949 → 1978 | proposals/china/china-era-4.yaml
+- china | china-era-5 | Réforme et puissance | 1978 → 2026 | proposals/china/china-era-5.yaml
+- india | india-era-1 | Civilisations anciennes | -2600 → 1206 | proposals/india/india-era-1.yaml
+- india | india-era-2 | Sultanats, Vijayanagara & Moghols | 1206 → 1757 | proposals/india/india-era-2.yaml
+- india | india-era-3 | Compagnie & Raj | 1757 → 1947 | proposals/india/india-era-3.yaml
+- india | india-era-4 | Inde contemporaine | 1947 → 2026 | proposals/india/india-era-4.yaml
+- japan | japan-era-1 | Antiquité, Asuka & Nara | 538 → 794 | proposals/japan/japan-era-1.yaml
+- japan | japan-era-2 | Heian & shoguns | 794 → 1603 | proposals/japan/japan-era-2.yaml
+- japan | japan-era-3 | Époque Edo | 1603 → 1868 | proposals/japan/japan-era-3.yaml
+- japan | japan-era-4 | Empire et guerres mondiales | 1868 → 1945 | proposals/japan/japan-era-4.yaml
+- japan | japan-era-5 | Japon contemporain | 1945 → 2026 | proposals/japan/japan-era-5.yaml
+- egypt | egypt-era-1 | Égypte pharaonique | -3100 → -332 | proposals/egypt/egypt-era-1.yaml
+- egypt | egypt-era-2 | Égypte gréco-romaine | -332 → 641 | proposals/egypt/egypt-era-2.yaml
+- egypt | egypt-era-3 | Égypte islamique | 641 → 1798 | proposals/egypt/egypt-era-3.yaml
+- egypt | egypt-era-4 | Égypte moderne et coloniale | 1798 → 1952 | proposals/egypt/egypt-era-4.yaml
+- egypt | egypt-era-5 | Égypte contemporaine | 1952 → 2026 | proposals/egypt/egypt-era-5.yaml

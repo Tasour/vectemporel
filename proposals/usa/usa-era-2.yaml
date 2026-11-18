@@ -1,0 +1,314 @@
+# Vectemporel — points proposés pour usa-era-2 (Indépendance et république esclavagiste, 1776-1861)
+# Un point par domaine de audits/usa/coverage-matrix.csv (ERA-2, 14 domaines).
+# Faits tirés de audits/usa/{country-audit.yaml, coverage-matrix.csv, omissions.yaml,
+# proposals.yaml, fixes.yaml, source-register.csv, REPORT.md} et des repères
+# usa-era-2 de src/data/dataset.js. Aucune date, source ou titre inventé.
+# Aucun lien externe de validation. Aucun point hors de l'ère 1776-1861.
+
+- id: usa-era2-pol-001
+  era_id: usa-era-2
+  domain: "Politique & institutions"
+  scale: national
+  subject: "Les treize colonies britanniques d'Amérique du Nord"
+  predicate: "proclament leur indépendance et se dotent d'une Constitution fédérale"
+  object: "Déclaration du 4 juillet 1776, puis Constitution rédigée à Philadelphie en 1787, avec séparation des pouvoirs, fédéralisme et compromis des trois cinquièmes"
+  time: "1776-1787"
+  time_precision: interval
+  families: [evenement, acteur, repere_normatif]
+  actors: ["signataires de la Déclaration", "Convention de Philadelphie"]
+  places: ["Philadelphie"]
+  groups: []
+  institutions: ["Congrès continental", "Convention de Philadelphie"]
+  normative: ["Déclaration d'indépendance (1776)", "Constitution fédérale (1787)", "compromis des trois cinquièmes"]
+  memory: []
+  sources: ["SRC-007", "SRC-008"]
+  confidence: certain
+  status: validated
+  justification: "Fiches us-independance et us-constitution de dataset.js, complétées par les corrections fixes.yaml (confiance haute, SRC-007 et SRC-008). La matrice ERA-2 signale l'absence du compromis des trois cinquièmes dans les fiches; le point le mentionne sans inventer de détail."
+  TODO: []
+
+- id: usa-era2-gue-001
+  era_id: usa-era-2
+  domain: "Guerres & diplomatie"
+  scale: transnational
+  subject: "États-Unis et Mexique"
+  predicate: "signent le traité qui met fin à la guerre américano-mexicaine"
+  object: "traité de Guadalupe Hidalgo du 2 février 1848: cession de la Californie, du Nevada, de l'Utah, du Nouveau-Mexique et renonciation au Texas; article X supprimé par le Sénat"
+  time: "1848"
+  time_precision: year
+  families: [evenement, acteur, repere_normatif]
+  actors: ["Nicholas P. Trist", "Luis G. Cuevas"]
+  places: ["Guadalupe Hidalgo", "Mexico"]
+  groups: []
+  institutions: ["Sénat des États-Unis"]
+  normative: ["traité de Guadalupe Hidalgo (1848)"]
+  memory: []
+  sources: ["SRC-001", "SRC-012"]
+  confidence: certain
+  status: validated
+  justification: "PROP-004, SRC-001 (document primaire NARA: signature le 2 février 1848, ratification le 10 mars et proclamation le 4 juillet 1848) et SRC-012. La matrice ERA-2 classe la cellule « couvert » par PROP-004. Deux sources indépendantes pour un point certain."
+  TODO: []
+
+- id: usa-era2-dro-001
+  era_id: usa-era-2
+  domain: "Droit & justice"
+  scale: national
+  subject: "Constitution fédérale de 1787"
+  predicate: "exclut de la citoyenneté politique"
+  object: "les femmes, les peuples autochtones et les personnes réduites en esclavage; le compromis des trois cinquièmes compte ces dernières dans la représentation sans leur accorder de droits"
+  time: "1787"
+  time_precision: year
+  families: [repere_normatif, institution]
+  actors: []
+  places: ["Philadelphie"]
+  groups: ["femmes", "peuples autochtones", "personnes réduites en esclavage"]
+  institutions: ["Congrès fédéral"]
+  normative: ["compromis des trois cinquièmes", "Constitution de 1787"]
+  memory: []
+  sources: ["SRC-007", "SRC-008"]
+  confidence: certain
+  status: validated
+  justification: "Points us-constitution-point-2 et us-constitution-point-3 de dataset.js et corrections fixes.yaml relatives à us-constitution (SRC-007, SRC-008, confiance haute). La matrice ERA-2 note l'absence de fiche juridique dédiée; le point enregistre la règle et ses exclusions."
+  TODO: []
+
+- id: usa-era2-eco-001
+  era_id: usa-era-2
+  domain: "Économie & travail"
+  scale: national
+  subject: "Économie de la république esclavagiste"
+  predicate: "repose sur l'extension de la culture cotonnière et du travail forcé"
+  object: "l'achat de la Louisiane en 1803 accélère l'expansion de la plantation esclavagiste; le travail artisanal, les filatures et le travail esclave dans le Nord et le Sud restent non traités"
+  time: "1803-1861"
+  time_precision: interval
+  families: [processus, groupe_social]
+  actors: []
+  places: ["La Nouvelle-Orléans, Louisiane"]
+  groups: ["personnes réduites en esclavage", "travailleurs"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-007", "OM-005"]
+  confidence: probable
+  status: validated
+  justification: "Point us-louisiane-point-2 de dataset.js (« accélère l'expansion de la plantation esclavagiste ») et SRC-007 (esclavage moteur central du capitalisme, expansion du coton). OM-005 (ERA-2, Économie & travail) documente le silence sur le travail artisanal, les filatures de Lowell, l'apprentissage et le travail esclave dans le Nord et le Sud. Confiance alignée sur CLAIM-002, marquée « probable »."
+  TODO: ["OM-005 : instrumenter le travail artisanal, les filatures de Lowell et le travail esclave dans le Nord"]
+
+- id: usa-era2-soc-001
+  era_id: usa-era-2
+  domain: "Société & démographie"
+  scale: national
+  subject: "Convention de Seneca Falls"
+  predicate: "réclame l'égalité des droits, dont le vote"
+  object: "réunion des 19 et 20 juillet 1848 à Seneca Falls, dans l'État de New York; moment fondateur du mouvement des femmes, dont l'universalisme exclut de fait les femmes noires et autochtones"
+  time: "1848"
+  time_precision: year
+  families: [evenement, acteur, groupe_social]
+  actors: ["Elizabeth Cady Stanton", "Lucretia Mott", "Frederick Douglass"]
+  places: ["Seneca Falls, New York"]
+  groups: ["militantes des droits des femmes"]
+  institutions: []
+  normative: ["Déclaration des sentiments (1848)"]
+  memory: []
+  sources: ["SRC-013"]
+  confidence: probable
+  status: validated
+  justification: "PROP-005 et fiche us-prop-005 de dataset.js; PLACE-011; SRC-013 (DuBois). La matrice ERA-2 classe la cellule « couvert » par PROP-005. Certitude « medium » de l'audit, rendue par « probable »."
+  TODO: []
+
+- id: usa-era2-fem-001
+  era_id: usa-era-2
+  domain: "Femmes, genre, sexualités"
+  scale: local
+  subject: "Elizabeth Cady Stanton, Lucretia Mott et Frederick Douglass à Seneca Falls"
+  predicate: "engagent la revendication de l'égalité civile des femmes"
+  object: "Déclaration des sentiments des 19 et 20 juillet 1848; l'universalisme de la convention exclut de fait les femmes noires et autochtones"
+  time: "1848"
+  time_precision: year
+  families: [evenement, acteur]
+  actors: ["Elizabeth Cady Stanton", "Lucretia Mott", "Frederick Douglass"]
+  places: ["Seneca Falls, New York"]
+  groups: ["militantes des droits des femmes"]
+  institutions: []
+  normative: ["Déclaration des sentiments (1848)"]
+  memory: []
+  sources: ["SRC-013"]
+  confidence: probable
+  status: validated
+  justification: "PROP-005, PLACE-011 et ACTOR-003 (Sojourner Truth, PERIOD-2, dont le discours de 1851 à Akron est une transcription tardive et reconstruite; elle n'est pas présentée ici comme participante à Seneca Falls). SRC-013. La matrice ERA-2 classe la cellule « couvert » (Stanton, Mott, Douglass)."
+  TODO: []
+
+- id: usa-era2-rel-001
+  era_id: usa-era-2
+  domain: "Religions & croyances"
+  scale: national
+  subject: "Vie religieuse de la république: Second Grand Réveil, mormonisme, immigration catholique"
+  predicate: "reste non instrumentée dans le corpus vérifié de l'ère"
+  object: "aucun repère ni proposition vérifiée entre 1776 et 1861 dans la frise; la matrice signale explicitement ce vide"
+  time: "1776-1861"
+  time_precision: interval
+  families: [memoire]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-006"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule ERA-2 « Religions & croyances » en « vide non traité » dans coverage-matrix.csv. La référence « OM-009 » de la matrice ne correspond pas à une omission de cette ère dans omissions.yaml (OM-009 concerne la guerre américano-philippine, ERA-3); aucun omissions ID dédié n'existe. SRC-006 est la synthèse du registre: le point enregistre le silence documenté plutôt qu'un repère inventé."
+  TODO: ["Ouvrir une omission dédiée aux réveils religieux, au mormonisme et à l'immigration catholique (1776-1861)"]
+
+- id: usa-era2-sci-001
+  era_id: usa-era-2
+  domain: "Sciences, techniques & santé"
+  scale: national
+  subject: "Coton gin, bateaux à vapeur et télégraphe"
+  predicate: "restent non instrumentés comme objets d'étude dans l'ère"
+  object: "aucun repère ni proposition vérifiée entre 1776 et 1861 dans la frise, alors que l'expansion cotonnière est documentée par ailleurs"
+  time: "1776-1861"
+  time_precision: interval
+  families: [memoire]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-007"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule ERA-2 « Sciences, techniques & santé » en « vide non traité » (coton gin, bateaux à vapeur, télégraphe). La référence « OM-010 » de la matrice ne correspond pas à une omission de cette ère dans omissions.yaml (OM-010 concerne Porto Rico, ERA-4); aucun omissions ID dédié n'existe. SRC-007 documente l'expansion du coton, sans inventer de repère technologique daté."
+  TODO: ["Ouvrir une omission dédiée aux techniques du coton, aux bateaux à vapeur et au télégraphe (1776-1861)"]
+
+- id: usa-era2-art-001
+  era_id: usa-era-2
+  domain: "Arts & lettres"
+  scale: national
+  subject: "Transcendantalisme, roman américain et presse abolitionniste"
+  predicate: "restent non instrumentés comme objets d'étude dans l'ère"
+  object: "aucun repère ni proposition vérifiée entre 1776 et 1861 dans la frise"
+  time: "1776-1861"
+  time_precision: interval
+  families: [memoire]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-008"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule ERA-2 « Arts & lettres » en « vide non traité » dans coverage-matrix.csv. SRC-008 (Foner) et la ressource « presse (North Star) » d'ACTOR-002 dans country-audit.yaml sont les seuls appuis indirects du registre; aucun repère daté d'arts ou de lettres n'est proposé pour l'ère."
+  TODO: ["Ouvrir une omission dédiée au transcendentalisme, au roman américain et à la presse abolitionniste"]
+
+- id: usa-era2-env-001
+  era_id: usa-era-2
+  domain: "Environnement & territoire"
+  scale: national
+  subject: "Territoire de la Louisiane acheté en 1803"
+  predicate: "double la superficie du pays et accélère la dépossession des peuples autochtones"
+  object: "achat de la Louisiane à la France; extension de la plantation esclavagiste et occupation des terres autochtones dans le bassin du Mississippi"
+  time: "1803"
+  time_precision: year
+  families: [evenement, processus]
+  actors: []
+  places: ["La Nouvelle-Orléans, Louisiane"]
+  groups: ["peuples autochtones"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-007", "SRC-006"]
+  confidence: certain
+  status: validated
+  justification: "Point us-louisiane-point-2 de dataset.js; SRC-007 (expansion de la plantation, migration forcée) et SRC-006 (dépossession autochtone comme processus structurel). La matrice ERA-2 classe la cellule « couvert » par us-louisiane et PROP-003."
+  TODO: []
+
+- id: usa-era2-mig-001
+  era_id: usa-era-2
+  domain: "Migrations & diasporas"
+  scale: transnational
+  subject: "Populations mexicaines du Sud-Ouest"
+  predicate: "sont intégrées aux États-Unis avec une question de citoyenneté"
+  object: "article IX du traité de Guadalupe Hidalgo (1848) sur la citoyenneté; article X supprimé par le Sénat; protection de la propriété et des droits civils"
+  time: "1848"
+  time_precision: year
+  families: [evenement, repere_normatif, groupe_social]
+  actors: []
+  places: ["Guadalupe Hidalgo", "Santa Fe"]
+  groups: ["Mexicains du Sud-Ouest"]
+  institutions: ["Sénat des États-Unis"]
+  normative: ["article IX du traité de Guadalupe Hidalgo"]
+  memory: []
+  sources: ["SRC-001", "SRC-012"]
+  confidence: certain
+  status: validated
+  justification: "SRC-001 (usage: « Article IX on citizenship; Article X struck by the Senate; protection of property and civil rights »), PROP-004 et SRC-012. PLACE-002 (Santa Fe, 1848- sous souveraineté américaine). La matrice ERA-2 classe la cellule « couvert » par PROP-004."
+  TODO: []
+
+- id: usa-era2-aut-001
+  era_id: usa-era-2
+  domain: "Peuples autochtones & minorités"
+  scale: regional
+  subject: "Nations autochtones de l'Est des États-Unis"
+  predicate: "sont visées par une politique fédérale de déportation"
+  object: "Indian Removal Act signé par Andrew Jackson le 28 mai 1830; environ 100 000 personnes visées par les traités de déplacement; déportation des Cherokees en 1838-1839, dite Trail of Tears"
+  time: "1830"
+  time_precision: year
+  families: [evenement, acteur, groupe_social, repere_normatif]
+  actors: ["Andrew Jackson"]
+  places: ["territoires à l'est du Mississippi"]
+  groups: ["nations autochtones de l'Est", "Cherokees"]
+  institutions: ["gouvernement fédéral"]
+  normative: ["Indian Removal Act (1830)"]
+  memory: ["Trail of Tears"]
+  sources: ["SRC-006"]
+  confidence: probable
+  status: validated
+  justification: "PROP-003 et fiche us-prop-003 de dataset.js; SRC-006 (Dunbar-Ortiz). La matrice ERA-2 classe la cellule « couvert » par PROP-003. Certitude « medium » de l'audit, rendue par « probable ». La Trail of Tears (1838-1839) reste dans l'ère."
+  TODO: []
+
+- id: usa-era2-mem-001
+  era_id: usa-era-2
+  domain: "Mémoire & patrimoine"
+  scale: national
+  subject: "Mémoire de la fondation et jubilés de 1826"
+  predicate: "restent non instrumentés dans la frise"
+  object: "aucun repère de mémoire ou de commémoration pour l'ère 1776-1861; les jubilés du cinquantenaire de la Déclaration ne sont pas traités"
+  time: "1776-1861"
+  time_precision: interval
+  families: [memoire]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: ["jubilés de 1826 non traités", "mémoire de la fondation non distinguée des événements"]
+  sources: ["SRC-006"]
+  confidence: non documenté
+  status: validated
+  justification: "Cellule ERA-2 « Mémoire & patrimoine » en « vide non traité » dans coverage-matrix.csv (mémoire de la fondation, jubilés de 1826). REPORT.md observe de manière générale que les commémorations ne sont pas distinguées des événements. SRC-006 est la synthèse du registre; aucun repère de mémoire n'est inventé pour l'ère."
+  TODO: ["Ouvrir une omission dédiée à la mémoire de la fondation et aux jubilés de 1826"]
+
+- id: usa-era2-cir-001
+  era_id: usa-era-2
+  domain: "Circulations transnationales"
+  scale: transnational
+  subject: "Vente de la Louisiane"
+  predicate: "relie la France, Saint-Domingue et les États-Unis"
+  object: "en 1803, l'échec de l'expédition de Saint-Domingue face à la révolution haïtienne pèse sur la vente; le territoire passe sous souveraineté américaine"
+  time: "1803"
+  time_precision: year
+  families: [evenement, acteur, lieu]
+  actors: []
+  places: ["La Nouvelle-Orléans, Louisiane", "Saint-Domingue"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: ["SRC-007"]
+  confidence: certain
+  status: validated
+  justification: "Point us-louisiane-point-1 de dataset.js et correction fixes.yaml (confiance haute, SRC-007): « Napoléon vend la Louisiane aux États-Unis en 1803, alors que l'expédition de Saint-Domingue échoue face à la révolution haïtienne ». La matrice ERA-2 note que les réseaux atlantiques restent peu documentés; le point enregistre la circulation transnationale étayée par la fiche."
+  TODO: []

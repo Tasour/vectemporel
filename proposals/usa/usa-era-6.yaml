@@ -1,0 +1,311 @@
+# États-Unis — ère 6 : Après-guerre froide, sécurité et polarisation (1991-2026)
+# 14 points, un par domaine de la matrice ERA-6. Sources: registre audits/usa/source-register.csv (SRC-001 à SRC-020).
+# Les points sans pièce au registre sont adossés à un ID d'omission explicite (OM-013, OM-014), jamais à un vide masqué.
+
+- id: usa-era6-pol-001
+  era_id: usa-era-6
+  domain: "Politique & institutions"
+  scale: national
+  subject: "Les États-Unis"
+  predicate: "interviennent massivement pour sauver"
+  object: "le système bancaire lors de la crise financière de 2008 (faillite de Lehman Brothers)"
+  time: 2008
+  time_precision: year
+  families: [evenement, institution]
+  actors: ["Lehman Brothers"]
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: probable
+  status: validated
+  justification: "Fait déjà présent dans la fiche us-2008 du dataset (faillite de Lehman Brothers, intervention publique). Aucune source post-2001 n'est inscrite dans le registre : dette explicite au §4 de REPORT.md et OM-014 (« La période 2001-2026 est presque vide après 2008 »)."
+  TODO: ["Ajouter au registre une source vérifiée sur la crise de 2008 et l'intervention publique"]
+
+- id: usa-era6-guerre-001
+  era_id: usa-era-6
+  domain: "Guerres & diplomatie"
+  scale: transnational
+  subject: "Les États-Unis"
+  predicate: "mènent et soutiennent"
+  object: "les guerres d'Afghanistan (2001-2021) et d'Irak (2003-2011), le centre de détention de Guantánamo et la surveillance de masse"
+  time: "2001-2021"
+  time_precision: interval
+  families: [evenement, processus]
+  actors: ["États-Unis"]
+  places: ["Afghanistan", "Irak", "Guantánamo"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "OM-013 (ERA-6, Guerres & diplomatie) documente ces absences : guerres d'Afghanistan et d'Irak, morts civils, Guantánamo, surveillance de masse ; evidence_checked est vide, aucune source post-2001 n'est au registre. Voir aussi coverage-matrix.csv ERA-6/Guerres & diplomatie et REPORT.md §10."
+  TODO: ["Ajouter des sources post-2001 vérifiées (guerres, Guantánamo, surveillance)"]
+
+- id: usa-era6-droit-001
+  era_id: usa-era-6
+  domain: "Droit & justice"
+  scale: national
+  subject: "Cour suprême des États-Unis"
+  predicate: "affaiblit"
+  object: "le Voting Rights Act de 1965 par l'arrêt Shelby County (2013)"
+  time: 2013
+  time_precision: year
+  families: [evenement, institution]
+  actors: ["Cour suprême des États-Unis"]
+  places: []
+  groups: []
+  institutions: ["Cour suprême des États-Unis"]
+  normative: ["Shelby County v. Holder (2013)"]
+  memory: []
+  sources: [SRC-005]
+  confidence: certain
+  status: validated
+  justification: "SRC-005 (Voting Rights Act, NARA) consigne explicitement la décision Shelby County de 2013 qui affaiblit le dispositif ; reprise dans PROP-016 du registre de propositions. Date compatible avec l'ère 1991-2026."
+  TODO: []
+
+- id: usa-era6-economie-001
+  era_id: usa-era-6
+  domain: "Économie & travail"
+  scale: national
+  subject: "Crise financière de 2008"
+  predicate: "entraîne"
+  object: "des saisies immobilières et une hausse du chômage aux États-Unis"
+  time: 2008
+  time_precision: year
+  families: [processus, evenement]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Coverage-matrix.csv ERA-6/Économie & travail et REPORT.md §4 signalent les saisies immobilières, le chômage et l'inégalité raciale liés à 2008 comme dettes non sourcées. Aucune source post-2001 au registre (OM-014 : période presque vide après 2008)."
+  TODO: ["Ajouter au registre une source vérifiée sur les saisies immobilières et l'emploi après 2008"]
+
+- id: usa-era6-societe-001
+  era_id: usa-era-6
+  domain: "Société & démographie"
+  scale: national
+  subject: "Ouragan Katrina"
+  predicate: "révèle"
+  object: "les inégalités raciales et sociales à La Nouvelle-Orléans"
+  time: 2005
+  time_precision: year
+  families: [evenement, groupe_social]
+  actors: []
+  places: ["La Nouvelle-Orléans, Louisiane"]
+  groups: ["quartiers noirs et pauvres"]
+  institutions: []
+  normative: []
+  memory: []
+  sources: [SRC-020]
+  confidence: probable
+  status: validated
+  justification: "SRC-020 (Horowitz, Katrina: A History, 1915-2015, Harvard University Press, 2020) documente les inégalités raciales et de classe et la reconstruction de La Nouvelle-Orléans ; cf. PROP-018 et coverage-matrix.csv ERA-6/Société & démographie (« Katrina documente la catastrophe raciale et sociale »). Confidence probable car le bilan humain est disputé (SRC-020 : environ 1 400 morts directs, plus de 1 800 au total)."
+  TODO: []
+
+- id: usa-era6-genre-001
+  era_id: usa-era-6
+  domain: "Femmes, genre, sexualités"
+  scale: national
+  subject: "Arrêt Dobbs (2022)"
+  predicate: "concerne"
+  object: "le droit à l'avortement aux États-Unis"
+  time: 2022
+  time_precision: year
+  families: [evenement, repere_normatif]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: ["Dobbs (2022)"]
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Coverage-matrix.csv ERA-6/Femmes, genre, sexualités cite explicitement Dobbs (2022), #MeToo et les droits trans comme non traités. Aucun OM dédié ni aucune source post-2001 au registre (OM-014)."
+  TODO: ["Ajouter une source vérifiée sur Dobbs (2022) et l'évolution du droit à l'avortement"]
+
+- id: usa-era6-religion-001
+  era_id: usa-era-6
+  domain: "Religions & croyances"
+  scale: national
+  subject: "Polarisation religieuse et islamophobie"
+  predicate: "marquent"
+  object: "la période post-2001 aux États-Unis"
+  time: 2001
+  time_precision: year
+  families: [processus]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Coverage-matrix.csv ERA-6/Religions & croyances : « polarisation religieuse et islamophobie post-2001 ne sont pas traitées ». Aucune source post-2001 au registre (OM-014)."
+  TODO: ["Ajouter une source vérifiée sur la religion et l'islamophobie après 2001"]
+
+- id: usa-era6-sciences-001
+  era_id: usa-era-6
+  domain: "Sciences, techniques & santé"
+  scale: national
+  subject: "Pandémie de COVID-19"
+  predicate: "frappe"
+  object: "les États-Unis entre 2020 et 2023"
+  time: "2020-2023"
+  time_precision: interval
+  families: [processus, evenement]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "OM-014 (ERA-6) nomme la pandémie de COVID-19 (2020-2023) et précise qu'aucune source post-2001 n'est au registre ; cf. coverage-matrix.csv ERA-6/Sciences, techniques & santé."
+  TODO: ["Ajouter une source vérifiée sur la COVID-19 et les vaccins"]
+
+- id: usa-era6-arts-001
+  era_id: usa-era-6
+  domain: "Arts & lettres"
+  scale: national
+  subject: "Cultures numériques et industries culturelles"
+  predicate: "constituent un angle mort de"
+  object: "l'ère 1991-2026 dans la matrice de couverture"
+  time: "1991-2026"
+  time_precision: interval
+  families: [processus]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Coverage-matrix.csv ERA-6/Arts & lettres : « cultures numériques et industries culturelles ne sont pas traitées ». OM-014 confirme l'absence de sources post-2001 au registre."
+  TODO: ["Ajouter une source vérifiée sur les cultures numériques de la période"]
+
+- id: usa-era6-environnement-001
+  era_id: usa-era-6
+  domain: "Environnement & territoire"
+  scale: regional
+  subject: "Ouragan Katrina"
+  predicate: "provoque"
+  object: "la rupture des digues et l'inondation de 80 % de La Nouvelle-Orléans"
+  time: 2005
+  time_precision: year
+  families: [evenement]
+  actors: []
+  places: ["La Nouvelle-Orléans, Louisiane"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: [SRC-020]
+  confidence: certain
+  status: validated
+  justification: "SRC-020 (Horowitz, 2020) et PROP-018 documentent la rupture de digues et l'inondation de 80 % de la ville ; coverage-matrix.csv ERA-6/Environnement & territoire la qualifie de couverte (« échecs d'infrastructure et inégalités »). Fait non contesté."
+  TODO: []
+
+- id: usa-era6-migrations-001
+  era_id: usa-era-6
+  domain: "Migrations & diasporas"
+  scale: transnational
+  subject: "DACA, migrations centro-américaines et réfugiés"
+  predicate: "sont des sujets non traités de"
+  object: "l'ère 1991-2026 dans la matrice de couverture"
+  time: "1991-2026"
+  time_precision: interval
+  families: [processus]
+  actors: []
+  places: []
+  groups: []
+  institutions: []
+  normative: []
+  memory: []
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Coverage-matrix.csv ERA-6/Migrations & diasporas nomme explicitement DACA, les migrations centro-américaines et les réfugiés comme non traités ; OM-014 confirme l'absence de sources post-2001 au registre."
+  TODO: ["Ajouter une source vérifiée sur DACA et les migrations centro-américaines"]
+
+- id: usa-era6-autochtones-001
+  era_id: usa-era-6
+  domain: "Peuples autochtones & minorités"
+  scale: national
+  subject: "Mouvement de Standing Rock"
+  predicate: "réapproprie"
+  object: "la figure de Sitting Bull (2016)"
+  time: 2016
+  time_precision: year
+  families: [memoire, acteur, groupe_social]
+  actors: ["Sitting Bull"]
+  places: ["Standing Rock"]
+  groups: ["Standing Rock"]
+  institutions: []
+  normative: []
+  memory: ["réappropriation de la figure de Sitting Bull en 2016"]
+  sources: [SRC-006]
+  confidence: probable
+  status: validated
+  justification: "Country-audit.yaml, acteur ACTOR-004 (Sitting Bull), champ memory : « Figure de la résistance ; réappropriée par Standing Rock en 2016 », documenté avec SRC-006. C'est la seule ancre autochtone datée de l'ère 1991-2026 présente dans le dossier ; coverage-matrix.csv ERA-6/Peuples autochtones & minorités note que les mouvements autochtones récents ne sont pas traités."
+  TODO: []
+
+- id: usa-era6-memoire-001
+  era_id: usa-era-6
+  domain: "Mémoire & patrimoine"
+  scale: national
+  subject: "Mémoire du 11-Septembre"
+  predicate: "est traitée comme"
+  object: "un récit commémoratif dans la fiche us-911, sans lieu de mémoire proposé"
+  time: 2001
+  time_precision: year
+  families: [memoire]
+  actors: []
+  places: ["New York"]
+  groups: []
+  institutions: []
+  normative: []
+  memory: ["commémorations du 11-Septembre"]
+  sources: []
+  confidence: non documenté
+  status: validated
+  justification: "Coverage-matrix.csv ERA-6/Mémoire & patrimoine : « Le 11-Septembre et Katrina posent des questions de mémoire, mais aucun lieu de mémoire n'est proposé » ; REPORT.md §2 note que les commémorations du 11-Septembre ne sont pas distinguées de l'événement. OM-013/OM-014 : aucune source post-2001 au registre."
+  TODO: ["Ajouter une source vérifiée sur les commémorations et lieux de mémoire du 11-Septembre"]
+
+- id: usa-era6-circulations-001
+  era_id: usa-era-6
+  domain: "Circulations transnationales"
+  scale: transnational
+  subject: "Réseau mondial de bases américaines"
+  predicate: "soutient"
+  object: "la projection de puissance des États-Unis après la guerre froide"
+  time: "1991-2026"
+  time_precision: interval
+  families: [processus, institution]
+  actors: []
+  places: []
+  groups: []
+  institutions: ["réseau mondial de bases américaines"]
+  normative: []
+  memory: []
+  sources: [SRC-009]
+  confidence: probable
+  status: validated
+  justification: "SRC-009 (Immerwahr, How to Hide an Empire, Farrar, Straus and Giroux, 2019) consigne un « global base network » et les territoires non incorporés ; ouvrage publié en 2019, donc contemporain de l'ère. Coverage-matrix.csv ERA-6/Circulations transnationales signale que les réseaux et institutions internationales ne sont pas traités. Confidence probable : la synthèse porte surtout sur les périodes antérieures."
+  TODO: []

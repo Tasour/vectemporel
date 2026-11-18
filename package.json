@@ -1,5 +1,5 @@
 {
-  "name": "vectemporel-v2",
+  "name": "vectemporel-atlas",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -9,7 +9,9 @@
     "start": "node scripts/serve.mjs",
     "verify": "node scripts/verify.mjs",
     "test:e2e": "node tests/e2e.mjs",
-    "check": "npm run verify && npm run test:e2e"
+    "check": "npm run verify && npm run verify:points && npm run test:e2e",
+    "verify:points": "node scripts/verify-points.mjs",
+    "build:points": "node scripts/merge-points.mjs && npm run verify:points"
   },
   "dependencies": {
     "yaml": "^2.9.1"
