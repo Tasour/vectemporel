@@ -5,6 +5,7 @@
 import http from 'node:http';
 import fs from 'node:fs';
 import path from 'node:path';
+import zlib from 'node:zlib';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = path.resolve(fileURLToPath(new URL('..', import.meta.url)));
@@ -52,9 +53,25 @@ function isAllowed(rel) {
   return ALLOWED_PREFIXES.some((prefix) => rel.startsWith(prefix));
 }
 
-function send(response, status, body = '', type = 'text/plain; charset=utf-8') {
-  response.writeHead(status, { 'Content-Type': type, ...SECURITY_HEADERS });
+const gzipCache = new Map();
+const COMPRESSIBLE = /\.(js|css|html|json|svg|csv|md)$/i;
+
+function send(response, status, body = '', type = 'text/plain; charset=utf-8', extra = {}) {
+  response.writeHead(status, { 'Content-Type': type, ...SECURITY_HEADERS, ...extra });
   response.end(body);
+}
+
+function encoded(request, file, data, cacheKey) {
+  if (!/\bgzip\b/.test(request.headers['accept-encoding'] || '') || !COMPRESSIBLE.test(file)) {
+    return { data, extra: {} };
+  }
+  let compressed = gzipCache.get(cacheKey);
+  if (!compressed) {
+    compressed = zlib.gzipSync(data, { level: 6 });
+    if (gzipCache.size >= 64) gzipCache.clear();
+    gzipCache.set(cacheKey, compressed);
+  }
+  return { data: compressed, extra: { 'Content-Encoding': 'gzip', Vary: 'Accept-Encoding' } };
 }
 
 function fail(status, message) {
@@ -114,7 +131,8 @@ const handler = (request, response) => {
             fail(404, 'Not found')(response);
             return;
           }
-          send(response, 200, data, TYPES[path.extname(real).toLowerCase()] || 'application/octet-stream');
+          const { data: payload, extra } = encoded(request, real, data, `${real}:${stats.mtimeMs}`);
+          send(response, 200, payload, TYPES[path.extname(real).toLowerCase()] || 'application/octet-stream', extra);
         });
       });
     });

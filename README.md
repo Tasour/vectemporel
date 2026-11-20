@@ -34,6 +34,9 @@ npm run check
 - `test:guards` vérifie le serveur sur un vrai processus : whitelist, en-têtes de sécurité, entrées malformées et survie.
 - `test:coverage-guard` prouve par mutation que `verify:points` échoue quand une proposition disparaît.
 - `test:idempotence` exécute deux générations complètes dans un répertoire temporaire et compare les hash des artefacts.
+- `test:perf` mesure le budget réseau au chargement : 81 requêtes / 1,58 Mo mesurés après différé des lentilles et gzip (contre 920 / 6,1 Mo avant). La cible initiale de 50 requêtes / 1 Mo reste ouverte ; le test garantit < 100 requêtes et < 2 Mo.
+
+Les lentilles d'audit sont chargées à la demande par vue (`src/views/lenses.js`), la texture globe 2k est servie par défaut (`?hires=1` force la haute définition).
 
 Le serveur écoute **uniquement** sur `127.0.0.1`. Il ne sert que `index.html`, `styles.css`, `public/**` et `src/**` ; tout autre chemin renvoie 403. Les textures du globe sont chargées depuis `public/`. Le service systemd `vectemporel-atlas.service` complète cette restriction avec `IPAddressDeny=any` et `IPAddressAllow=localhost` (fichier hors dépôt, à conserver lors d'une réinstallation).
 

@@ -2,8 +2,8 @@
 /* Audit atlas-constellation : positions déterministes et décoratives, zéro réseau.
    Tout est local : aucun fetch, aucune URL de ressource, aucun href/src généré ici. */
 import { state, currentCountry, selectEra, selectEvent, set, goView } from '../domain/store.js';
-import { runEnhancements } from './constellation/index.js';
-import { runEnhancements as runEnhancementsV2 } from './constellation/v2/index.js';
+import { runLenses } from './lenses.js';
+
 
 const CSS_ID = 'atlas-constellation-css';
 const NOTE_ID = 'constellation-note';
@@ -226,7 +226,7 @@ export function renderConstellation(stage) {
 
   const layout = el('div', 'constellation-layout');
   const head = el('div', 'constellation-head');
-  head.appendChild(el('h2', 'constellation-title', `Constellation · ${country.name}`));
+  head.appendChild(el('h1', 'constellation-title', `Constellation · ${country.name}`));
   head.appendChild(el('p', 'constellation-kicker', 'Vue optionnelle · figée'));
   const legend = el('div', 'constellation-legend');
   legend.append(
@@ -364,8 +364,7 @@ export function renderConstellation(stage) {
   layout.appendChild(caption);
 
   stage.appendChild(layout);
-  runEnhancements({ viewId: 'constellation', stage, layout });
-  runEnhancementsV2({ viewId: 'constellationv2', stage, layout });
+  runLenses('constellation', { stage, layout });
 
   /* Restauration du focus après le re-render complet du shell. */
   if (focusMemory && state.view === 'constellation' && !state.detailOpen && !state.helpOpen) {

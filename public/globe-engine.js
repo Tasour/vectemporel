@@ -846,8 +846,11 @@
     const saveData = !!(connection && connection.saveData);
     const lowMemory = typeof navigator.deviceMemory === 'number' && navigator.deviceMemory <= 4;
     const smallScreen = window.innerWidth < 700;
+    // V2-02 : variante 2k par défaut (417 Ko au lieu de 1,25 Mo). La haute
+    // définition reste explicitement demandable avec ?hires=1.
+    const hires = typeof location !== 'undefined' && new URLSearchParams(location.search).has('hires');
     const canUseHighResolution =
-      maxTexture >= 4096 && !smallScreen && !lowMemory && !saveData;
+      hires && maxTexture >= 4096 && !smallScreen && !lowMemory && !saveData;
     return canUseHighResolution ? 'public/globe-map.png' : 'public/globe-map-2k.png';
   }
 

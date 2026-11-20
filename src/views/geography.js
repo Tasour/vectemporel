@@ -5,8 +5,8 @@
  * valeurs de src/data/dataset.js sont projetées.
  */
 import { state, currentCountry, currentEra, currentPlaces, set, goView } from '../domain/store.js';
-import { runEnhancements } from './geography/index.js';
-import { runEnhancements as runEnhancementsV2 } from './geography/v2/index.js';
+import { runLenses } from './lenses.js';
+
 
 const MAP_W = 900;
 const MAP_H = 620;
@@ -379,6 +379,7 @@ export function renderGeography(stage) {
   });
 
   const panel = el('aside', 'geo-panel');
+  panel.appendChild(el('h1', 'geo-view-title', `Géographie · ${country?.name || ''}`));
   panel.appendChild(el('div', 'view-kicker', `Lieu ${places.length ? active + 1 : 0} / ${places.length} · ${state.scope === 'era' ? 'repère' : 'pays'}`));
 
   /* C3-05 : barre d'outils a emplacement fixe, avant la liste et le panneau. */
@@ -510,6 +511,5 @@ export function renderGeography(stage) {
 
   layout.append(map, panel);
   stage.appendChild(layout);
-  runEnhancements({ viewId: 'geography', stage, layout });
-  runEnhancementsV2({ viewId: 'geographyv2', stage, layout });
+  runLenses('geography', { stage, layout });
 }
