@@ -888,6 +888,19 @@
       container.appendChild(renderer.domElement);
       state.renderer = renderer;
 
+      /* V3-05 — perte/restauration du contexte WebGL : on arrête la boucle,
+       * on empêche le comportement par défaut puis on relance le rendu. */
+      renderer.domElement.addEventListener('webglcontextlost', (event) => {
+        event.preventDefault();
+        console.warn('[globe] contexte WebGL perdu, rendu suspendu');
+        stop();
+      }, false);
+      renderer.domElement.addEventListener('webglcontextrestored', () => {
+        console.info('[globe] contexte WebGL restauré');
+        state.visible = true;
+        invalidate();
+      }, false);
+
       state.clock = new THREE.Clock(false);
 
       const mapUrl = chooseMapUrl(renderer.capabilities.maxTextureSize);

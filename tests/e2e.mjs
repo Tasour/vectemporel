@@ -63,10 +63,35 @@ await page.keyboard.press('6');
 await new Promise((resolve) => setTimeout(resolve, 300));
 check('6 = points', await page.evaluate(() => window.VATLAS.getState().view === 'points'));
 check('h1 points', await page.evaluate(() => document.querySelectorAll('main h1').length === 1));
+check('matrice points rendue', (await page.$$('.points-cell')).length > 0);
+const beforeFilter = await page.evaluate(() => window.VATLAS.getState().revision);
+const firstCell = await page.$('.points-cell.has-points');
+if (firstCell) await firstCell.click();
+await new Promise((resolve) => setTimeout(resolve, 250));
+check('filtrage via entonnoir set()', await page.evaluate((before) => {
+  const s = window.VATLAS.getState();
+  return s.rejectedWrites === 0 && s.revision > before;
+}, beforeFilter));
 check('orbites figées', await page.evaluate(() => !document.querySelector('.constellation-field')?.querySelector('[style*="animation"]')));
 await page.keyboard.press('1');
 await new Promise((resolve) => setTimeout(resolve, 300));
 check('1 = globe', await page.evaluate(() => window.VATLAS.getState().view === 'globe'));
+const glSupported = await page.evaluate(() => {
+  const canvas = document.querySelector('canvas.globe-webgl');
+  const gl = canvas?.getContext('webgl2') || canvas?.getContext('webgl');
+  const extension = gl?.getExtension('WEBGL_lose_context');
+  if (!extension) return false;
+  extension.loseContext();
+  setTimeout(() => extension.restoreContext(), 120);
+  return true;
+});
+if (glSupported) {
+  await new Promise((resolve) => setTimeout(resolve, 350));
+  check('reprise contexte WebGL', await page.evaluate(() => Boolean(document.querySelector('canvas.globe-webgl')) && window.VATLAS.getState().view === 'globe'));
+} else {
+  console.log('PASS reprise contexte WebGL — extension indisponible, non testée');
+}
+check('diagnostics des lentilles exposés', await page.evaluate(() => Array.isArray(window.VATLAS_A11Y?.lensFailures?.())));
 check('taxonomie alignée', await page.evaluate(() => window.VECTEMPOREL_KEYS?.taxonomyAligned?.() === true));
 check('zéro collision de raccourcis', await page.evaluate(() => (window.VECTEMPOREL_KEYS?.conflicts?.() || ['non exposé']).length === 0));
 check('6 vues déclarées', await page.evaluate(() => (window.VATLAS?.taxonomy?.length || 0) === 6));

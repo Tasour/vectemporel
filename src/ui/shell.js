@@ -625,6 +625,8 @@ export function mount(element) {
   render();
   // ATLAS-COQUE-10 / M3-04 / M3-10 / M4 : crochets de test additifs.
   window.VATLAS_A11Y = {
+    lensFailures: () => (window.__VATLAS_LENS_DIAGNOSTICS || [])
+      .flatMap((get) => (get()?.diagnostics || []).map((item) => ({ ...item }))),
     getLive: () => liveRegion?.textContent || '',
     focusKey: () => captureFocusKey(),
     modal: () => (state.helpOpen ? 'help' : state.detailOpen ? 'detail' : null),
