@@ -1,5 +1,6 @@
 /* Vue dédiée à l'isolation de tous les points validés. */
 import { state, currentCountry, set } from '../domain/store.js';
+import { kicker, metrics } from '../ui/components.js';
 import { runLenses } from './lenses.js';
 
 
@@ -29,8 +30,13 @@ export function renderPoints(stage) {
 
   const layout = el('div', 'points-layout');
   const matrix = el('section', 'points-matrix');
-  matrix.appendChild(el('div', 'view-kicker', 'Matrice de couverture · points validés'));
+  matrix.appendChild(kicker('Matrice de couverture · points validés'));
   matrix.appendChild(el('h1', 'points-title', `${points.length} points extraits isolés`));
+  matrix.appendChild(metrics([
+    { label: 'Points', value: points.length, hint: 'extraits des audits locaux' },
+    { label: 'Domaines', value: domains.length, hint: '14 au référentiel' },
+    { label: 'Ères', value: country.eras.length, hint: 'pour ce pays' },
+  ]));
   const grid = el('div', 'points-grid');
   const header = el('div', 'points-grid-row is-head');
   header.appendChild(el('span', '', 'Ère'));
@@ -88,7 +94,7 @@ export function renderPoints(stage) {
   matrix.appendChild(filters);
 
   const detail = el('aside', 'points-detail');
-  detail.appendChild(el('div', 'view-kicker', `${visible.length} point(s) dans ce périmètre`));
+  detail.appendChild(kicker(`${visible.length} point(s) dans ce périmètre`));
   if (selected) {
     detail.appendChild(el('h3', 'points-point-title', selected.subject));
     detail.appendChild(el('p', 'points-point-text', selected.text));

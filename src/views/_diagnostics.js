@@ -4,6 +4,8 @@
  * partagé entre les 10 registres). */
 const originalParents = new WeakMap();
 const states = new Map();
+const contexts = new Map();
+let markObserver = null;
 const DIAGNOSTICS_ENABLED = typeof location !== 'undefined'
   && new URLSearchParams(location.search).has('diagnostics');
 
@@ -17,6 +19,7 @@ export function installDiagnostics(ctx) {
     style.textContent = `
       body [data-${view}-diagnostic] { display: none !important; }
       body.${view}-diagnostics [data-${view}-diagnostic] { display: block !important; }
+      body:not(.atlas-diagnostics) [data-lens-panel] { display: none !important; }
       #${view}-diagnostics-toggle { position: fixed; top: 62px; right: 12px; z-index: 80;
         min-width: 44px; min-height: 36px; padding: 6px 12px; font: 600 12px/1 inherit;
         color: #f5e9d0; background: rgba(12,16,24,.92); border: 1px solid rgba(230,185,111,.5);
@@ -36,8 +39,19 @@ export function installDiagnostics(ctx) {
     document.head.appendChild(style);
   }
 
-  // Hors mode explicite, aucun bouton ni tiroir n'est créé en production.
-  if (!DIAGNOSTICS_ENABLED) return;
+  // Le marquage universel des panneaux a lieu même hors diagnostics : c'est ce
+  // qui permet de les masquer par défaut en production. Les lentilles étant
+  // chargées en différé, un observateur marque aussi les nœuds ajoutés ensuite.
+  contexts.set(view, ctx);
+  if (!markObserver && typeof MutationObserver !== 'undefined') {
+    markObserver = new MutationObserver(() => {
+      for (const [registeredView, registeredCtx] of contexts) mark(registeredCtx, registeredView);
+    });
+    markObserver.observe(document.body, { childList: true, subtree: true });
+  }
+  mark(ctx, view);
+  if (DIAGNOSTICS_ENABLED) document.body.classList.add('atlas-diagnostics');
+  else return;
 
   let state = states.get(view);
   if (!state) {
@@ -76,7 +90,13 @@ function mark(ctx, view) {
   const containers = [document.body, ctx.stage, ctx.layout].filter(Boolean);
   const pattern = /^(e\d{2,3}[-_ ]|.*-e\d{2,3})/i;
   document.querySelectorAll('[id]').forEach((node) => {
-    if (!pattern.test(node.id) || !containers.includes(node.parentElement)) return;
+    if (!pattern.test(node.id)) return;
+    const LENS = /(^|[-_])(e\d{2,3}|v2[-_]?e\d{3})([-_]|$)/i;
+    const isLens = LENS.test(node.id)
+      || String(node.className || '').split(/\s+/).some((name) => LENS.test(name));
+    const isSkip = /skip/i.test(node.id);
+    if (isLens && !isSkip && !node.hasAttribute('data-lens-panel')) node.setAttribute('data-lens-panel', '');
+    if (!containers.includes(node.parentElement)) return;
     if (node.hasAttribute(attr)) return;
     node.setAttribute(attr, '');
     originalParents.set(node, node.parentElement);
