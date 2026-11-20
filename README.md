@@ -165,3 +165,9 @@ L'atlas est installable comme application web progressive : `manifest.webmanifes
 - Public : site statique généré par `npm run build:pages` et publié sur la branche `gh-pages` → `https://tasour.github.io/vectemporel/`.
 
 Le site public est servi sans serveur Node : seuls les fichiers nécessaires à l'exécution sont publiés (`index.html`, `styles.css`, `public/`, `src/`, `icons/`, `manifest`, `sw.js`). Les audits, sources et scripts de génération restent hors du site.
+
+## Architecture d'interface
+
+Les éléments partagés (kickers, badges, métriques, panneaux, états vides, barres d'outils, figures, onglets) vivent dans `src/ui/components.js` et sont stylés dans `styles.css`. Aucun composant ne possède d'état ni n'injecte de CSS.
+
+Les panneaux produits par les lentilles d'audit sont marqués `data-lens-panel` et masqués par défaut. Le paramètre `?diagnostics=1` les révèle avec le bouton de diagnostic ; ils ne font jamais partie de l'interface de production. Le garde-fou `tools.ui.guard` vérifie ces invariants en lecture seule.
