@@ -327,13 +327,13 @@ function renderResults(ctx, panel, results) {
   let ok = 0;
   let bad = 0;
   let na = 0;
-  results.forEach((result) => {
+  results.forEach((result, index) => {
     if (!result.applicable) na += 1;
     else if (result.ok) ok += 1;
     else bad += 1;
 
     const row = makeEl(ctx, 'tr');
-    row.id = result.id;
+    row.id = result.id ? `${ROWS_ID}-${result.id}` : `${ROWS_ID}-${index}`;
     const th = makeEl(ctx, 'th', null, result.label);
     th.scope = 'row';
     const td = makeEl(ctx, 'td');

@@ -95,6 +95,11 @@ if (glSupported) {
 } else {
   console.log('PASS reprise contexte WebGL — extension indisponible, non testée');
 }
+const duplicateIds = await page.evaluate(() => {
+  const ids = [...document.querySelectorAll('[id]')].map((node) => node.id);
+  return [...new Set(ids.filter((id, index) => ids.indexOf(id) !== index))];
+});
+check('aucun id DOM dupliqué', duplicateIds.length === 0, duplicateIds.slice(0, 5).join(', '));
 check('diagnostics des lentilles exposés', await page.evaluate(() => Array.isArray(window.VATLAS_A11Y?.lensFailures?.())));
 await page.goto('http://127.0.0.1:4181/index.html#/france/1789-1799/fr-revolution', { waitUntil: 'load', timeout: 60000 });
 await new Promise((resolve) => setTimeout(resolve, 700));

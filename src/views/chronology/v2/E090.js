@@ -152,6 +152,7 @@ const GUILLEMETS_NORMATIFS = (TEXTES_NORMATIFS.join(' ').match(/«/g) || []).len
 const GUILLEMETS_DROITS = (TEXTES_NORMATIFS.join(' ').match(/"/g) || []).length;
 
 let rendus = 0;
+let instances = 0;
 let references = {
   panneau: null, preambule: null, lignes: [], lexique: null, bilan: null,
 };
@@ -367,9 +368,10 @@ function installer(ctx) {
 
   const sousTitre = creer('h3', 'e090-sous-titre', 'Lexique de la vue');
   const lexique = creer('ul', 'e090-lexique');
-  lexique.id = LEXIQUE_ID;
+  instances += 1;
+  lexique.id = `${LEXIQUE_ID}-${instances}`;
   const bilan = creer('p', 'e090-bilan');
-  bilan.id = BILAN_ID;
+  bilan.id = `${BILAN_ID}-${instances}`;
 
   /* E090-10 : replaceChildren et non concaténation de balisage : les nœuds
      d'une rendu antérieure sont détachés, aucun identifiant n'est dupliqué. */
