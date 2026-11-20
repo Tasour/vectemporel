@@ -394,3 +394,15 @@ button.atlas-chrono-tag, button.nav-c2-back { min-height: 44px; }
 .const-moon::after, .constellation-note { font-size: 9px; }
 button.atlas-chrono-tag, button.nav-c2-back, .points-grid-row > button { font-size: 11px; }
 .atlas-chrono-tags, .atlas-chrono-count, .geo-source, .media-caption { font-size: 11px; }
+
+.shell-share { min-height: 36px; padding: 4px 10px; border: 1px solid var(--line); border-radius: 6px; background: transparent; color: var(--gold-bright); font: inherit; font-size: 11px; cursor: pointer; }
+.shell-share:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 2px; }
+
+.atlas-chrono-global { margin: 8px 0 12px; }
+.atlas-chrono-global-results { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 4px; }
+button.atlas-chrono-global-result { width: 100%; min-height: 36px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 6px; background: rgba(255,255,255,.02); color: var(--gold-bright); font: inherit; font-size: 12px; text-align: left; cursor: pointer; }
+button.atlas-chrono-global-result:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 2px; }
+
+.detail-figure { margin: 10px 0 14px; }
+.detail-figure img { display: block; width: 100%; max-height: 260px; object-fit: cover; border-radius: 8px; border: 1px solid var(--line); }
+.detail-caption { margin-top: 6px; color: var(--muted); font-size: 11px; line-height: 1.5; }

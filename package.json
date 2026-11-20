@@ -9,7 +9,7 @@
     "start": "node scripts/serve.mjs",
     "verify": "node scripts/verify.mjs",
     "test:e2e": "node tests/e2e.mjs",
-    "check": "npm run verify && npm run verify:points && npm run test:e2e && npm run test:guards && npm run test:coverage-guard && npm run test:idempotence && npm run test:perf",
+    "check": "npm run verify && npm run verify:points && npm run check:imports && npm run test:e2e && npm run test:guards && npm run test:coverage-guard && npm run test:idempotence && npm run test:perf",
     "verify:points": "node scripts/verify-points.mjs",
     "report:coverage": "node scripts/report-coverage.mjs",
     "build:points": "node scripts/merge-points.mjs && npm run verify:points",
@@ -19,7 +19,8 @@
     "test:perf": "node tests/perf-budget.mjs",
     "test:pwa": "node tests/pwa.mjs",
     "build:pages": "node scripts/build-pages.mjs",
-    "capture:all": "node scripts/capture-all.mjs"
+    "capture:all": "node scripts/capture-all.mjs",
+    "check:imports": "node scripts/check-imports.mjs"
   },
   "dependencies": {
     "yaml": "^2.9.1"

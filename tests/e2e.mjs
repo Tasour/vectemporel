@@ -43,6 +43,10 @@ await page.keyboard.press('Enter');
 await new Promise((resolve) => setTimeout(resolve, 250));
 check('Entrée ouvre le détail', (await page.$$('.detail-sheet')).length === 1);
 check('badge audit non signé', await page.evaluate(() => /Audit non signé/.test(document.querySelector('.detail-audit-state')?.textContent || '')));
+check('fiche image et crédit', await page.evaluate(() => {
+  const sheet = document.querySelector('.detail-sheet');
+  return Boolean(sheet?.querySelector('.detail-figure img') && sheet.querySelector('.detail-caption')?.textContent.trim());
+}));
 await page.keyboard.press('Escape');
 await new Promise((resolve) => setTimeout(resolve, 250));
 check('Échap ferme le détail', (await page.$$('.detail-sheet')).length === 0);
@@ -92,9 +96,27 @@ if (glSupported) {
   console.log('PASS reprise contexte WebGL — extension indisponible, non testée');
 }
 check('diagnostics des lentilles exposés', await page.evaluate(() => Array.isArray(window.VATLAS_A11Y?.lensFailures?.())));
+await page.goto('http://127.0.0.1:4181/index.html#/france/1789-1799/fr-revolution', { waitUntil: 'load', timeout: 60000 });
+await new Promise((resolve) => setTimeout(resolve, 700));
+check('deep link POC compat', await page.evaluate(() => window.VATLAS.getState().countryId === 'france' && window.VATLAS.getState().eventIndex >= 0));
+check('bouton partage', (await page.$$('.shell-share')).length === 1);
 check('taxonomie alignée', await page.evaluate(() => window.VECTEMPOREL_KEYS?.taxonomyAligned?.() === true));
 check('zéro collision de raccourcis', await page.evaluate(() => (window.VECTEMPOREL_KEYS?.conflicts?.() || ['non exposé']).length === 0));
 check('6 vues déclarées', await page.evaluate(() => (window.VATLAS?.taxonomy?.length || 0) === 6));
+await page.evaluate(() => {
+  const input = document.getElementById('atlas-chrono-global-search');
+  if (!input) return;
+  input.value = '1789';
+  input.dispatchEvent(new Event('input', { bubbles: true }));
+});
+await new Promise((resolve) => setTimeout(resolve, 300));
+check('recherche inter-pays', (await page.$$('.atlas-chrono-global-result')).length > 0);
+const globalResult = await page.$('.atlas-chrono-global-result');
+if (globalResult) {
+  await globalResult.click();
+  await new Promise((resolve) => setTimeout(resolve, 300));
+  check('résultat inter-pays ouvre un repère', await page.evaluate(() => window.VATLAS.getState().eventIndex >= 0));
+}
 check('aucune erreur console', errors.length === 0, errors.slice(0, 3).join(' | '));
 await browser.close();
 console.log(failed ? `${failed} échec(s)` : 'Tous les tests E2E passent.');

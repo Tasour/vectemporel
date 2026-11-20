@@ -563,10 +563,38 @@ export function formatDeepLink(snapshot = state) {
   return params.toString();
 }
 
+/* Anciens liens du POC : #/france/1789-1799/fr-revolution.
+ * Adaptateur sans réseau : pays, ère par année, repère par identifiant. */
+function parseLegacyLink(raw) {
+  const parts = raw.replace(/^\//, '').split('/').filter(Boolean);
+  if (parts.length < 2) return null;
+  const country = DATASET.countries.find((item) => item.id === parts[0]);
+  if (!country) return null;
+  const year = Number(String(parts[1]).match(/-?\d{1,5}/)?.[0] ?? NaN);
+  const out = { view: 'chronology', countryId: country.id, detailOpen: false };
+  if (Number.isFinite(year)) {
+    const eraIndex = country.eras.findIndex((era) => year >= era.start && year <= era.end);
+    if (eraIndex >= 0) out.eraIndex = eraIndex;
+    const eventIndex = country.events.findIndex((event) => event.year === year);
+    if (eventIndex >= 0) out.eventIndex = eventIndex;
+  }
+  const slug = parts[2];
+  if (slug) {
+    const eventIndex = country.events.findIndex((event) => event.id === slug);
+    if (eventIndex >= 0) {
+      out.eventIndex = eventIndex;
+      out.eraIndex = country.eras.findIndex((era) => country.events[eventIndex].eraId === era.id);
+      out.detailOpen = true;
+    }
+  }
+  return out;
+}
+
 export function parseDeepLink(hash) {
   if (typeof hash !== 'string') return null;
   const raw = hash.replace(/^#/, '');
   if (!raw) return null;
+  if (raw.startsWith('/')) return parseLegacyLink(raw);
   let params;
   try { params = new URLSearchParams(raw); } catch { return null; }
   const out = {};
