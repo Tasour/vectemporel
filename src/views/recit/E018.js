@@ -235,7 +235,7 @@ function clicDelegue(evenement) {
   schedule();
 }
 
-function installer() {
+function installer(ctx) {
   if (installed || typeof document === 'undefined' || typeof window === 'undefined') return;
   installed = true;
   try { document.addEventListener('click', clicDelegue, { passive: true }); } catch { /* non critique */ }
@@ -245,6 +245,7 @@ function installer() {
     if (typeof MutationObserver === 'function' && document.body) {
       const observateur = new MutationObserver(() => { schedule(); });
       observateur.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+      if (typeof ctx?.onLeave === 'function') ctx.onLeave(() => observateur.disconnect());
     }
   } catch { /* observation facultative */ }
 }
@@ -316,6 +317,6 @@ register('E018', (ctx) => {
   try { ajouterCommande(ctx); } catch { /* commande facultative */ }
   try { appliquerSobre(); } catch { /* état facultatif */ }
   try { assurerPanneauCout(ctx); } catch { /* panneau facultatif */ }
-  try { installer(); } catch { /* écouteurs facultatifs */ }
+  try { installer(ctx); } catch { /* écouteurs facultatifs */ }
   schedule();
 });

@@ -3,7 +3,8 @@
    provenance lisible et focus préservé. Aucune donnée n'est inventée.
    Refonte navigation C2 : repères de situation — voir
    UNIFIED_AUDIT/NAVIGATION/views/c2-orientation-atlas.md (C2-01 à C2-10). */
-import { state, currentCountry, selectEra, selectEvent, set, goView } from '../domain/store.js';
+import { state, currentCountry, selectCountry, selectEra, selectEvent, set, goView } from '../domain/store.js';
+import { DATASET } from '../data/dataset.js';
 import { runLenses } from './lenses.js';
 
 
@@ -15,7 +16,30 @@ let navLiveNode = null;
 /* Filtre propre à la vue : il ne modifie pas l'état partagé du store.
    Il survit aux reconstructions complètes du DOM opérées par la coque. */
 const local = { query: '', tag: null };
+const globalSearch = { query: '' };
 let focusIntent = null;
+
+/* V3-10 — recherche inter-pays : la question « et pendant ce temps, ailleurs ? ». */
+function globalMatches() {
+  const query = globalSearch.query.trim().toLowerCase();
+  if (query.length < 2) return [];
+  const results = [];
+  for (const item of DATASET.countries) {
+    const eraById = new Map(item.eras.map((era, index) => [era.id, index]));
+    item.events.forEach((event, eventIndex) => {
+      if (!eventHaystack(event).includes(query)) return;
+      results.push({
+        countryId: item.id,
+        countryName: item.name,
+        eraIndex: eraById.get(event.eraId) ?? 0,
+        eventIndex,
+        title: event.title,
+        year: event.year,
+      });
+    });
+  }
+  return results.slice(0, 8);
+}
 
 function el(tag, className, text) {
   const node = document.createElement(tag);
@@ -344,6 +368,39 @@ export function renderChronology(stage) {
   });
   tools.appendChild(el('span', 'atlas-chrono-count', `${matched.length} / ${scopeEvents.length} repères`));
   main.appendChild(tools);
+
+  const globalBox = el('div', 'atlas-chrono-global');
+  const globalInput = document.createElement('input');
+  globalInput.type = 'search';
+  globalInput.id = 'atlas-chrono-global-search';
+  globalInput.className = 'atlas-chrono-search';
+  globalInput.placeholder = 'Rechercher dans tous les pays…';
+  globalInput.setAttribute('aria-label', 'Rechercher un repère dans tous les pays');
+  globalInput.value = globalSearch.query;
+  globalInput.addEventListener('input', () => {
+    globalSearch.query = globalInput.value;
+    focusIntent = 'atlas-chrono-global-search';
+    set({}, 'chrono-global-filter');
+  });
+  globalBox.appendChild(globalInput);
+  const globalResults = el('ul', 'atlas-chrono-global-results');
+  globalResults.id = 'atlas-chrono-global-results';
+  globalResults.setAttribute('aria-label', 'Résultats dans tous les pays');
+  for (const result of globalMatches()) {
+    const li = el('li');
+    const button = el('button', 'atlas-chrono-global-result',
+      `${result.countryName} · ${formatYear(result.year)} · ${result.title}`);
+    button.type = 'button';
+    button.addEventListener('click', () => {
+      selectCountry(result.countryId);
+      set({ view: 'chronology', eraIndex: result.eraIndex, eventIndex: result.eventIndex }, 'global-result');
+      navSay(`${result.countryName} : ${result.title}`);
+    });
+    li.appendChild(button);
+    globalResults.appendChild(li);
+  }
+  if (globalResults.children.length) globalBox.appendChild(globalResults);
+  main.appendChild(globalBox);
 
   /* ATLAS-CHRONO-03 : liste ordonnée, adressable, avec données indexables. */
   const list = el('ol', 'event-list atlas-chrono-events');

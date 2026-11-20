@@ -5,6 +5,7 @@ import { installDiagnostics } from '../../_diagnostics.js';
    neutralisée sans interrompre le rendu. */
 const entries = [];
 const diagnostics = [];
+let controller = null;
 
 export function register(id, apply) {
   if (typeof id === 'string' && typeof apply === 'function') entries.push({ id, apply });
@@ -26,10 +27,22 @@ export function el(tag, className, text) {
 }
 
 export function runEnhancements(ctx) {
+  if (controller) controller.abort();
+  controller = new AbortController();
+  const signal = controller.signal;
+  const onLeave = (callback) => {
+    if (typeof callback !== "function") return;
+    signal.addEventListener("abort", () => {
+      try { callback(); } catch (error) { console.warn("[lentilles] onLeave :", error); }
+    }, { once: true });
+  };
+  diagnostics.length = 0;
   const api = {
     ...ctx,
     css: cssOnce,
     el,
+    signal,
+    onLeave,
     reducedMotion: () => {
       try { return window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
       catch { return false; }
@@ -45,4 +58,9 @@ export function runEnhancements(ctx) {
 
 export function viewDiagnostics() {
   return { entries: entries.map((e) => e.id), diagnostics: [...diagnostics] };
+}
+
+if (typeof window !== "undefined") {
+  window.__VATLAS_LENS_DIAGNOSTICS = window.__VATLAS_LENS_DIAGNOSTICS || [];
+  window.__VATLAS_LENS_DIAGNOSTICS.push(viewDiagnostics);
 }

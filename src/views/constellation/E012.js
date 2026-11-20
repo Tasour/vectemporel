@@ -199,6 +199,7 @@ register('E012', (ctx) => {
         });
       });
       observer.observe(field);
+      if (typeof api.onLeave === 'function') api.onLeave(() => observer.disconnect());
       host.dataset.e012Observed = '1';
     } catch (unsupported) {
       host.dataset.e012Visible = '1';

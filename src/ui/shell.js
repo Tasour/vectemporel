@@ -525,6 +525,22 @@ function renderDetail(parent) {
   title.id = 'atlas-detail-title';
   sheet.appendChild(title);
   sheet.appendChild(el('p', 'detail-year', `${formatYear(event.year)} · ${currentEra()?.name || ''}`));
+  if (event.image?.src) {
+    const figure = el('figure', 'detail-figure');
+    const image = el('img');
+    image.src = event.image.src;
+    image.alt = event.image.alt || `Image du repère ${event.title}`;
+    image.loading = 'lazy';
+    figure.appendChild(image);
+    const caption = el('figcaption', 'detail-caption');
+    caption.textContent = [
+      event.image.caption || '',
+      event.image.credit ? `© ${event.image.credit}` : '',
+      event.image.license || '',
+    ].filter(Boolean).join(' · ');
+    figure.appendChild(caption);
+    sheet.appendChild(figure);
+  }
   const audit = country?.audit;
   const signed = Boolean(audit?.signoff?.signed_by?.length);
   sheet.appendChild(el('p', 'detail-audit-state', signed
@@ -592,7 +608,20 @@ export function render(_state, reason) {
   const footer = el('footer', 'shell-footer');
   footer.setAttribute('aria-label', 'Situation et raccourcis');
   const [left, right] = footerText();
-  footer.append(el('span', '', left), el('span', '', right));
+  const share = el('button', 'shell-share', 'Copier le lien');
+  share.type = 'button';
+  share.dataset.fk = 'share-view';
+  share.addEventListener('click', async () => {
+    try {
+      await navigator.clipboard.writeText(window.location.href);
+      share.textContent = 'Lien copié';
+      announce('Lien de cette vue copié.');
+    } catch (error) {
+      share.textContent = 'Copie indisponible';
+      console.warn('[partage] presse-papiers indisponible :', error);
+    }
+  });
+  footer.append(el('span', '', left), el('span', '', right), share);
   root.appendChild(footer);
 
   // Une modale n'existe que si renderHelp/renderDetail en a réellement inséré une.
@@ -625,6 +654,8 @@ export function mount(element) {
   render();
   // ATLAS-COQUE-10 / M3-04 / M3-10 / M4 : crochets de test additifs.
   window.VATLAS_A11Y = {
+    lensFailures: () => (window.__VATLAS_LENS_DIAGNOSTICS || [])
+      .flatMap((get) => (get()?.diagnostics || []).map((item) => ({ ...item }))),
     getLive: () => liveRegion?.textContent || '',
     focusKey: () => captureFocusKey(),
     modal: () => (state.helpOpen ? 'help' : state.detailOpen ? 'detail' : null),

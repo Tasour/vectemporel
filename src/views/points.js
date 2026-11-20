@@ -1,5 +1,5 @@
 /* Vue dédiée à l'isolation de tous les points validés. */
-import { state, currentCountry, selectEra } from '../domain/store.js';
+import { state, currentCountry, set } from '../domain/store.js';
 import { runLenses } from './lenses.js';
 
 
@@ -48,9 +48,7 @@ export function renderPoints(stage) {
       cell.type = 'button';
       cell.title = `${item.name} · ${domain} · ${count} point(s)`;
       cell.addEventListener('click', () => {
-        selectEra(index);
-        state.pointFilterDomain = domain;
-        import('../domain/store.js').then(({ set }) => set({ view: 'points', pointFilterDomain: domain, pointIndex: 0 }, 'filter'));
+        set({ eraIndex: index, pointFilterDomain: domain, pointIndex: 0 }, 'filter');
       });
       row.appendChild(cell);
     });
@@ -68,8 +66,7 @@ export function renderPoints(stage) {
     domainSelect.appendChild(option);
   });
   domainSelect.addEventListener('change', () => {
-    state.pointFilterDomain = domainSelect.value;
-    import('../domain/store.js').then(({ set }) => set({ view: 'points', pointIndex: 0 }, 'filter'));
+    set({ pointFilterDomain: domainSelect.value, pointIndex: 0 }, 'filter');
   });
   const familySelect = el('select');
   familySelect.setAttribute('aria-label', 'Filtrer par famille');
@@ -80,15 +77,12 @@ export function renderPoints(stage) {
     familySelect.appendChild(option);
   });
   familySelect.addEventListener('change', () => {
-    state.pointFilterFamily = familySelect.value;
-    import('../domain/store.js').then(({ set }) => set({ view: 'points', pointIndex: 0 }, 'filter'));
+    set({ pointFilterFamily: familySelect.value, pointIndex: 0 }, 'filter');
   });
   const clear = el('button', '', 'Réinitialiser les filtres');
   clear.type = 'button';
   clear.addEventListener('click', () => {
-    state.pointFilterDomain = '*';
-    state.pointFilterFamily = '*';
-    import('../domain/store.js').then(({ set }) => set({ view: 'points', pointIndex: 0 }, 'filter'));
+    set({ pointFilterDomain: '*', pointFilterFamily: '*', pointIndex: 0 }, 'filter');
   });
   filters.append(domainSelect, familySelect, clear);
   matrix.appendChild(filters);
