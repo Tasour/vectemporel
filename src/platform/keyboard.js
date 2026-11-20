@@ -103,6 +103,8 @@ function ensureLive() {
 function announce(text) {
   if (!text || text === lastAnnounce.text) return;
   lastAnnounce.text = text;
+  if (document.documentElement.dataset.lastAnnounce === text) return;
+  document.documentElement.dataset.lastAnnounce = text;
   const node = ensureLive();
   if (node) node.textContent = text;
 }
@@ -167,6 +169,9 @@ function handle(event) {
 
   // Les flèches/Entrée/Espace du globe sont gérées par globe.js.
   if (state.view === 'globe') return;
+
+  // V2-05 : un contrôle local (radio, slider, liste) garde ses flèches natives.
+  if (isControl(target) && ['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp', 'Home', 'End'].includes(event.key)) return;
 
   if (['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp'].includes(event.key)) {
     event.preventDefault();

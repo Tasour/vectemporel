@@ -1,11 +1,11 @@
-/* Mode diagnostic générique pour les vues à 100 lentilles.
- * Les panneaux des greffons sont marqués et masqués par défaut ; un bouton
- * les regroupe dans un tiroir défilant, avec restauration au parent d'origine.
- */
+/* Mode diagnostic optionnel des vues à 100 lentilles.
+ * Les panneaux sont toujours masqués ; l'interface de bascule n'existe que si
+ * l'URL porte ?diagnostics=1. L'état est propre à chaque vue (plus de singleton
+ * partagé entre les 10 registres). */
 const originalParents = new WeakMap();
-let enabled = false;
-let button = null;
-let drawer = null;
+const states = new Map();
+const DIAGNOSTICS_ENABLED = typeof location !== 'undefined'
+  && new URLSearchParams(location.search).has('diagnostics');
 
 export function installDiagnostics(ctx) {
   if (typeof document === 'undefined' || !ctx || !ctx.stage) return;
@@ -36,8 +36,12 @@ export function installDiagnostics(ctx) {
     document.head.appendChild(style);
   }
 
-  if (!button) {
-    button = document.getElementById(`${view}-diagnostics-toggle`);
+  // Hors mode explicite, aucun bouton ni tiroir n'est créé en production.
+  if (!DIAGNOSTICS_ENABLED) return;
+
+  let state = states.get(view);
+  if (!state) {
+    let button = document.getElementById(`${view}-diagnostics-toggle`);
     if (!button) {
       button = document.createElement('button');
       button.id = `${view}-diagnostics-toggle`;
@@ -45,12 +49,10 @@ export function installDiagnostics(ctx) {
       button.textContent = 'Diagnostics · 100';
       button.setAttribute('aria-pressed', 'false');
       button.setAttribute('aria-controls', `${view}-diagnostics-drawer`);
-      button.addEventListener('click', () => setDiagnostics(view, !enabled, ctx));
     }
     if (button.parentNode !== document.body) document.body.appendChild(button);
-  }
-  if (!drawer) {
-    drawer = document.getElementById(`${view}-diagnostics-drawer`);
+
+    let drawer = document.getElementById(`${view}-diagnostics-drawer`);
     if (!drawer) {
       drawer = document.createElement('aside');
       drawer.id = `${view}-diagnostics-drawer`;
@@ -60,10 +62,13 @@ export function installDiagnostics(ctx) {
       drawer.appendChild(title);
     }
     if (drawer.parentNode !== document.body) document.body.appendChild(drawer);
+    state = { button, drawer, enabled: false };
+    button.addEventListener('click', () => setDiagnostics(view, !state.enabled, ctx));
+    states.set(view, state);
   }
 
   mark(ctx, view);
-  if (enabled) setDiagnostics(view, true, ctx);
+  if (state.enabled) setDiagnostics(view, true, ctx);
 }
 
 function mark(ctx, view) {
@@ -79,16 +84,16 @@ function mark(ctx, view) {
 }
 
 function setDiagnostics(view, next, ctx) {
-  enabled = Boolean(next);
-  document.body.classList.toggle(`${view}-diagnostics`, enabled);
-  if (button) {
-    button.setAttribute('aria-pressed', String(enabled));
-    button.textContent = enabled ? 'Fermer le diagnostic' : 'Diagnostics · 100';
-  }
-  if (!drawer) return;
+  const state = states.get(view);
+  if (!state) return;
+  state.enabled = Boolean(next);
+  document.body.classList.toggle(`${view}-diagnostics`, state.enabled);
+  state.button.setAttribute('aria-pressed', String(state.enabled));
+  state.button.textContent = state.enabled ? 'Fermer le diagnostic' : 'Diagnostics · 100';
+  const { drawer } = state;
   const title = drawer.querySelector('.diagnostics-title');
   const attr = `data-${view}-diagnostic`;
-  if (enabled) {
+  if (state.enabled) {
     mark(ctx, view);
     document.querySelectorAll(`[${attr}]`).forEach((node) => {
       if (node.parentNode !== drawer) drawer.appendChild(node);

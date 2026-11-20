@@ -15,8 +15,10 @@ import { renderChronology } from '../views/chronology.js';
 import { renderRecit } from '../views/recit.js';
 import { renderGeography } from '../views/geography.js';
 import { renderConstellation } from '../views/constellation.js';
+import { renderPoints } from '../views/points.js';
 
 const CSS_ID = 'atlas-coque-css';
+const inertedNodes = new Set();
 // M3 : CSS auto-porté complémentaire, injecté après le bloc historique.
 const M3_CSS_ID = 'nav-m3';
 const TAB_HELP_ID = 'atlas-tab-help';
@@ -122,6 +124,7 @@ function ensureM3Css() {
 function ensureLive() {
   if (liveRegion) return;
   liveRegion = el('div', 'sr-only');
+  liveRegion.id = 'atlas-status-live';
   liveRegion.setAttribute('role', 'status');
   liveRegion.setAttribute('aria-live', 'polite');
   liveRegion.setAttribute('aria-atomic', 'true');
@@ -182,7 +185,36 @@ function updateLive() {
   const text = announcement();
   if (text === lastLive) return;
   lastLive = text;
+  // Déduplication inter-modules : le routeur clavier écrit dans la même fenêtre.
+  if (document.documentElement.dataset.lastAnnounce === text) return;
+  document.documentElement.dataset.lastAnnounce = text;
   if (liveRegion) liveRegion.textContent = text;
+}
+
+/* V2-06 : au plus deux régions live subsistent après le rendu des lentilles.
+ * Les régions redondantes restent dans le DOM (le JS peut continuer à y écrire)
+ * mais perdent leur sémantique d'annonce. */
+let enforcingLive = false;
+let liveObserver = null;
+
+function enforceLiveBudget() {
+  if (enforcingLive) return;
+  enforcingLive = true;
+  const keep = new Set(['atlas-status-live', 'nav-t2-live']);
+  document.querySelectorAll('[aria-live],[role="status"]').forEach((node) => {
+    if (keep.has(node.id)) return;
+    node.removeAttribute('aria-live');
+    node.removeAttribute('role');
+    node.setAttribute('data-live-legacy', '1');
+  });
+  enforcingLive = false;
+}
+
+/* Les lentilles chargées en différé créent leurs régions après le rendu. */
+function watchLiveBudget() {
+  if (liveObserver || typeof MutationObserver === 'undefined') return;
+  liveObserver = new MutationObserver(() => enforceLiveBudget());
+  liveObserver.observe(document.body, { childList: true, subtree: true });
 }
 
 function captureFocusKey() {
@@ -445,7 +477,7 @@ function renderTrail(parent) {
 
 // M3-05 : aide contextualisée, alignée sur shortcuts() et sur le retour unique.
 function renderHelp(parent) {
-  if (!state.helpOpen) return;
+  if (!state.helpOpen) return false;
   const overlay = el('div', 'help-overlay');
   const sheet = el('div', 'help-sheet');
   sheet.id = 'atlas-help';
@@ -479,13 +511,14 @@ function renderHelp(parent) {
   makeDialog(overlay, sheet, 'atlas-help-title', 'help-close', 'Fermer l’aide (Échap)', 'atlas-help-context');
   overlay.appendChild(sheet);
   parent.appendChild(overlay);
+  return true;
 }
 
 function renderDetail(parent) {
-  if (!state.detailOpen) return;
+  if (!state.detailOpen) return false;
   const country = currentCountry();
   const event = currentEvent();
-  if (!event) return;
+  if (!event) return false;
   const overlay = el('div', 'help-overlay detail-overlay');
   const sheet = el('div', 'detail-sheet');
   const title = el('h2', '', event.title);
@@ -514,6 +547,7 @@ function renderDetail(parent) {
   makeDialog(overlay, sheet, 'atlas-detail-title', 'detail-close', 'Fermer le détail (Échap)');
   overlay.appendChild(sheet);
   parent.appendChild(overlay);
+  return true;
 }
 
 // ATLAS-COQUE-07 / M3-06 / M4 : pied dérivé de position(), sans table locale.
@@ -552,6 +586,7 @@ export function render(_state, reason) {
   else if (state.view === 'recit') renderRecit(stage);
   else if (state.view === 'geography') renderGeography(stage);
   else if (state.view === 'constellation') renderConstellation(stage);
+  else if (state.view === 'points') renderPoints(stage);
   // M3-01 : un id de vue inconnu ne doit jamais rendre une autre vue à sa place.
   else stage.appendChild(el('div', 'empty-stage', `Vue « ${labelFor(state.view)} » indisponible.`));
   const footer = el('footer', 'shell-footer');
@@ -560,11 +595,23 @@ export function render(_state, reason) {
   footer.append(el('span', '', left), el('span', '', right));
   root.appendChild(footer);
 
-  if (state.helpOpen || state.detailOpen) {
-    [bar, situation, trail, stage, footer].forEach((node) => { node.inert = true; });
+  // Une modale n'existe que si renderHelp/renderDetail en a réellement inséré une.
+  for (const node of inertedNodes) node.inert = false;
+  inertedNodes.clear();
+  const helpInserted = renderHelp(root);
+  const detailInserted = renderDetail(root);
+  enforceLiveBudget();
+  // Certaines lentilles créent leur région live dans un callback différé.
+  setTimeout(enforceLiveBudget, 0);
+  if (helpInserted || detailInserted) {
+    const dialogs = new Set([...root.querySelectorAll('[role="dialog"]')]);
+    const live = new Set([...document.querySelectorAll('[role="status"],[aria-live]')]);
+    for (const node of [bar, situation, trail, stage, footer, ...document.body.children]) {
+      if (node === root || dialogs.has(node) || live.has(node)) continue;
+      node.inert = true;
+      inertedNodes.add(node);
+    }
   }
-  renderHelp(root);
-  renderDetail(root);
   manageFocus(captured, reason);
   updateLive();
 }
@@ -574,6 +621,7 @@ export function mount(element) {
   ensureCss();
   ensureM3Css();
   ensureLive();
+  watchLiveBudget();
   render();
   // ATLAS-COQUE-10 / M3-04 / M3-10 / M4 : crochets de test additifs.
   window.VATLAS_A11Y = {

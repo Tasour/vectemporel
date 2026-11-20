@@ -118,6 +118,8 @@ function installDiagnosticsMode(ctx) {
     @media (prefers-reduced-motion: reduce) { #monde-diagnostics-drawer { transition: none; } }
   `);
 
+  // Hors mode explicite ?diagnostics=1, aucun bouton ni tiroir en production.
+  if (typeof location !== 'undefined' && !new URLSearchParams(location.search).has('diagnostics')) return;
   if (!toggle) {
     toggle = document.getElementById('monde-diagnostics-toggle');
     if (!toggle) {

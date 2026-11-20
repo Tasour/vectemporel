@@ -264,6 +264,7 @@ img { max-width: 100%; }
 .geo-marker.is-active text { fill: var(--ink); font-weight: 600; }
 .map-note { position: absolute; left: 18px; bottom: 12px; margin: 0; color: var(--muted-2); font-size: 8px; }
 .geo-panel { overflow-y: auto; padding: 24px 20px; border-left: 1px solid var(--line); background: var(--surface); }
+.geo-view-title { margin: 0 0 4px; font-family: var(--serif); font-size: 28px; font-weight: 450; }
 .geo-title { margin: 0 0 8px; font-family: var(--serif); font-size: 30px; font-weight: 450; }
 .geo-history, .geo-functions, .geo-debate, .geo-coords, .geo-source { color: var(--ink-soft); font-size: 11px; line-height: 1.5; }
 .geo-history, .geo-debate { color: var(--muted); font-style: italic; }
@@ -379,3 +380,17 @@ img { max-width: 100%; }
   .points-layout { grid-template-columns: 1fr; grid-template-rows: minmax(0,1fr) minmax(0,42%); }
   .points-detail { border-left: 0; border-top: 1px solid var(--line); }
 }
+
+/* V2-04 — cibles tactiles : zones effectives >= 44 px sans agrandir le visuel. */
+button.const-planet, button.const-moon { position: relative; }
+button.const-planet::before, button.const-moon::before {
+  content: ''; position: absolute; inset: -15px; border-radius: 50%; pointer-events: auto;
+}
+button.atlas-chrono-tag, button.nav-c2-back { min-height: 44px; }
+.points-grid-row > button { min-height: 44px; }
+
+/* V2-07 — plancher de lisibilité sur les informations porteuses de sens. */
+.point-kind, .confidence { font-size: 10px; }
+.const-moon::after, .constellation-note { font-size: 9px; }
+button.atlas-chrono-tag, button.nav-c2-back, .points-grid-row > button { font-size: 11px; }
+.atlas-chrono-tags, .atlas-chrono-count, .geo-source, .media-caption { font-size: 11px; }
