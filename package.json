@@ -22,10 +22,11 @@
     "capture:all": "node scripts/capture-all.mjs",
     "check:imports": "node scripts/check-imports.mjs"
   },
-  "dependencies": {
-    "yaml": "^2.9.1"
+  "engines": {
+    "node": ">=20"
   },
   "devDependencies": {
-    "puppeteer-core": "^23.11.1"
+    "puppeteer-core": "25.18.1",
+    "yaml": "2.9.1"
   }
 }
