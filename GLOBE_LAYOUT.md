@@ -42,7 +42,7 @@ Chaque carte pays affiche :
 ## Critères
 
 - 1440×900 : globe ≥ 1000×700, liste 420 px, 10 cartes visibles sans scroll inutile.
-- 390×844 : globe 390×~300, liste scrollable,第一款 carte ≤ 560 px, aucune cellule vide.
+- 390×844 : globe 390×~300, liste scrollable, première carte ≤ 560 px, aucune cellule vide.
 - Cibles tactiles ≥ 36 px, corps ≥ 12 px, contraste ≥ 4,5:1.
 - Un seul « Monde » visible dans la scène.
 
