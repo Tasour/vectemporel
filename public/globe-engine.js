@@ -848,7 +848,7 @@
     const smallScreen = window.innerWidth < 700;
     const canUseHighResolution =
       maxTexture >= 4096 && !smallScreen && !lowMemory && !saveData;
-    return canUseHighResolution ? 'globe-map.png' : 'globe-map-2k.png';
+    return canUseHighResolution ? 'public/globe-map.png' : 'public/globe-map-2k.png';
   }
 
   async function init(container, callbacks = {}) {
@@ -892,8 +892,8 @@
       const loader = new THREE.TextureLoader();
       const [mapTexture, pickTexture, palette] = await Promise.all([
         loader.loadAsync(mapUrl),
-        loader.loadAsync('globe-pick.png'),
-        fetch('globe-palette.json').then((response) => {
+        loader.loadAsync('public/globe-pick.png'),
+        fetch('public/globe-palette.json').then((response) => {
           if (!response.ok) throw new Error('Palette du globe indisponible.');
           return response.json();
         }),

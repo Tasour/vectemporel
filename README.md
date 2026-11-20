@@ -11,7 +11,9 @@ Application reconstruite de zéro selon le plan `/home/tasour/.opencode/plan/V_A
 ```bash
 npm install
 npm run build:data
-npm run build:points   # fusionne les 56 dossiers d'ères
+npm run build:points   # fusionne les 56 ères × 14 domaines
+npm run report:coverage  # régénère COVERAGE_POINTS.md
+node scripts/reclassify-matrix.mjs  # recalcule les statuts des matrices (deterministe)
 npm start
 ```
 
@@ -26,8 +28,14 @@ npm run check
 
 - `node --check` valide la syntaxe du point de composition et de la taxonomie publique.
 - `verify` contrôle le jeu de données, les images, les identifiants et l’absence de lien externe.
-- `verify:points` contrôle la couverture 100 % des 14 domaines × 56 ères.
+- `verify:points` contrôle la couverture des 14 domaines × 56 ères et **échoue** si une cellule manque ou si une anomalie est détectée ; il ne modifie aucun fichier.
+- `report:coverage` régénère explicitement `COVERAGE_POINTS.md` (artefact, hors vérification).
 - `test:e2e` parcourt le globe, la chronologie, le détail, le récit, la géographie et la constellation au clavier.
+- `test:guards` vérifie le serveur sur un vrai processus : whitelist, en-têtes de sécurité, entrées malformées et survie.
+- `test:coverage-guard` prouve par mutation que `verify:points` échoue quand une proposition disparaît.
+- `test:idempotence` exécute deux générations complètes dans un répertoire temporaire et compare les hash des artefacts.
+
+Le serveur écoute **uniquement** sur `127.0.0.1`. Il ne sert que `index.html`, `styles.css`, `public/**` et `src/**` ; tout autre chemin renvoie 403. Les textures du globe sont chargées depuis `public/`. Le service systemd `vectemporel-atlas.service` complète cette restriction avec `IPAddressDeny=any` et `IPAddressAllow=localhost` (fichier hors dépôt, à conserver lors d'une réinstallation).
 
 ## Structure
 
@@ -59,10 +67,11 @@ tests/e2e.mjs                  parcours clavier complet
 
 `scripts/build-dataset.mjs` lit :
 
-- `../vectemporel/data.js` pour les repères curatés ;
-- `../vectemporel/audits/<pays>/country-audit.yaml` pour ères, acteurs, lieux, claims, omissions et gouvernance ;
-- `../vectemporel/audits/<pays>/source-register.csv` pour les références ;
-- `../vectemporel/event-images.js` pour les images vérifiées.
+- `source/data.js` pour les repères curatés ;
+- `source/audits/<pays>/country-audit.yaml` pour ères, acteurs, lieux, claims, omissions et gouvernance ;
+- `source/audits/<pays>/source-register.csv` pour les références ;
+- `source/audits/<pays>/omissions.yaml` et `auto-omissions.yaml` pour les absences justifiées ;
+- `source/event-images.js` pour les images vérifiées.
 
 Il produit **229 repères** et **901 points** : phrases des résumés vérifiés, affirmations des audits, figures et lieux documentés. Chaque point garde son degré de certitude et ses identifiants de source.
 
@@ -107,9 +116,9 @@ La table lisible par machine est `window.VATLAS.shortcuts()`. Les boutons « ←
 | **pays** | Une des 10 entrées documentées par les audits locaux. |
 | **ère** | Période d’un pays, porteuse de repères. |
 | **repère** | Événement daté rattaché à une ère ; 229 au total. |
-| **point** | Assertion vérifiée attachée à un repère ; 901 au total. |
+| **point** | Assertion **extraite** d’un audit local, adossée à une source ou à une omission documentée ; 845 points d’audit et 901 points de récit. Aucun n’est présenté comme « validé » : les audits sont non signés. |
 | **lieu** | Repère géographique documenté, avec coordonnées locales. |
-| **certitude** | Degré repris de l’audit : vérifié, certain, probable, contesté. |
+| **certitude** | Degré repris de l’audit : certain, probable, disputé, non documenté. « vérifié » ne s’applique qu’aux phrases du récit. |
 | **source** | Référence du registre local, affichée sans lien externe. |
 
 Le même lexique figé est exposé par `window.VATLAS.lexicon`. Aucun terme n’est défini autrement dans une vue.
@@ -119,8 +128,8 @@ Le même lexique figé est exposé par `window.VATLAS.lexicon`. Aucun terme n’
 | Membre | Contrat |
 | --- | --- |
 | `meta` | Métadonnées du jeu de données généré. |
-| `taxonomyVersion` | Version du catalogue de navigation (`m4.1`). |
-| `taxonomy` | Les 5 vues ordonnées et figées : `id`, `label`, `digit`, `letter`, `level`, `role`. |
+| `taxonomyVersion` | Version du catalogue de navigation (`m4.2`). |
+| `taxonomy` | Les 6 vues ordonnées et figées : `id`, `label`, `digit`, `letter`, `level`, `role`. |
 | `lexicon` | Définitions du lexique ci-dessus. |
 | `views()` | Copie de la liste des identifiants de vues. |
 | `isValidView(id)` | `true` si l’identifiant appartient à la taxonomie. |
