@@ -1,0 +1,17 @@
+schema_version: "1.0"
+country_id: japan
+generated_by: scripts/reclassify-matrix.mjs
+rule: justification existante des propositions, aucun fait nouveau
+omissions:
+  - id: OM-AUTO-JP-05-religions-croyances
+    period_id: ERA-5
+    domain: Religions & croyances
+    justification: "La matrice ERA-5 marque la cellule « Religions & croyances » comme « partiel » avec la justification « Sécularisation, nouvelles religions et religions minoritaires ne sont pas instrumentées », sans entry_id ni source. Aucun ID d'omission spécifique n'existe dans omissions.yaml pour cette cellule : silence explicite conformément à la règle 7 de POINT_METHODOLOGY.md. Aucune date, source ou citation inventée ; ancre = intervalle de l'ère."
+    origin: auto-from-justification
+    source_point_id: jp-era5-rel-001
+  - id: OM-AUTO-JP-05-arts-lettres
+    period_id: ERA-5
+    domain: Arts & lettres
+    justification: "La matrice ERA-5 marque la cellule « Arts & lettres » comme « partiel » avec la justification « Cinéma, manga, anime et littérature contemporaine ne sont pas instrumentés », sans entry_id ni source. Aucun ID d'omission dédié n'existe dans omissions.yaml : silence explicite, non une négation de ces productions. Aucune œuvre, date ou source inventée ; ancre = intervalle de l'ère."
+    origin: auto-from-justification
+    source_point_id: jp-era5-art-001

@@ -1,0 +1,77 @@
+schema_version: "1.0"
+country_id: italy
+generated_by: scripts/reclassify-matrix.mjs
+rule: justification existante des propositions, aucun fait nouveau
+omissions:
+  - id: OM-AUTO-IT-01-femmes-genre-sexualites
+    period_id: ERA-1
+    domain: Femmes, genre, sexualités
+    justification: "La matrice ERA-1/Femmes, genre, sexualités est « vide non traité: Aucune figure féminine ni analyse de genre pour l'ère romaine. » Aucune omission dédiée n'existe dans omissions.yaml pour cette cellule. Le point explicite le silence du corpus; il ne décrit pas la condition féminine romaine, faute de source au registre."
+    origin: auto-from-justification
+    source_point_id: it-era1-genre-001
+  - id: OM-AUTO-IT-01-sciences-techniques-sant
+    period_id: ERA-1
+    domain: Sciences, techniques & santé
+    justification: "La matrice ERA-1/Sciences, techniques & santé est « vide non traité: Aucune fiche sur l'ingénierie, la médecine ou les savoirs romains. » Aucune omission dédiée dans omissions.yaml (OM-006 et OM-013/OM-014 concernent d'autres ères). Silence explicite, validé pour la couverture uniquement."
+    origin: auto-from-justification
+    source_point_id: it-era1-sci-001
+  - id: OM-AUTO-IT-01-arts-lettres
+    period_id: ERA-1
+    domain: Arts & lettres
+    justification: "Matrice ERA-1/Arts & lettres: « vide non traité — Aucune fiche sur la littérature, l'architecture ou les arts romains. » Aucune omission dédiée dans omissions.yaml (OM-004 concerne ERA-2). Silence explicité, sans invention de titre, d'œuvre ni d'auteur."
+    origin: auto-from-justification
+    source_point_id: it-era1-arts-001
+  - id: OM-AUTO-IT-01-migrations-diasporas
+    period_id: ERA-1
+    domain: Migrations & diasporas
+    justification: "Matrice ERA-1/Migrations & diasporas (échelle transnationale): « vide non traité — Peuplement, colonisation romaine et diaspora juive ne sont pas traités. » Aucune omission dédiée. Silence explicite, sans affirmation de date ni de flux migratoire."
+    origin: auto-from-justification
+    source_point_id: it-era1-migr-001
+  - id: OM-AUTO-IT-01-peuples-autochtones-mino
+    period_id: ERA-1
+    domain: Peuples autochtones & minorités
+    justification: "Reprend la matrice ERA-1/Peuples autochtones & minorités: « vide justifié — Catégorie « peuples autochtones » non applicable; esclaves et pérégrins relèvent d'autres domaines, non traités. » Aucune donnée historique n'est ajoutée."
+    origin: auto-from-justification
+    source_point_id: it-era1-autoct-001
+  - id: OM-AUTO-IT-01-circulations-transnation
+    period_id: ERA-1
+    domain: Circulations transnationales
+    justification: "Matrice ERA-1/Circulations transnationales (échelle impériale): « vide non traité — Routes, ports et commerce méditerranéen ne sont pas traités. » Aucune omission dédiée; silence explicite, sans invention de route, de port ni de date."
+    origin: auto-from-justification
+    source_point_id: it-era1-circ-001
+  - id: OM-AUTO-IT-02-droit-justice
+    period_id: ERA-2
+    domain: Droit & justice
+    justification: "Matrice ERA-2/Droit & justice: « vide non traité — Statuts communaux, droit canon et tribunaux ne sont pas traités. » Aucun ID d'omission dédié dans omissions.yaml pour cette cellule (OM-003 concerne ERA-1). Silence explicite; les objets cités sont ceux nommés par la matrice, non des faits attestés ici."
+    origin: auto-from-justification
+    source_point_id: it-era2-droit-003
+  - id: OM-AUTO-IT-02-migrations-diasporas
+    period_id: ERA-2
+    domain: Migrations & diasporas
+    justification: "Matrice ERA-2/Migrations & diasporas (échelle transnationale): « vide non traité — Diasporas juives, grecques, albanaises et migrations urbaines absentes. » Aucun ID d'omission dédié. Silence explicite, sans invention de flux ni de date."
+    origin: auto-from-justification
+    source_point_id: it-era2-migr-011
+  - id: OM-AUTO-IT-02-peuples-autochtones-mino
+    period_id: ERA-2
+    domain: Peuples autochtones & minorités
+    justification: "Matrice ERA-2/Peuples autochtones & minorités: « vide non traité — Minorités juives et musulmanes de Sicile et d'Italie du Sud non traitées. » Aucun ID d'omission dédié pour cette ère (OM-012 concerne ERA-5, OM-010 ERA-4). Silence explicite; aucun fait historique n'est ajouté."
+    origin: auto-from-justification
+    source_point_id: it-era2-peuples-012
+  - id: OM-AUTO-IT-04-arts-lettres
+    period_id: ERA-4
+    domain: Arts & lettres
+    justification: "Cellule « vide non traité » de coverage-matrix.csv (ERA-4, Arts & lettres, national) : futurisme, cinéma et littérature absents du corpus ; aucun ID d'omission dédié dans omissions.yaml pour cette cellule (OM-004 concerne ERA-2). Silence explicite selon la règle 7 de POINT_METHODOLOGY.md ; ancre = intervalle de l'ère, aucune date, source ou citation inventée."
+    origin: auto-from-justification
+    source_point_id: it-era4-arts-009
+  - id: OM-AUTO-IT-04-environnement-territoire
+    period_id: ERA-4
+    domain: Environnement & territoire
+    justification: "Cellule « vide non traité » de coverage-matrix.csv (ERA-4, Environnement & territoire, national) : bonifica, industrialisation et catastrophes environnementales absentes ; aucun ID d'omission dédié dans omissions.yaml pour cette ère et ce domaine (OM-015 concerne ERA-5). La catastrophe du Vajont (SRC-019) est postérieure à 1945 et n'est donc pas décrite ici. Aucune date ni source inventée."
+    origin: auto-from-justification
+    source_point_id: it-era4-env-010
+  - id: OM-AUTO-IT-05-arts-lettres
+    period_id: ERA-5
+    domain: Arts & lettres
+    justification: Cellule « vide non traité » dans coverage-matrix.csv. Aucune source du registre italien ne documente ce domaine pour l'ère; le silence est explicite plutôt que masqué, et aucun lien externe n'est employé.
+    origin: auto-from-justification
+    source_point_id: it-era5-art-001

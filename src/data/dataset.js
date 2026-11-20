@@ -4,12 +4,13 @@ export const DATASET = {
     "name": "Vectemporel",
     "system": "Vectemporel",
     "version": "0.1.0",
-    "generated": "2026-11-18",
+    "generated": "2026-11-20",
     "source": "audits locaux + data.js curaté",
     "externalLinks": false,
     "countries": 10,
     "events": 229,
     "points": 1746,
+    "eventPoints": 901,
     "validatedPoints": 845
   },
   "countries": [
@@ -227,6 +228,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Des marins grecs de Phocée fondent Massalia sur la côte méditerranéenne.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -234,6 +236,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le port devient une porte d’entrée du monde grec en Gaule.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -241,6 +244,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Sa défaite à Alésia en 52 av. J.-C. scelle la conquête romaine ; elle est aussi la défaite politique d'une coalition divisée.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001"
               ]
@@ -250,6 +254,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Marseille — port, cité marchande, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-015"
@@ -311,6 +316,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Après la révolte des Gaules, Vercingétorix est encerclé à Alésia par Jules César.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -318,6 +324,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Sa reddition scelle la conquête romaine de la Gaule.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -325,6 +332,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Sa défaite à Alésia en 52 av. J.-C. scelle la conquête romaine ; elle est aussi la défaite politique d'une coalition divisée.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001"
               ]
@@ -334,6 +342,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Alise-Sainte-Reine — oppidum, site de bataille, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001"
               ]
@@ -395,6 +404,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le général Munatius Plancus fonde une colonie romaine sur la colline de Fourvière.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -402,6 +412,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Lugdunum devient la capitale des Gaules.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -409,6 +420,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Sa défaite à Alésia en 52 av. J.-C. scelle la conquête romaine ; elle est aussi la défaite politique d'une coalition divisée.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001"
               ]
@@ -418,6 +430,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Lyon — capitale provinciale, carrefour commercial, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001"
               ]
@@ -479,6 +492,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Clovis, roi des Francs saliens, se fait baptiser à Reims, probablement vers 496.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -486,6 +500,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Ce geste rapproche le pouvoir franc de l’Église et de l’héritage romain.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -519,6 +534,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Charles Martel remporte une victoire sur une armée omeyyade venue d’Al-Andalus.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -526,6 +542,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’événement devient un symbole de la défense du royaume franc.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -559,6 +576,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le pape Léon III couronne Charlemagne empereur des Romains à Saint-Pierre.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -566,6 +584,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le roi des Francs devient le maître d’un empire européen.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -598,6 +617,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les petits-fils de Charlemagne se partagent l’empire à Verdun.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -605,6 +625,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La Francie occidentale pose l’une des bases du royaume de France.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -637,6 +658,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Hugues Capet est élu roi des Francs après la mort de Louis V.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -644,6 +666,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Sa dynastie règne, directement ou par ses branches, pendant près de huit siècles.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -677,6 +700,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Au concile de Clermont, le pape Urbain II appelle les chrétiens d’Occident à partir en Terre sainte.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -684,6 +708,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La prédication mobilise des seigneurs venus de toute la France.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -717,6 +742,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’abbé Suger consacre le chœur de la basilique de Saint-Denis.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -724,6 +750,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La lumière et les voûtes brisées inaugurent un style qui gagne toute l’Europe.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -757,6 +784,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le pape Innocent III lance une croisade contre les cathares du Languedoc.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -764,6 +792,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Elle se prolonge pendant vingt ans et renforce le pouvoir royal dans le Midi.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -796,6 +825,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le roi Philippe IV le Bel réunit pour la première fois les représentants du clergé, de la noblesse et des villes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -803,6 +833,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’assemblée soutient le roi face au pape.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -835,6 +866,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La querelle successorale autour du trône de France dégénère en un conflit de plus d’un siècle.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -842,6 +874,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La guerre transforme les armées, les impôts et le sentiment national.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -874,6 +907,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La peste noire atteint la France par le port de Marseille.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -881,6 +915,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "En quelques années, elle emporte une part considérable de la population européenne.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -914,6 +949,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Jeanne d’Arc délivre Orléans et conduit Charles VII à Reims pour son sacre.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -921,6 +957,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Figure de la résistance, elle est brûlée à Rouen en 1431.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -953,6 +990,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "François Ier remporte une victoire difficile contre les Confédérés suisses en Lombardie.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -960,6 +998,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Elle consolide la puissance française en Italie du Nord.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -993,6 +1032,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "François Ier impose le français dans les actes administratifs et juridiques du royaume.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -1000,6 +1040,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’ordonnance accélère l’unification linguistique du pays.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -1033,6 +1074,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Après l’assassinat de dirigeants huguenots, des massacres se déroulent à Paris puis en province.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -1040,6 +1082,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’événement radicalise les guerres de Religion.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -1073,6 +1116,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Henri IV accorde aux protestants une liberté de culte encadrée et des places de sûreté.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -1080,6 +1124,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’édit met fin, pour un temps, aux guerres de Religion.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -1113,6 +1158,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Richelieu fonde l’Académie française pour codifier la langue et les lettres.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -1120,6 +1166,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Elle devient un instrument du rayonnement culturel du royaume.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -1153,6 +1200,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Louis XIV règne pendant 72 ans et fait de Versailles le théâtre du pouvoir absolu.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -1160,6 +1208,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Guerres, mécénat et centralisation marquent durablement la monarchie.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -1167,6 +1216,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Versailles — résidence royale, centre politique, lieu de mémoire, Congrès",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-002",
                 "SRC-020"
@@ -1220,6 +1270,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Colbert fonde l’Académie royale des sciences à Paris.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -1227,6 +1278,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Elle organise la recherche et relie savants, État et grands projets techniques.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -1261,6 +1313,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’édit de mars 1685, dit Code noir, fixe le statut des esclaves dans les colonies françaises : police des plantations, châtiments, obligations religieuses et restrictions de déplacement.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -1268,6 +1321,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Dans la continuité de la politique coloniale de Colbert, il est promulgué par Louis XIV et s’applique notamment aux Antilles, où il structure l’économie sucrière et inscrit l’esclavage dans le droit royal.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -1275,6 +1329,7 @@ export const DATASET = {
               "kind": "audit",
               "text": "L'édit de mars 1685, dit Code noir, organise juridiquement l'esclavage dans les colonies françaises et en fait un instrument de police et de discipline.",
               "confidence": "certain",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-002"
               ]
@@ -1284,6 +1339,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Versailles — résidence royale, centre politique, lieu de mémoire, Congrès",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-002",
                 "SRC-020"
@@ -1294,6 +1350,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Fort-de-France — chef-lieu colonial, port, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-002"
               ]
@@ -1363,6 +1420,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Louis XIV révoque l’édit de Nantes et interdit le culte protestant.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -1370,6 +1428,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Des dizaines de milliers de huguenots quittent la France, emportant savoir-faire et capitaux.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -1403,6 +1462,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Diderot et d’Alembert publient le premier volume de l’Encyclopédie.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -1410,6 +1470,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’entreprise rassemble les savoirs et diffuse les idées des Lumières à travers l’Europe.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -1443,6 +1504,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La crise financière et politique provoque la réunion des États généraux, puis la prise de la Bastille le 14 juillet 1789.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -1450,6 +1512,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La Déclaration des droits de l’homme proclame l’égalité et la souveraineté nationale, mais la citoyenneté exclut les femmes et l’esclavage subsiste dans les colonies.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -1457,6 +1520,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’abolition de 1794 est suivie du rétablissement de l’esclavage par Bonaparte en 1802.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -1464,6 +1528,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Publie en septembre 1791 la Déclaration des droits de la femme et de la citoyenne ; guillotinée en 1793. Son œuvre articule droits civils, abolition de l'esclavage et critique du mariage.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-003"
               ]
@@ -1473,6 +1538,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Paris — capitale, centre politique, centre culturel, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-005",
                 "SRC-008",
@@ -1542,6 +1608,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "En septembre 1791, Olympe de Gouges publie la Déclaration des droits de la femme et de la citoyenne, qui reprend et retourne la Déclaration de 1789.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -1549,6 +1616,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Elle y réclame l’égalité civile et politique des femmes, critique le mariage et l’esclavage ; elle est guillotinée en 1793.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -1556,6 +1624,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Publie en septembre 1791 la Déclaration des droits de la femme et de la citoyenne ; guillotinée en 1793. Son œuvre articule droits civils, abolition de l'esclavage et critique du mariage.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-003"
               ]
@@ -1565,6 +1634,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Paris — capitale, centre politique, centre culturel, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-005",
                 "SRC-008",
@@ -1632,6 +1702,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La Convention instaure un gouvernement révolutionnaire et multiplie les exécutions.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -1639,6 +1710,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Louis XVI est guillotiné en janvier 1793 ; la Terreur prend fin en 1794.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -1646,6 +1718,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Publie en septembre 1791 la Déclaration des droits de la femme et de la citoyenne ; guillotinée en 1793. Son œuvre articule droits civils, abolition de l'esclavage et critique du mariage.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-003"
               ]
@@ -1690,6 +1763,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le général Bonaparte renverse le Directoire lors du coup d’État du 18 brumaire.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -1697,6 +1771,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Il installe le Consulat et concentre progressivement le pouvoir.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -1704,6 +1779,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Publie en septembre 1791 la Déclaration des droits de la femme et de la citoyenne ; guillotinée en 1793. Son œuvre articule droits civils, abolition de l'esclavage et critique du mariage.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-003"
               ]
@@ -1749,6 +1825,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le Code civil des Français unifie le droit, garantit la propriété et organise le mariage civil.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -1756,6 +1833,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’égalité civile qu’il consacre est celle des hommes majeurs ; les femmes restent sous l’autorité de leur mari et l’esclavage colonial demeure hors de son champ.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -1763,6 +1841,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Il inspire encore de nombreux systèmes juridiques.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -1770,6 +1849,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Publie en septembre 1791 la Déclaration des droits de la femme et de la citoyenne ; guillotinée en 1793. Son œuvre articule droits civils, abolition de l'esclavage et critique du mariage.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-003"
               ]
@@ -1815,6 +1895,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Napoléon est battu par les coalisés en Belgique.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -1822,6 +1903,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Il abdique une seconde fois et part en exil à Sainte-Hélène ; la Restauration revient.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -1829,6 +1911,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Participe à la première exposition impressionniste de 1874 ; son œuvre est longtemps lue comme « féminine » plutôt que moderne.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-005"
               ]
@@ -1838,6 +1921,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Découvre avec Pierre Curie le polonium et le radium en 1898 ; deux prix Nobel (1903, 1911).",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-006"
               ]
@@ -1890,6 +1974,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Trois journées d’émeute parisienne renversent Charles X.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -1897,6 +1982,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Louis-Philippe devient roi des Français, sous une monarchie constitutionnelle plus libérale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -1904,6 +1990,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Participe à la première exposition impressionniste de 1874 ; son œuvre est longtemps lue comme « féminine » plutôt que moderne.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-005"
               ]
@@ -1913,6 +2000,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Découvre avec Pierre Curie le polonium et le radium en 1898 ; deux prix Nobel (1903, 1911).",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-006"
               ]
@@ -1965,6 +2053,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La monarchie de Juillet tombe en février.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -1972,6 +2061,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La IIe République instaure le suffrage universel masculin et abolit l’esclavage dans les colonies.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -1979,6 +2069,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Participe à la première exposition impressionniste de 1874 ; son œuvre est longtemps lue comme « féminine » plutôt que moderne.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-005"
               ]
@@ -1988,6 +2079,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Découvre avec Pierre Curie le polonium et le radium en 1898 ; deux prix Nobel (1903, 1911).",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-006"
               ]
@@ -2040,6 +2132,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La France déclare la guerre à la Prusse et subit une défaite rapide.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -2047,6 +2140,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Napoléon III capitule à Sedan ; la République est proclamée à Paris.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -2054,6 +2148,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Participe à la première exposition impressionniste de 1874 ; son œuvre est longtemps lue comme « féminine » plutôt que moderne.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-005"
               ]
@@ -2063,6 +2158,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Découvre avec Pierre Curie le polonium et le radium en 1898 ; deux prix Nobel (1903, 1911).",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-006"
               ]
@@ -2116,6 +2212,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Après la défaite, Paris se soulève et instaure une Commune ouvrière et républicaine.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -2123,6 +2220,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La répression de la Semaine sanglante fait des milliers de victimes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -2130,6 +2228,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Participe à la première exposition impressionniste de 1874 ; son œuvre est longtemps lue comme « féminine » plutôt que moderne.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-005"
               ]
@@ -2139,6 +2238,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Découvre avec Pierre Curie le polonium et le radium en 1898 ; deux prix Nobel (1903, 1911).",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-006"
               ]
@@ -2148,6 +2248,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Paris — capitale, centre politique, centre culturel, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-005",
                 "SRC-008",
@@ -2224,6 +2325,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les lois Jules Ferry rendent l’enseignement primaire gratuit, laïque et obligatoire.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -2231,6 +2333,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’école devient un pilier de la République et de l’unité nationale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -2238,6 +2341,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Participe à la première exposition impressionniste de 1874 ; son œuvre est longtemps lue comme « féminine » plutôt que moderne.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-005"
               ]
@@ -2247,6 +2351,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Découvre avec Pierre Curie le polonium et le radium en 1898 ; deux prix Nobel (1903, 1911).",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-006"
               ]
@@ -2300,6 +2405,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le capitaine Alfred Dreyfus est condamné pour haute trahison sur des preuves falsifiées.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -2307,6 +2413,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’affaire déchire la France entre dreyfusards et antidreyfusards, et révèle l’antisémitisme de l’époque.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -2314,6 +2421,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Participe à la première exposition impressionniste de 1874 ; son œuvre est longtemps lue comme « féminine » plutôt que moderne.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-005"
               ]
@@ -2323,6 +2431,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Découvre avec Pierre Curie le polonium et le radium en 1898 ; deux prix Nobel (1903, 1911).",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-006"
               ]
@@ -2377,6 +2486,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La loi du 9 décembre 1905 met fin au régime des cultes reconnus et garantit la liberté de conscience.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -2384,6 +2494,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Son application est progressive et souvent conflictuelle, notamment lors des inventaires de 1906.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -2391,6 +2502,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La laïcité devient un principe structurant de la République, réactivé par les débats sur le voile à Creil en 1989 et par la loi de 2004 sur les signes religieux à l’école.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -2398,6 +2510,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Participe à la première exposition impressionniste de 1874 ; son œuvre est longtemps lue comme « féminine » plutôt que moderne.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-005"
               ]
@@ -2407,6 +2520,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Découvre avec Pierre Curie le polonium et le radium en 1898 ; deux prix Nobel (1903, 1911).",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-006"
               ]
@@ -2459,6 +2573,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La Première Guerre mondiale mobilise des millions de Français et dévaste le nord du pays.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -2466,6 +2581,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’armistice du 11 novembre 1918 laisse une société traumatisée.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -2498,6 +2614,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les vainqueurs imposent à l’Allemagne des réparations et des pertes territoriales.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -2505,6 +2622,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le traité nourrit un ressentiment durable et fragilise la jeune République de Weimar.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -2538,6 +2656,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La coalition de gauche menée par Léon Blum remporte les élections.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -2545,6 +2664,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les accords Matignon accordent congés payés et hausse des salaires, dans un climat de grèves.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -2579,6 +2699,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La défaite de 1940 conduit à l’Occupation et au régime de Vichy, qui prend part à la persécution des Juifs.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -2586,6 +2707,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les 16 et 17 juillet 1942, la police française organise, avec l’occupant allemand, la rafle du Vél’ d’Hiv ; en 1944, la Résistance, les Alliés et les troupes coloniales contribuent à la libération du pays.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -2593,6 +2715,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La guerre révèle l’ampleur des crimes nazis et de la collaboration.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -2600,6 +2723,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Paris — capitale, centre politique, centre culturel, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-005",
                 "SRC-008",
@@ -2658,6 +2782,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Une ordonnance du gouvernement d’Alger accorde le droit de vote aux femmes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -2665,6 +2790,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Elles votent pour la première fois aux municipales de 1945.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -2698,6 +2824,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les ordonnances de 1945 jettent les bases d’un système de protection sociale unifié.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -2705,6 +2832,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Maladie, vieillesse et famille deviennent des risques couverts par la collectivité.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -2738,6 +2866,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La reconstruction et l’industrialisation transforment la France en société de consommation entre 1945 et 1975.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -2745,6 +2874,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les villes, les transports et les modes de vie changent profondément.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -2752,6 +2882,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La croissance s’essouffle avec la crise de 1973-1975, qui ouvre une période de chômage de masse et de désindustrialisation.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -2759,6 +2890,7 @@ export const DATASET = {
               "kind": "audit",
               "text": "L'expression « Trente Glorieuses » désigne la période de croissance de 1946 à 1975, et non l'ensemble 1945-1989.",
               "confidence": "certain",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-019"
               ]
@@ -2795,6 +2927,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La guerre d’indépendance algérienne oppose l’armée française au FLN et à ses réseaux, et touche aussi les civils algériens.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -2802,6 +2935,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La torture, les déplacements de populations et la répression policière en métropole, dont celle du 17 octobre 1961, divisent durablement la France.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -2809,6 +2943,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les accords d’Évian mettent fin au conflit en 1962 ; l’exode des pieds-noirs et l’arrivée des harkis recomposent la société française.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -2841,6 +2976,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Appelé au pouvoir pendant la crise algérienne, de Gaulle fait adopter une nouvelle Constitution.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -2848,6 +2984,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le régime présidentiel renforce l’exécutif et stabilise la vie politique.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -2882,6 +3019,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 17 octobre 1961, des dizaines de milliers d’Algériens manifestent à Paris contre le couvre-feu imposé par la préfecture de police.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -2889,6 +3027,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La répression, conduite sous l’autorité de Maurice Papon, fait plusieurs dizaines de morts ; le bilan exact reste disputé.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -2896,13 +3035,15 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’événement est longtemps occulté avant de devenir un enjeu majeur de mémoire.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
               "id": "france-claim-003-point",
               "kind": "audit",
               "text": "La manifestation du FLN du 17 octobre 1961 à Paris a été réprimée par la police parisienne ; le bilan exact reste disputé.",
-              "confidence": "disputed",
+              "confidence": "disputé",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-011"
               ]
@@ -2912,6 +3053,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Paris — capitale, centre politique, centre culturel, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-005",
                 "SRC-008",
@@ -2971,6 +3113,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La loi du 28 décembre 1967, portée par le député Lucien Neuwirth, autorise la contraception et met fin à l’interdiction héritée de 1920.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -2978,6 +3121,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Elle ne garantit ni l’accès réel ni le remboursement, et son application se heurte à l’opposition catholique et aux résistances administratives.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -2985,6 +3129,7 @@ export const DATASET = {
               "kind": "audit",
               "text": "La loi du 28 décembre 1967 autorise la contraception mais ne garantit pas un accès universel.",
               "confidence": "probable",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-014"
               ]
@@ -3020,6 +3165,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La contestation étudiante parisienne débouche sur une grève générale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -3027,6 +3173,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Au-delà de la crise politique, Mai 68 transforme les mœurs et les rapports d’autorité.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -3034,6 +3181,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Paris — capitale, centre politique, centre culturel, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-005",
                 "SRC-008",
@@ -3092,6 +3240,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La loi du 17 janvier 1975, portée par Simone Veil, autorise l’interruption volontaire de grossesse sous conditions, pour une durée de cinq ans.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -3099,6 +3248,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Elle est reconduite et rendue définitive.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -3106,6 +3256,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Elle marque une étape majeure des droits des femmes en France.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -3113,6 +3264,7 @@ export const DATASET = {
               "kind": "audit",
               "text": "La loi du 17 janvier 1975 autorise l'IVG sous conditions et pour une durée limitée ; elle ne constitue pas une dépénalisation absolue.",
               "confidence": "certain",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-014"
               ]
@@ -3148,6 +3300,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La France abolit la peine de mort sous l’impulsion de Robert Badinter.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -3155,6 +3308,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La mesure devient un symbole de l’engagement français pour les droits humains.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -3188,6 +3342,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le traité de Maastricht crée l’Union européenne et prépare la monnaie unique.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -3195,6 +3350,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Approuvé de justesse par référendum le 20 septembre 1992, il révèle un clivage durable entre partisans de l’intégration et défenseurs de la souveraineté nationale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -3202,6 +3358,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Sa ratification ne va pas de soi et divise partis et électorats.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -3209,6 +3366,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Après la mort de Zyed Benna et Bouna Traoré en octobre 2005, les révoltes se diffusent dans les banlieues ; elles expriment des inégalités sociales et raciales.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-016",
                 "SRC-015"
@@ -3219,6 +3377,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Le 16 juillet 1995, reconnaît la responsabilité de l'État français dans la déportation des Juifs ; rupture avec la mémoire gaullienne.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-009",
                 "SRC-008"
@@ -3272,6 +3431,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 1er janvier 2002, les pièces et billets en euros remplacent le franc.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -3279,6 +3439,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La monnaie unique prolonge un choix de politique économique et monétaire discuté, qui implique de renoncer à une part de souveraineté nationale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -3286,6 +3447,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Elle approfondit l’intégration européenne mais reste associée à des débats sur la croissance, l’inflation et les règles budgétaires.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -3293,6 +3455,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Après la mort de Zyed Benna et Bouna Traoré en octobre 2005, les révoltes se diffusent dans les banlieues ; elles expriment des inégalités sociales et raciales.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-016",
                 "SRC-015"
@@ -3303,6 +3466,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Le 16 juillet 1995, reconnaît la responsabilité de l'État français dans la déportation des Juifs ; rupture avec la mémoire gaullienne.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-009",
                 "SRC-008"
@@ -3357,6 +3521,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Du 7 au 9 janvier 2015, les attentats contre Charlie Hebdo et l’Hyper Cacher, ainsi que le meurtre d’une policière à Montrouge, font dix-sept victimes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -3364,6 +3529,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Une immense marche républicaine défend la liberté d’expression, tandis que les débats portent aussi sur l’antisémitisme et la laïcité.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -3371,6 +3537,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les attentats relancent les questions sur la place de l’islam et sur les libertés publiques.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -3378,6 +3545,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Après la mort de Zyed Benna et Bouna Traoré en octobre 2005, les révoltes se diffusent dans les banlieues ; elles expriment des inégalités sociales et raciales.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-016",
                 "SRC-015"
@@ -3388,6 +3556,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Le 16 juillet 1995, reconnaît la responsabilité de l'État français dans la déportation des Juifs ; rupture avec la mémoire gaullienne.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-009",
                 "SRC-008"
@@ -3441,6 +3610,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La pandémie de Covid-19 conduit à un confinement national inédit.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -3448,6 +3618,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Elle bouleverse l’économie, l’école et les sociabilités, et accélère la numérisation.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -3455,6 +3626,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Après la mort de Zyed Benna et Bouna Traoré en octobre 2005, les révoltes se diffusent dans les banlieues ; elles expriment des inégalités sociales et raciales.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-016",
                 "SRC-015"
@@ -3465,6 +3637,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Le 16 juillet 1995, reconnaît la responsabilité de l'État français dans la déportation des Juifs ; rupture avec la mémoire gaullienne.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-009",
                 "SRC-008"
@@ -3517,6 +3690,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Paris accueille les Jeux olympiques d’été, un siècle après 1924.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -3524,6 +3698,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’événement mobilise le pays et met en scène une nouvelle image de la France.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -3531,6 +3706,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Après la mort de Zyed Benna et Bouna Traoré en octobre 2005, les révoltes se diffusent dans les banlieues ; elles expriment des inégalités sociales et raciales.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-016",
                 "SRC-015"
@@ -3541,6 +3717,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Le 16 juillet 1995, reconnaît la responsabilité de l'État français dans la déportation des Juifs ; rupture avec la mémoire gaullienne.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-009",
                 "SRC-008"
@@ -4209,7 +4386,7 @@ export const DATASET = {
           "predicate": "interprétation",
           "object": "construction européenne",
           "text": "Le plan Schuman de 1950 est une étape de la construction européenne ; son sens est disputé entre fédéralisme et consolidation des États-nations.",
-          "confidence": "disputed",
+          "confidence": "disputé",
           "sources": [
             "SRC-010"
           ]
@@ -4232,7 +4409,7 @@ export const DATASET = {
           "predicate": "causes",
           "object": "banlieues",
           "text": "Les révoltes de 2005 ont des causes multiples (ségrégation, chômage, contrôles policiers, racisme) ; les réduire à une seule « crise des banlieues » est réducteur.",
-          "confidence": "disputed",
+          "confidence": "disputé",
           "sources": [
             "SRC-016",
             "SRC-015"
@@ -4620,7 +4797,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Fondation de Lugdunum en -43 par Munatius Plancus, documentée dans le corpus (dataset.js, fr-lugdunum) et par SRC-001 (Woolf, Becoming Roman), qui cadre la romanisation de la Gaule ; date -43 conforme à l'ère -600/476.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era1-guer-002",
@@ -4660,7 +4837,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Siège et capitulation d'Alésia en -52 av. J.-C., documentés dans le corpus (dataset.js, fr-alesia) et par SRC-001 ; acteur Vercingétorix et lieu Alésia enregistrés dans country-audit.yaml. Aucune date hors de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era1-droit-003",
@@ -4697,7 +4874,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Droit & justice, impérial) : droit romain diffusé par processus, sans repère daté dans le corpus ; omission documentée OM-002 citée par la matrice pour cette cellule. Aucune date ni source directe inventée ; seul l'intervalle de l'ère (-600/476) est utilisé comme ancre.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era1-econ-004",
@@ -4709,7 +4886,7 @@ export const DATASET = {
           "object": "le commerce méditerranéen sur la côte gauloise",
           "text": "Massalia, port grec fondé par des marins de Phocée devient une cité marchande et une porte d'entrée du monde grec en Gaule le commerce méditerranéen sur la côte gauloise",
           "time": "-600",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "evenement",
             "lieu",
@@ -4737,7 +4914,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Fondation de Massalia vers -600 par des marins phocéens ; port et cité marchande documentés dans le corpus (dataset.js, fr-massalia ; country-audit.yaml, PLACE-3) et par SRC-001. Datation approximative (« vers -600 ») conforme à l'ère ; aucune donnée de production inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era1-soc-005",
@@ -4776,7 +4953,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Fondation de la colonie de Lugdunum en -43 ; société coloniale évoquée dans le corpus (dataset.js, fr-lugdunum) et dans SRC-001, qui traite des échelles locales de la romanisation. Échelle locale conforme à la matrice ; aucun chiffre démographique inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era1-genre-006",
@@ -4808,7 +4985,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Omission documentée OM-001 (ERA-1, Femmes, genre, sexualités, national) : aucun repère daté sur les femmes en Gaule ; sources écrites masculines et archéologie non événementielle. Silence explicite conformément à la règle 7 de POINT_METHODOLOGY.md ; aucune date ni source inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era1-relig-007",
@@ -4834,10 +5011,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-FR-01-religions-croyances"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Religions & croyances, national) : cultes gaulois et romains traités comme processus, sans repère daté ; omission documentée dans la matrice, aucun ID d'omission spécifique n'existant dans omissions.yaml pour cette cellule. Aucune date, source ou citation inventée ; ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era1-sci-008",
@@ -4863,10 +5042,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-FR-01-sciences-techniques-sant"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Sciences, techniques & santé, national) : techniques romaines non datées dans le corpus ; omission documentée dans la matrice, sans ID dédié dans omissions.yaml. Aucune date ni source inventée ; ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era1-arts-009",
@@ -4892,10 +5073,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-FR-01-arts-lettres"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Arts & lettres, national) : art gallo-romain traité comme processus, sans repère daté ; omission documentée dans la matrice, sans ID dédié dans omissions.yaml. Aucune date, source ou citation inventée ; ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era1-env-010",
@@ -4921,10 +5104,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-FR-01-environnement-territoire"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Environnement & territoire, national) : déforestation et agriculture antiques non datées, dette environnementale ; omission documentée dans la matrice, sans ID dédié dans omissions.yaml. Aucune date ni source inventée ; ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era1-migr-011",
@@ -4936,7 +5121,7 @@ export const DATASET = {
           "object": "une cité grecque ouverte sur le monde méditerranéen",
           "text": "Marins grecs de Phocée s'installent et fondent Massalia sur la côte méditerranéenne gauloise une cité grecque ouverte sur le monde méditerranéen",
           "time": "-600",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "evenement",
             "acteur",
@@ -4962,7 +5147,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Installation de Grecs de Phocée à Massalia vers -600, documentée dans le corpus (dataset.js, fr-massalia ; country-audit.yaml, PLACE-3) et par SRC-001. Échelle transnationale conforme à la matrice ; datation approximative, non inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era1-peuples-012",
@@ -5000,7 +5185,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Gaulois vaincus à Alésia en -52, documentés dans le corpus (dataset.js, fr-alesia) et par SRC-001. L'étiquette « autochtones » est anachronique pour l'Antiquité et est évitée ici, conformément à l'avertissement de coverage-matrix.csv ; aucun contenu hors de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era1-memoire-013",
@@ -5024,10 +5209,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-FR-01-memoire-patrimoine"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Mémoire & patrimoine, national) : aucun objet mémoriel antique dans le corpus ; Alésia ne devient lieu de mémoire qu'au XIXe siècle, soit hors de l'ère -600/476, et n'est donc pas décrit ici. Omission documentée dans la matrice, sans ID dédié dans omissions.yaml ; aucune date ni source inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era1-circ-014",
@@ -5066,7 +5253,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Lugdunum, fondée en -43, est décrite dans le corpus comme carrefour commercial et capitale provinciale (dataset.js, fr-lugdunum) ; SRC-001 cadre les échelles locales et les connexions de la Gaule romaine. Massalia (-600) complète les connexions méditerranéennes. Aucune date hors de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr2-pol-001",
@@ -5097,10 +5284,13 @@ export const DATASET = {
           ],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-02-politique-institutions"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Fait tiré du repère fr-capet (dataset.js, 987). La matrice ERA-2 classe la cellule en « partiel » : acteurs, lieux et sources non structurés dans la fiche d'origine. Les Capétiens et la durée de la dynastie sont énoncés dans le résumé, sans invention. Aucune source académique médiévale au registre (REPORT.md §7.2), d'où sources vide et ancrage par l'identifiant du repère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr2-pol-002",
@@ -5133,10 +5323,13 @@ export const DATASET = {
           ],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-02-politique-institutions"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Fait tiré du repère fr-etats-generaux (dataset.js, 1302), l'un des cinq repères politiques cités par la matrice. Les trois ordres et le soutien au roi sont dans le résumé ; aucun lieu n'est ajouté car la fiche n'en précise pas. Aucune source du registre ne documente les institutions médiévales (REPORT.md §7.2).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr2-gue-001",
@@ -5167,10 +5360,13 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-02-guerres-diplomatie"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Fait tiré du repère fr-poitiers (dataset.js, 732). Le lieu est le titre même du repère ; l'acteur et le groupe adverse sont nommés dans le résumé. La portée symbolique est rapportée comme telle par le résumé, sans quantification inventée. Aucune source de guerre médiévale au registre (REPORT.md §7.2).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr2-gue-002",
@@ -5196,10 +5392,13 @@ export const DATASET = {
           ],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-02-guerres-diplomatie"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Fait tiré du repère fr-cent-ans (dataset.js, 1337). La querelle successorale, la durée et la transformation des armées et des impôts sont textuelles dans le résumé. L'expression « sentiment national » est délibérément écartée : REPORT.md §4 la classe parmi les points non résolus faute de source au registre.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr2-dro-001",
@@ -5227,7 +5426,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Cellule « vide justifié » de la matrice ERA-2/Droit & justice. OM-002 (omissions.yaml) documente explicitement l'absence de repère daté et propose des fiches à instruire, non des faits attestés : aucune date ni institution n'est affirmée ici. La matrice renvoie à OM-003 par erreur ; OM-003 concerne l'ère 3 dans omissions.yaml. La certitude porte sur la dette documentée, non sur un événement juridique.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr2-eco-001",
@@ -5250,10 +5449,13 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-02-economie-travail"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Cellule « vide justifié » de la matrice ERA-2/Économie & travail : « expansion agraire et foires médiévales non datées ; dette économique ». Aucun OM dédié n'existe pour cette cellule dans omissions.yaml : sources vide et dette explicitement nommée, sans inventer d'ID. Le seul fait économique daté de l'ère est l'impôt dans le repère fr-cent-ans.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr2-soc-001",
@@ -5279,10 +5481,13 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "probable",
+          "sources": [
+            "OM-AUTO-FR-02-societe-demographie"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "probable",
           "justification": "Fait tiré du repère fr-peste (dataset.js, 1348), seul repère de la cellule « partiel ». REPORT.md §4 et §6.2 signalent que la date de la peste noire doit être vérifiée sur une source spécifique absente du registre : aucun chiffre de mortalité n'est introduit et la certitude reste probable.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr2-fem-001",
@@ -5313,10 +5518,13 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-02-femmes-genre-sexualites"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Fait tiré du repère fr-jeanne (dataset.js, 1429 ; mort à Rouen en 1431). REPORT.md §5 relève que la fiche traite Jeanne comme figure militaire et religieuse, non comme histoire des femmes : le point comble le domaine avec le seul acteur féminin daté du corpus, sans lui prêter une revendication genrée non attestée. Aucune source de genre médiéval au registre.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr2-rel-001",
@@ -5328,7 +5536,7 @@ export const DATASET = {
           "object": "un rapprochement du pouvoir franc avec l'Église et l'héritage romain",
           "text": "Clovis se fait baptiser à Reims, probablement vers 496 un rapprochement du pouvoir franc avec l'Église et l'héritage romain",
           "time": "496",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "evenement",
             "acteur",
@@ -5349,10 +5557,13 @@ export const DATASET = {
           ],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "disputé",
+          "sources": [
+            "OM-AUTO-FR-02-religions-croyances"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "disputé",
           "justification": "Fait tiré du repère fr-clovis (dataset.js). REPORT.md §6.2 et §7.2 : la date est disputée (496, 498 ou 499) et aucune correction n'est retenue faute de source au registre ; le résumé dit lui-même « probablement vers 496 ». La certitude disputée porte sur l'année, non sur le baptême.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr2-rel-002",
@@ -5383,10 +5594,13 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-02-religions-croyances"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Fait tiré du repère fr-albigeois (dataset.js, 1209), cité par la matrice dans Religions & croyances et dans Peuples autochtones & minorités. Le pape, le groupe visé, la durée et l'effet sur le pouvoir royal sont énoncés dans le résumé. Aucune source de police religieuse médiévale au registre.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr2-sci-001",
@@ -5408,10 +5622,13 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-02-sciences-techniques-sant"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Cellule « vide justifié » de la matrice ERA-2/Sciences, techniques & santé : « savoirs techniques gothiques traités dans Arts ; aucun repère scientifique séparé ». REPORT.md §7.4 classe le Moyen Âge scientifique comme « faible / à instruire ». La certitude porte sur l'absence de repère, non sur une hypothétique découverte.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr2-art-001",
@@ -5442,10 +5659,13 @@ export const DATASET = {
           ],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "probable",
+          "sources": [
+            "OM-AUTO-FR-02-arts-lettres"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "probable",
           "justification": "Fait tiré du repère fr-gothique (dataset.js, 1144). REPORT.md §4 : les « voûtes brisées » sont à vérifier sur une source spécifique avant correction, et §7.2 note l'absence de source d'art médiéval au registre (Woolf couvre la Gaule romaine, pas les cathédrales). La consécration par Suger est le fait documenté ; le détail stylistique reste probable.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr2-env-001",
@@ -5467,10 +5687,13 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-02-environnement-territoire"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Cellule « vide justifié » de la matrice ERA-2/Environnement & territoire : « climat, famines et défrichements non datés ; dette environnementale ». Aucun OM dédié et aucune source d'histoire environnementale médiévale au registre (SRC-013 couvre 1960-2000) : aucun chiffre climatique n'est introduit. La certitude porte sur la dette documentée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr2-mig-001",
@@ -5496,10 +5719,13 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-02-migrations-diasporas"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Cellule « vide justifié » de la matrice ERA-2/Migrations & diasporas : « installations franques et vikings non datées ; dette migratoire ». Les Francs saliens sont nommés dans le repère fr-clovis et les Vikings dans la justification de la cellule ; aucun mouvement ni date n'est affirmé. La certitude porte sur la dette documentée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr2-min-001",
@@ -5530,10 +5756,13 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-02-peuples-autochtones-mino"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Fait tiré du repère fr-albigeois (dataset.js, 1209), seul repère de la cellule « partiel ». La matrice précise que juifs et autres minorités sont absents : aucune autre minorité n'est ajoutée. Échelle régionale imposée par la cellule (Languedoc, Midi) et par le résumé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr2-mem-001",
@@ -5562,10 +5791,13 @@ export const DATASET = {
           "memory": [
             "figure de la résistance"
           ],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-02-memoire-patrimoine"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Fait tiré du repère fr-jeanne : « figure de la résistance » est le seul énoncé mémoriel daté de l'ère. La matrice signale l'absence d'objet mémoriel distinct ; aucune commémoration postérieure à 1492 (statues, canonisation) n'est introduite, conformément à la règle hors-ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr2-cir-001",
@@ -5600,10 +5832,13 @@ export const DATASET = {
           ],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-02-circulations-transnation"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Fait tiré du repère fr-croisade (dataset.js, 1095), cité par la matrice dans Guerres & diplomatie, Religions & croyances et Circulations transnationales. L'appel, le concile, la destination et la mobilisation des seigneurs sont énoncés dans le résumé ; aucun trajet ni effectif n'est inventé. Échelle transnationale imposée par la cellule.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era3-pol-001",
@@ -5637,10 +5872,13 @@ export const DATASET = {
             "Ordonnance de Villers-Cotterêts (1539)"
           ],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-03-politique-institutions"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Repère validé fr-villers (1539) du dataset.js : « François Ier impose le français dans les actes administratifs et juridiques du royaume ». Le registre SRC-001 à SRC-020 ne contient aucune référence pour l'ère 3 ; omission documentée ici.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era3-guer-001",
@@ -5671,10 +5909,13 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-03-guerres-diplomatie"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Repère validé fr-marignan (1515) du dataset.js. La matrice de couverture rattache ce repère aux « guerres d'Italie » ; proposals.yaml donne 1494 comme ouverture de ces guerres et 1515 (Marignan) comme borne alternative de l'ère. Aucune source du registre pour l'ère 3 ; omission documentée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era3-droit-001",
@@ -5708,10 +5949,13 @@ export const DATASET = {
             "Édit de Nantes (1598)"
           ],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-03-droit-justice"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Repère validé fr-nantes (1598) du dataset.js ; la légende de l'image de ce repère mentionne la transmission de l'édit pour enregistrement au Parlement de Paris. Aucune source du registre pour l'ère 3 ; omission documentée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era3-econ-001",
@@ -5723,7 +5967,7 @@ export const DATASET = {
           "object": "la révolution des prix et le commerce atlantique sont signalés comme dette économique, sans date retenue",
           "text": "Économie et travail de la Renaissance restent sans repère daté dans le corpus la révolution des prix et le commerce atlantique sont signalés comme dette économique, sans date retenue",
           "time": "1492-1610",
-          "datePrecision": "intervalle de l'ère ; phénomène non daté",
+          "datePrecision": "interval",
           "families": [
             "processus"
           ],
@@ -5733,10 +5977,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-FR-03-economie-travail"
+          ],
           "confidence": "non documenté",
           "justification": "Matrice de couverture, ERA-3, Économie & travail : « vide justifié — Révolution des prix et commerce atlantique non datés ; dette économique ». Le silence est explicitement documenté plutôt que masqué ; aucune source du registre ne le comble.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era3-soc-001",
@@ -5769,10 +6015,13 @@ export const DATASET = {
             "Ordonnance de Villers-Cotterêts (1539)"
           ],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-03-societe-demographie"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Repère validé fr-villers, point fr-villers-point-2 : « L'ordonnance accélère l'unification linguistique du pays ». La matrice de couverture range ce repère dans Société & démographie. Aucune source du registre pour l'ère 3 ; omission documentée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era3-genre-001",
@@ -5784,7 +6033,7 @@ export const DATASET = {
           "object": "Catherine de Médicis et Diane de Poitiers sont mentionnées comme dette de recherche, sans repère genré daté",
           "text": "Femmes de pouvoir de la Renaissance ne sont pas traitées comme actrices dans le corpus Catherine de Médicis et Diane de Poitiers sont mentionnées comme dette de recherche, sans repère genré daté",
           "time": "1492-1610",
-          "datePrecision": "intervalle de l'ère ; aucun repère daté",
+          "datePrecision": "interval",
           "families": [
             "groupe",
             "acteur"
@@ -5800,10 +6049,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-003"
+          ],
           "confidence": "non documenté",
           "justification": "Omission OM-003 (omissions.yaml, period_id ERA-3) : « Catherine de Médicis et Diane de Poitiers ne sont pas traitées comme actrices » ; raison not_yet_researched. La matrice de couverture range la cellule en vide justifié. Aucune source genrée du registre pour l'ère 3 ; omission documentée, sans tokenisme.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era3-rel-001",
@@ -5833,10 +6084,13 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-03-religions-croyances"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Repère validé fr-stbarth (1572) du dataset.js. Le country-audit situe les guerres de Religion entre 1562 et 1598 ; l'édit de Nantes (1598) y met fin pour un temps. Aucune source du registre pour l'ère 3 ; omission documentée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era3-sci-001",
@@ -5848,7 +6102,7 @@ export const DATASET = {
           "object": "anatomie, imprimerie et cosmographie sont signalées comme dette scientifique, sans date retenue",
           "text": "Savoirs scientifiques et techniques de la Renaissance restent sans repère daté dans le corpus anatomie, imprimerie et cosmographie sont signalées comme dette scientifique, sans date retenue",
           "time": "1492-1610",
-          "datePrecision": "intervalle de l'ère ; fait non daté",
+          "datePrecision": "interval",
           "families": [
             "processus"
           ],
@@ -5858,10 +6112,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-FR-03-sciences-techniques-sant"
+          ],
           "confidence": "non documenté",
           "justification": "Matrice de couverture, ERA-3, Sciences, techniques & santé : « vide justifié — Anatomie, imprimerie et cosmographie non datées ; dette scientifique ». Aucune source du registre ne documente ce domaine pour l'ère 3 ; omission explicitement documentée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era3-arts-001",
@@ -5873,7 +6129,7 @@ export const DATASET = {
           "object": "la Pléiade et les châteaux de la Loire sont absents ; la Défense et illustration de la langue française (1549) est signalée comme fiche à instruire",
           "text": "Création littéraire et artistique de la Renaissance n'est pas documentée dans le corpus la Pléiade et les châteaux de la Loire sont absents ; la Défense et illustration de la langue française (1549) est signalée comme fiche à instruire",
           "time": "1492-1610",
-          "datePrecision": "intervalle de l'ère ; repère candidat non retenu en 1549",
+          "datePrecision": "interval",
           "families": [
             "groupe",
             "lieu",
@@ -5889,10 +6145,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-004"
+          ],
           "confidence": "non documenté",
           "justification": "Omission OM-004 (omissions.yaml, period_id ERA-3, Arts & lettres) : « Aucun repère sur la Pléiade, les châteaux de la Loire ou la Renaissance artistique » ; la justification cite la Défense et illustration de la langue française (1549) comme fiche à instruire, non comme fait validé. Aucune source du registre pour l'ère 3 ; omission documentée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era3-env-001",
@@ -5904,7 +6162,7 @@ export const DATASET = {
           "object": "dette environnementale signalée, sans date ni indicateur retenu pour l'ère",
           "text": "Transformations agraires et forestières restent sans repère daté dans le corpus dette environnementale signalée, sans date ni indicateur retenu pour l'ère",
           "time": "1492-1610",
-          "datePrecision": "intervalle de l'ère ; fait non daté",
+          "datePrecision": "interval",
           "families": [
             "processus"
           ],
@@ -5914,10 +6172,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-FR-03-environnement-territoire"
+          ],
           "confidence": "non documenté",
           "justification": "Matrice de couverture, ERA-3, Environnement & territoire : « vide justifié — Transformations agraires et forestières non datées ; dette environnementale ». Aucune source du registre ne couvre ce domaine pour l'ère 3 ; omission explicitement documentée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era3-mig-001",
@@ -5929,7 +6189,7 @@ export const DATASET = {
           "object": "la matrice note que la diaspora huguenote est postérieure à l'ère traitée ; aucun repère migratoire retenu entre 1492 et 1610",
           "text": "Migrations et diasporas liées aux conflicts religieux ne font l'objet d'aucun repère dans cette ère la matrice note que la diaspora huguenote est postérieure à l'ère traitée ; aucun repère migratoire retenu entre 1492 et 1610",
           "time": "1492-1610",
-          "datePrecision": "intervalle de l'ère ; absence constatée",
+          "datePrecision": "interval",
           "families": [
             "groupe",
             "processus"
@@ -5942,10 +6202,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-FR-03-migrations-diasporas"
+          ],
           "confidence": "non documenté",
           "justification": "Matrice de couverture, ERA-3, Migrations & diasporas : « vide justifié — Diaspora huguenote postérieure à 1685 ; aucun repère migratoire dans cette ère ». Le phénomène postérieur à l'ère n'est pas traité comme un point de celle-ci ; aucun fait hors-ère n'est avancé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era3-min-001",
@@ -5957,7 +6219,7 @@ export const DATASET = {
           "object": "massacres à Paris et en province, puis liberté de culte encadrée et places de sûreté accordées en 1598 ; les autres minorités religieuses ne sont pas documentées",
           "text": "Minorité protestante est visée par les massacres de 1572 puis par une politique de tolérance encadrée massacres à Paris et en province, puis liberté de culte encadrée et places de sûreté accordées en 1598 ; les autres minorités religieuses ne sont pas documentées",
           "time": "1572-1598",
-          "datePrecision": "intervalle entre deux repères datés",
+          "datePrecision": "interval",
           "families": [
             "groupe",
             "evenement",
@@ -5977,10 +6239,13 @@ export const DATASET = {
             "Édit de Nantes (1598)"
           ],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-03-peuples-autochtones-mino"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Repères validés fr-stbarth (1572) et fr-nantes (1598) du dataset.js. La matrice de couverture précise pour ERA-3 : « Protestants massacrés ; autres minorités religieuses absentes ». Aucune source du registre pour l'ère 3 ; omission documentée pour les minorités non documentées.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era3-mem-001",
@@ -6009,10 +6274,13 @@ export const DATASET = {
           "memory": [
             "Saint-Barthélemy (commémoration)"
           ],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-03-memoire-patrimoine"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Matrice de couverture, ERA-3, Mémoire & patrimoine : « Événement commémoré, sans objet mémoriel distinct », avec fr-stbarth comme repère associé. La commémoration n'est pas confondue avec l'événement de 1572. Aucune source du registre pour l'ère 3 ; omission documentée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era3-circ-001",
@@ -6024,7 +6292,7 @@ export const DATASET = {
           "object": "la Lombardie et l'Italie du Nord en 1515, ainsi qu'aux réseaux protestants européens mentionnés à propos de l'édit de Nantes (1598), sans source structurée dans le registre",
           "text": "Guerres d'Italie et réseaux protestants européens relient le royaume à la Lombardie et l'Italie du Nord en 1515, ainsi qu'aux réseaux protestants européens mentionnés à propos de l'édit de Nantes (1598), sans source structurée dans le registre",
           "time": "1515-1598",
-          "datePrecision": "intervalle entre deux repères datés",
+          "datePrecision": "interval",
           "families": [
             "processus",
             "evenement",
@@ -6044,10 +6312,13 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "probable",
+          "sources": [
+            "OM-AUTO-FR-03-circulations-transnation"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "probable",
           "justification": "Matrice de couverture, ERA-3, Circulations transnationales : « Guerres d'Italie et réseaux protestants européens, sans source structurée », avec fr-marignan et fr-nantes comme repères. Les deux repères sont datés de 1515 et 1598 ; le lien transnational est attesté par l'audit mais non sourcé dans le registre, d'où la certitude probable.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era3-genre-002",
@@ -6059,7 +6330,7 @@ export const DATASET = {
           "object": "OM-003 constate que Catherine de Médicis et Diane de Poitiers ne sont pas traitées comme actrices pour l'ère 3",
           "text": "Femmes de pouvoir de la Renaissance (silence documenté) constitue une lacune explicite OM-003 constate que Catherine de Médicis et Diane de Poitiers ne sont pas traitées comme actrices pour l'ère 3",
           "time": "1492-1610",
-          "datePrecision": "intervalle de l'ère ; aucun repère genré daté",
+          "datePrecision": "interval",
           "families": [
             "groupe",
             "acteur"
@@ -6075,10 +6346,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-003"
+          ],
           "confidence": "non documenté",
           "justification": "Libellé canonique du domaine : « Femmes, genre, sexualités ». Forme de domaine alignée sur l'extraction de coverage-matrix.csv par verify-points.mjs. Omission OM-003 (ERA-3, not_yet_researched) : silence documenté, aucune figure féminine inventée comme repère daté.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era3-sci-002",
@@ -6090,7 +6363,7 @@ export const DATASET = {
           "object": "la matrice ERA-3 signale anatomie, imprimerie et cosmographie comme non datées, sans repère retenu",
           "text": "Savoirs scientifiques de la Renaissance (silence documenté) constitue une lacune explicite la matrice ERA-3 signale anatomie, imprimerie et cosmographie comme non datées, sans repère retenu",
           "time": "1492-1610",
-          "datePrecision": "intervalle de l'ère ; fait non daté",
+          "datePrecision": "interval",
           "families": [
             "processus"
           ],
@@ -6100,10 +6373,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-FR-03-sciences-techniques-sant"
+          ],
           "confidence": "non documenté",
           "justification": "Libellé canonique du domaine : « Sciences, techniques & santé ». Forme de domaine alignée sur l'extraction de coverage-matrix.csv par verify-points.mjs. Matrice ERA-3 : dette scientifique sans date ; aucune invention de repère ni de source.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era4-pol-001",
@@ -6134,10 +6409,13 @@ export const DATASET = {
           ],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-04-politique-institutions"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Repère validé fr-louis14 (1643) du dataset.js : « Louis XIV règne pendant 72 ans et fait de Versailles le théâtre du pouvoir absolu » ; le résumé ajoute que « Guerres, mécénat et centralisation marquent durablement la monarchie ». Le registre des sources ne contient aucune référence pour ce fait ; omission documentée, sans source inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era4-guer-001",
@@ -6149,7 +6427,7 @@ export const DATASET = {
           "object": "mentionnées dans le résumé du repère fr-louis14, sans fiche propre ni conflit daté dans le corpus",
           "text": "Guerres louis-quatorziennes marquent durablement la monarchie mentionnées dans le résumé du repère fr-louis14, sans fiche propre ni conflit daté dans le corpus",
           "time": "1643",
-          "datePrecision": "année du repère fr-louis14 ; aucun conflit daté individuellement",
+          "datePrecision": "year",
           "families": [
             "evenement",
             "acteur",
@@ -6165,10 +6443,13 @@ export const DATASET = {
           ],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "probable",
+          "sources": [
+            "OM-AUTO-FR-04-guerres-diplomatie"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "probable",
           "justification": "Matrice de couverture, ERA-4, Guerres & diplomatie : « Guerres louis-quatorziennes mentionnées dans le résumé, sans fiche propre ». L'ancre 1643 est celle du repère fr-louis14 du dataset.js, dont le résumé cite les guerres sans les dater. Aucune source du registre ne documente un conflit précis de l'ère 4 ; certitude ramenée à probable, sans date ni bataille inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era4-droit-001",
@@ -6208,7 +6489,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-001 (proposals.yaml) et repère fr-prop-001 (dataset.js) : l'édit de mars 1685 organise juridiquement l'esclavage colonial. La matrice de couverture classe cette cellule en « couvert », échelle impériale, et désigne PROP-001 avec SRC-002. Le rapport précise que l'édit est promulgué par Louis XIV et s'applique notamment aux Antilles ; aucun article ni chiffre inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era4-econ-001",
@@ -6220,7 +6501,7 @@ export const DATASET = {
           "object": "le Code noir structure l'économie sucrière aux Antilles dans la continuité de la politique coloniale de Colbert",
           "text": "Économie de plantation et colbertisme sont évoqués sans indicateurs chiffrés dans le corpus le Code noir structure l'économie sucrière aux Antilles dans la continuité de la politique coloniale de Colbert",
           "time": "1685",
-          "datePrecision": "année de l'édit servant d'ancre ; aucun indicateur économique daté",
+          "datePrecision": "year",
           "families": [
             "processus",
             "repere_normatif"
@@ -6243,7 +6524,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Matrice de couverture, ERA-4, Économie & travail : « Colbertisme et économie de plantation évoqués, sans source ni indicateurs ». Le repère fr-prop-001 du dataset.js précise que l'édit s'applique aux Antilles où il structure l'économie sucrière ; SRC-002 analyse le texte de 1685. Aucun prix, volume de production ou effectif n'est avancé, d'où la certitude probable.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era4-soc-001",
@@ -6271,10 +6552,13 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-04-societe-demographie"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Repère validé fr-revocation (1685) du dataset.js : « Des dizaines de milliers de huguenots quittent la France, emportant savoir-faire et capitaux ». La matrice de couverture rattache ce repère à Société & démographie et note l'absence d'acteurs et de sources ; aucun effectif précis n'est inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era4-genre-001",
@@ -6286,7 +6570,7 @@ export const DATASET = {
           "object": "la matrice signale l'absence de repère genré pour l'ère 4, sans figure ni texte identifié",
           "text": "Salonnières et précieuses ne font l'objet d'aucun repère daté dans le corpus la matrice signale l'absence de repère genré pour l'ère 4, sans figure ni texte identifié",
           "time": "1610-1789",
-          "datePrecision": "intervalle de l'ère ; silence documenté",
+          "datePrecision": "interval",
           "families": [
             "groupe",
             "processus"
@@ -6300,10 +6584,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-FR-04-femmes-genre-sexualites"
+          ],
           "confidence": "non documenté",
           "justification": "Matrice de couverture, ERA-4, Femmes, genre, sexualités : « Salonnières et précieuses non datées ; aucun repère genré dans le corpus » (vide justifié). Omissions.yaml ne répertorie aucune omission dédiée à cette cellule pour l'ère 4 ; OM-015 (period_id ALL) documente l'absence de repères sur les sexualités minoritaires. Aucune figure féminine n'est inventée comme repère daté.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era4-rel-001",
@@ -6337,10 +6623,13 @@ export const DATASET = {
             "Révocation de l'édit de Nantes (1685)"
           ],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-04-religions-croyances"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Repère validé fr-revocation (1685) du dataset.js : « Louis XIV révoque l'édit de Nantes et interdit le culte protestant ». REPORT.md situe la signature à Fontainebleau. La matrice de couverture associe aussi fr-nantes à la cellule, mais la date de l'édit révoqué appartient à l'ère précédente et n'est pas avancée comme repère de l'ère 4 ; aucun acteur ni source du registre n'est inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era4-sci-001",
@@ -6372,10 +6661,13 @@ export const DATASET = {
           ],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-04-sciences-techniques-sant"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Repère validé fr-academie-sciences (1666) du dataset.js : « Colbert fonde l'Académie royale des sciences à Paris » et « Elle organise la recherche et relie savants, État et grands projets techniques ». La matrice de couverture note l'absence d'acteurs et de sources structurés, alors que le repère nomme Colbert ; aucun savant ni projet technique supplémentaire n'est ajouté.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era4-arts-001",
@@ -6387,7 +6679,7 @@ export const DATASET = {
           "object": "Richelieu fonde l'Académie française en 1635 ; Diderot et d'Alembert publient le premier volume de l'Encyclopédie en 1751",
           "text": "Académie française et Encyclopédie codifient la langue et rassemblent les savoirs Richelieu fonde l'Académie française en 1635 ; Diderot et d'Alembert publient le premier volume de l'Encyclopédie en 1751",
           "time": "1635-1751",
-          "datePrecision": "intervalle entre deux repères datés",
+          "datePrecision": "interval",
           "families": [
             "institution",
             "acteur",
@@ -6407,10 +6699,13 @@ export const DATASET = {
           ],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-04-arts-lettres"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Repères validés fr-academie (1635) et fr-encyclopedie (1751) du dataset.js : l'Académie est fondée « pour codifier la langue et les lettres » et devient « un instrument du rayonnement culturel du royaume » ; l'Encyclopédie « rassemble les savoirs et diffuse les idées des Lumières à travers l'Europe ». REPORT.md range l'Académie française parmi les repères liés à Paris. La matrice rattache aussi fr-louis14 (mécénat) à la cellule, sans source du registre ; omission documentée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era4-env-001",
@@ -6422,7 +6717,7 @@ export const DATASET = {
           "object": "l'ordonnance des Eaux et Forêts et les défrichements sont signalés comme dette environnementale, sans date retenue",
           "text": "Politique forestière et transformations agraires de l'Ancien Régime restent sans repère daté dans le corpus l'ordonnance des Eaux et Forêts et les défrichements sont signalés comme dette environnementale, sans date retenue",
           "time": "1610-1789",
-          "datePrecision": "intervalle de l'ère ; fait non daté",
+          "datePrecision": "interval",
           "families": [
             "processus"
           ],
@@ -6432,10 +6727,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-005"
+          ],
           "confidence": "non documenté",
           "justification": "Matrice de couverture, ERA-4, Environnement & territoire : « Ordonnance des Eaux et Forêts (1669) et transformations agraires absentes (OM-006) » (vide justifié). Omissions.yaml enregistre cette dette sous OM-005 (period_id ERA-4, not_yet_researched) et indique SRC-002 comme source vérifiée sans que celle-ci couvre le domaine. Aucune mesure forestière ni date supplémentaire n'est inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era4-mig-001",
@@ -6464,10 +6761,13 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "probable",
+          "sources": [
+            "OM-AUTO-FR-04-migrations-diasporas"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "probable",
           "justification": "Repère validé fr-revocation (1685) du dataset.js : « Des dizaines de milliers de huguenots quittent la France, emportant savoir-faire et capitaux ». La matrice de couverture précise : « Exode huguenot présent, mais effectifs et destinations non renseignés ». Certitude probable faute de chiffre et de destination documentés ; aucun pays d'accueil n'est inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era4-min-001",
@@ -6504,7 +6804,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Matrice de couverture, ERA-4, Peuples autochtones & minorités : cellule « couvert » par PROP-001 — « Esclaves des Antilles et protestants ; Code noir documenté par SRC-002 ». Le repère fr-prop-001 du dataset.js et PROP-001 (proposals.yaml) datent l'édit de 1685. OM-014 (period_id ALL, échelle impériale) documente l'absence des populations colonisées comme actrices au-delà de l'Algérie ; aucun groupe ni chiffre supplémentaire n'est inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era4-mem-001",
@@ -6516,7 +6816,7 @@ export const DATASET = {
           "object": "résidence royale et centre politique associés à Louis XIV ; aucune commémoration datée n'est renseignée",
           "text": "Versailles est un lieu de mémoire sans objet mémoriel distinct dans le corpus résidence royale et centre politique associés à Louis XIV ; aucune commémoration datée n'est renseignée",
           "time": "1643",
-          "datePrecision": "année du repère fr-louis14 ; usages mémoriels non datés",
+          "datePrecision": "year",
           "families": [
             "lieu",
             "memoire",
@@ -6534,10 +6834,13 @@ export const DATASET = {
           "memory": [
             "Versailles (lieu de mémoire)"
           ],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-04-memoire-patrimoine"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Matrice de couverture, ERA-4, Mémoire & patrimoine : « Versailles comme lieu de mémoire, sans objet mémoriel distinct », avec fr-louis14 comme repère associé. Le point de lieu france-place-5 du dataset.js qualifie Versailles de « résidence royale, centre politique, lieu de mémoire, Congrès » et signale les contestations « mémoire monarchique » et « usages présidentiels ». Aucune date de commémoration n'est avancée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era4-circ-001",
@@ -6549,7 +6852,7 @@ export const DATASET = {
           "object": "l'Académie royale des sciences relie savants, État et grands projets techniques ; l'Encyclopédie diffuse les idées des Lumières à travers l'Europe, sans source structurée dans le registre",
           "text": "Savants et idées des Lumières circulent entre l'État, les académies et l'Europe l'Académie royale des sciences relie savants, État et grands projets techniques ; l'Encyclopédie diffuse les idées des Lumières à travers l'Europe, sans source structurée dans le registre",
           "time": "1666-1751",
-          "datePrecision": "intervalle entre deux repères datés",
+          "datePrecision": "interval",
           "families": [
             "processus",
             "institution",
@@ -6571,10 +6874,13 @@ export const DATASET = {
           ],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "probable",
+          "sources": [
+            "OM-AUTO-FR-04-circulations-transnation"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "probable",
           "justification": "Matrice de couverture, ERA-4, Circulations transnationales : « Circulation des savoirs européens, sans source structurée », avec fr-academie-sciences et fr-encyclopedie comme repères. Le dataset.js date ces repères de 1666 et 1751 et décrit la diffusion des Lumières « à travers l'Europe ». L'absence de source du registre justifie la certitude probable ; aucun réseau, tirage ou trajet n'est inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era5-pol-001",
@@ -6610,7 +6916,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Repère attesté dans fr-revolution (dataset.js) : crise financière et politique, États généraux, Bastille le 14 juillet 1789, Déclaration proclamant l'égalité et la souveraineté nationale. SRC-003 (Scott, Only Paradoxes to Offer) couvre les paradoxes des droits de l'homme et de la citoyenneté. 1789 est la borne de début de l'ère (country-audit.yaml).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era5-pol-002",
@@ -6640,10 +6946,13 @@ export const DATASET = {
           ],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "probable",
+          "sources": [
+            "OM-AUTO-FR-PT-fr-era5-pol-002"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "probable",
           "justification": "La fiche fr-terreur atteste la Convention, un gouvernement révolutionnaire, l'exécution de Louis XVI en janvier 1793 et la fin de la Terreur en 1794. Aucun ID du registre SRC-001 à SRC-020 ne documente spécifiquement la radicalisation de 1793 ; SRC-003 n'atteste dans cette fiche que la figure d'Olympe de Gouges. Silence explicite, non une négation du fait ; aucune date inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era5-pol-003",
@@ -6675,10 +6984,13 @@ export const DATASET = {
           ],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "probable",
+          "sources": [
+            "OM-AUTO-FR-PT-fr-era5-pol-003"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "probable",
           "justification": "La fiche fr-brumaire atteste le coup d'État du 18 brumaire, le renversement du Directoire par le général Bonaparte et l'instauration du Consulat ; le Conseil des Cinq-Cents figure dans la légende de l'image. 1799 est une alternative de borne citée dans country-audit.yaml. Aucun ID du registre ne couvre spécifiquement Brumaire : silence explicitement documenté.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era5-gue-001",
@@ -6703,10 +7015,13 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "probable",
+          "sources": [
+            "OM-AUTO-FR-05-guerres-diplomatie"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "probable",
           "justification": "La matrice de couverture (ERA-5, Guerres & diplomatie et Circulations transnationales) atteste les « guerres de la Révolution et de l'Empire » et les « coalitions », sans source structurée. L'intervalle reprend les bornes de l'ère. fr-waterloo est rattaché à france-era-6 dans dataset.js : il n'est pas utilisé comme repère ici, pour éviter tout hors-ère. Aucun ID du registre ne couvre ce domaine pour ERA-5 : silence explicite.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era5-dro-001",
@@ -6743,7 +7058,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-002 et fr-prop-002 (dataset.js ; proposals.yaml) attestent la publication en septembre 1791 d'un texte qui reprend et retourne la Déclaration de 1789 et réclame l'égalité civile et politique. SRC-003 (Scott, Only Paradoxes to Offer : French Feminists and the Rights of Man) est la source canonique du registre (REPORT.md, PROP-002).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era5-dro-002",
@@ -6777,7 +7092,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La fiche fr-code-civil atteste l'unification du droit, la propriété, le mariage civil et leurs limites genrées et coloniales. fixes.yaml rattache explicitement cette correction à Scott (SRC-003) et Sala-Molins (SRC-002). 1804 est une alternative de borne de l'ère (country-audit.yaml).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era5-eco-001",
@@ -6804,7 +7119,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de la matrice (ERA-5, Économie & travail) : assignats, maximum et Blocus continental non datés. OM-006 dans omissions.yaml documente l'omission et propose une fiche sur le maximum de 1793 à instruire (la matrice cite OM-007 par décalage de numérotation). Point de silence : aucun repère chiffré ni aucun ID SRC attesté ; aucun montant ni date inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era5-soc-001",
@@ -6842,7 +7157,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "fr-revolution (point 2) et fixes.yaml attestent que la Déclaration de 1789 proclame l'égalité mais que la citoyenneté exclut les femmes et que l'esclavage subsiste dans les colonies ; le Code civil (1804) organise le nouvel ordre civil. SRC-003 et SRC-002 sont les deux sources attachées à ERA-5 dans country-audit.yaml.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era5-fem-001",
@@ -6879,7 +7194,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-002 et fr-prop-002 attestent qu'en septembre 1791 Olympe de Gouges publie la Déclaration des droits de la femme et de la citoyenne, réclame l'égalité civile et politique, critique le mariage et l'esclavage. SRC-003 est la source canonique du registre (REPORT.md, PROP-002 ; ACTOR-PROP-002).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era5-fem-002",
@@ -6915,7 +7230,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "fr-prop-002 et fr-terreur attestent qu'Olympe de Gouges est guillotinée en 1793 ; la notice de figure du corpus (france-actor-2-point, avec SRC-003) figure dans fr-revolution et fr-terreur. Point distinct du texte de 1791 pour rendre compte de la répression politique, sans confondre les deux moments.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era5-rel-001",
@@ -6940,10 +7255,13 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "probable",
+          "sources": [
+            "OM-AUTO-FR-05-religions-croyances"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "probable",
           "justification": "La matrice (ERA-5, Religions & croyances) atteste une « politique religieuse et déchristianisation » dans fr-revolution et fr-terreur, sans sources structurées. Les bornes 1793 (Terreur) et 1794 (fin de la Terreur) sont toutes deux dans le corpus. Aucun ID du registre ne documente ce domaine pour ERA-5 : silence explicite, sans invention de texte ni de date.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era5-sci-001",
@@ -6972,10 +7290,12 @@ export const DATASET = {
           ],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-FR-05-sciences-techniques-sant"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de la matrice : « Lavoisier, Monge et l'École polytechnique ne sont pas datés ; dette scientifique. » Aucun repère daté ni aucun ID du registre ne couvrent ces acteurs pour ERA-5. Point de silence, non une négation de leur importance ; aucune date ni attribution inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era5-art-001",
@@ -7009,7 +7329,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-002 et fr-prop-002 qualifient Olympe de Gouges d'autrice et de dramaturge (tags « societe », « politique », « arts ») ; la matrice précise qu'il n'existe « aucun repère artistique autonome » pour l'ère. SRC-003 la documente. Aucune œuvre ni date inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era5-env-001",
@@ -7031,10 +7351,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-FR-05-environnement-territoire"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de la matrice (ERA-5, Environnement & territoire) : « Aucun repère environnemental ; dette. » SRC-013 (Bess) porte sur 1960-2000 et non sur cette ère. Point de silence explicite, sans date, territoire ni transformation environnementale inventés.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era5-mig-001",
@@ -7062,10 +7384,13 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "probable",
+          "sources": [
+            "OM-AUTO-FR-05-migrations-diasporas"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "probable",
           "justification": "La matrice (ERA-5, Migrations & diasporas) atteste des « émigrés et réfugiés évoqués, sans source ni chiffres » dans fr-revolution. L'image de fr-terreur mentionne par ailleurs le supplice d'émigrés en 1792. Aucun effectif, aucune destination et aucun ID du registre ne sont attestés : silence explicite, sans chiffre inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era5-peu-001",
@@ -7102,7 +7427,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "fr-revolution (point 3) et fixes.yaml attestent l'abolition de 1794, présentée comme une rupture dans l'histoire coloniale. SRC-002 (Sala-Molins, droit colonial) et SRC-003 (droits de l'homme) sont les deux sources attachées à ERA-5 dans country-audit.yaml et à la correction de fr-revolution dans REPORT.md. OM-014 documente la dette plus large sur les populations colonisées.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era5-peu-002",
@@ -7140,7 +7465,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "fr-revolution (point 3) atteste « le rétablissement de l'esclavage par Bonaparte en 1802 », année présente dans le corpus. SRC-002 et SRC-003 sourcent la correction de fr-revolution (REPORT.md) ; OM-014 documente la dette impériale sur les colonisés, absents comme acteurs.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era5-mem-001",
@@ -7170,10 +7495,13 @@ export const DATASET = {
             "Bastille comme lieu de mémoire fondateur",
             "14 juillet"
           ],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-05-memoire-patrimoine"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "La matrice (ERA-5, Mémoire & patrimoine) qualifie la Révolution de « lieu de mémoire fondateur, sans objet distinct » ; la Bastille et le 14 juillet 1789 sont attestés dans fr-revolution et dans sa légende d'image. Aucun objet mémoriel daté propre à l'ère ni ID du registre ne sont attestés : silence partiel documenté, sans monument ni commémoration inventés.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era5-cir-001",
@@ -7198,10 +7526,13 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "probable",
+          "sources": [
+            "OM-AUTO-FR-05-circulations-transnation"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "probable",
           "justification": "La matrice (ERA-5, Circulations transnationales) atteste un « impact européen et coalitions » rattaché à fr-revolution et fr-waterloo, « sans source structurée ». L'intervalle reprend les bornes de l'ère ; fr-waterloo appartenant à france-era-6, il n'est pas utilisé comme repère. Aucun ID du registre : silence explicite, sans invention de traité ni de date.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era6-pol-001",
@@ -7232,10 +7563,13 @@ export const DATASET = {
           ],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-06-politique-institutions"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Repère fr-1830 du dataset.js : trois journées d'émeute parisienne renversent Charles X. La matrice signale six repères politiques sans acteur ni source au schéma v1.0 ; aucun SRC du registre ne couvre spécifiquement cet événement, d'où des sources vides explicitement documentées. Fait daté et incontesté du corpus.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era6-pol-002",
@@ -7266,10 +7600,13 @@ export const DATASET = {
             "abolition de l'esclavage dans les colonies (1848)"
           ],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-06-politique-institutions"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Repère fr-1848 du dataset.js (tags politique) : la monarchie de Juillet tombe en février ; la IIe République instaure le suffrage universel masculin et abolit l'esclavage colonial. Aucun SRC du registre ne documente spécifiquement 1848 ; silence explicite.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era6-guer-001",
@@ -7308,7 +7645,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-003 du registre des propositions, retenue comme « couvert » par la matrice pour Guerres & diplomatie. SRC-004 (Sessions, By Sword and Plow) établit la conquête d'Alger de 1830 comme projet politique, militaire et culturel avec ses acteurs. Charles X, renversé quelques semaines plus tard, engage la conquête poursuivie par la monarchie de Juillet.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era6-droit-001",
@@ -7339,10 +7676,13 @@ export const DATASET = {
           ],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-06-droit-justice"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Repère fr-dreyfus du dataset.js, cité par la matrice pour Droit & justice. La condamnation sur preuves falsifiées et le clivage dreyfusards/antidreyfusards sont explicites dans le résumé du repère. Aucun SRC du registre ne couvre l'affaire ; silence documenté, la controverse demeurant disputée dans ses détails mais pas dans le fait de la condamnation.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era6-econ-001",
@@ -7375,10 +7715,13 @@ export const DATASET = {
             "obligation scolaire (1881)"
           ],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-06-economie-travail"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Repère fr-ferry du dataset.js. La matrice classe la cellule « vide justifié » (industrialisation, chemins de fer et crédit non datés) ; ce point documente au moins une mesure publique datée à portée économique (gratuité de l'école) sans inventer de chiffre de production. Aucun SRC ni omission dédiée à l'économie du XIXe siècle dans le registre : lacune explicite.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era6-soc-001",
@@ -7408,10 +7751,13 @@ export const DATASET = {
           ],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-06-societe-demographie"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Repère fr-commune du dataset.js (tags politique, societe), cité par la matrice Société & démographie. Société urbaine et conflits sociaux sans sources : le silence sur les SRC est explicite. Le nombre exact de victimes n'est pas chiffré dans le corpus (« des milliers ») et n'est donc pas précisé ici.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era6-soc-002",
@@ -7445,10 +7791,13 @@ export const DATASET = {
             "lois Ferry (1881)"
           ],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-06-societe-demographie"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Deuxième lecture du repère fr-ferry du dataset.js, cette fois sous l'angle de la société (tags societe, politique) et de la scolarisation de masse. Le corpus ne fournit ni effectifs ni SRC dédié : aucun chiffre n'est avancé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era6-femmes-001",
@@ -7486,7 +7835,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-005 et ACTOR-4 du registre des audits, retenues par la matrice pour Femmes, genre, sexualités. SRC-006 (Nobel Prize Outreach) atteste les prix de 1903 et 1911 et la découverte du polonium et du radium. ACTOR-4 documente le sexisme académique et le réseau Pierre Curie/Henri Becquerel ; ce point comble l'absence de femme scientifique dans la frise.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era6-rel-001",
@@ -7515,10 +7864,13 @@ export const DATASET = {
             "loi du 9 décembre 1905 sur la séparation des Églises et de l'État"
           ],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-06-religions-croyances"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Repère fr-laicite du dataset.js, cité par la matrice pour Religions & croyances. fixes.yaml rappelle que la laïcité ne doit pas être présentée comme un consensus intemporel : conflits de 1905 et inventaires de 1906 sont conservés. Aucun SRC du registre ne couvre la loi de 1905 elle-même (SRC-017 porte sur Creil en 1989, hors ère) : sources vides explicites.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era6-sci-001",
@@ -7556,7 +7908,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-005 et ACTOR-4 du registre des audits, retenues par la matrice pour Sciences, techniques & santé. SRC-006 atteste la découverte du polonium et du radium ; les travaux prolongent ceux d'Henri Becquerel sur les rayonnements (ACTOR-4). Lecture scientifique distincte du point genré fr-era6-femmes-001.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era6-arts-001",
@@ -7602,7 +7954,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-004 et ACTOR-3 du registre des audits, retenues par la matrice pour Arts & lettres. SRC-005 (Higonnet, Berthe Morisot) reconstitue la participation de Morisot à la première exposition de 1874. Les contre-pouvoirs (Salon officiel, Académie, critique conservatrice) sont documentés dans ACTOR-3.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era6-env-001",
@@ -7629,7 +7981,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de la matrice. OM-008 du registre des omissions documente l'absence de repère daté sur l'industrialisation, la pollution urbaine, les forêts ou l'haussmannisation (la matrice cite OM-009 par décalage de numérotation). Point de silence explicite, non une affirmation historique : aucune date ni grandeur n'est inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era6-migr-001",
@@ -7662,7 +8014,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de la matrice. OM-007 du registre des omissions documente l'absence de repère daté sur ces migrations et sur la loi de 1889 (la matrice cite OM-008 par décalage). SRC-015 (Hargreaves) couvre l'histoire longue de l'immigration mais aucune fiche datée n'a été retenue pour le XIXe siècle : aucun fait n'est avancé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era6-peuples-001",
@@ -7701,7 +8053,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-003 et SRC-004 (Sessions) attestent la capitulation du dey Hussein et le projet de colonie de peuplement. La matrice note que les colonisés restent absents comme acteurs ; OM-014 (périmètre impérial) est explicite sur cette dette, que ce point signale sans l'imiter.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era6-mem-001",
@@ -7731,10 +8083,13 @@ export const DATASET = {
           "memory": [
             "barricade de la chaussée Ménilmontant (18 mars 1871), collection du musée Carnavalet"
           ],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-06-memoire-patrimoine"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "La matrice signale des commémorations sans objet mémoriel distinct. Le repère fr-commune du dataset.js fournit un objet patrimonial daté : la barricade de la chaussée Ménilmontant (18 mars 1871), dont le crédit renvoie aux collections du musée Carnavalet. Aucun SRC du registre ne couvre cet objet : le silence sur les sources est explicite.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era6-circ-001",
@@ -7763,10 +8118,13 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-06-circulations-transnation"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Repère fr-1870 du dataset.js, cité par la matrice pour Circulations transnationales (« guerre »). Le conflit franco-prussien et la proclamation de l'Empire allemand à Versailles (légende de l'image du repère) relèvent d'une circulation transnationale. Aucun SRC du registre ne couvre la guerre de 1870 : silence documenté.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era7-pol-001",
@@ -7796,7 +8154,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Le repère fr-ww2 de src/data/dataset.js (1940) établit que la défaite conduit à l'Occupation et au régime de Vichy ; l'audit france mentionne « État français (1940-1944) » et SRC-008 (Paxton) couvre précisément 1940-1944. Aucune date d'investiture non vérifiée n'est avancée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era7-gue-001",
@@ -7823,10 +8181,13 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-07-guerres-diplomatie"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Repère vérifié fr-ww1 (dataset.js) : mobilisation de millions de Français, dévastation du nord, armistice du 11 novembre 1918 ; Verdun 1916 figure dans la légende de l'image du repère. Aucune source SRC du registre ne couvre 1914-1918 dans l'audit france ; l'ancre 1914 borne la période et 1918 en est la fin.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era7-dro-001",
@@ -7867,7 +8228,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-007 et CLAIM-002 (audits/france) attribuent la rafle des 16-17 juillet 1942 à la police française sous l'autorité de Vichy, en lien avec l'occupant ; SRC-008 et SRC-009. Le bilan chiffré est signalé comme à vérifier dans la review : il n'est pas affirmé ici.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era7-eco-001",
@@ -7898,10 +8259,13 @@ export const DATASET = {
             "Accords Matignon (1936)"
           ],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-07-economie-travail"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Repère vérifié fr-front-populaire (dataset.js, 1936) : coalition de gauche menée par Léon Blum, accords Matignon accordant congés payés et hausse des salaires dans un climat de grèves. La matrice signale une dette économique pour l'ère ; aucun chiffre ni source non présents dans le corpus n'est avancé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era7-soc-001",
@@ -7927,10 +8291,13 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-07-societe-demographie"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Le repère fr-ww1 (dataset.js) porte explicitement « L'armistice du 11 novembre 1918 laisse une société traumatisée » ; l'ancre 1918 est l'année de l'armistice, dans l'ère 1914-1945. Aucune estimation démographique non vérifiée n'est ajoutée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era7-fem-001",
@@ -7961,10 +8328,13 @@ export const DATASET = {
             "Ordonnance de 1944 accordant le droit de vote aux femmes"
           ],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-07-femmes-genre-sexualites"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Repère vérifié fr-vote-femmes (dataset.js, 1944) : ordonnance du gouvernement d'Alger accordant le droit de vote aux femmes ; la review de proposals.yaml précise que l'ordonnance ne s'applique pas uniformément aux femmes des colonies et d'Algérie. Le domaine reprend la chaîne exacte « Femmes, genre, sexualités » de la matrice, avec son guillemet initial tel que lu par verify-points.mjs.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era7-rel-001",
@@ -8002,7 +8372,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La matrice (ERA-7, Religions & croyances) cite la persécution des Juifs, Paris, SRC-008 ; la notice SRC-008 établit la responsabilité propre de Vichy dans les persécutions et déportations, dont la rafle du Vél' d'Hiv (1942), également relatée dans le repère fr-ww2.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era7-sci-001",
@@ -8029,7 +8399,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "OM-009 (audits/france/omissions.yaml, ERA-7, Sciences, techniques & santé) documente explicitement cette absence : Marie Curie n'apparaît pas dans la frise et la radiologie de guerre n'est pas traitée ; la notice SRC-006 porte sur les prix Nobel (1903, 1911) et la découverte de 1898, hors de l'ère. L'ancre 1914 borne la lacune ; aucun fait non vérifié n'est avancé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era7-art-001",
@@ -8067,7 +8437,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-006 (audits/france) donne les dates et le commissaire général ; CLAIM-007 (certain) et SRC-007 (Morton) établissent la représentation hiérarchisée et paternaliste de l'empire. La matrice ERA-7 classe ce domaine à l'échelle impériale.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era7-env-001",
@@ -8092,10 +8462,13 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-07-environnement-territoire"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Le repère fr-ww1 (dataset.js) mentionne explicitement la dévastation du nord du pays pendant la Grande Guerre ; la matrice ERA-7 signale une dette environnementale sur ce domaine. Aucune surface, date de combat ou estimation de dommage non présente dans le corpus n'est avancée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era7-mig-001",
@@ -8125,7 +8498,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "coverage-matrix.csv (ERA-7, Migrations & diasporas) porte « Exode de 1940 et réfugiés absents ; dette migratoire » ; OM-015 (audits/france/omissions.yaml) documente l'absence de repères sur les diasporas autres qu'algériennes. Aucun effectif, lieu d'accueil ou date d'exode non vérifié n'est inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era7-peu-001",
@@ -8159,7 +8532,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "CLAIM-007 (audits/france/country-audit.yaml, certain) : l'Exposition coloniale de 1931 produit une représentation hiérarchisée et paternaliste de l'empire ; SRC-007 (Morton). La matrice ERA-7 associe ce domaine aux colonisés et, pour la rafle de 1942, aux Juifs (SRC-008).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era7-mem-001",
@@ -8193,7 +8566,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-007 qualifie la rafle de « lieu central de la mémoire de Vichy » ; SRC-009 (Rousso, Le Syndrome de Vichy) et SRC-008 (Paxton) documentent les usages mémoriels et l'événement. L'ancre reste 1942, dans l'ère traitée : aucune commémoration postérieure à 1945 n'est datée ici.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era7-cir-001",
@@ -8226,10 +8599,13 @@ export const DATASET = {
             "Traité de Versailles (1919)"
           ],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-07-circulations-transnation"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Repère vérifié fr-versailles (dataset.js, 1919) : les vainqueurs imposent réparations et pertes territoriales, le traité nourrit un ressentiment durable ; les trois noms figurent dans le crédit de l'image du repère et Versailles est un lieu documenté du corpus. Aucune source SRC du registre ne couvre spécifiquement 1919 dans l'audit france.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era7-fem-002",
@@ -8260,10 +8636,13 @@ export const DATASET = {
             "Ordonnance de 1944 sur le vote des femmes"
           ],
           "memory": [],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-FR-07-femmes-genre-sexualites"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "Libellé sémantique du domaine « Femmes, genre, sexualités » de la matrice ERA-7, pour le même repère vérifié fr-vote-femmes (dataset.js, 1944) ; l'accent est mis sur l'accès des femmes au droit de vote et sur les limites coloniales notées dans la review de proposals.yaml.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era7-sci-002",
@@ -8290,7 +8669,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Libellé sémantique du domaine « Sciences, techniques & santé » de la matrice ERA-7, pour la même dette documentée par OM-009 : aucun repère daté sur la médecine de guerre ni sur la radiologie du front ; SRC-006 ne couvre que 1898, 1903 et 1911, hors de l'ère. Aucun fait non vérifié n'est avancé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era8-pol-001",
@@ -8326,7 +8705,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Le dataset (fr-ve-rep) rapporte que de Gaulle, appelé au pouvoir pendant la crise algérienne, fait adopter une nouvelle Constitution en 1958. Shepard (SRC-012) documente le rôle de de Gaulle dans la recomposition de la France issue de la décolonisation. Certitude probable faute de monographie dédiée à la Constitution dans le registre.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era8-guerre-001",
@@ -8371,7 +8750,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-010 et SRC-012 : les accords d'Évian (18 mars 1962) mettent fin aux combats, l'indépendance est proclamée le 3 juillet 1962 ; l'exode des pieds-noirs et l'arrivée des harkis recomposent la société française (cf. fr-algerie, CLAIM-004).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era8-droit-001",
@@ -8407,7 +8786,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-012 et SRC-014 (Pavard) : la loi du 28 décembre 1967 autorise la contraception ; CLAIM-005 précise qu'elle ne garantit pas un accès universel.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era8-economie-001",
@@ -8436,7 +8815,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "fr-trente et SRC-019 (Fourastié) : croissance et modernisation de 1946 à 1975, crise de 1973-1975. CLAIM-001 rappelle que l'expression borne la période à 1946-1975, et non à 1945-1989.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era8-societe-001",
@@ -8478,7 +8857,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-013 et ACTOR-9 : la marche de 1983, née des mobilisations des Minguettes, va de Marseille à Paris et rend visibles les descendants de l'immigration postcoloniale (SRC-015, SRC-016).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era8-femmes-001",
@@ -8512,7 +8891,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La matrice ERA-8 assigne ce domaine à PROP-012 : SRC-014 analyse la contraception comme transformation de la vie des femmes et des rapports de genre ; la loi Veil de 1975 (Simone Veil, ACTOR-5) prolonge ce mouvement.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era8-religion-001",
@@ -8544,7 +8923,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-012 (dataset) et SRC-014 mentionnent l'opposition catholique et les résistances administratives à la loi de 1967. C'est le seul repère religieux daté du corpus pour 1945-1989 ; la sécularisation, le catholicisme social et Vatican II restent une omission documentée (OM-011), d'où la certitude probable.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era8-sciences-001",
@@ -8575,7 +8954,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "SRC-014 (Pavard, « contraception et avortement dans la société française 1956-1979 ») documente la dimension sanitaire de la contraception, taguée « sciences » dans le dataset (fr-prop-012). Les autres repères (Concorde, TGV, VIH) ne sont pas datés dans le registre et restent une dette, comme le note la matrice.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era8-arts-001",
@@ -8610,7 +8989,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Le dataset (fr-mai68, tag « arts ») rapporte la contestation étudiante et la grève générale ainsi que la transformation des mœurs. Hargreaves (SRC-015) couvre la culture et la société françaises d'après-guerre. L'absence d'une source dédiée au ministère Malraux (1959) ou au Centre Pompidou (1977) est documentée (OM-012), d'où la certitude probable.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era8-environnement-001",
@@ -8644,7 +9023,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-011 et SRC-013 (Bess) : création du premier parc national français en 1963, compromis entre protection, tourisme et pastoralisme. La date exacte du décret reste à confirmer sur le texte officiel (review.unresolved), d'où la certitude probable.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era8-migrations-001",
@@ -8685,7 +9064,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-009, CLAIM-003 et SRC-011 (House et MacMaster) : manifestation du FLN réprimée par la police parisienne ; le bilan exact des morts reste disputé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era8-minorites-001",
@@ -8725,7 +9104,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La matrice assigne ce domaine à PROP-009/PROP-013 ; ACTOR-8 et SRC-011 documentent les immigrés algériens comme acteurs collectifs de 1961, et SRC-015 la visibilité des descendants de l'immigration en 1983.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era8-memoire-001",
@@ -8757,7 +9136,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La matrice assigne ce domaine à PROP-009 ; fr-prop-009 et SRC-011 montrent que l'événement, longtemps occulté, devient un enjeu majeur de mémoire (cf. CLAIM-003, bilan disputé).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era8-circulations-001",
@@ -8796,7 +9175,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-008 et SRC-010 (Milward) : déclaration du 9 mai 1950 au Quai d'Orsay, préparée avec Jean Monnet, ouvrant la voie à la CECA (1951). CLAIM-009 indique que son interprétation reste disputée entre fédéralisme et consolidation des États-nations.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era9-pol-001",
@@ -8829,7 +9208,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Repère fr-maastricht (1992) de l'ère. SRC-010 (Milward) interprète la construction européenne comme consolidation des États-nations ; la correction auditée de fr-maastricht retient cette source et le clivage référendaire. Le fait est daté et attribué ; le sens de l'intégration reste discuté dans l'audit.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era9-dip-001",
@@ -8861,7 +9240,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La matrice marque la cellule « vide justifié » pour les engagements militaires extérieurs (Golfe 1991, Kosovo 1999, Afghanistan, Mali 2013) : aucune source du registre ne les documente et aucun point militaire n'est avancé. Le volet diplomatique de l'ère est attesté par SRC-010, déjà retenu pour la correction de fr-maastricht. Ce point ne comble que la diplomatie ; le vide militaire reste ouvert et explicite.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era9-dro-001",
@@ -8897,7 +9276,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-018 et CLAIM-008 du country-audit : SRC-020 (Bojovic et Stanisljevic, Health Policy) analyse la loi du 8 mars 2024 ; SRC-014 (Pavard) documente la continuité avec la loi Veil de 1975. La portée juridique exacte — liberté garantie ou droit subjectif — reste débattue et signalée par l'audit.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era9-eco-001",
@@ -8925,7 +9304,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Repère fr-euro (2002) de l'ère. SRC-010 (Milward), retenu pour la correction auditée de fr-euro, permet de lire le passage à l'euro comme un choix discuté de politique économique et monétaire, et non comme une simple continuité technique. Le débat sur la croissance, l'inflation et les règles budgétaires reste ouvert.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era9-soc-001",
@@ -8961,9 +9340,9 @@ export const DATASET = {
             "SRC-016",
             "SRC-015"
           ],
-          "confidence": "disputed",
+          "confidence": "disputé",
           "justification": "PROP-016 : SRC-016 (Fassin) étudie la police des quartiers, SRC-015 (Hargreaves) l'histoire de l'immigration. L'événement est attesté, mais sa causalité est multiple et disputée (CLAIM-011) : la notion de « crise des banlieues » est réductrice. L'état d'urgence du 8 novembre 2005 est rapporté par PROP-016.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era9-fem-001",
@@ -9000,7 +9379,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Cellule « couvert » de la matrice, PROP-018 avec SRC-020 et SRC-014. SRC-014 (Pavard) couvre la période 1956-1979 et permet d'établir la continuité avec 1975 ; SRC-020 analyse la garantie de 2024. La qualification de « liberté » plutôt que de « droit » est un point non résolu de l'audit.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era9-rel-001",
@@ -9040,7 +9419,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-015 et CLAIM-010 du country-audit : SRC-017 (Bowen) reconstitue l'affaire de Creil, SRC-015 (Hargreaves) la place dans l'histoire de l'immigration et des minorités. L'affaire donne un contenu français à la borne 1989 et décentre le débat de Paris.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era9-sci-001",
@@ -9075,7 +9454,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La matrice classe la cellule « partiel » avec fr-covid (2020) : le registre ne contient aucune source sur la pandémie, aucun point Covid n'est donc avancé. La mesure de santé publique datée et sourcée de l'ère est la loi du 8 mars 2024 (SRC-020, article évalué dans Health Policy ; SRC-014 pour la continuité avec 1975). La dette documentaire sur les sciences et la crise sanitaire reste ouverte.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era9-art-001",
@@ -9107,7 +9486,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Repère fr-charlie (2015) de l'ère. La correction auditée de fr-charlie retient SRC-017 (Bowen) avec une confiance moyenne pour le cadrage laïcité et antisémitisme : la confiance reste donc « probable ». Ce point documente la presse satirique et la mobilisation culturelle ; la littérature, le cinéma et la musique contemporains restent absents du registre (OM-015 tel que cité par la matrice).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era9-env-001",
@@ -9144,7 +9523,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-017 : SRC-018 est la source primaire institutionnelle de l'UNFCCC pour le texte et la date d'adoption ; SRC-013 (Bess) situe la COP21 dans l'histoire de l'écologie française. L'accord est salué comme un tournant mais critiqué pour la faiblesse de ses obligations.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era9-mig-001",
@@ -9178,9 +9557,9 @@ export const DATASET = {
             "SRC-016",
             "SRC-015"
           ],
-          "confidence": "disputed",
+          "confidence": "disputé",
           "justification": "PROP-016 : SRC-016 (Fassin) et SRC-015 (Hargreaves) cadrent le traitement différencié des jeunes issus de l'immigration. La matrice signale que Calais et d'autres lieux restent absents ; la causalité des révoltes est multiple et disputée (CLAIM-011).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era9-min-001",
@@ -9220,7 +9599,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La matrice cite PROP-015 et PROP-016 pour cette cellule : Creil (SRC-017, SRC-015) et Clichy-sous-Bois (SRC-016, SRC-015). L'échelle locale et l'ancrage en 1989 sont ceux de PROP-015. Les diasporas non algériennes, le handicap et les sexualités minoritaires restent des dettes documentées (OM-015).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era9-mem-001",
@@ -9259,7 +9638,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-014 : SRC-009 (Rousso) analyse les usages mémoriels de Vichy jusqu'à la reconnaissance de 1995 ; SRC-008 (Paxton) établit la responsabilité propre de Vichy dans les persécutions. Il faut distinguer l'événement de 1942 de l'acte mémoriel de 1995.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "fr-era9-cir-001",
@@ -9298,7 +9677,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La matrice cite PROP-017, fr-maastricht et fr-euro pour cette cellule. SRC-018 (source primaire) et SRC-013 (Bess) pour la COP21 ; SRC-010 (Milward) pour la circulation des normes européennes. Aucun lien externe, aucune source inventée.",
-          "status": "validated"
+          "status": "extrait"
         }
       ]
     },
@@ -9493,6 +9872,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "En 43, l’empereur Claude lance l’invasion de la Bretagne, conduite par Aulus Plautius, et la conquête se poursuit pendant plusieurs décennies.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -9500,6 +9880,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Une grande partie de l’île est intégrée à la province romaine, mais l’Écosse n’est pas conquise et le mur d’Hadrien fixe une frontière.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -9507,6 +9888,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La Bretagne romaine se construit par l’armée, la fiscalité et l’administration, au prix de violences et de résistances.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -9540,6 +9922,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Vers 410, l’autorité romaine cesse durablement de s’exercer en Bretagne ; la date ne marque pas un départ unique des légions.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -9547,6 +9930,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les sociétés locales se recomposent tandis que l’installation anglo-saxonne s’étale sur les Ve et VIe siècles.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -9554,6 +9938,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les royaumes anglo-saxons qui émergent ne résultent pas d’une invasion homogène, mais de processus politiques et militaires divers.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -9587,6 +9972,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Guillaume, duc de Normandie, bat Harold II à Hastings.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -9594,6 +9980,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La conquête normande transforme la noblesse, la langue et l’administration du royaume.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -9626,6 +10013,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 15 juin 1215, Jean sans Terre accepte une charte négociée avec les barons, qui règle des griefs féodaux et limite certains abus royaux.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -9633,6 +10021,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Innocent III l’annule peu après ; le texte est réédité en 1216, 1217 et 1225.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -9640,6 +10029,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Sa mémoire comme charte des libertés se construit bien après 1215, dans les conflits politiques des siècles suivants.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -9673,6 +10063,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La peste atteint les îles Britanniques en 1348 et se prolonge en 1349 ; son origine portuaire exacte reste incertaine.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -9680,6 +10071,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les estimations de mortalité vont de 30 à 60 % de la population, avec des variations régionales.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -9687,6 +10079,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’épidémie bouleverse l’économie agraire, le travail et les rapports sociaux.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -9720,6 +10113,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le Parlement reconnaît Henri VIII comme chef suprême de l’Église d’Angleterre.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -9727,6 +10121,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La rupture avec Rome ouvre la voie à la Réforme anglaise.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -9759,6 +10154,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La grande flotte de Philippe II est défaite dans la Manche.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -9766,6 +10162,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La victoire renforce l’Angleterre protestante et son ambition maritime.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -9799,6 +10196,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les guerres des Trois Royaumes commencent en Écosse en 1639 et s’étendent à l’Irlande et à l’Angleterre.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -9806,6 +10204,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Charles Ier est exécuté en 1649 ; la république puis le Protectorat de Cromwell précèdent la restauration de 1660.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -9813,6 +10212,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La conquête cromwellienne de l’Irlande (1649–1653) y laisse des traces durables.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -9845,6 +10245,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "En 1688, Guillaume III débarque avec une armée hollandaise et Jacques II est renversé, avec le soutien d’une large partie des élites protestantes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -9852,6 +10253,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le Bill of Rights, adopté en décembre 1689 après une déclaration de février, est une loi qui limite le pouvoir royal et fixe des droits parlementaires.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -9859,6 +10261,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La révolution est aussi un compromis politique, et non l’installation spontanée du parlementarisme.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -9866,6 +10269,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Figure centrale de la mobilisation suffragiste, mais son récit militant ne résume pas le mouvement : les suffragistes radicales du Lancashire et les femmes travaillant en usine ont joué un rôle décisif et sont souvent oubliées.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-014",
                 "SRC-001"
@@ -9876,6 +10280,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Elle montre que le suffrage n'est pas seulement l'affaire des suffragettes londoniennes : les ouvrières du Nord ont lié le vote aux conditions de travail, au logement et à la protection maternelle.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-014",
                 "SRC-001"
@@ -9886,6 +10291,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Londres — capitale, port, centre financier, siège du Parlement",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-012"
@@ -9991,6 +10397,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les parlements d’Angleterre et d’Écosse adoptent les Actes d’Union, en vigueur le 1er mai 1707 ; ils créent le Royaume de Grande-Bretagne, et non le Royaume-Uni.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -9998,6 +10405,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le Parlement écossais vote sa propre dissolution au terme d’un marchandage politique contesté, accompagné de pétitions et d’émeutes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -10005,6 +10413,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’Église d’Écosse et le droit écossais sont préservés.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -10012,6 +10421,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Figure centrale de la mobilisation suffragiste, mais son récit militant ne résume pas le mouvement : les suffragistes radicales du Lancashire et les femmes travaillant en usine ont joué un rôle décisif et sont souvent oubliées.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-014",
                 "SRC-001"
@@ -10022,6 +10432,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Elle montre que le suffrage n'est pas seulement l'affaire des suffragettes londoniennes : les ouvrières du Nord ont lié le vote aux conditions de travail, au logement et à la protection maternelle.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-014",
                 "SRC-001"
@@ -10032,6 +10443,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Édimbourg — capitale, centre juridique, Lumières écossaises, Parlement dévolu",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-004",
                 "SRC-003"
@@ -10139,6 +10551,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’industrialisation se déploie vers 1750–1850 dans des régions précises : Lancashire, West Riding, Clyde et Midlands.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -10146,6 +10559,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le charbon, le textile, les manufactures, les marchés impériaux et les capitaux liés à la traite et à l’esclavage transforment le travail, y compris celui des femmes et des enfants, et accélèrent l’urbanisation.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -10153,6 +10567,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’expression « révolution industrielle » est une métaphore commode, contestée par les historiens qui insistent sur les continuités et la diversité régionale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -10160,6 +10575,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Figure centrale de la mobilisation suffragiste, mais son récit militant ne résume pas le mouvement : les suffragistes radicales du Lancashire et les femmes travaillant en usine ont joué un rôle décisif et sont souvent oubliées.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-014",
                 "SRC-001"
@@ -10170,6 +10586,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Elle montre que le suffrage n'est pas seulement l'affaire des suffragettes londoniennes : les ouvrières du Nord ont lié le vote aux conditions de travail, au logement et à la protection maternelle.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-014",
                 "SRC-001"
@@ -10258,6 +10675,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les Actes d’Union adoptés par les parlements de Grande-Bretagne et d’Irlande entrent en vigueur le 1er janvier 1801.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -10265,6 +10683,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’Irlande perd son parlement ; 100 députés irlandais siègent à Westminster.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -10272,6 +10691,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’union est contestée par les catholiques et les patriotes irlandais, et ne règle pas la question de l’émancipation catholique.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -10279,6 +10699,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Figure centrale de la mobilisation suffragiste, mais son récit militant ne résume pas le mouvement : les suffragistes radicales du Lancashire et les femmes travaillant en usine ont joué un rôle décisif et sont souvent oubliées.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-014",
                 "SRC-001"
@@ -10289,6 +10710,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Elle montre que le suffrage n'est pas seulement l'affaire des suffragettes londoniennes : les ouvrières du Nord ont lié le vote aux conditions de travail, au logement et à la protection maternelle.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-014",
                 "SRC-001"
@@ -10299,6 +10721,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Dublin — capitale, port, centre politique et culturel",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-005",
                 "SRC-001"
@@ -10405,6 +10828,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le Slavery Abolition Act reçoit l’assentiment royal le 28 août 1833 et entre en vigueur le 1er août 1834 dans les colonies britanniques, avec des exceptions.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -10412,6 +10836,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les personnes asservies passent par une période d’apprentissage avant 1838 ; les propriétaires reçoivent £20 millions, sans indemnisation pour les personnes libérées.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -10419,6 +10844,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’abolition couronne des décennies de campagnes, mais elle laisse subsister des formes de coercition et de dépendance.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -10426,6 +10852,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Figure centrale de la mobilisation suffragiste, mais son récit militant ne résume pas le mouvement : les suffragistes radicales du Lancashire et les femmes travaillant en usine ont joué un rôle décisif et sont souvent oubliées.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-014",
                 "SRC-001"
@@ -10436,6 +10863,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Elle montre que le suffrage n'est pas seulement l'affaire des suffragettes londoniennes : les ouvrières du Nord ont lié le vote aux conditions de travail, au logement et à la protection maternelle.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-014",
                 "SRC-001"
@@ -10524,6 +10952,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La maladie de la pomme de terre détruit les récoltes à partir de 1845 ; la famine dure jusqu’en 1852.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -10531,6 +10960,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Environ un million de personnes meurent et plus d’un million émigrent.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -10538,6 +10968,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La gestion britannique, les marchés et l’aide publique sont au cœur des débats historiographiques.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -10545,6 +10976,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Figure centrale de la mobilisation suffragiste, mais son récit militant ne résume pas le mouvement : les suffragistes radicales du Lancashire et les femmes travaillant en usine ont joué un rôle décisif et sont souvent oubliées.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-014",
                 "SRC-001"
@@ -10555,6 +10987,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Elle montre que le suffrage n'est pas seulement l'affaire des suffragettes londoniennes : les ouvrières du Nord ont lié le vote aux conditions de travail, au logement et à la protection maternelle.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-014",
                 "SRC-001"
@@ -10565,6 +10998,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Liverpool — port, commerce colonial, ville d'immigration",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-008",
                 "SRC-011"
@@ -10670,6 +11104,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Londres accueille une exposition mondiale dans un palais de verre et d’acier.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -10677,6 +11112,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’événement célèbre la puissance industrielle et impériale britannique.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -10684,6 +11120,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Figure centrale de la mobilisation suffragiste, mais son récit militant ne résume pas le mouvement : les suffragistes radicales du Lancashire et les femmes travaillant en usine ont joué un rôle décisif et sont souvent oubliées.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-014",
                 "SRC-001"
@@ -10694,6 +11131,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Elle montre que le suffrage n'est pas seulement l'affaire des suffragettes londoniennes : les ouvrières du Nord ont lié le vote aux conditions de travail, au logement et à la protection maternelle.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-014",
                 "SRC-001"
@@ -10704,6 +11142,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Londres — capitale, port, centre financier, siège du Parlement",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-012"
@@ -10810,6 +11249,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le Royaume-Uni mobilise son empire, lève une armée de volontaires puis instaure la conscription en 1916, et subit des pertes massives sur le front occidental.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -10817,6 +11257,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le front intérieur, les usines de munitions et le travail des femmes transforment la société ; l’insurrection de Pâques 1916 ouvre la crise irlandaise.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -10824,6 +11265,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le déclin relatif de la puissance britannique après 1918 est une thèse débattue, pas une conséquence automatique de la guerre.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -10857,6 +11299,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La Representation of the People Act reçoit l’assentiment royal le 6 février 1918 ; elle accorde le vote aux femmes de plus de 30 ans remplissant une condition de propriété, et aux hommes de plus de 21 ans.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -10864,6 +11307,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Environ 8,5 millions de femmes deviennent électrices, et les femmes peuvent se présenter aux élections dès 1918 ; l’égalité électorale avec les hommes n’est atteinte qu’en 1928.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -10871,6 +11315,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le vote de 1918 est le produit des campagnes de la WSPU, de la NUWSS et des suffragistes radicales, notamment dans le Lancashire.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -10904,6 +11349,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 13 avril 1919, le général Dyer ordonne de tirer sur une foule réunie à Jallianwala Bagh, à Amritsar.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -10911,6 +11357,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le bilan officiel est de 379 morts, mais les estimations sont plus élevées.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -10918,6 +11365,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’événement nourrit le mouvement nationaliste indien et la critique de l’empire britannique.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -10925,6 +11373,7 @@ export const DATASET = {
               "kind": "audit",
               "text": "Le 13 avril 1919, les troupes du général Dyer tirent sur la foule de Jallianwala Bagh; le bilan officiel est de 379 morts, mais les estimations savantes sont plus élevées.",
               "confidence": "certain",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-015",
                 "SRC-009"
@@ -10935,6 +11384,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Amritsar — ville religieuse, centre du Pendjab, lieu de massacre",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-015"
               ]
@@ -10986,6 +11436,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le Royaume-Uni et son empire combattent l’Allemagne nazie aux côtés des dominions et des Alliés ; après la défaite française de 1940, le pays tient avec son empire jusqu’à l’entrée en guerre de l’URSS et des États-Unis en 1941.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -10993,6 +11444,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La bataille d’Angleterre (1940) et le Blitz (septembre 1940–mai 1941) frappent les villes, puis les V1 et V2 bombardent le pays en 1944–1945, tandis que les îles Anglo-Normandes restent occupées.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -11000,6 +11452,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le rapport Beveridge de 1942 prépare l’État-providence, et la famine du Bengale de 1943 rappelle le coût impérial du conflit.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -11007,6 +11460,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Londres — capitale, port, centre financier, siège du Parlement",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-012"
@@ -11061,6 +11515,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’Inde et le Pakistan deviennent indépendants en août 1947.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -11068,6 +11523,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La partition du Bengale et du Pendjab provoque le déplacement de 10 à 15 millions de personnes et des violences qui tuent peut-être un million de personnes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -11075,6 +11531,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le Royaume-Uni met fin à son empire indien dans une précipitation controversée.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -11082,6 +11539,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Symbole de l'intersection entre classe, race et genre dans le syndicalisme britannique; la défaite de la grève ne diminue pas son impact sur la reconnaissance des travailleuses migrantes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-017",
                 "SRC-012"
@@ -11092,6 +11550,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "La « révolution thatchérienne » est réelle (privatisations, monétarisme, affaiblissement des syndicats, centralisation), mais elle est aussi une construction politique contestée : chômage de masse, inégalités territoriales, résistances sociales.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-012",
                 "SRC-001"
@@ -11102,6 +11561,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Kolkata (Calcutta) — ancienne capitale de l'Inde britannique (jusqu'en 1911), port, centre industriel de guerre",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-016",
                 "SRC-009"
@@ -11207,6 +11667,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le National Health Service ouvre le 5 juillet 1948 sous la direction du ministre de la Santé Aneurin Bevan ; il est gratuit au point d’usage et financé principalement par l’impôt.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -11214,6 +11675,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Des charges pour les prescriptions, les lunettes et les soins dentaires sont introduites à partir de 1951.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -11221,6 +11683,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La profession médicale, les hôpitaux volontaires et les personnels du Commonwealth sont des acteurs clés de sa construction.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -11228,6 +11691,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Symbole de l'intersection entre classe, race et genre dans le syndicalisme britannique; la défaite de la grève ne diminue pas son impact sur la reconnaissance des travailleuses migrantes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-017",
                 "SRC-012"
@@ -11238,6 +11702,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "La « révolution thatchérienne » est réelle (privatisations, monétarisme, affaiblissement des syndicats, centralisation), mais elle est aussi une construction politique contestée : chômage de masse, inégalités territoriales, résistances sociales.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-012",
                 "SRC-001"
@@ -11248,6 +11713,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Londres — capitale, port, centre financier, siège du Parlement",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-012"
@@ -11355,6 +11821,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Margaret Thatcher devient Première ministre le 4 mai 1979 et engage un programme de monétarisme, de privatisations et de réduction du pouvoir syndical.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -11362,6 +11829,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La grève des mineurs de 1984–1985, la poll tax et la Section 28 cristallisent les oppositions ; elle démissionne en novembre 1990.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -11369,6 +11837,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le programme transforme l’économie et creuse les divisions régionales, mais ses effets varient selon les secteurs et les territoires.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -11376,6 +11845,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Symbole de l'intersection entre classe, race et genre dans le syndicalisme britannique; la défaite de la grève ne diminue pas son impact sur la reconnaissance des travailleuses migrantes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-017",
                 "SRC-012"
@@ -11386,6 +11856,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "La « révolution thatchérienne » est réelle (privatisations, monétarisme, affaiblissement des syndicats, centralisation), mais elle est aussi une construction politique contestée : chômage de masse, inégalités territoriales, résistances sociales.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-012",
                 "SRC-001"
@@ -11396,6 +11867,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Londres — capitale, port, centre financier, siège du Parlement",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-012"
@@ -11502,6 +11974,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’accord du Vendredi saint est signé le 10 avril 1998 ; il organise un partage du pouvoir en Irlande du Nord et est approuvé par référendum le 22 mai 1998.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -11509,6 +11982,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’attentat d’Omagh, le 15 août 1998, et les suspensions de l’Assemblée entre 2002 et 2007 montrent que la paix n’est pas linéaire.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -11516,6 +11990,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’accord s’inscrit dans l’histoire de la partition de 1921–1922 et des Troubles, qu’il ne clôt pas entièrement.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -11523,6 +11998,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Symbole de l'intersection entre classe, race et genre dans le syndicalisme britannique; la défaite de la grève ne diminue pas son impact sur la reconnaissance des travailleuses migrantes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-017",
                 "SRC-012"
@@ -11533,6 +12009,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "La « révolution thatchérienne » est réelle (privatisations, monétarisme, affaiblissement des syndicats, centralisation), mais elle est aussi une construction politique contestée : chômage de masse, inégalités territoriales, résistances sociales.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-012",
                 "SRC-001"
@@ -11543,6 +12020,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Belfast — port, industrie du lin, chantiers navals, capitale dévolue",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-005",
                 "SRC-001"
@@ -11650,6 +12128,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le référendum du 23 juin 2016 donne 51,9 % des voix au Leave, avec une participation de 72,2 % ; l’Écosse et l’Irlande du Nord votent majoritairement Remain.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -11657,6 +12136,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le Royaume-Uni active l’article 50 en 2017, et l’élection de 2019 permet l’adoption de l’accord de retrait ; il quitte l’Union européenne le 31 janvier 2020.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -11664,6 +12144,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La période de transition s’achève le 31 décembre 2020, dans un contexte de divisions territoriales et de questions sur le protocole nord-irlandais.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -11671,6 +12152,7 @@ export const DATASET = {
               "kind": "audit",
               "text": "Le 23 juin 2016, 51,9 % des votants se prononcent pour la sortie de l'Union européenne, avec une participation de 72,2 %; l'Écosse et l'Irlande du Nord votent majoritairement Remain.",
               "confidence": "certain",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-013",
                 "SRC-001"
@@ -11681,6 +12163,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Symbole de l'intersection entre classe, race et genre dans le syndicalisme britannique; la défaite de la grève ne diminue pas son impact sur la reconnaissance des travailleuses migrantes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-017",
                 "SRC-012"
@@ -11691,6 +12174,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "La « révolution thatchérienne » est réelle (privatisations, monétarisme, affaiblissement des syndicats, centralisation), mais elle est aussi une construction politique contestée : chômage de masse, inégalités territoriales, résistances sociales.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-012",
                 "SRC-001"
@@ -11701,6 +12185,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Londres — capitale, port, centre financier, siège du Parlement",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-012"
@@ -12461,7 +12946,7 @@ export const DATASET = {
           "predicate": "a causé une mortalité de masse disputée",
           "object": "1943",
           "text": "La famine du Bengale de 1943 cause environ 2 à 3 millions de morts selon les estimations; les causes combinent guerre, réquisitions, transports, politique coloniale et perturbations locales.",
-          "confidence": "disputed",
+          "confidence": "disputé",
           "sources": [
             "SRC-016",
             "SRC-009"
@@ -12473,7 +12958,7 @@ export const DATASET = {
           "predicate": "est un processus violent et contesté",
           "object": "1919–1997",
           "text": "La décolonisation britannique ne se réduit pas à des transferts de souveraineté : elle inclut des violences coloniales (Amritsar, Kenya), des famines (Bengale), des partitions (Inde, Palestine) et des conflits armés (Irlande, Chypre).",
-          "confidence": "disputed",
+          "confidence": "disputé",
           "sources": [
             "SRC-009",
             "SRC-015",
@@ -12876,7 +13361,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Conquête lancée en 43 par Claude et conduite par Aulus Plautius, intégration progressive à la province romaine : dataset.js (uk-rome, uk-rome-point-1), audits/uk/fixes.yaml (uk-rome) et REPORT.md §4.15. SRC-001 et SRC-002 sont les deux synthèses du registre qui couvrent cette ère. Ancre 43 conforme à l'ère ; aucun acteur ni lieu inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era1-pol-002",
@@ -12912,7 +13397,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La formation du royaume d'Angleterre (927) est explicitement datée dans audits/uk/omissions.yaml (OM-003, ERA-1), dont evidence_checked est SRC-001 et SRC-002, et dans country-audit.yaml (CULT-1). Aucun nom de souverain ajouté : le corpus ne le nomme pas. Ancre 927 dans l'ère 43–1066.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era1-guer-003",
@@ -12953,7 +13438,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Conquête progressive, violences et résistances, Écosse non conquise et mur d'Hadrien comme frontière : dataset.js (uk-rome-point-2, uk-rome-point-3), fixes.yaml (uk-rome) et REPORT.md §4.15. L'ancre 43 mesure le début du processus, pas son achèvement ; aucune date de bataille inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era1-droit-004",
@@ -12995,7 +13480,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Droit & justice, national) : OM-002 documente l'absence de traitement de l'administration provinciale et du droit romain, OM-003 cite le Danelaw et les royaumes vikings. Aucun texte de loi ni date de promulgation dans le corpus. Silence explicite conformément aux règles 3 et 7 ; ancre = intervalle de l'ère, aucune date ni source inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era1-econ-005",
@@ -13031,7 +13516,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La Bretagne romaine « se construit par l'armée, la fiscalité et l'administration » : dataset.js (uk-rome-point-3). SRC-001 et SRC-002 cadrent l'économie provinciale. OM-002 rappelle que villas, mines et échanges restent à documenter ; aucun chiffre de production ni de commerce inventé. Ancre 43 dans l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era1-soc-006",
@@ -13043,7 +13528,7 @@ export const DATASET = {
           "object": "la Bretagne post-romaine, tandis que l'installation anglo-saxonne s'étale sur les Ve et VIe siècles",
           "text": "Les sociétés locales de Bretagne se recomposent après la cessation durable de l'autorité romaine la Bretagne post-romaine, tandis que l'installation anglo-saxonne s'étale sur les Ve et VIe siècles",
           "time": "410",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "processus",
             "groupe_social"
@@ -13066,7 +13551,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "Vers 410, l'autorité romaine cesse durablement et les sociétés locales se recomposent : dataset.js (uk-410, uk-410-point-1, uk-410-point-2), fixes.yaml (uk-410) et REPORT.md §4.1. country-audit.yaml classe « date et nature de la fin de la Bretagne romaine » parmi les débats structurants : 410 est une rescription impériale, non un départ unique des légions. Le disputé reste disputé ; SRC-001 et SRC-002 sont deux synthèses indépendantes du registre.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era1-genre-007",
@@ -13099,7 +13584,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Femmes, genre, sexualités, national) : OM-004 y est citée pour l'absence de fiche sur les femmes dans la Bretagne romaine ou anglo-saxonne et l'absence de source spécialisée au registre (Omissions.yaml place OM-004 en ERA-2 ; la matrice ERA-1 l'invoque pour cette cellule). OM-004 avertit contre le tokenisme : aucun nom ni événement féminin n'est inventé. Silence explicite, ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era1-relig-008",
@@ -13138,7 +13623,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La christianisation (597) est explicitement nommée dans audits/uk/omissions.yaml (OM-003, ERA-1), dont evidence_checked est SRC-001 et SRC-002, et dans country-audit.yaml (CULT-1). Les cultes romains sont signalés par OM-002. Aucun nom de missionnaire ni de roi ajouté : le corpus ne les nomme pas. Ancre 597 dans l'ère ; aucun contenu hors de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era1-sci-009",
@@ -13169,7 +13654,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Sciences, techniques & santé, national) : OM-002 documente l'absence de techniques, médecine et savoirs romains, avec SRC-001 et SRC-002 comme evidence_checked. Aucune invention technique ni date d'ouvrage ; silence explicite, ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era1-arts-010",
@@ -13200,7 +13685,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Arts & lettres, national) : OM-002 documente l'absence d'arts et d'architecture romains. Le mur d'Hadrien n'est mentionné dans uk-rome que comme frontière, pas comme objet artistique daté. Aucune œuvre, ni auteur, ni date inventée ; silence explicite, ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era1-env-011",
@@ -13212,7 +13697,7 @@ export const DATASET = {
           "object": "le territoire de la Bretagne romaine et son paysage de frontière",
           "text": "La frontière septentrionale de la Bretagne romaine laisse l'Écosse hors de la province et fixe une limite matérialisée par le mur d'Hadrien le territoire de la Bretagne romaine et son paysage de frontière",
           "time": "43",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "processus",
             "lieu"
@@ -13235,7 +13720,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "L'Écosse n'est pas conquise et le mur d'Hadrien fixe une frontière : dataset.js (uk-rome-point-2), fixes.yaml (uk-rome), REPORT.md §4.15. L'ancre 43 est le début de la conquête ; time_precision « approximate » indique que la frontière se met en place dans les décennies suivantes, sans date additionnelle inventée. SRC-001 et SRC-002 ; aucun contenu hors de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era1-migr-012",
@@ -13271,7 +13756,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "L'installation anglo-saxonne s'étale sur les Ve et VIe siècles et les royaumes émergents ne résultent pas d'une invasion homogène : dataset.js (uk-410-point-2, uk-410-point-3), fixes.yaml (uk-410), OM-003. L'ancre 450 représente le Ve siècle, borne de siècle conforme à l'ère ; aucune date d'événement unique ni effectif de migrants inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era1-migr-013",
@@ -13307,7 +13792,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "OM-003 (ERA-1) cite explicitement le Danelaw et les royaumes vikings comme angle mort majeur, « non justifié par l'absence de sources » (evidence_checked : SRC-001, SRC-002). La matrice ERA-1 (Migrations & diasporas) note les migrations germaniques sans datation ni acteurs. Silence documenté, ancre = intervalle de l'ère ; aucune date de raid ni de traité inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era1-peuples-014",
@@ -13319,7 +13804,7 @@ export const DATASET = {
           "object": "l'Angleterre anglo-saxonne émergente et les identités régionales conservées",
           "text": "Bretons romanisés et populations germaniques se recomposent après la fin de l'autorité romaine, sans statut ni voix documentés l'Angleterre anglo-saxonne émergente et les identités régionales conservées",
           "time": "410",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "processus",
             "groupe_social"
@@ -13347,7 +13832,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La matrice (ERA-1, Peuples autochtones & minorités) note que les Bretons romanisés et les populations germaniques sont présents « mais sans statut ni voix » ; dataset.js (uk-410) documente la recomposition des sociétés locales. OM-003 identifie l'angle mort des sociétés anglo-saxonnes. Confiance probable : statut et voix ne sont pas documentés dans le registre. Ancre 410 dans l'ère ; aucun contenu hors de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era1-memoire-015",
@@ -13380,7 +13865,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Mémoire & patrimoine, national) : OM-002 y est citée pour l'absence de traitement de la mémoire romaine et des récits de fondation. Tout objet commémoratif postérieur à 1066 (statues, musées, cérémonies modernes) est hors de l'ère et n'est donc pas décrit ici. Silence explicite, ancre = intervalle de l'ère ; aucune date ni citation inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era1-circ-016",
@@ -13418,7 +13903,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "L'intégration à l'Empire romain est un fait de circulation : coverage-matrix.csv (ERA-1, Circulations transnationales, partiel) et dataset.js (uk-rome : armée, fiscalité, administration). SRC-001 et SRC-002 sont les synthèses du registre couvrant cette ère. Échelle transnationale conforme à la matrice, ancre 43 dans l'ère ; aucun réseau commercial chiffré inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era2-pol-001",
@@ -13458,7 +13943,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Repère uk-hastings de dataset.js (1066) : victoire de Guillaume de Normandie sur Harold II et transformation de la noblesse, de la langue et de l'administration. SRC-001 (Oxford History of Britain) et SRC-002 (Kearney, A History of Four Nations) cadrent la conquête dans une histoire des quatre nations. 1066 est la borne d'entrée de l'ère (PERIOD-2) ; aucune date hors de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era2-guer-002",
@@ -13493,7 +13978,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Bataille de Hastings en 1066, documentée dans dataset.js (uk-hastings) et cadrée par SRC-001 et SRC-002. La matrice ERA-2 signale que les guerres d'Écosse, du pays de Galles et d'Irlande sont absentes (OM-006) ; country-audit.yaml ne cite 1283 (pays de Galles) et 1314 (Bannockburn) que comme bornes internes envisagées, pas comme repères du corpus. Aucun événement ni date supplémentaire avancé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era2-droit-003",
@@ -13537,7 +14022,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Dataset.js (uk-magna, points 1 et 2) : charte négociée le 15 juin 1215, annulation par Innocent III, rééditions en 1216, 1217 et 1225 ; correction de proposals.yaml (uk-magna) contre l'anachronisme de la « charte de droits ». SRC-001 et SRC-002 soutiennent le cadre institutionnel. 1215 est dans l'ère 1066-1485.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era2-econ-004",
@@ -13571,7 +14056,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Dataset.js (uk-peste, point 3) : « L'épidémie bouleverse l'économie agraire, le travail et les rapports sociaux ». La matrice ERA-2 classe uk-peste dans cette cellule tout en signalant l'absence de fiche économique dédiée. SRC-001 et SRC-002 cadrent la période. 1348 est conforme à l'ère ; aucune quantification ni cause économique non documentée n'est ajoutée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era2-soc-005",
@@ -13605,7 +14090,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "Dataset.js (uk-peste, points 1 et 2) : peste en 1348 prolongée en 1349, origine portuaire incertaine, estimations de 30 à 60 % avec variations régionales. La correction de proposals.yaml (uk-peste) rejette le « tiers de la population » présenté comme certitude : le chiffre reste disputé, l'événement est certain. SRC-001 et SRC-002 sont les synthèses de référence. Aucune date hors de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era2-genre-006",
@@ -13635,7 +14120,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Femmes, genre, sexualités) : OM-004 documente l'absence de fiche sur les femmes, le mariage, le travail, la religion, le veuvage, les voix féminines et les normes de genre ; evidence_checked SRC-001 et SRC-002. Seul le silence du corpus est décrit, aucun fait historique n'est inventé. L'intervalle 1066/1485 est la borne de l'ère, non une date d'événement.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era2-relig-007",
@@ -13677,7 +14162,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Dataset.js (uk-magna, point 2) et correction de proposals.yaml (uk-magna) : annulation par Innocent III puis rééditions, ce qui donne une ancre de fait religieux-institutionnel dans un domaine que la matrice jugeait seulement évoqué indirectement. SRC-001 et SRC-002 soutiennent le cadre. 1215 est la date de la charte, pas celle des rééditions.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era2-tech-008",
@@ -13705,7 +14190,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Sciences, techniques & santé) : OM-005 documente l'absence de fiche sur la médecine médiévale, les savoirs techniques et les sciences ; evidence_checked SRC-001 et SRC-002. Dette documentaire explicite, pas absence de sources ; aucun savoir, praticien ni date n'est inventé. L'intervalle est la borne de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era2-arts-009",
@@ -13732,7 +14217,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Arts & lettres) : OM-005 nomme explicitement l'architecture et les arts médiévaux parmi les domaines sans fiche ; evidence_checked SRC-001 et SRC-002. Aucun artiste, œuvre ou jalon artistique n'est avancé sans source. L'intervalle 1066/1485 est la borne de l'ère, non une date d'événement.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era2-env-010",
@@ -13764,7 +14249,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Dataset.js (uk-peste, points 1 et 2) : origine portuaire exacte incertaine et variations régionales de la mortalité. La matrice ERA-2 rattache uk-peste à Environnement & territoire tout en signalant l'absence d'histoire agraire et de climat (OM-005). SRC-001 et SRC-002 cadrent la période. Aucun port d'entrée ni donnée climatique n'est affirmé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era2-migr-011",
@@ -13797,7 +14282,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Migrations & diasporas) : migrations normandes, flamandes, galloises et irlandaises explicitement non traitées ; OM-006 documente l'absence, avec evidence_checked SRC-002, SRC-004, SRC-005 et SRC-006. Aucun flux, date ni groupe supplémentaire n'est inventé : les groupes nommés sont ceux de la matrice. L'intervalle est la borne de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era2-minor-012",
@@ -13843,7 +14328,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Matrice ERA-2 (échelle regional) : la conquête normande est présente via uk-hastings, tandis que Gallois, Irlandais, Écossais et Juifs médiévaux sont absents (OM-006). Les quatre SRC sont ceux que OM-006 déclare avoir vérifiés (SRC-002, SRC-004, SRC-005, SRC-006) ; le caractère plurinational est cadré par SRC-002. 1066 est la borne d'entrée de l'ère ; aucune chronologie propre non sourcée n'est projetée sur l'Écosse, le pays de Galles ou l'Irlande.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era2-mem-013",
@@ -13879,7 +14364,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Dataset.js (uk-magna, point 3) et correction de proposals.yaml (uk-magna) : distinction explicite entre le règlement féodal de 1215 et sa mémoire ultérieure ; la matrice ERA-2 note que la distinction texte/postérité manque. SRC-001 et SRC-002 soutiennent le cadre. La date 1215 mesure le texte, non la réception, qui est postérieure et non datée ici.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era2-circ-014",
@@ -13915,7 +14400,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Matrice ERA-2 (échelle transnational) : « l'espace normand et angevin est évoqué, sans réseaux ni échanges ». Dataset.js (uk-hastings) ancre le lien anglo-normand en 1066 par Guillaume, duc de Normandie ; SRC-001 et SRC-002 cadrent la conquête et ses relations continentales. Aucune route commerciale, noyau angevin ni date de circulation n'est ajouté.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era3-pol-001",
@@ -13956,7 +14441,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Repère uk-suprematie du dataset (Acte de suprématie, 1534). Complète la cellule « partiel » de la matrice ERA-3, qui signalait des repères sans acteurs ni institutions détaillés. SRC-001 et SRC-002 sont des synthèses de référence couvrant la période.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era3-guerre-001",
@@ -13994,7 +14479,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Repère uk-armada du dataset : la flotte de Philippe II est défaite dans la Manche et la victoire renforce l'Angleterre protestante. Cellule « partiel » de la matrice ERA-3 (Armada et guerre civile présentes, guerres des Trois Royaumes sous-traitées).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era3-droit-001",
@@ -14034,7 +14519,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Fait tiré du repère uk-civil du dataset et de la correction « uk-civil » de proposals.yaml (SRC-002, SRC-005, SRC-001). La matrice ERA-3 Droit & justice est « partiel » mais renvoie à uk-glorieuse (1688/1689) ; pour respecter la borne 1688 de l'ère, le point s'appuie sur l'exécution de 1649, sourcée dans l'audit.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era3-economie-001",
@@ -14068,7 +14553,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "OM-009 signale l'absence de tout point sur l'enclosure, le commerce atlantique, le travail et les finances de guerre pour 1485-1914 ; la matrice ERA-3 Économie & travail est « vide justifié ». Bornes : début conventionnel de l'ère et borne approximative de la première modernité, sans date ponctuelle ni chiffre inventé. SRC-001 est la synthèse de référence couvrant la période.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era3-societe-001",
@@ -14107,7 +14592,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Fait tiré du repère uk-civil du dataset (guerres des Trois Royaumes de 1639 à 1653 ; conquête cromwellienne de l'Irlande 1649-1653). La matrice ERA-3 Société & démographie est « partiel » et signalait l'absence de structure sociale. Les bornes 1639 et 1653 sont celles du repère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era3-femmes-001",
@@ -14141,7 +14626,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La matrice ERA-3 « Femmes, genre, sexualités » est vide justifiée et renvoie à OM-008, qui cite explicitement la sorcellerie comme angle mort. Les bornes sont celles de l'ère, faute de date ponctuelle validée dans le registre ; aucun chiffre ni nom de procès inventé. SRC-001 et SRC-002 sont les synthèses de référence de l'audit.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era3-femmes-002",
@@ -14174,7 +14659,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Même cellule que uk-era3-femmes-001. Le libellé de domaine reprend le jeton exact « \"Femmes » tel que lu par scripts/verify-points.mjs dans coverage-matrix.csv (virgule interne non échappée), afin que la cellule soit comptée. Aucune date ponctuelle ni donnée chiffrée inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era3-religion-001",
@@ -14210,7 +14695,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "OM-007 cite explicitement la Réforme écossaise (1560) comme angle mort de l'ERA-3 et donne SRC-001, SRC-002, SRC-004, SRC-005 et SRC-006 comme preuves vérifiées. La date 1560 figure dans l'audit. La cellule est « partiel » : seul l'acte de suprématie anglais était représenté.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era3-sciences-001",
@@ -14242,7 +14727,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "OM-009 (ERA-3) signale l'absence de la révolution scientifique, de la médecine et des techniques ; la matrice ERA-3 est « vide justifié ». Intervalle borné par la fin de l'ère, sans date ponctuelle ni nom d'ouvrage inventé. SRC-001 est la synthèse de référence couvrant la période.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era3-sciences-002",
@@ -14275,7 +14760,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Même cellule que uk-era3-sciences-001. Le libellé de domaine reprend le jeton exact « \"Sciences » tel que lu par scripts/verify-points.mjs dans coverage-matrix.csv (virgule interne non échappée), afin que la cellule soit comptée. Aucun nom de médecin, de livre ou de date ponctuelle inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era3-arts-001",
@@ -14310,7 +14795,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "OM-009 (ERA-3) cite explicitement « Shakespeare, musique et arts de la période absents » ; la matrice ERA-3 est « vide justifié ». Bornes approximatives conventionnelles pour l'apogée du théâtre londonien, sans titre d'œuvre ni date de création inventés. SRC-001 couvre la période.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era3-environnement-001",
@@ -14342,7 +14827,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "OM-009 (ERA-3) liste la déforestation, l'agriculture et le climat comme absents de la frise ; la matrice ERA-3 est « vide justifié ». Formulation processuelle bornée par l'ère, sans date ni chiffre inventé. SRC-001 et SRC-002 sont les synthèses de référence de l'audit.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era3-migrations-001",
@@ -14377,7 +14862,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La matrice ERA-3 Migrations & diasporas est « vide justifié » et cite explicitement les migrations huguenotes, irlandaises et écossaises absentes (OM-011). Intervalle approximatif borné par la fin de l'ère, sans chiffre de migrants ni date ponctuelle inventés. SRC-001 et SRC-005 couvrent la période.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era3-minorites-001",
@@ -14417,7 +14902,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La matrice ERA-3 (regional, « vide justifié ») renvoie à OM-006 et OM-007 : Irlande, pays de Galles et Écosse sous-représentés, populations colonisées absentes. La colonisation de l'Irlande est citée dans la periodization de proposals.yaml et la conquête cromwellienne (1649-1653) dans uk-civil. Aucune date de plantation précise inventée ; les bornes sont celles de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era3-memoire-001",
@@ -14455,7 +14940,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La matrice ERA-3 Mémoire & patrimoine est « partiel » (uk-glorieuse) et signalait l'absence d'analyse de sa postérité. Le repère uk-glorieuse et la correction « uk-glorieuse » de proposals.yaml précisent l'armée hollandaise, le soutien protestant et le compromis ; SRC-001 et SRC-003 sont les sources de cette correction. La date 1688 est la borne de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era3-circulations-001",
@@ -14494,7 +14979,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La matrice ERA-3 (transnational, « partiel ») cite uk-armada et uk-civil et constate des liens avec l'Espagne, les Provinces-Unies et l'Atlantique sans réseaux documentés. Les bornes 1588 et 1653 sont celles des repères uk-armada et uk-civil ; SRC-001, SRC-002 et SRC-005 sont les sources de la periodization ERA-3.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era4-pol-001",
@@ -14536,7 +15021,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "uk-union et fixes.yaml (ERA-4) : 1er mai 1707, Royaume de Grande-Bretagne et non Royaume-Uni ; Colley (SRC-003), Devine (SRC-004) et Kearney (SRC-002) documentent le vote écossais, l'opposition populaire et la préservation de l'Église d'Écosse et du droit écossais.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era4-guerre-001",
@@ -14568,7 +15053,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "OM-010 et periodization.proposed_changes (césure 1815) : la période 1688–1914 ne contient aucun repère de guerre alors qu'elle inclut la perte des Treize Colonies et les guerres napoléoniennes ; Morgan (SRC-001) et Darwin (SRC-009) fournissent le cadre. Certitude probable : aucune fiche dédiée n'est encore publiée (OM-010, statut to_fill).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era4-droit-001",
@@ -14609,7 +15094,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "SRC-020 (texte primaire, 3 & 4 Will. 4 c. 73) et Draper (SRC-008) : assentiment du 28 août 1833, effet au 1er août 1834, apprentissage avant 1838, compensation de £20 millions aux propriétaires et aucune aux personnes asservies ; cf. uk-esclavage et PROP-002.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era4-economie-001",
@@ -14648,7 +15133,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "uk-industrie et fixes.yaml : processus 1750–1850, régions et rôle du charbon, des marchés impériaux et des capitaux de la traite ; Thompson (SRC-007), Darwin (SRC-009) et Morgan (SRC-001) documentent classes populaires, empire et continuités.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era4-societe-001",
@@ -14686,7 +15171,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-003 : 16 août 1819, St Peter's Fields, 60 000 personnes, au moins 18 morts ; Thompson (SRC-007) et Morgan (SRC-001) ancrent l'événement dans l'histoire des classes populaires.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era4-femmes-001",
@@ -14726,7 +15211,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Domaine Femmes, genre, sexualités (jeton CSV tronqué conforme à verify-points.mjs et merge-points.mjs). OM-008 : les femmes sont victimes à Peterloo ou militantes abolitionnistes, sans fiche structurée ; Liddington et Norris (SRC-014) documentent Selina Cooper, ouvrière du textile du Lancashire, avec Morgan (SRC-001) ; Draper (SRC-008) et Thompson (SRC-007) pour l'abolitionnisme et Peterloo.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era4-religion-001",
@@ -14768,7 +15253,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "uk-union (fixes.yaml) : Église d'Écosse et droit écossais préservés en 1707 ; PROP-001 (SRC-005, SRC-002, SRC-003) : l'union de 1801 ne règle pas la question catholique. Devine (SRC-004) et Colley (SRC-003) pour l'Écosse ; OM-007 documente l'angle mort religieux.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era4-sciences-001",
@@ -14804,7 +15289,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Domaine Sciences, techniques & santé (jeton CSV tronqué conforme aux scripts du projet). uk-place-007 (dataset) : Édimbourg, Lumières écossaises ; uk-industrie : techniques et énergie 1750–1850 ; Devine (SRC-004), Thompson (SRC-007), Darwin (SRC-009) et Morgan (SRC-001). OM-009 : révolution scientifique et savoirs savants non traités, d'où la certitude probable.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era4-arts-001",
@@ -14834,7 +15319,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "OM-009 : romantisme, roman victorien et arts du XIXe siècle absents, omission documentée (statut to_fill) ; Morgan (SRC-001) fournit le cadre général. La date 1914 est la borne conventionnelle de fin de l'ère uk-era-4, pas un événement.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era4-environnement-001",
@@ -14875,7 +15360,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-006 : 1882–1886, commission Napier (1883), loi de 1886 ; Devine (SRC-004) et Kearney (SRC-002) documentent l'Écosse rurale et les clearances. La matrice ERA-4 classe ce domaine en scale regional.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era4-migrations-001",
@@ -14911,7 +15396,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-005 et Ó Gráda (SRC-011) : famine 1845–1852, environ un million de morts et plus d'un million d'émigrés ; Foster (SRC-005) pour l'Irlande, Draper (SRC-008) pour Liverpool port atlantique (PLACE-PROP-002). OM-012 : autres migrations non traitées.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era4-minorites-001",
@@ -14954,7 +15439,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-001 : 1er janvier 1801, perte du parlement irlandais, 100 députés à Westminster, opposition catholique et patriote ; Foster (SRC-005), Kearney (SRC-002), Colley (SRC-003). La matrice ERA-4 classe ce domaine en scale imperial.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era4-memoire-001",
@@ -14989,7 +15474,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "uk-expo (dataset) : 1851, Londres, palais de verre et d'acier, célébration de la puissance industrielle et impériale ; Morgan (SRC-001) et Darwin (SRC-009) pour le cadre. La matrice ERA-4 note l'absence d'analyse mémorielle dédiée (PROP-002, uk-expo).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era4-circulations-001",
@@ -15022,7 +15507,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Matrice ERA-4 : circulations couvertes par uk-industrie, uk-expo et PROP-002. Darwin (SRC-009) documente le système impérial, Morgan (SRC-001) le cadre britannique ; Draper (SRC-008) et le Slavery Abolition Act (SRC-020) l'abolitionnisme transnational.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era5-pol-001",
@@ -15056,7 +15541,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Fait tiré de PROP-016 (proposals.yaml) et du rapport d'audit §3.16; deux sources indépendantes. Cellule « Politique & institutions » de l'ère 5, actuellement partielle.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era5-gue-001",
@@ -15085,7 +15570,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Résumé corrigé de uk-ww1 (fixes.yaml); deux synthèses indépendantes. Cellule « Guerres & diplomatie » de l'ère 5.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era5-dro-001",
@@ -15118,7 +15603,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Correction de uk-vote (fixes.yaml) et rapport d'audit §4.9; deux sources indépendantes. Cellule « Droit & justice » de l'ère 5.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era5-eco-001",
@@ -15151,7 +15636,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Résumé corrigé de uk-ww1 (fixes.yaml) : « les usines de munitions et le travail des femmes transforment la société ». Cellule « Économie & travail » de l'ère 5.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era5-soc-001",
@@ -15184,7 +15669,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-008 (proposals.yaml) et rapport d'audit §3.8; le chiffre est une fourchette disputée, l'événement est certain et repose sur deux sources indépendantes. Cellule « Société & démographie » de l'ère 5.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era5-fem-001",
@@ -15220,7 +15705,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Correction de uk-vote (fixes.yaml), ACTOR-PROP-005 et rapport d'audit §5; deux sources indépendantes. Libellé canonique du domaine.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era5-rel-001",
@@ -15247,7 +15732,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « Religions & croyances » de l'ère 5 marquée vide justifié avec renvoi à OM-014 dans coverage-matrix.csv. Aucun fait non vérifié avancé : le silence est explicite, non masqué.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era5-sci-001",
@@ -15275,7 +15760,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Résumé corrigé de uk-ww2 (fixes.yaml) : V1/V2 en 1944–1945; deux sources indépendantes. Libellé canonique du domaine.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era5-art-001",
@@ -15302,7 +15787,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « Arts & lettres » de l'ère 5 marquée vide justifié avec renvoi à OM-015 dans coverage-matrix.csv. Aucun fait non vérifié avancé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era5-env-001",
@@ -15332,7 +15817,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Résumé corrigé de uk-ww2 (fixes.yaml); deux sources indépendantes. Cellule « Environnement & territoire » de l'ère 5.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era5-mig-001",
@@ -15359,7 +15844,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « Migrations & diasporas » de l'ère 5 partielle (uk-ww2); OM-012 couvre explicitement 1800–1945. Aucun fait non vérifié avancé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era5-min-001",
@@ -15394,7 +15879,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-007 (proposals.yaml), rapport d'audit §3.7; le bilan officiel est distingué des estimations. Deux sources indépendantes. Cellule « Peuples autochtones & minorités » de l'ère 5.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era5-mem-001",
@@ -15424,7 +15909,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "Résumé corrigé de uk-ww1 (fixes.yaml) et rapport d'audit §4 : le déclin est présenté comme une thèse à discuter. Cellule « Mémoire & patrimoine » de l'ère 5.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era5-cir-001",
@@ -15452,7 +15937,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Résumé corrigé de uk-ww2 (fixes.yaml); deux sources indépendantes. Cellule « Circulations transnationales » de l'ère 5.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era5-fem-002",
@@ -15487,7 +15972,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Libellé canonique du domaine : « Femmes, genre, sexualités ». ACTOR-PROP-005 (proposals.yaml) et rapport d'audit §5, sources SRC-014/SRC-001. Forme de domaine alignée sur l'extraction de coverage-matrix.csv par verify-points.mjs.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era5-sci-002",
@@ -15520,7 +16005,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Libellé canonique du domaine : « Sciences, techniques & santé ». ACTOR-PROP-012 (proposals.yaml), rapport d'audit §5 et résumé corrigé de uk-ww2 (fixes.yaml). Forme de domaine alignée sur l'extraction de coverage-matrix.csv par verify-points.mjs.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era6-pol-001",
@@ -15562,7 +16047,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-015 : les deux référendums de septembre 1997, les lois de 1998 et l'entrée en fonction des institutions en 1999 sont documentés dans proposals.yaml et REPORT.md §3. L'Assemblée d'Irlande du Nord relève de l'accord de 1998 selon PROP-015. Aucun acteur, lieu ou chiffre hors corpus.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era6-guer-001",
@@ -15593,7 +16078,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-009 et CLAIM-008 : l'indépendance d'août 1947 et la fin de l'empire indien sont documentées par SRC-010 et SRC-005. Ce point couvre la dimension diplomatique et décolonisatrice de la cellule. OM-013 signale que les guerres et interventions post-1945 (Malaisie, Corée, Suez, Falklands, Irak, Afghanistan) n'ont aucun repère sourcé dans le registre : elles ne sont pas affirmées ici.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era6-droit-001",
@@ -15632,7 +16117,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-014 : la date du meurtre, le rapport de 1999, le concept de racisme institutionnel et les recommandations figurent dans la notice SRC-019 (source primaire, Home Office) et dans SRC-012. Aucun chef d'accusation ni nom de suspect non documenté dans l'audit n'est ajouté.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era6-econ-001",
@@ -15673,7 +16158,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-013 et ACTOR-007 : la date de début, la durée d'un an, la défaite du NUM en mars 1985 et le rôle des Women Against Pit Closures sont documentés. La cellule « Économie & travail » de ERA-6 est également adossée à uk-thatcher, PROP-012 et PROP-017 dans la matrice.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era6-soc-001",
@@ -15712,7 +16197,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-010 et REPORT.md §3 : date, port, effectifs approximatifs et réorganisation de la nationalité impériale sont documentés. Les effectifs sont présentés comme les estimations du dossier, non comme un décompte exact.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era6-genre-001",
@@ -15757,7 +16242,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-012 et ACTOR-002 : la période 1976–1978, le rôle de porte-parole de Jayaben Desai et l'issue de la grève sont documentés. La notice SRC-017 signale un ouvrage académique engagé, à corroborer avec les archives du TUC et du Warwickshire MRC.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era6-rel-001",
@@ -15799,7 +16284,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Fait documenté dans ACTOR-011 (country-audit.yaml) : ressources « réseaux familiaux et communautaires, églises, associations » et réseaux « communautés caribéennes, syndicats, églises, carnaval de Notting Hill ». Ce point n'affirme rien sur la sécularisation, la diversité religieuse ou l'islam britannique : OM-014 reste ouvert faute de sources au registre. Certitude « probable » car l'audit atteste un réseau, non un événement daté.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era6-sante-001",
@@ -15839,7 +16324,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-018 et uk-nhs : fondation, financement, Bevan et charges de 1951 sont dans fixes.yaml et proposals.yaml. CLAIM-004 marque l'assertion comme « probable » et review.unresolved signale une controverse sur 1951 ou 1952 selon les prestations : la certitude n'est donc pas relevée à « certain », conformément à la règle d'intégrité.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era6-arts-001",
@@ -15880,7 +16365,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Fait documenté dans ACTOR-007 : ressources « archives, presse, chansons, récits » et assessment « politisent la fermeture des puits et transforment les rapports de genre dans les villages » ; SRC-018 porte précisément sur WAPC. OM-015 reste ouvert pour le reste des arts, du sport et de la culture populaire 1945–2026 : aucun titre ni auteur non attesté n'est avancé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era6-env-001",
@@ -15921,7 +16406,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-011 : vote de 1957 et inondation en 1965 sont documentés. REPORT.md §7.3 note que Tryweryn repose principalement sur Davies (SRC-006) avec Kearney (SRC-002) pour le contexte, et review.unresolved signale deux dates possibles (21 ou 28 octobre 1965) : seule l'année est retenue, d'où « probable ».",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era6-migr-001",
@@ -15956,7 +16441,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-009 donne 10 à 15 millions de déplacés et peut-être un million de morts ; REPORT.md §6.3 élargit la fourchette de mortalité à 0,5–2 millions. CLAIM-008 et REPORT.md §7.4 classent ces chiffres comme disputés : la certitude reste « probable » et les estimations sont affichées en fourchette, sans chiffre unique présenté comme certain.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era6-minor-001",
@@ -15999,7 +16484,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "ACTOR-011 (country-audit.yaml) documente les contraintes « lois migratoires restrictives (1962, 1968, 1971, 1981) » et « absence de papiers et scandale Windrush », ainsi que le Windrush Day depuis 2018. 1962 est la borne de début de la séquence restrictive, non la date du scandale, qui n'est pas datée dans l'audit : d'où « probable ».",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era6-memoire-001",
@@ -16038,7 +16523,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Champ memory de ACTOR-004 (country-audit.yaml) : « Stephen Lawrence Day (22 avril, depuis 2019), mémoriaux, débats sur la police et le racisme ». Ce point porte sur la mémoire et se distingue du point Droit & justice (meurtre et rapport Macpherson) et du point minorités (citoyenneté Windrush).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "uk-era6-circ-001",
@@ -16078,7 +16563,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-017 et uk-brexit : CLAIM-005 donne 51,9 % et 72,2 % avec certitude (SRC-013, SRC-001), et l'Écosse ainsi que l'Irlande du Nord ont voté majoritairement Remain. review.unresolved demande toutefois une vérification institutionnelle du statut juridique du référendum et de la chronologie de l'article 50 : la certitude globale reste « probable ».",
-          "status": "validated"
+          "status": "extrait"
         }
       ]
     },
@@ -16645,6 +17130,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Des colons anglais fondent Jamestown en 1607, première colonie anglaise durable en Amérique du Nord.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -16652,6 +17138,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La colonie survit difficilement, portée par le tabac et le travail forcé, tandis que les Powhatans occupent déjà la région.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -16659,6 +17146,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Saint Augustine (1565) et Santa Fe (1610) rappellent que la présence européenne précède Jamestown et que l’histoire du territoire ne commence pas avec elle.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -16666,6 +17154,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "A organisé une révolte coordonnée qui a expulsé les Espagnols de Santa Fe en 1680; le retour espagnol en 1692 limite la portée.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-006"
               ]
@@ -16710,6 +17199,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "À la fin du mois d’août 1619, une vingtaine d’Africains capturés par le White Lion sont vendus à Point Comfort, en Virginie.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -16717,6 +17207,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Leur statut initial n’est pas uniformément l’esclavage héréditaire, codifié plus tard dans la colonie, mais leur arrivée ouvre la longue histoire de l’esclavage racial en Amérique du Nord britannique.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -16724,6 +17215,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Elle s’inscrit dans la traite atlantique et dans l’économie coloniale qui se met en place depuis Jamestown.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -16731,6 +17223,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "A organisé une révolte coordonnée qui a expulsé les Espagnols de Santa Fe en 1680; le retour espagnol en 1692 limite la portée.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-006"
               ]
@@ -16740,6 +17233,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Point Comfort (Fort Monroe), Virginie — port, lieu d’arrivée et de vente, fort",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-007"
               ]
@@ -16800,6 +17294,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le Mayflower transporte des dissidents religieux vers l’Amérique du Nord.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -16807,6 +17302,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Leur pacte de gouvernement devient un mythe fondateur de la démocratie américaine.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -16814,6 +17310,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "A organisé une révolte coordonnée qui a expulsé les Espagnols de Santa Fe en 1680; le retour espagnol en 1692 limite la portée.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-006"
               ]
@@ -16858,6 +17355,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les treize colonies proclament leur indépendance de la Grande-Bretagne le 4 juillet 1776.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -16865,6 +17363,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La Déclaration affirme des droits naturels et l’égalité des hommes, mais plusieurs signataires possèdent des esclaves et les nations autochtones sont exclues de cet univers de droits.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -16872,6 +17371,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le texte fonde une république où l’esclavage et l’expansion territoriale restent centraux.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -16879,6 +17379,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "A relié abolition, droits civiques et mémoire de la guerre civile; a occupé des fonctions officielles, dont marshal du District de Columbia et ministre en Haïti.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-008"
               ]
@@ -16888,6 +17389,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "A relié abolition et droits des femmes; son discours de 1851 à Akron est devenu un symbole, mais sa transcription est tardive et reconstruite.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-013"
               ]
@@ -16943,6 +17445,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La Convention de Philadelphie rédige en 1787 une Constitution fédérale qui organise la séparation des pouvoirs et le fédéralisme.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -16950,6 +17453,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le texte intègre le compromis des trois cinquièmes, qui compte les personnes réduites en esclavage pour une partie de la représentation sans leur donner de droits, et protège l’esclavage par plusieurs dispositions.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -16957,6 +17461,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les femmes, les peuples autochtones et les personnes esclavisées sont exclus de la citoyenneté politique; la Constitution ne fonde pas une démocratie achevée.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -16964,6 +17469,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "A relié abolition, droits civiques et mémoire de la guerre civile; a occupé des fonctions officielles, dont marshal du District de Columbia et ministre en Haïti.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-008"
               ]
@@ -16973,6 +17479,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "A relié abolition et droits des femmes; son discours de 1851 à Akron est devenu un symbole, mais sa transcription est tardive et reconstruite.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-013"
               ]
@@ -17029,6 +17536,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Napoléon vend la Louisiane aux États-Unis en 1803, alors que l’expédition de Saint-Domingue échoue face à la révolution haïtienne et que les ambitions françaises sur l’île sont perdues.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17036,6 +17544,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le territoire double la superficie du pays et accélère l’expansion de la plantation esclavagiste et la dépossession des peuples autochtones.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17043,6 +17552,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La vente ne se réduit donc pas à un besoin de financement militaire.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17050,6 +17560,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "A relié abolition, droits civiques et mémoire de la guerre civile; a occupé des fonctions officielles, dont marshal du District de Columbia et ministre en Haïti.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-008"
               ]
@@ -17059,6 +17570,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "A relié abolition et droits des femmes; son discours de 1851 à Akron est devenu un symbole, mais sa transcription est tardive et reconstruite.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-013"
               ]
@@ -17068,6 +17580,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "La Nouvelle-Orléans, Louisiane — port, marché d’esclaves, carrefour migratoire, site de Katrina",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-020"
               ]
@@ -17140,6 +17653,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le président Andrew Jackson signe le 28 mai 1830 une loi qui autorise la négociation de traités d’échange de terres à l’est du Mississippi contre des terres à l’ouest.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17147,6 +17661,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Environ 100 000 personnes sont visées par les traités de déplacement; la déportation des Cherokees de 1838-1839 devient la Trail of Tears.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17154,6 +17669,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La loi fait de la dépossession autochtone une politique fédérale et ouvre la voie à l’expansion territoriale des États-Unis.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17161,6 +17677,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "A relié abolition, droits civiques et mémoire de la guerre civile; a occupé des fonctions officielles, dont marshal du District de Columbia et ministre en Haïti.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-008"
               ]
@@ -17170,6 +17687,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "A relié abolition et droits des femmes; son discours de 1851 à Akron est devenu un symbole, mais sa transcription est tardive et reconstruite.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-013"
               ]
@@ -17225,6 +17743,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les 19 et 20 juillet 1848, Elizabeth Cady Stanton, Lucretia Mott, Frederick Douglass et d’autres réclament l’égalité des droits, dont le vote, à Seneca Falls, dans l’État de New York.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17232,6 +17751,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La convention est un moment fondateur du mouvement des femmes, mais son universalisme exclut de fait les femmes noires et autochtones.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17239,6 +17759,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le droit de vote des femmes n’est reconnu au niveau fédéral qu’en 1920 avec le 19e amendement, et les femmes noires du Sud restent soumises à de nombreux obstacles.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17246,6 +17767,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "A relié abolition, droits civiques et mémoire de la guerre civile; a occupé des fonctions officielles, dont marshal du District de Columbia et ministre en Haïti.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-008"
               ]
@@ -17255,6 +17777,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "A relié abolition et droits des femmes; son discours de 1851 à Akron est devenu un symbole, mais sa transcription est tardive et reconstruite.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-013"
               ]
@@ -17264,6 +17787,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Seneca Falls, New York — site de la convention des droits des femmes",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-013"
               ]
@@ -17335,6 +17859,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La sécession des États esclavagistes déclenche en 1861 une guerre civile meurtrière.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17342,6 +17867,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La Proclamation d’émancipation de 1863 et le 13e amendement de 1865 inscrivent l’abolition dans un processus politique, mais la victoire de l’Union ne suffit pas à reconstruire la nation.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17349,6 +17875,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La Reconstruction (1865-1877) est renversée par la violence blanche et les compromis politiques de 1877, puis les lois Jim Crow consolident la ségrégation.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -17382,6 +17909,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 13e amendement est ratifié en décembre 1865; il abolit l’esclavage sauf comme sanction pénale, une exception qui permet le travail forcé des condamnés.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17389,6 +17917,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les Black Codes, le travail forcé des prisonniers (convict leasing) et les lois Jim Crow prolongent ensuite la ségrégation légale et le désfranchisement des Afro-Américains.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17396,6 +17925,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’abolition ne met donc pas fin à la domination raciale dans le Sud.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -17430,6 +17960,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le premier chemin de fer transcontinental est achevé à Promontory Summit en 1869.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17437,6 +17968,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Sa construction mobilise des travailleurs chinois et irlandais dans des conditions dangereuses; elle ouvre à la colonisation des terres autochtones et accélère la destruction des bisons.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17444,6 +17976,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le chemin de fer relie les deux océans et transforme l’économie de l’Ouest, mais son coût humain et écologique est indissociable de la dépossession.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17451,6 +17984,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Promontory Summit, Utah — jonction ferroviaire, site de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-010"
               ]
@@ -17501,6 +18035,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Au tournant du siècle, les États-Unis deviennent la première puissance industrielle mondiale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17508,6 +18043,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Acier, pétrole et électricité nourrissent une croissance rapide.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17515,6 +18051,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "A porté les grandes affaires juridiques, dont Brown v. Board (1954), et la mobilisation de masse; critiquée pour son élitisme et son anticommunisme.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-013",
                 "SRC-017"
@@ -17558,6 +18095,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Après des attaques de sous-marins allemands, les États-Unis rejoignent les Alliés.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17565,6 +18103,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Leur puissance industrielle et humaine pèse sur l’issue de la guerre.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17572,6 +18111,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "A porté les grandes affaires juridiques, dont Brown v. Board (1954), et la mobilisation de masse; critiquée pour son élitisme et son anticommunisme.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-013",
                 "SRC-017"
@@ -17616,6 +18156,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les 31 mai et 1er juin 1921, une foule blanche attaque le quartier noir de Greenwood, à Tulsa, et détruit 35 pâtés de maisons.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17623,6 +18164,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le bilan officiel de l’époque est de 36 morts, mais les historiens estiment aujourd’hui qu’il a pu atteindre 300 personnes; aucune réparation collective d’ampleur n’a été versée.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17630,6 +18172,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le massacre est longtemps occulté dans la mémoire publique avant de devenir un enjeu de reconnaissance.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17637,6 +18180,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "A porté les grandes affaires juridiques, dont Brown v. Board (1954), et la mobilisation de masse; critiquée pour son élitisme et son anticommunisme.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-013",
                 "SRC-017"
@@ -17647,6 +18191,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Tulsa, Oklahoma — quartier noir d’affaires, site de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-015"
               ]
@@ -17706,6 +18251,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le krach boursier de Wall Street précipite une dépression mondiale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17713,6 +18259,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le New Deal de Roosevelt transforme le rôle économique de l’État fédéral.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17720,6 +18267,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "A porté les grandes affaires juridiques, dont Brown v. Board (1954), et la mobilisation de masse; critiquée pour son élitisme et son anticommunisme.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-013",
                 "SRC-017"
@@ -17763,6 +18311,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’attaque japonaise contre Pearl Harbor entraîne l’entrée des États-Unis dans la Seconde Guerre mondiale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17770,6 +18319,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le pays devient l’arsenal des démocraties.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17777,6 +18327,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "A porté les grandes affaires juridiques, dont Brown v. Board (1954), et la mobilisation de masse; critiquée pour son élitisme et son anticommunisme.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-013",
                 "SRC-017"
@@ -17821,6 +18372,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les bombes atomiques larguées sur Hiroshima et Nagasaki provoquent des destructions inouïes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17828,6 +18380,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Elles ouvrent l’ère nucléaire et restent un sujet de débat moral.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -17861,6 +18414,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "États-Unis et Union soviétique se disputent le monde à partir de 1947, mais la rivalité nucléaire n’exclut pas les guerres réelles — Corée (1950-1953), Vietnam (1955-1975) —, les interventions par procuration ni les dictatures soutenues.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17868,6 +18422,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Un réseau mondial de bases et d’alliances soutient la projection de puissance américaine.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17875,6 +18430,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La course aux armements et la rivalité idéologique structurent quatre décennies.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -17908,6 +18464,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La loi de 1964 interdit la discrimination fondée sur la race, la couleur, la religion, le sexe ou l’origine dans les lieux publics, l’emploi et les programmes fédéraux.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17915,6 +18472,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Elle ne met pas fin à la ségrégation de fait dans le logement, les écoles ni aux violences policières, et le Voting Rights Act de 1965 reste nécessaire pour garantir le vote.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17922,6 +18480,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La loi couronne des années de mobilisation, mais son application rencontre une résistance durable.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -17955,6 +18514,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Neil Armstrong et Buzz Aldrin se posent sur la Lune.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -17962,6 +18522,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La mission symbolise la course spatiale et la supériorité technologique américaine.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -17995,6 +18556,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Des attentats islamistes détruisent les tours jumelles à New York.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -18002,6 +18564,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les États-Unis lancent une « guerre contre le terrorisme » qui redessine la géopolitique mondiale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -18034,6 +18597,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La faillite de Lehman Brothers déclenche une crise financière mondiale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -18041,6 +18605,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les États interviennent massivement pour sauver le système bancaire.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -19085,7 +19650,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Fiche us-jamestown de dataset.js et correction fixes.yaml (confiance haute) : SRC-006 cadre 1607 comme convention anglo-coloniale, non comme origine nationale. La même fiche signale Saint Augustine (1565) et Santa Fe (1610), attendus par OM-002.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era1-gue-001",
@@ -19122,7 +19687,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-002 et ACTOR-001 : SRC-006 documente la révolte des Pueblo, Popé et Santa Fe; le retour espagnol de 1692 en limite la portée. Certitude 'medium' dans l'audit, rendue par 'probable'.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era1-dro-001",
@@ -19154,7 +19719,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "PROP-001, us-prop-001 et PLACE-001 (contestation : premiers Africains ou premiers esclaves?) : SRC-007 date l'arrivée de 1619 et la codification ultérieure. La matrice ERA-1 précise qu'aucune loi coloniale n'est encore proposée : le disputé est conserve comme tel.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era1-eco-001",
@@ -19189,7 +19754,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Points us-jamestown-point-2 et us-prop-001-point-3 de dataset.js (tabac, travail forcé, traite atlantique); SRC-007 sur l'esclavage moteur du capitalisme et la migration forcee; OM-003 rappele l'esclavage atlantique avant 1619 comme hors du cadre.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era1-soc-001",
@@ -19223,7 +19788,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-001, us-prop-001 et PLACE-001 de dataset.js; SRC-007. La societe coloniale se peuple aussi par migration forcee, pas seulement par colons anglais : la fiche us-jamestown signale deja les Powhatans.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era1-fem-001",
@@ -19256,7 +19821,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "OM-004 (ERA-1, Femmes, genre, sexualites, local) documente ce silence et donne pour pieces a l'appui SRC-006 et SRC-013; son statut est to_fill. Le point enregistre l'omission avec son ID, sans fabriquer de repere.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era1-rel-001",
@@ -19296,7 +19861,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "ACTOR-001 de country-audit.yaml : roles 'chef religieux tewa', ressources 'autorite religieuse' et 'coordination par courroies nouees', contrainte 'missions catholiques', contre-pouvoir 'Eglise catholique'; SRC-006. La matrice signale que les missions et les religions autochtones etaient le seul angle religieux peu analyse.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era1-sci-001",
@@ -19323,7 +19888,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule ERA-1 'Sciences, techniques & santé' en 'vide non traite' dans coverage-matrix.csv; omissions.yaml n'ouvre pas d'OM dedie pour cette ere (OM-015 concerne ERA-4). SRC-006 est la synthese autochtone du registre : le point enregistre le silence documente plutot qu'un repere invente.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era1-art-001",
@@ -19354,7 +19919,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule ERA-1 'Arts & lettres' en 'vide non traite' dans coverage-matrix.csv (ecriture coloniale et arts autochtones non instrumentes). Le seul texte colonial present dans dataset.js est le pacte de gouvernement du Mayflower (us-mayflower-point-2); SRC-006 est la synthese autochtone du registre.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era1-env-001",
@@ -19388,7 +19953,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "SRC-006 : Indigenous dispossession as a long structural process; PLACE-002 (Santa Fe, Nouvelle-Espagne 1610-1821) et ACTOR-001 dans country-audit.yaml. La matrice ERA-1 note l'appropriation des terres sans analyse des paysages autochtones.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era1-mig-001",
@@ -19422,7 +19987,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-001 et us-prop-001-point-3 : 'Elle s'inscrit dans la traite atlantique et dans l'economie coloniale qui se met en place depuis Jamestown' (SRC-007). OM-003 rappelle que l'esclavage atlantique avant 1619 reste hors du cadre de la frise.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era1-aut-001",
@@ -19462,7 +20027,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "us-jamestown-point-2 : 'les Powhatans occupent deja la region'; SRC-006 : Pueblo Revolt, Pope et retour espagnol de 1692; CLAIM-001 et OM-001 signalent l'histoire anterieure a 1607 comme dette editoriale.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era1-mem-001",
@@ -19496,7 +20061,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "CLAIM-001 (SRC-006) et us-jamestown-point-3 de dataset.js : 'Saint Augustine (1565) et Santa Fe (1610) rappellent que la presence europeenne precede Jamestown'. OM-001 et OM-002 documentent les angles morts de ce recit.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era1-cir-001",
@@ -19528,7 +20093,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "us-prop-001-point-3 de dataset.js : 'Elle s'inscrit dans la traite atlantique'; SRC-007 documente la migration forcee et le role de l'esclavage dans le capitalisme americain; OM-003 marque la traite avant 1619 comme hors du cadre.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era2-pol-001",
@@ -19570,7 +20135,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Fiches us-independance et us-constitution de dataset.js, complétées par les corrections fixes.yaml (confiance haute, SRC-007 et SRC-008). La matrice ERA-2 signale l'absence du compromis des trois cinquièmes dans les fiches; le point le mentionne sans inventer de détail.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era2-gue-001",
@@ -19610,7 +20175,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-004, SRC-001 (document primaire NARA: signature le 2 février 1848, ratification le 10 mars et proclamation le 4 juillet 1848) et SRC-012. La matrice ERA-2 classe la cellule « couvert » par PROP-004. Deux sources indépendantes pour un point certain.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era2-dro-001",
@@ -19650,7 +20215,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Points us-constitution-point-2 et us-constitution-point-3 de dataset.js et corrections fixes.yaml relatives à us-constitution (SRC-007, SRC-008, confiance haute). La matrice ERA-2 note l'absence de fiche juridique dédiée; le point enregistre la règle et ses exclusions.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era2-eco-001",
@@ -19684,7 +20249,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Point us-louisiane-point-2 de dataset.js (« accélère l'expansion de la plantation esclavagiste ») et SRC-007 (esclavage moteur central du capitalisme, expansion du coton). OM-005 (ERA-2, Économie & travail) documente le silence sur le travail artisanal, les filatures de Lowell, l'apprentissage et le travail esclave dans le Nord et le Sud. Confiance alignée sur CLAIM-002, marquée « probable ».",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era2-soc-001",
@@ -19723,7 +20288,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-005 et fiche us-prop-005 de dataset.js; PLACE-011; SRC-013 (DuBois). La matrice ERA-2 classe la cellule « couvert » par PROP-005. Certitude « medium » de l'audit, rendue par « probable ».",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era2-fem-001",
@@ -19761,7 +20326,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-005, PLACE-011 et ACTOR-003 (Sojourner Truth, PERIOD-2, dont le discours de 1851 à Akron est une transcription tardive et reconstruite; elle n'est pas présentée ici comme participante à Seneca Falls). SRC-013. La matrice ERA-2 classe la cellule « couvert » (Stanton, Mott, Douglass).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era2-rel-001",
@@ -19788,7 +20353,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule ERA-2 « Religions & croyances » en « vide non traité » dans coverage-matrix.csv. La référence « OM-009 » de la matrice ne correspond pas à une omission de cette ère dans omissions.yaml (OM-009 concerne la guerre américano-philippine, ERA-3); aucun omissions ID dédié n'existe. SRC-006 est la synthèse du registre: le point enregistre le silence documenté plutôt qu'un repère inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era2-sci-001",
@@ -19815,7 +20380,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule ERA-2 « Sciences, techniques & santé » en « vide non traité » (coton gin, bateaux à vapeur, télégraphe). La référence « OM-010 » de la matrice ne correspond pas à une omission de cette ère dans omissions.yaml (OM-010 concerne Porto Rico, ERA-4); aucun omissions ID dédié n'existe. SRC-007 documente l'expansion du coton, sans inventer de repère technologique daté.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era2-art-001",
@@ -19842,7 +20407,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule ERA-2 « Arts & lettres » en « vide non traité » dans coverage-matrix.csv. SRC-008 (Foner) et la ressource « presse (North Star) » d'ACTOR-002 dans country-audit.yaml sont les seuls appuis indirects du registre; aucun repère daté d'arts ou de lettres n'est proposé pour l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era2-env-001",
@@ -19875,7 +20440,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Point us-louisiane-point-2 de dataset.js; SRC-007 (expansion de la plantation, migration forcée) et SRC-006 (dépossession autochtone comme processus structurel). La matrice ERA-2 classe la cellule « couvert » par us-louisiane et PROP-003.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era2-mig-001",
@@ -19914,7 +20479,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "SRC-001 (usage: « Article IX on citizenship; Article X struck by the Senate; protection of property and civil rights »), PROP-004 et SRC-012. PLACE-002 (Santa Fe, 1848- sous souveraineté américaine). La matrice ERA-2 classe la cellule « couvert » par PROP-004.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era2-aut-001",
@@ -19957,7 +20522,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-003 et fiche us-prop-003 de dataset.js; SRC-006 (Dunbar-Ortiz). La matrice ERA-2 classe la cellule « couvert » par PROP-003. Certitude « medium » de l'audit, rendue par « probable ». La Trail of Tears (1838-1839) reste dans l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era2-mem-001",
@@ -19987,7 +20552,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule ERA-2 « Mémoire & patrimoine » en « vide non traité » dans coverage-matrix.csv (mémoire de la fondation, jubilés de 1826). REPORT.md observe de manière générale que les commémorations ne sont pas distinguées des événements. SRC-006 est la synthèse du registre; aucun repère de mémoire n'est inventé pour l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era2-cir-001",
@@ -20019,7 +20584,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Point us-louisiane-point-1 de dataset.js et correction fixes.yaml (confiance haute, SRC-007): « Napoléon vend la Louisiane aux États-Unis en 1803, alors que l'expédition de Saint-Domingue échoue face à la révolution haïtienne ». La matrice ERA-2 note que les réseaux atlantiques restent peu documentés; le point enregistre la circulation transnationale étayée par la fiche.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "us-era3-pol-001",
@@ -20055,7 +20620,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Le 13e amendement est ratifié en décembre 1865 (fiche us-13e du dataset); la Reconstruction (1865-1877) est une séquence politique distincte, documentée par SRC-008 et les claims CLAIM-004 et CLAIM-005.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "us-era3-gue-001",
@@ -20090,7 +20655,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-008 du registre d’audit, source SRC-009. La guerre américano-philippine (1899-1902, OM-009) est traitée séparément dans le point de circulations transnationales.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "us-era3-dro-001",
@@ -20126,7 +20691,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-006 porte une confiance high dans l’audit; SRC-002 est la source primaire NARA et SRC-010 fournit le contexte asiatique-américain. La date de signature (6 mai 1882) est celle du registre.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "us-era3-eco-001",
@@ -20164,7 +20729,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-007 (confiance medium) et ACTOR-006, source SRC-014; le bilan (huit condamnés, quatre exécutés en 1887) est celui du registre.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "us-era3-soc-001",
@@ -20198,7 +20763,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Fiche us-13e du dataset et correction proposée sur us-13e; SRC-008 (Foner) documente la violence blanche et le renversement de la Reconstruction (CLAIM-005).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "us-era3-fem-001",
@@ -20236,7 +20801,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "OM-008 et ACTOR-005: SRC-013 (DuBois) couvre Ida B. Wells-Barnett et la longue bataille du suffrage; l’ancre 1865 est le début de la période d’après-guerre signalée par OM-008 (1865-1920).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "us-era3-rel-001",
@@ -20248,7 +20813,7 @@ export const DATASET = {
           "object": "abolition, foi et droits des femmes dans les conventions de l’après-guerre",
           "text": "Sojourner Truth prédicatrice et abolitionniste, utilise la parole publique pour relier abolition, foi et droits des femmes dans les conventions de l’après-guerre",
           "time": "1861-1877",
-          "datePrecision": "intervalle",
+          "datePrecision": "interval",
           "families": [
             "acteur"
           ],
@@ -20273,7 +20838,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "ACTOR-003 (PERIOD-2 et PERIOD-3) la décrit comme prédicatrice; SRC-013 documente son rôle. L’intervalle 1861-1877 correspond à PERIOD-3 du country-audit, sans date d’activité inventée; son discours de 1851 à Akron, à transcription tardive, reste hors de cette ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "us-era3-sci-001",
@@ -20302,7 +20867,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Fiche us-railroad du dataset et PLACE-012, source SRC-010; la date de jonction (1869) est celle du registre.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "us-era3-art-001",
@@ -20314,7 +20879,7 @@ export const DATASET = {
           "object": "des autobiographies devenues des classiques de la littérature américaine, qui relient l’émancipation à la mémoire de la guerre civile",
           "text": "Frederick Douglass écrivain, orateur et homme d’État, produit des autobiographies devenues des classiques de la littérature américaine, qui relient l’émancipation à la mémoire de la guerre civile",
           "time": "1861-1877",
-          "datePrecision": "intervalle",
+          "datePrecision": "interval",
           "families": [
             "acteur"
           ],
@@ -20338,7 +20903,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "ACTOR-002 (PERIOD-2 et PERIOD-3), source SRC-008: ses autobiographies sont des classiques et il a relié abolition, droits civiques et mémoire de la guerre civile. L’intervalle 1861-1877 est PERIOD-3; aucune date de publication n’est avancée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "us-era3-env-001",
@@ -20374,7 +20939,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Fiche us-railroad du dataset (SRC-010) et ACTOR-004 / SRC-006 pour la dépossession; la contestation de PLACE-012 oppose célébration du progrès et dépossession autochtone.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "us-era3-mig-001",
@@ -20410,7 +20975,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "OM-006 et PROP-006: SRC-010 documente le travail chinois du transcontinental (1869), SRC-010 et SRC-002 l’exclusion de 1882. Confiance high dans l’audit.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "us-era3-aut-001",
@@ -20452,7 +21017,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "ACTOR-004 (PERIOD-3), source SRC-006: victoire sur Custer en 1876, négociation puis mort en 1890. La réappropriation par Standing Rock en 2016 est hors de cette ère et n’est pas affirmée ici.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "us-era3-mem-001",
@@ -20489,7 +21054,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "SRC-014 (Green) documente explicitement la mémoire de Haymarket et du 1er mai; ACTOR-006 (memory) confirme le symbole. L’identité du poseur de bombe reste non résolue: aucun nom n’est avancé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "us-era3-cir-001",
@@ -20526,7 +21091,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "SRC-009 (Immerwahr) documente la distinction entre territoires incorporés et non incorporés et le réseau mondial de bases; OM-009 et la revue unresolved signalent la guerre américano-philippine (1899-1902) et les camps de reconcentration comme éléments à vérifier.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "us-era4-pol-001",
@@ -20559,7 +21124,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-009 du registre des propositions et SRC-013 (DuBois, Suffrage, 2020) dans le registre des sources. La matrice ERA-4 / Politique & institutions est « partiel » (us-crash, New Deal sans acteur ni institution) : le 19e amendement fournit un repère normatif daté, une institution et une source. Dates du 18 et 26 août 1920 telles qu'enregistrées dans PROP-009. Certitude « probable » reprise du degré « medium » de la proposition, sans reclassification.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "us-era4-guer-001",
@@ -20595,7 +21160,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "SRC-003 (Executive Order 9066, National Archives, document primaire) et PROP-012 du registre des auditeurs, où l'ordre est classé « guerre ». La matrice ERA-4 / Guerres & diplomatie signale deux repères (us-ww1, us-pearl) sans acteur, lieu ni source et note l'absence des conséquences impériales ; le texte primaire apporte ici un acteur, une institution et une date précise. Degré « certain » conforme au document primaire et au degré « high » de la proposition.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "us-era4-droit-001",
@@ -20636,7 +21201,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-012, PLACE-007 (Manzanar) et SRC-003 + SRC-010 du registre ; la matrice ERA-4 / Droit & justice est « couvert » via PROP-012. Les trois grandeurs chiffrées (122 000 personnes, près de 70 000 citoyens, dix camps) sont celles du corpus audité et ne sont pas recalculées ailleurs. L'ordre ne nommait pas d'ethnie mais a été appliqué overwhelmingly aux Japonais-Américains (note SRC-003). Les excuses et réparations de 1988 sont hors de l'ère 1900-1945 et ne sont pas affirmées ici.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "us-era4-econ-001",
@@ -20672,7 +21237,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-013 et SRC-012 (González, Harvest of Empire) + SRC-011 (Ngai, Impossible Subjects) ; la matrice ERA-4 / Économie & travail est « partiel » (us-industry, us-crash, sans fordisme ni syndicats). Le rapport d'audit précise que les 4,6 millions sont des contrats, non des personnes, et que les expériences varient ; le chiffre est donc présenté comme tel, sans extrapolation. Degré « high » de la proposition conservé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "us-era4-soc-001",
@@ -20706,7 +21271,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-010, PLACE-005 et SRC-015 (rapport de l'Oklahoma Commission, 2001) ; la matrice ERA-4 / Société & démographie est « couvert » via PROP-010 et PROP-011. Le bilan officiel de 36 morts et les estimations jusqu'à 300 sont rapportés comme deux valeurs documentées, non arbitrées (point de vigilance du rapport). Degré « medium » de la proposition conservé tel quel.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "us-era4-femmes-001",
@@ -20742,7 +21307,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-009 et SRC-013 (DuBois, Suffrage, 2020) ; la matrice ERA-4 / Femmes, genre, sexualités est « couvert » via PROP-009. Lecture genrée distincte du point politique : l'universalisme formel de 1920 laisse dehors les femmes noires. OM-008 documente le vide sur le mouvement suffragiste de 1865 à 1920 ; aucune militante n'est nommée ici faute d'actrice datée dans le corpus pour cette ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "us-era4-rel-001",
@@ -20764,10 +21329,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-US-04-religions-croyances"
+          ],
           "confidence": "non documenté",
           "justification": "coverage-matrix.csv, ligne ERA-4 / Religions & croyances : « vide non traité ». Aucune proposition dans proposals.yaml, aucun OM dédié dans omissions.yaml et aucune source du registre : ce point enregistre le silence explicite sans inventer de fait religieux. Le degré « non documenté » et les sources vides sont déclarés, conformément à la règle des silences comme données.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "us-era4-sci-001",
@@ -20799,7 +21366,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-011 et SRC-016 (Worster, Dust Bowl, 1979) : « capitalist agriculture and soil exhaustion ; federal relief and resettlement ». La matrice ERA-4 / Sciences, techniques & santé est « partiel » ; lecture agronomique distincte du point environnemental us-era4-env-001. OM-015 documente l'absence d'instrumentation de l'eugénisme, des stérilisations forcées et du handicap, sans aucune source au registre : aucun chiffre ni institution n'est inventé pour ce vide.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "us-era4-arts-001",
@@ -20821,10 +21388,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-US-04-arts-lettres"
+          ],
           "confidence": "non documenté",
           "justification": "coverage-matrix.csv, ligne ERA-4 / Arts & lettres : « vide non traité ». Le rapport d'audit confirme l'absence de tout repère culturel pour cette ère et le registre ne contient aucune source d'histoire culturelle 1900-1945 : le silence est documenté, aucun nom ni œuvre n'est avancé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "us-era4-env-001",
@@ -20859,7 +21428,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-011 (1930-1939) et SRC-016 (Worster) ; la matrice ERA-4 / Environnement & territoire est « couvert » via PROP-011. L'expression « des centaines de milliers » est celle du résumé de la proposition : aucun chiffre précis n'est introduit. Degré « medium » de la proposition conservé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "us-era4-migr-001",
@@ -20895,7 +21464,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-013, PLACE-008 / PLACE-PROP-008 et SRC-012 + SRC-011 ; la matrice ERA-4 / Migrations & diasporas est « couvert » via PROP-012 et PROP-013. Lecture migratoire distincte du point Économie & travail us-era4-econ-001 : ici la frontière et le recrutement transnational sont au centre. La distinction contrats / personnes est explicitement exigée par la revue du rapport d'audit.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "us-era4-peuples-001",
@@ -20933,7 +21502,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-012, PLACE-007 (Manzanar, contestation « internement ou incarcération ») et SRC-003 + SRC-010 (Takaki, Strangers from a Different Shore) ; la matrice ERA-4 / Peuples autochtones & minorités est « couvert » via PROP-010 et PROP-012. Le degré « high » de la proposition est conservé. Aucune autre minorité n'est attribuée à cette ère sans source : les politiques indiennes ne sont pas traitées dans le corpus pour 1900-1945.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "us-era4-memoire-001",
@@ -20968,7 +21537,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "PROP-010, PLACE-005 et SRC-015 (rapport de la commission de 2001) ; la matrice ERA-4 / Mémoire & patrimoine est « partiel » via PROP-010 et demande un lieu de mémoire, ici Greenwood/Tulsa. La contestation sur le nom et le bilan est documentée dans les notes de SRC-015, dans proposals.yaml et dans REPORT.md : le disputé reste disputé, aucune valeur n'est tranchée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "us-era4-circ-001",
@@ -21002,7 +21571,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "CLAIM-003 du country-audit (degré « probable », SRC-009) et SRC-009 (Immerwahr, How to Hide an Empire) : différence entre territoires incorporés et non incorporés et réseau mondial de bases. PLACE-009 (San Juan) et PLACE-010 (Honolulu). La matrice ERA-4 / Circulations transnationales est « partiel » (us-ww1, us-pearl sans réseaux impériaux) ; OM-010 documente le vide sur le statut de Porto Rico (Foraker Act 1900, Jones-Shafroth Act 1917). Aucune date de loi ni de transfert n'est ajoutée au-delà de celles déjà enregistrées dans l'audit.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era5-pol-001",
@@ -21033,7 +21602,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "fixes.yaml (correction de us-cold-war) : « États-Unis et Union soviétique se disputent le monde à partir de 1947 » et « un réseau mondial de bases et d'alliances soutient la projection de puissance américaine ». SRC-009 (Immerwahr, How to Hide an Empire) documente le réseau de bases. La formulation « sans conflit direct » est ainsi corrigée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era5-gue-001",
@@ -21061,7 +21630,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "fixes.yaml (correction de us-cold-war) nomme explicitement la Corée (1950-1953) et le Vietnam (1955-1975) ; coverage-matrix.csv ERA-5 signale que ces guerres n'étaient pas nommées. Les interventions secrètes (Iran 1953, Guatemala 1954, Cuba 1961, Chili 1973) sont documentées comme dette dans OM-012 et ne sont pas traitées comme un événement distinct ici.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era5-dro-001",
@@ -21093,7 +21662,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "SRC-004 (National Archives, Civil Rights Act of 1964) : titres II, VI et VII, EEOC, signé le 2 juillet 1964. La correction de us-civil-rights dans fixes.yaml limite sa portée aux lieux publics, à l'emploi et aux programmes fédéraux et rappelle les limites d'application.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era5-eco-001",
@@ -21134,7 +21703,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "country-audit.yaml ACTOR-007 et ACTOR-012 : « A cofondé l'UFW en 1962 et joué un rôle central dans les grèves de Delano et le boycott des raisins ; a popularisé « Sí, se puede » » ; l'UFW « a obtenu des contrats et une reconnaissance syndicale dans les années 1960-1970 ». SRC-012 (González, Harvest of Empire) couvre le travail latino.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era5-soc-001",
@@ -21175,7 +21744,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-014 de proposals.yaml : après l'arrestation de Rosa Parks le 1er décembre 1955, le boycott dure du 5 décembre 1955 au 20 décembre 1956 ; la MIA dirigée par Martin Luther King Jr. obtient la fin de la ségrégation après Browder v. Gayle. SRC-017 (Theoharis) corrige le mythe de la « couturière fatiguée ».",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era5-gen-001",
@@ -21217,7 +21786,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "PROP-017 de proposals.yaml et ACTOR-010 : dans la nuit du 28 juin 1969, une descente au Stonewall Inn déclenche une émeute ; Marsha P. Johnson, Sylvia Rivera et d'autres y participent. SRC-019 (Duberman, Stonewall). Le rôle exact de Marsha P. Johnson dans le déclenchement et l'attribution de la « première brique » sont disputés (REPORT.md §6) : le degré de certitude reste disputé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era5-rel-001",
@@ -21258,7 +21827,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "country-audit.yaml ACTOR-012 (United Farm Workers) : ressources « grèves, boycotts, réseaux religieux et étudiants, presse » et réseaux « Cesar Chavez, Dolores Huerta, AFL-CIO, clergé catholique, boycotts de consommateurs », avec SRC-012 pour source. La coverage-matrix.csv notait ce domaine comme « vide non traité » ; le point comble la cellule à partir des réseaux documentés de l'acteur collectif. Degré probable, car synthèse d'acteur et non document primaire.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era5-sci-001",
@@ -21297,7 +21866,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "SRC-018 (Carson, Silent Spring, 1962, Houghton Mifflin) : « Pesticide pollution; DDT; ecological interdependence; chemical-industry backlash ». PROP-015 et ACTOR-008 datent la publication du 27 septembre 1962. La note de registre précise qu'il s'agit d'une source primaire historique pour le mouvement environnemental, non d'une référence toxicologique actuelle : la portée du point est donc la controverse publique et scientifique, pas une assertion toxicologique.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era5-art-001",
@@ -21329,7 +21898,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "ACTOR-008 qualifie Rachel Carson de « biologiste, écrivaine, environnementaliste » et SRC-018 enregistre Silent Spring (1962, Houghton Mifflin) comme source primaire. PROP-015 note que l'ouvrage nourrit la création de l'EPA en 1970. La coverage-matrix.csv avait ce domaine « vide non traité » ; le point s'appuie uniquement sur la qualité d'ouvrage écrit et sur sa réception publique documentée, sans inventer d'œuvre littéraire ou artistique supplémentaire.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era5-env-001",
@@ -21364,7 +21933,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-015 et coverage-matrix.csv ERA-5 (cellule Environnement & territoire « couvert », PROP-015) : « Silent Spring est documenté par Carson (SRC-018), avec la controverse sur les pesticides. » SRC-018 note l'influence sur le mouvement environnemental et la création de l'EPA en 1970.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era5-mig-001",
@@ -21399,7 +21968,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-013 de proposals.yaml : de 1942 à 1964, environ 4,6 millions de contrats, avec abus, salaires impayés et logements précaires ; PLACE-PROP-008 situe un point de recrutement à El Paso / Ciudad Juárez. SRC-012 (González) et SRC-011 (Ngai, Impossible Subjects) documentent le programme. L'année retenue, 1964, est la borne finale du programme et appartient à l'ère 1945-1991 ; la période 1942-1964 est donnée dans l'objet. Les 4,6 millions sont des contrats, non des personnes distinctes (REPORT.md §3).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era5-aut-001",
@@ -21435,7 +22004,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-016 de proposals.yaml et SRC-005 (National Archives, Voting Rights Act of 1965) : loi signée le 6 août 1965, abolition des tests d'alphabétisation, examinateurs fédéraux, Section 5, environ 250 000 nouveaux électeurs noirs fin 1965. La coverage-matrix.csv ERA-5 indique que le Voting Rights Act documente la déségrégation pour ce domaine ; le point est centré sur les minorités, la cellule Femmes, genre, sexualités étant traitée séparément par Stonewall.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era5-mem-001",
@@ -21473,7 +22042,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PLACE-007 et PROP-012 : Manzanar est un « camp d'incarcération, site de mémoire » avec pour contestation « réparations de 1988 » ; « le gouvernement présente des excuses et verse des réparations partielles en 1988 ». SRC-003 (NARA, Executive Order 9066) confirme « 1988 apology and partial restitution » ; SRC-010 (Takaki) couvre l'histoire asiatique-américaine. La coverage-matrix.csv notait le domaine « vide non traité » ; le point s'appuie sur les elements de mémoire déjà présents dans le dossier, sans ajouter de lieu de mémoire non sourcé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era5-cir-001",
@@ -21507,7 +22076,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "fixes.yaml (correction de us-cold-war) : « Un réseau mondial de bases et d'alliances soutient la projection de puissance américaine ». SRC-009 (Immerwahr, How to Hide an Empire) documente le « global base network » et les territoires non incorporés ; PLACE-009 (San Juan) et PLACE-010 (Honolulu) donnent des lieux impériaux datés du dossier. La coverage-matrix.csv signalait le caractère partiel de cette cellule.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era6-pol-001",
@@ -21532,10 +22101,13 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
-          "confidence": "probable",
+          "sources": [
+            "OM-AUTO-US-06-politique-institutions"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "probable",
           "justification": "Fait déjà présent dans la fiche us-2008 du dataset (faillite de Lehman Brothers, intervention publique). Aucune source post-2001 n'est inscrite dans le registre : dette explicite au §4 de REPORT.md et OM-014 (« La période 2001-2026 est presque vide après 2008 »).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era6-guerre-001",
@@ -21564,10 +22136,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-013"
+          ],
           "confidence": "non documenté",
           "justification": "OM-013 (ERA-6, Guerres & diplomatie) documente ces absences : guerres d'Afghanistan et d'Irak, morts civils, Guantánamo, surveillance de masse ; evidence_checked est vide, aucune source post-2001 n'est au registre. Voir aussi coverage-matrix.csv ERA-6/Guerres & diplomatie et REPORT.md §10.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era6-droit-001",
@@ -21601,7 +22175,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "SRC-005 (Voting Rights Act, NARA) consigne explicitement la décision Shelby County de 2013 qui affaiblit le dispositif ; reprise dans PROP-016 du registre de propositions. Date compatible avec l'ère 1991-2026.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era6-economie-001",
@@ -21624,10 +22198,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-US-06-economie-travail"
+          ],
           "confidence": "non documenté",
           "justification": "Coverage-matrix.csv ERA-6/Économie & travail et REPORT.md §4 signalent les saisies immobilières, le chômage et l'inégalité raciale liés à 2008 comme dettes non sourcées. Aucune source post-2001 au registre (OM-014 : période presque vide après 2008).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era6-societe-001",
@@ -21659,7 +22235,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "SRC-020 (Horowitz, Katrina: A History, 1915-2015, Harvard University Press, 2020) documente les inégalités raciales et de classe et la reconstruction de La Nouvelle-Orléans ; cf. PROP-018 et coverage-matrix.csv ERA-6/Société & démographie (« Katrina documente la catastrophe raciale et sociale »). Confidence probable car le bilan humain est disputé (SRC-020 : environ 1 400 morts directs, plus de 1 800 au total).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era6-genre-001",
@@ -21684,10 +22260,12 @@ export const DATASET = {
             "Dobbs (2022)"
           ],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-US-06-femmes-genre-sexualites"
+          ],
           "confidence": "non documenté",
           "justification": "Coverage-matrix.csv ERA-6/Femmes, genre, sexualités cite explicitement Dobbs (2022), #MeToo et les droits trans comme non traités. Aucun OM dédié ni aucune source post-2001 au registre (OM-014).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era6-religion-001",
@@ -21709,10 +22287,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-US-06-religions-croyances"
+          ],
           "confidence": "non documenté",
           "justification": "Coverage-matrix.csv ERA-6/Religions & croyances : « polarisation religieuse et islamophobie post-2001 ne sont pas traitées ». Aucune source post-2001 au registre (OM-014).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era6-sciences-001",
@@ -21735,10 +22315,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-US-06-sciences-techniques-sant"
+          ],
           "confidence": "non documenté",
           "justification": "OM-014 (ERA-6) nomme la pandémie de COVID-19 (2020-2023) et précise qu'aucune source post-2001 n'est au registre ; cf. coverage-matrix.csv ERA-6/Sciences, techniques & santé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era6-arts-001",
@@ -21760,10 +22342,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-US-06-arts-lettres"
+          ],
           "confidence": "non documenté",
           "justification": "Coverage-matrix.csv ERA-6/Arts & lettres : « cultures numériques et industries culturelles ne sont pas traitées ». OM-014 confirme l'absence de sources post-2001 au registre.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era6-environnement-001",
@@ -21792,7 +22376,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "SRC-020 (Horowitz, 2020) et PROP-018 documentent la rupture de digues et l'inondation de 80 % de la ville ; coverage-matrix.csv ERA-6/Environnement & territoire la qualifie de couverte (« échecs d'infrastructure et inégalités »). Fait non contesté.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era6-migrations-001",
@@ -21814,10 +22398,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-US-06-migrations-diasporas"
+          ],
           "confidence": "non documenté",
           "justification": "Coverage-matrix.csv ERA-6/Migrations & diasporas nomme explicitement DACA, les migrations centro-américaines et les réfugiés comme non traités ; OM-014 confirme l'absence de sources post-2001 au registre.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era6-autochtones-001",
@@ -21854,7 +22440,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Country-audit.yaml, acteur ACTOR-004 (Sitting Bull), champ memory : « Figure de la résistance ; réappropriée par Standing Rock en 2016 », documenté avec SRC-006. C'est la seule ancre autochtone datée de l'ère 1991-2026 présente dans le dossier ; coverage-matrix.csv ERA-6/Peuples autochtones & minorités note que les mouvements autochtones récents ne sont pas traités.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era6-memoire-001",
@@ -21880,10 +22466,12 @@ export const DATASET = {
           "memory": [
             "commémorations du 11-Septembre"
           ],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-US-06-memoire-patrimoine"
+          ],
           "confidence": "non documenté",
           "justification": "Coverage-matrix.csv ERA-6/Mémoire & patrimoine : « Le 11-Septembre et Katrina posent des questions de mémoire, mais aucun lieu de mémoire n'est proposé » ; REPORT.md §2 note que les commémorations du 11-Septembre ne sont pas distinguées de l'événement. OM-013/OM-014 : aucune source post-2001 au registre.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "usa-era6-circulations-001",
@@ -21913,7 +22501,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "SRC-009 (Immerwahr, How to Hide an Empire, Farrar, Straus and Giroux, 2019) consigne un « global base network » et les territoires non incorporés ; ouvrage publié en 2019, donc contemporain de l'ère. Coverage-matrix.csv ERA-6/Circulations transnationales signale que les réseaux et institutions internationales ne sont pas traités. Confidence probable : la synthèse porte surtout sur les périodes antérieures.",
-          "status": "validated"
+          "status": "extrait"
         }
       ]
     },
@@ -22127,6 +22715,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 2 février 962, Otton Ier est couronné empereur à Rome.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22134,6 +22723,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Sa royauté repose sur un consensus princier et épiscopal ; l’Empire est composite et réunit, au fil des siècles, des composantes germaniques, italiennes et bourguignonnes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22141,6 +22731,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les titulatures « saint », « romain » et « de la nation allemande » ne se fixent que bien plus tard.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22148,6 +22739,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Sa royauté repose sur un consensus princier et épiscopal ; le couronnement de 962 ne crée pas un État allemand.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001"
               ]
@@ -22192,6 +22784,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 31 octobre 1517, Luther adresse ses thèses sur les indulgences à l’archevêque de Mayence et à l’évêque de Brandebourg.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22199,6 +22792,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Leur diffusion imprimée ouvre une controverse qui devient la Réforme.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22206,6 +22800,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’affichage à la porte de la Schlosskirche de Wittenberg est une tradition tardive, non attestée par un témoin oculaire.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -22239,6 +22834,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La défenestration de Prague (1618) ouvre un conflit qui implique les Habsbourg, les princes allemands, le Danemark, la Suède et la France.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22246,6 +22842,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les populations de l’Empire subissent pillages, épidémies et famines.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22253,6 +22850,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les traités de Westphalie (1648) redéfinissent l’ordre impérial et européen.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22260,6 +22858,7 @@ export const DATASET = {
               "kind": "audit",
               "text": "Le conflit implique des puissances extérieures à l’Empire et ne peut être réduit à une guerre civile allemande.",
               "confidence": "certain",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-003"
               ]
@@ -22294,6 +22893,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La coalition prussienne, russe, autrichienne et suédoise écrase Napoléon à Leipzig.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22301,6 +22901,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La défaite accélère la fin de l’Empire français et réveille les nationalismes allemands.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22308,6 +22909,7 @@ export const DATASET = {
               "kind": "audit",
               "text": "L’Allgemeiner Deutscher Arbeiterverein est fondé à Leipzig en 1863 autour de Ferdinand Lassalle.",
               "confidence": "certain",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-005"
               ]
@@ -22343,6 +22945,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les révolutions de mars réclament liberté et unité nationale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22350,6 +22953,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le Parlement de Francfort, élu au suffrage masculin, rédige une constitution et des droits fondamentaux ; les femmes en sont exclues, tandis que Louise Otto-Peters intervient publiquement sur la condition des ouvrières.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22357,6 +22961,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La campagne militaire de 1849 met fin aux dernières insurrections et Frédéric-Guillaume IV refuse la couronne impériale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -22389,6 +22994,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "En octobre 1865, une conférence réunit des femmes à Leipzig et fonde le 18 octobre l’Allgemeiner Deutscher Frauenverein (ADF).",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22396,6 +23002,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Louise Otto-Peters en devient présidente, avec Auguste Schmidt comme vice-présidente.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22403,6 +23010,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le programme porte sur l’éducation, l’accès aux métiers et à l’université, ainsi que le droit des femmes au travail.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22410,6 +23018,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Wittenberg — ville universitaire, lieu de culte, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-002",
                 "SRC-016"
@@ -22462,6 +23071,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 18 janvier 1871, les princes allemands proclament l’Empire allemand à Versailles, après la victoire sur la France.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22469,6 +23079,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La proclamation couronne un processus diplomatique et militaire de plusieurs années, conduit par Bismarck et les princes allemands.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22476,6 +23087,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’Empire est une fédération de monarchies et de villes libres, dotée d’un Reichstag élu au suffrage masculin et d’un pouvoir impérial fort.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -22509,6 +23121,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Dans le Sud-Ouest africain allemand (aujourd’hui Namibie), les troupes du général Lothar von Trotha mènent une guerre d’extermination contre les Herero et les Nama.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22516,6 +23129,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les historiens estiment qu’environ 65 000 Herero et au moins 10 000 Nama ont été tués.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22523,6 +23137,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "En 2021, le gouvernement allemand reconnaît ces événements comme un génocide et annonce son intention de demander pardon, sans reconnaissance juridique de réparations.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22530,6 +23145,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Mühlhausen — ville, lieu de prédication, théâtre de la Guerre des Paysans",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-002"
               ]
@@ -22580,6 +23196,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’Allemagne combat sur deux fronts et subit le blocus allié.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22587,6 +23204,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La défaite de 1918 provoque la chute de l’Empire et la révolution de novembre.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -22620,6 +23238,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La République est proclamée le 9 novembre 1918, dans une Allemagne vaincue, après l’annonce de l’abdication de Guillaume II.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22627,6 +23246,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’Assemblée nationale de Weimar adopte la Constitution le 11 août 1919, dans un pays marqué par la défaite, les réparations et le traité de Versailles.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22634,6 +23254,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Crises économiques et violences politiques minent la légitimité du régime.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -22667,6 +23288,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’hyperinflation résulte de causes fiscales, monétaires et politiques : déficits publics, création monétaire et charge des réparations.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22674,6 +23296,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’occupation de la Ruhr en janvier 1923 est un déclencheur majeur, non la cause unique.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22681,6 +23304,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le mark s’effondre, l’épargne est anéantie et la stabilisation monétaire de novembre 1923 rétablit la monnaie au prix d’une crise sociale et politique.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -22713,6 +23337,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Hitler devient chancelier et impose rapidement un régime nazi totalitaire.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22720,6 +23345,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les opposants sont réprimés, les Juifs persécutés et la guerre préparée.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -22753,6 +23379,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’Allemagne nazie déclenche la guerre et organise l’extermination des Juifs d’Europe ; environ six millions sont assassinés.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22760,6 +23387,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le régime persécute et tue aussi les Sinti et Roma, les personnes handicapées et les prisonniers soviétiques, tandis que la guerre totale dévaste l’Europe.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22767,6 +23395,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La défaite de 1945 laisse un pays occupé, divisé et confronté à la Shoah.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -22801,6 +23430,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "À partir de 1939, le régime nazi déporte vers le Reich des millions de civils, de prisonniers de guerre et de détenus de camps.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22808,6 +23438,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les estimations retiennent plus de 12 millions de personnes, avec un pic de 7,8 millions en août 1944.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22815,6 +23446,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les travailleurs polonais et soviétiques sont soumis à une ségrégation et à une violence spécifiques ; des entreprises allemandes en profitent.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -22848,6 +23480,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 20 janvier 1942, des hauts responsables nazis se réunissent à Wannsee sous la présidence de Reinhard Heydrich.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22855,6 +23488,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La conférence ne décide pas le génocide, déjà engagé après l’invasion de l’URSS ; elle coordonne l’administration de la « solution finale » et organise la déportation des Juifs d’Europe.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22862,6 +23496,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le protocole rédigé par Adolf Eichmann documente cette planification bureaucratique.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22869,6 +23504,7 @@ export const DATASET = {
               "kind": "audit",
               "text": "La conférence ne décide pas le génocide ; elle organise la coopération administrative pour une extermination déjà en cours.",
               "confidence": "certain",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-007"
               ]
@@ -22878,6 +23514,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Berlin — capitale, ville divisée, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-007",
                 "SRC-011",
@@ -22931,6 +23568,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Dans la nuit du 2 au 3 août 1944, la SS assassine environ 4 300 Sinti et Roma du « camp des familles » d’Auschwitz-Birkenau.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22938,6 +23576,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Environ 21 000 des 23 000 Sinti et Roma déportés à Auschwitz y sont morts.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22945,6 +23584,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les estimations du génocide européen varient de 250 000 à 500 000 victimes ; la date est devenue le jour européen de commémoration du Porajmos.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -22952,6 +23592,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Francfort-sur-le-Main — ville de foire, siège du parlement, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-004",
                 "SRC-017"
@@ -23004,6 +23645,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les procès de Nuremberg jugent les dirigeants nazis pour crimes de guerre et crimes contre l’humanité.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -23011,6 +23653,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Ils fondent une partie du droit pénal international.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -23018,6 +23661,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Le génocide est longtemps nié ; la reconnaissance fédérale date de 1982.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-018"
               ]
@@ -23027,6 +23671,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Le retour prévu devient installation ; la RFA se découvre pays d’immigration.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-009"
               ]
@@ -23036,6 +23681,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Nuremberg — ville industrielle, ville des congrès nazis, tribunal",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-007"
               ]
@@ -23122,6 +23768,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La République fédérale d’Allemagne est fondée le 23 mai 1949 dans les zones d’occupation occidentales ; la République démocratique allemande est proclamée le 7 octobre 1949 dans la zone soviétique.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -23129,6 +23776,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La Sarre reste séparée de la RFA jusqu’à son rattachement en 1957.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -23136,6 +23784,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les deux États s’inscrivent dans les blocs opposés de la Guerre froide.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -23143,6 +23792,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Le génocide est longtemps nié ; la reconnaissance fédérale date de 1982.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-018"
               ]
@@ -23152,6 +23802,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Le retour prévu devient installation ; la RFA se découvre pays d’immigration.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-009"
               ]
@@ -23222,6 +23873,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La RDA érige un mur pour empêcher la fuite de ses habitants vers l’Ouest.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -23229,6 +23881,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le Mur devient le symbole le plus visible de la Guerre froide.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -23236,6 +23889,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Le génocide est longtemps nié ; la reconnaissance fédérale date de 1982.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-018"
               ]
@@ -23245,6 +23899,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Le retour prévu devient installation ; la RFA se découvre pays d’immigration.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-009"
               ]
@@ -23316,6 +23971,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 9 octobre 1989, environ 70 000 personnes manifestent à Leipzig après les prières pour la paix.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -23323,6 +23979,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 9 novembre, lors d’une conférence de presse, Günter Schabowski annonce une nouvelle réglementation des voyages ; des milliers de personnes se pressent aux postes-frontières et les gardes ouvrent les barrières.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -23330,6 +23987,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le Mur de Berlin tombe, mais cette ouverture ne résulte pas d’une décision planifiée.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -23337,6 +23995,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Le génocide est longtemps nié ; la reconnaissance fédérale date de 1982.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-018"
               ]
@@ -23346,6 +24005,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Le retour prévu devient installation ; la RFA se découvre pays d’immigration.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-009"
               ]
@@ -23416,6 +24076,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Après les élections libres du 18 mars 1990, les Länder de la RDA rejoignent la RFA le 3 octobre 1990 en vertu de l’article 23 de la Loi fondamentale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -23423,6 +24084,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Il s’agit d’une accession, non d’une fusion de deux États égaux.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -23430,6 +24092,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La réunification pose de nouveaux défis économiques et sociaux.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -23437,6 +24100,7 @@ export const DATASET = {
               "kind": "audit",
               "text": "Les Länder de la RDA rejoignent la RFA le 3 octobre 1990 en vertu de l’article 23 de la Loi fondamentale ; il ne s’agit pas d’une fusion de deux États égaux.",
               "confidence": "certain",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-012"
               ]
@@ -23446,6 +24110,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "La résistance armée est écrasée ; la mémoire du génocide devient un enjeu diplomatique en 2021.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-013",
                 "SRC-020"
@@ -23456,6 +24121,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Le génocide est longtemps nié ; la reconnaissance fédérale date de 1982.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-018"
               ]
@@ -24574,7 +25240,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Couronnement d'Otton Ier à Rome le 2 février 962, documenté dans le corpus (dataset.js, de-otto) et par SRC-001 (Reuter, Germany in the Early Middle Ages), qui cadre le consensus princier et épiscopal et la structure composite de l'Empire. proposals.yaml corrige le cadrage « Naissance du Saint-Empire » : ni État allemand ni titulature complète en 962 (CLAIM-001). Date 962 conforme à l'ère 962/1517.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era1-guer-002",
@@ -24602,7 +25268,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Guerres & diplomatie, impérial) : aucune entrée médiévale ; omission documentée OM-001 cite les guerres ottoniennes, la querelle des Investitures, les expéditions en Italie et les campagnes contre les Slaves, avec SRC-001 comme evidence_checked. Silence explicite conformément à la règle 7 de POINT_METHODOLOGY.md ; seule l'ancre de l'ère (962/1517) est utilisée, aucune date ni source inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era1-droit-003",
@@ -24625,10 +25291,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-DE-01-droit-justice"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Droit & justice, impérial) : aucune entrée ; le droit impérial médiéval n'est pas instrumenté et aucun ID d'omission dédié n'existe dans omissions.yaml pour cette cellule (OM-005 concerne ERA-2). Silence explicitement documenté dans la matrice ; aucune date, source ou citation inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era1-econ-004",
@@ -24662,7 +25330,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Économie & travail, régional) : aucun repère économique médiéval ; omission documentée OM-002 cite l'économie agraire, l'essor urbain, la Hanse, les mines et le commerce à longue distance, avec SRC-001 comme evidence_checked. Silence explicite ; seule l'ancre de l'ère (962/1517) est utilisée, aucun chiffre ni source inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era1-soc-005",
@@ -24699,7 +25367,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La matrice ERA-1 (Société & démographie, impérial, partiel) note que le repère de-otto ne documente que l'élite impériale. SRC-001 atteste le consensus princier et épiscopal sur lequel repose la royauté d'Otton Ier. Aucune donnée démographique ni chiffre de population n'est avancé : silence documenté pour le volet rural, ancre 962 conforme à l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era1-genre-006",
@@ -24731,7 +25399,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Femmes, genre, sexualités, national) : aucune entrée ; omission documentée OM-003 nomme Hildegarde de Bingen, les femmes nobles, les monastères féminins, le travail des femmes et les normes de genre, avec SRC-001 comme evidence_checked. Silence explicite ; aucune date ni source inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era1-relig-007",
@@ -24770,7 +25438,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La matrice ERA-1 (Religions & croyances, impérial, partiel) précise que seule la légitimation chrétienne du pouvoir est représentée, pas la religion vécue ni les dissidences. SRC-001 documente le réseau épiscopal et le legs carolingien comme ressources d'Otton Ier. Le point se limite à ce volet documenté ; ancre 962 conforme à l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era1-sci-008",
@@ -24800,7 +25468,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Sciences, techniques & santé, transnational) : aucune entrée ; omission documentée OM-004 cite l'imprimerie de Gutenberg (vers 1450), les universités, l'astronomie et la circulation des savoirs, avec SRC-001 comme evidence_checked. Silence explicite ; aucune date précise ni source inventée, seule l'ancre de l'ère (962/1517) est utilisée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era1-arts-009",
@@ -24822,10 +25490,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-DE-01-arts-lettres"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Arts & lettres, national) : aucune entrée ; art roman et gothique non instrumentés. Omission documentée dans la matrice, aucun ID dédié n'existant dans omissions.yaml pour cette cellule. Aucune date, œuvre ou citation inventée ; ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era1-env-010",
@@ -24848,10 +25518,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-DE-01-environnement-territoire"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Environnement & territoire, régional) : aucune entrée ; pas de source environnementale médiévale dans le registre. Omission documentée dans la matrice, sans ID dédié dans omissions.yaml. Aucune date ni source inventée ; ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era1-migr-011",
@@ -24877,10 +25549,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-DE-01-migrations-diasporas"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Migrations & diasporas, transnational) : aucune entrée ; l'Ostsiedlung et les expulsions de Juifs ne sont pas traitées. Omission documentée dans la matrice, sans ID dédié dans omissions.yaml pour cette cellule. Silence explicite ; aucune date ni source inventée, ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era1-peuples-012",
@@ -24906,10 +25580,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-DE-01-peuples-autochtones-mino"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Peuples autochtones & minorités, national) : aucune entrée ; Juifs, Slaves et Sorbs médiévaux non traités. Omission documentée dans la matrice, sans ID dédié dans omissions.yaml. L'étiquette « autochtones » est employée avec la réserve de la matrice ; aucun fait ni source inventé, ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era1-memoire-013",
@@ -24933,10 +25609,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-DE-01-memoire-patrimoine"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule partielle de coverage-matrix.csv (ERA-1, Mémoire & patrimoine, national) : 962 fonctionne comme lieu de mémoire impérial, mais sans fiche mémorielle ni source. ACTOR-PROP-001 note une figure fondatrice mobilisée par des récits nationaux postérieurs ; aucune commémoration datée n'est avancée ici, afin de ne pas introduire de contenu hors de l'ère. Ancre = intervalle 962/1517.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era1-circ-014",
@@ -24976,7 +25654,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La matrice ERA-1 (Circulations transnationales, transnational, partiel) note que le couronnement à Rome implique une circulation italienne mais que le repère reste centré sur l'Empire. SRC-001 documente le déplacement d'Otton Ier à Rome et son réseau épiscopal. Aucun échange commercial ou culturel précis n'est inventé ; ancre 962 conforme à l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era2-pol-001",
@@ -25012,7 +25690,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-001 (audits/germany/proposals.yaml) atteste que la paix d'Augsbourg (1555) stabilise provisoirement la coexistence confessionnelle dans l'Empire ; SRC-002 (Scribner, The German Reformation) est la synthèse de référence de ce processus. 1555 est une borne interne de la Réforme, dans l'ère 1517/1815.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era2-pol-002",
@@ -25046,7 +25724,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Le dossier pays (PERIOD-3, country-audit.yaml) fixe à 1815 la clôture des guerres napoléoniennes et la réorganisation de l'Allemagne en Confédération germanique ; le repère de-leipzig (dataset.js) atteste la défaite de Napoléon en 1813 et le réveil des nationalismes allemands. SRC-003 et SRC-004 sont les sources de cette borne de période. 1815 est la borne de fin de l'ère ; aucun contenu hors-ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era2-guer-001",
@@ -25089,7 +25767,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Le repère de-30ans (dataset.js) et PROP-003 attestent la défenestration de Prague (1618), l'implication des Habsbourg, des princes allemands, du Danemark, de la Suède et de la France, et les traités de Westphalie (1648). CLAIM-003 (country-audit.yaml) qualifie le conflit de guerre européenne, non de simple guerre civile allemande, avec certitude. SRC-003 est la synthèse de référence. Intervalle conforme à l'ère 1517/1815.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era2-guer-002",
@@ -25126,7 +25804,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Le repère de-leipzig (dataset.js) atteste que la coalition prussienne, russe, autrichienne et suédoise écrase Napoléon en 1813, que la défaite accélère la fin de l'Empire français et qu'elle réveille les nationalismes allemands. SRC-004 (Blackbourn, History of Germany 1780–1918) couvre la séquence 1780–1815 ; le repère ne porte pas d'ID de source propre, d'où le degré probable. 1813 est dans l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era2-droit-001",
@@ -25157,7 +25835,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Droit & justice, impérial) : l'omission OM-005 (audits/germany/omissions.yaml) précise que la Chambre impériale de justice, la Caroline (1532), le droit coutumier et les procédures de tolérance confessionnelle ne sont pas instrumentés et exigent des sources juridiques absentes du registre (evidence_checked : SRC-003). Silence explicite, non une négation du fait ; aucune date ni norme inventée, ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era2-econ-001",
@@ -25189,7 +25867,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Économie & travail, régional) : l'omission OM-006 (audits/germany/omissions.yaml) documente l'absence de repères sur la proto-industrialisation, les crises agraires, les mines d'argent, les manufactures et les circuits commerciaux (evidence_checked : SRC-003). Aucun chiffre de production ni date inventé ; ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era2-soc-001",
@@ -25228,7 +25906,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-002 (audits/germany/proposals.yaml) et PLACE-PROP-002 (Mühlhausen, country-audit.yaml) attestent le soulèvement de 1524–1525, le rôle de Müntzer à Mühlhausen, l'écrasement du mouvement par les princes et la condamnation par Luther ; SRC-002 (Scribner) couvre la Guerre des Paysans et sa répression. La certitude reprend le niveau « high » de PROP-002. Intervalle dans l'ère 1517/1815.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era2-soc-002",
@@ -25259,7 +25937,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Le repère de-30ans (dataset.js) et PROP-003 attestent que les populations de l'Empire subissent pillages, épidémies et famines ; SRC-003 (Wilson, The Thirty Years War: Europe's Tragedy) documente la dévastation démographique. Aucun chiffre de population n'est avancé : aucun nombre n'est inventé. Intervalle conforme à l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era2-genre-001",
@@ -25292,7 +25970,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Femmes, genre, sexualités, national) : l'omission OM-007 (audits/germany/omissions.yaml) documente l'absence d'entrées sur les femmes de la Réforme, la fermeture des couvents, les procès en sorcellerie, le travail féminin et les normes sexuelles (evidence_checked : SRC-002). Silence explicite ; aucune date, actrice ou source inventée, ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era2-relig-001",
@@ -25336,7 +26014,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Le repère de-luther (dataset.js), PROP-001, ACTOR-PROP-002 et CLAIM-002 attestent l'envoi des thèses le 31 octobre 1517 à l'archevêque de Mayence et à l'évêque de Brandebourg et la diffusion imprimée qui ouvre la Réforme ; SRC-002 et SRC-016 sont les sources du registre. L'affichage à la Schlosskirche est une tradition tardive non attestée par un témoin oculaire (CLAIM-002) : aucune certitude ne lui est accordée ici.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era2-sci-001",
@@ -25362,10 +26040,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-DE-02-sciences-techniques-sant"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Sciences, techniques & santé, transnational) : la matrice mentionne explicitement Kepler, Leibniz et les académies comme non traités, sans ID dédié dans omissions.yaml. Silence explicite, non une négation du fait ; aucun nom de science, d'institution ou de date supplémentaire n'est inventé, ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era2-arts-001",
@@ -25391,10 +26071,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-DE-02-arts-lettres"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Arts & lettres, national) : la matrice indique que baroque, musique et lettres ne sont pas traités, sans ID dédié dans omissions.yaml. Silence explicite ; aucune œuvre, date ou source inventée, ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era2-env-001",
@@ -25416,10 +26098,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-DE-02-environnement-territoire"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Environnement & territoire, régional) : la matrice indique que le petit âge glaciaire et la déforestation ne sont pas traités, sans ID dédié dans omissions.yaml. Silence explicite ; aucune mesure climatique ou date inventée, ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era2-migr-001",
@@ -25452,7 +26136,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Migrations & diasporas, transnational) : l'omission OM-008 (audits/germany/omissions.yaml) documente l'absence de repères sur les huguenots après l'édit de Potsdam (1685), les protestants de Salzbourg, les Juifs d'Europe centrale et les migrations de travail saisonnières (evidence_checked : SRC-003). Ces groupes sont cités comme omissions, non comme événements datés inventés ; ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era2-peuples-001",
@@ -25479,10 +26163,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-DE-02-peuples-autochtones-mino"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Peuples autochtones & minorités, national) : la matrice indique que Juifs, anabaptistes et Sorbs ne sont pas traités, sans ID dédié dans omissions.yaml. L'étiquette « autochtones » est anachronique pour l'époque et n'est pas affirmée ici ; aucun fait, lieu ou date inventé, ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era2-memoire-001",
@@ -25520,7 +26206,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "ACTOR-PROP-002 (country-audit.yaml) décrit Luther comme figure confessionnelle et nationale instrumentalisée du XVIe au XXe siècle ; PLACE-PROP-001 (Wittenberg) porte la contestation « historicité de l'affichage des thèses » ; CLAIM-002 et SRC-016 rappellent que la date du 31 octobre reste symbolique et que l'affichage n'est pas attesté par un témoin oculaire. Aucune commémoration datée inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era2-circ-001",
@@ -25562,7 +26248,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Le repère de-luther (dataset.js) et PROP-001 attestent la diffusion imprimée des thèses et la circulation imprimée qui ouvre la Réforme ; ACTOR-PROP-002 relie Luther à Philipp Melanchthon, aux princes saxons et aux imprimeurs. SRC-002 et SRC-016 sont les sources du registre pour cette circulation. Aucun trajet, titre imprimé ou tirage inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era3-pol-001",
@@ -25603,7 +26289,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-004, CLAIM-004 et la correction de de-1848 (SRC-004, SRC-017) documentent la réunion de l'Assemblée, la constitution de mars 1849, l'exclusion des femmes et le refus de la couronne. La borne impériale est documentée par la correction de de-unification : proclamation le 18 janvier 1871 à Versailles (SRC-004).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era3-gue-001",
@@ -25635,7 +26321,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La correction de de-unification dans fixes.yaml et proposals.yaml (SRC-004) donne la date du 18 janvier 1871, le lieu de Versailles et le rôle des princes ; PROP-004 de country-audit.yaml rattache la proclamation à la guerre franco-prussienne. de-leipzig (1813) renseigne l'autre borne militaire de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era3-dro-001",
@@ -25673,7 +26359,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-005 et l'usage de SRC-005 dans le registre (Anti-Socialist Law, 1878) documentent la loi antisocialiste et la répression du parti ; la matrice ERA-3 Droit & justice est classée partiel via PROP-005, sans fiche juridique dédiée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era3-eco-001",
@@ -25710,7 +26396,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "CLAIM-005 et PROP-005 (SRC-005) documentent la fondation de l'ADAV à Leipzig en 1863 ; la même source documente le SDAP (1869), la fusion de Gotha (1875) et le programme d'Erfurt (1891).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era3-soc-001",
@@ -25755,7 +26441,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-005 et ACTOR-PROP-004 (SRC-005) documentent la transformation du mouvement ouvrier en parti de masse ; la matrice ERA-3 Société & démographie reste partielle, faute de démographie chiffrée dans le registre.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era3-fem-001",
@@ -25795,7 +26481,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-006, CLAIM-004 et ACTOR-PROP-003 (SRC-017) documentent la fondation de l'ADF le 18 octobre 1865 et le programme de Louise Otto-Peters ; la matrice ERA-3 marque ce domaine couvert.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era3-rel-001",
@@ -25823,7 +26509,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Aucune entrée religieuse dans la matrice ERA-3 ; omission OM-009, dont les sources vérifiées sont SRC-004 et SRC-005. Le point enregistre le silence documenté et sa borne de 1871, sans combler le vide par une affirmation non sourcée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era3-sci-001",
@@ -25850,7 +26536,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "La matrice ERA-3 est vide justifiée pour ce domaine ; omission OM-010, dont la source vérifiée est SRC-004. L'ancre 1815 est la borne de l'ère, non un événement scientifique : aucun fait daté n'est inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era3-art-001",
@@ -25877,7 +26563,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "La matrice ERA-3 Arts & lettres est vide justifiée : aucun événement artistique daté n'est enregistré dans le dossier d'audit. SRC-004 couvre l'histoire culturelle et quotidienne du long XIXe siècle, sans fiche dédiée. L'ancre 1815 est la borne de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era3-env-001",
@@ -25904,7 +26590,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "La matrice ERA-3 Environnement & territoire est vide justifiée (assainissement urbain, foresterie) ; aucun événement environnemental daté n'est enregistré. SRC-004 est la seule source du registre couvrant le long XIXe siècle. L'ancre 1815 est la borne de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era3-mig-001",
@@ -25934,7 +26620,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "L'omission OM-011 (sources vérifiées SRC-004 et SRC-009) recense Ruhrpolen et émigration vers les Amériques ; la frise ne retient aucun événement migratoire daté. L'ancre 1880 est la borne inférieure de la période couverte par SRC-009 (1880–1980), telle qu'indiquée dans le registre.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era3-min-001",
@@ -25977,7 +26663,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-007, ACTOR-PROP-007, ACTOR-PROP-008 et CLAIM-011 (SRC-013, SRC-020) documentent la guerre d'extermination de 1904–1908, l'ordre de von Trotha et la reconnaissance de 2021 ; la matrice ERA-3 classe ce domaine partiel via PROP-007.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era3-mem-001",
@@ -26014,7 +26700,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-004 et PLACE-PROP-003 (SRC-004, SRC-017) documentent la Paulskirche comme siège de 1848 et haut lieu mémoriel ; la matrice ERA-3 signale une mémoire présente sans fiche dédiée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era3-cir-001",
@@ -26054,7 +26740,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La matrice ERA-3 note « guerre coloniale et socialisme international, mais pas de circulation documentée » ; PROP-005 (SRC-005) fournit l'ancre 1869 (fondation du SDAP par Bebel et Liebknecht) et PROP-007 (SRC-013) le cadre colonial. Aucune fiche de circulation dédiée n'existe dans le dossier d'audit.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era4-pol-001",
@@ -26091,7 +26777,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La correction de de-weimar distingue la proclamation du 9 novembre 1918 de la constitution du 11 août 1919 ; SRC-006 documente la politique et la société weimariennes. Aucun fait n'est ajouté hors de l'audit.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era4-pol-002",
@@ -26124,7 +26810,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Les périodes PERIOD-6 et PERIOD-7 du country-audit fixent la borne de 1933 : fin de la République de Weimar puis ouverture de la dictature nazie, documentées respectivement par SRC-006 et SRC-007.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era4-war-001",
@@ -26156,7 +26842,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PERIOD-6 (SRC-006) ouvre en 1914 la guerre qui provoque la chute de l'Empire ; la correction de de-weimar mentionne la défaite et le traité de Versailles.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era4-war-002",
@@ -26187,7 +26873,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La correction de de-ww2 (SRC-007, SRC-018) résume le déclenchement de la guerre, la guerre totale qui dévaste l'Europe et la défaite de 1945 ; les autres victimes y sont mentionnées sans diluer la Shoah.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era4-law-001",
@@ -26224,7 +26910,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-009 et la fiche de vérité CLAIM-007 du dossier donnent les lois du 15 septembre 1935, les décrets de novembre 1935 et leur rôle dans la construction juridique de la persécution, d'après SRC-007.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era4-eco-001",
@@ -26260,7 +26946,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "CLAIM-008 marque le chiffre de plus de 12 millions comme probable ; la proposition PROP-010 et la correction de de-prop-003 (SRC-008, SRC-009) documentent le pic d'août 1944 et la ségrégation. Le degré n'est pas renforcé par rapport à l'audit.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era4-soc-001",
@@ -26291,7 +26977,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La correction de de-inflation (SRC-006) écarte la cause unique et précise le rôle de l'occupation de la Ruhr, de l'effondrement du mark et de la stabilisation de novembre 1923.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era4-gen-001",
@@ -26332,7 +27018,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "CLAIM-006 et PROP-008 donnent les dates du 12 et du 30 novembre 1918, les élections du 19 janvier 1919 et les 37 femmes élues ; SRC-006 documente le suffrage féminin, SRC-005 et SRC-006 l'action de Clara Zetkin.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era4-rel-001",
@@ -26363,7 +27049,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "La case ERA-4 / Religions & croyances est « vide justifié » dans la matrice de couverture ; OM-012 énumère ce qui manque et renvoie à SRC-007. Aucune affirmation historique supplémentaire n'est avancée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era4-sci-001",
@@ -26385,10 +27071,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-DE-04-sciences-techniques-sant"
+          ],
           "confidence": "non documenté",
           "justification": "La matrice de couverture classe cette cellule en « vide justifié » : aucune source du registre ne traite ce domaine pour 1914–1945 et omissions.yaml ne contient pas d'ID dédié. Le silence est explicite, aucun fait n'est inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era4-art-001",
@@ -26419,7 +27107,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "SRC-006 mentionne la modernité culturelle de la République de Weimar ; OM-013 constate l'absence de toute entrée artistique dédiée pour 1914–1945. Aucune œuvre ni aucun artiste n'est avancé sans source.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era4-env-001",
@@ -26441,10 +27129,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-DE-04-environnement-territoire"
+          ],
           "confidence": "non documenté",
           "justification": "La matrice de couverture signale l'absence de toute entrée sur les autobahns, le paysage et les bombardements pour cette ère ; aucun ID d'omission n'est enregistré dans omissions.yaml. Aucun fait n'est avancé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era4-mig-001",
@@ -26477,7 +27167,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-013 et la case ERA-4 / Migrations & diasporas de la matrice documentent ces transferts et l'estimation de 12 à 14 millions ; la fourchette reste estimative, d'où le degré probable.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era4-mig-002",
@@ -26512,7 +27202,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "SRC-008 et SRC-009 documentent le recrutement et la déportation de travailleurs étrangers ; la cellule Migrations & diasporas de la matrice cite PROP-010.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era4-min-001",
@@ -26549,7 +27239,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-012, la correction de de-prop-004 et ACTOR-PROP-009 (SRC-018) donnent la date, le nombre de victimes du camp des familles, la fourchette européenne et la commémoration du 2 août.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era4-mem-001",
@@ -26583,7 +27273,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PLACE-PROP-005 et PLACE-PROP-009 du country-audit mentionnent la fonction de tribunal de Nuremberg et la contestation « mémoire nazie et procès » ; SRC-007 est la source du dossier. Seule l'ouverture en 1945 est retenue comme ancre, borne de l'ère traitée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era4-mem-002",
@@ -26618,7 +27308,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-011, la correction de de-ww2 et CLAIM-007 (SRC-007) documentent le processus, l'échelle et la bureaucratie du génocide ; la cellule Mémoire & patrimoine de la matrice cite explicitement PROP-011.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era4-cir-001",
@@ -26655,7 +27345,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "CLAIM-007 et la correction de de-wannsee (SRC-007) précisent que la conférence du 20 janvier 1942 coordonne un génocide déjà engagé, sous la présidence de Heydrich, avec un protocole rédigé par Eichmann.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era5-pol-001",
@@ -26690,7 +27380,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La fiche de-rfa (dataset.js) atteste les dates de fondation (23 mai 1949, 7 octobre 1949), le maintien de la Sarre séparée jusqu'en 1957 et l'insertion des deux États dans les blocs opposés de la Guerre froide. fixes.yaml rattache explicitement cette correction à SRC-010 (Fulbrook, The People's State). La matrice ERA-5 classe le domaine en « partiel ». Aucune date ni institution inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era5-pol-002",
@@ -26727,7 +27417,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-017, de-1989, de-1990 et fixes.yaml attestent la séquence : 9 octobre 1989 (environ 70 000 manifestants à Leipzig), conférence de presse de Schabowski le 9 novembre, élections libres du 18 mars 1990, accession du 3 octobre 1990 par l'article 23. SRC-012 (Jarausch, The Rush to German Unity) et SRC-010 sont les sources du registre. L'ouverture du Mur n'est pas présentée comme une décision planifiée (fixes.yaml).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era5-gue-001",
@@ -26760,7 +27450,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La matrice ERA-5 classe « Guerres & diplomatie » en « vide justifié » : « Pas de guerre directe sur le territoire ; la Guerre froide est traitée comme politique. » La fiche de-rfa atteste l'insertion des deux États dans les blocs opposés de la Guerre froide (SRC-010). Point de silence sur la guerre directe, non une négation des conflits externes de la période ; aucun théâtre de guerre ni traité inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era5-dro-001",
@@ -26793,7 +27483,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La fiche de-nuremberg (dataset.js) atteste que les procès jugent les dirigeants nazis pour crimes de guerre et crimes contre l'humanité et fondent une partie du droit pénal international. Le lieu Nuremberg porte « tribunal » parmi ses fonctions et SRC-007 dans country-audit.yaml (place PLACE-PROP-005). La matrice ERA-5 classe le domaine en « partiel » : « Héritage de Nuremberg et répression, mais pas de droit de la RDA ». 1945 est la borne de début de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era5-eco-001",
@@ -26830,7 +27520,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-015 et ACTOR-PROP-010 (country-audit.yaml) attestent l'accord du 30 octobre 1961 à Bad Godesberg, les accords antérieurs (Italie 1955, Espagne et Grèce 1960), environ 870 000 Turcs jusqu'en 1973 et l'Anwerbestopp de novembre 1973. SRC-009 (Herbert, A History of Foreign Labor in Germany) est la source canonique. La matrice note que le Wirtschaftswunder n'est pas traité : aucun chiffre de croissance inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era5-soc-001",
@@ -26864,7 +27554,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-014 (proposals.yaml) atteste les grèves du 17 juin 1953 contre l'augmentation des normes, les manifestations dans plus de 70 villes, les revendications d'élections libres à Berlin-Est et l'intervention des troupes soviétiques. SRC-010 (Fulbrook, The People's State) est la source attachée ; sa notice d'usage couvre « 1953 and 1989 ». La matrice classe le domaine en « partiel » (pas de démographie) : aucun effectif de population inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era5-fem-001",
@@ -26891,10 +27581,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-DE-05-femmes-genre-sexualites"
+          ],
           "confidence": "non documenté",
           "justification": "La matrice ERA-5 classe le domaine en « vide justifié » : « Aucune entrée ; femmes de la RDA, travail et avortement (1972) non traités. » Aucun repère daté, aucun effectif et aucun ID du registre ne documentent spécifiquement ce domaine pour l'ère. SRC-010 mentionne le genre dans sa notice d'usage, mais aucun point structuré n'est attesté : silence explicite, sans réforme ni figure inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era5-rel-001",
@@ -26926,7 +27618,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-017 et la fiche de-1989 (dataset.js) attestent qu'environ 70 000 personnes manifestent à Leipzig le 9 octobre 1989 « après les prières pour la paix ». SRC-012 (Jarausch, The Rush to German Unity) couvre la révolution pacifique, Leipzig et Berlin. La matrice classe le domaine en « vide justifié » pour les Églises de RDA comme telles : seul le rôle des prières est attesté, aucune institution ecclésiale n'est inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era5-sci-001",
@@ -26948,10 +27640,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-DE-05-sciences-techniques-sant"
+          ],
           "confidence": "non documenté",
           "justification": "La matrice ERA-5 classe le domaine en « vide justifié » : « Aucune entrée ; sciences et techniques de la RDA non traitées. » Aucun laboratoire, chercheur, programme ou date n'est attesté dans le corpus ni dans le registre SRC-001 à SRC-020 pour cette ère. Point de silence, sans invention d'institution ni de découverte.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era5-art-001",
@@ -26973,10 +27667,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-DE-05-arts-lettres"
+          ],
           "confidence": "non documenté",
           "justification": "La matrice ERA-5 classe le domaine en « vide justifié » : « Aucune entrée ; culture et littérature de la RDA non traitées. » Aucune œuvre, auteur, date ou institution culturelle n'est attesté dans le corpus pour cette ère. Point de silence explicite, sans titre ni nom inventés.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era5-env-001",
@@ -27009,7 +27705,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "OM-014 (omissions.yaml) documente l'omission : « Pollution industrielle de la RDA (Bitterfeld, Wismut), politique environnementale de la RFA, mouvement antinucléaire », avec evidence_checked SRC-010 et SRC-014 ; la matrice ERA-5 cite OM-014 pour cette cellule « vide justifié ». SRC-014 (Uekötter) couvre l'environnementalisme allemand et l'antinucléarisme, mais aucun repère daté n'est instrumenté pour l'ère : silence explicite, sans chiffre de pollution inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era5-mig-001",
@@ -27046,7 +27742,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-015 et CLAIM-009 (country-audit.yaml) attestent l'accord du 30 octobre 1961 à Bad Godesberg, environ 870 000 Turcs jusqu'en 1973 et le retour prévu devenu installation, renforcé par l'Anwerbestopp de 1973. SRC-009 (Herbert) est la source canonique. La matrice ERA-5 classe cette cellule « couvert » (PROP-015). Aucun effectif supplémentaire inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era5-peu-001",
@@ -27088,7 +27784,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "ACTOR-PROP-012 (country-audit.yaml) atteste la Domowina comme fédération des Sorbs, active sur PERIOD-8 (1945-1990), avec les lieux Bautzen/Budyšin et Cottbus/Chóśebuz, des écoles, une presse et des institutions culturelles, ainsi que la Stiftung für das sorbische Volk. SRC-019 est un portail officiel du Land de Saxe : fiable pour les faits institutionnels, non pour une synthèse historique indépendante. La matrice note l'absence de minorité juive documentée : aucune affirmation inventée à ce sujet.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era5-mem-001",
@@ -27118,10 +27814,13 @@ export const DATASET = {
             "Mur de Berlin comme symbole de la Guerre froide",
             "mémoire de 1989 à Leipzig"
           ],
-          "sources": [],
-          "confidence": "certain",
+          "sources": [
+            "OM-AUTO-DE-05-memoire-patrimoine"
+          ],
+          "confidence": "non documenté",
+          "confidenceOriginal": "certain",
           "justification": "La fiche de-mur (dataset.js) atteste que la RDA érige un mur en 1961 pour empêcher la fuite vers l'Ouest et que le Mur devient « le symbole le plus visible de la Guerre froide » ; le lieu Leipzig porte « lieu de mémoire » et « mémoire de 1989 » dans country-audit.yaml (PROP-017). La matrice ERA-5 classe le domaine en « partiel » : « Mur et 1989, mais pas de fiche mémorielle. » Aucun monument ni commémoration inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era5-cir-001",
@@ -27159,7 +27858,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-015 (proposals.yaml) atteste la succession des accords de recrutement avec l'Italie (1955), l'Espagne et la Grèce (1960), la Turquie (30 octobre 1961), puis l'Anwerbestopp de novembre 1973 ; SRC-009 (Herbert, A History of Foreign Labor in Germany 1880-1980) est la source du registre. La matrice ERA-5 classe le domaine en « partiel » : « Recrutement transnational, mais pas de circulation documentée. » Aucun flux chiffré supplémentaire inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era6-pol-001",
@@ -27197,7 +27896,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-017 et la correction de de-1990 documentent l'accession du 3 octobre 1990, les élections du 18 mars et le recours à l'article 23. SRC-012 (Jarausch) et SRC-010 (Fulbrook) sont deux synthèses indépendantes. La qualification juridique reste disputée (accession ou annexion, REPORT.md §6) : le débat est signalé sans être tranché par la frise.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era6-dip-001",
@@ -27236,7 +27935,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "SRC-020 est le communiqué officiel de l'Auswärtiges Amt sur la conclusion des négociations avec la Namibie : reconnaissance, excuse et programme de 1,1 milliard d'euros. SRC-013 documente la guerre coloniale de 1904-1908. PROP-007 précise que cette reconnaissance n'emporte pas de reconnaissance juridique de réparations : aucun montant n'est présenté comme une réparation.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era6-droit-001",
@@ -27271,7 +27970,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La correction de de-1990 et PROP-017 précisent que l'accession du 3 octobre 1990 se fait en vertu de l'article 23 de la Loi fondamentale. Aucune autre procédure constitutionnelle n'est affirmée. La controverse accession/annexion signalée dans REPORT.md §6 est un débat d'interprétation, non une incertitude sur le texte mobilisé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era6-econ-001",
@@ -27304,7 +28003,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-018 et SRC-014 (Uekötter) documentent le moratoire consécutif à Fukushima (11 mars 2011), le vote de juin 2011 et l'inversion de la prolongation décidée en 2010. La décision est décrite comme un pilier de la politique énergétique ; aucun chiffre économique n'est avancé ici.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era6-soc-001",
@@ -27341,7 +28040,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "SRC-012 documente l'unification de 1990 ; SRC-010 documente la société de RDA jusqu'en 1989. Le point se limite à la fin de la séparation institutionnelle des deux sociétés : aucun chiffre démographique n'est affirmé, conformément à la coverage-matrix (ERA-6, Société & démographie : « pas de démographie »).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era6-femmes-001",
@@ -27363,10 +28062,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-DE-06-femmes-genre-sexualites"
+          ],
           "confidence": "non documenté",
           "justification": "La coverage-matrix (ERA-6, Femmes, genre, sexualités) porte « vide justifié » : « aucune entrée ; Merkel, égalité et genre non traités ». REPORT.md §2 et §7 confirment cette dette documentaire. Aucune affirmation historique n'est avancée : ce point enregistre l'omission, conformément à la règle « les silences sont des données ». Aucun ID d'omission dédié n'existe dans omissions.yaml pour cette cellule.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era6-rel-001",
@@ -27388,10 +28089,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-DE-06-religions-croyances"
+          ],
           "confidence": "non documenté",
           "justification": "La coverage-matrix (ERA-6, Religions & croyances) porte « vide justifié » : « aucune entrée ; sécularisation, islam et vie juive non traités ». Aucune affirmation concernant ces phénomènes n'est avancée faute de source dans le registre vérifié. Ce point enregistre l'omission et ne la masque pas.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era6-sci-001",
@@ -27425,7 +28128,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-018 et SRC-014 documentent l'accident du 11 mars 2011, le moratoire et le vote de juin 2011. Le point porte sur la décision relative à une technique ; aucun effet sanitaire n'est affirmé, le registre ne documentant pas la santé pour cette ère au-delà du nucléaire.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era6-arts-001",
@@ -27447,10 +28150,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-DE-06-arts-lettres"
+          ],
           "confidence": "non documenté",
           "justification": "La coverage-matrix (ERA-6, Arts & lettres) porte « vide justifié » : « aucune entrée ; culture de la République de Berlin non traitée ». Aucun nom, aucune œuvre ni aucune date n'est avancé sans source vérifiée. Ce point enregistre l'omission plutôt que de la combler par du texte générique.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era6-env-001",
@@ -27481,7 +28186,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-018 et SRC-014 (Uekötter, The Greenest Nation?) inscrivent la sortie du nucléaire de 2011 dans une histoire plus longue de l'antinucléarisme et de l'environnementalisme allemand. SRC-014 s'arrête en 2014 : aucune évaluation postérieure de la transition n'est affirmée ici.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era6-migr-001",
@@ -27512,7 +28217,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "OM-015 (omissions.yaml) documente explicitement ce silence pour ERA-6 et précise que son traitement exige des sources statistiques et juridiques spécifiques, absentes du registre. Aucun chiffre ni aucune date d'arrivée n'est affirmé au-delà de ceux déjà inscrits dans l'omission.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era6-min-001",
@@ -27549,7 +28254,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "SRC-019 (portail officiel du Land de Saxe, consulté le 13 novembre 2026) documente la reconnaissance des Sorbs comme minorité nationale, environ 60 000 personnes en Allemagne, Bautzen/Budyšin comme centre culturel, la Domowina et les droits bilingues. Page non datée : les faits sont donnés pour l'état actuel, sans datation d'événement inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era6-mem-001",
@@ -27588,7 +28293,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-007 et PLACE-PROP-011 (Windhoek) documentent le lien entre la guerre coloniale de 1904-1908, la reconnaissance de 2021 et la mémoire contemporaine. SRC-013 couvre la violence coloniale et sa mémoire, SRC-020 la déclaration officielle. La portée de la reconnaissance reste disputée (REPORT.md §6) : le point ne tranche pas la question des réparations.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "de-era6-circ-001",
@@ -27628,7 +28333,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "SRC-020 est le communiqué de l'Auswärtiges Amt sur la conclusion des négociations avec la Namibie ; SRC-013 replace ces échanges dans l'histoire du génocide colonial et de sa mémoire. Le point documente la circulation diplomatique et mémorielle entre les deux pays, sans affirmer de détail de négociation absent des sources.",
-          "status": "validated"
+          "status": "extrait"
         }
       ]
     },
@@ -27851,6 +28556,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La tradition fixe en 753 av.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -27858,6 +28564,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "J.-C. la fondation de Rome par Romulus.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -27865,6 +28572,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La cité devient le cœur d’un immense empire.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -27872,6 +28580,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Rome — capitale impériale, siège papal, capitale nationale",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-003",
                 "SRC-015"
@@ -27925,6 +28634,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La monarchie est renversée et Rome se dote d’institutions républicaines.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -27932,6 +28642,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Sénat, consulats et assemblées structurent la vie politique romaine.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -27939,6 +28650,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Rome — capitale impériale, siège papal, capitale nationale",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-003",
                 "SRC-015"
@@ -27992,6 +28704,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Octave reçoit le titre d’Auguste et concentre les pouvoirs.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -27999,6 +28712,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’Empire romain domine la Méditerranée pendant des siècles.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -28006,6 +28720,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Rome — capitale impériale, siège papal, capitale nationale",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-003",
                 "SRC-015"
@@ -28060,6 +28775,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "En 476, Odoacre dépose Romulus Augustulus, dernier empereur d'Occident, et renvoie les insignes impériaux à Constantinople.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -28067,6 +28783,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La date est une convention historiographique: l'Empire d'Orient subsiste et les dominations ostrogothe, byzantine puis lombarde assurent la continuité des institutions et des sociétés italiennes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -28074,6 +28791,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Autorité religieuse et politique hors institution; son rôle dans le retour de la papauté à Rome en 1377 est documenté, mais ses modalités et son poids exact restent discutés.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-005"
               ]
@@ -28121,6 +28839,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Tertiaire dominicaine, Catherine de Sienne (1347-1380) intervient par ses lettres et ses réseaux dans la politique des cités toscanes et de l'Église.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -28128,6 +28847,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Elle joue un rôle dans le retour de Grégoire XI d'Avignon à Rome en 1377, avant de mourir en 1380.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -28135,6 +28855,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Son autorité, exercée hors des institutions sacerdotales, montre les marges d'action des femmes religieuses.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -28142,6 +28863,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Autorité religieuse et politique hors institution; son rôle dans le retour de la papauté à Rome en 1377 est documenté, mais ses modalités et son poids exact restent discutés.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-005"
               ]
@@ -28151,6 +28873,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Sienne — commune, ville de Catherine",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-005"
               ]
@@ -28213,6 +28936,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "En juillet 1378, les ouvriers non qualifiés de la laine, les Ciompi, se soulèvent à Florence et obtiennent la création de trois arts populaires.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -28220,6 +28944,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Leur pouvoir est bref: la révolte est réprimée et les conquêtes annulées.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -28227,6 +28952,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L'épisode reste un cas majeur de conflit du travail dans l'Europe médiévale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -28234,6 +28960,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Autorité religieuse et politique hors institution; son rôle dans le retour de la papauté à Rome en 1377 est documenté, mais ses modalités et son poids exact restent discutés.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-005"
               ]
@@ -28243,6 +28970,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Florence — commune, banque, mécénat, capitale temporaire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-004",
                 "SRC-008"
@@ -28309,6 +29037,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "En 1434, Cosme de Médicis rentre d'exil et consolide à Florence un pouvoir fondé sur la banque, les réseaux de clientèle et le contrôle des institutions.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -28316,6 +29045,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Son mécénat accompagne cette domination politique et ne résume pas la Renaissance, qui se développe dans plusieurs cours et cités italiennes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -28323,6 +29053,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Autorité religieuse et politique hors institution; son rôle dans le retour de la papauté à Rome en 1377 est documenté, mais ses modalités et son poids exact restent discutés.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-005"
               ]
@@ -28332,6 +29063,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Florence — commune, banque, mécénat, capitale temporaire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-004",
                 "SRC-008"
@@ -28397,6 +29129,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "De 1494 à 1559, Charles VIII, Louis XII et François Ier interviennent en Italie, tandis que Charles Quint et les papes disputent Naples, Milan et Florence.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -28404,6 +29137,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La paix de Cateau-Cambrésis, en 1559, consacre la prépondérance espagnole dans la péninsule.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -28411,6 +29145,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les guerres révèlent la richesse culturelle des cités italiennes autant que la fragilité de leurs États.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -28418,6 +29153,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Figure du volontariat transnational; sa mort en 1849 et sa mémoire servent des usages nationaux, familiaux et féministes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-009"
               ]
@@ -28427,6 +29163,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Figure du volontariat et de la mobilisation populaire; son rôle militaire est décisif en 1860, mais l'unification est aussi l'œuvre de la diplomatie et de l'armée.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-009"
               ]
@@ -28500,6 +29237,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Après l'unification, des bandes armées et des révoltes paysannes se multiplient dans le Mezzogiorno; l'armée italienne répond par une répression massive, des exécutions et des déportations.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -28507,6 +29245,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le « brigandage » devient un stéréotype national opposant un Nord moderne à un Sud arriéré.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -28514,6 +29253,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Cette violence de 1861-1865 pèse durablement sur la mémoire de l'Unité.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -28521,6 +29261,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Figure du volontariat transnational; sa mort en 1849 et sa mémoire servent des usages nationaux, familiaux et féministes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-009"
               ]
@@ -28530,6 +29271,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Figure du volontariat et de la mobilisation populaire; son rôle militaire est décisif en 1860, mais l'unification est aussi l'œuvre de la diplomatie et de l'armée.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-009"
               ]
@@ -28539,6 +29281,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Naples — capitale, port, centre culturel",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-010",
                 "SRC-011"
@@ -28630,6 +29373,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "En 1861, Victor-Emmanuel II est proclamé roi d'Italie après les campagnes de Garibaldi et la diplomatie de Cavour, au terme de plébiscites et de combats de volontaires.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -28637,6 +29381,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L'unité reste incomplète: la Vénétie est annexée en 1866 et Rome en 1870.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -28644,6 +29389,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Dans le Mezzogiorno, l'annexion s'accompagne d'une répression du brigandage et de violences qui pèsent durablement sur la mémoire de l'Unité.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -28651,6 +29397,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Figure du volontariat transnational; sa mort en 1849 et sa mémoire servent des usages nationaux, familiaux et féministes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-009"
               ]
@@ -28660,6 +29407,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Figure du volontariat et de la mobilisation populaire; son rôle militaire est décisif en 1860, mais l'unification est aussi l'œuvre de la diplomatie et de l'armée.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-009"
               ]
@@ -28669,6 +29417,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Turin — capitale, industrie automobile, ville ouvrière",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-015",
                 "SRC-016"
@@ -28759,6 +29508,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 20 septembre 1870, les troupes italiennes entrent dans Rome après la défaite française à Sedan; la capitale est transférée de Florence à Rome en 1871.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -28766,6 +29516,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La fin de l'État pontifical ne règle pas la question romaine, réglée seulement par les accords du Latran de 1929.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -28773,6 +29524,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le pape refuse alors de reconnaître le royaume et se déclare prisonnier au Vatican.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -28780,6 +29532,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Figure du volontariat transnational; sa mort en 1849 et sa mémoire servent des usages nationaux, familiaux et féministes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-009"
               ]
@@ -28789,6 +29542,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Figure du volontariat et de la mobilisation populaire; son rôle militaire est décisif en 1860, mais l'unification est aussi l'œuvre de la diplomatie et de l'armée.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-009"
               ]
@@ -28798,6 +29552,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Rome — capitale impériale, siège papal, capitale nationale",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-003",
                 "SRC-015"
@@ -28888,6 +29643,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’Italie quitte la Triple-Alliance et rejoint l’Entente en 1915.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -28895,6 +29651,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La guerre coûte cher et nourrit la crise politique d’après-guerre.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -28927,6 +29684,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Du 27 au 29 octobre 1922, les chemises noires convergent vers Rome; le 30, Victor-Emmanuel III nomme Mussolini président du Conseil sans que l'armée intervienne.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -28934,6 +29692,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La violence squadriste et la loi Acerbo de 1923 consolident le pouvoir; après le meurtre de Matteotti et la sécession de l'Aventin en 1924, les lois fascistissimes de 1925-1926 achèvent la suppression des libertés politiques.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -28968,6 +29727,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L'Italie entre en guerre le 10 juin 1940 aux côtés de l'Allemagne.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -28975,6 +29735,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Après l'armistice du 8 septembre 1943, l'occupation allemande et la République sociale italienne ouvrent une guerre civile et une Résistance armée, jusqu'à la Libération du 25 avril 1945.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -29008,6 +29769,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 2 juin 1946, les électeurs abolissent la monarchie par référendum et élisent une Assemblée constituante; les femmes votent pour la première fois lors d'élections nationales.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -29015,6 +29777,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La Constitution est promulguée le 27 décembre 1947 et entre en vigueur le 1er janvier 1948.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -29022,6 +29785,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La République naît ainsi d'un double vote, avant que ses institutions ne soient pleinement établies.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -29029,6 +29793,7 @@ export const DATASET = {
               "kind": "audit",
               "text": "Le référendum du 2 juin 1946 instaure la République avec environ 54 % des suffrages; l'Assemblée constituante est élue le même jour.",
               "confidence": "certain",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-015"
               ]
@@ -29038,6 +29803,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Première femme à présider la Chambre des députés (1979); incarne l'entrée des femmes dans les institutions républicaines.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-015"
               ]
@@ -29047,6 +29813,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Acteurs centraux de l'automne chaud de 1969 et des conflits des années 1970; la défaite de 1980 marque un tournant.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-015",
                 "SRC-016"
@@ -29129,6 +29896,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 25 mars 1957, six États signent à Rome les traités instituant la Communauté économique européenne et Euratom, après une négociation marquée par le rapport Spaak, Jean Monnet et Konrad Adenauer.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -29136,6 +29904,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La CEE entre en vigueur le 1er janvier 1958 et s'inscrit aux côtés de l'OECE et de l'OTAN dans le bloc occidental.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -29143,6 +29912,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L'Italie, engagée de longue date dans la construction européenne avec De Gasperi, figure parmi les membres fondateurs.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -29150,6 +29920,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Première femme à présider la Chambre des députés (1979); incarne l'entrée des femmes dans les institutions républicaines.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-015"
               ]
@@ -29159,6 +29930,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Acteurs centraux de l'automne chaud de 1969 et des conflits des années 1970; la défaite de 1980 marque un tournant.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-015",
                 "SRC-016"
@@ -29242,6 +30014,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 9 octobre 1963, une masse rocheuse se détache du mont Toc et s'abat dans le lac artificiel du Vajont.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -29249,6 +30022,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L'onde submerge Longarone et plusieurs villages, faisant 1 917 victimes selon les chiffres officiels.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -29256,6 +30030,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le désastre, précédé d'avertissements ignorés, devient un symbole des risques industriels et de la responsabilité publique.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -29263,6 +30038,7 @@ export const DATASET = {
               "kind": "audit",
               "text": "La catastrophe du Vajont (9 octobre 1963, 1 917 victimes) relève d'un risque industriel connu et de décisions publiques et privées contestées.",
               "confidence": "certain",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-019"
               ]
@@ -29272,6 +30048,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Première femme à présider la Chambre des députés (1979); incarne l'entrée des femmes dans les institutions républicaines.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-015"
               ]
@@ -29281,6 +30058,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Acteurs centraux de l'automne chaud de 1969 et des conflits des années 1970; la défaite de 1980 marque un tournant.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-015",
                 "SRC-016"
@@ -29291,6 +30069,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Longarone — ville sinistrée, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-019"
               ]
@@ -29387,6 +30166,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’opération Mani pulite révèle un vaste système de corruption politique.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -29394,6 +30174,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Elle provoque l’effondrement des partis traditionnels italiens.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -29401,6 +30182,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Première femme à présider la Chambre des députés (1979); incarne l'entrée des femmes dans les institutions républicaines.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-015"
               ]
@@ -29410,6 +30192,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Acteurs centraux de l'automne chaud de 1969 et des conflits des années 1970; la défaite de 1980 marque un tournant.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-015",
                 "SRC-016"
@@ -29491,6 +30274,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’Italie abandonne la lire pour l’euro.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -29498,6 +30282,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La monnaie unique s’inscrit dans l’approfondissement de l’intégration européenne.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -29505,6 +30290,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Première femme à présider la Chambre des députés (1979); incarne l'entrée des femmes dans les institutions républicaines.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-015"
               ]
@@ -29514,6 +30300,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Acteurs centraux de l'automne chaud de 1969 et des conflits des années 1970; la défaite de 1980 marque un tournant.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-015",
                 "SRC-016"
@@ -30700,7 +31487,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Fondé sur l'usage documenté de SRC-002 (Lenski, The Cambridge Companion to the Age of Constantine, 2005) et sur PROP-002: rencontre de Constantin et Licinius à Milan en 313, « lutte pour le pouvoir impérial ». Complète les repères institutionnels du dataset (it-rep-romaine -509, it-empire -27) que proposals.yaml signale comme non sourcés dans son review.unresolved.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era1-guer-001",
@@ -30739,7 +31526,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "SRC-001 (Plutarch, Life of Crassus, Lives III, trad. Bernadotte Perrin, Loeb 1916) documente la révolte de 73-71 av. J.-C., le commandement de Crassus et les crucifiements le long de la Via Appia; PROP-001 ajoute le départ de Capoue et l'intervention de Pompée. Source primaire aristocratique hostile à Spartacus (note SRC-001): chiffres à recouper, d'où la confiance « probable ». La matrice signale que seul it-476 était tagué guerre pour cette ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era1-droit-001",
@@ -30765,10 +31552,12 @@ export const DATASET = {
             "droit prétorien"
           ],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-003"
+          ],
           "confidence": "non documenté",
           "justification": "Reprend exactement OM-003 (period_id ERA-1, domain Droit & justice, scale imperial, reason not_yet_researched, evidence_checked: []): le droit romain n'est instrumenté par aucune fiche. Les objets cités sont ceux nommés par l'omission, pas des faits attestés ici. Silence explicite, validé pour la couverture seulement.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era1-econ-001",
@@ -30808,7 +31597,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "SRC-001 et PROP-001 documentent l'économie esclavagiste et la peur sociale de l'Italie romaine; PROP-001 est déjà désignée par la matrice comme entrée de la cellule Économie & travail. Confiance « probable »: source primaire unique, récit hostile à Spartacus (note SRC-001).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era1-soc-001",
@@ -30846,7 +31635,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "SRC-001 (révolte de 73-71, répression, crucifiements) et PROP-001 (dizaines de milliers d'esclaves et de paysans, milliers de captifs) fournissent le seul repère social du corpus pour cette ère; la matrice relève que la fondation légendaire it-rome en était le seul repère social. Effectifs non vérifiés à l'unité: confiance « probable ».",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era1-genre-001",
@@ -30868,10 +31657,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-IT-01-femmes-genre-sexualites"
+          ],
           "confidence": "non documenté",
           "justification": "La matrice ERA-1/Femmes, genre, sexualités est « vide non traité: Aucune figure féminine ni analyse de genre pour l'ère romaine. » Aucune omission dédiée n'existe dans omissions.yaml pour cette cellule. Le point explicite le silence du corpus; il ne décrit pas la condition féminine romaine, faute de source au registre.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era1-rel-001",
@@ -30907,7 +31698,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "SRC-002 (Lenski, The Cambridge Companion to the Age of Constantine, 2005, DOI 10.1017/ccol0521818389) et PROP-002 documentent la rencontre de 313, la tolérance, la restitution des biens et l'absence de religion d'État. Cellule déjà qualifiée de « couvert » par la matrice via PROP-002.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era1-sci-001",
@@ -30929,10 +31720,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-IT-01-sciences-techniques-sant"
+          ],
           "confidence": "non documenté",
           "justification": "La matrice ERA-1/Sciences, techniques & santé est « vide non traité: Aucune fiche sur l'ingénierie, la médecine ou les savoirs romains. » Aucune omission dédiée dans omissions.yaml (OM-006 et OM-013/OM-014 concernent d'autres ères). Silence explicite, validé pour la couverture uniquement.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era1-arts-001",
@@ -30954,10 +31747,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-IT-01-arts-lettres"
+          ],
           "confidence": "non documenté",
           "justification": "Matrice ERA-1/Arts & lettres: « vide non traité — Aucune fiche sur la littérature, l'architecture ou les arts romains. » Aucune omission dédiée dans omissions.yaml (OM-004 concerne ERA-2). Silence explicité, sans invention de titre, d'œuvre ni d'auteur.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era1-env-001",
@@ -30991,7 +31786,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "SRC-001 documente explicitement les « crucifiements le long de la Via Appia »; PROP-001 reprend le fait. Donne une ancre territoriale à une ère dont la matrice signale l'absence de fiche environnement et territoire. La source ne décrit ni l'éruption du Vésuve ni l'exploitation du sol: ces exemples de la matrice ne sont pas affirmés ici.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era1-migr-001",
@@ -31014,10 +31809,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-IT-01-migrations-diasporas"
+          ],
           "confidence": "non documenté",
           "justification": "Matrice ERA-1/Migrations & diasporas (échelle transnationale): « vide non traité — Peuplement, colonisation romaine et diaspora juive ne sont pas traités. » Aucune omission dédiée. Silence explicite, sans affirmation de date ni de flux migratoire.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era1-autoct-001",
@@ -31042,10 +31839,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-IT-01-peuples-autochtones-mino"
+          ],
           "confidence": "non documenté",
           "justification": "Reprend la matrice ERA-1/Peuples autochtones & minorités: « vide justifié — Catégorie « peuples autochtones » non applicable; esclaves et pérégrins relèvent d'autres domaines, non traités. » Aucune donnée historique n'est ajoutée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era1-mem-001",
@@ -31079,7 +31878,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "country-audit.yaml (scope.temporal.start_rationale) qualifie -753 de convention littéraire non documentée; PLACE-001 (Rome) porte les contestations « Fondation légendaire, mémoire impériale, question romaine » et est sourcé SRC-003/SRC-015 dans dataset.js. SRC-003 (La Rocca, Italy in the Early Middle Ages 476-1000) documente la discussion de la borne de 476 et les continuités post-romaines. Confiance « disputé »: le récit est conservé avec réserve, non tenu pour un fait.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era1-circ-001",
@@ -31102,10 +31901,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-IT-01-circulations-transnation"
+          ],
           "confidence": "non documenté",
           "justification": "Matrice ERA-1/Circulations transnationales (échelle impériale): « vide non traité — Routes, ports et commerce méditerranéen ne sont pas traités. » Aucune omission dédiée; silence explicite, sans invention de route, de port ni de date.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era2-pol-001",
@@ -31141,7 +31942,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Fait enregistré dans src/data/dataset.js (it-medicis, 1434) et dans la correction it-medicis de audits/italy/proposals.yaml, sourcée SRC-004 (Najemy, A History of Florence, 1200-1575). OM-001 signale que le Haut Moyen Âge (476-1000) reste non documenté pour cette même cellule. Échelle régionale conforme à la matrice.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era2-guer-002",
@@ -31163,10 +31964,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-002"
+          ],
           "confidence": "non documenté",
           "justification": "Reprend OM-002 (ERA-2, Guerres & diplomatie, regional, reason not_yet_researched, evidence_checked SRC-004): aucune guerre médiévale n'est présente entre 476 et 1494. La matrice qualifie la cellule de « vide non traité — Aucune guerre communale, guelfe/gibeline ou angevine n'est documentée. » Silence explicite, sans invention de bataille ni de date.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era2-droit-003",
@@ -31192,10 +31995,12 @@ export const DATASET = {
             "droit canon"
           ],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-IT-02-droit-justice"
+          ],
           "confidence": "non documenté",
           "justification": "Matrice ERA-2/Droit & justice: « vide non traité — Statuts communaux, droit canon et tribunaux ne sont pas traités. » Aucun ID d'omission dédié dans omissions.yaml pour cette cellule (OM-003 concerne ERA-1). Silence explicite; les objets cités sont ceux nommés par la matrice, non des faits attestés ici.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era2-econ-004",
@@ -31231,7 +32036,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-004 de audits/italy/proposals.yaml et dataset.js (it-prop-004, 1378), sourcés SRC-004 (Najemy): juillet 1378, ouvriers non qualifiés de la laine, trois arts populaires, répression. La matrice ERA-2 désigne PROP-003 et PROP-004 comme entrées de la cellule Économie & travail. Aucun chiffre inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era2-soc-005",
@@ -31265,7 +32070,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-003 de audits/italy/proposals.yaml (SRC-004) et CLAIM-002 (certain) du country-audit: la peste noire de 1347-1351 modifie en profondeur démographie, prix, salaires et rapports de travail. La matrice ERA-2/Société & démographie renvoie à PROP-003. Aucun chiffre de mortalité inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era2-genre-006",
@@ -31303,7 +32108,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "ACTOR-001 du country-audit et PROP-005 (SRC-005, Luongo, The Saintly Politics of Catherine of Siena), repris dans dataset.js (it-prop-005, 1377). Son autorité hors institution est documentée; son rôle précis dans le retour de la papauté en 1377 est décrit comme discuté dans ACTOR-001, d'où la confiance « probable ». Cellule « couvert » de la matrice.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era2-rel-007",
@@ -31339,7 +32144,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-005 (SRC-005) et ACTOR-001 documentent le retour de Grégoire XI d'Avignon à Rome en 1377; la matrice ERA-2/Religions & croyances qualifie la cellule de « couvert » via PROP-005 (« papauté d'Avignon et retour à Rome en 1377 »). Aucune date inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era2-sci-008",
@@ -31372,7 +32177,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-003 (SRC-004): « les autorités urbaines multiplient les mesures sanitaires et les registres ». La matrice ERA-2/Sciences, techniques & santé qualifie la cellule de « partiel » via PROP-003 et note que médecine et universités restent absentes. Certitude prudente: ce sont les seuls repères sanitaires du corpus.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era2-arts-009",
@@ -31405,7 +32210,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "dataset.js (it-medicis, point-2) et la correction it-medicis de proposals.yaml (SRC-004): « Son mécénat accompagne cette domination politique et ne résume pas la Renaissance, qui se développe dans plusieurs cours et cités italiennes. » La matrice ERA-2/Arts & lettres qualifie la cellule de « partiel » via it-medicis; OM-004 signale que le reste de la Renaissance artistique et littéraire n'est pas instrumenté.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era2-env-010",
@@ -31437,7 +32242,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-003 (SRC-004): la peste arrive en Sicile en 1347 et ravage l'Italie jusqu'en 1351; les autorités urbaines multiplient les mesures sanitaires. La matrice ERA-2/Environnement & territoire relie la peste aux conditions urbaines et note l'absence d'histoire agraire. Aucun lien de causalité environnementale non sourcé n'est affirmé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era2-migr-011",
@@ -31460,10 +32265,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-IT-02-migrations-diasporas"
+          ],
           "confidence": "non documenté",
           "justification": "Matrice ERA-2/Migrations & diasporas (échelle transnationale): « vide non traité — Diasporas juives, grecques, albanaises et migrations urbaines absentes. » Aucun ID d'omission dédié. Silence explicite, sans invention de flux ni de date.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era2-peuples-012",
@@ -31492,10 +32299,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-IT-02-peuples-autochtones-mino"
+          ],
           "confidence": "non documenté",
           "justification": "Matrice ERA-2/Peuples autochtones & minorités: « vide non traité — Minorités juives et musulmanes de Sicile et d'Italie du Sud non traitées. » Aucun ID d'omission dédié pour cette ère (OM-012 concerne ERA-5, OM-010 ERA-4). Silence explicite; aucun fait historique n'est ajouté.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era2-mem-013",
@@ -31529,7 +32338,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "PLACE-003 (Florence) du country-audit porte les contestations « Renaissance élitiste » et « mémoire des Ciompi », sourcées SRC-004/SRC-008; la matrice ERA-2/Mémoire & patrimoine qualifie la cellule de « partiel » via it-medicis (« Florence est un lieu de mémoire médicéen, sans analyse critique »). Conflit de récits maintenu comme disputé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era2-circ-014",
@@ -31564,7 +32373,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La matrice ERA-2/Circulations transnationales qualifie la cellule de « partiel » via it-medicis: « Réseaux marchands et artistiques européens évoqués, non documentés. » dataset.js (it-medicis) mentionne la banque et les réseaux de clientèle; SRC-004 (Najemy) couvre la Florence communale et médicéenne. Aucune route, expédition ni date de circulation inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era3-pol-001",
@@ -31604,7 +32413,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Fait établi par la synthèse de Riall (SRC-009) et par la fiche it-unification du jeu de données; l'unité reste incomplète jusqu'en 1870.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era3-ger-001",
@@ -31644,7 +32453,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Fait décrit dans la fiche it-guerres du jeu de données et couvert par SRC-004, qui documente les guerres d'Italie à partir de 1494.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era3-drt-001",
@@ -31680,7 +32489,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Repère normatif central de la construction de l'État italien, couvert par la synthèse sur l'État et l'unification (SRC-009); complète la cellule droit & justice signalée vide non traité dans la matrice ERA-3.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era3-eco-001",
@@ -31718,7 +32527,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "SRC-006 documente explicitement le ghetto de Venise (1516), la ségrégation urbaine et la vie économique de la minorité juive; fournit un point de travail pour l'époque moderne.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era3-soc-001",
@@ -31754,7 +32563,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "SRC-009 documente les dimensions sociales du Risorgimento et SRC-010 les révoltes paysannes et le rapport Nord-Sud; la fiche it-unification mentionne plébiscites et combats de volontaires.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era3-gen-001",
@@ -31793,7 +32602,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "ACTOR-PROP-002 du registre d'audits documente son parcours au Brésil, en Uruguay et en Italie à partir de SRC-009; l'omission OM-007 signalait l'absence de femmes dans cette ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era3-rel-001",
@@ -31831,7 +32640,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-007 du registre d'audits et SRC-007 documentent le concile (1545-1563), la Réforme catholique et le rôle de Paul III.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era3-sci-001",
@@ -31874,7 +32683,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-008 et SRC-008 documentent le procès de 1633, la science de cour et les rapports entre mathématiciens, ordres religieux et papauté.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era3-art-001",
@@ -31909,7 +32718,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "SRC-004 est une histoire de Florence de 1200 à 1575 qui couvre cette période; la fiche it-guerres souligne la richesse culturelle des cités italiennes. Aucune source dédiée aux arts n'existe dans le registre italien pour cette ère, d'où le degré probable.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era3-env-001",
@@ -31947,7 +32756,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Les fiches it-unification et it-rome-capitale du jeu de données et SRC-009 documentent ces annexions et le transfert de la capitale en 1871.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era3-mig-001",
@@ -31986,7 +32795,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "ACTOR-PROP-002 et ACTOR-PROP-007 documentent le parcours transnational des Garibaldi à partir de SRC-009; comble la cellule migrations & diasporas signalée vide non traité dans la matrice ERA-3.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era3-min-001",
@@ -32028,7 +32837,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-006 et SRC-006 documentent le ghetto de Venise (1516), la minorité juive, la ségrégation urbaine et la vie économique; la matrice ERA-3 classait déjà cette cellule couverte.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era3-mem-001",
@@ -32066,7 +32875,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La fiche it-rome-capitale du jeu de données et SRC-009 documentent la prise de Rome, la fin de l'État pontifical et le refus papal de reconnaître le royaume.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era3-cir-001",
@@ -32108,7 +32917,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "SRC-004 et la fiche it-guerres documentent la présence de Charles VIII, Louis XII, François Ier et Charles Quint dans la péninsule jusqu'à Cateau-Cambrésis (1559).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era4-pol-001",
@@ -32153,7 +32962,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Marche sur Rome (27-29 octobre 1922), nomination de Mussolini le 30 octobre et lois fascistissimes de 1925-1926 : faits enregistrés dans src/data/dataset.js (it-mussolini) et dans la correction it-mussolini de audits/italy/proposals.yaml, sourcée SRC-012 et SRC-013 ; acteur ACTOR-009 du country-audit. Échelle nationale conforme à coverage-matrix.csv ; aucune date ni source inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era4-guer-002",
@@ -32196,7 +33005,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Entrée en guerre le 10 juin 1940, armistice du 8 septembre 1943, occupation allemande, guerre civile et Libération du 25 avril 1945 : src/data/dataset.js (it-ww2) et correction it-ww2 de proposals.yaml, sourcée SRC-014 et SRC-015 ; CLAIM-005 et ACTOR-004 du country-audit. Échelle impériale conforme à coverage-matrix.csv.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era4-droit-003",
@@ -32235,7 +33044,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-011 de audits/italy/proposals.yaml et CLAIM-004 (certain) du country-audit : lois raciales de 1938, exclusion civile et sociale, genèse italienne propre, sourcées SRC-013 (Sarfatti, The Jews in Mussolini's Italy). Cellule « couvert » de coverage-matrix.csv ; aucune date ni citation inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era4-econ-004",
@@ -32271,7 +33080,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-010 de audits/italy/proposals.yaml, sourcée SRC-011 (Gabaccia, Italy's Many Diasporas) : « Les remises des migrants soutiennent des régions entières ». Période 1876-1915 et ports de Gênes et de Naples documentés dans le registre SRC-011 et dans PLACE-005/PLACE-012 du country-audit. Cellule « couvert » de la matrice ; aucun chiffre inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era4-soc-005",
@@ -32306,7 +33115,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-010 (SRC-011) : « L'émigration est aussi une histoire de femmes, d'enfants et de familles séparées » ; la cellule ERA-4 « Société & démographie » de coverage-matrix.csv renvoie à PROP-010 pour « familles, villages et diasporas de l'émigration ». Aucune donnée démographique chiffrée inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era4-genre-006",
@@ -32348,7 +33157,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "SRC-012 (De Grazia, How Fascism Ruled Women: Italy, 1922-1945) documente les politiques fascistes de genre, le travail et la maternité ; SRC-014 (Pavone) et PROP-012 documentent la participation des femmes à la Résistance ; acteur collectif ACTOR-004 (ERA-4) du country-audit. Cellule « couvert » de la matrice.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era4-relig-007",
@@ -32388,7 +33197,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La correction it-rome-capitale de audits/italy/proposals.yaml précise, avec SRC-009 (Riall), que « la question romaine n'est réglée qu'en 1929 » ; la cellule « Religions & croyances » de coverage-matrix.csv signale explicitement les accords du Latran (1929) comme contenu absent à combler. Événement et date dans l'ère 1871-1945 ; aucun contenu inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era4-sci-008",
@@ -32424,7 +33233,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La périodisation SOC-1 de audits/italy/country-audit.yaml nomme la phase 1871-1945 « triangle industriel, émigration de masse et dualisme Nord-Sud » et cite SRC-010 et SRC-011 ; la cellule « Sciences, techniques & santé » de coverage-matrix.csv relève l'absence d'industrialisation, de médecine et de prix Nobel documentés. Certitude prudente (probable) ; aucune date ni chiffre inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era4-arts-009",
@@ -32451,10 +33260,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-IT-04-arts-lettres"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule « vide non traité » de coverage-matrix.csv (ERA-4, Arts & lettres, national) : futurisme, cinéma et littérature absents du corpus ; aucun ID d'omission dédié dans omissions.yaml pour cette cellule (OM-004 concerne ERA-2). Silence explicite selon la règle 7 de POINT_METHODOLOGY.md ; ancre = intervalle de l'ère, aucune date, source ou citation inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era4-env-010",
@@ -32479,10 +33290,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-IT-04-environnement-territoire"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule « vide non traité » de coverage-matrix.csv (ERA-4, Environnement & territoire, national) : bonifica, industrialisation et catastrophes environnementales absentes ; aucun ID d'omission dédié dans omissions.yaml pour cette ère et ce domaine (OM-015 concerne ERA-5). La catastrophe du Vajont (SRC-019) est postérieure à 1945 et n'est donc pas décrite ici. Aucune date ni source inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era4-migr-011",
@@ -32519,7 +33332,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-010 de audits/italy/proposals.yaml, sourcée SRC-011 (Gabaccia, Italy's Many Diasporas) ; registre SRC-011 : « Émigration italienne de masse (1876-1915), diasporas, familles et travail des migrantes » ; PLACE-012 (Gênes) et PLACE-005 (Naples) du country-audit. Échelle transnationale conforme à coverage-matrix.csv.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era4-peuples-012",
@@ -32558,7 +33371,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "SRC-013 (Sarfatti) couvre les lois raciales de 1938, la persécution antisémite et les déportations de 1943-1945 ; CLAIM-004 (certain) du country-audit et OM-010 de omissions.yaml signalent la Shoah en Italie comme dette mémorielle. Aucune donnée numérique inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era4-memoire-013",
@@ -32603,7 +33416,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-012 (SRC-014, SRC-015) : « Elle fonde ensuite une partie de la légitimité de la République » ; CLAIM-005 qualifie la Résistance de probable combinaison d'une guerre patriotique, civile et de classe ; la cellule ERA-4 « Mémoire & patrimoine » de coverage-matrix.csv renvoie à PROP-011 et PROP-012. Mémoire traitée comme récit contemporain des événements de l'ère, sans projection postérieure.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era4-circ-014",
@@ -32640,7 +33453,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-010 et la cellule ERA-4 « Circulations transnationales » de coverage-matrix.csv (« diasporas et circulations transatlantiques ») ; SRC-011 documente l'émigration de masse (1876-1915) et les diasporas ; l'État cherche à conserver un lien avec les émigrés selon PROP-010. Échelle transnationale conforme à la matrice ; aucun chiffre inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era5-pol-001",
@@ -32675,7 +33488,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Comble le statut « partiel » de la cellule: la frise ne distingue pas la fin de la guerre (1945), le référendum (1946) et la Constitution (1948), tous documentés dans SRC-014 et SRC-015.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era5-dip-001",
@@ -32711,7 +33524,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La cellule est marquée « vide justifié » pour l'absence de guerre sur le territoire national après 1945; elle est renseignée ici par la diplomatie documentée de De Gasperi (SRC-015), sans inventer de conflit ni d'opération extérieure.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era5-dro-001",
@@ -32742,7 +33555,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Source primaire du registre (Normattiva), déjà signalée par PROP-018 mais non intégrée; donne un repère normatif daté à la cellule « Droit & justice ».",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era5-eco-001",
@@ -32777,7 +33590,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Reprend PROP-013 (SRC-015), proposition non intégrée; la certitude reste « probable », conformément au niveau « medium » de l'audit.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era5-soc-001",
@@ -32816,7 +33629,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "L'audit associe déjà PROP-013 à cette cellule; le point ajoute le groupe social, les lieux et la mémoire documentés dans ACTOR-006, sans nouvelle assertion.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era5-gen-001",
@@ -32853,7 +33666,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Donne une actrice nommée à une cellule jusqu'ici couverte seulement par le mouvement des femmes de PROP-014; tous les éléments proviennent de ACTOR-003 (SRC-015).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era5-rel-001",
@@ -32888,7 +33701,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Cellule marquée « vide non traité » (sécularisation, Concordat 1984, pluralisme). Le point ne s'appuie que sur le rôle de l'Église et de la DC documenté dans ACTOR-010 (SRC-015); il n'affirme pas la révision concordataire, faute de source du registre.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era5-scs-001",
@@ -32920,7 +33733,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Reprend le volet ingénierie/risque de PROP-017, dont SRC-019 est la source institutionnelle; la santé publique et la loi Basaglia restent des omissions documentées et ne sont pas affirmées ici.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era5-art-001",
@@ -32944,10 +33757,12 @@ export const DATASET = {
           "memory": [
             "absence de traitement du cinéma, du néoréalisme, du design et de la littérature dans la frise"
           ],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-IT-05-arts-lettres"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule « vide non traité » dans coverage-matrix.csv. Aucune source du registre italien ne documente ce domaine pour l'ère; le silence est explicite plutôt que masqué, et aucun lien externe n'est employé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era5-env-001",
@@ -32979,7 +33794,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Reprend PROP-017 pour le volet environnement et territoire (SRC-019). La divergence documentée entre 1 917 victimes (protection civile) et 1 910 (anagrafe) n'est pas tranchée ici.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era5-mig-001",
@@ -33011,7 +33826,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Reprend le volet migrations de PROP-018 (SRC-018); la certitude « probable » respecte le niveau « medium » de l'audit et évite de transformer une synthèse en source primaire.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era5-min-001",
@@ -33046,10 +33861,12 @@ export const DATASET = {
             "Legge 482/1999"
           ],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-012"
+          ],
           "confidence": "non documenté",
           "justification": "OM-012 est marquée « to_fill » avec evidence_checked vide et la loi 482/1999 n'est pas dans le registre; la certitude « non documenté » évite d'inventer une source tout en rendant le silence visible.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era5-mem-001",
@@ -33093,7 +33910,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Reprend PROP-015 et PROP-016, propositions non intégrées; la cellule était marquée « couvert » sans acteurs ni lieux dans la frise.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "it-era5-cir-001",
@@ -33128,7 +33945,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "L'événement it-rome-traite figure déjà dans la frise mais sans source; SRC-015 documente explicitement le traité de Rome et l'intégration européenne.",
-          "status": "validated"
+          "status": "extrait"
         }
       ]
     },
@@ -33323,6 +34140,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "En juillet 711, une armée arabo-berbère venue du Maghreb bat le roi wisigoth Rodéric à la bataille de Guadalete.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -33330,6 +34148,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La conquête ne se réduit pas à ce combat : elle progresse par accords, capitulations et installations militaires pendant des décennies, jusqu'à couvrir l'essentiel de la péninsule.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -33337,6 +34156,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Elle met fin au royaume wisigoth et ouvre la période d'al-Andalus.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -33370,6 +34190,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Vers 722, selon une tradition tardive, une victoire chrétienne dans les montagnes asturiennes est attribuée à Pelage et à ses partisans.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -33377,6 +34198,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L'épisode, connu par des récits postérieurs, fonde le royaume des Asturies dans la mémoire médiévale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -33384,13 +34206,15 @@ export const DATASET = {
               "kind": "récit",
               "text": "Son rôle de « début de la Reconquista » relève d'une construction historiographique, non d'un fait contemporain.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
               "id": "spain-claim-2-point",
               "kind": "audit",
               "text": "La bataille de Covadonga, traditionnellement datée de 722, est connue par des sources tardives ; son rôle de « début de la Reconquista » est une construction médiévale et moderne.",
-              "confidence": "disputed",
+              "confidence": "disputé",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001"
               ]
@@ -33426,6 +34250,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 19 octobre 1469, Isabelle de Castille épouse Ferdinand d'Aragon à Valladolid.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -33433,6 +34258,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les deux couronnes restent distinctes, avec leurs institutions, leurs lois et leurs finances ; le mariage ne réalise pas l'unification politique de l'Espagne.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -33440,6 +34266,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Leurs règnes sont marqués par la création de l'Inquisition en 1478 et par la conquête de Grenade en 1492.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -33447,6 +34274,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Grenade — capitale nasride, Alhambra, frontière, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-003",
                 "SRC-008"
@@ -33501,6 +34329,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 12 octobre 1492, Colomb atteint Guanahani, dans l'archipel des Bahamas, puis les Grandes Antilles.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -33508,6 +34337,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les Taïnos qu'il rencontre subissent rapidement la domination des colons, les maladies et les déplacements forcés ; l'expédition ouvre la colonisation européenne des Amériques.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -33515,6 +34345,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Colomb, convaincu d'atteindre l'Asie, meurt sans avoir compris qu'il avait abordé un autre continent.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -33522,6 +34353,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Reine de Castille en titre, elle gouverne avec Ferdinand dans une monarchie composite ; son règne combine expansion territoriale, confessionnalisation et délégation de l'expédition atlantique.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-008",
                 "SRC-005"
@@ -33532,6 +34364,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Ses voyages ouvrent une route atlantique durable et un processus de conquête et de colonisation ; il n'« invente » pas un monde et ses descriptions sont marquées par les attentes de la couronne.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-008"
               ]
@@ -33541,6 +34374,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Séville — port, Casa de Contratación (1503), archives, commerce colonial",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-008",
                 "SRC-010"
@@ -33551,6 +34385,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Palos de la Frontera — port, départ de Colomb, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-008"
               ]
@@ -33657,6 +34492,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 31 mars 1492, les Rois catholiques signent à Grenade le décret d'expulsion des Juifs de leurs royaumes, qui doit prendre effet avant la fin du mois de juillet.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -33664,6 +34500,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Des dizaines de milliers de personnes partent, se convertissent ou périssent en route ; les estimations varient fortement.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -33671,6 +34508,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La diaspora séfarade qui en résulte s'installe en Méditerranée, aux Pays-Bas et plus tard dans les Amériques.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -33678,6 +34516,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Reine de Castille en titre, elle gouverne avec Ferdinand dans une monarchie composite ; son règne combine expansion territoriale, confessionnalisation et délégation de l'expédition atlantique.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-008",
                 "SRC-005"
@@ -33688,6 +34527,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Ses voyages ouvrent une route atlantique durable et un processus de conquête et de colonisation ; il n'« invente » pas un monde et ses descriptions sont marquées par les attentes de la couronne.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-008"
               ]
@@ -33759,6 +34599,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 2 janvier 1492, le royaume nasride de Grenade capitule devant les Rois catholiques, mettant fin au dernier État musulman de la péninsule.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -33766,6 +34607,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La reddition ouvre une politique de confessionnalisation, avec le décret d'expulsion des Juifs le 31 mars et la conversion forcée des musulmans de Castille en 1502.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -33773,6 +34615,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L'arrivée de Colomb aux Caraïbes, le 12 octobre, relève d'un autre événement de la même année.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -33780,6 +34623,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Reine de Castille en titre, elle gouverne avec Ferdinand dans une monarchie composite ; son règne combine expansion territoriale, confessionnalisation et délégation de l'expédition atlantique.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-008",
                 "SRC-005"
@@ -33790,6 +34634,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Ses voyages ouvrent une route atlantique durable et un processus de conquête et de colonisation ; il n'« invente » pas un monde et ses descriptions sont marquées par les attentes de la couronne.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-008"
               ]
@@ -33799,6 +34644,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Grenade — capitale nasride, Alhambra, frontière, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-003",
                 "SRC-008"
@@ -33888,6 +34734,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "En 1588, Philippe II lance une grande expédition navale contre l'Angleterre, destinée à débarquer une armée venue des Flandres.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -33895,6 +34742,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La flotte est malmenée par les combats, les tempêtes et les difficultés logistiques, et l'opération échoue.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -33902,6 +34750,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Cet échec n'arrête pas la puissance maritime espagnole, qui reste active dans l'Atlantique et en Méditerranée pendant des décennies.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -33909,6 +34758,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Reine de Castille en titre, elle gouverne avec Ferdinand dans une monarchie composite ; son règne combine expansion territoriale, confessionnalisation et délégation de l'expédition atlantique.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-008",
                 "SRC-005"
@@ -33919,6 +34769,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Ses voyages ouvrent une route atlantique durable et un processus de conquête et de colonisation ; il n'« invente » pas un monde et ses descriptions sont marquées par les attentes de la couronne.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-008"
               ]
@@ -33990,6 +34841,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 30 juillet 1749, une opération générale ordonnée sous Ferdinand VI arrête des milliers de Roms à travers l'Espagne.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -33997,6 +34849,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Hommes, femmes et enfants sont envoyés dans des prisons et des arsenaux, et l'épisode devient central dans l'histoire de l'antitsiganisme espagnol.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -34004,6 +34857,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les estimations du nombre de personnes arrêtées varient fortement selon les sources.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -34011,6 +34865,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Reine de Castille en titre, elle gouverne avec Ferdinand dans une monarchie composite ; son règne combine expansion territoriale, confessionnalisation et délégation de l'expédition atlantique.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-008",
                 "SRC-005"
@@ -34021,6 +34876,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Ses voyages ouvrent une route atlantique durable et un processus de conquête et de colonisation ; il n'« invente » pas un monde et ses descriptions sont marquées par les attentes de la couronne.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-008"
               ]
@@ -34030,6 +34886,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Tolède — capitale wisigothe, cité des trois cultures, traductions, primatie ecclésiastique",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-003"
@@ -34120,6 +34977,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L'invasion napoléonienne de 1808 provoque un soulèvement général, une guérilla longue et une crise de la monarchie.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -34127,6 +34985,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les Cortès de Cadix adoptent la Constitution de 1812 tandis que les afrancesados soutiennent le régime de Joseph Bonaparte.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -34134,6 +34993,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La guerre affaiblit durablement la monarchie espagnole et ouvre la crise des empires américains.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -34141,6 +35001,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Cadix — port, Constitution de 1812, commerce colonial",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-011",
                 "SRC-010"
@@ -34194,6 +35055,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La défaite face aux États-Unis en 1898 coûte à l'Espagne Cuba, Porto Rico, les Philippines et Guam.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -34201,6 +35063,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L'Espagne conserve le Río de Oro et la Guinée équatoriale, puis établit un protectorat au Maroc en 1912 : 1898 ne marque donc pas la fin de l'empire.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -34208,6 +35071,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le mot « Désastre », employé en Espagne, désigne une crise nationale autant qu'une défaite militaire.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -34215,6 +35079,7 @@ export const DATASET = {
               "kind": "audit",
               "text": "L'Espagne perd Cuba, Porto Rico, les Philippines et Guam en 1898, mais conserve le Río de Oro/Sahara occidental et la Guinée équatoriale, et établit plus tard un protectorat au Maroc (1912).",
               "confidence": "certain",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-010",
                 "SRC-009"
@@ -34251,6 +35116,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 1er octobre 1931, les Cortès constituantes adoptent le droit de vote des femmes après un débat tendu.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -34258,6 +35124,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Clara Campoamor, députée radicale, défend le texte face à une partie de la gauche qui craint le poids des femmes catholiques.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -34265,6 +35132,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le suffrage est exercé pour la première fois aux élections de 1933.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -34272,6 +35140,7 @@ export const DATASET = {
               "kind": "audit",
               "text": "Le suffrage féminin est adopté par les Cortès le 1er octobre 1931 ; Clara Campoamor joue un rôle décisif face à une partie de la gauche et des républicains.",
               "confidence": "certain",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-013",
                 "SRC-011"
@@ -34282,6 +35151,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Cordoue — capitale califale, mosquée-cathédrale, centre savant",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-003"
               ]
@@ -34335,6 +35205,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 17 juillet 1936, un soulèvement militaire contre la République échoue partiellement et débouche sur une guerre de près de trois ans, jusqu'à la victoire de Franco le 1er avril 1939.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -34342,6 +35213,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L'Allemagne et l'Italie soutiennent les nationalistes, tandis que l'URSS et les Brigades internationales aident la République.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -34349,6 +35221,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les deux camps mènent une répression violente, qui touche aussi les femmes et les populations civiles.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -34356,6 +35229,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Première femme ministre en Espagne ; son passage au gouvernement illustre la tension entre anarchisme et institutionnalisation.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-013",
                 "SRC-011"
@@ -34366,6 +35240,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Figure majeure de la mobilisation républicaine ; son rôle est indissociable de la politique du PCE et de l'aide soviétique.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-013",
                 "SRC-014"
@@ -34376,6 +35251,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Madrid — capitale, administration, cour, presse, musées, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-011",
                 "SRC-015"
@@ -34386,6 +35262,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Barcelone — port, industrie, capitale régionale, anarchisme, tourisme, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-011",
                 "SRC-018"
@@ -34564,6 +35441,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "De 1939 à 1975, Franco gouverne un régime autoritaire fondé sur l'armée, l'Église et le parti unique, qui réprime les opposants et emprisonne des milliers de personnes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -34571,6 +35449,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Après l'autarcie des années 1940, l'entrée à l'ONU en 1955 et le Plan de stabilisation de 1959 accompagnent une croissance rapide, financée aussi par l'émigration et le tourisme.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -34578,6 +35457,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Ce développement s'accompagne de répression, d'inégalités et de migrations massives.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -34585,6 +35465,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Première femme ministre en Espagne ; son passage au gouvernement illustre la tension entre anarchisme et institutionnalisation.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-013",
                 "SRC-011"
@@ -34595,6 +35476,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Figure majeure de la mobilisation républicaine ; son rôle est indissociable de la politique du PCE et de l'aide soviétique.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-013",
                 "SRC-014"
@@ -34605,6 +35487,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Madrid — capitale, administration, cour, presse, musées, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-011",
                 "SRC-015"
@@ -34712,6 +35595,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 6 décembre 1978, une Constitution démocratique est approuvée par référendum et organise une monarchie parlementaire et l'État des autonomies.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -34719,6 +35603,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Elle s'inscrit dans une transition négociée, marquée par la loi d'amnistie de 1977 et les pactes de la Moncloa sur la crise économique.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -34726,6 +35611,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La tentative de coup d'État du 23 février 1981 éprouve le régime sans l'interrompre.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -34733,6 +35619,7 @@ export const DATASET = {
               "kind": "audit",
               "text": "Le référendum du 1er octobre 2017 a été suspendu par le Tribunal constitutionnel ; la déclaration d'indépendance du 27 octobre n'a pas été reconnue et la crise reste politique.",
               "confidence": "certain",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-018"
               ]
@@ -34742,6 +35629,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Il facilite la transition négociée et la Constitution de 1978, mais son rôle reste dépendant des rapports de force et de la mobilisation sociale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-015",
                 "SRC-011"
@@ -34752,6 +35640,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "La diaspora séfarade maintient des identités et des réseaux transnationaux ; son histoire ne se réduit pas à l'expulsion de 1492.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-005"
               ]
@@ -34761,6 +35650,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Madrid — capitale, administration, cour, presse, musées, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-011",
                 "SRC-015"
@@ -34835,6 +35725,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "En 1986, l'Espagne adhère à la Communauté économique européenne, après son entrée à l'OTAN en 1982, confirmée par référendum en 1986.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -34842,6 +35733,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les fonds structurels européens soutiennent des infrastructures et des régions en retard, tandis que l'ouverture expose l'industrie et l'agriculture à une concurrence nouvelle.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -34849,6 +35741,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L'intégration accélère la transformation économique sans en effacer les coûts sociaux.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -34856,6 +35749,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Il facilite la transition négociée et la Constitution de 1978, mais son rôle reste dépendant des rapports de force et de la mobilisation sociale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-015",
                 "SRC-011"
@@ -34866,6 +35760,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "La diaspora séfarade maintient des identités et des réseaux transnationaux ; son histoire ne se réduit pas à l'expulsion de 1492.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-005"
               ]
@@ -34918,6 +35813,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 1er octobre 2017, la Catalogne organise malgré la suspension du Tribunal constitutionnel un référendum d'indépendance, dans un climat de forte tension et d'affrontements avec la police.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -34925,6 +35821,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le Parlement catalan proclame l'indépendance le 27 octobre, sans reconnaissance internationale ; Madrid répond par l'article 155 et la convocation d'élections en décembre.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -34932,6 +35829,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La crise se poursuit depuis dans le cadre européen.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -34939,6 +35837,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Il facilite la transition négociée et la Constitution de 1978, mais son rôle reste dépendant des rapports de force et de la mobilisation sociale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-015",
                 "SRC-011"
@@ -34949,6 +35848,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "La diaspora séfarade maintient des identités et des réseaux transnationaux ; son histoire ne se réduit pas à l'expulsion de 1492.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-005"
               ]
@@ -34958,6 +35858,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Barcelone — port, industrie, capitale régionale, anarchisme, tourisme, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-011",
                 "SRC-018"
@@ -35033,6 +35934,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La loi 20/2022, promulguée le 19 octobre 2022, renforce les politiques publiques de mémoire de la guerre civile et du franquisme.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -35040,6 +35942,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Elle reconnaît les victimes, prévoit des mesures sur le Valle de los Caídos et encadre les exhumations des fosses communes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -35047,6 +35950,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Elle prolonge un débat ouvert sur l'amnistie de 1977 et la place de la mémoire dans la démocratie espagnole.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -35054,6 +35958,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Il facilite la transition négociée et la Constitution de 1978, mais son rôle reste dépendant des rapports de force et de la mobilisation sociale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-015",
                 "SRC-011"
@@ -35064,6 +35969,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "La diaspora séfarade maintient des identités et des réseaux transnationaux ; son histoire ne se réduit pas à l'expulsion de 1492.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-005"
               ]
@@ -35073,6 +35979,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Tolède — capitale wisigothe, cité des trois cultures, traductions, primatie ecclésiastique",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-003"
@@ -35810,7 +36717,7 @@ export const DATASET = {
           "predicate": "est",
           "object": "un modèle historiographique discuté",
           "text": "La notion de convivencia décrit des formes réelles de coexistence, mais elle ne doit pas effacer les violences, les conversions forcées et les persécutions.",
-          "confidence": "disputed",
+          "confidence": "disputé",
           "sources": [
             "SRC-004",
             "SRC-003"
@@ -35822,7 +36729,7 @@ export const DATASET = {
           "predicate": "est",
           "object": "un régime autoritaire et national-catholique",
           "text": "Le franquisme combine répression, parti unique, corporatisme et national-catholicisme ; sa qualification de « fasciste » fait débat chez les historiens.",
-          "confidence": "disputed",
+          "confidence": "disputé",
           "sources": [
             "SRC-014",
             "SRC-013"
@@ -35834,7 +36741,7 @@ export const DATASET = {
           "predicate": "fut",
           "object": "une transition négociée avec des coûts mémoriels",
           "text": "La transition de 1975-1982 repose sur des pactes, une amnistie et des compromis ; elle n'efface ni les violences de la guerre ni les demandes de justice des victimes.",
-          "confidence": "disputed",
+          "confidence": "disputé",
           "sources": [
             "SRC-015",
             "SRC-011"
@@ -36246,7 +37153,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Bataille de Guadalete en juillet 711 et conquête progressive documentées dans le corpus (dataset.js, es-711) et par SRC-001 (Collins) et SRC-003 (Kennedy). La thèse d'une conquête comme processus et la critique de 711 comme rupture nette sont dans country-audit.yaml (CLAIM-1). Aucune date hors de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era1-guer-002",
@@ -36258,7 +37165,7 @@ export const DATASET = {
           "object": "la fondation du royaume des Asturies dans la mémoire médiévale",
           "text": "Pelage et ses partisans une victoire chrétienne dans les montagnes asturiennes leur est attribuée, selon une tradition tardive la fondation du royaume des Asturies dans la mémoire médiévale",
           "time": "722",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "evenement",
             "acteur",
@@ -36285,7 +37192,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "« Vers 722, selon une tradition tardive » : dataset.js (es-covadonga) et SRC-001 (Collins). L'historicité de l'épisode et son rôle de « début de la Reconquista », construction historiographique, sont marqués disputés dans country-audit.yaml (CLAIM-2). Datation approximative et conforme à l'ère ; aucune date de tradition non sourcée n'est avancée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era1-droit-003",
@@ -36326,7 +37233,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La création de l'Inquisition en 1478 est documentée dans le corpus (dataset.js, es-mariage ; audits/spain/proposals.yaml, correction es-mariage) et par SRC-008 (Elliott) et SRC-005 (Ray). La matrice note l'absence de codification juridique interne proposée ; ce point apporte un repère de justice daté et in-era. Aucune invention.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era1-econ-004",
@@ -36365,7 +37272,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "En 929, Abd al-Rahman III se proclame calife à Cordoue ; la ville reste un pôle politique, savant et économique jusqu'à la crise du califat (PROP-003, audits/spain/proposals.yaml). SRC-003 (Kennedy) et SRC-001 (Collins) ; la matrice rattache artisanat, commerce et fiscalité à ce repère. Intervalle strictement in-era.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era1-soc-005",
@@ -36402,7 +37309,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Conquête et société d'al-Andalus : acteurs berbères et arabes, lieu Cordoue, SRC-001 et SRC-003, conformément à la cellule « Société & démographie » de coverage-matrix.csv. Aucun chiffre démographique inventé ; intervalle ancré sur 711 et sur la fin du califat (1031), tous deux in-era.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era1-genre-006",
@@ -36440,7 +37347,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Mariage de Valladolid, 19 octobre 1469, et statut d'Isabelle comme reine de Castille (1474-1504) : dataset.js (es-mariage), country-audit.yaml (ACTOR-1), SRC-008 (Elliott) et SRC-005 (Ray). La matrice marque la cellule partielle : aucune fiche sur le travail ou le droit des femmes médiévales n'est inventée ici ; seul le repère documenté d'une femme actrice politique est retenu.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era1-relig-007",
@@ -36483,7 +37390,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Décret du 31 mars 1492 (PROP-005, es-prop-001), distinct de la capitulation de Grenade du 2 janvier, documenté par SRC-005 (Ray) et SRC-008 (Elliott). Les trois religions et la critique du modèle de convivencia sont dans SRC-004, non utilisée ici comme source directe de la date. Aucun effectif chiffré n'est avancé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era1-sci-008",
@@ -36521,7 +37428,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-004 (audits/spain/proposals.yaml) : aux XIIe et XIIIe siècles, des équipes de traducteurs à Tolède font passer en latin des textes grecs, arabes et hébreux ; SRC-003 (Kennedy) et SRC-004 (Soifer). Confiance probable, comme la proposition. Aucun nom de traducteur ni titre d'ouvrage inventé ; intervalle in-era.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era1-arts-009",
@@ -36562,7 +37469,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "ACTOR-4 (country-audit.yaml) : philosophe, juriste malikite et médecin de Cordoue, dont les commentaires d'Aristote circulent en latin et en hébreu ; SRC-003 (Kennedy), SRC-004 (Soifer). La matrice rattache à ce domaine architecture, arts, traductions et acteur Averroès. L'intervalle est celui du mouvement de traduction (PROP-004), non une biographie inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era1-env-010",
@@ -36592,7 +37499,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Environnement & territoire, national) ; omission OM-004 (source_absent) dans audits/spain/omissions.yaml, qui cite SRC-001, SRC-003 et SRC-008 comme sources vérifiées sans fiche environnementale. Silence explicite conformément à la règle 7 de POINT_METHODOLOGY.md ; aucune date ni source inventée, ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era1-migr-011",
@@ -36631,7 +37538,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-005 : la diaspora séfarade issue de l'expulsion du 31 mars 1492 s'installe en Méditerranée, aux Pays-Bas et plus tard dans les Amériques ; SRC-005 (Ray) et SRC-008 (Elliott). ACTOR-12 et la liste des diasporas de country-audit.yaml confirment le groupe. Aucun effectif chiffré retenu, les estimations étant divergentes dans le dossier.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era1-peuples-012",
@@ -36669,7 +37576,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "OM-002 (audits/spain/omissions.yaml) documente explicitement la dette sur la diversité interne d'al-Andalus et cite SRC-003 (Kennedy) et SRC-004 (Soifer) comme littérature savante existante. Les noms de groupes proviennent d'OM-002 et de la liste des angles morts de country-audit.yaml, sans invention. Intervalle de l'ère ; aucun effectif avancé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era1-memoire-013",
@@ -36681,7 +37588,7 @@ export const DATASET = {
           "object": "la mémoire médiévale et moderne du royaume des Asturies",
           "text": "Covadonga est érigée en récit de « début de la Reconquista », une construction historiographique la mémoire médiévale et moderne du royaume des Asturies",
           "time": "722",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "memoire",
             "evenement",
@@ -36707,7 +37614,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "CLAIM-2 (country-audit.yaml) qualifie de disputé le rôle de Covadonga comme « début de la Reconquista », connu par des sources tardives ; dataset.js (es-covadonga) et SRC-001 (Collins). La matrice marque la cellule partielle : Covadonga et Grenade sont des lieux de mémoire sans fiche de controverse mémorielle. Le disputé reste disputé, conformément à la règle 6 de POINT_METHODOLOGY.md.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era1-circ-014",
@@ -36746,7 +37653,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-004 (audits/spain/proposals.yaml) décrit un mouvement qui connecte al-Andalus, le monde chrétien et l'Europe latine ; SRC-003 (Kennedy) et SRC-004 (Soifer). Cellule « Circulations transnationales » de coverage-matrix.csv : PROP-004 y est citée pour l'ERA-1 (le voyage de Colomb relevant de l'era-2 et n'étant pas repris ici). Aucun contenu hors de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era2-pol-001",
@@ -36788,7 +37695,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-006 (audits/spain/proposals.yaml) : en 1520-1521, les villes de Castille se soulèvent contre la fiscalité et le gouvernement de Charles Quint ; la défaite de Villalar, le 23 avril 1521, renforce la monarchie. SRC-008 (Elliott, Imperial Spain 1469-1716) couvre la période et les institutions. Cellule « Politique & institutions » d'ERA-2 de coverage-matrix.csv. Intervalle strictement in-era.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era2-guer-002",
@@ -36827,7 +37734,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Repère es-armada de src/data/dataset.js : en 1588, Philippe II lance une expédition navale contre l'Angleterre destinée à débarquer une armée des Flandres ; la flotte est malmenée et l'opération échoue, sans arrêter la puissance maritime espagnole. SRC-008 (Elliott). Cellule « Guerres & diplomatie » d'ERA-2. Aucun effectif de navires ou de combattants inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era2-droit-003",
@@ -36870,7 +37777,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-008 (audits/spain/proposals.yaml) et cellule « Droit & justice » d'ERA-2 (coverage-matrix.csv, qui cite le repère par erreur sous l'ID PROP-009) : décrets de Nueva Planta de 1707-1716, acteur Philippe V, lieux Barcelone et Valence, SRC-008 (Elliott). Aucun article de décret ni date de publication non vérifiée avancé ; intervalle in-era.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era2-econ-004",
@@ -36910,7 +37817,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Cellule « Économie & travail » d'ERA-2 de coverage-matrix.csv : économie coloniale et fiscalité impériale, acteur Colomb, lieu Séville. Repère es-colomb de src/data/dataset.js (12 octobre 1492, arrivée aux Caraïbes) et SRC-008 (Elliott, dont l'ouvrage couvre la cour et l'économie de l'Espagne impériale). SRC-010, bien que cité dans la matrice, concerne Cuba en 1895-1898 et n'est donc pas retenu pour une fiche in-era. Aucun montant ou chiffre de commerce inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era2-soc-005",
@@ -36954,7 +37861,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Cellule « Société & démographie » d'ERA-2 (coverage-matrix.csv) : Comuneros (PROP-006) et Morisques (PROP-007), lieux Villalar et Valence, SRC-008 (Elliott) et SRC-006 (García-Arenal et Wiegers, The Expulsion of the Moriscos from Spain). Intervalle 1520-1614 entièrement in-era ; aucun effectif démographique inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era2-genre-006",
@@ -36985,7 +37892,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Femmes, genre, sexualités, national) : aucune source du registre ne permet une fiche documentée sur les femmes à l'époque moderne ; dette OM-005 (audits/spain/omissions.yaml, reason not_yet_researched, qui couvre l'histoire des femmes avant 1931). Silence explicite conformément à la règle 7 de POINT_METHODOLOGY.md ; aucune date ni source inventée, ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era2-relig-007",
@@ -37030,7 +37937,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-007 (audits/spain/proposals.yaml) et cellule « Religions & croyances » d'ERA-2 : entre 1609 et 1614, Philippe III ordonne l'expulsion des Morisques ; SRC-006 (García-Arenal et Wiegers, 2014) et SRC-008 (Elliott). OM-003 (convertis de 1502 et mudéjars) n'est pas comblé ici par invention. Aucun effectif de personnes déplacées retenu, les estimations variant dans le dossier.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era2-sci-008",
@@ -37070,7 +37977,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Cellule « Sciences, techniques & santé » d'ERA-2 (coverage-matrix.csv) : navigation et cartographie au service de l'empire, acteur Colomb, lieu Séville, SRC-008 (Elliott). Repère es-colomb de src/data/dataset.js (Guanahani, 12 octobre 1492). Aucun instrument, traité ou nom de cartographe non attesté avancé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era2-arts-009",
@@ -37099,7 +38006,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Arts & lettres, national) : le corpus n'a aucun repère artistique précis ; dette OM-007 (audits/spain/omissions.yaml, reason not_yet_researched, cite SRC-008 et SRC-011 comme sources non intégrées). Silence explicite selon la règle 7 de POINT_METHODOLOGY.md ; aucun nom d'artiste ni titre d'œuvre inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era2-env-010",
@@ -37128,7 +38035,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Environnement & territoire, national) : pas de fiche sur les forêts, l'irrigation ou la Mesta ; dette OM-004 (audits/spain/omissions.yaml, reason source_absent, dont le libellé couvre l'histoire environnementale « médiévale et moderne » et cite SRC-001, SRC-003 et SRC-008). Silence explicite conformément à la règle 7 ; aucune date ni mesure environnementale inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era2-migr-011",
@@ -37169,7 +38076,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Cellule « Migrations & diasporas » d'ERA-2 (coverage-matrix.csv) : émigration coloniale et expulsion des Morisques, acteurs Colomb et morisques, lieux Séville et Valence, SRC-006 et SRC-008. SRC-006 documente explicitement la diaspora méditerranéenne issue de l'expulsion de 1609-1614. Aucun effectif chiffré retenu.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era2-peuples-012",
@@ -37209,7 +38116,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-009 (audits/spain/proposals.yaml) et repère es-prop-002 de src/data/dataset.js : le 30 juillet 1749, une opération générale ordonnée sous Ferdinand VI arrête des milliers de Roms ; SRC-007 (Gómez Alfaro, La gran redada de gitanos, 1993) et SRC-008 (Elliott). Cellule « Peuples autochtones & minorités » d'ERA-2 (Morisques et Roms, SRC-006, SRC-007). Aucun effectif précis avancé, les estimations variant selon les sources.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era2-memoire-013",
@@ -37253,7 +38160,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Repère es-grenade de src/data/dataset.js : le 2 janvier 1492, le royaume nasride de Grenade capitule, mettant fin au dernier État musulman de la péninsule et ouvrant une politique de confessionnalisation. Cellule « Mémoire & patrimoine » d'ERA-2 (coverage-matrix.csv) : Grenade et Armada comme objets de mémoire, sources Elliott (SRC-008) et Ray (SRC-005). Aucune commémoration datée non attestée inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era2-circ-014",
@@ -37295,7 +38202,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Repère es-colomb de src/data/dataset.js : le 12 octobre 1492, Colomb atteint Guanahani puis les Grandes Antilles ; les Taïnos rencontrés subissent la domination des colons, les maladies et les déplacements forcés. Cellule « Circulations transnationales » d'ERA-2 (coverage-matrix.csv) : circulation atlantique et coloniale, acteur Colomb, lieu Séville, SRC-008. SRC-010, cité dans la matrice, concerne Cuba en 1895-1898 et n'est pas retenu ici. Aucune date d'étape non attestée avancée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era3-pol-001",
@@ -37335,7 +38242,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Proclamation du 14 avril 1931 après les élections municipales du 12 avril, documentée par SRC-013 (Casanova, The Spanish Republic and Civil War) et SRC-011 (Radcliff, Modern Spain: 1808 to the Present) ; repère politique central de la cellule « Politique & institutions » d'ERA-3. Aucune date ni nom de ministre inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era3-guer-002",
@@ -37376,7 +38283,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Guerre d'indépendance (1808-1814) et occupation napoléonienne ancrées dans SRC-011 (Radcliff), synthèse de référence de la période 1808-2016. Les deux bornes sont incluses dans l'ère ; aucun épisode de la guerre civile (postérieur à 1936) n'est introduit.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era3-droit-003",
@@ -37414,7 +38321,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Constitution de 1812 ancrée dans la cellule « Droit & justice » d'ERA-3 de coverage-matrix.csv et dans SRC-011 (Radcliff). Date précise et titre de texte conservés ; aucun article ni contenu normatif non vérifié n'est avancé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era3-eco-004",
@@ -37457,7 +38364,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Abolition à Porto Rico en 1873 et à Cuba en 1886 : PROP-010 et cellule « Économie & travail » d'ERA-3 (coverage-matrix.csv), SRC-011 (Radcliff) et SRC-010 (Tone, War and Genocide in Cuba, 1895-1898). Aucun effectif chiffré ni nom d'abolitionniste non attesté n'est ajouté.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era3-soc-005",
@@ -37498,7 +38405,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Loi de réforme agraire de 1932 et limites de son application documentées par SRC-013 (Casanova) et SRC-011 (Radcliff), dont la synthèse couvre la société et les réformes de la République. Aucune surface redistribuée ni nombre de bénéficiaires inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era3-genre-006",
@@ -37539,7 +38446,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Vote du 1er octobre 1931 et rôle de Clara Campoamor : PROP-012, cellule « Femmes, genre, sexualités » d'ERA-3 (coverage-matrix.csv), SRC-013 (Casanova) et SRC-011 (Radcliff). Aucun effectif ni contre-argument partisan non documenté n'est avancé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era3-relig-007",
@@ -37580,7 +38487,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Séparation Église-État et mesures laïques de la Constitution de 1931, cellule « Religions & croyances » d'ERA-3 et SRC-011 (Radcliff), complété par SRC-013 (Casanova) pour les conflits politiques de la République. Aucun épisode de violence religieuse postérieur à 1936 n'est inclus.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era3-sci-008",
@@ -37616,7 +38523,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Réforme de l'instruction et missions éducatives de la République documentées dans la synthèse SRC-011 (Radcliff), qui couvre la période 1808-2016 et la dimension sociale. La matrice signalait une cellule sans source spécialisée : aucune donnée chiffrée, aucun nom de savant ni titre d'ouvrage n'est avancé au-delà de cette synthèse.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era3-arts-009",
@@ -37653,7 +38560,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Lien entre le désastre de 1898 et la génération de 98, cellule « Arts & lettres » d'ERA-3 de coverage-matrix.csv et SRC-011 (Radcliff). Les noms d'écrivains sont ceux canoniquement rattachés au courant ; aucun titre d'œuvre ni date de publication non vérifiée n'est ajouté.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era3-env-010",
@@ -37687,7 +38594,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Structure agraire andalouse et protestation paysanne documentées par SRC-012 (Temma Kaplan, Anarchists of Andalusia, 1868-1903), dont l'intervalle de publication borne la période. Aucune superficie, rendement ou date d'expropriation inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era3-mig-011",
@@ -37722,7 +38629,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "L'émigration figure parmi les thèmes traités par SRC-011 (Radcliff), synthèse de la période 1808-2016 ; elle est également signalée dans la cellule « Migrations & diasporas » d'ERA-3. Bornes d'intervalle toutes deux in-era ; aucun chiffre de flux inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era3-min-012",
@@ -37761,7 +38668,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Guerre coloniale au Maroc et défaite de 1921 documentées par SRC-009 (Sebastian Balfour, Deadly Embrace: Morocco and the Road to the Spanish Civil War), qui traite de l'armée d'Afrique et des racines coloniales du coup de 1936. Aucun effectif ni épisode de la guerre civile (postérieur à 1936) n'est avancé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era3-mem-013",
@@ -37798,7 +38705,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Le « Désastre » comme lieu de mémoire nationaliste, cellule « Mémoire & patrimoine » d'ERA-3 (coverage-matrix.csv), SRC-010 (Tone) et SRC-011 (Radcliff). Aucune commémoration datée ni monument non attesté n'est inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era3-circ-014",
@@ -37842,7 +38749,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Guerre de 1898 et perte des colonies documentées par SRC-010 (Tone, War and Genocide in Cuba, 1895-1898) et SRC-011 (Radcliff) ; cellule « Circulations transnationales » d'ERA-3 (coverage-matrix.csv). Aucune clause de traité ni date de cession non vérifiée n'est ajoutée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era4-pol-001",
@@ -37882,7 +38789,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "Instauration du régime après la victoire d'avril 1939 : dataset.js (es-franco, points vérifiés) et country-audit.yaml (PERIOD-4, CLAIM-6). Le régime y est décrit comme autoritaire et national-catholique, tandis que sa qualification de « fasciste » est explicitement disputée (D-001) ; d'où confidence disputé. SRC-013 et SRC-014. Aucune date hors de l'ère 1936/1975.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era4-guer-002",
@@ -37922,7 +38829,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Soulèvement du 17 juillet 1936 et fin de la guerre le 1er avril 1939 : dataset.js (es-civile, points vérifiés) et country-audit.yaml (PERIOD-4). SRC-013 et SRC-014. L'aide étrangère est traitée séparément dans le point sur les circulations transnationales ; aucun épisode de combat inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era4-droit-003",
@@ -37966,7 +38873,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Répression, tribunaux militaires et lois d'exception : cellule « couvert » de coverage-matrix.csv (ERA-4, Droit & justice) et dataset.js (es-franco) ; SRC-014. OM-011 précise que les fiches spécifiques sur les camps, les tribunaux et les fosses communes restent à faire ; aucun chiffre de victimes inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era4-econ-004",
@@ -38006,7 +38913,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Autarcie des années 1940 et Plan de stabilisation de 1959 : dataset.js (es-franco, points vérifiés, avec l'entrée à l'ONU en 1955) ; SRC-011 et SRC-014. La date 1959 est l'ancre du plan, conforme à l'ère 1936/1975 ; aucun indicateur économique chiffré inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era4-soc-005",
@@ -38043,7 +38950,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-014 dans audits/spain/proposals.yaml (1960/1973, confidence medium) et SRC-011 ; dataset.js (es-franco) mentionne des migrations massives. Les volumes et les régions de départ doivent encore être précisés par une source statistique : confidence probable, aucun chiffre inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era4-genre-006",
@@ -38087,7 +38994,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Montseny, première femme ministre (ministre de la Santé, 1936-1937), et Ibárruri : dataset.js (es-civile, figures), country-audit.yaml (ACTOR-6, ACTOR-7, ACTOR-11) ; SRC-013 et SRC-011, SRC-016 pour l'exil des femmes. Aucune fonction ministérielle ni date inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era4-relig-007",
@@ -38127,7 +39034,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "National-catholicisme et répression religieuse : cellule « couvert » de coverage-matrix.csv (ERA-4, Religions & croyances) et CLAIM-6 de country-audit.yaml ; SRC-014 et SRC-013. Aucun chiffre ni nom de victime inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era4-sci-008",
@@ -38159,7 +39066,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-4, Sciences, techniques & santé) ; OM-008 (ERA-4) : Cajal, CSIC, santé publique et pandémie de 2020 sont explicitement absents du registre. Aucune date de recherche ni résultat scientifique avancé ; seule l'ancre de l'ère est utilisée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era4-arts-009",
@@ -38193,7 +39100,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « partiel » de coverage-matrix.csv (ERA-4, Arts & lettres) : le bombardement du 26 avril 1937 est documenté comme fonction du lieu dans dataset.js (spain-place-9), mais aucune fiche artistique dédiée n'est proposée ; dette explicitée en OM-007. Aucun tableau, auteur ou date d'œuvre attribué sans source.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era4-env-010",
@@ -38223,7 +39130,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-4, Environnement & territoire) ; OM-004 : barrages, Doñana et exode rural sans source au registre. Aucun fait environnemental daté ni aménagement précis inventé ; ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era4-mig-011",
@@ -38265,7 +39172,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-013 dans audits/spain/proposals.yaml (janvier-février 1939, confidence high) et SRC-016 (Dreyfus-Armand), SRC-014 ; cellule « couvert » de la matrice (ERA-4, Migrations & diasporas, transnational). L'expression « centaines de milliers » est reprise de PROP-013 ; aucun chiffre affiné ni camp nommé sans source.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era4-min-012",
@@ -38304,7 +39211,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Cellule « couvert » de coverage-matrix.csv (ERA-4, Peuples autochtones & minorités) : exil républicain et minorités persécutées, SRC-016 et SRC-014. country-audit.yaml ne nomme pas de minorité interne spécifique pour cette ère : aucun groupe inventé, d'où confidence probable.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era4-mem-013",
@@ -38347,7 +39254,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "Mémoire de la guerre et de l'exil : SRC-016, SRC-014 et SRC-015 ; CLAIM-7 et D-004 de country-audit.yaml qualifient le bilan mémoriel de la transition de disputé, et dataset.js (spain-place-1, spain-place-9) enregistre Madrid et Guernica comme lieux de mémoire. Aucune commémoration ni date de lois mémorielles postérieures à 1975 avancée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era4-circ-014",
@@ -38390,7 +39297,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Cellule « partiel » de coverage-matrix.csv (ERA-4, Circulations transnationales, transnational) : soutien de l'Allemagne et de l'Italie aux nationalistes, de l'URSS et des Brigades internationales à la République, documenté dans dataset.js (es-civile, point vérifié) et par SRC-013 et SRC-014. Fiche dédiée ajoutée ici ; aucun volume d'aide inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era5-pol-001",
@@ -38431,7 +39338,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Repère es-constitution (6 décembre 1978) documenté par SRC-015 et SRC-011 ; acteur Juan Carlos Ier, lieu Madrid.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era5-dip-001",
@@ -38465,7 +39372,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Le repère es-cee (1986) mentionne l'entrée de l'Espagne dans l'OTAN en 1982, confirmée par référendum en 1986 (SRC-011).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era5-jus-001",
@@ -38506,7 +39413,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Source primaire SRC-020 et synthèse SRC-015 ; proposition PROP-018.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era5-eco-001",
@@ -38542,7 +39449,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Repère es-cee : adhésion à la CEE en 1986, fonds structurels et concurrence accrue (SRC-011).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era5-soc-001",
@@ -38579,7 +39486,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Proposition PROP-017 (15 mai 2011) documentée par SRC-017 (Flesher Fominaya, 2020).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era5-fem-001",
@@ -38618,7 +39525,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La synthèse SRC-011 couvre la place des femmes de 1808 à 2016 et SRC-015 la transition ; point d'égalité juridique pour l'ère démocratique (OM-009).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era5-rel-001",
@@ -38657,7 +39564,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Cellule Religions & croyances du repère es-constitution : liberté religieuse et sécularisation, SRC-015.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era5-sci-001",
@@ -38689,7 +39596,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La dette OM-008 est traitée par la synthèse SRC-011 (1808-2016), sans fiche scientifique précise : certitude probable assumée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era5-art-001",
@@ -38721,7 +39628,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Dette OM-007 traitée à partir de la synthèse sociale SRC-011 (jusqu'en 2016) ; certitude probable faute de fiche artistique dédiée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era5-env-001",
@@ -38754,7 +39661,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Proposition PROP-015 (2002) et article évalué SRC-019 (Loureiro et al., 2009).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era5-mig-001",
@@ -38789,7 +39696,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Dette OM-013 (immigration récente) traitée depuis la synthèse SRC-011 (1808-2016) ; certitude probable.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era5-min-001",
@@ -38833,7 +39740,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Repère es-catalogne (1er octobre 2017) documenté par SRC-018 (McRoberts, 2022) et SRC-011.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era5-mem-001",
@@ -38876,7 +39783,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Proposition PROP-018 et dette OM-012 ; sources primaire SRC-020 et synthèse SRC-015.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "es-era5-cir-001",
@@ -38914,7 +39821,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Repère es-cee et SRC-011 ; SRC-018 documente les réseaux catalans transnationaux (cellule Circulations transnationales).",
-          "status": "validated"
+          "status": "extrait"
         }
       ]
     },
@@ -39466,6 +40373,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Vers -1600, les Shang constituent la première dynastie chinoise dont l'écriture est abondamment attestée, mais la datation reste conventionnelle.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -39473,13 +40381,15 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les inscriptions oraculaires d'Anyang, vers -1250, et les bronzes rituels documentent une royauté et un culte des ancêtres ; l'identification d'Erlitou à une capitale Xia ou Shang reste débattue.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
               "id": "china-claim-001-point",
               "kind": "audit",
               "text": "La date de -1600 est une convention chronologique pour le début des Shang ; les premières écritures abondantes proviennent d'Anyang (vers -1250) et l'identification d'Erlitou reste débattue.",
-              "confidence": "disputed",
+              "confidence": "disputé",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001"
               ]
@@ -39515,6 +40425,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Vers -1046, les Zhou renversent les Shang à Muye et légitiment leur pouvoir par le mandat du Ciel.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -39522,6 +40433,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Après le sac de Hao en -771, les Zhou orientaux ne contrôlent plus qu'un domaine réduit, tandis que les principautés s'affrontent jusqu'aux Royaumes combattants.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -39555,6 +40467,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "En -221, Qin Shi Huang achève l'unification et impose une administration centralisée, l'écriture, la monnaie et les mesures standardisées, ainsi qu'un recensement et un réseau routier.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -39562,6 +40475,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Il relie et étend des murs défensifs antérieurs ; le régime, très coercitif, s'effondre en -206, peu après sa mort en -210.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -39569,6 +40483,7 @@ export const DATASET = {
               "kind": "audit",
               "text": "L'unification Qin de -221 est associée à la standardisation de l'écriture, des poids, des mesures et de la monnaie, ainsi qu'à une administration centralisée ; ces mesures furent imposées par la conquête et la coercition.",
               "confidence": "certain",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001"
               ]
@@ -39605,6 +40520,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les Han occidentaux consolident l'empire ; les missions de Zhang Qian, de -138 à -126, ouvrent vers -130 les routes commerciales d'Asie centrale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -39612,13 +40528,15 @@ export const DATASET = {
               "kind": "récit",
               "text": "Après l'usurpation de Wang Mang (9-23) et la restauration des Han orientaux en 25, l'administration lettrée se diffuse ; le papier est généralement associé à Cai Lun (vers 105), qui en perfectionne la fabrication.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
               "id": "china-claim-001-point",
               "kind": "audit",
               "text": "La date de -1600 est une convention chronologique pour le début des Shang ; les premières écritures abondantes proviennent d'Anyang (vers -1250) et l'identification d'Erlitou reste débattue.",
-              "confidence": "disputed",
+              "confidence": "disputé",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001"
               ]
@@ -39628,6 +40546,7 @@ export const DATASET = {
               "kind": "audit",
               "text": "Le 23 janvier 2020, les autorités chinoises imposent des restrictions de circulation strictes à Wuhan pour contenir l'épidémie de COVID-19 ; l'OMS qualifie l'épidémie d'urgence de santé publique internationale le 30 janvier.",
               "confidence": "certain",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-019"
               ]
@@ -39664,6 +40583,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Chang'an, capitale cosmopolite ouverte aux marchands et aux religions, est souvent décrite comme un âge d'or de la poésie et des échanges, un label historiographique plus qu'une réalité uniforme.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -39671,6 +40591,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L'empire est ravagé par la rébellion d'An Lushan (755-763), puis par des raids tibétains et des révoltes régionales ; la dynastie s'effondre en 907.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -39678,6 +40599,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Xi'an — capitale impériale Tang, carrefour de l'Asie centrale, lieu de l'incident de 1936",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-002"
@@ -39730,6 +40652,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les Song du Nord (960-1127) gouvernent une partie de la Chine, tandis que les Liao puis les Jin contrôlent le Nord et que les Xia occidentaux tiennent le Nord-Ouest.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -39737,6 +40660,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L'imprimerie, la poudre et la boussole sont perfectionnées et diffusées à grande échelle ; après 1127, les Song du Sud poursuivent à Hangzhou une économie urbaine et marchande jusqu'à la conquête mongole de 1279.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -39770,6 +40694,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Kubilai Khan proclame le khanat Yuan en 1271, successeur de l'empire mongol alors fragmenté, et achève la conquête de la Chine du Sud en 1279.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -39777,6 +40702,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les Mongols occupent les postes militaires et une partie de l'administration, tandis que des lettrés chinois et des intermédiaires d'Asie centrale dirigent les finances ; les révoltes paysannes renversent le régime en 1368.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -39811,6 +40737,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les Ming chassent les Mongols et reconstruisent un État centralisé, tout en héritant de plusieurs institutions Yuan.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -39818,6 +40745,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La Cité interdite est édifiée de 1406 à 1420 et les expéditions de Zheng He se déploient de 1405 à 1433 ; l'interdiction du commerce maritime n'empêche pas les échanges côtiers et clandestins.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -39825,6 +40753,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Pékin (Beijing) — capitale impériale, capitale de la RPC, centre administratif et politique",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-008"
@@ -39877,6 +40806,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La conquête mandchoue prend 1644-1662 en Chine propre et s'achève à Taïwan en 1683 ; elle est marquée par des violences et des mesures de coercition.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -39884,6 +40814,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les Qing conquièrent le Xinjiang en 1755-1759, puis tentent l'autorenforcement (1861-1895) et les Nouvelles Politiques (1901-1911), sans enrayer les pressions coloniales et les révoltes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -39891,6 +40822,7 @@ export const DATASET = {
               "kind": "audit",
               "text": "L'unification Qin de -221 est associée à la standardisation de l'écriture, des poids, des mesures et de la monnaie, ainsi qu'à une administration centralisée ; ces mesures furent imposées par la conquête et la coercition.",
               "confidence": "certain",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001"
               ]
@@ -39900,6 +40832,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Pékin (Beijing) — capitale impériale, capitale de la RPC, centre administratif et politique",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-008"
@@ -39952,6 +40885,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "En 1839, Lin Zexu fait détruire l'opium saisi à Canton ; le Royaume-Uni riposte par la force (1839-1842) et impose le traité de Nanjing.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -39959,6 +40893,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Celui-ci ouvre cinq ports, cède Hong Kong et fixe une indemnité, mais l'opium n'est légalisé qu'en 1858 ; le récit du « siècle d'humiliation » est une catégorie nationale chinoise, pas un cadre neutre.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -39966,6 +40901,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Shanghai — port ouvert, centre industriel et financier, lieu de fondation du PCC, ville de la purge de 1927",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-002",
@@ -39977,6 +40913,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Guangzhou (Canton) — port du commerce maritime, centre révolutionnaire du KMT, ville de la grève de 1925-1926",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-002"
@@ -40061,6 +40998,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le soulèvement de Wuchang, le 10 octobre 1911, déclenche la chute des Qing.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -40068,6 +41006,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La République de Chine est proclamée à Nanjing le 1er janvier 1912, avec Sun Yat-sen comme président provisoire ; Puyi abdique le 12 février 1912 et Yuan Shikai devient président.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -40075,6 +41014,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La mort de Yuan en 1916 ouvre la fragmentation des seigneurs de la guerre.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -40082,6 +41022,7 @@ export const DATASET = {
               "kind": "audit",
               "text": "Le soulèvement de Wuchang du 10 octobre 1911 déclenche la chute des Qing ; la République de Chine est proclamée à Nanjing le 1er janvier 1912 et l'abdication de Puyi intervient le 12 février 1912.",
               "confidence": "certain",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-002"
@@ -40092,6 +41033,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Nanjing — capitale, centre culturel, lieu de mémoire du massacre de 1937",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-002",
@@ -40103,6 +41045,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Guangzhou (Canton) — port du commerce maritime, centre révolutionnaire du KMT, ville de la grève de 1925-1926",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-002"
@@ -40171,6 +41114,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 4 mai 1919, des étudiants de Pékin manifestent contre le transfert au Japon des concessions allemandes du Shandong décidé à Versailles.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -40178,6 +41122,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le mouvement gagne les villes, les ouvriers et les femmes, et devient un moment fondateur du nationalisme chinois et de la Nouvelle Culture.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -40185,6 +41130,7 @@ export const DATASET = {
               "kind": "audit",
               "text": "Le 4 mai 1919, des étudiants manifestent à Pékin contre le traitement de la Chine à Versailles ; le mouvement s'étend aux villes et aux milieux ouvriers et devient un moment fondateur du nationalisme et de la Nouvelle Culture.",
               "confidence": "certain",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-003",
                 "SRC-001"
@@ -40195,6 +41141,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Nanjing — capitale, centre culturel, lieu de mémoire du massacre de 1937",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-002",
@@ -40206,6 +41153,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Wuhan (Wuchang, Hankou, Hanyang) — lieu du soulèvement de 1911, centre industriel, capitale provisoire en 1927, lieu du confinement de 2020",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-002",
@@ -40289,6 +41237,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "En juillet 1921, treize délégués environ tiennent à Shanghai le premier congrès du Parti communiste chinois, avec l'aide du Komintern.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -40296,6 +41245,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le parti adopte une organisation centralisée et s'implante dans les milieux ouvriers et intellectuels.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -40303,6 +41253,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Shanghai — port ouvert, centre industriel et financier, lieu de fondation du PCC, ville de la purge de 1927",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-002",
@@ -40357,6 +41308,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Après la prise de Nanjing en décembre 1937, l'armée japonaise commet des massacres, des viols et des pillages pendant plusieurs semaines.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -40364,6 +41316,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le tribunal militaire international de Tokyo retient environ 200 000 morts ; des travaux récents proposent 100 000 à 200 000 et les mémoires chinoises vont jusqu'à 300 000.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -40371,13 +41324,15 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les catégories de victimes et les méthodes de comptage restent disputées.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
               "id": "china-claim-007-point",
               "kind": "audit",
               "text": "Les estimations du nombre de victimes varient fortement : le tribunal militaire international de Tokyo retient environ 200 000 morts ; des travaux récents proposent 100 000 à 200 000 ; les mémoires chinoises vont jusqu'à 300 000. Les catégories de victimes et les méthodes de comptage sont disputées.",
-              "confidence": "disputed",
+              "confidence": "disputé",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-005",
                 "SRC-004"
@@ -40415,6 +41370,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 1er octobre 1949, Mao Zedong proclame la République populaire à Pékin ; le gouvernement nationaliste se replie à Taïwan et la guerre civile continue, avec la prise de Hainan en 1950.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -40422,6 +41378,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La consolidation comprend la réforme agraire (1950-1952), la loi sur le mariage (1950) et l'accord en dix-sept points sur le Tibet (1951), après l'entrée de l'armée populaire au Tibet en 1950.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -40429,6 +41386,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le Grand Bond en avant, la famine de 1959-1961 et la Révolution culturelle marquent ensuite la période maoïste.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -40436,6 +41394,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Pékin (Beijing) — capitale impériale, capitale de la RPC, centre administratif et politique",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-008"
@@ -40488,6 +41447,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 1er mai 1950, la loi sur le mariage interdit le mariage arrangé, la polygamie et le concubinage, et proclame l'égalité des époux.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -40495,6 +41455,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Sa mise en œuvre se heurte aux pratiques locales et aux campagnes de propagande, et son application varie selon les régions.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -40502,6 +41463,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Shanghai — port ouvert, centre industriel et financier, lieu de fondation du PCC, ville de la purge de 1927",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-002",
@@ -40556,6 +41518,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "En décembre 1978, le troisième plénum du XIe Comité central lance les réformes : le démantèlement progressif des communes, le système de responsabilité familiale et les zones économiques spéciales (Shenzhen, Zhuhai, Shantou, Xiamen).",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -40563,6 +41526,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L'ouverture attire les investissements et accélère la croissance, tandis que la répression de 1989, la rétrocession de Hong Kong (1997), l'entrée à l'OMC (2001) et le confinement de Wuhan (2020) scandent la période.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -40570,6 +41534,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La trajectoire s'accompagne d'inégalités, de migrations massives et de coûts environnementaux.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -41262,7 +42227,7 @@ export const DATASET = {
           "predicate": "bilan humain",
           "object": "1959-1961",
           "text": "Les estimations de surmortalité varient d'environ 15 à 46 millions de morts ; Ashton et al. proposent environ 30 millions, Dikötter au moins 45 millions. La famine résulte des politiques du Grand Bond, des réquisitions, de la gestion agricole et de conditions climatiques.",
-          "confidence": "disputed",
+          "confidence": "disputé",
           "sources": [
             "SRC-009",
             "SRC-010",
@@ -41299,7 +42264,7 @@ export const DATASET = {
           "predicate": "répression",
           "object": "1989-06-04",
           "text": "Les manifestations étudiantes et ouvrières de printemps 1989 sont réprimées par l'armée dans la nuit du 3 au 4 juin ; le bilan humain est disputé et l'événement est censuré en RPC.",
-          "confidence": "disputed",
+          "confidence": "disputé",
           "sources": [
             "SRC-018",
             "SRC-001"
@@ -41702,7 +42667,7 @@ export const DATASET = {
           "object": "le royaume Shang, avec Anyang (vers -1250) comme principal site archéologique",
           "text": "Royauté Shang constitue, selon une datation conventionnelle, la première dynastie chinoise dont l'écriture est abondamment attestée le royaume Shang, avec Anyang (vers -1250) comme principal site archéologique",
           "time": "-1600",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "evenement",
             "acteur",
@@ -41727,7 +42692,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "Repère cn-shang (dataset.js) et correction cn-shang (fixes.yaml, proposals.yaml) : vers -1600, première dynastie à écriture abondante, datation conventionnelle. CLAIM-001 (country-audit.yaml) qualifie la date de « disputed » et rappelle le débat Erlitou/Xia ; le disputé reste donc disputé. SRC-001 est la synthèse utilisée par l'audit pour les dates dynastiques. Ancre -1600 = borne de début de l'ère, conforme à -1600/-221 ; aucun fait hors ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era1-guer-002",
@@ -41739,7 +42704,7 @@ export const DATASET = {
           "object": "la bataille de Muye (vers -1046) et la rupture avec les Zhou occidentaux",
           "text": "Zhou renversent les Shang à Muye et légitiment leur victoire par le mandat du Ciel, avant le sac de Hao en -771 la bataille de Muye (vers -1046) et la rupture avec les Zhou occidentaux",
           "time": "-1046",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "evenement",
             "acteur",
@@ -41770,7 +42735,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Repère cn-zhou (dataset.js) et correction cn-zhou (fixes.yaml, proposals.yaml) : vers -1046, renversement des Shang à Muye, légitimation par le mandat du Ciel, puis sac de Hao en -771. La matrice signalait l'absence de fiche de bataille (Muye), d'acteurs et de lieux ; ils sont ici renseignés. La date de Muye est conventionnelle, d'où « probable ». -1046 et -771 sont dans l'ère -1600/-221 ; aucune invention.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era1-droit-003",
@@ -41792,10 +42757,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-CN-01-droit-justice"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule « vide non traité » de coverage-matrix.csv (ERA-1, Droit & justice) : « aucune fiche sur le droit Zhou, les serments, les codes Qin ou la justice locale ». Le registre omissions.yaml n'enregistre aucune omission pour ERA-1 : silence explicite, sans ID d'omission à citer, conformément à la règle 7 de POINT_METHODOLOGY.md. Les codes Qin sont associés à cn-qin (-221, china-era-2) et ne sont pas introduits ici pour éviter tout hors-ère. Aucune date ni source inventée ; ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era1-econ-004",
@@ -41807,7 +42774,7 @@ export const DATASET = {
           "object": "les matières (bronze, jade, coquillages) et le travail artisanal documentés à Anyang",
           "text": "Production et échanges de bronze Shang sont attestés par les bronzes rituels, sans fiche dédiée à l'agriculture ou à la fiscalité les matières (bronze, jade, coquillages) et le travail artisanal documentés à Anyang",
           "time": "-1250",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "processus",
             "lieu",
@@ -41830,7 +42797,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Repère cn-shang (dataset.js) : les bronzes rituels et les inscriptions d'Anyang (vers -1250) documentent royauté et culte des ancêtres. La matrice précise que les échanges de bronze, jade et coquillages sont suggérés et que l'agriculture/fiscalité ne font pas l'objet de fiche ; ces silences sont signalés, non comblés par invention. -1250 est dans l'ère. SRC-001 est la synthèse de référence de l'audit pour ce repère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era1-soc-005",
@@ -41842,7 +42809,7 @@ export const DATASET = {
           "object": "les inscriptions oraculaires et les bronzes rituels d'Anyang (vers -1250)",
           "text": "Lignages et sacrifices Shang structurent la société documentée par l'archéologie d'Anyang les inscriptions oraculaires et les bronzes rituels d'Anyang (vers -1250)",
           "time": "-1250",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "processus",
             "groupe_social",
@@ -41868,7 +42835,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La justification de la cellule (coverage-matrix.csv, ERA-1, Société & démographie) indique explicitement que « l'archéologie d'Anyang documente lignages et sacrifices », tout en déplorant l'absence de traitement de la société comme objet historique ; le point comble cette cellule avec les seuls éléments présents dans le corpus (cn-shang). Interprétation archéologique -> « probable », sans chiffre démographique inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era1-genre-006",
@@ -41892,10 +42859,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-CN-01-femmes-genre-sexualites"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule « vide non traité » de coverage-matrix.csv (ERA-1, Femmes, genre, sexualités) : la matrice cite explicitement Fu Hao, les reines Shang et les rapports de genre comme absents de la frise. Ces noms ne sont repris que comme exemples de silence documenté, jamais comme faits attestés : aucune affirmation inventée. Aucun OM ERA-1 dans omissions.yaml ; silence explicite. Aucune date ni source inventée ; ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era1-relig-007",
@@ -41937,7 +42906,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Repères cn-shang et cn-zhou (dataset.js) : os oraculaires d'Anyang, culte des ancêtres, mandat du Ciel. La matrice notait ces deux éléments comme seuls couverts (« partiel ») ; ils sont ici traités comme points à part entière. L'intervalle -1600/-221 est utilisé comme ancre pour ne pas forcer une date unique sur deux phénomènes distincts ; les dates « vers -1250 » et « vers -1046 » sont données dans l'objet avec leur rôle. SRC-001 est la synthèse de l'audit pour les deux repères.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era1-sci-008",
@@ -41949,7 +42918,7 @@ export const DATASET = {
           "object": "les savoirs techniques mis en œuvre à Anyang (vers -1250)",
           "text": "Métallurgie du bronze Shang est attestée par les bronzes rituels, sans fiche sur l'astronomie, le calendrier ou la médecine les savoirs techniques mis en œuvre à Anyang (vers -1250)",
           "time": "-1250",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "processus",
             "lieu"
@@ -41969,7 +42938,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La justification de la cellule (coverage-matrix.csv, ERA-1, Sciences, techniques & santé) indique que « la métallurgie du bronze est évoquée, mais sans fiche sur l'astronomie, le calendrier ou la médecine ». Seule la métallurgie, présente dans cn-shang (dataset.js), est affirmée ; les autres savoirs sont signalés comme absents, non inventés. Ancre -1250 = horizon d'Anyang, dans l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era1-arts-009",
@@ -41981,7 +42950,7 @@ export const DATASET = {
           "object": "les inscriptions d'Anyang (vers -1250) et les bronzes rituels",
           "text": "Écriture oraculaire et bronzes rituels Shang constituent les formes d'écriture et d'art les plus anciennes attestées du corpus de cette ère les inscriptions d'Anyang (vers -1250) et les bronzes rituels",
           "time": "-1250",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "processus",
             "lieu",
@@ -42003,7 +42972,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Repère cn-shang (dataset.js) : « première dynastie chinoise dont l'écriture est abondamment attestée », inscriptions oraculaires et bronzes rituels. La matrice notait que la poésie, la calligraphie et les textes n'étaient pas traités ; l'écriture oraculaire, elle, est documentée et c'est elle qui est affirmée ici. Aucune œuvre, titre ou auteur inventé. Ancre -1250 conforme à l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era1-env-010",
@@ -42028,10 +42997,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-CN-01-environnement-territoire"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule « vide non traité » de coverage-matrix.csv (ERA-1, Environnement & territoire) : « aucune fiche sur le fleuve Jaune, la déforestation, l'agriculture ou le climat ». Aucun OM ERA-1 dans omissions.yaml ; silence explicite, non masqué. Aucune catastrophe, date ou chiffre inventé ; l'intervalle -1600/-221 sert d'ancre et aucun événement environnemental n'est affirmé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era1-migr-011",
@@ -42043,7 +43014,7 @@ export const DATASET = {
           "object": "le sac de Hao en -771 et le domaine réduit des Zhou orientaux",
           "text": "Passage des Zhou occidentaux aux Zhou orientaux est traité dans le corpus comme un changement dynastique, non comme une migration le sac de Hao en -771 et le domaine réduit des Zhou orientaux",
           "time": "-771",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "evenement",
             "acteur",
@@ -42071,7 +43042,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Repère cn-zhou (dataset.js) : après le sac de Hao en -771, les Zhou orientaux ne contrôlent plus qu'un domaine réduit et les principautés s'affrontent jusqu'aux Royaumes combattants. La matrice signalait que la conquête Zhou était traitée comme changement dynastique « pas comme migration ou expansion territoriale » : le point documente ce traitement sans inventer de récit migratoire. -771 est dans l'ère ; SRC-001 est la synthèse de l'audit pour ce repère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era1-peuples-012",
@@ -42097,10 +43068,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-CN-01-peuples-autochtones-mino"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule « vide non traité » de coverage-matrix.csv (ERA-1, Peuples autochtones & minorités) : la matrice énumère explicitement Chu, Yue et les nomades des steppes comme absents de la frise. Ces noms ne sont repris que pour documenter le silence ; aucun rattachement, date ou événement n'est affirmé. Aucun OM ERA-1 dans omissions.yaml ; ancre = intervalle de l'ère, sans invention.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era1-memoire-013",
@@ -42125,10 +43098,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-CN-01-memoire-patrimoine"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule « vide non traité » de coverage-matrix.csv (ERA-1, Mémoire & patrimoine) : « Anyang et l'archéologie Shang ne sont pas traités comme objets de mémoire ou de patrimoine ». La patrimonialisation d'Anyang est postérieure à l'ère et n'est pas décrite comme un fait de l'ère. Aucun OM ERA-1 dans omissions.yaml ; silence explicite, aucune date ni source inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era1-circ-014",
@@ -42140,7 +43115,7 @@ export const DATASET = {
           "object": "les réseaux d'échange mentionnés autour d'Anyang (vers -1250)",
           "text": "Échanges de bronze, jade et coquillages Shang sont suggérés par le corpus, sans fiche dédiée aux circulations eurasiennes les réseaux d'échange mentionnés autour d'Anyang (vers -1250)",
           "time": "-1250",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "processus",
             "lieu"
@@ -42158,7 +43133,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Cellule « partiel » de coverage-matrix.csv (ERA-1, Circulations transnationales, échelle regional) : « les échanges de bronze, jade et coquillages sont suggérés, mais aucune fiche sur les circulations eurasiennes ». Le point reprend exactement ce qui est suggéré (cn-shang, dataset.js) et signale l'absence de fiche sur les circulations eurasiennes, sans transformer une suggestion en fait certain ni inventer de route. Ancre -1250 = horizon d'Anyang, dans l'ère ; SRC-001 est la synthèse de l'audit pour cn-shang.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era2-pol-001",
@@ -42191,7 +43166,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "L'unification Qin de -221 et l'administration centralisée sont documentées dans le corpus (dataset.js, cn-qin) et dans CLAIM-002 (country-audit.yaml, certitude certaine, SRC-001). La matrice ERA-2, Politique & institutions (cn-qin, cn-han, cn-tang, cn-song, cn-yuan, cn-ming, cn-qing) signale sept repères dynastiques sans acteurs structurés ; OM-015 rappelle l'absence d'archives primaires consultées pour cette ère. Aucune date ni source inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era2-pol-002",
@@ -42223,7 +43198,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "CLAIM-003 (country-audit.yaml) qualifie de certaine l'alternance d'unité et de divisions sur -221/1912, avec SRC-001 ; la proposition de renommage de l'ère 2 dans audits/china/proposals.yaml documente les sous-périodes Qin-Han, Division, Sui-Tang, Song-Yuan, Ming-Qing. L'ancre est l'intervalle complet de l'ère ; aucune date ni source inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era2-guer-003",
@@ -42267,7 +43242,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Fait daté dans le corpus (dataset.js, cn-opium) : destruction de l'opium à Canton en 1839, riposte britannique de 1839 à 1842, traité de Nanjing ouvrant cinq ports, cédant Hong Kong et fixant une indemnité ; l'opium n'est légalisé qu'en 1858. SRC-001 couvre la Chine des Qing au XIXe siècle et la matrice ERA-2, Guerres & diplomatie cite cn-opium. Certitude probable, le registre ne comportant pas d'étude dédiée au traité.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era2-droit-004",
@@ -42302,7 +43277,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "CLAIM-002 (country-audit.yaml, certain, SRC-001) et le corpus (dataset.js, cn-qin) documentent la standardisation imposée en -221 avec l'administration centralisée. La matrice ERA-2, Droit & justice (cn-qin) note l'absence de fiche sur le droit Tang, les examens ou la justice impériale : ces silences ne sont pas comblés ici. Aucune règle ni date inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era2-econ-005",
@@ -42338,7 +43313,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Le corpus (dataset.js, cn-han, « vérifié ») date les missions de Zhang Qian de -138 à -126 et l'ouverture des routes commerciales d'Asie centrale vers -130 ; la matrice ERA-2, Économie & travail cite cn-han pour la route de la soie. SRC-015 fournit le cadre de longue durée du Xinjiang et des circulations d'Asie centrale ; le registre n'a pas de monographie dédiée aux Han, d'où la certitude probable, et OM-015 documente l'absence d'archives primaires. Aucune date ni source inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era2-soc-006",
@@ -42365,10 +43340,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-CN-02-societe-demographie"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule « vide non traité » de coverage-matrix.csv (ERA-2, Société & démographie, national) : aucune fiche sur la démographie, la famille, les famines ou les hiérarchies sociales impériales. Silence explicite conformément à la règle 7 de POINT_METHODOLOGY.md ; aucun ID d'omission dédié n'existe dans omissions.yaml pour cette cellule, OM-015 documentant seulement l'absence d'archives primaires. Aucune date, source ou donnée chiffrée inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era2-genre-007",
@@ -42410,7 +43387,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "ACTOR-003 de country-audit.yaml (périodes ERA-2 et ERA-3) documente Qiu Jin (1875-1907), révolutionnaire, féministe et écrivaine, exécutée après une tentative d'insurrection, avec SRC-001 et SRC-002 ; ses lieux d'action Shaoxing et Tokyo et son réseau d'étudiantes y sont nommés. La matrice ERA-2, Femmes signale l'absence de fiche dédiée : ce point la comble sans inventer de date. Certitude probable faute d'étude dédiée dans le registre.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era2-relig-008",
@@ -42447,7 +43424,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Le corpus (dataset.js, cn-tang) décrit Chang'an comme capitale cosmopolite ouverte aux marchands et aux religions ; PLACE-006 (country-audit.yaml) enregistre la fonction de carrefour de l'Asie centrale et les contestations mémorielles, avec SRC-001 et SRC-002. La matrice ERA-2, Religions & croyances signale l'absence de fiches sur le taoïsme, l'islam, le christianisme et les religions populaires : ces silences ne sont pas comblés ici.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era2-sci-009",
@@ -42478,7 +43455,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Le corpus (dataset.js, cn-song, « vérifié ») rapporte que l'imprimerie, la poudre et la boussole sont perfectionnées et diffusées à grande échelle sous les Song, et que les Song du Sud poursuivent à Hangzhou une économie urbaine et marchande après 1127. La matrice ERA-2, Sciences, techniques & santé cite cn-song ; SRC-001 cadre les dates dynastiques, mais le registre n'a pas de source dédiée aux techniques Song, d'où la certitude probable.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era2-arts-010",
@@ -42514,7 +43491,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Le corpus (dataset.js, cn-tang) qualifie l'époque de Chang'an d'âge d'or de la poésie et des échanges, en précisant qu'il s'agit d'un label historiographique ; PLACE-006 confirme le rôle de carrefour et les usages mémoriels, avec SRC-001 et SRC-002. La matrice ERA-2, Arts & lettres cite cn-tang et cn-ming ; peinture, théâtre et calligraphie restent absents du corpus et ne sont pas inventés ici.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era2-env-011",
@@ -42538,10 +43515,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-CN-02-environnement-territoire"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule « vide non traité » de coverage-matrix.csv (ERA-2, Environnement & territoire, national) : aucune fiche sur les crues du fleuve Jaune, la déforestation, le climat ou le Grand Canal. SRC-017 (China: An Environmental History) couvre la longue durée, mais aucun repère environnemental daté n'a été rédigé pour l'ère dans le corpus ; aucun ID d'omission dédié n'existe dans omissions.yaml. Silence explicite, aucune date ou donnée inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era2-migr-012",
@@ -42580,7 +43559,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Le corpus (dataset.js, cn-qing, « vérifié ») date la conquête mandchoue de 1644-1662 en Chine propre, son achèvement à Taïwan en 1683 et la conquête du Xinjiang en 1755-1759, avec violences et mesures de coercition. SRC-001 couvre la Chine Qing et SRC-015 l'histoire du Xinjiang ; la matrice ERA-2, Migrations & diasporas classe ces conquêtes comme dynasties et signale l'absence de fiche sur les migrations han vers le sud et la diaspora, qui ne sont pas inventées ici.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era2-peuples-013",
@@ -42616,7 +43595,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Le corpus (dataset.js, cn-qing) date la conquête Qing du Xinjiang de 1755 à 1759 ; SRC-015 est une synthèse universitaire de l'histoire du Xinjiang de l'Antiquité au XXIe siècle et SRC-001 cadre la Chine Qing. La matrice ERA-2, Peuples autochtones & minorités (échelle impériale, cn-yuan ; cn-qing) signale l'absence de fiches sur le Tibet et les peuples du sud : ce point ne les invente pas. L'étiquette « autochtones » est conservée telle quelle dans la matrice, sans projection anachronique.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era2-memoire-014",
@@ -42651,7 +43630,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Le corpus (dataset.js, cn-ming) date la construction de la Cité interdite de 1406 à 1420 ; PLACE-001 (country-audit.yaml) documente Pékin comme capitale impériale et la coexistence des mémoires impériales et révolutionnaires, avec SRC-001. La matrice ERA-2, Mémoire & patrimoine (cn-ming) précise qu'aucune fiche sur les commémorations ou les usages politiques du passé n'existe : ces objets ne sont pas inventés ici.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era2-circ-015",
@@ -42692,7 +43671,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Le corpus (dataset.js, cn-ming, « vérifié ») date les expéditions de Zheng He de 1405 à 1433 et note que l'interdiction du commerce maritime n'empêche pas les échanges côtiers et clandestins ; SRC-001 cadre les dates dynastiques Ming. La matrice ERA-2, Circulations transnationales cite cn-han (route de la soie) et cn-tang (Chang'an cosmopolite) ; missions, pèlerinages et tributs restent non traités et ne sont pas inventés ici.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era3-pol-001",
@@ -42730,7 +43709,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-001 (proposals.yaml) et CLAIM-004 (country-audit.yaml), avec SRC-002 et SRC-001. La cellule ERA-3 / Politique & institutions de la matrice renvoie au repère corrigé cn-1911, qui distingue la proclamation du 1er janvier 1912 de l'abdication du 12 février 1912. ACTOR-001 enregistre Sun Yat-sen comme président provisoire en 1912 et ACTOR-006 associe Yuan Shikai à l'ère. Aucun événement antérieur à 1912 n'est traité comme point dans ce fichier.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era3-gue-001",
@@ -42771,7 +43750,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-006 (proposals.yaml), phases datées 1931, 1932, 1937 et 1945, avec SRC-004 et SRC-002 ; PROP-008 et PROP-009 en sont des épisodes traités dans leurs propres domaines. Aucun bilan humain chiffré n'est repris dans ce point : le massacre de Nanjing fait l'objet de cn-era3-mem-001 et la crue de 1938 de cn-era3-env-001.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era3-dro-001",
@@ -42806,7 +43785,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Cellule ERA-3 / Droit & justice de coverage-matrix.csv et PROP-001 (proposals.yaml) sourcé SRC-002 et SRC-001. Aucun texte de loi daté, aucun article de constitution et aucune décision de justice n'étant explicitement référencés dans le registre, ils ne sont pas introduits ici : le silence est documenté plutôt que comblé par une affirmation non sourcée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era3-eco-001",
@@ -42837,7 +43816,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule ERA-3 / Économie & travail de la matrice marquée « vide non traité » et omission OM-001 de omissions.yaml (statut to_fill, evidence_checked SRC-002 et SRC-001). Aucune réforme monétaire, aucun établissement bancaire et aucune donnée de prix n'étant nommés dans le registre, ils ne sont pas avancés.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era3-soc-001",
@@ -42877,7 +43856,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-003 et CLAIM-005 (SRC-003, SRC-001), ainsi que le repère cn-prop-001 du dataset.js. Traitement sobre : le motif de la manifestation et son extension aux groupes sociaux sont seuls retenus. Aucune université, aucun nom d'étudiant et aucune date de signature du traité non attestés dans le dossier ne sont introduits.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era3-fem-001",
@@ -42914,7 +43893,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-002 (rationale : « femmes intellectuelles ») et PROP-003 (extension du mouvement aux femmes), avec SRC-003 ; cn-prop-001 du dataset.js mentionne également les femmes. OM-002 (evidence_checked SRC-003 et SRC-011) documente l'absence de fiche sur le suffrage, le mariage et le travail féminin : aucun droit acquis n'est affirmé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era3-rel-001",
@@ -42951,7 +43930,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Cellule ERA-3 / Religions & croyances de la matrice (« La critique du confucianisme est au cœur de la Nouvelle Culture ; missions, islam et bouddhisme absents ») et PROP-002, sourcé SRC-003 et SRC-001. Aucune campagne anti-chrétienne datée n'est introduite, faute de référence explicite dans le registre.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era3-sci-001",
@@ -42988,7 +43967,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Cellule ERA-3 / Sciences, techniques & santé de la matrice et PROP-002 (sous-titre « Nouvelle Jeunesse, langue vernaculaire, science et démocratie », tag sciences), sourcé SRC-003 et SRC-001. Aucune société savante, aucune publication périodique spécialisée et aucune invention technique non nommées dans le registre ne sont avancées.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era3-art-001",
@@ -43026,7 +44005,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Cellule ERA-3 / Arts & lettres de la matrice et PROP-002, sourcé SRC-003 et SRC-001. Aucun titre d'œuvre et aucune année de publication non attestés dans le dossier ne sont introduits ; le point porte sur les revues et les débats, non sur un jugement littéraire.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era3-env-001",
@@ -43066,7 +44045,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-009 (SRC-017, SRC-004) et CLAIM-008 de country-audit.yaml : la destruction des digues et les provinces touchées sont documentées, tandis que le bilan humain y est qualifié « probable ». En conséquence, aucun chiffre de mortalité n'est repris comme fait certain dans ce point.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era3-mig-001",
@@ -43100,7 +44079,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule ERA-3 / Migrations & diasporas de la matrice marquée « vide non traité » et PROP-006, PROP-009 (SRC-004, SRC-017) pour les déplacements mentionnés. omissions.yaml n'enregistre aucune omission pour ce domaine et cette ère : silence explicite, sans ID d'omission à citer, conformément à la règle 7 de POINT_METHODOLOGY.md.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era3-min-001",
@@ -43141,7 +44120,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule ERA-3 / Peuples autochtones & minorités de la matrice (PROP-007, sourcé SRC-006 et SRC-001) et omission OM-003 de omissions.yaml (evidence_checked SRC-015, SRC-016, SRC-020). Le point documente l'angle mort sans attribuer de politique ou de chiffre non sourcé à ces populations.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era3-mem-001",
@@ -43182,7 +44161,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "PROP-008 (SRC-005, SRC-004), CLAIM-007 de country-audit.yaml qualifié « disputed » et PLACE-002 (contestations : « chiffres et qualification disputés entre historiographies chinoise, japonaise et occidentale »). Le désaccord sur le bilan est maintenu comme tel, sans chiffre unique présenté comme consensus et sans description graphique.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era3-cir-001",
@@ -43223,7 +44202,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-004 et ACTOR-012 (Komintern, ERA-3), sourcés SRC-002 et SRC-001. CLAIM-006 qualifie la fondation de « probable » et signale la variation sur le nombre de participants et le lieu de clôture : la certitude est alignée sur ce niveau, et le lieu de clôture n'est pas fixé dans ce point.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era4-pol-001",
@@ -43261,7 +44240,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Le repère cn-1949 et ACTOR-005 documentent la fondation de la RPC en 1949. Spence (SRC-001) et Walder (SRC-008) situent la prise du pouvoir par le PCC et la mise en place du nouvel État. La borne de 1949 est la borne politique de l'ère (PERIOD-4).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era4-guerre-001",
@@ -43297,7 +44276,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La matrice ERA-4 classe ce domaine en « vide non traité » et OM-004 enregistre l'absence de sources militaires et diplomatiques dédiées, avec SRC-001 et SRC-008 comme evidence_checked. Spence et Walder situent l'entrée en guerre de la RPC en 1950 ; la certitude reste probable faute de monographie spécialisée dans le registre.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era4-droit-001",
@@ -43328,7 +44307,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-010 et la matrice ERA-4 (cellule « Droit & justice », partiel) documentent la loi du 1er mai 1950. Hershatter (SRC-011) analyse sa mise en œuvre et ses résistances locales ; Spence (SRC-001) fournit le contexte législatif de la première décennie de la RPC.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era4-economie-001",
@@ -43363,7 +44342,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-012 et CLAIM-009 datent le lancement du Grand Bond de 1958. Dikötter (SRC-009), Walder (SRC-008) et l'analyse démographique d'Ashton et al. (SRC-010) documentent communes, quotas, réquisitions et leurs effets. Le bilan humain, disputé, est traité séparément dans le point cn-era4-societe-001.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era4-societe-001",
@@ -43397,7 +44376,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "CLAIM-009 et PROP-012 donnent la fourchette de 15 à 46 millions et les estimations divergentes d'Ashton et al. (SRC-010, évalué par les pairs) et Dikötter (SRC-009). Walder (SRC-008) complète le cadre social. Le chiffre reste disputé : il est cité comme estimation, jamais comme consensus.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era4-femmes-001",
@@ -43432,7 +44411,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "ACTOR-011 (période ERA-4) décrit le travail des femmes rurales dans les brigades de production et leurs contraintes. Hershatter (SRC-011) repose sur des mémoires de femmes rurales et le travail collectif des années 1950 ; Walder (SRC-008) situe cette mobilisation dans la collectivisation. La matrice ERA-4 notait l'absence de ce volet genre au-delà de la loi de 1950.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era4-religion-001",
@@ -43469,7 +44448,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-011, ACTOR-008 et PLACE-011 documentent l'accord de 1951, le soulèvement de 1959 et l'exil. Shakya (SRC-016) est la synthèse de référence sur le Tibet depuis 1947 ; Spence (SRC-001) fournit le contexte de la RPC. Le point de vue reste disputé, ce qui est explicite dans le champ memory.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era4-sciences-001",
@@ -43506,7 +44485,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La matrice ERA-4 classe ce domaine en « vide non traité » et OM-006 enregistre l'absence de source dédiée aux sciences et à la santé maoïstes. MacFarquhar et Schoenhals (SRC-007) et Walder (SRC-008) documentent la persécution des intellectuels et la fermeture des universités pendant la Révolution culturelle. La certitude reste probable faute de monographie spécialisée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era4-arts-001",
@@ -43545,7 +44524,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-013 et la matrice ERA-4 signalent les destructions culturelles de la Révolution culturelle. ACTOR-004 documente le parcours de Ding Ling (purge en 1955, prison pendant la Révolution culturelle, réhabilitation en 1979). MacFarquhar et Schoenhals (SRC-007) et Spence (SRC-001) couvrent la répression culturelle et intellectuelle.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era4-environnement-001",
@@ -43576,7 +44555,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La matrice ERA-4 note l'absence de fiche sur l'irrigation et les moineaux et relie la famine à l'écologie et aux campagnes agricoles. Marks (SRC-017) traite l'histoire environnementale de la Chine et Dikötter (SRC-009) les campagnes du Grand Bond ; CLAIM-009 mentionne les conditions climatiques. La certitude reste probable faute de monographie dédiée à cette campagne.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era4-migrations-001",
@@ -43612,7 +44591,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "OM-005 date la mise en place du hukou de 1958 et donne SRC-014 et SRC-008 comme evidence_checked. La matrice ERA-4 signalait l'absence de fiche sur le hukou et les migrations forcées. Naughton (SRC-014) et Walder (SRC-008) documentent le mécanisme et son rôle de contrôle social ; la certitude reste probable faute d'histoire sociale dédiée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era4-minorites-001",
@@ -43648,7 +44627,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La matrice ERA-4 notait l'absence du Xinjiang, de la Mongolie-Intérieure et des Zhuang. Millward (SRC-015) atteste l'autonomie de 1955 et PLACE-012 donne Ürümqi comme capitale de la région autonome depuis 1955 ; Spence (SRC-001) fournit le cadre de la politique des minorités de la RPC.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era4-memoire-001",
@@ -43683,7 +44662,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "CLAIM-010 et PROP-013 datent la fin de la Révolution culturelle de 1976 et notent un bilan humain disputé. OM-014 documente explicitement l'absence de bilan quantitatif fiable. MacFarquhar et Schoenhals (SRC-007) et Walder (SRC-008) fournissent le cadre factuel de la mémoire et de la violence de masse.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era4-circulations-001",
@@ -43715,7 +44694,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La matrice ERA-4 classe ce domaine en « vide non traité » et cite explicitement « l'ONU en 1971 » et « la visite de Nixon en 1972 ». Spence (SRC-001), synthèse de référence, couvre la diplomatie de la RPC dans les années 1970. La certitude est celle du repère chronologique, non d'un jugement sur le régime.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era5-pol-001",
@@ -43753,7 +44732,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Repère cn-deng (1978) et borne PERIOD-5 (troisième plénum du XIe Comité central, décembre 1978) dans country-audit.yaml ; ACTOR-007 qualifie Deng d'architecte des réformes et souligne le maintien du monopole du parti. SRC-013 (Vogel) et SRC-014 (Naughton) sont les sources du repère et de la période. Aucune date hors de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era5-pol-002",
@@ -43794,7 +44773,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "PROP-015 et CLAIM-012 du country-audit : répression dans la nuit du 3 au 4 juin 1989, bilan disputé, événement censuré en RPC ; ACTOR-007 attribue la décision à Deng. Le désaccord F4 du audit enregistre la qualification contestée (récit officiel des « troubles politiques » contre sources indépendantes, SRC-018). SRC-001 recoupe le cadre général.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era5-gue-001",
@@ -43835,7 +44814,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-016 (déclaration conjointe de 1984 ayant fixé les modalités de la rétrocession) et CLAIM-013 (négociation menée dans les années 1980), toutes deux sourcées SRC-013 et SRC-001 dans le country-audit. Ce point ne couvre que la diplomatie : la cellule ERA-5 « Guerres & diplomatie » signale qu'aucune guerre interétatique post-1978 n'a de fiche (voir OM-004 pour 1979).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era5-gue-002",
@@ -43862,7 +44841,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "La cellule ERA-5 « Guerres & diplomatie » de coverage-matrix.csv nomme la guerre de 1979 et constate l'absence de fiche ; OM-004 (omissions.yaml) range ce conflit parmi les guerres non documentées du registre, avec evidence_checked SRC-001 et SRC-008. OM-004 est indexé PERIOD-4 dans le registre mais nomme explicitement 1979 : ce point explicite le silence sans avancer de chiffre, de bataille ni de source inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era5-dro-001",
@@ -43899,7 +44878,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "CLAIM-011 du country-audit : la politique annoncée en 1979 est « inscrite dans la Constitution en 1982 », assouplie en 2013 et remplacée en 2015 ; sources SRC-012 (Greenhalgh) et SRC-001 (Spence). La cellule ERA-5 « Droit & justice » signale que la Constitution de 1982 et les réformes judiciaires manquaient : ce point comble le repère normatif daté sans traiter les réformes judiciaires non documentées.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era5-eco-001",
@@ -43943,7 +44922,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Repère cn-deng (point-1) du dataset : « démantèlement progressif des communes, système de responsabilité familiale et zones économiques spéciales (Shenzhen, Zhuhai, Shantou, Xiamen) », date de décembre 1978 confirmée par PERIOD-4 ; SRC-014 (Naughton) et SRC-013 (Vogel) sont les sources de l'ère. La croissance qui suit est documentée, mais ses coûts sociaux et environnementaux font l'objet de points séparés.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era5-eco-002",
@@ -43977,7 +44956,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-017 et CLAIM-014 du country-audit, sourcés SRC-014 et SRC-013 : date du 11 décembre 2001, négociations commencées en 1986, accélération des réformes et intégration industrielle avec ajustements sociaux. Même fait que le point de circulations cn-era5-cir-002, mais traité ici sous l'angle économique.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era5-soc-001",
@@ -44015,7 +44994,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-014 et CLAIM-011 : chronologie 1979 / 1980 / 1982 / 2013 / 2015 et exceptions rurales et minoritaires, sourcées SRC-012 (Greenhalgh) et SRC-001 (Spence). La cellule ERA-5 « Société & démographie » cite PROP-014 et PROP-018 ; l'urbanisation, les classes moyennes et le vieillissement restent absents du registre et ne sont pas affirmés ici.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era5-fem-001",
@@ -44054,7 +45033,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-014 est taggé « femmes » dans proposals.yaml et s'appuie sur SRC-012 (Greenhalgh, Just One Child: Science and Policy in Deng's China) ; ACTOR-011 (Femmes rurales, period_ids ERA-4 et ERA-5) liste la politique de l'enfant unique parmi les contraintes de genre et est sourcé SRC-011 (Hershatter) et SRC-008. La portée sur les expériences locales reste interprétative : confiance « probable », aucune expérience individuelle inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era5-rel-001",
@@ -44096,7 +45075,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "ACTOR-008 du country-audit (period_ids ERA-4 et ERA-5) : chef religieux tibétain, figure de l'exil, autorité non reconnue par la RPC, réseau à Dharamsala ; sources SRC-016 (Shakya) et SRC-001. Le statut du Tibet et la qualification de l'exil restent profondément contestés (désaccord F4) : la confiance est « disputé ». La cellule ERA-5 « Religions & croyances » est vide non traitée pour le christianisme, l'islam et le Falun Gong, lesquels ne sont pas affirmés ici.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era5-sci-001",
@@ -44129,7 +45108,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-018 et CLAIM-015 (dates des 23 et 30 janvier 2020), PLACE-004 (Wuhan, lieu du confinement de 2020) ; SRC-019 est le rapport conjoint OMS-RPC du 21 février 2020. L'audit précise qu'il s'agit d'une source institutionnelle unique, non indépendante du gouvernement chinois : la date et la mesure sont certaines, l'interprétation reste à corroborer.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era5-sci-002",
@@ -44157,7 +45136,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "OM-013 (ERA-5, Sciences, techniques & santé, national) documente explicitement l'absence : fin de la politique zéro-COVID, protestations de 2022 et transition 2022-2023, « sujet trop récent pour une fiche stable », evidence_checked SRC-019. Aucune date de levée, aucun chiffre ni aucun acteur ne sont avancés.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era5-art-001",
@@ -44194,7 +45173,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "ACTOR-004 du country-audit : « purge en 1955, exil, prison pendant la Révolution culturelle, réhabilitée en 1979 », avec memory « son féminisme est souvent édulcoré dans les commémorations officielles », sources SRC-001 et SRC-007. L'acteur est étiqueté ERA-3/ERA-4 dans l'audit, mais l'événement daté de 1979 tombe bien dans l'ère 1978-2026.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era5-art-002",
@@ -44222,7 +45201,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "La cellule ERA-5 « Arts & lettres » de coverage-matrix.csv est « vide non traité » : aucune fiche sur le cinéma de la cinquième génération, l'art contemporain ou la censure. Aucun ID d'omission n'existe pour cette cellule dans omissions.yaml ; OM-007 (censure littéraire et formes artistiques autorisées, evidence_checked SRC-007 et SRC-008) est l'entrée du registre qui documente la même dette, mais il est indexé ERA-4 : ce point signale explicitement le prolongement de la dette après 1978, sans inventer d'œuvre, de cinéaste ni de date.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era5-env-001",
@@ -44250,7 +45229,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Le point-3 de cn-deng affirme que la trajectoire « s'accompagne d'inégalités, de migrations massives et de coûts environnementaux ». La cellule ERA-5 « Environnement & territoire » est vide non traitée ; OM-008 nomme le barrage des Trois Gorges, la pollution industrielle, la désertification et le climat, avec evidence_checked SRC-017 (Marks) et SRC-014. Aucune date de chantier, aucun chiffre de pollution ni de déforestation n'est avancé : confiance « probable ».",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era5-mig-001",
@@ -44293,7 +45272,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "ACTOR-010 du country-audit (period_ids ERA-5) : main-d'œuvre industrielle et urbaine, contrainte du hukou, précarité, séparation familiale, réseaux villageois ; sources SRC-014 et SRC-013. OM-009 (ERA-5, Migrations & diasporas) documente l'absence de fiche sur les vagues migratoires, les villes-dortoirs et les diasporas : l'existence de l'acteur est attestée, la chronologie des flux ne l'est pas, d'où la confiance « probable ».",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era5-min-001",
@@ -44329,7 +45308,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "OM-010 (ERA-5, Peuples autochtones & minorités, regional dans le registre, mais cellule nationale dans la matrice) : reason « disputed », qualifications et chiffres contestés entre sources chinoises, organisations internationales et travaux universitaires, evidence_checked SRC-015 (Millward) et SRC-016 (Shakya). Aucun effectif, aucun site d'internement et aucune date précise ne sont affirmés.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era5-mem-001",
@@ -44366,7 +45345,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "PROP-015 (« l'événement est censuré en RPC »), CLAIM-012 (bilan disputé) et la section memory du country-audit (mémoires de 1989, « bilan et qualification de 1989 ») ; SRC-018 (Lim, The People's Republic of Amnesia) analyse précisément censure et oubli, recoupée par SRC-001. Le désaccord F4 maintient la qualification disputée : aucun bilan chiffré n'est repris.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era5-mem-002",
@@ -44405,7 +45384,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "ACTOR-007, champ memory : « Architecte de la Chine moderne dans le récit officiel ; mémoire critique chez les victimes de 1989 et les militants des droits », avec assessment sur le monopole du parti et les inégalités ; sources SRC-013 (Vogel, perspective favorable à Deng) et SRC-018 (Lim), qui s'équilibrent. La dispute mémorielle est maintenue, pas résolue.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era5-cir-001",
@@ -44445,7 +45424,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-016, CLAIM-013 et PLACE-009 (colonie britannique 1842-1997, région administrative spéciale 1997-2026, hiérarchie transnationale), sourcés SRC-013 et SRC-001 ; le point-2 de cn-deng rappelle la rétrocession de 1997. La contestation des récits (mouvements de 2019, loi de sécurité nationale de 2020) est signalée par PLACE-009 et OM-012, mais non développée ici faute de sources dans le registre.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "cn-era5-cir-002",
@@ -44479,7 +45458,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-017 et CLAIM-014, sourcés SRC-014 (Naughton) et SRC-013 (Vogel) : « intégration aux chaînes de valeur mondiales », investissements étrangers et ajustements sociaux. La matrice cite PROP-017 pour la cellule ERA-5 « Circulations transnationales » comme pour « Économie & travail » : cn-era5-eco-002 traite le même fait sous l'angle économique, ce point sous l'angle des flux transnationaux.",
-          "status": "validated"
+          "status": "extrait"
         }
       ]
     },
@@ -44834,6 +45813,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Des cités planifiées et des réseaux d’irrigation caractérisent la civilisation de l’Indus, dont l’écriture n’est pas déchiffrée.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -44841,6 +45821,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Sa dé-urbanisation s’étend entre 1900 et 1300 av.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -44848,6 +45829,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "J.-C. ; le climat, les cours d’eau et le commerce figurent parmi les causes discutées, sans disparition brutale des sociétés.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -44855,6 +45837,7 @@ export const DATASET = {
               "kind": "audit",
               "text": "L'écriture de l'Indus n'est pas déchiffrée ; aucune lecture phonétique ou sémantique ne fait consensus.",
               "confidence": "certain",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-002"
@@ -44865,6 +45848,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Mohenjo-daro — ville, centre artisanal, carrefour fluvial",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-002"
@@ -44920,6 +45904,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Chandragupta renverse les Nanda et bâtit un empire qui prolonge la puissance du Magadha.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -44927,6 +45912,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Ashoka se convertit au bouddhisme et promeut le dhamma, un programme de gouvernement moral, après la conquête meurtrière du Kalinga en 261 av.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -44934,6 +45920,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "J.-C. ; son action ne se réduit pas à la non-violence et ses missions bouddhiques touchent surtout l’Asie du Sud et l’Asie centrale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -44941,6 +45928,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Patna — capitale maurya, capitale gupta, centre administratif",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-002"
@@ -44994,6 +45982,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les Gupta favorisent les arts, la littérature et les sciences, et leur règne est devenu un « âge d’or » de l’historiographie.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -45001,13 +45990,15 @@ export const DATASET = {
               "kind": "récit",
               "text": "Aryabhata compose son traité d’astronomie en 499 ; le zéro et la numération décimale se développent sur plusieurs siècles, sans être des inventions gupta.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
               "id": "india-claim-006-point",
               "kind": "audit",
               "text": "L'« âge d'or » Gupta est une construction historiographique autant qu'une réalité économique et culturelle ; il ne doit pas être naturalisé.",
-              "confidence": "disputed",
+              "confidence": "disputé",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-002"
@@ -45018,6 +46009,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Patna — capitale maurya, capitale gupta, centre administratif",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-002"
@@ -45071,6 +46063,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "De 1206 à 1526, cinq dynasties — Mamelouks, Khalji, Tughlaq, Sayyid et Lodi — gouvernent depuis Delhi.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -45078,6 +46071,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le sultanat développe l’iqta, la monnaie et une administration persanophone, mais il coexiste avec les sultanats du Deccan, du Bengale et du Gujarat.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -45085,6 +46079,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Consolide un empire pluriel par l'intégration des élites ; l'« apogée » est autant politique que culturelle et n'efface pas les hiérarchies.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-003"
               ]
@@ -45094,6 +46089,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Actrice politique majeure, souvent réduite à un cliché de harem ; son pouvoir passe par la cour, la famille et le patronage.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-003"
               ]
@@ -45157,6 +46153,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Babur fonde l’empire en 1526 ; Akbar le consolide par le mansabdari et des alliances rajputes, tandis que Shah Jahan porte l’apogée culturelle et fait construire le Taj Mahal entre 1632 et 1653.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -45164,6 +46161,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’expansion territoriale culmine sous Aurangzeb, mais sa mort en 1707 ouvre une crise successorale et un long déclin.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -45171,6 +46169,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Consolide un empire pluriel par l'intégration des élites ; l'« apogée » est autant politique que culturelle et n'efface pas les hiérarchies.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-003"
               ]
@@ -45180,6 +46179,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Actrice politique majeure, souvent réduite à un cliché de harem ; son pouvoir passe par la cour, la famille et le patronage.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-003"
               ]
@@ -45244,6 +46244,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La Compagnie anglaise des Indes orientales reçoit sa charte en 1600, mais elle n’obtient son premier comptoir qu’à Surat en 1613, puis s’installe à Madras, Bombay et Calcutta.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -45251,6 +46252,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La victoire de Plassey en 1757, celle de Buxar en 1764 et le Diwani de 1765 la transforment en puissance territoriale et fiscale au Bengale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -45258,6 +46260,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Consolide un empire pluriel par l'intégration des élites ; l'« apogée » est autant politique que culturelle et n'efface pas les hiérarchies.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-003"
               ]
@@ -45267,6 +46270,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Actrice politique majeure, souvent réduite à un cliché de harem ; son pouvoir passe par la cour, la famille et le patronage.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-003"
               ]
@@ -45276,6 +46280,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Mumbai — port, industrie textile, finance, cinéma, presse",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-004",
                 "SRC-011"
@@ -45286,6 +46291,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Chennai — port, capitale du Sud britannique, centre administratif",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-004",
                 "SRC-002"
@@ -45387,6 +46393,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La révolte éclate en 1857 parmi les sepoys du Bengale et s’étend aux paysans, aux villes et à plusieurs princes, avec des violences des deux camps.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -45394,6 +46401,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La répression britannique est massive et fait de nombreuses victimes civiles ; en 1858, Londres retire ses pouvoirs à la Compagnie et place l’Inde sous l’administration directe de la Couronne.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -45401,6 +46409,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Mobilise les femmes dans la marche du sel et les campagnes civiles ; son rôle est institutionnel et symbolique, pas seulement décoratif.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-012",
                 "SRC-005"
@@ -45411,6 +46420,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Fait de l'égalité juridique et de la représentation politique des Dalits un enjeu national ; la conversion de 1956 est un acte politique et religieux.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-019",
                 "SRC-011",
@@ -45505,6 +46515,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Fondé à Bombay en 1885, le Congrès rassemble d’abord avocats, journalistes, propriétaires et marchands, dans une phase modérée de pétitions et de réformes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -45512,6 +46523,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Il devient un parti de masse après 1920, sous l’impulsion de Gandhi, et doit compter avec la concurrence de la Ligue musulmane.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -45519,6 +46531,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Mobilise les femmes dans la marche du sel et les campagnes civiles ; son rôle est institutionnel et symbolique, pas seulement décoratif.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-012",
                 "SRC-005"
@@ -45529,6 +46542,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Fait de l'égalité juridique et de la représentation politique des Dalits un enjeu national ; la conversion de 1956 est un acte politique et religieux.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-019",
                 "SRC-011",
@@ -45623,6 +46637,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 13 avril 1919, le général Dyer fait tirer sur une foule réunie à Jallianwala Bagh, à Amritsar, en marge des protestations contre le Rowlatt Act.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -45630,6 +46645,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les estimations vont de 379 à plus de 1 500 morts et environ 1 200 blessés ; la commission Hunter, instituée en 1919, critique dans son rapport la conduite de l’armée, et le massacre discrédite le Raj.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -45637,6 +46653,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Mobilise les femmes dans la marche du sel et les campagnes civiles ; son rôle est institutionnel et symbolique, pas seulement décoratif.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-012",
                 "SRC-005"
@@ -45647,6 +46664,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Fait de l'égalité juridique et de la représentation politique des Dalits un enjeu national ; la conversion de 1956 est un acte politique et religieux.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-019",
                 "SRC-011",
@@ -45658,6 +46676,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Amritsar — ville sainte sikhe, lieu de pèlerinage, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-005",
                 "SRC-003"
@@ -45770,6 +46789,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 20 mars 1927, Ambedkar et des milliers de Dalits boivent l’eau du réservoir Chavdar à Mahad pour affirmer l’égalité d’accès aux espaces publics.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -45777,6 +46797,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La campagne ouvre une décennie de luttes pour les droits des intouchables et nourrit la politisation dalite.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -45784,6 +46805,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Mobilise les femmes dans la marche du sel et les campagnes civiles ; son rôle est institutionnel et symbolique, pas seulement décoratif.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-012",
                 "SRC-005"
@@ -45794,6 +46816,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Fait de l'égalité juridique et de la représentation politique des Dalits un enjeu national ; la conversion de 1956 est un acte politique et religieux.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-019",
                 "SRC-011",
@@ -45889,6 +46912,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Du 12 mars au 6 avril 1930, Gandhi et ses compagnons marchent de Sabarmati à Dandi pour produire du sel illégalement, en défi au monopole britannique.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -45896,6 +46920,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Sarojini Naidu et des milliers de femmes rejoignent le mouvement ; la répression touche environ 60 000 personnes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -45903,6 +46928,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Mobilise les femmes dans la marche du sel et les campagnes civiles ; son rôle est institutionnel et symbolique, pas seulement décoratif.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-012",
                 "SRC-005"
@@ -45913,6 +46939,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Fait de l'égalité juridique et de la représentation politique des Dalits un enjeu national ; la conversion de 1956 est un acte politique et religieux.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-019",
                 "SRC-011",
@@ -46007,6 +47034,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’Inde devient indépendante le 15 août 1947, au terme de négociations constitutionnelles et de décennies de mobilisations.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -46014,6 +47042,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La Partition du sous-continent, tracée par la ligne Radcliffe en août 1947, constitue un événement distinct, avec ses propres réfugiés et ses propres violences.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -46021,6 +47050,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Lahore — capitale provinciale moghole, centre sikh, ville frontière en 1947",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-003",
                 "SRC-008"
@@ -46031,6 +47061,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Kolkata — port, capitale de l'Inde britannique (1772-1911), centre de la famine de 1943, ville de la Partition",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-005",
                 "SRC-017"
@@ -46120,6 +47151,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La ligne Radcliffe, publiée en août 1947, partage le Pendjab et le Bengale entre l’Inde et le Pakistan ; les transferts de population et les violences déplacent entre 12 et 20 millions de personnes et font entre 200 000 et 2 millions de morts selon les estimations.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -46127,13 +47159,15 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le conflit du Cachemire, né de l’accession contestée de 1947, débouche sur la première guerre indo-pakistanaise de 1947-1948.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
               "id": "india-claim-003-point",
               "kind": "audit",
               "text": "La Partition de 1947 a déplacé entre 12 et 20 millions de personnes et causé entre 200 000 et 2 millions de morts, selon des estimations divergentes.",
-              "confidence": "disputed",
+              "confidence": "disputé",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-007",
                 "SRC-008",
@@ -46172,6 +47206,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Mohandas Gandhi est assassiné le 30 janvier 1948 à Delhi par Nathuram Godse, ancien militant du RSS.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -46179,6 +47214,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Figure centrale de la non-violence et du mouvement national, il est aussi critiqué pour ses positions sur la caste et pour son rôle dans les négociations de 1942-1947, notamment face à la Ligue musulmane ; son héritage reste contesté.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -46212,6 +47248,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "En 1991, une crise de balance des paiements pousse le gouvernement Rao et son ministre des Finances Manmohan Singh à engager des réformes sous conditions du FMI.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -46219,6 +47256,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La libéralisation, partielle et progressive, s’étend sur les années 1990 et se poursuit après 2000 ; elle accélère la croissance des services mais laisse subsister de fortes inégalités sociales et régionales.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -46253,6 +47291,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La loi de 2006 reconnaît les droits individuels et collectifs des communautés forestières, notamment des Adivasis, sur les terres et les ressources qu’elles occupent.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -46260,6 +47299,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Son application reste inégale ; le conflit de Niyamgiri, où les gram sabhas rejettent en 2013 le projet minier, en devient un cas emblématique.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -46267,6 +47307,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Thanjavur — capitale chola, centre religieux, centre fiscal",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-002"
@@ -46958,7 +47999,7 @@ export const DATASET = {
           "predicate": "evidence_status",
           "object": "disputed",
           "text": "Les migrations indo-européennes vers le sous-continent sont discutées à partir de la linguistique et de l'archéologie ; leur chronologie, leurs modalités et leur lien avec les Védas sont disputés.",
-          "confidence": "disputed",
+          "confidence": "disputé",
           "sources": [
             "SRC-001",
             "SRC-002"
@@ -46970,7 +48011,7 @@ export const DATASET = {
           "predicate": "mortality",
           "object": "0.8-3.8 million",
           "text": "La famine du Bengale de 1943 a tué entre 0,8 et 3,8 millions de personnes ; le consensus savant est autour de 2,1 millions, mais les causes et la responsabilité coloniale restent débattues.",
-          "confidence": "disputed",
+          "confidence": "disputé",
           "sources": [
             "SRC-014",
             "SRC-017"
@@ -46982,7 +48023,7 @@ export const DATASET = {
           "predicate": "colonial_construction",
           "object": "partial",
           "text": "La caste a été partiellement codifiée et rigidifiée par les recensements et le droit colonial, sans être une invention coloniale : des hiérarchies et des exclusions précoloniales sont attestées.",
-          "confidence": "disputed",
+          "confidence": "disputé",
           "sources": [
             "SRC-010",
             "SRC-011"
@@ -46994,7 +48035,7 @@ export const DATASET = {
           "predicate": "definition",
           "object": "contested",
           "text": "Le sécularisme indien est contesté entre neutralité de l'État, reconnaissance des minorités et majoritarisme hindou.",
-          "confidence": "disputed",
+          "confidence": "disputé",
           "sources": [
             "SRC-006",
             "SRC-020"
@@ -47408,7 +48449,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Fondation de l'empire maurya en -322 par Chandragupta, documentée dans le corpus (dataset.js, in-maurya ; country-audit.yaml, ACTOR-001 et PLACE-002) et par SRC-001 (Thapar) et SRC-002 (Singh). La correction in-maurya nuance le label de « premier grand empire » par les précédents du Magadha et des Nanda ; aucun « premier empire » non documenté n'est affirmé. Date -322 conforme à l'ère -2600/1206.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era1-guer-002",
@@ -47446,7 +48487,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Conquête du Kalinga en 261 av. J.-C. documentée dans le corpus (dataset.js, in-maurya ; fixes.yaml, in-maurya) et par SRC-001 et SRC-002 (ACTOR-001 : « violence de la conquête de Kalinga (261 av. J.-C.) »). Le dhamma est un programme de gouvernement moral, non un pacifisme absolu ; la violence de la conquête est conservée. Aucune date hors de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era1-droit-003",
@@ -47490,7 +48531,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Cellule « partiel » de coverage-matrix.csv (ERA-1, Droit & justice, national) : « Les édits d'Ashoka et l'Arthashastra documentent un droit royal, sans fiche juridique dédiée ». Les édits figurent parmi les ressources d'ACTOR-001 (country-audit.yaml) ; SRC-001 et SRC-002 sont les synthèses de référence. Ancrage par le règne d'Ashoka (268-232 av. J.-C., ACTOR-001), sans dater précisément chaque édit ni l'Arthashastra ; aucune règle de droit inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era1-econ-004",
@@ -47528,7 +48569,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-003 (audits/india/proposals.yaml) : « Les ports de la côte de Coromandel commercent avec Rome et l'Asie du Sud-Est. » Confiance probable car les datations du corpus sangam sont débattues (PROP-003, confidence medium) ; SRC-001 et SRC-002. Aucun volume, prix ou chiffre commercial inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era1-soc-005",
@@ -47565,7 +48606,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "in-indus (dataset.js) : « Des cités planifiées et des réseaux d'irrigation caractérisent la civilisation de l'Indus » ; phase urbaine mature à partir de -2600, borne de l'ère (country-audit.yaml, start_rationale). PLACE-001 enregistre Mohenjo-daro comme ville, centre artisanal et carrefour fluvial. SRC-001, SRC-002. Aucun chiffre de population inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era1-genre-006",
@@ -47601,7 +48642,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-003 : « Des poètes tamils, dont des femmes, composent à Madurai et dans le Tamilakam un corpus de poésie amoureuse et héroïque. » Confiance probable car les datations du corpus sont débattues (PROP-003, confidence medium) ; l'omission OM-003 rappelle que les rôles de genre restent sous-documentés. Le corpus ne nomme pas ces femmes : elles sont désignées collectivement, sans invention de nom ni de biographie.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era1-relig-007",
@@ -47648,7 +48689,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-001 (corpus védique, Rigveda au Sapta Sindhu), PROP-002 (Bouddha et Mahavira au Magadha et au Kosala) et in-maurya (dhamma) dans dataset.js. SRC-001 et SRC-002. Les missions bouddhiques touchent surtout l'Asie du Sud et l'Asie centrale (correction in-maurya), sans « toute l'Asie ». Aucune date de naissance de Bouddha ni de Mahavira inventée ; les migrations indo-européennes, disputées, sont traitées dans la cellule Migrations.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era1-sci-008",
@@ -47686,7 +48727,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "in-gupta (dataset.js) et fixes.yaml : « Aryabhata compose son traité d'astronomie en 499 ; le zéro et la numération décimale se développent sur plusieurs siècles, sans être des inventions gupta. » SRC-001, SRC-002. CLAIM-006 précise que l'« âge d'or » est une construction historiographique, non une réalité naturalisée ; aucune attribution du zéro aux Gupta. L'omission OM-001 (préhistoire antérieure à -2600) confirme la borne de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era1-arts-009",
@@ -47722,7 +48763,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "in-gupta (dataset.js : image « Peintures des grottes d'Ajanta », art gupta) et PROP-003 (littérature sangam). SRC-001 et SRC-002. L'omission OM-002 (écriture de l'Indus non déchiffrée, reason source_absent) est documentée et explique qu'aucun texte de l'Indus n'est cité. Intervalle -300/499 entièrement dans l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era1-env-010",
@@ -47759,7 +48800,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "in-indus (dataset.js et fixes.yaml) : « réseaux d'irrigation », « sa dé-urbanisation s'étend entre 1900 et 1300 av. J.-C. », « le climat, les cours d'eau et le commerce figurent parmi les causes discutées ». Confiance probable car les causes sont discutées et la correction in-indus refuse l'idée d'une disparition brutale. SRC-001, SRC-002. Aucune catastrophe climatique datée précisément inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era1-migr-011",
@@ -47793,7 +48834,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "PROP-001 et CLAIM-002 (country-audit.yaml) : « Les migrations indo-européennes vers le sous-continent sont discutées à partir de la linguistique et de l'archéologie ; leur chronologie, leurs modalités et leur lien avec les Védas sont disputés. » Confidence disputé conforme à CLAIM-002 et à la règle 6 (le disputé reste disputé) ; deux sources indépendantes SRC-001 et SRC-002. Intervalle -1500/-1200 issu de PROP-001, sans trancher le débat.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era1-peuples-012",
@@ -47826,7 +48867,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « partiel » de coverage-matrix.csv (ERA-1, Peuples autochtones & minorités) : « Les peuples forestiers et non étatiques ne sont pas traités comme acteurs autonomes. » Omission documentée OM-004 (reason not_yet_researched, status to_fill, evidence SRC-016/SRC-018) : la catégorie « Adivasi » est contemporaine et une fiche doit éviter la rétroprojection. OM-004 est enregistrée à l'échelle régionale ; le silence vaut ici pour la cellule nationale de la matrice. Silence explicite conformément aux règles 7 et 9 de POINT_METHODOLOGY.md : aucun acteur, nom ou date inventé ; seul l'intervalle de l'ère sert d'ancre.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era1-memoire-013",
@@ -47862,7 +48903,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Cellule « partiel » de coverage-matrix.csv (ERA-1, Mémoire & patrimoine) : « Harappa et Mohenjo-daro sont des objets archéologiques et mémoriels, sans fiche de patrimoine. » PLACE-001 (country-audit.yaml) enregistre le nom antique inconnu et l'écriture non déchiffrée ; CLAIM-001 (certain) confirme le non-déchiffrement ; OM-002 documente cette incertitude. SRC-001, SRC-002. Les désignations patrimoniales modernes (classements) sont hors de l'ère et ne sont pas décrites.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era1-circ-014",
@@ -47904,7 +48945,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-004 : « l'expédition maritime de 1025 vers Srivijaya témoigne d'un pouvoir naval et fiscal » ; PLACE-003 (country-audit.yaml) et PLACE-PROP-003 (proposals.yaml) font de Thanjavur la capitale chola. SRC-001, SRC-002. Date 1025 conforme à l'ère -2600/1206 ; la fin de l'empire chola (1279) est postérieure à la borne et n'est pas traitée ici. Les missions bouddhiques maurya et le commerce sangam complètent les circulations de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era2-pol-001",
@@ -47946,7 +48987,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Fiche in-delhi (dataset.js) : de 1206 à 1526, cinq dynasties gouvernent depuis Delhi ; le sultanat développe l’iqta, la monnaie et une administration persanophone, tout en coexistant avec les sultanats du Deccan, du Bengale et du Gujarat. La correction in-delhi du dossier d’audit précise la liste des dynasties et l’erreur de la formule « dynasties turques » (SRC-001, SRC-003). Bornes conformes à l’ère 1206/1757.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era2-pol-002",
@@ -47985,7 +49026,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-005 (proposals.yaml) : Harihara et Bukka fondent Vijayanagara ; Hampi devient une capitale monumentale et les nayakas prolongent l’ordre politique. PLACE-PROP-004 confirme la capitale (1336-1565) et signale une contestation sur la date de fondation. SRC-003 est l’unique synthèse du registre pour ce point ; certitude probable, sans corroboration inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era2-pol-003",
@@ -48027,7 +49068,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Fiche in-moghol (dataset.js) : Babur fonde l’empire en 1526, Akbar le consolide par le mansabdari et des alliances rajputes, l’expansion territoriale culmine sous Aurangzeb et sa mort en 1707 ouvre une crise successorale. ACTOR-002 et la correction in-moghol du dossier d’audit distinguent explicitement apogée territoriale (Aurangzeb) et apogée culturelle (Shah Jahan), tous deux dans l’ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era2-pol-004",
@@ -48063,7 +49104,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "OM-006 (omissions.yaml, ERA-2, Politique & institutions, régional) consigne explicitement l’absence de fiches sur ces royaumes et sur l’État marathe de Shivaji (1674), avec la raison « not_yet_researched ». La matrice ERA-2/Politique reste couverte par les fiches impériales ; ce point explicite le silence régional sans inventer de dates ni de sources. Shivaji et 1674 proviennent du libellé d’OM-006, non d’une affirmation extérieure.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era2-guer-001",
@@ -48097,7 +49138,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-005 (proposals.yaml) : « la défaite de 1565 à Talikota précède le déclin, tandis que les nayakas régionaux prolongent l’ordre politique ». PLACE-PROP-004 (country-audit.yaml) porte en contestation « interprétation de Talikota » : le fait est daté, sa portée discutée. SRC-003 est la seule source du registre pour ce repère, d’où la certitude probable.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era2-guer-002",
@@ -48133,7 +49174,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Fiche in-moghol (dataset.js) : « l’expansion territoriale culmine sous Aurangzeb, mais sa mort en 1707 ouvre une crise successorale et un long déclin ». La matrice ERA-2/Guerres & diplomatie est « couvert » (in-delhi, in-moghol, PROP-005) avec la mention « Conquêtes, Talikota et guerres mogholes sont attestées ». 1707 est une borne alternative documentée du dossier d’audit.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era2-droit-001",
@@ -48174,7 +49215,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "La matrice ERA-2/Droit & justice est « partiel » : « Droit moghol et ordre sikh sont mentionnés, sans fiche juridique dédiée » (in-moghol, PROP-007). Le mansabdari et l’iqta sont attestés comme institutions dans in-moghol, in-delhi et ACTOR-002 ; PROP-007 atteste la discipline du Khalsa fondée en 1699. Aucun texte de loi ni date de promulgation n’est inventé : silence explicite sur l’absence de fiche juridique, ancre = intervalle de l’ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era2-econ-001",
@@ -48212,7 +49253,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La matrice ERA-2/Économie & travail est « partiel » : « Revenu agraire et commerce de Vijayanagara sont documentés, sans fiche dédiée » (in-moghol, PROP-005). PROP-005 précise le commerce des épices et du coton à Hampi ; in-delhi atteste iqta et monnaie ; ACTOR-002 cite le revenu agraire parmi les ressources d’Akbar ; in-eic atteste le premier comptoir à Surat en 1613, dans l’ère. SRC-003 est la source unique de PROP-005 : certitude probable.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era2-soc-001",
@@ -48247,7 +49288,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La matrice ERA-2/Société & démographie est « partiel » : « Caste, genre et ordres religieux sont abordés, sans synthèse sociale » (in-moghol, PROP-006). PROP-006 indique que les poètes vernaculaires et les ordres soufis « contestent et reconfigurent les hiérarchies religieuses entre le XIIe et le XVIIe siècle ». Aucun chiffre démographique n’est avancé ; ancre = intervalle de l’ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era2-femmes-001",
@@ -48285,7 +49326,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La matrice ERA-2/Femmes, genre, sexualités est « partiel » : « Mirabai et Nur Jahan sont proposées, mais le genre reste périphérique » (PROP-006). ACTOR-PROP-003 et l’acteur india-actor-003 du dataset donnent Nur Jahan (vers 1577-1645), régente de fait (1611-1627), patronne architecturale, en notant le biais orientaliste ; SRC-003 demeure la source unique, et le dossier d’audit porte en non résolu la recherche d’une source indépendante : certitude probable, aucun détail inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era2-relig-001",
@@ -48328,7 +49369,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La matrice ERA-2/Religions & croyances est « couvert » : « Islam, bhakti, soufisme et sikhisme couvrent le pluralisme religieux » (in-delhi, in-moghol, PROP-006, PROP-007). PROP-006 atteste les ordres soufis, les khanqahs, les langues persanes et les poètes Mirabai, Kabir et Guru Nanak ; SRC-001 couvre les traditions dévotionnelles plus anciennes (Andal, Basava). Intervalle conforme à l’ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era2-relig-002",
@@ -48368,7 +49409,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-007 (proposals.yaml) : Guru Gobind Singh fonde le Khalsa à Anandpur lors de la Baisakhi de 1699 ; la tradition s’inscrit dans les conflits avec les Moghols et les États régionaux. La fiche précise « source unique, à corroborer par une histoire du sikhisme » : certitude probable conservée, sans ajout de source externe.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era2-sci-001",
@@ -48394,10 +49435,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-IN-02-sciences-techniques-sant"
+          ],
           "confidence": "non documenté",
           "justification": "La matrice ERA-2/Sciences, techniques & santé est « partiel » : « Astronomie et médecine mogholes sont attestées, sans fiche dédiée » (in-moghol). Le corpus ne fournit ni date, ni titre, ni auteur, ni ID d’omission dédié à cette cellule : silence explicite conformément à la règle des silences, sans invention d’un traité ni d’une datation ; ancre = intervalle de l’ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era2-arts-001",
@@ -48431,7 +49474,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Fiche in-moghol (dataset.js) : « Shah Jahan porte l’apogée culturel et fait construire le Taj Mahal entre 1632 et 1653 ». La correction in-moghol (SRC-003) confirme la datation 1632-1653 et la distinction avec l’apogée territorial d’Aurangzeb. La matrice ERA-2/Arts & lettres est « couvert » (in-moghol, PROP-005, PROP-006) : Taj Mahal, Hampi et poésie dévotionnelle.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era2-env-001",
@@ -48462,7 +49505,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "La matrice ERA-2/Environnement & territoire est « partiel » : « Jardins, déforestation et irrigation sont mentionnés, sans histoire environnementale » (in-moghol, PROP-005). SRC-016 (Gadgil et Guha, This Fissured Land) fournit le cadre d’histoire environnementale de longue durée : forêts, agriculture, eau, communs ; le registre n’associe toutefois aucun repère daté à ces processus pour l’ère, d’où la certitude « non documenté » et l’absence de date inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era2-migr-001",
@@ -48499,7 +49542,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La matrice ERA-2/Migrations & diasporas est « partiel » : « Élites persanophones et réseaux soufis sont attestés, sans fiche dédiée » (in-moghol, PROP-006). SRC-003 a pour usage déclaré dans le registre « Sultanats, Vijayanagara, empire moghol, bhakti et soufisme, sikhisme, circulations persanophones » ; in-delhi atteste l’administration persanophone et PROP-006 les khanqahs. Aucun flux chiffré n’est avancé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era2-peuples-001",
@@ -48538,7 +49581,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "La matrice ERA-2/Peuples autochtones & minorités est « partiel » : « Minorités sikhes et musulmanes sont présentes, mais les Adivasis restent absents » (PROP-007, in-delhi). PROP-007 atteste le Khalsa (1699) et in-delhi les sultanats. OM-004 (omissions.yaml) documente explicitement l’absence des « Adivasis et peuples forestiers avant 1800 » et met en garde contre la rétroprojection de la catégorie : ce silence est consigné, non comblé par une invention.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era2-memoire-001",
@@ -48572,7 +49615,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "La matrice ERA-2/Mémoire & patrimoine est « partiel » : « Taj Mahal et Hampi sont des lieux de mémoire, sans fiche patrimoniale » (in-moghol, PROP-005). PLACE-PROP-004 note que Hampi est « aujourd’hui site classé », mais cette patrimonialisation est postérieure à 1757 et n’est donc pas datée ici. Aucune commémoration ni date de classement n’est inventée ; ancre = intervalle de l’ère, comme pour les silences des autres ères.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era2-circ-001",
@@ -48611,7 +49654,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La matrice ERA-2/Circulations transnationales est « couvert » : « Monde persanophone, océan Indien et pèlerinages couvrent les circulations » (in-moghol, PROP-005, PROP-006). SRC-003 a pour usage déclaré « circulations persanophones » ; PROP-005 atteste le commerce des épices et du coton à Hampi ; PLACE-PROP-005/PLACE-010 (country-audit.yaml) donnent Amritsar, fondée en 1577, comme ville sainte et lieu de pèlerinage. Toutes les bornes sont dans l’ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era3-pol-001",
@@ -48655,7 +49698,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La période 1757-1947 combine la domination de la Compagnie (1757-1858) et le Raj de la Couronne (1858-1947), avec 1858 comme sous-borne majeure (country-audit.yaml, PERIOD-4 et POL-2). La correction in-eic date le pouvoir territorial de Plassey (1757), Buxar (1764) et du Diwani (1765) ; SRC-003 et SRC-004 documentent la Compagnie comme institution. Aucune date hors de l'ère ni source inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era3-guer-002",
@@ -48693,7 +49736,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La correction in-cipayes demande de renommer « Mutinerie des cipayes » en « Révolte de 1857-1858 » : elle implique sepoys, paysans, princes et villes, avec une répression massive et des violences des deux côtés, puis le passage à la Couronne en 1858. L'omission OM-007 documente les violences civiles et répressions de 1857-1858. Sources SRC-004 et SRC-005 ; aucun bilan chiffré inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era3-droit-003",
@@ -48734,7 +49777,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La correction in-amritsar demande de replacer le massacre de 1919 dans la répression du Rowlatt Act et de citer le général Dyer et la commission Hunter ; Sumit Sarkar (SRC-005) couvre Amritsar et le Raj tardif. La cellule ERA-3 Droit & justice de coverage-matrix.csv est « partiel » et mentionne Rowlatt sans fiche juridique dédiée. Aucune date ni citation inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era3-econ-004",
@@ -48776,7 +49819,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-009 documente la famine du Bengale de 1770 liée à la fiscalité de la Compagnie et la Grande Famine de 1876-1878 aggravée par la politique de non-intervention de Lytton ; les estimations varient fortement et la responsabilité coloniale est documentée mais discutée. SRC-004, SRC-013 et SRC-014 étayent le cadre. Confiance « probable » et non « certaine », les bilans humains étant contestés ; aucun chiffre inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era3-soc-005",
@@ -48816,7 +49859,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-010 : le 20 mars 1927, Ambedkar et des milliers de Dalits boivent l'eau du réservoir Chavdar à Mahad, ouvrant une décennie de luttes ; campagne documentée par la source primaire SRC-019 (texte de 1936) et par Jaffrelot (SRC-011). Aucune date ni citation inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era3-genre-006",
@@ -48857,7 +49900,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-011 : du 12 mars au 6 avril 1930, Gandhi et ses compagnons marchent de Sabarmati à Dandi pour produire du sel illégalement ; Sarojini Naidu et des milliers de femmes rejoignent le mouvement, documenté par SRC-005 et SRC-012. ACTOR-004 précise le rôle institutionnel de Naidu (présidente du Congrès en 1925). Aucune date inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era3-relig-007",
@@ -48891,7 +49934,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PLACE-010 décrit Amritsar comme ville sainte sikhe, lieu de pèlerinage et lieu de mémoire, avec l'événement in-amritsar (1919) ; sources SRC-005 et SRC-003. La correction in-amritsar replace le massacre dans la répression du Rowlatt Act. Aucune affirmation religieuse non sourcée ni date inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era3-sci-008",
@@ -48916,10 +49959,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-IN-03-sciences-techniques-sant"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule « partiel » de coverage-matrix.csv (ERA-3, Sciences, techniques & santé, national) : chemins de fer, télégraphe et santé publique sont attestés, sans fiche dédiée ni repère daté dans le corpus. Omission documentée dans la matrice, sans ID dédié dans omissions.yaml pour cette cellule. Aucune date, source ou citation inventée ; ancre = intervalle de l'ère, conformément à la règle des silences explicites.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era3-arts-009",
@@ -48943,10 +49988,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-IN-03-arts-lettres"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule « partiel » de coverage-matrix.csv (ERA-3, Arts & lettres, national) : la Renaissance bengalie et le cinéma sont absents malgré leur importance ; seule la référence in-congres y est enregistrée. Omission documentée dans la matrice, sans ID dédié dans omissions.yaml pour cette cellule. Aucune date ni source inventée ; ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era3-env-010",
@@ -48981,7 +50028,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La périodisation ENV-1 (country-audit.yaml) définit une phase « État colonial extractif et forêts (1757/1947) » appuyée sur SRC-013 et SRC-016 ; SRC-016 (Gadgil et Guha) couvre forêts, communs, agriculture et État colonial. La cellule ERA-3 Environnement & territoire de coverage-matrix.csv mentionne la politique forestière. Aucune date ni institution non attestée inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era3-migr-011",
@@ -49024,7 +50071,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-008 : après l'abolition de l'esclavage, plus d'un million de travailleurs indiens, surtout du Bihar, de l'Uttar Pradesh et du Tamil Nadu, sont recrutés sous contrat pour les plantations de Maurice, des Caraïbes, de Fiji et d'Afrique du Sud (1834-1917) ; sources SRC-004 et SRC-015. Aucune date ni effectif inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era3-peuples-012",
@@ -49062,9 +50109,9 @@ export const DATASET = {
             "SRC-010",
             "SRC-011"
           ],
-          "confidence": "disputed",
+          "confidence": "disputé",
           "justification": "CLAIM-005 (country-audit.yaml) : la caste a été partiellement codifiée et rigidifiée par les recensements et le droit colonial, sans être une invention coloniale, des hiérarchies et exclusions précoloniales étant attestées ; confiance « disputé » conservée, sources SRC-010 et SRC-011. Aucune affirmation non sourcée ni date inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era3-memoire-013",
@@ -49105,7 +50152,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "SRC-007 (Butalia) documente la Partition de 1947 par l'histoire orale, les violences, les familles et les silences ; SRC-008 (Zamindar) la « longue Partition » par les réfugiés, permis, frontières et citoyenneté, à Lahore et Karachi. CLAIM-003 donne des ordres de grandeur disputés, non repris ici comme chiffre certain. Aucune date ni citation inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era3-circ-014",
@@ -49150,7 +50197,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "ACTOR-012 (country-audit.yaml) : la Compagnie « relie Londres, l'Inde et la Chine », avec des comptoirs à Surat, Madras, Bombay et Calcutta et des réseaux de banquiers indiens et de marchands arméniens et persans ; sources SRC-003 et SRC-004. La cellule ERA-3 Circulations transnationales de coverage-matrix.csv enregistre in-eic. Aucune date hors de l'ère ni lien externe.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era4-pol-001",
@@ -49196,7 +50243,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-013 : l'Assemblée constituante adopte la Constitution le 26 novembre 1949, en vigueur le 26 janvier 1950 ; SRC-020 (texte institutionnel primaire), SRC-006 (Guha) et SRC-019 (Ambedkar) documentent le suffrage universel, l'égalité devant la loi, l'abolition de l'intouchabilité et les quotas pour les castes et tribus répertoriées. Ambedkar préside le comité de rédaction (ACTOR-005). Dates conformes à l'ère 1947/2026 ; aucune source inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era4-pol-002",
@@ -49238,7 +50285,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-016 : le 25 juin 1975, Indira Gandhi fait proclamer l'état d'urgence, levé le 21 mars 1977 ; SRC-006 (Guha) et SRC-020 (Constitution) documentent la rupture institutionnelle. Le programme de stérilisation de Sanjay Gandhi est signalé par PROP-016 avec des estimations divergentes (point non résolu du review de proposals.yaml) : aucun chiffre n'est avancé ici. Dates conformes à l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era4-gue-001",
@@ -49273,7 +50320,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La correction auditée de in-independance demande de scinder indépendance et Partition et d'ajouter la guerre de 1947-1948 au Cachemire ; sources SRC-007 (Butalia), SRC-008 (Zamindar) et SRC-009 (Jalal). L'indépendance (15 août 1947) et la Partition (ligne Radcliffe, août 1947) sont distinguées. OM-010 signale que les autres guerres (1962, 1965, 1971, 1999) restent absentes de la frise. Aucune date ni source inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era4-gue-002",
@@ -49305,7 +50352,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "OM-010 (ERA-4, Guerres & diplomatie, transnational) documente l'absence de fiches sur ces guerres et sur la crise du Bangladesh ; SRC-006 (Guha) est la source à croiser avant publication. Aucune date de bilan, mortalité ou source supplémentaire n'est avancée ; le silence est explicite conformément à la règle 7 de POINT_METHODOLOGY.md. L'intervalle 1962/1999 reprend les seules années citées par l'omission, sans invention.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era4-dro-001",
@@ -49348,7 +50395,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-013 : la Constitution établit le suffrage universel, l'égalité devant la loi, l'abolition de l'intouchabilité et des quotas pour les castes et tribus répertoriées ; SRC-020 est le texte primaire, SRC-019 (Ambedkar) le texte de référence du mouvement dalit. Entrée en vigueur le 26 janvier 1950 après adoption le 26 novembre 1949. Aucun numéro d'article n'est avancé : les repères sont décrits par leur contenu sourcé, non par une référence inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era4-dro-002",
@@ -49391,7 +50438,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-017 : le 23 avril 1985, la Cour suprême accorde à Shah Bano, divorcée musulmane d'Indore, une pension au titre du Code de procédure pénale ; le gouvernement fait voter en 1986 une loi qui limite cette obligation. Sources SRC-006 (Guha) et SRC-012 (Forbes). Le cas articule genre, religion et droit ; la loi de 1986 est décrite par son effet, sans titre officiel inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era4-eco-001",
@@ -49428,7 +50475,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-015 : variétés de blé à haut rendement, irrigation et engrais transforment le Panjab et l'Haryana (1966-1970) ; M. S. Swaminathan joue un rôle clé ; la production augmente tandis que les nappes phréatiques et les inégalités se dégradent. Sources SRC-006 (Guha) et SRC-016 (Gadgil & Guha). Aucune donnée de rendement chiffrée n'est inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era4-eco-002",
@@ -49466,7 +50513,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La correction auditée de in-liberalisation précise que 1991 n'est pas un point unique : crise de la balance des paiements, gouvernement Rao, Manmohan Singh, conditions du FMI, libéralisation partielle et croissance inégale, à lire comme un processus 1991-2000s. Sources SRC-006 (Guha) et SRC-014 (Sen) pour le cadre analytique. Le review signale que ces deux ouvrages ne fournissent pas les données post-1991 et demande une corroboration par une source économique spécialisée : la confiance reste « probable » et aucun indicateur chiffré n'est avancé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era4-soc-001",
@@ -49503,7 +50550,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-014 : la loi de 1956 redessine les États sur des bases linguistiques, créant 14 États et 6 territoires, à la suite des mobilisations linguistiques notamment telougou ; elle stabilise le fédéralisme au prix de nouvelles minorités. Sources SRC-006 (Guha) et SRC-020 (Constitution). Aucune date ni nombre supplémentaire n'est inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era4-soc-002",
@@ -49544,7 +50591,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "CLAIM-003 du country-audit : la Partition de 1947 déplace entre 12 et 20 millions de personnes et cause entre 200 000 et 2 millions de morts, selon des estimations divergentes (qualification « disputé ») ; sources SRC-007 (Butalia), SRC-008 (Zamindar), SRC-009 (Jalal). La correction de in-independance distingue l'indépendance (15 août 1947) de la Partition. Aucun chiffre n'est tranché ni inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era4-fem-001",
@@ -49586,7 +50633,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-017 et cellule « couvert » de la matrice (ERA-4, Femmes, genre, sexualités) : SRC-006 (Guha) et SRC-012 (Forbes, Women in Modern India) documentent l'affaire et le débat sur l'égalité et les droits personnels. Le cas est proposé avec acteur, lieu et sources ; aucune intention, citation ou date supplémentaire n'est inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era4-rel-001",
@@ -49623,7 +50670,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "OM-009 (ERA-4, Religions & croyances, national) documente la conversion massive de Dalits au bouddhisme en 1956, conduite par Ambedkar à Nagpur ; sources vérifiées SRC-019 (Ambedkar) et SRC-011 (Jaffrelot). L'ACTOR-005 précise que la conversion de 1956 est un acte politique et religieux. Aucune date ni nombre de convertis n'est inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era4-rel-002",
@@ -49660,7 +50707,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "OM-012 (ERA-4, Religions & croyances, national, raison « disputed ») : démolition de la mosquée de Babri le 6 décembre 1992, mouvement Ram Janmabhoomi et construction du temple en 2024 ; SRC-006 (Guha) est la source à croiser. Conformément à l'omission, les faits, les décisions judiciaires et les récits des deux côtés doivent être présentés sans arbitrage militant : la qualification reste « disputé », aucun jugement ni bilan n'est avancé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era4-sci-001",
@@ -49698,7 +50745,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-015 : les variétés de blé à haut rendement, l'irrigation et les engrais transforment le Panjab et l'Haryana à partir de 1966 ; M. S. Swaminathan joue un rôle clé. Sources SRC-006 (Guha) et SRC-016 (Gadgil & Guha). La matrice signale que l'espace et le nucléaire manquent encore (cellule « partiel ») : cette dette reste ouverte et n'est pas comblée par une source inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era4-art-001",
@@ -49725,10 +50772,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-IN-04-arts-lettres"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule « partiel » de la matrice (ERA-4, Arts & lettres, national, entry_ids in-liberalisation) : « Cinéma, littérature et musique sont absents, malgré leur rayonnement. » Aucune omission portant un ID dédié n'existe dans omissions.yaml pour cette cellule : le silence est donc documenté par la matrice seule, sans ID d'omission, conformément au modèle des points « non documenté » du corpus. Mumbai est enregistrée dans le country-audit comme centre de cinéma et de presse (PLACE-007). Aucune œuvre, date ni source n'est inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era4-env-001",
@@ -49769,7 +50818,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-018 : la loi de 2006 reconnaît les droits individuels et collectifs des communautés forestières, notamment des Adivasis ; l'application reste inégale et Niyamgiri (2013) devient un cas emblématique (PLACE-012, collines sacrées des Dongria Kondh, gram sabha). Sources SRC-018 (Sundar) et SRC-016 (Gadgil & Guha). Aucune date ni donnée d'application n'est inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era4-env-002",
@@ -49806,7 +50855,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "OM-011 (ERA-4, Environnement & territoire, local) : catastrophe de Bhopal les 2-3 décembre 1984, fuite de méthylisocyanate, morts, handicaps et lutte judiciaire ; les bilans de mortalité sont contestés. Sources à croiser SRC-006, SRC-016 et SRC-018. Aucun bilan chiffré n'est avancé et la qualification reste prudente, conformément à l'omission.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era4-mig-001",
@@ -49849,7 +50898,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "SRC-008 (Zamindar, The Long Partition) documente les réfugiés, les permis, les frontières et la citoyenneté ; SRC-007 (Butalia) et SRC-009 (Jalal) complètent le cadre de la Partition de 1947. Lahore est enregistrée comme ville frontière en 1947 (PLACE-005). La matrice marque la cellule « partiel » et signale que le Golfe et le COVID manquent (OM-014) : cette dette reste ouverte. Les ordres de grandeur sont disputés (CLAIM-003), aucun chiffre n'est tranché.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era4-mig-002",
@@ -49881,7 +50930,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "OM-014 (ERA-4, Migrations & diasporas, transnational) : migrations de travail vers le Golfe et crise des migrants pendant le confinement de 2020, retours massifs et absence de recensement ; les données sont fragmentaires et contestées. Sources vérifiées SRC-006 et SRC-015 (Amrith, circulations du golfe du Bengale). La frise ne peut pas encore quantifier les flux ni les morts : aucun chiffre n'est avancé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era4-min-001",
@@ -49924,7 +50973,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "ACTOR-010 (ACTOR-PROP-010 dans proposals.yaml) : mouvement fondé à Bombay en 1972, qui radicalise la politique dalit par la poésie, la rue et la dénonciation des atrocités ; réseaux Namdeo Dhasal, J. V. Pawar, Arun Kamble ; sources SRC-011 (Jaffrelot) et SRC-019 (Ambedkar). L'évaluation enregistre ses divisions, sa répression et son héritage littéraire. Aucune date ni action supplémentaire n'est inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era4-min-002",
@@ -49963,7 +51012,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "OM-013 (ERA-4, Peuples autochtones & minorités, régional, raison « disputed ») : opération Blue Star (1984), violences anti-sikhes de 1984 et violences de 2002 au Gujarat ; morts, déplacements, procès et mémoires. SRC-006 (Guha) est la source à croiser. L'omission exige des sources indépendantes, des décisions judiciaires datées et une qualification prudente : la confiance reste « disputé », aucun bilan ni responsabilité n'est avancé. Amritsar est enregistrée comme lieu de l'opération Blue Star (PLACE-010).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era4-mem-001",
@@ -50004,7 +51053,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La correction auditée de in-gandhi nomme l'assassin Nathuram Godse, ancien militant du RSS, et date l'assassinat du 30 janvier 1948 ; sources SRC-005 (Sarkar) et SRC-006 (Guha). La matrice cite in-gandhi pour la cellule « partiel » (ERA-4, Mémoire & patrimoine). L'ACTOR-006 enregistre une « mémoire contestée par les Dalits et les nationalistes hindous » et la figure du « Père de la nation » ; le jugement de la fiche (« continue d'inspirer ») est précisément ce que la correction demande de remplacer par une analyse des héritages contestés. Aucun propos ni date n'est inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "in-era4-cir-001",
@@ -50045,7 +51094,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La correction de in-liberalisation décrit un processus 1991-2000s avec crise de la balance des paiements, gouvernement Rao, Manmohan Singh et conditions du FMI ; la matrice cite in-liberalisation et PROP-008 pour la cellule « partiel » (ERA-4, Circulations transnationales). PROP-008 (engagisme 1834-1917) est hors de cette ère et n'est donc pas repris comme point. SRC-015 (Amrith) cadre les circulations et diasporas ; SRC-006 et SRC-014 fournissent le cadre analytique. Le review demandant une corroboration économique spécialisée pour l'après-1991, la confiance reste « probable » et aucun flux chiffré n'est avancé.",
-          "status": "validated"
+          "status": "extrait"
         }
       ]
     },
@@ -50212,6 +51261,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le bouddhisme est introduit depuis le royaume de Baekje, selon une tradition datée de 538 et, dans le Nihon Shoki, de 552.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50219,6 +51269,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L'empereur Kinmei et le clan Soga figurent parmi les acteurs de cette introduction, associée à Asuka.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50226,13 +51277,15 @@ export const DATASET = {
               "kind": "récit",
               "text": "La date de 538 est une convention religieuse: elle ne marque ni le début de l'écriture chinoise, ni celui du peuplement de l'archipel.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
               "id": "japan-claim-1-point",
               "kind": "audit",
               "text": "La date de 538 est conventionnelle; le Nihon Shoki donne 552. Les deux dates doivent être présentées comme des traditions historiographiques, non comme un fait unique.",
-              "confidence": "disputed",
+              "confidence": "disputé",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001"
               ]
@@ -50269,6 +51322,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Nara (Heijō-kyō) est fondée en 710 sur le modèle des capitales chinoises et reste le siège du pouvoir jusqu'en 784.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50276,6 +51330,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le bouddhisme d'État, les chroniques impériales et l'architecture monumentale y structurent le pouvoir.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50283,6 +51338,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La cour se transfère ensuite à Nagaoka-kyō (784–794), avant l'installation à Heian-kyō en 794; Nara n'est pas la première capitale fixe, Fujiwara-kyō l'ayant précédée de 694 à 710.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50290,6 +51346,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Nara — capitale, culte bouddhique, patrimoine",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001"
               ]
@@ -50342,6 +51399,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La cour impériale s'installe à Heian-kyō (Kyoto) en 794 et y développe une culture raffinée jusqu'à la fin du XIIe siècle.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50349,6 +51407,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La régence Fujiwara structure la vie politique, tandis que les femmes de cour occupent une place centrale dans la production littéraire; Murasaki Shikibu compose le Dit du Genji vers 1008.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50356,6 +51415,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L'ère s'achève en 1185 avec la mise en place du bakufu de Kamakura, qui ouvre une longue période dominée par les guerriers.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50363,6 +51423,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Kyoto — capitale impériale, culture, patrimoine",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-002",
                 "SRC-003",
@@ -50417,6 +51478,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Après la victoire sur les Taira, Minamoto no Yoritomo met en place un gouvernement militaire à Kamakura en 1185; il ne reçoit le titre de shogun qu'en 1192.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50424,6 +51486,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le bakufu s'appuie sur les guerriers et sur les régents Hōjō, tandis que la cour impériale conserve une autorité symbolique.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50431,6 +51494,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les samouraïs ne forment pas une classe dirigeante homogène: leur pouvoir se construit par étapes, entre services militaires, domaines et liens personnels.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50438,6 +51502,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Kamakura — capitale du bakufu, port, culte",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-003"
               ]
@@ -50490,6 +51555,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les armées de Kubilai Khan tentent d'envahir le Japon en 1274 et en 1281; les deux expéditions échouent.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50497,6 +51563,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les tempêtes ont joué un rôle, mais la logistique, la résistance japonaise et les difficultés de combat expliquent aussi les défaites.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50504,6 +51571,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La mythification ultérieure en « kamikaze » (vent divin) masque ces causes multiples; le coût de la défense affaiblit financièrement et politiquement le bakufu de Kamakura.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -50538,6 +51606,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Des marchands portugais atteignent Tanegashima en 1543 et introduisent les armes à feu, rapidement adoptées par les seigneurs de Kyūshū.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50545,6 +51614,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "En 1549, François Xavier et les Jésuites arrivent à Kagoshima et commencent la mission chrétienne.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50552,6 +51622,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Commerce, technologie et religion sont des phénomènes distincts, portés par des acteurs différents, même s'ils se recoupent dans les ports de Kyūshū.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -50586,6 +51657,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le shogunat Tokugawa instaure une paix longue et un contrôle strict de la société, avec Edo pour capitale politique.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50593,6 +51665,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le terme sakoku, forgé au XIXe siècle, masque la diversité des échanges: Nagasaki avec les Hollandais et les Chinois, Satsuma via Ryūkyū, Matsumae avec les Ainu, et le commerce avec la Corée.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50600,6 +51673,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Des famines et des révoltes paysannes traversent la période, tandis qu'une culture urbaine prospère.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50607,6 +51681,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Osaka — port, marché, château, industrie",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-004"
               ]
@@ -50616,6 +51691,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Tokyo — capitale, siège du bakufu, métropole",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-004",
                 "SRC-005",
@@ -50688,6 +51764,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le commodore Matthew Perry arrive dans la baie d'Edo en juillet 1853 avec une flotte de guerre et exige l'ouverture de ports.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50695,6 +51772,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La menace des canonnières et les divisions du bakufu conduisent à la convention de Kanagawa en mars 1854, qui ouvre Shimoda et Hakodate.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50702,6 +51780,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L'ouverture résulte donc d'une pression militaire et d'une négociation, pas d'un simple décret.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -50735,6 +51814,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La restauration de Meiji est menée en 1868 par une oligarchie de jeunes samouraïs au nom de l'empereur, qui règne mais ne gouverne pas seul.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50742,6 +51822,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La Charte du serment, l'abolition des domaines en 1871, la conscription de 1873 et la réforme foncière de 1873 transforment l'État, l'armée et la propriété.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50749,6 +51830,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Cette modernisation autoritaire et impériale s'accompagne d'une industrialisation rapide, mais les coûts sociaux et les inégalités sont importants.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50756,6 +51838,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Tokyo — capitale, siège du bakufu, métropole",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-004",
                 "SRC-005",
@@ -50811,6 +51894,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "En 1869, le nouveau gouvernement de Meiji crée la Commission de développement de Hokkaidō et encourage la colonisation japonaise de l'île, rebaptisée Hokkaidō.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50818,6 +51902,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les terres ainu sont progressivement privatisées et les pratiques culturelles interdites; la loi de 1899 sur les « anciens aborigènes » impose l'assimilation.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50825,6 +51910,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La dépossession foncière et les maladies infectieuses réduisent fortement la population ainu.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50832,6 +51918,7 @@ export const DATASET = {
               "kind": "audit",
               "text": "La loi de 2019 reconnaît les Ainu comme peuple autochtone; elle ne règle pas les revendications foncières ni les discriminations.",
               "confidence": "certain",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-020",
                 "SRC-016"
@@ -50842,6 +51929,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Hokkaidō — territoire ainu, colonisation, ressources, patrimoine",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-016",
                 "SRC-020"
@@ -50896,6 +51984,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La guerre russo-japonaise (1904–1905) oppose deux empires pour le contrôle de la Mandchourie et de la Corée.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50903,6 +51992,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La victoire japonaise, consacrée par le traité de Portsmouth, modifie le rapport de forces régional et ouvre la voie à l'annexion de la Corée en 1910.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50910,6 +52000,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Elle est souvent présentée comme une « première victoire asiatique », mais le Japon avait déjà vaincu la Chine en 1895 et poursuivait sa propre expansion impériale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -50943,6 +52034,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le traité d'annexion japonais-coréen de 1910 fait de la Corée une colonie japonaise, administrée depuis Keijō (Séoul) par le gouvernement général de Corée.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50950,6 +52042,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La colonisation s'accompagne de confiscations, de travail forcé, de migrations japonaises et de politiques d'assimilation; le mouvement du 1er mars 1919 et les résistances indépendantistes la contestent durablement.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -50957,6 +52050,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Séoul — capitale coloniale, administration, résistance",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-009",
                 "SRC-010"
@@ -51010,6 +52104,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Après la capitulation, l'occupation dirigée par le général MacArthur impose une démilitarisation et une démocratisation du Japon.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -51017,6 +52112,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La nouvelle Constitution, promulguée en 1946 et entrée en vigueur en 1947, garantit l'égalité des sexes, le suffrage universel et l'article 9 qui renonce à la guerre.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -51024,6 +52120,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les femmes votent pour la première fois en avril 1946; des militantes comme Ichikawa Fusae jouent un rôle dans la conquête de ce droit.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -51031,6 +52128,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Tokyo — capitale, siège du bakufu, métropole",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-004",
                 "SRC-005",
@@ -51087,6 +52185,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les États-Unis lancent une bombe atomique sur Hiroshima le 6 août 1945, puis sur Nagasaki le 9 août; les deux villes sont détruites et les victimes civiles se comptent par dizaines de milliers.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -51094,6 +52193,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le Japon annonce sa capitulation le 15 août et la signe le 2 septembre, sous occupation américaine.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -51101,6 +52201,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La Constitution de 1947, avec son article 9, est un acte distinct de la capitulation; la mémoire des hibakusha et le débat sur les bombardements se poursuivent.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -51108,6 +52209,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Hiroshima — ville, port, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-007"
               ]
@@ -51160,6 +52262,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "À Minamata, la firme Chisso rejette dans la mer des composés de mercure qui contaminent les poissons et provoquent une maladie neurologique grave, dont les premiers cas sont identifiés en 1956.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -51167,6 +52270,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les victimes et leurs soutiens affrontent longtemps l'entreprise et l'État avant que des indemnisations ne soient obtenues en 1973.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -51174,6 +52278,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L'affaire devient un symbole de la pollution industrielle et de la mobilisation citoyenne au Japon.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -51181,6 +52286,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Minamata — ville industrielle, pêche, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-015",
                 "SRC-008"
@@ -51235,6 +52341,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les Jeux olympiques de Tokyo se tiennent du 10 au 24 octobre 1964, quelques jours après l'ouverture du shinkansen Tokyo–Osaka le 1er octobre.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -51242,6 +52349,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Ils célèbrent la reconstruction et la croissance, mais ne la causent pas: la télévision existe depuis 1953 et les infrastructures olympiques s'inscrivent dans une transformation urbaine plus large.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -51249,6 +52357,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les travaux et la pollution suscitent aussi des contestations, notamment à Tokyo.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             }
           ],
@@ -51282,6 +52391,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 11 mars 2011, un séisme de magnitude 9 au large du Tōhoku déclenche un tsunami qui ravage la côte nord-est et provoque l'accident de la centrale de Fukushima Daiichi.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -51289,6 +52399,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les évacuations, la contamination et les indemnisations transforment la catastrophe en crise sociale durable; les enquêtes distinguent l'aléa naturel, les défaillances de conception et de régulation, et les responsabilités de TEPCO et de l'État.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -51296,13 +52407,15 @@ export const DATASET = {
               "kind": "récit",
               "text": "La mémoire locale et le débat sur l'énergie nucléaire restent vifs.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
               "id": "japan-claim-6-point",
               "kind": "audit",
               "text": "L'accident résulte du séisme et du tsunami de mars 2011, mais les enquêtes soulignent aussi des défaillances de conception, de préparation et de régulation.",
-              "confidence": "disputed",
+              "confidence": "disputé",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-018"
               ]
@@ -51905,7 +53018,7 @@ export const DATASET = {
           "predicate": "a tué",
           "object": "des milliers de Coréens, de Chinois et de Japonais",
           "text": "Après le séisme de 1923, des policiers, des soldats et des groupes d'autodéfense ont tué des milliers de Coréens, de Chinois et de Japonais confondus avec eux; les chiffres restent disputés.",
-          "confidence": "disputed",
+          "confidence": "disputé",
           "sources": [
             "SRC-014",
             "SRC-010"
@@ -51917,7 +53030,7 @@ export const DATASET = {
           "predicate": "a fait",
           "object": "un nombre de victimes disputé",
           "text": "Le massacre de Nanjing est attesté; les bilans chiffrés varient fortement et restent un objet de controverse mémorielle entre le Japon et la Chine.",
-          "confidence": "disputed",
+          "confidence": "disputé",
           "sources": [
             "SRC-006"
           ]
@@ -52344,7 +53457,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "jp-nara dans data.js et la correction de fixes.yaml (SRC-001, The Cambridge History of Japan, vol. 1 : Ancient Japan) : Heijō-kyō fondée en 710, siège du pouvoir jusqu'en 784, Nagaoka-kyō (784–794), Heian-kyō en 794, Fujiwara-kyō (694–710). coverage-matrix.csv (ERA-1 / Politique & institutions, « partiel ») note que « la cour impériale siège à Heijō-kyō » mais que la fiche manque d'acteur et de lieu structurés ; le point apporte les lieux et les bornes sans inventer d'acteur.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era1-guerre-001",
@@ -52374,7 +53487,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "coverage-matrix.csv (ERA-1 / Guerres & diplomatie, « vide justifié ») : « Aucune fiche sur les campagnes contre les Emishi ni sur la guerre de Jinshin (672) ; dette documentée explicitement dans omissions.yaml. » Le point rend visible cette absence conformément à la règle « les silences sont des données », en n'ajoutant ni date ni acteur non attesté ; 672 est la seule borne chiffrée fournie par la matrice, dans l'ère 538–794.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era1-droit-001",
@@ -52406,7 +53519,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "coverage-matrix.csv (ERA-1 / Droit & justice, « vide justifié ») : « Les codes ritsuryō et la réforme Taika ne sont pas instrumentés ; l'absence est documentée comme dette, non comme non-pertinence. » Le periodogramme PERIOD-2 du country-audit.yaml mentionne la « formation de l'État ritsuryō » sur SRC-001 ; OM-004 enregistre la dette des codes ritsuryō (son périmètre déclaré est l'ERA-2). Aucune date de la réforme Taika n'est avancée : elle n'est pas fournie par les pièces du dossier.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era1-economie-001",
@@ -52435,7 +53548,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "coverage-matrix.csv (ERA-1 / Économie & travail, « partiel », entrée jp-nara) : « La fiscalité et la riziculture sont évoquées, mais sans acteur, indicateur ni source propre. » SRC-001 est la synthèse de référence de l'ère ; la certitude reste probable faute de fiche économique autonome dans le corpus japonais.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era1-societe-001",
@@ -52471,7 +53584,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "coverage-matrix.csv (ERA-1 / Société & démographie, « partiel », entrée jp-nara) : « La société de cour est présente, mais paysans, artisans et populations rurales sont absents. » OM-001 (omissions.yaml) documente l'absence de Jōmon, Yayoi et Kofun comme hors-périmètre de l'ère ouverte en 538. La certitude reste probable pour les groupes absents, qui sont signalés comme dette et non comme faits établis.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era1-femmes-001",
@@ -52506,7 +53619,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "coverage-matrix.csv (ERA-1 / Femmes, genre, sexualités, « vide justifié ») : « Aucune fiche sur les impératrices Suiko ou Kōken, ni sur les femmes de Nara ; dette documentaire. » OM-002 (omissions.yaml) confirme la dette et nomme les mêmes actrices, sans dates de règne fournies : aucune n'est inventée ici. SRC-001 figure parmi les pièces vérifiées de l'omission ; le point rend le silence visible sans combler par des exemples vagues.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era1-religion-001",
@@ -52543,7 +53656,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "jp-bouddhisme (data.js) et sa correction dans fixes.yaml, fondées sur SRC-001 (Cambridge History of Japan, vol. 1) : Baekje, Kinmei, Soga, Asuka, 538/552. CLAIM-1 du country-audit.yaml qualifie la datation de « disputed » et impose de conserver les deux dates comme traditions historiographiques. coverage-matrix.csv (ERA-1 / Religions & croyances, « couvert ») confirme acteurs, lieu et source. Le point ne tranche pas la controverse, conformément à la règle « le disputé reste disputé ».",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era1-sciences-001",
@@ -52573,7 +53686,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "coverage-matrix.csv (ERA-1 / Sciences, techniques & santé, « partiel », entrée jp-bouddhisme) : « Écriture, calendrier et médecine continentale sont évoqués, mais aucune fiche technique autonome. » La correction de jp-bouddhisme (fixes.yaml, SRC-001) retire l'assimilation entre bouddhisme et introduction de l'écriture. Certitude probable : aucun savoir technique n'a de fiche dédiée dans le registre.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era1-arts-001",
@@ -52603,7 +53716,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "coverage-matrix.csv (ERA-1 / Arts & lettres, « couvert », entrée jp-nara) : « Temples, architecture et chroniques de Nara, lieu Heijō-kyō, source SRC-001. » Le résumé corrigé de jp-nara (fixes.yaml) mentionne « le bouddhisme d'État, les chroniques impériales et l'architecture monumentale » comme structures du pouvoir.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era1-environnement-001",
@@ -52634,7 +53747,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "coverage-matrix.csv (ERA-1 / Environnement & territoire, « vide justifié ») : « Aménagement des capitales, déboisement et catastrophes ne sont pas traités ; dette. » Les lieux Nara et Nagaoka-kyō sont ceux de l'ère, attestés par jp-nara (SRC-001) ; aucun phénomène environnemental n'est affirmé, seul le silence est enregistré. OM-011 documente la dette plus largement pour l'ère médiévale.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era1-migrations-001",
@@ -52668,7 +53781,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "coverage-matrix.csv (ERA-1 / Migrations & diasporas, « partiel », entrée jp-bouddhisme) : « Artisans et lettrés continentaux implicites, mais aucune fiche migratoire. » L'échelle régionale est celle de la matrice. Les groupes sont signalés comme implicites et non comme une migration datée : aucune date, aucun effectif ni itinéraire n'est inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era1-minorites-001",
@@ -52699,7 +53812,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "coverage-matrix.csv (ERA-1 / Peuples autochtones & minorités, « vide justifié ») : « Emishi, Hayato et populations frontalières ne sont pas instrumentés ; dette. » Les groupes sont nommés par la matrice elle-même ; le point enregistre l'absence de traitement sans leur prêter de fait, de date ou de localisation non attestés. OM-005 traite des populations du nord mais est cadré sur l'ERA-2.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era1-memoire-001",
@@ -52731,7 +53844,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "coverage-matrix.csv (ERA-1 / Mémoire & patrimoine, « partiel », entrée jp-nara) : « Le patrimoine de Nara est évoqué, mais non traité comme objet mémoriel et politique. » La certitude reste probable car aucun contenu mémoriel précis n'est documenté dans le registre pour cette ère ; le point signale la dette sans lui substituer un récit commémoratif.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era1-circulations-001",
@@ -52764,7 +53877,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "coverage-matrix.csv (ERA-1 / Circulations transnationales, « couvert », entrée jp-bouddhisme) : « Circulations avec la Corée et la Chine, lieu Asuka/Nara, source SRC-001. » jp-bouddhisme (data.js, corrigé par fixes.yaml) précise l'introduction depuis Baekje et les acteurs Kinmei et Soga ; les savoirs continentaux sont attestés par la cellule « Sciences, techniques & santé » de la même ère. Aucun acteur chinois nommé n'est ajouté : la Chine n'est mentionnée qu'en direction des échanges, comme dans la matrice.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era2-pol-001",
@@ -52804,7 +53917,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Fiche jp-heian du dataset (year 794) et corrections fixes.yaml : installation de la cour à Heian-kyō, régence Fujiwara, fin de la période en 1185 ; SRC-002 (Cambridge History of Japan, vol. 2) et SRC-003 (vol. 3). 794 marque l'installation, 1185 la mise en place du bakufu : les deux bornes ont un rôle explicite.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era2-pol-002",
@@ -52845,7 +53958,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Fiche jp-kamakura du dataset (year 1185, sous-titre « Le premier bakufu, 1185/1192 ») : Yoritomo, victoire sur les Taira, régents Hōjō, autorité symbolique de la cour ; SRC-003. Le débat 1185/1192 est enregistré dans country-audit.yaml (structuring_debates) et dans l'intervalle, non résolu artificiellement.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era2-guer-003",
@@ -52887,7 +54000,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Fiche jp-mongols du dataset (year 1274) et cellule ERA-2/Guerres & diplomatie de coverage-matrix.csv : deux expéditions, causes multiples, mythe du kamikaze postérieur, affaiblissement du bakufu ; SRC-003. Aucun effectif ni perte chiffrée n'est avancé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era2-guer-004",
@@ -52933,7 +54046,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-005 et ACTOR-3 de audits/japan/ (sources SRC-004, SRC-010) : invasions de 1592 et 1597, occupation de Séoul, aide des Ming, marine de Yi Sun-sin, retraite après la mort de Hideyoshi en 1598. Toutes les dates sont dans l'ère. Aucun bilan humain chiffré n'est inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era2-droit-005",
@@ -52965,7 +54078,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule ERA-2/Droit & justice de coverage-matrix.csv : « vide justifié » ; OM-004 (codes ritsuryō, code Jōei 1232, justice seigneuriale, châtiments ; evidence_checked SRC-001, SRC-003). 1232 est la date du code telle qu'elle figure dans l'omission : aucun texte de loi ni article n'est inventé. Le silence est explicite, conformément à la règle 7 de POINT_METHODOLOGY.md.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era2-econ-006",
@@ -53001,7 +54114,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule ERA-2/Économie & travail de coverage-matrix.csv : « partiel » (jp-heian) — économie de cour et manoirs évoqués, sans fiche sur le commerce, la monnaie ou le travail paysan ; OM-003 (evidence_checked SRC-001, SRC-003, SRC-004). Les bornes sont celles de l'ère ; aucun prix, salaire ou volume n'est avancé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era2-soc-007",
@@ -53040,7 +54153,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Cellule ERA-2/Société & démographie de coverage-matrix.csv : « couvert » (jp-heian, jp-kamakura ; SRC-002, SRC-003) — cour, guerriers et paysans, lieux Kyoto et Kamakura. La nuance sur les samouraïs est tirée mot pour mot de la correction jp-kamakura dans fixes.yaml et du dataset.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era2-femmes-008",
@@ -53086,7 +54199,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Cellule ERA-2/Femmes, genre, sexualités de coverage-matrix.csv : « couvert » (PROP-003 ; SRC-002, SRC-012). PROP-003 (v. 1000) nomme Murasaki Shikibu et Sei Shōnagon à Kyoto ; ACTOR-1 (SRC-002) et ACTOR-2 (SRC-003, 1157–1225) complètent le tableau. 1000 est l'ancre de PROP-003, 1225 l'année de mort de Hōjō Masako donnée dans REPORT.md : les deux bornes ont un rôle.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era2-relig-009",
@@ -53126,7 +54239,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule ERA-2/Religions & croyances de coverage-matrix.csv : « partiel » (jp-bouddhisme) — « Terre pure, Zen et Nichiren ne sont pas instrumentés ; le bouddhisme reste un arrière-plan ». SRC-003 couvre le Japon médiéval, SRC-004 la mission jésuite. 1185 est la borne médiévale du corpus, 1549 l'arrivée documentée des Jésuites : aucune date de fondation de secte n'est inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era2-sci-010",
@@ -53165,7 +54278,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Fiche jp-portugais du dataset (year 1543) et corrections fixes.yaml : marchands portugais à Tanegashima, armes à feu adoptées par les seigneurs de Kyūshū, distinction d'avec la mission de 1549 ; SRC-004. Cellule ERA-2/Sciences & santé « partiel » : la dette sur les savoirs médicaux et techniques médiévaux est signalée dans l'objet ; aucune date d'adoption ni chiffre de production n'est inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era2-arts-011",
@@ -53207,7 +54320,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Cellule ERA-2/Arts & lettres de coverage-matrix.csv : « couvert » (jp-heian, PROP-003 ; SRC-002) ; fiche jp-heian et corrections fixes.yaml : « Murasaki Shikibu compose le Dit du Genji vers 1008 ». PROP-003 ajoute Sei Shōnagon et les Notes de chevet (SRC-002, SRC-012). La date est conservée comme approximative (« vers 1008 ») d'où la certitude probable ; aucun titre d'œuvre supplémentaire n'est inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era2-env-012",
@@ -53239,7 +54352,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Cellule ERA-2/Environnement & territoire de coverage-matrix.csv : « partiel » (jp-mongols) — « Typhons et climat sont mentionnés, mais il n'y a pas d'histoire environnementale de la période » ; OM-011 (evidence_checked SRC-008) pour le déboisement, les fleuves, les famines et les catastrophes préindustrielles. SRC-003 documente le rôle des tempêtes ; aucune catastrophe ni donnée climatique chiffrée n'est inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era2-migr-013",
@@ -53282,7 +54395,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule ERA-2/Migrations & diasporas de coverage-matrix.csv : « partiel » (jp-portugais, jp-mongols) — « Marchands, pirates et missionnaires continentaux sont évoqués, sans fiche migratoire ». SRC-003 et SRC-004 sont les sources assignées aux fiches ; 1274 et 1549 sont les bornes documentées du corpus pour ces acteurs. Aucun volume migratoire ni diaspora installée n'est inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era2-peuples-014",
@@ -53319,7 +54432,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule ERA-2/Peuples autochtones & minorités de coverage-matrix.csv : « partiel », sans entry_ids — « Ainu et Ryūkyū médiévaux sont absents ; les fiches 1869 et 1879 sont postérieures à la période ». OM-005 (Ainu, Emishi, nord ; SRC-016, SRC-010) et OM-006 (Ryūkyū ; SRC-017, SRC-010). Aucune date de colonisation ou d'annexion antérieure à 1603 n'est avancée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era2-memoire-015",
@@ -53354,7 +54467,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule ERA-2/Mémoire & patrimoine de coverage-matrix.csv : « partiel » (jp-kamakura, jp-heian) — « Le patrimoine de Kyoto et Kamakura est évoqué, mais non traité comme mémoire politique ». Les contestations sont celles des champs contestations des lieux japan-place-3 et japan-place-4 du dataset (SRC-002, SRC-003). Aucun monument ni commémoration datée n'est inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era2-circ-016",
@@ -53404,7 +54517,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Cellule ERA-2/Circulations transnationales de coverage-matrix.csv : « couvert » (jp-mongols, jp-portugais ; SRC-003, SRC-004) — « Mongols, Ming, missionnaires et marchands, lieux Kyūshū et Kyoto ». PROP-005 (SRC-004, SRC-010) apporte l'aide des Ming et la mémoire coréenne. Toutes les dates sont dans l'ère ; aucune quantité ni traité n'est inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era3-pol-001",
@@ -53442,7 +54555,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "ACTOR-4 et ACTOR-PROP-004 (country-audit.yaml et proposals.yaml) : Tokugawa Ieyasu, daimyo puis shogun, fonde l'ordre Edo ; SRC-004 (Cambridge History of Japan, vol. 4 : Early Modern Japan) documente le shogunat, Edo comme capitale politique et la paix longue. proposals.yaml (action « keep » pour l'ère) rappelle que 1600 (Sekigahara) et 1868 sont des bornes alternatives, 1603 étant celle du shogunat.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era3-guerre-001",
@@ -53483,7 +54596,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "ACTOR-11, jp-perry et fixes.yaml (SRC-005, Cambridge History of Japan, vol. 5 : The Nineteenth Century) : l'arrivée de juillet 1853 et la convention de mars 1854 sont deux moments distincts ; l'ouverture résulte d'une pression militaire et d'une négociation, pas d'un simple décret. La correction de jp-perry retire le récit d'une « exploration » et précise les divisions du bakufu.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era3-droit-001",
@@ -53515,7 +54628,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "coverage-matrix.csv (ERA-3 / Droit & justice, statut « partiel ») : « L'ordre juridique Tokugawa est évoqué, mais sans fiche sur les codes, tribunaux et châtiments » ; jp-edo (SRC-004) parle d'un « contrôle strict de la société ». Le point explicite la dette au lieu de la masquer ; certitude probable faute de monographie juridique dédiée dans le registre (cf. OM-004 pour le droit médiéval).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era3-economie-001",
@@ -53549,7 +54662,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PLACE-5 (country-audit.yaml) : Osaka, « port, marché, château, industrie », avec pour contestations le rôle dans la centralisation Tokugawa et la mémoire marchande ; PLACE-PROP-005 la dit « ville marchande » ; coverage-matrix.csv (ERA-3 / Économie & travail, « couvert » : « Commercialisation, marchés et Osaka, source SRC-004 »).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era3-societe-001",
@@ -53584,7 +54697,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "jp-edo, points 1 et 3 (SRC-004) : « société urbaine, contrôle social et Edo » d'après coverage-matrix.csv (ERA-3 / Société & démographie, « couvert »), et « des famines et des révoltes paysannes traversent la période ». FIXES jp-edo demande d'ajouter famines et révoltes paysannes sans replier sur le terme anachronique de fermeture du pays.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era3-femmes-001",
@@ -53615,7 +54728,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "coverage-matrix.csv (ERA-3 / Femmes, genre, sexualités, « partiel ») : « Les femmes de l'époque Edo sont absentes comme actrices ; dette documentaire. » SRC-012 (Mackie, Feminism in Modern Japan) est l'historiographie du genre du registre et couvre les XIXe–XXIe siècles. Le point rend le silence visible conformément à la règle « les silences sont des données » ; aucune actrice ni aucun texte n'est inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era3-religion-001",
@@ -53645,7 +54758,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "coverage-matrix.csv (ERA-3 / Religions & croyances, « partiel ») : « Néo-confucianisme, shintō et répression du christianisme ne sont pas instrumentés » ; SRC-004 (Early Modern Japan) est la synthèse de référence de la période. La certitude reste probable : aucun de ces trois repères n'a de fiche autonome dans le corpus japonais.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era3-sciences-001",
@@ -53677,7 +54790,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "jp-edo, point 2 (SRC-004) : « Nagasaki avec les Hollandais et les Chinois » ; coverage-matrix.csv (ERA-3 / Sciences, techniques & santé, « partiel ») : « Rangaku, médecine et calendrier ne sont pas instrumentés ». Le rangaku est enregistré comme dette documentaire, d'où la certitude probable.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era3-arts-001",
@@ -53709,7 +54822,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "coverage-matrix.csv (ERA-3 / Arts & lettres, « couvert ») : « Culture Genroku, ukiyo-e et haïku, lieu Edo, source SRC-004 » ; jp-edo, point 3 : « tandis qu'une culture urbaine prospère ». L'image inlinée du repère jp-edo porte la légende « La Grande Vague de Kanagawa — Hokusai, époque Edo ».",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era3-environnement-001",
@@ -53740,7 +54853,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "jp-edo, point 3 (SRC-004) : « Des famines et des révoltes paysannes traversent la période » ; coverage-matrix.csv (ERA-3 / Environnement & territoire, « partiel ») : « Famines, séismes et déboisement ne sont pas instrumentés ». SRC-008 (Walker, Toxic Archipelago) est le registre de l'histoire environnementale mais reste centré sur les maladies industrielles de l'ère suivante (cf. OM-011) : certitude probable.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era3-migrations-001",
@@ -53780,7 +54893,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "jp-edo, point 2 et FIXES jp-edo (SRC-004) : « Matsumae avec les Ainu », à maintenir contre le terme anachronique de fermeture du pays ; ACTOR-8 (SRC-016, SRC-020) inclut explicitement l'ERA-3 ; coverage-matrix.csv (ERA-3 / Migrations & diasporas, « couvert ») : « Nagasaki, Ryūkyū, Ainu et Hollandais, source SRC-004 et SRC-010 ».",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era3-minorites-001",
@@ -53818,7 +54931,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-007 (proposals.yaml, confiance « high ») : « Le royaume de Ryūkyū, tributaire de la Chine et vassal de Satsuma depuis 1609 » ; sources SRC-010 et SRC-017. OM-006 documente le double statut vis-à-vis de la Chine et de Satsuma et la société okinawaienne avant 1879 comme dette de l'ERA-3 ; la date de 1609 est conforme à l'ère 1603–1868.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era3-memoire-001",
@@ -53853,7 +54966,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "ACTOR-4 (country-audit.yaml) : « Tōshōgū de Nikkō ; figure fondatrice de la paix Tokugawa », sur SRC-004 ; coverage-matrix.csv (ERA-3 / Mémoire & patrimoine, « partiel ») : « Le patrimoine d'Edo est évoqué, mais non traité comme objet mémoriel ». La certitude reste probable car la date de construction du mausolée ne figure pas dans le registre : le point est ancré sur l'ère, sans date d'édification inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era3-circulations-001",
@@ -53890,7 +55003,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "jp-edo, point 2 et FIXES jp-edo (SRC-004) : remplacer « fermeture » par « contrôle des échanges » et nommer Nagasaki, Satsuma/Ryūkyū, Matsumae/Ainu et la Corée ; coverage-matrix.csv (ERA-3 / Circulations transnationales, « couvert ») : « Échanges contrôlés avec la Chine, la Corée, les Pays-Bas et Ryūkyū, source SRC-004 ». Le désaccord F4 de l'audit interdit d'employer sakoku comme description neutre ; SRC-010 étaye Ryūkyū.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era4-pol-001",
@@ -53935,7 +55048,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Fiche jp-meiji du dataset (year 1868) : restauration menée au nom de l'empereur, Charte du serment, abolition des domaines en 1871, conscription et réforme foncière en 1873 ; SRC-005 (Cambridge History of Japan, vol. 5) documente la restauration et les réformes, SRC-006 la continuité Tokugawa–Meiji. Le registre note que l'interprétation (révolution ou réforme) diverge ; le point s'en tient aux mesures datées.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era4-guer-002",
@@ -53977,7 +55090,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Fiche jp-russie du dataset (1904–1905) : affrontement pour la Mandchourie et la Corée, victoire consacrée par Portsmouth, suite ouverte sur 1910 ; SRC-005 et SRC-009 (Duus, penetration of Korea 1895–1910) sont les sources assignées à cette cellule par coverage-matrix.csv (ERA-4, Guerres & diplomatie, impérial). Aucun chiffre de pertes inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era4-droit-003",
@@ -54018,7 +55131,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-004 et ACTOR-10 : en 1871 le gouvernement de Meiji abolit les statuts de eta et hinin ; le Suiheisha est fondé à Kyoto en 1922 ; SRC-011 (Amos, Embodying Difference) est une monographie dédiée. La source critique la continuité supposée entre outcastes prémodernes et burakumin modernes : le point n'affirme pas une continuité.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era4-econ-004",
@@ -54057,7 +55170,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-011 (juillet 1918) : protestation des femmes de Toyama, extension nationale, répression violente et chute du cabinet Terauchi ; SRC-006 (Gordon) est la source de synthèse unique assignée à la cellule par coverage-matrix.csv. Certitude ramenée à probable faute de monographie dédiée dans le registre ; aucun bilan chiffré inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era4-soc-005",
@@ -54096,7 +55209,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-012 : séisme du 1er septembre 1923, magnitude 7,9, incendies, environ 105 000 morts, rumeurs et massacres de Coréens ; SRC-014 (Schencking, monographie dédiée) et SRC-010. Le bilan du massacre reste disputé (CLAIM-3) : il est signalé comme tel, non chiffré.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era4-femmes-006",
@@ -54137,7 +55250,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "ACTOR-6 (country-audit.yaml) : Hiratsuka Raichō, écrivaine et éditrice, fonde Seitō en 1911, revendique l'autonomie des femmes et la maternité choisie ; SRC-012 (Mackie, Feminism in Modern Japan) est la source dédiée. Le système des femmes de réconfort, traité dans PROP-013, reste une omission documentée OM-009 et n'est pas traité ici comme fait autonome.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era4-relig-007",
@@ -54172,7 +55285,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Cellule partielle de coverage-matrix.csv (ERA-4, Religions & croyances, national) : « Shintō d'État et politiques religieuses ne sont pas instrumentés ». Le culte impérial Meiji est mentionné dans country-audit.yaml (§ histoire des religions) et SRC-010 (Morris-Suzuki, construction nationale et mémoire impériale) avec SRC-005 pour le cadre Meiji. Décrit comme processus sur l'intervalle de l'ère ; aucune date de loi ni de réforme religieuse inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era4-sci-008",
@@ -54214,7 +55327,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-008 et PLACE-11 : filature fondée par le gouvernement en 1872 avec machines et instructeurs français, emploi de jeunes femmes, soie grège d'exportation ; SRC-005 et SRC-006. Le transfert technique est documenté, mais aucune assertion sur la productivité ou des chiffres de production n'est avancée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era4-arts-009",
@@ -54251,7 +55364,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule partielle de coverage-matrix.csv (ERA-4, Arts & lettres, national) : « Littérature et arts de Meiji-Taishō ne sont pas instrumentés ». Le seul ancrage littéraire daté du corpus pour l'ère est la fondation de Seitō en 1911 (ACTOR-6, SRC-012). Silence explicite sur l'absence de fiche artistique autonome ; aucun titre d'œuvre ni date de publication inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era4-env-010",
@@ -54294,7 +55407,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "ACTOR-5 (country-audit.yaml) : dénonciation de la pollution de la rivière Watarase et pétition directe à l'empereur en 1901, réseaux de pêcheurs et paysans d'Ashio, affrontement avec Furukawa et le gouvernement ; SRC-008 (Walker, Toxic Archipelago) est la monographie de référence. La cellule coverage-matrix ERA-4/Environnement est partielle : l'acteur existait sans fiche événement.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era4-migr-011",
@@ -54340,7 +55453,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-010 et fiche jp-prop-010 du dataset : traité d'annexion de 1910, administration depuis Keijō, confiscations, travail forcé, migrations japonaises, assimilation, contestation en 1919 ; SRC-009 et SRC-010. L'omission OM-008 (flux de travailleurs non chiffrés) est signalée dans la justification : aucun volume migratoire n'est inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era4-peuples-012",
@@ -54385,7 +55498,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-006 et fiche jp-prop-006 : création de la Commission en 1869, privatisation des terres, interdiction de pratiques culturelles, loi d'assimilation de 1899 ; SRC-016 (Siddle) et SRC-010. La reconnaissance de 2019 (CLAIM-2, SRC-020) est postérieure à l'ère : elle n'est citée que comme mémoire, non comme fait de la période.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era4-memoire-013",
@@ -54424,7 +55537,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "PROP-013 (guerre de Quinze Ans, 1931–1945) : occupation de Nanjing en 1937 et massacre, bilans disputés ; CLAIM-4 du country-audit confirme le caractère contesté des chiffres ; SRC-006 et SRC-013. Le point atteste le massacre sans retenir aucun chiffre de victimes, conformément à la règle 6 de POINT_METHODOLOGY.md.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era4-circ-014",
@@ -54466,7 +55579,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-009 : guerre de 1894–1895, traité de Shimonoseki, Taïwan, Pescadores, indemnité, fin de la suzeraineté chinoise sur la Corée ; SRC-009 (Duus) et SRC-005. La fiche jp-russie rappelle que le Japon avait déjà vaincu la Chine en 1895, ce qui écarte le récit d'une « première victoire asiatique » en 1905.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era5-pol-001",
@@ -54503,7 +55616,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-014 du registre : après la capitulation, l'occupation dirigée par le général MacArthur impose démilitarisation et démocratisation ; la Constitution, promulguée en 1946 et entrée en vigueur en 1947, garantit l'égalité des sexes, le suffrage universel et l'article 9 qui renonce à la guerre. SRC-007 (Dower, Embracing Defeat) documente l'occupation et la Constitution ; SRC-012 (Mackie) les droits des femmes. La matrice ERA-5 classe la cellule « couvert » (PROP-014 et PROP-016).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era5-pol-002",
@@ -54542,7 +55655,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-016 : Okinawa reste sous administration américaine jusqu'en 1972, date de sa réversion au Japon ; la présence militaire américaine se poursuit et structure l'économie et les contestations locales. SRC-017 (Hein et Selden) couvre l'administration américaine, la réversion de 1972, les bases et les mémoires de guerre ; SRC-010 (Morris-Suzuki) la construction nationale. Matrice ERA-5 : cellule « couvert », entrées PROP-014 et PROP-016.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era5-dip-001",
@@ -54581,7 +55694,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "OM-012 (ERA-5, Guerres & diplomatie, transnational) documente l'absence de fiches sur les bases américaines hors Okinawa, les mouvements Anpo de 1960 et 1970, la politique de défense et l'article 9, avec SRC-006 et SRC-017 pour seules sources vérifiées mais non instrumentées ; la matrice marque la cellule « partiel » (seul jp-hiroshima est retenu). Silence explicite conformément à la règle 7 de POINT_METHODOLOGY.md : aucune date d'événement ni affirmation non sourcée avancée ; ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era5-dro-001",
@@ -54617,7 +55730,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-014 : la Constitution de 1947 garantit l'égalité des sexes, le suffrage universel et l'article 9 renonçant à la guerre. SRC-007 (Dower) documente la refonte constitutionnelle sous l'occupation ; SRC-012 (Mackie) l'égalité juridique des femmes. La matrice ERA-5 marque « couvert » pour Droit & justice avec SRC-007 et SRC-012. Aucun article non attesté par le registre n'est cité.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era5-eco-001",
@@ -54649,7 +55762,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-017 (1991, confidence medium du registre) : la Banque du Japon relève les taux, la bulle immobilière et boursière éclate au début des années 1990, les banques héritent de créances douteuses, l'emploi précaire se développe, chômage et dette publique augmentent. SRC-006 (Gordon) est la source unique de synthèse, explicitement signalée comme exception à corroborer ; d'où la certitude probable. Matrice ERA-5 : cellule « couvert » (PROP-017).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era5-eco-002",
@@ -54681,7 +55794,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Correction auditée de jp-1964 : les JO se tiennent du 10 au 24 octobre 1964, le shinkansen ouvre le 1er octobre ; la fiche distingue le symbole de la causalité et mentionne infrastructures, pollution et oppositions. SRC-006 (Gordon) couvre la haute croissance. Matrice ERA-5 : cellule « couvert » (entrée jp-1964).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era5-soc-001",
@@ -54712,7 +55825,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-018 (SRC-019, SRC-006) : la population cesse de croître autour de 2008 ; au 1er octobre 2024, 123,80 millions d'habitants et 29,3 % de 65 ans et plus (Statistics Bureau of Japan). SRC-019 est une source institutionnelle officielle ; SRC-006 cadre la longue durée. Matrice ERA-5 : cellule « couvert ». Les chiffres sont repris tels quels du registre, sans recalcul. La question du handicap et de la santé mentale reste une omission documentée distincte (OM-010) et n'est pas traitée ici.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era5-fem-001",
@@ -54753,7 +55866,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-014 : les femmes votent pour la première fois en avril 1946 ; des militantes comme Ichikawa Fusae jouent un rôle dans la conquête de ce droit. ACTOR-PROP-007 (Ichikawa Fusae, ERA-4 et ERA-5) et SRC-012 (Mackie, Feminism in Modern Japan) documentent le féminisme, le suffrage et le travail des femmes ; SRC-007 (Dower) les droits des femmes sous l'occupation. Matrice ERA-5 : cellule « couvert ».",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era5-rel-001",
@@ -54775,10 +55888,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-JP-05-religions-croyances"
+          ],
           "confidence": "non documenté",
           "justification": "La matrice ERA-5 marque la cellule « Religions & croyances » comme « partiel » avec la justification « Sécularisation, nouvelles religions et religions minoritaires ne sont pas instrumentées », sans entry_id ni source. Aucun ID d'omission spécifique n'existe dans omissions.yaml pour cette cellule : silence explicite conformément à la règle 7 de POINT_METHODOLOGY.md. Aucune date, source ou citation inventée ; ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era5-sci-001",
@@ -54817,7 +55932,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La correction auditée de jp-fukushima distingue séisme, tsunami et accident nucléaire et date le début de l'accident du 11 mars 2011 ; elle demande d'ajouter évacuations, enquêtes et responsabilités. SRC-018 (AIEA, The Fukushima Daiichi Accident) documente la séquence, les causes techniques, les évacuations et les leçons de sûreté ; SRC-008 (Walker) l'histoire environnementale industrielle. Matrice ERA-5 : cellule « couvert ». OM-013 note que l'expérience sociale des évacués reste à documenter ; elle n'est pas comblée ici par des chiffres inventés.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era5-art-001",
@@ -54839,10 +55954,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-JP-05-arts-lettres"
+          ],
           "confidence": "non documenté",
           "justification": "La matrice ERA-5 marque la cellule « Arts & lettres » comme « partiel » avec la justification « Cinéma, manga, anime et littérature contemporaine ne sont pas instrumentés », sans entry_id ni source. Aucun ID d'omission dédié n'existe dans omissions.yaml : silence explicite, non une négation de ces productions. Aucune œuvre, date ou source inventée ; ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era5-env-001",
@@ -54882,7 +55999,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-015 (1956–1973, confidence high du registre) : la firme Chisso rejette des composés de mercure, les premiers cas sont identifiés en 1956, les victimes et leurs soutiens obtiennent des indemnisations en 1973 ; l'affaire devient un symbole de la pollution industrielle et de la mobilisation citoyenne. SRC-008 (Walker, Toxic Archipelago) et SRC-015 (George, Minamata) sont deux sources indépendantes. Matrice ERA-5 : cellule « couvert » (PROP-015 et jp-fukushima).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era5-mig-001",
@@ -54913,7 +56030,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "La matrice ERA-5 marque la cellule « Migrations & diasporas » comme « partiel » : « Zainichi et travailleurs étrangers sont présents comme acteurs, mais sans fiche migratoire ». ACTOR-PROP-009 (Coréens du Japon et organisations communautaires, ERA-4 et ERA-5) s'appuie sur SRC-010 (Morris-Suzuki) et SRC-009 (Duus) ; l'absence de fiche migratoire chiffrée est explicitement signalée. Aucun flux ni chiffre inventé ; ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era5-aut-001",
@@ -54956,7 +56073,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "SRC-020 est la source primaire officielle (Government of Japan, Japanese Law Translation Database) : loi n° 16 de 2019 promulguée le 26 avril 2019, entrée en vigueur le 24 mai 2019, reconnaissant les Ainu comme peuple autochtone et prévoyant des mesures culturelles et territoriales. SRC-016 (Siddle) documente la colonisation de Hokkaidō, l'assimilation et les mouvements de résistance. ACTOR-PROP-008 (peuple ainu et Ainu Association of Hokkaido, ERA-3/4/5) et matrice ERA-5 « couvert » (PROP-006 et PROP-016). La revue (unresolved) discute encore de l'autonomie de cette loi comme événement ; le fait légal est, lui, daté et sourcé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era5-mem-001",
@@ -54998,7 +56115,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La correction auditée de jp-hiroshima demande d'inclure les victimes civiles, les hibakusha et la mémoire, et de distinguer bombardements, capitulation et Constitution ; PROP-016 et SRC-017 (Hein et Selden) couvrent les mémoires de guerre et les bases d'Okinawa. SRC-007 (Dower) traite de la mémoire de Hiroshima dans l'après-guerre. Matrice ERA-5 : cellule « couvert » (jp-hiroshima et PROP-016). Le bilan chiffré des victimes n'est pas avancé ici, faute de chiffre validé dans le registre (cf. points non résolus).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "jp-era5-cir-001",
@@ -55033,7 +56150,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La matrice ERA-5 marque la cellule « Circulations transnationales » comme « couvert » avec la justification « Alliance américaine et mondialisation, sources SRC-006 et SRC-017 » et les entrées jp-1964 et PROP-016. SRC-006 (Gordon) couvre la haute croissance et l'insertion internationale ; SRC-017 (Hein et Selden) l'administration américaine d'Okinawa et la réversion de 1972. L'ancre 1964 est celle de jp-1964 ; aucun chiffre d'échange non sourcé n'est avancé.",
-          "status": "validated"
+          "status": "extrait"
         }
       ]
     },
@@ -55211,6 +56328,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "J.-C., la Haute et la Basse-Égypte sont réunies sous un même souverain, au terme d’un processus politique progressif.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -55218,6 +56336,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "J.-C. est une convention des égyptologues, qui situent l’unification dans une fourchette de 3200 à 3000 av.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -55225,6 +56344,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’écriture hiéroglyphique, l’administration et l’idéologie pharaonique structurent ensuite une civilisation de trois millénaires.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -55232,6 +56352,7 @@ export const DATASET = {
               "kind": "audit",
               "text": "La date de -3100 est une convention chronologique pour un processus d'unification, pas la date certaine d'un événement unique.",
               "confidence": "probable",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001"
               ]
@@ -55241,6 +56362,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Règne de c. 1479–1458 av. J.-C. ; expédition au pays de Pount en l'an 9 ; programme architectural à Deir el-Bahari. Son pouvoir s'appuie sur la légitimité amonienne et sur une mise en scène royale masculine.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-003",
                 "SRC-001"
@@ -55251,6 +56373,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Présence millénaire entre Assouan et Wadi Halfa ; déplacement d'environ 50 000 personnes en 1963–1964 ; revendications foncières et culturelles persistantes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-018",
                 "SRC-011"
@@ -55306,6 +56429,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La pyramide de Khéops est édifiée à Gizeh.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -55313,6 +56437,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Sa conception et sa construction témoignent d’une maîtrise exceptionnelle de l’organisation et de la géométrie.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -55320,6 +56445,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Règne de c. 1479–1458 av. J.-C. ; expédition au pays de Pount en l'an 9 ; programme architectural à Deir el-Bahari. Son pouvoir s'appuie sur la légitimité amonienne et sur une mise en scène royale masculine.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-003",
                 "SRC-001"
@@ -55330,6 +56456,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Présence millénaire entre Assouan et Wadi Halfa ; déplacement d'environ 50 000 personnes en 1963–1964 ; revendications foncières et culturelles persistantes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-018",
                 "SRC-011"
@@ -55385,6 +56512,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "J.-C., Akhenaton impose le culte du disque solaire Aton et fonde une nouvelle capitale, Akhetaton, sur le site d’Amarna.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -55392,6 +56520,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Son règne religieux radical est suivi d’un retour à l’ordre traditionnel.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -55399,6 +56528,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les historiens discutent de la nature exacte de ce culte et du bien-fondé du terme monothéisme.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -55406,6 +56536,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Règne de c. 1479–1458 av. J.-C. ; expédition au pays de Pount en l'an 9 ; programme architectural à Deir el-Bahari. Son pouvoir s'appuie sur la légitimité amonienne et sur une mise en scène royale masculine.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-003",
                 "SRC-001"
@@ -55416,6 +56547,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Présence millénaire entre Assouan et Wadi Halfa ; déplacement d'environ 50 000 personnes en 1963–1964 ; revendications foncières et culturelles persistantes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-018",
                 "SRC-011"
@@ -55472,6 +56604,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Ramsès II règne de 1279 à 1213 av.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -55479,6 +56612,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "J.-C., soit environ 66 ans.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -55486,6 +56620,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Il affronte les Hittites à Qadesh vers 1274, puis conclut avec eux un traité de paix, et fait construire de nombreux monuments, dont Abou Simbel.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -55493,6 +56628,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Son règne est marqué par une propagande royale intense et par les limites de la puissance égyptienne en Syrie.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -55500,6 +56636,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Règne de c. 1479–1458 av. J.-C. ; expédition au pays de Pount en l'an 9 ; programme architectural à Deir el-Bahari. Son pouvoir s'appuie sur la légitimité amonienne et sur une mise en scène royale masculine.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-003",
                 "SRC-001"
@@ -55510,6 +56647,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Présence millénaire entre Assouan et Wadi Halfa ; déplacement d'environ 50 000 personnes en 1963–1964 ; revendications foncières et culturelles persistantes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-018",
                 "SRC-011"
@@ -55520,6 +56658,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Louxor — capitale religieuse, nécropole, site archéologique, tourisme",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-002",
                 "SRC-003"
@@ -55595,6 +56734,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Alexandre le Grand fonde Alexandrie en 331 av.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -55602,6 +56742,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "J.-C., après son entrée en Égypte à la fin de 332 av.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -55609,6 +56750,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La ville devient un grand centre culturel et commercial sous les Ptolémées, qui y développent la bibliothèque et le phare.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -55616,6 +56758,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Ces institutions sont postérieures à la fondation et ne doivent pas être attribuées à Alexandre.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -55623,6 +56766,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Séparation après Chalcédoine (451), coexistence durable, réformes ottomanes et modernes, tensions sectaires contemporaines. L'Église est à la fois minorité protégée, acteur politique et institution transnationale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-006",
                 "SRC-007"
@@ -55633,6 +56777,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Alexandrie — port, capitale ptolémaïque, centre intellectuel, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-005",
@@ -55699,6 +56844,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La flotte de Cléopâtre et d’Antoine est défaite à Actium en 31 av.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -55706,6 +56852,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "J.-C., Octave prend Alexandrie ; Cléopâtre se donne la mort et l’Égypte devient une province romaine.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -55713,6 +56860,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La défaite navale, la prise de la capitale et l’annexion sont trois moments distincts.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -55720,6 +56868,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Séparation après Chalcédoine (451), coexistence durable, réformes ottomanes et modernes, tensions sectaires contemporaines. L'Église est à la fois minorité protégée, acteur politique et institution transnationale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-006",
                 "SRC-007"
@@ -55730,6 +56879,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Alexandrie — port, capitale ptolémaïque, centre intellectuel, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-005",
@@ -55796,6 +56946,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les armées arabes entrent en Égypte en 639 et achèvent la conquête en 642 ; la prise d’Alexandrie en 641 en est un épisode.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -55803,6 +56954,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’Égypte devient une province de l’empire arabe, mais l’islamisation et l’arabisation restent des processus pluriséculaires.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -55810,6 +56962,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les estimations de bascule démographique entre coptes et musulmans varient selon les méthodes, du IXe au XIVe siècle.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -55817,6 +56970,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Régence de fait dès 1249, sultanat de mai à juillet 1250, transition des Ayyubides aux Mamelouks ; morte en 1257. Son pouvoir est documenté par les chroniques, mais sa légitimité reste contestée.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-007"
               ]
@@ -55826,6 +56980,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Séparation après Chalcédoine (451), coexistence durable, réformes ottomanes et modernes, tensions sectaires contemporaines. L'Église est à la fois minorité protégée, acteur politique et institution transnationale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-006",
                 "SRC-007"
@@ -55891,6 +57046,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les Fatimides fondent al-Qahira en 969 et al-Azhar l’année suivante.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -55898,6 +57054,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "En 973, le calife al-Muizz s’y installe et la ville devient la capitale du califat fatimide.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -55905,6 +57062,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Fondation urbaine, capitale califale et institution religieuse sont trois faits distincts.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -55912,6 +57070,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Régence de fait dès 1249, sultanat de mai à juillet 1250, transition des Ayyubides aux Mamelouks ; morte en 1257. Son pouvoir est documenté par les chroniques, mais sa légitimité reste contestée.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-007"
               ]
@@ -55921,6 +57080,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Séparation après Chalcédoine (451), coexistence durable, réformes ottomanes et modernes, tensions sectaires contemporaines. L'Église est à la fois minorité protégée, acteur politique et institution transnationale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-006",
                 "SRC-007"
@@ -55931,6 +57091,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Le Caire — capitale, centre religieux, marché, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-007",
                 "SRC-011",
@@ -56015,6 +57176,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Bonaparte débarque en Égypte en 1798 avec une expédition militaire et scientifique.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -56022,6 +57184,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La pierre de Rosette est découverte en 1799 à Rachid, puis cédée aux Britanniques en 1801 après la capitulation française.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -56029,6 +57192,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’expédition se retire la même année, mais ses savants et leurs publications nourrissent durablement l’égyptologie.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -56036,6 +57200,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Le Caire — capitale, centre religieux, marché, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-007",
                 "SRC-011",
@@ -56093,6 +57258,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le canal de Suez est inauguré en 1869 ; il raccourcit la route maritime entre l’Europe et l’Asie, sans la créer.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -56100,6 +57266,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Sa construction mobilise la corvée de travailleurs égyptiens, dans des conditions sanitaires dures, avec une mortalité mal documentée.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -56107,13 +57274,15 @@ export const DATASET = {
               "kind": "récit",
               "text": "La dette du khédivat conduit à la vente des actions égyptiennes en 1875, puis à l’occupation britannique en 1882.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
               "id": "egypt-claim-003-point",
               "kind": "audit",
               "text": "Le chiffre de 120 000 morts, souvent cité pour la construction du canal de Suez, n'est pas documenté de façon fiable ; les estimations varient fortement.",
-              "confidence": "disputed",
+              "confidence": "disputé",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-011",
                 "SRC-012"
@@ -56124,6 +57293,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Port-Saïd — port, ville ouvrière, canal",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-011",
                 "SRC-012"
@@ -56134,6 +57304,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Ismaïlia — siège de la Compagnie du canal, port, ville de garnison",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-011",
                 "SRC-012"
@@ -56205,6 +57376,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le mouvement d’Ahmed Urabi conteste la tutelle européenne et l’absolutisme khédivial.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -56212,6 +57384,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "En juillet 1882, les Britanniques bombardent Alexandrie ; le 13 septembre, ils écrasent l’armée égyptienne à Tell el-Kebir.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -56219,6 +57392,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’occupation britannique commence et dure, sous des formes variables, jusqu’au retrait de 1956.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -56226,6 +57400,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Alexandrie — port, capitale ptolémaïque, centre intellectuel, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-001",
                 "SRC-005",
@@ -56283,6 +57458,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’arrestation de Saad Zaghloul et des dirigeants du Wafd en mars 1919 déclenche une révolution nationale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -56290,6 +57466,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Étudiants, ouvriers, paysans, femmes et coptes participent au mouvement ; la répression tue au moins 800 personnes.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -56297,6 +57474,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La révolution force Londres à proclamer l’indépendance en 1922, avec quatre points réservés.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -56304,6 +57482,7 @@ export const DATASET = {
               "kind": "audit",
               "text": "La révolution de 1919 dépasse les élites du Wafd : des paysans, des ouvriers, des femmes et des chrétiens y participent, avec des violences rurales importantes.",
               "confidence": "probable",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-013"
               ]
@@ -56313,6 +57492,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Assiout — ville carrefour, communauté copte, agriculture",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-013",
                 "SRC-006"
@@ -56323,6 +57503,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Le Caire — capitale, centre religieux, marché, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-007",
                 "SRC-011",
@@ -56394,6 +57575,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 28 février 1922, Londres proclame unilatéralement la fin du protectorat et l’Égypte devient un royaume indépendant.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -56401,6 +57583,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Quatre matières restent réservées à la Grande-Bretagne : les communications impériales, la défense, la protection des intérêts étrangers et des minorités, et le Soudan.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -56408,6 +57591,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La souveraineté reste incomplète jusqu’en 1936, et la présence militaire britannique se maintient dans la zone du canal jusqu’en 1956.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -56415,6 +57599,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Le Caire — capitale, centre religieux, marché, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-007",
                 "SRC-011",
@@ -56471,6 +57656,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "En mars 1923, Hoda Shaarawi et des femmes de l’élite fondent l’Union féministe égyptienne.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -56478,6 +57664,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’organisation revendique le droit de vote, la réforme du statut personnel et l’éducation des filles.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -56485,6 +57672,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La Constitution de 1923 ne garantit pas le suffrage des femmes, qui ne l’obtiennent qu’en 1956, de façon restrictive jusqu’en 1979.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -56492,6 +57680,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Le Caire — capitale, centre religieux, marché, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-007",
                 "SRC-011",
@@ -56548,6 +57737,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 23 juillet 1952, les Officiers libres renversent le roi Farouk ; le régime présente l’opération comme une révolution, tandis que les historiens la qualifient de coup d’État.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -56555,6 +57745,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le général Naguib devient président de la République en 1953, puis Nasser s’impose après la crise de 1954 et est confirmé président par référendum en 1956.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -56562,6 +57753,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La réforme agraire de septembre 1952 plafonne les propriétés à 200 feddans, tandis que les femmes obtiennent le droit de vote en 1956.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -56569,6 +57761,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Coup de 1952, présidence de 1956 à 1970, nationalisation du canal, barrage d'Assouan, panarabisme, défaite de 1967. Bilan social réel mais régime répressif.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-015",
                 "SRC-011"
@@ -56579,6 +57772,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Guerre de 1973, infitah, visite à Jérusalem en 1977, Camp David en 1978, traité de 1979, assassinat en 1981. Paix séparée et libéralisation économique inégale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-011",
                 "SRC-017"
@@ -56589,6 +57783,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Le Caire — capitale, centre religieux, marché, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-007",
                 "SRC-011",
@@ -56699,6 +57894,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 26 juillet 1956, Nasser nationalise le canal de Suez.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -56706,6 +57902,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Israël envahit le Sinaï le 29 octobre ; la France et le Royaume-Uni débarquent à Port-Saïd en novembre.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -56713,6 +57910,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les pressions américaine et soviétique imposent un retrait de décembre 1956 à mars 1957, qui renforce Nasser.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -56720,6 +57918,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Coup de 1952, présidence de 1956 à 1970, nationalisation du canal, barrage d'Assouan, panarabisme, défaite de 1967. Bilan social réel mais régime répressif.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-015",
                 "SRC-011"
@@ -56730,6 +57929,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Guerre de 1973, infitah, visite à Jérusalem en 1977, Camp David en 1978, traité de 1979, assassinat en 1981. Paix séparée et libéralisation économique inégale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-011",
                 "SRC-017"
@@ -56740,6 +57940,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Port-Saïd — port, ville ouvrière, canal",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-011",
                 "SRC-012"
@@ -56750,6 +57951,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Ismaïlia — siège de la Compagnie du canal, port, ville de garnison",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-011",
                 "SRC-012"
@@ -56875,6 +58077,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "La construction du haut barrage d’Assouan inonde la vallée nubienne entre Assouan et la frontière soudanaise.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -56882,6 +58085,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Environ 50 000 Nubiens égyptiens sont relogés à Kom Ombo en 1963-1964 ; 44 villages et des millions de palmiers disparaissent.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -56889,6 +58093,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "L’UNESCO sauve les monuments, mais pas les villages.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -56896,6 +58101,7 @@ export const DATASET = {
               "kind": "audit",
               "text": "Le déplacement de 1963–1964 concerne environ 50 000 Nubiens égyptiens, relogés à Kom Ombo ; les chiffres varient selon les sources et les modes de comptage.",
               "confidence": "probable",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-018"
               ]
@@ -56905,6 +58111,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Coup de 1952, présidence de 1956 à 1970, nationalisation du canal, barrage d'Assouan, panarabisme, défaite de 1967. Bilan social réel mais régime répressif.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-015",
                 "SRC-011"
@@ -56915,6 +58122,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Guerre de 1973, infitah, visite à Jérusalem en 1977, Camp David en 1978, traité de 1979, assassinat en 1981. Paix séparée et libéralisation économique inégale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-011",
                 "SRC-017"
@@ -56925,6 +58133,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Assouan — frontière, commerce, barrage, lieu de mémoire nubien",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-018",
                 "SRC-011"
@@ -56935,6 +58144,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Nubie / Wadi Halfa — frontière, terres agricoles, lieu de mémoire, diaspora",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-018"
               ]
@@ -57060,6 +58270,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Les accords de Camp David sont signés en septembre 1978 et valent à Sadate et Begin le prix Nobel de la paix la même année.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -57067,6 +58278,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le traité de paix égypto-israélien est signé à Washington le 26 mars 1979.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -57074,6 +58286,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Cette paix séparée isole l’Égypte dans le monde arabe et entraîne sa suspension de la Ligue arabe.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -57081,6 +58294,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Coup de 1952, présidence de 1956 à 1970, nationalisation du canal, barrage d'Assouan, panarabisme, défaite de 1967. Bilan social réel mais régime répressif.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-015",
                 "SRC-011"
@@ -57091,6 +58305,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Guerre de 1973, infitah, visite à Jérusalem en 1977, Camp David en 1978, traité de 1979, assassinat en 1981. Paix séparée et libéralisation économique inégale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-011",
                 "SRC-017"
@@ -57101,6 +58316,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Sinaï — frontière, lieu saint, tourisme, ressources",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-016",
                 "SRC-011"
@@ -57210,6 +58426,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Des manifestations massives place Tahrir provoquent la chute de Hosni Moubarak en février 2011.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -57217,6 +58434,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Mohamed Morsi, élu président en 2012 et premier civil à occuper la fonction, est déposé par l’armée le 3 juillet 2013.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -57224,6 +58442,7 @@ export const DATASET = {
               "kind": "récit",
               "text": "Le 14 août, les forces de sécurité dispersent le sit-in de Rabaa al-Adawiya, tuant au moins 817 personnes selon Human Rights Watch.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": []
             },
             {
@@ -57231,6 +58450,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Coup de 1952, présidence de 1956 à 1970, nationalisation du canal, barrage d'Assouan, panarabisme, défaite de 1967. Bilan social réel mais régime répressif.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-015",
                 "SRC-011"
@@ -57241,6 +58461,7 @@ export const DATASET = {
               "kind": "figure",
               "text": "Guerre de 1973, infitah, visite à Jérusalem en 1977, Camp David en 1978, traité de 1979, assassinat en 1981. Paix séparée et libéralisation économique inégale.",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-011",
                 "SRC-017"
@@ -57251,6 +58472,7 @@ export const DATASET = {
               "kind": "lieu",
               "text": "Le Caire — capitale, centre religieux, marché, lieu de mémoire",
               "confidence": "vérifié",
+              "datePrecision": "unknown",
               "sources": [
                 "SRC-007",
                 "SRC-011",
@@ -58003,7 +59225,7 @@ export const DATASET = {
           "predicate": "est qualifié",
           "object": "de révolution par le régime",
           "text": "Le 23 juillet 1952 est un coup d'État militaire qui se présente comme une révolution ; la qualification reste un enjeu historiographique.",
-          "confidence": "disputed",
+          "confidence": "disputé",
           "sources": [
             "SRC-015"
           ]
@@ -58411,7 +59633,7 @@ export const DATASET = {
           "object": "la naissance de l'État pharaonique et de son idéologie royale",
           "text": "La royauté pharaonique issue de l'unification de la Haute et de la Basse-Égypte unifie les deux terres sous un même souverain au terme d'un processus politique progressif la naissance de l'État pharaonique et de son idéologie royale",
           "time": "-3100",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "evenement",
             "processus",
@@ -58441,7 +59663,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Unification vers -3100 av. J.-C. documentée dans le corpus (dataset.js, eg-unification ; fixes.yaml, eg-unification) et par SRC-001 (Shaw, Oxford History of Ancient Egypt). La date -3100 est une convention des égyptologues, qui situent le processus dans une fourchette de -3200 à -3000 (CLAIM-001, pays) : certitude ramenée à probable, sans transformer la convention en événement unique. Aucune date hors de l'ère -3100/-332.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era1-guer-002",
@@ -58453,7 +59675,7 @@ export const DATASET = {
           "object": "la frontière syrienne et les limites de la puissance égyptienne",
           "text": "Ramsès II, pharaon de la XIXe dynastie affronte les Hittites à Qadesh puis conclut avec eux un traité de paix la frontière syrienne et les limites de la puissance égyptienne",
           "time": "-1274",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "evenement",
             "acteur",
@@ -58484,7 +59706,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Bataille de Qadesh vers -1274 av. J.-C. et traité de paix ultérieur avec les Hittites, documentés dans le corpus (dataset.js, eg-ramses ; fixes.yaml, eg-ramses) et par SRC-001 (Shaw). Ramsès II règne de -1279 à -1213, soit environ 66 ans ; la bataille est datée « vers 1274 », d'où une certitude probable et non certaine. Aucun chiffre ni événement inventé ; conformité avec l'ère -3100/-332.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era1-droit-003",
@@ -58496,7 +59718,7 @@ export const DATASET = {
           "object": "le conflit sur les rations documenté par le papyrus de Turin",
           "text": "Les artisans de Deir el-Médineh en grève sous Ramsès III réclament le retard de leurs rations et ont recours aux autorités, sans fiche dédiée aux institutions judiciaires pharaoniques le conflit sur les rations documenté par le papyrus de Turin",
           "time": "-1157",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "evenement",
             "groupe_social",
@@ -58526,7 +59748,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Cellule partielle de coverage-matrix.csv (ERA-1, Droit & justice, local) : d'après sa justification, « conflit sur les rations et recours aux autorités, mais pas de fiche sur les institutions judiciaires pharaoniques ». Faits ancrés dans PROP-003 (proposals.yaml) et SRC-002 (McDowell, Village Life in Ancient Egypt), qui documente la grève et les rations à partir des ostraca et papyrus. Le recours aux autorités est signalé sans inventer de code ni de tribunal ; échelle locale conforme à la matrice.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era1-econ-004",
@@ -58538,7 +59760,7 @@ export const DATASET = {
           "object": "l'organisation du travail et de la subsistance dans le village des artisans",
           "text": "La main-d'œuvre des tombes royales à Deir el-Médineh reçoit des rations et interrompt le travail pour en réclamer le paiement l'organisation du travail et de la subsistance dans le village des artisans",
           "time": "-1157",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "evenement",
             "groupe_social",
@@ -58566,7 +59788,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Rations, corvée et travail des tombes documentés par PROP-003 (proposals.yaml, confiance high), SRC-002 (McDowell) et SRC-001 (Shaw) ; cellule « couvert » de coverage-matrix.csv (ERA-1, Économie & travail, local). Le papyrus de Turin, rédigé par le scribe Amennakhte, documente plusieurs épisodes de grève sous Ramsès III. Aucune donnée de production chiffrée inventée ; échelle locale conforme à la matrice.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era1-soc-005",
@@ -58578,7 +59800,7 @@ export const DATASET = {
           "object": "la société locale d'une nécropole royale du Nouvel Empire",
           "text": "La communauté d'artisans de Deir el-Médineh vit dans un village ouvrier structuré par des familles et une hiérarchie du travail la société locale d'une nécropole royale du Nouvel Empire",
           "time": "-1157",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "groupe_social",
             "lieu",
@@ -58607,7 +59829,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Village d'artisans, familles et hiérarchies de travail documentés par SRC-002 (McDowell) et signalés dans la cellule « couvert » de coverage-matrix.csv (ERA-1, Société & démographie, local). SRC-002 est une étude fondée sur les ostraca et papyrus, à échantillon local non représentatif de toute l'Égypte : l'énoncé reste circonscrit à Deir el-Médineh, sans extrapolation démographique.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era1-genre-006",
@@ -58619,7 +59841,7 @@ export const DATASET = {
           "object": "le pouvoir au féminin dans l'Égypte du Nouvel Empire",
           "text": "Hatshepsout, femme devenue pharaon exerce le pouvoir royal et légitime son règne par une mise en scène et une expédition commanditée le pouvoir au féminin dans l'Égypte du Nouvel Empire",
           "time": "-1470",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "acteur",
             "evenement",
@@ -58651,7 +59873,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Règne de c. -1479 à -1458 av. J.-C., expédition au pays de Pount en l'an 9 et programme architectural de Deir el-Bahari, documentés dans le corpus (dataset.js, eg-unification et autres points de figure ; country-audit.yaml, ACTOR-001) et par SRC-003 (Roehrig, Hatshepsut: From Queen to Pharaoh) et SRC-001. PROP-002 est coté high dans proposals.yaml ; la datation « c. -1470 » reste approximative. La contrainte de genre et la dépendance au clergé d'Amon sont documentées dans country-audit.yaml ; aucune reconstruction inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era1-relig-007",
@@ -58663,7 +59885,7 @@ export const DATASET = {
           "object": "la cité d'Akhetaton (Amarna) et le débat sur le monothéisme atonien",
           "text": "Akhenaton et le culte du disque solaire Aton impose un culte réformateur et fonde une capitale nouvelle, avant un retour à l'ordre traditionnel la cité d'Akhetaton (Amarna) et le débat sur le monothéisme atonien",
           "time": "-1350",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "evenement",
             "acteur",
@@ -58690,7 +59912,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Réforme atonienne vers -1350 av. J.-C., Akhetaton/Amarna et débat sur le qualificatif de monothéisme, documentés dans le corpus (dataset.js, eg-akhenaton ; fixes.yaml, eg-akhenaton) et par SRC-001 (Shaw). La date est approximative et la nature du culte est discutée : certitude probable, conformément à la règle 6 (le disputé reste disputé). Cellule partielle de coverage-matrix.csv (ERA-1, Religions & croyances, national), acteurs, lieux et sources ici renseignés.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era1-sci-008",
@@ -58702,7 +59924,7 @@ export const DATASET = {
           "object": "l'ouvrage pyramidal de Gizeh",
           "text": "La Grande Pyramide de Khéops à Gizeh témoigne d'une maîtrise de l'organisation et de la géométrie dans sa conception et sa construction l'ouvrage pyramidal de Gizeh",
           "time": "-2560",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "evenement",
             "lieu",
@@ -58727,7 +59949,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Pyramide de Khéops édifiée à Gizeh, conception et construction témoignant d'une maîtrise de l'organisation et de la géométrie : faits ancrés dans le corpus (dataset.js, eg-kheops) et dans SRC-001 (Shaw). La cellule partielle de coverage-matrix.csv (ERA-1, Sciences, techniques & santé, national) signale l'absence de fiche sur la médecine, l'astronomie ou les papyrus techniques : cette dette est explicite dans la justification, sans inventer de contenu pour ces domaines.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era1-arts-009",
@@ -58739,7 +59961,7 @@ export const DATASET = {
           "object": "les temples de Deir el-Bahari, à Thèbes",
           "text": "Le programme architectural de Deir el-Bahari sous Hatshepsout exprime la mise en scène royale par un grand chantier de temples les temples de Deir el-Bahari, à Thèbes",
           "time": "-1470",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "evenement",
             "acteur",
@@ -58767,7 +59989,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Programme architectural de Deir el-Bahari documenté par SRC-003 (Roehrig) et SRC-001 (Shaw), et enregistré dans country-audit.yaml (ACTOR-001). La cellule partielle de coverage-matrix.csv (ERA-1, Arts & lettres, national) mentionne l'architecture et la propagande monumentales de eg-kheops et eg-ramses ; le chantier de Deir el-Bahari fournit un ancrage complémentaire. L'absence de fiche sur la littérature, la musique ou l'artisanat est signalée comme dette, sans invention.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era1-env-010",
@@ -58801,7 +60023,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Crise du Nil de -2200 à -2050 av. J.-C. et effondrement de l'Ancien Empire, proposés dans PROP-001 (proposals.yaml), couverts dans coverage-matrix.csv (ERA-1, Environnement & territoire, national) et fondés sur SRC-001 (Shaw). La causalité unique est exclue par proposals.yaml : la crise éclaire les famines, migrations et décentralisations sans tout expliquer, d'où une certitude probable. Exception documentée dans proposals.yaml : la dimension paléoclimatique repose sur une synthèse générale.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era1-migr-011",
@@ -58813,7 +60035,7 @@ export const DATASET = {
           "object": "les échanges avec le pays de Pount par la mer Rouge",
           "text": "L'expédition d'Hatshepsout vers le pays de Pount établit un contact avec des populations étrangères de la corne de l'Afrique les échanges avec le pays de Pount par la mer Rouge",
           "time": "-1470",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "evenement",
             "acteur",
@@ -58844,7 +60066,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Cellule partielle de coverage-matrix.csv (ERA-1, Migrations & diasporas, transnational) : sa justification mentionne les contacts avec Pount et les populations étrangères, mais pas de fiche sur les migrations nubiennes, libyennes ou asiatiques. L'expédition est documentée par PROP-002, SRC-003 et SRC-001 ; la localisation de Pount reste débattue (REPORT.md), d'où une certitude probable. La dette sur les autres migrations est explicite, sans invention.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era1-peuples-012",
@@ -58886,7 +60108,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Destruction du temple juif d'Éléphantine en -410 av. J.-C., documentée par PROP-004 (proposals.yaml, confiance high), par SRC-004 (Porten, The Elephantine Papyri in English, édition de sources primaires) et par SRC-001. Les lettres de -407 demandent la reconstruction du temple. SRC-004 précise que l'interprétation de la destruction reste discutée ; le fait de la destruction est certain, son interprétation n'est pas figée. Cellule « couvert » de coverage-matrix.csv (ERA-1, Peuples autochtones & minorités, local).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era1-memoire-013",
@@ -58898,7 +60120,7 @@ export const DATASET = {
           "object": "les pyramides de Gizeh et la pyramide de Khéops",
           "text": "Le patrimoine monumental de la nécropole de Gizeh est présent dans le corpus comme monument, sans fiche sur les usages mémoriels, les fouilles ou le tourisme pour cette ère les pyramides de Gizeh et la pyramide de Khéops",
           "time": "-2560",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "memoire",
             "lieu"
@@ -58922,7 +60144,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Cellule partielle de coverage-matrix.csv (ERA-1, Mémoire & patrimoine, national) : « patrimoine monumental présent, mais pas de fiche sur usages mémoriels, fouilles ou tourisme ». La pyramide de Khéops à Gizeh est documentée dans le corpus (dataset.js, eg-kheops, avec un visuel de la nécropole) et par SRC-001 (Shaw). Le silence sur les usages mémoriels postérieurs est explicite : conformément à la règle 7 de POINT_METHODOLOGY.md, aucun usage touristique ou fouille n'est projeté dans l'ère -3100/-332.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era1-circ-014",
@@ -58934,7 +60156,7 @@ export const DATASET = {
           "object": "les échanges entre l'Égypte et le pays de Pount via la mer Rouge",
           "text": "L'expédition au pays de Pount sous Hatshepsout exporte et importe des produits, dont la myrrhe et des arbres à myrrhe transplantés les échanges entre l'Égypte et le pays de Pount via la mer Rouge",
           "time": "-1470",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "evenement",
             "acteur",
@@ -58963,7 +60185,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Expédition au pays de Pount en l'an 9 du règne d'Hatshepsout : les reliefs de Deir el-Bahari montrent le voyage, les produits rapportés et les arbres à myrrhe transplantés. Faits documentés par PROP-002 (proposals.yaml, confiance high), SRC-003 (Roehrig, catalogue d'exposition savant) et SRC-001 ; cellule « couvert » de coverage-matrix.csv (ERA-1, Circulations transnationales, transnational). La localisation de Pount reste débattue et n'est pas tranchée ici.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era2-pol-001",
@@ -58975,7 +60197,7 @@ export const DATASET = {
           "object": "Alexandrie (Alexandreia / Rhakotis), capitale ptolémaïque puis ville intégrée à la province romaine d'Égypte",
           "text": "Alexandre le Grand fonde Alexandrie en -331 après son entrée en Égypte à la fin de -332 ; la ville devient la capitale du royaume ptolémaïque Alexandrie (Alexandreia / Rhakotis), capitale ptolémaïque puis ville intégrée à la province romaine d'Égypte",
           "time": "-331",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "evenement",
             "acteur",
@@ -59003,7 +60225,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Fondation d'Alexandrie en -331 après l'entrée d'Alexandre en Égypte à la fin de -332 : correction documentée de la date -332 portée par la fiche eg-alexandrie (fixes.yaml, eg-alexandrie ; proposals.yaml, corrections ; REPORT.md). La certitude reste probable, la date étant « généralement placée en -331 ». Le royaume ptolémaïque (305–30 av. J.-C.) et la province romaine d'Égypte (30 av. J.-C.–641) sont ancrés dans country-audit.yaml ; SRC-001 est source de PERIOD-2 et de PLACE-001. Date dans l'ère -332/641 ; aucun acteur, lieu ou chiffre inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era2-guer-002",
@@ -59045,7 +60267,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Défaite navale d'Actium (-31), prise d'Alexandrie par Octave (-30), mort de Cléopâtre et annexion : trois moments distincts que la fiche eg-cleopatre confondait, correction documentée (fixes.yaml, eg-cleopatre ; proposals.yaml, corrections ; REPORT.md). SRC-001 est la source attachée à cette correction et à PERIOD-2. Ce point comble la case « Guerres & diplomatie » (ERA-2, partiel), qui signalait « Actium et annexion évoqués, mais pas de fiche militaire détaillée ». Aucune date hors de l'ère ni citation inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era2-droit-003",
@@ -59072,10 +60294,12 @@ export const DATASET = {
             "droit provincial romain et statuts personnels non instrumentés dans le corpus"
           ],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-EG-02-droit-justice"
+          ],
           "confidence": "non documenté",
           "justification": "Case « vide justifié » de coverage-matrix.csv (ERA-2, Droit & justice, national) : « Droit provincial romain et statuts personnels non instrumentés ; dette documentaire, pas absence historique. » Aucun ID d'omission dédié n'existe pour PERIOD-2 dans omissions.yaml (OM-001 à OM-015 concernent PERIOD-3 à PERIOD-5) ; conformément à la règle 7 de POINT_METHODOLOGY.md, le silence est explicite et sources est vide. Aucune date, source ni citation inventée ; ancre = intervalle de l'ère (-332/641).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era2-econ-004",
@@ -59087,7 +60311,7 @@ export const DATASET = {
           "object": "le commerce du port alexandrin, relais de l'Égypte gréco-romaine",
           "text": "Port d'Alexandrie devient un grand centre commercial sous les Ptolémées, intégré aux échanges méditerranéens le commerce du port alexandrin, relais de l'Égypte gréco-romaine",
           "time": "-331",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "lieu",
             "institution",
@@ -59108,7 +60332,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Le port et le commerce alexandrins sont documentés dans le corpus (fixes.yaml, eg-alexandrie : « La ville devient un grand centre culturel et commercial sous les Ptolémées » ; country-audit.yaml, PLACE-001, fonction « port ») et par SRC-001. La matrice ERA-2 (Économie & travail, régional) classe la case « partiel » et signale l'absence de fiche sur le blé, la fiscalité ou la monnaie : ces dimensions ne sont pas inventées ici. Aucun chiffre de production, de prix ou de tonnage avancé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era2-soc-005",
@@ -59143,7 +60367,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La matrice ERA-2 (Société & démographie, régional) classe la case « partiel » : « Ville cosmopolite évoquée ; pas de fiche sur démographie, esclavage ou classes populaires. » Les diasporas grecque, juive et romaine sont documentées dans la case Migrations & diasporas de la même matrice ; SRC-001 est source de PLACE-001 (country-audit.yaml). Aucun effectif, aucune proportion et aucune date non documentée ne sont avancés ; ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era2-genre-006",
@@ -59187,7 +60411,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Meurtre d'Hypatie en mars 415 documenté par SRC-005 (Dzielska) et SRC-006 (Davis) ; PROP-005 dans proposals.yaml et la matrice ERA-2 (Femmes, genre, sexualités, régional, « couvert »). Le récit suit fixes.yaml et REPORT.md : le meurtre s'inscrit dans le conflit entre Orestes et Cyrille et ne doit être lu ni comme la fin du paganisme ni comme le martyre de la science moderne. Aucune date, acteur ou citation inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era2-relig-007",
@@ -59231,7 +60455,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Concile de Chalcédoine (451) et refus de la formule par l'Église d'Alexandrie, documentés par SRC-006 (Davis) et SRC-007 (Petry) ; PROP-006 et la matrice ERA-2 (Religions & croyances, national, « couvert »). La séparation est progressive et structure durablement l'identité copte, comme le confirme ACTOR-008 (Église copte orthodoxe, PERIOD-2) dans country-audit.yaml. Aucun anachronisme, ni date ni citation inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era2-sci-008",
@@ -59269,7 +60493,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "SRC-005 (Dzielska) documente la vie, l'école néoplatonicienne et la mort d'Hypatie à Alexandrie en 415 ; la matrice ERA-2 (Sciences, techniques & santé, régional, « couvert ») cite PROP-005 et Dzielska. Ce point porte sur l'école et l'enseignement ; le meurtre est traité séparément dans le domaine Femmes, genre, sexualités pour éviter la duplication. Aucune découverte scientifique non documentée n'est attribuée à Hypatie.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era2-arts-009",
@@ -59305,7 +60529,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "fixes.yaml (eg-alexandrie) et proposals.yaml (corrections) documentent que la bibliothèque et le phare sont postérieurs à la fondation par Alexandre et relèvent du programme ptolémaïque ; country-audit.yaml (PLACE-001) relève le « mythe de la bibliothèque » et donne SRC-001 comme source. La matrice ERA-2 (Arts & lettres, régional) classe la case « partiel » : absence de fiche sur l'art copte, la mosaïque ou la littérature, non inventés ici. L'intervalle -305/-30 est le royaume ptolémaïque documenté dans country-audit.yaml.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era2-env-010",
@@ -59330,10 +60554,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-EG-02-environnement-territoire"
+          ],
           "confidence": "non documenté",
           "justification": "Case « vide justifié » de coverage-matrix.csv (ERA-2, Environnement & territoire, national) : « Crues du Nil et histoire du delta non instrumentées pour la période ; dette. » Aucun ID d'omission dédié pour PERIOD-2 dans omissions.yaml ; silence explicite conformément à la règle 7 de POINT_METHODOLOGY.md, sources vide. Aucune crue, date, sécheresse ou chiffre non documenté n'est avancé ; ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era2-migr-011",
@@ -59369,7 +60595,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La matrice ERA-2 (Migrations & diasporas, transnational) classe la case « partiel » : « Diasporas grecque, juive et romaine évoquées indirectement ; pas de fiche spécifique. » country-audit.yaml inclut les « Grecs, Italiens et Arméniens historiques » et la « Diaspora juive d'Égypte » parmi les populations prises en compte, et SRC-001 figure parmi les sources de PLACE-001. Aucun effectif, aucune date d'arrivée ni assertion de composition non documentée ne sont avancés.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era2-peuples-012",
@@ -59410,7 +60636,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La matrice ERA-2 (Peuples autochtones & minorités, national, « couvert ») cite PROP-006 et Davis (SRC-006) pour « Coptes et non-chalcédoniens ». ACTOR-008 (Église copte orthodoxe, period_ids incluant PERIOD-2, sources SRC-006 et SRC-007) documente la séparation après Chalcédoine (451). L'étiquette « autochtones » est employée avec prudence et aucun chiffre de population non documenté n'est avancé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era2-memoire-013",
@@ -59447,7 +60673,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "country-audit.yaml (PLACE-001) relève « localisation du tombeau d'Alexandre » et « mythe de la bibliothèque » parmi les contestations d'Alexandrie, avec SRC-001 comme source ; la matrice ERA-2 (Mémoire & patrimoine, régional) classe la case « partiel » : « Mythe de la bibliothèque et patrimoine alexandrin ; pas de fiche critique. » Aucun récit de destruction, aucune date ni localisation non documentée ne sont affirmés.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era2-circ-014",
@@ -59483,7 +60709,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La matrice ERA-2 (Circulations transnationales, transnational) classe la case « partiel » : « Carrefour méditerranéen présent ; pas de fiche sur routes commerciales. » country-audit.yaml (PLACE-001) documente la fonction « port » d'Alexandrie et donne SRC-001 comme source. Ce point ne nomme aucune route, aucun volume ni aucune date non attestés dans le corpus ; ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era3-pol-001",
@@ -59524,7 +60750,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Conquête ottomane de janvier 1517, documentée dans le corpus (proposals.yaml, PROP-010 ; country-audit.yaml, CLAIM-010) par SRC-008 (Winter) et SRC-007 (Petry), deux synthèses indépendantes. Borne interne majeure de l'ère 641/1798 ; aucune date ni acteur inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era3-guer-002",
@@ -59568,7 +60794,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Septième croisade, Mansourah et capture de Louis IX en 1249–1250, documentées dans le corpus (proposals.yaml, PROP-008 ; country-audit.yaml, ACTOR-002, PLACE-007) par SRC-007 et SRC-011. Intervalle conforme à l'ère ; aucun chiffre ni date inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era3-droit-003",
@@ -59611,7 +60837,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « vide justifié » de coverage-matrix.csv (ERA-3, Droit & justice, impérial) et omission OM-002 (PERIOD-3, Droit & justice, impérial) : droit islamique, dhimma, tribunaux qadi, kanun ottoman et juridictions consulaires non fichés ; dette documentaire, pas non-pertinence. Aucune date ni source directe inventée ; ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era3-econ-004",
@@ -59651,7 +60877,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Grande famine fatimide de 1065–1072, documentée dans le corpus (proposals.yaml, PROP-007 ; coverage-matrix.csv, ERA-3 Économie & travail) par SRC-007 (Petry). Exception documentée dans proposals.yaml : synthèse unique à compléter par une étude spécialisée ; d'où « probable ». Aucun chiffre de prix ni de mortalité inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era3-soc-005",
@@ -59689,7 +60915,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Peste noire de 1347–1349, documentée dans le corpus (proposals.yaml, PROP-009 ; coverage-matrix.csv, ERA-3 Société & démographie) par SRC-009 (Dols) et SRC-007 (Petry), deux sources indépendantes. Aucun pourcentage de mortalité avancé : le chiffre reste non tranché dans proposals.yaml (review.unresolved).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era3-genre-006",
@@ -59733,7 +60959,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Régence de fait dès 1249 et sultanat de mai à juillet 1250, documentés dans le corpus (country-audit.yaml, ACTOR-002 ; proposals.yaml, PROP-008, ACTOR-PROP-002) par SRC-007. La légitimité contestée de Shajar al-Durr est signalée, non résolue, conformément à la règle 6 ; aucune date inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era3-relig-007",
@@ -59772,7 +60998,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "CLAIM-002 (country-audit.yaml) qualifie l'islamisation de processus pluriséculaire, avec SRC-007 et SRC-006 ; ACTOR-008 confirme le rôle de l'Église copte (PERIOD-3). La date de bascule démographique reste non tranchée (IXe, XIe ou XIVe siècle dans proposals.yaml, review.unresolved) : certitude « probable » conservée, controverse non résolue.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era3-sci-008",
@@ -59809,7 +61035,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « partiel » de coverage-matrix.csv (ERA-3, Sciences, techniques & santé, impérial) : Caire intellectuel évoqué, aucune fiche sur Ibn al-Haytham, médecine ou astronomie. SRC-007 (Petry) et SRC-008 (Winter, oulémas et vie urbaine) cadrent le contexte sans fournir de repère daté. Silence explicite ; aucune date, œuvre ou citation inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era3-arts-009",
@@ -59845,7 +61071,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « partiel » de coverage-matrix.csv (ERA-3, Arts & lettres, impérial) : architecture fatimide évoquée ; pas de fiche sur arts mamelouks, textiles ou céramique. Les repères 970 (al-Azhar) et 973 (capitale califale) proviennent des corrections de proposals.yaml (eg-caire, SRC-007). Aucune date ni œuvre inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era3-env-010",
@@ -59883,7 +61109,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Cellule « couvert » de coverage-matrix.csv (ERA-3, Environnement & territoire, national) : famine de 1065–1072 liée aux crues du Nil, documentée par PROP-007 et SRC-007 (Petry). Exception documentée : synthèse unique à compléter, d'où « probable ». Aucune donnée climatique chiffrée inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era3-migr-011",
@@ -59895,7 +61121,7 @@ export const DATASET = {
           "object": "l'entrée de l'Égypte dans l'empire arabe (conquête de 639 à 642) et le peuplement arabe",
           "text": "La conquête arabe et la migration arabe en Égypte ouvrent une ère de peuplement et de circulations, sans fiche dédiée aux Turcs, Circassiens, Bédouins ou marchands italiens l'entrée de l'Égypte dans l'empire arabe (conquête de 639 à 642) et le peuplement arabe",
           "time": "641",
-          "datePrecision": "approximate",
+          "datePrecision": "unknown",
           "families": [
             "processus",
             "groupe_social",
@@ -59922,7 +61148,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "Cellule « partiel » de coverage-matrix.csv (ERA-3, Migrations & diasporas, impérial) et omission OM-005 (groupes non fichés). Les corrections de proposals.yaml (eg-arabes) et CLAIM-010 donnent 639–642 pour la conquête et 641 comme borne conventionnelle ; d'où « probable ». SRC-007 et SRC-008 ; aucun groupe ni date inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era3-peuples-012",
@@ -59967,7 +61193,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « partiel » de coverage-matrix.csv (ERA-3, Peuples autochtones & minorités, impérial) et omission OM-005 (PERIOD-3, régional). Présence documentée dans country-audit.yaml (ACTOR-008 Église copte, ACTOR-009 Nubiens, period_ids PERIOD-3), mais aucune fiche dédiée ; silence explicite, aucune date ni source inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era3-memoire-013",
@@ -60008,7 +61234,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « partiel » de coverage-matrix.csv (ERA-3, Mémoire & patrimoine, impérial) : patrimoine fatimide présent (SRC-007), aucune fiche sur al-Maqrizi ni mémoire urbaine. Aucune datation de la vie d'al-Maqrizi n'est avancée : seul son nom, tel que cité dans la matrice, est repris.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era3-circ-014",
@@ -60045,7 +61271,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "Cellule « partiel » de coverage-matrix.csv (ERA-3, Circulations transnationales, transnational) : Caire carrefour commercial évoqué ; pas de fiche sur mer Rouge, pèlerinage ou commerce indien. Omission OM-006 cite le commerce de la mer Rouge et du pèlerinage. SRC-007 et SRC-008 ; aucune route, date ou citation inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era4-pol-001",
@@ -60084,7 +61310,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "ACTOR-012 et la correction eg-bonaparte documentent l'expédition de 1798–1801, la pierre de Rosette (découverte 1799, cession 1801), le retrait français de 1801 et la Description de l'Égypte ; SRC-011 (Daly) couvre la fin de la province ottomane. Intervalle conforme à l'ère 1798/1952.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era4-pol-002",
@@ -60125,7 +61351,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-011 et ACTOR-004 (SRC-010 Fahmy, SRC-011 Daly) documentent la reconnaissance de Muhammad Ali comme wali en 1805, le massacre des mamelouks en 1811, la conscription, les monopoles et l'hérédité en 1841. Dates toutes within l'ère 1798/1952.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era4-pol-003",
@@ -60167,7 +61393,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La correction eg-independance et ACTOR-005 documentent la déclaration unilatérale du 28 février 1922 ; PROP-013 (SRC-013, SRC-011) explique qu'elle est forcée par la révolution de 1919. SRC-011 est la synthèse de référence pour la monarchie issue de 1922.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era4-guer-001",
@@ -60207,7 +61433,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-012 (SRC-011 Daly, SRC-012 Jakes) documente le mouvement d'Ahmed Urabi, le bombardement d'Alexandrie en juillet 1882, la défaite de Tell el-Kebir le 13 septembre 1882 et une occupation jusqu'en 1956. Aucune date hors de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era4-droit-001",
@@ -60244,7 +61470,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La correction eg-independance énumère explicitement les quatre points réservés et précise que l'indépendance de 1922 n'est pas pleine ; SRC-011 (Daly) est la source de référence. La cellule ERA-4 Droit & justice est qualifiée de « partiel » dans la matrice, cette fiche la complète sans inventer de texte de loi.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era4-econ-001",
@@ -60284,7 +61510,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La matrice ERA-4 Économie cite « Canal, coton, dette et réformes de Muhammad Ali ; sources Daly, Jakes et Fahmy ». PROP-011 (SRC-010) documente les monopoles, PROP-012 (SRC-012) la dette et la crise du capitalisme colonial, SRC-011 la continuité. Certitude probable, faute de monographie unique sur la dette dans le registre.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era4-soc-001",
@@ -60326,7 +61552,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-013 et CLAIM-004 (SRC-013 Goldberg) documentent la participation des paysans, ouvriers, femmes et chrétiens, thèse d'une révolution paysanne à confronter aux récits centrés sur Le Caire ; SRC-011 complète le cadre. Le bilan de la répression reste disputé dans le registre : aucun chiffre unique n'est avancé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era4-femmes-001",
@@ -60365,7 +61591,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-014 et ACTOR-003 (SRC-014 Badran, SRC-013 Goldberg) documentent la fondation en mars 1923, les revendications et le refus du suffrage par la Constitution de 1923, obtenu seulement en 1956. Deux sources indépendantes du registre.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era4-relig-001",
@@ -60404,7 +61630,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "ACTOR-010 (SRC-011) documente la fondation en 1928 à Ismaïlia ; la matrice ERA-4 Religions & croyances qualifie la cellule de « partiel » et note l'absence de fiche sur les Frères musulmans. Certitude probable avec une seule source du registre pour la fondation.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era4-sci-001",
@@ -60442,7 +61668,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "La matrice ERA-4 marque la cellule « vide non traité » ; OM-008 documente explicitement l'omission (école de médecine d'Abou Zabal, Dar al-Ulum, ingénierie du canal, chemins de fer, santé publique). Aucune date ni source inventée ; ancre = intervalle de l'ère. Silence explicite conformément à la règle 7 de POINT_METHODOLOGY.md.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era4-arts-001",
@@ -60476,7 +61702,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "La matrice ERA-4 marque la cellule « vide non traité » ; OM-009 documente l'omission (Nahda, presse, théâtre, cinéma, littérature, musique). Aucune date ni source inventée ; ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era4-env-001",
@@ -60514,7 +61740,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La correction eg-suez et PLACE-004/005/006 (SRC-011, SRC-012) documentent l'inauguration en 1869 et la transformation du delta ; la matrice ERA-4 Environnement note « Canal et transformations du delta ». Formulation non téléologique conforme à la correction. Aucune date hors de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era4-migr-001",
@@ -60554,7 +61780,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "La matrice ERA-4 Migrations note « Main-d'œuvre du canal et migrations méditerranéennes ; pas de fiche dédiée » ; la correction eg-suez ajoute la corvée et les travailleurs égyptiens (SRC-011, SRC-012). CLAIM-003 qualifie la mortalité de « disputée » : aucun chiffre n'est repris comme fait unique.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era4-min-001",
@@ -60590,7 +61816,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "La matrice ERA-4 Peuples autochtones & minorités note « Minorités protégées par les Britanniques ; pas de fiche sur Juifs, Grecs, Italiens, Arméniens » ; OM-007 documente explicitement cette omission (SRC-011 comme evidence_checked). Aucune date ni source inventée ; ancre = intervalle de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era4-memoire-001",
@@ -60628,7 +61854,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La matrice ERA-4 Mémoire & patrimoine indique « 1919 et indépendance comme lieux de mémoire ; sources Goldberg et Daly ». PROP-013 et ACTOR-005 documentent le rôle de Zaghloul et du Wafd (SRC-013, SRC-011). Aucune date hors de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era4-circ-001",
@@ -60671,7 +61897,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "La matrice ERA-4 Circulations transnationales cite « Canal, commerce et expédition scientifique ; sources Daly et Jakes ». ACTOR-012 (Commission des sciences et des arts, Description de l'Égypte) et la correction eg-suez (raccourcit la route des Indes) fondent ce point sur SRC-011 et SRC-012. Aucune date hors de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era5-pol-001",
@@ -60711,7 +61937,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "Fait daté du corpus (dataset.js, eg-nasser et eg-nasser-point-1 ; ACTOR-011) et de CLAIM-005 (disputed) : SRC-015 (Gordon, Nasser's Blessed Movement) distingue coup, mouvement et révolution ; SRC-011 (Daly) couvre la monarchie et la période nassérienne. La correction auditée de eg-nasser sépare le coup du 23 juillet 1952, la présidence de Naguib (1953), la crise de 1954 et l'élection de Nasser (1956). Qualification conservée comme disputée ; aucune date ni source inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era5-pol-002",
@@ -60750,7 +61976,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Eg-tahrir et ses points 1 à 3 (dataset.js) documentent la chute de Moubarak en février 2011, l'élection de Morsi en 2012 et le coup du 3 juillet 2013 ; CLAIM-009 est marqué certain. SRC-019 (El-Ghobashy, Bread and Freedom) et SRC-020 (HRW) sont les sources enregistrées ; la correction auditée de eg-tahrir exige explicitement l'ajout de 2012–2013. Toutes les dates sont dans l'ère 1952/2026.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era5-guer-001",
@@ -60786,7 +62012,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Repère eg-suez-crise (dataset.js) : le résumé et la correction auditée donnent le 26 juillet 1956, le 29 octobre, le débarquement de novembre et le retrait de décembre 1956 à mars 1957 ; SRC-011 (Daly) est la source retenue par la correction et par la matrice ERA-5 « Guerres & diplomatie ». Port-Saïd et Ismaïlia sont des lieux du corpus (egypt-place-004 et -005).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era5-guer-002",
@@ -60820,7 +62046,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-016 (proposals.yaml) : les dates 5–10 juin 1967, la destruction de l'aviation égyptienne, l'occupation du Sinaï et de Gaza, la démission annoncée puis retirée de Nasser et la fermeture du canal jusqu'en 1975 sont explicitement dans le corpus ; SRC-016 (Oren) et SRC-011 (Daly) sont les sources enregistrées. Matrice ERA-5 « Guerres & diplomatie » : PROP-016.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era5-guer-003",
@@ -60856,7 +62082,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "CLAIM-006 est marqué certain et eg-paix (dataset.js) donne le 26 mars 1979, la suspension de la Ligue arabe et l'isolement diplomatique ; SRC-011 (Daly). La correction auditée de eg-paix distingue explicitement Camp David (septembre 1978), le Nobel (1978) et le traité de Washington (26 mars 1979) : aucune confusion de dates.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era5-droit-001",
@@ -60879,10 +62105,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-EG-05-droit-justice"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule ERA-5 « Droit & justice » de coverage-matrix.csv : statut partiel, entry_ids eg-tahrir, justification « État d'urgence et constitutions évoqués ; pas de fiche sur justice constitutionnelle. » Aucune omission dédiée au droit n'existe dans omissions.yaml pour PERIOD-5 (les OM-010 à OM-015 couvrent d'autres domaines) : silence explicite conformément à la règle 7 de POINT_METHODOLOGY.md, sans date ni source inventée ; ancre = bornes de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era5-eco-001",
@@ -60921,7 +62149,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Eg-nasser-point-3 (dataset.js) : « La réforme agraire de septembre 1952 plafonne les propriétés à 200 feddans ». La matrice ERA-5 « Économie & travail » est couverte par PROP-017 et eg-nasser ; SRC-011 (Daly) et SRC-015 (Gordon) sont les sources du registre associées à eg-nasser. Chiffre repris tel quel du corpus ; aucune donnée de production inventée.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era5-eco-002",
@@ -60956,7 +62184,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-017 (proposals.yaml) : dates des 18 et 19 janvier 1977, hausses de prix sur les produits subventionnés, déploiement de l'armée et annulation des mesures ; SRC-017 (Ketchley, Eibl, Gunning, Journal of Peace Research) et SRC-011 (Daly). Lieu Suez documenté (egypt-place-006, eventIds eg-prop-017). L'estimation des morts (77 à plusieurs centaines) est disputée et n'est pas reprise comme chiffre unique.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era5-soc-001",
@@ -60993,7 +62221,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Eg-tahrir-point-1 (dataset.js) et CLAIM-009 (certain) ; SRC-019 (El-Ghobashy) et SRC-011 (Daly) sont les sources enregistrées. Matrice ERA-5 « Société & démographie » : couverte par PROP-017 et eg-tahrir. Le lieu Le Caire est documenté (egypt-place-011). Aucun bilan chiffré non sourcé avancé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era5-fem-001",
@@ -61028,7 +62256,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Eg-nasser-point-3 (dataset.js) : « les femmes obtiennent le droit de vote en 1956 ». OM-010 (PERIOD-5, Femmes) documente explicitement ce silence avec evidence_checked SRC-014 (Badran) et SRC-011 (Daly) ; PROP-014 précise le caractère restrictif jusqu'en 1979. Matrice ERA-5 « Femmes, genre, sexualités » : partiel, « Suffrage de 1956 et mouvements féministes à ajouter ; sources Badran et Daly. »",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era5-rel-001",
@@ -61067,7 +62295,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Egypt-actor-010 (dataset.js) : « de l'assassinat de Sadate à la présidence de Morsi (2012–2013), puis cible d'une répression massive » ; sources SRC-011 et SRC-019. ACTOR-PROP-010 (proposals.yaml) confirme le rôle. Matrice ERA-5 « Religions & croyances » : partiel, « pas de fiche sur coptes, al-Azhar ou islamisme » ; la question distincte des coptes contemporains reste documentée par OM-011 (disputed) et n'est pas traitée ici.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era5-sci-001",
@@ -61107,7 +62335,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "PROP-015 (proposals.yaml) et eg-prop-015 (dataset.js) : 50 000 Nubiens, Kom Ombo, 44 villages, millions de palmiers et sauvetage des monuments par l'UNESCO ; SRC-018 (Hopkins & Mehanna) et SRC-011 (Daly). Matrice ERA-5 « Sciences, techniques & santé » : couverte par PROP-015. CLAIM-007 rappelle que les chiffres varient selon les modes de comptage (voir eg-era5-mig-001).",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era5-arts-001",
@@ -61131,10 +62359,12 @@ export const DATASET = {
           "institutions": [],
           "normative": [],
           "memory": [],
-          "sources": [],
+          "sources": [
+            "OM-AUTO-EG-05-arts-lettres"
+          ],
           "confidence": "non documenté",
           "justification": "Cellule ERA-5 « Arts & lettres » de coverage-matrix.csv : statut « vide non traité », justification « Umm Kulthum, cinéma, Mahfouz, musique populaire : aucune fiche. » Aucun ID d'omission dédié aux arts n'existe dans omissions.yaml pour PERIOD-5 (OM-009 concerne PERIOD-4) : silence explicite, aucune date ni source inventée ; ancre = bornes de l'ère.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era5-env-001",
@@ -61169,7 +62399,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Eg-prop-015-point-1 et les lieux egypt-place-002 (Assouan) et egypt-place-012 (Nubie / Wadi Halfa) documentent l'inondation de la vallée nubienne, le « patrimoine englouti » et le « partage de l'eau » ; PROP-015 et SRC-018/SRC-011. Matrice ERA-5 « Environnement & territoire » : couverte par PROP-015. OM-013 (PERIOD-5, environnement transnational : pollution du Caire, GERD, climat) reste une dette distincte, non traitée ici.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era5-mig-001",
@@ -61208,7 +62438,7 @@ export const DATASET = {
           ],
           "confidence": "probable",
           "justification": "PROP-015, eg-prop-015-point-2 et CLAIM-007 (probable, SRC-018) : 50 000 Nubiens relogés à Kom Ombo en 1963–1964 ; la revue proposals.yaml signale 50 000, 70 000 ou 100 000 selon les sources. Matrice ERA-5 « Migrations & diasporas » : couverte par PROP-015, « migrations vers le Golfe à ajouter » (OM-012, dette distincte non traitée ici). Certitude ramenée à probable conformément à CLAIM-007.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era5-peu-001",
@@ -61246,7 +62476,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Egypt-actor-009 (dataset.js, type « collective », rôles « peuple autochtone », « communauté déplacée », « minorité ») : « déplacement d'environ 50 000 personnes en 1963–1964 ; revendications foncières et culturelles persistantes » ; sources SRC-018 et SRC-011. ACTOR-PROP-009 confirme. Matrice ERA-5 « Peuples autochtones & minorités » : couverte par PROP-015 et PROP-018.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era5-mem-001",
@@ -61282,7 +62512,7 @@ export const DATASET = {
           ],
           "confidence": "disputé",
           "justification": "Matrice ERA-5 « Mémoire & patrimoine » : couverte par eg-tahrir et PROP-018, « Tahrir et Rabaa comme lieux de mémoire ; sources El-Ghobashy et HRW ». OM-014 (PERIOD-5, Mémoire, reason « disputed », status « documented ») : commémorations, mémoriaux de Rabaa, usages de Tahrir ; evidence SRC-019 et SRC-020. CLAIM-008 (probable) rapporte au moins 817 morts le 14 août 2013 selon HRW. Mémoire contestée conservée comme telle.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era5-circ-001",
@@ -61317,7 +62547,7 @@ export const DATASET = {
           ],
           "confidence": "certain",
           "justification": "Matrice ERA-5 « Circulations transnationales » : couverte, entry_ids eg-suez-crise, eg-paix, eg-suez, « Canal, guerre et paix ; source Daly ». Dates du corpus : eg-suez-crise (26 juillet 1956), PROP-016 (canal fermé jusqu'en 1975), eg-paix (traité du 26 mars 1979). SRC-011 (Daly) est la source enregistrée ; aucun fait nouveau inventé.",
-          "status": "validated"
+          "status": "extrait"
         },
         {
           "id": "eg-era5-circ-002",
@@ -61349,7 +62579,7 @@ export const DATASET = {
           ],
           "confidence": "non documenté",
           "justification": "OM-015 (PERIOD-5, Circulations transnationales, reason « not_yet_researched », status « to_fill ») : « La République arabe unie (1958–1961), le panarabisme nassérien et l'échec de l'union avec la Syrie ne sont pas fichés », evidence_checked SRC-015 et SRC-011. Les dates 1958–1961 proviennent de l'omission elle-même ; aucune date ni source supplémentaire inventée.",
-          "status": "validated"
+          "status": "extrait"
         }
       ]
     }

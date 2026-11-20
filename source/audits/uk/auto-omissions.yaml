@@ -1,0 +1,59 @@
+schema_version: "1.0"
+country_id: uk
+generated_by: scripts/reclassify-matrix.mjs
+rule: justification existante des propositions, aucun fait nouveau
+omissions:
+  - id: OM-AUTO-GB-01-femmes-genre-sexualites
+    period_id: ERA-1
+    domain: Femmes, genre, sexualités
+    justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Femmes, genre, sexualités, national) : OM-004 y est citée pour l'absence de fiche sur les femmes dans la Bretagne romaine ou anglo-saxonne et l'absence de source spécialisée au registre (Omissions.yaml place OM-004 en ERA-2 ; la matrice ERA-1 l'invoque pour cette cellule). OM-004 avertit contre le tokenisme : aucun nom ni événement féminin n'est inventé. Silence explicite, ancre = intervalle de l'ère."
+    origin: auto-from-justification
+    source_point_id: uk-era1-genre-007
+  - id: OM-AUTO-GB-01-sciences-techniques-sant
+    period_id: ERA-1
+    domain: Sciences, techniques & santé
+    justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Sciences, techniques & santé, national) : OM-002 documente l'absence de techniques, médecine et savoirs romains, avec SRC-001 et SRC-002 comme evidence_checked. Aucune invention technique ni date d'ouvrage ; silence explicite, ancre = intervalle de l'ère."
+    origin: auto-from-justification
+    source_point_id: uk-era1-sci-009
+  - id: OM-AUTO-GB-01-arts-lettres
+    period_id: ERA-1
+    domain: Arts & lettres
+    justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Arts & lettres, national) : OM-002 documente l'absence d'arts et d'architecture romains. Le mur d'Hadrien n'est mentionné dans uk-rome que comme frontière, pas comme objet artistique daté. Aucune œuvre, ni auteur, ni date inventée ; silence explicite, ancre = intervalle de l'ère."
+    origin: auto-from-justification
+    source_point_id: uk-era1-arts-010
+  - id: OM-AUTO-GB-01-memoire-patrimoine
+    period_id: ERA-1
+    domain: Mémoire & patrimoine
+    justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-1, Mémoire & patrimoine, national) : OM-002 y est citée pour l'absence de traitement de la mémoire romaine et des récits de fondation. Tout objet commémoratif postérieur à 1066 (statues, musées, cérémonies modernes) est hors de l'ère et n'est donc pas décrit ici. Silence explicite, ancre = intervalle de l'ère ; aucune date ni citation inventée."
+    origin: auto-from-justification
+    source_point_id: uk-era1-memoire-015
+  - id: OM-AUTO-GB-02-arts-lettres
+    period_id: ERA-2
+    domain: Arts & lettres
+    justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Arts & lettres) : OM-005 nomme explicitement l'architecture et les arts médiévaux parmi les domaines sans fiche ; evidence_checked SRC-001 et SRC-002. Aucun artiste, œuvre ou jalon artistique n'est avancé sans source. L'intervalle 1066/1485 est la borne de l'ère, non une date d'événement."
+    origin: auto-from-justification
+    source_point_id: uk-era2-arts-009
+  - id: OM-AUTO-GB-02-migrations-diasporas
+    period_id: ERA-2
+    domain: Migrations & diasporas
+    justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Migrations & diasporas) : migrations normandes, flamandes, galloises et irlandaises explicitement non traitées ; OM-006 documente l'absence, avec evidence_checked SRC-002, SRC-004, SRC-005 et SRC-006. Aucun flux, date ni groupe supplémentaire n'est inventé : les groupes nommés sont ceux de la matrice. L'intervalle est la borne de l'ère."
+    origin: auto-from-justification
+    source_point_id: uk-era2-migr-011
+  - id: OM-AUTO-GB-05-religions-croyances
+    period_id: ERA-5
+    domain: Religions & croyances
+    justification: "Cellule « Religions & croyances » de l'ère 5 marquée vide justifié avec renvoi à OM-014 dans coverage-matrix.csv. Aucun fait non vérifié avancé : le silence est explicite, non masqué."
+    origin: auto-from-justification
+    source_point_id: uk-era5-rel-001
+  - id: OM-AUTO-GB-05-arts-lettres
+    period_id: ERA-5
+    domain: Arts & lettres
+    justification: Cellule « Arts & lettres » de l'ère 5 marquée vide justifié avec renvoi à OM-015 dans coverage-matrix.csv. Aucun fait non vérifié avancé.
+    origin: auto-from-justification
+    source_point_id: uk-era5-art-001
+  - id: OM-AUTO-GB-05-migrations-diasporas
+    period_id: ERA-5
+    domain: Migrations & diasporas
+    justification: Cellule « Migrations & diasporas » de l'ère 5 partielle (uk-ww2); OM-012 couvre explicitement 1800–1945. Aucun fait non vérifié avancé.
+    origin: auto-from-justification
+    source_point_id: uk-era5-mig-001

@@ -1,71 +1,71 @@
 period_id,period_label,start_edtf,end_edtf,scale,domain,status,entry_ids,justification,reviewer,last_review
-ERA-1,Égypte pharaonique,-3100,-332,national,Politique & institutions,partiel,eg-unification,"Unification narrée comme événement ponctuel ; acteurs et lieux non renseignés, date conventionnelle.",,2026-11-13
-ERA-1,Égypte pharaonique,-3100,-332,national,Guerres & diplomatie,partiel,eg-ramses,"Ramsès II présent, mais aucune fiche sur Qadesh ou les campagnes ; acteurs et lieux manquants.",,2026-11-13
-ERA-1,Égypte pharaonique,-3100,-332,local,Droit & justice,partiel,PROP-003,"Conflit sur les rations et recours aux autorités, mais pas de fiche sur les institutions judiciaires pharaoniques.",,2026-11-13
-ERA-1,Égypte pharaonique,-3100,-332,local,Économie & travail,couvert,PROP-003,"Rations, corvée et travail des tombes : proposition avec acteurs, lieu et source.",,2026-11-13
-ERA-1,Égypte pharaonique,-3100,-332,local,Société & démographie,couvert,PROP-003,"Village d'artisans, familles et hiérarchies de travail ; source McDowell.",,2026-11-13
-ERA-1,Égypte pharaonique,-3100,-332,national,"Femmes, genre, sexualités",couvert,PROP-002,"Hatshepsout et l'expédition de Pount ; femme pharaon, sources Roehrig et Shaw.",,2026-11-13
-ERA-1,Égypte pharaonique,-3100,-332,national,Religions & croyances,partiel,eg-akhenaton,"Réforme atonienne présente, mais acteurs, lieux et sources manquants ; qualification du monothéisme à revoir.",,2026-11-13
-ERA-1,Égypte pharaonique,-3100,-332,national,"Sciences, techniques & santé",partiel,eg-kheops,"Pyramide et géométrie présentes, mais pas de fiche sur médecine, astronomie ou papyrus techniques.",,2026-11-13
-ERA-1,Égypte pharaonique,-3100,-332,national,Arts & lettres,partiel,eg-kheops; eg-ramses,"Architecture et propagande monumentales présentes ; pas de fiche sur littérature, musique ou artisanat.",,2026-11-13
-ERA-1,Égypte pharaonique,-3100,-332,national,Environnement & territoire,couvert,PROP-001,Crise du Nil de 2200–2050 av. J.-C. et effondrement de l'Ancien Empire ; source Shaw.,,2026-11-13
-ERA-1,Égypte pharaonique,-3100,-332,transnational,Migrations & diasporas,partiel,PROP-002,"Contacts avec Pount et populations étrangères mentionnés, mais pas de fiche sur les migrations nubiennes, libyennes ou asiatiques.",,2026-11-13
-ERA-1,Égypte pharaonique,-3100,-332,local,Peuples autochtones & minorités,couvert,PROP-004,"Communauté juive d'Éléphantine, temple et destruction en 410 av. J.-C. ; source Porten.",,2026-11-13
-ERA-1,Égypte pharaonique,-3100,-332,national,Mémoire & patrimoine,partiel,eg-kheops,"Patrimoine monumental présent, mais pas de fiche sur usages mémoriels, fouilles ou tourisme.",,2026-11-13
-ERA-1,Égypte pharaonique,-3100,-332,transnational,Circulations transnationales,couvert,PROP-002,"Pount, mer Rouge et échanges de myrrhe ; source Roehrig.",,2026-11-13
-ERA-2,Égypte gréco-romaine,-332,641,national,Politique & institutions,partiel,eg-alexandrie; eg-cleopatre,Alexandrie et annexion romaine présentes ; dates et acteurs à corriger.,,2026-11-13
-ERA-2,Égypte gréco-romaine,-332,641,national,Guerres & diplomatie,partiel,eg-cleopatre,"Actium et annexion évoqués, mais pas de fiche militaire détaillée.",,2026-11-13
-ERA-2,Égypte gréco-romaine,-332,641,national,Droit & justice,vide justifié,,"Droit provincial romain et statuts personnels non instrumentés ; dette documentaire, pas absence historique.",,2026-11-13
-ERA-2,Égypte gréco-romaine,-332,641,regional,Économie & travail,partiel,eg-alexandrie,"Port et commerce alexandrins présents ; pas de fiche sur blé, fiscalité ou monnaie.",,2026-11-13
-ERA-2,Égypte gréco-romaine,-332,641,regional,Société & démographie,partiel,eg-alexandrie,"Ville cosmopolite évoquée ; pas de fiche sur démographie, esclavage ou classes populaires.",,2026-11-13
-ERA-2,Égypte gréco-romaine,-332,641,regional,"Femmes, genre, sexualités",couvert,PROP-005,"Hypatie, philosophie et violence religieuse à Alexandrie ; sources Dzielska et Davis.",,2026-11-13
-ERA-2,Égypte gréco-romaine,-332,641,national,Religions & croyances,couvert,PROP-006,Chalcédoine (451) et séparation copte ; sources Davis et Petry.,,2026-11-13
-ERA-2,Égypte gréco-romaine,-332,641,regional,"Sciences, techniques & santé",couvert,PROP-005,Hypatie et l'école néoplatonicienne d'Alexandrie ; source Dzielska.,,2026-11-13
-ERA-2,Égypte gréco-romaine,-332,641,regional,Arts & lettres,partiel,eg-alexandrie,"Bibliothèque et Phare évoqués, mais pas de fiche sur arts copte, mosaïque ou littérature.",,2026-11-13
-ERA-2,Égypte gréco-romaine,-332,641,national,Environnement & territoire,vide justifié,,Crues du Nil et histoire du delta non instrumentées pour la période ; dette.,,2026-11-13
-ERA-2,Égypte gréco-romaine,-332,641,transnational,Migrations & diasporas,partiel,eg-alexandrie,"Diasporas grecque, juive et romaine évoquées indirectement ; pas de fiche spécifique.",,2026-11-13
-ERA-2,Égypte gréco-romaine,-332,641,national,Peuples autochtones & minorités,couvert,PROP-006,Coptes et non-chalcédoniens ; source Davis.,,2026-11-13
-ERA-2,Égypte gréco-romaine,-332,641,regional,Mémoire & patrimoine,partiel,eg-alexandrie,Mythe de la bibliothèque et patrimoine alexandrin ; pas de fiche critique.,,2026-11-13
-ERA-2,Égypte gréco-romaine,-332,641,transnational,Circulations transnationales,partiel,eg-alexandrie,Carrefour méditerranéen présent ; pas de fiche sur routes commerciales.,,2026-11-13
-ERA-3,Égypte islamique,641,1798,imperial,Politique & institutions,partiel,eg-arabes; eg-caire,"Conquête et fondation fatimide présentes ; pas de fiche sur Tulunides, Ayyubides, Mamelouks, Ottomans.",,2026-11-13
-ERA-3,Égypte islamique,641,1798,imperial,Guerres & diplomatie,couvert,PROP-008; PROP-010,"Septième croisade et Mansourah, puis conquête ottomane ; sources Petry et Winter.",,2026-11-13
-ERA-3,Égypte islamique,641,1798,imperial,Droit & justice,vide justifié,,"Droit islamique, dhimma et kanun ottoman non instrumentés ; dette.",,2026-11-13
-ERA-3,Égypte islamique,641,1798,national,Économie & travail,couvert,PROP-007; PROP-009,Famine fatimide et peste noire ; sources Petry et Dols.,,2026-11-13
-ERA-3,Égypte islamique,641,1798,national,Société & démographie,couvert,PROP-009,"Peste noire, mortalité et migrations rurales ; source Dols.",,2026-11-13
-ERA-3,Égypte islamique,641,1798,imperial,"Femmes, genre, sexualités",couvert,PROP-008,"Shajar al-Durr, sultane et transition mamelouke ; source Petry.",,2026-11-13
-ERA-3,Égypte islamique,641,1798,imperial,Religions & croyances,partiel,eg-arabes; eg-caire,"Islamisation et institutions présentes ; pas de fiche sur coptes, juifs, soufisme ou chiisme fatimide.",,2026-11-13
-ERA-3,Égypte islamique,641,1798,imperial,"Sciences, techniques & santé",partiel,eg-caire,"Caire intellectuel évoqué ; pas de fiche sur Ibn al-Haytham, médecine ou astronomie.",,2026-11-13
-ERA-3,Égypte islamique,641,1798,imperial,Arts & lettres,partiel,eg-caire,"Architecture fatimide évoquée ; pas de fiche sur arts mamelouks, textiles ou céramique.",,2026-11-13
-ERA-3,Égypte islamique,641,1798,national,Environnement & territoire,couvert,PROP-007,Famine de 1065–1072 liée aux crues du Nil ; source Petry.,,2026-11-13
-ERA-3,Égypte islamique,641,1798,imperial,Migrations & diasporas,partiel,eg-arabes,"Migration arabe évoquée ; pas de fiche sur Turcs, Circassiens, Bedouins ou marchands italiens.",,2026-11-13
-ERA-3,Égypte islamique,641,1798,imperial,Peuples autochtones & minorités,partiel,eg-arabes,"Coptes mentionnés ; pas de fiche sur dhimma, conversions ou juifs.",,2026-11-13
-ERA-3,Égypte islamique,641,1798,imperial,Mémoire & patrimoine,partiel,eg-caire,Patrimoine fatimide présent ; pas de fiche sur al-Maqrizi ou mémoire urbaine.,,2026-11-13
-ERA-3,Égypte islamique,641,1798,transnational,Circulations transnationales,partiel,eg-caire; eg-arabes,"Caire carrefour commercial évoqué ; pas de fiche sur mer Rouge, pèlerinage ou commerce indien.",,2026-11-13
-ERA-4,Égypte moderne,1798,1952,national,Politique & institutions,couvert,eg-bonaparte; eg-independance; PROP-011; PROP-012; PROP-013,"Expédition française, Muhammad Ali, occupation britannique et 1919 ; sources Daly, Fahmy, Jakes et Goldberg.",,2026-11-13
-ERA-4,Égypte moderne,1798,1952,national,Guerres & diplomatie,couvert,PROP-012,Occupation britannique de 1882 ; sources Daly et Jakes.,,2026-11-13
-ERA-4,Égypte moderne,1798,1952,national,Droit & justice,partiel,eg-independance,Déclaration de 1922 et points réservés ; pas de fiche sur tribunaux mixtes ou capitulations.,,2026-11-13
-ERA-4,Égypte moderne,1798,1952,national,Économie & travail,couvert,eg-suez; PROP-011,"Canal, coton, dette et réformes de Muhammad Ali ; sources Daly, Jakes et Fahmy.",,2026-11-13
-ERA-4,Égypte moderne,1798,1952,national,Société & démographie,couvert,PROP-013,Révolution de 1919 et mobilisation paysanne ; source Goldberg.,,2026-11-13
-ERA-4,Égypte moderne,1798,1952,national,"Femmes, genre, sexualités",couvert,PROP-014,Union féministe égyptienne (1923) ; source Badran.,,2026-11-13
-ERA-4,Égypte moderne,1798,1952,national,Religions & croyances,partiel,eg-independance,"Protection des minorités dans les points réservés ; pas de fiche sur Frères musulmans, al-Azhar ou coptes.",,2026-11-13
-ERA-4,Égypte moderne,1798,1952,national,"Sciences, techniques & santé",vide non traité,,"École de médecine, Dar al-Ulum, ingénierie du canal : aucune fiche.",,2026-11-13
-ERA-4,Égypte moderne,1798,1952,national,Arts & lettres,vide non traité,,"Nahda, cinéma, presse et littérature : aucune fiche.",,2026-11-13
-ERA-4,Égypte moderne,1798,1952,national,Environnement & territoire,partiel,eg-suez,"Canal et transformations du delta ; pas de fiche sur barrage d'Assouan 1902, coton ou pollution.",,2026-11-13
-ERA-4,Égypte moderne,1798,1952,transnational,Migrations & diasporas,partiel,eg-suez,Main-d'œuvre du canal et migrations méditerranéennes ; pas de fiche dédiée.,,2026-11-13
-ERA-4,Égypte moderne,1798,1952,national,Peuples autochtones & minorités,partiel,eg-independance,"Minorités protégées par les Britanniques ; pas de fiche sur Juifs, Grecs, Italiens, Arméniens.",,2026-11-13
-ERA-4,Égypte moderne,1798,1952,national,Mémoire & patrimoine,couvert,PROP-013; eg-independance,1919 et indépendance comme lieux de mémoire ; sources Goldberg et Daly.,,2026-11-13
-ERA-4,Égypte moderne,1798,1952,transnational,Circulations transnationales,couvert,eg-suez; eg-bonaparte,"Canal, commerce et expédition scientifique ; sources Daly et Jakes.",,2026-11-13
-ERA-5,Égypte contemporaine,1952,2026,national,Politique & institutions,couvert,eg-nasser; eg-paix; eg-tahrir; PROP-018,"Nasser, paix de 1979, 2011 et 2013 ; sources Gordon, Daly, El-Ghobashy et HRW.",,2026-11-13
-ERA-5,Égypte contemporaine,1952,2026,national,Guerres & diplomatie,couvert,eg-suez-crise; eg-paix; PROP-016,"Suez 1956, Six-Jours 1967, paix de 1979 ; sources Daly et Oren.",,2026-11-13
-ERA-5,Égypte contemporaine,1952,2026,national,Droit & justice,partiel,eg-tahrir,État d'urgence et constitutions évoqués ; pas de fiche sur justice constitutionnelle.,,2026-11-13
-ERA-5,Égypte contemporaine,1952,2026,national,Économie & travail,couvert,PROP-017; eg-nasser,"Réforme agraire, infitah, émeutes de 1977 ; sources Daly et Ketchley.",,2026-11-13
-ERA-5,Égypte contemporaine,1952,2026,national,Société & démographie,couvert,PROP-017; eg-tahrir,Émeutes du pain et révolution de 2011 ; sources Ketchley et El-Ghobashy.,,2026-11-13
-ERA-5,Égypte contemporaine,1952,2026,national,"Femmes, genre, sexualités",partiel,eg-nasser,Suffrage de 1956 et mouvements féministes à ajouter ; sources Badran et Daly.,,2026-11-13
-ERA-5,Égypte contemporaine,1952,2026,national,Religions & croyances,partiel,eg-paix; PROP-018,"Paix et violences politiques ; pas de fiche sur coptes, al-Azhar ou islamisme.",,2026-11-13
-ERA-5,Égypte contemporaine,1952,2026,national,"Sciences, techniques & santé",couvert,PROP-015,Haut barrage d'Assouan et déplacement nubien ; source Hopkins et Mehanna.,,2026-11-13
-ERA-5,Égypte contemporaine,1952,2026,national,Arts & lettres,vide non traité,,"Umm Kulthum, cinéma, Mahfouz, musique populaire : aucune fiche.",,2026-11-13
-ERA-5,Égypte contemporaine,1952,2026,national,Environnement & territoire,couvert,PROP-015,"Barrage, lac Nasser et déplacement ; source Hopkins et Mehanna.",,2026-11-13
-ERA-5,Égypte contemporaine,1952,2026,national,Migrations & diasporas,couvert,PROP-015,Déplacement nubien ; migrations vers le Golfe à ajouter.,,2026-11-13
-ERA-5,Égypte contemporaine,1952,2026,national,Peuples autochtones & minorités,couvert,PROP-015; PROP-018,"Nubiens et violences de 2013 ; sources Hopkins et Mehanna, HRW.",,2026-11-13
-ERA-5,Égypte contemporaine,1952,2026,national,Mémoire & patrimoine,couvert,eg-tahrir; PROP-018,Tahrir et Rabaa comme lieux de mémoire ; sources El-Ghobashy et HRW.,,2026-11-13
-ERA-5,Égypte contemporaine,1952,2026,transnational,Circulations transnationales,couvert,eg-suez-crise; eg-paix; eg-suez,"Canal, guerre et paix ; source Daly.",,2026-11-13
+ERA-1,Égypte pharaonique,-3100,-332,national,Politique & institutions,couvert,eg-era1-pol-001,"Unification narrée comme événement ponctuel ; acteurs et lieux non renseignés, date conventionnelle.",,2026-11-13
+ERA-1,Égypte pharaonique,-3100,-332,national,Guerres & diplomatie,couvert,eg-era1-guer-002,"Ramsès II présent, mais aucune fiche sur Qadesh ou les campagnes ; acteurs et lieux manquants.",,2026-11-13
+ERA-1,Égypte pharaonique,-3100,-332,local,Droit & justice,couvert,eg-era1-droit-003,"Conflit sur les rations et recours aux autorités, mais pas de fiche sur les institutions judiciaires pharaoniques.",,2026-11-13
+ERA-1,Égypte pharaonique,-3100,-332,local,Économie & travail,couvert,eg-era1-econ-004,"Rations, corvée et travail des tombes : proposition avec acteurs, lieu et source.",,2026-11-13
+ERA-1,Égypte pharaonique,-3100,-332,local,Société & démographie,couvert,eg-era1-soc-005,"Village d'artisans, familles et hiérarchies de travail ; source McDowell.",,2026-11-13
+ERA-1,Égypte pharaonique,-3100,-332,national,"Femmes, genre, sexualités",couvert,eg-era1-genre-006,"Hatshepsout et l'expédition de Pount ; femme pharaon, sources Roehrig et Shaw.",,2026-11-13
+ERA-1,Égypte pharaonique,-3100,-332,national,Religions & croyances,couvert,eg-era1-relig-007,"Réforme atonienne présente, mais acteurs, lieux et sources manquants ; qualification du monothéisme à revoir.",,2026-11-13
+ERA-1,Égypte pharaonique,-3100,-332,national,"Sciences, techniques & santé",couvert,eg-era1-sci-008,"Pyramide et géométrie présentes, mais pas de fiche sur médecine, astronomie ou papyrus techniques.",,2026-11-13
+ERA-1,Égypte pharaonique,-3100,-332,national,Arts & lettres,couvert,eg-era1-arts-009,"Architecture et propagande monumentales présentes ; pas de fiche sur littérature, musique ou artisanat.",,2026-11-13
+ERA-1,Égypte pharaonique,-3100,-332,national,Environnement & territoire,couvert,eg-era1-env-010,Crise du Nil de 2200–2050 av. J.-C. et effondrement de l'Ancien Empire ; source Shaw.,,2026-11-13
+ERA-1,Égypte pharaonique,-3100,-332,transnational,Migrations & diasporas,couvert,eg-era1-migr-011,"Contacts avec Pount et populations étrangères mentionnés, mais pas de fiche sur les migrations nubiennes, libyennes ou asiatiques.",,2026-11-13
+ERA-1,Égypte pharaonique,-3100,-332,local,Peuples autochtones & minorités,couvert,eg-era1-peuples-012,"Communauté juive d'Éléphantine, temple et destruction en 410 av. J.-C. ; source Porten.",,2026-11-13
+ERA-1,Égypte pharaonique,-3100,-332,national,Mémoire & patrimoine,couvert,eg-era1-memoire-013,"Patrimoine monumental présent, mais pas de fiche sur usages mémoriels, fouilles ou tourisme.",,2026-11-13
+ERA-1,Égypte pharaonique,-3100,-332,transnational,Circulations transnationales,couvert,eg-era1-circ-014,"Pount, mer Rouge et échanges de myrrhe ; source Roehrig.",,2026-11-13
+ERA-2,Égypte gréco-romaine,-332,641,national,Politique & institutions,couvert,eg-era2-pol-001,Alexandrie et annexion romaine présentes ; dates et acteurs à corriger.,,2026-11-13
+ERA-2,Égypte gréco-romaine,-332,641,national,Guerres & diplomatie,couvert,eg-era2-guer-002,"Actium et annexion évoqués, mais pas de fiche militaire détaillée.",,2026-11-13
+ERA-2,Égypte gréco-romaine,-332,641,national,Droit & justice,vide justifié,OM-AUTO-EG-02-droit-justice,"Droit provincial romain et statuts personnels non instrumentés ; dette documentaire, pas absence historique.",,2026-11-13
+ERA-2,Égypte gréco-romaine,-332,641,regional,Économie & travail,couvert,eg-era2-econ-004,"Port et commerce alexandrins présents ; pas de fiche sur blé, fiscalité ou monnaie.",,2026-11-13
+ERA-2,Égypte gréco-romaine,-332,641,regional,Société & démographie,couvert,eg-era2-soc-005,"Ville cosmopolite évoquée ; pas de fiche sur démographie, esclavage ou classes populaires.",,2026-11-13
+ERA-2,Égypte gréco-romaine,-332,641,regional,"Femmes, genre, sexualités",couvert,eg-era2-genre-006,"Hypatie, philosophie et violence religieuse à Alexandrie ; sources Dzielska et Davis.",,2026-11-13
+ERA-2,Égypte gréco-romaine,-332,641,national,Religions & croyances,couvert,eg-era2-relig-007,Chalcédoine (451) et séparation copte ; sources Davis et Petry.,,2026-11-13
+ERA-2,Égypte gréco-romaine,-332,641,regional,"Sciences, techniques & santé",couvert,eg-era2-sci-008,Hypatie et l'école néoplatonicienne d'Alexandrie ; source Dzielska.,,2026-11-13
+ERA-2,Égypte gréco-romaine,-332,641,regional,Arts & lettres,couvert,eg-era2-arts-009,"Bibliothèque et Phare évoqués, mais pas de fiche sur arts copte, mosaïque ou littérature.",,2026-11-13
+ERA-2,Égypte gréco-romaine,-332,641,national,Environnement & territoire,vide justifié,OM-AUTO-EG-02-environnement-territoire,Crues du Nil et histoire du delta non instrumentées pour la période ; dette.,,2026-11-13
+ERA-2,Égypte gréco-romaine,-332,641,transnational,Migrations & diasporas,couvert,eg-era2-migr-011,"Diasporas grecque, juive et romaine évoquées indirectement ; pas de fiche spécifique.",,2026-11-13
+ERA-2,Égypte gréco-romaine,-332,641,national,Peuples autochtones & minorités,couvert,eg-era2-peuples-012,Coptes et non-chalcédoniens ; source Davis.,,2026-11-13
+ERA-2,Égypte gréco-romaine,-332,641,regional,Mémoire & patrimoine,couvert,eg-era2-memoire-013,Mythe de la bibliothèque et patrimoine alexandrin ; pas de fiche critique.,,2026-11-13
+ERA-2,Égypte gréco-romaine,-332,641,transnational,Circulations transnationales,couvert,eg-era2-circ-014,Carrefour méditerranéen présent ; pas de fiche sur routes commerciales.,,2026-11-13
+ERA-3,Égypte islamique,641,1798,imperial,Politique & institutions,couvert,eg-era3-pol-001,"Conquête et fondation fatimide présentes ; pas de fiche sur Tulunides, Ayyubides, Mamelouks, Ottomans.",,2026-11-13
+ERA-3,Égypte islamique,641,1798,imperial,Guerres & diplomatie,couvert,eg-era3-guer-002,"Septième croisade et Mansourah, puis conquête ottomane ; sources Petry et Winter.",,2026-11-13
+ERA-3,Égypte islamique,641,1798,imperial,Droit & justice,vide justifié,OM-AUTO-EG-03-droit-justice,"Droit islamique, dhimma et kanun ottoman non instrumentés ; dette.",,2026-11-13
+ERA-3,Égypte islamique,641,1798,national,Économie & travail,couvert,eg-era3-econ-004,Famine fatimide et peste noire ; sources Petry et Dols.,,2026-11-13
+ERA-3,Égypte islamique,641,1798,national,Société & démographie,couvert,eg-era3-soc-005,"Peste noire, mortalité et migrations rurales ; source Dols.",,2026-11-13
+ERA-3,Égypte islamique,641,1798,imperial,"Femmes, genre, sexualités",couvert,eg-era3-genre-006,"Shajar al-Durr, sultane et transition mamelouke ; source Petry.",,2026-11-13
+ERA-3,Égypte islamique,641,1798,imperial,Religions & croyances,couvert,eg-era3-relig-007,"Islamisation et institutions présentes ; pas de fiche sur coptes, juifs, soufisme ou chiisme fatimide.",,2026-11-13
+ERA-3,Égypte islamique,641,1798,imperial,"Sciences, techniques & santé",couvert,eg-era3-sci-008,"Caire intellectuel évoqué ; pas de fiche sur Ibn al-Haytham, médecine ou astronomie.",,2026-11-13
+ERA-3,Égypte islamique,641,1798,imperial,Arts & lettres,couvert,eg-era3-arts-009,"Architecture fatimide évoquée ; pas de fiche sur arts mamelouks, textiles ou céramique.",,2026-11-13
+ERA-3,Égypte islamique,641,1798,national,Environnement & territoire,couvert,eg-era3-env-010,Famine de 1065–1072 liée aux crues du Nil ; source Petry.,,2026-11-13
+ERA-3,Égypte islamique,641,1798,imperial,Migrations & diasporas,couvert,eg-era3-migr-011,"Migration arabe évoquée ; pas de fiche sur Turcs, Circassiens, Bedouins ou marchands italiens.",,2026-11-13
+ERA-3,Égypte islamique,641,1798,imperial,Peuples autochtones & minorités,couvert,eg-era3-peuples-012,"Coptes mentionnés ; pas de fiche sur dhimma, conversions ou juifs.",,2026-11-13
+ERA-3,Égypte islamique,641,1798,imperial,Mémoire & patrimoine,couvert,eg-era3-memoire-013,Patrimoine fatimide présent ; pas de fiche sur al-Maqrizi ou mémoire urbaine.,,2026-11-13
+ERA-3,Égypte islamique,641,1798,transnational,Circulations transnationales,couvert,eg-era3-circ-014,"Caire carrefour commercial évoqué ; pas de fiche sur mer Rouge, pèlerinage ou commerce indien.",,2026-11-13
+ERA-4,Égypte moderne,1798,1952,national,Politique & institutions,couvert,eg-era4-pol-001;eg-era4-pol-002;eg-era4-pol-003,"Expédition française, Muhammad Ali, occupation britannique et 1919 ; sources Daly, Fahmy, Jakes et Goldberg.",,2026-11-13
+ERA-4,Égypte moderne,1798,1952,national,Guerres & diplomatie,couvert,eg-era4-guer-001,Occupation britannique de 1882 ; sources Daly et Jakes.,,2026-11-13
+ERA-4,Égypte moderne,1798,1952,national,Droit & justice,couvert,eg-era4-droit-001,Déclaration de 1922 et points réservés ; pas de fiche sur tribunaux mixtes ou capitulations.,,2026-11-13
+ERA-4,Égypte moderne,1798,1952,national,Économie & travail,couvert,eg-era4-econ-001,"Canal, coton, dette et réformes de Muhammad Ali ; sources Daly, Jakes et Fahmy.",,2026-11-13
+ERA-4,Égypte moderne,1798,1952,national,Société & démographie,couvert,eg-era4-soc-001,Révolution de 1919 et mobilisation paysanne ; source Goldberg.,,2026-11-13
+ERA-4,Égypte moderne,1798,1952,national,"Femmes, genre, sexualités",couvert,eg-era4-femmes-001,Union féministe égyptienne (1923) ; source Badran.,,2026-11-13
+ERA-4,Égypte moderne,1798,1952,national,Religions & croyances,couvert,eg-era4-relig-001,"Protection des minorités dans les points réservés ; pas de fiche sur Frères musulmans, al-Azhar ou coptes.",,2026-11-13
+ERA-4,Égypte moderne,1798,1952,national,"Sciences, techniques & santé",vide justifié,OM-AUTO-EG-04-sciences-techniques-sant,"École de médecine, Dar al-Ulum, ingénierie du canal : aucune fiche.",,2026-11-13
+ERA-4,Égypte moderne,1798,1952,national,Arts & lettres,vide justifié,OM-AUTO-EG-04-arts-lettres,"Nahda, cinéma, presse et littérature : aucune fiche.",,2026-11-13
+ERA-4,Égypte moderne,1798,1952,national,Environnement & territoire,couvert,eg-era4-env-001,"Canal et transformations du delta ; pas de fiche sur barrage d'Assouan 1902, coton ou pollution.",,2026-11-13
+ERA-4,Égypte moderne,1798,1952,transnational,Migrations & diasporas,couvert,eg-era4-migr-001,Main-d'œuvre du canal et migrations méditerranéennes ; pas de fiche dédiée.,,2026-11-13
+ERA-4,Égypte moderne,1798,1952,national,Peuples autochtones & minorités,vide justifié,OM-AUTO-EG-04-peuples-autochtones-mino,"Minorités protégées par les Britanniques ; pas de fiche sur Juifs, Grecs, Italiens, Arméniens.",,2026-11-13
+ERA-4,Égypte moderne,1798,1952,national,Mémoire & patrimoine,couvert,eg-era4-memoire-001,1919 et indépendance comme lieux de mémoire ; sources Goldberg et Daly.,,2026-11-13
+ERA-4,Égypte moderne,1798,1952,transnational,Circulations transnationales,couvert,eg-era4-circ-001,"Canal, commerce et expédition scientifique ; sources Daly et Jakes.",,2026-11-13
+ERA-5,Égypte contemporaine,1952,2026,national,Politique & institutions,couvert,eg-era5-pol-001;eg-era5-pol-002,"Nasser, paix de 1979, 2011 et 2013 ; sources Gordon, Daly, El-Ghobashy et HRW.",,2026-11-13
+ERA-5,Égypte contemporaine,1952,2026,national,Guerres & diplomatie,couvert,eg-era5-guer-001;eg-era5-guer-002;eg-era5-guer-003,"Suez 1956, Six-Jours 1967, paix de 1979 ; sources Daly et Oren.",,2026-11-13
+ERA-5,Égypte contemporaine,1952,2026,national,Droit & justice,vide justifié,OM-AUTO-EG-05-droit-justice,État d'urgence et constitutions évoqués ; pas de fiche sur justice constitutionnelle.,,2026-11-13
+ERA-5,Égypte contemporaine,1952,2026,national,Économie & travail,couvert,eg-era5-eco-001;eg-era5-eco-002,"Réforme agraire, infitah, émeutes de 1977 ; sources Daly et Ketchley.",,2026-11-13
+ERA-5,Égypte contemporaine,1952,2026,national,Société & démographie,couvert,eg-era5-soc-001,Émeutes du pain et révolution de 2011 ; sources Ketchley et El-Ghobashy.,,2026-11-13
+ERA-5,Égypte contemporaine,1952,2026,national,"Femmes, genre, sexualités",couvert,eg-era5-fem-001,Suffrage de 1956 et mouvements féministes à ajouter ; sources Badran et Daly.,,2026-11-13
+ERA-5,Égypte contemporaine,1952,2026,national,Religions & croyances,couvert,eg-era5-rel-001,"Paix et violences politiques ; pas de fiche sur coptes, al-Azhar ou islamisme.",,2026-11-13
+ERA-5,Égypte contemporaine,1952,2026,national,"Sciences, techniques & santé",couvert,eg-era5-sci-001,Haut barrage d'Assouan et déplacement nubien ; source Hopkins et Mehanna.,,2026-11-13
+ERA-5,Égypte contemporaine,1952,2026,national,Arts & lettres,vide justifié,OM-AUTO-EG-05-arts-lettres,"Umm Kulthum, cinéma, Mahfouz, musique populaire : aucune fiche.",,2026-11-13
+ERA-5,Égypte contemporaine,1952,2026,national,Environnement & territoire,couvert,eg-era5-env-001,"Barrage, lac Nasser et déplacement ; source Hopkins et Mehanna.",,2026-11-13
+ERA-5,Égypte contemporaine,1952,2026,national,Migrations & diasporas,couvert,eg-era5-mig-001,Déplacement nubien ; migrations vers le Golfe à ajouter.,,2026-11-13
+ERA-5,Égypte contemporaine,1952,2026,national,Peuples autochtones & minorités,couvert,eg-era5-peu-001,"Nubiens et violences de 2013 ; sources Hopkins et Mehanna, HRW.",,2026-11-13
+ERA-5,Égypte contemporaine,1952,2026,national,Mémoire & patrimoine,couvert,eg-era5-mem-001,Tahrir et Rabaa comme lieux de mémoire ; sources El-Ghobashy et HRW.,,2026-11-13
+ERA-5,Égypte contemporaine,1952,2026,transnational,Circulations transnationales,couvert,eg-era5-circ-001,"Canal, guerre et paix ; source Daly.",,2026-11-13

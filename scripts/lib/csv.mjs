@@ -29,3 +29,13 @@ export function parseCsv(text) {
   const header = rows.shift() || [];
   return rows.map((cells) => Object.fromEntries(header.map((key, index) => [key.trim(), (cells[index] || '').trim()])));
 }
+
+const escapeCell = (value) => {
+  const text = String(value ?? '');
+  return /[",\n\r]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
+};
+
+/* Sérialisation déterministe : l'ordre des colonnes est fourni par l'appelant. */
+export function stringifyCsv(rows, header) {
+  return [header.join(','), ...rows.map((row) => header.map((key) => escapeCell(row[key])).join(','))].join('\n') + '\n';
+}

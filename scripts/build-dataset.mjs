@@ -22,6 +22,12 @@ const PREFIX = {
   france: 'fr', uk: 'uk', usa: 'us', germany: 'de', italy: 'it',
   spain: 'es', china: 'cn', india: 'in', japan: 'jp', egypt: 'eg',
 };
+/* Vocabulaire fermé : une seule graphie par concept, quelle que soit la source. */
+const CONFIDENCE_ALIASES = Object.freeze({
+  disputed: 'disputé', contesté: 'disputé', controversy: 'disputé',
+  'non localisé': 'non documenté', uncertain: 'probable',
+});
+const normalizeConfidence = (value) => CONFIDENCE_ALIASES[String(value)] || String(value);
 
 function loadWindow(file) {
   const context = { window: {} };
@@ -150,7 +156,7 @@ for (const country of oldData.countries) {
     predicate: claim.predicate || '',
     object: claim.object || '',
     text: claim.text || '',
-    confidence: claim.confidence || 'probable',
+    confidence: normalizeConfidence(claim.confidence || 'probable'),
     sources: claim.sources || [],
   }));
 
@@ -190,6 +196,7 @@ for (const country of oldData.countries) {
         kind: 'récit',
         text: sentence,
         confidence: 'vérifié',
+        datePrecision: 'unknown',
         sources: [],
       })),
       ...relatedClaims.map((claim) => ({
@@ -197,6 +204,7 @@ for (const country of oldData.countries) {
         kind: 'audit',
         text: claim.text,
         confidence: claim.confidence,
+        datePrecision: 'unknown',
         sources: claim.sources,
       })),
       ...matchingActors.slice(0, 2).map((actor) => ({
@@ -204,13 +212,15 @@ for (const country of oldData.countries) {
         kind: 'figure',
         text: actor.assessment || `${actor.label} : ${actor.roles.join(', ')}`,
         confidence: 'vérifié',
+        datePrecision: 'unknown',
         sources: actor.sources,
       })),
       ...matchingPlaces.slice(0, 2).map((place) => ({
         id: `${place.id}-point`,
         kind: 'lieu',
         text: `${place.label} — ${place.functions.join(', ') || place.hierarchy || 'lieu documenté'}`,
-        confidence: place.lat !== null ? 'vérifié' : 'non localisé',
+        confidence: place.lat !== null ? 'vérifié' : 'non documenté',
+        datePrecision: 'unknown',
         sources: place.sources,
       })),
     ];

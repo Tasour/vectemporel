@@ -47,7 +47,7 @@ Un point ne doit jamais être réduit à une date : la date est un **champ**, pa
 
 ## 3. Règles d’intégrité
 
-1. **Aucune date sans rôle** : toute année doit dire ce qu’elle mesure (début, fin, borne conventionnelle,日期 approchée).
+1. **Aucune date sans rôle** : toute année doit dire ce qu’elle mesure (début, fin, borne conventionnelle, date approchée).
 2. **Aucune affirmation sans source** : `Src` peut être un ID du registre ou une omission documentée.
 3. **Aucun point invisible** : un point absent de la matrice n’existe pas pour le système.
 4. **Un point par cellule minimum** : pour chaque ère × domaine, il faut au moins un point ou un `vide justifié`.
@@ -63,11 +63,11 @@ Un pays est à **100 % de couverture** quand, pour chacune de ses ères :
 - chaque domaine de la matrice est soit `couvert` par au moins un point valide, soit `vide justifié` avec omission ID ;
 - aucun statut `partiel` ni `vide non traité` ne subsiste ;
 - les acteurs, lieux, groupes, institutions, repères normatifs et mémoires sont représentés quand le corpus le permet ;
-- le script `npm run verify:points` confirme le résultat.
+- le script `npm run verify:points` confirme le résultat et **échoue** (code de sortie 1) si une cellule manque ou si une anomalie est détectée ; la régénération de `COVERAGE_POINTS.md` est une commande distincte, `npm run report:coverage`.
 
 La couverture est donc **explicite et binaire**, pas une impression de complétude.
 
-## 5.hiérarchie des écailles
+## 5. Hiérarchie des écailles
 
 ```text
 Monde → Pays → Ère → Point → Sous-point

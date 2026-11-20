@@ -1,0 +1,29 @@
+schema_version: "1.0"
+country_id: spain
+generated_by: scripts/reclassify-matrix.mjs
+rule: justification existante des propositions, aucun fait nouveau
+omissions:
+  - id: OM-AUTO-ES-02-femmes-genre-sexualites
+    period_id: ERA-2
+    domain: Femmes, genre, sexualités
+    justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Femmes, genre, sexualités, national) : aucune source du registre ne permet une fiche documentée sur les femmes à l'époque moderne ; dette OM-005 (audits/spain/omissions.yaml, reason not_yet_researched, qui couvre l'histoire des femmes avant 1931). Silence explicite conformément à la règle 7 de POINT_METHODOLOGY.md ; aucune date ni source inventée, ancre = intervalle de l'ère."
+    origin: auto-from-justification
+    source_point_id: es-era2-genre-006
+  - id: OM-AUTO-ES-02-environnement-territoire
+    period_id: ERA-2
+    domain: Environnement & territoire
+    justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-2, Environnement & territoire, national) : pas de fiche sur les forêts, l'irrigation ou la Mesta ; dette OM-004 (audits/spain/omissions.yaml, reason source_absent, dont le libellé couvre l'histoire environnementale « médiévale et moderne » et cite SRC-001, SRC-003 et SRC-008). Silence explicite conformément à la règle 7 ; aucune date ni mesure environnementale inventée."
+    origin: auto-from-justification
+    source_point_id: es-era2-env-010
+  - id: OM-AUTO-ES-04-arts-lettres
+    period_id: ERA-4
+    domain: Arts & lettres
+    justification: "Cellule « partiel » de coverage-matrix.csv (ERA-4, Arts & lettres) : le bombardement du 26 avril 1937 est documenté comme fonction du lieu dans dataset.js (spain-place-9), mais aucune fiche artistique dédiée n'est proposée ; dette explicitée en OM-007. Aucun tableau, auteur ou date d'œuvre attribué sans source."
+    origin: auto-from-justification
+    source_point_id: es-era4-arts-009
+  - id: OM-AUTO-ES-04-environnement-territoire
+    period_id: ERA-4
+    domain: Environnement & territoire
+    justification: "Cellule « vide justifié » de coverage-matrix.csv (ERA-4, Environnement & territoire) ; OM-004 : barrages, Doñana et exode rural sans source au registre. Aucun fait environnemental daté ni aménagement précis inventé ; ancre = intervalle de l'ère."
+    origin: auto-from-justification
+    source_point_id: es-era4-env-010
