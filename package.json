@@ -9,9 +9,13 @@
     "start": "node scripts/serve.mjs",
     "verify": "node scripts/verify.mjs",
     "test:e2e": "node tests/e2e.mjs",
-    "check": "npm run verify && npm run verify:points && npm run test:e2e",
+    "check": "npm run verify && npm run verify:points && npm run test:e2e && npm run test:guards && npm run test:coverage-guard && npm run test:idempotence",
     "verify:points": "node scripts/verify-points.mjs",
-    "build:points": "node scripts/merge-points.mjs && npm run verify:points"
+    "report:coverage": "node scripts/report-coverage.mjs",
+    "build:points": "node scripts/merge-points.mjs && npm run verify:points",
+    "test:guards": "node tests/http-guards.mjs",
+    "test:idempotence": "node tests/build-idempotence.mjs",
+    "test:coverage-guard": "node tests/verify-points-guard.mjs"
   },
   "dependencies": {
     "yaml": "^2.9.1"
