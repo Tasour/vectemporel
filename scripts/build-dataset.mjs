@@ -92,6 +92,8 @@ const oldOutlines = loadWindow(path.join(OLD, 'place-atlas.js')).VECTEMPOREL_OUT
 
 fs.mkdirSync(IMG_OUT, { recursive: true });
 const countries = [];
+const appliedFixes = [];
+const missingFixes = [];
 
 for (const country of oldData.countries) {
   const auditDir = AUDIT_DIRS[country.id];
@@ -99,6 +101,15 @@ for (const country of oldData.countries) {
   const auditPath = path.join(OLD, 'audits', auditDir, 'country-audit.yaml');
   const csvPath = path.join(OLD, 'audits', auditDir, 'source-register.csv');
   const audit = fs.existsSync(auditPath) ? YAML.parse(fs.readFileSync(auditPath, 'utf8')) : {};
+  const fixesPath = path.join(OLD, 'audits', auditDir, 'fixes.yaml');
+  const fixes = fs.existsSync(fixesPath) ? YAML.parse(fs.readFileSync(fixesPath, 'utf8')) : {};
+  const eventFixes = new Map();
+  const knownIds = new Set(country.events.map((event) => event.id));
+  for (const update of fixes.event_updates || []) {
+    if (!update.id || !update.set) continue;
+    if (!knownIds.has(update.id)) missingFixes.push(`${country.id}/${update.id}`);
+    else eventFixes.set(update.id, update.set);
+  }
   const sourceRows = fs.existsSync(csvPath) ? csvRows(fs.readFileSync(csvPath, 'utf8')) : [];
   const sources = new Map(sourceRows.map((row) => [row.source_id, {
     id: row.source_id,
@@ -160,7 +171,10 @@ for (const country of oldData.countries) {
     sources: claim.sources || [],
   }));
 
-  const events = country.events.map((event) => {
+  const events = country.events.map((rawEvent) => {
+    const fix = eventFixes.get(rawEvent.id);
+    if (fix) appliedFixes.push(`${country.id}/${rawEvent.id}`);
+    const event = fix ? { ...rawEvent, ...fix } : rawEvent;
     const eraIdx = eraIndexForYear(country, event.year);
     const era = eras[Math.max(0, eraIdx)];
     const image = oldImages[event.id];
@@ -293,6 +307,7 @@ const dataset = {
     countries: countries.length,
     events: countries.reduce((sum, country) => sum + country.events.length, 0),
     points: countries.reduce((sum, country) => sum + country.events.reduce((n, event) => n + event.points.length, 0), 0),
+    appliedFixes: [...appliedFixes].sort(),
   },
   countries,
 };

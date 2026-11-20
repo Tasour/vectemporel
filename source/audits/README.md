@@ -31,10 +31,13 @@ audits/<pays>/
   coverage-matrix.csv      # périodes × 14 domaines × échelles
   source-register.csv      # sources vérifiées, avec indépendance et fiabilité
   omissions.yaml           # omissions explicites, justifiées
-  proposals.yaml           # propositions d’événements, acteurs, lieux, corrections
-  fixes.yaml               # patch d’intégration : corrections, ajouts, renommages d’ères
-  REPORT.md                # synthèse experte, angles morts, priorités
+  proposals.yaml           # ARCHIVE HISTORIQUE : file de revue, non consommée par le build
+  fixes.yaml               # CORRECTIONS ACTIVES : appliquées en mémoire par build-dataset.mjs
+  auto-omissions.yaml      # absences dérivées des justifications existantes (généré)
+  REPORT.md                # ARCHIVE HISTORIQUE : synthèse experte, chiffres non recalculés
 ```
+
+`fixes.yaml` est appliqué de façon déterministe lors de `npm run build:data` (aucune écriture dans `source/data.js`) et chaque correction appliquée est tracée dans `meta.appliedFixes`, contrôlée par `npm run verify`. `proposals.yaml` et `REPORT.md` sont conservés pour la traçabilité mais ne sont pas des sources d'exécution : leurs chiffres et leurs files de revue n'ont pas été rejoués.
 
 ## Règles
 
@@ -47,11 +50,8 @@ audits/<pays>/
 ## Commandes
 
 ```bash
-npm run audit:timeline          # audit structurel global
-npm run audit:timeline:strict   # échoue si la cible v1.0 est < 80/100
-npm run audit:dossiers          # contrôle structurel des 10 dossiers pays
-npm run apply:fixes:dry         # simule l’application des patches fixes.yaml
-npm run apply:fixes             # applique les patches à data.js
-npm run verify:sources          # vérifie DOI et URL des sources
-npm run verify                  # vérifie les liens Grokipedia
+npm run build:data              # régénère dataset.js en appliquant fixes.yaml
+npm run build:points            # fusionne les propositions validées
+npm run verify                  # contrôle les données, les fixes appliqués et les légendes
+npm run report:omissions        # régénère docs/arbitrage-omissions.md
 ```

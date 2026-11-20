@@ -2,6 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
+import YAML from 'yaml';
 
 const ROOT = path.resolve(new URL('..', import.meta.url).pathname);
 const src = fs.readFileSync(path.join(ROOT, 'src/data/dataset.js'), 'utf8');
@@ -31,6 +32,13 @@ check('statut extrait des points d’audit', auditPoints.every((point) => point.
 check('chaque pays a des ères', data.countries.every((country) => country.eras.length > 0));
 check('chaque repère a une ère valide', events.every((event) => event.countryEraValid !== false));
 check('chaque image existe', events.every((event) => !event.image || fs.existsSync(path.join(ROOT, event.image.src))));
+const declaredFixes = data.countries.reduce((sum, country) => {
+  const file = path.join(ROOT, 'source', 'audits', country.id, 'fixes.yaml');
+  if (!fs.existsSync(file)) return sum;
+  return sum + (YAML.parse(fs.readFileSync(file, 'utf8')).event_updates || []).filter((item) => item.id && item.set).length;
+}, 0);
+check('corrections d’audit appliquées', data.meta.appliedFixes?.length === declaredFixes,
+  `${data.meta.appliedFixes?.length || 0}/${declaredFixes}`);
 const UNTRANSLATED = /\b(seen from|view of|in the|from the|reconstruction of|the opening of)\b/i;
 const prose = (text) => String(text || '').replace(/\S+\.(png|jpe?g|svg|gif)\b/gi, '');
 check('légendes d’images en français', events.every((event) => !event.image

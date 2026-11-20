@@ -20,7 +20,8 @@
     "test:pwa": "node tests/pwa.mjs",
     "build:pages": "node scripts/build-pages.mjs",
     "capture:all": "node scripts/capture-all.mjs",
-    "check:imports": "node scripts/check-imports.mjs"
+    "check:imports": "node scripts/check-imports.mjs",
+    "report:omissions": "node scripts/report-omissions.mjs"
   },
   "engines": {
     "node": ">=20"
