@@ -121,6 +121,11 @@
 
   function setHover(code) {
     if (state.hoverCode === code) return;
+    if (code && !state.flagImages.has(code)) {
+      loadFlag(code).then(() => {
+        if (state.hoverCode === code) { state.hoverCode = null; setHover(code); }
+      });
+    }
     state.hoverCode = code;
     if (state.uniforms) {
       const color = paletteColor(code);
@@ -163,7 +168,6 @@
 
   /* Drapeaux locaux : un CanvasTexture par pays, étiré sur la boîte
      équirectangulaire du pays relevée dans la texture de picking. */
-  const FLAG_CODES = ['FR', 'GB', 'US', 'DE', 'IT', 'ES', 'CN', 'IN', 'JP', 'EG'];
 
   /* Rectangle équirectangulaire du drapeau, centré sur le pays et dont le
      ratio 3:2 est préservé en degrés (correction du cosinus de latitude).
@@ -214,8 +218,12 @@
     };
   }
 
-  async function prepareFlags() {
-    await Promise.all(FLAG_CODES.map((code) => new Promise((resolve) => {
+  const flagPending = new Set();
+
+  async function loadFlag(code) {
+    if (!state.renderer || state.flagImages.has(code) || flagPending.has(code)) return;
+    flagPending.add(code);
+    await new Promise((resolve) => {
       const image = new Image();
       image.onload = () => {
         state.flagImages.set(code, image);
@@ -237,7 +245,8 @@
       };
       image.onerror = () => resolve();
       image.src = `public/flags/${code}.svg`;
-    })));
+    });
+    flagPending.delete(code);
   }
 
   /* Masque vectoriel du pays, rasterisé uniquement pour le pays survolé et à
@@ -948,7 +957,6 @@
       pickContext.drawImage(pickTexture.image, 0, 0);
       state.pickData = pickContext.getImageData(0, 0, palette.width, palette.height).data;
 
-      await prepareFlags();
       state.flagTierCurrent = flagTier();
       buildScene(pickTexture, mapTexture);
       attachInteractions();
