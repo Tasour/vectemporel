@@ -4,6 +4,8 @@
 > **Périmètre** : `~/Projects/vectemporel-atlas` (Atlas, `source/`, `scripts/`, `public/`, `tests/`, documentation, 1 165 rapports Markdown) + `~/Projects/_archive/vectemporel-poc` (224 Mo, 8 527 fichiers) + service systemd et lanceur desktop.
 > **Méthode** : 7 audits parallèles en lecture seule (données, architecture/performance, accessibilité, sécurité, tests/dette, visuel/contenu, parité fonctionnelle) + sondes navigateur/HTTP indépendantes. **Aucun fichier du projet, aucun service et aucun rapport d'audit n'ont été modifiés.** Aucune commande d'écriture (`build:data`, `build:points`, `verify:points`, Git) n'a été exécutée ; le test de crash du serveur n'a pas été joué pour ne pas perturber le service (démonstration statique).
 
+> **Mise à jour 2026-11-20 (P2)** : les 1 152 rapports détaillés cités ci-dessous ont été déplacés vers `docs/archive-audits/`. Seules les 10 synthèses restent dans `UNIFIED_AUDIT/`. Les chemins `UNIFIED_AUDIT/.../views/*.md` ci-dessous sont donc historiques.
+
 ---
 
 ## 1. Verdict

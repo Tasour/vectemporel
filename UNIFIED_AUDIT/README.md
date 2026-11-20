@@ -1,81 +1,20 @@
-> **Archive historique (2026-11-20).** Les chemins `v1/` et `v2/` cités ci-dessous n'existent plus : le POC est archivé dans `~/Projects/_archive/vectemporel-poc`, l'app active est `~/Projects/vectemporel-atlas`. Les chiffres de validation de ces synthèses ne sont pas rejouables ; se référer à `AUDIT_COMPLET.md` et à `npm run check`.
+# Index des synthèses d'audit (archive)
 
-# Vectemporel unifié — audit des vues (V1 + Atlas)
+Ce dossier ne conserve plus que les **synthèses** des audits ayant conduit à l'Atlas. Les **1 152 rapports détaillés** (chantiers, lentilles, thèmes, scripts de contrôle textuels) sont archivés sous [`docs/archive-audits/`](../docs/archive-audits/) : ils documentent le processus historique mais ne sont pas rejouables (chemins `v1/`/`v2/` disparus, chiffres non recalculés).
 
+## Synthèses conservées
 
+- [Synthèse maître](./SYNTHESE.md) — 13 vues, arbitrages, validation finale historique.
+- [Synthèse des vues, passe 1](./SYNTHESE_VUES.md)
+- [Synthèse des vues, passe 2](./SYNTHESE_VUES_V2.md)
+- [Chronologie](./CHRONOLOGIE/SYNTHESE.md)
+- [Constellation](./CONSTELLATION/SYNTHESE.md)
+- [Géographie](./GEOGRAPHIE/SYNTHESE.md)
+- [Monde](./MONDE/SYNTHESE.md)
+- [Navigation](./NAVIGATION/SYNTHESE.md)
+- [Points](./POINTS/SYNTHESE.md)
+- [Récit](./RECIT/SYNTHESE.md)
 
-Hub de coordination pour l'audit parallèle de **toutes les vues** de Vectemporel,
+## Référence courante
 
-traité comme **une seule et unique application** (V1 POC + Atlas V-ATLAS).
-
-
-
-- V1 : `/home/tasour/Projects/vectemporel`
-
-- Atlas : `/home/tasour/Projects/vectemporel-atlas`
-
-
-
-Chaque vue possède **un sous-agent expert**, un rapport de **10 chantiers**, et
-
-implémente **les 10 chantiers** dans ses propres fichiers. L'agent maître
-
-synchronise les avancées dans `SYNTHESE.md`.
-
-
-
-## Vues et propriétaires
-
-
-
-| ID | Vue | Version | Agent | Fichiers possédés |
-
-| --- | --- | --- | --- | --- |
-
-| `v1-monde-3d` | Monde 3D / Plan | V1 | ux-accessibilite | `globe-engine.js`, `plan.js` |
-
-| `v1-systeme-solaire` | Système solaire | V1 | ux-accessibilite | `solar.js` |
-
-| `v1-recit` | Récit (périodes/panorama/lieux) | V1 | pedagogue | `story.js`, `satellite-map.js` |
-
-| `v1-dragon` | Dragon (canevas zoomable) | V1 | ux-accessibilite | `dragon.js` |
-
-| `v1-frise` | Frise chronologique | V1 | indexeur-semantique | `app.js` (zone frise) |
-
-| `v1-fiche-detaillee` | Fiche détaillée | V1 | general | `app.js` (zone fiche) |
-
-| `v1-lecteur` | Lecteur de source | V1 | pedagogue | `app.js` (zone lecteur/recherche), `server.mjs` |
-
-| `atlas-globe` | Globe | Atlas | ux-accessibilite | `src/views/globe.js` |
-
-| `atlas-chronologie` | Chronologie | Atlas | indexeur-semantique | `src/views/chronology.js` |
-
-| `atlas-recit` | Récit guidé | Atlas | pedagogue | `src/views/recit.js` |
-
-| `atlas-geographie` | Géographie | Atlas | indexeur-semantique | `src/views/geography.js` |
-
-| `atlas-constellation` | Constellation | Atlas | general | `src/views/constellation.js` |
-
-| `atlas-coque-navigation` | Coque, état, clavier | Atlas | ux-accessibilite | `src/ui/shell.js`, `src/domain/store.js`, `src/platform/keyboard.js` |
-
-
-
-## Rapports
-
-
-
-`views/<id>.md` — 10 chantiers structurés, statut d'implémentation, vérifications.
-
-
-
-## Règles de non-collision
-
-
-
-- Un sous-agent ne modifie que ses fichiers possédés.
-
-- `app.js` de V1 est partagé par trois vues : edits avec ancres uniques, relecture avant chaque modification.
-
-- `styles.css` : ajout d'un bloc signalé en fin de fichier, aucune suppression de règles existantes.
-
-- Aucune donnée historique inventée, aucune commande Git.
+Pour l'état réel du projet, voir [`AUDIT_COMPLET.md`](../AUDIT_COMPLET.md), [`docs/adr/0001-archivage-poc.md`](../docs/adr/0001-archivage-poc.md) et la sortie de `npm run check`. Les chiffres des synthèses ci-dessus sont des affirmations historiques, pas des mesures.
