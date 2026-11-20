@@ -182,7 +182,7 @@ register('E011', ctx => {
       }
     };
     window[NAV_KEY] = onNav;
-    window.addEventListener('keydown', onNav, true);
+    window.VECTEMPOREL_KEYS?.registerScoped?.(() => true, onNav);
   }
 
   /* E011-09 — Stabilité du focus : la coque restaure déjà le focus avec

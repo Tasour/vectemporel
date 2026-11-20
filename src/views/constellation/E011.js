@@ -217,8 +217,8 @@ function onFocusIn(event) {
 function installListeners() {
   if (listenersInstalled || typeof document === 'undefined') return;
   listenersInstalled = true;
-  document.addEventListener('keydown', onKeyDown, true);
-  document.addEventListener('keydown', onLayerKey, true);
+  window.VECTEMPOREL_KEYS?.registerScoped?.(() => true, onKeyDown);
+  window.VECTEMPOREL_KEYS?.registerScoped?.(() => true, onLayerKey);
   document.addEventListener('focusin', onFocusIn, true);
 }
 

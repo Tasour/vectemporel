@@ -130,7 +130,7 @@ let ecouteurPointeur = null;
 function chargerEcouteurs() {
   if (ecouteursArmes || typeof window === 'undefined') return;
   ecouteursArmes = true;
-  window.addEventListener('keydown', surTouche, true);
+  window.VECTEMPOREL_KEYS?.registerScoped?.(() => true, surTouche);
   ecouteurPointeur = () => appliquerModeClavier(false);
   window.addEventListener('pointerdown', ecouteurPointeur, true);
 }

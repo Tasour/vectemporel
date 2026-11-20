@@ -299,7 +299,7 @@ function install(ctx) {
   watch(stage || host);
 
   if (!keyBound) {
-    document.addEventListener('keydown', onKeyDown, true);
+    window.VECTEMPOREL_KEYS?.registerScoped?.(() => true, onKeyDown);
     document.addEventListener('focusin', onFocusIn, true);
     keyBound = true;
   }

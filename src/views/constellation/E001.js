@@ -75,7 +75,7 @@ register('E001', ctx => {
       if (destination && destination !== target) destination.click();
     };
     window[NAV_KEY] = onNav;
-    window.addEventListener('keydown', onNav, true);
+    window.VECTEMPOREL_KEYS?.registerScoped?.(() => true, onNav);
   }
 
   /* E001-05 — Marquage du soleil focalisé : l'anneau de focus reste visible. */

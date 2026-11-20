@@ -584,6 +584,7 @@ function footerText() {
 // M3-07 : render reçoit désormais (state, reason) depuis subscribe(app.js:125).
 export function render(_state, reason) {
   if (!root) return;
+  window.VECTEMPOREL_KEYS?.clearScoped?.();
   const activeBefore = document.activeElement;
   const captured = { key: captureFocusKey(), sig: focusSignature(activeBefore) };
   root.innerHTML = '';

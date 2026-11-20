@@ -269,6 +269,6 @@ register('E051', ctx => {
       }
     };
     window[NAV_KEY] = onNav;
-    window.addEventListener('keydown', onNav, true);
+    window.VECTEMPOREL_KEYS?.registerScoped?.(() => true, onNav);
   }
 });

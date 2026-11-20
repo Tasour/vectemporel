@@ -278,7 +278,7 @@ register('E048', ctx => {
       announce(`Entrée ${next + 1} sur ${entries.length} : ${normalize(destination.node) || destination.label}`);
     };
     window[navKey] = onNav;
-    window.addEventListener('keydown', onNav, true);
+    window.VECTEMPOREL_KEYS?.registerScoped?.(() => true, onNav);
     legend.dataset.v2e048Nav = '1';
   } else {
     legend.dataset.v2e048Nav = '0';

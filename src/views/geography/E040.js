@@ -210,7 +210,7 @@ function onKey(event) {
 function installGuard() {
   if (S.guardReady || typeof window === 'undefined') return;
   S.guardReady = true;
-  window.addEventListener('keydown', onKey, true);
+  window.VECTEMPOREL_KEYS?.registerScoped?.(() => true, onKey);
 }
 
 function installVisibility() {

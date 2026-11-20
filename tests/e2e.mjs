@@ -105,6 +105,7 @@ await page.goto('http://127.0.0.1:4181/index.html#/france/1789-1799/fr-revolutio
 await new Promise((resolve) => setTimeout(resolve, 700));
 check('deep link POC compat', await page.evaluate(() => window.VATLAS.getState().countryId === 'france' && window.VATLAS.getState().eventIndex >= 0));
 check('bouton partage', (await page.$$('.shell-share')).length === 1);
+check('registre clavier scoping disponible', await page.evaluate(() => typeof window.VECTEMPOREL_KEYS?.registerScoped === 'function' && typeof window.VECTEMPOREL_KEYS?.clearScoped === 'function'));
 check('taxonomie alignée', await page.evaluate(() => window.VECTEMPOREL_KEYS?.taxonomyAligned?.() === true));
 check('zéro collision de raccourcis', await page.evaluate(() => (window.VECTEMPOREL_KEYS?.conflicts?.() || ['non exposé']).length === 0));
 check('6 vues déclarées', await page.evaluate(() => (window.VATLAS?.taxonomy?.length || 0) === 6));

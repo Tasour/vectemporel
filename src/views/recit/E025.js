@@ -266,9 +266,9 @@ function capFil(layout) {
   if (!docEcoute && typeof document !== 'undefined') {
     docEcoute = true;
     document.addEventListener('pointerdown', () => { clavierActif = false; }, true);
-    document.addEventListener('keydown', (event) => {
+    window.VECTEMPOREL_KEYS?.registerScoped?.(() => true, (event) => {
       if (!event.altKey && !event.ctrlKey && !event.metaKey) clavierActif = true;
-    }, true);
+    });
   }
   layout.addEventListener('focusin', (event) => {
     try {

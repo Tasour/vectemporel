@@ -122,9 +122,34 @@ function navigate(view, axis, delta) {
   return true;
 }
 
+const scopedHandlers = new Set();
+
+/* V2-05 : les lentilles enregistrent leurs besoins clavier ici, au lieu
+ * d'ajouter des écouteurs globaux en capture. Un handler qui appelle
+ * preventDefault() est considéré comme consommé. */
+export function registerScoped(predicate, handler) {
+  if (typeof predicate !== 'function' || typeof handler !== 'function') return () => {};
+  const entry = { predicate, handler };
+  scopedHandlers.add(entry);
+  return () => { scopedHandlers.delete(entry); };
+}
+
+export function clearScoped() {
+  scopedHandlers.clear();
+}
+
 function handle(event) {
   // T2-10 : respecter un gestionnaire local ayant déjà consommé la touche.
   if (event.defaultPrevented) return;
+  for (const entry of scopedHandlers) {
+    try {
+      if (!entry.predicate(event)) continue;
+      entry.handler(event);
+      if (event.defaultPrevented) return;
+    } catch (error) {
+      console.warn('[clavier] gestionnaire scope indisponible :', error);
+    }
+  }
   // ATLAS-COQUE-09 : les raccourcis globaux ignorent les combinaisons du navigateur.
   if (event.ctrlKey || event.metaKey || event.altKey) return;
   const target = event.target;
@@ -206,6 +231,8 @@ document.addEventListener('keydown', handle, true);
 /* T2-03/04/05/07/09/10 : contrat auditable du routeur. */
 window.VECTEMPOREL_KEYS = {
   handle,
+  registerScoped,
+  clearScoped,
   setAutoplayMs,
   map: Object.fromEntries(SHORTCUT_MAP),
   order: DISPATCH_ORDER,

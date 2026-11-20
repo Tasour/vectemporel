@@ -364,7 +364,7 @@ register('E036', (ctx) => {
       destination.click();
     };
     window[CLE_NAV] = surNavigation;
-    window.addEventListener('keydown', surNavigation, true);
+    window.VECTEMPOREL_KEYS?.registerScoped?.(() => true, surNavigation);
   }
 
   /* E036-07 — Observateur ciblé : seul le SVG est surveillé, en childList,

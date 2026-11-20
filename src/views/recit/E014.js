@@ -453,7 +453,7 @@ function installer() {
   if (ecouteursPoses || typeof window === 'undefined' || typeof document === 'undefined') return;
   ecouteursPoses = true;
   document.addEventListener('focusin', surFocus, true);
-  window.addEventListener('keydown', surTouche, true);
+  window.VECTEMPOREL_KEYS?.registerScoped?.(() => true, surTouche);
   document.addEventListener('keyup', surRelache, true);
 }
 

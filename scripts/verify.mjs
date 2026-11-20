@@ -47,6 +47,18 @@ check('chaque point a un texte', events.every((event) => event.points.every((poi
 check('aucun lien Grokipedia', !/grokipedia\.com|grokipedia/i.test(fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8')));
 check('aucun lien externe dans l’interface', !/href=["']https?:/.test(fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8')));
 check('routeur clavier unique', (fs.readFileSync(path.join(ROOT, 'src/platform/keyboard.js'), 'utf8').match(/addEventListener\('keydown'/g) || []).length === 1);
+const CAPTURE_GLOBAL = /\b(window|document)\.addEventListener\('keydown'[^;]*\btrue\b/;
+const captureFiles = [];
+(function scan(dir) {
+  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) scan(full);
+    else if (entry.name.endsWith('.js') && CAPTURE_GLOBAL.test(fs.readFileSync(full, 'utf8'))) {
+      captureFiles.push(path.relative(ROOT, full));
+    }
+  }
+})(path.join(ROOT, 'src', 'views'));
+check('aucun ecouteur clavier global en capture hors routeur', captureFiles.length === 0, captureFiles.slice(0, 3).join(', '));
 
 for (const country of data.countries) {
   const eraIds = new Set(country.eras.map((era) => era.id));
