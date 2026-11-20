@@ -34,7 +34,7 @@ npm run check
 - `test:guards` vérifie le serveur sur un vrai processus : whitelist, en-têtes de sécurité, entrées malformées et survie.
 - `test:coverage-guard` prouve par mutation que `verify:points` échoue quand une proposition disparaît.
 - `test:idempotence` exécute deux générations complètes dans un répertoire temporaire et compare les hash des artefacts.
-- `test:perf` mesure le budget réseau au chargement : 81 requêtes / 1,58 Mo mesurés après différé des lentilles et gzip (contre 920 / 6,1 Mo avant). La cible initiale de 50 requêtes / 1 Mo reste ouverte ; le test garantit < 100 requêtes et < 2 Mo.
+- `test:perf` mesure le budget réseau : 81 requêtes / 1,58 Mo en régime normal (contre 920 / 6,1 Mo avant lentilles différées et gzip). La première visite avec la PWA coûte ~85 requêtes supplémentaires de préchauffage du cache ; les visites suivantes sont servies par le service worker (0 octet transféré). La cible initiale de 50 requêtes / 1 Mo reste ouverte.
 
 Les lentilles d'audit sont chargées à la demande par vue (`src/views/lenses.js`), la texture globe 2k est servie par défaut (`?hires=1` force la haute définition).
 
@@ -156,3 +156,12 @@ Cette API est additive : aucun membre existant n’a été retiré. Les modules 
 - Dette éditoriale héritée des audits : audits non signés, schéma de preuve partiel, sources non concluantes.
 
 Le projet reste un **POC v0.1**, pas une v1.0 académique.
+
+## PWA et GitHub Pages
+
+L'atlas est installable comme application web progressive : `manifest.webmanifest`, icônes 192/512 (+ maskable) et `sw.js` (cache same-origin, fonctionnement hors ligne après une première visite en ligne). Le service worker ne s'enregistre que sur HTTPS ou `localhost` et n'intercepte aucune requête externe.
+
+- Local : `npm run test:pwa` vérifie le manifest, le cache et le rendu hors ligne sur `http://127.0.0.1:4181`.
+- Public : site statique généré par `npm run build:pages` et publié sur la branche `gh-pages` → `https://tasour.github.io/vectemporel/`.
+
+Le site public est servi sans serveur Node : seuls les fichiers nécessaires à l'exécution sont publiés (`index.html`, `styles.css`, `public/`, `src/`, `icons/`, `manifest`, `sw.js`). Les audits, sources et scripts de génération restent hors du site.

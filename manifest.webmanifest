@@ -1,0 +1,20 @@
+{
+  "name": "Vectemporel — Atlas historique vérifié",
+  "short_name": "Vectemporel",
+  "description": "Atlas hiérarchique local : globe, chronologie, récit, géographie, constellation et points vérifiés, sans service externe.",
+  "id": "./",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0b0e13",
+  "theme_color": "#e6b96f",
+  "lang": "fr",
+  "dir": "ltr",
+  "categories": ["education", "reference"],
+  "icons": [
+    { "src": "./icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "./icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

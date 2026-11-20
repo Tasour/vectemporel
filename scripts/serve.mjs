@@ -13,8 +13,8 @@ const REAL_ROOT = fs.realpathSync(ROOT);
 const HOST = '127.0.0.1';
 const PORT = Number(process.env.PORT || 4181);
 const MAX_FILE_BYTES = 64 * 1024 * 1024;
-const ALLOWED_FILES = new Set(['index.html', 'styles.css']);
-const ALLOWED_PREFIXES = ['public/', 'src/'];
+const ALLOWED_FILES = new Set(['index.html', 'styles.css', 'sw.js', 'manifest.webmanifest']);
+const ALLOWED_PREFIXES = ['public/', 'src/', 'icons/'];
 
 if (!Number.isInteger(PORT) || PORT < 1 || PORT > 65535) {
   console.error(JSON.stringify({ isError: true, cause: 'PORT invalide', port: process.env.PORT }));
@@ -26,6 +26,7 @@ const TYPES = Object.freeze({
   '.js': 'text/javascript; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
+  '.webmanifest': 'application/manifest+json',
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg',
@@ -34,7 +35,7 @@ const TYPES = Object.freeze({
 });
 
 const SECURITY_HEADERS = Object.freeze({
-  'Content-Security-Policy': "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'",
+  'Content-Security-Policy': "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; worker-src 'self'",
   'X-Content-Type-Options': 'nosniff',
   'X-Frame-Options': 'DENY',
   'Referrer-Policy': 'no-referrer',

@@ -156,3 +156,26 @@ window.VATLAS = {
     return Promise.resolve(true);
   },
 };
+
+/* PWA : enregistrement du service worker sur HTTPS ou localhost uniquement.
+ * Aucun inline script (CSP stricte) ; échec journalisé, jamais silencieux. */
+if ('serviceWorker' in navigator
+  && (location.protocol === 'https:' || ['localhost', '127.0.0.1'].includes(location.hostname))) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js', { scope: './' })
+      .then(() => navigator.serviceWorker.ready)
+      .then(async () => {
+        // Préchauffage : la première visite précède la prise de contrôle du SW.
+        // On met en cache exactement les ressources same-origin réellement chargées.
+        const cache = await caches.open('vectemporel-v1');
+        const urls = new Set(performance.getEntriesByType('resource')
+          .map((entry) => entry.name)
+          .filter((url) => url.startsWith(location.origin) && !url.endsWith('/sw.js')));
+        urls.add(location.href);
+        const results = await Promise.allSettled([...urls].map((url) => cache.add(url)));
+        const failed = results.filter((result) => result.status === 'rejected').length;
+        if (failed) console.warn(`[pwa] ${failed} ressource(s) non mises en cache`);
+      })
+      .catch((error) => console.warn('[pwa] enregistrement indisponible :', error));
+  });
+}

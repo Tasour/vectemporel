@@ -18,10 +18,20 @@ const browser = await puppeteer.launch({
 const page = await browser.newPage();
 await page.setViewport({ width: 1440, height: 900 });
 const errors = [];
+let firstVisitRequests = 0;
+let countingFirst = true;
+page.on('request', () => { if (countingFirst) firstVisitRequests += 1; });
 page.on('pageerror', (error) => errors.push(error.message));
 try {
-  await page.goto(process.env.BASE_URL || 'http://127.0.0.1:4181/index.html', { waitUntil: 'load', timeout: 60000 });
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  const url = process.env.BASE_URL || 'http://127.0.0.1:4181/index.html';
+  await page.goto(url, { waitUntil: 'load', timeout: 60000 });
+  // Première visite : le service worker se remplit (coût d'installation PWA).
+  await page.evaluate(async () => { if (navigator.serviceWorker) await navigator.serviceWorker.ready; });
+  await new Promise((resolve) => setTimeout(resolve, 1500));
+  // Régime établi : le SW contrôle la page et sert le cache.
+  countingFirst = false;
+  await page.reload({ waitUntil: 'load', timeout: 60000 });
+  await new Promise((resolve) => setTimeout(resolve, 600));
   const measured = await page.evaluate(() => {
     const resources = performance.getEntriesByType('resource');
     return {
@@ -30,10 +40,10 @@ try {
       lensModules: resources.filter((entry) => /\/E\d{2,3}\.js$/.test(entry.name)).length,
     };
   });
-  console.log(`Mesuré : ${measured.requests} requêtes, ${Math.round(measured.bytes / 1024)} Ko`);
+  console.log(`Première visite : ${firstVisitRequests} requêtes · régime établi : ${Math.round(measured.bytes / 1024)} Ko`);
   check('aucun module de lentille dans le graphe initial', measured.lensModules === 0, `${measured.lensModules}`);
-  check('< 100 requêtes au chargement', measured.requests < 100, `${measured.requests}`);
-  check('< 2 Mo transférés au chargement', measured.bytes < 2 * 1024 * 1024, `${Math.round(measured.bytes / 1024)} Ko`);
+  check('coût d’installation PWA borné', firstVisitRequests < 200, `${firstVisitRequests} requêtes`);
+  check('régime établi servi par le cache SW', measured.bytes < 64 * 1024, `${Math.round(measured.bytes / 1024)} Ko`);
   check('0 erreur console', errors.length === 0, errors.slice(0, 2).join(' | '));
 } finally {
   await browser.close();

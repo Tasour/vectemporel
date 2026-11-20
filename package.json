@@ -16,7 +16,9 @@
     "test:guards": "node tests/http-guards.mjs",
     "test:idempotence": "node tests/build-idempotence.mjs",
     "test:coverage-guard": "node tests/verify-points-guard.mjs",
-    "test:perf": "node tests/perf-budget.mjs"
+    "test:perf": "node tests/perf-budget.mjs",
+    "test:pwa": "node tests/pwa.mjs",
+    "build:pages": "node scripts/build-pages.mjs"
   },
   "dependencies": {
     "yaml": "^2.9.1"
