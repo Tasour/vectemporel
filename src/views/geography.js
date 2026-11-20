@@ -6,6 +6,7 @@
  */
 import { state, currentCountry, currentEra, currentPlaces, set, goView } from '../domain/store.js';
 import { runEnhancements } from './geography/index.js';
+import { runEnhancements as runEnhancementsV2 } from './geography/v2/index.js';
 
 const MAP_W = 900;
 const MAP_H = 620;
@@ -510,4 +511,5 @@ export function renderGeography(stage) {
   layout.append(map, panel);
   stage.appendChild(layout);
   runEnhancements({ viewId: 'geography', stage, layout });
+  runEnhancementsV2({ viewId: 'geographyv2', stage, layout });
 }

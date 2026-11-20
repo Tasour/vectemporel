@@ -4,6 +4,7 @@
    Aucune donnée historique ajoutée : seuls des libellés d'interface sont calculés. */
 import { state, currentCountry, currentEvent, goView, set, stepEvent } from '../domain/store.js';
 import { runEnhancements } from './recit/index.js';
+import { runEnhancements as runEnhancementsV2 } from './recit/v2/index.js';
 
 const CONFIDENCE = {
   'vérifié': { label: 'Vérifié', mark: '✓', gloss: 'mention « vérifié » reprise de l’audit' },
@@ -449,6 +450,7 @@ export function renderRecit(stage) {
   layout.append(media, body);
   stage.appendChild(layout);
   runEnhancements({ viewId: 'recit', stage, layout });
+  runEnhancementsV2({ viewId: 'recitv2', stage, layout });
 
   /* C3-05 (annonce du point) : conserve le texte reel du point courant. */
   announce(`Point ${index + 1} sur ${total}, ${kind}, ${conf.label}. ${point?.text || event.title}`);
