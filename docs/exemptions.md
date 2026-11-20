@@ -2,13 +2,12 @@
 
 Conformément au standard `code-military-grade`, tout invariant non prouvé est soit corrigé, soit documenté avec raison et date.
 
-## V2-2 — Budget réseau 50 requêtes / 1 Mo — CLÔTURÉE partiellement (2026-11-20)
+## V2-2 — Budget réseau 50 requêtes / 1 Mo — CLÔTURÉE (2026-11-20)
 
-- **Mesure finale** : 169 requêtes / **1 019 Ko** à la première visite (PWA incluse) ; 0 octet en régime établi.
-- **Correction** : lentilles chargées à la demande, gzip niveau 9, texture globe 2k en WebP (45 Ko au lieu de 407 Ko) et texture de picking WebP (63 Ko au lieu de 264 Ko), avec détection locale et repli PNG.
-- **Preuve** : `test:perf` échoue au-dessus de 1 Mo à la première visite ; captures `screenshots/v2/` comparées avant/après (rendu conforme).
-- **Reste partiel** : le seuil de 50 requêtes n'est pas atteint, le préchauffage du service worker représentant ~85 requêtes. Le gain aurait nécessité un découpage du dataset ou un bundling, jugés plus risqués que bénéfiques.
-- **Statut** : exemption levée pour le critère de poids ; le critère de nombre de requêtes reste une limite connue et mesurée, pas une dette bloquante.
+- **Mesure finale** : **48 requêtes / 746 Ko** à la première visite (PWA incluse) ; 0 octet en régime établi.
+- **Corrections** : lentilles des vues chargées à la demande, 50 lentilles du globe réservées à `?diagnostics=1`, drapeaux chargés au survol, gzip niveau 9, textures WebP (45 Ko et 63 Ko) avec détection locale et repli PNG, préchauffage PWA limité aux 23 ressources essentielles.
+- **Preuve** : `test:perf` échoue au-dessus de 50 requêtes ou 1 Mo ; captures `screenshots/v2/` comparées avant/après (rendu conforme, overlays de diagnostic disparus de la production).
+- **Statut** : exemption totalement levée.
 
 ## V2-5 — Routeur clavier strictement unique — CLÔTURÉE (2026-11-20)
 

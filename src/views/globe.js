@@ -6,11 +6,12 @@
 import { DATASET } from '../data/dataset.js';
 import { state, subscribe, countryByCode, selectCountry } from '../domain/store.js';
 import { attachReveal } from './globe-reveal.js';
-import { runMondeEnhancements, flushMondeReady, notifyMondeHover, notifyMondeLeave, mondeDiagnostics } from './monde/index.js';
+import { runMondeEnhancements, loadMondeLenses, flushMondeReady, notifyMondeHover, notifyMondeLeave, mondeDiagnostics } from './monde/index.js';
 
 let host = null;
 let initialized = false;
 let engine = null;
+let latestMondeCtx = null;
 
 /* État local de la vue : rien n'est permanent, tout est dérivé du store. */
 let inView = true;          //IntersectionObserver (ATLAS-GLOBE-01)
@@ -448,7 +449,12 @@ export function renderGlobe(stage) {
     },
     say,
   };
-  runMondeEnhancements(mondeCtx);
+  latestMondeCtx = mondeCtx;
+  // Les 50 lentilles du globe sont des outils d'audit : masquées en production
+  // depuis V2-10, elles ne sont chargées que si ?diagnostics=1 est explicite.
+  if (typeof location !== 'undefined' && new URLSearchParams(location.search).has('diagnostics')) {
+    loadMondeLenses().then(() => runMondeEnhancements(latestMondeCtx));
+  }
 
   if (!initialized && window.THREE && window.VECTEMPOREL_GLOBE) {
     initialized = true;

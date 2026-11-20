@@ -44,7 +44,7 @@ try {
   });
   console.log(`Première visite : ${firstVisitRequests} requêtes / ${Math.round(firstBytes / 1024)} Ko · régime établi : ${Math.round(measured.bytes / 1024)} Ko`);
   check('aucun module de lentille dans le graphe initial', measured.lensModules === 0, `${measured.lensModules}`);
-  check('coût d’installation PWA borné', firstVisitRequests < 200, `${firstVisitRequests} requêtes`);
+  check('première visite < 50 requêtes', firstVisitRequests < 50, `${firstVisitRequests} requêtes`);
   check('première visite < 1 Mo', firstBytes < 1024 * 1024, `${Math.round(firstBytes / 1024)} Ko`);
   check('régime établi servi par le cache SW', measured.bytes < 64 * 1024, `${Math.round(measured.bytes / 1024)} Ko`);
   check('0 erreur console', errors.length === 0, errors.slice(0, 2).join(' | '));
