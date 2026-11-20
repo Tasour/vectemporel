@@ -5,6 +5,7 @@ const require = createRequire(`${process.cwd()}/package.json`);
 const puppeteer = require('puppeteer-core');
 
 const BASE = process.env.BASE_URL || 'http://127.0.0.1:4181/index.html';
+const ORIGIN = new URL(BASE).origin;
 let failed = 0;
 const check = (name, ok, detail = '') => {
   if (!ok) failed += 1;
@@ -22,7 +23,7 @@ const external = [];
 page.on('pageerror', (error) => errors.push(error.message));
 page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
 page.on('request', (request) => {
-  if (!request.url().startsWith('http://127.0.0.1:4181/')) external.push(request.url());
+  if (!request.url().startsWith(`${ORIGIN}/`)) external.push(request.url());
 });
 
 try {
