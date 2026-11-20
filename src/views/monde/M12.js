@@ -30,6 +30,7 @@ let countriesRef = [];
 let hostRef = null;
 let statusRef = null;
 let badgeRef = null;
+let badgeInstance = 0;
 let reportRef = null;
 
 function cssRules() {
@@ -42,11 +43,11 @@ function cssRules() {
     background-image:linear-gradient(180deg,rgba(0,0,0,.22),transparent 50%,rgba(0,0,0,.22))!important;
     background-color:var(--m12-flag-color,#7f9cff)!important}
   .globe-country-flag{font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
-  #monde-m12-era-badge{position:absolute;top:8px;right:8px;z-index:2;pointer-events:none;
+  .monde-m12-era-badge{position:absolute;top:8px;right:8px;z-index:2;pointer-events:none;
     max-width:62%;padding:4px 8px;border-radius:999px;background:rgba(8,11,18,.82);
     color:#f5e9d0;font-size:11px;font-weight:600;line-height:1.3;font-family:inherit;
     letter-spacing:.02em}
-  #monde-m12-era-badge[hidden]{display:none}
+  .monde-m12-era-badge[hidden]{display:none}
   `;
 }
 
@@ -86,10 +87,11 @@ function ensureReport() {
 function ensureBadge() {
   if (!hostRef) return null;
   if (badgeRef && badgeRef.isConnected && badgeRef.parentNode === hostRef) return badgeRef;
-  badgeRef = document.getElementById(BADGE_ID);
+  badgeRef = hostRef.querySelector('.monde-m12-era-badge');
   if (!badgeRef) {
     badgeRef = document.createElement('span');
-    badgeRef.id = BADGE_ID;
+    badgeRef.id = `${BADGE_ID}-${++badgeInstance}`;
+    badgeRef.className = 'monde-m12-era-badge';
     badgeRef.setAttribute('aria-hidden', 'true');
   }
   badgeRef.hidden = true;
