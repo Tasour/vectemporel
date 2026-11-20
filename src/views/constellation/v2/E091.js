@@ -277,7 +277,7 @@ register('E091', ctx => {
       }
     };
     window[NAV_KEY] = surNav;
-    window.addEventListener('keydown', surNav, true);
+    window.VECTEMPOREL_KEYS?.registerScoped?.(() => true, surNav);
   });
 
   /* E091-08 — Feuille unique : anneau de focus à deux niveaux, distinct de

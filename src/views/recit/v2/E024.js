@@ -456,7 +456,7 @@ function surTouche(event) {
 function chargerEcouteurs() {
   if (ecouteursArmes || typeof window === 'undefined') return;
   ecouteursArmes = true;
-  window.addEventListener('keydown', (event) => safe(() => surTouche(event)), true);
+  window.VECTEMPOREL_KEYS?.registerScoped?.(() => true, (event) => safe(() => surTouche(event)));
 }
 
 register('E024', (ctx) => {

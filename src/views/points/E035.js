@@ -376,7 +376,7 @@ register('E035', (ctx) => {
   writeMetrics();
 
   if (!listenerInstalled) {
-    window.addEventListener('keydown', onKeyDown, true);
+    window.VECTEMPOREL_KEYS?.registerScoped?.(() => true, onKeyDown);
     listenerInstalled = true;
   }
 

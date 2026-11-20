@@ -328,7 +328,7 @@ register('E032', (ctx) => {
     ? 'reduce' : 'normal';
 
   if (!listenerInstalled) {
-    window.addEventListener('keydown', onKeyDown, true);
+    window.VECTEMPOREL_KEYS?.registerScoped?.(() => true, onKeyDown);
     listenerInstalled = true;
   }
 });

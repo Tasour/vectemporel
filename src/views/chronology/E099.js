@@ -194,7 +194,7 @@ function bindListeners() {
   listenersBound = true;
   document.addEventListener('click', onClickCapture, true);
   document.addEventListener('input', onInputCapture, true);
-  document.addEventListener('keydown', onKeyDownCapture, true);
+  window.VECTEMPOREL_KEYS?.registerScoped?.(() => true, onKeyDownCapture);
 }
 
 register('E099', (ctx) => {

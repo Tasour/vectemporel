@@ -241,7 +241,7 @@ register('E027', ctx => {
       focusSansDefilement(destination);
     };
     window[NAV_KEY] = surTouche;
-    window.addEventListener('keydown', surTouche, true);
+    window.VECTEMPOREL_KEYS?.registerScoped?.(() => true, surTouche);
   }
 
   /* Repli « mouvement réduit » : la classe sobre retire les transitions des

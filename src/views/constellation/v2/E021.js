@@ -90,7 +90,7 @@ register('E021', ctx => {
       }
     };
     window[NAV_KEY] = onNav;
-    window.addEventListener('keydown', onNav, true);
+    window.VECTEMPOREL_KEYS?.registerScoped?.(() => true, onNav);
   }
 
   /* E021-04 — Position canonique aria-posinset / aria-setsize sur chaque lune. */

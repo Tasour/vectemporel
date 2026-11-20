@@ -252,7 +252,7 @@ register('E081', ctx => {
           }
         };
         window[PEER_KEY] = onPeer;
-        window.addEventListener('keydown', onPeer, true);
+        window.VECTEMPOREL_KEYS?.registerScoped?.(() => true, onPeer);
       }
     }
     layout.dataset.v2e081PeerHook = field ? '1' : '0';

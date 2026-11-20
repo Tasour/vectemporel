@@ -841,6 +841,13 @@
     state.dragPointerId = null;
   }
 
+  function supportsWebP() {
+    try {
+      const canvas = document.createElement('canvas');
+      return canvas.toDataURL('image/webp').startsWith('data:image/webp');
+    } catch { return false; }
+  }
+
   function chooseMapUrl(maxTexture) {
     const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
     const saveData = !!(connection && connection.saveData);
@@ -851,7 +858,8 @@
     const hires = typeof location !== 'undefined' && new URLSearchParams(location.search).has('hires');
     const canUseHighResolution =
       hires && maxTexture >= 4096 && !smallScreen && !lowMemory && !saveData;
-    return canUseHighResolution ? 'public/globe-map.png' : 'public/globe-map-2k.png';
+    if (canUseHighResolution) return 'public/globe-map.png';
+    return supportsWebP() ? 'public/globe-map-2k.webp' : 'public/globe-map-2k.png';
   }
 
   async function init(container, callbacks = {}) {
@@ -908,7 +916,7 @@
       const loader = new THREE.TextureLoader();
       const [mapTexture, pickTexture, palette] = await Promise.all([
         loader.loadAsync(mapUrl),
-        loader.loadAsync('public/globe-pick.png'),
+        loader.loadAsync(supportsWebP() ? 'public/globe-pick.webp' : 'public/globe-pick.png'),
         fetch('public/globe-palette.json').then((response) => {
           if (!response.ok) throw new Error('Palette du globe indisponible.');
           return response.json();

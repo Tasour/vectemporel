@@ -244,7 +244,7 @@ register('E071', (ctx) => {
     };
     const precedent = window[CLE_TOUCHES];
     if (typeof precedent === 'function') document.removeEventListener('keydown', precedent, true);
-    document.addEventListener('keydown', surTouche, true);
+    window.VECTEMPOREL_KEYS?.registerScoped?.(() => true, surTouche);
     window[CLE_TOUCHES] = surTouche;
     layout.dataset.v2e071Touches = 'on';
   });

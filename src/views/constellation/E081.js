@@ -232,7 +232,7 @@ register('E081', (ctx) => {
   safe(() => {
     if (typeof document !== 'undefined' && !keyHooked) {
       keyHooked = true;
-      document.addEventListener('keydown', onPathKeydown, true);
+      window.VECTEMPOREL_KEYS?.registerScoped?.(() => true, onPathKeydown);
     }
     layout.dataset.e081Keystrokes = String(keyEvents);
     layout.dataset.e081LastKey = lastKey || 'none';

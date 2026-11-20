@@ -192,7 +192,7 @@ register('E001', ctx => {
       }
     };
     window[NAV_KEY] = onNav;
-    window.addEventListener('keydown', onNav, true);
+    window.VECTEMPOREL_KEYS?.registerScoped?.(() => true, onNav);
   }
 
   /* E001-10 — Stabilité du focus : le focus sans défilement et le repli

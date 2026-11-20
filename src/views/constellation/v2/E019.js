@@ -383,7 +383,7 @@ register('E019', ctx => {
         }
       };
       window[NAV_KEY] = surNav;
-      window.addEventListener('keydown', surNav, true);
+      window.VECTEMPOREL_KEYS?.registerScoped?.(() => true, surNav);
       layout.dataset.v2e019Nav = 'actif';
     } else {
       layout.dataset.v2e019Nav = 'inactif';

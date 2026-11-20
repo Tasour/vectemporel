@@ -263,7 +263,7 @@ register('E036', (ctx) => {
   }
 
   if (!listenerInstalled) {
-    window.addEventListener('keydown', onKeyDown, true);
+    window.VECTEMPOREL_KEYS?.registerScoped?.(() => true, onKeyDown);
     listenerInstalled = true;
   }
 });
