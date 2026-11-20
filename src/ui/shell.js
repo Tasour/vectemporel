@@ -492,6 +492,11 @@ function renderDetail(parent) {
   title.id = 'atlas-detail-title';
   sheet.appendChild(title);
   sheet.appendChild(el('p', 'detail-year', `${formatYear(event.year)} · ${currentEra()?.name || ''}`));
+  const audit = country?.audit;
+  const signed = Boolean(audit?.signoff?.signed_by?.length);
+  sheet.appendChild(el('p', 'detail-audit-state', signed
+    ? `Audit signé${audit.signoff.date ? ` le ${audit.signoff.date}` : ''} · points extraits`
+    : `Audit non signé${audit?.blocked ? ' · blocage documenté' : ''} · points extraits, non validés`));
   event.points.forEach((point) => {
     const row = el('div', 'detail-point');
     row.append(el('span', `point-kind is-${point.kind}`, point.kind), el('span', 'confidence', point.confidence));
@@ -518,10 +523,11 @@ function footerText() {
   const progress = pos.countryName && pos.eventTitle
     ? ` · repère ${pos.eventIndex + 1}/${pos.eventCount}` : '';
   const left = `Vous êtes ici · ${label}${progress}`;
+  const viewCount = window.VATLAS?.taxonomy?.length || 6;
   let right;
-  if (pos.view === rootView().id) right = `1–5 vues · Échap retour · ? aide`;
+  if (pos.view === rootView().id) right = `1–${viewCount} vues · Échap retour · ? aide`;
   else if (state.playing) right = 'lecture en cours · Espace pour arrêter · ? aide';
-  else right = '← → repère · ↑ ↓ période · 1–5 vues · Échap retour · ? aide';
+  else right = `← → repère · ↑ ↓ période · 1–${viewCount} vues · Échap retour · ? aide`;
   return [left, right];
 }
 

@@ -38,6 +38,7 @@ check('flèche change de repère', await page.evaluate(() => window.VATLAS.getSt
 await page.keyboard.press('Enter');
 await new Promise((resolve) => setTimeout(resolve, 250));
 check('Entrée ouvre le détail', (await page.$$('.detail-sheet')).length === 1);
+check('badge audit non signé', await page.evaluate(() => /Audit non signé/.test(document.querySelector('.detail-audit-state')?.textContent || '')));
 await page.keyboard.press('Escape');
 await new Promise((resolve) => setTimeout(resolve, 250));
 check('Échap ferme le détail', (await page.$$('.detail-sheet')).length === 0);
@@ -59,6 +60,9 @@ check('orbites figées', await page.evaluate(() => !document.querySelector('.con
 await page.keyboard.press('1');
 await new Promise((resolve) => setTimeout(resolve, 300));
 check('1 = globe', await page.evaluate(() => window.VATLAS.getState().view === 'globe'));
+check('taxonomie alignée', await page.evaluate(() => window.VECTEMPOREL_KEYS?.taxonomyAligned?.() === true));
+check('zéro collision de raccourcis', await page.evaluate(() => (window.VECTEMPOREL_KEYS?.conflicts?.() || ['non exposé']).length === 0));
+check('6 vues déclarées', await page.evaluate(() => (window.VATLAS?.taxonomy?.length || 0) === 6));
 check('aucune erreur console', errors.length === 0, errors.slice(0, 3).join(' | '));
 await browser.close();
 console.log(failed ? `${failed} échec(s)` : 'Tous les tests E2E passent.');

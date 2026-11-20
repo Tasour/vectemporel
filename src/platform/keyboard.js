@@ -13,10 +13,10 @@ export { DEFAULT_AUTOPLAY_MS, setAutoplayMs };
  * le repli local est strictement identique lorsque VATLAS n'est pas publié. */
 const FALLBACK_VIEWS = Object.freeze([
   Object.freeze({ id: 'globe', digit: '1', letter: 'm', label: 'Monde', level: 1 }),
-  Object.freeze({ id: 'chronology', digit: '2', letter: 'c', label: 'Chronologie', level: 2 }),
+  Object.freeze({ id: 'chronology', digit: '2', letter: 'c', label: 'Chrono', level: 2 }),
   Object.freeze({ id: 'recit', digit: '3', letter: 'r', label: 'Récit', level: 3 }),
-  Object.freeze({ id: 'geography', digit: '4', letter: 'g', label: 'Géographie', level: 4 }),
-  Object.freeze({ id: 'constellation', digit: '5', letter: 's', label: 'Constellation', level: 5 }),
+  Object.freeze({ id: 'geography', digit: '4', letter: 'g', label: 'Géo', level: 4 }),
+  Object.freeze({ id: 'constellation', digit: '5', letter: 's', label: 'Const', level: 5 }),
   Object.freeze({ id: 'points', digit: '6', letter: 'p', label: 'Points', level: 6 }),
 ]);
 function taxonomyViews() {

@@ -7,6 +7,11 @@ const ROOT = path.resolve(new URL('..', import.meta.url).pathname);
 const src = fs.readFileSync(path.join(ROOT, 'src/data/dataset.js'), 'utf8');
 const match = src.match(/export const DATASET = ([\s\S]*);\s*$/);
 const data = JSON.parse(match[1]);
+const CONFIDENCE = new Set(['vérifié', 'certain', 'probable', 'disputé', 'non documenté']);
+const PRECISION = new Set(['year', 'month', 'day', 'interval', 'range', 'circa', 'century', 'unknown']);
+const events = data.countries.flatMap((country) => country.events);
+const narrativePoints = events.flatMap((event) => event.points);
+const auditPoints = data.countries.flatMap((country) => country.points);
 let failures = 0;
 const check = (name, condition) => {
   if (!condition) failures += 1;
@@ -14,10 +19,15 @@ const check = (name, condition) => {
 };
 
 check('10 pays', data.countries.length === 10);
-const events = data.countries.flatMap((country) => country.events);
 check('229 repères', events.length === 229);
 check('ids uniques', new Set(events.map((event) => event.id)).size === events.length);
-check('901 points au moins', events.reduce((sum, event) => sum + event.points.length, 0) >= 900);
+check('901 points de récit', narrativePoints.length === data.meta.eventPoints);
+check('845 points d’audit extraits', auditPoints.length === data.meta.validatedPoints);
+check('total des points', data.meta.points === data.meta.eventPoints + data.meta.validatedPoints);
+check('certitudes fermées', [...narrativePoints, ...auditPoints].every((point) => CONFIDENCE.has(point.confidence)));
+check('précisions fermées', [...narrativePoints, ...auditPoints].every((point) => PRECISION.has(point.datePrecision)));
+check('aucun point d’audit sans source', auditPoints.every((point) => Array.isArray(point.sources) && point.sources.length > 0));
+check('statut extrait des points d’audit', auditPoints.every((point) => point.status === 'extrait'));
 check('chaque pays a des ères', data.countries.every((country) => country.eras.length > 0));
 check('chaque repère a une ère valide', events.every((event) => event.countryEraValid !== false));
 check('chaque image existe', events.every((event) => !event.image || fs.existsSync(path.join(ROOT, event.image.src))));

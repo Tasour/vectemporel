@@ -386,7 +386,7 @@ export function renderGlobe(stage) {
     ? `Sélection courante : ${selected.name}`
     : 'Aucun pays sélectionné'));
   orientation.appendChild(el('p', 'globe-progress',
-    `${DATASET.countries.length} pays · ${DATASET.meta.events} repères · ${DATASET.meta.validatedPoints || 0} points d’audit validés`));
+    `${DATASET.countries.length} pays · ${DATASET.meta.events} repères · ${DATASET.meta.validatedPoints || 0} points d’audit extraits`));
   list.appendChild(orientation);
 
   const choices = el('ol', 'globe-choices');

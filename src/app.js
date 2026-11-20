@@ -32,9 +32,9 @@ export const VOCABULARY = Object.freeze({
   pays: 'Une des 10 entrées documentées par les audits locaux.',
   ère: 'Période d’un pays, porteuse de repères.',
   repère: 'Événement daté rattaché à une ère ; 229 au total.',
-  point: 'Assertion vérifiée isolée par ère et domaine ; 845 au total.',
+  point: 'Assertion extraite d’un audit local, isolée par ère et domaine ; adossée à une source ou à une omission documentée, jamais présentée comme validée ; 845 au total.',
   lieu: 'Repère géographique documenté, avec coordonnées locales.',
-  certitude: 'Degré repris de l’audit : vérifié, certain, probable, contesté.',
+  certitude: 'Degré repris de l’audit : certain, probable, disputé, non documenté. « vérifié » ne s’applique qu’aux phrases du récit, pas aux points d’audit.',
   source: 'Référence du registre local, affichée sans lien externe.',
 });
 

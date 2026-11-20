@@ -304,6 +304,7 @@ img { max-width: 100%; }
 .help-row kbd { min-width: 46px; padding: 4px 6px; border: 1px solid var(--line-strong); border-radius: 5px; color: var(--gold-bright); font-family: var(--sans); font-size: 9px; text-align: center; }
 .help-sheet p { color: var(--muted-2); font-size: 10px; line-height: 1.5; }
 .detail-year { color: var(--gold-bright); font-size: 11px; }
+.detail-audit-state { color: var(--muted); font-size: 11px; line-height: 1.5; border-left: 2px solid var(--line-strong); padding-left: 8px; }
 .detail-point { padding: 10px 0; border-top: 1px solid var(--line); }
 .detail-point p { margin: 6px 0 3px; color: var(--ink-soft); font-size: 11px; line-height: 1.5; }
 .detail-point small { color: var(--muted-2); font-size: 8px; }
