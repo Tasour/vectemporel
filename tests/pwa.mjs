@@ -43,11 +43,11 @@ try {
 
   const cache = await page.evaluate(async () => {
     const keys = await caches.keys();
-    const store = await caches.open('vectemporel-v1');
+    const store = await caches.open('vectemporel-v2');
     const entries = await store.keys();
     return { keys, count: entries.length, hasIndex: Boolean(await store.match('./index.html')) };
   });
-  check('cache versionné', cache.keys.includes('vectemporel-v1'), cache.keys.join(','));
+  check('cache versionné', cache.keys.includes('vectemporel-v2'), cache.keys.join(','));
   check('coque mise en cache', cache.hasIndex, `${cache.count} entrées`);
   check('cache préchauffé (> 10 ressources)', cache.count > 10, String(cache.count));
 

@@ -167,17 +167,17 @@ if ('serviceWorker' in navigator
       .then(async () => {
         // Préchauffage : la première visite précède la prise de contrôle du SW.
         // On met en cache exactement les ressources same-origin réellement chargées.
-        const cache = await caches.open('vectemporel-v1');
+        const cache = await caches.open('vectemporel-v2');
         const ESSENTIAL = [
-          '/', '/index.html', '/styles.css', '/manifest.webmanifest', '/icons/icon-192.png',
-          '/public/three.min.js', '/public/globe-engine.js', '/public/globe-palette.json',
-          '/public/globe-map-2k.webp', '/public/globe-pick.webp', '/public/globe-map-2k.png',
-          '/public/globe-pick.png', '/public/flags/FR.svg',
-          '/src/app.js', '/src/ui/shell.js', '/src/domain/store.js', '/src/platform/keyboard.js',
-          '/src/data/dataset.js', '/src/views/globe.js', '/src/views/globe-reveal.js',
-          '/src/views/lenses.js', '/src/views/monde/index.js', '/src/views/monde/registry.js',
+          './', './index.html', './styles.css', './manifest.webmanifest', './icons/icon-192.png',
+          './public/three.min.js', './public/globe-engine.js', './public/globe-palette.json',
+          './public/globe-map-2k.webp', './public/globe-pick.webp', './public/globe-map-2k.png',
+          './public/globe-pick.png', './public/flags/FR.svg',
+          './src/app.js', './src/ui/shell.js', './src/domain/store.js', './src/platform/keyboard.js',
+          './src/data/dataset.js', './src/views/globe.js', './src/views/globe-reveal.js',
+          './src/views/lenses.js', './src/views/monde/index.js', './src/views/monde/registry.js',
         ];
-        const urls = new Set(ESSENTIAL.map((path) => new URL(path, location.origin).href));
+        const urls = new Set(ESSENTIAL.map((path) => new URL(path, document.baseURI).href));
         const results = await Promise.allSettled([...urls].map((url) => cache.add(url)));
         const failed = results.filter((result) => result.status === 'rejected').length;
         if (failed) console.warn(`[pwa] ${failed} ressource(s) non mises en cache`);
