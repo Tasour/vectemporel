@@ -3,6 +3,7 @@
    Refonte navigation c3-recherche-atlas : C3-01, C3-02, C3-03, C3-04, C3-08, C3-10.
    Aucune donnée historique ajoutée : seuls des libellés d'interface sont calculés. */
 import { state, currentCountry, currentEvent, goView, set, stepEvent } from '../domain/store.js';
+import { kicker, badge } from '../ui/components.js';
 import { runLenses } from './lenses.js';
 
 
@@ -77,7 +78,7 @@ function injectCss() {
 .recit-thread{margin:0 0 18px}
 .recit-thread-title{margin:0 0 7px;color:var(--muted);font-size:9px;letter-spacing:.12em;text-transform:uppercase}
 .recit-thread-list{display:flex;flex-wrap:wrap;gap:5px;margin:0;padding:0;list-style:none}
-.recit-thread-item{max-width:100%;min-height:30px;padding:5px 8px;border:1px solid var(--line);border-radius:7px;background:transparent;color:var(--muted);font-size:9px;text-align:left;cursor:pointer}
+.recit-thread-item{max-width:100%;min-height:44px;padding:5px 8px;border:1px solid var(--line);border-radius:7px;background:transparent;color:var(--muted);font-size:9px;text-align:left;cursor:pointer}
 .recit-thread-item:hover{border-color:var(--gold);color:var(--ink)}
 .recit-thread-item.is-current{border-color:var(--gold);color:var(--gold-bright);background:rgba(230,185,111,.1)}
 .recit-thread-item[disabled]{opacity:.4;cursor:not-allowed}
@@ -85,7 +86,7 @@ function injectCss() {
 .recit-legend{margin-top:16px;padding-top:12px;border-top:1px solid var(--line);color:var(--muted-2);font-size:8px;line-height:1.6}
 .recit-legend p{margin:3px 0}
 .recit-trace{margin-top:12px;color:var(--muted-2);font-size:9px}
-.recit-trace summary{min-height:30px;display:flex;align-items:center;cursor:pointer}
+.recit-trace summary{min-height:44px;display:flex;align-items:center;cursor:pointer}
 .recit-trace p{margin:6px 0 0;line-height:1.5}
 .recit-media-credit{position:absolute;left:16px;bottom:30px;margin:0;color:rgba(255,255,255,.58);font-size:8px;text-shadow:0 1px 4px #000}
 .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
@@ -99,8 +100,8 @@ function injectCss() {
   .recit-title{font-size:clamp(24px,7vw,34px)}
   .recit-context{font-size:14px;line-height:1.65}
   .recit-actions{gap:8px}
-  .recit-actions button{min-height:40px}
-  .recit-thread-item{min-height:36px}
+  .recit-actions button{min-height:44px}
+  .recit-thread-item{min-height:44px}
   .recit-media-credit{display:none}
   .media-caption{right:10px;bottom:8px;left:10px;font-size:8px}
 }
@@ -117,22 +118,22 @@ function injectNavCss() {
   style.id = 'nav-c3a';
   style.textContent = `
 .c3a-tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0 6px}
-.c3a-search{flex:1 1 200px;min-width:160px;min-height:36px;padding:6px 9px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.03);color:var(--ink);font:inherit;font-size:10px}
+.c3a-search{flex:1 1 200px;min-width:160px;min-height:44px;padding:6px 9px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.03);color:var(--ink);font:inherit;font-size:10px}
 .c3a-search::placeholder{color:var(--muted-2)}
 .c3a-group{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
 .c3a-group-label{color:var(--muted-2);font-size:9px;margin-right:2px}
-.c3a-filter{min-height:28px;padding:3px 8px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--muted);font-size:9px;cursor:pointer}
+.c3a-filter{min-height:44px;padding:3px 8px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--muted);font-size:9px;cursor:pointer}
 .c3a-filter[aria-pressed="true"]{border-color:var(--gold);color:var(--gold-bright);background:rgba(230,185,111,.1)}
 .c3a-filter:focus-visible,.c3a-search:focus-visible,.c3a-reset:focus-visible{outline:2px solid var(--gold-bright);outline-offset:2px}
 .c3a-status{min-height:12px;margin:0 0 8px;color:var(--muted);font-size:9px;line-height:1.4;font-variant-numeric:tabular-nums}
 .c3a-empty{padding:12px;border:1px dashed var(--line);border-radius:8px;color:var(--muted);font-size:10px;line-height:1.5}
 .c3a-empty p{margin:0}
-.c3a-reset{min-height:30px;margin-top:6px;padding:0 10px;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--gold-bright);font-size:9px;cursor:pointer}
+.c3a-reset{min-height:44px;margin-top:6px;padding:0 10px;border:1px solid var(--line);border-radius:8px;background:transparent;color:var(--gold-bright);font-size:9px;cursor:pointer}
 .c3a-thread-item[aria-current="step"]{border-color:var(--gold)}
 @media (max-width:620px){
   .c3a-tools{flex-direction:column;align-items:stretch}
   .c3a-search{width:100%}
-  .c3a-filter{min-height:32px}
+  .c3a-filter{min-height:44px}
 }`;
   document.head.appendChild(style);
 }
@@ -275,7 +276,7 @@ export function renderRecit(stage) {
   fill.style.width = `${total ? Math.round(((index + 1) / total) * 100) : 0}%`;
   progress.appendChild(fill);
   body.appendChild(progress);
-  body.appendChild(el('div', 'view-kicker', `Étape ${index + 1} / ${total} · ${kind}`));
+  body.appendChild(kicker(`Étape ${index + 1} / ${total} · ${kind}`));
 
   /* Titre = point unique, avec ancrage pour le fil et la region d'annonce. */
   const title = el('h1', 'recit-title', point?.text || event.title);
@@ -286,7 +287,8 @@ export function renderRecit(stage) {
 
   const meta = el('p', 'recit-meta');
   meta.append(document.createTextNode(`${event.title} · ${formatYear(event.year)} · `));
-  const confChip = el('span', 'recit-conf', `${conf.mark} ${conf.label}`);
+  const confChip = badge(`${conf.mark} ${conf.label}`);
+  confChip.classList.add('recit-conf');
   confChip.title = conf.gloss;
   meta.appendChild(confChip);
   body.appendChild(meta);
