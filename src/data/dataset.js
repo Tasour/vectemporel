@@ -216,8 +216,8 @@ export const DATASET = {
           "importance": 1,
           "image": {
             "src": "public/images/fr-massalia.jpg",
-            "alt": "Notre-Dame de la Garde basilica, in Marseille, Bouches-du-Rhône, France, seen from the Vieux port (old harbour)",
-            "caption": "Notre-Dame de la Garde basilica, in Marseille, Bouches-du-Rhône, France, seen from the Vieux port (old harbour)",
+            "alt": "Basilique Notre-Dame de la Garde, à Marseille (Bouches-du-Rhône, France), vue depuis le Vieux-Port",
+            "caption": "Basilique Notre-Dame de la Garde, à Marseille (Bouches-du-Rhône, France), vue depuis le Vieux-Port",
             "credit": "Benh LIEU SONG",
             "license": "CC BY-SA 3.0",
             "source": "https://commons.wikimedia.org/wiki/File:Notre_Dame_de_la_Garde.jpg"
@@ -304,8 +304,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/fr-alesia.jpg",
-            "alt": "Alise-Sainte-Reine (Côte-d'Or, France) - Alesia museum - Reconstruction of the Roman contravallation (fortifications designed to protect the besiegers from sorties by its defenders",
-            "caption": "Alise-Sainte-Reine (Côte-d'Or, France) - Alesia museum - Reconstruction of the Roman contravallation (fortifications designed to protect the besiegers",
+            "alt": "Alise-Sainte-Reine (Côte-d'Or, France) - Musée d'Alésia - Reconstitution de la contrevallation romaine (fortifications conçues pour protéger les assiégeants des sorties de ses défenseurs",
+            "caption": "Alise-Sainte-Reine (Côte-d'Or, France) - Musée d'Alésia - Reconstitution de la contrevallation romaine (fortifications conçues pour protéger les assiégeants",
             "credit": "Benjamin Smith",
             "license": "CC BY-SA 4.0",
             "source": "https://commons.wikimedia.org/wiki/File:Alise-Sainte-Reine_-_Contrevallation.jpg"
@@ -522,8 +522,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/fr-poitiers.jpg",
-            "alt": "Charles Martel in the Battle of Tours",
-            "caption": "Charles Martel in the Battle of Tours",
+            "alt": "Charles Martel à la bataille de Tours",
+            "caption": "Charles Martel à la bataille de Tours",
             "credit": "Charles de Steuben",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Steuben_-_Bataille_de_Poitiers.png"
@@ -605,8 +605,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/fr-verdun.jpg",
-            "alt": "Louis the Pious (right) blessing the division of the Carolingian Empire in 843 into West Francia, Lotharingia, and East Francia; from the Chroniques des rois de France, fifteenth c",
-            "caption": "Louis the Pious (right) blessing the division of the Carolingian Empire in 843 into West Francia, Lotharingia, and East Francia; from the Chroniques d",
+            "alt": "Louis le Pieux (à droite) bénissant le partage de l'Empire carolingien en 843 en Francie occidentale, Lotharingie et Francie orientale ; d'après les Chroniques des rois de France, XVe s",
+            "caption": "Louis le Pieux (à droite) bénissant le partage de l'Empire carolingien en 843 en Francie occidentale, Lotharingie et Francie orientale ; d'après les Chroniques d",
             "credit": "Anonymous Unknown author",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Louis_the_Pious_blessing_the_division_of_the_Carolingian_Empire_in_843_into_West_Francia,_Lotharingia,_and_East_Francia.jpg"
@@ -646,8 +646,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/fr-capet.jpg",
-            "alt": "The Coronation of Hugues Capet (941-996), 988. Miniature from a manuscript of the 13th or 14th century. B.N., Paris, France.",
-            "caption": "The Coronation of Hugues Capet (941-996), 988. Miniature from a manuscript of the 13th or 14th century. B.N., Paris, France.",
+            "alt": "Le Couronnement d'Hugues Capet (941-996), 988. Miniature d'un manuscrit du XIIIe ou XIVe siècle. B.N., Paris, France.",
+            "caption": "Le Couronnement d'Hugues Capet (941-996), 988. Miniature d'un manuscrit du XIIIe ou XIVe siècle. B.N., Paris, France.",
             "credit": "Unknown author Unknown author",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Coronation_of_Hugues_Capet_2.jpg"
@@ -688,8 +688,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/fr-croisade.jpg",
-            "alt": "Paris, BNF lat. 17716, Miscellanea secundum usum ordinis Cluniacensis, fol. 91r. A closeup of Pope Urban II .",
-            "caption": "Paris, BNF lat. 17716, Miscellanea secundum usum ordinis Cluniacensis, fol. 91r. A closeup of Pope Urban II .",
+            "alt": "Paris, BNF lat. 17716, Miscellanea secundum usum ordinis Cluniacensis, fol. 91r. Gros plan sur le pape Urbain II .",
+            "caption": "Paris, BNF lat. 17716, Miscellanea secundum usum ordinis Cluniacensis, fol. 91r. Gros plan sur le pape Urbain II .",
             "credit": "Unknown author Unknown author",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Urbano_II_in_consacrazione_de_l'altare_del_monastero_di_Cluny_(detail)_(crop).png"
@@ -730,8 +730,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/fr-gothique.jpg",
-            "alt": "The West Front of Wells Cathedral.",
-            "caption": "The West Front of Wells Cathedral.",
+            "alt": "La façade occidentale de la cathédrale de Wells.",
+            "caption": "La façade occidentale de la cathédrale de Wells.",
             "credit": "Diliff",
             "license": "CC BY-SA 3.0",
             "source": "https://commons.wikimedia.org/wiki/File:Wells_Cathedral_West_Front_Exterior,_UK_-_Diliff.jpg"
@@ -772,8 +772,8 @@ export const DATASET = {
           "importance": 1,
           "image": {
             "src": "public/images/fr-albigeois.jpg",
-            "alt": "The Albigensian massacre, chronicle of Saint-Denis, 14th century, London, British Library.",
-            "caption": "The Albigensian massacre, chronicle of Saint-Denis, 14th century, London, British Library.",
+            "alt": "Le massacre albigeois, chronique de Saint-Denis, XIVe siècle, Londres, British Library.",
+            "caption": "Le massacre albigeois, chronique de Saint-Denis, XIVe siècle, Londres, British Library.",
             "credit": "Unknown author Unknown author",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Le_massacre_des_Albigeois.jpg"
@@ -813,8 +813,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/fr-etats-generaux.jpg",
-            "alt": "The opening of the Estates General May 5, 1789 in the Salle des Menus Plaisirs in Versailles.",
-            "caption": "The opening of the Estates General May 5, 1789 in the Salle des Menus Plaisirs in Versailles.",
+            "alt": "L'ouverture des États généraux le 5 mai 1789 dans la Salle des Menus Plaisirs à Versailles.",
+            "caption": "L'ouverture des États généraux le 5 mai 1789 dans la Salle des Menus Plaisirs à Versailles.",
             "credit": "Isidore-Stanislaus Helman (1743-1806) and Charles Monnet (1732-1808)",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Estatesgeneral.jpg"
@@ -854,8 +854,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/fr-cent-ans.jpg",
-            "alt": "Battle of Agincourt (1415)",
-            "caption": "Battle of Agincourt (1415)",
+            "alt": "Bataille d'Azincourt (1415)",
+            "caption": "Bataille d'Azincourt (1415)",
             "credit": "Antoine Leduc, Sylvie Leluc et Olivier Renaudeau (dir.), D'Azincourt à Marignan. Chevaliers et bombardes, 1415-1515 , Paris, Gallimard / Musée de l'armée, 2015, p. 18-19, ISBN 978-2-07-014949-0",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Schlacht_von_Azincourt.jpg"
@@ -895,8 +895,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/fr-peste.jpg",
-            "alt": "Miniature by Pierart dou Tielt illustrating the Tractatus quartus bu Gilles li Muisit (Tournai, c. 1353). The people of Tournai bury victims of the Black Death. ms. 13076 - 13077 f",
-            "caption": "Miniature by Pierart dou Tielt illustrating the Tractatus quartus bu Gilles li Muisit (Tournai, c. 1353). The people of Tournai bury victims of the Bl",
+            "alt": "Miniature de Pierart dou Tielt illustrant le Tractatus quartus bu Gilles li Muisit (Tournai, v. 1353). Les habitants de Tournai enterrent les victimes de la peste noire. ms. 13076 - 13077 f",
+            "caption": "Miniature de Pierart dou Tielt illustrant le Tractatus quartus bu Gilles li Muisit (Tournai, v. 1353). Les habitants de Tournai enterrent les victimes de la p",
             "credit": "Pierart dou Tielt (fl. 1340-1360)",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Doutielt3.jpg"
@@ -937,8 +937,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/fr-jeanne.jpg",
-            "alt": "Joan of Arc depicted in an historiated initial. Miniature probably produced in the late 19th century by an anonymous artist, possibly the painter and collector Georges Spetz or the",
-            "caption": "Joan of Arc depicted in an historiated initial. Miniature probably produced in the late 19th century by an anonymous artist, possibly the painter and ",
+            "alt": "Jeanne d'Arc représentée dans une initiale historiée. Miniature probablement réalisée à la fin du XIXe siècle par un artiste anonyme, peut-être le peintre et collectionneur Georges Spetz ou le",
+            "caption": "Jeanne d'Arc représentée dans une initiale historiée. Miniature probablement réalisée à la fin du XIXe siècle par un artiste anonyme, peut-être le peintre et ",
             "credit": "Derived from original commons upload at which is now in the history version: 01:39, 13. 8. 2005 Colour-graded to reveal more detail using GIMP software \"curves\" tool",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Joan_of_Arc_miniature_graded.jpg"
@@ -978,8 +978,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/fr-marignan.jpg",
-            "alt": "Battle of Marignano, September 14, 1515",
-            "caption": "Battle of Marignano, September 14, 1515",
+            "alt": "Bataille de Marignan, 14 septembre 1515",
+            "caption": "Bataille de Marignan, 14 septembre 1515",
             "credit": "Alexandre-Évariste Fragonard",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Marignan-1515-francois1er.jpg"
@@ -1020,8 +1020,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/fr-villers.jpg",
-            "alt": "Town hall of Villers-Cotterêts, Aisne, Picardie, France",
-            "caption": "Town hall of Villers-Cotterêts, Aisne, Picardie, France",
+            "alt": "Hôtel de ville de Villers-Cotterêts, Aisne, Picardie, France",
+            "caption": "Hôtel de ville de Villers-Cotterêts, Aisne, Picardie, France",
             "credit": "Pline",
             "license": "CC BY-SA 3.0",
             "source": "https://commons.wikimedia.org/wiki/File:2012--DSC_0208-Hôtel-de-Ville-de-Villers-Cotterêts.jpg"
@@ -1188,8 +1188,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/fr-louis14.jpg",
-            "alt": "Louis XIV of France",
-            "caption": "Louis XIV of France",
+            "alt": "Louis XIV de France",
+            "caption": "Louis XIV de France",
             "credit": "Hyacinthe Rigaud",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Louis_XIV_of_France.jpg"
@@ -1258,8 +1258,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/fr-academie-sciences.jpg",
-            "alt": "Colbert Presenting the Members of the Royal Academy of Sciences to Louis XIV in 1667",
-            "caption": "Colbert Presenting the Members of the Royal Academy of Sciences to Louis XIV in 1667",
+            "alt": "Colbert présentant les membres de l'Académie royale des sciences à Louis XIV en 1667",
+            "caption": "Colbert présentant les membres de l'Académie royale des sciences à Louis XIV en 1667",
             "credit": "After Charles Le Brun / Henri Testelin",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Colbert_Presenting_the_Members_of_the_Royal_Academy_of_Sciences_to_Louis_XIV_in_1667.PNG"
@@ -1813,8 +1813,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/fr-code-civil.jpg",
-            "alt": "Napoleonic Code on display in the Historical Museum of the Palatinate",
-            "caption": "Napoleonic Code on display in the Historical Museum of the Palatinate",
+            "alt": "Code Napoléon exposé au Musée historique du Palatinat",
+            "caption": "Code Napoléon exposé au Musée historique du Palatinat",
             "credit": "DerHexer",
             "license": "CC BY-SA 4.0",
             "source": "https://commons.wikimedia.org/wiki/File:Speyer,_Historical_Museum_of_the_Palatinate_-_Code_civil_des_Français.jpg"
@@ -1883,8 +1883,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/fr-waterloo.jpg",
-            "alt": "Battle of Waterloo 1815",
-            "caption": "Battle of Waterloo 1815",
+            "alt": "Bataille de Waterloo 1815",
+            "caption": "Bataille de Waterloo 1815",
             "credit": "William Sadler",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Battle_of_Waterloo_1815.PNG"
@@ -2120,8 +2120,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/fr-1870.jpg",
-            "alt": "The third version of the proclamation of Prussian king Wilhelm I as German Emperor at Versailles, by Anton von Werner. The first two versions were destroyed in the Second World War",
-            "caption": "The third version of the proclamation of Prussian king Wilhelm I as German Emperor at Versailles, by Anton von Werner. The first two versions were des",
+            "alt": "La troisième version de la proclamation du roi de Prusse Wilhelm Ier comme empereur d'Allemagne à Versailles, par Anton von Werner. Les deux premières versions furent détruites pendant la Seconde Guerre mondiale",
+            "caption": "La troisième version de la proclamation du roi de Prusse Wilhelm Ier comme empereur d'Allemagne à Versailles, par Anton von Werner. Les deux premières versions furent dé",
             "credit": "Anton von Werner",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:A_v_Werner_-_Kaiserproklamation_am_18_Januar_1871_(3._Fassung_1885).jpg"
@@ -2474,8 +2474,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/fr-laicite.jpg",
-            "alt": "First page of the 1905 French law on the separation of Church and State",
-            "caption": "First page of the 1905 French law on the separation of Church and State",
+            "alt": "Première page de la loi française de 1905 sur la séparation de l'Église et de l'État",
+            "caption": "Première page de la loi française de 1905 sur la séparation de l'Église et de l'État",
             "credit": "Wikimedia Commons",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:First_page_of_the_1905_French_law_on_the_separation_of_Church_and_State.png"
@@ -2561,8 +2561,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/fr-ww1.jpg",
-            "alt": "French soldiers moving into attack from their trench during the Battle of Verdun, 1916.",
-            "caption": "French soldiers moving into attack from their trench during the Battle of Verdun, 1916.",
+            "alt": "Des soldats français s'élançant à l'attaque depuis leur tranchée pendant la bataille de Verdun, 1916.",
+            "caption": "Des soldats français s'élançant à l'attaque depuis leur tranchée pendant la bataille de Verdun, 1916.",
             "credit": "Collection DocAnciens/docpix.fr",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Bataille_de_Verdun_1916.jpg"
@@ -2602,8 +2602,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/fr-versailles.jpg",
-            "alt": "The cover of a publication of the Treaty of Versailles in English The text reads THE TREATY OF PEACE BETWEEN THE ALLIED AND ASSOCIATED POWERS AND GERMANY, The protocol annexed ther",
-            "caption": "The cover of a publication of the Treaty of Versailles in English The text reads THE TREATY OF PEACE BETWEEN THE ALLIED AND ASSOCIATED POWERS AND GERM",
+            "alt": "La couverture d'une publication du traité de Versailles en anglais Le texte indique THE TREATY OF PEACE BETWEEN THE ALLIED AND ASSOCIATED POWERS AND GERMANY, The protocol annexed ther",
+            "caption": "La couverture d'une publication du traité de Versailles en anglais Le texte indique THE TREATY OF PEACE BETWEEN THE ALLIED AND ASSOCIATED POWERS AND GERM",
             "credit": "David Lloyd George, Woodrow Wilson and Georges Clemenceau",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Treaty_of_Versailles,_English_version.jpg"
@@ -2644,8 +2644,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/fr-front-populaire.jpg",
-            "alt": "New Popular Front poster for the 2024 French legislative elections",
-            "caption": "New Popular Front poster for the 2024 French legislative elections",
+            "alt": "Affiche du Nouveau Front populaire pour les élections législatives françaises de 2024",
+            "caption": "Affiche du Nouveau Front populaire pour les élections législatives françaises de 2024",
             "credit": "Guallendra",
             "license": "CC0",
             "source": "https://commons.wikimedia.org/wiki/File:Affiche_Nouveau_Front_populaire_Votez.jpg"
@@ -2915,8 +2915,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/fr-algerie.jpg",
-            "alt": "Soldiers of the National Liberation Army during the Algerian War of Independence.",
-            "caption": "Soldiers of the National Liberation Army during the Algerian War of Independence.",
+            "alt": "Des soldats de l'Armée de libération nationale pendant la guerre d'indépendance algérienne.",
+            "caption": "Des soldats de l'Armée de libération nationale pendant la guerre d'indépendance algérienne.",
             "credit": "Zdravko Pečar",
             "license": "CC BY-SA 4.0",
             "source": "https://commons.wikimedia.org/wiki/File:National_Liberation_Army_Soldiers_(7).jpg"
@@ -3153,8 +3153,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/fr-mai68.jpg",
-            "alt": "Demonstrations of may 1968 in Bordeaux (Gironde, France) - Rue Paul-Bert.",
-            "caption": "Demonstrations of may 1968 in Bordeaux (Gironde, France) - Rue Paul-Bert.",
+            "alt": "Manifestations de mai 1968 à Bordeaux (Gironde, France) - Rue Paul-Bert.",
+            "caption": "Manifestations de mai 1968 à Bordeaux (Gironde, France) - Rue Paul-Bert.",
             "credit": "Tangopaso",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:1968-05_Évènements_de_mai_à_Bordeaux_-_Rue_Paul-Bert_2.jpg"
@@ -3419,8 +3419,8 @@ export const DATASET = {
           "importance": 1,
           "image": {
             "src": "public/images/fr-euro.jpg",
-            "alt": "Euro Banknotes Europa series as of 28th May 2019",
-            "caption": "Euro Banknotes Europa series as of 28th May 2019",
+            "alt": "Billets d'euro série Europa au 28 mai 2019",
+            "caption": "Billets d'euro série Europa au 28 mai 2019",
             "credit": "The RedBurn",
             "license": "ECB decisions ECB/2003/4 and ECB/2003/5",
             "source": "https://commons.wikimedia.org/wiki/File:Euro_Series_Banknotes_(2019)_-_centered.png"
@@ -3598,8 +3598,8 @@ export const DATASET = {
           "importance": 1,
           "image": {
             "src": "public/images/fr-covid.jpg",
-            "alt": "A team of doctors, nurses and physiotherapists care for critically ill COVID-19 patients in the ICU of the Vila Nova Cachoeirinha hospital, in the north of São Paulo.",
-            "caption": "A team of doctors, nurses and physiotherapists care for critically ill COVID-19 patients in the ICU of the Vila Nova Cachoeirinha hospital, in the nor",
+            "alt": "Une équipe de médecins, d'infirmiers et de kinésithérapeutes prend en charge des patients atteints de COVID-19 en état critique dans l'unité de soins intensifs de l'hôpital Vila Nova Cachoeirinha, au nord de São Paulo.",
+            "caption": "Une équipe de médecins, d'infirmiers et de kinésithérapeutes prend en charge des patients atteints de COVID-19 en état critique dans l'unité de soins intensifs de l'hôpital Vila Nova Cachoeirinha, au nord de S",
             "credit": "Gustavo Basso",
             "license": "CC BY-SA 4.0",
             "source": "https://commons.wikimedia.org/wiki/File:Covid-19_SP_-_UTI_V._Nova_Cachoeirinha.jpg"
@@ -3678,8 +3678,8 @@ export const DATASET = {
           "importance": 1,
           "image": {
             "src": "public/images/fr-jo2024.jpg",
-            "alt": "Poster of the Olympic Games of Paris in 1924 in the Municipal Museum of Art and History in Colombes (Hauts-de-Seine, France).",
-            "caption": "Poster of the Olympic Games of Paris in 1924 in the Municipal Museum of Art and History in Colombes (Hauts-de-Seine, France).",
+            "alt": "Affiche des Jeux olympiques de Paris de 1924 au Musée municipal d'art et d'histoire de Colombes (Hauts-de-Seine, France).",
+            "caption": "Affiche des Jeux olympiques de Paris de 1924 au Musée municipal d'art et d'histoire de Colombes (Hauts-de-Seine, France).",
             "credit": "Tangopaso",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Affiche_des_jeux_olympiques_de_Paris_de_1924.jpg"
@@ -9860,8 +9860,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/uk-rome.jpg",
-            "alt": "Campaigns in the Roman Conquest of Britain, 43 — 84",
-            "caption": "Campaigns in the Roman Conquest of Britain, 43 — 84",
+            "alt": "Campagnes de la conquête romaine de la Bretagne, 43 — 84",
+            "caption": "Campagnes de la conquête romaine de la Bretagne, 43 — 84",
             "credit": "my work",
             "license": "CC BY-SA 3.0",
             "source": "https://commons.wikimedia.org/wiki/File:Roman.Britain.campaigns.43.to.84.jpg"
@@ -9910,8 +9910,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/uk-410.jpg",
-            "alt": "End of Roman Rule in Britain, 383–410",
-            "caption": "End of Roman Rule in Britain, 383–410",
+            "alt": "Fin de la domination romaine en Bretagne, 383–410",
+            "caption": "Fin de la domination romaine en Bretagne, 383–410",
             "credit": "my work",
             "license": "CC BY-SA 3.0",
             "source": "https://commons.wikimedia.org/wiki/File:End.of.Roman.rule.in.Britain.383.410.jpg"
@@ -9960,8 +9960,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/uk-hastings.jpg",
-            "alt": "Bayeux Tapestry - Scene 57: the death of King Harold at the Battle of Hastings . Titulus: HIC HAROLD REX INTERFECTUS EST (Here King Harold is slain)",
-            "caption": "Bayeux Tapestry - Scene 57: the death of King Harold at the Battle of Hastings . Titulus: HIC HAROLD REX INTERFECTUS EST (Here King Harold is slain)",
+            "alt": "Tapisserie de Bayeux - Scène 57 : la mort du roi Harold à la bataille de Hastings . Titulus : HIC HAROLD REX INTERFECTUS EST (Ici le roi Harold est tué)",
+            "caption": "Tapisserie de Bayeux - Scène 57 : la mort du roi Harold à la bataille de Hastings . Titulus : HIC HAROLD REX INTERFECTUS EST (Ici le roi Harold est tué)",
             "credit": "Myrabella",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Bayeux_Tapestry_scene57_Harold_death.jpg"
@@ -10001,8 +10001,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/uk-magna.jpg",
-            "alt": "The Magna Carta (originally known as the Charter of Liberties) of 1215, written in iron gall ink on parchment in medieval Latin, using standard abbreviations of the period, authent",
-            "caption": "The Magna Carta (originally known as the Charter of Liberties) of 1215, written in iron gall ink on parchment in medieval Latin, using standard abbrev",
+            "alt": "La Magna Carta (initialement connue sous le nom de Charte des libertés) de 1215, écrite à l'encre métallo-gallique sur parchemin en latin médiéval, avec les abréviations courantes de l'époque, authent",
+            "caption": "La Magna Carta (initialement connue sous le nom de Charte des libertés) de 1215, écrite à l'encre métallo-gallique sur parchemin en latin médiéval, avec les abréviations cou",
             "credit": "Original authors were the barons and King John of England . Uploaded by Earthsound .",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Magna_Carta_(British_Library_Cotton_MS_Augustus_II.106).jpg"
@@ -10051,8 +10051,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/uk-peste.jpg",
-            "alt": "Miniature by Pierart dou Tielt illustrating the Tractatus quartus bu Gilles li Muisit (Tournai, c. 1353). The people of Tournai bury victims of the Black Death. ms. 13076 - 13077 f",
-            "caption": "Miniature by Pierart dou Tielt illustrating the Tractatus quartus bu Gilles li Muisit (Tournai, c. 1353). The people of Tournai bury victims of the Bl",
+            "alt": "Miniature de Pierart dou Tielt illustrant le Tractatus quartus bu Gilles li Muisit (Tournai, v. 1353). Les habitants de Tournai enterrent les victimes de la peste noire. ms. 13076 - 13077 f",
+            "caption": "Miniature de Pierart dou Tielt illustrant le Tractatus quartus bu Gilles li Muisit (Tournai, v. 1353). Les habitants de Tournai enterrent les victimes de la p",
             "credit": "Pierart dou Tielt (fl. 1340-1360)",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Doutielt3.jpg"
@@ -10184,8 +10184,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/uk-civil.jpg",
-            "alt": "Battle of Naseby, hand-coloured copper engraving",
-            "caption": "Battle of Naseby, hand-coloured copper engraving",
+            "alt": "Bataille de Naseby, gravure sur cuivre coloriée à la main",
+            "caption": "Bataille de Naseby, gravure sur cuivre coloriée à la main",
             "credit": "Unknown author Unknown author",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Battle_of_Naseby,_hand-coloured_copper_engraving.jpg"
@@ -10233,8 +10233,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/uk-glorieuse.jpg",
-            "alt": "William of Orange III and his Dutch army land in Brixham",
-            "caption": "William of Orange III and his Dutch army land in Brixham",
+            "alt": "Guillaume III d'Orange et son armée néerlandaise débarquent à Brixham",
+            "caption": "Guillaume III d'Orange et son armée néerlandaise débarquent à Brixham",
             "credit": "Johan Herman Isings",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:William_of_Orange_III_and_his_Dutch_army_land_in_Brixham,_1688.jpg"
@@ -10385,8 +10385,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/uk-union.jpg",
-            "alt": "Portrait of Anne of Great Britain",
-            "caption": "Portrait of Anne of Great Britain",
+            "alt": "Portrait d'Anne de Grande-Bretagne",
+            "caption": "Portrait d'Anne de Grande-Bretagne",
             "credit": "Michael Dahl",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Annavon_GroßbritannienDahl.jpg"
@@ -10663,8 +10663,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/uk-prop-001.jpg",
-            "alt": "On 1 January 1801, the United Kingdom of Great Britain merged with the Kingdom of Ireland to become the United Kingdom of Great Britain and Ireland . In preparation for this, on 5 ",
-            "caption": "On 1 January 1801, the United Kingdom of Great Britain merged with the Kingdom of Ireland to become the United Kingdom of Great Britain and Ireland . ",
+            "alt": "Le 1er janvier 1801, le Royaume-Uni de Grande-Bretagne a fusionné avec le royaume d'Irlande pour devenir le Royaume-Uni de Grande-Bretagne et d'Irlande . En préparation de cela, le 5 ",
+            "caption": "Le 1er janvier 1801, le Royaume-Uni de Grande-Bretagne a fusionné avec le royaume d'Irlande pour devenir le Royaume-Uni de Grande-Bretagne et d'Irlande . ",
             "credit": "Royal College of Arms",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Order_in_Council,_5th_November_1800_–_illustrations_of_the_new_arms,_flag,_and_standard_of_the_United_Kingdom_of_Great_Britain_and_Ireland_(PC_2-157).jpg"
@@ -10816,8 +10816,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/uk-esclavage.jpg",
-            "alt": "\"Protector of Slaves Office (Trinidad),\" by Richard Bridgens (active 1838), graphite on wove paper. 8 in x 12 3/4 in. (20.3 cm x 32.4 cm). Courtesy of the Paul Mellon Collection, Y",
-            "caption": "\"Protector of Slaves Office (Trinidad),\" by Richard Bridgens (active 1838), graphite on wove paper. 8 in x 12 3/4 in. (20.3 cm x 32.4 cm). Courtesy of",
+            "alt": "\"Bureau du protecteur des esclaves (Trinidad),\" par Richard Bridgens (actif en 1838), graphite sur papier vélin. 8 in x 12 3/4 in. (20.3 cm x 32.4 cm). Avec l'aimable autorisation de la Paul Mellon Collection, Y",
+            "caption": "\"Bureau du protecteur des esclaves (Trinidad),\" par Richard Bridgens (actif en 1838), graphite sur papier vélin. 8 in x 12 3/4 in. (20.3 cm x 32.4 cm). Avec l'aimable autorisation de",
             "credit": "Richard Bridgens",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Protector_of_Slaves_Office_(Trinidad)_by_Richard_Bridgens.jpg"
@@ -10940,8 +10940,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/uk-prop-005.jpg",
-            "alt": "The scene at Skibbereen, west Cork, in 1847. From a series of illustrations by Cork artist James Mahony (1810–1879), commissioned by Illustrated London News 1847. “The first Sketch",
-            "caption": "The scene at Skibbereen, west Cork, in 1847. From a series of illustrations by Cork artist James Mahony (1810–1879), commissioned by Illustrated Londo",
+            "alt": "La scène à Skibbereen, dans l'ouest de Cork, en 1847. Extraite d'une série d'illustrations de l'artiste de Cork James Mahony (1810–1879), commandée par l'Illustrated London News 1847. “The first Sketch",
+            "caption": "La scène à Skibbereen, dans l'ouest de Cork, en 1847. Extraite d'une série d'illustrations de l'artiste de Cork James Mahony (1810–1879), commandée par l'Illustrated Londo",
             "credit": "James Mahony",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Skibbereen_by_James_Mahony,_1847.JPG"
@@ -11092,8 +11092,8 @@ export const DATASET = {
           "importance": 1,
           "image": {
             "src": "public/images/uk-expo.jpg",
-            "alt": "View from the Knightsbridge Road of The Crystal Palace in Hyde Park for Grand International Exhibition of 1851. Dedicated to the Royal Commissioners., London: Read & Co. Engravers ",
-            "caption": "View from the Knightsbridge Road of The Crystal Palace in Hyde Park for Grand International Exhibition of 1851. Dedicated to the Royal Commissioners.,",
+            "alt": "Vue depuis Knightsbridge Road du Crystal Palace à Hyde Park pour la Grande Exposition internationale de 1851. Dédié aux Royal Commissioners., Londres : Read & Co. Engravers ",
+            "caption": "Vue depuis Knightsbridge Road du Crystal Palace à Hyde Park pour la Grande Exposition internationale de 1851. Dédié aux Royal Commissioners.,",
             "credit": "Read & Co. Engravers & Printers",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:The_Crystal_Palace_in_Hyde_Park_for_Grand_International_Exhibition_of_1851.jpg"
@@ -11237,8 +11237,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/uk-ww1.jpg",
-            "alt": "French soldiers moving into attack from their trench during the Battle of Verdun, 1916.",
-            "caption": "French soldiers moving into attack from their trench during the Battle of Verdun, 1916.",
+            "alt": "Des soldats français s'élançant à l'attaque depuis leur tranchée pendant la bataille de Verdun, 1916.",
+            "caption": "Des soldats français s'élançant à l'attaque depuis leur tranchée pendant la bataille de Verdun, 1916.",
             "credit": "Collection DocAnciens/docpix.fr",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Bataille_de_Verdun_1916.jpg"
@@ -11287,8 +11287,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/uk-vote.jpg",
-            "alt": "The original 'Representation of the People Act 1918', the british act that gave men universal suffrage and women over 30 census suffrage.",
-            "caption": "The original 'Representation of the People Act 1918', the british act that gave men universal suffrage and women over 30 census suffrage.",
+            "alt": "Le texte original du 'Representation of the People Act 1918', la loi britannique qui accorda le suffrage universel aux hommes et le suffrage censitaire aux femmes de plus de 30 ans.",
+            "caption": "Le texte original du 'Representation of the People Act 1918', la loi britannique qui accorda le suffrage universel aux hommes et le suffrage censitaire aux femmes de plus de 30 ans.",
             "credit": "Uncredited.",
             "license": "OGL 3",
             "source": "https://commons.wikimedia.org/wiki/File:Representation_of_the_People_Act_1918.jpg"
@@ -11424,8 +11424,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/uk-ww2.jpg",
-            "alt": "For documentary purposes the German Federal Archive often retained the original image captions , which may be erroneous, biased, obsolete or politically extreme . German Stuka dive",
-            "caption": "For documentary purposes the German Federal Archive often retained the original image captions , which may be erroneous, biased, obsolete or political",
+            "alt": "À des fins documentaires, les Archives fédérales allemandes ont souvent conservé les légendes originales des images , qui peuvent être erronées, partiales, obsolètes ou politiquement extrêmes . Stuka allemand en piqué",
+            "caption": "À des fins documentaires, les Archives fédérales allemandes ont souvent conservé les légendes originales des images , qui peuvent être erronées, partiales, obsolètes ou politiques",
             "credit": "Richard Opitz",
             "license": "CC BY-SA 3.0 de",
             "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_101I-646-5188-17,_Flugzeuge_Junkers_Ju_87.jpg"
@@ -11655,8 +11655,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/uk-nhs.jpg",
-            "alt": "National Health Service. The Civil War. General Collections",
-            "caption": "National Health Service. The Civil War. General Collections",
+            "alt": "National Health Service. The Civil War. Collections générales",
+            "caption": "National Health Service. The Civil War. Collections générales",
             "credit": "https://wellcomeimages.org/indexplus/obf_images/fc/97/8509ab04fbdd53ce6f9a810ca085.jpg Gallery: https://wellcomeimages.org/indexplus/image/L0000770.html",
             "license": "CC BY 4.0",
             "source": "https://commons.wikimedia.org/wiki/File:National_Health_Service_Wellcome_L0000770.jpg"
@@ -11809,8 +11809,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/uk-thatcher.jpg",
-            "alt": "Portrait of Margaret Thatcher (1925–2013)",
-            "caption": "Portrait of Margaret Thatcher (1925–2013)",
+            "alt": "Portrait de Margaret Thatcher (1925–2013)",
+            "caption": "Portrait de Margaret Thatcher (1925–2013)",
             "credit": "derivative work by Begoon",
             "license": "Copyrighted free use",
             "source": "https://commons.wikimedia.org/wiki/File:Margaret_Thatcher_stock_portrait_(cropped).jpg"
@@ -11962,8 +11962,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/uk-good-friday.jpg",
-            "alt": "Crowning with Thorns",
-            "caption": "Crowning with Thorns",
+            "alt": "Couronnement d'épines",
+            "caption": "Couronnement d'épines",
             "credit": "Dirck van Baburen",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Dirk_van_Baburen_-_Kroning_met_de_doornenkroon.jpg"
@@ -17118,8 +17118,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/us-jamestown.jpg",
-            "alt": "Sketch of the Jamestown, Virginia fort sent to King Philip III of Spain by his ambassador Don Pedro de Zúñiga. The sketch was found on the back of a map Captain John Smith in 1608.",
-            "caption": "Sketch of the Jamestown, Virginia fort sent to King Philip III of Spain by his ambassador Don Pedro de Zúñiga. The sketch was found on the back of a m",
+            "alt": "Esquisse du fort de Jamestown, en Virginie, envoyée au roi Philippe III d'Espagne par son ambassadeur Don Pedro de Zúñiga. L'esquisse a été trouvée au dos d'une carte du capitaine John Smith en 1608.",
+            "caption": "Esquisse du fort de Jamestown, en Virginie, envoyée au roi Philippe III d'Espagne par son ambassadeur Don Pedro de Zúñiga. L'esquisse a été trouvée au dos d'une c",
             "credit": "Unknown (rediscovered by Alexander Brown)",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Jamestownzuniga.jpg"
@@ -17187,8 +17187,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/us-prop-001.jpg",
-            "alt": "Illustration titled \"Landing Negroes at Jamestown from Dutch man-of-war, 1619\"; signed H. Pyle in lower left hand corner",
-            "caption": "Illustration titled \"Landing Negroes at Jamestown from Dutch man-of-war, 1619\"; signed H. Pyle in lower left hand corner",
+            "alt": "Illustration intitulée \"Landing Negroes at Jamestown from Dutch man-of-war, 1619\"; signée H. Pyle dans le coin inférieur gauche",
+            "caption": "Illustration intitulée \"Landing Negroes at Jamestown from Dutch man-of-war, 1619\"; signée H. Pyle dans le coin inférieur gauche",
             "credit": "Howard Pyle",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:AfricansatJamestown1619.jpg"
@@ -17282,8 +17282,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/us-mayflower.jpg",
-            "alt": "Copyrighted and Published by A S Burbank, The Mayflower at Sea",
-            "caption": "Copyrighted and Published by A S Burbank, The Mayflower at Sea",
+            "alt": "Copyrighté et publié par A S Burbank, The Mayflower at Sea",
+            "caption": "Copyrighté et publié par A S Burbank, The Mayflower at Sea",
             "credit": "Unknown author Unknown author",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Copyrighted_and_Published_by_A_S_Burbank,_The_Mayflower_at_Sea_(NBY_21340).jpg"
@@ -17343,8 +17343,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/us-independance.jpg",
-            "alt": "This is a high-resolution image of the United States Declaration of Independence ( article - text ). This image is a version of the 1823 William Stone facsimile — Stone may well ha",
-            "caption": "This is a high-resolution image of the United States Declaration of Independence ( article - text ). This image is a version of the 1823 William Stone",
+            "alt": "Ceci est une image haute résolution de la Déclaration d'indépendance des États-Unis ( article - texte ). Cette image est une version du fac-similé de William Stone de 1823 — Stone a bien pu",
+            "caption": "Ceci est une image haute résolution de la Déclaration d'indépendance des États-Unis ( article - texte ). Cette image est une version du fac-similé de 1823 de William Stone",
             "credit": "original: w:Second Continental Congress ; reproduction: William Stone",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:United_States_Declaration_of_Independence.jpg"
@@ -17433,8 +17433,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/us-constitution.jpg",
-            "alt": "Constitution of the United States - DPLA - 9ca804144bd5965e992ae3528bc3c6a3 (page 1)",
-            "caption": "Constitution of the United States - DPLA - 9ca804144bd5965e992ae3528bc3c6a3 (page 1)",
+            "alt": "Constitution des États-Unis - DPLA - 9ca804144bd5965e992ae3528bc3c6a3 (page 1)",
+            "caption": "Constitution des États-Unis - DPLA - 9ca804144bd5965e992ae3528bc3c6a3 (page 1)",
             "credit": "Constitutional Convention",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Constitution_of_the_United_States_-_DPLA_-_9ca804144bd5965e992ae3528bc3c6a3_(page_1).jpg"
@@ -17524,8 +17524,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/us-louisiane.jpg",
-            "alt": "The Louisiana Purchase Projection = USA Contiguous Albers Equal Area Conic (EPSG:102003) Sources: Natural Earth and Portland State University ( https://gist.github.com/wboykinm/057",
-            "caption": "The Louisiana Purchase Projection = USA Contiguous Albers Equal Area Conic (EPSG:102003) Sources: Natural Earth and Portland State University ( https:",
+            "alt": "Projection de l'achat de la Louisiane = USA Contiguous Albers Equal Area Conic (EPSG:102003) Sources : Natural Earth et Portland State University ( https://gist.github.com/wboykinm/057",
+            "caption": "Projection de l'achat de la Louisiane = USA Contiguous Albers Equal Area Conic (EPSG:102003) Sources : Natural Earth et Portland State University ( https:",
             "credit": "William Morris",
             "license": "CC BY-SA 4.0",
             "source": "https://commons.wikimedia.org/wiki/File:Louisiana_Purchase.png"
@@ -17641,8 +17641,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/us-prop-003.jpg",
-            "alt": "Andrew Jackson's message to Congress, justifying the relocation of southeastern Native American tribes allowed by the Indian Removal Act of 1830.",
-            "caption": "Andrew Jackson's message to Congress, justifying the relocation of southeastern Native American tribes allowed by the Indian Removal Act of 1830.",
+            "alt": "Message d'Andrew Jackson au Congrès, justifiant le déplacement des tribus amérindiennes du sud-est autorisé par l'Indian Removal Act de 1830.",
+            "caption": "Message d'Andrew Jackson au Congrès, justifiant le déplacement des tribus amérindiennes du sud-est autorisé par l'Indian Removal Act de 1830.",
             "credit": "Andrew Jackson",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:\"'On_Indian_Removal\".png"
@@ -17847,8 +17847,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/us-civil-war.jpg",
-            "alt": "The battle of Gettysburg, Pa. July 3d. 1863 , depicting the Battle of Gettysburg , fought July 1–3, 1863. The battle was part of the American Civil War and was won by the North . H",
-            "caption": "The battle of Gettysburg, Pa. July 3d. 1863 , depicting the Battle of Gettysburg , fought July 1–3, 1863. The battle was part of the American Civil Wa",
+            "alt": "La bataille de Gettysburg, Pa. 3 juillet 1863 , représentant la bataille de Gettysburg , livrée du 1er au 3 juillet 1863. La bataille faisait partie de la guerre de Sécession américaine et a été gagnée par le Nord . H",
+            "caption": "La bataille de Gettysburg, Pa. 3 juillet 1863 , représentant la bataille de Gettysburg , livrée du 1er au 3 juillet 1863. La bataille faisait partie de la guerre de Sécession améri",
             "credit": "Nathaniel Currier and James Merritt Ives",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Battle_of_Gettysburg,_by_Currier_and_Ives.png"
@@ -17948,8 +17948,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/us-railroad.jpg",
-            "alt": "The ceremony for the driving of the golden spike at Promontory Summit, Utah on May 10, 1869; completion of the First Transcontinental Railroad . At center left, Samuel S. Montague ",
-            "caption": "The ceremony for the driving of the golden spike at Promontory Summit, Utah on May 10, 1869; completion of the First Transcontinental Railroad . At ce",
+            "alt": "La cérémonie du plantage du clou d'or à Promontory Summit, Utah, le 10 mai 1869 ; achèvement du First Transcontinental Railroad . Au centre à gauche, Samuel S. Montague ",
+            "caption": "La cérémonie du plantage du clou d'or à Promontory Summit, Utah, le 10 mai 1869 ; achèvement du First Transcontinental Railroad . Au centre à g",
             "credit": "Andrew J. Russell / Adam Cuerden",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:East_and_West_Shaking_hands_at_the_laying_of_last_rail_Union_Pacific_Railroad_-_Restoration.jpg"
@@ -18023,8 +18023,8 @@ export const DATASET = {
           "importance": 1,
           "image": {
             "src": "public/images/us-industry.jpg",
-            "alt": "Illustration of power loom weaving.",
-            "caption": "Illustration of power loom weaving.",
+            "alt": "Illustration d'un métier à tisser mécanique.",
+            "caption": "Illustration d'un métier à tisser mécanique.",
             "credit": "Illustrator T. Allom, Engraver J. Tingle",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Powerloom_weaving_in_1835.jpg"
@@ -18083,8 +18083,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/us-ww1.jpg",
-            "alt": "President Woodrow Wilson asking Congress to declare war on Germany, causing the United States to enter World War I.",
-            "caption": "President Woodrow Wilson asking Congress to declare war on Germany, causing the United States to enter World War I.",
+            "alt": "Le président Woodrow Wilson demandant au Congrès de déclarer la guerre à l'Allemagne, entraînant les États-Unis dans la Première Guerre mondiale.",
+            "caption": "Le président Woodrow Wilson demandant au Congrès de déclarer la guerre à l'Allemagne, entraînant les États-Unis dans la Première Guerre mondiale.",
             "credit": "Unknown author Unknown author",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:President_Woodrow_Wilson_asking_Congress_to_declare_war_on_Germany,_2_April_1917.jpg"
@@ -18144,8 +18144,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/us-prop-010.jpg",
-            "alt": "Destruction from the 1921 Tulsa race massacre.",
-            "caption": "Destruction from the 1921 Tulsa race massacre.",
+            "alt": "Destruction due au massacre racial de Tulsa de 1921.",
+            "caption": "Destruction due au massacre racial de Tulsa de 1921.",
             "credit": "United States Library of Congress",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:TulsaRaceRiot-1921.png"
@@ -18239,8 +18239,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/us-crash.jpg",
-            "alt": "A solemn crowd gathers outside the Stock Exchange after the crash. 1929.",
-            "caption": "A solemn crowd gathers outside the Stock Exchange after the crash. 1929.",
+            "alt": "Une foule solennelle se rassemble devant la Bourse après le krach. 1929.",
+            "caption": "Une foule solennelle se rassemble devant la Bourse après le krach. 1929.",
             "credit": "US-gov",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Crowd_outside_nyse.jpg"
@@ -18299,8 +18299,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/us-pearl.jpg",
-            "alt": "Photograph taken from a Japanese plane during the torpedo attack on ships moored on both sides of Ford Island shortly after the beginning of the Pearl Harbor attack. View looks abo",
-            "caption": "Photograph taken from a Japanese plane during the torpedo attack on ships moored on both sides of Ford Island shortly after the beginning of the Pearl",
+            "alt": "Photographie prise depuis un avion japonais pendant l'attaque à la torpille contre les navires amarrés des deux côtés de l'île de Ford peu après le début de l'attaque de Pearl Harbor. Vue regardant abo",
+            "caption": "Photographie prise depuis un avion japonais pendant l'attaque à la torpille contre les navires amarrés des deux côtés de l'île de Ford peu après le début de l'attaque de Pearl",
             "credit": "Imperial Japanese Navy",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Attack_on_Pearl_Harbor_Japanese_planes_view.jpg"
@@ -18360,8 +18360,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/us-hiroshima.jpg",
-            "alt": "Left picture : At the time this photo was made, smoke billowed 20,000 feet above Hiroshima while smoke from the burst of the first atomic bomb had spread over 10,000 feet on the ta",
-            "caption": "Left picture : At the time this photo was made, smoke billowed 20,000 feet above Hiroshima while smoke from the burst of the first atomic bomb had spr",
+            "alt": "Image de gauche : Au moment où cette photo a été prise, la fumée s'élevait à 20 000 pieds au-dessus d'Hiroshima tandis que la fumée de l'explosion de la première bombe atomique s'était étendue sur plus de 10 000 pieds sur la ta",
+            "caption": "Image de gauche : Au moment où cette photo a été prise, la fumée s'élevait à 20 000 pieds au-dessus d'Hiroshima tandis que la fumée de l'explosion de la première bombe atomique s'était ét",
             "credit": "George R. Caron / Charles Levy",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Atomic_bombing_of_Japan.jpg"
@@ -18502,8 +18502,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/us-apollo.jpg",
-            "alt": "Apollo 11 Hasselblad image from film magazine 40/S - EVA. The image of astronaut Neil Armstrong photographing astronaut Aldrin is clearly seen in the reflections on the helmet viso",
-            "caption": "Apollo 11 Hasselblad image from film magazine 40/S - EVA. The image of astronaut Neil Armstrong photographing astronaut Aldrin is clearly seen in the ",
+            "alt": "Image Hasselblad d'Apollo 11 provenant du magasin de film 40/S - EVA. L'image de l'astronaute Neil Armstrong photographiant l'astronaute Aldrin est clairement visible dans les reflets sur la visière du casque viso",
+            "caption": "Image Hasselblad d'Apollo 11 provenant du magasin de film 40/S - EVA. L'image de l'astronaute Neil Armstrong photographiant l'astronaute Aldrin est clairement visible dans les ",
             "credit": "Neil A. Armstrong",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:A_Man_on_the_Moon,_AS11-40-5903_(cropped).jpg"
@@ -18544,8 +18544,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/us-911.jpg",
-            "alt": "Plumes of smoke billow from the World Trade Center towers in Lower Manhattan , New York City , after a Boeing 767 hits each tower during the September 11 attacks .",
-            "caption": "Plumes of smoke billow from the World Trade Center towers in Lower Manhattan , New York City , after a Boeing 767 hits each tower during the September",
+            "alt": "Des panaches de fumée s'élèvent des tours du World Trade Center dans le Lower Manhattan , New York City , après qu'un Boeing 767 a frappé chaque tour lors des attentats du 11 septembre .",
+            "caption": "Des panaches de fumée s'élèvent des tours du World Trade Center dans le Lower Manhattan , New York City , après qu'un Boeing 767 a frappé chaque tour durant le September",
             "credit": "Flickr user Michael Foran",
             "license": "CC BY 2.0",
             "source": "https://commons.wikimedia.org/wiki/File:WTC_smoking_on_9-11.jpeg"
@@ -18585,8 +18585,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/us-2008.jpg",
-            "alt": "Eesa Khoury, Fundraising concert in New York",
-            "caption": "Eesa Khoury, Fundraising concert in New York",
+            "alt": "Eesa Khoury, concert de collecte de fonds à New York",
+            "caption": "Eesa Khoury, concert de collecte de fonds à New York",
             "credit": "Eesa Khoury Violinist",
             "license": "CC0",
             "source": "https://commons.wikimedia.org/wiki/File:Eesa-Khoury-Violin-Newyork.jpg"
@@ -22703,8 +22703,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/de-otto.jpg",
-            "alt": "Seal of Otto I, detailed description: The Seals of the German Emperors and Kings: Volume 5:Page 12, No. 5",
-            "caption": "Seal of Otto I, detailed description: The Seals of the German Emperors and Kings: Volume 5:Page 12, No. 5",
+            "alt": "Sceau d'Otton Ier, description détaillée : The Seals of the German Emperors and Kings : Volume 5:Page 12, No. 5",
+            "caption": "Sceau d'Otton Ier, description détaillée : The Seals of the German Emperors and Kings : Volume 5:Page 12, No. 5",
             "credit": "Otto Posse",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Siegel_Otto_I_Posse.JPG"
@@ -22822,8 +22822,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/de-30ans.jpg",
-            "alt": "Carl Friedrich Lessing - The Siege (Defense of a Church Courtyard During the Thirty Years’ War) - Google Art Project",
-            "caption": "Carl Friedrich Lessing - The Siege (Defense of a Church Courtyard During the Thirty Years’ War) - Google Art Project",
+            "alt": "Carl Friedrich Lessing - Le Siège (Défense d'une cour d'église pendant la guerre de Trente Ans) - Google Art Project",
+            "caption": "Carl Friedrich Lessing - Le Siège (Défense d'une cour d'église pendant la guerre de Trente Ans) - Google Art Project",
             "credit": "Karl Friedrich Lessing",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Carl_Friedrich_Lessing_-_The_Siege_(Defense_of_a_Church_Courtyard_During_the_Thirty_Years’_War)_-_Google_Art_Project.jpg"
@@ -22881,8 +22881,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/de-leipzig.jpg",
-            "alt": "The Battle of Leipzig",
-            "caption": "The Battle of Leipzig",
+            "alt": "La bataille de Leipzig",
+            "caption": "La bataille de Leipzig",
             "credit": "Vladimir Moshkov",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:MoshkovVI_SrazhLeypcigomGRM.jpg"
@@ -22933,8 +22933,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/de-1848.jpg",
-            "alt": "Picture of the fights between revolutionaries and the royal military in the Breite Strasse Street, Berlin during the March 1848 revolution",
-            "caption": "Picture of the fights between revolutionaries and the royal military in the Breite Strasse Street, Berlin during the March 1848 revolution",
+            "alt": "Image des combats entre révolutionnaires et militaires royaux dans la rue Breite Strasse, Berlin, pendant la révolution de mars 1848",
+            "caption": "Image des combats entre révolutionnaires et militaires royaux dans la rue Breite Strasse, Berlin, pendant la révolution de mars 1848",
             "credit": "Unknown author Unknown author",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Ereignisblatt_aus_den_revolutionären_Märztagen_18.-19._März_1848_mit_einer_Barrikadenszene_aus_der_Breiten_Strasse,_Berlin_01.jpg"
@@ -22982,8 +22982,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/de-prop-001.jpg",
-            "alt": "For documentary purposes the German Federal Archive often retained the original image captions , which may be erroneous, biased, obsolete or politically extreme . Meißen, Altstadt,",
-            "caption": "For documentary purposes the German Federal Archive often retained the original image captions , which may be erroneous, biased, obsolete or political",
+            "alt": "À des fins documentaires, les Archives fédérales allemandes ont souvent conservé les légendes originales des images , qui peuvent être erronées, biaisées, obsolètes ou politiquement extrêmes . Meißen, Altstadt,",
+            "caption": "À des fins documentaires, les Archives fédérales allemandes ont souvent conservé les légendes originales des images , qui peuvent être erronées, biaisées, obsolètes ou politiques",
             "credit": "Löwe",
             "license": "CC BY-SA 3.0 de",
             "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_183-59032-0002,_Meißen,_Altstadt,_Dom.jpg"
@@ -23184,8 +23184,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/de-ww1.jpg",
-            "alt": "French soldiers moving into attack from their trench during the Battle of Verdun, 1916.",
-            "caption": "French soldiers moving into attack from their trench during the Battle of Verdun, 1916.",
+            "alt": "Des soldats français passant à l'attaque depuis leur tranchée pendant la bataille de Verdun, 1916.",
+            "caption": "Des soldats français passant à l'attaque depuis leur tranchée pendant la bataille de Verdun, 1916.",
             "credit": "Collection DocAnciens/docpix.fr",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Bataille_de_Verdun_1916.jpg"
@@ -23276,8 +23276,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/de-inflation.jpg",
-            "alt": "For documentary purposes the German Federal Archive often retained the original image captions , which may be erroneous, biased, obsolete or politically extreme . ADN-ZB Deutschlan",
-            "caption": "For documentary purposes the German Federal Archive often retained the original image captions , which may be erroneous, biased, obsolete or political",
+            "alt": "À des fins documentaires, les Archives fédérales allemandes ont souvent conservé les légendes originales des images , qui peuvent être erronées, partiales, obsolètes ou politiquement extrêmes . ADN-ZB Deutschlan",
+            "caption": "À des fins documentaires, les Archives fédérales allemandes ont souvent conservé les légendes originales des images , qui peuvent être erronées, partiales, obsolètes ou politiques",
             "credit": "Unknown author Unknown author",
             "license": "CC BY-SA 3.0 de",
             "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_183-R1215-506,_Berlin,_Reichsbank,_Geldauflieferungsstelle.jpg"
@@ -23325,8 +23325,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/de-hitler.jpg",
-            "alt": "1938 portrait photograph of Adolf Hitler",
-            "caption": "1938 portrait photograph of Adolf Hitler",
+            "alt": "Photographie de portrait d'Adolf Hitler, 1938",
+            "caption": "Photographie de portrait d'Adolf Hitler, 1938",
             "credit": "Heinrich Hoffmann",
             "license": "CC BY-SA 3.0 de",
             "source": "https://commons.wikimedia.org/wiki/File:Hitler_portrait_crop_(cropped)(2).jpg"
@@ -23367,8 +23367,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/de-ww2.jpg",
-            "alt": "For documentary purposes the German Federal Archive often retained the original image captions , which may be erroneous, biased, obsolete or politically extreme . German Stuka dive",
-            "caption": "For documentary purposes the German Federal Archive often retained the original image captions , which may be erroneous, biased, obsolete or political",
+            "alt": "À des fins documentaires, les Archives fédérales allemandes ont souvent conservé les légendes originales des images , qui peuvent être erronées, partiales, obsolètes ou politiquement extrêmes . Stuka allemand en piqué",
+            "caption": "À des fins documentaires, les Archives fédérales allemandes ont souvent conservé les légendes originales des images , qui peuvent être erronées, partiales, obsolètes ou politiques",
             "credit": "Richard Opitz",
             "license": "CC BY-SA 3.0 de",
             "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_101I-646-5188-17,_Flugzeuge_Junkers_Ju_87.jpg"
@@ -23418,8 +23418,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/de-prop-003.jpg",
-            "alt": "For documentary purposes the German Federal Archive often retained the original image captions , which may be erroneous, biased, obsolete or politically extreme . Dachau, Konzentra",
-            "caption": "For documentary purposes the German Federal Archive often retained the original image captions , which may be erroneous, biased, obsolete or political",
+            "alt": "À des fins documentaires, les Archives fédérales allemandes ont souvent conservé les légendes originales des images , qui peuvent être erronées, biaisées, obsolètes ou politiquement extrêmes . Dachau, Konzentra",
+            "caption": "À des fins documentaires, les Archives fédérales allemandes ont souvent conservé les légendes originales des images , qui peuvent être erronées, biaisées, obsolètes ou politiques",
             "credit": "Friedrich Franz Bauer",
             "license": "CC BY-SA 3.0 de",
             "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_152-01-26,_Dachau,_Konzentrationslager.jpg"
@@ -23468,8 +23468,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/de-wannsee.jpg",
-            "alt": "Manor in Berlin-Wannsee, Germany - also known as the House of the Wannsee Conference",
-            "caption": "Manor in Berlin-Wannsee, Germany - also known as the House of the Wannsee Conference",
+            "alt": "Manoir à Berlin-Wannsee, Allemagne - également connu sous le nom de maison de la conférence de Wannsee",
+            "caption": "Manoir à Berlin-Wannsee, Allemagne - également connu sous le nom de maison de la conférence de Wannsee",
             "credit": "A.Savin",
             "license": "CC BY-SA 3.0",
             "source": "https://commons.wikimedia.org/wiki/File:Haus_der_Wannsee-Konferenz_02-2014.jpg"
@@ -23556,8 +23556,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/de-prop-004.jpg",
-            "alt": "Ghetto Litzmannstadt: The Gypsy neighborhood in the ghetto, after its inhabitants were transported to the Chelmno death camp.",
-            "caption": "Ghetto Litzmannstadt: The Gypsy neighborhood in the ghetto, after its inhabitants were transported to the Chelmno death camp.",
+            "alt": "Ghetto de Litzmannstadt : le quartier des Gitans dans le ghetto, après que ses habitants ont été transportés au camp de la mort de Chelmno.",
+            "caption": "Ghetto de Litzmannstadt : le quartier des Gitans dans le ghetto, après que ses habitants ont été transportés au camp de la mort de Chelmno.",
             "credit": "Unknown author Unknown author",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Gypsy_camp_in_ghetto.JPG"
@@ -23633,8 +23633,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/de-nuremberg.jpg",
-            "alt": "Emblem of the International Military Tribunal, Nuremberg . As featured on the cover of the \"Blue Series\", the \"Trial of the Major War Criminals Before the International Military Tr",
-            "caption": "Emblem of the International Military Tribunal, Nuremberg . As featured on the cover of the \"Blue Series\", the \"Trial of the Major War Criminals Before",
+            "alt": "Emblème du Tribunal militaire international, Nuremberg. Tel qu'il figure sur la couverture de la « Blue Series », le « Trial of the Major War Criminals Before the International Military Tr",
+            "caption": "Emblème du Tribunal militaire international, Nuremberg. Tel qu'il figure sur la couverture de la « Blue Series », le « Trial of the Major War Criminals Before",
             "credit": "Published in accordance with the direction of the International Military Tribunal by the Secretariat of the Tribunal, under the jurisdiction of the Allied Control Authority for Germany .",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Emblem_of_the_International_Military_Tribunal,_Nuremberg.png"
@@ -23861,8 +23861,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/de-mur.jpg",
-            "alt": "This image of the Berlin Wall was taken in 1986 by Thierry Noir at Bethaniendamm in Berlin-Kreuzberg.",
-            "caption": "This image of the Berlin Wall was taken in 1986 by Thierry Noir at Bethaniendamm in Berlin-Kreuzberg.",
+            "alt": "Cette image du mur de Berlin a été prise en 1986 par Thierry Noir à Bethaniendamm à Berlin-Kreuzberg.",
+            "caption": "Cette image du mur de Berlin a été prise en 1986 par Thierry Noir à Bethaniendamm à Berlin-Kreuzberg.",
             "credit": "Noir",
             "license": "CC BY-SA 3.0",
             "source": "https://commons.wikimedia.org/wiki/File:Berlinermauer.jpg"
@@ -24064,8 +24064,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/de-1990.jpg",
-            "alt": "The Fall of the Berlin Wall, 1989. The photo shows a part of a public photo documentation wall at the Brandenburg Gate, Berlin. The photo documentation is permanently placed in the",
-            "caption": "The Fall of the Berlin Wall, 1989. The photo shows a part of a public photo documentation wall at the Brandenburg Gate, Berlin. The photo documentatio",
+            "alt": "La chute du mur de Berlin, 1989. La photo montre une partie d'un mur de documentation photographique public à la Porte de Brandebourg, Berlin. La documentation photographique est installée en permanence dans le",
+            "caption": "La chute du mur de Berlin, 1989. La photo montre une partie d'un mur de documentation photographique public à la Porte de Brandebourg, Berlin. La documentation photographi",
             "credit": "Unknown photographer, Reproduction by Lear 21 at English Wikipedia .",
             "license": "CC BY-SA 3.0",
             "source": "https://commons.wikimedia.org/wiki/File:West_and_East_Germans_at_the_Brandenburg_Gate_in_1989.jpg"
@@ -28544,8 +28544,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/it-rome.jpg",
-            "alt": "Capitoline she-wolf (Latin Lupa Capitolina), a bronze figure showing Romulus and Remus, the mythical founders of the city of Rome",
-            "caption": "Capitoline she-wolf (Latin Lupa Capitolina), a bronze figure showing Romulus and Remus, the mythical founders of the city of Rome",
+            "alt": "Louve capitoline (latin Lupa Capitolina), une figure en bronze représentant Romulus et Rémus, les fondateurs mythiques de la ville de Rome",
+            "caption": "Louve capitoline (latin Lupa Capitolina), une figure en bronze représentant Romulus et Rémus, les fondateurs mythiques de la ville de Rome",
             "credit": "Rabax63",
             "license": "CC BY-SA 4.0",
             "source": "https://commons.wikimedia.org/wiki/File:Kapitolinische_Wölfin_Museum_Capitolini.jpg"
@@ -28692,8 +28692,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/it-empire.jpg",
-            "alt": "The Roman Empire (red) and its clients (pink) in 117 AD during the reign of emperor Trajan.",
-            "caption": "The Roman Empire (red) and its clients (pink) in 117 AD during the reign of emperor Trajan.",
+            "alt": "L'Empire romain (rouge) et ses clients (rose) en 117 apr. J.-C. sous le règne de l'empereur Trajan.",
+            "caption": "L'Empire romain (rouge) et ses clients (rose) en 117 apr. J.-C. sous le règne de l'empereur Trajan.",
             "credit": "Tataryn",
             "license": "CC BY-SA 3.0",
             "source": "https://commons.wikimedia.org/wiki/File:Roman_Empire_Trajan_117AD.png"
@@ -28827,8 +28827,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/it-prop-005.jpg",
-            "alt": "Saint Catherine of Siena. From chiesa di Santa Maria del Rosario in Prati, Roma",
-            "caption": "Saint Catherine of Siena. From chiesa di Santa Maria del Rosario in Prati, Roma",
+            "alt": "Sainte Catherine de Sienne. De chiesa di Santa Maria del Rosario in Prati, Roma",
+            "caption": "Sainte Catherine de Sienne. De chiesa di Santa Maria del Rosario in Prati, Roma",
             "credit": "Unidentified painter",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Catherine_of_Siena.jpg"
@@ -28924,8 +28924,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/it-prop-004.jpg",
-            "alt": "Michele di Lando war ein Anführer der Ciompi während deren Aufstand 1378. Statue in der Loggia del Mercato Nuovo in Florence (Italy).",
-            "caption": "Michele di Lando war ein Anführer der Ciompi während deren Aufstand 1378. Statue in der Loggia del Mercato Nuovo in Florence (Italy).",
+            "alt": "Michele di Lando était un dirigeant des Ciompi pendant leur révolte de 1378. Statue dans la Loggia del Mercato Nuovo à Florence (Italie).",
+            "caption": "Michele di Lando était un dirigeant des Ciompi pendant leur révolte de 1378. Statue dans la Loggia del Mercato Nuovo à Florence (Italie).",
             "credit": "Sailko",
             "license": "CC BY 2.5",
             "source": "https://commons.wikimedia.org/wiki/File:Michele_di_lando.JPG"
@@ -29496,8 +29496,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/it-rome-capitale.jpg",
-            "alt": "Photograph of the Capture of Rome",
-            "caption": "Photograph of the Capture of Rome",
+            "alt": "Photographie de la prise de Rome",
+            "caption": "Photographie de la prise de Rome",
             "credit": "Ludovico Tuminello",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Ludovico_Tuminello_-_Veduta_delle_barricate_a_Porta_San_Giovanni._Fotografia_stereoscopica_scattata_il_21_settembre_1870_(cropped).jpg"
@@ -29631,8 +29631,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/it-ww1.jpg",
-            "alt": "Identifier : peopleswarbookhi00mill ( find matches ) Title : The people's war book; history, cyclopaedia and chronology of the great world war Year : 1919 ( 1910s ) Authors : Mille",
-            "caption": "Identifier : peopleswarbookhi00mill ( find matches ) Title : The people's war book; history, cyclopaedia and chronology of the great world war Year : ",
+            "alt": "Identifiant : peopleswarbookhi00mill ( trouver des correspondances ) Titre : The people's war book; history, cyclopaedia and chronology of the great world war Année : 1919 ( années 1910 ) Auteurs : Mille",
+            "caption": "Identifiant : peopleswarbookhi00mill ( trouver des correspondances ) Titre : The people's war book; history, cyclopaedia and chronology of the great world war Année : ",
             "credit": "Internet Archive Book Images",
             "license": "No restrictions",
             "source": "https://commons.wikimedia.org/wiki/File:The_people's_war_book;_history,_cyclopaedia_and_chronology_of_the_great_world_war_(1919)_(14782046375).jpg"
@@ -29672,8 +29672,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/it-mussolini.jpg",
-            "alt": "From left to right: Italo Balbo, Benito Mussolini, Cesare Maria de Vecchi and Michele Bianchi in 1922",
-            "caption": "From left to right: Italo Balbo, Benito Mussolini, Cesare Maria de Vecchi and Michele Bianchi in 1922",
+            "alt": "De gauche à droite : Italo Balbo, Benito Mussolini, Cesare Maria de Vecchi et Michele Bianchi en 1922",
+            "caption": "De gauche à droite : Italo Balbo, Benito Mussolini, Cesare Maria de Vecchi et Michele Bianchi en 1922",
             "credit": "Unknown author Unknown author",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Naples_Fascist_rally_on_24_October_1922_(2).jpg"
@@ -29715,8 +29715,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/it-ww2.jpg",
-            "alt": "For documentary purposes the German Federal Archive often retained the original image captions , which may be erroneous, biased, obsolete or politically extreme . German Stuka dive",
-            "caption": "For documentary purposes the German Federal Archive often retained the original image captions , which may be erroneous, biased, obsolete or political",
+            "alt": "À des fins documentaires, les Archives fédérales allemandes ont souvent conservé les légendes originales des images, qui peuvent être erronées, partiales, obsolètes ou politiquement extrêmes. Stuka en piqué allemand",
+            "caption": "À des fins documentaires, les Archives fédérales allemandes ont souvent conservé les légendes originales des images, qui peuvent être erronées, partiales, obsolètes ou politiques",
             "credit": "Richard Opitz",
             "license": "CC BY-SA 3.0 de",
             "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_101I-646-5188-17,_Flugzeuge_Junkers_Ju_87.jpg"
@@ -30002,8 +30002,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/it-prop-017.jpg",
-            "alt": "Landslide of Vajont Dam disaster, 10 oct 1963",
-            "caption": "Landslide of Vajont Dam disaster, 10 oct 1963",
+            "alt": "Glissement de terrain de la catastrophe du barrage du Vajont, 10 oct 1963",
+            "caption": "Glissement de terrain de la catastrophe du barrage du Vajont, 10 oct 1963",
             "credit": "Unknown author Unknown author",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Vajont_Dam_1963.jpg"
@@ -30262,8 +30262,8 @@ export const DATASET = {
           "importance": 1,
           "image": {
             "src": "public/images/it-euro.jpg",
-            "alt": "Euro Banknotes Europa series as of 28th May 2019",
-            "caption": "Euro Banknotes Europa series as of 28th May 2019",
+            "alt": "Billets en euros de la série Europa au 28 mai 2019",
+            "caption": "Billets en euros de la série Europa au 28 mai 2019",
             "credit": "The RedBurn",
             "license": "ECB decisions ECB/2003/4 and ECB/2003/5",
             "source": "https://commons.wikimedia.org/wiki/File:Euro_Series_Banknotes_(2019)_-_centered.png"
@@ -34238,8 +34238,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/es-mariage.jpg",
-            "alt": "Wedding portrait of King Ferdinand of Aragon and Queen Isabella of Castile",
-            "caption": "Wedding portrait of King Ferdinand of Aragon and Queen Isabella of Castile",
+            "alt": "Portrait de mariage du roi Ferdinand d'Aragon et de la reine Isabelle de Castille",
+            "caption": "Portrait de mariage du roi Ferdinand d'Aragon et de la reine Isabelle de Castille",
             "credit": "anonymous",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Ferdinand_of_Aragon,_Isabella_of_Castile_(cropped).jpg"
@@ -34317,8 +34317,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/es-colomb.jpg",
-            "alt": "Portrait of a Man, Said to be Christopher Columbus",
-            "caption": "Portrait of a Man, Said to be Christopher Columbus",
+            "alt": "Portrait d'un homme, dit Christophe Colomb",
+            "caption": "Portrait d'un homme, dit Christophe Colomb",
             "credit": "Sebastiano del Piombo",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Portrait_of_a_Man,_Said_to_be_Christopher_Columbus.jpg"
@@ -34965,8 +34965,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/es-independance.jpg",
-            "alt": "This file was derived from: El tres de mayo de 1808 en Madrid (2008).jpg Battle of Somosierra 1808.PNG Goya War2.jpg The Sortie from Bayonne, at 3 in the Morning, on the 14th April",
-            "caption": "This file was derived from: El tres de mayo de 1808 en Madrid (2008).jpg Battle of Somosierra 1808.PNG Goya War2.jpg The Sortie from Bayonne, at 3 in ",
+            "alt": "Ce fichier est dérivé de : El tres de mayo de 1808 en Madrid (2008).jpg Battle of Somosierra 1808.PNG Goya War2.jpg La Sortie de Bayonne, à 3 heures du matin, le 14 avril",
+            "caption": "Ce fichier est dérivé de : El tres de mayo de 1808 en Madrid (2008).jpg Battle of Somosierra 1808.PNG Goya War2.jpg La Sortie de Bayonne, à 3 heures du matin",
             "credit": "Ruedi33a",
             "license": "CC BY-SA 4.0",
             "source": "https://commons.wikimedia.org/wiki/File:Peninsular_war_collage.jpg"
@@ -35043,8 +35043,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/es-1898.jpg",
-            "alt": "Top left: Signal Corps extending telegraph lines from trenches Top right: USS Iowa Middle left: Replacing of the Spanish flag at Fort Malate Middle right: Filipino soldiers wearing",
-            "caption": "Top left: Signal Corps extending telegraph lines from trenches Top right: USS Iowa Middle left: Replacing of the Spanish flag at Fort Malate Middle ri",
+            "alt": "En haut à gauche : le Signal Corps prolongeant les lignes télégraphiques depuis les tranchées En haut à droite : l'USS Iowa Au milieu à gauche : le remplacement du drapeau espagnol au fort Malate Au milieu à droite : des soldats philippins portant",
+            "caption": "En haut à gauche : le Signal Corps prolongeant les lignes télégraphiques depuis les tranchées En haut à droite : l'USS Iowa Au milieu à gauche : le remplacement du drapeau espagnol au fort Malate Au milieu à droite",
             "credit": "Barbudo Barbudo and TEP",
             "license": "CC BY-SA 4.0",
             "source": "https://commons.wikimedia.org/wiki/File:Collage_infobox_for_Spanish-American_War.jpg"
@@ -35193,8 +35193,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/es-civile.jpg",
-            "alt": "International Brigadiers from the XI International Brigade volunteered on the side of the Spanish Republic at the Battle of Belchite (1937).",
-            "caption": "International Brigadiers from the XI International Brigade volunteered on the side of the Spanish Republic at the Battle of Belchite (1937).",
+            "alt": "Des brigadistes internationaux de la XIe Brigade internationale se sont portés volontaires aux côtés de la République espagnole lors de la bataille de Belchite (1937).",
+            "caption": "Des brigadistes internationaux de la XIe Brigade internationale se sont portés volontaires aux côtés de la République espagnole lors de la bataille de Belchite (1937).",
             "credit": "Unknown author Unknown author",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Испанская_11_интербригада_в_бою_под_Бельчите._1937-edit.jpg"
@@ -35429,8 +35429,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/es-franco.jpg",
-            "alt": "Portrait of Francisco Franco",
-            "caption": "Portrait of Francisco Franco",
+            "alt": "Portrait de Francisco Franco",
+            "caption": "Portrait de Francisco Franco",
             "credit": "Unknown author Unknown author",
             "license": "CC0",
             "source": "https://commons.wikimedia.org/wiki/File:Francisco_Franco_posed_portrait_photograph.jpg"
@@ -35583,8 +35583,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/es-constitution.jpg",
-            "alt": "Spanish Constitution of 1978. The text translates to \"Spanish Constitution – Lord Juan Carlos I, King of Spain, to all whom these presents shall be seen or understood, BE IT KNOWN:",
-            "caption": "Spanish Constitution of 1978. The text translates to \"Spanish Constitution – Lord Juan Carlos I, King of Spain, to all whom these presents shall be se",
+            "alt": "Constitution espagnole de 1978. Le texte se traduit par « Constitution espagnole – Seigneur Juan Carlos Ier, roi d'Espagne, à tous ceux qui verront ou comprendront les présentes, SACHEZ :",
+            "caption": "Constitution espagnole de 1978. Le texte se traduit par « Constitution espagnole – Seigneur Juan Carlos Ier, roi d'Espagne, à tous ceux qui verront ou compr",
             "credit": "Cortes Constituyentes",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Constitución_Española_de_1978.JPG"
@@ -35713,8 +35713,8 @@ export const DATASET = {
           "importance": 1,
           "image": {
             "src": "public/images/es-cee.jpg",
-            "alt": "On 12 June 1985, the Treaties of Accession to the European Communities of Portugal and Spain were signed in Lisbon and Madrid. On 1 January 1986 the accession of both countries bec",
-            "caption": "On 12 June 1985, the Treaties of Accession to the European Communities of Portugal and Spain were signed in Lisbon and Madrid. On 1 January 1986 the a",
+            "alt": "Le 12 juin 1985, les traités d'adhésion aux Communautés européennes du Portugal et de l'Espagne ont été signés à Lisbonne et à Madrid. Le 1er janvier 1986, l'adhésion des deux pays est dev",
+            "caption": "Le 12 juin 1985, les traités d'adhésion aux Communautés européennes du Portugal et de l'Espagne ont été signés à Lisbonne et à Madrid. Le 1er janvier 1986, l'a",
             "credit": "European Communities - Christian Lambiotte",
             "license": "CC BY 4.0",
             "source": "https://commons.wikimedia.org/wiki/File:Signature_of_the_Act_of_accession_of_Spain_in_the_EC_(11).tif"
@@ -40361,8 +40361,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/cn-shang.jpg",
-            "alt": "Montage of various Shanghai images",
-            "caption": "Montage of various Shanghai images",
+            "alt": "Montage de diverses images de Shanghai",
+            "caption": "Montage de diverses images de Shanghai",
             "credit": "ASDFGHJ , pontmarcheur (compilations, for proper attribution you have to name the authors of source images",
             "license": "CC BY-SA 3.0",
             "source": "https://commons.wikimedia.org/wiki/File:Shanghai_montage.png"
@@ -40508,8 +40508,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/cn-han.jpg",
-            "alt": "Ornemental belt buckle, decorated with a mythical animal and birds. Chiseled and hammered gold, late Han period, first or second century. Guimet Museum, Paris.",
-            "caption": "Ornemental belt buckle, decorated with a mythical animal and birds. Chiseled and hammered gold, late Han period, first or second century. Guimet Museu",
+            "alt": "Boucle de ceinture ornementale, décorée d'un animal mythique et d'oiseaux. Or ciselé et martelé, fin de la période Han, premier ou deuxième siècle. Musée Guimet, Paris.",
+            "caption": "Boucle de ceinture ornementale, décorée d'un animal mythique et d'oiseaux. Or ciselé et martelé, fin de la période Han, premier ou deuxième siècle. Guimet Museu",
             "credit": "Vassil",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Boucle_Han_Chine_Guimet_2910.jpg"
@@ -40640,8 +40640,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/cn-song.jpg",
-            "alt": "Billie Holiday at the Downbeat club, a jazz club in New York City . [1]",
-            "caption": "Billie Holiday at the Downbeat club, a jazz club in New York City . [1]",
+            "alt": "Billie Holiday au club Downbeat, un club de jazz de New York. [1]",
+            "caption": "Billie Holiday au club Downbeat, un club de jazz de New York. [1]",
             "credit": "William P. Gottlieb",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Billie_Holiday,_Downbeat,_New_York,_N.Y.,_ca._Feb._1947_(William_P._Gottlieb_04251).jpg"
@@ -40682,8 +40682,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/cn-yuan.jpg",
-            "alt": "Based on Encyclopedia of Mongolia and the Mongol Empire (2004) by Christopher P. Atwood",
-            "caption": "Based on Encyclopedia of Mongolia and the Mongol Empire (2004) by Christopher P. Atwood",
+            "alt": "D'après Encyclopedia of Mongolia and the Mongol Empire (2004) de Christopher P. Atwood",
+            "caption": "D'après Encyclopedia of Mongolia and the Mongol Empire (2004) de Christopher P. Atwood",
             "credit": "Cattette",
             "license": "CC BY 4.0",
             "source": "https://commons.wikimedia.org/wiki/File:Yuan_Dynasty_revised.png"
@@ -40725,8 +40725,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/cn-ming.jpg",
-            "alt": "Chinese Garden The Hidden Empire Ming in Hortus Haren in the Netherlands. Mosaic pavement courtyard.",
-            "caption": "Chinese Garden The Hidden Empire Ming in Hortus Haren in the Netherlands. Mosaic pavement courtyard.",
+            "alt": "Jardin chinois The Hidden Empire Ming au Hortus Haren aux Pays-Bas. Cour avec pavage en mosaïque.",
+            "caption": "Jardin chinois The Hidden Empire Ming au Hortus Haren aux Pays-Bas. Cour avec pavage en mosaïque.",
             "credit": "Agnes Monkelbaan",
             "license": "CC BY-SA 4.0",
             "source": "https://commons.wikimedia.org/wiki/File:Chinese_tuin_Het_Verborgen_Rijk_van_Ming_in_Hortus_Haren_03.jpg"
@@ -40794,8 +40794,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/cn-qing.jpg",
-            "alt": "Zhu Ye Qing Tea (竹叶青), also known as green bamboo leaf tea , is a tea that grows on the slopes of Mount Emei in the Sichuan province, China. It was given the name Zhu Ye Qing by th",
-            "caption": "Zhu Ye Qing Tea (竹叶青), also known as green bamboo leaf tea , is a tea that grows on the slopes of Mount Emei in the Sichuan province, China. It was gi",
+            "alt": "Thé Zhu Ye Qing (竹叶青), également connu sous le nom de thé vert feuille de bambou , est un thé qui pousse sur les pentes du mont Emei dans la province du Sichuan, en Chine. Il a reçu le nom de Zhu Ye Qing par th",
+            "caption": "Thé Zhu Ye Qing (竹叶青), également connu sous le nom de thé vert feuille de bambou , est un thé qui pousse sur les pentes du mont Emei dans la province du Sichuan, en Chine. Il a été gi",
             "credit": "CEphoto, Uwe Aranas",
             "license": "CC BY-SA 4.0",
             "source": "https://commons.wikimedia.org/wiki/File:Zhu-Ye-Qing-Tea-03.jpg"
@@ -40873,8 +40873,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/cn-opium.jpg",
-            "alt": "The East India Company iron steam ship Nemesis , commanded by Lieutenant W. H. Hall, with boats from the Sulphur , Calliope , Larne and Starling , destroying the Chinese war junks ",
-            "caption": "The East India Company iron steam ship Nemesis , commanded by Lieutenant W. H. Hall, with boats from the Sulphur , Calliope , Larne and Starling , des",
+            "alt": "Le navire à vapeur en fer Nemesis de la East India Company, commandé par le lieutenant W. H. Hall, avec des embarcations du Sulphur, Calliope, Larne et Starling, détruisant les jonques de guerre chinoises",
+            "caption": "Le navire à vapeur en fer Nemesis de la East India Company, commandé par le lieutenant W. H. Hall, avec des embarcations du Sulphur, Calliope, Larne et Starling, détruisant",
             "credit": "Edward Duncan",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Destroying_Chinese_war_junks,_by_E._Duncan_(1843).jpg"
@@ -41102,8 +41102,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/cn-prop-001.jpg",
-            "alt": "Protestors at the May Fourth Movement , dissatisfied with Article 156 of the Treaty of Versailles for China ( Shandong Problem ).",
-            "caption": "Protestors at the May Fourth Movement , dissatisfied with Article 156 of the Treaty of Versailles for China ( Shandong Problem ).",
+            "alt": "Des manifestants du Mouvement du 4 Mai, mécontents de l'article 156 du traité de Versailles concernant la Chine (problème du Shandong).",
+            "caption": "Des manifestants du Mouvement du 4 Mai, mécontents de l'article 156 du traité de Versailles concernant la Chine (problème du Shandong).",
             "credit": "Unknown author Unknown author",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Beijing_students_protesting_the_Treaty_of_Versailles_(May_4,_1919).jpg"
@@ -41296,8 +41296,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/cn-prop-003.jpg",
-            "alt": "Bodies of victims along Qinhuai River out of Nanjing's west gate during Nanjing Massacre.",
-            "caption": "Bodies of victims along Qinhuai River out of Nanjing's west gate during Nanjing Massacre.",
+            "alt": "Corps de victimes le long de la rivière Qinhuai à la sortie de la porte ouest de Nankin pendant le massacre de Nankin.",
+            "caption": "Corps de victimes le long de la rivière Qinhuai à la sortie de la porte ouest de Nankin pendant le massacre de Nankin.",
             "credit": "Originally Moriyasu Murase, 村瀬守保",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Nanking_bodies_1937.jpg"
@@ -41435,8 +41435,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/cn-prop-004.jpg",
-            "alt": "A gatekeeper and his family, Changde, Hunan, China, ca.1900-1919 \"Our gatekeeper, a special friend of Victor's, who used to talk with him quite often. I think he had lost his wife ",
-            "caption": "A gatekeeper and his family, Changde, Hunan, China, ca.1900-1919 \"Our gatekeeper, a special friend of Victor's, who used to talk with him quite often.",
+            "alt": "Un gardien et sa famille, Changde, Hunan, Chine, ca.1900-1919 \"Notre gardien, un ami particulier de Victor, qui avait l'habitude de lui parler assez souvent. Je pense qu'il avait perdu sa femme ",
+            "caption": "Un gardien et sa famille, Changde, Hunan, Chine, ca.1900-1919 \"Notre gardien, un ami particulier de Victor, qui avait l'habitude de lui parler assez souvent.",
             "credit": "Unknown author Unknown author",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:A_gatekeeper_and_his_family,_Changde,_Hunan,_China,_ca.1900-1919_(IMP-YDS-RG008-358-0008-0065).jpg"
@@ -41506,8 +41506,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/cn-deng.jpg",
-            "alt": "Deng Xiaoping and Jimmy Carter at the arrival ceremony for the Vice Chairman of the Chinese Communist Party and Vice Premier of China.",
-            "caption": "Deng Xiaoping and Jimmy Carter at the arrival ceremony for the Vice Chairman of the Chinese Communist Party and Vice Premier of China.",
+            "alt": "Deng Xiaoping et Jimmy Carter lors de la cérémonie d'arrivée du vice-président du Parti communiste chinois et vice-Premier ministre de Chine.",
+            "caption": "Deng Xiaoping et Jimmy Carter lors de la cérémonie d'arrivée du vice-président du Parti communiste chinois et vice-Premier ministre de Chine.",
             "credit": "Unknown author Unknown author",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Deng_Xiaoping_at_the_arrival_ceremony_for_the_Vice_Premier_of_China_(cropped).jpg"
@@ -45801,8 +45801,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/in-indus.jpg",
-            "alt": "Sources: McIntosh, Jane (2008). The Ancient Indus Valley: New Perspectives. ISBN 978-1-57607-907-2 . Background from http://www2.demis.nl/mapserver/mapper.asp",
-            "caption": "Sources: McIntosh, Jane (2008). The Ancient Indus Valley: New Perspectives. ISBN 978-1-57607-907-2 . Background from http://www2.demis.nl/mapserver/ma",
+            "alt": "Sources : McIntosh, Jane (2008). The Ancient Indus Valley: New Perspectives. ISBN 978-1-57607-907-2. Fond de carte issu de http://www2.demis.nl/mapserver/mapper.asp",
+            "caption": "Sources : McIntosh, Jane (2008). The Ancient Indus Valley: New Perspectives. ISBN 978-1-57607-907-2. Fond de carte issu de http://www2.demis.nl/mapserver/ma",
             "credit": "Avantiputra7",
             "license": "CC BY-SA 3.0",
             "source": "https://commons.wikimedia.org/wiki/File:Indus_Valley_Civilization,_Mature_Phase_(2600-1900_BCE).png"
@@ -45892,8 +45892,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/in-maurya.jpg",
-            "alt": "Maurya Empire conceptualized as a network of cities. Based on File:Maurya Empire, c.250 BCE.png , which was made by Avantiputra7. Uncontrolled areas Original map, with large uncont",
-            "caption": "Maurya Empire conceptualized as a network of cities. Based on File:Maurya Empire, c.250 BCE.png , which was made by Avantiputra7. Uncontrolled areas O",
+            "alt": "Empire maurya conçu comme un réseau de villes. D'après File:Maurya Empire, c.250 BCE.png, réalisé par Avantiputra7. Zones non contrôlées Carte originale, avec de vastes zones non contrôlées",
+            "caption": "Empire maurya conçu comme un réseau de villes. D'après File:Maurya Empire, c.250 BCE.png, réalisé par Avantiputra7. Zones non contrôlées Carte originale, avec de vastes zones non",
             "credit": "Joshua Jonathan",
             "license": "CC0",
             "source": "https://commons.wikimedia.org/wiki/File:Maurya_Empire,_c.250_BCE_network_model_v01.png"
@@ -46051,8 +46051,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/in-delhi.jpg",
-            "alt": "Grave in Balban's tomb enclosure.",
-            "caption": "Grave in Balban's tomb enclosure.",
+            "alt": "Tombe dans l'enceinte du tombeau de Balban.",
+            "caption": "Tombe dans l'enceinte du tombeau de Balban.",
             "credit": "Varun Shiv Kapur",
             "license": "CC BY 2.0",
             "source": "https://commons.wikimedia.org/wiki/File:Grave_in_Balban's_tomb_enclosure.jpg"
@@ -46232,8 +46232,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/in-eic.jpg",
-            "alt": "Coat of arms of the French East India Company .",
-            "caption": "Coat of arms of the French East India Company .",
+            "alt": "Armoiries de la Compagnie française des Indes orientales .",
+            "caption": "Armoiries de la Compagnie française des Indes orientales .",
             "credit": "Frank Schulenburg",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Armoiries_de_la_Compagnie_des_Indes_Orientales.jpg"
@@ -46503,8 +46503,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/in-congres.jpg",
-            "alt": "An image from Jean Goanvic's website about philately and history \" https://www.histoire-et-philatelie.fr \" illustrating the postal history and general (modern) history of France an",
-            "caption": "An image from Jean Goanvic's website about philately and history \" https://www.histoire-et-philatelie.fr \" illustrating the postal history and general",
+            "alt": "Une image du site web de Jean Goanvic consacré à la philatélie et à l'histoire \" https://www.histoire-et-philatelie.fr \" illustrant l'histoire postale et l'histoire générale (moderne) de la France an",
+            "caption": "Une image du site web de Jean Goanvic consacré à la philatélie et à l'histoire \" https://www.histoire-et-philatelie.fr \" illustrant l'histoire postale et l'histoire générale",
             "credit": "The Government-General of French Indo-China.",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Bpm180_timbres_inde_gb.jpg"
@@ -46625,8 +46625,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/in-amritsar.jpg",
-            "alt": "Jallianwala Bagh in Day light",
-            "caption": "Jallianwala Bagh in Day light",
+            "alt": "Jallianwala Bagh en plein jour",
+            "caption": "Jallianwala Bagh en plein jour",
             "credit": "Sukanta Pal",
             "license": "CC BY-SA 4.0",
             "source": "https://commons.wikimedia.org/wiki/File:Jallianwala_Bagh_in_Day_light.JPG"
@@ -46777,8 +46777,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/in-prop-001.jpg",
-            "alt": "A flyer published by Bahishkrit Hitakarini Sabha in 1927 before the Mahad Satyagraha asking for contributions of Re. 5 to cover travel costs to Mahad and requesting all activists t",
-            "caption": "A flyer published by Bahishkrit Hitakarini Sabha in 1927 before the Mahad Satyagraha asking for contributions of Re. 5 to cover travel costs to Mahad ",
+            "alt": "Un tract publié par Bahishkrit Hitakarini Sabha en 1927 avant le Mahad Satyagraha demandant des contributions de Re. 5 pour couvrir les frais de déplacement vers Mahad et demandant à tous les militants t",
+            "caption": "Un tract publié par Bahishkrit Hitakarini Sabha en 1927 avant le Mahad Satyagraha demandant des contributions de Re. 5 pour couvrir les frais de déplacement vers Mahad ",
             "credit": "Unknown author Unknown author",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Flyer_published_before_Mahad_Satyagraha_in_1927.jpg"
@@ -47194,8 +47194,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/in-gandhi.jpg",
-            "alt": "Studio photograph of Mahatma Gandhi ji, London, 1931.",
-            "caption": "Studio photograph of Mahatma Gandhi ji, London, 1931.",
+            "alt": "Photographie de studio de Mahatma Gandhi ji, Londres, 1931.",
+            "caption": "Photographie de studio de Mahatma Gandhi ji, Londres, 1931.",
             "credit": "Elliott & Fry",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Mahatma-Gandhi,_studio,_1931.jpg"
@@ -47236,8 +47236,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/in-liberalisation.jpg",
-            "alt": "The Deputy Chairman, Planning Commission, Shri Montek Singh Ahluwalia delivering the 3rd M. Visveswaraya Memorial Lecture on “Two decades of Economic Reforms in India ; Gains and R",
-            "caption": "The Deputy Chairman, Planning Commission, Shri Montek Singh Ahluwalia delivering the 3rd M. Visveswaraya Memorial Lecture on “Two decades of Economic ",
+            "alt": "Le vice-président de la Commission de planification, Shri Montek Singh Ahluwalia, prononçant la 3e conférence commémorative M. Visveswaraya sur “Two decades of Economic Reforms in India ; Gains and R",
+            "caption": "Le vice-président de la Commission de planification, Shri Montek Singh Ahluwalia, prononçant la 3e conférence commémorative M. Visveswaraya sur “Two decades of Economic ",
             "credit": "Planning Commission",
             "license": "GODL-India",
             "source": "https://commons.wikimedia.org/wiki/File:The_Deputy_Chairman,_Planning_Commission,_Shri_Montek_Singh_Ahluwalia_delivering_the_3rd_M._Visveswaraya_Memorial_Lecture_on_“Two_decades_of_Economic_Reforms_in_India_;_Gains_and_Reflections”_in_Mumbai_on_December_21,_2011.jpg"
@@ -47279,8 +47279,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/in-prop-004.jpg",
-            "alt": "The Union Minister of Tribal Affairs, Shri P.R. Kyndiah lighting the lamp to inaugurate the State Ministers’ meeting to review implementation of the Scheduled Tribes and Other Trad",
-            "caption": "The Union Minister of Tribal Affairs, Shri P.R. Kyndiah lighting the lamp to inaugurate the State Ministers’ meeting to review implementation of the S",
+            "alt": "Le ministre de l'Union chargé des affaires tribales, Shri P.R. Kyndiah, allumant la lampe pour inaugurer la réunion des ministres d'État visant à examiner la mise en œuvre des Scheduled Tribes and Other Trad",
+            "caption": "Le ministre de l'Union chargé des affaires tribales, Shri P.R. Kyndiah, allumant la lampe pour inaugurer la réunion des ministres d'État visant à examiner la mise en œuvre de la S",
             "credit": "Ministry of Tribal Affairs",
             "license": "GODL-India",
             "source": "https://commons.wikimedia.org/wiki/File:P.R._Kyndiah_lighting_the_lamp_to_inaugurate_the_State_Ministers’_meeting_to_review_implementation_of_the_Scheduled_Tribes_and_Other_Traditional_Forest_Dwellers_(Recognition_of_Forest_Rights)_Act,_in_New_Delhi.jpg"
@@ -51249,8 +51249,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/jp-bouddhisme.jpg",
-            "alt": "High priest blessing at Zenkoji",
-            "caption": "High priest blessing at Zenkoji",
+            "alt": "Bénédiction par le grand prêtre à Zenkoji",
+            "caption": "Bénédiction par le grand prêtre à Zenkoji",
             "credit": "Wikimedia Commons",
             "license": "CC BY-SA 3.0",
             "source": "https://commons.wikimedia.org/wiki/File:High_priest_blessing_at_Zenkoji.jpg"
@@ -51310,8 +51310,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/jp-nara.jpg",
-            "alt": "Mount Wakakusa and Heijo Palace, Daibutsu, Yakushi-ji Temple, Todai-ji Temple, Kasuga-taisha Shrine, Deers in Nara Park",
-            "caption": "Mount Wakakusa and Heijo Palace, Daibutsu, Yakushi-ji Temple, Todai-ji Temple, Kasuga-taisha Shrine, Deers in Nara Park",
+            "alt": "Mont Wakakusa et palais Heijo, Daibutsu, temple Yakushi-ji, temple Todai-ji, sanctuaire Kasuga-taisha, cerfs dans le parc de Nara",
+            "caption": "Mont Wakakusa et palais Heijo, Daibutsu, temple Yakushi-ji, temple Todai-ji, sanctuaire Kasuga-taisha, cerfs dans le parc de Nara",
             "credit": "User:名古屋太郎 User:Douglaspperkins User:Fg2 User:663highland User:Jakubhal composition: Kyoww",
             "license": "CC BY-SA 3.0",
             "source": "https://commons.wikimedia.org/wiki/File:Nara_montage.jpg"
@@ -51466,8 +51466,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/jp-kamakura.jpg",
-            "alt": "Fuji view from Shichirigahama Beach in Kamakura",
-            "caption": "Fuji view from Shichirigahama Beach in Kamakura",
+            "alt": "Vue du Fuji depuis la plage de Shichirigahama à Kamakura",
+            "caption": "Vue du Fuji depuis la plage de Shichirigahama à Kamakura",
             "credit": "Jmills74 at English Wikipedia",
             "license": "CC BY 2.5",
             "source": "https://commons.wikimedia.org/wiki/File:Fujiview.jpg"
@@ -51543,8 +51543,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/jp-mongols.jpg",
-            "alt": "Mongol invasions of Japan 1274, 1281",
-            "caption": "Mongol invasions of Japan 1274, 1281",
+            "alt": "Invasions mongoles du Japon 1274, 1281",
+            "caption": "Invasions mongoles du Japon 1274, 1281",
             "credit": "Qiushufang",
             "license": "CC BY-SA 4.0",
             "source": "https://commons.wikimedia.org/wiki/File:Mongol_invasions_of_Japan_1274,_1281.jpg"
@@ -51752,8 +51752,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/jp-perry.jpg",
-            "alt": "Japanese 1854 print relating Perry's visit. The paddlewheel steamer depicted would be either the USS Mississippi (Commodore Perry's flagship), or the USS Susquehanna - the only two",
-            "caption": "Japanese 1854 print relating Perry's visit. The paddlewheel steamer depicted would be either the USS Mississippi (Commodore Perry's flagship), or the ",
+            "alt": "Gravure japonaise de 1854 relative à la visite de Perry. Le steamer à roues à aubes représenté serait soit l'USS Mississippi (navire amiral du commodore Perry), soit l'USS Susquehanna — les deux seuls",
+            "caption": "Gravure japonaise de 1854 relative à la visite de Perry. Le steamer à roues à aubes représenté serait soit l'USS Mississippi (navire amiral du commodore Perry), soit l'",
             "credit": "Unknown author Unknown author",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Japanese_1854_print_Commodore_Perry.jpg"
@@ -51802,8 +51802,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/jp-meiji.jpg",
-            "alt": "Emperor Meiji by Takahashi Yuichi, Imperial Collection",
-            "caption": "Emperor Meiji by Takahashi Yuichi, Imperial Collection",
+            "alt": "L'empereur Meiji par Takahashi Yuichi, collection impériale",
+            "caption": "L'empereur Meiji par Takahashi Yuichi, collection impériale",
             "credit": "Takahashi Yuichi (1828-1894)",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Emperor_Meiji_by_Takahashi_Yuichi.jpg"
@@ -52022,8 +52022,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/jp-prop-010.jpg",
-            "alt": "Japan–Korea Annexation Treaty of 1910",
-            "caption": "Japan–Korea Annexation Treaty of 1910",
+            "alt": "Traité d'annexion Japon–Corée de 1910",
+            "caption": "Traité d'annexion Japon–Corée de 1910",
             "credit": "Empire of Japan, Korean Empire",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Japan–Korea_Annexation_Treaty_1.jpg"
@@ -52092,8 +52092,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/jp-prop-014.jpg",
-            "alt": "The original of \"The Constitution of the State of Japan\" This constitution was promulgated in 1946, and it was taken effect in 1947. Japan's postwar constitution was endorsed by Em",
-            "caption": "The original of \"The Constitution of the State of Japan\" This constitution was promulgated in 1946, and it was taken effect in 1947. Japan's postwar c",
+            "alt": "L'original de \"The Constitution of the State of Japan\" Cette constitution a été promulguée en 1946 et est entrée en vigueur en 1947. La constitution japonaise d'après-guerre a été approuvée par Em",
+            "caption": "L'original de \"The Constitution of the State of Japan\" Cette constitution a été promulguée en 1946 et est entrée en vigueur en 1947. La constitution japonaise d'après-guerre a été approuvée par Em",
             "credit": "Japanese government",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Nihon_Kenpo02.jpg"
@@ -52173,8 +52173,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/jp-hiroshima.jpg",
-            "alt": "Left picture : At the time this photo was made, smoke billowed 20,000 feet above Hiroshima while smoke from the burst of the first atomic bomb had spread over 10,000 feet on the ta",
-            "caption": "Left picture : At the time this photo was made, smoke billowed 20,000 feet above Hiroshima while smoke from the burst of the first atomic bomb had spr",
+            "alt": "Photo de gauche : Au moment où cette photo a été prise, la fumée s'élevait à 20 000 pieds au-dessus d'Hiroshima tandis que la fumée due à l'explosion de la première bombe atomique s'était étendue sur plus de 10 000 pieds sur la cible",
+            "caption": "Photo de gauche : Au moment où cette photo a été prise, la fumée s'élevait à 20 000 pieds au-dessus d'Hiroshima tandis que la fumée due à l'explosion de la première bombe atomique s'était étendue",
             "credit": "George R. Caron / Charles Levy",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Atomic_bombing_of_Japan.jpg"
@@ -52250,8 +52250,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/jp-prop-015.jpg",
-            "alt": "Minamata Disease Municipal Museum, Minamata City , Kumamoto , Japan",
-            "caption": "Minamata Disease Municipal Museum, Minamata City , Kumamoto , Japan",
+            "alt": "Musée municipal de la maladie de Minamata, ville de Minamata, Kumamoto, Japon",
+            "caption": "Musée municipal de la maladie de Minamata, ville de Minamata, Kumamoto, Japon",
             "credit": "STA3816",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Minamata_Disease_Museum.jpg"
@@ -52379,8 +52379,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/jp-fukushima.jpg",
-            "alt": "The Fukushima I Nuclear Power Plant after the 2011 Tōhoku earthquake and tsunami . Reactor 1 to 4 from right to left.",
-            "caption": "The Fukushima I Nuclear Power Plant after the 2011 Tōhoku earthquake and tsunami . Reactor 1 to 4 from right to left.",
+            "alt": "La centrale nucléaire de Fukushima I après le séisme et le tsunami de Tōhoku de 2011. Réacteurs 1 à 4 de droite à gauche.",
+            "caption": "La centrale nucléaire de Fukushima I après le séisme et le tsunami de Tōhoku de 2011. Réacteurs 1 à 4 de droite à gauche.",
             "credit": "Digital Globe",
             "license": "CC BY-SA 3.0",
             "source": "https://commons.wikimedia.org/wiki/File:Fukushima_I_by_Digital_Globe.jpg"
@@ -56316,8 +56316,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/eg-unification.jpg",
-            "alt": "All Giza Pyramids in one shot.",
-            "caption": "All Giza Pyramids in one shot.",
+            "alt": "Toutes les pyramides de Gizeh en un seul cliché.",
+            "caption": "Toutes les pyramides de Gizeh en un seul cliché.",
             "credit": "Ricardo Liberato",
             "license": "CC BY-SA 2.0",
             "source": "https://commons.wikimedia.org/wiki/File:All_Gizah_Pyramids.jpg"
@@ -56592,8 +56592,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/eg-ramses.jpg",
-            "alt": "Statue of Ramesses II, the « Younger Memnon ». From the Ramesseum, Thebes, Egypt, 19th Dynasty, about 1250 BC. British Museum, London.",
-            "caption": "Statue of Ramesses II, the « Younger Memnon ». From the Ramesseum, Thebes, Egypt, 19th Dynasty, about 1250 BC. British Museum, London.",
+            "alt": "Statue de Ramsès II, le « Jeune Memnon ». Du Ramesséum, Thèbes, Égypte, XIXe dynastie, vers 1250 av. J.-C. British Museum, Londres.",
+            "caption": "Statue de Ramsès II, le « Jeune Memnon ». Du Ramesséum, Thèbes, Égypte, XIXe dynastie, vers 1250 av. J.-C. British Museum, Londres.",
             "credit": "Pbuergler",
             "license": "CC BY-SA 3.0",
             "source": "https://commons.wikimedia.org/wiki/File:Ramses_II_British_Museum.jpg"
@@ -56832,8 +56832,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/eg-cleopatre.jpg",
-            "alt": "Marble bust of Cleopatra VII of Egypt from ca. 40-30 BC. An ancient Roman bust of Ptolemaic ruler Cleopatra VII of Egypt wearing a royal diadem band over her hair; dated to the mid",
-            "caption": "Marble bust of Cleopatra VII of Egypt from ca. 40-30 BC. An ancient Roman bust of Ptolemaic ruler Cleopatra VII of Egypt wearing a royal diadem band o",
+            "alt": "Buste en marbre de Cléopâtre VII d'Égypte, vers 40-30 av. J.-C. Un buste romain antique de la souveraine ptolémaïque Cléopâtre VII d'Égypte portant un bandeau de diadème royal dans les cheveux ; daté du milieu",
+            "caption": "Buste en marbre de Cléopâtre VII d'Égypte, vers 40-30 av. J.-C. Un buste romain antique de la souveraine ptolémaïque Cléopâtre VII d'Égypte portant un bandeau de diadème royal sur",
             "credit": "Louis le Grand",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Kleopatra-VII.-Altes-Museum-Berlin1.jpg"
@@ -56934,8 +56934,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/eg-arabes.jpg",
-            "alt": "Mohammad adil-Muslim conquest of Egypt",
-            "caption": "Mohammad adil-Muslim conquest of Egypt",
+            "alt": "Mohammad adil - Conquête musulmane de l'Égypte",
+            "caption": "Mohammad adil - Conquête musulmane de l'Égypte",
             "credit": "Mohammad Adil ( talk )",
             "license": "CC BY-SA 3.0",
             "source": "https://commons.wikimedia.org/wiki/File:Mohammad_adil-Muslim_conquest_of_Egypt.PNG"
@@ -57034,8 +57034,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/eg-caire.jpg",
-            "alt": "Zamalek (Egyptian Arabic: الزمالك pronounced [ez.zæˈmæːlek]) is an affluent district of western Cairo encompassing the northern portion of Gezira Island in the Nile River. The isla",
-            "caption": "Zamalek (Egyptian Arabic: الزمالك pronounced [ez.zæˈmæːlek]) is an affluent district of western Cairo encompassing the northern portion of Gezira Isla",
+            "alt": "Zamalek (arabe égyptien : الزمالك prononcé [ez.zæˈmæːlek]) est un quartier aisé de l'ouest du Caire englobant la partie nord de l'île de Gezira sur le Nil. L'île",
+            "caption": "Zamalek (arabe égyptien : الزمالك prononcé [ez.zæˈmæːlek]) est un quartier aisé de l'ouest du Caire englobant la partie nord de l'île de Gezira",
             "credit": "Jorge Láscar from Melbourne, Australia",
             "license": "CC BY 2.0",
             "source": "https://commons.wikimedia.org/wiki/File:Cairo_Opera_House,_Al_Hurriyah_Park_and_the_Nile_river_(14797782354).jpg"
@@ -57164,8 +57164,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/eg-bonaparte.jpg",
-            "alt": "Jacques-Louis David - The Emperor Napoleon in His Study at the Tuileries - Google Art Project",
-            "caption": "Jacques-Louis David - The Emperor Napoleon in His Study at the Tuileries - Google Art Project",
+            "alt": "Jacques-Louis David - L'Empereur Napoléon dans son cabinet aux Tuileries - Google Art Project",
+            "caption": "Jacques-Louis David - L'Empereur Napoléon dans son cabinet aux Tuileries - Google Art Project",
             "credit": "Jacques-Louis David",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Jacques-Louis_David_-_The_Emperor_Napoleon_in_His_Study_at_the_Tuileries_-_Google_Art_Project.jpg"
@@ -57246,8 +57246,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/eg-suez.jpg",
-            "alt": "Port of Suez, Egypt is featured in this image photographed by an Expedition 16 crewmember on the International Space Station. The Port of Suez is located in Egypt along the norther",
-            "caption": "Port of Suez, Egypt is featured in this image photographed by an Expedition 16 crewmember on the International Space Station. The Port of Suez is loca",
+            "alt": "Le port de Suez, en Égypte, figure sur cette image photographiée par un membre d'équipage de l'Expédition 16 à bord de la Station spatiale internationale. Le port de Suez est situé en Égypte le long de la partie nord",
+            "caption": "Le port de Suez, en Égypte, figure sur cette image photographiée par un membre d'équipage de l'Expédition 16 à bord de la Station spatiale internationale. Le port de Suez est situé",
             "credit": "NASA",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Iss016e019375.jpg"
@@ -57364,8 +57364,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/eg-prop-012.jpg",
-            "alt": "Soldiers of the 1st Battalion of the West Yorkshire Regiment (Prince of Wales's Own) in Egypt , 1931-1933.",
-            "caption": "Soldiers of the 1st Battalion of the West Yorkshire Regiment (Prince of Wales's Own) in Egypt , 1931-1933.",
+            "alt": "Soldats du 1er bataillon du West Yorkshire Regiment (Prince of Wales's Own) en Égypte , 1931-1933.",
+            "caption": "Soldats du 1er bataillon du West Yorkshire Regiment (Prince of Wales's Own) en Égypte , 1931-1933.",
             "credit": "1st Battalion, West Yorkshire Regiment|West Yorkshire Regiment (Prince of Wales's Own), British Army",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Soldiers_of_the_1st_Battalion_of_the_West_Yorkshire_Regiment_(Prince_of_Wales's_Own)_in_Egypt_1931-1933.jpg"
@@ -57446,8 +57446,8 @@ export const DATASET = {
           "importance": 3,
           "image": {
             "src": "public/images/eg-prop-013.jpg",
-            "alt": "For documentary purposes the German Federal Archive often retained the original image captions , which may be erroneous, biased, obsolete or politically extreme . This description ",
-            "caption": "For documentary purposes the German Federal Archive often retained the original image captions , which may be erroneous, biased, obsolete or political",
+            "alt": "À des fins documentaires, les Archives fédérales allemandes ont souvent conservé les légendes originales des images , qui peuvent être erronées, biaisées, obsolètes ou politiquement extrêmes . Cette description ",
+            "caption": "À des fins documentaires, les Archives fédérales allemandes ont souvent conservé les légendes originales des images , qui peuvent être erronées, biaisées, obsolètes ou politiques",
             "credit": "Hermann Pfeiffer",
             "license": "CC BY-SA 3.0 de",
             "source": "https://commons.wikimedia.org/wiki/File:Bundesarchiv_Bild_146-2004-0048,_Revolution_in_Bayern,_Gefangener.jpg"
@@ -57882,8 +57882,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/eg-suez-crise.jpg",
-            "alt": "Smoke rises from oil tanks beside the Suez Canal hit during the initial Anglo-French assault on Port Said, 5 November 1956.",
-            "caption": "Smoke rises from oil tanks beside the Suez Canal hit during the initial Anglo-French assault on Port Said, 5 November 1956.",
+            "alt": "Des fumées s'élèvent de réservoirs de pétrole près du canal de Suez touchés lors de l'assaut initial anglo-français sur Port-Saïd, le 5 novembre 1956.",
+            "caption": "Des fumées s'élèvent de réservoirs de pétrole près du canal de Suez touchés lors de l'assaut initial anglo-français sur Port-Saïd, le 5 novembre 1956.",
             "credit": "Fleet Air Arm official photographer",
             "license": "Public domain",
             "source": "https://commons.wikimedia.org/wiki/File:Port_Said_from_air.jpg"
@@ -58258,8 +58258,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/eg-paix.jpg",
-            "alt": "THE TRIPLE HANDSHAKE IN THE PEACE TREATY SIGNING BETWEEN ISRAEL AND EGYPT ON THE WHITE HOUSE LAWN. R. TO L: P.M. MENAHEM BEGIN, PRES. JIMMY CARTER AND A. SADAT. . לחיצת יד משולשת ב",
-            "caption": "THE TRIPLE HANDSHAKE IN THE PEACE TREATY SIGNING BETWEEN ISRAEL AND EGYPT ON THE WHITE HOUSE LAWN. R. TO L: P.M. MENAHEM BEGIN, PRES. JIMMY CARTER AND",
+            "alt": "LA POIGNÉE DE MAIN TRIPLE LORS DE LA SIGNATURE DU TRAITÉ DE PAIX ENTRE ISRAËL ET L'ÉGYPTE SUR LA PELOUSE DE LA MAISON-BLANCHE. DE D. À G. : LE P.-M. MENAHEM BEGIN, LE PRÉS. JIMMY CARTER ET A. SADAT. . לחיצת יד משולשת ב",
+            "caption": "LA POIGNÉE DE MAIN TRIPLE LORS DE LA SIGNATURE DU TRAITÉ DE PAIX ENTRE ISRAËL ET L'ÉGYPTE SUR LA PELOUSE DE LA MAISON-BLANCHE. DE D. À G. : LE P.-M. MENAHEM BEGIN, LE PRÉS. JIMMY CARTER ET",
             "credit": "Yaakov Saar",
             "license": "CC BY-SA 3.0",
             "source": "https://commons.wikimedia.org/wiki/File:Flickr_-_Government_Press_Office_(GPO)_-_THE_TRIPLE_HANDSHAKE_IN_THE_PEACE_TREATY_SIGNING_BETWEEN_ISRAEL_AND_EGYPT.jpg"
@@ -58414,8 +58414,8 @@ export const DATASET = {
           "importance": 2,
           "image": {
             "src": "public/images/eg-tahrir.jpg",
-            "alt": "Tahrir Square during 8 February 2011",
-            "caption": "Tahrir Square during 8 February 2011",
+            "alt": "Place Tahrir pendant le 8 février 2011",
+            "caption": "Place Tahrir pendant le 8 février 2011",
             "credit": "Mona",
             "license": "CC BY 2.0",
             "source": "https://commons.wikimedia.org/wiki/File:Tahrir_Square_during_8_February_2011.jpg"

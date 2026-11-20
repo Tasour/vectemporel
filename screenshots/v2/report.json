@@ -1,0 +1,134 @@
+{
+  "generated": "2026-11-20T11:50:21.977Z",
+  "base": "http://127.0.0.1:4181/index.html",
+  "captures": [
+    {
+      "name": "globe-desktop.png",
+      "viewport": "desktop",
+      "view": "globe",
+      "nodes": 1766,
+      "scrollWidth": 1658,
+      "innerWidth": 1658,
+      "emptyContainers": 0,
+      "live": 2
+    },
+    {
+      "name": "chronology-desktop.png",
+      "viewport": "desktop",
+      "view": "chronology",
+      "nodes": 8894,
+      "scrollWidth": 1658,
+      "innerWidth": 1658,
+      "emptyContainers": 0,
+      "live": 2
+    },
+    {
+      "name": "recit-desktop.png",
+      "viewport": "desktop",
+      "view": "recit",
+      "nodes": 1703,
+      "scrollWidth": 1658,
+      "innerWidth": 1658,
+      "emptyContainers": 0,
+      "live": 2
+    },
+    {
+      "name": "geography-desktop.png",
+      "viewport": "desktop",
+      "view": "geography",
+      "nodes": 8354,
+      "scrollWidth": 1658,
+      "innerWidth": 1658,
+      "emptyContainers": 0,
+      "live": 2
+    },
+    {
+      "name": "constellation-desktop.png",
+      "viewport": "desktop",
+      "view": "constellation",
+      "nodes": 3528,
+      "scrollWidth": 1658,
+      "innerWidth": 1658,
+      "emptyContainers": 0,
+      "live": 2
+    },
+    {
+      "name": "points-desktop.png",
+      "viewport": "desktop",
+      "view": "points",
+      "nodes": 3061,
+      "scrollWidth": 1658,
+      "innerWidth": 1658,
+      "emptyContainers": 0,
+      "live": 2
+    },
+    {
+      "viewport": "desktop",
+      "errors": []
+    },
+    {
+      "name": "globe-mobile.png",
+      "viewport": "mobile",
+      "view": "globe",
+      "nodes": 1766,
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "emptyContainers": 0,
+      "live": 2
+    },
+    {
+      "name": "chronology-mobile.png",
+      "viewport": "mobile",
+      "view": "chronology",
+      "nodes": 8894,
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "emptyContainers": 0,
+      "live": 2
+    },
+    {
+      "name": "recit-mobile.png",
+      "viewport": "mobile",
+      "view": "recit",
+      "nodes": 2742,
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "emptyContainers": 0,
+      "live": 2
+    },
+    {
+      "name": "geography-mobile.png",
+      "viewport": "mobile",
+      "view": "geography",
+      "nodes": 8354,
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "emptyContainers": 0,
+      "live": 2
+    },
+    {
+      "name": "constellation-mobile.png",
+      "viewport": "mobile",
+      "view": "constellation",
+      "nodes": 5125,
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "emptyContainers": 0,
+      "live": 2
+    },
+    {
+      "name": "points-mobile.png",
+      "viewport": "mobile",
+      "view": "points",
+      "nodes": 3061,
+      "scrollWidth": 390,
+      "innerWidth": 390,
+      "emptyContainers": 0,
+      "live": 2
+    },
+    {
+      "viewport": "mobile",
+      "errors": []
+    }
+  ]
+}

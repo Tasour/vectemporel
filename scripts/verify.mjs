@@ -31,6 +31,10 @@ check('statut extrait des points d’audit', auditPoints.every((point) => point.
 check('chaque pays a des ères', data.countries.every((country) => country.eras.length > 0));
 check('chaque repère a une ère valide', events.every((event) => event.countryEraValid !== false));
 check('chaque image existe', events.every((event) => !event.image || fs.existsSync(path.join(ROOT, event.image.src))));
+const UNTRANSLATED = /\b(seen from|view of|in the|from the|reconstruction of|the opening of)\b/i;
+const prose = (text) => String(text || '').replace(/\S+\.(png|jpe?g|svg|gif)\b/gi, '');
+check('légendes d’images en français', events.every((event) => !event.image
+  || (!UNTRANSLATED.test(prose(event.image.alt)) && !UNTRANSLATED.test(prose(event.image.caption)))));
 check('chaque point a un texte', events.every((event) => event.points.every((point) => point.text && point.text.length > 15)));
 check('aucun lien Grokipedia', !/grokipedia\.com|grokipedia/i.test(fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8')));
 check('aucun lien externe dans l’interface', !/href=["']https?:/.test(fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8')));
