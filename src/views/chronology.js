@@ -5,6 +5,7 @@
    UNIFIED_AUDIT/NAVIGATION/views/c2-orientation-atlas.md (C2-01 à C2-10). */
 import { state, currentCountry, selectCountry, selectEra, selectEvent, set, goView } from '../domain/store.js';
 import { DATASET } from '../data/dataset.js';
+import { metrics, badge } from '../ui/components.js';
 import { runLenses } from './lenses.js';
 
 
@@ -253,6 +254,11 @@ export function renderChronology(stage) {
   h1.id = 'atlas-chrono-title';
   main.appendChild(h1);
   main.appendChild(el('p', 'view-lede', 'Une seule ère à la fois. Les bandes gardent le contexte, la fiche donne les points vérifiés.'));
+  main.appendChild(metrics([
+    { label: 'Pays', value: DATASET.countries.length, hint: 'histoires documentées' },
+    { label: 'Ères', value: country.eras.length, hint: 'pour ce pays' },
+    { label: 'Repères', value: country.events.length, hint: 'dans le corpus local' },
+  ]));
   main.appendChild(el('p', 'atlas-chrono-hint', 'Clavier : → repère suivant · ↑ ère précédente · ↓ ère suivante · Entrée détail · ? aide.'));
 
   const eraIndex = Math.max(0, Math.min(country.eras.length - 1, state.eraIndex));
@@ -366,7 +372,9 @@ export function renderChronology(stage) {
     });
     tools.appendChild(button);
   });
-  tools.appendChild(el('span', 'atlas-chrono-count', `${matched.length} / ${scopeEvents.length} repères`));
+  const count = badge(`${matched.length} / ${scopeEvents.length} repères`);
+  count.classList.add('atlas-chrono-count');
+  tools.appendChild(count);
   main.appendChild(tools);
 
   const globalBox = el('div', 'atlas-chrono-global');
