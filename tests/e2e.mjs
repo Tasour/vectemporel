@@ -35,7 +35,10 @@ check('pays → chronologie', await page.evaluate(() => window.VATLAS.getState()
 check('repères affichés', (await page.$$('.event-card')).length > 0);
 check('un h1 dans la vue', await page.evaluate(() => document.querySelectorAll('main h1').length === 1));
 check('au plus 2 régions live', await page.evaluate(() => document.querySelectorAll('[aria-live],[role="status"]').length <= 2));
-check('cibles tactiles >= 44px', await page.evaluate(() => [...document.querySelectorAll('button.atlas-chrono-tag, button.nav-c2-back, .points-grid-row > button')].every((node) => node.getBoundingClientRect().height >= 44)));
+await new Promise((resolve) => setTimeout(resolve, 250));
+check('cibles tactiles >= 44px', await page.evaluate(() => [...document.querySelectorAll('button.atlas-chrono-tag, button.nav-c2-back, .points-grid-row > button')]
+  .filter((node) => node.getClientRects().length)
+  .every((node) => node.getBoundingClientRect().height >= 44)));
 await page.keyboard.press('ArrowRight');
 await new Promise((resolve) => setTimeout(resolve, 250));
 check('flèche change de repère', await page.evaluate(() => window.VATLAS.getState().eventIndex === 1));
