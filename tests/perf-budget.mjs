@@ -25,6 +25,8 @@ page.on('pageerror', (error) => errors.push(error.message));
 try {
   const url = process.env.BASE_URL || 'http://127.0.0.1:4181/index.html';
   await page.goto(url, { waitUntil: 'load', timeout: 60000 });
+  const firstBytes = await page.evaluate(() => performance.getEntriesByType('resource')
+    .reduce((sum, entry) => sum + (entry.transferSize || 0), 0));
   // Première visite : le service worker se remplit (coût d'installation PWA).
   await page.evaluate(async () => { if (navigator.serviceWorker) await navigator.serviceWorker.ready; });
   await new Promise((resolve) => setTimeout(resolve, 1500));
@@ -40,9 +42,10 @@ try {
       lensModules: resources.filter((entry) => /\/E\d{2,3}\.js$/.test(entry.name)).length,
     };
   });
-  console.log(`Première visite : ${firstVisitRequests} requêtes · régime établi : ${Math.round(measured.bytes / 1024)} Ko`);
+  console.log(`Première visite : ${firstVisitRequests} requêtes / ${Math.round(firstBytes / 1024)} Ko · régime établi : ${Math.round(measured.bytes / 1024)} Ko`);
   check('aucun module de lentille dans le graphe initial', measured.lensModules === 0, `${measured.lensModules}`);
   check('coût d’installation PWA borné', firstVisitRequests < 200, `${firstVisitRequests} requêtes`);
+  check('première visite < 1 Mo', firstBytes < 1024 * 1024, `${Math.round(firstBytes / 1024)} Ko`);
   check('régime établi servi par le cache SW', measured.bytes < 64 * 1024, `${Math.round(measured.bytes / 1024)} Ko`);
   check('0 erreur console', errors.length === 0, errors.slice(0, 2).join(' | '));
 } finally {

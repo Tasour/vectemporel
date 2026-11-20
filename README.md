@@ -34,7 +34,7 @@ npm run check
 - `test:guards` vérifie le serveur sur un vrai processus : whitelist, en-têtes de sécurité, entrées malformées et survie.
 - `test:coverage-guard` prouve par mutation que `verify:points` échoue quand une proposition disparaît.
 - `test:idempotence` exécute deux générations complètes dans un répertoire temporaire et compare les hash des artefacts.
-- `test:perf` mesure le budget réseau : 81 requêtes / 1,58 Mo en régime normal (contre 920 / 6,1 Mo avant lentilles différées et gzip). La première visite avec la PWA coûte ~85 requêtes supplémentaires de préchauffage du cache ; les visites suivantes sont servies par le service worker (0 octet transféré). La cible initiale de 50 requêtes / 1 Mo reste ouverte.
+- `test:perf` mesure le budget réseau : 169 requêtes / **1 019 Ko** à la première visite (PWA comprise), contre 920 / 6,1 Mo avant lentilles différées, gzip et textures WebP. Les visites suivantes sont servies par le service worker (0 octet transféré). Le seuil de 1 Mo est tenu ; celui de 50 requêtes reste ouvert, le préchauffage PWA représentant ~85 requêtes.
 
 Les lentilles d'audit sont chargées à la demande par vue (`src/views/lenses.js`), la texture globe 2k est servie par défaut (`?hires=1` force la haute définition).
 

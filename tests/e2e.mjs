@@ -69,8 +69,7 @@ check('6 = points', await page.evaluate(() => window.VATLAS.getState().view === 
 check('h1 points', await page.evaluate(() => document.querySelectorAll('main h1').length === 1));
 check('matrice points rendue', (await page.$$('.points-cell')).length > 0);
 const beforeFilter = await page.evaluate(() => window.VATLAS.getState().revision);
-const firstCell = await page.$('.points-cell.has-points');
-if (firstCell) await firstCell.click();
+await page.evaluate(() => document.querySelector('.points-cell.has-points')?.click());
 await new Promise((resolve) => setTimeout(resolve, 250));
 check('filtrage via entonnoir set()', await page.evaluate((before) => {
   const s = window.VATLAS.getState();

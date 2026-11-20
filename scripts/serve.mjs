@@ -68,7 +68,7 @@ function encoded(request, file, data, cacheKey) {
   }
   let compressed = gzipCache.get(cacheKey);
   if (!compressed) {
-    compressed = zlib.gzipSync(data, { level: 6 });
+    compressed = zlib.gzipSync(data, { level: 9 });
     if (gzipCache.size >= 64) gzipCache.clear();
     gzipCache.set(cacheKey, compressed);
   }
