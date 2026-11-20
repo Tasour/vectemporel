@@ -49,5 +49,6 @@ for (const country of ['france', 'uk', 'usa', 'germany', 'italy', 'spain', 'chin
 }
 
 lines.splice(2, 0, `**Totaux** : ${totals.human} omissions revues (${totals.toFill} à combler, ${totals.documented} documentées, ${totals.accepted} acceptées) et ${totals.derived} absences dérivées.`, '');
+while (lines.length && lines[lines.length - 1] === '') lines.pop();
 writeFileAtomic(OUT, `${lines.join('\n')}\n`);
 console.log(`Journal généré : ${totals.human} revues, ${totals.derived} dérivées → docs/arbitrage-omissions.md`);

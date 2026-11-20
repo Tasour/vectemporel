@@ -86,4 +86,3 @@ Deux origines distinctes : les omissions **revues par un auditeur** (`omissions.
 | ID | Ère | Domaine | Statut |
 | --- | --- | --- | --- |
 | OM-014 | PERIOD-5 | Mémoire & patrimoine | documented |
-
