@@ -28,6 +28,12 @@ La barre de dimensions permet de colorer les régions par État, culture, religi
 
 La barre `Aucun / Historique / Capitales` affiche des libellés projetés sur la sphère (noms Chronas importés au build). La frise porte les **560 épiques** Chronas : pastilles colorées par catégorie et sélecteur accessible pour sauter à un événement. La fiche de chaque région affiche aussi sa **chronologie provinciale** locale : souverain, culture, religion, capitale et population à travers les siècles, avec un sélecteur de repères. Le mode « moderne » de Chronas dépend d'un fond de carte externe et n'est pas reproduit hors ligne (voir `RISKS.md`). Le thème clair/sombre est conservé dans `localStorage`.
 
+## Interface mobile et navigation
+
+Sous 760 px, la fiche de région s'ouvre en **plein écran** avec un bouton Fermer (`Échap` fonctionne aussi) ; la timeline et les contrôles sont masqués pendant la lecture. Une fois fermée, la frise devient compacte (144 px) et le readout reste au-dessus. Le bouton `☷` ouvre le panneau « Affichage » qui regroupe couleurs, libellés et épiques ; les boutons `+`, `−` et `⌖` pilotent le zoom et le recentrage avec des cibles de 44 px.
+
+La navigation de la sphère a été affinée : molette/D trackpad zooment vers le curseur, double-clic zoom, `Maj+flèches` tourne finement, `R` recentre, le tactile a une sensibilité réduite et un rayon de sélection de 20 px. Les capitales se choisissent au doigt comme à la souris.
+
 ## URL
 
 Format Chronas conservé :

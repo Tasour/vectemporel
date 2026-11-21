@@ -124,6 +124,20 @@ Les features F22 et F27, initialement reportées, ont été livrées en P10 avec
 
 **Rollback** : restaurer `src/app.js`, `sw.js` et `src/data/year-store.js` depuis le commit `b32e7a8`.
 
+## P12 — Interface mobile et navigation ✅ 2026-11-21
+
+- F62 Fiche de région plein écran sur mobile, focus et fermeture ✅
+- F63 HUD mobile sans collision (titre ellipsé, boutons 44 px, panneau Affichage) ✅
+- F64 Timeline mobile compacte (144 px) ✅
+- F65 Readout repositionné au-dessus de la timeline ✅
+- F66 Zoom molette/trackpad vers le curseur ✅
+- F67 Double-clic zoom ✅
+- F68 Touch optimisé (sensibilité, seuil 8 px, rayon 20 px, inertie plafonnée) ✅
+- F69 Boutons zoom/recentrer + raccourcis `R`, `Maj+flèches` ✅
+- F70 `lastInput` exposé dans l'état pour les tests ✅
+
+**Rollback** : restaurer `styles.css`, `src/app.js` et `src/globe/globe.js` depuis le commit `e381dee`.
+
 ## Rollback global
 
 Restaurer `archive/v2-globe-1year/` (ou `archive/v1-map-2d/`) et republier le commit `adc5c9d`.

@@ -195,6 +195,62 @@ try {
   await new Promise((resolve) => setTimeout(resolve, 600));
   check('repère provincial change l’année', await page.evaluate((value) => window.VATLAS.getState().year !== value, yearBeforeProvince));
 
+  /* P12 — navigation souris/clavier. */
+  const beforeDbl = await page.evaluate(() => window.VATLAS.getState().camera.zoom);
+  await page.mouse.click(720, 450, { clickCount: 2, delay: 40 });
+  await new Promise((resolve) => setTimeout(resolve, 300));
+  check('double-clic zoome', await page.evaluate((value) => window.VATLAS.getState().camera.zoom > value, beforeDbl));
+  const beforeFine = await page.evaluate(() => window.VATLAS.getState().camera.lon);
+  await page.focus('#globe-canvas');
+  await page.keyboard.down('Shift');
+  await page.keyboard.press('ArrowLeft');
+  await page.keyboard.up('Shift');
+  await new Promise((resolve) => setTimeout(resolve, 250));
+  check('rotation fine clavier', await page.evaluate((value) => {
+    const delta = Math.abs(window.VATLAS.getState().camera.lon - value);
+    return delta > 0 && delta < 5;
+  }, beforeFine));
+
+  /* P12 — mobile 390x844. */
+  const mobile = await browser.newPage();
+  await mobile.setViewport({ width: 390, height: 844, isMobile: true, hasTouch: true, deviceScaleFactor: 2 });
+  mobile.on('pageerror', (error) => errors.push(error.message));
+  await mobile.goto(`${new URL(BASE).origin}${new URL(BASE).pathname}?type=area&value=Berry&pos=47.08,2.4,4.2&year=1000`, { waitUntil: 'load', timeout: 60000 });
+  await mobile.waitForFunction(() => window.VATLAS?.getState?.().provinceTimeline === true, { timeout: 8000 }).catch(() => {});
+  check('mobile : fiche plein écran', await mobile.evaluate(() => {
+    const card = document.getElementById('hud-card');
+    const rect = card.getBoundingClientRect();
+    return !card.hidden && rect.width >= innerWidth - 1 && rect.height >= innerHeight - 1;
+  }));
+  check('mobile : bouton fermer visible', await mobile.evaluate(() => {
+    const button = document.getElementById('hud-card-close');
+    return Boolean(button) && getComputedStyle(button).display !== 'none';
+  }));
+  await mobile.click('#hud-card-close');
+  await new Promise((resolve) => setTimeout(resolve, 200));
+  check('mobile : fermeture fiche', await mobile.evaluate(() => document.getElementById('hud-card').hidden && !document.body.classList.contains('card-open')));
+  const layout = await mobile.evaluate(() => {
+    const box = (selector) => {
+      const element = document.querySelector(selector);
+      if (!element || element.hidden) return null;
+      const r = element.getBoundingClientRect();
+      return { x: r.x, y: r.y, right: r.right, bottom: r.bottom, w: r.width, h: r.height };
+    };
+    return { brand: box('.hud-brand'), actions: box('.hud-actions'), timeline: box('.timeline'), readout: box('.hud-readout'), nav: box('.nav-controls') };
+  });
+  check('mobile : titre et actions séparés', layout.brand.right < layout.actions.x, `brand=${Math.round(layout.brand.right)} actions=${Math.round(layout.actions.x)}`);
+  check('mobile : readout au-dessus timeline', layout.readout.bottom < layout.timeline.y, `readout=${Math.round(layout.readout.bottom)} timeline=${Math.round(layout.timeline.y)}`);
+  check('mobile : navigation au-dessus timeline', layout.nav.bottom < layout.timeline.y, `nav=${Math.round(layout.nav.bottom)} timeline=${Math.round(layout.timeline.y)}`);
+  check('mobile : timeline compacte', layout.timeline.h < 180, `${Math.round(layout.timeline.h)} px`);
+  const beforeMobileZoom = await mobile.evaluate(() => window.VATLAS.getState().camera.zoom);
+  await mobile.click('#nav-zoom-in');
+  await new Promise((resolve) => setTimeout(resolve, 300));
+  check('mobile : bouton zoom', await mobile.evaluate((value) => window.VATLAS.getState().camera.zoom > value, beforeMobileZoom));
+  await mobile.click('#hud-display-button');
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  check('mobile : panneau affichage', await mobile.evaluate(() => !document.getElementById('display-panel').hidden && Boolean(document.querySelector('#display-panel .dimension-bar'))));
+  await mobile.close();
+
   check('aucune erreur console', errors.length === 0, errors.slice(0, 3).join(' | '));
 } finally {
   await browser.close();

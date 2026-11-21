@@ -246,12 +246,87 @@ button, input { font: inherit; }
 .hud-error[hidden] { display: none; }
 .noscript { position: fixed; inset: 20px; color: var(--ink); }
 
+/* Contrôles conditionnels : desktop. */
+.hud-close { display: none; }
+#hud-display-button { display: none; }
+.nav-controls { display: none; }
+.display-panel { z-index: 45; }
+.display-panel .dimension-bar, .display-panel .label-bar { margin-top: 8px; }
+.display-panel .epic-select { width: 100%; max-width: none; margin-top: 8px; }
+
 @media (max-width: 760px) {
-  .hud-card { bottom: 180px; padding: 12px 14px; }
-  .hud-title { font-size: 20px; }
-  .hud-readout { bottom: 170px; max-width: calc(100vw - 24px); }
-  .timeline { width: calc(100vw - 16px); padding: 6px 8px 8px; }
-  .era-band { font-size: 7px; }
+  .hud-brand { top: max(10px, env(safe-area-inset-top)); left: 10px; max-width: 150px; }
+  .hud-brand strong { font-size: 9px; letter-spacing: .12em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .hud-brand > span { display: none; }
+  .hud-actions { top: max(10px, env(safe-area-inset-top)); right: 10px; gap: 4px; }
+  .hud-btn { min-width: 44px; min-height: 44px; padding: 8px; }
+  #hud-display-button { display: inline-flex; }
+
+  .hud-card {
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    width: auto;
+    max-width: none;
+    height: 100dvh;
+    overflow-y: auto;
+    padding: 64px 18px 24px;
+    border: 0;
+    border-radius: 0;
+    background: rgba(7, 10, 14, .98);
+  }
+  .hud-card[hidden] { display: none; }
+  .hud-close {
+    display: inline-flex;
+    position: absolute;
+    top: max(14px, env(safe-area-inset-top));
+    right: 14px;
+    width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--ink);
+  }
+  .hud-title { font-size: 26px; }
+
+  .timeline {
+    bottom: max(8px, env(safe-area-inset-bottom));
+    left: 8px;
+    width: calc(100vw - 16px);
+    transform: none;
+    padding: 4px 8px 6px;
+  }
+  .timeline .epic-host { display: none; }
+  .era-bands { height: 8px; }
+  .era-band { font-size: 7px; line-height: 8px; }
+  .timeline-year { min-height: 32px; font-size: 16px; }
+  .timeline-range { width: calc(100% - 52px); min-height: 32px; }
+  .timeline-play { min-width: 44px; min-height: 44px; }
+  .century-nav { overflow-x: auto; gap: 2px; }
+  .century-btn { flex: 0 0 auto; min-height: 32px; font-size: 9px; }
+  .timeline-loading { min-height: 12px; }
+  .hud-readout {
+    bottom: max(160px, calc(env(safe-area-inset-bottom) + 160px));
+    left: 8px;
+    transform: none;
+    max-width: calc(100vw - 16px);
+  }
+
+  .nav-controls {
+    display: flex;
+    position: absolute;
+    right: 10px;
+    bottom: max(160px, calc(env(safe-area-inset-bottom) + 160px));
+    gap: 6px;
+  }
+  body.card-open .timeline,
+  body.card-open .hud-readout,
+  body.card-open .nav-controls { display: none; }
+  body.card-open .hud-brand,
+  body.card-open .hud-actions { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
