@@ -2,7 +2,7 @@
  * Cache-first sur les ressources same-origin : la première visite en ligne
  * remplit le cache, les suivantes fonctionnent hors ligne. Aucune requête
  * cross-origin n'est interceptée ni mise en cache (contrainte zéro réseau). */
-const CACHE = 'vectemporel-v7';
+const CACHE = 'vectemporel-03cbaa11cc9d';
 const SHELL = [
   './', './index.html', './manifest.webmanifest', './styles.css', './sw.js',
   './src/app.js', './src/map/data.js', './src/map/projection.js',
@@ -39,7 +39,7 @@ self.addEventListener('fetch', (event) => {
     const cached = await cache.match(request);
     if (cached) return cached;
     try {
-      const response = await fetch(request);
+      const response = await fetch(request, { cache: 'reload' });
       if (response && response.status === 200 && response.type === 'basic') {
         await cache.put(request, response.clone());
       }

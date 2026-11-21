@@ -541,6 +541,14 @@ function mount() {
 
 function registerServiceWorker() {
   if (!('serviceWorker' in navigator) || window.location.protocol === 'file:') return;
+  const hadController = Boolean(navigator.serviceWorker.controller);
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    /* Un nouveau SW prend le contrôle : recharger une seule fois pour
+     * afficher immédiatement la nouvelle version, sans boucle. */
+    if (!hadController || sessionStorage.getItem('history-sw-reloaded')) return;
+    sessionStorage.setItem('history-sw-reloaded', '1');
+    window.location.reload();
+  });
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js').catch(() => { /* mode en ligne dégradé */ });
   }, { once: true });
