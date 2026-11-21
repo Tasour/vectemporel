@@ -116,6 +116,11 @@ function mount() {
   suggestions.setAttribute('aria-label', 'Régions correspondantes');
   searchOverlay.append(search, suggestions);
 
+  const tooltip = el('div', 'map-tooltip');
+  tooltip.id = 'map-tooltip';
+  tooltip.setAttribute('role', 'tooltip');
+  tooltip.hidden = true;
+
   const helpOverlay = el('div', 'hud-overlay');
   helpOverlay.id = 'hud-help';
   helpOverlay.hidden = true;
@@ -193,7 +198,7 @@ function mount() {
   yearInput.setAttribute('aria-label', 'Année (entre -2000 et 2000)');
   yearDialog.appendChild(yearInput);
 
-  hud.append(brand, actions, card, searchOverlay, helpOverlay, yearDialog, readout, timeline, error);
+  hud.append(brand, actions, card, tooltip, searchOverlay, helpOverlay, yearDialog, readout, timeline, error);
 
   let selected = null;
   let areasForYear = null;
@@ -204,6 +209,7 @@ function mount() {
 
   const globe = createGlobe(canvas, {
     onSelect: (name) => select(name),
+    onHover: (name, x, y) => showTooltip(name, x, y),
     onCitySelect: (name) => {
       const area = capitalIndex.get(normalizeName(name))?.[0];
       if (area) {
@@ -271,6 +277,18 @@ function mount() {
     }
     const info = describe(name);
     readout.textContent = `${name} · ${info?.capital || 'capitale inconnue'} · ${info?.culture || 'culture inconnue'}.`;
+  }
+
+  function showTooltip(name, x, y) {
+    if (!name) { tooltip.hidden = true; return; }
+    const area = describe(name);
+    tooltip.replaceChildren(
+      el('strong', '', name),
+      el('span', '', `${area?.culture || 'culture inconnue'} · ${area?.capital || 'capitale inconnue'}`),
+    );
+    tooltip.style.left = `${x + 14}px`;
+    tooltip.style.top = `${y + 14}px`;
+    tooltip.hidden = false;
   }
 
   function normalizeName(value) {

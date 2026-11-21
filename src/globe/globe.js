@@ -20,7 +20,7 @@ const mulberry32 = (seed) => () => {
 const distanceForZoom = (zoom) => 3.2 - clamp(zoom, 0, ZOOM_MAX) * 0.19;
 const clampZoom = (zoom) => clamp(zoom, 0, ZOOM_MAX);
 
-export function createGlobe(canvas, { onSelect, onCitySelect, onView, onError } = {}) {
+export function createGlobe(canvas, { onSelect, onCitySelect, onView, onError, onHover } = {}) {
   const THREE = window.THREE;
   if (!THREE) {
     onError?.('Three.js indisponible');
@@ -367,7 +367,9 @@ export function createGlobe(canvas, { onSelect, onCitySelect, onView, onError } 
       return;
     }
     if (event.pointerType === 'mouse') {
-      canvas.classList.toggle('point-hover', Boolean(pickCity(event.clientX, event.clientY)));
+      const city = pickCity(event.clientX, event.clientY);
+      canvas.classList.toggle('point-hover', Boolean(city));
+      onHover?.(city ? null : pick(event.clientX, event.clientY), event.clientX, event.clientY);
     }
   };
 
@@ -395,7 +397,10 @@ export function createGlobe(canvas, { onSelect, onCitySelect, onView, onError } 
     lastInteraction = performance.now();
   };
 
-  const onPointerLeave = () => canvas.classList.remove('point-hover');
+  const onPointerLeave = () => {
+    canvas.classList.remove('point-hover');
+    onHover?.(null, 0, 0);
+  };
 
   const onWheel = (event) => {
     event.preventDefault();
