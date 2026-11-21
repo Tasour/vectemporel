@@ -24,6 +24,10 @@ check('licence CC BY-SA', map.meta.license === 'CC BY-SA 4.0', map.meta.license)
 check('coordonnées finies', map.features.every((feature) => feature.rings.every((ring) => ring.every(([lon, lat]) => Number.isFinite(lon) && Number.isFinite(lat)))));
 const snapshotBytes = fs.statSync(path.join(ROOT, 'src/data/chronas-map.js')).size;
 check('snapshot < 1 Mo', snapshotBytes < 1024 * 1024, `${Math.round(snapshotBytes / 1024)} Ko`);
+check('bornes 4001 ans', map.meta.minYear === -2000 && map.meta.maxYear === 2000);
+const chunkDir = path.join(ROOT, 'src/data/years');
+const chunkCount = fs.existsSync(chunkDir) ? fs.readdirSync(chunkDir).filter((name) => /^c-?\d+\.json$/.test(name)).length : 0;
+check('41 chunks de siècle', chunkCount === 41, `${chunkCount}`);
 
 const html = read('index.html');
 const runtimeFiles = ['index.html', 'styles.css', 'src/app.js', 'src/map/data.js', 'src/map/projection.js', 'src/globe/globe.js', 'src/globe/lonlat.js', 'src/globe/texture.js'];

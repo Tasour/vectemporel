@@ -2,12 +2,12 @@
  * Cache-first sur les ressources same-origin : la première visite en ligne
  * remplit le cache, les suivantes fonctionnent hors ligne. Aucune requête
  * cross-origin n'est interceptée ni mise en cache (contrainte zéro réseau). */
-const CACHE = 'vectemporel-v4';
+const CACHE = 'vectemporel-v5';
 const SHELL = [
   './', './index.html', './manifest.webmanifest', './styles.css', './sw.js',
   './src/app.js', './src/map/data.js', './src/map/projection.js',
   './src/globe/globe.js', './src/globe/lonlat.js', './src/globe/texture.js',
-  './src/data/chronas-map.js', './public/three.min.js',
+  './src/data/chronas-map.js', './src/data/year-store.js', './public/three.min.js',
   './icons/icon-192.png', './icons/icon-512.png', './icons/icon-maskable-512.png',
 ];
 

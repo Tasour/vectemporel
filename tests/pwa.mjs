@@ -43,7 +43,7 @@ try {
 
   const cache = await page.evaluate(async () => {
     const keys = await caches.keys();
-    const store = await caches.open('vectemporel-v4');
+    const store = await caches.open('vectemporel-v5');
     const entries = await store.keys();
     return {
       keys,
@@ -53,7 +53,7 @@ try {
       hasThree: entries.some((entry) => /three\.min\.js/.test(entry.url)),
     };
   });
-  check('cache versionné', cache.keys.includes('vectemporel-v4'), cache.keys.join(','));
+  check('cache versionné', cache.keys.includes('vectemporel-v5'), cache.keys.join(','));
   check('snapshot carte en cache', cache.hasMap);
   check('Three.js en cache', cache.hasThree);
   check('coque mise en cache', cache.hasIndex, `${cache.count} entrées`);
