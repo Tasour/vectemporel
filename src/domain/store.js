@@ -590,6 +590,44 @@ function parseLegacyLink(raw) {
   return out;
 }
 
+/* Deep links au format Chronas : ?type=area&value=Berry&pos=lat,lon,zoom&year=1000.
+ * Aucun état nouveau : on projette année + zone sur notre taxonomie existante.
+ * `pos` est reconnu mais non stocké (pas de champ d'état correspondant). */
+function parseChronasParams(params) {
+  const type = params.get('type');
+  const value = params.get('value');
+  const yearParam = params.get('year');
+  const pos = params.get('pos');
+  if (type === null && value === null && yearParam === null && pos === null) return null;
+  if (type !== null && type !== 'area') return null;
+
+  const out = { view: 'chronology', detailOpen: false };
+  const country = value
+    ? DATASET.countries.find((item) => item.id === value.toLowerCase()
+      || item.name.toLowerCase() === value.toLowerCase()) || null
+    : null;
+  if (country) out.countryId = country.id;
+  const target = country || DATASET.countries[0];
+  if (yearParam !== null && target) {
+    const year = Number(yearParam);
+    if (!Number.isFinite(year)) return null;
+    const eraIndex = target.eras.findIndex((era) => year >= era.start && year <= era.end);
+    if (eraIndex >= 0) out.eraIndex = eraIndex;
+    let eventIndex = target.events.findIndex((event) => event.year === year);
+    if (eventIndex < 0 && target.events.length) {
+      let best = 0;
+      let distance = Infinity;
+      target.events.forEach((event, index) => {
+        const current = Math.abs(event.year - year);
+        if (current < distance) { distance = current; best = index; }
+      });
+      eventIndex = best;
+    }
+    out.eventIndex = eventIndex;
+  }
+  return out;
+}
+
 export function parseDeepLink(hash) {
   if (typeof hash !== 'string') return null;
   const raw = hash.replace(/^#/, '');
@@ -597,6 +635,8 @@ export function parseDeepLink(hash) {
   if (raw.startsWith('/')) return parseLegacyLink(raw);
   let params;
   try { params = new URLSearchParams(raw); } catch { return null; }
+  const chronas = parseChronasParams(params);
+  if (chronas) return chronas;
   const out = {};
   let recognized = 0;
   const view = params.get('v');
