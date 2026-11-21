@@ -42,10 +42,13 @@ try {
   check('3 icônes', manifest?.icons?.length === 3, String(manifest?.icons?.length));
 
   const cache = await page.evaluate(async () => {
+    const source = await (await fetch('./sw.js', { cache: 'no-store' })).text();
+    const name = source.match(/const CACHE = '([^']+)'/)?.[1] || '';
     const keys = await caches.keys();
-    const store = await caches.open('vectemporel-v7');
+    const store = await caches.open(name);
     const entries = await store.keys();
     return {
+      name,
       keys,
       count: entries.length,
       hasIndex: Boolean(await store.match('./index.html')),
@@ -55,7 +58,7 @@ try {
       urls: entries.map((entry) => entry.url),
     };
   });
-  check('cache versionné', cache.keys.includes('vectemporel-v7'), cache.keys.join(','));
+  check('cache versionné', Boolean(cache.name) && cache.keys.includes(cache.name), `${cache.name} / ${cache.keys.join(',')}`);
   check('snapshot carte en cache', cache.hasMap);
   check('Three.js en cache', cache.hasThree);
   check('chunk d’année en cache', cache.hasChunk, cache.urls.filter((u) => /years/.test(u)).join(',') || `${cache.count} entrées`);

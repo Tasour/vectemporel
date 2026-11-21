@@ -75,6 +75,15 @@ Les features F22 et F27 sont reportées : elles demandent un import supplémenta
 
 **Rollback** : restaurer `PointsMaterial` nu, le filtre complet et le message immédiat depuis le commit `b4f4525`.
 
+## P8 — Cache busting automatique ✅ 2026-11-21
+
+- Hash SHA-256 de tous les fichiers publiés calculé par `build-pages.mjs`.
+- Nom du cache SW et URLs des assets versionnés par ce hash.
+- Anciens caches supprimés à l'activation ; fetch réseau en `cache: 'reload'`.
+- Rechargement unique de la page quand un nouveau SW prend le contrôle.
+
+**Rollback** : restaurer `sw.js`, `build-pages.mjs` et `src/app.js` depuis le commit `722eea1`.
+
 ## Rollback global
 
 Restaurer `archive/v2-globe-1year/` (ou `archive/v1-map-2d/`) et republier le commit `adc5c9d`.

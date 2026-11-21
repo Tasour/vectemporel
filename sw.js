@@ -39,7 +39,7 @@ self.addEventListener('fetch', (event) => {
     const cached = await cache.match(request);
     if (cached) return cached;
     try {
-      const response = await fetch(request);
+      const response = await fetch(request, { cache: 'reload' });
       if (response && response.status === 200 && response.type === 'basic') {
         await cache.put(request, response.clone());
       }

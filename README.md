@@ -74,7 +74,13 @@ npm run check
 | `npm run test:perf` | budget < 50 requêtes / < 1 Mo |
 | `npm run test:pwa` | manifest, cache versionné, survie hors ligne |
 
-Budget mesuré : **16 requêtes / 464 Ko** à la première visite (Three.js compris), **0 Ko** en régime établi. Le serveur écoute uniquement sur `127.0.0.1`.
+Budget mesuré : **17 requêtes / 466 Ko** à la première visite (Three.js compris), **0 Ko** en régime établi. Le serveur écoute uniquement sur `127.0.0.1`.
+
+## Mises à jour et cache
+
+`npm run build:pages` calcule un hash SHA-256 de tous les fichiers publiés. Ce hash devient le nom du cache du service worker (`vectemporel-<hash>`) et est ajouté aux URLs des assets dans `index.html` (`?v=<hash>`). À chaque déploiement, les anciens caches `vectemporel-*` sont supprimés lors de l'activation du service worker, et les assets sont récupérés avec `cache: 'reload'` plutôt que depuis le cache HTTP de GitHub Pages (`max-age=600`).
+
+Côté client, lorsqu'un nouveau service worker prend le contrôle d'une page déjà ouverte, l'application se recharge **une seule fois** (garde-fou `sessionStorage`) pour afficher immédiatement la nouvelle version. Le hash est stable si le contenu ne change pas, et change dès qu'un fichier publié est modifié.
 
 ## Structure
 
