@@ -20,6 +20,7 @@ const page = await browser.newPage();
 await page.setViewport({ width: 1440, height: 900 });
 page.on('pageerror', (error) => errors.push(error.message));
 page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
+page.on('response', (response) => { if (response.status() >= 400) errors.push(`HTTP ${response.status()} ${response.url()}`); });
 
 try {
   await page.goto(`${BASE}?type=area&value=Berry&pos=47.08,2.4,4.2&year=1000`, { waitUntil: 'load', timeout: 60000 });
@@ -73,6 +74,28 @@ try {
   check('accueil sans deep link', await page.evaluate(() => window.VATLAS.getState().selected === null && document.getElementById('hud-card').hidden));
   const beforeTour = await page.evaluate(() => window.VATLAS.getState().camera.lon);
   await new Promise((resolve) => setTimeout(resolve, 1200));
+  /* P3 — timeline. */
+  check('timeline visible', await page.evaluate(() => !document.getElementById('timeline').hidden && Boolean(document.getElementById('timeline-range'))));
+  check('année initiale 1000', await page.evaluate(() => window.VATLAS.getState().year === 1000));
+  await page.evaluate(() => window.VATLAS.setYear(1500));
+  await new Promise((resolve) => setTimeout(resolve, 700));
+  check('changement d’année', await page.evaluate(() => window.VATLAS.getState().year === 1500));
+  check('URL année', await page.evaluate(() => new URLSearchParams(location.search).get('year') === '1500'));
+  check('libellé année', await page.evaluate(() => document.getElementById('timeline-year').textContent === '1500'));
+  check('chunk chargé', await page.evaluate(() => performance.getEntriesByType('resource').some((e) => /\/c\d+\.json/.test(e.name))));
+  await page.click('.century-btn[data-year="0"]');
+  await new Promise((resolve) => setTimeout(resolve, 700));
+  check('saut de siècle', await page.evaluate(() => window.VATLAS.getState().year === 0), `année=${await page.evaluate(() => window.VATLAS.getState().year)}`);
+  await page.click('#timeline-year');
+  await page.type('#year-input', '-500');
+  await page.keyboard.press('Enter');
+  await new Promise((resolve) => setTimeout(resolve, 700));
+  check('saisie directe', await page.evaluate(() => window.VATLAS.getState().year === -500), `année=${await page.evaluate(() => window.VATLAS.getState().year)}`);
+  await page.click('#timeline-play');
+  await new Promise((resolve) => setTimeout(resolve, 1200));
+  check('autoplay manuel', await page.evaluate(() => window.VATLAS.getState().year !== -500));
+  await page.click('#timeline-play');
+
   check('aucune rotation automatique', await page.evaluate((value) => Math.abs(window.VATLAS.getState().camera.lon - value) < 0.01, beforeTour));
   await page.click('#hud-tour-button');
   await new Promise((resolve) => setTimeout(resolve, 600));

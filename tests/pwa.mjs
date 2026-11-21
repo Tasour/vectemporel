@@ -43,7 +43,7 @@ try {
 
   const cache = await page.evaluate(async () => {
     const keys = await caches.keys();
-    const store = await caches.open('vectemporel-v5');
+    const store = await caches.open('vectemporel-v6');
     const entries = await store.keys();
     return {
       keys,
@@ -51,11 +51,14 @@ try {
       hasIndex: Boolean(await store.match('./index.html')),
       hasMap: entries.some((entry) => /chronas-map\.js/.test(entry.url)),
       hasThree: entries.some((entry) => /three\.min\.js/.test(entry.url)),
+      hasChunk: entries.some((entry) => /\/years\/c-?\d+\.json/.test(entry.url)),
+      urls: entries.map((entry) => entry.url),
     };
   });
-  check('cache versionné', cache.keys.includes('vectemporel-v5'), cache.keys.join(','));
+  check('cache versionné', cache.keys.includes('vectemporel-v6'), cache.keys.join(','));
   check('snapshot carte en cache', cache.hasMap);
   check('Three.js en cache', cache.hasThree);
+  check('chunk d’année en cache', cache.hasChunk, cache.urls.filter((u) => /years/.test(u)).join(',') || `${cache.count} entrées`);
   check('coque mise en cache', cache.hasIndex, `${cache.count} entrées`);
   check('cache préchauffé (> 10 ressources)', cache.count > 10, String(cache.count));
 

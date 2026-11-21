@@ -19,7 +19,7 @@ for (const feature of FEATURES) {
   if (!COLORS.has(culture)) COLORS.set(culture, colorFor(culture));
 }
 
-export function createEquirectangularCanvas(quality = globeQuality()) {
+export function createEquirectangularCanvas(quality = globeQuality(), areas = AREAS) {
   const { width: WIDTH, height: HEIGHT } = quality;
   const canvas = document.createElement('canvas');
   canvas.width = WIDTH;
@@ -48,6 +48,11 @@ export function createEquirectangularCanvas(quality = globeQuality()) {
   }
   ctx.stroke();
 
+  paintFeatures(ctx, WIDTH, HEIGHT, areas);
+  return canvas;
+}
+
+function paintFeatures(ctx, WIDTH, HEIGHT, areas) {
   for (const feature of FEATURES) {
     ctx.beginPath();
     for (const ring of feature.rings) {
@@ -58,18 +63,26 @@ export function createEquirectangularCanvas(quality = globeQuality()) {
       });
       ctx.closePath();
     }
-    ctx.fillStyle = COLORS.get(AREAS[feature.name]?.[1]) || '#263345';
+    const row = areas[feature.name];
+    let culture = Array.isArray(row) ? row[1] : undefined;
+    if (culture === undefined && !Array.isArray(row) && row?.culture !== undefined) culture = row.culture;
+    const color = colorFor(culture || 'inconnu');
+    ctx.fillStyle = color || '#263345';
     ctx.fill();
   }
-  return canvas;
 }
 
 export function createGlobeTexture(THREE, quality = globeQuality(), renderer = null) {
   const canvas = createEquirectangularCanvas(quality);
+  const ctx = canvas.getContext('2d');
   const texture = new THREE.CanvasTexture(canvas);
   texture.colorSpace = THREE.SRGBColorSpace;
   texture.minFilter = THREE.LinearMipmapLinearFilter;
   texture.magFilter = THREE.LinearFilter;
   texture.anisotropy = Math.min(16, renderer?.capabilities?.getMaxAnisotropy?.() || 1);
-  return { texture, canvas };
+  const repaint = (areas) => {
+    paintFeatures(ctx, canvas.width, canvas.height, areas);
+    texture.needsUpdate = true;
+  };
+  return { texture, canvas, repaint };
 }

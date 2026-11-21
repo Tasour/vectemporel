@@ -9,7 +9,10 @@ const chunks = new Map();
 const years = new Map();
 const MAX_YEARS = 12;
 
-export const clampYear = (year) => Math.max(MIN, Math.min(MAX, Math.round(Number(year) || 1000)));
+export const clampYear = (year) => {
+  const value = Number(year);
+  return Number.isFinite(value) ? Math.max(MIN, Math.min(MAX, Math.round(value))) : 1000;
+};
 export const centuryStart = (year) => MIN + Math.floor((clampYear(year) - MIN) / 100) * 100;
 
 /* Pur et testable : reconstruit l'état d'une année depuis un chunk. */

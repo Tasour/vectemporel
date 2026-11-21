@@ -3,9 +3,16 @@
 import { MAP_META, FEATURES, describe, searchNames, ATTRIBUTION, formatPopulation } from './map/data.js';
 import { decodePos, encodePos } from './map/projection.js';
 import { createGlobe } from './globe/globe.js';
+import { clampYear, getAreasForYear } from './data/year-store.js';
 
 const SEED = 20261121;
 const DEFAULT_VIEW = { lat: 20, lon: 0, zoom: 1.6 };
+const ERAS = [
+  { label: 'Antiquité', start: -2000, end: -500 },
+  { label: 'Classique', start: -500, end: 500 },
+  { label: 'Médiéval', start: 500, end: 1500 },
+  { label: 'Moderne', start: 1500, end: 2000 },
+];
 
 const el = (tag, className, text) => {
   const node = document.createElement(tag);
@@ -33,7 +40,7 @@ function mount() {
   const hud = document.getElementById('hud');
   const canvas = document.getElementById('globe-canvas');
   const params = readParams();
-  const year = Number(params.get('year')) || MAP_META.year;
+  let year = clampYear(params.get('year') ?? MAP_META.year);
   const initialName = params.get('value');
   const initialPos = decodePos(params.get('pos'));
 
@@ -91,7 +98,7 @@ function mount() {
     + '<kbd>←</kbd><kbd>→</kbd><kbd>↑</kbd><kbd>↓</kbd> tourner · <kbd>+</kbd><kbd>−</kbd> zoomer<br>'
     + '<kbd>/</kbd> recherche · <kbd>?</kbd> aide · <kbd>Échap</kbd> fermer<br>'
     + '<kbd>▶</kbd> tour du monde (manuel uniquement)<br>'
-    + '<kbd>Clic</kbd> sélectionner une région';
+    + '<kbd>Clic</kbd> sélectionner une région · <kbd>Curseur</kbd> changer d’année';
   helpOverlay.appendChild(help);
 
   const readout = el('p', 'hud-readout');
@@ -103,7 +110,63 @@ function mount() {
   error.id = 'hud-error';
   error.hidden = true;
 
-  hud.append(brand, actions, card, searchOverlay, helpOverlay, readout, error);
+  /* Timeline — F15 à F20. */
+  const timeline = el('section', 'timeline');
+  timeline.id = 'timeline';
+  timeline.setAttribute('aria-label', 'Frise chronologique');
+  const eraBands = el('div', 'era-bands');
+  eraBands.setAttribute('aria-hidden', 'true');
+  for (const era of ERAS) {
+    const band = el('span', 'era-band', era.label);
+    band.style.left = `${((era.start + 2000) / 4000) * 100}%`;
+    band.style.width = `${((era.end - era.start) / 4000) * 100}%`;
+    eraBands.appendChild(band);
+  }
+  const yearLabel = el('button', 'timeline-year', '1000');
+  yearLabel.type = 'button';
+  yearLabel.id = 'timeline-year';
+  yearLabel.setAttribute('aria-label', 'Choisir une année (saisie directe)');
+  const slider = document.createElement('input');
+  slider.type = 'range';
+  slider.id = 'timeline-range';
+  slider.className = 'timeline-range';
+  slider.min = '-2000';
+  slider.max = '2000';
+  slider.step = '1';
+  slider.value = String(year);
+  slider.setAttribute('aria-label', 'Année');
+  const play = el('button', 'hud-btn timeline-play', '▶');
+  play.type = 'button';
+  play.id = 'timeline-play';
+  play.setAttribute('aria-label', 'Lancer la lecture des années');
+  play.setAttribute('aria-pressed', 'false');
+  const centuries = el('div', 'century-nav');
+  centuries.setAttribute('role', 'group');
+  centuries.setAttribute('aria-label', 'Sauts de siècle');
+  for (const mark of [-2000, -1000, 0, 1000, 2000]) {
+    const button = el('button', 'century-btn', String(mark));
+    button.type = 'button';
+    button.dataset.year = String(mark);
+    centuries.appendChild(button);
+  }
+  const loading = el('span', 'timeline-loading', '');
+  loading.id = 'timeline-loading';
+  loading.hidden = true;
+  timeline.append(eraBands, yearLabel, slider, play, centuries, loading);
+
+  const yearDialog = el('div', 'hud-overlay');
+  yearDialog.id = 'year-dialog';
+  yearDialog.hidden = true;
+  yearDialog.append(el('h2', '', 'Choisir une année'));
+  const yearInput = document.createElement('input');
+  yearInput.type = 'number';
+  yearInput.id = 'year-input';
+  yearInput.min = '-2000';
+  yearInput.max = '2000';
+  yearInput.setAttribute('aria-label', 'Année (entre -2000 et 2000)');
+  yearDialog.appendChild(yearInput);
+
+  hud.append(brand, actions, card, searchOverlay, helpOverlay, yearDialog, readout, timeline, error);
 
   let selected = null;
   let suggestionIndex = -1;
@@ -148,12 +211,90 @@ function mount() {
 
   function announce(name) {
     if (!name) {
-      readout.textContent = `${FEATURES.length} régions · année ${MAP_META.year}. Glissez pour explorer.`;
+      readout.textContent = `${FEATURES.length} régions · année ${year}. Glissez pour explorer.`;
       return;
     }
     const info = describe(name);
     readout.textContent = `${name} · ${info?.capital || 'capitale inconnue'} · ${info?.culture || 'culture inconnue'}.`;
   }
+
+  let yearRequest = 0;
+  let autoplayTimer = 0;
+  let debounceTimer = 0;
+
+  async function applyYear(next, { updateUrl = true, notify = true } = {}) {
+    const target = clampYear(next);
+    const request = ++yearRequest;
+    year = target;
+    yearLabel.textContent = String(target);
+    slider.value = String(target);
+    params.set('year', String(target));
+    if (updateUrl) writeUrl(params);
+    loading.hidden = false;
+    loading.textContent = `Chargement de ${target}…`;
+    try {
+      const areas = await getAreasForYear(target);
+      if (request !== yearRequest) return;
+      globe?.setYearAreas(areas);
+      if (selected) renderCard(selected);
+      if (notify) announce(selected);
+    } catch (issue) {
+      if (request !== yearRequest) return;
+      error.textContent = `Année ${target} indisponible : ${issue.message}`;
+      error.hidden = false;
+      readout.textContent = error.textContent;
+    } finally {
+      if (request === yearRequest) loading.hidden = true;
+    }
+  }
+
+  function setYear(next, options) {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => applyYear(next, options), 120);
+  }
+
+  function toggleAutoplay() {
+    if (autoplayTimer) {
+      clearInterval(autoplayTimer);
+      autoplayTimer = 0;
+      play.textContent = '▶';
+      play.setAttribute('aria-pressed', 'false');
+      play.setAttribute('aria-label', 'Lancer la lecture des années');
+      return;
+    }
+    play.textContent = '⏸';
+    play.setAttribute('aria-pressed', 'true');
+    play.setAttribute('aria-label', 'Arrêter la lecture des années');
+    autoplayTimer = setInterval(() => {
+      const next = year >= 2000 ? -2000 : year + 25;
+      applyYear(next);
+    }, 900);
+  }
+
+  function openYearDialog() {
+    helpOverlay.hidden = true;
+    searchOverlay.hidden = true;
+    yearDialog.hidden = false;
+    yearInput.value = '';
+    yearInput.placeholder = String(year);
+    yearInput.focus();
+  }
+
+  yearLabel.addEventListener('click', openYearDialog);
+  slider.addEventListener('input', () => setYear(slider.value));
+  play.addEventListener('click', toggleAutoplay);
+  for (const button of centuries.children) {
+    button.addEventListener('click', () => setYear(Number(button.dataset.year)));
+  }
+  yearInput.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      applyYear(yearInput.value);
+      yearDialog.hidden = true;
+    } else if (event.key === 'Escape') {
+      yearDialog.hidden = true;
+    }
+  });
 
   function select(name, { move = true } = {}) {
     if (!name) return;
@@ -254,15 +395,16 @@ function mount() {
     else if (event.key === 'Escape') {
       searchOverlay.hidden = true;
       helpOverlay.hidden = true;
+      yearDialog.hidden = true;
     }
   });
 
   if (globe) {
     globe.setView(initialPos || DEFAULT_VIEW);
+    applyYear(year, { notify: false });
     if (initialName) select(initialName, { move: !initialPos });
     else {
       params.set('type', 'area');
-      params.set('year', String(year));
       params.set('pos', encodePos(globe.getView()));
       writeUrl(params);
       announce(null);
@@ -283,6 +425,7 @@ function mount() {
       touring: Boolean(globe?.isTouring?.()),
     }),
     selectRegion: (name) => select(name),
+    setYear: (value) => applyYear(value),
     diagnostics: () => ({ seed: SEED, features: FEATURES.length, areas: MAP_META.areas, webgl: Boolean(globe) }),
   };
   document.documentElement.dataset.globeReady = 'true';

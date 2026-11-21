@@ -47,7 +47,7 @@ export function createGlobe(canvas, { onSelect, onView, onError } = {}) {
   scene.add(latGroup);
 
   const quality = globeQuality();
-  const { texture: globeTexture } = createGlobeTexture(THREE, quality, renderer);
+  const { texture: globeTexture, repaint: repaintTexture } = createGlobeTexture(THREE, quality, renderer);
   const sphere = new THREE.Mesh(
     new THREE.SphereGeometry(1, quality.segments[0], quality.segments[1]),
     new THREE.MeshPhongMaterial({ map: globeTexture, shininess: 8, specular: 0x111111 }),
@@ -339,6 +339,10 @@ export function createGlobe(canvas, { onSelect, onView, onError } = {}) {
       tourAuto = !tourAuto;
       lastInteraction = performance.now();
       return tourAuto;
+    },
+    setYearAreas(areas) {
+      repaintTexture(areas);
+      renderer.render(scene, camera);
     },
     rotateBy(dLon, dLat) {
       target.lon = normalizeLongitude(target.lon + dLon);
