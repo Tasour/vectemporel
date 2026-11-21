@@ -24,7 +24,7 @@ La frise en bas de l'écran couvre **toutes les années de −2000 à 2000** (4 
 
 Les données sont générées au build (`npm run years:import`, import reprenable) puis stockées en 41 chunks de siècle chargés à la demande. Le snapshot de référence et les chunks sont servis localement : aucun appel réseau au runtime, PWA hors ligne conservée.
 
-La barre de dimensions permet de colorer les régions par État, culture, religion, capitale ou population. Les capitales historiques sont chargées depuis `npm run cities:import`. Le thème clair/sombre est conservé dans `localStorage`.
+La barre de dimensions permet de colorer les régions par État, culture, religion, capitale ou population. Les capitales historiques sont chargées depuis `npm run cities:import` et filtrées sur les capitales politiques de l'année affichée (210 points en l'an 1000) : ce sont de petits disques, visibles seulement à partir du zoom 2,5. Le thème clair/sombre est conservé dans `localStorage`.
 
 ## URL
 

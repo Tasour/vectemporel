@@ -47,6 +47,12 @@ try {
     return canvas.width > 1000 && canvas.getBoundingClientRect().width >= window.innerWidth - 1;
   }));
   check('readout live', await page.evaluate(() => document.getElementById('hud-readout')?.getAttribute('aria-live') === 'polite'));
+  check('message de chargement masqué', await page.evaluate(() => document.getElementById('timeline-loading').hidden));
+  check('capitales filtrées', await page.evaluate(() => {
+    const mesh = window.VATLAS.getState().mesh;
+    return mesh?.cityCount > 100 && mesh?.cityCount < 300;
+  }), `capitales=${await page.evaluate(() => window.VATLAS.getState().mesh?.cityCount)}`);
+  check('marqueurs ronds', await page.evaluate(() => window.VATLAS.getState().mesh?.citySprite === true));
 
   const cameraBefore = await page.evaluate(() => window.VATLAS.getState().camera.lon);
   await page.focus('#globe-canvas');

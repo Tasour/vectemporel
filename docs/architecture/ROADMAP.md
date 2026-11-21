@@ -66,6 +66,15 @@ Les features F22 et F27 sont reportées : elles demandent un import supplémenta
 
 **Rollback** : restaurer la texture 4096×2048 et le zoom 8 depuis `archive/v2-globe-1year/`.
 
+## P7 — Finition visuelle ✅ 2026-11-21
+
+- F38 Marqueurs ronds (sprite disque local, taille fixe en pixels, zéro carré) ✅
+- F39 Filtrage des capitales par année (344 → 210 marqueurs en 1000) ✅
+- F40 Message de chargement différé de 800 ms (plus de flash) ✅
+- F41 Tests e2e, captures zoom 6, publication ✅
+
+**Rollback** : restaurer `PointsMaterial` nu, le filtre complet et le message immédiat depuis le commit `b4f4525`.
+
 ## Rollback global
 
 Restaurer `archive/v2-globe-1year/` (ou `archive/v1-map-2d/`) et republier le commit `adc5c9d`.

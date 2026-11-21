@@ -110,28 +110,60 @@ export function createGlobe(canvas, { onSelect, onView, onError, onHover } = {})
   const marker = new THREE.Group();
   lonGroup.add(marker);
 
+  /* F38 : disque-local au lieu du carré par défaut de THREE.Points. */
+  const discCanvas = document.createElement('canvas');
+  discCanvas.width = 64;
+  discCanvas.height = 64;
+  const discCtx = discCanvas.getContext('2d');
+  discCtx.beginPath();
+  discCtx.arc(32, 32, 28, 0, Math.PI * 2);
+  discCtx.fillStyle = '#ffffff';
+  discCtx.fill();
+  discCtx.lineWidth = 4;
+  discCtx.strokeStyle = 'rgba(10,15,22,.85)';
+  discCtx.stroke();
+  const discTexture = new THREE.CanvasTexture(discCanvas);
+  discTexture.minFilter = THREE.LinearFilter;
+  discTexture.magFilter = THREE.LinearFilter;
+  discTexture.generateMipmaps = false;
+  const pointSize = 7 * Math.min(2, window.devicePixelRatio || 1);
+
   let cityPoints = null;
+  let cityCount = 0;
+  let currentCities = [];
+  let currentCityYear = 0;
   function setCities(cities, year) {
+    currentCities = cities || [];
+    currentCityYear = year;
     if (cityPoints) {
       lonGroup.remove(cityPoints);
       cityPoints.geometry.dispose();
       cityPoints.material.dispose();
       cityPoints = null;
     }
-    if (!cities?.length) return;
+    if (!currentCities.length) { cityCount = 0; return; }
     const positions = [];
-    for (const [lon, lat, , start, end, capital] of cities) {
+    for (const [lon, lat, , start, end, capital] of currentCities) {
       if (year < start || (end && year > end)) continue;
       if (!capital) continue;
       const vector = vectorFromLonLat(lon, lat, 1.012);
       positions.push(vector.x, vector.y, vector.z);
     }
-    if (!positions.length) return;
+    if (!positions.length) { cityCount = 0; return; }
+    cityCount = positions.length / 3;
     const geometry = new THREE.BufferGeometry();
     geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
     cityPoints = new THREE.Points(geometry, new THREE.PointsMaterial({
-      color: 0xf4d69e, size: 0.02, sizeAttenuation: true, transparent: true, opacity: 0.85,
+      color: 0xf4d69e,
+      map: discTexture,
+      size: pointSize,
+      sizeAttenuation: false,
+      transparent: true,
+      alphaTest: 0.5,
+      depthWrite: false,
+      opacity: 0.9,
     }));
+    cityPoints.visible = current.zoom >= 2.5;
     lonGroup.add(cityPoints);
   }
 
@@ -158,6 +190,7 @@ export function createGlobe(canvas, { onSelect, onView, onError, onHover } = {})
     latGroup.rotation.x = current.lat * DEG;
     lonGroup.rotation.y = -(Math.PI / 2 + current.lon * DEG);
     camera.position.z = distanceForZoom(current.zoom);
+    if (cityPoints) cityPoints.visible = current.zoom >= 2.5;
   }
 
   function resize() {
@@ -387,7 +420,12 @@ export function createGlobe(canvas, { onSelect, onView, onError, onHover } = {})
       renderer.render(scene, camera);
     },
     setCities,
-    statistics: () => ({ ...provinceStatistics, zoomMax: ZOOM_MAX }),
+    statistics: () => ({
+      ...provinceStatistics,
+      zoomMax: ZOOM_MAX,
+      cityCount,
+      citySprite: Boolean(discTexture?.image),
+    }),
     rotateBy(dLon, dLat) {
       target.lon = normalizeLongitude(target.lon + dLon);
       target.lat = clampLatitude(target.lat + dLat);
@@ -409,6 +447,7 @@ export function createGlobe(canvas, { onSelect, onView, onError, onHover } = {})
       clearMarker();
       if (provinceMesh) { lonGroup.remove(provinceMesh.group); provinceMesh.dispose(); }
       if (cityPoints) { cityPoints.geometry.dispose(); cityPoints.material.dispose(); }
+      discTexture.dispose();
       sphere.geometry.dispose();
       sphere.material.map?.dispose?.();
       sphere.material.dispose();
