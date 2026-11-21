@@ -7,7 +7,7 @@ import { normalizeLongitude, vectorFromLonLat } from './lonlat.js';
 const RADIUS = 1.003;
 const EDGE_RADIUS = 1.004;
 
-export const ZOOM_MAX = 6;
+export const ZOOM_MAX = 7.2;
 
 function normalizedRing(ring) {
   const clean = ring

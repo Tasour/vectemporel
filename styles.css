@@ -36,6 +36,7 @@ button, input { font: inherit; }
   touch-action: none;
   cursor: grab;
 }
+#globe-canvas.point-hover { cursor: pointer; }
 #globe-canvas:active { cursor: grabbing; }
 
 #hud { position: fixed; inset: 0; pointer-events: none; }
@@ -178,19 +179,6 @@ button, input { font: inherit; }
 .dimension-bar { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
 .dimension-btn { min-height: 44px; padding: 3px 8px; border: 1px solid var(--line); border-radius: 6px; background: rgba(10,15,22,.7); color: var(--muted); font-size: 10px; cursor: pointer; }
 .dimension-btn[aria-checked="true"] { border-color: var(--gold); color: var(--gold-bright); background: rgba(230,185,111,.14); }
-.map-tooltip {
-  position: fixed;
-  z-index: 20;
-  max-width: 220px;
-  padding: 8px 10px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: rgba(8,12,18,.94);
-  pointer-events: none;
-}
-.map-tooltip[hidden] { display: none; }
-.map-tooltip strong { display: block; color: var(--gold-bright); font-size: 12px; }
-.map-tooltip span { display: block; color: var(--muted); font-size: 10px; }
 .hud-dimension { margin: 10px 0 0; color: var(--gold); font-size: 11px; }
 .hud-wiki { display: inline-block; margin-top: 6px; color: var(--gold-bright); font-size: 11px; }
 .hud-error {

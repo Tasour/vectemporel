@@ -116,11 +116,6 @@ function mount() {
   suggestions.setAttribute('aria-label', 'Régions correspondantes');
   searchOverlay.append(search, suggestions);
 
-  const tooltip = el('div', 'map-tooltip');
-  tooltip.id = 'map-tooltip';
-  tooltip.setAttribute('role', 'tooltip');
-  tooltip.hidden = true;
-
   const helpOverlay = el('div', 'hud-overlay');
   helpOverlay.id = 'hud-help';
   helpOverlay.hidden = true;
@@ -198,18 +193,23 @@ function mount() {
   yearInput.setAttribute('aria-label', 'Année (entre -2000 et 2000)');
   yearDialog.appendChild(yearInput);
 
-  hud.append(brand, actions, card, tooltip, searchOverlay, helpOverlay, yearDialog, readout, timeline, error);
+  hud.append(brand, actions, card, searchOverlay, helpOverlay, yearDialog, readout, timeline, error);
 
   let selected = null;
   let areasForYear = null;
+  let capitalIndex = new Map();
   let cities = null;
   let suggestionIndex = -1;
   let suggestionsList = [];
 
   const globe = createGlobe(canvas, {
     onSelect: (name) => select(name),
-    onHover: (name, x, y) => {
-      showTooltip(name, x, y);
+    onCitySelect: (name) => {
+      const area = capitalIndex.get(normalizeName(name))?.[0];
+      if (area) {
+        select(area);
+        readout.textContent = `Capitale ${name} · ${readout.textContent}`;
+      }
     },
     onView: (camera) => {
       params.set('pos', encodePos(camera));
@@ -227,6 +227,7 @@ function mount() {
   import('./data/chronas-cities.js')
     .then(({ CHRONAS_CITIES }) => {
       cities = CHRONAS_CITIES;
+      refreshCapitalIndex(areasForYear);
       globe?.setCities(capitalsForYear(areasForYear), year);
     })
     .catch(() => { /* données optionnelles : la carte reste utilisable */ });
@@ -272,18 +273,6 @@ function mount() {
     readout.textContent = `${name} · ${info?.capital || 'capitale inconnue'} · ${info?.culture || 'culture inconnue'}.`;
   }
 
-  function showTooltip(name, x, y) {
-    if (!name) { tooltip.hidden = true; return; }
-    const area = describe(name);
-    tooltip.replaceChildren(
-      el('strong', '', name),
-      el('span', '', `${area?.culture || 'culture inconnue'} · ${area?.capital || 'capitale inconnue'}`),
-    );
-    tooltip.style.left = `${x + 14}px`;
-    tooltip.style.top = `${y + 14}px`;
-    tooltip.hidden = false;
-  }
-
   function normalizeName(value) {
     return String(value || '')
       .normalize('NFD')
@@ -293,13 +282,20 @@ function mount() {
       .trim();
   }
 
-  function capitalsForYear(areas) {
-    const wanted = new Set();
-    for (const row of Object.values(areas || {})) {
+  function refreshCapitalIndex(areas) {
+    capitalIndex = new Map();
+    for (const [name, row] of Object.entries(areas || {})) {
       const capital = Array.isArray(row) ? row[3] : row?.capital;
       const key = normalizeName(capital);
-      if (key) wanted.add(key);
+      if (!key) continue;
+      if (!capitalIndex.has(key)) capitalIndex.set(key, []);
+      capitalIndex.get(key).push(name);
     }
+    for (const names of capitalIndex.values()) names.sort((a, b) => a.localeCompare(b, 'fr'));
+  }
+
+  function capitalsForYear(areas) {
+    const wanted = new Set(capitalIndex.keys());
     const seen = new Set();
     return (cities?.cities || []).filter(([lon, lat, name, start, end, capital]) => {
       if (!capital) return false;
@@ -334,6 +330,7 @@ function mount() {
       const areas = await getAreasForYear(target);
       if (request !== yearRequest) return;
       areasForYear = areas;
+      refreshCapitalIndex(areas);
       globe?.setYearAreas(areas, dimension);
       globe?.setCities(capitalsForYear(areas), target);
       if (selected) renderCard(selected);
@@ -534,6 +531,8 @@ function mount() {
     }),
     selectRegion: (name) => select(name),
     setYear: (value) => applyYear(value),
+    cityScreenPoints: () => globe?.cityScreenPoints?.() || [],
+    setView: (view) => globe?.setView(view),
     diagnostics: () => ({ seed: SEED, features: FEATURES.length, areas: MAP_META.areas, webgl: Boolean(globe) }),
   };
   document.documentElement.dataset.globeReady = 'true';
