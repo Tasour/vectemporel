@@ -11,7 +11,7 @@
 | Snapshot données | 593 Ko, 2 429 régions, 2 492 géométries | `scripts/verify.mjs` |
 | Première visite | 10 requêtes / 208 Ko | `npm run test:perf` |
 | PWA | 12/12, hors ligne | `npm run test:pwa` |
-| Actif Three.js | r152, 633338 o, MIT | en-tête de `archive/v0-atlas/public/three.min.js` |
+| Actif Three.js | r180, bundle ESM tree-shaké, 491 Ko brut / 126 Ko gzip, MIT | `scripts/build-three.mjs` |
 | Site public | GitHub Pages `gh-pages` → 200 | `curl` |
 
 ## Décision en cours
@@ -26,7 +26,7 @@ P1 données multi-années · P2 rendu haute définition · P3 timeline · P4 fea
 
 ## Limites et invariants
 
-- `three.min.js` r152 émet un `console.warn` de dépréciation : ce n'est pas une erreur, mais il doit rester documenté.
+- L'ancien UMD `three.min.js` r152 émettait un `console.warn` de dépréciation : supprimé en P15 au profit d'un bundle ESM r180 sans avertissement.
 - Aucun appel réseau au runtime : la texture est générée localement depuis `chronas-map.js`.
 - Données sous **CC BY-SA 4.0** : attribution conservée dans `DATA-LICENSE.md`, `ATTRIBUTION.md` et le HUD.
 - Code sous **MIT**, y compris Three.js r152.

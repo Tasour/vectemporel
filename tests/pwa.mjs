@@ -53,7 +53,7 @@ try {
       count: entries.length,
       hasIndex: Boolean(await store.match('./index.html')),
       hasMap: entries.some((entry) => /chronas-map\.js/.test(entry.url)),
-      hasThree: entries.some((entry) => /three\.min\.js/.test(entry.url)),
+      hasThree: entries.some((entry) => /three-bundle\.js/.test(entry.url)),
       hasChunk: entries.some((entry) => /\/years\/c-?\d+\.json/.test(entry.url)),
       urls: entries.map((entry) => entry.url),
     };

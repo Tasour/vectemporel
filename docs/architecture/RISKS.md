@@ -9,7 +9,7 @@
 | `console.warn` de dépréciation r152 | Certaine | Faible | Documenté, non traité comme erreur par les harnais |
 | HUD trop minimal pour l'accessibilité | Moyenne | Moyen | Recherche `/`, aide `?`, `aria-live`, cibles 44 px, focus visible |
 | Rotation auto inconfortable | Moyenne | Faible | Arrêt au premier geste, `prefers-reduced-motion`, touche d'arrêt |
-| Service worker qui sert une ancienne version de `three.min.js` | Faible | Moyen | Cache versionné automatiquement par hash de contenu (P8), anciens caches supprimés à l'activation |
+| Service worker qui sert un ancien bundle Three.js | Faible | Moyen | Cache versionné automatiquement par hash de contenu (P8), anciens caches supprimés à l'activation |
 
 ## Angles morts
 

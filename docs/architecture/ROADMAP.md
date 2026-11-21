@@ -157,6 +157,16 @@ Les features F22 et F27, initialement reportées, ont été livrées en P10 avec
 
 **Rollback** : restaurer `src/globe/globe.js` et `tests/e2e.mjs` depuis le commit `473e8a6`.
 
+## P15 — Stack Three.js r180 ESM tree-shaké ✅ 2026-11-21
+
+- ADR-0010 ✅
+- Bundle local `public/three-bundle.js` (126 Ko gzip vs 157 Ko) ✅
+- Adaptateur `src/globe/three.js`, suppression du global `window.THREE` ✅
+- Scripts `three-entry.js` / `build-three.mjs`, esbuild en devDependency ✅
+- Mise à jour index, SW, verify, http-guards, attribution ✅
+
+**Rollback** : restaurer `public/three.min.js`, `index.html` et `src/globe/globe.js` depuis le commit `539fdda`.
+
 ## Rollback global
 
 Restaurer `archive/v2-globe-1year/` (ou `archive/v1-map-2d/`) et republier le commit `adc5c9d`.

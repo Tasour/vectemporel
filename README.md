@@ -64,7 +64,7 @@ Au repos, la sphère tourne lentement ; le mouvement s'arrête au premier geste 
 
 ## Rendu
 
-- `public/three.min.js` : Three.js **r152 local**, licence **MIT** (voir `ATTRIBUTION.md`). Aucun CDN.
+- `public/three-bundle.js` : Three.js **r180 local**, bundle ESM tree-shaké (126 Ko gzip), licence **MIT** (voir `ATTRIBUTION.md`). Aucun CDN, aucun script global.
 - `src/globe/lonlat.js` : conversions pures longitude/latitude ↔ vecteur 3D, convention UV alignée sur la texture.
 - `src/globe/texture.js` : fond océan + graticule uniquement (2048×1024), sans binaire ni réseau.
 - `src/globe/vector-provinces.js` : maillage GPU des 2 492 provinces (16 741 triangles), triangulé une fois par changement d'année ou de dimension. Les frontières restent nettes à tout zoom ; la caméra est bornée à **zoom 6**.
@@ -105,7 +105,7 @@ src/
   data/chronas-cities.js    capitales historiques, générée
   data/years/               41 chunks de siècle, générés
   data/year-store.js        reconstruction des années
-public/three.min.js         Three.js r152 (MIT)
+public/three-bundle.js      Three.js r180 tree-shaké (MIT)
 scripts/                    serve, build-pages, import, verify
 tests/                      e2e, perf, pwa, guards
 docs/architecture/          ADR, scorecard, roadmap, risques

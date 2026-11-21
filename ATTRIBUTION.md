@@ -9,7 +9,7 @@
 
 ## Bibliothèques de rendu
 
-- **Three.js r152** — https://threejs.org — Copyright 2010-2023 Three.js Authors, licence **MIT** (`SPDX-License-Identifier: MIT`). Fichier local `public/three.min.js`, utilisé pour la sphère WebGL. Aucune autre bibliothèque tierce n'est chargée au runtime.
+- **Three.js r180** — https://threejs.org — Copyright 2010-2025 Three.js Authors, licence **MIT** (`SPDX-License-Identifier: MIT`). Bundle local tree-shaké `public/three-bundle.js` généré depuis `scripts/three-entry.js`, utilisé pour la sphère WebGL. Aucune autre bibliothèque tierce n'est chargée au runtime.
 
 ## Inspiration fonctionnelle (aucun code copié)
 

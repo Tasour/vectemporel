@@ -60,7 +60,7 @@ const indexPath = path.join(OUT, 'index.html');
 let html = fs.readFileSync(indexPath, 'utf8');
 for (const asset of [
   './manifest.webmanifest', './icons/icon-192.png', './styles.css',
-  './public/three.min.js', './src/app.js',
+  './public/three-bundle.js', './src/app.js',
 ]) {
   const escaped = asset.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   html = html.replace(new RegExp(`(["'])${escaped}(["'])`, 'g'), `$1${asset}?v=${version}$2`);

@@ -30,6 +30,7 @@ Voir `CURRENT-STATE.md`. Points clés : 5 modules JS, 0 cycle, `arch.verify` OK,
 | Timeline | Snapshot unique / chunks par siècle + deltas / proxy API | **Chunks locaux par siècle** | ADR-0005 |
 | Définition et rotation | 3072 / 4096 / 8192 ; auto / manuel | **4096×2048, rotation manuelle** | ADR-0006 |
 | Netteté en zoom | Texture 8192 / texture dynamique / maillage vectoriel | **Maillage vectoriel + zoom 6, porté 7,2 en P9** | ADR-0007 |
+| Moteur 3D | UMD r152 / ESM r180 / WebGL2 maison | **ESM r180 tree-shaké** | ADR-0010 |
 | Timeline provinciale | Fichier unique / chunks par initiale / un fichier par province | **Chunks par initiale, import paresseux** | ADR-0008 |
 
 Chaque ADR contient coût, risque et réversibilité.
@@ -56,7 +57,7 @@ src/
     province-timeline-store.js  import paresseux des timelines provinciales
     province-timelines/     27 chunks générés + index
 public/
-  three.min.js              r152, MIT (copie locale)
+  three-bundle.js           r180 ESM tree-shaké, MIT (généré par esbuild)
 scripts/                    serve, build-pages, import, verify
 tests/                      e2e, perf, pwa, guards
 archive/v0-atlas/           application originelle
@@ -81,7 +82,7 @@ Le module `src/map/renderer.js` n'est plus livré : il reste dans `archive/v1-ma
 |---|---|---|
 | Requêtes | < 50 | `test:perf` |
 | Poids initial | < 1 Mo | `test:perf` |
-| `three.min.js` | ~160 Ko gzip | transferSize mesuré |
+| `three-bundle.js` | 126 Ko gzip (vs 157 Ko pour l'UMD r152) | mesure gzip locale |
 | Snapshot | < 1 Mo | `verify` |
 | DOM | 1 canvas plein écran, cibles ≥ 44 px | `ui.guard`, `test:e2e` |
 | rAF | 1 boucle, 0 en arrière-plan | revue de code + `test:perf` |
@@ -117,5 +118,6 @@ Voir `RISKS.md`. Risques principaux : WebGL indisponible, couture de texture aux
 - ADR-0007 : maillage vectoriel des provinces et zoom maximal 6, porté à 7,2 en P9 ; remplace le dessin raster des frontières.
 - ADR-0008 : timelines provinciales en 27 chunks locaux chargés à la demande.
 - ADR-0009 : libellés modernes issus de Natural Earth, importés au build.
+- ADR-0010 : Three.js r180 ESM tree-shaké, bundle local généré par esbuild.
 
 Ces décisions sont réversibles : voir `ROADMAP.md` (rollback) et `RISKS.md`.

@@ -40,7 +40,7 @@ const provinceIndex = await import(path.join(ROOT, 'src/data/province-timelines/
 check('index timelines 2429', Object.keys(provinceIndex).length === 2429, `${Object.keys(provinceIndex).length}`);
 
 const html = read('index.html');
-const runtimeFiles = ['index.html', 'styles.css', 'src/app.js', 'src/map/data.js', 'src/map/projection.js', 'src/globe/globe.js', 'src/globe/lonlat.js', 'src/globe/texture.js', 'src/globe/vector-provinces.js', 'src/globe/labels.js', 'src/timeline/epics.js', 'src/data/year-store.js', 'src/data/province-timeline-store.js', 'src/data/modern-labels.js'];
+const runtimeFiles = ['index.html', 'styles.css', 'src/app.js', 'src/map/data.js', 'src/map/projection.js', 'src/globe/globe.js', 'src/globe/lonlat.js', 'src/globe/texture.js', 'src/globe/vector-provinces.js', 'src/globe/three.js', 'src/globe/labels.js', 'src/timeline/epics.js', 'src/data/year-store.js', 'src/data/province-timeline-store.js', 'src/data/modern-labels.js'];
 const runtime = runtimeFiles.map(read).join('\n');
 const sw = read('sw.js');
 check('aucun fetch réseau runtime', !/fetch\(\s*['"]https?:/.test(runtime));
@@ -48,9 +48,12 @@ check('fetch des chunks locaux uniquement', /fetch\(url/.test(read('src/data/yea
 check('aucune URL distante (hors lien Wikipédia)', !/https?:\/\//.test(runtime.replace(/https:\/\/fr\.wikipedia\.org\/wiki\/\$\{encodeURIComponent\(info\.name\)\}/g, '')));
 check('service worker same-origin', /url\.origin !== self\.location\.origin/.test(sw));
 check('aucun moteur globe obsolète', !/globe-engine/.test(runtime));
-check('Three.js local référencé', /public\/three\.min\.js/.test(html));
-const three = read('public/three.min.js');
-check('Three.js MIT', /SPDX-License-Identifier: MIT/.test(three.slice(0, 400)));
+check('aucun global THREE', !/window\.THREE/.test(runtime));
+check('adaptateur Three local', /public\/three-bundle\.js/.test(read('src/globe/three.js')));
+check('ancien UMD retiré', !/three\.min\.js/.test(html) && !/three\.min\.js/.test(sw));
+const three = read('public/three-bundle.js');
+check('Three.js MIT', /MIT/.test(three.slice(0, 500)));
+check('bundle tree-shaké présent', fs.statSync(path.join(ROOT, 'public/three-bundle.js')).size < 600_000);
 check('aucun Math.random dans l’app', !/Math\.random/.test(runtime));
 
 const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
@@ -70,7 +73,7 @@ check('roundtrip lon/lat -> vecteur', roundtrip);
 const pixel = pixelsFromLonLat(0, 0, 2048, 1024);
 check('texture équirectangulaire centrée', pixel.x === 1024 && pixel.y === 512);
 
-const files = ['scripts/serve.mjs', 'scripts/build-pages.mjs', 'scripts/import-chronas-map.mjs', 'src/app.js', 'src/map/data.js', 'src/map/projection.js', 'src/globe/globe.js', 'src/globe/lonlat.js', 'src/globe/texture.js', 'src/globe/vector-provinces.js', 'src/globe/labels.js', 'src/timeline/epics.js', 'src/data/year-store.js', 'src/data/province-timeline-store.js', 'src/data/modern-labels.js', 'scripts/import-chronas-markers.mjs', 'scripts/import-modern-labels.mjs', 'scripts/import-chronas-province-timelines.mjs', 'scripts/import-chronas-metadata.mjs', 'scripts/import-chronas-epics.mjs', 'tests/e2e.mjs', 'tests/pwa.mjs', 'tests/perf-budget.mjs'];
+const files = ['scripts/serve.mjs', 'scripts/build-pages.mjs', 'scripts/build-three.mjs', 'scripts/three-entry.js', 'scripts/import-chronas-map.mjs', 'src/app.js', 'src/map/data.js', 'src/map/projection.js', 'src/globe/globe.js', 'src/globe/lonlat.js', 'src/globe/texture.js', 'src/globe/vector-provinces.js', 'src/globe/three.js', 'src/globe/labels.js', 'src/timeline/epics.js', 'src/data/year-store.js', 'src/data/province-timeline-store.js', 'src/data/modern-labels.js', 'scripts/import-chronas-markers.mjs', 'scripts/import-modern-labels.mjs', 'scripts/import-chronas-province-timelines.mjs', 'scripts/import-chronas-metadata.mjs', 'scripts/import-chronas-epics.mjs', 'tests/e2e.mjs', 'tests/pwa.mjs', 'tests/perf-budget.mjs'];
 for (const file of files) {
   try {
     execFileSync(process.execPath, ['--check', path.join(ROOT, file)], { stdio: 'pipe' });

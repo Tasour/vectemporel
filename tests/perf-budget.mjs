@@ -45,7 +45,7 @@ try {
   console.log(`Première visite : ${firstVisitRequests} requêtes / ${Math.round(firstBytes / 1024)} Ko · régime établi : ${Math.round(measured.bytes / 1024)} Ko`);
   check('aucun module de lentille dans le graphe initial', measured.lensModules === 0, `${measured.lensModules}`);
   check('Three.js chargé depuis le site', await page.evaluate(() => performance.getEntriesByType('resource')
-    .some((entry) => /three\.min\.js/.test(entry.name))));
+    .some((entry) => /three-bundle\.js/.test(entry.name))));
   check('sphère WebGL active', await page.evaluate(() => window.VATLAS?.getState?.().webgl === true));
   check('première visite < 50 requêtes', firstVisitRequests < 50, `${firstVisitRequests} requêtes`);
   check('première visite < 1 Mo', firstBytes < 1024 * 1024, `${Math.round(firstBytes / 1024)} Ko`);

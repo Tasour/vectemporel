@@ -1,10 +1,6 @@
 #!/usr/bin/env node
 /* Contrôle déterministe du maillage vectoriel des provinces (ADR-0007). */
-import { createRequire } from 'node:module';
-const require = createRequire(import.meta.url);
-require('../public/three.min.js');
-const THREE = globalThis.THREE;
-
+import { THREE } from '../src/globe/three.js';
 import { AREAS } from '../src/map/data.js';
 import { buildProvinceData, ZOOM_MAX } from '../src/globe/vector-provinces.js';
 
