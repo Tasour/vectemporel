@@ -2,7 +2,7 @@
  * Cache-first sur les ressources same-origin : la première visite en ligne
  * remplit le cache, les suivantes fonctionnent hors ligne. Aucune requête
  * cross-origin n'est interceptée ni mise en cache (contrainte zéro réseau). */
-const CACHE = 'vectemporel-8a84259050b8';
+const CACHE = 'vectemporel-45ac82c7d67e';
 const SHELL = [
   './', './index.html', './manifest.webmanifest', './styles.css', './sw.js',
   './src/app.js', './src/map/data.js', './src/map/projection.js',
@@ -11,7 +11,7 @@ const SHELL = [
   './src/globe/labels.js', './src/timeline/epics.js',
   './src/data/chronas-labels.js', './src/data/modern-labels.js', './src/data/chronas-epics.js',
   './src/data/province-timelines/index.js', './src/data/province-timelines/b.js',
-  './src/data/years/c1000.json', './src/data/chronas-cities.js', './public/three.min.js',
+  './src/data/years/c1000.json', './src/data/chronas-cities.js', './public/three-bundle.js',
   './icons/icon-192.png', './icons/icon-512.png', './icons/icon-maskable-512.png',
 ];
 

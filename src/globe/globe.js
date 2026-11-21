@@ -7,6 +7,7 @@ import {
 } from './lonlat.js';
 import { createGlobeTexture, globeQuality, DIMENSIONS } from './texture.js';
 import { createProvinceMesh, ZOOM_MAX } from './vector-provinces.js';
+import { THREE } from './three.js';
 
 const SEED = 20261121;
 const DEG = Math.PI / 180;
@@ -23,12 +24,6 @@ const clampZoom = (zoom) => clamp(zoom, 0, ZOOM_MAX);
 export function createGlobe(canvas, {
   onSelect, onCitySelect, onView, onError, onHover, onFrame,
 } = {}) {
-  const THREE = window.THREE;
-  if (!THREE) {
-    onError?.('Three.js indisponible');
-    return null;
-  }
-
   let renderer;
   try {
     renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
