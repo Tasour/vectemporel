@@ -2,8 +2,13 @@
  * Cache-first sur les ressources same-origin : la première visite en ligne
  * remplit le cache, les suivantes fonctionnent hors ligne. Aucune requête
  * cross-origin n'est interceptée ni mise en cache (contrainte zéro réseau). */
-const CACHE = 'vectemporel-v2';
-const SHELL = ['./', './index.html', './manifest.webmanifest', './icons/icon-192.png'];
+const CACHE = 'vectemporel-v3';
+const SHELL = [
+  './', './index.html', './manifest.webmanifest', './styles.css', './sw.js',
+  './src/app.js', './src/map/data.js', './src/map/projection.js', './src/map/renderer.js',
+  './src/data/chronas-map.js',
+  './icons/icon-192.png', './icons/icon-512.png', './icons/icon-maskable-512.png',
+];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE)
