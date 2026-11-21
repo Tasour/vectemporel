@@ -61,7 +61,7 @@ function ensureCss() {
     .shell-tabs { min-width: 0; flex: 1 1 auto; }
     .shell-icon { width: 36px; height: 36px; flex: none; }
     .shell-brand { flex: none; }
-    .crumb { min-height: 24px; padding: 6px 8px; }
+    .crumb { min-height: 44px; padding: 6px 8px; }
     .shell-tab[aria-current="page"] { color: var(--gold-bright); border-color: var(--line-strong); background: rgba(230,185,111,.1); }
     .shell-tab:focus-visible, .shell-icon:focus-visible, .crumb:focus-visible, .atlas-close:focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 3px; }
     .atlas-close { min-height: 36px; padding: 0 12px; border: 1px solid var(--line-strong); border-radius: 8px; background: rgba(230,185,111,.08); color: var(--gold-bright); font-size: 10px; cursor: pointer; }
@@ -91,7 +91,7 @@ function ensureM3Css() {
   style.id = M3_CSS_ID;
   style.textContent = `
     .atlas-situation {
-      display: flex; align-items: center; flex: none; min-height: 26px;
+      display: flex; align-items: center; flex: none; min-height: 44px;
       padding: 4px 20px; border-bottom: 1px solid var(--line);
       background: #0a0e13; color: var(--gold-bright);
       font-size: 10px; letter-spacing: .03em;

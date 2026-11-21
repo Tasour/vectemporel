@@ -1,0 +1,22 @@
+/* V-ATLAS — jetons de design canoniques.
+ * Source unique : ce fichier. `npm run tokens:sync` répercute le bloc dans
+ * styles.css (aucun fichier CSS supplémentaire chargé à l'exécution). */
+:root {
+  --bg: #070a0e;
+  --surface: #0b0f15;
+  --surface-2: #10151d;
+  --line: rgba(255, 255, 255, 0.1);
+  --line-strong: rgba(230, 185, 111, 0.24);
+  --ink: #f2ede3;
+  --ink-soft: #d7d1c6;
+  --muted: #a8a198;
+  --muted-2: #8c8d91;
+  --gold: #e6b96f;
+  --gold-bright: #f4d69e;
+  --blue: #7f9cff;
+  --violet: #b28bdd;
+  --red: #dd7165;
+  --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --serif: Georgia, "Times New Roman", serif;
+  --radius: 12px;
+}
