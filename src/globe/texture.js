@@ -3,8 +3,15 @@
 import { AREAS, FEATURES, colorFor } from '../map/data.js';
 import { pixelsFromLonLat } from './lonlat.js';
 
-const WIDTH = 2048;
-const HEIGHT = 1024;
+/* Définition haute (ADR-0006) avec repli automatique sur appareil peu mémoire. */
+const HIGH = { width: 4096, height: 2048, segments: [192, 128] };
+const LOW = { width: 2048, height: 1024, segments: [96, 64] };
+
+export function globeQuality() {
+  const memory = navigator.deviceMemory || 8;
+  const coarse = window.matchMedia?.('(pointer: coarse)').matches || false;
+  return memory >= 4 && !coarse ? HIGH : LOW;
+}
 
 const COLORS = new Map();
 for (const feature of FEATURES) {
@@ -12,7 +19,8 @@ for (const feature of FEATURES) {
   if (!COLORS.has(culture)) COLORS.set(culture, colorFor(culture));
 }
 
-export function createEquirectangularCanvas() {
+export function createEquirectangularCanvas(quality = globeQuality()) {
+  const { width: WIDTH, height: HEIGHT } = quality;
   const canvas = document.createElement('canvas');
   canvas.width = WIDTH;
   canvas.height = HEIGHT;
@@ -56,12 +64,12 @@ export function createEquirectangularCanvas() {
   return canvas;
 }
 
-export function createGlobeTexture(THREE) {
-  const canvas = createEquirectangularCanvas();
+export function createGlobeTexture(THREE, quality = globeQuality(), renderer = null) {
+  const canvas = createEquirectangularCanvas(quality);
   const texture = new THREE.CanvasTexture(canvas);
   texture.colorSpace = THREE.SRGBColorSpace;
   texture.minFilter = THREE.LinearMipmapLinearFilter;
   texture.magFilter = THREE.LinearFilter;
-  texture.anisotropy = 4;
-  return texture;
+  texture.anisotropy = Math.min(16, renderer?.capabilities?.getMaxAnisotropy?.() || 1);
+  return { texture, canvas };
 }

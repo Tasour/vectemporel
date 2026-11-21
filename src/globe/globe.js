@@ -5,7 +5,7 @@ import { pointInFeature, clamp } from '../map/projection.js';
 import {
   vectorFromLonLat, lonLatFromVector, centerOfBounds, clampLatitude, normalizeLongitude,
 } from './lonlat.js';
-import { createGlobeTexture } from './texture.js';
+import { createGlobeTexture, globeQuality } from './texture.js';
 
 const SEED = 20261121;
 const DEG = Math.PI / 180;
@@ -46,14 +46,16 @@ export function createGlobe(canvas, { onSelect, onView, onError } = {}) {
   latGroup.add(lonGroup);
   scene.add(latGroup);
 
+  const quality = globeQuality();
+  const { texture: globeTexture } = createGlobeTexture(THREE, quality, renderer);
   const sphere = new THREE.Mesh(
-    new THREE.SphereGeometry(1, 96, 64),
-    new THREE.MeshPhongMaterial({ map: createGlobeTexture(THREE), shininess: 8, specular: 0x111111 }),
+    new THREE.SphereGeometry(1, quality.segments[0], quality.segments[1]),
+    new THREE.MeshPhongMaterial({ map: globeTexture, shininess: 8, specular: 0x111111 }),
   );
   lonGroup.add(sphere);
 
   const atmosphere = new THREE.Mesh(
-    new THREE.SphereGeometry(1.06, 64, 40),
+    new THREE.SphereGeometry(1.06, 128, 80),
     new THREE.ShaderMaterial({
       uniforms: {},
       vertexShader: 'varying vec3 vNormal; void main(){ vNormal = normalize(normalMatrix * normal); gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }',
@@ -107,6 +109,7 @@ export function createGlobe(canvas, { onSelect, onView, onError } = {}) {
   let pinch = null;
   let lastInteraction = performance.now();
   let selected = null;
+  let tourAuto = false;
   let frame = 0;
   let running = false;
   let framesSinceView = 0;
@@ -183,8 +186,8 @@ export function createGlobe(canvas, { onSelect, onView, onError } = {}) {
 
   function tick(now) {
     if (!running) return;
-    const idle = now - lastInteraction > 2600;
-    if (!dragging && idle && !reducedMotion) target.lon = normalizeLongitude(target.lon + 0.035);
+    /* ADR-0006 : aucune rotation automatique. Le tour du monde est manuel. */
+    if (tourAuto && !dragging) target.lon = normalizeLongitude(target.lon + 0.035);
 
     if (!dragging) {
       target.lon = normalizeLongitude(target.lon + velocity.lon);
@@ -250,6 +253,7 @@ export function createGlobe(canvas, { onSelect, onView, onError } = {}) {
       const dx = event.clientX - lastPointer.x;
       const dy = event.clientY - lastPointer.y;
       if (Math.abs(dx) + Math.abs(dy) > 2) dragMoved = true;
+      if (dragMoved && tourAuto) tourAuto = false;
       const sensitivity = 0.22 / (1 + current.zoom * 0.12);
       target.lon = normalizeLongitude(target.lon - dx * sensitivity);
       target.lat = clampLatitude(target.lat + dy * sensitivity);
@@ -330,6 +334,12 @@ export function createGlobe(canvas, { onSelect, onView, onError } = {}) {
       target.zoom = clampZoom(target.zoom + delta);
       lastInteraction = performance.now();
     },
+    isTouring: () => tourAuto,
+    toggleTour() {
+      tourAuto = !tourAuto;
+      lastInteraction = performance.now();
+      return tourAuto;
+    },
     rotateBy(dLon, dLat) {
       target.lon = normalizeLongitude(target.lon + dLon);
       target.lat = clampLatitude(target.lat + dLat);
@@ -350,7 +360,7 @@ export function createGlobe(canvas, { onSelect, onView, onError } = {}) {
       canvas.removeEventListener('wheel', onWheel);
       clearMarker();
       sphere.geometry.dispose();
-      sphere.material.map?.dispose();
+      sphere.material.map?.dispose?.();
       sphere.material.dispose();
       atmosphere.geometry.dispose();
       atmosphere.material.dispose();

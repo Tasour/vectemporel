@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-21T05:30:14.522Z",
+  "generatedAt": "2026-11-21T05:53:07.723Z",
   "root": "/home/tasour/Projects/vectemporel-atlas",
   "weights": {
     "simplicite": 15,
@@ -18,91 +18,82 @@
       "score": 5,
       "weight": 15,
       "evidence": [
-        "src/ = 7 modules",
-        "1 canvas plein écran + HUD"
+        "1 canvas + HUD"
       ],
-      "note": "Une seule vue sphère."
+      "note": ""
     },
     "modularite": {
       "status": "measured",
       "score": 4,
       "weight": 15,
       "evidence": [
-        "globe/lonlat.js pur",
         "0 cycle"
       ],
-      "note": "Couches séparées."
+      "note": ""
     },
     "donnees": {
       "status": "measured",
       "score": 4,
       "weight": 15,
       "evidence": [
-        "chronas-map.js 592 Ko",
-        "6 ADR",
-        "DATA-LICENSE.md"
+        "4001 ans",
+        "41 chunks"
       ],
-      "note": "Snapshot 1000 ; extension 4 001 ans en P1."
+      "note": ""
     },
     "api": {
       "status": "measured",
       "score": 4,
       "weight": 10,
       "evidence": [
-        "window.VATLAS.getState()",
         "URL Chronas"
       ],
-      "note": "Contrat inchangé."
+      "note": ""
     },
     "performance": {
       "status": "measured",
       "score": 5,
       "weight": 15,
       "evidence": [
-        "test:perf 13 requêtes / 366 Ko"
+        "13 requêtes / 385 Ko"
       ],
-      "note": "Marge ~630 Ko."
+      "note": ""
     },
     "securite": {
       "status": "measured",
       "score": 4,
       "weight": 10,
       "evidence": [
-        "http-guards",
-        "CSP",
-        "0 dépendance npm"
+        "http-guards"
       ],
-      "note": "Serveur whitelisté."
+      "note": ""
     },
     "testabilite": {
       "status": "measured",
       "score": 4,
       "weight": 10,
       "evidence": [
-        "npm run check 112 PASS"
+        "122 PASS"
       ],
-      "note": "Suites vertes."
+      "note": ""
     },
     "dx": {
       "status": "measured",
       "score": 5,
       "weight": 5,
       "evidence": [
-        "README.md",
-        "docs/architecture/ROADMAP.md",
         "TODO F01-F32"
       ],
-      "note": "Plan de features ordonné."
+      "note": ""
     },
     "cout": {
       "status": "measured",
       "score": 4,
       "weight": 5,
       "evidence": [
-        "Three.js MIT local",
-        "0 service externe"
+        "0 dépendance npm"
       ],
-      "note": "Coût maîtrisé."
+      "note": ""
     }
   },
   "score": 87,

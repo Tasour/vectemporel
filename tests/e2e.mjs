@@ -71,6 +71,14 @@ try {
   await page.goto(`${new URL(BASE).origin}${rootPath}?year=1000`, { waitUntil: 'load', timeout: 60000 });
   await wait(1000);
   check('accueil sans deep link', await page.evaluate(() => window.VATLAS.getState().selected === null && document.getElementById('hud-card').hidden));
+  const beforeTour = await page.evaluate(() => window.VATLAS.getState().camera.lon);
+  await new Promise((resolve) => setTimeout(resolve, 1200));
+  check('aucune rotation automatique', await page.evaluate((value) => Math.abs(window.VATLAS.getState().camera.lon - value) < 0.01, beforeTour));
+  await page.click('#hud-tour-button');
+  await new Promise((resolve) => setTimeout(resolve, 600));
+  check('tour manuel actif', await page.evaluate(() => window.VATLAS.getState().touring === true));
+  await page.click('#hud-tour-button');
+  check('tour manuel arrêté', await page.evaluate(() => window.VATLAS.getState().touring === false));
   check('aucune erreur console', errors.length === 0, errors.slice(0, 3).join(' | '));
 } finally {
   await browser.close();

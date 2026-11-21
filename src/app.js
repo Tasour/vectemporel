@@ -48,11 +48,16 @@ function mount() {
   searchButton.type = 'button';
   searchButton.id = 'hud-search-button';
   searchButton.setAttribute('aria-label', 'Rechercher une région (touche slash)');
+  const tourButton = el('button', 'hud-btn', '▶');
+  tourButton.type = 'button';
+  tourButton.id = 'hud-tour-button';
+  tourButton.setAttribute('aria-label', 'Lancer le tour du monde');
+  tourButton.setAttribute('aria-pressed', 'false');
   const helpButton = el('button', 'hud-btn', '?');
   helpButton.type = 'button';
   helpButton.id = 'hud-help-button';
   helpButton.setAttribute('aria-label', 'Afficher les commandes (touche point d’interrogation)');
-  actions.append(searchButton, helpButton);
+  actions.append(tourButton, searchButton, helpButton);
 
   const card = el('section', 'hud-card');
   card.id = 'hud-card';
@@ -85,6 +90,7 @@ function mount() {
   help.innerHTML = '<kbd>Glisser</kbd> tourner la sphère · <kbd>Molette</kbd> zoomer<br>'
     + '<kbd>←</kbd><kbd>→</kbd><kbd>↑</kbd><kbd>↓</kbd> tourner · <kbd>+</kbd><kbd>−</kbd> zoomer<br>'
     + '<kbd>/</kbd> recherche · <kbd>?</kbd> aide · <kbd>Échap</kbd> fermer<br>'
+    + '<kbd>▶</kbd> tour du monde (manuel uniquement)<br>'
     + '<kbd>Clic</kbd> sélectionner une région';
   helpOverlay.appendChild(help);
 
@@ -204,6 +210,13 @@ function mount() {
     helpOverlay.hidden = !helpOverlay.hidden;
   }
 
+  tourButton.addEventListener('click', () => {
+    const active = globe?.toggleTour();
+    tourButton.textContent = active ? '⏸' : '▶';
+    tourButton.setAttribute('aria-pressed', String(Boolean(active)));
+    tourButton.setAttribute('aria-label', active ? 'Arrêter le tour du monde' : 'Lancer le tour du monde');
+    readout.textContent = active ? 'Tour du monde en cours.' : 'Tour du monde arrêté.';
+  });
   searchButton.addEventListener('click', openSearch);
   helpButton.addEventListener('click', toggleHelp);
   search.addEventListener('input', () => setSuggestions(search.value));
@@ -267,6 +280,7 @@ function mount() {
       webgl: Boolean(globe),
       attribution: ATTRIBUTION,
       seed: SEED,
+      touring: Boolean(globe?.isTouring?.()),
     }),
     selectRegion: (name) => select(name),
     diagnostics: () => ({ seed: SEED, features: FEATURES.length, areas: MAP_META.areas, webgl: Boolean(globe) }),
