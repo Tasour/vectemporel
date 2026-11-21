@@ -5,7 +5,7 @@ import { pointInFeature, clamp } from '../map/projection.js';
 import {
   vectorFromLonLat, lonLatFromVector, centerOfBounds, clampLatitude, normalizeLongitude,
 } from './lonlat.js';
-import { createGlobeTexture } from './texture.js';
+import { createGlobeTexture, globeQuality } from './texture.js';
 
 const SEED = 20261121;
 const DEG = Math.PI / 180;
@@ -19,7 +19,7 @@ const mulberry32 = (seed) => () => {
 const distanceForZoom = (zoom) => 3.2 - clamp(zoom, 0, 8) * 0.19;
 const clampZoom = (zoom) => clamp(zoom, 0, 8);
 
-export function createGlobe(canvas, { onSelect, onView, onError } = {}) {
+export function createGlobe(canvas, { onSelect, onView, onError, onHover } = {}) {
   const THREE = window.THREE;
   if (!THREE) {
     onError?.('Three.js indisponible');
@@ -46,14 +46,16 @@ export function createGlobe(canvas, { onSelect, onView, onError } = {}) {
   latGroup.add(lonGroup);
   scene.add(latGroup);
 
+  const quality = globeQuality();
+  const { texture: globeTexture, repaint: repaintTexture } = createGlobeTexture(THREE, quality, renderer);
   const sphere = new THREE.Mesh(
-    new THREE.SphereGeometry(1, 96, 64),
-    new THREE.MeshPhongMaterial({ map: createGlobeTexture(THREE), shininess: 8, specular: 0x111111 }),
+    new THREE.SphereGeometry(1, quality.segments[0], quality.segments[1]),
+    new THREE.MeshPhongMaterial({ map: globeTexture, shininess: 8, specular: 0x111111 }),
   );
   lonGroup.add(sphere);
 
   const atmosphere = new THREE.Mesh(
-    new THREE.SphereGeometry(1.06, 64, 40),
+    new THREE.SphereGeometry(1.06, 128, 80),
     new THREE.ShaderMaterial({
       uniforms: {},
       vertexShader: 'varying vec3 vNormal; void main(){ vNormal = normalize(normalMatrix * normal); gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }',
@@ -93,6 +95,31 @@ export function createGlobe(canvas, { onSelect, onView, onError } = {}) {
   const marker = new THREE.Group();
   lonGroup.add(marker);
 
+  let cityPoints = null;
+  function setCities(cities, year) {
+    if (cityPoints) {
+      lonGroup.remove(cityPoints);
+      cityPoints.geometry.dispose();
+      cityPoints.material.dispose();
+      cityPoints = null;
+    }
+    if (!cities?.length) return;
+    const positions = [];
+    for (const [lon, lat, , start, end, capital] of cities) {
+      if (year < start || (end && year > end)) continue;
+      if (!capital) continue;
+      const vector = vectorFromLonLat(lon, lat, 1.012);
+      positions.push(vector.x, vector.y, vector.z);
+    }
+    if (!positions.length) return;
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    cityPoints = new THREE.Points(geometry, new THREE.PointsMaterial({
+      color: 0xf4d69e, size: 0.02, sizeAttenuation: true, transparent: true, opacity: 0.85,
+    }));
+    lonGroup.add(cityPoints);
+  }
+
   const raycaster = new THREE.Raycaster();
   const pointer = new THREE.Vector2();
   const pointers = new Map();
@@ -107,6 +134,7 @@ export function createGlobe(canvas, { onSelect, onView, onError } = {}) {
   let pinch = null;
   let lastInteraction = performance.now();
   let selected = null;
+  let tourAuto = false;
   let frame = 0;
   let running = false;
   let framesSinceView = 0;
@@ -183,8 +211,8 @@ export function createGlobe(canvas, { onSelect, onView, onError } = {}) {
 
   function tick(now) {
     if (!running) return;
-    const idle = now - lastInteraction > 2600;
-    if (!dragging && idle && !reducedMotion) target.lon = normalizeLongitude(target.lon + 0.035);
+    /* ADR-0006 : aucune rotation automatique. Le tour du monde est manuel. */
+    if (tourAuto && !dragging) target.lon = normalizeLongitude(target.lon + 0.035);
 
     if (!dragging) {
       target.lon = normalizeLongitude(target.lon + velocity.lon);
@@ -250,6 +278,7 @@ export function createGlobe(canvas, { onSelect, onView, onError } = {}) {
       const dx = event.clientX - lastPointer.x;
       const dy = event.clientY - lastPointer.y;
       if (Math.abs(dx) + Math.abs(dy) > 2) dragMoved = true;
+      if (dragMoved && tourAuto) tourAuto = false;
       const sensitivity = 0.22 / (1 + current.zoom * 0.12);
       target.lon = normalizeLongitude(target.lon - dx * sensitivity);
       target.lat = clampLatitude(target.lat + dy * sensitivity);
@@ -259,7 +288,9 @@ export function createGlobe(canvas, { onSelect, onView, onError } = {}) {
       return;
     }
     if (event.pointerType === 'mouse') {
-      canvas.title = pick(event.clientX, event.clientY) || '';
+      const name = pick(event.clientX, event.clientY);
+      canvas.title = name || '';
+      onHover?.(name, event.clientX, event.clientY);
     }
   };
 
@@ -330,6 +361,17 @@ export function createGlobe(canvas, { onSelect, onView, onError } = {}) {
       target.zoom = clampZoom(target.zoom + delta);
       lastInteraction = performance.now();
     },
+    isTouring: () => tourAuto,
+    toggleTour() {
+      tourAuto = !tourAuto;
+      lastInteraction = performance.now();
+      return tourAuto;
+    },
+    setYearAreas(areas, dimension) {
+      repaintTexture(areas, dimension);
+      renderer.render(scene, camera);
+    },
+    setCities,
     rotateBy(dLon, dLat) {
       target.lon = normalizeLongitude(target.lon + dLon);
       target.lat = clampLatitude(target.lat + dLat);
@@ -349,8 +391,9 @@ export function createGlobe(canvas, { onSelect, onView, onError } = {}) {
       canvas.removeEventListener('pointercancel', onPointerUp);
       canvas.removeEventListener('wheel', onWheel);
       clearMarker();
+      if (cityPoints) { cityPoints.geometry.dispose(); cityPoints.material.dispose(); }
       sphere.geometry.dispose();
-      sphere.material.map?.dispose();
+      sphere.material.map?.dispose?.();
       sphere.material.dispose();
       atmosphere.geometry.dispose();
       atmosphere.material.dispose();
