@@ -84,6 +84,15 @@ Les features F22 et F27 sont reportées : elles demandent un import supplémenta
 
 **Rollback** : restaurer `sw.js`, `build-pages.mjs` et `src/app.js` depuis le commit `722eea1`.
 
+## P9 — Interaction sans bulle et picking des capitales ✅ 2026-11-21
+
+- F42 Suppression des infobulles maison et natives ✅
+- F43 Zoom maximal porté à 7,2 (+20 %) ✅
+- F44 Hit-test écran des capitales → sélection de la région ✅
+- F45 Tests e2e, captures zoom 7,2, publication ✅
+
+**Rollback** : restaurer `src/app.js`, `src/globe/globe.js`, `styles.css` et `tests/e2e.mjs` depuis le commit `de2e7a6`.
+
 ## Rollback global
 
 Restaurer `archive/v2-globe-1year/` (ou `archive/v1-map-2d/`) et republier le commit `adc5c9d`.

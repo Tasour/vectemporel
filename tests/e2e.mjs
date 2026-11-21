@@ -36,11 +36,11 @@ try {
   check('crédit CC BY-SA', await page.evaluate(() => /CC BY-SA/.test(document.querySelector('.hud-credit')?.textContent || '')));
   check('URL synchronisée', await page.evaluate(() => new URLSearchParams(location.search).get('value') === 'Berry'));
   check('maillage vectoriel actif', await page.evaluate(() => (window.VATLAS.getState().mesh?.triangles || 0) > 10000));
-  check('zoom borné à 6', await page.evaluate(async () => {
+  check('zoom borné à 7.2', await page.evaluate(async () => {
     window.VATLAS.selectRegion('Berry');
     for (let i = 0; i < 20; i += 1) document.querySelector('button[aria-label="Zoomer"]')?.click();
     await new Promise((resolve) => setTimeout(resolve, 500));
-    return window.VATLAS.getState().camera.zoom <= 6.0001;
+    return window.VATLAS.getState().camera.zoom <= 7.2001;
   }));
   check('canvas plein écran', await page.evaluate(() => {
     const canvas = document.getElementById('globe-canvas');
@@ -53,6 +53,25 @@ try {
     return mesh?.cityCount > 100 && mesh?.cityCount < 300;
   }), `capitales=${await page.evaluate(() => window.VATLAS.getState().mesh?.cityCount)}`);
   check('marqueurs ronds', await page.evaluate(() => window.VATLAS.getState().mesh?.citySprite === true));
+  check('aucune bulle maison', await page.evaluate(() => !document.getElementById('map-tooltip')));
+  const cap = await page.evaluate(() => window.VATLAS.cityScreenPoints()[0] || null);
+  check('capitales projectées', Boolean(cap), cap ? `${cap.name} @ ${Math.round(cap.x)},${Math.round(cap.y)}` : 'aucune');
+  if (cap) {
+    await page.mouse.move(cap.x, cap.y);
+    await new Promise((resolve) => setTimeout(resolve, 120));
+    check('aucun title natif', await page.evaluate(() => document.getElementById('globe-canvas').title === ''));
+    await page.mouse.click(cap.x, cap.y);
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    check('clic capitale sélectionne une région', await page.evaluate(() => Boolean(window.VATLAS.getState().selected)));
+    check('fiche ouverte après clic capitale', await page.evaluate(() => !document.getElementById('hud-card').hidden));
+  }
+  check('zoom 7.2 autorisé', await page.evaluate(async () => {
+    window.VATLAS.setView({ lat: 47, lon: 2, zoom: 7.2 });
+    await new Promise((resolve) => setTimeout(resolve, 200));
+    return window.VATLAS.getState().camera.zoom > 7.1;
+  }));
+  await page.evaluate(() => window.VATLAS.setView({ lat: 47, lon: 2, zoom: 4.2 }));
+  await new Promise((resolve) => setTimeout(resolve, 250));
 
   const cameraBefore = await page.evaluate(() => window.VATLAS.getState().camera.lon);
   await page.focus('#globe-canvas');

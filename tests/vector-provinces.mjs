@@ -29,7 +29,7 @@ check('rayon constant 1.003', data.positions.every((_, index) => {
 check('contours générés', data.edges.length > 0 && data.edges.length % 6 === 0, `${data.edges.length / 6} segments`);
 check('polygones ignorés bornés', data.skipped <= 5, `${data.skipped}`);
 check('construction < 400 ms', elapsed < 400, `${elapsed} ms`);
-check('zoom maximal 6', ZOOM_MAX === 6);
+check('zoom maximal 7.2', ZOOM_MAX === 7.2);
 
 const second = buildProvinceData(AREAS, 1, THREE);
 check('déterminisme', JSON.stringify(second.indices) === JSON.stringify(data.indices));

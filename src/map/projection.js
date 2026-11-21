@@ -10,7 +10,7 @@ export function clampView(view) {
   return {
     lat: clamp(Number(view.lat) || 0, -MAX_LAT, MAX_LAT),
     lon: clamp(Number(view.lon) || 0, -180, 180),
-    zoom: clamp(Number(view.zoom) || 0, 0, 6),
+    zoom: clamp(Number(view.zoom) || 0, 0, 7.2),
   };
 }
 
@@ -96,7 +96,7 @@ export function fitBounds(bounds, size, padding = 40) {
   const zoomY = Math.log2(height / (Math.max(1e-6, y1 - y0) * TILE));
   const [cx, cy] = toWorld((bounds.minLon + bounds.maxLon) / 2, (bounds.minLat + bounds.maxLat) / 2);
   const [lon, lat] = fromWorld(cx, cy);
-  return clampView({ lat, lon, zoom: clamp(Math.min(zoomX, zoomY), 0, 8) });
+  return clampView({ lat, lon, zoom: clamp(Math.min(zoomX, zoomY), 0, 7.2) });
 }
 
 export function pointInRing(lon, lat, ring) {

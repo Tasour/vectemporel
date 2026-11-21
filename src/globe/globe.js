@@ -20,7 +20,7 @@ const mulberry32 = (seed) => () => {
 const distanceForZoom = (zoom) => 3.2 - clamp(zoom, 0, ZOOM_MAX) * 0.19;
 const clampZoom = (zoom) => clamp(zoom, 0, ZOOM_MAX);
 
-export function createGlobe(canvas, { onSelect, onView, onError, onHover } = {}) {
+export function createGlobe(canvas, { onSelect, onCitySelect, onView, onError } = {}) {
   const THREE = window.THREE;
   if (!THREE) {
     onError?.('Three.js indisponible');
@@ -131,6 +131,7 @@ export function createGlobe(canvas, { onSelect, onView, onError, onHover } = {})
   let cityPoints = null;
   let cityCount = 0;
   let currentCities = [];
+  let cityHits = [];
   let currentCityYear = 0;
   function setCities(cities, year) {
     currentCities = cities || [];
@@ -141,13 +142,15 @@ export function createGlobe(canvas, { onSelect, onView, onError, onHover } = {})
       cityPoints.material.dispose();
       cityPoints = null;
     }
+    cityHits = [];
     if (!currentCities.length) { cityCount = 0; return; }
     const positions = [];
-    for (const [lon, lat, , start, end, capital] of currentCities) {
+    for (const [lon, lat, name, start, end, capital] of currentCities) {
       if (year < start || (end && year > end)) continue;
       if (!capital) continue;
       const vector = vectorFromLonLat(lon, lat, 1.012);
       positions.push(vector.x, vector.y, vector.z);
+      cityHits.push({ name, vector });
     }
     if (!positions.length) { cityCount = 0; return; }
     cityCount = positions.length / 3;
@@ -191,6 +194,34 @@ export function createGlobe(canvas, { onSelect, onView, onError, onHover } = {})
     lonGroup.rotation.y = -(Math.PI / 2 + current.lon * DEG);
     camera.position.z = distanceForZoom(current.zoom);
     if (cityPoints) cityPoints.visible = current.zoom >= 2.5;
+  }
+
+  /* F44 : positions écran des capitales, pour un hit-test indépendant du raster. */
+  function cityScreenPoints() {
+    if (!cityPoints?.visible || current.zoom < 2.5) return [];
+    latGroup.updateMatrixWorld(true);
+    camera.updateMatrixWorld();
+    const rect = canvas.getBoundingClientRect();
+    return cityHits.map(({ name, vector }) => {
+      const world = lonGroup.localToWorld(new THREE.Vector3(vector.x, vector.y, vector.z));
+      const projected = world.project(camera);
+      if (projected.z < -1 || projected.z > 1) return null;
+      return {
+        name,
+        x: rect.left + ((projected.x + 1) / 2) * rect.width,
+        y: rect.top + ((1 - projected.y) / 2) * rect.height,
+      };
+    }).filter(Boolean);
+  }
+
+  function pickCity(clientX, clientY) {
+    let best = null;
+    let bestDistance = 12;
+    for (const point of cityScreenPoints()) {
+      const distance = Math.hypot(point.x - clientX, point.y - clientY);
+      if (distance < bestDistance) { bestDistance = distance; best = point.name; }
+    }
+    return best;
   }
 
   function resize() {
@@ -336,9 +367,7 @@ export function createGlobe(canvas, { onSelect, onView, onError, onHover } = {})
       return;
     }
     if (event.pointerType === 'mouse') {
-      const name = pick(event.clientX, event.clientY);
-      canvas.title = name || '';
-      onHover?.(name, event.clientX, event.clientY);
+      canvas.classList.toggle('point-hover', Boolean(pickCity(event.clientX, event.clientY)));
     }
   };
 
@@ -347,11 +376,16 @@ export function createGlobe(canvas, { onSelect, onView, onError, onHover } = {})
     canvas.releasePointerCapture?.(event.pointerId);
     if (pointers.size < 2) pinch = null;
     if (dragging && !dragMoved) {
-      const name = pick(event.clientX, event.clientY);
-      if (name) {
-        selected = name;
-        buildMarker(name);
-        onSelect?.(name);
+      const city = pickCity(event.clientX, event.clientY);
+      if (city) {
+        onCitySelect?.(city);
+      } else {
+        const name = pick(event.clientX, event.clientY);
+        if (name) {
+          selected = name;
+          buildMarker(name);
+          onSelect?.(name);
+        }
       }
     }
     if (pointers.size === 0) {
@@ -360,6 +394,8 @@ export function createGlobe(canvas, { onSelect, onView, onError, onHover } = {})
     }
     lastInteraction = performance.now();
   };
+
+  const onPointerLeave = () => canvas.classList.remove('point-hover');
 
   const onWheel = (event) => {
     event.preventDefault();
@@ -373,6 +409,7 @@ export function createGlobe(canvas, { onSelect, onView, onError, onHover } = {})
   canvas.addEventListener('pointermove', onPointerMove);
   canvas.addEventListener('pointerup', onPointerUp);
   canvas.addEventListener('pointercancel', onPointerUp);
+  canvas.addEventListener('pointerleave', onPointerLeave);
   canvas.addEventListener('wheel', onWheel, { passive: false });
   document.addEventListener('visibilitychange', onVisibility);
   const observer = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(resize) : null;
@@ -433,6 +470,8 @@ export function createGlobe(canvas, { onSelect, onView, onError, onHover } = {})
       lastInteraction = performance.now();
     },
     pick,
+    pickCity,
+    cityScreenPoints,
     getSelected: () => selected,
     destroy() {
       stop();
@@ -443,6 +482,7 @@ export function createGlobe(canvas, { onSelect, onView, onError, onHover } = {})
       canvas.removeEventListener('pointermove', onPointerMove);
       canvas.removeEventListener('pointerup', onPointerUp);
       canvas.removeEventListener('pointercancel', onPointerUp);
+      canvas.removeEventListener('pointerleave', onPointerLeave);
       canvas.removeEventListener('wheel', onWheel);
       clearMarker();
       if (provinceMesh) { lonGroup.remove(provinceMesh.group); provinceMesh.dispose(); }

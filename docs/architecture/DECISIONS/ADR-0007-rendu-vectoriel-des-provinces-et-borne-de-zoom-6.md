@@ -19,7 +19,7 @@ Après ADR-0006 (texture 4096x2048, sphère 192x128), l'utilisateur juge le rend
 
 ## Décision
 
-Option A — maillage vectoriel des provinces, fond de carte raster réduit à 2048x1024 (océan + graticule seulement), zoom maximal borné à 6.
+Option A — maillage vectoriel des provinces, fond de carte raster réduit à 2048x1024 (océan + graticule seulement), zoom maximal borné à 6, puis porté à 7,2 par révision du 2026-11-21.
 
 ## Conséquences
 
@@ -36,3 +36,5 @@ Option A — maillage vectoriel des provinces, fond de carte raster réduit à 2
 ## Révision
 
 0007
+
+Révision 2026-11-21 : le zoom maximal passe de 6 à **7,2** (+20 %) à la demande de l'utilisateur. Le maillage vectoriel restant indépendant du raster, la netteté des frontières est conservée. Le picking des capitales est ajouté sans bulle d'infobulle.
