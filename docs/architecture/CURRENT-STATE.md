@@ -4,7 +4,7 @@
 
 | Mesure | Valeur | Source |
 |---|---|---|
-| Livrables architecture | présents, 4 ADR, 0 erreur | `tools.arch.verify` |
+| Livrables architecture | présents, 6 ADR, 0 erreur | `tools.arch.verify` |
 | Scorecard | 87/100, couverture 100 %, confiance high | `docs/architecture/scorecard.md` |
 | Modules JS livrés | 5 (`app.js`, `map/{data,projection,renderer}.js`, snapshot) | `find src` |
 | Cycles d'imports | 0 | `tools.arch.dependency_graph` |
@@ -16,7 +16,11 @@
 
 ## Décision en cours
 
-Passage de la carte 2D à la sphère WebGL (ADR-0004). La version 2D est archivée dans `archive/v1-map-2d/` ; le code livré sera réduit au HUD et aux modules de la sphère.
+La sphère WebGL est livrée (ADR-0004). P0 du plan de features est terminé : ADR-0005 (timeline 4 001 ans en chunks locaux) et ADR-0006 (4096×2048, rotation manuelle). Les versions antérieures sont archivées dans `archive/v1-map-2d/` et `archive/v2-globe-1year/`.
+
+## Prochaines phases
+
+P1 données multi-années · P2 rendu haute définition · P3 timeline · P4 features Chronas complémentaires · P5 qualité et publication. Un push est effectué à la fin de chaque phase.
 
 ## Limites et invariants
 

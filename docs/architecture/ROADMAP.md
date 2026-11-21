@@ -1,38 +1,59 @@
-# Roadmap de migration — sphère plein écran
+# Roadmap — plan de features ordonné
 
-## P0 — Fondations (réversible) ✅ 2026-11-21
+Un push est effectué à la fin de chaque phase P*.
 
-1. Écrire l'ADR-0004 (Three.js r152 local, abrogation partielle de l'ADR-0001). ✅
-2. Archiver la version 2D sous `archive/v1-map-2d/`. ✅
-3. Mettre à jour `ARCHITECTURE.md`, `CURRENT-STATE.md`, `RISKS.md`, scorecard. ✅
-4. Copier `three.min.js` dans `public/` et documenter la licence MIT. ✅
+## P0 — Fondations ✅ 2026-11-21
 
-**Sortie** : `arch.verify` vert, archives en place.
+- F01 ADR-0005 (timeline chunks locaux) ✅
+- F02 ADR-0006 (4096×2048 + rotation manuelle) ✅
+- F03 Documents d'architecture et scorecard ✅
+- F04 Archive `archive/v2-globe-1year/` ✅
 
-## P1 — Sphère
+**Rollback** : restaurer l'archive v2.
 
-5. `src/globe/lonlat.js` : conversions pures et convention UV.
-6. `src/globe/texture.js` : texture équirectangulaire depuis `FEATURES`.
-7. `src/globe/globe.js` : scène, picking par raycast, inertie, étoiles, halo, caméra.
+## P1 — Données 4 001 ans
 
-**Sortie** : la deep link `value=Berry` sélectionne Berry sur la sphère.
+- F05 Importeur borné et reprenable (−2000→2000)
+- F06 Géométrie partagée
+- F07 Deltes annuels par siècle
+- F08 `year-store.js` (LRU, abort, debounce)
+- F09 Intégrité `getYear(1000)` == snapshot actuel
 
-## P2 — HUD et expérience
+## P2 — Rendu haute définition
 
-8. Réécrire `index.html` et `styles.css` : canvas plein écran, HUD minimal.
-9. Réécrire `src/app.js` : URL, recherche `/`, aide `?`, clavier, tactile, fiche de région.
-10. Mettre à jour le service worker (cache de `three.min.js`).
+- F10 Texture 4096×2048, sphère 192×128, anisotropie 16
+- F11 Repli mémoire mobile
+- F12 Contours et survol
+- F13 Rotation manuelle (bouton, suppression de l'auto)
+- F14 Redraw texture par année
 
-**Sortie** : aucune barre ni panneau permanent ; 0 erreur console.
+## P3 — Timeline
 
-## P3 — Vérification et publication
+- F15 Curseur −2000→2000
+- F16 Saisie directe de l'année
+- F17 Sauts de siècle + bandes d'époques
+- F18 Autoplay manuel
+- F19 États de chargement
+- F20 Deep-link `year=`
 
-11. Adapter `tests/e2e.mjs`, `test:perf`, `test:pwa`, `http-guards`.
-12. `npm run check`, `arch.verify`, scorecard, `ui.guard`, captures 1440×900 / 390×844.
-13. Commit `atlas`, repush `gh-pages`, contrôle HTTP et PWA du site publié.
+## P4 — Features Chronas complémentaires
 
-**Sortie** : budget < 50 requêtes / < 1 Mo, site en 200, PWA hors ligne.
+- F21 5 dimensions de couleur
+- F22 Modes de libellés
+- F23 Marqueurs locaux
+- F24 Tooltip riche
+- F25 Fiche à onglets + lien Wikipédia externe
+- F26 Recherche enrichie
+- F27 Épiques locaux
+- F28 Préférences locales
 
-## Rollback
+## P5 — Qualité et publication
 
-Restaurer `archive/v1-map-2d/` vers la racine, rétablir l'ADR-0001 comme référence de rendu, republier `gh-pages` depuis le commit précédent (`ea3527c`).
+- F29 E2E timeline
+- F30 Perf/PWA étendus
+- F31 Preuves visuelles
+- F32 Publication `atlas` + `gh-pages`
+
+## Rollback global
+
+Restaurer `archive/v2-globe-1year/` (ou `archive/v1-map-2d/`) et republier le commit `adc5c9d`.

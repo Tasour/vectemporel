@@ -27,6 +27,8 @@ Voir `CURRENT-STATE.md`. Points clés : 5 modules JS, 0 cycle, `arch.verify` OK,
 | Données | Année 1000 complète / 10 ans bornées / 10 ans complètes | Année 1000 complète | ADR-0002 |
 | Migration v0 | Archive dépôt / nouveau dépôt / écrasement | Archive dépôt | ADR-0003 |
 | Rendu sphère | Three.js r152 local / WebGL maison / Canvas 2D pseudo-sphère | **Three.js r152 local** | ADR-0004 |
+| Timeline | Snapshot unique / chunks par siècle + deltas / proxy API | **Chunks locaux par siècle** | ADR-0005 |
+| Définition et rotation | 3072 / 4096 / 8192 ; auto / manuel | **4096×2048, rotation manuelle** | ADR-0006 |
 
 Chaque ADR contient coût, risque et réversibilité.
 
@@ -45,7 +47,9 @@ src/
     data.js                 accès au snapshot (partagé)
     projection.js           hits et bbox (partagé, hors rendu 2D)
   data/
-    chronas-map.js          généré, CC BY-SA 4.0
+    chronas-map.js          généré, géométrie partagée, CC BY-SA 4.0
+    years/                  chunks de deltas par siècle (générés)
+    year-store.js           reconstruction LRU des années -2000..2000
 public/
   three.min.js              r152, MIT (copie locale)
 scripts/                    serve, build-pages, import, verify
@@ -78,10 +82,12 @@ Le module `src/map/renderer.js` n'est plus livré : il reste dans `archive/v1-ma
 
 ## 8. Migration (strangler)
 
-P0 — ADR-0004 + archive de la version 2D + actif Three.js. ✅ 2026-11-21
-P1 — texture équirectangulaire, conversions lon/lat, scène WebGL et picking.
-P2 — HUD minimal, clavier, tactile, droit d'auteur visible.
-P3 — tests adaptés, captures, vérification et publication.
+P0 — ADR-0005/0006, docs, archive v2 (✅ 2026-11-21).
+P1 — import 4 001 ans, géométrie partagée, deltas par siècle, `year-store`, intégrité.
+P2 — texture 4096×2048, sphère 192×128, repli mobile, contours, rotation manuelle, redraw par année.
+P3 — timeline -2000→2000, saisie directe, sauts de siècle, autoplay manuel, états de chargement, deep-link.
+P4 — dimensions de couleur, libellés, marqueurs, tooltips, fiches, épiques, préférences.
+P5 — tests, perf/PWA étendus, captures, publication.
 
 Chaque étape est réversible par restauration depuis `archive/v1-map-2d/`.
 
@@ -99,5 +105,7 @@ Voir `RISKS.md`. Risques principaux : WebGL indisponible, couture de texture aux
 - ADR-0002 : snapshot complet de l'année 1000.
 - ADR-0003 : archivage de l'Atlas v0 dans le dépôt.
 - ADR-0004 : sphère WebGL avec Three.js r152 local ; abroge partiellement ADR-0001.
+- ADR-0005 : timeline multi-années avec chunks locaux ; abroge ADR-0002.
+- ADR-0006 : définition 4096×2048 et rotation exclusivement manuelle.
 
 Ces décisions sont réversibles : voir `ROADMAP.md` (rollback) et `RISKS.md`.

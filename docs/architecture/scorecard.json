@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-21T04:10:59.548Z",
+  "generatedAt": "2026-11-21T05:30:14.522Z",
   "root": "/home/tasour/Projects/vectemporel-atlas",
   "weights": {
     "simplicite": 15,
@@ -21,7 +21,7 @@
         "src/ = 7 modules",
         "1 canvas plein écran + HUD"
       ],
-      "note": "Une seule vue sphère, HUD minimal."
+      "note": "Une seule vue sphère."
     },
     "modularite": {
       "status": "measured",
@@ -31,7 +31,7 @@
         "globe/lonlat.js pur",
         "0 cycle"
       ],
-      "note": "Couches données / projection / sphère / HUD séparées."
+      "note": "Couches séparées."
     },
     "donnees": {
       "status": "measured",
@@ -39,9 +39,10 @@
       "weight": 15,
       "evidence": [
         "chronas-map.js 592 Ko",
+        "6 ADR",
         "DATA-LICENSE.md"
       ],
-      "note": "Snapshot complet CC BY-SA."
+      "note": "Snapshot 1000 ; extension 4 001 ans en P1."
     },
     "api": {
       "status": "measured",
@@ -51,7 +52,7 @@
         "window.VATLAS.getState()",
         "URL Chronas"
       ],
-      "note": "Contrat d'URL inchangé."
+      "note": "Contrat inchangé."
     },
     "performance": {
       "status": "measured",
@@ -60,7 +61,7 @@
       "evidence": [
         "test:perf 13 requêtes / 366 Ko"
       ],
-      "note": "Budget largement respecté."
+      "note": "Marge ~630 Ko."
     },
     "securite": {
       "status": "measured",
@@ -78,20 +79,20 @@
       "score": 4,
       "weight": 10,
       "evidence": [
-        "npm run check 100+ PASS",
-        "roundtrip lonlat"
+        "npm run check 112 PASS"
       ],
       "note": "Suites vertes."
     },
     "dx": {
       "status": "measured",
-      "score": 4,
+      "score": 5,
       "weight": 5,
       "evidence": [
         "README.md",
-        "docs/architecture/ROADMAP.md"
+        "docs/architecture/ROADMAP.md",
+        "TODO F01-F32"
       ],
-      "note": "Documentation à jour."
+      "note": "Plan de features ordonné."
     },
     "cout": {
       "status": "measured",
@@ -101,10 +102,10 @@
         "Three.js MIT local",
         "0 service externe"
       ],
-      "note": "Dépendance de rendu locale, sans abonnement."
+      "note": "Coût maîtrisé."
     }
   },
-  "score": 86,
+  "score": 87,
   "coverage": 1,
   "confidence": "high"
 }

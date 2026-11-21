@@ -17,3 +17,15 @@
 - Palette de couleurs dérivée des tokens locaux : la palette Chronas n'est pas copiable légalement.
 - Le snapshot ne couvre que l'année 1000 ; le HUD l'affiche explicitement.
 - Le raccourci Omarchy et l'URL Pages ne changent pas : aucun test spécifique au menu dans ce dépôt.
+
+## Risques du plan de features (P0–P5)
+
+| Risque | Probabilité | Impact | Mitigation |
+|---|---|---|---|
+| Import 4 001 ans trop long / throttlé | Élevée | Élevé | Concurrence bornée à 4, retries 429/503, checkpoint reprenable |
+| Chunks de deltas trop volumineux | Moyenne | Moyen | Découpage par siècle, mesure `test:perf`, compression serveur |
+| Reconstruction d'année inexacte | Moyenne | Élevé | Test F09 : `getYear(1000)` identique au snapshot actuel + checksums |
+| VRAM 4096×2048 (~43 Mo) | Moyenne | Élevé | Repli automatique 2048×1024 (F11) |
+| Scrubbing rapide → chargements multiples | Élevée | Moyen | Debounce 120 ms + `AbortController` (F08) |
+| Rotation manuelle oubliée si l'auto reste | Faible | Moyen | Test e2e : aucun mouvement après 60 s (F13) |
+| Dérive du budget initial | Faible | Élevé | Gate `test:perf` < 50 req / < 1 Mo à chaque phase |
