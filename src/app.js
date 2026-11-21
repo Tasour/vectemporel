@@ -3,6 +3,7 @@
 import { MAP_META, FEATURES, describe, searchNames, ATTRIBUTION, formatPopulation } from './map/data.js';
 import { decodePos, encodePos } from './map/projection.js';
 import { createGlobe } from './globe/globe.js';
+import { DIMENSIONS } from './globe/texture.js';
 import { clampYear, getAreasForYear } from './data/year-store.js';
 
 const SEED = 20261121;
@@ -47,8 +48,28 @@ function mount() {
   const brand = el('div', 'hud-brand');
   brand.append(
     el('strong', '', 'HISTOIRE DU MONDE'),
-    el('span', '', `${MAP_META.year} · ${MAP_META.areas} régions · ${MAP_META.features} contours`),
+    el('span', '', `-2000 → 2000 · ${MAP_META.areas} régions · ${MAP_META.features} contours`),
   );
+  const dimensions = el('div', 'dimension-bar');
+  dimensions.id = 'dimension-bar';
+  dimensions.setAttribute('role', 'radiogroup');
+  dimensions.setAttribute('aria-label', 'Dimension des couleurs');
+  let dimension = 'culture';
+  for (const item of DIMENSIONS) {
+    const button = el('button', 'dimension-btn', item.label);
+    button.type = 'button';
+    button.dataset.dimension = item.id;
+    button.setAttribute('role', 'radio');
+    button.setAttribute('aria-checked', String(item.id === dimension));
+    button.addEventListener('click', () => {
+      dimension = item.id;
+      for (const other of dimensions.children) other.setAttribute('aria-checked', String(other === button));
+      globe?.setYearAreas(areasForYear, dimension);
+      renderCard(selected);
+    });
+    dimensions.appendChild(button);
+  }
+  brand.appendChild(dimensions);
 
   const actions = el('div', 'hud-actions');
   const searchButton = el('button', 'hud-btn', '⌕');
@@ -60,11 +81,17 @@ function mount() {
   tourButton.id = 'hud-tour-button';
   tourButton.setAttribute('aria-label', 'Lancer le tour du monde');
   tourButton.setAttribute('aria-pressed', 'false');
+  const themeButton = el('button', 'hud-btn', '◐');
+  themeButton.type = 'button';
+  themeButton.id = 'hud-theme-button';
+  themeButton.setAttribute('aria-label', 'Basculer le thème clair / sombre');
   const helpButton = el('button', 'hud-btn', '?');
   helpButton.type = 'button';
   helpButton.id = 'hud-help-button';
   helpButton.setAttribute('aria-label', 'Afficher les commandes (touche point d’interrogation)');
-  actions.append(tourButton, searchButton, helpButton);
+  actions.append(tourButton, searchButton, themeButton, helpButton);
+  const savedTheme = localStorage.getItem('history-theme');
+  if (savedTheme === 'light') document.documentElement.dataset.theme = 'light';
 
   const card = el('section', 'hud-card');
   card.id = 'hud-card';
@@ -88,6 +115,11 @@ function mount() {
   suggestions.setAttribute('role', 'listbox');
   suggestions.setAttribute('aria-label', 'Régions correspondantes');
   searchOverlay.append(search, suggestions);
+
+  const tooltip = el('div', 'map-tooltip');
+  tooltip.id = 'map-tooltip';
+  tooltip.setAttribute('role', 'tooltip');
+  tooltip.hidden = true;
 
   const helpOverlay = el('div', 'hud-overlay');
   helpOverlay.id = 'hud-help';
@@ -166,14 +198,19 @@ function mount() {
   yearInput.setAttribute('aria-label', 'Année (entre -2000 et 2000)');
   yearDialog.appendChild(yearInput);
 
-  hud.append(brand, actions, card, searchOverlay, helpOverlay, yearDialog, readout, timeline, error);
+  hud.append(brand, actions, card, tooltip, searchOverlay, helpOverlay, yearDialog, readout, timeline, error);
 
   let selected = null;
+  let areasForYear = null;
+  let cities = null;
   let suggestionIndex = -1;
   let suggestionsList = [];
 
   const globe = createGlobe(canvas, {
     onSelect: (name) => select(name),
+    onHover: (name, x, y) => {
+      showTooltip(name, x, y);
+    },
     onView: (camera) => {
       params.set('pos', encodePos(camera));
       writeUrl(params);
@@ -185,6 +222,14 @@ function mount() {
       document.documentElement.dataset.globeError = message;
     },
   });
+
+  /* F23 : chargement différé des capitales historiques. */
+  import('./data/chronas-cities.js')
+    .then(({ CHRONAS_CITIES }) => {
+      cities = CHRONAS_CITIES;
+      globe?.setCities(cities.cities, year);
+    })
+    .catch(() => { /* données optionnelles : la carte reste utilisable */ });
 
   function renderCard(name) {
     const info = name ? describe(name) : null;
@@ -205,7 +250,16 @@ function mount() {
       list.appendChild(el('dt', '', label));
       list.appendChild(el('dd', '', value));
     }
-    card.append(list, el('p', 'hud-credit', 'Chronas · CC BY-SA 4.0'));
+    card.appendChild(list);
+    const current = DIMENSIONS.find((item) => item.id === dimension);
+    const row = areasForYear?.[name];
+    const value = row ? row[current?.index ?? 1] : undefined;
+    card.append(el('p', 'hud-dimension', `${current?.label || 'Dimension'} : ${value ?? info.culture}`));
+    const wiki = el('a', 'hud-wiki', 'Article Wikipédia ↗');
+    wiki.href = `https://fr.wikipedia.org/wiki/${encodeURIComponent(info.name)}`;
+    wiki.target = '_blank';
+    wiki.rel = 'noopener noreferrer';
+    card.append(wiki, el('p', 'hud-credit', 'Chronas · CC BY-SA 4.0'));
     card.hidden = false;
   }
 
@@ -216,6 +270,18 @@ function mount() {
     }
     const info = describe(name);
     readout.textContent = `${name} · ${info?.capital || 'capitale inconnue'} · ${info?.culture || 'culture inconnue'}.`;
+  }
+
+  function showTooltip(name, x, y) {
+    if (!name) { tooltip.hidden = true; return; }
+    const area = describe(name);
+    tooltip.replaceChildren(
+      el('strong', '', name),
+      el('span', '', `${area?.culture || 'culture inconnue'} · ${area?.capital || 'capitale inconnue'}`),
+    );
+    tooltip.style.left = `${x + 14}px`;
+    tooltip.style.top = `${y + 14}px`;
+    tooltip.hidden = false;
   }
 
   let yearRequest = 0;
@@ -235,7 +301,9 @@ function mount() {
     try {
       const areas = await getAreasForYear(target);
       if (request !== yearRequest) return;
-      globe?.setYearAreas(areas);
+      areasForYear = areas;
+      globe?.setYearAreas(areas, dimension);
+      globe?.setCities(cities?.cities || [], target);
       if (selected) renderCard(selected);
       if (notify) announce(selected);
     } catch (issue) {
@@ -357,6 +425,12 @@ function mount() {
     tourButton.setAttribute('aria-pressed', String(Boolean(active)));
     tourButton.setAttribute('aria-label', active ? 'Arrêter le tour du monde' : 'Lancer le tour du monde');
     readout.textContent = active ? 'Tour du monde en cours.' : 'Tour du monde arrêté.';
+  });
+  themeButton.addEventListener('click', () => {
+    const light = document.documentElement.dataset.theme === 'light';
+    if (light) delete document.documentElement.dataset.theme;
+    else document.documentElement.dataset.theme = 'light';
+    localStorage.setItem('history-theme', light ? 'dark' : 'light');
   });
   searchButton.addEventListener('click', openSearch);
   helpButton.addEventListener('click', toggleHelp);

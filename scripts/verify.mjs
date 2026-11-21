@@ -35,7 +35,7 @@ const runtime = runtimeFiles.map(read).join('\n');
 const sw = read('sw.js');
 check('aucun fetch réseau runtime', !/fetch\(\s*['"]https?:/.test(runtime));
 check('fetch des chunks locaux uniquement', /fetch\(url/.test(read('src/data/year-store.js')));
-check('aucune URL distante', !/https?:\/\//.test(runtime));
+check('aucune URL distante (hors lien Wikipédia)', !/https?:\/\//.test(runtime.replace(/https:\/\/fr\.wikipedia\.org\/wiki\/\$\{encodeURIComponent\(info\.name\)\}/g, '')));
 check('service worker same-origin', /url\.origin !== self\.location\.origin/.test(sw));
 check('aucun moteur globe obsolète', !/globe-engine/.test(runtime));
 check('Three.js local référencé', /public\/three\.min\.js/.test(html));
@@ -60,7 +60,7 @@ check('roundtrip lon/lat -> vecteur', roundtrip);
 const pixel = pixelsFromLonLat(0, 0, 2048, 1024);
 check('texture équirectangulaire centrée', pixel.x === 1024 && pixel.y === 512);
 
-const files = ['scripts/serve.mjs', 'scripts/build-pages.mjs', 'scripts/import-chronas-map.mjs', 'src/app.js', 'src/map/data.js', 'src/map/projection.js', 'src/globe/globe.js', 'src/globe/lonlat.js', 'src/globe/texture.js', 'src/data/year-store.js', 'tests/e2e.mjs', 'tests/pwa.mjs', 'tests/perf-budget.mjs'];
+const files = ['scripts/serve.mjs', 'scripts/build-pages.mjs', 'scripts/import-chronas-map.mjs', 'src/app.js', 'src/map/data.js', 'src/map/projection.js', 'src/globe/globe.js', 'src/globe/lonlat.js', 'src/globe/texture.js', 'src/data/year-store.js', 'scripts/import-chronas-markers.mjs', 'tests/e2e.mjs', 'tests/pwa.mjs', 'tests/perf-budget.mjs'];
 for (const file of files) {
   try {
     execFileSync(process.execPath, ['--check', path.join(ROOT, file)], { stdio: 'pipe' });

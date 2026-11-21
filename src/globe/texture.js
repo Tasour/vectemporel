@@ -3,6 +3,15 @@
 import { AREAS, FEATURES, colorFor } from '../map/data.js';
 import { pixelsFromLonLat } from './lonlat.js';
 
+/* Dimensions de couleur (F21) : index dans la ligne Chronas. */
+export const DIMENSIONS = Object.freeze([
+  { id: 'ruler', label: 'État', index: 0 },
+  { id: 'culture', label: 'Culture', index: 1 },
+  { id: 'religion', label: 'Religion', index: 2 },
+  { id: 'capital', label: 'Capitale', index: 3 },
+  { id: 'population', label: 'Population', index: 4 },
+]);
+
 /* Définition haute (ADR-0006) avec repli automatique sur appareil peu mémoire. */
 const HIGH = { width: 4096, height: 2048, segments: [192, 128] };
 const LOW = { width: 2048, height: 1024, segments: [96, 64] };
@@ -19,7 +28,7 @@ for (const feature of FEATURES) {
   if (!COLORS.has(culture)) COLORS.set(culture, colorFor(culture));
 }
 
-export function createEquirectangularCanvas(quality = globeQuality(), areas = AREAS) {
+export function createEquirectangularCanvas(quality = globeQuality(), areas = AREAS, dimension = 'culture') {
   const { width: WIDTH, height: HEIGHT } = quality;
   const canvas = document.createElement('canvas');
   canvas.width = WIDTH;
@@ -48,11 +57,12 @@ export function createEquirectangularCanvas(quality = globeQuality(), areas = AR
   }
   ctx.stroke();
 
-  paintFeatures(ctx, WIDTH, HEIGHT, areas);
+  paintFeatures(ctx, WIDTH, HEIGHT, areas, dimension);
   return canvas;
 }
 
-function paintFeatures(ctx, WIDTH, HEIGHT, areas) {
+function paintFeatures(ctx, WIDTH, HEIGHT, areas, dimension = 'culture') {
+  const dimensionIndex = DIMENSIONS.find((item) => item.id === dimension)?.index ?? 1;
   for (const feature of FEATURES) {
     ctx.beginPath();
     for (const ring of feature.rings) {
@@ -64,9 +74,8 @@ function paintFeatures(ctx, WIDTH, HEIGHT, areas) {
       ctx.closePath();
     }
     const row = areas[feature.name];
-    let culture = Array.isArray(row) ? row[1] : undefined;
-    if (culture === undefined && !Array.isArray(row) && row?.culture !== undefined) culture = row.culture;
-    const color = colorFor(culture || 'inconnu');
+    const value = Array.isArray(row) ? row[dimensionIndex] : row?.[DIMENSIONS[dimensionIndex].id];
+    const color = colorFor(String(value ?? 'inconnu'));
     ctx.fillStyle = color || '#263345';
     ctx.fill();
   }
@@ -80,8 +89,12 @@ export function createGlobeTexture(THREE, quality = globeQuality(), renderer = n
   texture.minFilter = THREE.LinearMipmapLinearFilter;
   texture.magFilter = THREE.LinearFilter;
   texture.anisotropy = Math.min(16, renderer?.capabilities?.getMaxAnisotropy?.() || 1);
-  const repaint = (areas) => {
-    paintFeatures(ctx, canvas.width, canvas.height, areas);
+  let currentDimension = 'culture';
+  let currentAreas = AREAS;
+  const repaint = (areas = currentAreas, dimension = currentDimension) => {
+    currentAreas = areas;
+    currentDimension = dimension;
+    paintFeatures(ctx, canvas.width, canvas.height, areas, dimension);
     texture.needsUpdate = true;
   };
   return { texture, canvas, repaint };

@@ -8,6 +8,7 @@
     "start": "node scripts/serve.mjs",
     "map:data": "node scripts/import-chronas-map.mjs",
     "years:import": "node scripts/import-chronas-years.mjs",
+    "cities:import": "node scripts/import-chronas-markers.mjs",
     "test:years": "node tests/year-integrity.mjs",
     "build:pages": "node scripts/build-pages.mjs",
     "verify": "node scripts/verify.mjs",

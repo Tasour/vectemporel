@@ -43,7 +43,7 @@ try {
 
   const cache = await page.evaluate(async () => {
     const keys = await caches.keys();
-    const store = await caches.open('vectemporel-v6');
+    const store = await caches.open('vectemporel-v7');
     const entries = await store.keys();
     return {
       keys,
@@ -55,7 +55,7 @@ try {
       urls: entries.map((entry) => entry.url),
     };
   });
-  check('cache versionné', cache.keys.includes('vectemporel-v6'), cache.keys.join(','));
+  check('cache versionné', cache.keys.includes('vectemporel-v7'), cache.keys.join(','));
   check('snapshot carte en cache', cache.hasMap);
   check('Three.js en cache', cache.hasThree);
   check('chunk d’année en cache', cache.hasChunk, cache.urls.filter((u) => /years/.test(u)).join(',') || `${cache.count} entrées`);

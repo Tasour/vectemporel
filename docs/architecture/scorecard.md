@@ -1,12 +1,12 @@
 # Scorecard — /home/tasour/Projects/vectemporel-atlas
-Score global : 92/100
+Score global : 89/100
 Couverture : 100 %
 Confiance : high
-Généré le : 2026-11-21T06:20:29.808Z
+Généré le : 2026-11-21T06:42:19.730Z
 
 | Dimension | Poids | Score | Preuves |
 |---|---:|---:|---|
-| simplicite | 15 | 5/5 | 1 |
+| simplicite | 15 | 4/5 | 1 |
 | modularite | 15 | 4/5 | 2 |
 | donnees | 15 | 5/5 | 3 |
 | api | 10 | 4/5 | 1 |

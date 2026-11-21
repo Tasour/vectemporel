@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-21T06:20:29.808Z",
+  "generatedAt": "2026-11-21T06:42:19.730Z",
   "root": "/home/tasour/Projects/vectemporel-atlas",
   "weights": {
     "simplicite": 15,
@@ -15,12 +15,12 @@
   "dimensions": {
     "simplicite": {
       "status": "measured",
-      "score": 5,
+      "score": 4,
       "weight": 15,
       "evidence": [
-        "1 canvas + HUD + timeline"
+        "1 canvas + HUD + timeline + dimensions"
       ],
-      "note": ""
+      "note": "Interface enrichie."
     },
     "modularite": {
       "status": "measured",
@@ -28,7 +28,7 @@
       "weight": 15,
       "evidence": [
         "0 cycle",
-        "year-store séparé"
+        "year-store, cities"
       ],
       "note": ""
     },
@@ -38,8 +38,8 @@
       "weight": 15,
       "evidence": [
         "4001 ans",
-        "41 chunks",
-        "test:years"
+        "4662 villes",
+        "41 chunks"
       ],
       "note": ""
     },
@@ -57,7 +57,7 @@
       "score": 5,
       "weight": 15,
       "evidence": [
-        "15 requêtes / 389 Ko"
+        "16 requêtes / 464 Ko"
       ],
       "note": ""
     },
@@ -75,7 +75,7 @@
       "score": 5,
       "weight": 10,
       "evidence": [
-        "136 PASS"
+        "142 PASS"
       ],
       "note": ""
     },
@@ -98,7 +98,7 @@
       "note": ""
     }
   },
-  "score": 92,
+  "score": 89,
   "coverage": 1,
   "confidence": "high"
 }

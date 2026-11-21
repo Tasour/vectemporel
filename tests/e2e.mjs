@@ -68,6 +68,16 @@ try {
   await wait(120);
   check('aide fermée', await page.evaluate(() => document.getElementById('hud-help').hidden));
 
+  /* P4 — dimensions de couleur. */
+  check('barre de dimensions', (await page.$$('#dimension-bar .dimension-btn')).length === 5);
+  await page.click('.dimension-btn[data-dimension="religion"]');
+  await new Promise((resolve) => setTimeout(resolve, 300));
+  check('dimension religion active', await page.evaluate(() => document.querySelector('.dimension-btn[data-dimension="religion"]').getAttribute('aria-checked') === 'true'));
+  check('fiche enrichie', await page.evaluate(() => Boolean(document.querySelector('.hud-dimension')) && Boolean(document.querySelector('.hud-wiki'))));
+  await page.click('#hud-theme-button');
+  await new Promise((resolve) => setTimeout(resolve, 120));
+  check('thème clair persistant', await page.evaluate(() => document.documentElement.dataset.theme === 'light' && localStorage.getItem('history-theme') === 'light'));
+
   const rootPath = new URL(BASE).pathname;
   await page.goto(`${new URL(BASE).origin}${rootPath}?year=1000`, { waitUntil: 'load', timeout: 60000 });
   await wait(1000);

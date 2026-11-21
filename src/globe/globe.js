@@ -19,7 +19,7 @@ const mulberry32 = (seed) => () => {
 const distanceForZoom = (zoom) => 3.2 - clamp(zoom, 0, 8) * 0.19;
 const clampZoom = (zoom) => clamp(zoom, 0, 8);
 
-export function createGlobe(canvas, { onSelect, onView, onError } = {}) {
+export function createGlobe(canvas, { onSelect, onView, onError, onHover } = {}) {
   const THREE = window.THREE;
   if (!THREE) {
     onError?.('Three.js indisponible');
@@ -94,6 +94,31 @@ export function createGlobe(canvas, { onSelect, onView, onError } = {}) {
 
   const marker = new THREE.Group();
   lonGroup.add(marker);
+
+  let cityPoints = null;
+  function setCities(cities, year) {
+    if (cityPoints) {
+      lonGroup.remove(cityPoints);
+      cityPoints.geometry.dispose();
+      cityPoints.material.dispose();
+      cityPoints = null;
+    }
+    if (!cities?.length) return;
+    const positions = [];
+    for (const [lon, lat, , start, end, capital] of cities) {
+      if (year < start || (end && year > end)) continue;
+      if (!capital) continue;
+      const vector = vectorFromLonLat(lon, lat, 1.012);
+      positions.push(vector.x, vector.y, vector.z);
+    }
+    if (!positions.length) return;
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+    cityPoints = new THREE.Points(geometry, new THREE.PointsMaterial({
+      color: 0xf4d69e, size: 0.02, sizeAttenuation: true, transparent: true, opacity: 0.85,
+    }));
+    lonGroup.add(cityPoints);
+  }
 
   const raycaster = new THREE.Raycaster();
   const pointer = new THREE.Vector2();
@@ -263,7 +288,9 @@ export function createGlobe(canvas, { onSelect, onView, onError } = {}) {
       return;
     }
     if (event.pointerType === 'mouse') {
-      canvas.title = pick(event.clientX, event.clientY) || '';
+      const name = pick(event.clientX, event.clientY);
+      canvas.title = name || '';
+      onHover?.(name, event.clientX, event.clientY);
     }
   };
 
@@ -340,10 +367,11 @@ export function createGlobe(canvas, { onSelect, onView, onError } = {}) {
       lastInteraction = performance.now();
       return tourAuto;
     },
-    setYearAreas(areas) {
-      repaintTexture(areas);
+    setYearAreas(areas, dimension) {
+      repaintTexture(areas, dimension);
       renderer.render(scene, camera);
     },
+    setCities,
     rotateBy(dLon, dLat) {
       target.lon = normalizeLongitude(target.lon + dLon);
       target.lat = clampLatitude(target.lat + dLat);
@@ -363,6 +391,7 @@ export function createGlobe(canvas, { onSelect, onView, onError } = {}) {
       canvas.removeEventListener('pointercancel', onPointerUp);
       canvas.removeEventListener('wheel', onWheel);
       clearMarker();
+      if (cityPoints) { cityPoints.geometry.dispose(); cityPoints.material.dispose(); }
       sphere.geometry.dispose();
       sphere.material.map?.dispose?.();
       sphere.material.dispose();
