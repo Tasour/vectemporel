@@ -35,7 +35,13 @@ Captures aux deux viewports (1658×1150 et 390×844) pour tout changement visuel
 ## Skills à charger en premier
 
 `ui-architecte` (agent) pour toute migration de vue ; `d3-graph-studio` pour un graphique ;
+`threejs` (et les skills `threejs-*` locaux) pour la scène 3D, les shaders et le pipeline glTF ;
 `quality-gates` avant livraison ; `visual-density-lab` pour une grille de tuiles.
+
+Le serveur MCP `threejs-devtools-mcp` est configuré dans `~/.config/opencode/opencode.json` :
+69 outils d'inspection de scène vivante. Son pont navigateur doit être ouvert avant usage
+(`bridge_status` indique l'URL locale à visiter) ; il ne modifie jamais les sources sans édition
+explicite.
 
 ## Pièges connus
 
