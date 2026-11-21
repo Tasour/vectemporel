@@ -1,187 +1,298 @@
-/* Vectemporel Atlas — point de composition (composition root).
- * M4 : la taxonomie ci-dessous est le catalogue sémantique PUBLIC de la navigation.
- * La coque (ui/shell.js) et le routeur (platform/keyboard.js) en sont la source
- * d'exécution ; ce catalogue en est le miroir adressable, documenté dans README.md.
- * app.js ne possède aucun état : il assemble les couches et expose window.VATLAS. */
-import { mount, render } from './ui/shell.js';
-import {
-  subscribe, state, selectCountry, goView as setView,
-} from './domain/store.js';
-import { initKeyboard } from './platform/keyboard.js';
-import { DATASET } from './data/dataset.js';
-import { mondeDiagnostics } from './views/monde/index.js';
+/* Atlas historique mondial — une seule vue : la carte.
+ * Réimplémentation originale : aucun code du frontend Chronas n'est copié.
+ * Données © Chronas, CC BY-SA 4.0 (fichier DATA-LICENSE.md). */
+import { MAP_META, FEATURES, describe, searchNames, ATTRIBUTION, formatPopulation, areaByName } from './map/data.js';
+import { createMapRenderer } from './map/renderer.js';
+import { decodePos, encodePos, fitBounds } from './map/projection.js';
 
-/* Version du modèle de navigation. Toute modification d'un libellé ou d'un
- * raccourci doit être répercutée ici, dans la coque, dans le routeur et dans
- * le README (voir UNIFIED_AUDIT/NAVIGATION/views/m4-taxonomie-atlas.md). */
-export const TAXONOMY_VERSION = 'm4.2';
-
-/* Catalogue ordonné macro → micro. `level` = profondeur dans le modèle mental,
- * `role` = la question que la vue rend visible. Figé : c'est un contrat. */
-export const VIEW_TAXONOMY = Object.freeze([
-  Object.freeze({ id: 'globe', label: 'Monde', digit: '1', letter: 'm', level: 1, role: 'Quels pays sont documentés ?' }),
-  Object.freeze({ id: 'chronology', label: 'Chrono', digit: '2', letter: 'c', level: 2, role: 'Quelles ères et quels repères ?' }),
-  Object.freeze({ id: 'recit', label: 'Récit', digit: '3', letter: 'r', level: 3, role: 'Que disent les points vérifiés ?' }),
-  Object.freeze({ id: 'geography', label: 'Géo', digit: '4', letter: 'g', level: 4, role: 'Où se situent les lieux ?' }),
-  Object.freeze({ id: 'constellation', label: 'Const', digit: '5', letter: 's', level: 5, role: 'Comment l’ensemble se synthétise-t-il ?' }),
-  Object.freeze({ id: 'points', label: 'Points', digit: '6', letter: 'p', level: 6, role: 'Quels points vérifiés isoler ?' }),
-]);
-
-/* Lexique normatif : les mêmes termes que le README, exposés sans doublon. */
-export const VOCABULARY = Object.freeze({
-  pays: 'Une des 10 entrées documentées par les audits locaux.',
-  ère: 'Période d’un pays, porteuse de repères.',
-  repère: 'Événement daté rattaché à une ère ; 229 au total.',
-  point: 'Assertion extraite d’un audit local, isolée par ère et domaine ; adossée à une source ou à une omission documentée, jamais présentée comme validée ; 845 au total.',
-  lieu: 'Repère géographique documenté, avec coordonnées locales.',
-  certitude: 'Degré repris de l’audit : certain, probable, disputé, non documenté. « vérifié » ne s’applique qu’aux phrases du récit, pas aux points d’audit.',
-  source: 'Référence du registre local, affichée sans lien externe.',
-});
-
-/* Table de navigation lisible par machine : jumeau de la table du README. */
-const NAV_SHORTCUTS = Object.freeze([
-  Object.freeze({ key: '1–6 / r c g s m p', action: 'changer de vue', scope: 'partout' }),
-  Object.freeze({ key: '← →', action: 'repère, point ou lieu précédent / suivant', scope: 'hors globe et modale' }),
-  Object.freeze({ key: '↑ ↓', action: 'ère précédente / suivante ; en Récit et Géographie, comme ← →', scope: 'Chronologie / Constellation ; Récit / Géographie' }),
-  Object.freeze({ key: 'Entrée', action: 'ouvrir le détail du repère', scope: 'hors globe et modale' }),
-  Object.freeze({ key: 'Espace', action: 'lecture du récit / périmètre géographique', scope: 'Récit / Géographie' }),
-  Object.freeze({ key: 'Échap', action: 'fermer l’aide ou le détail, puis revenir au Monde', scope: 'partout' }),
-  Object.freeze({ key: '?', action: 'ouvrir / fermer l’aide', scope: 'partout' }),
-]);
-
-const BY_ID = new Map(VIEW_TAXONOMY.map((view) => [view.id, view]));
-const BY_DIGIT = new Map(VIEW_TAXONOMY.map((view) => [view.digit, view.id]));
-const BY_LETTER = new Map(VIEW_TAXONOMY.map((view) => [view.letter, view.id]));
-
-/* Repli accent/casse pour accepter « Récit » comme « recit ». */
-function fold(value) {
-  return String(value ?? '').trim().normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '').toLowerCase();
-}
-const BY_LABEL = new Map(VIEW_TAXONOMY.map((view) => [fold(view.label), view.id]));
-
-/* Forme canonique : id, chiffre, initiale ou libellé → identifiant unique. */
-export function resolveView(input) {
-  const key = String(input ?? '').trim();
-  if (BY_ID.has(key)) return key;
-  if (BY_DIGIT.has(key)) return BY_DIGIT.get(key);
-  const lower = key.toLowerCase();
-  if (BY_LETTER.has(lower)) return BY_LETTER.get(lower);
-  return BY_LABEL.get(fold(key)) || null;
-}
-
-export function views() {
-  return VIEW_TAXONOMY.map((view) => view.id);
-}
-
-export function isValidView(id) {
-  return BY_ID.has(id);
-}
-
-export function viewInfo(id) {
-  return BY_ID.get(id) || null;
-}
-
-export function shortcutFor(id) {
-  const view = BY_ID.get(id);
-  return view ? { digit: view.digit, letter: view.letter } : null;
-}
-
-export function viewForShortcut(key) {
-  return resolveView(key);
-}
-
-export function shortcuts() {
-  return NAV_SHORTCUTS.slice();
-}
-
-export function countries() {
-  return DATASET.countries.map(({ id, code, name, events }) => ({
-    id, code, name, events: events.length,
-  }));
-}
-
-/* Situation sémantique : l'équivalent programmatique du fil et de l'annonce. */
-export function position() {
-  const info = BY_ID.get(state.view) || null;
-  // Sur le Monde, le contexte pays/ère/repère n'appartient pas à la vue :
-  // le fil d'Ariane ne doit pas afficher la sélection d'une vue précédente.
-  const atRoot = state.view === 'globe';
-  const country = !atRoot ? DATASET.countries.find((item) => item.id === state.countryId) || null : null;
-  const era = !atRoot ? country?.eras?.[state.eraIndex] || null : null;
-  const event = !atRoot ? country?.events?.[state.eventIndex] || null : null;
-  return {
-    view: state.view,
-    label: info?.label || state.view,
-    level: info?.level ?? 0,
-    role: info?.role || '',
-    countryId: state.countryId,
-    countryName: country?.name || null,
-    eraName: era?.name || null,
-    eventIndex: state.eventIndex,
-    eventCount: country?.events.length || 0,
-    eventTitle: event?.title || null,
-    pointIndex: state.pointIndex,
-    placeIndex: state.placeIndex,
-  };
-}
-
-mount(document.getElementById('app'));
-subscribe(render);
-initKeyboard();
-
-/* API publique stable : les membres historiques sont conservés, les autres
- * sont additifs. Les modules internes peuvent changer, ces noms non. */
-window.VATLAS = {
-  meta: DATASET.meta,
-  taxonomyVersion: TAXONOMY_VERSION,
-  taxonomy: VIEW_TAXONOMY,
-  lexicon: VOCABULARY,
-  views,
-  isValidView,
-  resolveView,
-  viewInfo,
-  shortcutFor,
-  viewForShortcut,
-  shortcuts,
-  countries,
-  position,
-  getState: () => ({ ...state }),
-  mondeDiagnostics,
-  openCountry: (id) => Promise.resolve(selectCountry(String(id))),
-  goView: (view) => {
-    const id = resolveView(view);
-    if (!id) return Promise.resolve(false);
-    setView(id);
-    return Promise.resolve(true);
-  },
+const SEED = 20261121;
+const mulberry32 = (seed) => () => {
+  let t = seed += 0x6D2B79F5;
+  t = Math.imul(t ^ (t >>> 15), t | 1);
+  t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+  return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
 };
 
-/* PWA : enregistrement du service worker sur HTTPS ou localhost uniquement.
- * Aucun inline script (CSP stricte) ; échec journalisé, jamais silencieux. */
-if ('serviceWorker' in navigator
-  && (location.protocol === 'https:' || ['localhost', '127.0.0.1'].includes(location.hostname))) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js', { scope: './' })
-      .then(() => navigator.serviceWorker.ready)
-      .then(async () => {
-        // Préchauffage : la première visite précède la prise de contrôle du SW.
-        // On met en cache exactement les ressources same-origin réellement chargées.
-        const cache = await caches.open('vectemporel-v2');
-        const ESSENTIAL = [
-          './', './index.html', './styles.css', './manifest.webmanifest', './icons/icon-192.png',
-          './public/three.min.js', './public/globe-engine.js', './public/globe-palette.json',
-          './public/globe-map-2k.webp', './public/globe-pick.webp', './public/globe-map-2k.png',
-          './public/globe-pick.png', './public/flags/FR.svg',
-          './src/app.js', './src/ui/shell.js', './src/domain/store.js', './src/platform/keyboard.js',
-          './src/data/dataset.js', './src/views/globe.js', './src/views/globe-reveal.js',
-          './src/views/lenses.js', './src/views/monde/index.js', './src/views/monde/registry.js',
-        ];
-        const urls = new Set(ESSENTIAL.map((path) => new URL(path, document.baseURI).href));
-        const results = await Promise.allSettled([...urls].map((url) => cache.add(url)));
-        const failed = results.filter((result) => result.status === 'rejected').length;
-        if (failed) console.warn(`[pwa] ${failed} ressource(s) non mises en cache`);
-      })
-      .catch((error) => console.warn('[pwa] enregistrement indisponible :', error));
-  });
+const el = (tag, className, text) => {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+};
+
+function readParams() {
+  let raw = window.location.search.replace(/^\?/, '');
+  if (!raw && window.location.hash) raw = window.location.hash.replace(/^#\/?/, '');
+  try { return new URLSearchParams(raw); } catch { return new URLSearchParams(); }
 }
+
+function writeUrl(params) {
+  try {
+    const url = new URL(window.location.href);
+    url.search = params.toString();
+    url.hash = '';
+    window.history.replaceState(null, '', url);
+  } catch { /* URL non writable : l'état reste interne */ }
+}
+
+function mount() {
+  const root = document.getElementById('app');
+  root.replaceChildren();
+
+  const bar = el('header', 'map-bar');
+  const brand = el('div', 'map-brand');
+  brand.append(
+    el('strong', '', 'HISTOIRE DU MONDE'),
+    el('span', '', `Atlas historique · ${MAP_META.year} · ${MAP_META.areas} régions`),
+  );
+  const search = document.createElement('input');
+  search.type = 'search';
+  search.id = 'region-search';
+  search.className = 'region-search';
+  search.placeholder = 'Rechercher une région…';
+  search.setAttribute('aria-label', 'Rechercher une région historique');
+  search.setAttribute('aria-controls', 'region-suggestions');
+  search.setAttribute('aria-expanded', 'false');
+  search.setAttribute('autocomplete', 'off');
+  const suggestions = el('ul', 'region-suggestions');
+  suggestions.id = 'region-suggestions';
+  suggestions.setAttribute('role', 'listbox');
+  suggestions.setAttribute('aria-label', 'Régions correspondantes');
+  suggestions.hidden = true;
+  const searchWrap = el('div', 'region-search-wrap');
+  searchWrap.append(search, suggestions);
+
+  const lucky = el('button', 'map-btn', '✦ Hasard');
+  lucky.type = 'button';
+  const reset = el('button', 'map-btn', '↺ Recentrer');
+  reset.type = 'button';
+  bar.append(brand, searchWrap, lucky, reset);
+
+  const layout = el('div', 'map-layout');
+  const stage = el('main', 'map-stage');
+  stage.id = 'map-stage';
+  const canvas = el('canvas', 'world-map');
+  canvas.id = 'world-map';
+  canvas.tabIndex = 0;
+  canvas.setAttribute('role', 'img');
+  canvas.setAttribute('aria-label', 'Carte mondiale. Flèches pour déplacer, plus et moins pour zoomer. Utilisez la recherche pour choisir une région.');
+  stage.appendChild(canvas);
+
+  const zoomBar = el('div', 'map-zoom');
+  zoomBar.setAttribute('role', 'group');
+  zoomBar.setAttribute('aria-label', 'Zoom de la carte');
+  const zoomIn = el('button', 'map-btn', '+');
+  zoomIn.type = 'button';
+  zoomIn.setAttribute('aria-label', 'Zoomer');
+  const zoomOut = el('button', 'map-btn', '−');
+  zoomOut.type = 'button';
+  zoomOut.setAttribute('aria-label', 'Dézoomer');
+  zoomBar.append(zoomIn, zoomOut);
+  stage.appendChild(zoomBar);
+
+  const readout = el('p', 'map-readout');
+  readout.id = 'map-readout';
+  readout.setAttribute('role', 'status');
+  readout.setAttribute('aria-live', 'polite');
+  stage.appendChild(readout);
+
+  const aside = el('aside', 'map-panel');
+  aside.id = 'map-panel';
+  aside.setAttribute('aria-label', 'Détails de la région sélectionnée');
+  const placeholder = el('p', 'map-empty', 'Choisissez une région sur la carte ou via la recherche.');
+  aside.appendChild(placeholder);
+
+  layout.append(stage, aside);
+  const footer = el('footer', 'map-footer');
+  footer.append(el('span', '', ATTRIBUTION), el('span', '', `graine ${SEED} · généré le ${MAP_META.retrieved_at} · API ${MAP_META.api_version}`));
+
+  root.append(bar, layout, footer);
+
+  const params = readParams();
+  const year = Number(params.get('year')) || MAP_META.year;
+  const initialName = params.get('value');
+  const initialPos = decodePos(params.get('pos'));
+
+  let selected = null;
+  let suggestionIndex = -1;
+  let suggestionsList = [];
+  let luckyCounter = 0;
+
+  const renderer = createMapRenderer(canvas, {
+    onSelect: (name) => select(name),
+    onView: (camera) => {
+      params.set('pos', encodePos(camera));
+      writeUrl(params);
+    },
+  });
+
+  function renderPanel(name) {
+    const info = name ? describe(name) : null;
+    aside.replaceChildren();
+    if (!info) {
+      const empty = el('p', 'map-empty', 'Choisissez une région sur la carte ou via la recherche.');
+      aside.appendChild(empty);
+      return;
+    }
+    const kicker = el('p', 'view-kicker', 'Région historique');
+    const title = el('h1', 'region-title', info.name);
+    title.id = 'region-title';
+    aside.append(kicker, title);
+    const list = el('dl', 'region-facts');
+    const fields = [
+      ['État', info.state],
+      ['Culture', info.culture],
+      ['Religion', info.religion],
+      ['Capitale', info.capital],
+      ['Population', formatPopulation(info.population)],
+    ];
+    for (const [label, value] of fields) {
+      list.appendChild(el('dt', '', label));
+      list.appendChild(el('dd', '', value));
+    }
+    aside.appendChild(list);
+    if (year !== MAP_META.year) {
+      aside.appendChild(el('p', 'map-note', `Année demandée : ${year}. Le snapshot local contient l'année ${MAP_META.year}.`));
+    }
+    aside.appendChild(el('p', 'map-source', 'Source : Chronas · CC BY-SA 4.0'));
+  }
+
+  function announce(name) {
+    if (!name) {
+      readout.textContent = `${FEATURES.length} régions affichées · année ${year}.`;
+      return;
+    }
+    const area = areaByName(name);
+    readout.textContent = `${name} · ${area?.capital || 'capitale inconnue'} · ${area?.culture || 'culture inconnue'}.`;
+  }
+
+  function select(name, { move = true } = {}) {
+    if (!name) return;
+    selected = name;
+    params.set('type', 'area');
+    params.set('value', name);
+    params.set('year', String(year));
+    writeUrl(params);
+    renderer.setSelected(name);
+    if (move) {
+      const info = describe(name);
+      if (info?.bounds) renderer.setView(fitBounds(info.bounds, renderer.size(), 80));
+    }
+    renderPanel(name);
+    announce(name);
+    suggestions.hidden = true;
+    search.value = '';
+    search.setAttribute('aria-expanded', 'false');
+  }
+
+  function setSuggestions(query) {
+    suggestionsList = searchNames(query);
+    suggestionIndex = -1;
+    suggestions.replaceChildren();
+    if (!suggestionsList.length) {
+      suggestions.hidden = true;
+      search.setAttribute('aria-expanded', 'false');
+      return;
+    }
+    suggestionsList.forEach((name, index) => {
+      const item = el('li', 'suggestion', name);
+      item.id = `suggestion-${index}`;
+      item.setAttribute('role', 'option');
+      item.setAttribute('aria-selected', 'false');
+      item.addEventListener('mousedown', (event) => { event.preventDefault(); select(name); });
+      suggestions.appendChild(item);
+    });
+    suggestions.hidden = false;
+    search.setAttribute('aria-expanded', 'true');
+  }
+
+  function highlight(index) {
+    suggestionIndex = index;
+    [...suggestions.children].forEach((item, position) => {
+      item.setAttribute('aria-selected', String(position === index));
+      item.classList.toggle('active', position === index);
+    });
+  }
+
+  search.addEventListener('input', () => setSuggestions(search.value));
+  search.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowDown' && suggestionsList.length) {
+      event.preventDefault();
+      highlight((suggestionIndex + 1) % suggestionsList.length);
+    } else if (event.key === 'ArrowUp' && suggestionsList.length) {
+      event.preventDefault();
+      highlight((suggestionIndex - 1 + suggestionsList.length) % suggestionsList.length);
+    } else if (event.key === 'Enter') {
+      const name = suggestionsList[suggestionIndex >= 0 ? suggestionIndex : 0];
+      if (name) { event.preventDefault(); select(name); }
+    } else if (event.key === 'Escape') {
+      suggestions.hidden = true;
+      search.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  lucky.addEventListener('click', () => {
+    const random = mulberry32(SEED + luckyCounter * 7919);
+    luckyCounter += 1;
+    const feature = FEATURES[Math.floor(random() * FEATURES.length)];
+    if (feature) {
+      select(feature.name);
+      readout.textContent = `Hasard : ${feature.name}. ${readout.textContent}`;
+    }
+  });
+  reset.addEventListener('click', () => {
+    const info = selected ? describe(selected) : null;
+    renderer.setView(info?.bounds ? fitBounds(info.bounds, renderer.size(), 80) : { lat: 20, lon: 0, zoom: 1.6 });
+  });
+  zoomIn.addEventListener('click', () => renderer.zoom(0.6));
+  zoomOut.addEventListener('click', () => renderer.zoom(-0.6));
+
+  canvas.addEventListener('keydown', (event) => {
+    const step = event.shiftKey ? 160 : 60;
+    if (event.key === 'ArrowLeft') renderer.pan(step, 0);
+    else if (event.key === 'ArrowRight') renderer.pan(-step, 0);
+    else if (event.key === 'ArrowUp') renderer.pan(0, step);
+    else if (event.key === 'ArrowDown') renderer.pan(0, -step);
+    else if (event.key === '+' || event.key === '=') renderer.zoom(0.6);
+    else if (event.key === '-') renderer.zoom(-0.6);
+    else return;
+    event.preventDefault();
+  });
+
+  if (initialPos) renderer.setView(initialPos);
+  if (initialName) select(initialName, { move: !initialPos });
+  else {
+    params.set('type', 'area');
+    params.set('year', String(year));
+    if (!initialPos) params.set('pos', encodePos(renderer.getView()));
+    writeUrl(params);
+    announce(null);
+  }
+
+  window.VATLAS = {
+    getState: () => ({
+      view: 'map',
+      selected,
+      year,
+      camera: renderer.getView(),
+      meta: { ...MAP_META },
+      features: FEATURES.length,
+    }),
+    selectRegion: (name) => select(name),
+    diagnostics: () => ({ seed: SEED, features: FEATURES.length, areas: MAP_META.areas }),
+  };
+  document.documentElement.dataset.mapReady = 'true';
+}
+
+/* Enregistrement du service worker : indispensable au fonctionnement hors ligne.
+ * Aucune portée inhabituelle, aucun script tiers, repli silencieux si indisponible. */
+function registerServiceWorker() {
+  if (!('serviceWorker' in navigator) || window.location.protocol === 'file:') return;
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js').catch(() => { /* mode en ligne dégradé */ });
+  }, { once: true });
+}
+
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount, { once: true });
+else mount();
+registerServiceWorker();

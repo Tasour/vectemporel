@@ -43,19 +43,25 @@ try {
 
   const cache = await page.evaluate(async () => {
     const keys = await caches.keys();
-    const store = await caches.open('vectemporel-v2');
+    const store = await caches.open('vectemporel-v3');
     const entries = await store.keys();
-    return { keys, count: entries.length, hasIndex: Boolean(await store.match('./index.html')) };
+    return {
+      keys,
+      count: entries.length,
+      hasIndex: Boolean(await store.match('./index.html')),
+      hasMap: entries.some((entry) => /chronas-map\.js/.test(entry.url)),
+    };
   });
-  check('cache versionné', cache.keys.includes('vectemporel-v2'), cache.keys.join(','));
+  check('cache versionné', cache.keys.includes('vectemporel-v3'), cache.keys.join(','));
+  check('snapshot carte en cache', cache.hasMap);
   check('coque mise en cache', cache.hasIndex, `${cache.count} entrées`);
   check('cache préchauffé (> 10 ressources)', cache.count > 10, String(cache.count));
 
   await page.setOfflineMode(true);
   await page.reload({ waitUntil: 'domcontentloaded', timeout: 30000 });
   await new Promise((resolve) => setTimeout(resolve, 900));
-  check('globe rendu hors ligne', await page.evaluate(() => window.VATLAS?.getState?.().view === 'globe'));
-  check('10 pays hors ligne', (await page.$$('.globe-list button')).length === 10);
+  check('carte rendue hors ligne', await page.evaluate(() => window.VATLAS?.getState?.().view === 'map'));
+  check('snapshot chargé hors ligne', await page.evaluate(() => window.VATLAS?.getState?.().features === 2492));
   check('hors ligne sans erreur console', errors.length === 0, errors.slice(0, 2).join(' | '));
   await page.setOfflineMode(false);
   check('aucune requête externe', external.length === 0, external.slice(0, 2).join(' | '));

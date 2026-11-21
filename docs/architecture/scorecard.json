@@ -1,0 +1,109 @@
+{
+  "generatedAt": "2026-11-21T03:40:04.696Z",
+  "root": "/home/tasour/Projects/vectemporel-atlas",
+  "weights": {
+    "simplicite": 15,
+    "modularite": 15,
+    "donnees": 15,
+    "api": 10,
+    "performance": 15,
+    "securite": 10,
+    "testabilite": 10,
+    "dx": 5,
+    "cout": 5
+  },
+  "dimensions": {
+    "simplicite": {
+      "status": "measured",
+      "score": 5,
+      "weight": 15,
+      "evidence": [
+        "src/ = 5 fichiers",
+        "1 vue carte"
+      ],
+      "note": "Après simplification : une seule vue, 5 modules."
+    },
+    "modularite": {
+      "status": "measured",
+      "score": 4,
+      "weight": 15,
+      "evidence": [
+        "src/map/projection.js pur",
+        "0 cycle"
+      ],
+      "note": "Couches data/projection/renderer/app séparées."
+    },
+    "donnees": {
+      "status": "measured",
+      "score": 4,
+      "weight": 15,
+      "evidence": [
+        "src/data/chronas-map.js 592 Ko",
+        "DATA-LICENSE.md"
+      ],
+      "note": "Snapshot complet, licence renseignée."
+    },
+    "api": {
+      "status": "measured",
+      "score": 4,
+      "weight": 10,
+      "evidence": [
+        "window.VATLAS.getState()",
+        "URL Chronas"
+      ],
+      "note": "Contrat d'URL et API de diagnostic documentés."
+    },
+    "performance": {
+      "status": "measured",
+      "score": 5,
+      "weight": 15,
+      "evidence": [
+        "test:perf 10 requêtes / 208 Ko"
+      ],
+      "note": "Budget largement respecté."
+    },
+    "securite": {
+      "status": "measured",
+      "score": 4,
+      "weight": 10,
+      "evidence": [
+        "http-guards",
+        "CSP",
+        "0 dépendance runtime"
+      ],
+      "note": "Serveur whitelisté."
+    },
+    "testabilite": {
+      "status": "measured",
+      "score": 4,
+      "weight": 10,
+      "evidence": [
+        "npm run check 97 PASS"
+      ],
+      "note": "Suites vertes."
+    },
+    "dx": {
+      "status": "measured",
+      "score": 4,
+      "weight": 5,
+      "evidence": [
+        "README.md",
+        "docs/architecture/ROADMAP.md"
+      ],
+      "note": "Documentation à jour."
+    },
+    "cout": {
+      "status": "measured",
+      "score": 5,
+      "weight": 5,
+      "evidence": [
+        "package.json: 0 dépendance runtime",
+        "zéro service externe"
+      ],
+      "note": "Coût nul."
+    }
+  },
+  "score": 87,
+  "coverage": 1,
+  "confidence": "high"
+}

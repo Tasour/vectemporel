@@ -61,7 +61,7 @@ try {
   check('log annonce 127.0.0.1', logs.includes(`http://127.0.0.1:${port}`), logs.trim().slice(0, 120));
   check('log n annonce pas *:', !logs.includes('*:'), logs.trim().slice(0, 120));
 
-  const allowed = ['/', '/index.html', '/styles.css', '/src/app.js', '/src/data/dataset.js', '/public/globe-engine.js', '/public/globe-palette.json'];
+  const allowed = ['/', '/index.html', '/styles.css', '/sw.js', '/manifest.webmanifest', '/src/app.js', '/src/map/projection.js', '/src/data/chronas-map.js', '/icons/icon-192.png'];
   for (const pathValue of allowed) {
     const response = await fetch(`${base}${pathValue}`, { signal: AbortSignal.timeout(2000) });
     check(`200 ${pathValue}`, response.status === 200, `HTTP ${response.status}`);
@@ -69,8 +69,8 @@ try {
 
   const denied = [
     '/.git/config', '/.git/HEAD', '/node_modules/.package-lock.json',
-    '/scripts/verify.mjs', '/source/audits/france/source-register.csv',
-    '/package-lock.json', '/UNIFIED_AUDIT/SYNTHESE.md', '/docs/veille/README.md',
+    '/scripts/verify.mjs', '/tests/e2e.mjs', '/README.md', '/package.json',
+    '/archive/v0-atlas/README.md', '/docs/veille/2026-11-21-chronas-histography.md',
     '/src/../scripts/serve.mjs', '/src/%2e%2e/scripts/serve.mjs',
   ];
   for (const pathValue of denied) {
