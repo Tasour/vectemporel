@@ -18,6 +18,14 @@ npm run map:data          # -> src/data/chronas-map.js (592 Ko, année 1000)
 npm run build:pages       # -> dist-pages/ pour GitHub Pages
 ```
 
+## Timeline et années
+
+La frise en bas de l'écran couvre **toutes les années de −2000 à 2000** (4 001 ans). Le curseur change d'année pas à pas, le clic sur l'année ouvre la saisie directe, les boutons de siècle sautent aux repères, et la lecture est **toujours manuelle**. Aucune rotation spatiale n'est automatique : le bouton `▶` du coin supérieur droit lance le tour du monde.
+
+Les données sont générées au build (`npm run years:import`, import reprenable) puis stockées en 41 chunks de siècle chargés à la demande. Le snapshot de référence et les chunks sont servis localement : aucun appel réseau au runtime, PWA hors ligne conservée.
+
+La barre de dimensions permet de colorer les régions par État, culture, religion, capitale ou population. Les capitales historiques sont chargées depuis `npm run cities:import`. Le thème clair/sombre est conservé dans `localStorage`.
+
 ## URL
 
 Format Chronas conservé :
@@ -65,7 +73,7 @@ npm run check
 | `npm run test:perf` | budget < 50 requêtes / < 1 Mo |
 | `npm run test:pwa` | manifest, cache versionné, survie hors ligne |
 
-Budget mesuré : **13 requêtes / 366 Ko** à la première visite (Three.js compris), **0 Ko** en régime établi. Le serveur écoute uniquement sur `127.0.0.1`.
+Budget mesuré : **16 requêtes / 464 Ko** à la première visite (Three.js compris), **0 Ko** en régime établi. Le serveur écoute uniquement sur `127.0.0.1`.
 
 ## Structure
 
@@ -76,7 +84,10 @@ src/
   app.js                    composition root, URL, HUD, clavier
   globe/{globe,lonlat,texture}.js
   map/{data,projection}.js  données partagées
-  data/chronas-map.js       généré — NE PAS ÉDITER
+  data/chronas-map.js       géométrie partagée, générée
+  data/chronas-cities.js    capitales historiques, générée
+  data/years/               41 chunks de siècle, générés
+  data/year-store.js        reconstruction des années
 public/three.min.js         Three.js r152 (MIT)
 scripts/                    serve, build-pages, import, verify
 tests/                      e2e, perf, pwa, guards

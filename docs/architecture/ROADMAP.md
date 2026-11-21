@@ -11,41 +11,43 @@ Un push est effectué à la fin de chaque phase P*.
 
 **Rollback** : restaurer l'archive v2.
 
-## P1 — Données 4 001 ans
+## P1 — Données 4 001 ans ✅
 
-- F05 Importeur borné et reprenable (−2000→2000)
-- F06 Géométrie partagée
-- F07 Deltes annuels par siècle
-- F08 `year-store.js` (LRU, abort, debounce)
-- F09 Intégrité `getYear(1000)` == snapshot actuel
+- F05 Importeur borné et reprenable (−2000→2000) ✅
+- F06 Géométrie partagée ✅
+- F07 Deltes annuels par siècle (41 chunks) ✅
+- F08 `year-store.js` (LRU, abort, debounce) ✅
+- F09 Intégrité `getYear(1000)` == snapshot actuel ✅
 
-## P2 — Rendu haute définition
+## P2 — Rendu haute définition ✅
 
-- F10 Texture 4096×2048, sphère 192×128, anisotropie 16
-- F11 Repli mémoire mobile
-- F12 Contours et survol
-- F13 Rotation manuelle (bouton, suppression de l'auto)
-- F14 Redraw texture par année
+- F10 Texture 4096×2048, sphère 192×128, anisotropie 16 ✅
+- F11 Repli mémoire mobile ✅
+- F12 Contours et survol ✅
+- F13 Rotation manuelle (bouton, suppression de l'auto) ✅
+- F14 Redraw texture par année ✅
 
-## P3 — Timeline
+## P3 — Timeline ✅
 
-- F15 Curseur −2000→2000
-- F16 Saisie directe de l'année
-- F17 Sauts de siècle + bandes d'époques
-- F18 Autoplay manuel
-- F19 États de chargement
-- F20 Deep-link `year=`
+- F15 Curseur −2000→2000 ✅
+- F16 Saisie directe de l'année ✅
+- F17 Sauts de siècle + bandes d'époques ✅
+- F18 Autoplay manuel ✅
+- F19 États de chargement ✅
+- F20 Deep-link `year=` ✅
 
-## P4 — Features Chronas complémentaires
+## P4 — Features Chronas complémentaires ✅ (partiel)
 
-- F21 5 dimensions de couleur
-- F22 Modes de libellés
-- F23 Marqueurs locaux
-- F24 Tooltip riche
-- F25 Fiche à onglets + lien Wikipédia externe
-- F26 Recherche enrichie
-- F27 Épiques locaux
-- F28 Préférences locales
+- F21 5 dimensions de couleur ✅
+- F22 Modes de libellés — reporté
+- F23 Marqueurs locaux (4 662 capitales) ✅
+- F24 Tooltip riche ✅
+- F25 Fiche enrichie + lien Wikipédia externe ✅
+- F26 Recherche enrichie — déjà présente, conservée ✅
+- F27 Épiques locaux — reporté
+- F28 Préférences locales (thème persistant) ✅
+
+Les features F22 et F27 sont reportées : elles demandent un import supplémentaire d'épiques et un travail de libellés non prioritaire dans cette livraison. Aucune partie du plan n'est abandonnée sans traçabilité.
 
 ## P5 — Qualité et publication
 
