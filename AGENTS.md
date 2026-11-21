@@ -43,6 +43,10 @@ Le serveur MCP `threejs-devtools-mcp` est configuré dans `~/.config/opencode/op
 (`bridge_status` indique l'URL locale à visiter) ; il ne modifie jamais les sources sans édition
 explicite.
 
+`npm run test:devtools` (intégré à `npm run check`) injecte le même pont **avant chargement**
+via `attachDevtools({ connect: false })`, sans assouplir la CSP `script-src 'self'` ni exposer
+`window.THREE` dans l'application. C'est la voie de vérification retenue pour la scène ESM r180.
+
 ## Pièges connus
 
 - 59 modules `E*.js` étaient orphelins avant `check-imports.mjs` : ne pas ajouter de module sans
