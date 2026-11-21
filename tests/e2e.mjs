@@ -35,6 +35,13 @@ try {
   check('capitale Bourges', await page.evaluate(() => /Bourges/.test(document.querySelector('.hud-facts')?.textContent || '')));
   check('crédit CC BY-SA', await page.evaluate(() => /CC BY-SA/.test(document.querySelector('.hud-credit')?.textContent || '')));
   check('URL synchronisée', await page.evaluate(() => new URLSearchParams(location.search).get('value') === 'Berry'));
+  check('maillage vectoriel actif', await page.evaluate(() => (window.VATLAS.getState().mesh?.triangles || 0) > 10000));
+  check('zoom borné à 6', await page.evaluate(async () => {
+    window.VATLAS.selectRegion('Berry');
+    for (let i = 0; i < 20; i += 1) document.querySelector('button[aria-label="Zoomer"]')?.click();
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    return window.VATLAS.getState().camera.zoom <= 6.0001;
+  }));
   check('canvas plein écran', await page.evaluate(() => {
     const canvas = document.getElementById('globe-canvas');
     return canvas.width > 1000 && canvas.getBoundingClientRect().width >= window.innerWidth - 1;

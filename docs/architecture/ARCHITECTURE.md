@@ -29,6 +29,7 @@ Voir `CURRENT-STATE.md`. Points clés : 5 modules JS, 0 cycle, `arch.verify` OK,
 | Rendu sphère | Three.js r152 local / WebGL maison / Canvas 2D pseudo-sphère | **Three.js r152 local** | ADR-0004 |
 | Timeline | Snapshot unique / chunks par siècle + deltas / proxy API | **Chunks locaux par siècle** | ADR-0005 |
 | Définition et rotation | 3072 / 4096 / 8192 ; auto / manuel | **4096×2048, rotation manuelle** | ADR-0006 |
+| Netteté en zoom | Texture 8192 / texture dynamique / maillage vectoriel | **Maillage vectoriel + zoom 6** | ADR-0007 |
 
 Chaque ADR contient coût, risque et réversibilité.
 
@@ -42,7 +43,8 @@ src/
   globe/
     globe.js                scène Three.js, picking, inertie, étoiles, halo
     lonlat.js               conversions pures lon/lat <-> vecteur 3D
-    texture.js              texture équirectangulaire depuis les polygones
+    texture.js              fond océan + graticule uniquement
+    vector-provinces.js     maillage GPU des 2 492 provinces (ADR-0007)
   map/
     data.js                 accès au snapshot (partagé)
     projection.js           hits et bbox (partagé, hors rendu 2D)
@@ -65,6 +67,7 @@ Le module `src/map/renderer.js` n'est plus livré : il reste dans `archive/v1-ma
 - URL : `type=area&value=<nom>&pos=<lat,lon,zoom>&year=<année>` ; la caméra de la sphère pilote `pos`, la sélection pilote `value`.
 - `lonlat.js` : fonctions pures, convention UV alignée sur la texture équirectangulaire, aucun aléa.
 - `globe.js` : une seule boucle rAF, pause sur `document.hidden`, DPR ≤ 2, picking par raycast puis `pointInFeature()`.
+- `vector-provinces.js` : tris déterministes, rayon 1.003, `ShapeUtils.triangulateShape`, antiméridien normalisé ; zoom maximal 6.
 - `texture.js` : aucun fichier binaire généré au runtime, aucun réseau ; dessin déterministe des 2 492 polygones.
 - Données générées : `meta.source`, `meta.license`, `meta.retrieved_at`, `meta.api_version`.
 - Licences : code MIT (Three.js inclus), données CC BY-SA 4.0 — attribution visible dans le HUD.
@@ -88,6 +91,7 @@ P2 — texture 4096×2048, sphère 192×128, repli mobile, contours, rotation ma
 P3 — timeline -2000→2000, saisie directe, sauts de siècle, autoplay manuel, états de chargement, deep-link.
 P4 — dimensions de couleur, libellés, marqueurs, tooltips, fiches, épiques, préférences.
 P5 — tests, perf/PWA étendus, captures, publication.
+P6 — maillage vectoriel des provinces, texture réduite, zoom borné à 6, preuves visuelles. ✅ 2026-11-21
 
 Chaque étape est réversible par restauration depuis `archive/v1-map-2d/`.
 
@@ -107,5 +111,6 @@ Voir `RISKS.md`. Risques principaux : WebGL indisponible, couture de texture aux
 - ADR-0004 : sphère WebGL avec Three.js r152 local ; abroge partiellement ADR-0001.
 - ADR-0005 : timeline multi-années avec chunks locaux ; abroge ADR-0002.
 - ADR-0006 : définition 4096×2048 et rotation exclusivement manuelle.
+- ADR-0007 : maillage vectoriel des provinces et zoom maximal 6 ; remplace le dessin raster des frontières.
 
 Ces décisions sont réversibles : voir `ROADMAP.md` (rollback) et `RISKS.md`.

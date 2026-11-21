@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-21T06:42:19.730Z",
+  "generatedAt": "2026-11-21T07:55:15.904Z",
   "root": "/home/tasour/Projects/vectemporel-atlas",
   "weights": {
     "simplicite": 15,
@@ -18,17 +18,17 @@
       "score": 4,
       "weight": 15,
       "evidence": [
-        "1 canvas + HUD + timeline + dimensions"
+        "1 canvas + HUD + timeline + maillage"
       ],
-      "note": "Interface enrichie."
+      "note": ""
     },
     "modularite": {
       "status": "measured",
-      "score": 4,
+      "score": 5,
       "weight": 15,
       "evidence": [
         "0 cycle",
-        "year-store, cities"
+        "vector-provinces isolé et testable"
       ],
       "note": ""
     },
@@ -38,8 +38,7 @@
       "weight": 15,
       "evidence": [
         "4001 ans",
-        "4662 villes",
-        "41 chunks"
+        "2492 provinces vectorielles"
       ],
       "note": ""
     },
@@ -48,7 +47,8 @@
       "score": 4,
       "weight": 10,
       "evidence": [
-        "URL Chronas"
+        "URL Chronas",
+        "zoom cap 6"
       ],
       "note": ""
     },
@@ -57,7 +57,8 @@
       "score": 5,
       "weight": 15,
       "evidence": [
-        "16 requêtes / 464 Ko"
+        "17 requêtes / 465 Ko",
+        "maillage 44 ms"
       ],
       "note": ""
     },
@@ -75,7 +76,8 @@
       "score": 5,
       "weight": 10,
       "evidence": [
-        "142 PASS"
+        "155 PASS",
+        "test:vector"
       ],
       "note": ""
     },
@@ -84,7 +86,7 @@
       "score": 5,
       "weight": 5,
       "evidence": [
-        "TODO F01-F32"
+        "TODO F01-F37"
       ],
       "note": ""
     },
@@ -98,7 +100,7 @@
       "note": ""
     }
   },
-  "score": 89,
+  "score": 92,
   "coverage": 1,
   "confidence": "high"
 }

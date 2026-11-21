@@ -29,3 +29,7 @@
 | Scrubbing rapide → chargements multiples | Élevée | Moyen | Debounce 120 ms + `AbortController` (F08) |
 | Rotation manuelle oubliée si l'auto reste | Faible | Moyen | Test e2e : aucun mouvement après 60 s (F13) |
 | Dérive du budget initial | Faible | Élevé | Gate `test:perf` < 50 req / < 1 Mo à chaque phase |
+| Polygones concaves ou dégénérés (ADR-0007) | Moyenne | Moyen | `ShapeUtils.triangulateShape`, 2 anneaux ignorés sur 2 492 mesurés |
+| Antiméridien −180/+180 (ADR-0007) | Faible | Moyen | Normalisation autour du centroïde ; 0 anneau concerné mesuré |
+| Z-fighting sphère/maillage | Faible | Moyen | Rayon 1.003 pour le maillage, 1.004 pour les contours |
+| Reconstruction lente à chaque année | Moyenne | Moyen | 44 ms mesurés sur 2 492 polygones, seuil 400 ms dans `test:vector` |

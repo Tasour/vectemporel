@@ -497,6 +497,7 @@ function mount() {
       attribution: ATTRIBUTION,
       seed: SEED,
       touring: Boolean(globe?.isTouring?.()),
+      mesh: globe?.statistics?.() || null,
     }),
     selectRegion: (name) => select(name),
     setYear: (value) => applyYear(value),

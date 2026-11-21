@@ -21,11 +21,11 @@ Un push est effectué à la fin de chaque phase P*.
 
 ## P2 — Rendu haute définition ✅
 
-- F10 Texture 4096×2048, sphère 192×128, anisotropie 16 ✅
+- F10 Texture 4096×2048, sphère 192×128, anisotropie 16 ✅ (amendé par P6/F35)
 - F11 Repli mémoire mobile ✅
 - F12 Contours et survol ✅
 - F13 Rotation manuelle (bouton, suppression de l'auto) ✅
-- F14 Redraw texture par année ✅
+- F14 Redraw par année ✅ (redirection vers le maillage vectoriel en P6)
 
 ## P3 — Timeline ✅
 
@@ -34,7 +34,7 @@ Un push est effectué à la fin de chaque phase P*.
 - F17 Sauts de siècle + bandes d'époques ✅
 - F18 Autoplay manuel ✅
 - F19 États de chargement ✅
-- F20 Deep-link `year=` ✅
+- F20 Deep-link `year=` ✅ (pos borné à zoom 6 en P6/F36)
 
 ## P4 — Features Chronas complémentaires ✅ (partiel)
 
@@ -55,6 +55,16 @@ Les features F22 et F27 sont reportées : elles demandent un import supplémenta
 - F30 Perf/PWA étendus
 - F31 Preuves visuelles
 - F32 Publication `atlas` + `gh-pages`
+
+## P6 — Netteté vectorielle ✅ 2026-11-21
+
+- F33 ADR-0007 (maillage vectoriel + zoom 6) ✅
+- F34 Module `vector-provinces.js` (16 741 triangles, 44 ms) ✅
+- F35 Intégration globe + texture réduite à 2048×1024 ✅
+- F36 Borne de zoom 6 (`clampView`, molette, pincement, deep-link) ✅
+- F37 Test vectoriel, e2e, captures zoom 6, publication ✅
+
+**Rollback** : restaurer la texture 4096×2048 et le zoom 8 depuis `archive/v2-globe-1year/`.
 
 ## Rollback global
 

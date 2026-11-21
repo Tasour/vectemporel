@@ -56,7 +56,8 @@ Au repos, la sphère tourne lentement ; le mouvement s'arrête au premier geste 
 
 - `public/three.min.js` : Three.js **r152 local**, licence **MIT** (voir `ATTRIBUTION.md`). Aucun CDN.
 - `src/globe/lonlat.js` : conversions pures longitude/latitude ↔ vecteur 3D, convention UV alignée sur la texture.
-- `src/globe/texture.js` : texture équirectangulaire 2048×1024 dessinée depuis les polygones, sans binaire ni réseau.
+- `src/globe/texture.js` : fond océan + graticule uniquement (2048×1024), sans binaire ni réseau.
+- `src/globe/vector-provinces.js` : maillage GPU des 2 492 provinces (16 741 triangles), triangulé une fois par changement d'année ou de dimension. Les frontières restent nettes à tout zoom ; la caméra est bornée à **zoom 6**.
 - `src/globe/globe.js` : une seule boucle rAF (pause sur `document.hidden`), Halo atmosphérique, champ d'étoiles déterministe, picking par raycast puis test de polygone, DPR ≤ 2.
 
 ## Vérifier

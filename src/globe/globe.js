@@ -1,11 +1,12 @@
 /* Sphère WebGL plein écran. Une seule boucle rAF, pause sur document.hidden,
  * picking par raycast puis test de polygone, déterminisme et zéro réseau. */
-import { FEATURES, INDEX, featureByName } from '../map/data.js';
+import { FEATURES, INDEX, AREAS, featureByName } from '../map/data.js';
 import { pointInFeature, clamp } from '../map/projection.js';
 import {
   vectorFromLonLat, lonLatFromVector, centerOfBounds, clampLatitude, normalizeLongitude,
 } from './lonlat.js';
-import { createGlobeTexture, globeQuality } from './texture.js';
+import { createGlobeTexture, globeQuality, DIMENSIONS } from './texture.js';
+import { createProvinceMesh, ZOOM_MAX } from './vector-provinces.js';
 
 const SEED = 20261121;
 const DEG = Math.PI / 180;
@@ -16,8 +17,8 @@ const mulberry32 = (seed) => () => {
   return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
 };
 
-const distanceForZoom = (zoom) => 3.2 - clamp(zoom, 0, 8) * 0.19;
-const clampZoom = (zoom) => clamp(zoom, 0, 8);
+const distanceForZoom = (zoom) => 3.2 - clamp(zoom, 0, ZOOM_MAX) * 0.19;
+const clampZoom = (zoom) => clamp(zoom, 0, ZOOM_MAX);
 
 export function createGlobe(canvas, { onSelect, onView, onError, onHover } = {}) {
   const THREE = window.THREE;
@@ -47,12 +48,26 @@ export function createGlobe(canvas, { onSelect, onView, onError, onHover } = {})
   scene.add(latGroup);
 
   const quality = globeQuality();
-  const { texture: globeTexture, repaint: repaintTexture } = createGlobeTexture(THREE, quality, renderer);
+  const { texture: globeTexture } = createGlobeTexture(THREE, quality, renderer);
   const sphere = new THREE.Mesh(
     new THREE.SphereGeometry(1, quality.segments[0], quality.segments[1]),
     new THREE.MeshPhongMaterial({ map: globeTexture, shininess: 8, specular: 0x111111 }),
   );
   lonGroup.add(sphere);
+
+  let provinceMesh = null;
+  let provinceStatistics = null;
+  function rebuildProvinces(areas, dimension = 'culture') {
+    if (provinceMesh) {
+      lonGroup.remove(provinceMesh.group);
+      provinceMesh.dispose();
+    }
+    const index = DIMENSIONS.find((item) => item.id === dimension)?.index ?? 1;
+    provinceMesh = createProvinceMesh(THREE, areas || AREAS, index);
+    provinceStatistics = provinceMesh.statistics;
+    lonGroup.add(provinceMesh.group);
+  }
+  rebuildProvinces(AREAS, 'culture');
 
   const atmosphere = new THREE.Mesh(
     new THREE.SphereGeometry(1.06, 128, 80),
@@ -368,10 +383,11 @@ export function createGlobe(canvas, { onSelect, onView, onError, onHover } = {})
       return tourAuto;
     },
     setYearAreas(areas, dimension) {
-      repaintTexture(areas, dimension);
+      rebuildProvinces(areas, dimension);
       renderer.render(scene, camera);
     },
     setCities,
+    statistics: () => ({ ...provinceStatistics, zoomMax: ZOOM_MAX }),
     rotateBy(dLon, dLat) {
       target.lon = normalizeLongitude(target.lon + dLon);
       target.lat = clampLatitude(target.lat + dLat);
@@ -391,6 +407,7 @@ export function createGlobe(canvas, { onSelect, onView, onError, onHover } = {})
       canvas.removeEventListener('pointercancel', onPointerUp);
       canvas.removeEventListener('wheel', onWheel);
       clearMarker();
+      if (provinceMesh) { lonGroup.remove(provinceMesh.group); provinceMesh.dispose(); }
       if (cityPoints) { cityPoints.geometry.dispose(); cityPoints.material.dispose(); }
       sphere.geometry.dispose();
       sphere.material.map?.dispose?.();
