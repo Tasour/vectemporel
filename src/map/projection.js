@@ -10,7 +10,7 @@ export function clampView(view) {
   return {
     lat: clamp(Number(view.lat) || 0, -MAX_LAT, MAX_LAT),
     lon: clamp(Number(view.lon) || 0, -180, 180),
-    zoom: clamp(Number(view.zoom) || 0, 0, 8),
+    zoom: clamp(Number(view.zoom) || 0, 0, 6),
   };
 }
 

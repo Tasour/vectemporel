@@ -53,7 +53,7 @@ export function colorFor(culture) {
   let hash = 7;
   for (let i = 0; i < key.length; i += 1) hash = (Math.imul(hash, 31) + key.charCodeAt(i)) >>> 0;
   const hue = hash % 360;
-  return `hsl(${hue} 30% 30%)`;
+  return `hsl(${hue}, 30%, 30%)`;
 }
 
 const POPULATION = new Intl.NumberFormat('fr-FR');
