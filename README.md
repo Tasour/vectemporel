@@ -34,6 +34,8 @@ Sous 760 px, la fiche de région s'ouvre en **plein écran** avec un bouton Ferm
 
 La navigation de la sphère a été affinée : molette/D trackpad zooment vers le curseur, double-clic zoom, `Maj+flèches` tourne finement, `R` recentre, le tactile a une sensibilité réduite et un rayon de sélection de 20 px. Les capitales se choisissent au doigt comme à la souris.
 
+Sur téléphone, les gestes sont désormais déterministes (P14) : un **double-tap** zoome d'un seul cran (+0,8) sans sélectionner, un **tap à deux doigts** zoome en arrière (−0,8), et un tap simple sélectionne après 600 ms. Le pincement et le glisser restent disponibles ; un taper après pincement sélectionne normalement.
+
 ## URL
 
 Format Chronas conservé :

@@ -11,6 +11,18 @@ const check = (name, ok, detail = '') => {
 };
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+/* Événements pointer synthétiques : indépendants de la latence du headless. */
+async function touchEvents(page, events) {
+  await page.evaluate((list) => {
+    const canvas = document.getElementById('globe-canvas');
+    for (const [type, id, x, y] of list) {
+      canvas.dispatchEvent(new PointerEvent(type, {
+        pointerId: id, pointerType: 'touch', clientX: x, clientY: y, bubbles: true,
+      }));
+    }
+  }, events);
+}
+
 const browser = await puppeteer.launch({
   executablePath: process.env.CHROME_PATH || '/usr/bin/chromium',
   headless: 'new',
@@ -255,6 +267,54 @@ try {
   await mobile.click('#hud-display-button');
   await new Promise((resolve) => setTimeout(resolve, 150));
   check('mobile : panneau affichage', await mobile.evaluate(() => !document.getElementById('display-panel').hidden && Boolean(document.querySelector('#display-panel .dimension-bar'))));
+
+  /* P14 — gestes tactiles déterministes. */
+  await mobile.goto(`${new URL(BASE).origin}${new URL(BASE).pathname}?year=1000`, { waitUntil: 'load', timeout: 60000 });
+  await wait(1600);
+  await mobile.evaluate(() => document.getElementById('hud-card-close')?.click());
+  await wait(100);
+  const z0 = await mobile.evaluate(() => window.VATLAS.getState().camera.targetZoom);
+
+  await touchEvents(mobile, [['pointerdown', 1, 195, 400], ['pointerup', 1, 195, 400]]);
+  await wait(80);
+  await touchEvents(mobile, [['pointerdown', 1, 195, 400], ['pointerup', 1, 195, 400]]);
+  await wait(750);
+  check('mobile : double-tap zoom avant', await mobile.evaluate((base) => {
+    const c = window.VATLAS.getState().camera;
+    return Math.abs(c.targetZoom - (base + 0.8)) < 0.01
+      && c.lastGesture === 'double-tap'
+      && window.VATLAS.getState().selected === null;
+  }, z0));
+
+  await touchEvents(mobile, [
+    ['pointerdown', 2, 150, 400], ['pointerdown', 3, 240, 400],
+    ['pointerup', 2, 150, 400], ['pointerup', 3, 240, 400],
+  ]);
+  await wait(750);
+  check('mobile : tap deux doigts zoom arrière', await mobile.evaluate((base) => {
+    const c = window.VATLAS.getState().camera;
+    return Math.abs(c.targetZoom - base) < 0.01
+      && c.lastGesture === 'two-finger-tap'
+      && window.VATLAS.getState().selected === null;
+  }, z0));
+
+  await touchEvents(mobile, [
+    ['pointerdown', 4, 150, 400], ['pointerdown', 5, 240, 400],
+    ['pointermove', 4, 120, 400], ['pointermove', 5, 270, 400],
+    ['pointerup', 4, 120, 400], ['pointerup', 5, 270, 400],
+  ]);
+  await wait(300);
+  check('mobile : pincement conservé', await mobile.evaluate(() => {
+    const c = window.VATLAS.getState().camera;
+    return c.targetZoom > 1.6 && c.lastGesture === 'pinch';
+  }));
+
+  await touchEvents(mobile, [
+    ['pointerdown', 6, 195, 400], ['pointerup', 6, 195, 400],
+  ]);
+  await wait(750);
+  check('mobile : tap simple après pincement sélectionne', await mobile.evaluate(() => Boolean(window.VATLAS.getState().selected)));
+
   await mobile.close();
 
   check('aucune erreur console', errors.length === 0, errors.slice(0, 3).join(' | '));

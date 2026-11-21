@@ -36,5 +36,6 @@
 | Mode « libellés modernes » indisponible | Faible (corrigé P13) | Faible | Noms Natural Earth importés au build (domaine public, 177 pays, 8 Ko), zéro réseau au runtime |
 | 400 Chromium synthétique sur chunks concurrents | Certaine | Faible | Serveur vérifié 200 ; `year-store` gère son propre cache et l'e2e isole cet artefact sans masquer les autres erreurs |
 | Fiche plein écran qui piège l'utilisateur | Faible | Moyen | Bouton Fermer 44 px, `Échap`, restitution du focus au canvas |
-| Double-tap tactile qui sélectionne par erreur | Moyenne | Faible | Délai 280 ms avant sélection, annulé si un second tap arrive sous 300 ms |
+| Double-tap tactile qui sélectionne par erreur | Faible (corrigé P14) | Faible | Machine à gestes pointer-based ; timer de sélection 600 ms annulé par tout nouveau pointerdown ; écart mesuré fin du 1ᵉʳ tap → début du 2ᵉ |
+| Tap à deux doigts confondu avec pincement | Moyenne | Faible | Seuil 120 ms de simultanéité et 12 px de mouvement ; pincement prioritaire |
 | Zoom vers curseur désynchronisé de l'URL | Faible | Moyen | `onView` réécrit `pos` après chaque changement ; e2e dédié |

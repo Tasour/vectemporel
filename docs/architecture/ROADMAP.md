@@ -147,6 +147,16 @@ Les features F22 et F27, initialement reportées, ont été livrées en P10 avec
 
 **Rollback** : restaurer `src/globe/labels.js`, `src/app.js` et `styles.css` depuis le commit `c569360`.
 
+## P14 — Gestes tactiles fiables ✅ 2026-11-21
+
+- Machine à gestes `pointerdown/move/up/cancel` dans `globe.js` ✅
+- Double-tap = zoom avant unique, sans sélection ✅
+- Tap à deux doigts = zoom arrière ✅
+- Timer de sélection 600 ms annulé par tout nouveau toucher ✅
+- Tests e2e mobiles : 4 nouveaux contrôles ✅
+
+**Rollback** : restaurer `src/globe/globe.js` et `tests/e2e.mjs` depuis le commit `473e8a6`.
+
 ## Rollback global
 
 Restaurer `archive/v2-globe-1year/` (ou `archive/v1-map-2d/`) et republier le commit `adc5c9d`.
