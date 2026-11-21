@@ -309,11 +309,17 @@ try {
     return c.targetZoom > 1.6 && c.lastGesture === 'pinch';
   }));
 
-  await touchEvents(mobile, [
-    ['pointerdown', 6, 195, 400], ['pointerup', 6, 195, 400],
-  ]);
-  await wait(750);
-  check('mobile : tap simple après pincement sélectionne', await mobile.evaluate(() => Boolean(window.VATLAS.getState().selected)));
+  await mobile.waitForFunction(() => window.VATLAS?.getState?.().mesh?.cityCount > 0, { timeout: 8000 }).catch(() => {});
+  const capital = await mobile.evaluate(() => window.VATLAS.cityScreenPoints()[0] || null);
+  if (capital) {
+    await touchEvents(mobile, [
+      ['pointerdown', 6, capital.x, capital.y], ['pointerup', 6, capital.x, capital.y],
+    ]);
+    await wait(750);
+    check('mobile : tap simple après pincement sélectionne', await mobile.evaluate(() => Boolean(window.VATLAS.getState().selected)));
+  } else {
+    check('mobile : tap simple après pincement sélectionne', false, 'aucune capitale visible');
+  }
 
   await mobile.close();
 
