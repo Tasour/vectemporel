@@ -11,14 +11,16 @@
     "cities:import": "node scripts/import-chronas-markers.mjs",
     "labels:import": "node scripts/import-chronas-metadata.mjs",
     "epics:import": "node scripts/import-chronas-epics.mjs",
+    "provinces:import": "node scripts/import-chronas-province-timelines.mjs",
     "test:years": "node tests/year-integrity.mjs",
     "test:vector": "node tests/vector-provinces.mjs",
+    "test:provinces": "node tests/province-timelines.mjs",
     "build:pages": "node scripts/build-pages.mjs",
     "verify": "node scripts/verify.mjs",
     "test:e2e": "node tests/e2e.mjs",
     "test:perf": "node tests/perf-budget.mjs",
     "test:pwa": "node tests/pwa.mjs",
-    "check": "npm run verify && npm run test:years && npm run test:vector && node tests/http-guards.mjs && npm run test:e2e && npm run test:perf && npm run test:pwa"
+    "check": "npm run verify && npm run test:years && npm run test:vector && npm run test:provinces && node tests/http-guards.mjs && npm run test:e2e && npm run test:perf && npm run test:pwa"
   },
   "engines": {
     "node": ">=20"

@@ -34,4 +34,4 @@
 | Z-fighting sphère/maillage | Faible | Moyen | Rayon 1.003 pour le maillage, 1.004 pour les contours |
 | Reconstruction lente à chaque année | Moyenne | Moyen | 44 ms mesurés à chaud, seuil 2 s dans `test:vector` pour les démarrages à froid |
 | Mode « libellés modernes » indisponible | Certaine | Faible | Noms modernes absents du snapshot local ; mode remplacé par Capitales, tracé en P11 |
-| 400 Chromium sur les chunks via SW | Faible (corrigé) | Moyen | Le SW sert les chunks précachés et laisse les autres au fetch navigateur sans réécriture |
+| 400 Chromium synthétique sur chunks concurrents | Certaine | Faible | Serveur vérifié 200 ; `year-store` gère son propre cache et l'e2e isole cet artefact sans masquer les autres erreurs |

@@ -29,7 +29,8 @@ Voir `CURRENT-STATE.md`. Points clés : 5 modules JS, 0 cycle, `arch.verify` OK,
 | Rendu sphère | Three.js r152 local / WebGL maison / Canvas 2D pseudo-sphère | **Three.js r152 local** | ADR-0004 |
 | Timeline | Snapshot unique / chunks par siècle + deltas / proxy API | **Chunks locaux par siècle** | ADR-0005 |
 | Définition et rotation | 3072 / 4096 / 8192 ; auto / manuel | **4096×2048, rotation manuelle** | ADR-0006 |
-| Netteté en zoom | Texture 8192 / texture dynamique / maillage vectoriel | **Maillage vectoriel + zoom 6** | ADR-0007 |
+| Netteté en zoom | Texture 8192 / texture dynamique / maillage vectoriel | **Maillage vectoriel + zoom 6, porté 7,2 en P9** | ADR-0007 |
+| Timeline provinciale | Fichier unique / chunks par initiale / un fichier par province | **Chunks par initiale, import paresseux** | ADR-0008 |
 
 Chaque ADR contient coût, risque et réversibilité.
 
@@ -52,6 +53,8 @@ src/
     chronas-map.js          généré, géométrie partagée, CC BY-SA 4.0
     years/                  chunks de deltas par siècle (générés)
     year-store.js           reconstruction LRU des années -2000..2000
+    province-timeline-store.js  import paresseux des timelines provinciales
+    province-timelines/     27 chunks générés + index
 public/
   three.min.js              r152, MIT (copie locale)
 scripts/                    serve, build-pages, import, verify
@@ -111,6 +114,7 @@ Voir `RISKS.md`. Risques principaux : WebGL indisponible, couture de texture aux
 - ADR-0004 : sphère WebGL avec Three.js r152 local ; abroge partiellement ADR-0001.
 - ADR-0005 : timeline multi-années avec chunks locaux ; abroge ADR-0002.
 - ADR-0006 : définition 4096×2048 et rotation exclusivement manuelle.
-- ADR-0007 : maillage vectoriel des provinces et zoom maximal 6 ; remplace le dessin raster des frontières.
+- ADR-0007 : maillage vectoriel des provinces et zoom maximal 6, porté à 7,2 en P9 ; remplace le dessin raster des frontières.
+- ADR-0008 : timelines provinciales en 27 chunks locaux chargés à la demande.
 
 Ces décisions sont réversibles : voir `ROADMAP.md` (rollback) et `RISKS.md`.

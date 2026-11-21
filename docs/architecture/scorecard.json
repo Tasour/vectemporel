@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-21T07:55:15.904Z",
+  "generatedAt": "2026-11-21T11:40:57.671Z",
   "root": "/home/tasour/Projects/vectemporel-atlas",
   "weights": {
     "simplicite": 15,
@@ -18,7 +18,7 @@
       "score": 4,
       "weight": 15,
       "evidence": [
-        "1 canvas + HUD + timeline + maillage"
+        "1 canvas + HUD + timeline"
       ],
       "note": ""
     },
@@ -28,7 +28,7 @@
       "weight": 15,
       "evidence": [
         "0 cycle",
-        "vector-provinces isolé et testable"
+        "province-timeline-store isolé"
       ],
       "note": ""
     },
@@ -38,7 +38,8 @@
       "weight": 15,
       "evidence": [
         "4001 ans",
-        "2492 provinces vectorielles"
+        "2429 timelines",
+        "560 épiques"
       ],
       "note": ""
     },
@@ -47,8 +48,7 @@
       "score": 4,
       "weight": 10,
       "evidence": [
-        "URL Chronas",
-        "zoom cap 6"
+        "URL Chronas"
       ],
       "note": ""
     },
@@ -57,8 +57,7 @@
       "score": 5,
       "weight": 15,
       "evidence": [
-        "17 requêtes / 465 Ko",
-        "maillage 44 ms"
+        "22 requêtes / 529 Ko"
       ],
       "note": ""
     },
@@ -76,8 +75,7 @@
       "score": 5,
       "weight": 10,
       "evidence": [
-        "155 PASS",
-        "test:vector"
+        "195 PASS"
       ],
       "note": ""
     },
@@ -86,7 +84,7 @@
       "score": 5,
       "weight": 5,
       "evidence": [
-        "TODO F01-F37"
+        "TODO F01-F61"
       ],
       "note": ""
     },

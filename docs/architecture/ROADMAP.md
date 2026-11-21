@@ -39,29 +39,29 @@ Un push est effectué à la fin de chaque phase P*.
 ## P4 — Features Chronas complémentaires ✅ (partiel)
 
 - F21 5 dimensions de couleur ✅
-- F22 Modes de libellés — reporté
+- F22 Modes de libellés — ✅ livré en P10 (Aucun / Historique / Capitales)
 - F23 Marqueurs locaux (4 662 capitales) ✅
 - F24 Tooltip riche ✅
 - F25 Fiche enrichie + lien Wikipédia externe ✅
 - F26 Recherche enrichie — déjà présente, conservée ✅
-- F27 Épiques locaux — reporté
+- F27 Épiques locaux — ✅ livré en P10 (560 événements)
 - F28 Préférences locales (thème persistant) ✅
 
-Les features F22 et F27 sont reportées : elles demandent un import supplémentaire d'épiques et un travail de libellés non prioritaire dans cette livraison. Aucune partie du plan n'est abandonnée sans traçabilité.
+Les features F22 et F27, initialement reportées, ont été livrées en P10 avec leurs imports build-time et leurs contrôles dédiés.
 
-## P5 — Qualité et publication
+## P5 — Qualité et publication ✅ 2026-11-21
 
-- F29 E2E timeline
-- F30 Perf/PWA étendus
-- F31 Preuves visuelles
-- F32 Publication `atlas` + `gh-pages`
+- F29 E2E timeline ✅
+- F30 Perf/PWA étendus ✅
+- F31 Preuves visuelles ✅
+- F32 Publication `atlas` + `gh-pages` ✅
 
 ## P6 — Netteté vectorielle ✅ 2026-11-21
 
 - F33 ADR-0007 (maillage vectoriel + zoom 6) ✅
 - F34 Module `vector-provinces.js` (16 741 triangles, 44 ms) ✅
 - F35 Intégration globe + texture réduite à 2048×1024 ✅
-- F36 Borne de zoom 6 (`clampView`, molette, pincement, deep-link) ✅
+- F36 Borne de zoom 6 (`clampView`, molette, pincement, deep-link) ✅ (portée à 7,2 en P9/F43)
 - F37 Test vectoriel, e2e, captures zoom 6, publication ✅
 
 **Rollback** : restaurer la texture 4096×2048 et le zoom 8 depuis `archive/v2-globe-1year/`.
@@ -79,14 +79,14 @@ Les features F22 et F27 sont reportées : elles demandent un import supplémenta
 
 - Hash SHA-256 de tous les fichiers publiés calculé par `build-pages.mjs`.
 - Nom du cache SW et URLs des assets versionnés par ce hash.
-- Anciens caches supprimés à l'activation ; fetch réseau en `cache: 'reload'`.
+- Anciens caches supprimés à l'activation ; chunks d'années gérés par `year-store` (fetch standard + cache dédié), amendé en P11.
 - Rechargement unique de la page quand un nouveau SW prend le contrôle.
 
 **Rollback** : restaurer `sw.js`, `build-pages.mjs` et `src/app.js` depuis le commit `722eea1`.
 
-## P9 — Interaction sans bulle et picking des capitales ✅ 2026-11-21
+## P9 — Interaction sans bulle native et picking des capitales ✅ 2026-11-21
 
-- F42 Suppression des infobulles maison et natives ✅
+- F42 Suppression de l'infobulle native ; bulle custom restaurée en P9a ✅
 - F43 Zoom maximal porté à 7,2 (+20 %) ✅
 - F44 Hit-test écran des capitales → sélection de la région ✅
 - F45 Tests e2e, captures zoom 7,2, publication ✅
@@ -111,6 +111,18 @@ Les features F22 et F27 sont reportées : elles demandent un import supplémenta
 - F54 Tests, captures et publication ✅
 
 **Rollback** : restaurer `src/app.js`, `sw.js` et `scripts/serve.mjs` depuis le commit `30fdb17`.
+
+## P11 — Timeline provinciale ✅ 2026-11-21
+
+- F55 ADR-0008 (chunks locaux paresseux) ✅
+- F56 Importeur reprenable des 2 429 timelines ✅
+- F57 27 chunks par initiale + index 41 Ko ✅
+- F58 Store paresseux avec LRU et repli hors ligne ✅
+- F59 Section « Chronologie » dans la fiche de région ✅
+- F60 Nettoyage de la roadmap et docs ✅
+- F61 Test d'intégrité, e2e, captures, publication ✅
+
+**Rollback** : restaurer `src/app.js`, `sw.js` et `src/data/year-store.js` depuis le commit `b32e7a8`.
 
 ## Rollback global
 

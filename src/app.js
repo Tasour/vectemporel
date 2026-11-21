@@ -6,6 +6,8 @@ import { createGlobe } from './globe/globe.js';
 import { DIMENSIONS } from './globe/texture.js';
 import { createLabelRenderer, buildLabels, LABEL_MODES } from './globe/labels.js';
 import { createEpicTimeline, epicYear, categoryOf } from './timeline/epics.js';
+import { getProvinceTimeline } from './data/province-timeline-store.js';
+import { CHRONAS_LABELS } from './data/chronas-labels.js';
 import { clampYear, getAreasForYear } from './data/year-store.js';
 
 const SEED = 20261121;
@@ -234,6 +236,8 @@ function mount() {
 
   let selected = null;
   let areasForYear = null;
+  let provinceTimelineToken = 0;
+  let provinceTimelineData = null;
   let capitalIndex = new Map();
   let cities = null;
   let suggestionIndex = -1;
@@ -271,10 +275,103 @@ function mount() {
     })
     .catch(() => { /* données optionnelles : la carte reste utilisable */ });
 
+  const PROVINCE_DIMENSIONS = [
+    { id: 'ruler', label: 'Souverain' },
+    { id: 'culture', label: 'Culture' },
+    { id: 'religion', label: 'Religion' },
+    { id: 'capital', label: 'Capitale' },
+    { id: 'population', label: 'Population' },
+  ];
+
+  function localizeTimelineValue(dimension, value) {
+    if (dimension === 'population') return `${value} hab`;
+    if (dimension === 'capital') return value;
+    return CHRONAS_LABELS.names[dimension]?.[value] || value;
+  }
+
+  function renderProvinceTimeline(name) {
+    const token = ++provinceTimelineToken;
+    const host = el('section', 'province-timeline');
+    host.id = 'province-timeline';
+    host.appendChild(el('h3', 'pt-title', 'Chronologie de la région'));
+    const status = el('p', 'pt-status', 'Chargement de la chronologie…');
+    host.appendChild(status);
+    card.appendChild(host);
+
+    getProvinceTimeline(name).then((timeline) => {
+      if (token !== provinceTimelineToken || !host.isConnected) return;
+      provinceTimelineData = timeline;
+      status.hidden = true;
+      if (!timeline) {
+        status.textContent = 'Chronologie indisponible pour cette région.';
+        status.hidden = false;
+        return;
+      }
+
+      const options = [];
+      const rows = el('div', 'pt-rows');
+      for (const dimension of PROVINCE_DIMENSIONS) {
+        const entries = (timeline[dimension.id] || []).slice(0, 40);
+        if (!entries.length) continue;
+        const row = el('div', 'pt-row');
+        row.appendChild(el('span', 'pt-name', dimension.label));
+        const track = el('div', 'pt-track');
+        track.setAttribute('aria-hidden', 'true');
+        const now = el('span', 'pt-now');
+        now.style.left = `${((year + 2000) / 4000) * 100}%`;
+        track.appendChild(now);
+        for (const [entryYear, value] of entries) {
+          const dot = el('span', entryYear === year ? 'pt-dot active' : 'pt-dot');
+          dot.style.left = `${((entryYear + 2000) / 4000) * 100}%`;
+          track.appendChild(dot);
+          options.push({ dimension: dimension.id, year: entryYear, label: localizeTimelineValue(dimension.id, value) });
+        }
+        track.addEventListener('click', (event) => {
+          const rect = track.getBoundingClientRect();
+          const target = -2000 + ((event.clientX - rect.left) / rect.width) * 4000;
+          let best = null;
+          let distance = Infinity;
+          for (const entry of entries) {
+            const current = Math.abs(entry[0] - target);
+            if (current < distance) { distance = current; best = entry; }
+          }
+          if (best && distance <= 100) applyYear(best[0]);
+        });
+        row.appendChild(track);
+        rows.appendChild(row);
+      }
+      host.appendChild(rows);
+
+      const picker = el('select', 'pt-select');
+      picker.id = 'province-event-select';
+      picker.setAttribute('aria-label', 'Aller à un repère de la chronologie provinciale');
+      const empty = el('option', '', 'Aller à un repère…');
+      empty.value = '';
+      picker.appendChild(empty);
+      options.sort((a, b) => a.year - b.year || a.label.localeCompare(b.label, 'fr'));
+      options.forEach((option, index) => {
+        const node = el('option', '', `${option.year} · ${option.label}`);
+        node.value = String(index);
+        picker.appendChild(node);
+      });
+      picker.addEventListener('change', () => {
+        const option = options[Number(picker.value)];
+        if (option) applyYear(option.year);
+      });
+      host.appendChild(picker);
+    }).catch(() => {
+      if (token !== provinceTimelineToken) return;
+      status.textContent = 'Chronologie indisponible.';
+      status.hidden = false;
+    });
+  }
+
   function renderCard(name) {
     const info = name ? describe(name) : null;
     card.replaceChildren();
     if (!info) {
+      provinceTimelineToken += 1;
+      provinceTimelineData = null;
       card.hidden = true;
       return;
     }
@@ -300,6 +397,7 @@ function mount() {
     wiki.target = '_blank';
     wiki.rel = 'noopener noreferrer';
     card.append(wiki, el('p', 'hud-credit', 'Chronas · CC BY-SA 4.0'));
+    renderProvinceTimeline(name);
     card.hidden = false;
   }
 
@@ -594,6 +692,7 @@ function mount() {
       labels: labelRenderer.count(),
       labelMode,
       epics: epicTimeline.count,
+      provinceTimeline: Boolean(provinceTimelineData),
     }),
     selectRegion: (name) => select(name),
     setYear: (value) => applyYear(value),

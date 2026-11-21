@@ -33,9 +33,11 @@ check('libellés Chronas présents', Object.values(labels.names).reduce((sum, ma
 const epicsData = await import(path.join(ROOT, 'src/data/chronas-epics.js')).then((m) => m.CHRONAS_EPICS);
 check('560 épiques locaux', epicsData.epics.length === 560, `${epicsData.epics.length}`);
 check('aucun poster distant', !JSON.stringify(epicsData).includes('http'));
+const provinceIndex = await import(path.join(ROOT, 'src/data/province-timelines/index.js')).then((m) => m.PROVINCE_CHUNKS);
+check('index timelines 2429', Object.keys(provinceIndex).length === 2429, `${Object.keys(provinceIndex).length}`);
 
 const html = read('index.html');
-const runtimeFiles = ['index.html', 'styles.css', 'src/app.js', 'src/map/data.js', 'src/map/projection.js', 'src/globe/globe.js', 'src/globe/lonlat.js', 'src/globe/texture.js', 'src/globe/vector-provinces.js', 'src/globe/labels.js', 'src/timeline/epics.js', 'src/data/year-store.js'];
+const runtimeFiles = ['index.html', 'styles.css', 'src/app.js', 'src/map/data.js', 'src/map/projection.js', 'src/globe/globe.js', 'src/globe/lonlat.js', 'src/globe/texture.js', 'src/globe/vector-provinces.js', 'src/globe/labels.js', 'src/timeline/epics.js', 'src/data/year-store.js', 'src/data/province-timeline-store.js'];
 const runtime = runtimeFiles.map(read).join('\n');
 const sw = read('sw.js');
 check('aucun fetch réseau runtime', !/fetch\(\s*['"]https?:/.test(runtime));
@@ -65,7 +67,7 @@ check('roundtrip lon/lat -> vecteur', roundtrip);
 const pixel = pixelsFromLonLat(0, 0, 2048, 1024);
 check('texture équirectangulaire centrée', pixel.x === 1024 && pixel.y === 512);
 
-const files = ['scripts/serve.mjs', 'scripts/build-pages.mjs', 'scripts/import-chronas-map.mjs', 'src/app.js', 'src/map/data.js', 'src/map/projection.js', 'src/globe/globe.js', 'src/globe/lonlat.js', 'src/globe/texture.js', 'src/globe/vector-provinces.js', 'src/globe/labels.js', 'src/timeline/epics.js', 'src/data/year-store.js', 'scripts/import-chronas-markers.mjs', 'scripts/import-chronas-metadata.mjs', 'scripts/import-chronas-epics.mjs', 'tests/e2e.mjs', 'tests/pwa.mjs', 'tests/perf-budget.mjs'];
+const files = ['scripts/serve.mjs', 'scripts/build-pages.mjs', 'scripts/import-chronas-map.mjs', 'src/app.js', 'src/map/data.js', 'src/map/projection.js', 'src/globe/globe.js', 'src/globe/lonlat.js', 'src/globe/texture.js', 'src/globe/vector-provinces.js', 'src/globe/labels.js', 'src/timeline/epics.js', 'src/data/year-store.js', 'src/data/province-timeline-store.js', 'scripts/import-chronas-markers.mjs', 'scripts/import-chronas-province-timelines.mjs', 'scripts/import-chronas-metadata.mjs', 'scripts/import-chronas-epics.mjs', 'tests/e2e.mjs', 'tests/pwa.mjs', 'tests/perf-budget.mjs'];
 for (const file of files) {
   try {
     execFileSync(process.execPath, ['--check', path.join(ROOT, file)], { stdio: 'pipe' });

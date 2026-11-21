@@ -10,6 +10,7 @@ const SHELL = [
   './src/data/chronas-map.js', './src/data/year-store.js',
   './src/globe/labels.js', './src/timeline/epics.js',
   './src/data/chronas-labels.js', './src/data/chronas-epics.js',
+  './src/data/province-timelines/index.js', './src/data/province-timelines/b.js',
   './src/data/years/c1000.json', './src/data/chronas-cities.js', './public/three.min.js',
   './icons/icon-192.png', './icons/icon-512.png', './icons/icon-maskable-512.png',
 ];
@@ -35,14 +36,14 @@ self.addEventListener('fetch', (event) => {
   let url;
   try { url = new URL(request.url); } catch { return; }
   if (url.origin !== self.location.origin) return;
+  /* Les chunks d'années sont gérés par year-store (cache + repli hors ligne)
+   * pour éviter les 400 intermittents de Chromium sur les Request réutilisées. */
+  if (url.pathname.includes('/src/data/years/')) return;
 
   event.respondWith((async () => {
     const cache = await caches.open(CACHE);
     const cached = await cache.match(request);
     if (cached) return cached;
-    /* Les chunks d'années sont précachés pour le hors-ligne ; les autres
-     * doivent être récupérés sans réécriture de requête (cache SW bug 400). */
-    if (url.pathname.includes('/src/data/years/')) return fetch(request);
     try {
       const response = await fetch(request);
       if (response && response.status === 200 && response.type === 'basic') {
