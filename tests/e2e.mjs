@@ -129,6 +129,12 @@ await page.evaluate(() => document.getElementById('chronas-toggle')?.click());
 await new Promise((resolve) => setTimeout(resolve, 500));
 check('frise mondiale active', await page.evaluate(() => Boolean(document.getElementById('chronas-canvas'))));
 check('readout Chronas', await page.evaluate(() => /Chronas|événements/.test(document.getElementById('chronas-readout')?.textContent || '')));
+await page.goto('http://127.0.0.1:4181/index.html#type=area&value=France&pos=2.35,48.85,5&year=1000', { waitUntil: 'load', timeout: 60000 });
+await new Promise((resolve) => setTimeout(resolve, 700));
+check('deep link Chronas', await page.evaluate(() => {
+  const state = window.VATLAS.getState();
+  return state.view === 'chronology' && state.countryId === 'france' && state.eventIndex >= 0;
+}));
 check('aucune erreur console', errors.length === 0, errors.slice(0, 3).join(' | '));
 await browser.close();
 console.log(failed ? `${failed} échec(s)` : 'Tous les tests E2E passent.');

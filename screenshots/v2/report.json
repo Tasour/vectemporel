@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-20T16:25:55.227Z",
+  "generated": "2026-11-21T01:53:17.216Z",
   "base": "http://127.0.0.1:4181/index.html",
   "captures": [
     {
@@ -16,7 +16,7 @@
       "name": "chronology-desktop.png",
       "viewport": "desktop",
       "view": "chronology",
-      "nodes": 8812,
+      "nodes": 8822,
       "scrollWidth": 1658,
       "innerWidth": 1658,
       "emptyContainers": 0,
@@ -36,7 +36,7 @@
       "name": "geography-desktop.png",
       "viewport": "desktop",
       "view": "geography",
-      "nodes": 8252,
+      "nodes": 9343,
       "scrollWidth": 1658,
       "innerWidth": 1658,
       "emptyContainers": 0,
@@ -80,7 +80,7 @@
       "name": "chronology-mobile.png",
       "viewport": "mobile",
       "view": "chronology",
-      "nodes": 8812,
+      "nodes": 8822,
       "scrollWidth": 390,
       "innerWidth": 390,
       "emptyContainers": 0,
@@ -90,7 +90,7 @@
       "name": "recit-mobile.png",
       "viewport": "mobile",
       "view": "recit",
-      "nodes": 1601,
+      "nodes": 2639,
       "scrollWidth": 390,
       "innerWidth": 390,
       "emptyContainers": 0,
