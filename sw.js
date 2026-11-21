@@ -8,6 +8,8 @@ const SHELL = [
   './src/app.js', './src/map/data.js', './src/map/projection.js',
   './src/globe/globe.js', './src/globe/lonlat.js', './src/globe/texture.js',
   './src/data/chronas-map.js', './src/data/year-store.js',
+  './src/globe/labels.js', './src/timeline/epics.js',
+  './src/data/chronas-labels.js', './src/data/chronas-epics.js',
   './src/data/years/c1000.json', './src/data/chronas-cities.js', './public/three.min.js',
   './icons/icon-192.png', './icons/icon-512.png', './icons/icon-maskable-512.png',
 ];
@@ -38,8 +40,11 @@ self.addEventListener('fetch', (event) => {
     const cache = await caches.open(CACHE);
     const cached = await cache.match(request);
     if (cached) return cached;
+    /* Les chunks d'années sont précachés pour le hors-ligne ; les autres
+     * doivent être récupérés sans réécriture de requête (cache SW bug 400). */
+    if (url.pathname.includes('/src/data/years/')) return fetch(request);
     try {
-      const response = await fetch(request, { cache: 'reload' });
+      const response = await fetch(request);
       if (response && response.status === 200 && response.type === 'basic') {
         await cache.put(request, response.clone());
       }

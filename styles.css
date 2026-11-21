@@ -176,6 +176,29 @@ button, input { font: inherit; }
   overflow: hidden;
   text-overflow: ellipsis;
 }
+#globe-labels { position: fixed; inset: 0; z-index: 5; pointer-events: none; overflow: hidden; }
+.globe-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 180px;
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: rgba(5, 8, 13, .55);
+  color: var(--gold-bright);
+  font-size: 11px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.globe-label[hidden] { display: none; }
+.label-bar { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+.label-btn { min-height: 44px; padding: 3px 8px; border: 1px solid var(--line); border-radius: 6px; background: rgba(10,15,22,.7); color: var(--muted); font-size: 10px; cursor: pointer; }
+.label-btn[aria-checked="true"] { border-color: var(--gold); color: var(--gold-bright); background: rgba(230,185,111,.14); }
+.epic-host { position: relative; display: flex; align-items: center; gap: 6px; }
+.epic-track { position: relative; flex: 1; height: 44px; }
+.epic-tick { position: absolute; bottom: 6px; width: 2px; height: 10px; border-radius: 1px; opacity: .85; }
+.epic-select { min-height: 44px; max-width: 220px; padding: 4px 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); font-size: 11px; }
 .dimension-bar { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
 .dimension-btn { min-height: 44px; padding: 3px 8px; border: 1px solid var(--line); border-radius: 6px; background: rgba(10,15,22,.7); color: var(--muted); font-size: 10px; cursor: pointer; }
 .dimension-btn[aria-checked="true"] { border-color: var(--gold); color: var(--gold-bright); background: rgba(230,185,111,.14); }

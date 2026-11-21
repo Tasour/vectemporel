@@ -100,6 +100,18 @@ Les features F22 et F27 sont reportées : elles demandent un import supplémenta
 
 **Rollback** : restaurer l'état sans tooltip depuis le commit `319d149`.
 
+## P10 — Libellés et épiques ✅ 2026-11-21
+
+- F48 Import des noms Chronas (4 832 libellés, 104 Ko) ✅
+- F49 Libellés projetés : Aucun / Historique / Capitales ✅
+- F50 Mode « moderne » tracé comme hors périmètre hors ligne ✅
+- F51 Import des 560 épiques (46 Ko, sans poster) ✅
+- F52 Pastilles + sélecteur accessible sur la timeline ✅
+- F53 Correctif SW : les chunks d'années ne sont pas réécrits (400 Chromium) ✅
+- F54 Tests, captures et publication ✅
+
+**Rollback** : restaurer `src/app.js`, `sw.js` et `scripts/serve.mjs` depuis le commit `30fdb17`.
+
 ## Rollback global
 
 Restaurer `archive/v2-globe-1year/` (ou `archive/v1-map-2d/`) et republier le commit `adc5c9d`.

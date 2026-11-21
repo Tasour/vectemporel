@@ -20,6 +20,12 @@ const page = await browser.newPage();
 await page.setViewport({ width: 1440, height: 900 });
 page.on('pageerror', (error) => errors.push(error.message));
 page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
+page.on('response', (response) => {
+  if (response.status() >= 400) {
+    const headers = response.request().headers();
+    errors.push(`HTTP ${response.status()} ${response.url()} ${JSON.stringify(headers)}`);
+  }
+});
 page.on('response', (response) => { if (response.status() >= 400) errors.push(`HTTP ${response.status()} ${response.url()}`); });
 
 try {
@@ -151,6 +157,24 @@ try {
   check('tour manuel actif', await page.evaluate(() => window.VATLAS.getState().touring === true));
   await page.click('#hud-tour-button');
   check('tour manuel arrêté', await page.evaluate(() => window.VATLAS.getState().touring === false));
+  /* P10 — libellés et épiques. */
+  await page.evaluate(() => window.VATLAS.setYear(1000));
+  await new Promise((resolve) => setTimeout(resolve, 600));
+  check('560 épiques chargés', await page.evaluate(() => window.VATLAS.getState().epics === 560));
+  check('sélecteur épiques', await page.evaluate(() => document.querySelectorAll('#epic-select option').length > 560));
+  await page.click('.label-btn[data-mode="historical"]');
+  await new Promise((resolve) => setTimeout(resolve, 400));
+  check('libellés historiques', await page.evaluate(() => window.VATLAS.getState().labels > 0));
+  await page.click('.label-btn[data-mode="capitals"]');
+  await new Promise((resolve) => setTimeout(resolve, 400));
+  check('libellés capitales', await page.evaluate(() => window.VATLAS.getState().labels > 0));
+  await page.click('.label-btn[data-mode="off"]');
+  check('libellés désactivés', await page.evaluate(() => window.VATLAS.getState().labels === 0));
+  const yearBeforeEpic = await page.evaluate(() => window.VATLAS.getState().year);
+  await page.select('#epic-select', '5');
+  await new Promise((resolve) => setTimeout(resolve, 600));
+  check('clic épique change l’année', await page.evaluate((value) => window.VATLAS.getState().year !== value, yearBeforeEpic));
+
   check('aucune erreur console', errors.length === 0, errors.slice(0, 3).join(' | '));
 } finally {
   await browser.close();

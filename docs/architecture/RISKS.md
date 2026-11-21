@@ -32,4 +32,6 @@
 | Polygones concaves ou dégénérés (ADR-0007) | Moyenne | Moyen | `ShapeUtils.triangulateShape`, 2 anneaux ignorés sur 2 492 mesurés |
 | Antiméridien −180/+180 (ADR-0007) | Faible | Moyen | Normalisation autour du centroïde ; 0 anneau concerné mesuré |
 | Z-fighting sphère/maillage | Faible | Moyen | Rayon 1.003 pour le maillage, 1.004 pour les contours |
-| Reconstruction lente à chaque année | Moyenne | Moyen | 44 ms mesurés sur 2 492 polygones, seuil 400 ms dans `test:vector` |
+| Reconstruction lente à chaque année | Moyenne | Moyen | 44 ms mesurés à chaud, seuil 2 s dans `test:vector` pour les démarrages à froid |
+| Mode « libellés modernes » indisponible | Certaine | Faible | Noms modernes absents du snapshot local ; mode remplacé par Capitales, tracé en P11 |
+| 400 Chromium sur les chunks via SW | Faible (corrigé) | Moyen | Le SW sert les chunks précachés et laisse les autres au fetch navigateur sans réécriture |
