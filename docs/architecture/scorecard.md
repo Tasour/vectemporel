@@ -1,8 +1,8 @@
 # Scorecard — /home/tasour/Projects/vectemporel-atlas
-Score global : 87/100
+Score global : 86/100
 Couverture : 100 %
 Confiance : high
-Généré le : 2026-11-21T03:40:04.696Z
+Généré le : 2026-11-21T04:10:59.548Z
 
 | Dimension | Poids | Score | Preuves |
 |---|---:|---:|---|
@@ -12,8 +12,8 @@ Généré le : 2026-11-21T03:40:04.696Z
 | api | 10 | 4/5 | 2 |
 | performance | 15 | 5/5 | 1 |
 | securite | 10 | 4/5 | 3 |
-| testabilite | 10 | 4/5 | 1 |
+| testabilite | 10 | 4/5 | 2 |
 | dx | 5 | 4/5 | 2 |
-| cout | 5 | 5/5 | 2 |
+| cout | 5 | 4/5 | 2 |
 
 Règle : une dimension sans preuve est exclue du calcul et plafonne la confiance.

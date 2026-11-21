@@ -1,60 +1,69 @@
-# Architecture cible — Atlas historique minimal
+# Architecture cible — Sphère historique plein écran
 
 ## 1. Contexte
 
-Remplacer l'Atlas v0 (6 vues, 1 632 lentilles, audits) par **une seule vue** : la carte mondiale de Chronas, reconstruite en clean-room, avec les paramètres d'URL d'origine (`type=area&value=Berry&pos=lat,lon,zoom&year=1000`). Données locales, zéro réseau au runtime, PWA conservée.
+L'atlas livré affiche une carte 2D de 2 429 régions de l'an 1000 (données Chronas CC BY-SA 4.0). L'objectif est de transformer cette base en **sphère WebGL plein écran**, avec une interface réduite au minimum : un HUD de jeu vidéo, pas de barre d'outils ni de panneau latéral. Le site publié et le raccourci Omarchy restent inchangés.
+
+L'ADR-0001 (« canvas maison, zéro dépendance ») est partiellement abrogé par l'**ADR-0004** : la couche de rendu 3D utilise Three.js r152 local (MIT). La couche données reste locale, déterministe et sans appel réseau.
 
 ## 2. Drivers de qualité
 
-1. Budget : < 50 requêtes et < 1 Mo au chargement.
-2. Zéro dépendance runtime, zéro appel réseau externe à l'exécution.
-3. Mobile 390×844, clavier, ARIA, mouvement réduit.
-4. Fidélité fonctionnelle à l'URL cible.
-5. Réversibilité : archiver l'ancien sans suppression.
+1. Sphère plein écran, ambiance spatiale (étoiles, halo, inertie, rotation auto).
+2. Budget : < 50 requêtes et < 1 Mo au chargement (mesure : 208 Ko avant Three.js).
+3. Zéro appel réseau au runtime ; PWA hors ligne conservée.
+4. Mobile 390×844, clavier, ARIA, `prefers-reduced-motion`.
+5. Contrat d'URL Chronas inchangé : `type=area&value=…&pos=lat,lon,zoom&year=…`.
+6. Réversibilité : version 2D archivée dans `archive/v1-map-2d/`.
 
 ## 3. État des lieux
 
-Voir `CURRENT-STATE.md`. Points clés : vanilla JS, 0 dépendance, 0 cycle, snapshot 705 Ko, géométrie 2 492 polygones disponible au build.
+Voir `CURRENT-STATE.md`. Points clés : 5 modules JS, 0 cycle, `arch.verify` OK, scorecard 87/100, snapshot 593 Ko, première visite 10 requêtes / 208 Ko, actif Three.js r152 MIT déjà présent dans l'archive (633 Ko brut).
 
 ## 4. Options comparées
 
 | Décision | Options | Retenue | ADR |
 |---|---|---|---|
-| Rendu carte | Canvas maison / MapLibre / SVG | **Canvas maison** | ADR-0001 |
-| Données | Année 1000 complète / 10 ans bornées / 10 ans complètes | **Année 1000 complète** | ADR-0002 |
-| Migration | Archive dépôt / nouveau dépôt / écrasement | **Archive dépôt** | ADR-0003 |
+| Rendu carte 2D | Canvas maison / MapLibre / SVG | Canvas maison | ADR-0001 |
+| Données | Année 1000 complète / 10 ans bornées / 10 ans complètes | Année 1000 complète | ADR-0002 |
+| Migration v0 | Archive dépôt / nouveau dépôt / écrasement | Archive dépôt | ADR-0003 |
+| Rendu sphère | Three.js r152 local / WebGL maison / Canvas 2D pseudo-sphère | **Three.js r152 local** | ADR-0004 |
 
 Chaque ADR contient coût, risque et réversibilité.
 
 ## 5. Architecture cible
 
 ```text
-index.html                  # une seule entrée
-styles.css                  # tokens + styles de la carte
+index.html                  canvas plein écran + HUD
+styles.css                  tokens + HUD minimal
 src/
-  app.js                    # composition root, aucun état métier
+  app.js                    composition root, URL, HUD, clavier
+  globe/
+    globe.js                scène Three.js, picking, inertie, étoiles, halo
+    lonlat.js               conversions pures lon/lat <-> vecteur 3D
+    texture.js              texture équirectangulaire depuis les polygones
   map/
-    renderer.js             # canvas Mercator, pan/zoom, hit-testing
-    projection.js           # pure, testable
-    data.js                 # chargement du snapshot local
+    data.js                 accès au snapshot (partagé)
+    projection.js           hits et bbox (partagé, hors rendu 2D)
   data/
-    chronas-map.js          # généré, CC BY-SA 4.0
-scripts/
-  serve.mjs                 # statique, whitelist
-  build-pages.mjs           # dist-pages
-  import-chronas.mjs        # build-time uniquement
-public/  icons/  manifest.webmanifest  sw.js
-archive/v0-atlas/           # ancienne app, données et audits
-docs/architecture/  docs/veille/
+    chronas-map.js          généré, CC BY-SA 4.0
+public/
+  three.min.js              r152, MIT (copie locale)
+scripts/                    serve, build-pages, import, verify
+tests/                      e2e, perf, pwa, guards
+archive/v0-atlas/           application originelle
+archive/v1-map-2d/          version cartographique plate
 ```
+
+Le module `src/map/renderer.js` n'est plus livré : il reste dans `archive/v1-map-2d/`.
 
 ## 6. Contrats et invariables
 
-- URL : `type=area&value=<nom>&pos=<lat,lon,zoom>&year=<année>` ; `value` et `year` pilotent la sélection.
-- `projection.js` : fonctions pures, coordonnées arrondies, pas d'aléa.
-- `renderer.js` : un seul canvas, un seul gestionnaire de rendu, aucun rAF continu ; DPR ≤ 2.
+- URL : `type=area&value=<nom>&pos=<lat,lon,zoom>&year=<année>` ; la caméra de la sphère pilote `pos`, la sélection pilote `value`.
+- `lonlat.js` : fonctions pures, convention UV alignée sur la texture équirectangulaire, aucun aléa.
+- `globe.js` : une seule boucle rAF, pause sur `document.hidden`, DPR ≤ 2, picking par raycast puis `pointInFeature()`.
+- `texture.js` : aucun fichier binaire généré au runtime, aucun réseau ; dessin déterministe des 2 492 polygones.
 - Données générées : `meta.source`, `meta.license`, `meta.retrieved_at`, `meta.api_version`.
-- Aucun appel réseau au runtime ; le service worker met les ressources locales en cache.
+- Licences : code MIT (Three.js inclus), données CC BY-SA 4.0 — attribution visible dans le HUD.
 
 ## 7. Budgets
 
@@ -62,29 +71,33 @@ docs/architecture/  docs/veille/
 |---|---|---|
 | Requêtes | < 50 | `test:perf` |
 | Poids initial | < 1 Mo | `test:perf` |
-| Snapshot carte | < 1 Mo | taille du fichier généré |
-| DOM | 1 canvas, cibles ≥ 44 px | `ui.guard`, `test:e2e` |
+| `three.min.js` | ~160 Ko gzip | transferSize mesuré |
+| Snapshot | < 1 Mo | `verify` |
+| DOM | 1 canvas plein écran, cibles ≥ 44 px | `ui.guard`, `test:e2e` |
+| rAF | 1 boucle, 0 en arrière-plan | revue de code + `test:perf` |
 
 ## 8. Migration (strangler)
 
-P0 — ADR + import des données + archive de l'ancien.
-P1 — vue carte minimale avec pan/zoom/sélection/deep link.
-P2 — accessibilité, PWA, vérifications et publication.
+P0 — ADR-0004 + archive de la version 2D + actif Three.js. ✅ 2026-11-21
+P1 — texture équirectangulaire, conversions lon/lat, scène WebGL et picking.
+P2 — HUD minimal, clavier, tactile, droit d'auteur visible.
+P3 — tests adaptés, captures, vérification et publication.
 
-Chaque étape réversible par restauration depuis `archive/v0-atlas/`.
+Chaque étape est réversible par restauration depuis `archive/v1-map-2d/`.
 
 ## 9. Risques
 
-Voir `RISKS.md`. Principal risque : perte de fidélité visuelle par rapport au frontend Chronas (non copiable légalement).
+Voir `RISKS.md`. Risques principaux : WebGL indisponible, couture de texture aux pôles, avertissement de dépréciation de Three.js r152.
 
 ## 10. Définition de terminée
 
-`tools.arch.verify` vert, `npm run check` vert, `test:perf`, `test:pwa`, captures, `git diff --check`, site Pages mis à jour.
+`tools.arch.verify` vert, `npm run check` vert (e2e, perf, pwa, guards), captures 1440×900 et 390×844, `ui.guard` sans constat sur le code livré, `git diff --check` propre, site Pages mis à jour.
 
 ## 11. Décisions
 
-- ADR-0001 : rendu Canvas maison, zéro dépendance.
-- ADR-0002 : snapshot complet de l'année 1000, géométrie simplifiée.
-- ADR-0003 : archivage de l'Atlas v0 dans le dépôt, migration strangler.
+- ADR-0001 : rendu Canvas maison pour la carte 2D.
+- ADR-0002 : snapshot complet de l'année 1000.
+- ADR-0003 : archivage de l'Atlas v0 dans le dépôt.
+- ADR-0004 : sphère WebGL avec Three.js r152 local ; abroge partiellement ADR-0001.
 
 Ces décisions sont réversibles : voir `ROADMAP.md` (rollback) et `RISKS.md`.

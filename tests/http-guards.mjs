@@ -61,7 +61,7 @@ try {
   check('log annonce 127.0.0.1', logs.includes(`http://127.0.0.1:${port}`), logs.trim().slice(0, 120));
   check('log n annonce pas *:', !logs.includes('*:'), logs.trim().slice(0, 120));
 
-  const allowed = ['/', '/index.html', '/styles.css', '/sw.js', '/manifest.webmanifest', '/src/app.js', '/src/map/projection.js', '/src/data/chronas-map.js', '/icons/icon-192.png'];
+  const allowed = ['/', '/index.html', '/styles.css', '/sw.js', '/manifest.webmanifest', '/src/app.js', '/src/map/projection.js', '/src/globe/globe.js', '/src/globe/lonlat.js', '/src/data/chronas-map.js', '/public/three.min.js', '/icons/icon-192.png'];
   for (const pathValue of allowed) {
     const response = await fetch(`${base}${pathValue}`, { signal: AbortSignal.timeout(2000) });
     check(`200 ${pathValue}`, response.status === 200, `HTTP ${response.status}`);

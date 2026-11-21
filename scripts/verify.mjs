@@ -25,16 +25,19 @@ check('coordonnées finies', map.features.every((feature) => feature.rings.every
 const snapshotBytes = fs.statSync(path.join(ROOT, 'src/data/chronas-map.js')).size;
 check('snapshot < 1 Mo', snapshotBytes < 1024 * 1024, `${Math.round(snapshotBytes / 1024)} Ko`);
 
-const runtimeFiles = ['index.html', 'styles.css', 'src/app.js', 'src/map/data.js', 'src/map/projection.js', 'src/map/renderer.js'];
+const html = read('index.html');
+const runtimeFiles = ['index.html', 'styles.css', 'src/app.js', 'src/map/data.js', 'src/map/projection.js', 'src/globe/globe.js', 'src/globe/lonlat.js', 'src/globe/texture.js'];
 const runtime = runtimeFiles.map(read).join('\n');
 const sw = read('sw.js');
 check('aucun fetch runtime', !/\bfetch\s*\(/.test(runtime));
 check('aucune URL distante', !/https?:\/\//.test(runtime));
 check('service worker same-origin', /url\.origin !== self\.location\.origin/.test(sw));
-check('aucun canvas tombstone', !/three\.min\.js|globe-engine/.test(runtime));
-check('aucun Math.random', !/Math\.random/.test(runtime));
+check('aucun moteur globe obsolète', !/globe-engine/.test(runtime));
+check('Three.js local référencé', /public\/three\.min\.js/.test(html));
+const three = read('public/three.min.js');
+check('Three.js MIT', /SPDX-License-Identifier: MIT/.test(three.slice(0, 400)));
+check('aucun Math.random dans l’app', !/Math\.random/.test(runtime));
 
-const html = read('index.html');
 const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map((match) => match[1]);
 check('ids DOM uniques', new Set(ids).size === ids.length, `${ids.length} ids`);
 check('un seul main dans le HTML', (html.match(/<main/g) || []).length <= 1);
@@ -43,7 +46,16 @@ check('meta description', /name="description"/.test(html));
 const pkg = JSON.parse(read('package.json'));
 check('0 dépendance runtime', !pkg.dependencies || Object.keys(pkg.dependencies).length === 0);
 
-const files = ['scripts/serve.mjs', 'scripts/build-pages.mjs', 'scripts/import-chronas-map.mjs', 'src/app.js', 'src/map/data.js', 'src/map/projection.js', 'src/map/renderer.js', 'tests/e2e.mjs', 'tests/pwa.mjs', 'tests/perf-budget.mjs'];
+const { vectorFromLonLat, lonLatFromVector, pixelsFromLonLat } = await import(path.join(ROOT, 'src/globe/lonlat.js'));
+const roundtrip = [[0, 0], [2.4, 47.1], [-73.5, -40.2], [179.9, 84.9]].every(([lon, lat]) => {
+  const back = lonLatFromVector(vectorFromLonLat(lon, lat));
+  return Math.abs(back.lon - lon) < 1e-6 && Math.abs(back.lat - lat) < 1e-6;
+});
+check('roundtrip lon/lat -> vecteur', roundtrip);
+const pixel = pixelsFromLonLat(0, 0, 2048, 1024);
+check('texture équirectangulaire centrée', pixel.x === 1024 && pixel.y === 512);
+
+const files = ['scripts/serve.mjs', 'scripts/build-pages.mjs', 'scripts/import-chronas-map.mjs', 'src/app.js', 'src/map/data.js', 'src/map/projection.js', 'src/globe/globe.js', 'src/globe/lonlat.js', 'src/globe/texture.js', 'tests/e2e.mjs', 'tests/pwa.mjs', 'tests/perf-budget.mjs'];
 for (const file of files) {
   try {
     execFileSync(process.execPath, ['--check', path.join(ROOT, file)], { stdio: 'pipe' });

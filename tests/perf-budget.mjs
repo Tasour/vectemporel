@@ -13,7 +13,7 @@ const check = (name, ok, detail = '') => {
 
 const browser = await puppeteer.launch({
   executablePath: process.env.CHROME_PATH || '/usr/bin/chromium',
-  headless: 'new', args: ['--no-sandbox', '--disable-gpu', '--enable-webgl'],
+  headless: 'new', args: ['--no-sandbox', '--disable-gpu', '--enable-webgl', '--enable-unsafe-swiftshader'],
 });
 const page = await browser.newPage();
 await page.setViewport({ width: 1440, height: 900 });
@@ -44,6 +44,9 @@ try {
   });
   console.log(`Première visite : ${firstVisitRequests} requêtes / ${Math.round(firstBytes / 1024)} Ko · régime établi : ${Math.round(measured.bytes / 1024)} Ko`);
   check('aucun module de lentille dans le graphe initial', measured.lensModules === 0, `${measured.lensModules}`);
+  check('Three.js chargé depuis le site', await page.evaluate(() => performance.getEntriesByType('resource')
+    .some((entry) => /three\.min\.js/.test(entry.name))));
+  check('sphère WebGL active', await page.evaluate(() => window.VATLAS?.getState?.().webgl === true));
   check('première visite < 50 requêtes', firstVisitRequests < 50, `${firstVisitRequests} requêtes`);
   check('première visite < 1 Mo', firstBytes < 1024 * 1024, `${Math.round(firstBytes / 1024)} Ko`);
   check('régime établi servi par le cache SW', measured.bytes < 64 * 1024, `${Math.round(measured.bytes / 1024)} Ko`);

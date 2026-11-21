@@ -7,6 +7,10 @@
 - **OpenHistoricalMap** — https://www.openhistoricalmap.org — données cartographiques historiques, licence **ODbL**.
 - **Natural Earth** — https://www.naturalearthdata.com — domaine public (contours de référence utilisés par l'atlas local).
 
+## Bibliothèques de rendu
+
+- **Three.js r152** — https://threejs.org — Copyright 2010-2023 Three.js Authors, licence **MIT** (`SPDX-License-Identifier: MIT`). Fichier local `public/three.min.js`, utilisé pour la sphère WebGL. Aucune autre bibliothèque tierce n'est chargée au runtime.
+
 ## Inspiration fonctionnelle (aucun code copié)
 
 - **Histography** — https://histography.io — Matan Stauber, Bezalel Academy (2015). Interaction timeline « un point = un événement », échelles multiples, catégories, « Feeling Lucky ». Projet fermé : **reconstruction originale uniquement**.
