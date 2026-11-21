@@ -93,6 +93,13 @@ Les features F22 et F27 sont reportées : elles demandent un import supplémenta
 
 **Rollback** : restaurer `src/app.js`, `src/globe/globe.js`, `styles.css` et `tests/e2e.mjs` depuis le commit `de2e7a6`.
 
+## P9a — Bulle custom restaurée ✅ 2026-11-21
+
+- F46 Réintroduction du tooltip maison au survol d'une province ✅
+- F47 Tests : bulle visible, `title` natif vide, masquage à la sortie ✅
+
+**Rollback** : restaurer l'état sans tooltip depuis le commit `319d149`.
+
 ## Rollback global
 
 Restaurer `archive/v2-globe-1year/` (ou `archive/v1-map-2d/`) et republier le commit `adc5c9d`.

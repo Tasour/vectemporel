@@ -53,7 +53,14 @@ try {
     return mesh?.cityCount > 100 && mesh?.cityCount < 300;
   }), `capitales=${await page.evaluate(() => window.VATLAS.getState().mesh?.cityCount)}`);
   check('marqueurs ronds', await page.evaluate(() => window.VATLAS.getState().mesh?.citySprite === true));
-  check('aucune bulle maison', await page.evaluate(() => !document.getElementById('map-tooltip')));
+  check('bulle custom présente', await page.evaluate(() => Boolean(document.getElementById('map-tooltip'))));
+  await page.mouse.move(720, 450);
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  check('bulle custom au survol', await page.evaluate(() => {
+    const tip = document.getElementById('map-tooltip');
+    return !tip.hidden && (tip.textContent || '').length > 0;
+  }));
+  check('aucun title natif', await page.evaluate(() => document.getElementById('globe-canvas').title === ''));
   const cap = await page.evaluate(() => window.VATLAS.cityScreenPoints()[0] || null);
   check('capitales projectées', Boolean(cap), cap ? `${cap.name} @ ${Math.round(cap.x)},${Math.round(cap.y)}` : 'aucune');
   if (cap) {
