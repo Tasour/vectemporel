@@ -183,8 +183,10 @@ export function createGlobe(canvas, {
   let dragging = false;
   let dragMoved = false;
   let suppressClick = false;
-  let lastTapTime = 0;
-  let touchSelectTimer = 0;
+  let gesture = null;
+  let pendingTapTimer = 0;
+  let lastTap = null;
+  let lastGesture = 'none';
   let lastPointer = null;
   let pinch = null;
   let lastInteraction = performance.now();
@@ -378,15 +380,59 @@ export function createGlobe(canvas, {
     frame = 0;
   }
 
+  function cancelPendingTap() {
+    if (pendingTapTimer) clearTimeout(pendingTapTimer);
+    pendingTapTimer = 0;
+  }
+
+  function resetGesture() {
+    cancelPendingTap();
+    gesture = null;
+    dragging = false;
+    dragMoved = false;
+    lastPointer = null;
+    pinch = null;
+  }
+
   const onPointerDown = (event) => {
+    /* Tout nouveau toucher annule une sélection en attente : c'est
+     * potentiellement le second tap d'un double-tap. */
+    cancelPendingTap();
     lastInput = event.pointerType || 'mouse';
     pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    if (!gesture) {
+      gesture = {
+        type: event.pointerType || 'mouse',
+        start: performance.now(),
+        startX: event.clientX,
+        startY: event.clientY,
+        lastX: event.clientX,
+        lastY: event.clientY,
+        totalMovement: 0,
+        maxPointers: 1,
+        multi: false,
+        secondStart: null,
+        moved: false,
+        ids: new Set([event.pointerId]),
+      };
+    } else {
+      gesture.ids.add(event.pointerId);
+      gesture.maxPointers = Math.max(gesture.maxPointers, pointers.size);
+      if (pointers.size === 2 && gesture.secondStart === null) {
+        gesture.secondStart = performance.now();
+        gesture.multi = true;
+        const [a, b] = [...pointers.values()];
+        gesture.midpointX = (a.x + b.x) / 2;
+        gesture.midpointY = (a.y + b.y) / 2;
+        /* Un second doigt annule une éventuelle sélection en attente. */
+        cancelPendingTap();
+      }
+    }
     dragging = true;
-    dragMoved = false;
     lastPointer = { x: event.clientX, y: event.clientY };
     lastInteraction = performance.now();
     velocity = { lon: 0, lat: 0 };
-    canvas.setPointerCapture?.(event.pointerId);
+    try { canvas.setPointerCapture?.(event.pointerId); } catch { /* pointeur synthétique */ }
     if (pointers.size === 2) {
       const [a, b] = [...pointers.values()];
       pinch = { distance: Math.hypot(a.x - b.x, a.y - b.y) || 1, zoom: target.zoom };
@@ -395,6 +441,15 @@ export function createGlobe(canvas, {
 
   const onPointerMove = (event) => {
     if (pointers.has(event.pointerId)) pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    if (gesture) {
+      gesture.totalMovement += Math.hypot(event.clientX - gesture.lastX, event.clientY - gesture.lastY);
+      gesture.lastX = event.clientX;
+      gesture.lastY = event.clientY;
+      const threshold = gesture.type === 'touch' ? 8 : 2;
+      if (Math.hypot(event.clientX - gesture.startX, event.clientY - gesture.startY) > threshold
+        || gesture.totalMovement > threshold) gesture.moved = true;
+      if (gesture.moved) cancelPendingTap();
+    }
     if (pointers.size >= 2 && pinch) {
       const [a, b] = [...pointers.values()];
       const distance = Math.hypot(a.x - b.x, a.y - b.y) || 1;
@@ -440,17 +495,69 @@ export function createGlobe(canvas, {
     }
   };
 
-  const onPointerUp = (event) => {
+  const finishPointer = (event, cancelled = false) => {
     pointers.delete(event.pointerId);
-    canvas.releasePointerCapture?.(event.pointerId);
+    try { canvas.releasePointerCapture?.(event.pointerId); } catch { /* pointeur synthétique */ }
+    if (gesture) gesture.ids.delete(event.pointerId);
     if (pointers.size < 2) pinch = null;
-    suppressClick = dragMoved;
-    if (pointers.size === 0) {
-      dragging = false;
-      lastPointer = null;
-    }
     lastInteraction = performance.now();
+    if (pointers.size > 0 || !gesture) return;
+
+    const g = gesture;
+    const isTouch = g.type === 'touch';
+    const duration = performance.now() - g.start;
+    const x = g.startX;
+    const y = g.startY;
+    gesture = null;
+    dragging = false;
+    lastPointer = null;
+    cancelPendingTap();
+
+    if (cancelled) { lastGesture = 'cancel'; return; }
+
+    if (isTouch) {
+      if (g.maxPointers >= 2) {
+        const twoFingerTap = g.secondStart !== null
+          && g.secondStart - g.start <= 120
+          && duration <= 600
+          && g.totalMovement < 12;
+        if (twoFingerTap) {
+          lastGesture = 'two-finger-tap';
+          zoomAround(g.midpointX ?? x, g.midpointY ?? y, -0.8);
+        } else {
+          lastGesture = g.totalMovement > 12 ? 'pinch' : 'two-finger';
+        }
+        return;
+      }
+      if (g.moved || duration >= 600) {
+        lastGesture = g.totalMovement > 12 ? 'pinch' : 'drag';
+        return;
+      }
+      /* On mesure l'écart entre la fin du 1er tap et le début du 2e,
+       * pas entre les deux fins (qui inclut la durée du second tap). */
+      const gap = g.start - lastTap?.time;
+      if (lastTap && gap >= 0 && gap < 600 && Math.hypot(x - lastTap.x, y - lastTap.y) < 30) {
+        lastGesture = 'double-tap';
+        lastTap = null;
+        zoomAround(x, y, 0.8);
+        return;
+      }
+      lastTap = { time: performance.now(), x, y };
+      lastGesture = 'tap';
+      pendingTapTimer = setTimeout(() => {
+        pendingTapTimer = 0;
+        selectAt(x, y);
+        lastGesture = 'tap-select';
+      }, 600);
+      return;
+    }
+
+    suppressClick = g.moved;
+    lastGesture = g.moved ? 'drag' : 'mouse-click';
   };
+
+  const onPointerUp = (event) => finishPointer(event);
+  const onPointerCancel = (event) => finishPointer(event, true);
 
   const onPointerLeave = () => {
     canvas.classList.remove('point-hover');
@@ -473,25 +580,15 @@ export function createGlobe(canvas, {
   }
 
   const onClick = (event) => {
+    /* Le tactile est entièrement géré par la machine à gestes pointer. */
+    if (lastInput === 'touch') return;
     if (suppressClick) { suppressClick = false; return; }
     if (event.detail > 1) return;
-    if (lastInput === 'touch') {
-      const now = performance.now();
-      if (now - lastTapTime < 300) {
-        clearTimeout(touchSelectTimer);
-        lastTapTime = 0;
-        zoomAround(event.clientX, event.clientY, 0.8);
-        return;
-      }
-      lastTapTime = now;
-      const { clientX, clientY } = event;
-      touchSelectTimer = setTimeout(() => selectAt(clientX, clientY), 280);
-      return;
-    }
     selectAt(event.clientX, event.clientY);
   };
 
   const onDoubleClick = (event) => {
+    if (lastInput === 'touch') return;
     event.preventDefault();
     zoomAround(event.clientX, event.clientY, event.shiftKey ? -0.8 : 0.8);
     lastInput = 'mouse';
@@ -510,7 +607,7 @@ export function createGlobe(canvas, {
   canvas.addEventListener('pointerdown', onPointerDown);
   canvas.addEventListener('pointermove', onPointerMove);
   canvas.addEventListener('pointerup', onPointerUp);
-  canvas.addEventListener('pointercancel', onPointerUp);
+  canvas.addEventListener('pointercancel', onPointerCancel);
   canvas.addEventListener('pointerleave', onPointerLeave);
   canvas.addEventListener('click', onClick);
   canvas.addEventListener('dblclick', onDoubleClick);
@@ -524,7 +621,12 @@ export function createGlobe(canvas, {
   start();
 
   return {
-    getView: () => ({ ...current, lastInput }),
+    getView: () => ({
+      ...current,
+      lastInput,
+      targetZoom: target.zoom,
+      lastGesture,
+    }),
     setView(next) {
       target = { lon: normalizeLongitude(next.lon), lat: clampLatitude(next.lat), zoom: clampZoom(next.zoom) };
       current = { ...target };
@@ -588,12 +690,12 @@ export function createGlobe(canvas, {
       canvas.removeEventListener('pointerdown', onPointerDown);
       canvas.removeEventListener('pointermove', onPointerMove);
       canvas.removeEventListener('pointerup', onPointerUp);
-      canvas.removeEventListener('pointercancel', onPointerUp);
+      canvas.removeEventListener('pointercancel', onPointerCancel);
       canvas.removeEventListener('pointerleave', onPointerLeave);
       canvas.removeEventListener('click', onClick);
       canvas.removeEventListener('dblclick', onDoubleClick);
       canvas.removeEventListener('wheel', onWheel);
-      clearTimeout(touchSelectTimer);
+      cancelPendingTap();
       clearMarker();
       if (provinceMesh) { lonGroup.remove(provinceMesh.group); provinceMesh.dispose(); }
       if (cityPoints) { cityPoints.geometry.dispose(); cityPoints.material.dispose(); }
