@@ -32,14 +32,38 @@ export function reconstruct(chunk, year) {
   return result;
 }
 
+const CHUNK_CACHE = 'chronas-year-chunks';
+
+async function cachedChunk(url) {
+  return caches.match(url.href).catch(() => null);
+}
+
 async function loadChunk(start) {
   if (chunks.has(start)) return chunks.get(start);
   const url = new URL(`./src/data/years/c${start}.json`, document.baseURI);
-  const response = await fetch(url, { cache: 'no-store' });
-  if (!response.ok) throw new Error(`Chunk ${start} indisponible (HTTP ${response.status})`);
-  const chunk = await response.json();
-  chunks.set(start, chunk);
-  return chunk;
+  let response = null;
+  if (navigator.onLine !== false) {
+    try {
+      response = await fetch(url);
+    } catch { /* repli cache ci-dessous */ }
+  }
+  if (response?.ok) {
+    const chunk = await response.json();
+    chunks.set(start, chunk);
+    caches.open(CHUNK_CACHE)
+      .then((cache) => cache.put(url.href, new Response(JSON.stringify(chunk), {
+        headers: { 'Content-Type': 'application/json' },
+      })))
+      .catch(() => { /* cache best-effort */ });
+    return chunk;
+  }
+  const cached = await cachedChunk(url);
+  if (cached) {
+    const chunk = await cached.json();
+    chunks.set(start, chunk);
+    return chunk;
+  }
+  throw new Error(`Chunk ${start} indisponible (HTTP ${response?.status || 'réseau'})`);
 }
 
 export async function getAreasForYear(year) {
