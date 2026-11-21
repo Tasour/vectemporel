@@ -310,15 +310,20 @@ try {
   }));
 
   await mobile.waitForFunction(() => window.VATLAS?.getState?.().mesh?.cityCount > 0, { timeout: 8000 }).catch(() => {});
-  const capital = await mobile.evaluate(() => window.VATLAS.cityScreenPoints()[0] || null);
+  await mobile.waitForFunction(() => window.VATLAS?.getState?.().camera?.zoom >= 2.5, { timeout: 8000 }).catch(() => {});
+  const capital = await mobile.evaluate(() => {
+    const points = window.VATLAS.cityScreenPoints();
+    return points.find((point) => point.x >= 0 && point.x <= innerWidth
+      && point.y >= 0 && point.y <= innerHeight) || null;
+  });
   if (capital) {
     await touchEvents(mobile, [
       ['pointerdown', 6, capital.x, capital.y], ['pointerup', 6, capital.x, capital.y],
     ]);
     await wait(750);
-    check('mobile : tap simple après pincement sélectionne', await mobile.evaluate(() => Boolean(window.VATLAS.getState().selected)));
+    check('mobile : tap simple après pincement sélectionne', await mobile.evaluate(() => Boolean(window.VATLAS.getState().selected)), `${capital.name} @ ${Math.round(capital.x)},${Math.round(capital.y)}`);
   } else {
-    check('mobile : tap simple après pincement sélectionne', false, 'aucune capitale visible');
+    check('mobile : tap simple après pincement sélectionne', false, 'aucune capitale dans le viewport');
   }
 
   await mobile.close();
