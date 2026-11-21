@@ -35,7 +35,7 @@ export function reconstruct(chunk, year) {
 async function loadChunk(start) {
   if (chunks.has(start)) return chunks.get(start);
   const url = new URL(`./src/data/years/c${start}.json`, document.baseURI);
-  const response = await fetch(url, { cache: 'force-cache' });
+  const response = await fetch(url, { cache: 'no-store' });
   if (!response.ok) throw new Error(`Chunk ${start} indisponible (HTTP ${response.status})`);
   const chunk = await response.json();
   chunks.set(start, chunk);

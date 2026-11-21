@@ -20,7 +20,9 @@ const mulberry32 = (seed) => () => {
 const distanceForZoom = (zoom) => 3.2 - clamp(zoom, 0, ZOOM_MAX) * 0.19;
 const clampZoom = (zoom) => clamp(zoom, 0, ZOOM_MAX);
 
-export function createGlobe(canvas, { onSelect, onCitySelect, onView, onError, onHover } = {}) {
+export function createGlobe(canvas, {
+  onSelect, onCitySelect, onView, onError, onHover, onFrame,
+} = {}) {
   const THREE = window.THREE;
   if (!THREE) {
     onError?.('Three.js indisponible');
@@ -196,6 +198,22 @@ export function createGlobe(canvas, { onSelect, onCitySelect, onView, onError, o
     if (cityPoints) cityPoints.visible = current.zoom >= 2.5;
   }
 
+  /* F49 : projection lon/lat -> écran pour les libellés, sans boucle dédiée. */
+  function project(lon, lat) {
+    latGroup.updateMatrixWorld(true);
+    camera.updateMatrixWorld();
+    const vector = vectorFromLonLat(lon, lat, 1.02);
+    const world = lonGroup.localToWorld(new THREE.Vector3(vector.x, vector.y, vector.z));
+    const facing = world.clone().normalize().dot(camera.position.clone().normalize()) > 0.15;
+    const projected = world.project(camera);
+    const rect = canvas.getBoundingClientRect();
+    return {
+      x: rect.left + ((projected.x + 1) / 2) * rect.width,
+      y: rect.top + ((1 - projected.y) / 2) * rect.height,
+      visible: facing && projected.z >= -1 && projected.z <= 1,
+    };
+  }
+
   /* F44 : positions écran des capitales, pour un hit-test indépendant du raster. */
   function cityScreenPoints() {
     if (!cityPoints?.visible || current.zoom < 2.5) return [];
@@ -308,6 +326,7 @@ export function createGlobe(canvas, { onSelect, onCitySelect, onView, onError, o
     current.zoom += (target.zoom - current.zoom) * 0.12;
     applyView();
     renderer.render(scene, camera);
+    onFrame?.({ ...current });
 
     framesSinceView += 1;
     if (framesSinceView >= 15) {
@@ -475,6 +494,7 @@ export function createGlobe(canvas, { onSelect, onCitySelect, onView, onError, o
       lastInteraction = performance.now();
     },
     pick,
+    project,
     pickCity,
     cityScreenPoints,
     getSelected: () => selected,

@@ -4,6 +4,8 @@ import { MAP_META, FEATURES, describe, searchNames, ATTRIBUTION, formatPopulatio
 import { decodePos, encodePos } from './map/projection.js';
 import { createGlobe } from './globe/globe.js';
 import { DIMENSIONS } from './globe/texture.js';
+import { createLabelRenderer, buildLabels, LABEL_MODES } from './globe/labels.js';
+import { createEpicTimeline, epicYear, categoryOf } from './timeline/epics.js';
 import { clampYear, getAreasForYear } from './data/year-store.js';
 
 const SEED = 20261121;
@@ -65,11 +67,32 @@ function mount() {
       dimension = item.id;
       for (const other of dimensions.children) other.setAttribute('aria-checked', String(other === button));
       globe?.setYearAreas(areasForYear, dimension);
+      refreshLabels();
       renderCard(selected);
     });
     dimensions.appendChild(button);
   }
   brand.appendChild(dimensions);
+
+  const labelBar = el('div', 'label-bar');
+  labelBar.id = 'label-bar';
+  labelBar.setAttribute('role', 'radiogroup');
+  labelBar.setAttribute('aria-label', 'Affichage des libellés');
+  let labelMode = 'off';
+  for (const mode of LABEL_MODES) {
+    const button = el('button', 'label-btn', mode.label);
+    button.type = 'button';
+    button.dataset.mode = mode.id;
+    button.setAttribute('role', 'radio');
+    button.setAttribute('aria-checked', String(mode.id === labelMode));
+    button.addEventListener('click', () => {
+      labelMode = mode.id;
+      for (const other of labelBar.children) other.setAttribute('aria-checked', String(other === button));
+      refreshLabels();
+    });
+    labelBar.appendChild(button);
+  }
+  brand.appendChild(labelBar);
 
   const actions = el('div', 'hud-actions');
   const searchButton = el('button', 'hud-btn', '⌕');
@@ -184,7 +207,9 @@ function mount() {
   const loading = el('span', 'timeline-loading', '');
   loading.id = 'timeline-loading';
   loading.hidden = true;
-  timeline.append(eraBands, yearLabel, slider, play, centuries, loading);
+  const epicHost = el('div', 'epic-host');
+  epicHost.id = 'epic-host';
+  timeline.append(epicHost, eraBands, yearLabel, slider, play, centuries, loading);
 
   const yearDialog = el('div', 'hud-overlay');
   yearDialog.id = 'year-dialog';
@@ -200,6 +225,13 @@ function mount() {
 
   hud.append(brand, actions, card, tooltip, searchOverlay, helpOverlay, yearDialog, readout, timeline, error);
 
+  const labelRenderer = createLabelRenderer(document.getElementById('globe-labels'));
+  const epicTimeline = createEpicTimeline(epicHost, (epic) => {
+    const target = epicYear(epic);
+    applyYear(target);
+    readout.textContent = `${epic[1]} · ${categoryOf(epic[4])} · ${target}.`;
+  });
+
   let selected = null;
   let areasForYear = null;
   let capitalIndex = new Map();
@@ -210,6 +242,7 @@ function mount() {
   const globe = createGlobe(canvas, {
     onSelect: (name) => select(name),
     onHover: (name, x, y) => showTooltip(name, x, y),
+    onFrame: (view) => labelRenderer.update((lon, lat) => globe?.project(lon, lat), view.zoom),
     onCitySelect: (name) => {
       const area = capitalIndex.get(normalizeName(name))?.[0];
       if (area) {
@@ -312,6 +345,17 @@ function mount() {
     for (const names of capitalIndex.values()) names.sort((a, b) => a.localeCompare(b, 'fr'));
   }
 
+  function refreshLabels() {
+    if (!labelRenderer || labelMode === 'off' || !areasForYear) {
+      labelRenderer?.setLabels([]);
+      return;
+    }
+    const effective = labelMode === 'capitals'
+      ? 'capital'
+      : (dimension === 'population' ? 'ruler' : dimension);
+    labelRenderer.setLabels(buildLabels(areasForYear, effective));
+  }
+
   function capitalsForYear(areas) {
     const wanted = new Set(capitalIndex.keys());
     const seen = new Set();
@@ -350,6 +394,7 @@ function mount() {
       areasForYear = areas;
       refreshCapitalIndex(areas);
       globe?.setYearAreas(areas, dimension);
+      refreshLabels();
       globe?.setCities(capitalsForYear(areas), target);
       if (selected) renderCard(selected);
       if (notify) announce(selected);
@@ -546,6 +591,9 @@ function mount() {
       seed: SEED,
       touring: Boolean(globe?.isTouring?.()),
       mesh: globe?.statistics?.() || null,
+      labels: labelRenderer.count(),
+      labelMode,
+      epics: epicTimeline.count,
     }),
     selectRegion: (name) => select(name),
     setYear: (value) => applyYear(value),
