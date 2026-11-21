@@ -125,6 +125,10 @@ if (globalResult) {
   await new Promise((resolve) => setTimeout(resolve, 300));
   check('résultat inter-pays ouvre un repère', await page.evaluate(() => window.VATLAS.getState().eventIndex >= 0));
 }
+await page.evaluate(() => document.getElementById('chronas-toggle')?.click());
+await new Promise((resolve) => setTimeout(resolve, 500));
+check('frise mondiale active', await page.evaluate(() => Boolean(document.getElementById('chronas-canvas'))));
+check('readout Chronas', await page.evaluate(() => /Chronas|événements/.test(document.getElementById('chronas-readout')?.textContent || '')));
 check('aucune erreur console', errors.length === 0, errors.slice(0, 3).join(' | '));
 await browser.close();
 console.log(failed ? `${failed} échec(s)` : 'Tous les tests E2E passent.');

@@ -197,6 +197,7 @@ function handle(event) {
 
   // V2-05 : un contrôle local (radio, slider, liste) garde ses flèches natives.
   if (isControl(target) && ['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp', 'Home', 'End'].includes(event.key)) return;
+  if (target?.classList?.contains('chronas-canvas')) return; // géré localement par la frise
 
   if (['ArrowRight', 'ArrowDown', 'ArrowLeft', 'ArrowUp'].includes(event.key)) {
     event.preventDefault();

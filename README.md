@@ -171,3 +171,9 @@ Le site public est servi sans serveur Node : seuls les fichiers nécessaires à 
 Les éléments partagés (kickers, badges, métriques, panneaux, états vides, barres d'outils, figures, onglets) vivent dans `src/ui/components.js` et sont stylés dans `styles.css`. Aucun composant ne possède d'état ni n'injecte de CSS.
 
 Les panneaux produits par les lentilles d'audit sont marqués `data-lens-panel` et masqués par défaut. Le paramètre `?diagnostics=1` les révèle avec le bouton de diagnostic ; ils ne font jamais partie de l'interface de production. Le garde-fou `tools.ui.guard` vérifie ces invariants en lecture seule.
+
+## Atlas mondial Chronas (données CC BY-SA)
+
+`npm run import:chronas` génère `src/data/chronas-snapshot.js` depuis l'API publique de Chronas, au build uniquement (aucun appel réseau au runtime). Le snapshot est borné : 10 années, 200 aires et 300 marqueurs par année, tri déterministe, graine `20261121`. Données © Chronas sous CC BY-SA 4.0 — voir `DATA-LICENSE.md` et `ATTRIBUTION.md`.
+
+La vue « Frise mondiale » (bouton dans la Chronologie) rejoue l'expérience d'un timeline de points à la manière de Histography, avec une réimplémentation originale : canvas statique sans boucle rAF, bandes d'ères, filtres de type, curseur d'année, « Feeling lucky » déterministe et feedback sonore optional. Aucun code de Histography n'a été utilisé (projet fermé).

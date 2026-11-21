@@ -6,6 +6,7 @@
   "description": "Vectemporel — atlas hiérarchique vérifié, généré depuis les audits locaux.",
   "scripts": {
     "build:data": "node scripts/build-dataset.mjs",
+    "import:chronas": "node scripts/import-chronas.mjs",
     "start": "node scripts/serve.mjs",
     "verify": "node scripts/verify.mjs",
     "test:e2e": "node tests/e2e.mjs",

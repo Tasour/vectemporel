@@ -19,6 +19,7 @@ let navLiveNode = null;
 const local = { query: '', tag: null };
 const globalSearch = { query: '' };
 let focusIntent = null;
+let chronasActive = false;
 
 /* V3-10 — recherche inter-pays : la question « et pendant ce temps, ailleurs ? ». */
 function globalMatches() {
@@ -375,6 +376,19 @@ export function renderChronology(stage) {
   const count = badge(`${matched.length} / ${scopeEvents.length} repères`);
   count.classList.add('atlas-chrono-count');
   tools.appendChild(count);
+
+  const chronasToggle = el('button', 'atlas-chrono-tag', '◉ Frise mondiale');
+  chronasToggle.type = 'button';
+  chronasToggle.id = 'chronas-toggle';
+  chronasToggle.setAttribute('aria-pressed', String(chronasActive));
+  chronasToggle.setAttribute('aria-controls', 'chronas-canvas');
+  chronasToggle.addEventListener('click', () => {
+    chronasActive = !chronasActive;
+    focusIntent = 'chronas-toggle';
+    set({}, 'chronas-mode');
+    navSay(chronasActive ? 'Frise mondiale activée.' : 'Frise mondiale désactivée.');
+  });
+  tools.appendChild(chronasToggle);
   main.appendChild(tools);
 
   const globalBox = el('div', 'atlas-chrono-global');
@@ -602,6 +616,16 @@ export function renderChronology(stage) {
 
   layout.append(main, aside);
   stage.appendChild(layout);
+  if (chronasActive) {
+    import('./chronas-timeline.js')
+      .then(({ renderChronasTimeline }) => {
+        if (!chronasActive || !main.isConnected) return;
+        renderChronasTimeline(main, (item) => {
+          navSay(`${item.name} · ${item.year}. Source : Chronas, CC BY-SA 4.0.`);
+        });
+      })
+      .catch((error) => console.warn('[chronas] vue indisponible :', error));
+  }
   runLenses('chronology', { stage, layout });
   applyFocusIntent();
 }
