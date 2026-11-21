@@ -227,7 +227,7 @@ function mount() {
   import('./data/chronas-cities.js')
     .then(({ CHRONAS_CITIES }) => {
       cities = CHRONAS_CITIES;
-      globe?.setCities(cities.cities, year);
+      globe?.setCities(capitalsForYear(areasForYear), year);
     })
     .catch(() => { /* données optionnelles : la carte reste utilisable */ });
 
@@ -284,9 +284,36 @@ function mount() {
     tooltip.hidden = false;
   }
 
+  function normalizeName(value) {
+    return String(value || '')
+      .normalize('NFD')
+      .replace(/\p{Diacritic}/gu, '')
+      .toLocaleLowerCase('fr')
+      .replace(/[^a-z0-9]+/g, '')
+      .trim();
+  }
+
+  function capitalsForYear(areas) {
+    const wanted = new Set();
+    for (const row of Object.values(areas || {})) {
+      const capital = Array.isArray(row) ? row[3] : row?.capital;
+      const key = normalizeName(capital);
+      if (key) wanted.add(key);
+    }
+    const seen = new Set();
+    return (cities?.cities || []).filter(([lon, lat, name, start, end, capital]) => {
+      if (!capital) return false;
+      const key = normalizeName(name);
+      if (!wanted.has(key) || seen.has(key)) return false;
+      seen.add(key);
+      return year >= start && (!end || year <= end);
+    });
+  }
+
   let yearRequest = 0;
   let autoplayTimer = 0;
   let debounceTimer = 0;
+  let loadingTimer = 0;
 
   async function applyYear(next, { updateUrl = true, notify = true } = {}) {
     const target = clampYear(next);
@@ -296,14 +323,19 @@ function mount() {
     slider.value = String(target);
     params.set('year', String(target));
     if (updateUrl) writeUrl(params);
-    loading.hidden = false;
-    loading.textContent = `Chargement de ${target}…`;
+    clearTimeout(loadingTimer);
+    loadingTimer = setTimeout(() => {
+      if (request === yearRequest) {
+        loading.textContent = `Chargement de ${target}…`;
+        loading.hidden = false;
+      }
+    }, 800);
     try {
       const areas = await getAreasForYear(target);
       if (request !== yearRequest) return;
       areasForYear = areas;
       globe?.setYearAreas(areas, dimension);
-      globe?.setCities(cities?.cities || [], target);
+      globe?.setCities(capitalsForYear(areas), target);
       if (selected) renderCard(selected);
       if (notify) announce(selected);
     } catch (issue) {
@@ -312,6 +344,7 @@ function mount() {
       error.hidden = false;
       readout.textContent = error.textContent;
     } finally {
+      clearTimeout(loadingTimer);
       if (request === yearRequest) loading.hidden = true;
     }
   }
