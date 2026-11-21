@@ -182,9 +182,13 @@ export function createGlobe(canvas, {
   let velocity = { lon: 0, lat: 0 };
   let dragging = false;
   let dragMoved = false;
+  let suppressClick = false;
+  let lastTapTime = 0;
+  let touchSelectTimer = 0;
   let lastPointer = null;
   let pinch = null;
   let lastInteraction = performance.now();
+  let lastInput = 'init';
   let selected = null;
   let tourAuto = false;
   let frame = 0;
@@ -232,9 +236,35 @@ export function createGlobe(canvas, {
     }).filter(Boolean);
   }
 
-  function pickCity(clientX, clientY) {
+  function surfacePoint(clientX, clientY) {
+    const rect = canvas.getBoundingClientRect();
+    pointer.set(
+      ((clientX - rect.left) / rect.width) * 2 - 1,
+      -((clientY - rect.top) / rect.height) * 2 + 1,
+    );
+    latGroup.updateMatrixWorld(true);
+    raycaster.setFromCamera(pointer, camera);
+    const hits = raycaster.intersectObject(sphere, false);
+    if (!hits.length) return null;
+    return lonLatFromVector(sphere.worldToLocal(hits[0].point.clone()));
+  }
+
+  function zoomAround(clientX, clientY, delta) {
+    const before = surfacePoint(clientX, clientY);
+    const nextZoom = clampZoom(target.zoom + delta);
+    if (nextZoom === target.zoom) return;
+    if (before) {
+      const ratio = distanceForZoom(nextZoom) / distanceForZoom(target.zoom);
+      target.lon = normalizeLongitude(target.lon + (before.lon - target.lon) * (1 - ratio));
+      target.lat = clampLatitude(target.lat + (before.lat - target.lat) * (1 - ratio));
+    }
+    target.zoom = nextZoom;
+    lastInteraction = performance.now();
+  }
+
+  function pickCity(clientX, clientY, radius = 12) {
     let best = null;
-    let bestDistance = 12;
+    let bestDistance = radius;
     for (const point of cityScreenPoints()) {
       const distance = Math.hypot(point.x - clientX, point.y - clientY);
       if (distance < bestDistance) { bestDistance = distance; best = point.name; }
@@ -349,6 +379,7 @@ export function createGlobe(canvas, {
   }
 
   const onPointerDown = (event) => {
+    lastInput = event.pointerType || 'mouse';
     pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
     dragging = true;
     dragMoved = false;
@@ -367,7 +398,18 @@ export function createGlobe(canvas, {
     if (pointers.size >= 2 && pinch) {
       const [a, b] = [...pointers.values()];
       const distance = Math.hypot(a.x - b.x, a.y - b.y) || 1;
+      const centerX = (a.x + b.x) / 2;
+      const centerY = (a.y + b.y) / 2;
       target.zoom = clampZoom(pinch.zoom + Math.log2(distance / pinch.distance) * 2);
+      if (pinch.centerX !== undefined) {
+        const dx = centerX - pinch.centerX;
+        const dy = centerY - pinch.centerY;
+        const sensitivity = 0.14 / (1 + current.zoom * 0.12);
+        target.lon = normalizeLongitude(target.lon - dx * sensitivity);
+        target.lat = clampLatitude(target.lat + dy * sensitivity);
+      }
+      pinch.centerX = centerX;
+      pinch.centerY = centerY;
       dragMoved = true;
       lastInteraction = performance.now();
       return;
@@ -375,18 +417,24 @@ export function createGlobe(canvas, {
     if (dragging && lastPointer) {
       const dx = event.clientX - lastPointer.x;
       const dy = event.clientY - lastPointer.y;
-      if (Math.abs(dx) + Math.abs(dy) > 2) dragMoved = true;
+      const isTouch = event.pointerType === 'touch';
+      const threshold = isTouch ? 8 : 2;
+      if (Math.abs(dx) + Math.abs(dy) > threshold) dragMoved = true;
       if (dragMoved && tourAuto) tourAuto = false;
-      const sensitivity = 0.22 / (1 + current.zoom * 0.12);
+      const sensitivity = (isTouch ? 0.14 : 0.22) / (1 + current.zoom * 0.12);
       target.lon = normalizeLongitude(target.lon - dx * sensitivity);
       target.lat = clampLatitude(target.lat + dy * sensitivity);
-      velocity = { lon: -dx * sensitivity * 0.28, lat: dy * sensitivity * 0.28 };
+      const cap = isTouch ? 0.8 : 1.2;
+      velocity = {
+        lon: clamp(-dx * sensitivity * 0.28, -cap, cap),
+        lat: clamp(dy * sensitivity * 0.28, -cap, cap),
+      };
       lastPointer = { x: event.clientX, y: event.clientY };
       lastInteraction = performance.now();
       return;
     }
     if (event.pointerType === 'mouse') {
-      const city = pickCity(event.clientX, event.clientY);
+      const city = pickCity(event.clientX, event.clientY, 12);
       canvas.classList.toggle('point-hover', Boolean(city));
       onHover?.(city ? null : pick(event.clientX, event.clientY), event.clientX, event.clientY);
     }
@@ -396,19 +444,7 @@ export function createGlobe(canvas, {
     pointers.delete(event.pointerId);
     canvas.releasePointerCapture?.(event.pointerId);
     if (pointers.size < 2) pinch = null;
-    if (dragging && !dragMoved) {
-      const city = pickCity(event.clientX, event.clientY);
-      if (city) {
-        onCitySelect?.(city);
-      } else {
-        const name = pick(event.clientX, event.clientY);
-        if (name) {
-          selected = name;
-          buildMarker(name);
-          onSelect?.(name);
-        }
-      }
-    }
+    suppressClick = dragMoved;
     if (pointers.size === 0) {
       dragging = false;
       lastPointer = null;
@@ -421,10 +457,52 @@ export function createGlobe(canvas, {
     onHover?.(null, 0, 0);
   };
 
+  function selectAt(clientX, clientY) {
+    const radius = lastInput === 'touch' ? 20 : 12;
+    const city = pickCity(clientX, clientY, radius);
+    if (city) {
+      onCitySelect?.(city);
+      return;
+    }
+    const name = pick(clientX, clientY);
+    if (name) {
+      selected = name;
+      buildMarker(name);
+      onSelect?.(name);
+    }
+  }
+
+  const onClick = (event) => {
+    if (suppressClick) { suppressClick = false; return; }
+    if (event.detail > 1) return;
+    if (lastInput === 'touch') {
+      const now = performance.now();
+      if (now - lastTapTime < 300) {
+        clearTimeout(touchSelectTimer);
+        lastTapTime = 0;
+        zoomAround(event.clientX, event.clientY, 0.8);
+        return;
+      }
+      lastTapTime = now;
+      const { clientX, clientY } = event;
+      touchSelectTimer = setTimeout(() => selectAt(clientX, clientY), 280);
+      return;
+    }
+    selectAt(event.clientX, event.clientY);
+  };
+
+  const onDoubleClick = (event) => {
+    event.preventDefault();
+    zoomAround(event.clientX, event.clientY, event.shiftKey ? -0.8 : 0.8);
+    lastInput = 'mouse';
+  };
+
   const onWheel = (event) => {
     event.preventDefault();
-    target.zoom = clampZoom(target.zoom + (event.deltaY < 0 ? 0.5 : -0.5));
-    lastInteraction = performance.now();
+    const unit = event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? canvas.clientHeight : 1;
+    const delta = clamp(event.deltaY * unit, -600, 600);
+    zoomAround(event.clientX, event.clientY, -delta / 600);
+    lastInput = event.ctrlKey ? 'trackpad' : 'wheel';
   };
 
   const onVisibility = () => { if (document.hidden) stop(); else start(); };
@@ -434,6 +512,8 @@ export function createGlobe(canvas, {
   canvas.addEventListener('pointerup', onPointerUp);
   canvas.addEventListener('pointercancel', onPointerUp);
   canvas.addEventListener('pointerleave', onPointerLeave);
+  canvas.addEventListener('click', onClick);
+  canvas.addEventListener('dblclick', onDoubleClick);
   canvas.addEventListener('wheel', onWheel, { passive: false });
   document.addEventListener('visibilitychange', onVisibility);
   const observer = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(resize) : null;
@@ -444,7 +524,7 @@ export function createGlobe(canvas, {
   start();
 
   return {
-    getView: () => ({ ...current }),
+    getView: () => ({ ...current, lastInput }),
     setView(next) {
       target = { lon: normalizeLongitude(next.lon), lat: clampLatitude(next.lat), zoom: clampZoom(next.zoom) };
       current = { ...target };
@@ -469,6 +549,7 @@ export function createGlobe(canvas, {
     zoomBy(delta) {
       target.zoom = clampZoom(target.zoom + delta);
       lastInteraction = performance.now();
+      lastInput = 'button';
     },
     isTouring: () => tourAuto,
     toggleTour() {
@@ -492,6 +573,7 @@ export function createGlobe(canvas, {
       target.lat = clampLatitude(target.lat + dLat);
       velocity = { lon: 0, lat: 0 };
       lastInteraction = performance.now();
+      lastInput = 'keyboard';
     },
     pick,
     project,
@@ -508,7 +590,10 @@ export function createGlobe(canvas, {
       canvas.removeEventListener('pointerup', onPointerUp);
       canvas.removeEventListener('pointercancel', onPointerUp);
       canvas.removeEventListener('pointerleave', onPointerLeave);
+      canvas.removeEventListener('click', onClick);
+      canvas.removeEventListener('dblclick', onDoubleClick);
       canvas.removeEventListener('wheel', onWheel);
+      clearTimeout(touchSelectTimer);
       clearMarker();
       if (provinceMesh) { lonGroup.remove(provinceMesh.group); provinceMesh.dispose(); }
       if (cityPoints) { cityPoints.geometry.dispose(); cityPoints.material.dispose(); }

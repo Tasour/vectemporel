@@ -110,18 +110,34 @@ function mount() {
   themeButton.type = 'button';
   themeButton.id = 'hud-theme-button';
   themeButton.setAttribute('aria-label', 'Basculer le thème clair / sombre');
+  const displayButton = el('button', 'hud-btn', '☷');
+  displayButton.type = 'button';
+  displayButton.id = 'hud-display-button';
+  displayButton.setAttribute('aria-label', 'Affichage des couleurs, libellés et événements');
+  displayButton.setAttribute('aria-expanded', 'false');
   const helpButton = el('button', 'hud-btn', '?');
   helpButton.type = 'button';
   helpButton.id = 'hud-help-button';
   helpButton.setAttribute('aria-label', 'Afficher les commandes (touche point d’interrogation)');
-  actions.append(tourButton, searchButton, themeButton, helpButton);
+  actions.append(tourButton, searchButton, displayButton, themeButton, helpButton);
   const savedTheme = localStorage.getItem('history-theme');
   if (savedTheme === 'light') document.documentElement.dataset.theme = 'light';
 
   const card = el('section', 'hud-card');
   card.id = 'hud-card';
   card.setAttribute('aria-label', 'Région sélectionnée');
+  card.setAttribute('role', 'dialog');
   card.hidden = true;
+  const cardClose = el('button', 'hud-close', '✕');
+  cardClose.type = 'button';
+  cardClose.id = 'hud-card-close';
+  cardClose.setAttribute('aria-label', 'Fermer la fiche');
+  card.appendChild(cardClose);
+
+  const displayPanel = el('div', 'hud-overlay display-panel');
+  displayPanel.id = 'display-panel';
+  displayPanel.hidden = true;
+  displayPanel.append(el('h2', '', 'Affichage'));
 
   const searchOverlay = el('div', 'hud-overlay');
   searchOverlay.id = 'hud-search';
@@ -151,8 +167,9 @@ function mount() {
   helpOverlay.hidden = true;
   helpOverlay.append(el('h2', '', 'Commandes'));
   const help = el('p', 'hud-help');
-  help.innerHTML = '<kbd>Glisser</kbd> tourner la sphère · <kbd>Molette</kbd> zoomer<br>'
-    + '<kbd>←</kbd><kbd>→</kbd><kbd>↑</kbd><kbd>↓</kbd> tourner · <kbd>+</kbd><kbd>−</kbd> zoomer<br>'
+  help.innerHTML = '<kbd>Glisser</kbd> tourner la sphère · <kbd>Molette</kbd> zoomer vers le curseur<br>'
+    + '<kbd>←</kbd><kbd>→</kbd><kbd>↑</kbd><kbd>↓</kbd> tourner · <kbd>Maj+flèches</kbd> rotation fine<br>'
+    + '<kbd>+</kbd><kbd>−</kbd> zoomer · <kbd>R</kbd> recentrer · <kbd>Double-clic</kbd> zoomer<br>'
     + '<kbd>/</kbd> recherche · <kbd>?</kbd> aide · <kbd>Échap</kbd> fermer<br>'
     + '<kbd>▶</kbd> tour du monde (manuel uniquement)<br>'
     + '<kbd>Clic</kbd> sélectionner une région · <kbd>Curseur</kbd> changer d’année';
@@ -225,7 +242,25 @@ function mount() {
   yearInput.setAttribute('aria-label', 'Année (entre -2000 et 2000)');
   yearDialog.appendChild(yearInput);
 
-  hud.append(brand, actions, card, tooltip, searchOverlay, helpOverlay, yearDialog, readout, timeline, error);
+  const navControls = el('div', 'nav-controls');
+  navControls.id = 'nav-controls';
+  navControls.setAttribute('role', 'group');
+  navControls.setAttribute('aria-label', 'Navigation de la sphère');
+  const zoomIn = el('button', 'hud-btn', '+');
+  zoomIn.type = 'button';
+  zoomIn.id = 'nav-zoom-in';
+  zoomIn.setAttribute('aria-label', 'Zoomer');
+  const zoomOut = el('button', 'hud-btn', '−');
+  zoomOut.type = 'button';
+  zoomOut.id = 'nav-zoom-out';
+  zoomOut.setAttribute('aria-label', 'Dézoomer');
+  const recenter = el('button', 'hud-btn', '⌖');
+  recenter.type = 'button';
+  recenter.id = 'nav-recenter';
+  recenter.setAttribute('aria-label', 'Recentrer la sphère');
+  navControls.append(zoomIn, zoomOut, recenter);
+
+  hud.append(brand, actions, card, tooltip, searchOverlay, helpOverlay, yearDialog, readout, timeline, navControls, displayPanel, error);
 
   const labelRenderer = createLabelRenderer(document.getElementById('globe-labels'));
   const epicTimeline = createEpicTimeline(epicHost, (epic) => {
@@ -234,7 +269,33 @@ function mount() {
     readout.textContent = `${epic[1]} · ${categoryOf(epic[4])} · ${target}.`;
   });
 
+  const mobileQuery = window.matchMedia('(max-width: 760px)');
+  function arrangeControls() {
+    const mobile = mobileQuery.matches;
+    document.body.classList.toggle('is-mobile', mobile);
+    const barsTarget = mobile ? displayPanel : brand;
+    for (const bar of [dimensions, labelBar]) {
+      if (bar.parentElement !== barsTarget) barsTarget.appendChild(bar);
+    }
+    const pickerTarget = mobile ? displayPanel : epicHost;
+    if (epicTimeline.picker.parentElement !== pickerTarget) {
+      pickerTarget.appendChild(epicTimeline.picker);
+    }
+    if (!mobile) {
+      displayPanel.hidden = true;
+      displayButton.setAttribute('aria-expanded', 'false');
+    }
+  }
+  arrangeControls();
+  mobileQuery.addEventListener?.('change', arrangeControls);
+
+  function toggleDisplayPanel() {
+    displayPanel.hidden = !displayPanel.hidden;
+    displayButton.setAttribute('aria-expanded', String(!displayPanel.hidden));
+  }
+
   let selected = null;
+  let cardReturnFocus = null;
   let areasForYear = null;
   let provinceTimelineToken = 0;
   let provinceTimelineData = null;
@@ -366,13 +427,34 @@ function mount() {
     });
   }
 
+  function openCard() {
+    const wasHidden = card.hidden;
+    card.hidden = false;
+    document.body.classList.add('card-open');
+    if (mobileQuery.matches && wasHidden) {
+      cardReturnFocus = document.activeElement;
+      requestAnimationFrame(() => cardClose.focus());
+    }
+  }
+
+  function closeCard() {
+    card.hidden = true;
+    document.body.classList.remove('card-open');
+    displayPanel.hidden = true;
+    displayButton.setAttribute('aria-expanded', 'false');
+    (cardReturnFocus || canvas).focus?.();
+    cardReturnFocus = null;
+  }
+
   function renderCard(name) {
     const info = name ? describe(name) : null;
     card.replaceChildren();
+    card.appendChild(cardClose);
     if (!info) {
       provinceTimelineToken += 1;
       provinceTimelineData = null;
       card.hidden = true;
+      document.body.classList.remove('card-open');
       return;
     }
     card.append(el('p', 'hud-kicker', 'Région historique'), el('h2', 'hud-title', info.name));
@@ -398,7 +480,7 @@ function mount() {
     wiki.rel = 'noopener noreferrer';
     card.append(wiki, el('p', 'hud-credit', 'Chronas · CC BY-SA 4.0'));
     renderProvinceTimeline(name);
-    card.hidden = false;
+    openCard();
   }
 
   function announce(name) {
@@ -623,6 +705,14 @@ function mount() {
     else document.documentElement.dataset.theme = 'light';
     localStorage.setItem('history-theme', light ? 'dark' : 'light');
   });
+  displayButton.addEventListener('click', toggleDisplayPanel);
+  cardClose.addEventListener('click', closeCard);
+  zoomIn.addEventListener('click', () => globe?.zoomBy(0.6));
+  zoomOut.addEventListener('click', () => globe?.zoomBy(-0.6));
+  recenter.addEventListener('click', () => {
+    if (selected) globe?.focusRegion(selected);
+    else globe?.setView(DEFAULT_VIEW);
+  });
   searchButton.addEventListener('click', openSearch);
   helpButton.addEventListener('click', toggleHelp);
   search.addEventListener('input', () => setSuggestions(search.value));
@@ -643,13 +733,17 @@ function mount() {
   });
 
   canvas.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowLeft') globe?.rotateBy(-6, 0);
-    else if (event.key === 'ArrowRight') globe?.rotateBy(6, 0);
-    else if (event.key === 'ArrowUp') globe?.rotateBy(0, -6);
-    else if (event.key === 'ArrowDown') globe?.rotateBy(0, 6);
+    const fine = event.shiftKey ? 2 : 6;
+    if (event.key === 'ArrowLeft') globe?.rotateBy(-fine, 0);
+    else if (event.key === 'ArrowRight') globe?.rotateBy(fine, 0);
+    else if (event.key === 'ArrowUp') globe?.rotateBy(0, -fine);
+    else if (event.key === 'ArrowDown') globe?.rotateBy(0, fine);
     else if (event.key === '+' || event.key === '=') globe?.zoomBy(0.5);
     else if (event.key === '-') globe?.zoomBy(-0.5);
-    else return;
+    else if (event.key.toLowerCase() === 'r') {
+      if (selected) globe?.focusRegion(selected);
+      else globe?.setView(DEFAULT_VIEW);
+    } else return;
     event.preventDefault();
   });
 
@@ -658,9 +752,11 @@ function mount() {
     if (event.key === '/' && !typing) { event.preventDefault(); openSearch(); }
     else if (event.key === '?' && !typing) { event.preventDefault(); toggleHelp(); }
     else if (event.key === 'Escape') {
+      if (!card.hidden && mobileQuery.matches) closeCard();
       searchOverlay.hidden = true;
       helpOverlay.hidden = true;
       yearDialog.hidden = true;
+      if (!displayPanel.hidden) toggleDisplayPanel();
     }
   });
 
