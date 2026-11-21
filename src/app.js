@@ -4,7 +4,9 @@ import { MAP_META, FEATURES, describe, searchNames, ATTRIBUTION, formatPopulatio
 import { decodePos, encodePos } from './map/projection.js';
 import { createGlobe } from './globe/globe.js';
 import { DIMENSIONS } from './globe/texture.js';
-import { createLabelRenderer, buildLabels, LABEL_MODES } from './globe/labels.js';
+import {
+  createLabelRenderer, buildLabels, buildModernLabels, combineLabels, LABEL_MODES,
+} from './globe/labels.js';
 import { createEpicTimeline, epicYear, categoryOf } from './timeline/epics.js';
 import { getProvinceTimeline } from './data/province-timeline-store.js';
 import { CHRONAS_LABELS } from './data/chronas-labels.js';
@@ -530,10 +532,17 @@ function mount() {
       labelRenderer?.setLabels([]);
       return;
     }
+    if (labelMode === 'modern') {
+      labelRenderer.setLabels(buildModernLabels());
+      return;
+    }
     const effective = labelMode === 'capitals'
       ? 'capital'
       : (dimension === 'population' ? 'ruler' : dimension);
-    labelRenderer.setLabels(buildLabels(areasForYear, effective));
+    const historical = buildLabels(areasForYear, effective);
+    labelRenderer.setLabels(labelMode === 'both'
+      ? combineLabels(historical, buildModernLabels())
+      : historical);
   }
 
   function capitalsForYear(areas) {

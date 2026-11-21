@@ -3,6 +3,7 @@
 import { FEATURES } from '../map/data.js';
 import { boundsOf } from '../map/projection.js';
 import { CHRONAS_LABELS } from '../data/chronas-labels.js';
+import { MODERN_LABELS } from '../data/modern-labels.js';
 
 const FEATURE_BY_NAME = new Map(FEATURES.map((feature) => [feature.name, feature]));
 const LIMIT = 24;
@@ -47,8 +48,34 @@ export function buildLabels(areas, dimension) {
         lon: group.lon / group.count,
         lat: group.lat / group.count,
         count: group.count,
+        kind: dimensionKey === 'capital' ? 'capital' : 'historical',
       };
     });
+}
+
+/* P13 : noms de pays modernes (Natural Earth, domaine public), triés par rang. */
+export function buildModernLabels(limit = LIMIT) {
+  return MODERN_LABELS.countries.slice(0, limit).map((country) => ({
+    key: country[1],
+    text: country[0],
+    lon: country[2],
+    lat: country[3],
+    kind: 'modern',
+  }));
+}
+
+export function combineLabels(historical, modern, limit = LIMIT) {
+  const half = Math.ceil(limit / 2);
+  const seen = new Set();
+  const result = [];
+  for (const label of [...historical.slice(0, half), ...modern.slice(0, limit - half)]) {
+    const key = `${label.kind}:${Math.round(label.lon / 5)}:${Math.round(label.lat / 5)}:${label.text}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    result.push(label);
+    if (result.length >= limit) break;
+  }
+  return result;
 }
 
 export function createLabelRenderer(container) {
@@ -60,7 +87,7 @@ export function createLabelRenderer(container) {
     container.replaceChildren();
     nodes = labels.map((label) => {
       const node = document.createElement('span');
-      node.className = 'globe-label';
+      node.className = `globe-label kind-${label.kind || 'historical'}`;
       node.textContent = label.text;
       container.appendChild(node);
       return node;
@@ -88,4 +115,6 @@ export const LABEL_MODES = Object.freeze([
   { id: 'off', label: 'Aucun' },
   { id: 'historical', label: 'Historique' },
   { id: 'capitals', label: 'Capitales' },
+  { id: 'modern', label: 'Moderne' },
+  { id: 'both', label: 'Les deux' },
 ]);
