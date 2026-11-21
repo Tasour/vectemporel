@@ -9,7 +9,7 @@ const SHELL = [
   './src/globe/globe.js', './src/globe/lonlat.js', './src/globe/texture.js',
   './src/data/chronas-map.js', './src/data/year-store.js',
   './src/globe/labels.js', './src/timeline/epics.js',
-  './src/data/chronas-labels.js', './src/data/chronas-epics.js',
+  './src/data/chronas-labels.js', './src/data/modern-labels.js', './src/data/chronas-epics.js',
   './src/data/province-timelines/index.js', './src/data/province-timelines/b.js',
   './src/data/years/c1000.json', './src/data/chronas-cities.js', './public/three.min.js',
   './icons/icon-192.png', './icons/icon-512.png', './icons/icon-maskable-512.png',

@@ -12,6 +12,7 @@
     "labels:import": "node scripts/import-chronas-metadata.mjs",
     "epics:import": "node scripts/import-chronas-epics.mjs",
     "provinces:import": "node scripts/import-chronas-province-timelines.mjs",
+    "modern:import": "node scripts/import-modern-labels.mjs",
     "test:years": "node tests/year-integrity.mjs",
     "test:vector": "node tests/vector-provinces.mjs",
     "test:provinces": "node tests/province-timelines.mjs",

@@ -104,7 +104,7 @@ Les features F22 et F27, initialement reportées, ont été livrées en P10 avec
 
 - F48 Import des noms Chronas (4 832 libellés, 104 Ko) ✅
 - F49 Libellés projetés : Aucun / Historique / Capitales ✅
-- F50 Mode « moderne » tracé comme hors périmètre hors ligne ✅
+- F50 Mode « moderne » tracé comme hors périmètre hors ligne ✅ (finalement livré en P13)
 - F51 Import des 560 épiques (46 Ko, sans poster) ✅
 - F52 Pastilles + sélecteur accessible sur la timeline ✅
 - F53 Correctif SW : les chunks d'années ne sont pas réécrits (400 Chromium) ✅
@@ -137,6 +137,15 @@ Les features F22 et F27, initialement reportées, ont été livrées en P10 avec
 - F70 `lastInput` exposé dans l'état pour les tests ✅
 
 **Rollback** : restaurer `styles.css`, `src/app.js` et `src/globe/globe.js` depuis le commit `e381dee`.
+
+## P13 — Libellés modernes locaux ✅ 2026-11-21
+
+- Import Natural Earth 110m (177 pays, 8 Ko, domaine public) ✅
+- Modes `Moderne` et `Les deux` dans la barre de libellés ✅
+- ADR-0009 ✅
+- Tests e2e et vérification budget ✅
+
+**Rollback** : restaurer `src/globe/labels.js`, `src/app.js` et `styles.css` depuis le commit `c569360`.
 
 ## Rollback global
 

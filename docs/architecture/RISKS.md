@@ -33,7 +33,7 @@
 | Antiméridien −180/+180 (ADR-0007) | Faible | Moyen | Normalisation autour du centroïde ; 0 anneau concerné mesuré |
 | Z-fighting sphère/maillage | Faible | Moyen | Rayon 1.003 pour le maillage, 1.004 pour les contours |
 | Reconstruction lente à chaque année | Moyenne | Moyen | 44 ms mesurés à chaud, seuil 2 s dans `test:vector` pour les démarrages à froid |
-| Mode « libellés modernes » indisponible | Certaine | Faible | Noms modernes absents du snapshot local ; mode remplacé par Capitales, tracé en P11 |
+| Mode « libellés modernes » indisponible | Faible (corrigé P13) | Faible | Noms Natural Earth importés au build (domaine public, 177 pays, 8 Ko), zéro réseau au runtime |
 | 400 Chromium synthétique sur chunks concurrents | Certaine | Faible | Serveur vérifié 200 ; `year-store` gère son propre cache et l'e2e isole cet artefact sans masquer les autres erreurs |
 | Fiche plein écran qui piège l'utilisateur | Faible | Moyen | Bouton Fermer 44 px, `Échap`, restitution du focus au canvas |
 | Double-tap tactile qui sélectionne par erreur | Moyenne | Faible | Délai 280 ms avant sélection, annulé si un second tap arrive sous 300 ms |

@@ -116,5 +116,6 @@ Voir `RISKS.md`. Risques principaux : WebGL indisponible, couture de texture aux
 - ADR-0006 : définition 4096×2048 et rotation exclusivement manuelle.
 - ADR-0007 : maillage vectoriel des provinces et zoom maximal 6, porté à 7,2 en P9 ; remplace le dessin raster des frontières.
 - ADR-0008 : timelines provinciales en 27 chunks locaux chargés à la demande.
+- ADR-0009 : libellés modernes issus de Natural Earth, importés au build.
 
 Ces décisions sont réversibles : voir `ROADMAP.md` (rollback) et `RISKS.md`.

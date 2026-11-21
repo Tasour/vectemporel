@@ -177,6 +177,12 @@ try {
   await page.click('.label-btn[data-mode="capitals"]');
   await new Promise((resolve) => setTimeout(resolve, 400));
   check('libellés capitales', await page.evaluate(() => window.VATLAS.getState().labels > 0));
+  await page.click('.label-btn[data-mode="modern"]');
+  await new Promise((resolve) => setTimeout(resolve, 300));
+  check('libellés modernes', await page.evaluate(() => window.VATLAS.getState().labels > 0 && Boolean(document.querySelector('.globe-label.kind-modern'))));
+  await page.click('.label-btn[data-mode="both"]');
+  await new Promise((resolve) => setTimeout(resolve, 300));
+  check('libellés combinés', await page.evaluate(() => window.VATLAS.getState().labels > 0 && Boolean(document.querySelector('.globe-label.kind-historical')) && Boolean(document.querySelector('.globe-label.kind-modern'))));
   await page.click('.label-btn[data-mode="off"]');
   check('libellés désactivés', await page.evaluate(() => window.VATLAS.getState().labels === 0));
   const yearBeforeEpic = await page.evaluate(() => window.VATLAS.getState().year);
