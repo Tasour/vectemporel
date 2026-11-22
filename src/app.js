@@ -97,6 +97,7 @@ function mount() {
     navHistory.push(entry);
     if (navHistory.length > 60) navHistory.shift();
     navIndex = navHistory.length - 1;
+    renderHistoryList();
   }
   function navigateNav(delta) {
     const next = navIndex + delta;
@@ -108,6 +109,22 @@ function mount() {
     if (entry.selected) select(entry.selected);
     replayingNav = false;
     readout.textContent = `Historique : ${entry.year}${entry.selected ? ` · ${entry.selected}` : ''}.`;
+  }
+
+  function renderHistoryList() {
+    const host = document.getElementById('history-list');
+    if (!host) return;
+    host.replaceChildren();
+    const recent = navHistory.slice(-5);
+    for (const [position, entry] of recent.entries()) {
+      const absolute = navHistory.length - recent.length + position;
+      const button = el('button', 'history-item', `${entry.year}${entry.selected ? ` · ${entry.selected}` : ''}`);
+      button.type = 'button';
+      button.setAttribute('aria-label', `Revenir à ${entry.year}${entry.selected ? `, ${entry.selected}` : ''}`);
+      button.addEventListener('click', () => navigateNav(absolute - navIndex));
+      host.appendChild(button);
+    }
+    if (!recent.length) host.appendChild(el('p', 'history-empty', 'Aucun déplacement enregistré.'));
   }
   const initialName = params.get('value');
   const initialPos = decodePos(params.get('pos'));
@@ -306,6 +323,23 @@ function mount() {
     }
   });
   toolButton('Mode zen', 'tool-zen', () => toggleZen());
+  const historySection = el('div', 'history-section');
+  historySection.id = 'history-section';
+  historySection.appendChild(el('h3', '', 'Historique récent'));
+  const historyList = el('div', 'history-list');
+  historyList.id = 'history-list';
+  historySection.appendChild(historyList);
+  const historyClear = el('button', 'hm-btn', 'Effacer l’historique');
+  historyClear.type = 'button';
+  historyClear.id = 'history-clear';
+  historyClear.addEventListener('click', () => {
+    navHistory.length = 0;
+    navIndex = -1;
+    renderHistoryList();
+    readout.textContent = 'Historique effacé.';
+  });
+  historySection.appendChild(historyClear);
+  toolsSection.appendChild(historySection);
   toolButton('Exporter le profil', 'tool-export', () => {
     const payload = {
       version: 1,
@@ -772,6 +806,27 @@ function mount() {
   compareB.value = '1500';
   compareB.setAttribute('aria-label', 'Deuxième année');
   compareInputs.append(compareA, compareB);
+  const comparePresets = el('div', 'compare-presets');
+  comparePresets.id = 'compare-presets';
+  for (const [label, a, b] of [
+    ['Antiquité → Moyen Âge', -500, 500], ['Médiéval → Moderne', 1000, 1500], ['Moderne → Contemporain', 1800, 2000],
+  ]) {
+    const preset = el('button', 'hm-btn', label);
+    preset.type = 'button';
+    preset.addEventListener('click', () => {
+      compareA.value = String(a);
+      compareB.value = String(b);
+      runCompare(a, b);
+    });
+    comparePresets.appendChild(preset);
+  }
+  const compareCurrent = el('button', 'hm-btn', 'Comparer avec l’année courante');
+  compareCurrent.type = 'button';
+  compareCurrent.id = 'compare-current';
+  compareCurrent.addEventListener('click', () => {
+    compareB.value = String(year);
+    runCompare(Number(compareA.value), year);
+  });
   const compareRun = el('button', 'hm-btn', 'Comparer');
   compareRun.type = 'button';
   compareRun.id = 'compare-run';
@@ -779,7 +834,9 @@ function mount() {
   compareResult.id = 'compare-result';
   compareResult.setAttribute('role', 'status');
   compareResult.setAttribute('aria-live', 'polite');
-  comparePanel.append(compareClose, compareTitle, compareInputs, compareRun, compareResult);
+  const compareBars = el('div', 'compare-bars');
+  compareBars.id = 'compare-bars';
+  comparePanel.append(compareClose, compareTitle, compareInputs, comparePresets, compareRun, compareCurrent, compareResult, compareBars);
 
   const navControls = el('div', 'nav-controls');
   navControls.id = 'nav-controls';
@@ -808,7 +865,12 @@ function mount() {
     applyYear(target);
     readout.textContent = `${epic[1]} · ${categoryOf(epic[4])} · ${target}.`;
   });
-  epicTimeline.filter.addEventListener('change', () => renderDensity(epicTimeline.visible()));
+  epicTimeline.filter.addEventListener('change', () => {
+    renderDensity(epicTimeline.visible());
+    if (epicTimeline.filter.value === 'all') params.delete('epic');
+    else params.set('epic', epicTimeline.filter.value);
+    writeUrl(params);
+  });
 
   const mobileQuery = window.matchMedia('(max-width: 760px)');
   function arrangeControls() {
@@ -1658,6 +1720,21 @@ function mount() {
         .slice(0, 3)
         .map((name) => `${name} (${((Number(areasB[name][4]) || 0) - (Number(areasA[name][4]) || 0) >= 0 ? '+' : '')}${Math.round((Number(areasB[name][4]) || 0) - (Number(areasA[name][4]) || 0))} hab)`);
       compareResult.textContent = `${first} → ${second} : population ${Math.round(totalA / 1000)} k → ${Math.round(totalB / 1000)} k (${totalB >= totalA ? '+' : ''}${Math.round((totalB - totalA) / 1000)} k), ${rulers} souverains et ${cultures} cultures différents. Plus fortes variations : ${biggest.join(' ; ') || 'aucune'}.`;
+      compareBars.replaceChildren();
+      const maxCount = Math.max(rulers, cultures, 1);
+      for (const [label, value, max] of [
+        ['Population', Math.abs(totalB - totalA), Math.max(totalA, totalB, 1)],
+        ['Souverains', rulers, maxCount],
+        ['Cultures', cultures, maxCount],
+      ]) {
+        const row = el('div', 'compare-bar-row');
+        const track = el('div', 'compare-bar-track');
+        const fill = el('span', 'compare-bar-fill');
+        fill.style.width = `${Math.round((value / max) * 100)}%`;
+        track.appendChild(fill);
+        row.append(el('span', 'compare-bar-label', label), track, el('span', 'compare-bar-value', String(Math.round(value))));
+        compareBars.appendChild(row);
+      }
     } catch (issue) {
       compareResult.textContent = `Comparaison indisponible : ${issue.message}`;
     }
@@ -1791,6 +1868,7 @@ function mount() {
         const text = `${label} ${localizeTimelineValue(field, code)} · ${members.length} régions`;
         results.push({
           text,
+          weight: members[0].population,
           action: () => {
             select(members[0].name);
             readout.textContent = `${label} ${code} : ${members.length} régions en ${year}. Extrait Chronas CC BY-SA 4.0.`;
@@ -1809,6 +1887,7 @@ function mount() {
         if (!`${item.code} ${display}`.toLowerCase().includes(needle)) continue;
         if (results.some((result) => result.text.includes(item.code))) continue;
         results.push({
+          weight: item.count,
           text: `État ${display} · ${item.count} régions (${reference})`,
           action: () => {
             applyYear(reference);
@@ -1822,6 +1901,7 @@ function mount() {
         if (!`${item.code} ${display}`.toLowerCase().includes(needle)) continue;
         if (results.some((result) => result.text.includes(item.code))) continue;
         results.push({
+          weight: item.population,
           text: `Culture ${display} · ${Math.round(item.population / 1000)} k hab (${reference})`,
           action: () => {
             applyYear(reference);
@@ -1830,7 +1910,7 @@ function mount() {
         });
       }
     }
-    return results;
+    return results.sort((a, b) => (b.weight || 0) - (a.weight || 0) || a.text.localeCompare(b.text, 'fr'));
   }
 
   function setSuggestions(query) {
@@ -2022,6 +2102,12 @@ function mount() {
     applyYear(year, { notify: false });
     if (showSun) globe.setSunYear(year, true);
     if (showWire) globe.setWireframe(true);
+    else if ((navigator.hardwareConcurrency || 8) <= 4) {
+      showWire = true;
+      wireButton.setAttribute('aria-pressed', 'true');
+      globe.setWireframe(true);
+      readout.textContent = 'Mode silhouette activé automatiquement (appareil peu puissant).';
+    }
     if (initialName) select(initialName, { move: !initialPos });
     else {
       params.set('type', 'area');
@@ -2032,6 +2118,11 @@ function mount() {
     const initialTrail = params.get('trail');
     if (initialTrail && trailPlayer.has(initialTrail)) {
       startTrail(initialTrail, Number(params.get('step') || 0));
+    }
+    const initialEpic = params.get('epic');
+    if (initialEpic) {
+      epicTimeline.setFilter(initialEpic);
+      renderDensity(epicTimeline.visible());
     }
     if (params.get('histomap') === '1') openHistomap();
     if (params.has('compare')) {
@@ -2064,6 +2155,7 @@ function mount() {
       touring: Boolean(globe?.isTouring?.()),
       mesh: globe?.statistics?.() || null,
       labels: labelRenderer.count(),
+      labelsHidden: Number(document.getElementById('globe-labels').dataset.collisions || 0),
       labelMode,
       epics: epicTimeline.count,
       epicFilter: epicTimeline.filter.value,
@@ -2119,6 +2211,9 @@ function mount() {
     setEpicFilter: (value) => {
       epicTimeline.setFilter(value);
       renderDensity(epicTimeline.visible());
+      if (value === 'all') params.delete('epic');
+      else params.set('epic', value);
+      writeUrl(params);
     },
     setZoom: (mode) => setZoomMode(mode),
     cityScreenPoints: () => globe?.cityScreenPoints?.() || [],
