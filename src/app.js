@@ -12,6 +12,9 @@ import {
   MIN_YEAR, MAX_YEAR, SPAN, SCALE_LABELS, densityBuckets, positionToYear, yearToPosition,
 } from './timeline/scale.js';
 import { getProvinceTimeline } from './data/province-timeline-store.js';
+import { TRAILS } from './data/trails.js';
+import { TURNING_POINTS } from './data/turning-points.js';
+import { createTrailPlayer } from './story/trails.js';
 import { CHRONAS_LABELS } from './data/chronas-labels.js';
 import { clampYear, getAreasForYear } from './data/year-store.js';
 
@@ -125,11 +128,16 @@ function mount() {
   reviewButton.type = 'button';
   reviewButton.id = 'hud-review-button';
   reviewButton.setAttribute('aria-label', 'Mode révision active (touche É)');
+  const trailsButton = el('button', 'hud-btn', '❖');
+  trailsButton.type = 'button';
+  trailsButton.id = 'hud-trails-button';
+  trailsButton.setAttribute('aria-label', 'Récits guidés (touche T)');
+  trailsButton.setAttribute('aria-expanded', 'false');
   const helpButton = el('button', 'hud-btn', '?');
   helpButton.type = 'button';
   helpButton.id = 'hud-help-button';
   helpButton.setAttribute('aria-label', 'Afficher les commandes (touche point d’interrogation)');
-  actions.append(tourButton, searchButton, displayButton, reviewButton, themeButton, helpButton);
+  actions.append(tourButton, searchButton, displayButton, trailsButton, reviewButton, themeButton, helpButton);
   const savedTheme = localStorage.getItem('history-theme');
   if (savedTheme === 'light') document.documentElement.dataset.theme = 'light';
 
@@ -236,6 +244,28 @@ function mount() {
     button.dataset.year = String(mark);
     centuries.appendChild(button);
   }
+  const turningStrip = el('div', 'turning-strip');
+  turningStrip.id = 'turning-strip';
+  turningStrip.setAttribute('role', 'group');
+  turningStrip.setAttribute('aria-label', 'Points de rupture détectés dans Chronas');
+  for (const point of TURNING_POINTS.points) {
+    const badge = el('button', 'turning-badge', point.year < 0 ? `−${-point.year}` : String(point.year));
+    badge.type = 'button';
+    badge.dataset.year = String(point.year);
+    badge.setAttribute('aria-label', `Rupture en ${point.year} : ${point.rulers} régions changent de souverain. Ouvrir.`);
+    badge.addEventListener('click', () => {
+      applyYear(point.year, { notify: false });
+      params.set('turn', String(point.year));
+      writeUrl(params);
+      if (point.provinces[0]) select(point.provinces[0]);
+      readout.textContent = `${point.label} · extrait Chronas CC BY-SA 4.0.`;
+      for (const other of turningStrip.children) other.setAttribute('aria-current', String(other === badge));
+    });
+    turningStrip.appendChild(badge);
+  }
+  const marks = el('div', 'timeline-marks');
+  marks.id = 'timeline-marks';
+  marks.append(centuries, turningStrip);
   const minimapRow = el('div', 'timeline-minimap-row');
   const minimap = el('div', 'timeline-minimap');
   const density = el('div', 'timeline-minimap-density');
@@ -269,7 +299,7 @@ function mount() {
   loading.hidden = true;
   const epicHost = el('div', 'epic-host');
   epicHost.id = 'epic-host';
-  timeline.append(epicHost, eraBands, scrub, centuries, minimapRow, loading);
+  timeline.append(epicHost, eraBands, scrub, marks, minimapRow, loading);
 
   const yearDialog = el('div', 'hud-overlay');
   yearDialog.id = 'year-dialog';
@@ -319,6 +349,56 @@ function mount() {
   reviewNext.hidden = true;
   reviewPanel.append(reviewClose, reviewMeta, reviewPrompt, reviewOptions, reviewSkip, reviewFeedback, reviewSource, reviewNext);
 
+  const trailsPanel = el('section', 'hud-overlay trails-panel');
+  trailsPanel.id = 'trails-panel';
+  trailsPanel.setAttribute('role', 'dialog');
+  trailsPanel.setAttribute('aria-label', 'Récits guidés');
+  trailsPanel.hidden = true;
+  const trailsClose = el('button', 'hud-close review-close', '✕');
+  trailsClose.type = 'button';
+  trailsClose.id = 'trails-close';
+  trailsClose.setAttribute('aria-label', 'Fermer les récits');
+  const trailsKicker = el('p', 'trails-kicker', 'Récits guidés');
+  trailsKicker.id = 'trails-kicker';
+  const trailsTitle = el('h2', 'trails-title', 'Cinq parcours dans Chronas');
+  trailsTitle.id = 'trails-title';
+  const trailsList = el('div', 'trails-list');
+  trailsList.id = 'trails-list';
+  for (const trail of TRAILS.trails) {
+    const item = el('button', 'trail-item');
+    item.type = 'button';
+    item.dataset.trail = trail.id;
+    item.append(el('strong', '', trail.title), el('span', '', trail.subtitle));
+    item.addEventListener('click', () => startTrail(trail.id, 0));
+    trailsList.appendChild(item);
+  }
+  const trailsStep = el('div', 'trails-step');
+  trailsStep.id = 'trails-step';
+  trailsStep.hidden = true;
+  const trailsStepKicker = el('p', 'trails-step-kicker');
+  trailsStepKicker.id = 'trails-step-kicker';
+  const trailsStepTitle = el('h3', 'trails-step-title');
+  trailsStepTitle.id = 'trails-step-title';
+  const trailsStepText = el('p', 'trails-step-text');
+  trailsStepText.id = 'trails-step-text';
+  const trailsFacts = el('dl', 'trails-facts');
+  trailsFacts.id = 'trails-facts';
+  const trailsEvidence = el('p', 'trails-evidence');
+  trailsEvidence.id = 'trails-evidence';
+  const trailsNav = el('div', 'trails-nav');
+  const trailsPrev = el('button', 'trails-btn', '← Précédent');
+  trailsPrev.type = 'button';
+  trailsPrev.id = 'trails-prev';
+  const trailsNext = el('button', 'trails-btn trails-btn-next', 'Suivant →');
+  trailsNext.type = 'button';
+  trailsNext.id = 'trails-next';
+  const trailsStop = el('button', 'trails-btn trails-btn-quiet', 'Quitter');
+  trailsStop.type = 'button';
+  trailsStop.id = 'trails-stop';
+  trailsNav.append(trailsPrev, trailsNext, trailsStop);
+  trailsStep.append(trailsStepKicker, trailsStepTitle, trailsStepText, trailsFacts, trailsEvidence, trailsNav);
+  trailsPanel.append(trailsClose, trailsKicker, trailsTitle, trailsList, trailsStep);
+
   const navControls = el('div', 'nav-controls');
   navControls.id = 'nav-controls';
   navControls.setAttribute('role', 'group');
@@ -337,7 +417,7 @@ function mount() {
   recenter.setAttribute('aria-label', 'Recentrer la sphère');
   navControls.append(zoomIn, zoomOut, recenter);
 
-  hud.append(brand, actions, card, tooltip, searchOverlay, helpOverlay, yearDialog, reviewPanel, readout, timeline, navControls, displayPanel, error);
+  hud.append(brand, actions, card, tooltip, searchOverlay, helpOverlay, yearDialog, reviewPanel, trailsPanel, readout, timeline, navControls, displayPanel, error);
 
   const labelRenderer = createLabelRenderer(document.getElementById('globe-labels'));
   const epicTimeline = createEpicTimeline(epicHost, (epic) => {
@@ -630,7 +710,7 @@ function mount() {
     cardReturnFocus = null;
   }
 
-  function renderCard(name) {
+  function renderCard(name, open = true) {
     const info = name ? describe(name) : null;
     card.replaceChildren();
     card.appendChild(cardClose);
@@ -664,7 +744,11 @@ function mount() {
     wiki.rel = 'noopener noreferrer';
     card.append(wiki, el('p', 'hud-credit', 'Chronas · CC BY-SA 4.0'));
     renderProvinceTimeline(name);
-    openCard();
+    if (open) openCard();
+    else {
+      card.hidden = true;
+      document.body.classList.remove('card-open');
+    }
   }
 
   function announce(name) {
@@ -744,7 +828,7 @@ function mount() {
   let debounceTimer = 0;
   let loadingTimer = 0;
 
-  async function applyYear(next, { updateUrl = true, notify = true } = {}) {
+  async function applyYear(next, { updateUrl = true, notify = true, reopenCard = true } = {}) {
     const target = clampYear(next);
     const request = ++yearRequest;
     year = target;
@@ -770,7 +854,7 @@ function mount() {
       globe?.setYearAreas(areas, dimension);
       refreshLabels();
       globe?.setCities(capitalsForYear(areas), target);
-      if (selected) renderCard(selected);
+      if (selected && reopenCard) renderCard(selected);
       if (notify) announce(selected);
     } catch (issue) {
       if (request !== yearRequest) return;
@@ -844,7 +928,7 @@ function mount() {
     }
   });
 
-  function select(name, { move = true } = {}) {
+  function select(name, { move = true, open = true } = {}) {
     if (!name) return;
     selected = name;
     params.set('type', 'area');
@@ -853,12 +937,119 @@ function mount() {
     writeUrl(params);
     globe?.setSelected(name);
     if (move) globe?.focusRegion(name);
-    renderCard(name);
+    renderCard(name, open);
     announce(name);
     searchOverlay.hidden = true;
     search.setAttribute('aria-expanded', 'false');
     search.value = '';
   }
+
+  /* --- Récits guidés -------------------------------------------------- */
+  const trailPlayer = createTrailPlayer(TRAILS.trails, {
+    onStep: (snapshot) => renderTrailStep(snapshot),
+    onEnd: () => { readout.textContent = 'Récit terminé.'; },
+  });
+  let trailFactsToken = 0;
+
+  function openTrails() {
+    trailsPanel.hidden = false;
+    trailsButton.setAttribute('aria-expanded', 'true');
+    if (!trailPlayer.state().active) {
+      trailsList.hidden = false;
+      trailsStep.hidden = true;
+      trailsKicker.textContent = 'Récits guidés';
+      trailsTitle.textContent = 'Cinq parcours dans Chronas';
+    }
+    if (mobileQuery.matches) requestAnimationFrame(() => trailsClose.focus());
+  }
+
+  function closeTrails() {
+    trailsPanel.hidden = true;
+    trailsButton.setAttribute('aria-expanded', 'false');
+  }
+
+  function stopTrail() {
+    trailPlayer.stop();
+    closeTrails();
+    params.delete('trail');
+    params.delete('step');
+    writeUrl(params);
+    readout.textContent = 'Récit quitté.';
+    canvas.focus?.();
+  }
+
+  function startTrail(id, stepIndex = 0) {
+    trailsPanel.hidden = false;
+    trailsButton.setAttribute('aria-expanded', 'true');
+    trailPlayer.start(id, stepIndex);
+  }
+
+  function renderTrailStep(snapshot) {
+    const step = snapshot.step;
+    if (!step) return;
+    trailsPanel.hidden = false;
+    trailsButton.setAttribute('aria-expanded', 'true');
+    trailsList.hidden = true;
+    trailsStep.hidden = false;
+    trailsKicker.textContent = `Étape ${snapshot.index + 1} sur ${snapshot.total}`;
+    trailsTitle.textContent = snapshot.title;
+    trailsStepKicker.textContent = `${step.year} · ${step.province}`;
+    trailsStepTitle.textContent = step.title;
+    trailsStepText.textContent = step.text;
+    trailsFacts.replaceChildren();
+    const factFields = [
+      ['Souverain', 'ruler'], ['Culture', 'culture'], ['Capitale', 'capital'], ['Population', 'population'],
+    ];
+    const factCells = [];
+    for (const [label] of factFields) {
+      trailsFacts.appendChild(el('dt', '', label));
+      const value = el('dd', '', '…');
+      factCells.push(value);
+      trailsFacts.appendChild(value);
+    }
+    const factToken = ++trailFactsToken;
+    getProvinceTimeline(step.province).then((timeline) => {
+      if (factToken !== trailFactsToken || trailPlayer.state().step !== step) return;
+      factFields.forEach(([label, field], index) => {
+        let value = null;
+        for (const [start, entry] of timeline?.[field] || []) {
+          if (start <= step.year) value = entry;
+          else break;
+        }
+        factCells[index].textContent = value === null ? '—' : localizeTimelineValue(field, value);
+      });
+    }).catch(() => {
+      if (factToken !== trailFactsToken) return;
+      for (const cell of factCells) cell.textContent = '—';
+    });
+    const fieldLabel = {
+      ruler: 'souverain', culture: 'culture', religion: 'religion', capital: 'capitale', population: 'population',
+    }[step.evidence.field] || step.evidence.field;
+    trailsEvidence.textContent = `Preuve : Chronas, ${fieldLabel} « ${step.evidence.value} » en ${step.year} · CC BY-SA 4.0`;
+    trailsPrev.disabled = snapshot.first;
+    trailsNext.textContent = snapshot.last ? 'Terminer' : 'Suivant →';
+    applyYear(step.year, { updateUrl: false, notify: false, reopenCard: false });
+    select(step.province, { move: true, open: false });
+    params.set('trail', snapshot.id);
+    params.set('step', String(snapshot.index));
+    writeUrl(params);
+    readout.textContent = `${step.title} · ${step.province} · ${step.year}.`;
+  }
+
+  trailsButton.addEventListener('click', () => {
+    if (trailsPanel.hidden) openTrails();
+    else closeTrails();
+  });
+  trailsClose.addEventListener('click', () => {
+    if (trailPlayer.state().active) stopTrail();
+    else closeTrails();
+  });
+  trailsPrev.addEventListener('click', () => trailPlayer.prev());
+  trailsNext.addEventListener('click', () => {
+    if (trailPlayer.state().last) stopTrail();
+    else trailPlayer.next();
+  });
+  trailsStop.addEventListener('click', stopTrail);
 
   function setSuggestions(query) {
     suggestionsList = searchNames(query);
@@ -986,11 +1177,20 @@ function mount() {
     if (event.key === 'É' || event.key === 'é') { event.preventDefault(); openReview(); }
     else if (event.key === '/' && !typing) { event.preventDefault(); openSearch(); }
     else if (event.key === '?' && !typing) { event.preventDefault(); toggleHelp(); }
+    else if (event.key.toLowerCase() === 't' && !typing) {
+      event.preventDefault();
+      if (trailsPanel.hidden) openTrails();
+      else closeTrails();
+    }
     else if (event.key === 'Escape') {
       if (!card.hidden && mobileQuery.matches) closeCard();
       searchOverlay.hidden = true;
       helpOverlay.hidden = true;
       yearDialog.hidden = true;
+      if (!trailsPanel.hidden) {
+        if (trailPlayer.state().active) stopTrail();
+        else closeTrails();
+      }
       if (!displayPanel.hidden) toggleDisplayPanel();
     }
   });
@@ -1004,6 +1204,15 @@ function mount() {
       params.set('pos', encodePos(globe.getView()));
       writeUrl(params);
       announce(null);
+    }
+    const initialTrail = params.get('trail');
+    if (initialTrail && trailPlayer.has(initialTrail)) {
+      startTrail(initialTrail, Number(params.get('step') || 0));
+    }
+    const initialTurn = Number(params.get('turn'));
+    if (Number.isInteger(initialTurn)) {
+      const badge = turningStrip.querySelector(`[data-year="${initialTurn}"]`);
+      if (badge) badge.setAttribute('aria-current', 'true');
     }
   }
 
@@ -1026,9 +1235,12 @@ function mount() {
       epics: epicTimeline.count,
       provinceTimeline: Boolean(provinceTimelineData),
       review: reviewSnapshot(),
+      trail: trailPlayer.state(),
+      turn: turningStrip.querySelector('[aria-current="true"]')?.dataset.year ?? null,
     }),
     selectRegion: (name) => select(name),
     setYear: (value) => applyYear(value),
+    startTrail: (id, step) => startTrail(id, step),
     setScale: (mode) => {
       if ((mode === 'recent') !== (scaleMode === 'recent')) scaleButton.click();
     },
