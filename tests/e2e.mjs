@@ -162,6 +162,17 @@ try {
   check('changement d’année', await page.evaluate(() => window.VATLAS.getState().year === 1500));
   check('URL année', await page.evaluate(() => new URLSearchParams(location.search).get('year') === '1500'));
   check('libellé année', await page.evaluate(() => document.getElementById('timeline-year').textContent === '1500'));
+  check('historique enregistré', await page.evaluate(() => window.VATLAS.getState().history.length >= 2));
+  await page.keyboard.down('Alt');
+  await page.keyboard.press('ArrowLeft');
+  await page.keyboard.up('Alt');
+  await new Promise((resolve) => setTimeout(resolve, 500));
+  check('Alt+← restaure l’année précédente', await page.evaluate(() => window.VATLAS.getState().year === 1000));
+  await page.keyboard.down('Alt');
+  await page.keyboard.press('ArrowRight');
+  await page.keyboard.up('Alt');
+  await new Promise((resolve) => setTimeout(resolve, 500));
+  check('Alt+→ revient à 1500', await page.evaluate(() => window.VATLAS.getState().year === 1500));
   check('minimap présente', await page.evaluate(() => Boolean(document.getElementById('timeline-minimap-range'))));
   await page.evaluate(() => window.VATLAS.setScale('recent'));
   await new Promise((resolve) => setTimeout(resolve, 150));
@@ -195,6 +206,18 @@ try {
   await new Promise((resolve) => setTimeout(resolve, 600));
   check('560 épiques chargés', await page.evaluate(() => window.VATLAS.getState().epics === 560));
   check('sélecteur épiques', await page.evaluate(() => document.querySelectorAll('#epic-select option').length > 560));
+  check('filtre épiques présent', Boolean(await page.$('#epic-filter')));
+  await page.evaluate(() => window.VATLAS.setEpicFilter('guerre'));
+  await new Promise((resolve) => setTimeout(resolve, 120));
+  check('filtre épiques actif', await page.evaluate(() => {
+    const state = window.VATLAS.getState();
+    return state.epicFilter === 'guerre' && state.epicVisible > 0 && state.epicVisible < 560;
+  }));
+  check('pastilles filtrées', await page.evaluate(() => [...document.querySelectorAll('.epic-tick')]
+    .some((tick) => tick.hidden)));
+  await page.evaluate(() => window.VATLAS.setEpicFilter('all'));
+  await new Promise((resolve) => setTimeout(resolve, 120));
+  check('filtre épiques réinitialisé', await page.evaluate(() => window.VATLAS.getState().epicVisible === 560));
   await page.click('.label-btn[data-mode="historical"]');
   await new Promise((resolve) => setTimeout(resolve, 400));
   check('libellés historiques', await page.evaluate(() => window.VATLAS.getState().labels > 0));
@@ -207,6 +230,12 @@ try {
   await page.click('.label-btn[data-mode="both"]');
   await new Promise((resolve) => setTimeout(resolve, 300));
   check('libellés combinés', await page.evaluate(() => window.VATLAS.getState().labels > 0 && Boolean(document.querySelector('.globe-label.kind-historical')) && Boolean(document.querySelector('.globe-label.kind-modern'))));
+  check('anti-collision des libellés', await page.evaluate(() => {
+    const host = document.getElementById('globe-labels');
+    const boxes = [...host.querySelectorAll('.globe-label:not([hidden])')].map((node) => node.getBoundingClientRect());
+    const overlap = boxes.some((a, i) => boxes.slice(i + 1).some((b) => a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top));
+    return !overlap && Number(host.dataset.collisions || 0) >= 0 && Number(host.dataset.visibleLabels || 0) <= boxes.length + 1;
+  }));
   await page.click('.label-btn[data-mode="off"]');
   check('libellés désactivés', await page.evaluate(() => window.VATLAS.getState().labels === 0));
   const yearBeforeEpic = await page.evaluate(() => window.VATLAS.getState().year);

@@ -42,6 +42,15 @@ try {
   check('quatre provinces liées', await page.evaluate(() => window.VATLAS.getState().arcs.linked.length === 4),
     await page.evaluate(() => window.VATLAS.getState().arcs.linked.join(',')));
   check('arcs dessinés sur la sphère', await page.evaluate(() => window.VATLAS.getState().mesh.arcCount >= 3));
+  check('marqueurs d’arcs', (await page.$$('#arc-host .arc-marker')).length === 4);
+  await page.evaluate(() => document.querySelector('#arc-host .arc-marker').dispatchEvent(new PointerEvent('pointerenter', { bubbles: true })));
+  check('tooltip d’arc', await page.evaluate(() => {
+    const text = document.getElementById('arc-tip').textContent;
+    return !document.getElementById('arc-tip').hidden && /hab/.test(text) && /Chronas/.test(text);
+  }));
+  await page.click('#arc-host .arc-marker');
+  await wait(250);
+  check('clic marqueur : fiche province', await page.evaluate(() => !document.getElementById('hud-card').hidden));
   check('deep link arcs=1', await page.evaluate(() => new URLSearchParams(location.search).get('arcs') === '1'));
   check('readout catégorie/valeur/unité', await page.evaluate(() => {
     const text = document.getElementById('hud-readout').textContent;

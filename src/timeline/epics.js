@@ -48,6 +48,36 @@ export function createEpicTimeline(host, select) {
     picker.appendChild(option);
   });
 
+  const controls = document.createElement('div');
+  controls.className = 'epic-controls';
+  const filter = document.createElement('select');
+  filter.className = 'epic-select epic-filter';
+  filter.id = 'epic-filter';
+  filter.setAttribute('aria-label', 'Filtrer les événements par catégorie');
+  for (const [value, label] of [
+    ['all', 'Toutes les catégories'], ['guerre', 'Guerres'], ['empire', 'Empires'], ['personne', 'Personnes'],
+  ]) {
+    const option = document.createElement('option');
+    option.value = value;
+    option.textContent = label;
+    filter.appendChild(option);
+  }
+  let activeCategory = 'all';
+  function setFilter(category) {
+    activeCategory = ['guerre', 'empire', 'personne'].includes(category) ? category : 'all';
+    filter.value = activeCategory;
+    for (const [index, tick] of [...track.children].entries()) {
+      tick.hidden = activeCategory !== 'all' && categoryOf(EPICS[index][4]) !== activeCategory;
+    }
+    for (const [index, option] of [...picker.children].entries()) {
+      if (index === 0) continue;
+      option.hidden = activeCategory !== 'all' && categoryOf(EPICS[index - 1][4]) !== activeCategory;
+    }
+    return visible();
+  }
+  filter.addEventListener('change', () => setFilter(filter.value));
+  const visible = () => EPICS.filter((epic) => activeCategory === 'all' || categoryOf(epic[4]) === activeCategory);
+
   picker.addEventListener('change', () => {
     const epic = EPICS[Number(picker.value)];
     if (!epic) return;
@@ -61,13 +91,14 @@ export function createEpicTimeline(host, select) {
     const target = MIN_YEAR + ratio * (MAX_YEAR - MIN_YEAR);
     let best = null;
     let bestDistance = Infinity;
-    for (const epic of EPICS) {
+    for (const epic of visible()) {
       const distance = Math.abs(epicYear(epic) - target);
       if (distance < bestDistance) { bestDistance = distance; best = epic; }
     }
     if (best && bestDistance <= 60) select(best);
   });
 
-  host.append(track, picker);
-  return { track, picker, count: EPICS.length };
+  controls.append(filter, picker);
+  host.append(track, controls);
+  return { track, picker, controls, filter, setFilter, visible, count: EPICS.length };
 }

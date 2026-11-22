@@ -12,6 +12,7 @@ const check = (name, ok, detail = '') => {
   if (!ok) failed += 1;
   console.log(`${ok ? 'PASS' : 'FAIL'} ${name}${detail ? ` — ${detail}` : ''}`);
 };
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 check('serveur ruptures démarré', await waitForHttp(BASE));
 const browser = await puppeteer.launch({
@@ -42,6 +43,14 @@ try {
     && !document.getElementById('hud-card').hidden));
   check('clic badge : aria-current', await page.evaluate(() => document.querySelector('.turning-badge[data-year="751"]').getAttribute('aria-current') === 'true'));
   check('clic badge : libellé extrait', await page.evaluate(() => /extrait Chronas/.test(document.getElementById('hud-readout').textContent)));
+  check('cinq provinces proposées', (await page.$$('#turning-provinces .turning-province')).length === 5);
+  await page.click('#turning-provinces .turning-province:nth-of-type(2)');
+  await wait(250);
+  check('raccourci province : sélection', await page.evaluate(() => Boolean(window.VATLAS.getState().selected)));
+  await page.click('.turning-back');
+  await wait(120);
+  check('retour aux repères', await page.evaluate(() => document.getElementById('turning-provinces').hidden
+    && !document.getElementById('turning-strip').hidden));
 
   const restored = await browser.newPage();
   await restored.setViewport({ width: 390, height: 844, isMobile: true, hasTouch: true });

@@ -260,6 +260,15 @@ Les features F22 et F27, initialement reportées, ont été livrées en P10 avec
 
 **Rollback** : retirer `scripts/families.csv`, `scripts/build-histomap.mjs`, `scripts/build-d3.mjs`, `scripts/d3-entry.js`, `vendor/`, `src/data/histomap.json`, `src/histomap/`, `tests/histomap*.mjs` ; restaurer `src/app.js`, `styles.css`, `sw.js`, `package.json`, `README.md` et `scripts/verify.mjs`.
 
+## P24 — Dix idées, lot 1 ✅ 2026-11-22
+
+- Filtre des épiques par catégorie (pastilles, sélecteur et minimap recalculés) ✅
+- Ruptures : les 5 provinces prouvées deviennent des raccourcis cliquables ✅
+- Historique `Alt+←/→` sur les changements d'année et de province ✅
+- Arcs : marqueurs projetés, tooltips catégorie/valeur/unité, clic → fiche ✅
+- Libellés : déduplication des textes et anti-collision par priorité de population ✅
+- **Rollback** : restaurer `src/timeline/epics.js`, `src/globe/labels.js`, `src/globe/globe.js`, `src/app.js`, `styles.css` et `tests/e2e.mjs` depuis le commit précédent ; retirer les tests modifiés.
+
 ## Rollback global
 
 Restaurer `archive/v2-globe-1year/` (ou `archive/v1-map-2d/`) et republier le commit `adc5c9d`.

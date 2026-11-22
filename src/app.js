@@ -58,6 +58,30 @@ function mount() {
   let scaleMode = params.get('scale') === 'recent' ? 'recent' : 'linear';
   let showArcs = params.get('arcs') === '1';
   let arcLinks = [];
+  const navHistory = [];
+  let navIndex = -1;
+  let replayingNav = false;
+  function recordNav() {
+    if (replayingNav) return;
+    const entry = { year, selected };
+    const last = navHistory[navIndex];
+    if (last && last.year === entry.year && last.selected === entry.selected) return;
+    navHistory.splice(navIndex + 1);
+    navHistory.push(entry);
+    if (navHistory.length > 60) navHistory.shift();
+    navIndex = navHistory.length - 1;
+  }
+  function navigateNav(delta) {
+    const next = navIndex + delta;
+    if (next < 0 || next >= navHistory.length) return;
+    navIndex = next;
+    const entry = navHistory[next];
+    replayingNav = true;
+    applyYear(entry.year);
+    if (entry.selected) select(entry.selected);
+    replayingNav = false;
+    readout.textContent = `Historique : ${entry.year}${entry.selected ? ` · ${entry.selected}` : ''}.`;
+  }
   const initialName = params.get('value');
   const initialPos = decodePos(params.get('pos'));
 
@@ -188,6 +212,14 @@ function mount() {
   tooltip.setAttribute('role', 'tooltip');
   tooltip.hidden = true;
 
+  const arcHost = el('div', 'arc-host');
+  arcHost.id = 'arc-host';
+  const arcTip = el('div', 'arc-tip');
+  arcTip.id = 'arc-tip';
+  arcTip.setAttribute('role', 'status');
+  arcTip.setAttribute('aria-live', 'polite');
+  arcTip.hidden = true;
+
   const helpOverlay = el('div', 'hud-overlay');
   helpOverlay.id = 'hud-help';
   helpOverlay.hidden = true;
@@ -266,25 +298,57 @@ function mount() {
       params.set('turn', String(point.year));
       writeUrl(params);
       if (point.provinces[0]) select(point.provinces[0]);
+      showTurningProvinces(point);
       readout.textContent = `${point.label} · extrait Chronas CC BY-SA 4.0.`;
       for (const other of turningStrip.children) other.setAttribute('aria-current', String(other === badge));
     });
     turningStrip.appendChild(badge);
   }
+  const turningProvinces = el('div', 'turning-provinces');
+  turningProvinces.id = 'turning-provinces';
+  turningProvinces.hidden = true;
+  function showTurningProvinces(point) {
+    centuries.hidden = true;
+    turningStrip.hidden = true;
+    turningProvinces.hidden = false;
+    turningProvinces.replaceChildren();
+    const back = el('button', 'turning-back', '← Repères');
+    back.type = 'button';
+    back.addEventListener('click', () => {
+      turningProvinces.hidden = true;
+      centuries.hidden = false;
+      turningStrip.hidden = false;
+    });
+    turningProvinces.appendChild(back);
+    for (const name of point.provinces) {
+      const button = el('button', 'turning-province', name);
+      button.type = 'button';
+      button.setAttribute('aria-label', `Ouvrir ${name}, province de la rupture de ${point.year}`);
+      button.addEventListener('click', () => {
+        select(name);
+        readout.textContent = `${name} · rupture de ${point.year} · extrait Chronas CC BY-SA 4.0.`;
+      });
+      turningProvinces.appendChild(button);
+    }
+  }
   const marks = el('div', 'timeline-marks');
   marks.id = 'timeline-marks';
-  marks.append(centuries, turningStrip);
+  marks.append(centuries, turningStrip, turningProvinces);
   const minimapRow = el('div', 'timeline-minimap-row');
   const minimap = el('div', 'timeline-minimap');
   const density = el('div', 'timeline-minimap-density');
   density.setAttribute('aria-hidden', 'true');
-  const counts = densityBuckets(EPICS.map((epic) => epicYear(epic)), 80);
-  const peak = Math.max(1, ...counts);
-  for (const count of counts) {
-    const bar = el('span', 'minimap-bar');
-    bar.style.height = `${Math.round((count / peak) * 100)}%`;
-    density.appendChild(bar);
+  function renderDensity(list) {
+    const counts = densityBuckets(list.map(epicYear), 80);
+    const peak = Math.max(1, ...counts);
+    density.replaceChildren();
+    for (const count of counts) {
+      const bar = el('span', 'minimap-bar');
+      bar.style.height = `${Math.round((count / peak) * 100)}%`;
+      density.appendChild(bar);
+    }
   }
+  renderDensity(EPICS);
   const minimapRange = document.createElement('input');
   minimapRange.type = 'range';
   minimapRange.id = 'timeline-minimap-range';
@@ -453,7 +517,7 @@ function mount() {
   recenter.setAttribute('aria-label', 'Recentrer la sphère');
   navControls.append(zoomIn, zoomOut, recenter);
 
-  hud.append(brand, actions, card, tooltip, searchOverlay, helpOverlay, yearDialog, reviewPanel, trailsPanel, histomapPanel, readout, timeline, navControls, displayPanel, error);
+  hud.append(brand, actions, card, tooltip, arcHost, arcTip, searchOverlay, helpOverlay, yearDialog, reviewPanel, trailsPanel, histomapPanel, readout, timeline, navControls, displayPanel, error);
 
   const labelRenderer = createLabelRenderer(document.getElementById('globe-labels'));
   const epicTimeline = createEpicTimeline(epicHost, (epic) => {
@@ -461,6 +525,7 @@ function mount() {
     applyYear(target);
     readout.textContent = `${epic[1]} · ${categoryOf(epic[4])} · ${target}.`;
   });
+  epicTimeline.filter.addEventListener('change', () => renderDensity(epicTimeline.visible()));
 
   const mobileQuery = window.matchMedia('(max-width: 760px)');
   function arrangeControls() {
@@ -471,8 +536,8 @@ function mount() {
       if (bar.parentElement !== barsTarget) barsTarget.appendChild(bar);
     }
     const pickerTarget = mobile ? displayPanel : epicHost;
-    if (epicTimeline.picker.parentElement !== pickerTarget) {
-      pickerTarget.appendChild(epicTimeline.picker);
+    if (epicTimeline.controls.parentElement !== pickerTarget) {
+      pickerTarget.appendChild(epicTimeline.controls);
     }
     const reviewTarget = mobile ? displayPanel : actions;
     if (reviewButton.parentElement !== reviewTarget) reviewTarget.appendChild(reviewButton);
@@ -607,7 +672,10 @@ function mount() {
   const globe = createGlobe(canvas, {
     onSelect: (name) => select(name),
     onHover: (name, x, y) => showTooltip(name, x, y),
-    onFrame: (view) => labelRenderer.update((lon, lat) => globe?.project(lon, lat), view.zoom),
+    onFrame: (view) => {
+      labelRenderer.update((lon, lat) => globe?.project(lon, lat), view.zoom);
+      updateArcMarkers();
+    },
     onCitySelect: (name) => {
       const area = capitalIndex.get(normalizeName(name))?.[0];
       if (area) {
@@ -868,6 +936,7 @@ function mount() {
     const target = clampYear(next);
     const request = ++yearRequest;
     year = target;
+    recordNav();
     yearLabel.textContent = String(target);
     slider.value = String(yearToPosition(target, scaleMode));
     slider.setAttribute('aria-valuetext', String(target));
@@ -971,15 +1040,51 @@ function mount() {
     if (!showArcs) {
       arcLinks = [];
       globe?.setArcs([]);
+      renderArcMarkers();
       return;
     }
     arcLinks = linkedProvinces(areasForYear, selected, 5);
     globe?.setArcs(arcPairs(selected, arcLinks));
+    renderArcMarkers();
     const ruler = String(areasForYear?.[selected]?.[0] ?? '');
     const label = ruler ? localizeTimelineValue('ruler', ruler) : 'souverain inconnu';
     readout.textContent = arcLinks.length
       ? `Simultanéité en ${year} : ${arcLinks.length + 1} régions sous ${label} · ${arcLinks.map((item) => `${item.name}, ${item.population} hab`).join(' ; ')}.`
       : `Aucune autre région ne partage ce souverain en ${year}.`;
+  }
+
+  function renderArcMarkers() {
+    arcHost.replaceChildren();
+    arcTip.hidden = true;
+    if (!showArcs) return;
+    for (const item of arcLinks) {
+      const dot = el('button', 'arc-marker', '');
+      dot.type = 'button';
+      dot.dataset.name = item.name;
+      dot.setAttribute('aria-label', `${item.name} : ${item.population} habitants, même souverain en ${year}. Ouvrir la fiche.`);
+      const show = () => {
+        arcTip.textContent = `${item.name} · ${localizeTimelineValue('ruler', item.ruler)} · ${item.population} hab · ${year} · Chronas CC BY-SA 4.0`;
+        arcTip.hidden = false;
+      };
+      dot.addEventListener('pointerenter', show);
+      dot.addEventListener('focus', show);
+      dot.addEventListener('pointerleave', () => { arcTip.hidden = true; });
+      dot.addEventListener('blur', () => { arcTip.hidden = true; });
+      dot.addEventListener('click', () => select(item.name));
+      arcHost.appendChild(dot);
+    }
+    updateArcMarkers();
+  }
+
+  function updateArcMarkers() {
+    if (!showArcs) return;
+    const points = globe?.arcScreenPoints?.() || [];
+    for (const point of points) {
+      const dot = [...arcHost.children].find((child) => child.dataset.name === point.name);
+      if (!dot) continue;
+      dot.hidden = !point.visible;
+      dot.style.transform = `translate(${Math.round(point.x)}px, ${Math.round(point.y)}px) translate(-50%, -50%)`;
+    }
   }
 
   function toggleArcs() {
@@ -996,6 +1101,7 @@ function mount() {
   function select(name, { move = true, open = true } = {}) {
     if (!name) return;
     selected = name;
+    recordNav();
     params.set('type', 'area');
     params.set('value', name);
     params.set('year', String(year));
@@ -1270,6 +1376,11 @@ function mount() {
   });
 
   document.addEventListener('keydown', (event) => {
+    if (event.altKey && (event.key === 'ArrowLeft' || event.key === 'ArrowRight')) {
+      event.preventDefault();
+      navigateNav(event.key === 'ArrowLeft' ? -1 : 1);
+      return;
+    }
     const typing = /^(INPUT|TEXTAREA)$/.test(document.activeElement?.tagName || '');
     if (!reviewPanel.hidden && !typing) {
       if (/^[1-4]$/.test(event.key) && reviewOptions.children[Number(event.key) - 1]?.disabled === false) {
@@ -1355,18 +1466,26 @@ function mount() {
       labels: labelRenderer.count(),
       labelMode,
       epics: epicTimeline.count,
+      epicFilter: epicTimeline.filter.value,
+      epicVisible: epicTimeline.visible().length,
       provinceTimeline: Boolean(provinceTimelineData),
       review: reviewSnapshot(),
       trail: trailPlayer.state(),
       turn: turningStrip.querySelector('[aria-current="true"]')?.dataset.year ?? null,
       arcs: { enabled: showArcs, linked: arcLinks.map((item) => item.name) },
       histomap: histomap ? histomap.getState() : { open: false, year, mode: scaleMode, samples: 161 },
+      history: { index: navIndex, length: navHistory.length },
     }),
     selectRegion: (name) => select(name),
     setYear: (value) => applyYear(value),
     startTrail: (id, step) => startTrail(id, step),
+    navigateHistory: (delta) => navigateNav(delta),
     setScale: (mode) => {
       if ((mode === 'recent') !== (scaleMode === 'recent')) scaleButton.click();
+    },
+    setEpicFilter: (value) => {
+      epicTimeline.setFilter(value);
+      renderDensity(epicTimeline.visible());
     },
     cityScreenPoints: () => globe?.cityScreenPoints?.() || [],
     setView: (view) => globe?.setView(view),
