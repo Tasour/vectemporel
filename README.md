@@ -58,6 +58,8 @@ Sur téléphone, les gestes sont désormais déterministes (P14) : un **double-t
 
 Les épiques se filtrent par catégorie (la minimap se recalcule), les ruptures exposent leurs provinces comme raccourcis, `Alt+←/→` parcourt l'historique des années et des provinces, les arcs portent des marqueurs interactifs, et les libellés projected évitent les collisions en priorisant les groupes les plus étendus.
 
+La frise peut zoomer sur un seul siècle (101 crans), le bouton `A/B` compare deux années, la dimension **Empire** isole les provinces d'un même souverain, la recherche trouve aussi les souverains et cultures de l'année, et un clic sur un ruban Histomap ouvre le récit correspondant.
+
 ## Mode révision active
 
 Le bouton **✦** (touche `É`) ouvre un mode d'apprentissage par rappel actif : **9 245 questions** générées localement à partir des données Chronas, 5 types (capitales, souverains, cultures, religions, événements), 4 réponses, feedback immédiat et source affichée. La progression suit un Leitner à 5 boîtes (1/3/7/16/35 jours) stocké dans `localStorage`. Chaque session de 10 cartes est entrelacée et reproductible via une graine affichée (`20261121`). Les cartes fausses reviennent en boîte 1 ; les cartes justes montent d'une boîte. Aucun appel réseau, aucune donnée inventée. Les questions dérivées restent sous CC BY-SA 4.0 comme les données source.

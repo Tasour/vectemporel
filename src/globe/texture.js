@@ -9,6 +9,7 @@ export const DIMENSIONS = Object.freeze([
   { id: 'religion', label: 'Religion', index: 2 },
   { id: 'capital', label: 'Capitale', index: 3 },
   { id: 'population', label: 'Population', index: 4 },
+  { id: 'empire', label: 'Empire', index: 5 },
 ]);
 
 /* La géométrie vectorielle ne dépend plus de la résolution du raster. */

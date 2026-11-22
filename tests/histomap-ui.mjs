@@ -79,6 +79,14 @@ try {
     && !document.body.classList.contains('histomap-open')
     && !new URLSearchParams(location.search).has('histomap')));
 
+  await page.click('#hud-histomap-button');
+  await page.waitForFunction(() => document.querySelectorAll('#histomap-svg .hm-band').length === 7, { timeout: 20000 });
+  await page.evaluate(() => document.querySelector('#histomap-svg .hm-band[data-key="Chinois"]')
+    .dispatchEvent(new MouseEvent('click', { bubbles: true })));
+  await page.waitForFunction(() => window.VATLAS.getState().trail.id === 'asie', { timeout: 10000 });
+  check('pont Histomap → récit', await page.evaluate(() => window.VATLAS.getState().trail.active
+    && document.getElementById('histomap-panel').hidden));
+
   const restored = await browser.newPage();
   await restored.setViewport({ width: 1440, height: 900 });
   restored.on('pageerror', (error) => errors.push(error.message));

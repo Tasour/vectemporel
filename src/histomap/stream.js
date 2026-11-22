@@ -19,7 +19,7 @@ const TICKS = [-2000, -1500, -1000, -500, 0, 500, 1000, 1500, 2000];
 const pct = (value) => `${Math.round(value * 100)} %`;
 const hab = format(',d');
 
-export function createHistomap(host, data, { onYear = () => {} } = {}) {
+export function createHistomap(host, data, { onYear = () => {}, onTrail = () => {} } = {}) {
   const families = data.meta.families;
   const years = data.years;
   /* Métrique = part de la population estimée, pas valeur absolue : chaque
@@ -146,6 +146,7 @@ export function createHistomap(host, data, { onYear = () => {} } = {}) {
           if (event.type === 'keydown' && event.key !== 'Enter' && event.key !== ' ') return;
           event.preventDefault();
           onYear(years[index]);
+          onTrail(family, years[index]);
         });
       const last = layer[layer.length - 1];
       const labelY = (y(last[0]) + y(last[1])) / 2;

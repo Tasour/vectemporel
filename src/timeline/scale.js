@@ -6,6 +6,7 @@ export const MIN_YEAR = -2000;
 export const MAX_YEAR = 2000;
 export const SPAN = MAX_YEAR - MIN_YEAR;
 export const POSITION_STEPS = 1000;
+export const CENTURY_STEPS = 100;
 
 export const SCALE_MODES = Object.freeze(['linear', 'recent']);
 export const SCALE_LABELS = Object.freeze({ linear: 'Linéaire', recent: 'Récents' });
@@ -51,6 +52,21 @@ export function positionToYear(position, mode = 'linear') {
   const value = Number(position);
   const safe = Number.isFinite(value) ? clamp(value, 0, POSITION_STEPS) : 0;
   return ratioToYear(safe / POSITION_STEPS, mode);
+}
+
+/* Zoom « siècle » : 101 crans, un par année, bornés au siècle courant. */
+export function centuryStart(year) {
+  return Math.floor(clampYear(year) / 100) * 100;
+}
+
+export function yearToCenturyPosition(year, base) {
+  return Math.round(clamp(clampYear(year) - base, 0, CENTURY_STEPS));
+}
+
+export function centuryPositionToYear(position, base) {
+  const value = Number(position);
+  const safe = Number.isFinite(value) ? Math.round(clamp(value, 0, CENTURY_STEPS)) : 0;
+  return clampYear(base + safe);
 }
 
 /* Densité de repères par tranche, pour la minimap. */

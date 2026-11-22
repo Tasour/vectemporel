@@ -130,6 +130,22 @@ try {
   await page.keyboard.press('Enter');
   await wait(500);
   check('sélection via recherche', await page.evaluate(() => window.VATLAS.getState().selected === 'Finnmark'));
+  await page.evaluate(() => {
+    const input = document.getElementById('region-search');
+    input.value = 'FRC';
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+  });
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  check('recherche par souverain', await page.evaluate(() => [...document.querySelectorAll('#region-suggestions li')]
+    .some((item) => /État/.test(item.textContent))));
+  await page.evaluate(() => {
+    const input = document.getElementById('region-search');
+    input.value = 'french';
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+  });
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  check('recherche par culture', await page.evaluate(() => [...document.querySelectorAll('#region-suggestions li')]
+    .some((item) => /Culture/.test(item.textContent))));
 
   await page.click('#hud-help-button');
   await wait(120);
@@ -139,11 +155,18 @@ try {
   check('aide fermée', await page.evaluate(() => document.getElementById('hud-help').hidden));
 
   /* P4 — dimensions de couleur. */
-  check('barre de dimensions', (await page.$$('#dimension-bar .dimension-btn')).length === 5);
+  check('barre de dimensions', (await page.$$('#dimension-bar .dimension-btn')).length === 6);
   await page.click('.dimension-btn[data-dimension="religion"]');
   await new Promise((resolve) => setTimeout(resolve, 300));
   check('dimension religion active', await page.evaluate(() => document.querySelector('.dimension-btn[data-dimension="religion"]').getAttribute('aria-checked') === 'true'));
   check('fiche enrichie', await page.evaluate(() => Boolean(document.querySelector('.hud-dimension')) && Boolean(document.querySelector('.hud-wiki'))));
+  await page.click('.dimension-btn[data-dimension="empire"]');
+  await new Promise((resolve) => setTimeout(resolve, 250));
+  check('focus empire actif', await page.evaluate(() => window.VATLAS.getState().empire.active
+    && document.querySelector('.dimension-btn[data-dimension="empire"]').getAttribute('aria-checked') === 'true'));
+  await page.click('.dimension-btn[data-dimension="empire"]');
+  await new Promise((resolve) => setTimeout(resolve, 200));
+  check('focus empire désactivé', await page.evaluate(() => !window.VATLAS.getState().empire.active));
   await page.click('#hud-theme-button');
   await new Promise((resolve) => setTimeout(resolve, 120));
   check('thème clair persistant', await page.evaluate(() => document.documentElement.dataset.theme === 'light' && localStorage.getItem('history-theme') === 'light'));
@@ -181,6 +204,31 @@ try {
   await page.evaluate(() => window.VATLAS.setScale('linear'));
   await new Promise((resolve) => setTimeout(resolve, 150));
   check('retour échelle linéaire', await page.evaluate(() => window.VATLAS.getState().scale === 'linear'));
+  await page.click('#timeline-zoom');
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  check('zoom siècle activé', await page.evaluate(() => window.VATLAS.getState().zoom === 'century'
+    && document.getElementById('timeline-range').max === '100'
+    && new URLSearchParams(location.search).get('zoom') === 'century'));
+  await page.evaluate(() => window.VATLAS.setYear(1450));
+  await new Promise((resolve) => setTimeout(resolve, 500));
+  check('cran année dans le siècle', await page.evaluate(() => document.getElementById('timeline-range').value === '50'));
+  await page.click('#timeline-zoom');
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  check('retour frise complète', await page.evaluate(() => window.VATLAS.getState().zoom === 'global'
+    && document.getElementById('timeline-range').max === '1000'));
+  await page.click('#hud-compare-button');
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  check('panneau comparaison ouvert', await page.evaluate(() => !document.getElementById('compare-panel').hidden));
+  await page.evaluate(() => window.VATLAS.compareYears(1000, 1500));
+  await page.waitForFunction(() => /souverains/.test(document.getElementById('compare-result').textContent), { timeout: 15000 });
+  check('deltas comparés', await page.evaluate(() => {
+    const text = document.getElementById('compare-result').textContent;
+    return /1000 → 1500/.test(text) && /hab/.test(text) && /cultures/.test(text);
+  }));
+  check('deep link comparaison', await page.evaluate(() => new URLSearchParams(location.search).get('compare') === '1000,1500'));
+  await page.click('#compare-close');
+  await new Promise((resolve) => setTimeout(resolve, 120));
+  check('comparaison fermée', await page.evaluate(() => document.getElementById('compare-panel').hidden));
   check('chunk chargé', await page.evaluate(() => performance.getEntriesByType('resource').some((e) => /\/c\d+\.json/.test(e.name))));
   await page.click('.century-btn[data-year="0"]');
   await new Promise((resolve) => setTimeout(resolve, 700));
