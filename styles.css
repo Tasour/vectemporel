@@ -414,6 +414,18 @@ body.histomap-open .hud-readout, body.histomap-open .nav-controls { display: non
 .learn-goal { display: flex; justify-content: space-between; gap: 10px; padding: 10px; border: 1px solid var(--line); border-radius: 8px; font-size: 12px; }
 .learn-goal.done { border-color: var(--gold); color: var(--gold-bright); }
 .learn-next { min-height: 44px; width: 100%; margin-top: 4px; padding: 8px 10px; border: 1px solid var(--gold); border-radius: 8px; background: rgba(230,185,111,.12); color: var(--gold-bright); font-size: 12px; cursor: pointer; }
+/* Outils, panneau unique et mode zen. */
+.display-tools { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 10px; }
+.display-tools h3 { grid-column: 1 / -1; margin: 4px 0 0; color: var(--muted); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; }
+.display-tools .hm-btn { min-height: 44px; font-size: 10px; }
+.zen-exit { position: fixed; right: 12px; bottom: 12px; z-index: 95; min-height: 44px; padding: 8px 12px; border: 1px solid var(--gold); border-radius: 8px; background: #0b1119; color: var(--gold-bright); font-size: 11px; cursor: pointer; }
+.zen-exit[hidden] { display: none; }
+body.zen .hud-brand, body.zen .hud-actions, body.zen .hud-card,
+body.zen .hud-readout, body.zen .nav-controls, body.zen .display-panel,
+body.zen .arc-host, body.zen #globe-labels { display: none !important; }
+.review-panel, .trails-panel, .learn-panel, .quality-panel, .compare-panel { animation: hm-in .12s ease-out; }
+@keyframes hm-in { from { opacity: .6; transform: translate(-50%, -48%); } to { opacity: 1; transform: translate(-50%, -50%); } }
+@media (prefers-reduced-motion: reduce) { .review-panel, .trails-panel, .learn-panel, .quality-panel, .compare-panel { animation: none; } }
 .hud-error {
   position: absolute;
   top: 50%;
@@ -432,7 +444,7 @@ body.histomap-open .hud-readout, body.histomap-open .nav-controls { display: non
 
 /* Contrôles conditionnels : desktop. */
 .hud-close { display: none; }
-#hud-display-button { display: none; }
+#hud-display-button { display: inline-flex; }
 .nav-controls { display: none; }
 .display-panel { z-index: 45; }
 .display-panel .dimension-bar, .display-panel .label-bar { margin-top: 8px; }

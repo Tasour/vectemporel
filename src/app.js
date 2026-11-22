@@ -273,6 +273,40 @@ function mount() {
   displayPanel.id = 'display-panel';
   displayPanel.hidden = true;
   displayPanel.append(el('h2', '', 'Affichage'));
+  const toolsSection = el('div', 'display-tools');
+  toolsSection.id = 'display-tools';
+  toolsSection.appendChild(el('h3', '', 'Outils'));
+  const toolButton = (label, id, handler) => {
+    const button = el('button', 'hm-btn', label);
+    button.type = 'button';
+    button.id = id;
+    button.addEventListener('click', handler);
+    toolsSection.appendChild(button);
+    return button;
+  };
+  toolButton('Recentrer la vue', 'tool-reset', () => {
+    globe?.setView(DEFAULT_VIEW);
+    readout.textContent = 'Vue recentrée.';
+  });
+  toolButton('Revenir à 1000', 'tool-year', () => applyYear(1000));
+  toolButton('Copier le lien', 'tool-copy', async () => {
+    try {
+      await navigator.clipboard.writeText(location.href);
+      readout.textContent = 'Lien copié dans le presse-papiers.';
+    } catch {
+      readout.textContent = 'Copie indisponible : sélectionnez l’adresse dans la barre du navigateur.';
+    }
+  });
+  toolButton('Plein écran', 'tool-fullscreen', async () => {
+    try {
+      if (document.fullscreenElement) await document.exitFullscreen();
+      else await document.documentElement.requestFullscreen();
+    } catch {
+      readout.textContent = 'Plein écran refusé par le navigateur.';
+    }
+  });
+  toolButton('Mode zen', 'tool-zen', () => toggleZen());
+  displayPanel.appendChild(toolsSection);
 
   const searchOverlay = el('div', 'hud-overlay');
   searchOverlay.id = 'hud-search';
@@ -314,7 +348,9 @@ function mount() {
     + '<kbd>←</kbd><kbd>→</kbd><kbd>↑</kbd><kbd>↓</kbd> tourner · <kbd>Maj+flèches</kbd> rotation fine<br>'
     + '<kbd>+</kbd><kbd>−</kbd> zoomer · <kbd>R</kbd> recentrer · <kbd>Double-clic</kbd> zoomer<br>'
     + '<kbd>/</kbd> recherche · <kbd>É</kbd> révision · <kbd>?</kbd> aide · <kbd>Échap</kbd> fermer<br>'
-    + '<kbd>▶</kbd> tour du monde (manuel uniquement)<br>'
+    + '<kbd>T</kbd> récits · <kbd>L</kbd> apprendre · <kbd>A</kbd> comparer · <kbd>H</kbd> Histomap<br>'
+    + '<kbd>Ctrl+K</kbd> recherche · <kbd>Z</kbd> mode zen · <kbd>Y</kbd> ombre · <kbd>W</kbd> fil de fer<br>'
+    + '<kbd>Alt+←/→</kbd> historique · <kbd>▶</kbd> tour du monde (manuel uniquement)<br>'
     + '<kbd>Clic</kbd> sélectionner une région · <kbd>Curseur</kbd> changer d’année';
   helpOverlay.appendChild(help);
 
@@ -1365,6 +1401,7 @@ function mount() {
   let histomapAbort = null;
 
   function openTrails() {
+    closeAllPanels();
     trailsPanel.hidden = false;
     trailsButton.setAttribute('aria-expanded', 'true');
     if (!trailPlayer.state().active) {
@@ -1450,8 +1487,38 @@ function mount() {
     readout.textContent = `${step.title} · ${step.province} · ${step.year}.`;
   }
 
+  const zenExit = el('button', 'zen-exit', 'Quitter le mode zen ✕');
+  zenExit.type = 'button';
+  zenExit.id = 'zen-exit';
+  zenExit.hidden = true;
+  zenExit.addEventListener('click', () => toggleZen(false));
+  hud.appendChild(zenExit);
+
+  function toggleZen(force) {
+    const active = typeof force === 'boolean' ? force : !document.body.classList.contains('zen');
+    document.body.classList.toggle('zen', active);
+    zenExit.hidden = !active;
+    const button = document.getElementById('tool-zen');
+    if (button) button.textContent = active ? 'Quitter le mode zen' : 'Mode zen';
+    if (active) closeAllPanels();
+    readout.textContent = active ? 'Mode zen : seules la sphère et la frise restent visibles.' : 'Mode zen désactivé.';
+  }
+
+  function closeAllPanels() {
+    if (!trailsPanel.hidden) closeTrails();
+    if (!histomapPanel.hidden) closeHistomap();
+    if (!qualityPanel.hidden) closeQuality();
+    if (!comparePanel.hidden) closeCompare();
+    if (!learnPanel.hidden) closeLearn();
+    if (!searchOverlay.hidden) { searchOverlay.hidden = true; search.setAttribute('aria-expanded', 'false'); }
+    if (!helpOverlay.hidden) helpOverlay.hidden = true;
+    if (!yearDialog.hidden) yearDialog.hidden = true;
+    if (!displayPanel.hidden) toggleDisplayPanel();
+  }
+
   let learn = null;
   function openLearn() {
+    closeAllPanels();
     if (!learn) {
       learn = createLearnPanel(learnPanel, {
         getState: () => window.VATLAS.getState(),
@@ -1557,6 +1624,7 @@ function mount() {
   }
 
   function openCompare() {
+    closeAllPanels();
     comparePanel.hidden = false;
     compareButton.setAttribute('aria-expanded', 'true');
   }
@@ -1567,6 +1635,7 @@ function mount() {
     writeUrl(params);
   }
   function openQuality() {
+    closeAllPanels();
     qualityPanel.hidden = false;
     qualityButton.setAttribute('aria-expanded', 'true');
   }
@@ -1608,6 +1677,7 @@ function mount() {
   }
 
   async function openHistomap() {
+    closeAllPanels();
     histomapPanel.hidden = false;
     document.body.classList.add('histomap-open');
     histomapButton.setAttribute('aria-pressed', 'true');
@@ -1758,7 +1828,7 @@ function mount() {
   }
 
   function openSearch() {
-    helpOverlay.hidden = true;
+    closeAllPanels();
     searchOverlay.hidden = false;
     search.focus();
   }
@@ -1834,6 +1904,10 @@ function mount() {
   });
 
   document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && document.body.classList.contains('zen')) {
+      toggleZen(false);
+      return;
+    }
     if (event.altKey && (event.key === 'ArrowLeft' || event.key === 'ArrowRight')) {
       event.preventDefault();
       navigateNav(event.key === 'ArrowLeft' ? -1 : 1);
@@ -1869,6 +1943,11 @@ function mount() {
     else if (event.key.toLowerCase() === 'l' && !typing) {
       event.preventDefault();
       if (learnPanel.hidden) openLearn(); else closeLearn();
+    }
+    else if (event.key.toLowerCase() === 'z' && !typing) { event.preventDefault(); toggleZen(); }
+    else if (event.key.toLowerCase() === 'k' && (event.ctrlKey || event.metaKey)) {
+      event.preventDefault();
+      openSearch();
     }
     else if (event.key.toLowerCase() === 'y' && !typing) { event.preventDefault(); toggleSun(); }
     else if (event.key.toLowerCase() === 'w' && !typing) { event.preventDefault(); toggleWire(); }
@@ -1960,6 +2039,7 @@ function mount() {
       empire: { active: Boolean(empireRuler), ruler: empireRuler },
       sun: { enabled: showSun, year: globe?.statistics?.().sunYear ?? null },
       wireframe: showWire,
+      zen: document.body.classList.contains('zen'),
       anomalies: ANOMALIES.meta.count,
       qualityOpen: !qualityPanel.hidden,
       learning: {
@@ -1986,6 +2066,9 @@ function mount() {
     toggleWire,
     openLearn,
     closeLearn,
+    toggleZen,
+    closeAllPanels,
+    openSearch,
     setLearnSection: (id) => {
       openLearn();
       learnPanel.querySelector(`.learn-tab[data-section="${id}"]`)?.click();
