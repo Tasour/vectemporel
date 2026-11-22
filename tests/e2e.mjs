@@ -287,6 +287,33 @@ try {
   await page.keyboard.press('Escape');
   await new Promise((resolve) => setTimeout(resolve, 150));
   check('Apprendre fermé', await page.evaluate(() => document.getElementById('learn-panel').hidden));
+  await page.click('#hud-display-button');
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  check('outils disponibles', await page.evaluate(() => ['tool-reset', 'tool-year', 'tool-copy', 'tool-fullscreen', 'tool-zen']
+    .every((id) => Boolean(document.getElementById(id)))));
+  await page.click('#tool-year');
+  await new Promise((resolve) => setTimeout(resolve, 500));
+  check('outil année 1000', await page.evaluate(() => window.VATLAS.getState().year === 1000));
+  await page.click('#tool-zen');
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  check('mode zen activé', await page.evaluate(() => window.VATLAS.getState().zen
+    && !document.getElementById('zen-exit').hidden && document.getElementById('display-panel').hidden));
+  await page.keyboard.press('Escape');
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  check('mode zen quitté', await page.evaluate(() => !window.VATLAS.getState().zen));
+  await page.keyboard.down('Control');
+  await page.keyboard.press('k');
+  await page.keyboard.up('Control');
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  check('Ctrl+K ouvre la recherche', await page.evaluate(() => !document.getElementById('hud-search').hidden));
+  await page.keyboard.press('Escape');
+  await page.keyboard.press('t');
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  await page.keyboard.press('l');
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  check('un seul panneau à la fois', await page.evaluate(() => document.getElementById('trails-panel').hidden
+    && !document.getElementById('learn-panel').hidden));
+  await page.keyboard.press('Escape');
   check('chunk chargé', await page.evaluate(() => performance.getEntriesByType('resource').some((e) => /\/c\d+\.json/.test(e.name))));
   await page.click('.century-btn[data-year="0"]');
   await new Promise((resolve) => setTimeout(resolve, 700));

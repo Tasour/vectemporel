@@ -64,7 +64,7 @@ Sur téléphone, les gestes sont désormais déterministes (P14) : un **double-t
 
 Les épiques se filtrent par catégorie (la minimap se recalcule), les ruptures exposent leurs provinces comme raccourcis, `Alt+←/→` parcourt l'historique des années et des provinces, les arcs portent des marqueurs interactifs, et les libellés projected évitent les collisions en priorisant les groupes les plus étendus.
 
-La frise peut zoomer sur un seul siècle (101 crans), le bouton `A/B` compare deux années, la dimension **Empire** isole les provinces d'un même souverain, la recherche trouve aussi les souverains et cultures de l'année, et un clic sur un ruban Histomap ouvre le récit correspondant.
+La frise peut zoomer sur un seul siècle (101 crans), le bouton `A/B` compare deux années, la dimension **Empire** isole les provinces d'un même souverain, la recherche trouve aussi les souverains et cultures de l'année, et un clic sur un ruban Histomap ouvre le récit correspondant. Le panneau **Affichage** (bouton `☷`, présent sur desktop et mobile) regroupe les outils : recentrer, revenir à 1000, copier le lien, plein écran et **mode zen** (`Z`). `Ctrl+K` ouvre la recherche et un seul panneau peut être ouvert à la fois.
 
 ## Mode révision active
 

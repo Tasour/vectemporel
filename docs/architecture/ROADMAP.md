@@ -307,6 +307,16 @@ Les features F22 et F27, initialement reportées, ont été livrées en P10 avec
 - En-tête de licence restauré dans le bundle D3 ✅
 - **Rollback** : retirer les cinq nouveaux `content/trails/*.json`, `scripts/build-data-quality.mjs`, `scripts/make-snapshot.mjs`, `scripts/check-licenses.mjs`, `src/data/data-quality.js`, `data-snapshot.sha256`, `tests/data-quality.mjs`, `tests/snapshot.mjs` ; restaurer `src/app.js`, `styles.css`, `package.json`, `sw.js`, `scripts/verify.mjs`, `scripts/build-d3.mjs`, `public/d3-bundle.js`, `README.md`, `CHANGELOG.md`.
 
+## P29 — Outils, panneau unique et mode zen ✅ 2026-11-23
+
+- Section Outils du panneau Affichage : recentrer, année 1000, copier le lien, plein écran, mode zen ✅
+- Bouton Affichage disponible sur desktop comme sur mobile ✅
+- `Ctrl+K` ouvre la recherche, `Z` bascule le mode zen, `Échap` le quitte ✅
+- Ouverture d'un panneau = fermeture des autres ✅
+- Transitions courtes désactivées par `prefers-reduced-motion` ✅
+- Aide intégrée mise à jour avec tous les raccourcis ✅
+- **Rollback** : restaurer `src/app.js`, `styles.css` et `tests/e2e.mjs` depuis le commit précédent.
+
 ## Rollback global
 
 Restaurer `archive/v2-globe-1year/` (ou `archive/v1-map-2d/`) et republier le commit `adc5c9d`.
