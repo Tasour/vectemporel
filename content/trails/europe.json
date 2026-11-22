@@ -1,0 +1,56 @@
+{
+  "id": "europe",
+  "title": "L'Europe des capitales",
+  "subtitle": "D'Aix-la-Chapelle à Londres industrielle, sept villes qui ont fait l'Europe politique.",
+  "steps": [
+    {
+      "year": 800,
+      "province": "Aachen",
+      "title": "Charlemagne couronné à Rome",
+      "text": "Le roi des Francs est couronné empereur à Rome. Aix-la-Chapelle, sa résidence, devient le centre d'une cour qui copie et diffuse les textes anciens.",
+      "evidence": { "field": "ruler", "value": "FRK" }
+    },
+    {
+      "year": 1066,
+      "province": "London",
+      "title": "Londres passe aux Normands",
+      "text": "Après Hastings, Guillaume le Conquérant se fait couronner à Westminster. Londres devient la capitale d'un royaume anglo-normand qui conserve longtemps des possessions sur le continent.",
+      "evidence": { "field": "ruler", "value": "_Kingdom_of_England" }
+    },
+    {
+      "year": 1300,
+      "province": "Wien",
+      "title": "Vienne et les Habsbourg",
+      "text": "Les Habsbourg installent leur résidence à Vienne. La ville profite du Danube et de la route vers l'Italie pour devenir un centre administratif et commercial.",
+      "evidence": { "field": "ruler", "value": "HAB" }
+    },
+    {
+      "year": 1500,
+      "province": "Venezia",
+      "title": "Venise, puissance maritime",
+      "text": "La Sérénissime contrôle un empire de comptoirs et d'îles en Méditerranée orientale. Ses ateliers d'imprimerie et ses marchands en font une des villes les plus riches d'Europe.",
+      "evidence": { "field": "ruler", "value": "VEN" }
+    },
+    {
+      "year": 1500,
+      "province": "Madrid",
+      "title": "Madrid, bourgade castillane",
+      "text": "Madrid n'est encore qu'une ville de Castille, sans rôle de capitale. Elle ne sera choisie comme résidence de la cour qu'en 1561, ce qui la transformera en centre de la monarchie espagnole.",
+      "evidence": { "field": "ruler", "value": "CAS" }
+    },
+    {
+      "year": 1700,
+      "province": "Wien",
+      "title": "Vienne après le siège",
+      "text": "Vienne se remet du siège ottoman de 1683 et s'étend en faubourgs baroques. La monarchie des Habsbourg y concentre administration, musique et diplomatie.",
+      "evidence": { "field": "ruler", "value": "_Habsburg_Monarchy" }
+    },
+    {
+      "year": 1900,
+      "province": "London",
+      "title": "Londres, capitale impériale",
+      "text": "Londres est la capitale du Royaume-Uni et le centre financier d'un empire mondial. Port, chemin de fer et télégraphe y font converger les flux de marchandises et d'informations.",
+      "evidence": { "field": "ruler", "value": "GBR" }
+    }
+  ]
+}

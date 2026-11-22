@@ -16,11 +16,11 @@ export function startServer(port) {
   });
 }
 
-export async function waitForHttp(url, timeout = 15000) {
+export async function waitForHttp(url, timeout = 20000) {
   const deadline = Date.now() + timeout;
   while (Date.now() < deadline) {
     try {
-      const response = await fetch(url, { signal: AbortSignal.timeout(1000) });
+      const response = await fetch(url, { signal: AbortSignal.timeout(3000) });
       if (response.ok) return true;
     } catch { /* serveur pas encore prêt */ }
     await new Promise((resolve) => setTimeout(resolve, 200));

@@ -30,6 +30,16 @@ La barre de dimensions permet de colorer les régions par État, culture, religi
 
 La barre `Aucun / Historique / Capitales / Moderne / Les deux` affiche des libellés projetés sur la sphère : noms Chronas importés au build et noms de pays modernes issus de Natural Earth (domaine public, 177 pays, 8 Ko), tous hors ligne. La frise porte les **560 épiques** Chronas : pastilles colorées par catégorie et sélecteur accessible pour sauter à un événement. La fiche de chaque région affiche aussi sa **chronologie provinciale** locale : souverain, culture, religion, capitale et population à travers les siècles, avec un sélecteur de repères. Contrairement à Chronas, aucun fond de carte externe n'est nécessaire pour le mode moderne : les noms sont embarqués. Le thème clair/sombre est conservé dans `localStorage`.
 
+## Récits guidés
+
+Cinq parcours — **la route de la soie, le réveil de l'Islam, l'Europe des capitales, les villes du savoir, les empires d'Asie** — totalisent **35 jalons** dans `content/trails/*.json`. Le bouton `❖` (touche `T`) ouvre la liste ; chaque jalon amène la sphère à l'année et à la province concernées, puis affiche le récit, les faits Chronas à cette année et la preuve utilisée (`souverain « XIO » en -138`). La fiche de région reste fermée pendant le récit : le panneau tient lieu de lecture. `Précédent / Suivant / Quitter` et `Échap` pilotent la progression ; `?trail=soie&step=2` reprend un récit après rechargement.
+
+Les récits ne sont pas du texte libre non vérifié : `scripts/build-trails.mjs` recalcule pour chaque jalon la valeur du champ Chronas déclaré à l'année indiquée et casse le build en cas d'écart. Un SHA-256 canonique est embarqué dans `src/data/trails.js` et contrôlé par `npm run test:trails:data`. Texte des récits sous licence MIT, données © Chronas CC BY-SA 4.0.
+
+## Ruptures détectées
+
+La frise porte aussi **49 points de rupture** calculés depuis les 41 chunks annuels (ADR-0012). Règle reproductible : une année où au moins 20 provinces changent de souverain, l'an 1 et les sauts de population $>10$ millions étant exclus comme artefacts de la source. Chaque badge affiche l'année, son nombre de régions et, au clic, amène le globe à l'année puis ouvre la fiche d'une province concernée. Le libellé dit explicitement **« extrait Chronas »** : c'est un constat sur la donnée, pas un récit historique. `?turn=751` sélectionne un point au chargement ; les badges sont des cibles de 44 px dans une bande défilante.
+
 ## Interface mobile et navigation
 
 Sous 760 px, la fiche de région s'ouvre en **plein écran** avec un bouton Fermer (`Échap` fonctionne aussi) ; la timeline et les contrôles sont masqués pendant la lecture. Une fois fermée, la frise devient compacte (156 px, année + curseur + lecture sur une ligne) et le readout tient sur deux lignes à gauche des boutons de zoom. Le bouton `☷` ouvre le panneau « Affichage » qui regroupe couleurs, libellés et épiques ; les boutons `+`, `−` et `⌖` pilotent le zoom et le recentrage avec des cibles de 44 px.
@@ -96,6 +106,12 @@ npm run check
 |---|---|
 | `npm run verify` | snapshot, licence, roundtrip lon/lat, zéro réseau runtime, syntaxe, ids DOM |
 | `npm run test:scale` | échelle de la frise : bornes, monotonie, aller-retour, mode récents |
+| `npm run trails:build` | régénère `src/data/trails.js` depuis `content/trails/*.json`, preuve à l'appui |
+| `npm run test:trails:data` | 35 jalons : provinces existantes, preuves Chronas, SHA-256 |
+| `npm run test:trails` | parcours des récits : navigation, deep link, mobile |
+| `npm run points:build` | recalcule les 49 ruptures depuis les chunks, avec SHA-256 |
+| `npm run test:points` | règle ADR-0012, bornes, espacement, reproductibilité |
+| `npm run test:points:ui` | badges, clic, fiche, deep link, timeline mobile |
 | `node tests/http-guards.mjs` | vrai serveur : whitelist, en-têtes, entrées malformées, survie |
 | `npm run test:live` | gate live 1440×1000 et 390×844 : cibles ≥ 44 px, collisions HUD, débordement, console, réseau |
 | `npm run test:e2e` | deep link, WebGL, fiche, clavier, recherche, aide, révision |

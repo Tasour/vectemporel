@@ -214,6 +214,29 @@ Les features F22 et F27, initialement reportées, ont été livrées en P10 avec
 
 **Rollback** : retirer `src/timeline/scale.js`, `tests/timeline-scale.mjs`, `tests/lib/server.mjs`, les blocs minimap de `src/app.js` et `styles.css` ; restaurer `package.json`, `README.md`, `tests/e2e.mjs`, `tests/perf-budget.mjs`, `tests/pwa.mjs`.
 
+## P20 — Récits guidés ✅ 2026-11-22
+
+- `content/trails/*.json` : 5 récits, 35 jalons, chaque jalon portant une preuve Chronas ✅
+- `scripts/build-trails.mjs` : validation des provinces, du champ et de la valeur à l'année ; SHA-256 canonique ✅
+- `src/story/trails.js` : lecteur pur (démarrer, suivant, précédent, arrêter), sans DOM ni horloge ✅
+- HUD : bouton `❖` (touche `T`), panneau dialog, faits synchronisés avec l'année du jalon ✅
+- La fiche reste fermée pendant le récit : `applyYear({ notify: false, reopenCard: false })` ✅
+- Deep link `trail` + `step`, repris au chargement ✅
+- Mobile : actions HUD réparties sur deux lignes (max 220 px), titre et boutons séparés ✅
+- `tests/trails-data.mjs` et `tests/trails.mjs` intégrés à `npm run check` ✅
+
+**Rollback** : retirer `content/trails/`, `scripts/build-trails.mjs`, `scripts/lib/canonical.mjs`, `src/story/trails.js`, `src/data/trails.js`, `tests/trails*.mjs` ; restaurer `src/app.js`, `styles.css`, `package.json`, `README.md` et `scripts/verify.mjs`.
+
+## P21 — Points de rupture détectés (proposé) ✅ 2026-11-22
+
+- ADR-0012 : règle de détection, artefacts de l'an 1 et des populations exclus ✅
+- `scripts/build-turning-points.mjs` : 49 ruptures, SHA-256 canonique, build reproductible ✅
+- Bande défilante de badges 44 px dans la frise, sans augmentation de hauteur sur mobile ✅
+- Clic badge → année + fiche provinciale + `?turn=`, libellé « extrait Chronas » ✅
+- `tests/turning-points.mjs` et `tests/turning-ui.mjs` intégrés à `npm run check` ✅
+
+**Rollback** : retirer `src/data/turning-points.js`, `scripts/build-turning-points.mjs`, `tests/turning-points.mjs`, `tests/turning-ui.mjs`, ADR-0012 ; restaurer `src/app.js`, `styles.css`, `sw.js`, `package.json`, `README.md` et `scripts/verify.mjs`.
+
 ## Rollback global
 
 Restaurer `archive/v2-globe-1year/` (ou `archive/v1-map-2d/`) et republier le commit `adc5c9d`.
