@@ -43,6 +43,10 @@ const SECURITY_HEADERS = Object.freeze({
   'Cache-Control': 'no-cache',
 });
 
+/* Uniquement pour le proxy local du MCP devtools : le pont injecte un script
+ * inline et ouvre un WebSocket sur 9222. La CSP de production reste stricte. */
+const DEVTOOLS_CSP = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' ws://localhost:9222 ws://127.0.0.1:9222; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'; worker-src 'self'";
+
 function isInside(root, candidate) {
   const rel = path.relative(root, candidate);
   return rel !== '' && !rel.startsWith('..') && !path.isAbsolute(rel);
@@ -58,7 +62,10 @@ const gzipCache = new Map();
 const COMPRESSIBLE = /\.(js|css|html|json|svg|csv|md)$/i;
 
 function send(response, status, body = '', type = 'text/plain; charset=utf-8', extra = {}) {
-  response.writeHead(status, { 'Content-Type': type, ...SECURITY_HEADERS, ...extra });
+  const csp = response.devtoolsCsp
+    ? { 'Content-Security-Policy': DEVTOOLS_CSP }
+    : {};
+  response.writeHead(status, { 'Content-Type': type, ...SECURITY_HEADERS, ...csp, ...extra });
   response.end(body);
 }
 
@@ -80,6 +87,7 @@ function fail(status, message) {
 }
 
 const handler = (request, response) => {
+  response.devtoolsCsp = String(request.url || '').includes('devtools=1');
   let rel = '';
   try {
     if (request.method !== 'GET' && request.method !== 'HEAD') {

@@ -25,7 +25,8 @@
     "test:perf": "node tests/perf-budget.mjs",
     "test:pwa": "node tests/pwa.mjs",
     "check": "npm run verify && npm run test:years && npm run test:vector && npm run test:provinces && npm run test:learning && node tests/http-guards.mjs && npm run test:e2e && npm run test:perf && npm run test:pwa && npm run test:devtools",
-    "test:devtools": "node tests/devtools-bridge.mjs"
+    "test:devtools": "node tests/devtools-bridge.mjs",
+    "bridge:check": "node tests/bridge-check.mjs"
   },
   "engines": {
     "node": ">=20"

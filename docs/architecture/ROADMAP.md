@@ -180,6 +180,16 @@ Les features F22 et F27, initialement reportées, ont été livrées en P10 avec
 
 **Rollback** : restaurer `src/app.js`, `styles.css`, `package.json` et `sw.js` depuis le commit `0b8868b`.
 
+## P18 — Pont Three.js créé par OpenCode ✅ 2026-11-22
+
+- Configuration MCP globale : wrapper + `DEV_URL` 4181 `?devtools=1` + headless + CDP 9229 ✅
+- `scripts/bridge-mcp.mjs` : health-check puis démarrage du MCP ✅
+- CSP de production inchangée ; CSP assouplie uniquement sur `?devtools=1` ✅
+- `npm run bridge:check` ✅
+- Documentation locale mise à jour ✅
+
+**Rollback** : restaurer `~/.config/opencode/opencode.json` depuis le backup horodaté et `scripts/serve.mjs` depuis le commit `0a05101`.
+
 ## Rollback global
 
 Restaurer `archive/v2-globe-1year/` (ou `archive/v1-map-2d/`) et republier le commit `adc5c9d`.

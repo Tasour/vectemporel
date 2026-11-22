@@ -39,13 +39,21 @@ Captures aux deux viewports (1658×1150 et 390×844) pour tout changement visuel
 `quality-gates` avant livraison ; `visual-density-lab` pour une grille de tuiles.
 
 Le serveur MCP `threejs-devtools-mcp` est configuré dans `~/.config/opencode/opencode.json` :
-69 outils d'inspection de scène vivante. Son pont navigateur doit être ouvert avant usage
-(`bridge_status` indique l'URL locale à visiter) ; il ne modifie jamais les sources sans édition
-explicite.
+69 outils d'inspection de scène vivante. OpenCode le démarre désormais via
+`scripts/bridge-mcp.mjs`, qui lance le serveur local sur 4181 si besoin puis le MCP avec
+`DEV_URL=http://127.0.0.1:4181/?devtools=1`, `HEADLESS=true`, `CHROME_PATH=/usr/bin/chromium`
+et `CDP_PORT=9229`. Le proxy du pont écoute sur 9222 ; Playwright peut partager le même
+navigateur avec `--cdp-endpoint http://localhost:9229`. Le MCP ne modifie jamais les sources
+sans édition explicite.
 
-`npm run test:devtools` (intégré à `npm run check`) injecte le même pont **avant chargement**
-via `attachDevtools({ connect: false })`, sans assouplir la CSP `script-src 'self'` ni exposer
-`window.THREE` dans l'application. C'est la voie de vérification retenue pour la scène ESM r180.
+`?devtools=1` n'est qu'un marqueur du serveur local : il n'assouplit la CSP que pour le proxy
+du pont (script inline + WebSocket 9222). La CSP de production reste stricte
+(`script-src 'self'`), et `window.THREE` n'est jamais exposé par l'application.
+
+`npm run bridge:check` valide la configuration du pont, le wrapper, les deux CSP et,
+si le MCP est démarré, la joignabilité du proxy. `npm run test:devtools` (intégré à
+`npm run check`) injecte le même pont **avant chargement** via `attachDevtools({ connect: false })`,
+sans réseau ni navigateur supplémentaire. C'est la voie de vérification retenue pour la scène ESM r180.
 
 ## Pièges connus
 

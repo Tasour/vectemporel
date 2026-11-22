@@ -74,6 +74,14 @@ Au repos, la sphère tourne lentement ; le mouvement s'arrête au premier geste 
 - `src/globe/vector-provinces.js` : maillage GPU des 2 492 provinces (16 741 triangles), triangulé une fois par changement d'année ou de dimension. Les frontières restent nettes à tout zoom ; la caméra est bornée à **zoom 6**.
 - `src/globe/globe.js` : une seule boucle rAF (pause sur `document.hidden`), Halo atmosphérique, champ d'étoiles déterministe, picking par raycast puis test de polygone, DPR ≤ 2.
 
+## Pont Three.js pour OpenCode
+
+Le MCP `threejs-devtools-mcp` est lancé par `scripts/bridge-mcp.mjs` : il démarre le serveur local sur 4181 si besoin, puis le MCP avec `DEV_URL=http://127.0.0.1:4181/?devtools=1`, un Chromium headless et le CDP sur 9229. Le proxy du pont écoute sur 9222. `?devtools=1` n'assouplit la CSP que pour ce proxy local ; la CSP de production reste stricte.
+
+```bash
+npm run bridge:check   # config MCP, wrapper, CSP production/dev, proxy si actif
+```
+
 ## Vérifier
 
 ```bash
