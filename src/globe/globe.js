@@ -106,6 +106,9 @@ export function createGlobe(canvas, {
 
   const marker = new THREE.Group();
   lonGroup.add(marker);
+  const arcs = new THREE.Group();
+  lonGroup.add(arcs);
+  let arcCount = 0;
 
   /* F38 : disque-local au lieu du carré par défaut de THREE.Points. */
   const discCanvas = document.createElement('canvas');
@@ -285,6 +288,55 @@ export function createGlobe(canvas, {
       child.geometry?.dispose?.();
       child.material?.dispose?.();
     }
+  }
+
+  function clearArcs() {
+    for (const child of [...arcs.children]) {
+      arcs.remove(child);
+      child.geometry?.dispose?.();
+      child.material?.dispose?.();
+    }
+    arcCount = 0;
+  }
+
+  /* Arcs de simultanéité : interpolation great-circle entre deux centres de
+   * province. Une seule frame rendue ici, aucune boucle supplémentaire. */
+  function setArcs(pairs = []) {
+    clearArcs();
+    const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+    for (const { from, to } of pairs) {
+      const aBox = INDEX[from];
+      const bBox = INDEX[to];
+      if (!aBox || !bBox) continue;
+      const a = centerOfBounds(aBox);
+      const b = centerOfBounds(bBox);
+      const av = vectorFromLonLat(a.lon, a.lat);
+      const bv = vectorFromLonLat(b.lon, b.lat);
+      const va = new THREE.Vector3(av.x, av.y, av.z);
+      const vb = new THREE.Vector3(bv.x, bv.y, bv.z);
+      const omega = Math.acos(clamp(va.dot(vb), -1, 1));
+      if (omega < 0.02) continue;
+      const sinOmega = Math.sin(omega);
+      const height = reduced ? 0.02 : Math.min(0.16, 0.06 + omega * 0.05);
+      const points = [];
+      for (let index = 0; index <= 32; index += 1) {
+        const t = index / 32;
+        const direction = va.clone().multiplyScalar(Math.sin((1 - t) * omega) / sinOmega)
+          .add(vb.clone().multiplyScalar(Math.sin(t * omega) / sinOmega))
+          .normalize();
+        points.push(direction.multiplyScalar(1.014 + height * Math.sin(Math.PI * t)));
+      }
+      const segments = [];
+      for (let index = 0; index < points.length - 1; index += 1) {
+        segments.push(points[index], points[index + 1]);
+      }
+      arcs.add(new THREE.LineSegments(
+        new THREE.BufferGeometry().setFromPoints(segments),
+        new THREE.LineBasicMaterial({ color: 0xe6b96f, transparent: true, opacity: 0.9 }),
+      ));
+      arcCount += 1;
+    }
+    renderer.render(scene, camera);
   }
 
   function buildMarker(name) {
@@ -634,6 +686,7 @@ export function createGlobe(canvas, {
       selected = name;
       buildMarker(name);
     },
+    setArcs,
     focusRegion(name) {
       const box = INDEX[name];
       if (!box) return;
@@ -663,6 +716,7 @@ export function createGlobe(canvas, {
       ...provinceStatistics,
       zoomMax: ZOOM_MAX,
       cityCount,
+      arcCount,
       citySprite: Boolean(discTexture?.image),
     }),
     rotateBy(dLon, dLat) {
@@ -692,6 +746,7 @@ export function createGlobe(canvas, {
       canvas.removeEventListener('wheel', onWheel);
       cancelPendingTap();
       clearMarker();
+      clearArcs();
       if (provinceMesh) { lonGroup.remove(provinceMesh.group); provinceMesh.dispose(); }
       if (cityPoints) { cityPoints.geometry.dispose(); cityPoints.material.dispose(); }
       discTexture.dispose();
