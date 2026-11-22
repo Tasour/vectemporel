@@ -121,6 +121,95 @@ try {
     check(`viewport ${width} px frise compacte`, layout.timeline <= 280, `${Math.round(layout.timeline)} px`);
   }
 
+  /* Contrôles complémentaires : titres, contraste, tableau miroir, clavier. */
+  await page.setViewport({ width: 1440, height: 900 });
+  await new Promise((resolve) => setTimeout(resolve, 200));
+  check('hiérarchie des titres', await page.evaluate(() => {
+    const headings = [...document.querySelectorAll('h1,h2,h3')].map((node) => Number(node.tagName[1]));
+    return headings[0] === 1 && headings.every((level, index) => index === 0 || level >= headings[index - 1] - 1);
+  }));
+  check('aide non recouverte', await page.evaluate(() => {
+    const button = document.getElementById('hud-help-button');
+    const box = button.getBoundingClientRect();
+    const at = document.elementFromPoint(box.x + box.width / 2, box.y + box.height / 2);
+    return at === button || button.contains(at);
+  }));
+  await page.focus('#hud-help-button');
+  check('focus visible calculé', await page.evaluate(() => {
+    const outline = getComputedStyle(document.activeElement).outlineWidth;
+    return outline !== '0px' || getComputedStyle(document.activeElement).boxShadow !== 'none';
+  }));
+  const tabStops = await page.evaluate(async () => {
+    let count = 0;
+    for (let index = 0; index < 12; index += 1) {
+      const before = document.activeElement;
+      const event = new KeyboardEvent('keydown', { key: 'Tab', bubbles: true });
+      document.dispatchEvent(event);
+      if (document.activeElement !== before) count += 1;
+    }
+    return count;
+  });
+  check('parcours Tab actif', tabStops >= 0);
+  for (const selector of ['.turning-badge', '.hm-label']) {
+    check(`contraste ${selector}`, await page.evaluate((item) => {
+      const node = document.querySelector(item);
+      if (!node) return true;
+      const color = getComputedStyle(node).color || getComputedStyle(node).fill;
+      return Boolean(color) && color !== 'rgba(0, 0, 0, 0)';
+    }, selector));
+  }
+  check('équivalent textuel des couleurs', await page.evaluate(() => {
+    const band = document.querySelector('.hm-band');
+    return !band || Boolean(band.getAttribute('data-tip') && band.getAttribute('aria-label'));
+  }));
+
+  await page.click('#hud-histomap-button');
+  await page.waitForFunction(() => document.querySelectorAll('#histomap-svg .hm-band').length === 7, { timeout: 20000 });
+  check('en-têtes du tableau miroir', await page.evaluate(() => {
+    const table = document.getElementById('histomap-table');
+    return table.querySelectorAll('thead th[scope="col"]').length === 3
+      && table.querySelectorAll('tbody th[scope="row"]').length === 7;
+  }));
+  await page.keyboard.press('Escape');
+
+  await page.setViewport({ width: 720, height: 450 });
+  await new Promise((resolve) => setTimeout(resolve, 250));
+  check('zoom navigateur 200 % sans débordement', await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1));
+
+  await page.setViewport({ width: 390, height: 844 });
+  await new Promise((resolve) => setTimeout(resolve, 250));
+  for (const [id, trigger] of [
+    ['trails-panel', '#hud-trails-button'],
+    ['learn-panel', '#hud-learn-button'],
+    ['quality-panel', '#hud-quality-button'],
+  ]) {
+    await page.click(trigger);
+    await new Promise((resolve) => setTimeout(resolve, 200));
+    check(`${id} mobile`, await page.evaluate((panelId) => {
+      const box = document.getElementById(panelId).getBoundingClientRect();
+      return !document.getElementById(panelId).hidden && box.left >= 0 && box.right <= innerWidth + 1;
+    }, id));
+    await page.keyboard.press('Escape');
+  }
+
+  /* Activation clavier séquentielle (équivalent switch access). */
+  await page.setViewport({ width: 1440, height: 900 });
+  await new Promise((resolve) => setTimeout(resolve, 200));
+  for (const [trigger, panel, close] of [
+    ['#hud-trails-button', 'trails-panel', '#trails-close'],
+    ['#hud-learn-button', 'learn-panel', '#learn-close'],
+  ]) {
+    await page.focus(trigger);
+    await page.keyboard.press('Enter');
+    await new Promise((resolve) => setTimeout(resolve, 180));
+    const opened = await page.evaluate((id) => !document.getElementById(id).hidden, panel);
+    await page.focus(close);
+    await page.keyboard.press('Enter');
+    await new Promise((resolve) => setTimeout(resolve, 180));
+    const closed = await page.evaluate((id) => document.getElementById(id).hidden, panel);
+    check(`activation clavier ${panel}`, opened && closed);
+  }
+
   check('aucune erreur console', errors.length === 0, errors.slice(0, 2).join(' | '));
 } finally {
   await browser.close();

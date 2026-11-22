@@ -86,6 +86,16 @@ try {
   await page.waitForFunction(() => window.VATLAS.getState().trail.id === 'asie', { timeout: 10000 });
   check('pont Histomap → récit', await page.evaluate(() => window.VATLAS.getState().trail.active
     && document.getElementById('histomap-panel').hidden));
+  await page.evaluate(() => window.VATLAS.closeAllPanels());
+  await page.click('#hud-histomap-button');
+  await page.waitForFunction(() => document.querySelectorAll('#histomap-svg .hm-band').length === 7, { timeout: 20000 });
+  await page.evaluate(() => document.querySelector('#histomap-svg .hm-band[data-key="Islamique"]')
+    .dispatchEvent(new MouseEvent('click', { bubbles: true })));
+  await page.waitForFunction(() => window.VATLAS.getState().trail.id === 'islam', { timeout: 10000 });
+  check('pont Islamique → récit islam', await page.evaluate(() => window.VATLAS.getState().trail.id === 'islam'));
+  await page.keyboard.press('h');
+  await page.waitForFunction(() => document.querySelectorAll('#histomap-svg .hm-band').length === 7, { timeout: 20000 });
+  check('retour du récit vers l’Histomap', await page.evaluate(() => !document.getElementById('histomap-panel').hidden));
 
   const restored = await browser.newPage();
   await restored.setViewport({ width: 1440, height: 900 });

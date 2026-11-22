@@ -1,6 +1,8 @@
 /* Panneau Apprendre : cinq défis locaux, branchés sur le SRS existant.
  * Aucune donnée réseau, aucune horloge autre que Date.now() réel pour le SRS. */
-import { loadSrs, saveSrs, reviewCard, srsSummary } from './srs.js';
+import { loadSrs, saveSrs, reviewCard, srsSummary, INTERVALS } from './srs.js';
+import { getQuestionPool } from './questions.js';
+import { TRAILS } from '../data/trails.js';
 import {
   localGoals, silentQuestion, srsHeatmap, trailFillQuestion, yearQuiz,
 } from './challenges.js';
@@ -125,6 +127,28 @@ export function createLearnPanel(host, api = {}) {
       el('p', 'learn-prompt', `${summary.cards} cartes · ${summary.reviews} révisions · ${summary.correct} bonnes réponses · série ${summary.streak}`),
       el('p', 'learn-meta', `Boîtes Leitner : ${summary.mastered} maîtrisées, ${summary.due} dues`),
     );
+    /* Taux par catégorie : les cartes au dernier palier Leitner sont
+     * considérées comme maîtrisées ; ce n'est pas un taux de réussite brut. */
+    const byId = new Map([
+      ...getQuestionPool().map((question) => [question.id, question.type]),
+      ...yearQuiz().map((question) => [question.id, 'Année']),
+      ...TRAILS.trails.flatMap((trail) => trail.steps.map((step, index) => [`fill-${trail.id}-${index}`, 'Récits'])),
+    ]);
+    const masteredByType = new Map();
+    const seenByType = new Map();
+    for (const [id, card] of Object.entries(srs.cards || {})) {
+      const type = byId.get(id);
+      if (!type) continue;
+      seenByType.set(type, (seenByType.get(type) || 0) + 1);
+      if (card.box >= INTERVALS.length - 1) masteredByType.set(type, (masteredByType.get(type) || 0) + 1);
+    }
+    const categories = [...seenByType].map(([type, seen]) => {
+      const mastered = masteredByType.get(type) || 0;
+      return `${type} ${Math.round((mastered / seen) * 100)} %`;
+    });
+    if (categories.length) {
+      content.appendChild(el('p', 'learn-meta', `Cartes maîtrisées par catégorie : ${categories.join(' · ')}`));
+    }
     const grid = el('div', 'learn-heatmap');
     grid.id = 'learn-heatmap';
     for (const day of cells) {

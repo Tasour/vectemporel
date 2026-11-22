@@ -53,6 +53,10 @@ try {
   const markers = await page.$$('#arc-host .arc-marker');
   check('marqueurs d’arcs présents', markers.length > 0, `${markers.length}`);
   check('compteur de libellés masqués', await page.evaluate(() => Number.isInteger(window.VATLAS.getState().labelsHidden)));
+  check('raycast ignore les arcs', await page.evaluate(() => {
+    const picked = window.VATLAS.pickAt(720, 450);
+    return picked === null || !/arc/i.test(String(picked));
+  }));
   if (markers.length) {
     await page.evaluate(() => document.querySelector('#arc-host .arc-marker').focus());
     await new Promise((resolve) => setTimeout(resolve, 150));

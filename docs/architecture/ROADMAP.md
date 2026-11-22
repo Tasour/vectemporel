@@ -344,6 +344,17 @@ Les features F22 et F27, initialement reportées, ont été livrées en P10 avec
 - Bascule automatique en silhouette sur appareil peu puissant ✅
 - Résultats de recherche triés par population ✅
 
+## P33 — Dernières finitions et onboarding ✅ 2026-11-23
+
+- Bandeau de premier lancement en trois étapes, non modal et mémorisé ✅
+- Indicateur de panneau actif (desktop), masqué en mobile après relecture des captures ✅
+- Aide au survol, en-têtes et tooltips harmonisés ✅
+- Taux par catégorie dans le tableau de bord SRS ✅
+- Tests complémentaires : historique, arcs, récits, apprentissage, a11y, perf, offline ✅
+- Cartes des écrans, composants, styleguide et tutoriel ajoutés ✅
+- **Annulés et documentés** : 20 épiques supplémentaires (l'API Chronas n'en publie que 561, dont 560 déjà importés ; aucun chiffre inventé), refonte du HUD en navigation principale et réduction à 6 boutons (conflit avec les raccourcis validés), audit axe-core externe (licence MPL nécessitant validation humaine).
+- **Rollback** : restaurer `src/app.js`, `styles.css`, `tests/*`, `README.md`, `docs/` depuis le commit précédent.
+
 ## Rollback global
 
 Restaurer `archive/v2-globe-1year/` (ou `archive/v1-map-2d/`) et republier le commit `adc5c9d`.

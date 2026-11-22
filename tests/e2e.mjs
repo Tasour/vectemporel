@@ -57,6 +57,13 @@ try {
   await page.goto(`${BASE}?type=area&value=Berry&pos=47.08,2.4,4.2&year=1000`, { waitUntil: 'load', timeout: 60000 });
   await wait(1600);
 
+  check('bandeau premier lancement', Boolean(await page.$('#onboarding')));
+  for (let index = 0; index < 3; index += 1) await page.click('#onboarding .onboarding-next');
+  await new Promise((resolve) => setTimeout(resolve, 120));
+  check('bandeau refermé et mémorisé', await page.evaluate(() => !document.getElementById('onboarding')
+    && localStorage.getItem('vectemporel-onboarded') === '1'));
+  check('aide au survol sur les boutons', await page.evaluate(() => [...document.querySelectorAll('.hud-actions .hud-btn')]
+    .every((button) => Boolean(button.title))));
   check('vue sphère active', await page.evaluate(() => window.VATLAS?.getState?.().view === 'globe'));
   check('WebGL disponible', await page.evaluate(() => window.VATLAS.getState().webgl === true));
   check('2 492 géométries', await page.evaluate(() => window.VATLAS.getState().features === 2492));
@@ -211,6 +218,14 @@ try {
   await page.keyboard.up('Alt');
   await new Promise((resolve) => setTimeout(resolve, 500));
   check('Alt+→ revient à 1500', await page.evaluate(() => window.VATLAS.getState().year === 1500));
+  const historyBefore = await page.evaluate(() => window.VATLAS.getState().history.length);
+  await page.evaluate(() => window.VATLAS.navigateHistory(-999));
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  check('historique : pas de bouclage', await page.evaluate((value) => window.VATLAS.getState().year === 1500
+    && window.VATLAS.getState().history.length === value, historyBefore));
+  await page.evaluate(() => window.VATLAS.setYear(1500));
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  check('historique : pas de doublon', await page.evaluate((value) => window.VATLAS.getState().history.length === value, historyBefore));
   check('minimap présente', await page.evaluate(() => Boolean(document.getElementById('timeline-minimap-range'))));
   await page.evaluate(() => window.VATLAS.setScale('recent'));
   await new Promise((resolve) => setTimeout(resolve, 150));
@@ -302,6 +317,7 @@ try {
   await page.evaluate(() => window.VATLAS.setLearnSection('progress'));
   await new Promise((resolve) => setTimeout(resolve, 150));
   check('heatmap 30 jours', (await page.$$('#learn-panel .learn-day')).length === 30);
+  check('taux par catégorie', await page.evaluate(() => /Catégorie|catégorie/.test(document.getElementById('learn-content').textContent)));
   await page.evaluate(() => window.VATLAS.setLearnSection('goals'));
   await new Promise((resolve) => setTimeout(resolve, 150));
   check('cinq objectifs', (await page.$$('#learn-panel .learn-goal')).length === 5);
@@ -311,9 +327,17 @@ try {
   await page.click('#learn-panel .learn-option');
   await new Promise((resolve) => setTimeout(resolve, 150));
   check('récit à trous : feedback', await page.evaluate(() => Boolean(document.getElementById('learn-feedback'))));
+  await page.keyboard.press('Escape');
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  check('sortie anticipée du récit à trous', await page.evaluate(() => document.getElementById('learn-panel').hidden));
+  await page.evaluate(() => window.VATLAS.setLearnSection('fill'));
   await page.evaluate(() => window.VATLAS.setLearnSection('silent'));
   await new Promise((resolve) => setTimeout(resolve, 150));
   check('carte muette : révélation', Boolean(await page.$('#learn-reveal')));
+  await page.focus('#learn-reveal');
+  await page.keyboard.press('Enter');
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  check('révélation au clavier', await page.evaluate(() => Boolean(document.getElementById('learn-feedback'))));
   await page.evaluate(() => window.VATLAS.setLearnSection('profile'));
   await new Promise((resolve) => setTimeout(resolve, 150));
   check('profil local', (await page.$$('#learn-profile .learn-goal')).length === 4);
@@ -589,6 +613,18 @@ try {
   check('question suivante', await page.evaluate((previous) => document.getElementById('review-prompt').textContent !== previous, firstPrompt));
   await page.keyboard.press('Escape');
   check('révision fermée', await page.evaluate(() => document.getElementById('review-panel').hidden));
+
+  const learnPage = await browser.newPage();
+  await learnPage.setViewport({ width: 1440, height: 900 });
+  await learnPage.goto(BASE, { waitUntil: 'load', timeout: 60000 });
+  await learnPage.waitForFunction(() => document.documentElement.dataset.globeReady === 'true', { timeout: 20000 });
+  check('SRS repris après rechargement', await learnPage.evaluate(() => {
+    const state = JSON.parse(localStorage.getItem('vectemporel-srs-v1') || '{}');
+    return (state.stats?.reviews || 0) >= 1;
+  }));
+  check('stockage local présent', await learnPage.evaluate(() => Boolean(localStorage.getItem('vectemporel-srs-v1'))
+    && Boolean(localStorage.getItem('vectemporel-progress-v1'))));
+  await learnPage.close();
 
   const devPage = await browser.newPage();
   await devPage.setViewport({ width: 1440, height: 900 });

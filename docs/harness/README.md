@@ -20,6 +20,15 @@ Les captures des lots sont archivées dans `captures/`, en 1658×1150 et 390×84
 
 `histomap-proof.html` est généré depuis `histomap-proof.spec.json` et les données Histomap. Résultats : `audit.mjs --advanced` **40/40**, `roast.mjs` **0 défaut** (`histomap-gates.txt`).
 
+## Test utilisateur (règle UI)
+
+Captures réelles relues en 1658×1150 et 390×844, dans les thèmes sombre et clair, avec les états significatifs (premier lancement, panneaux Récits et Apprendre). Captures archivées dans `captures/user2-*.png` et `captures/fix0*.png`.
+
+Défauts observés et corrigés :
+- `FIX-01` indicateur de panneau chevauchant les actions HUD en mobile.
+- `FIX-02` indicateur recouvrant le titre du panneau après déplacement ; masqué en mobile.
+- `FIX-03` boutons d'onboarding à 36 px au lieu de 44 px (signalé par le gate live).
+
 ## Matrice idée → fichiers → tests
 
 | Idée | Fichiers clés | Tests |
@@ -37,4 +46,4 @@ Les captures des lots sont archivées dans `captures/`, en 1658×1150 et 390×84
 
 ## Budget mesuré
 
-Dernier `npm run check` : 1 328 PASS, 34 requêtes / 501 Ko en première visite, 56 Ko en régime établi.
+Dernier `npm run check` : 1 359 PASS, 35 requêtes / 505 Ko en première visite, 56 Ko en régime établi.

@@ -45,6 +45,39 @@ try {
   check('première frame < 45 s', elapsed < 45000, `${elapsed} ms`);
   check('moins de 50 requêtes', metrics.requests < 50, `${metrics.requests}`);
   check('aucune erreur console', errors.length === 0, errors.slice(0, 2).join(' | '));
+
+  /* Une seule boucle rAF : on compte les callbacks sur 500 ms. */
+  const frames = await page.evaluate(() => new Promise((resolve) => {
+    const original = window.requestAnimationFrame;
+    let count = 0;
+    window.requestAnimationFrame = function counted(callback) {
+      count += 1;
+      return original.call(window, callback);
+    };
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowLeft', bubbles: true }));
+    setTimeout(() => { window.requestAnimationFrame = original; resolve(count); }, 500);
+  }));
+  check('boucle rAF unique', frames <= 45, `${frames} callbacks / 500 ms`);
+
+  const heapBefore = await page.evaluate(() => performance.memory?.usedJSHeapSize || 0);
+  for (let index = 0; index < 5; index += 1) {
+    await page.click('#hud-trails-button');
+    await page.keyboard.press('Escape');
+    await page.click('#hud-learn-button');
+    await page.keyboard.press('Escape');
+  }
+  await new Promise((resolve) => setTimeout(resolve, 300));
+  const heapAfter = await page.evaluate(() => performance.memory?.usedJSHeapSize || 0);
+  check('pas de fuite mémoire évidente', heapBefore === 0 || heapAfter < heapBefore * 1.25,
+    `${Math.round(heapBefore / 1e6)} → ${Math.round(heapAfter / 1e6)} Mo`);
+
+  const contextResult = await page.evaluate(() => {
+    const canvas = document.getElementById('globe-canvas');
+    const event = new Event('webglcontextlost', { cancelable: true });
+    canvas.dispatchEvent(event);
+    return { defaultPrevented: event.defaultPrevented, ready: document.documentElement.dataset.globeReady };
+  });
+  check('context loss sans plantage', contextResult.ready === 'true' && errors.length === 0, JSON.stringify(contextResult));
 } finally {
   await browser.close();
   stopServer(server);

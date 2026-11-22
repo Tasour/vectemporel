@@ -39,6 +39,11 @@ try {
   await page.click('#hud-trails-button');
   await wait(150);
   check('panneau ouvert', await page.evaluate(() => !document.getElementById('trails-panel').hidden));
+  check('indicateur de panneau', await page.evaluate(() => {
+    const indicator = document.getElementById('panel-indicator');
+    return getComputedStyle(indicator).display !== 'none'
+      && /Récits/.test(getComputedStyle(indicator, '::after').content);
+  }));
   check('dix récits proposés', (await page.$$('#trails-list .trail-item')).length === 10);
   await page.select('#trail-difficulty', 'expert');
   await new Promise((resolve) => setTimeout(resolve, 120));
