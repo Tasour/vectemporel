@@ -36,6 +36,10 @@ La navigation de la sphère a été affinée : molette/D trackpad zooment vers l
 
 Sur téléphone, les gestes sont désormais déterministes (P14) : un **double-tap** zoome d'un seul cran (+0,8) sans sélectionner, un **tap à deux doigts** zoome en arrière (−0,8), et un tap simple sélectionne après 600 ms. Le pincement et le glisser restent disponibles ; un taper après pincement sélectionne normalement.
 
+## Mode révision active
+
+Le bouton **✦** (touche `É`) ouvre un mode d'apprentissage par rappel actif : **9 245 questions** générées localement à partir des données Chronas, 5 types (capitales, souverains, cultures, religions, événements), 4 réponses, feedback immédiat et source affichée. La progression suit un Leitner à 5 boîtes (1/3/7/16/35 jours) stocké dans `localStorage`. Chaque session de 10 cartes est entrelacée et reproductible via une graine affichée (`20261121`). Les cartes fausses reviennent en boîte 1 ; les cartes justes montent d'une boîte. Aucun appel réseau, aucune donnée inventée. Les questions dérivées restent sous CC BY-SA 4.0 comme les données source.
+
 ## URL
 
 Format Chronas conservé :

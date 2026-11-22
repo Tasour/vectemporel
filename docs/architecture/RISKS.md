@@ -39,3 +39,7 @@
 | Double-tap tactile qui sélectionne par erreur | Faible (corrigé P14) | Faible | Machine à gestes pointer-based ; timer de sélection 600 ms annulé par tout nouveau pointerdown ; écart mesuré fin du 1ᵉʳ tap → début du 2ᵉ |
 | Tap à deux doigts confondu avec pincement | Moyenne | Faible | Seuil 120 ms de simultanéité et 12 px de mouvement ; pincement prioritaire |
 | Zoom vers curseur désynchronisé de l'URL | Faible | Moyen | `onView` réécrit `pos` après chaque changement ; e2e dédié |
+| Question d'apprentissage ambiguë | Moyenne | Moyen | Génération depuis des valeurs uniques normalisées ; question écartée si le candidat n'est pas distinct |
+| SRS perdu si `localStorage` indisponible | Faible | Faible | Mode dégradé en mémoire, aucun crash, session toujours jouable |
+| Session trop longue sur mobile | Moyenne | Faible | 10 cartes maximum, fermeture permanente, aucune notification |
+| Dérive CC BY-SA sur les questions | Faible | Moyen | Questions dérivées et attribution Chronas affichée dans le panneau |

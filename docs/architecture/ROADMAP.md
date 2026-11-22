@@ -167,6 +167,19 @@ Les features F22 et F27, initialement reportées, ont été livrées en P10 avec
 
 **Rollback** : restaurer `public/three.min.js`, `index.html` et `src/globe/globe.js` depuis le commit `539fdda`.
 
+## P16 — Apprentissage actif ✅ 2026-11-22
+
+- F83 Audit des 2 commits hors plan : conservés (skills Three.js, pont devtools, `test:devtools`) ✅
+- F84 Générateur de 9 245 questions sourcées ✅
+- F85 SRS Leitner local 5 boîtes ✅
+- F86 Session entrelacée de 10 cartes, graine affichée ✅
+- F87 Panneau « Réviser » avec feedback et source ✅
+- F88 Progression visible (dues, réussites, cartes, maîtrise) ✅
+- F89 Difficulté adaptative et cartes dues prioritaires ✅
+- F90 Tests, captures, ADR-0011, publication ✅
+
+**Rollback** : restaurer `src/app.js`, `styles.css`, `package.json` et `sw.js` depuis le commit `0b8868b`.
+
 ## Rollback global
 
 Restaurer `archive/v2-globe-1year/` (ou `archive/v1-map-2d/`) et republier le commit `adc5c9d`.

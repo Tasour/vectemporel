@@ -328,6 +328,27 @@ try {
 
   await mobile.close();
 
+  /* P16 — révision active. */
+  await page.evaluate(() => document.getElementById('hud-card-close')?.click());
+  await page.click('#hud-review-button');
+  await page.waitForFunction(() => window.VATLAS?.getState?.().review?.total > 0, { timeout: 8000 }).catch(() => {});
+  check('panneau révision ouvert', await page.evaluate(() => !document.getElementById('review-panel').hidden));
+  check('question affichée', await page.evaluate(() => (document.getElementById('review-prompt').textContent || '').length > 10));
+  check('4 réponses', await page.evaluate(() => document.querySelectorAll('#review-options .review-option').length === 4));
+  check('graine affichée', await page.evaluate(() => /20261121/.test(document.getElementById('review-meta').textContent || '')));
+  const firstPrompt = await page.evaluate(() => document.getElementById('review-prompt').textContent);
+  await page.keyboard.press('1');
+  await new Promise((resolve) => setTimeout(resolve, 200));
+  check('feedback révision', await page.evaluate(() => (document.getElementById('review-feedback').textContent || '').length > 5));
+  check('source affichée', await page.evaluate(() => /Chronas.*CC BY-SA/.test(document.getElementById('review-source').textContent || '')));
+  check('progression SRS', await page.evaluate(() => window.VATLAS.getState().review.summary.reviews >= 1));
+  check('bouton suivant', await page.evaluate(() => !document.getElementById('review-next').hidden));
+  await page.keyboard.press('Enter');
+  await new Promise((resolve) => setTimeout(resolve, 200));
+  check('question suivante', await page.evaluate((previous) => document.getElementById('review-prompt').textContent !== previous, firstPrompt));
+  await page.keyboard.press('Escape');
+  check('révision fermée', await page.evaluate(() => document.getElementById('review-panel').hidden));
+
   check('aucune erreur console', errors.length === 0, errors.slice(0, 3).join(' | '));
 } finally {
   await browser.close();

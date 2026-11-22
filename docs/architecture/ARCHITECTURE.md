@@ -119,5 +119,6 @@ Voir `RISKS.md`. Risques principaux : WebGL indisponible, couture de texture aux
 - ADR-0008 : timelines provinciales en 27 chunks locaux chargés à la demande.
 - ADR-0009 : libellés modernes issus de Natural Earth, importés au build.
 - ADR-0010 : Three.js r180 ESM tree-shaké, bundle local généré par esbuild.
+- ADR-0011 : apprentissage actif local, questions sourcées et SRS Leitner.
 
 Ces décisions sont réversibles : voir `ROADMAP.md` (rollback) et `RISKS.md`.
