@@ -1,0 +1,74 @@
+{
+  "id": "egypte",
+  "title": "Égypte, d'Alexandrie au Caire",
+  "subtitle": "Sept étapes de la métropole hellénistique à la capitale mamelouke.",
+  "difficulty": "intermédiaire",
+  "duration": 14,
+  "tags": [
+    "Antiquité",
+    "Islam",
+    "Villes"
+  ],
+  "steps": [
+    {
+      "year": -331,
+      "province": "Alexandria",
+      "title": "Alexandre fonde la ville",
+      "text": "Alexandre établit une nouvelle cité sur le delta du Nil. Le code MAC désigne la puissance macédonienne dans les données Chronas. La ville devient le point de contact entre la Méditerranée et l'Égypte.",
+      "evidence": {
+        "field": "ruler",
+        "value": "MAC"
+      }
+    },
+    {
+      "year": -48,
+      "province": "Alexandria",
+      "title": "Le règne ptolémaïque",
+      "text": "Alexandrie est désormais sous autorité ptolémaïque (PTO). La bibliothèque et le musée en font un centre de savoir grec, tandis que le port draine le commerce du Nil et de la mer Rouge.",
+      "evidence": {
+        "field": "ruler",
+        "value": "PTO"
+      }
+    },
+    {
+      "year": 642,
+      "province": "Alexandria",
+      "title": "La conquête arabe",
+      "text": "Les armées des Rashidun (RSD) prennent Alexandrie. La ville cesse d'être la capitale au profit de Fustat, mais reste un grand port du monde musulman naissant.",
+      "evidence": {
+        "field": "ruler",
+        "value": "RSD"
+      }
+    },
+    {
+      "year": 969,
+      "province": "Cairo",
+      "title": "Fondation du Caire fatimide",
+      "text": "Les Fatimides (ABA dans la série de cette année) fondent une capitale nouvelle. Al-Azhar devient un centre d'enseignement et la ville un relais entre l'Égypte et le Levant.",
+      "evidence": {
+        "field": "ruler",
+        "value": "ABA"
+      }
+    },
+    {
+      "year": 1171,
+      "province": "Cairo",
+      "title": "Saladin et l'ayyoubide",
+      "text": "Le sultanat ayyoubide (FAT dans la donnée de l'année) succède aux Fatimides. Le Caire redevient sunnite et se dote d'une citadelle destinée à protéger le pouvoir face aux croisades.",
+      "evidence": {
+        "field": "ruler",
+        "value": "FAT"
+      }
+    },
+    {
+      "year": 1517,
+      "province": "Cairo",
+      "title": "La province mamelouke",
+      "text": "Les Mamelouks (MAM) gouvernent le Caire lors de l'arrivée des Ottomans. La ville reste un pôle commercial et religieux majeur pendant plusieurs siècles sous la domination ottomane.",
+      "evidence": {
+        "field": "ruler",
+        "value": "MAM"
+      }
+    }
+  ]
+}

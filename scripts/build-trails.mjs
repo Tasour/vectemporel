@@ -64,6 +64,11 @@ for (const file of files) {
   if (trail.id !== expectedId) fail(file, `id « ${trail.id} » différent du fichier « ${expectedId} »`);
   if (typeof trail.title !== 'string' || trail.title.length < 5) fail(file, 'titre manquant');
   if (typeof trail.subtitle !== 'string' || trail.subtitle.length < 20) fail(file, 'sous-titre trop court');
+  if (!['débutant', 'intermédiaire', 'expert'].includes(trail.difficulty)) fail(file, `difficulté invalide (${trail.difficulty})`);
+  if (!Number.isInteger(trail.duration) || trail.duration < 1 || trail.duration > 120) fail(file, `durée invalide (${trail.duration})`);
+  if (!Array.isArray(trail.tags) || trail.tags.length < 1 || !trail.tags.every((tag) => typeof tag === 'string' && tag.trim().length > 1)) {
+    fail(file, 'tags invalides');
+  }
   if (!Array.isArray(trail.steps)) { fail(file, 'steps absent'); continue; }
   if (trail.steps.length < MIN_STEPS || trail.steps.length > MAX_STEPS) {
     fail(file, `${trail.steps.length} jalons (attendu ${MIN_STEPS}–${MAX_STEPS})`);

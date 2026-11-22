@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.0 — 2026-11-23
+
+### Ajouté
+- Cinq récits supplémentaires (10 parcours, 70 jalons) avec difficulté, durée, tags et filtres.
+- Rapport de qualité des données, index de référence et snapshot `data-snapshot.sha256`.
+- Contrôle automatisé des mentions de licence.
+
 ## 0.2.0 — 2026-11-23
 
 ### Ajouté

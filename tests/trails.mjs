@@ -39,7 +39,18 @@ try {
   await page.click('#hud-trails-button');
   await wait(150);
   check('panneau ouvert', await page.evaluate(() => !document.getElementById('trails-panel').hidden));
-  check('cinq récits proposés', (await page.$$('#trails-list .trail-item')).length === 5);
+  check('dix récits proposés', (await page.$$('#trails-list .trail-item')).length === 10);
+  await page.select('#trail-difficulty', 'expert');
+  await new Promise((resolve) => setTimeout(resolve, 120));
+  check('filtre difficulté', await page.evaluate(() => document.getElementById('trails-list').dataset.visible === '1'));
+  await page.select('#trail-tag', 'Commerce');
+  await new Promise((resolve) => setTimeout(resolve, 120));
+  check('filtre combiné', await page.evaluate(() => document.getElementById('trails-list').dataset.visible === '1'
+    && [...document.querySelectorAll('#trails-list .trail-item')].filter((item) => !item.hidden)
+      .every((item) => item.dataset.difficulty === 'expert' && item.dataset.tags.includes('Commerce'))));
+  await page.select('#trail-difficulty', 'tous');
+  await page.select('#trail-tag', 'tous');
+  await new Promise((resolve) => setTimeout(resolve, 120));
   check('aria-expanded vrai', await page.evaluate(() => document.getElementById('hud-trails-button').getAttribute('aria-expanded') === 'true'));
 
   await page.click('.trail-item[data-trail="soie"]');

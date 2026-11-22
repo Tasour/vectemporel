@@ -36,7 +36,11 @@ async function timelineOf(province) {
   return chunks.get(province) || null;
 }
 
-check('cinq récits', TRAILS.trails.length === 5, `${TRAILS.trails.length}`);
+check('dix récits', TRAILS.trails.length === 10, `${TRAILS.trails.length}`);
+check('métadonnées éditoriales', TRAILS.trails.every((trail) => [
+  'débutant', 'intermédiaire', 'expert',
+].includes(trail.difficulty) && Number.isInteger(trail.duration) && trail.duration > 0
+  && Array.isArray(trail.tags) && trail.tags.length > 0));
 check('métadonnées Chronas', TRAILS.meta.source === 'Chronas' && TRAILS.meta.license === 'CC BY-SA 4.0');
 check('SHA-256 sur 64 caractères', /^[0-9a-f]{64}$/.test(TRAILS.meta.sha256));
 check('SHA-256 recalculé identique', sha256Hex(canonical({ trails: TRAILS.trails })) === TRAILS.meta.sha256);

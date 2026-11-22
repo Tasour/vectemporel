@@ -34,7 +34,7 @@ La barre `Aucun / Historique / Capitales / Moderne / Les deux` affiche des libel
 
 ## Récits guidés
 
-Cinq parcours — **la route de la soie, le réveil de l'Islam, l'Europe des capitales, les villes du savoir, les empires d'Asie** — totalisent **35 jalons** dans `content/trails/*.json`. Le bouton `❖` (touche `T`) ouvre la liste ; chaque jalon amène la sphère à l'année et à la province concernées, puis affiche le récit, les faits Chronas à cette année et la preuve utilisée (`souverain « XIO » en -138`). La fiche de région reste fermée pendant le récit : le panneau tient lieu de lecture. `Précédent / Suivant / Quitter` et `Échap` pilotent la progression ; `?trail=soie&step=2` reprend un récit après rechargement.
+Dix parcours — route de la soie, réveil de l'Islam, Europe des capitales, villes du savoir, empires d'Asie, Égypte, Levant, steppe, océan Indien et Amériques — totalisent **70 jalons** dans `content/trails/*.json`. Le bouton `❖` (touche `T`) ouvre la liste ; deux filtres (difficulté, thème) permettent de la parcourir. Chaque récit porte sa difficulté, sa durée estimée et ses tags. Chaque jalon amène la sphère à l'année et à la province concernées, puis affiche le récit, les faits Chronas à cette année et la preuve utilisée (`souverain « XIO » en -138`). La fiche de région reste fermée pendant le récit : le panneau tient lieu de lecture. `Précédent / Suivant / Quitter` et `Échap` pilotent la progression ; `?trail=soie&step=2` reprend un récit après rechargement.
 
 Les récits ne sont pas du texte libre non vérifié : `scripts/build-trails.mjs` recalcule pour chaque jalon la valeur du champ Chronas déclaré à l'année indiquée et casse le build en cas d'écart. Un SHA-256 canonique est embarqué dans `src/data/trails.js` et contrôlé par `npm run test:trails:data`. Texte des récits sous licence MIT, données © Chronas CC BY-SA 4.0.
 
@@ -49,6 +49,10 @@ Le bouton `⌁` (touche `S`) affiche des arcs entre la province sélectionnée e
 ## Histomap (mode de la chronologie)
 
 Le bouton `Histomap` de la frise (touche `H`) ouvre une seconde lecture du temps : un **streamgraph D3 de la part de population estimée par famille culturelle**, tous les 25 ans de −2000 à 2000. La métrique est relative (chaque année a la même hauteur), ce qui rend les quatre millénaires lisibles malgré la croissance démographique ; les valeurs absolues restent dans les tooltips et la table miroir. Sept rubans, dont une bande **« non classé »** hachurée pour les cultures absentes de `scripts/families.csv` (table éditoriale auditable, 104 cultures). Le graphique réutilise l'échelle `src/timeline/scale.js` (linéaire ou récents), possède sa propre minimap, des étiquettes directes, des tooltips « famille · population · part · source », une table miroir et le clavier ←/→ / Début / Fin. Un clic sur un ruban amène le globe à l'année correspondante ; `?histomap=1&year=1500` ouvre directement le mode. D3 v7 local (ISC, `vendor/`), chargé à la demande, zéro réseau externe.
+
+## Qualité des données
+
+Le bouton `⚑` ouvre un rapport d'**extraits Chronas** : 1 372 changements de capitale sans changement de souverain, avec l'année et la province. `scripts/build-data-quality.mjs` produit aussi la couverture des champs par siècle et les index des souverains et cultures les plus présents en 1000, 1500 et 2000 ; ces index alimentent la recherche locale. `npm run quality:build`, `npm run test:quality` et `npm run test:snapshot` garantissent un rapport reproductible, résumé dans `data-snapshot.sha256`. Aucun de ces chiffres n'est présenté comme validé historiquement.
 
 ## Interface mobile et navigation
 
@@ -121,7 +125,7 @@ npm run check
 | `npm run verify` | snapshot, licence, roundtrip lon/lat, zéro réseau runtime, syntaxe, ids DOM |
 | `npm run test:scale` | échelle de la frise : bornes, monotonie, aller-retour, mode récents |
 | `npm run trails:build` | régénère `src/data/trails.js` depuis `content/trails/*.json`, preuve à l'appui |
-| `npm run test:trails:data` | 35 jalons : provinces existantes, preuves Chronas, SHA-256 |
+| `npm run test:trails:data` | 70 jalons : provinces existantes, preuves Chronas, SHA-256 |
 | `npm run test:trails` | parcours des récits : navigation, deep link, mobile |
 | `npm run points:build` | recalcule les 49 ruptures depuis les chunks, avec SHA-256 |
 | `npm run test:points` | règle ADR-0012, bornes, espacement, reproductibilité |
@@ -130,6 +134,11 @@ npm run check
 | `npm run histomap:build` | régénère histomap.json depuis les chunks et families.csv |
 | `npm run test:histomap` | données : 161 échantillons, SHA-256, budget 80 Ko |
 | `npm run test:histomap:ui` | rubans D3, tooltips, clavier, minimap, deep link, mobile |
+| `npm run quality:build` | couverture, anomalies souverains et index de référence |
+| `npm run test:quality` | contrat du rapport qualité et reproductibilité |
+| `npm run test:challenges` | défis d'apprentissage : graine, heatmap, objectifs |
+| `npm run test:snapshot` | empreinte déterministe des données générées |
+| `npm run licenses:check` | mentions de licence dans les livrables |
 | `node tests/http-guards.mjs` | vrai serveur : whitelist, en-têtes, entrées malformées, survie |
 | `npm run test:live` | gate live 1440×1000 et 390×844 : cibles ≥ 44 px, collisions HUD, débordement, console, réseau |
 | `npm run test:e2e` | deep link, WebGL, fiche, clavier, recherche, aide, révision |

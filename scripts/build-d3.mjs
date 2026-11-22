@@ -18,6 +18,7 @@ await build({
   format: 'esm',
   target: ['es2020'],
   legalComments: 'inline',
+  banner: { js: '/* D3 v7.9.2 — ISC — © 2010-2026 Mike Bostock — https://d3js.org — voir vendor/D3-LICENSES.md */\n' },
   sourcemap: false,
   logLevel: 'warning',
 });

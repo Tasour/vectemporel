@@ -297,6 +297,16 @@ Les features F22 et F27, initialement reportées, ont été livrées en P10 avec
 - Panneau unique `✧` / touche `L`, cinq onglets, 100 % local ✅
 - **Rollback** : retirer `src/learning/challenges.js`, `src/learning/learn-ui.js`, `tests/challenges.mjs` ; restaurer `src/app.js`, `styles.css`, `package.json`, `sw.js`, `scripts/verify.mjs`, `README.md`.
 
+## P28 — Contenu et qualité des données ✅ 2026-11-23
+
+- Cinq récits supplémentaires (Égypte, Levant, steppe, océan Indien, Amériques) : 10 parcours, 70 jalons prouvés ✅
+- Métadonnées éditoriales : difficulté, durée, tags ; filtres correspondants dans le panneau Récits ✅
+- Rapport qualité : couverture par siècle, champs manquants, souverains sans changement de culture ✅
+- Index des souverains et cultures en 1000/1500/2000, exposés dans la recherche ✅
+- Snapshot déterministe `data-snapshot.sha256` et contrôle des mentions de licence ✅
+- En-tête de licence restauré dans le bundle D3 ✅
+- **Rollback** : retirer les cinq nouveaux `content/trails/*.json`, `scripts/build-data-quality.mjs`, `scripts/make-snapshot.mjs`, `scripts/check-licenses.mjs`, `src/data/data-quality.js`, `data-snapshot.sha256`, `tests/data-quality.mjs`, `tests/snapshot.mjs` ; restaurer `src/app.js`, `styles.css`, `package.json`, `sw.js`, `scripts/verify.mjs`, `scripts/build-d3.mjs`, `public/d3-bundle.js`, `README.md`, `CHANGELOG.md`.
+
 ## Rollback global
 
 Restaurer `archive/v2-globe-1year/` (ou `archive/v1-map-2d/`) et republier le commit `adc5c9d`.
