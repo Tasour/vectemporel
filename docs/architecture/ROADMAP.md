@@ -200,6 +200,20 @@ Les features F22 et F27, initialement reportées, ont été livrées en P10 avec
 
 **Rollback** : restaurer `~/.config/opencode/opencode.json` depuis le backup horodaté et `scripts/serve.mjs` depuis le commit `0a05101`.
 
+## P19 — Minimap et échelle adaptative ✅ 2026-11-22
+
+- `src/timeline/scale.js` : échelle linéaire ↔ « récents » (exposant 2), bornes -2000..2000, fonctions pures ✅
+- Minimap de densité (560 épiques, 80 tranches) avec curseur linéaire 44 px ✅
+- Bascule d'échelle `#timeline-scale` (`aria-pressed`) et persistance `scale` dans l'URL ✅
+- `aria-valuetext` sur les deux curseurs : les lecteurs d'écran annoncent l'année, pas la position ✅
+- Mobile : année, curseur et lecture sur une seule ligne ; timeline ramenée à 156 px ✅
+- Mobile : readout en deux lignes à gauche des boutons de zoom, sans chevauchement ✅
+- Desktop : fiche et readout remontés au-dessus de la frise (bottoms 290 px, fiche plafonnée) ✅
+- `tests/timeline-scale.mjs` intégré à `npm run check` ✅
+- `tests/lib/server.mjs` : e2e, perf et pwa démarrent leur propre serveur (4186/4187/4188) ; `npm run check` ne dépend plus d'un terminal annexe ✅
+
+**Rollback** : retirer `src/timeline/scale.js`, `tests/timeline-scale.mjs`, `tests/lib/server.mjs`, les blocs minimap de `src/app.js` et `styles.css` ; restaurer `package.json`, `README.md`, `tests/e2e.mjs`, `tests/perf-budget.mjs`, `tests/pwa.mjs`.
+
 ## Rollback global
 
 Restaurer `archive/v2-globe-1year/` (ou `archive/v1-map-2d/`) et republier le commit `adc5c9d`.

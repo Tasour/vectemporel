@@ -2,14 +2,21 @@
 /* Budget réseau mesuré sur le service réel, avant tout clic.
  * Cible historique : < 50 requêtes / < 1 Mo. Écart restant documenté dans README. */
 import { createRequire } from 'node:module';
+import { startServer, waitForHttp, stopServer } from './lib/server.mjs';
 const require = createRequire(`${process.cwd()}/package.json`);
 const puppeteer = require('puppeteer-core');
+
+const PORT = process.env.PERF_PORT || '4187';
+const BASE = process.env.BASE_URL || `http://127.0.0.1:${PORT}/index.html`;
+const server = startServer(PORT);
 
 let failed = 0;
 const check = (name, ok, detail = '') => {
   if (!ok) failed += 1;
   console.log(`${ok ? 'PASS' : 'FAIL'} ${name}${detail ? ` — ${detail}` : ''}`);
 };
+
+check('serveur perf démarré', await waitForHttp(BASE));
 
 const browser = await puppeteer.launch({
   executablePath: process.env.CHROME_PATH || '/usr/bin/chromium',
@@ -23,7 +30,7 @@ let countingFirst = true;
 page.on('request', () => { if (countingFirst) firstVisitRequests += 1; });
 page.on('pageerror', (error) => errors.push(error.message));
 try {
-  const url = process.env.BASE_URL || 'http://127.0.0.1:4181/index.html';
+  const url = BASE;
   await page.goto(url, { waitUntil: 'load', timeout: 60000 });
   const firstBytes = await page.evaluate(() => performance.getEntriesByType('resource')
     .reduce((sum, entry) => sum + (entry.transferSize || 0), 0));
@@ -53,6 +60,7 @@ try {
   check('0 erreur console', errors.length === 0, errors.slice(0, 2).join(' | '));
 } finally {
   await browser.close();
+  stopServer(server);
 }
 console.log(failed ? `${failed} échec(s)` : 'Budget réseau vérifié.');
 process.exit(failed ? 1 : 0);

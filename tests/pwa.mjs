@@ -1,16 +1,21 @@
 #!/usr/bin/env node
 /* Harnais PWA : manifest, service worker, préchauffage du cache et survie hors ligne. */
 import { createRequire } from 'node:module';
+import { startServer, waitForHttp, stopServer } from './lib/server.mjs';
 const require = createRequire(`${process.cwd()}/package.json`);
 const puppeteer = require('puppeteer-core');
 
-const BASE = process.env.BASE_URL || 'http://127.0.0.1:4181/index.html';
+const PORT = process.env.PWA_PORT || '4188';
+const BASE = process.env.BASE_URL || `http://127.0.0.1:${PORT}/index.html`;
 const ORIGIN = new URL(BASE).origin;
+const server = startServer(PORT);
 let failed = 0;
 const check = (name, ok, detail = '') => {
   if (!ok) failed += 1;
   console.log(`${ok ? 'PASS' : 'FAIL'} ${name}${detail ? ` — ${detail}` : ''}`);
 };
+
+check('serveur pwa démarré', await waitForHttp(BASE));
 
 const browser = await puppeteer.launch({
   executablePath: process.env.CHROME_PATH || '/usr/bin/chromium',
@@ -75,6 +80,7 @@ try {
   check('aucune requête externe', external.length === 0, external.slice(0, 2).join(' | '));
 } finally {
   await browser.close();
+  stopServer(server);
 }
 console.log(failed ? `${failed} échec(s)` : 'PWA vérifiée.');
 process.exit(failed ? 1 : 0);

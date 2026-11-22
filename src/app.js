@@ -7,7 +7,10 @@ import { DIMENSIONS } from './globe/texture.js';
 import {
   createLabelRenderer, buildLabels, buildModernLabels, combineLabels, LABEL_MODES,
 } from './globe/labels.js';
-import { createEpicTimeline, epicYear, categoryOf } from './timeline/epics.js';
+import { createEpicTimeline, epicYear, categoryOf, EPICS } from './timeline/epics.js';
+import {
+  MIN_YEAR, MAX_YEAR, SPAN, SCALE_LABELS, densityBuckets, positionToYear, yearToPosition,
+} from './timeline/scale.js';
 import { getProvinceTimeline } from './data/province-timeline-store.js';
 import { CHRONAS_LABELS } from './data/chronas-labels.js';
 import { clampYear, getAreasForYear } from './data/year-store.js';
@@ -15,10 +18,10 @@ import { clampYear, getAreasForYear } from './data/year-store.js';
 const SEED = 20261121;
 const DEFAULT_VIEW = { lat: 20, lon: 0, zoom: 1.6 };
 const ERAS = [
-  { label: 'Antiquité', start: -2000, end: -500 },
+  { label: 'Antiquité', start: MIN_YEAR, end: -500 },
   { label: 'Classique', start: -500, end: 500 },
   { label: 'Médiéval', start: 500, end: 1500 },
-  { label: 'Moderne', start: 1500, end: 2000 },
+  { label: 'Moderne', start: 1500, end: MAX_YEAR },
 ];
 
 const el = (tag, className, text) => {
@@ -48,6 +51,7 @@ function mount() {
   const canvas = document.getElementById('globe-canvas');
   const params = readParams();
   let year = clampYear(params.get('year') ?? MAP_META.year);
+  let scaleMode = params.get('scale') === 'recent' ? 'recent' : 'linear';
   const initialName = params.get('value');
   const initialPos = decodePos(params.get('pos'));
 
@@ -198,8 +202,8 @@ function mount() {
   eraBands.setAttribute('aria-hidden', 'true');
   for (const era of ERAS) {
     const band = el('span', 'era-band', era.label);
-    band.style.left = `${((era.start + 2000) / 4000) * 100}%`;
-    band.style.width = `${((era.end - era.start) / 4000) * 100}%`;
+    band.style.left = `${((era.start - MIN_YEAR) / SPAN) * 100}%`;
+    band.style.width = `${((era.end - era.start) / SPAN) * 100}%`;
     eraBands.appendChild(band);
   }
   const yearLabel = el('button', 'timeline-year', '1000');
@@ -210,16 +214,19 @@ function mount() {
   slider.type = 'range';
   slider.id = 'timeline-range';
   slider.className = 'timeline-range';
-  slider.min = '-2000';
-  slider.max = '2000';
+  slider.min = '0';
+  slider.max = '1000';
   slider.step = '1';
-  slider.value = String(year);
-  slider.setAttribute('aria-label', 'Année');
+  slider.value = String(yearToPosition(year, scaleMode));
+  slider.setAttribute('aria-label', `Année sur l'échelle ${SCALE_LABELS[scaleMode].toLowerCase()}`);
+  slider.setAttribute('aria-valuetext', String(year));
   const play = el('button', 'hud-btn timeline-play', '▶');
   play.type = 'button';
   play.id = 'timeline-play';
   play.setAttribute('aria-label', 'Lancer la lecture des années');
   play.setAttribute('aria-pressed', 'false');
+  const scrub = el('div', 'timeline-scrub');
+  scrub.append(yearLabel, slider, play);
   const centuries = el('div', 'century-nav');
   centuries.setAttribute('role', 'group');
   centuries.setAttribute('aria-label', 'Sauts de siècle');
@@ -229,12 +236,40 @@ function mount() {
     button.dataset.year = String(mark);
     centuries.appendChild(button);
   }
+  const minimapRow = el('div', 'timeline-minimap-row');
+  const minimap = el('div', 'timeline-minimap');
+  const density = el('div', 'timeline-minimap-density');
+  density.setAttribute('aria-hidden', 'true');
+  const counts = densityBuckets(EPICS.map((epic) => epicYear(epic)), 80);
+  const peak = Math.max(1, ...counts);
+  for (const count of counts) {
+    const bar = el('span', 'minimap-bar');
+    bar.style.height = `${Math.round((count / peak) * 100)}%`;
+    density.appendChild(bar);
+  }
+  const minimapRange = document.createElement('input');
+  minimapRange.type = 'range';
+  minimapRange.id = 'timeline-minimap-range';
+  minimapRange.className = 'timeline-minimap-range';
+  minimapRange.min = '0';
+  minimapRange.max = '1000';
+  minimapRange.step = '1';
+  minimapRange.value = String(yearToPosition(year, 'linear'));
+  minimapRange.setAttribute('aria-label', 'Repères de la frise (échelle linéaire)');
+  minimapRange.setAttribute('aria-valuetext', String(year));
+  minimap.append(density, minimapRange);
+  const scaleButton = el('button', 'timeline-scale', SCALE_LABELS[scaleMode]);
+  scaleButton.type = 'button';
+  scaleButton.id = 'timeline-scale';
+  scaleButton.setAttribute('aria-pressed', String(scaleMode === 'recent'));
+  scaleButton.setAttribute('aria-label', 'Basculer l’échelle de la frise entre linéaire et récents');
+  minimapRow.append(minimap, scaleButton);
   const loading = el('span', 'timeline-loading', '');
   loading.id = 'timeline-loading';
   loading.hidden = true;
   const epicHost = el('div', 'epic-host');
   epicHost.id = 'epic-host';
-  timeline.append(epicHost, eraBands, yearLabel, slider, play, centuries, loading);
+  timeline.append(epicHost, eraBands, scrub, centuries, minimapRow, loading);
 
   const yearDialog = el('div', 'hud-overlay');
   yearDialog.id = 'year-dialog';
@@ -714,7 +749,10 @@ function mount() {
     const request = ++yearRequest;
     year = target;
     yearLabel.textContent = String(target);
-    slider.value = String(target);
+    slider.value = String(yearToPosition(target, scaleMode));
+    slider.setAttribute('aria-valuetext', String(target));
+    minimapRange.value = String(yearToPosition(target, 'linear'));
+    minimapRange.setAttribute('aria-valuetext', String(target));
     params.set('year', String(target));
     if (updateUrl) writeUrl(params);
     clearTimeout(loadingTimer);
@@ -778,7 +816,20 @@ function mount() {
   }
 
   yearLabel.addEventListener('click', openYearDialog);
-  slider.addEventListener('input', () => setYear(slider.value));
+  slider.addEventListener('input', () => setYear(positionToYear(slider.value, scaleMode)));
+  minimapRange.addEventListener('input', () => setYear(positionToYear(minimapRange.value, 'linear')));
+  scaleButton.addEventListener('click', () => {
+    scaleMode = scaleMode === 'linear' ? 'recent' : 'linear';
+    scaleButton.textContent = SCALE_LABELS[scaleMode];
+    scaleButton.setAttribute('aria-pressed', String(scaleMode === 'recent'));
+    slider.setAttribute('aria-label', `Année sur l'échelle ${SCALE_LABELS[scaleMode].toLowerCase()}`);
+    slider.value = String(yearToPosition(year, scaleMode));
+    params.set('scale', scaleMode);
+    writeUrl(params);
+    readout.textContent = scaleMode === 'recent'
+      ? 'Échelle récents : les siècles récents occupent plus de place.'
+      : 'Échelle linéaire : les 4 001 ans sont régulièrement répartis.';
+  });
   play.addEventListener('click', toggleAutoplay);
   for (const button of centuries.children) {
     button.addEventListener('click', () => setYear(Number(button.dataset.year)));
@@ -961,6 +1012,7 @@ function mount() {
       view: 'globe',
       selected,
       year,
+      scale: scaleMode,
       camera: globe?.getView() || { ...DEFAULT_VIEW },
       meta: { ...MAP_META },
       features: FEATURES.length,
@@ -977,6 +1029,9 @@ function mount() {
     }),
     selectRegion: (name) => select(name),
     setYear: (value) => applyYear(value),
+    setScale: (mode) => {
+      if ((mode === 'recent') !== (scaleMode === 'recent')) scaleButton.click();
+    },
     cityScreenPoints: () => globe?.cityScreenPoints?.() || [],
     setView: (view) => globe?.setView(view),
     diagnostics: () => ({ seed: SEED, features: FEATURES.length, areas: MAP_META.areas, webgl: Boolean(globe) }),

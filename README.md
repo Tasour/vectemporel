@@ -22,6 +22,8 @@ npm run build:pages       # -> dist-pages/ pour GitHub Pages
 
 La frise en bas de l'écran couvre **toutes les années de −2000 à 2000** (4 001 ans). Le curseur change d'année pas à pas, le clic sur l'année ouvre la saisie directe, les boutons de siècle sautent aux repères, et la lecture est **toujours manuelle**. Aucune rotation spatiale n'est automatique : le bouton `▶` du coin supérieur droit lance le tour du monde.
 
+Deux échelles cohabitent, testées dans `src/timeline/scale.js` : **linéaire** (chaque année occupe la même largeur) et **récents** (exposant 2 : les siècles récents s'étalent, le passé lointain se comprime). Le bouton `Linéaire / Récents` bascule l'échelle du curseur principal et l'état part dans l'URL (`?scale=recent`). Une **minimap de densité** sous le curseur montre la répartition des 560 épiques sur 80 tranches, avec son propre curseur linéaire : elle reste la référence spatiale même quand l'échelle principale est compressée. Les deux curseurs exposent `aria-valuetext` avec l'année réelle, jamais la position interne.
+
 Les données sont générées au build (`npm run years:import`, import reprenable) puis stockées en 41 chunks de siècle chargés à la demande. Le snapshot de référence et les chunks sont servis localement : aucun appel réseau au runtime, PWA hors ligne conservée.
 
 La barre de dimensions permet de colorer les régions par État, culture, religion, capitale ou population. Les capitales historiques sont chargées depuis `npm run cities:import` et filtrées sur les capitales politiques de l'année affichée (210 points en l'an 1000) : ce sont de petits disques, visibles seulement à partir du zoom 2,5. **Cliquer un disque sélectionne la région correspondante**. Au survol d'une région, une **bulle custom** discrète affiche son nom et sa culture ; la bulle native du navigateur reste désactivée. L'information détaillée reste dans la fiche et le `role="status"`. Le zoom maximal est de **7,2**.
@@ -30,7 +32,7 @@ La barre `Aucun / Historique / Capitales / Moderne / Les deux` affiche des libel
 
 ## Interface mobile et navigation
 
-Sous 760 px, la fiche de région s'ouvre en **plein écran** avec un bouton Fermer (`Échap` fonctionne aussi) ; la timeline et les contrôles sont masqués pendant la lecture. Une fois fermée, la frise devient compacte (144 px) et le readout reste au-dessus. Le bouton `☷` ouvre le panneau « Affichage » qui regroupe couleurs, libellés et épiques ; les boutons `+`, `−` et `⌖` pilotent le zoom et le recentrage avec des cibles de 44 px.
+Sous 760 px, la fiche de région s'ouvre en **plein écran** avec un bouton Fermer (`Échap` fonctionne aussi) ; la timeline et les contrôles sont masqués pendant la lecture. Une fois fermée, la frise devient compacte (156 px, année + curseur + lecture sur une ligne) et le readout tient sur deux lignes à gauche des boutons de zoom. Le bouton `☷` ouvre le panneau « Affichage » qui regroupe couleurs, libellés et épiques ; les boutons `+`, `−` et `⌖` pilotent le zoom et le recentrage avec des cibles de 44 px.
 
 La navigation de la sphère a été affinée : molette/D trackpad zooment vers le curseur, double-clic zoom, `Maj+flèches` tourne finement, `R` recentre, le tactile a une sensibilité réduite et un rayon de sélection de 20 px. Les capitales se choisissent au doigt comme à la souris.
 
@@ -88,9 +90,12 @@ npm run bridge:check   # config MCP, wrapper, CSP production/dev, proxy si actif
 npm run check
 ```
 
+`npm run check` ne demande aucun terminal annexe : les harnais e2e, perf et pwa démarrent leur propre serveur loopback (ports 4186, 4187, 4188) et l'arrêtent en sortie.
+
 | Commande | Rôle |
 |---|---|
 | `npm run verify` | snapshot, licence, roundtrip lon/lat, zéro réseau runtime, syntaxe, ids DOM |
+| `npm run test:scale` | échelle de la frise : bornes, monotonie, aller-retour, mode récents |
 | `node tests/http-guards.mjs` | vrai serveur : whitelist, en-têtes, entrées malformées, survie |
 | `npm run test:live` | gate live 1440×1000 et 390×844 : cibles ≥ 44 px, collisions HUD, débordement, console, réseau |
 | `npm run test:e2e` | deep link, WebGL, fiche, clavier, recherche, aide, révision |

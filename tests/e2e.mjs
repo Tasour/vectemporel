@@ -1,8 +1,11 @@
 #!/usr/bin/env node
 /* Parcours fonctionnel de la sphère : deep link, clavier, recherche, aide, HUD. */
 import puppeteer from 'puppeteer-core';
+import { startServer, waitForHttp, stopServer } from './lib/server.mjs';
 
-const BASE = process.env.BASE_URL || 'http://127.0.0.1:4181/index.html';
+const PORT = process.env.E2E_PORT || '4186';
+const BASE = process.env.BASE_URL || `http://127.0.0.1:${PORT}/index.html`;
+const server = startServer(PORT);
 let failed = 0;
 const errors = [];
 const check = (name, ok, detail = '') => {
@@ -50,6 +53,7 @@ page.on('response', (response) => {
 });
 
 try {
+  check('serveur e2e démarré', await waitForHttp(BASE));
   await page.goto(`${BASE}?type=area&value=Berry&pos=47.08,2.4,4.2&year=1000`, { waitUntil: 'load', timeout: 60000 });
   await wait(1600);
 
@@ -158,6 +162,14 @@ try {
   check('changement d’année', await page.evaluate(() => window.VATLAS.getState().year === 1500));
   check('URL année', await page.evaluate(() => new URLSearchParams(location.search).get('year') === '1500'));
   check('libellé année', await page.evaluate(() => document.getElementById('timeline-year').textContent === '1500'));
+  check('minimap présente', await page.evaluate(() => Boolean(document.getElementById('timeline-minimap-range'))));
+  await page.evaluate(() => window.VATLAS.setScale('recent'));
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  check('échelle récents', await page.evaluate(() => window.VATLAS.getState().scale === 'recent'));
+  check('URL échelle', await page.evaluate(() => new URLSearchParams(location.search).get('scale') === 'recent'));
+  await page.evaluate(() => window.VATLAS.setScale('linear'));
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  check('retour échelle linéaire', await page.evaluate(() => window.VATLAS.getState().scale === 'linear'));
   check('chunk chargé', await page.evaluate(() => performance.getEntriesByType('resource').some((e) => /\/c\d+\.json/.test(e.name))));
   await page.click('.century-btn[data-year="0"]');
   await new Promise((resolve) => setTimeout(resolve, 700));
@@ -352,6 +364,7 @@ try {
   check('aucune erreur console', errors.length === 0, errors.slice(0, 3).join(' | '));
 } finally {
   await browser.close();
+  stopServer(server);
 }
 console.log(failed ? `${failed} échec(s)` : 'Parcours sphère OK.');
 process.exit(failed ? 1 : 0);
