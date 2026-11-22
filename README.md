@@ -137,6 +137,9 @@ npm run check
 | `npm run quality:build` | couverture, anomalies souverains et index de référence |
 | `npm run test:quality` | contrat du rapport qualité et reproductibilité |
 | `npm run test:challenges` | défis d'apprentissage : graine, heatmap, objectifs |
+| `npm run test:throttle` | budget sous CPU x4 et réseau lent |
+| `npm run test:offline` | deep links repris hors ligne depuis le cache PWA |
+| `npm run test:a11y` | noms, rôles, contraste et panneaux accessibles |
 | `npm run test:snapshot` | empreinte déterministe des données générées |
 | `npm run licenses:check` | mentions de licence dans les livrables |
 | `node tests/http-guards.mjs` | vrai serveur : whitelist, en-têtes, entrées malformées, survie |
@@ -147,7 +150,7 @@ npm run check
 | `npm run test:devtools` | pont Three.js injecté avant chargement, API in-page |
 | `npm run bridge:check` | configuration du pont OpenCode et CSP production/dev |
 
-Budget mesuré : **24 requêtes / 508 Ko** à la première visite (Three.js compris), **0 Ko** en régime établi. Le serveur écoute uniquement sur `127.0.0.1`.
+Budget mesuré : **34 requêtes / 573 Ko** à la première visite (Three.js et D3 locaux compris), **56 Ko** en régime établi. Le serveur écoute uniquement sur `127.0.0.1`.
 
 ## Mises à jour et cache
 

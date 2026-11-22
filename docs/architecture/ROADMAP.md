@@ -317,6 +317,15 @@ Les features F22 et F27, initialement reportées, ont été livrées en P10 avec
 - Aide intégrée mise à jour avec tous les raccourcis ✅
 - **Rollback** : restaurer `src/app.js`, `styles.css` et `tests/e2e.mjs` depuis le commit précédent.
 
+## P30 — Accessibilité, hors ligne et preuves ✅ 2026-11-23
+
+- `h1` sr-only unique, boutons/champs/dialogues nommés, contraste AA mesuré ✅
+- Audit DOM automatisé : `tests/a11y.mjs` intégré à `npm run check` ✅
+- Sept deep links vérifiés hors ligne (récits, ruptures, Histomap, A/B, arcs, zoom, rendu) ✅
+- Budget sous CPU x4 et réseau lent mesuré (`tests/perf-throttle.mjs`) ✅
+- Captures archivées dans `docs/harness/captures/` et matrice idée→fichiers→tests ✅
+- **Rollback** : retirer `tests/a11y.mjs`, `tests/offline-links.mjs`, `tests/perf-throttle.mjs` et `docs/harness/` ; restaurer `index.html`, `styles.css`, `package.json`, `scripts/verify.mjs`, `README.md`.
+
 ## Rollback global
 
 Restaurer `archive/v2-globe-1year/` (ou `archive/v1-map-2d/`) et republier le commit `adc5c9d`.

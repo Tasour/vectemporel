@@ -38,6 +38,9 @@
     "test:anomalies": "node tests/anomalies.mjs",
     "test:quality": "node tests/data-quality.mjs",
     "test:snapshot": "node tests/snapshot.mjs",
+    "test:a11y": "node tests/a11y.mjs",
+    "test:offline": "node tests/offline-links.mjs",
+    "test:throttle": "node tests/perf-throttle.mjs",
     "test:histomap:ui": "node tests/histomap-ui.mjs",
     "build:pages": "node scripts/build-pages.mjs",
     "verify": "node scripts/verify.mjs",
@@ -45,7 +48,7 @@
     "test:e2e": "node tests/e2e.mjs",
     "test:perf": "node tests/perf-budget.mjs",
     "test:pwa": "node tests/pwa.mjs",
-    "check": "npm run verify && npm run test:years && npm run test:scale && npm run test:trails:data && npm run test:anomalies && npm run test:quality && npm run test:snapshot && npm run licenses:check && npm run test:points && npm run test:vector && npm run test:provinces && npm run test:learning && npm run test:challenges && node tests/http-guards.mjs && npm run test:live && npm run test:e2e && npm run test:trails && npm run test:points:ui && npm run test:arcs && npm run test:histomap && npm run test:histomap:ui && npm run test:perf && npm run test:pwa && npm run test:devtools",
+    "check": "npm run verify && npm run test:years && npm run test:scale && npm run test:trails:data && npm run test:anomalies && npm run test:quality && npm run test:snapshot && npm run licenses:check && npm run test:points && npm run test:vector && npm run test:provinces && npm run test:learning && npm run test:challenges && node tests/http-guards.mjs && npm run test:live && npm run test:a11y && npm run test:e2e && npm run test:trails && npm run test:offline && npm run test:throttle && npm run test:points:ui && npm run test:arcs && npm run test:histomap && npm run test:histomap:ui && npm run test:perf && npm run test:pwa && npm run test:devtools",
     "test:devtools": "node tests/devtools-bridge.mjs",
     "test:live": "node tests/live-layout.mjs",
     "bridge:check": "node tests/bridge-check.mjs"
