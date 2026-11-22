@@ -36,6 +36,7 @@
     "test:histomap:ui": "node tests/histomap-ui.mjs",
     "build:pages": "node scripts/build-pages.mjs",
     "verify": "node scripts/verify.mjs",
+    "check:quick": "npm run verify && npm run test:years && npm run test:scale && npm run test:trails:data && npm run test:points && npm run test:anomalies && npm run test:histomap && npm run test:learning && npm run test:challenges && npm run test:vector && npm run test:provinces && node tests/http-guards.mjs",
     "test:e2e": "node tests/e2e.mjs",
     "test:perf": "node tests/perf-budget.mjs",
     "test:pwa": "node tests/pwa.mjs",

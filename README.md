@@ -1,5 +1,7 @@
 # Histoire du monde — Sphère historique
 
+![version](https://img.shields.io/badge/version-0.2.0-blue) ![tests](https://img.shields.io/badge/check-1031%20PASS-brightgreen) ![licence](https://img.shields.io/badge/licence-MIT-blue)
+
 Application web **une seule vue** : une sphère WebGL plein écran affichant les régions du monde en l'an 1000. Aucun framework applicatif, aucun appel réseau à l'exécution. Les données sont générées au build depuis l'API publique de Chronas (CC BY-SA 4.0) et embarquées dans le bundle.
 
 > L'atlas 6 vues est dans `archive/v0-atlas/`, la carte 2D dans `archive/v1-map-2d/`. Les décisions sont documentées dans `docs/architecture/` (ADR-0001 à 0004).
@@ -165,6 +167,15 @@ docs/veille/                rapport Chronas / Histography
 archive/v0-atlas/           application originelle
 archive/v1-map-2d/          version cartographique plate
 ```
+
+## Documentation
+
+- `docs/ABOUT.md` — ce que contient l'atlas et pourquoi.
+- `docs/ARCHITECTURE.md` — comment c'est fait.
+- `docs/LIMITES.md` — angles morts et ce que l'application ne prouve pas.
+- `docs/GLOSSAIRE.md` — vocabulaire des épiques, ruptures, extraits et du SRS.
+- `RELEASE.md` — procédure de publication ; `CONTRIBUTING.md` — règles de contribution.
+- `CHANGELOG.md` — historique des versions ; `LICENSES.md` — tableau consolidé des licences.
 
 ## Licences
 

@@ -261,7 +261,7 @@ try {
   await page.click('#hud-learn-button');
   await new Promise((resolve) => setTimeout(resolve, 200));
   check('panneau Apprendre ouvert', await page.evaluate(() => !document.getElementById('learn-panel').hidden));
-  check('cinq onglets', (await page.$$('#learn-panel .learn-tab')).length === 5);
+  check('six onglets', (await page.$$('#learn-panel .learn-tab')).length === 6);
   check('quiz quatre options', (await page.$$('#learn-panel .learn-option')).length === 4);
   await page.click('#learn-panel .learn-option');
   await new Promise((resolve) => setTimeout(resolve, 150));
@@ -281,6 +281,9 @@ try {
   await page.evaluate(() => window.VATLAS.setLearnSection('silent'));
   await new Promise((resolve) => setTimeout(resolve, 150));
   check('carte muette : révélation', Boolean(await page.$('#learn-reveal')));
+  await page.evaluate(() => window.VATLAS.setLearnSection('profile'));
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  check('profil local', (await page.$$('#learn-profile .learn-goal')).length === 4);
   await page.keyboard.press('Escape');
   await new Promise((resolve) => setTimeout(resolve, 150));
   check('Apprendre fermé', await page.evaluate(() => document.getElementById('learn-panel').hidden));
