@@ -117,11 +117,15 @@ function mount() {
   displayButton.id = 'hud-display-button';
   displayButton.setAttribute('aria-label', 'Affichage des couleurs, libellés et événements');
   displayButton.setAttribute('aria-expanded', 'false');
+  const reviewButton = el('button', 'hud-btn', '✦');
+  reviewButton.type = 'button';
+  reviewButton.id = 'hud-review-button';
+  reviewButton.setAttribute('aria-label', 'Mode révision active (touche É)');
   const helpButton = el('button', 'hud-btn', '?');
   helpButton.type = 'button';
   helpButton.id = 'hud-help-button';
   helpButton.setAttribute('aria-label', 'Afficher les commandes (touche point d’interrogation)');
-  actions.append(tourButton, searchButton, displayButton, themeButton, helpButton);
+  actions.append(tourButton, searchButton, displayButton, reviewButton, themeButton, helpButton);
   const savedTheme = localStorage.getItem('history-theme');
   if (savedTheme === 'light') document.documentElement.dataset.theme = 'light';
 
@@ -172,7 +176,7 @@ function mount() {
   help.innerHTML = '<kbd>Glisser</kbd> tourner la sphère · <kbd>Molette</kbd> zoomer vers le curseur<br>'
     + '<kbd>←</kbd><kbd>→</kbd><kbd>↑</kbd><kbd>↓</kbd> tourner · <kbd>Maj+flèches</kbd> rotation fine<br>'
     + '<kbd>+</kbd><kbd>−</kbd> zoomer · <kbd>R</kbd> recentrer · <kbd>Double-clic</kbd> zoomer<br>'
-    + '<kbd>/</kbd> recherche · <kbd>?</kbd> aide · <kbd>Échap</kbd> fermer<br>'
+    + '<kbd>/</kbd> recherche · <kbd>É</kbd> révision · <kbd>?</kbd> aide · <kbd>Échap</kbd> fermer<br>'
     + '<kbd>▶</kbd> tour du monde (manuel uniquement)<br>'
     + '<kbd>Clic</kbd> sélectionner une région · <kbd>Curseur</kbd> changer d’année';
   helpOverlay.appendChild(help);
@@ -244,6 +248,42 @@ function mount() {
   yearInput.setAttribute('aria-label', 'Année (entre -2000 et 2000)');
   yearDialog.appendChild(yearInput);
 
+  const reviewPanel = el('section', 'hud-overlay review-panel');
+  reviewPanel.id = 'review-panel';
+  reviewPanel.setAttribute('role', 'dialog');
+  reviewPanel.setAttribute('aria-label', 'Révision active');
+  reviewPanel.hidden = true;
+  const reviewClose = el('button', 'hud-close review-close', '✕');
+  reviewClose.type = 'button';
+  reviewClose.id = 'review-close';
+  reviewClose.setAttribute('aria-label', 'Fermer la révision');
+  const reviewMeta = el('p', 'review-meta');
+  reviewMeta.id = 'review-meta';
+  const reviewPrompt = el('p', 'review-prompt');
+  reviewPrompt.id = 'review-prompt';
+  const reviewOptions = el('div', 'review-options');
+  reviewOptions.id = 'review-options';
+  for (let index = 0; index < 4; index += 1) {
+    const option = el('button', 'review-option', '');
+    option.type = 'button';
+    option.dataset.option = String(index);
+    reviewOptions.appendChild(option);
+  }
+  const reviewSkip = el('button', 'review-skip', 'Je ne sais pas');
+  reviewSkip.type = 'button';
+  reviewSkip.id = 'review-skip';
+  const reviewFeedback = el('p', 'review-feedback');
+  reviewFeedback.id = 'review-feedback';
+  reviewFeedback.setAttribute('role', 'status');
+  reviewFeedback.setAttribute('aria-live', 'polite');
+  const reviewSource = el('p', 'review-source');
+  reviewSource.id = 'review-source';
+  const reviewNext = el('button', 'review-next', 'Suivant →');
+  reviewNext.type = 'button';
+  reviewNext.id = 'review-next';
+  reviewNext.hidden = true;
+  reviewPanel.append(reviewClose, reviewMeta, reviewPrompt, reviewOptions, reviewSkip, reviewFeedback, reviewSource, reviewNext);
+
   const navControls = el('div', 'nav-controls');
   navControls.id = 'nav-controls';
   navControls.setAttribute('role', 'group');
@@ -262,7 +302,7 @@ function mount() {
   recenter.setAttribute('aria-label', 'Recentrer la sphère');
   navControls.append(zoomIn, zoomOut, recenter);
 
-  hud.append(brand, actions, card, tooltip, searchOverlay, helpOverlay, yearDialog, readout, timeline, navControls, displayPanel, error);
+  hud.append(brand, actions, card, tooltip, searchOverlay, helpOverlay, yearDialog, reviewPanel, readout, timeline, navControls, displayPanel, error);
 
   const labelRenderer = createLabelRenderer(document.getElementById('globe-labels'));
   const epicTimeline = createEpicTimeline(epicHost, (epic) => {
@@ -283,6 +323,8 @@ function mount() {
     if (epicTimeline.picker.parentElement !== pickerTarget) {
       pickerTarget.appendChild(epicTimeline.picker);
     }
+    const reviewTarget = mobile ? displayPanel : actions;
+    if (reviewButton.parentElement !== reviewTarget) reviewTarget.appendChild(reviewButton);
     if (!mobile) {
       displayPanel.hidden = true;
       displayButton.setAttribute('aria-expanded', 'false');
@@ -294,9 +336,114 @@ function mount() {
   function toggleDisplayPanel() {
     displayPanel.hidden = !displayPanel.hidden;
     displayButton.setAttribute('aria-expanded', String(!displayPanel.hidden));
+    if (!displayPanel.hidden && !reviewPanel.hidden) closeReview();
+  }
+
+  function reviewSnapshot() {
+    if (!reviewSession || !learning) {
+      return { active: !reviewPanel.hidden, seed: reviewSeed, total: 0, position: 0, correct: 0 };
+    }
+    return {
+      active: !reviewPanel.hidden,
+      seed: reviewSeed,
+      ...reviewSession.progress(),
+      summary: learning.srsSummary(srsState),
+    };
+  }
+
+  function renderReviewQuestion() {
+    const question = reviewSession.current();
+    if (!question) {
+      reviewMeta.textContent = `Session terminée · graine ${reviewSeed}`;
+      reviewPrompt.textContent = 'Bien joué. Relance une session pour continuer.';
+      reviewOptions.replaceChildren();
+      reviewSkip.hidden = true;
+      reviewSource.textContent = '';
+      reviewNext.textContent = 'Nouvelle session';
+      reviewNext.hidden = false;
+      return;
+    }
+    const progress = reviewSession.progress();
+    const summary = learning.srsSummary(srsState);
+    reviewMeta.textContent = `Carte ${progress.position + 1}/${progress.total} · graine ${reviewSeed} · dues ${summary.due} · réussites ${summary.correct}`;
+    reviewPrompt.textContent = question.prompt;
+    reviewSkip.hidden = false;
+    reviewFeedback.textContent = '';
+    reviewSource.textContent = `Source : Chronas · ${question.source.field} · ${question.year} · CC BY-SA 4.0`;
+    reviewNext.hidden = true;
+    [...reviewOptions.children].forEach((button, index) => {
+      button.textContent = `${index + 1}. ${question.options[index]}`;
+      button.disabled = false;
+      button.className = 'review-option';
+      button.hidden = false;
+    });
+  }
+
+  function startReviewSession() {
+    reviewSession = learning.createSession({
+      pool: learning.getQuestionPool(),
+      srs: srsState,
+      seed: reviewSeed,
+      limit: 10,
+    });
+    renderReviewQuestion();
+  }
+
+  async function openReview() {
+    closeCard();
+    searchOverlay.hidden = true;
+    helpOverlay.hidden = true;
+    yearDialog.hidden = true;
+    displayPanel.hidden = true;
+    displayButton.setAttribute('aria-expanded', 'false');
+    reviewPanel.hidden = false;
+    if (!learning) {
+      learning = await import('./learning/review.js');
+      srsState = learning.loadSrs();
+      startReviewSession();
+    } else if (!reviewSession || reviewSession.progress().done) {
+      startReviewSession();
+    }
+    reviewClose.focus();
+  }
+
+  function closeReview() {
+    reviewPanel.hidden = true;
+    reviewButton.focus?.();
+  }
+
+  function answerReview(index) {
+    const result = reviewSession?.answer(index);
+    if (!result) return;
+    learning.saveSrs(srsState);
+    [...reviewOptions.children].forEach((button, position) => {
+      button.disabled = true;
+      if (position === result.answerIndex) button.classList.add('correct');
+      else if (position === index && !result.correct) button.classList.add('wrong');
+    });
+    reviewFeedback.textContent = result.correct
+      ? 'Correct — carte promue à la boîte suivante.'
+      : `Réponse : ${result.question.options[result.answerIndex]} — carte revenue en boîte 1.`;
+    reviewNext.hidden = false;
+    reviewNext.focus();
+  }
+
+  function skipReview() {
+    reviewSession?.skip();
+    learning.saveSrs(srsState);
+    const question = reviewSession?.current();
+    reviewFeedback.textContent = question
+      ? `Réponse : ${question.options[question.answerIndex]} — carte revenue en boîte 1.`
+      : 'Session terminée.';
+    reviewNext.hidden = false;
+    reviewNext.focus();
   }
 
   let selected = null;
+  let learning = null;
+  let srsState = null;
+  let reviewSession = null;
+  const reviewSeed = 20261121;
   let cardReturnFocus = null;
   let areasForYear = null;
   let provinceTimelineToken = 0;
@@ -715,6 +862,16 @@ function mount() {
     localStorage.setItem('history-theme', light ? 'dark' : 'light');
   });
   displayButton.addEventListener('click', toggleDisplayPanel);
+  reviewButton.addEventListener('click', openReview);
+  reviewClose.addEventListener('click', closeReview);
+  reviewNext.addEventListener('click', () => {
+    if (!reviewSession || reviewSession.progress().done) startReviewSession();
+    else renderReviewQuestion();
+  });
+  reviewSkip.addEventListener('click', skipReview);
+  for (const button of reviewOptions.children) {
+    button.addEventListener('click', () => answerReview(Number(button.dataset.option)));
+  }
   cardClose.addEventListener('click', closeCard);
   zoomIn.addEventListener('click', () => globe?.zoomBy(0.6));
   zoomOut.addEventListener('click', () => globe?.zoomBy(-0.6));
@@ -758,7 +915,25 @@ function mount() {
 
   document.addEventListener('keydown', (event) => {
     const typing = /^(INPUT|TEXTAREA)$/.test(document.activeElement?.tagName || '');
-    if (event.key === '/' && !typing) { event.preventDefault(); openSearch(); }
+    if (!reviewPanel.hidden && !typing) {
+      if (/^[1-4]$/.test(event.key) && reviewOptions.children[Number(event.key) - 1]?.disabled === false) {
+        event.preventDefault();
+        answerReview(Number(event.key) - 1);
+        return;
+      }
+      if (event.key === 'Enter' && !reviewNext.hidden) {
+        event.preventDefault();
+        reviewNext.click();
+        return;
+      }
+      if (event.key === 'Escape') {
+        event.preventDefault();
+        closeReview();
+        return;
+      }
+    }
+    if (event.key === 'É' || event.key === 'é') { event.preventDefault(); openReview(); }
+    else if (event.key === '/' && !typing) { event.preventDefault(); openSearch(); }
     else if (event.key === '?' && !typing) { event.preventDefault(); toggleHelp(); }
     else if (event.key === 'Escape') {
       if (!card.hidden && mobileQuery.matches) closeCard();
@@ -798,6 +973,7 @@ function mount() {
       labelMode,
       epics: epicTimeline.count,
       provinceTimeline: Boolean(provinceTimelineData),
+      review: reviewSnapshot(),
     }),
     selectRegion: (name) => select(name),
     setYear: (value) => applyYear(value),
