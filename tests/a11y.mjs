@@ -110,6 +110,17 @@ try {
     await new Promise((resolve) => setTimeout(resolve, 120));
   }
 
+  for (const [width, height] of [[320, 700], [768, 1024]]) {
+    await page.setViewport({ width, height });
+    await new Promise((resolve) => setTimeout(resolve, 250));
+    const layout = await page.evaluate(() => ({
+      overflow: document.documentElement.scrollWidth - window.innerWidth,
+      timeline: document.querySelector('.timeline').getBoundingClientRect().height,
+    }));
+    check(`viewport ${width} px sans débordement`, layout.overflow <= 1, `${layout.overflow} px`);
+    check(`viewport ${width} px frise compacte`, layout.timeline <= 280, `${Math.round(layout.timeline)} px`);
+  }
+
   check('aucune erreur console', errors.length === 0, errors.slice(0, 2).join(' | '));
 } finally {
   await browser.close();

@@ -306,6 +306,46 @@ function mount() {
     }
   });
   toolButton('Mode zen', 'tool-zen', () => toggleZen());
+  toolButton('Exporter le profil', 'tool-export', () => {
+    const payload = {
+      version: 1,
+      exportedAt: new Date().toISOString(),
+      progress: localProgress,
+      srs: learn?.srs() ?? null,
+    };
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'vectemporel-profil.json';
+    link.click();
+    URL.revokeObjectURL(link.href);
+    readout.textContent = 'Profil exporté en JSON local.';
+  });
+  const importInput = document.createElement('input');
+  importInput.type = 'file';
+  importInput.accept = 'application/json';
+  importInput.id = 'tool-import';
+  importInput.className = 'sr-only';
+  importInput.setAttribute('aria-label', 'Importer un profil JSON local');
+  importInput.addEventListener('change', async () => {
+    const file = importInput.files?.[0];
+    if (!file) return;
+    try {
+      const data = JSON.parse(await file.text());
+      for (const key of ['regions', 'trails', 'centuries']) {
+        if (Array.isArray(data?.progress?.[key])) {
+          localProgress[key] = [...new Set([...localProgress[key], ...data.progress[key]])];
+        }
+      }
+      try { localStorage.setItem(PROGRESS_KEY, JSON.stringify(localProgress)); } catch { /* ignoré */ }
+      readout.textContent = `Profil importé : ${localProgress.regions.length} régions, ${localProgress.trails.length} jalons.`;
+    } catch {
+      readout.textContent = 'Import impossible : fichier JSON invalide.';
+    }
+    importInput.value = '';
+  });
+  toolsSection.appendChild(importInput);
+  toolButton('Importer un profil', 'tool-import-button', () => importInput.click());
   displayPanel.appendChild(toolsSection);
 
   const searchOverlay = el('div', 'hud-overlay');

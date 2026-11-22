@@ -146,6 +146,21 @@ try {
   await new Promise((resolve) => setTimeout(resolve, 150));
   check('recherche par culture', await page.evaluate(() => [...document.querySelectorAll('#region-suggestions li')]
     .some((item) => /Culture/.test(item.textContent))));
+  await page.evaluate(() => {
+    const input = document.getElementById('region-search');
+    input.value = '';
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+  });
+  await new Promise((resolve) => setTimeout(resolve, 120));
+  check('recherche vide : état explicite', await page.evaluate(() => document.getElementById('region-suggestions').hidden
+    && document.getElementById('region-search').getAttribute('aria-expanded') === 'false'));
+  await page.evaluate(() => {
+    const input = document.getElementById('region-search');
+    input.value = 'zzzznope';
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+  });
+  await new Promise((resolve) => setTimeout(resolve, 120));
+  check('recherche sans résultat : état explicite', await page.evaluate(() => document.getElementById('region-suggestions').hidden));
 
   await page.click('#hud-help-button');
   await wait(120);

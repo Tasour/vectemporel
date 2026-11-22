@@ -326,6 +326,13 @@ Les features F22 et F27, initialement reportées, ont été livrées en P10 avec
 - Captures archivées dans `docs/harness/captures/` et matrice idée→fichiers→tests ✅
 - **Rollback** : retirer `tests/a11y.mjs`, `tests/offline-links.mjs`, `tests/perf-throttle.mjs` et `docs/harness/` ; restaurer `index.html`, `styles.css`, `package.json`, `scripts/verify.mjs`, `README.md`.
 
+## P31 — Profil importable et contrôles de recherche ✅ 2026-11-23
+
+- Export du profil local en JSON et réimport fusionné (régions, jalons, siècles) ✅
+- Recherche : états vides explicites pour une requête vide ou sans résultat ✅
+- Audit d'accessibilité étendu aux viewports 320 px et 768 px ✅
+- **Rollback** : restaurer `src/app.js`, `tests/e2e.mjs`, `tests/a11y.mjs` depuis le commit précédent.
+
 ## Rollback global
 
 Restaurer `archive/v2-globe-1year/` (ou `archive/v1-map-2d/`) et republier le commit `adc5c9d`.
