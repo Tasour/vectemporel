@@ -180,6 +180,16 @@ Les features F22 et F27, initialement reportées, ont été livrées en P10 avec
 
 **Rollback** : restaurer `src/app.js`, `styles.css`, `package.json` et `sw.js` depuis le commit `0b8868b`.
 
+## P17 — Accessibilité tactile et gate live ✅ 2026-11-22
+
+- Correction des cibles < 44 px sur desktop et mobile (années, siècles, dimensions, libellés) ✅
+- Recalage de la fiche, du readout et de la navigation au-dessus de la timeline ✅
+- `tests/live-layout.mjs` : mesures groupées 1440×1000 / 390×844 ✅
+- Gate intégré à `npm run check` ✅
+- Documentation README / RISKS mise à jour ✅
+
+**Rollback** : restaurer `styles.css`, `package.json` et `README.md` depuis le commit `2a539dd`.
+
 ## P18 — Pont Three.js créé par OpenCode ✅ 2026-11-22
 
 - Configuration MCP globale : wrapper + `DEV_URL` 4181 `?devtools=1` + headless + CDP 9229 ✅

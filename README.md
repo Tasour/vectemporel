@@ -92,11 +92,14 @@ npm run check
 |---|---|
 | `npm run verify` | snapshot, licence, roundtrip lon/lat, zéro réseau runtime, syntaxe, ids DOM |
 | `node tests/http-guards.mjs` | vrai serveur : whitelist, en-têtes, entrées malformées, survie |
-| `npm run test:e2e` | deep link, WebGL, fiche, clavier, recherche, aide |
+| `npm run test:live` | gate live 1440×1000 et 390×844 : cibles ≥ 44 px, collisions HUD, débordement, console, réseau |
+| `npm run test:e2e` | deep link, WebGL, fiche, clavier, recherche, aide, révision |
 | `npm run test:perf` | budget < 50 requêtes / < 1 Mo |
 | `npm run test:pwa` | manifest, cache versionné, survie hors ligne |
+| `npm run test:devtools` | pont Three.js injecté avant chargement, API in-page |
+| `npm run bridge:check` | configuration du pont OpenCode et CSP production/dev |
 
-Budget mesuré : **17 requêtes / 466 Ko** à la première visite (Three.js compris), **0 Ko** en régime établi. Le serveur écoute uniquement sur `127.0.0.1`.
+Budget mesuré : **24 requêtes / 508 Ko** à la première visite (Three.js compris), **0 Ko** en régime établi. Le serveur écoute uniquement sur `127.0.0.1`.
 
 ## Mises à jour et cache
 

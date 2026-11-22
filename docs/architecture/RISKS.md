@@ -43,3 +43,5 @@
 | SRS perdu si `localStorage` indisponible | Faible | Faible | Mode dégradé en mémoire, aucun crash, session toujours jouable |
 | Session trop longue sur mobile | Moyenne | Faible | 10 cartes maximum, fermeture permanente, aucune notification |
 | Dérive CC BY-SA sur les questions | Faible | Moyen | Questions dérivées et attribution Chronas affichée dans le panneau |
+| Cibles tactiles sous 44 px | Faible (corrigé P17) | Moyen | Gate `test:live` sur deux viewports ; échec immédiat si une cible visible est plus petite |
+| Chevauchement HUD/timeline | Faible (corrigé P17) | Moyen | Mesure géométrique des rects fiche/readout/nav/timeline dans `test:live` |
