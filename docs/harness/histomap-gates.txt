@@ -1,0 +1,6 @@
+audit.mjs --advanced
+
+✓ CONTRAT OK — 40/40 — 239.8 Ko
+roast.mjs
+Score : 0 point(s) — misleading 0 · wrong-type 0 · color 0 · design 0 · maps 0 · labels 0 · dashboards 0 · advanced 0 · selectors 0 · other 0
+✓ Aucun défaut détecté par les contrôles automatiques. La relecture humaine reste obligatoire.

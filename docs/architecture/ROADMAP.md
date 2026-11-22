@@ -248,6 +248,18 @@ Les features F22 et F27, initialement reportées, ont été livrées en P10 avec
 
 **Rollback** : retirer `src/globe/simultaneity.js`, `tests/simultaneity.mjs`, `tests/arcs.mjs` ; restaurer `src/app.js`, `src/globe/globe.js`, `sw.js`, `package.json`, `README.md` et `scripts/verify.mjs`.
 
+## P23 — Histomap dans la chronologie ✅ 2026-11-22
+
+- `scripts/families.csv` : 104 cultures, six familles + « non classé » explicite ✅
+- `scripts/build-histomap.mjs` : 161 échantillons (pas de 25 ans), 9,5 Ko, SHA-256 ✅
+- D3 v7.9.2 local et tree-shaké (`public/d3-bundle.js`, ISC), chargé à la demande ✅
+- `src/histomap/stream.js` : streamgraph, étiquetage direct, tooltips, minimap, table miroir, clavier, ResizeObserver ✅
+- Bascule d'échelle partagée avec la frise (`src/timeline/scale.js`) ✅
+- Bouton `Histomap` / touche `H`, deep link `?histomap=1`, AbortController sur le chargement ✅
+- `tests/histomap-data.mjs` et `tests/histomap-ui.mjs` intégrés à `npm run check` ✅
+
+**Rollback** : retirer `scripts/families.csv`, `scripts/build-histomap.mjs`, `scripts/build-d3.mjs`, `scripts/d3-entry.js`, `vendor/`, `src/data/histomap.json`, `src/histomap/`, `tests/histomap*.mjs` ; restaurer `src/app.js`, `styles.css`, `sw.js`, `package.json`, `README.md` et `scripts/verify.mjs`.
+
 ## Rollback global
 
 Restaurer `archive/v2-globe-1year/` (ou `archive/v1-map-2d/`) et republier le commit `adc5c9d`.

@@ -44,6 +44,10 @@ La frise porte aussi **49 points de rupture** calculés depuis les 41 chunks ann
 
 Le bouton `⌁` (touche `S`) affiche des arcs entre la province sélectionnée et jusqu'à quatre autres provinces qui partagent le même souverain l'année courante (`?arcs=1` au chargement). Les arcs sont des `LineSegments` dessinés dans le repère de la sphère, donc occlus correctement par le globe ; un seul rendu est déclenché par changement, aucune boucle d'animation supplémentaire. Le `role="status"` annonce la catégorie (souverain), la valeur (province) et l'unité (`hab`) de chaque lien. `prefers-reduced-motion` aplatit les arcs.
 
+## Histomap (mode de la chronologie)
+
+Le bouton `Histomap` de la frise (touche `H`) ouvre une seconde lecture du temps : un **streamgraph D3 de la part de population estimée par famille culturelle**, tous les 25 ans de −2000 à 2000. La métrique est relative (chaque année a la même hauteur), ce qui rend les quatre millénaires lisibles malgré la croissance démographique ; les valeurs absolues restent dans les tooltips et la table miroir. Sept rubans, dont une bande **« non classé »** hachurée pour les cultures absentes de `scripts/families.csv` (table éditoriale auditable, 104 cultures). Le graphique réutilise l'échelle `src/timeline/scale.js` (linéaire ou récents), possède sa propre minimap, des étiquettes directes, des tooltips « famille · population · part · source », une table miroir et le clavier ←/→ / Début / Fin. Un clic sur un ruban amène le globe à l'année correspondante ; `?histomap=1&year=1500` ouvre directement le mode. D3 v7 local (ISC, `vendor/`), chargé à la demande, zéro réseau externe.
+
 ## Interface mobile et navigation
 
 Sous 760 px, la fiche de région s'ouvre en **plein écran** avec un bouton Fermer (`Échap` fonctionne aussi) ; la timeline et les contrôles sont masqués pendant la lecture. Une fois fermée, la frise devient compacte (156 px, année + curseur + lecture sur une ligne) et le readout tient sur deux lignes à gauche des boutons de zoom. Le bouton `☷` ouvre le panneau « Affichage » qui regroupe couleurs, libellés et épiques ; les boutons `+`, `−` et `⌖` pilotent le zoom et le recentrage avec des cibles de 44 px.
@@ -117,6 +121,9 @@ npm run check
 | `npm run test:points` | règle ADR-0012, bornes, espacement, reproductibilité |
 | `npm run test:points:ui` | badges, clic, fiche, deep link, timeline mobile |
 | `npm run test:arcs` | simultanéités : bascule, arcs WebGL, clavier, deep link, mobile |
+| `npm run histomap:build` | régénère histomap.json depuis les chunks et families.csv |
+| `npm run test:histomap` | données : 161 échantillons, SHA-256, budget 80 Ko |
+| `npm run test:histomap:ui` | rubans D3, tooltips, clavier, minimap, deep link, mobile |
 | `node tests/http-guards.mjs` | vrai serveur : whitelist, en-têtes, entrées malformées, survie |
 | `npm run test:live` | gate live 1440×1000 et 390×844 : cibles ≥ 44 px, collisions HUD, débordement, console, réseau |
 | `npm run test:e2e` | deep link, WebGL, fiche, clavier, recherche, aide, révision |
