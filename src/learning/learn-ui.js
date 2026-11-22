@@ -11,6 +11,7 @@ const SECTIONS = [
   { id: 'progress', label: 'Progression' },
   { id: 'goals', label: 'Objectifs' },
   { id: 'fill', label: 'À trous' },
+  { id: 'profile', label: 'Profil' },
 ];
 
 export function createLearnPanel(host, api = {}) {
@@ -190,6 +191,28 @@ export function createLearnPanel(host, api = {}) {
     content.appendChild(open);
   }
 
+  function renderProfile() {
+    const progress = api.getProgress?.() || {};
+    const summary = srsSummary(srs);
+    content.replaceChildren(
+      el('p', 'learn-prompt', 'Votre progression reste sur cet appareil.'),
+      el('p', 'learn-meta', `${summary.reviews} révisions · ${summary.correct} bonnes réponses · ${summary.bestStreak} meilleure série`),
+    );
+    const list = el('div', 'learn-goals');
+    list.id = 'learn-profile';
+    for (const [label, value] of [
+      ['Régions visitées', progress.regions || 0],
+      ['Jalons de récit', progress.trails || 0],
+      ['Siècles explorés', progress.centuries || 0],
+      ['Cartes SRS', summary.cards],
+    ]) {
+      const row = el('div', 'learn-goal');
+      row.append(el('strong', '', label), el('span', '', String(value)));
+      list.appendChild(row);
+    }
+    content.appendChild(list);
+  }
+
   function render() {
     for (const tab of tabs.children) {
       const active = tab.dataset.section === section;
@@ -200,7 +223,8 @@ export function createLearnPanel(host, api = {}) {
     else if (section === 'silent') renderSilent();
     else if (section === 'progress') renderProgress();
     else if (section === 'goals') renderGoals();
-    else renderFill();
+    else if (section === 'fill') renderFill();
+    else renderProfile();
   }
 
   close.addEventListener('click', () => api.closeLearn?.());
