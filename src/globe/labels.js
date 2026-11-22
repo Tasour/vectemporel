@@ -67,11 +67,14 @@ export function buildModernLabels(limit = LIMIT) {
 export function combineLabels(historical, modern, limit = LIMIT) {
   const half = Math.ceil(limit / 2);
   const seen = new Set();
+  const seenText = new Set();
   const result = [];
   for (const label of [...historical.slice(0, half), ...modern.slice(0, limit - half)]) {
     const key = `${label.kind}:${Math.round(label.lon / 5)}:${Math.round(label.lat / 5)}:${label.text}`;
-    if (seen.has(key)) continue;
+    const textKey = label.text.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    if (seen.has(key) || seenText.has(textKey)) continue;
     seen.add(key);
+    seenText.add(textKey);
     result.push(label);
     if (result.length >= limit) break;
   }
@@ -98,14 +101,33 @@ export function createLabelRenderer(container) {
     const visible = zoom >= MIN_ZOOM;
     container.hidden = !visible || !labels.length;
     if (!visible) return;
-    labels.forEach((label, index) => {
-      const point = project(label.lon, label.lat);
+    for (const node of nodes) node.hidden = true;
+    const candidates = labels.map((label, index) => ({ label, index, point: project(label.lon, label.lat) }))
+      .filter((item) => item.point.visible)
+      /* Priorité au groupe le plus étendu, puis ordre alphabétique stable. */
+      .sort((a, b) => (b.label.count || 0) - (a.label.count || 0)
+        || a.label.text.localeCompare(b.label.text, 'fr'));
+    const placed = [];
+    let shown = 0;
+    for (const { label, index, point } of candidates) {
+      const width = 10 + label.text.length * 6.5;
+      const height = 18;
+      const box = {
+        left: point.x - width / 2, right: point.x + width / 2,
+        top: point.y - height / 2, bottom: point.y + height / 2,
+      };
+      const collision = placed.some((other) => box.left < other.right + 4 && box.right > other.left - 4
+        && box.top < other.bottom + 3 && box.bottom > other.top - 3);
+      if (collision) continue;
+      placed.push(box);
+      shown += 1;
       const node = nodes[index];
-      if (!point.visible) { node.hidden = true; return; }
       node.hidden = false;
       node.style.transform = `translate(${Math.round(point.x)}px, ${Math.round(point.y)}px) translate(-50%, -50%)`;
       node.style.opacity = String(Math.min(1, 0.35 + (zoom - MIN_ZOOM) * 0.3));
-    });
+    }
+    container.dataset.visibleLabels = String(shown);
+    container.dataset.collisions = String(candidates.length - shown);
   }
 
   return { setLabels, update, count: () => labels.length };

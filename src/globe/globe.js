@@ -109,6 +109,7 @@ export function createGlobe(canvas, {
   const arcs = new THREE.Group();
   lonGroup.add(arcs);
   let arcCount = 0;
+  let arcHits = [];
 
   /* F38 : disque-local au lieu du carré par défaut de THREE.Points. */
   const discCanvas = document.createElement('canvas');
@@ -236,6 +237,24 @@ export function createGlobe(canvas, {
     }).filter(Boolean);
   }
 
+  function arcScreenPoints() {
+    if (!arcHits.length) return [];
+    latGroup.updateMatrixWorld(true);
+    camera.updateMatrixWorld();
+    const rect = canvas.getBoundingClientRect();
+    return arcHits.map(({ name, vector }) => {
+      const world = lonGroup.localToWorld(new THREE.Vector3(vector.x, vector.y, vector.z));
+      const facing = world.clone().normalize().dot(camera.position.clone().normalize()) > 0.12;
+      const projected = world.project(camera);
+      return {
+        name,
+        x: rect.left + ((projected.x + 1) / 2) * rect.width,
+        y: rect.top + ((1 - projected.y) / 2) * rect.height,
+        visible: facing && projected.z >= -1 && projected.z <= 1,
+      };
+    });
+  }
+
   function surfacePoint(clientX, clientY) {
     const rect = canvas.getBoundingClientRect();
     pointer.set(
@@ -303,6 +322,7 @@ export function createGlobe(canvas, {
    * province. Une seule frame rendue ici, aucune boucle supplémentaire. */
   function setArcs(pairs = []) {
     clearArcs();
+    arcHits = [];
     const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
     for (const { from, to } of pairs) {
       const aBox = INDEX[from];
@@ -326,6 +346,7 @@ export function createGlobe(canvas, {
           .normalize();
         points.push(direction.multiplyScalar(1.014 + height * Math.sin(Math.PI * t)));
       }
+      arcHits.push({ name: to, vector: points[16].clone().normalize() });
       const segments = [];
       for (let index = 0; index < points.length - 1; index += 1) {
         segments.push(points[index], points[index + 1]);
@@ -728,6 +749,7 @@ export function createGlobe(canvas, {
     },
     pick,
     project,
+    arcScreenPoints,
     pickCity,
     cityScreenPoints,
     getSelected: () => selected,
