@@ -151,7 +151,7 @@ npm run check
 | `npm run test:devtools` | pont Three.js injecté avant chargement, API in-page |
 | `npm run bridge:check` | configuration du pont OpenCode et CSP production/dev |
 
-Budget mesuré : **35 requêtes / 505 Ko** à la première visite (Three.js et D3 locaux compris), **56 Ko** en régime établi. Le serveur écoute uniquement sur `127.0.0.1`.
+Budget mesuré : **35 requêtes / 578 Ko** à la première visite (Three.js et D3 locaux compris), **56 Ko** en régime établi. Le serveur écoute uniquement sur `127.0.0.1`.
 
 ## Mises à jour et cache
 

@@ -27,7 +27,7 @@
 
 ### Vérifié
 - `npm run check` : 1 359 PASS / 0 échec.
-- Budget : 35 requêtes / 505 Ko à la première visite, 56 Ko en régime établi.
+- Budget : 35 requêtes / 578 Ko à la première visite, 56 Ko en régime établi.
 - Captures 1658×1150 et 390×844 relues.
 
 ## 0.1.0 — 2026-11-21

@@ -29,6 +29,19 @@ Défauts observés et corrigés :
 - `FIX-02` indicateur recouvrant le titre du panneau après déplacement ; masqué en mobile.
 - `FIX-03` boutons d'onboarding à 36 px au lieu de 44 px (signalé par le gate live).
 
+## Deuxième passe utilisateur (thème clair)
+
+Relance du parcours en 1658×1150 et 390×844, thèmes sombre et clair, panneaux Récits, Comparaison et Histomap. Nouveaux défauts observés puis corrigés et recapturés :
+
+- `FIX-01` barres de défilement blanches natives → barres fines couleur or.
+- `FIX-02` frise et panneaux restés sombres en thème clair → variables `--panel`, `--panel-soft`, `--panel-strong`.
+- `FIX-03` résultat de comparaison et presets peu lisibles → corrigés par le thème clair.
+- `FIX-04` croix de fermeture invisibles → corrigées par le thème clair.
+- `FIX-05` indicateur de panneau frôlant les actions → déplacé sous la marque.
+- `FIX-06` boutons Linéaire/Siècle/Histomap sombres en thème clair → fond `--surface`.
+
+Captures de preuve : `captures/fix-verify-dark-trails.png`, `captures/fixv-light-compare.png`, `captures/fixv2-light-histomap.png`, `captures/fixv2-light-1440.png`.
+
 ## Matrice idée → fichiers → tests
 
 | Idée | Fichiers clés | Tests |
@@ -46,4 +59,4 @@ Défauts observés et corrigés :
 
 ## Budget mesuré
 
-Dernier `npm run check` : 1 359 PASS, 35 requêtes / 505 Ko en première visite, 56 Ko en régime établi.
+Dernier `npm run check` : 1 359 PASS, 35 requêtes / 578 Ko en première visite, 56 Ko en régime établi.
