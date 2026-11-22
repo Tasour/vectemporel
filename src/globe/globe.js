@@ -80,6 +80,21 @@ export function createGlobe(canvas, {
   );
   scene.add(atmosphere);
 
+  /* Ombre stylisée et déterministe : la direction du « soleil » dépend de
+   * l'année affichée, jamais de l'heure réelle. Aucune animation. */
+  let sunYear = null;
+  const sunMaterial = new THREE.ShaderMaterial({
+    uniforms: { uSun: { value: new THREE.Vector3(1, 0, 0) } },
+    vertexShader: 'varying vec3 vWorldNormal; void main(){ vWorldNormal = normalize(mat3(modelMatrix) * normal); gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }',
+    fragmentShader: 'uniform vec3 uSun; varying vec3 vWorldNormal; void main(){ float d = dot(normalize(vWorldNormal), normalize(uSun)); float night = 1.0 - smoothstep(-0.22, 0.22, d); gl_FragColor = vec4(0.0, 0.01, 0.05, night * 0.62); }',
+    transparent: true,
+    depthWrite: false,
+  });
+  const terminator = new THREE.Mesh(new THREE.SphereGeometry(1.003, 96, 64), sunMaterial);
+  terminator.visible = false;
+  scene.add(terminator);
+  let wireframe = false;
+
   const starPositions = [];
   const random = mulberry32(SEED);
   for (let index = 0; index < 900; index += 1) {
@@ -235,6 +250,27 @@ export function createGlobe(canvas, {
         y: rect.top + ((1 - projected.y) / 2) * rect.height,
       };
     }).filter(Boolean);
+  }
+
+  function setSunYear(year, enabled = true) {
+    if (!enabled) {
+      terminator.visible = false;
+      sunYear = null;
+    } else {
+      const phase = ((Number(year) - 2000) % 360) * DEG;
+      sunMaterial.uniforms.uSun.value.set(Math.cos(phase), 0.42, Math.sin(phase)).normalize();
+      terminator.visible = true;
+      sunYear = Number(year);
+    }
+    renderer.render(scene, camera);
+  }
+
+  function setWireframe(enabled) {
+    wireframe = Boolean(enabled);
+    sphere.material.wireframe = wireframe;
+    if (provinceMesh) provinceMesh.group.visible = !wireframe;
+    atmosphere.visible = !wireframe;
+    renderer.render(scene, camera);
   }
 
   function arcScreenPoints() {
@@ -708,6 +744,8 @@ export function createGlobe(canvas, {
       buildMarker(name);
     },
     setArcs,
+    setSunYear,
+    setWireframe,
     focusRegion(name) {
       const box = INDEX[name];
       if (!box) return;
@@ -738,6 +776,8 @@ export function createGlobe(canvas, {
       zoomMax: ZOOM_MAX,
       cityCount,
       arcCount,
+      sunYear,
+      wireframe,
       citySprite: Boolean(discTexture?.image),
     }),
     rotateBy(dLon, dLat) {
@@ -775,6 +815,8 @@ export function createGlobe(canvas, {
       sphere.geometry.dispose();
       sphere.material.map?.dispose?.();
       sphere.material.dispose();
+      terminator.geometry.dispose();
+      terminator.material.dispose();
       atmosphere.geometry.dispose();
       atmosphere.material.dispose();
       starsGeometry.dispose();
