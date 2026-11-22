@@ -375,6 +375,12 @@ button, input { font: inherit; }
 .hm-table th, .hm-table td { padding: 4px 6px; border-bottom: 1px solid var(--line); text-align: left; }
 .hm-table thead th { color: var(--muted); font-weight: 500; }
 body.histomap-open .hud-readout, body.histomap-open .nav-controls { display: none; }
+/* Comparaison A/B. */
+.compare-panel { z-index: 52; width: min(560px, calc(100vw - 32px)); }
+.compare-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+.compare-inputs input { width: 100%; min-height: 44px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); }
+.compare-result { margin: 12px 0 0; font-size: 12px; line-height: 1.55; color: var(--ink); }
+#hud-compare-button { font-size: 11px; letter-spacing: -.04em; }
 .hud-error {
   position: absolute;
   top: 50%;

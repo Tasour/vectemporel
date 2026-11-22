@@ -9,7 +9,8 @@ import {
 } from './globe/labels.js';
 import { createEpicTimeline, epicYear, categoryOf, EPICS } from './timeline/epics.js';
 import {
-  MIN_YEAR, MAX_YEAR, SPAN, SCALE_LABELS, densityBuckets, positionToYear, yearToPosition,
+  MIN_YEAR, MAX_YEAR, SPAN, SCALE_LABELS, CENTURY_STEPS, centuryPositionToYear,
+  centuryStart, densityBuckets, positionToYear, yearToPosition, yearToCenturyPosition,
 } from './timeline/scale.js';
 import { getProvinceTimeline } from './data/province-timeline-store.js';
 import { TRAILS } from './data/trails.js';
@@ -56,6 +57,12 @@ function mount() {
   const params = readParams();
   let year = clampYear(params.get('year') ?? MAP_META.year);
   let scaleMode = params.get('scale') === 'recent' ? 'recent' : 'linear';
+  let zoomMode = params.get('zoom') === 'century' ? 'century' : 'global';
+  let centuryBase = centuryStart(year);
+  const positionOf = (value) => (zoomMode === 'century'
+    ? yearToCenturyPosition(value, centuryBase) : yearToPosition(value, scaleMode));
+  const yearOfPosition = (position) => (zoomMode === 'century'
+    ? centuryPositionToYear(position, centuryBase) : positionToYear(position, scaleMode));
   let showArcs = params.get('arcs') === '1';
   let arcLinks = [];
   const navHistory = [];
@@ -95,6 +102,20 @@ function mount() {
   dimensions.setAttribute('role', 'radiogroup');
   dimensions.setAttribute('aria-label', 'Dimension des couleurs');
   let dimension = 'culture';
+  let empireRuler = null;
+  let dimensionBeforeEmpire = 'culture';
+  function empireAreas(areas, ruler) {
+    const result = {};
+    for (const [name, row] of Object.entries(areas || {})) {
+      result[name] = [...row, String(row?.[0]) === String(ruler) ? 'empire' : 'autre'];
+    }
+    return result;
+  }
+  function applyDimension() {
+    if (empireRuler) globe?.setYearAreas(empireAreas(areasForYear, empireRuler), 'empire');
+    else globe?.setYearAreas(areasForYear, dimension);
+    refreshLabels();
+  }
   for (const item of DIMENSIONS) {
     const button = el('button', 'dimension-btn', item.label);
     button.type = 'button';
@@ -102,10 +123,29 @@ function mount() {
     button.setAttribute('role', 'radio');
     button.setAttribute('aria-checked', String(item.id === dimension));
     button.addEventListener('click', () => {
-      dimension = item.id;
-      for (const other of dimensions.children) other.setAttribute('aria-checked', String(other === button));
-      globe?.setYearAreas(areasForYear, dimension);
-      refreshLabels();
+      if (item.id === 'empire') {
+        if (empireRuler) {
+          empireRuler = null;
+          dimension = dimensionBeforeEmpire;
+          readout.textContent = 'Focus empire désactivé.';
+        } else if (selected && areasForYear?.[selected]) {
+          empireRuler = String(areasForYear[selected][0] || '');
+          dimensionBeforeEmpire = dimension;
+          dimension = 'empire';
+          const count = Object.values(areasForYear).filter((row) => String(row?.[0]) === empireRuler).length;
+          readout.textContent = `Empire ${empireRuler} : ${count} régions mises en évidence.`;
+        } else {
+          readout.textContent = 'Sélectionnez d’abord une région pour isoler son empire.';
+        }
+      } else {
+        empireRuler = null;
+        dimension = item.id;
+      }
+      for (const other of dimensions.children) {
+        const id = other.dataset.dimension;
+        other.setAttribute('aria-checked', String(id === (empireRuler ? 'empire' : dimension)));
+      }
+      applyDimension();
       renderCard(selected);
     });
     dimensions.appendChild(button);
@@ -165,11 +205,16 @@ function mount() {
   trailsButton.id = 'hud-trails-button';
   trailsButton.setAttribute('aria-label', 'Récits guidés (touche T)');
   trailsButton.setAttribute('aria-expanded', 'false');
+  const compareButton = el('button', 'hud-btn', 'A/B');
+  compareButton.type = 'button';
+  compareButton.id = 'hud-compare-button';
+  compareButton.setAttribute('aria-label', 'Comparer deux années (touche A)');
+  compareButton.setAttribute('aria-expanded', 'false');
   const helpButton = el('button', 'hud-btn', '?');
   helpButton.type = 'button';
   helpButton.id = 'hud-help-button';
   helpButton.setAttribute('aria-label', 'Afficher les commandes (touche point d’interrogation)');
-  actions.append(tourButton, searchButton, displayButton, arcsButton, trailsButton, reviewButton, themeButton, helpButton);
+  actions.append(tourButton, searchButton, displayButton, arcsButton, trailsButton, compareButton, reviewButton, themeButton, helpButton);
   const savedTheme = localStorage.getItem('history-theme');
   if (savedTheme === 'light') document.documentElement.dataset.theme = 'light';
 
@@ -263,9 +308,9 @@ function mount() {
   slider.id = 'timeline-range';
   slider.className = 'timeline-range';
   slider.min = '0';
-  slider.max = '1000';
+  slider.max = zoomMode === 'century' ? String(CENTURY_STEPS) : '1000';
   slider.step = '1';
-  slider.value = String(yearToPosition(year, scaleMode));
+  slider.value = String(positionOf(year));
   slider.setAttribute('aria-label', `Année sur l'échelle ${SCALE_LABELS[scaleMode].toLowerCase()}`);
   slider.setAttribute('aria-valuetext', String(year));
   const play = el('button', 'hud-btn timeline-play', '▶');
@@ -370,7 +415,12 @@ function mount() {
   histomapButton.id = 'hud-histomap-button';
   histomapButton.setAttribute('aria-pressed', 'false');
   histomapButton.setAttribute('aria-label', 'Ouvrir l’Histomap des familles culturelles (touche H)');
-  minimapRow.append(minimap, scaleButton, histomapButton);
+  const zoomButton = el('button', 'timeline-scale', zoomMode === 'century' ? 'Siècle' : '4 001 ans');
+  zoomButton.type = 'button';
+  zoomButton.id = 'timeline-zoom';
+  zoomButton.setAttribute('aria-pressed', String(zoomMode === 'century'));
+  zoomButton.setAttribute('aria-label', 'Basculer le zoom de la frise entre 4 001 ans et un siècle');
+  minimapRow.append(minimap, scaleButton, zoomButton, histomapButton);
   const loading = el('span', 'timeline-loading', '');
   loading.id = 'timeline-loading';
   loading.hidden = true;
@@ -499,6 +549,41 @@ function mount() {
   hmHost.id = 'hm-host';
   histomapPanel.append(hmHead, hmTools, hmHost);
 
+  const comparePanel = el('section', 'hud-overlay compare-panel');
+  comparePanel.id = 'compare-panel';
+  comparePanel.setAttribute('role', 'dialog');
+  comparePanel.setAttribute('aria-label', 'Comparer deux années');
+  comparePanel.hidden = true;
+  const compareClose = el('button', 'hm-close', '✕');
+  compareClose.type = 'button';
+  compareClose.id = 'compare-close';
+  compareClose.setAttribute('aria-label', 'Fermer la comparaison');
+  const compareTitle = el('h2', '', 'Comparer deux années');
+  const compareInputs = el('div', 'compare-inputs');
+  const compareA = document.createElement('input');
+  compareA.type = 'number';
+  compareA.id = 'compare-a';
+  compareA.min = String(MIN_YEAR);
+  compareA.max = String(MAX_YEAR);
+  compareA.value = '1000';
+  compareA.setAttribute('aria-label', 'Première année');
+  const compareB = document.createElement('input');
+  compareB.type = 'number';
+  compareB.id = 'compare-b';
+  compareB.min = String(MIN_YEAR);
+  compareB.max = String(MAX_YEAR);
+  compareB.value = '1500';
+  compareB.setAttribute('aria-label', 'Deuxième année');
+  compareInputs.append(compareA, compareB);
+  const compareRun = el('button', 'hm-btn', 'Comparer');
+  compareRun.type = 'button';
+  compareRun.id = 'compare-run';
+  const compareResult = el('p', 'compare-result');
+  compareResult.id = 'compare-result';
+  compareResult.setAttribute('role', 'status');
+  compareResult.setAttribute('aria-live', 'polite');
+  comparePanel.append(compareClose, compareTitle, compareInputs, compareRun, compareResult);
+
   const navControls = el('div', 'nav-controls');
   navControls.id = 'nav-controls';
   navControls.setAttribute('role', 'group');
@@ -517,7 +602,7 @@ function mount() {
   recenter.setAttribute('aria-label', 'Recentrer la sphère');
   navControls.append(zoomIn, zoomOut, recenter);
 
-  hud.append(brand, actions, card, tooltip, arcHost, arcTip, searchOverlay, helpOverlay, yearDialog, reviewPanel, trailsPanel, histomapPanel, readout, timeline, navControls, displayPanel, error);
+  hud.append(brand, actions, card, tooltip, arcHost, arcTip, searchOverlay, helpOverlay, yearDialog, reviewPanel, trailsPanel, histomapPanel, comparePanel, readout, timeline, navControls, displayPanel, error);
 
   const labelRenderer = createLabelRenderer(document.getElementById('globe-labels'));
   const epicTimeline = createEpicTimeline(epicHost, (epic) => {
@@ -936,9 +1021,13 @@ function mount() {
     const target = clampYear(next);
     const request = ++yearRequest;
     year = target;
+    if (zoomMode === 'century' && (target < centuryBase || target > centuryBase + 99)) {
+      centuryBase = centuryStart(target);
+    }
     recordNav();
     yearLabel.textContent = String(target);
-    slider.value = String(yearToPosition(target, scaleMode));
+    slider.max = zoomMode === 'century' ? String(CENTURY_STEPS) : '1000';
+    slider.value = String(positionOf(target));
     slider.setAttribute('aria-valuetext', String(target));
     minimapRange.value = String(yearToPosition(target, 'linear'));
     minimapRange.setAttribute('aria-valuetext', String(target));
@@ -956,7 +1045,8 @@ function mount() {
       if (request !== yearRequest) return;
       areasForYear = areas;
       refreshCapitalIndex(areas);
-      globe?.setYearAreas(areas, dimension);
+      if (empireRuler) globe?.setYearAreas(empireAreas(areas, empireRuler), 'empire');
+      else globe?.setYearAreas(areas, dimension);
       refreshLabels();
       globe?.setCities(capitalsForYear(areas), target);
       if (selected && reopenCard) renderCard(selected);
@@ -1007,14 +1097,32 @@ function mount() {
   }
 
   yearLabel.addEventListener('click', openYearDialog);
-  slider.addEventListener('input', () => setYear(positionToYear(slider.value, scaleMode)));
-  minimapRange.addEventListener('input', () => setYear(positionToYear(minimapRange.value, 'linear')));
+  function setZoomMode(mode) {
+    zoomMode = mode === 'century' ? 'century' : 'global';
+    if (zoomMode === 'century') centuryBase = centuryStart(year);
+    zoomButton.textContent = zoomMode === 'century' ? 'Siècle' : '4 001 ans';
+    zoomButton.setAttribute('aria-pressed', String(zoomMode === 'century'));
+    slider.max = zoomMode === 'century' ? String(CENTURY_STEPS) : '1000';
+    slider.value = String(positionOf(year));
+    params.set('zoom', zoomMode);
+    writeUrl(params);
+    readout.textContent = zoomMode === 'century'
+      ? `Zoom siècle ${centuryBase}–${centuryBase + 99}.`
+      : 'Frise complète : 4 001 ans.';
+  }
+
+  zoomButton.addEventListener('click', () => setZoomMode(zoomMode === 'century' ? 'global' : 'century'));
+  slider.addEventListener('input', () => setYear(yearOfPosition(slider.value)));
+  minimapRange.addEventListener('input', () => {
+    if (zoomMode === 'century') setZoomMode('global');
+    setYear(positionToYear(minimapRange.value, 'linear'));
+  });
   scaleButton.addEventListener('click', () => {
     scaleMode = scaleMode === 'linear' ? 'recent' : 'linear';
     scaleButton.textContent = SCALE_LABELS[scaleMode];
     scaleButton.setAttribute('aria-pressed', String(scaleMode === 'recent'));
     slider.setAttribute('aria-label', `Année sur l'échelle ${SCALE_LABELS[scaleMode].toLowerCase()}`);
-    slider.value = String(yearToPosition(year, scaleMode));
+    slider.value = String(positionOf(year));
     histomap?.setMode(scaleMode);
     params.set('scale', scaleMode);
     writeUrl(params);
@@ -1024,7 +1132,13 @@ function mount() {
   });
   play.addEventListener('click', toggleAutoplay);
   for (const button of centuries.children) {
-    button.addEventListener('click', () => setYear(Number(button.dataset.year)));
+    button.addEventListener('click', () => {
+      setYear(Number(button.dataset.year));
+      if (zoomMode === 'century') {
+        centuryBase = centuryStart(Number(button.dataset.year));
+        slider.value = String(positionOf(Number(button.dataset.year)));
+      }
+    });
   }
   yearInput.addEventListener('keydown', (event) => {
     if (event.key === 'Enter') {
@@ -1225,7 +1339,81 @@ function mount() {
   });
   trailsStop.addEventListener('click', stopTrail);
 
+  /* --- Comparaison A/B ------------------------------------------------ */
+  let comparePair = null;
+  async function runCompare(a = Number(compareA.value), b = Number(compareB.value)) {
+    const first = clampYear(a);
+    const second = clampYear(b);
+    compareA.value = String(first);
+    compareB.value = String(second);
+    comparePair = [first, second];
+    params.set('compare', `${first},${second}`);
+    writeUrl(params);
+    compareResult.textContent = 'Chargement des deux années…';
+    try {
+      const [areasA, areasB] = await Promise.all([getAreasForYear(first), getAreasForYear(second)]);
+      let totalA = 0;
+      let totalB = 0;
+      let rulers = 0;
+      let cultures = 0;
+      for (const [name, row] of Object.entries(areasA)) {
+        totalA += Number(row?.[4]) || 0;
+        const other = areasB[name];
+        if (!other) continue;
+        totalB += Number(other[4]) || 0;
+        if (String(row[0]) !== String(other[0])) rulers += 1;
+        if (String(row[1]) !== String(other[1])) cultures += 1;
+      }
+      const biggest = Object.keys(areasB)
+        .filter((name) => areasA[name])
+        .sort((x, y) => Math.abs((Number(areasB[y][4]) || 0) - (Number(areasA[y][4]) || 0))
+          - Math.abs((Number(areasB[x][4]) || 0) - (Number(areasA[x][4]) || 0)))
+        .slice(0, 3)
+        .map((name) => `${name} (${((Number(areasB[name][4]) || 0) - (Number(areasA[name][4]) || 0) >= 0 ? '+' : '')}${Math.round((Number(areasB[name][4]) || 0) - (Number(areasA[name][4]) || 0))} hab)`);
+      compareResult.textContent = `${first} → ${second} : population ${Math.round(totalA / 1000)} k → ${Math.round(totalB / 1000)} k (${totalB >= totalA ? '+' : ''}${Math.round((totalB - totalA) / 1000)} k), ${rulers} souverains et ${cultures} cultures différents. Plus fortes variations : ${biggest.join(' ; ') || 'aucune'}.`;
+    } catch (issue) {
+      compareResult.textContent = `Comparaison indisponible : ${issue.message}`;
+    }
+  }
+
+  function openCompare() {
+    comparePanel.hidden = false;
+    compareButton.setAttribute('aria-expanded', 'true');
+  }
+  function closeCompare() {
+    comparePanel.hidden = true;
+    compareButton.setAttribute('aria-expanded', 'false');
+    params.delete('compare');
+    writeUrl(params);
+  }
+  compareButton.addEventListener('click', () => {
+    if (comparePanel.hidden) openCompare(); else closeCompare();
+  });
+  compareClose.addEventListener('click', closeCompare);
+  compareRun.addEventListener('click', () => runCompare());
+
   /* --- Histomap (mode secondaire de la chronologie) ------------------- */
+  const TRAIL_BY_FAMILY = {
+    'Chinois': 'asie', 'Indien': 'savoir', 'Islamique': 'islam', 'Européen': 'europe',
+    'Amériques': 'soie', 'Asie orientale et du Sud-Est': 'asie', 'non classé': null,
+  };
+  function openTrailForFamily(family, year) {
+    const id = TRAIL_BY_FAMILY[family];
+    const trail = TRAILS.trails.find((item) => item.id === id);
+    if (!trail) {
+      readout.textContent = `Aucun récit associé à « ${family} » dans Chronas.`;
+      return;
+    }
+    let index = 0;
+    let distance = Infinity;
+    trail.steps.forEach((step, position) => {
+      const delta = Math.abs(step.year - year);
+      if (delta < distance) { distance = delta; index = position; }
+    });
+    if (!histomapPanel.hidden) closeHistomap();
+    startTrail(id, index);
+  }
+
   async function openHistomap() {
     histomapPanel.hidden = false;
     document.body.classList.add('histomap-open');
@@ -1243,7 +1431,10 @@ function mount() {
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data = await response.json();
       const { createHistomap } = await import('./histomap/stream.js');
-      histomap = createHistomap(hmHost, data, { onYear: (value) => applyYear(value) });
+      histomap = createHistomap(hmHost, data, {
+        onYear: (value) => applyYear(value),
+        onTrail: (family, value) => openTrailForFamily(family, value),
+      });
       histomap.setMode(scaleMode);
       histomap.render(year);
     } catch (issue) {
@@ -1271,8 +1462,50 @@ function mount() {
   hmClose.addEventListener('click', closeHistomap);
   hmScale.addEventListener('click', () => scaleButton.click());
 
+  let suggestionActions = [];
+
+  /* Recherche locale enrichie : régions, puis souverains / cultures / religions
+   * de l'année courante. Chaque résultat porte son action, sans réseau. */
+  function smartSuggestions(query) {
+    const needle = query.trim().toLowerCase();
+    const results = [];
+    if (!needle || !areasForYear) return results;
+    const fields = [
+      ['ruler', 0, 'État'], ['culture', 1, 'Culture'], ['religion', 2, 'Religion'],
+    ];
+    for (const [field, index, label] of fields) {
+      const groups = new Map();
+      for (const [name, row] of Object.entries(areasForYear)) {
+        const code = String(row?.[index] ?? '');
+        if (!code) continue;
+        const display = localizeTimelineValue(field, code);
+        if (!`${code} ${display}`.toLowerCase().includes(needle)) continue;
+        if (!groups.has(code)) groups.set(code, []);
+        groups.get(code).push({ name, population: Number(row?.[4]) || 0 });
+      }
+      for (const [code, members] of [...groups].slice(0, 4)) {
+        members.sort((a, b) => b.population - a.population || a.name.localeCompare(b.name, 'fr'));
+        const text = `${label} ${localizeTimelineValue(field, code)} · ${members.length} régions`;
+        results.push({
+          text,
+          action: () => {
+            select(members[0].name);
+            readout.textContent = `${label} ${code} : ${members.length} régions en ${year}. Extrait Chronas CC BY-SA 4.0.`;
+          },
+        });
+      }
+    }
+    return results;
+  }
+
   function setSuggestions(query) {
-    suggestionsList = searchNames(query);
+    const names = searchNames(query);
+    const semantic = smartSuggestions(query);
+    suggestionsList = [...names, ...semantic.map((item) => item.text)];
+    suggestionActions = [
+      ...names.map((name) => () => select(name)),
+      ...semantic.map((item) => item.action),
+    ];
     suggestionIndex = -1;
     suggestions.replaceChildren();
     if (!suggestionsList.length) {
@@ -1280,11 +1513,11 @@ function mount() {
       search.setAttribute('aria-expanded', 'false');
       return;
     }
-    suggestionsList.forEach((name, index) => {
-      const item = el('li', 'suggestion', name);
+    suggestionsList.forEach((text, index) => {
+      const item = el('li', 'suggestion', text);
       item.setAttribute('role', 'option');
       item.setAttribute('aria-selected', 'false');
-      item.addEventListener('mousedown', (event) => { event.preventDefault(); select(name); });
+      item.addEventListener('mousedown', (event) => { event.preventDefault(); suggestionActions[index]?.(); });
       suggestions.appendChild(item);
     });
     suggestions.hidden = false;
@@ -1352,8 +1585,8 @@ function mount() {
       event.preventDefault();
       highlight((suggestionIndex - 1 + suggestionsList.length) % suggestionsList.length);
     } else if (event.key === 'Enter') {
-      const name = suggestionsList[suggestionIndex >= 0 ? suggestionIndex : 0];
-      if (name) { event.preventDefault(); select(name); }
+      const index = suggestionIndex >= 0 ? suggestionIndex : 0;
+      if (suggestionsList[index]) { event.preventDefault(); suggestionActions[index]?.(); }
     } else if (event.key === 'Escape') {
       searchOverlay.hidden = true;
       search.setAttribute('aria-expanded', 'false');
@@ -1413,8 +1646,13 @@ function mount() {
       if (histomapPanel.hidden) openHistomap();
       else closeHistomap();
     }
+    else if (event.key.toLowerCase() === 'a' && !typing) {
+      event.preventDefault();
+      if (comparePanel.hidden) openCompare(); else closeCompare();
+    }
     else if (event.key === 'Escape') {
       if (!histomapPanel.hidden) closeHistomap();
+      if (!comparePanel.hidden) closeCompare();
       if (!card.hidden && mobileQuery.matches) closeCard();
       searchOverlay.hidden = true;
       helpOverlay.hidden = true;
@@ -1442,6 +1680,13 @@ function mount() {
       startTrail(initialTrail, Number(params.get('step') || 0));
     }
     if (params.get('histomap') === '1') openHistomap();
+    if (params.has('compare')) {
+      const [a, b] = params.get('compare').split(',').map(Number);
+      if (Number.isFinite(a) && Number.isFinite(b)) {
+        openCompare();
+        runCompare(a, b);
+      }
+    }
     const initialTurn = Number(params.get('turn'));
     if (Number.isInteger(initialTurn)) {
       const badge = turningStrip.querySelector(`[data-year="${initialTurn}"]`);
@@ -1455,6 +1700,7 @@ function mount() {
       selected,
       year,
       scale: scaleMode,
+      zoom: zoomMode,
       camera: globe?.getView() || { ...DEFAULT_VIEW },
       meta: { ...MAP_META },
       features: FEATURES.length,
@@ -1475,11 +1721,19 @@ function mount() {
       arcs: { enabled: showArcs, linked: arcLinks.map((item) => item.name) },
       histomap: histomap ? histomap.getState() : { open: false, year, mode: scaleMode, samples: 161 },
       history: { index: navIndex, length: navHistory.length },
+      compare: comparePair,
+      empire: { active: Boolean(empireRuler), ruler: empireRuler },
     }),
     selectRegion: (name) => select(name),
     setYear: (value) => applyYear(value),
     startTrail: (id, step) => startTrail(id, step),
     navigateHistory: (delta) => navigateNav(delta),
+    compareYears: (a, b) => runCompare(a, b),
+    focusEmpire: (on = true) => {
+      const button = document.querySelector('.dimension-btn[data-dimension="empire"]');
+      if (Boolean(empireRuler) !== on) button?.click();
+    },
+    openTrailForFamily: (family, year) => openTrailForFamily(family, year),
     setScale: (mode) => {
       if ((mode === 'recent') !== (scaleMode === 'recent')) scaleButton.click();
     },
@@ -1487,6 +1741,7 @@ function mount() {
       epicTimeline.setFilter(value);
       renderDensity(epicTimeline.visible());
     },
+    setZoom: (mode) => setZoomMode(mode),
     cityScreenPoints: () => globe?.cityScreenPoints?.() || [],
     setView: (view) => globe?.setView(view),
     diagnostics: () => ({ seed: SEED, features: FEATURES.length, areas: MAP_META.areas, webgl: Boolean(globe) }),

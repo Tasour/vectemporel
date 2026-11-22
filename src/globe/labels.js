@@ -8,7 +8,7 @@ import { MODERN_LABELS } from '../data/modern-labels.js';
 const FEATURE_BY_NAME = new Map(FEATURES.map((feature) => [feature.name, feature]));
 const LIMIT = 24;
 const MIN_ZOOM = 3;
-const DIMENSION_KEYS = ['ruler', 'culture', 'religion', 'capital', 'population'];
+const DIMENSION_KEYS = ['ruler', 'culture', 'religion', 'capital', 'population', 'empire'];
 
 function centerOf(feature) {
   const box = boundsOf(feature.rings);
@@ -21,7 +21,7 @@ function centerOf(feature) {
 export function buildLabels(areas, dimension) {
   const dimensionKey = DIMENSION_KEYS.includes(dimension) ? dimension : 'culture';
   const keyIndex = dimensionKey === 'capital' ? 3 : DIMENSION_KEYS.indexOf(dimensionKey);
-  if (dimensionKey === 'population') return [];
+  if (dimensionKey === 'population' || dimensionKey === 'empire') return [];
 
   const groups = new Map();
   for (const [provinceName, row] of Object.entries(areas || {})) {
