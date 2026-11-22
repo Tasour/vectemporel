@@ -859,6 +859,49 @@ function mount() {
   hud.append(brand, actions, card, tooltip, arcHost, arcTip, searchOverlay, helpOverlay, yearDialog, reviewPanel, trailsPanel, histomapPanel, learnPanel, qualityPanel, comparePanel, readout, timeline, navControls, displayPanel, error);
   if (budgetWidget) hud.appendChild(budgetWidget);
 
+  const panelIndicator = el('div', 'panel-indicator');
+  panelIndicator.id = 'panel-indicator';
+  hud.appendChild(panelIndicator);
+
+  /* Aide au survol sur les contrôles nommés (hors canvas, qui garde son
+   * aria-label mais aucun title natif afin d'éviter une double infobulle). */
+  for (const node of document.querySelectorAll('[aria-label]')) {
+    if (node.id !== 'globe-canvas' && !node.title) node.title = node.getAttribute('aria-label');
+  }
+
+  /* Premier lancement : bandeau non modal, trois étapes, mémorisé localement. */
+  if (!localStorage.getItem('vectemporel-onboarded')) {
+    const steps = [
+      'Tournez la sphère en glissant ; cliquez une région pour ouvrir sa fiche.',
+      'La frise couvre 4 001 ans : curseur, siècles, échelle et minimap.',
+      '❖ récits, ✧ apprentissage, ⚑ qualité des données : tout est local.',
+    ];
+    let step = 0;
+    const banner = el('div', 'onboarding');
+    banner.id = 'onboarding';
+    banner.setAttribute('role', 'status');
+    const bannerText = el('p', 'onboarding-text', steps[0]);
+    const next = el('button', 'onboarding-next', 'Suivant →');
+    next.type = 'button';
+    next.addEventListener('click', () => {
+      step += 1;
+      if (step >= steps.length) {
+        banner.remove();
+        localStorage.setItem('vectemporel-onboarded', '1');
+      } else {
+        bannerText.textContent = steps[step];
+      }
+    });
+    const skip = el('button', 'onboarding-skip', 'Passer');
+    skip.type = 'button';
+    skip.addEventListener('click', () => {
+      banner.remove();
+      localStorage.setItem('vectemporel-onboarded', '1');
+    });
+    banner.append(bannerText, next, skip);
+    hud.appendChild(banner);
+  }
+
   const labelRenderer = createLabelRenderer(document.getElementById('globe-labels'));
   const epicTimeline = createEpicTimeline(epicHost, (epic) => {
     const target = epicYear(epic);
@@ -2217,6 +2260,7 @@ function mount() {
     },
     setZoom: (mode) => setZoomMode(mode),
     cityScreenPoints: () => globe?.cityScreenPoints?.() || [],
+    pickAt: (x, y) => globe?.pick?.(x, y) ?? null,
     setView: (view) => globe?.setView(view),
     diagnostics: () => ({ seed: SEED, features: FEATURES.length, areas: MAP_META.areas, webgl: Boolean(globe) }),
   };
