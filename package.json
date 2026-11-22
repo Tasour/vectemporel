@@ -22,6 +22,7 @@
     "test:vector": "node tests/vector-provinces.mjs",
     "test:provinces": "node tests/province-timelines.mjs",
     "test:learning": "node tests/learning.mjs",
+    "test:challenges": "node tests/challenges.mjs",
     "test:scale": "node tests/timeline-scale.mjs",
     "trails:build": "node scripts/build-trails.mjs",
     "test:trails:data": "node tests/trails-data.mjs",
@@ -38,7 +39,7 @@
     "test:e2e": "node tests/e2e.mjs",
     "test:perf": "node tests/perf-budget.mjs",
     "test:pwa": "node tests/pwa.mjs",
-    "check": "npm run verify && npm run test:years && npm run test:scale && npm run test:trails:data && npm run test:anomalies && npm run test:points && npm run test:vector && npm run test:provinces && npm run test:learning && node tests/http-guards.mjs && npm run test:live && npm run test:e2e && npm run test:trails && npm run test:points:ui && npm run test:arcs && npm run test:histomap && npm run test:histomap:ui && npm run test:perf && npm run test:pwa && npm run test:devtools",
+    "check": "npm run verify && npm run test:years && npm run test:scale && npm run test:trails:data && npm run test:anomalies && npm run test:points && npm run test:vector && npm run test:provinces && npm run test:learning && npm run test:challenges && node tests/http-guards.mjs && npm run test:live && npm run test:e2e && npm run test:trails && npm run test:points:ui && npm run test:arcs && npm run test:histomap && npm run test:histomap:ui && npm run test:perf && npm run test:pwa && npm run test:devtools",
     "test:devtools": "node tests/devtools-bridge.mjs",
     "test:live": "node tests/live-layout.mjs",
     "bridge:check": "node tests/bridge-check.mjs"

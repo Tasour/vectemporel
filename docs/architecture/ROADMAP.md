@@ -287,6 +287,16 @@ Les features F22 et F27, initialement reportées, ont été livrées en P10 avec
 - Widget de budget réservé à `?devtools=1` ✅
 - **Rollback** : restaurer `src/app.js`, `src/globe/globe.js`, `styles.css`, `scripts/families.csv`, `src/data/histomap.json`, `package.json`, `sw.js`, `scripts/verify.mjs` et `tests/e2e.mjs` ; retirer `scripts/build-anomalies.mjs`, `src/data/anomalies.js`, `tests/anomalies.mjs`.
 
+## P27 — Dix idées, lot 4 ✅ 2026-11-23
+
+- Quiz « devine l'année » (graine 20261121, 5 questions, 4 propositions) ✅
+- Carte muette : faits visibles, nom révélé à la demande ✅
+- Progression SRS : heatmap 30 jours, boîtes Leitner, cartes dues ✅
+- Objectifs locaux (révisions, jalons, siècles) en `localStorage` ✅
+- Récits à trous : province masquée, preuve Chronas révélée ✅
+- Panneau unique `✧` / touche `L`, cinq onglets, 100 % local ✅
+- **Rollback** : retirer `src/learning/challenges.js`, `src/learning/learn-ui.js`, `tests/challenges.mjs` ; restaurer `src/app.js`, `styles.css`, `package.json`, `sw.js`, `scripts/verify.mjs`, `README.md`.
+
 ## Rollback global
 
 Restaurer `archive/v2-globe-1year/` (ou `archive/v1-map-2d/`) et republier le commit `adc5c9d`.
