@@ -2,7 +2,7 @@
  * Cache-first sur les ressources same-origin : la première visite en ligne
  * remplit le cache, les suivantes fonctionnent hors ligne. Aucune requête
  * cross-origin n'est interceptée ni mise en cache (contrainte zéro réseau). */
-const CACHE = 'vectemporel-2ed4bab6fcf0';
+const CACHE = 'vectemporel-08ddeb975f1e';
 const SHELL = [
   './', './index.html', './manifest.webmanifest', './styles.css', './sw.js',
   './src/app.js', './src/map/data.js', './src/map/projection.js',
@@ -10,7 +10,8 @@ const SHELL = [
   './src/data/chronas-map.js', './src/data/year-store.js',
   './src/globe/labels.js', './src/timeline/epics.js', './src/timeline/scale.js',
   './src/data/chronas-labels.js', './src/data/modern-labels.js', './src/data/chronas-epics.js',
-  './src/data/trails.js', './src/data/turning-points.js', './src/story/trails.js', './src/globe/simultaneity.js',
+  './src/data/trails.js', './src/data/turning-points.js', './src/data/histomap.json',
+  './src/story/trails.js', './src/globe/simultaneity.js', './src/histomap/stream.js', './public/d3-bundle.js',
   './src/learning/review.js', './src/learning/questions.js', './src/learning/srs.js', './src/learning/session.js',
   './src/data/province-timelines/index.js', './src/data/province-timelines/b.js',
   './src/data/years/c1000.json', './src/data/chronas-cities.js', './public/three-bundle.js',

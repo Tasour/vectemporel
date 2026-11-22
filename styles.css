@@ -325,6 +325,43 @@ button, input { font: inherit; }
 .trails-btn:disabled { opacity: .45; cursor: default; }
 .trails-btn-next { border-color: var(--gold); background: rgba(230,185,111,.12); color: var(--gold-bright); }
 .trails-btn-quiet { flex: 0 0 auto; color: var(--muted); }
+/* Histomap : vue secondaire de la chronologie. */
+.histomap-panel {
+  z-index: 48;
+  left: 50%;
+  bottom: max(300px, calc(env(safe-area-inset-bottom) + 300px));
+  width: min(1120px, calc(100vw - 36px));
+  max-height: 64vh;
+  overflow-y: auto;
+  padding: 14px 16px 16px;
+  transform: translateX(-50%);
+}
+.histomap-panel[hidden] { display: none; }
+.hm-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+.hm-head h2 { margin: 0; font-family: var(--serif); font-size: 17px; font-weight: 450; color: var(--gold-bright); }
+.hm-close { display: inline-flex; min-width: 44px; min-height: 44px; align-items: center; justify-content: center; border: 1px solid var(--line); border-radius: 8px; background: none; color: var(--ink); cursor: pointer; }
+.hm-tools { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 8px; }
+.hm-btn { min-height: 44px; padding: 6px 12px; border: 1px solid var(--line); border-radius: 8px; background: none; color: var(--muted); font-size: 11px; cursor: pointer; }
+.hm-btn[aria-pressed="true"] { border-color: var(--gold); color: var(--gold-bright); background: rgba(230,185,111,.12); }
+.hm-figure { margin: 0; }
+#histomap-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.hm-band { cursor: pointer; transition: fill-opacity .12s ease; }
+.hm-band:hover, .hm-band:focus-visible { fill-opacity: 1; stroke: #fff; stroke-width: 1; outline: none; }
+.hm-label { font-size: 10px; font-family: var(--sans, sans-serif); }
+.hm-tick { font-size: 10px; fill: var(--muted); }
+.hm-grid { stroke: rgba(255,255,255,.09); stroke-width: 1; }
+.hm-cursor { stroke: var(--gold-bright); stroke-width: 1.6; }
+#histomap-minimap { display: block; width: 100%; height: 56px; margin: 4px 0; cursor: crosshair; }
+.hm-mini-line { fill: none; stroke: var(--gold); stroke-width: 1.6; }
+.hm-mini-cursor { stroke: var(--gold-bright); stroke-width: 1.6; }
+.hm-year { margin: 4px 0 8px; color: var(--gold-bright); font-size: 11px; }
+.hm-caption { margin-top: 4px; color: var(--muted); font-size: 10px; line-height: 1.4; }
+.hm-tip { position: absolute; top: 56px; right: 18px; max-width: min(460px, 70%); padding: 8px 10px; border: 1px solid var(--gold); border-radius: 8px; background: #0b1119; color: var(--ink); font-size: 11px; line-height: 1.4; }
+.hm-tip[hidden] { display: none; }
+.hm-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+.hm-table th, .hm-table td { padding: 4px 6px; border-bottom: 1px solid var(--line); text-align: left; }
+.hm-table thead th { color: var(--muted); font-weight: 500; }
+body.histomap-open .hud-readout, body.histomap-open .nav-controls { display: none; }
 .hud-error {
   position: absolute;
   top: 50%;
@@ -409,6 +446,17 @@ button, input { font: inherit; }
   .century-btn { flex: 0 0 auto; min-width: 44px; min-height: 44px; font-size: 9px; }
   .turning-badge { min-width: 44px; min-height: 44px; font-size: 9px; }
   .timeline-loading { min-height: 12px; }
+  .histomap-panel {
+    bottom: max(196px, calc(env(safe-area-inset-bottom) + 196px));
+    width: calc(100vw - 16px);
+    max-height: 54vh;
+    padding: 10px 10px 12px;
+  }
+  .hm-head h2 { font-size: 15px; }
+  .hm-figure { overflow-x: auto; }
+  #histomap-svg { min-width: 520px; }
+  .hm-table { font-size: 10px; }
+  .hm-tip { top: 52px; right: 10px; max-width: calc(100% - 20px); }
   .hud-readout {
     bottom: max(200px, calc(env(safe-area-inset-bottom) + 200px));
     left: 8px;

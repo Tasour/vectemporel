@@ -301,7 +301,12 @@ function mount() {
   scaleButton.id = 'timeline-scale';
   scaleButton.setAttribute('aria-pressed', String(scaleMode === 'recent'));
   scaleButton.setAttribute('aria-label', 'Basculer l’échelle de la frise entre linéaire et récents');
-  minimapRow.append(minimap, scaleButton);
+  const histomapButton = el('button', 'timeline-scale', 'Histomap');
+  histomapButton.type = 'button';
+  histomapButton.id = 'hud-histomap-button';
+  histomapButton.setAttribute('aria-pressed', 'false');
+  histomapButton.setAttribute('aria-label', 'Ouvrir l’Histomap des familles culturelles (touche H)');
+  minimapRow.append(minimap, scaleButton, histomapButton);
   const loading = el('span', 'timeline-loading', '');
   loading.id = 'timeline-loading';
   loading.hidden = true;
@@ -407,6 +412,29 @@ function mount() {
   trailsStep.append(trailsStepKicker, trailsStepTitle, trailsStepText, trailsFacts, trailsEvidence, trailsNav);
   trailsPanel.append(trailsClose, trailsKicker, trailsTitle, trailsList, trailsStep);
 
+  const histomapPanel = el('section', 'hud-overlay histomap-panel');
+  histomapPanel.id = 'histomap-panel';
+  histomapPanel.setAttribute('role', 'dialog');
+  histomapPanel.setAttribute('aria-label', 'Histomap des familles culturelles');
+  histomapPanel.hidden = true;
+  const hmHead = el('div', 'hm-head');
+  hmHead.appendChild(el('h2', '', 'Histomap — qui vivait où, à chaque siècle'));
+  const hmClose = el('button', 'hm-close', '✕');
+  hmClose.type = 'button';
+  hmClose.id = 'histomap-close';
+  hmClose.setAttribute('aria-label', 'Fermer l’Histomap');
+  hmHead.appendChild(hmClose);
+  const hmTools = el('div', 'hm-tools');
+  const hmScale = el('button', 'hm-btn', SCALE_LABELS[scaleMode]);
+  hmScale.type = 'button';
+  hmScale.id = 'histomap-scale';
+  hmScale.setAttribute('aria-pressed', String(scaleMode === 'recent'));
+  hmScale.setAttribute('aria-label', 'Échelle de l’Histomap');
+  hmTools.appendChild(hmScale);
+  const hmHost = el('div', 'hm-host');
+  hmHost.id = 'hm-host';
+  histomapPanel.append(hmHead, hmTools, hmHost);
+
   const navControls = el('div', 'nav-controls');
   navControls.id = 'nav-controls';
   navControls.setAttribute('role', 'group');
@@ -425,7 +453,7 @@ function mount() {
   recenter.setAttribute('aria-label', 'Recentrer la sphère');
   navControls.append(zoomIn, zoomOut, recenter);
 
-  hud.append(brand, actions, card, tooltip, searchOverlay, helpOverlay, yearDialog, reviewPanel, trailsPanel, readout, timeline, navControls, displayPanel, error);
+  hud.append(brand, actions, card, tooltip, searchOverlay, helpOverlay, yearDialog, reviewPanel, trailsPanel, histomapPanel, readout, timeline, navControls, displayPanel, error);
 
   const labelRenderer = createLabelRenderer(document.getElementById('globe-labels'));
   const epicTimeline = createEpicTimeline(epicHost, (epic) => {
@@ -865,6 +893,7 @@ function mount() {
       if (selected && reopenCard) renderCard(selected);
       if (notify) announce(selected);
       refreshArcs();
+      if (histomap && !histomapPanel.hidden) histomap.render(target);
     } catch (issue) {
       if (request !== yearRequest) return;
       error.textContent = `Année ${target} indisponible : ${issue.message}`;
@@ -917,6 +946,7 @@ function mount() {
     scaleButton.setAttribute('aria-pressed', String(scaleMode === 'recent'));
     slider.setAttribute('aria-label', `Année sur l'échelle ${SCALE_LABELS[scaleMode].toLowerCase()}`);
     slider.value = String(yearToPosition(year, scaleMode));
+    histomap?.setMode(scaleMode);
     params.set('scale', scaleMode);
     writeUrl(params);
     readout.textContent = scaleMode === 'recent'
@@ -986,6 +1016,8 @@ function mount() {
     onEnd: () => { readout.textContent = 'Récit terminé.'; },
   });
   let trailFactsToken = 0;
+  let histomap = null;
+  let histomapAbort = null;
 
   function openTrails() {
     trailsPanel.hidden = false;
@@ -1086,6 +1118,52 @@ function mount() {
     else trailPlayer.next();
   });
   trailsStop.addEventListener('click', stopTrail);
+
+  /* --- Histomap (mode secondaire de la chronologie) ------------------- */
+  async function openHistomap() {
+    histomapPanel.hidden = false;
+    document.body.classList.add('histomap-open');
+    histomapButton.setAttribute('aria-pressed', 'true');
+    params.set('histomap', '1');
+    writeUrl(params);
+    if (histomap) {
+      histomap.setMode(scaleMode);
+      histomap.render(year);
+      return;
+    }
+    histomapAbort = new AbortController();
+    try {
+      const response = await fetch('./src/data/histomap.json', { signal: histomapAbort.signal });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data = await response.json();
+      const { createHistomap } = await import('./histomap/stream.js');
+      histomap = createHistomap(hmHost, data, { onYear: (value) => applyYear(value) });
+      histomap.setMode(scaleMode);
+      histomap.render(year);
+    } catch (issue) {
+      if (issue.name !== 'AbortError') hmHost.textContent = 'Histomap indisponible.';
+    } finally {
+      histomapAbort = null;
+    }
+  }
+
+  function closeHistomap() {
+    histomapPanel.hidden = true;
+    document.body.classList.remove('histomap-open');
+    histomapButton.setAttribute('aria-pressed', 'false');
+    histomapAbort?.abort();
+    histomapAbort = null;
+    params.delete('histomap');
+    writeUrl(params);
+    canvas.focus?.();
+  }
+
+  histomapButton.addEventListener('click', () => {
+    if (histomapPanel.hidden) openHistomap();
+    else closeHistomap();
+  });
+  hmClose.addEventListener('click', closeHistomap);
+  hmScale.addEventListener('click', () => scaleButton.click());
 
   function setSuggestions(query) {
     suggestionsList = searchNames(query);
@@ -1219,7 +1297,13 @@ function mount() {
       else closeTrails();
     }
     else if (event.key.toLowerCase() === 's' && !typing) { event.preventDefault(); toggleArcs(); }
+    else if (event.key.toLowerCase() === 'h' && !typing) {
+      event.preventDefault();
+      if (histomapPanel.hidden) openHistomap();
+      else closeHistomap();
+    }
     else if (event.key === 'Escape') {
+      if (!histomapPanel.hidden) closeHistomap();
       if (!card.hidden && mobileQuery.matches) closeCard();
       searchOverlay.hidden = true;
       helpOverlay.hidden = true;
@@ -1246,6 +1330,7 @@ function mount() {
     if (initialTrail && trailPlayer.has(initialTrail)) {
       startTrail(initialTrail, Number(params.get('step') || 0));
     }
+    if (params.get('histomap') === '1') openHistomap();
     const initialTurn = Number(params.get('turn'));
     if (Number.isInteger(initialTurn)) {
       const badge = turningStrip.querySelector(`[data-year="${initialTurn}"]`);
@@ -1275,6 +1360,7 @@ function mount() {
       trail: trailPlayer.state(),
       turn: turningStrip.querySelector('[aria-current="true"]')?.dataset.year ?? null,
       arcs: { enabled: showArcs, linked: arcLinks.map((item) => item.name) },
+      histomap: histomap ? histomap.getState() : { open: false, year, mode: scaleMode, samples: 161 },
     }),
     selectRegion: (name) => select(name),
     setYear: (value) => applyYear(value),
