@@ -18,6 +18,7 @@ import { TURNING_POINTS } from './data/turning-points.js';
 import { ANOMALIES } from './data/anomalies.js';
 import { linkedProvinces, arcPairs } from './globe/simultaneity.js';
 import { createTrailPlayer } from './story/trails.js';
+import { createLearnPanel } from './learning/learn-ui.js';
 import { CHRONAS_LABELS } from './data/chronas-labels.js';
 import { clampYear, getAreasForYear } from './data/year-store.js';
 
@@ -65,6 +66,21 @@ function mount() {
   const yearOfPosition = (position) => (zoomMode === 'century'
     ? centuryPositionToYear(position, centuryBase) : positionToYear(position, scaleMode));
   let showArcs = params.get('arcs') === '1';
+  const PROGRESS_KEY = 'vectemporel-progress-v1';
+  function loadProgress() {
+    try {
+      const data = JSON.parse(localStorage.getItem(PROGRESS_KEY));
+      if (data && Array.isArray(data.regions)) return { regions: [], trails: [], centuries: [], ...data };
+    } catch { /* stockage indisponible */ }
+    return { regions: [], trails: [], centuries: [] };
+  }
+  const localProgress = loadProgress();
+  function trackProgress(kind, value) {
+    if (!localProgress[kind] || localProgress[kind].includes(value)) return;
+    localProgress[kind].push(value);
+    try { localStorage.setItem(PROGRESS_KEY, JSON.stringify(localProgress)); } catch { /* ignoré */ }
+  }
+
   let showSun = params.get('sun') === '1';
   let showWire = params.get('wire') === '1';
   let arcLinks = [];
@@ -218,6 +234,11 @@ function mount() {
   wireButton.id = 'hud-wire-button';
   wireButton.setAttribute('aria-label', 'Afficher la sphère en fil de fer (touche W)');
   wireButton.setAttribute('aria-pressed', 'false');
+  const learnButton = el('button', 'hud-btn', '✧');
+  learnButton.type = 'button';
+  learnButton.id = 'hud-learn-button';
+  learnButton.setAttribute('aria-label', 'Ouvrir les défis d’apprentissage (touche L)');
+  learnButton.setAttribute('aria-expanded', 'false');
   const qualityButton = el('button', 'hud-btn', '⚑');
   qualityButton.type = 'button';
   qualityButton.id = 'hud-quality-button';
@@ -232,7 +253,7 @@ function mount() {
   helpButton.type = 'button';
   helpButton.id = 'hud-help-button';
   helpButton.setAttribute('aria-label', 'Afficher les commandes (touche point d’interrogation)');
-  actions.append(tourButton, searchButton, displayButton, arcsButton, sunButton, wireButton, trailsButton, qualityButton, compareButton, reviewButton, themeButton, helpButton);
+  actions.append(tourButton, searchButton, displayButton, arcsButton, sunButton, wireButton, trailsButton, learnButton, qualityButton, compareButton, reviewButton, themeButton, helpButton);
   const savedTheme = localStorage.getItem('history-theme');
   if (savedTheme === 'light') document.documentElement.dataset.theme = 'light';
 
@@ -576,6 +597,12 @@ function mount() {
   hmHost.id = 'hm-host';
   histomapPanel.append(hmHead, hmTools, hmHost);
 
+  const learnPanel = el('section', 'hud-overlay learn-panel');
+  learnPanel.id = 'learn-panel';
+  learnPanel.setAttribute('role', 'dialog');
+  learnPanel.setAttribute('aria-label', 'Défis d’apprentissage locaux');
+  learnPanel.hidden = true;
+
   const qualityPanel = el('section', 'hud-overlay quality-panel');
   qualityPanel.id = 'quality-panel';
   qualityPanel.setAttribute('role', 'dialog');
@@ -655,7 +682,7 @@ function mount() {
   recenter.setAttribute('aria-label', 'Recentrer la sphère');
   navControls.append(zoomIn, zoomOut, recenter);
 
-  hud.append(brand, actions, card, tooltip, arcHost, arcTip, searchOverlay, helpOverlay, yearDialog, reviewPanel, trailsPanel, histomapPanel, qualityPanel, comparePanel, readout, timeline, navControls, displayPanel, error);
+  hud.append(brand, actions, card, tooltip, arcHost, arcTip, searchOverlay, helpOverlay, yearDialog, reviewPanel, trailsPanel, histomapPanel, learnPanel, qualityPanel, comparePanel, readout, timeline, navControls, displayPanel, error);
   if (budgetWidget) hud.appendChild(budgetWidget);
 
   const labelRenderer = createLabelRenderer(document.getElementById('globe-labels'));
@@ -1078,6 +1105,7 @@ function mount() {
     if (zoomMode === 'century' && (target < centuryBase || target > centuryBase + 99)) {
       centuryBase = centuryStart(target);
     }
+    trackProgress('centuries', centuryStart(target));
     recordNav();
     yearLabel.textContent = String(target);
     slider.max = zoomMode === 'century' ? String(CENTURY_STEPS) : '1000';
@@ -1270,6 +1298,7 @@ function mount() {
   function select(name, { move = true, open = true } = {}) {
     if (!name) return;
     selected = name;
+    trackProgress('regions', name);
     recordNav();
     params.set('type', 'area');
     params.set('value', name);
@@ -1324,7 +1353,8 @@ function mount() {
   function startTrail(id, stepIndex = 0) {
     trailsPanel.hidden = false;
     trailsButton.setAttribute('aria-expanded', 'true');
-    trailPlayer.start(id, stepIndex);
+    const snapshot = trailPlayer.start(id, stepIndex);
+    if (snapshot) trackProgress('trails', `${snapshot.id}:${snapshot.index}`);
   }
 
   function renderTrailStep(snapshot) {
@@ -1378,6 +1408,37 @@ function mount() {
     writeUrl(params);
     readout.textContent = `${step.title} · ${step.province} · ${step.year}.`;
   }
+
+  let learn = null;
+  function openLearn() {
+    if (!learn) {
+      learn = createLearnPanel(learnPanel, {
+        getState: () => window.VATLAS.getState(),
+        getFacts: (name) => {
+          const info = describe(name);
+          return info ? { ...info, populationLabel: formatPopulation(info.population) } : null;
+        },
+        getProgress: () => ({
+          trails: localProgress.trails.length,
+          centuries: localProgress.centuries.length,
+        }),
+        applyYear: (value) => applyYear(value),
+        startTrail: (id, index) => startTrail(id, index),
+        readout: (text) => { readout.textContent = text; },
+        closeLearn,
+      });
+    }
+    learnPanel.hidden = false;
+    learnButton.setAttribute('aria-expanded', 'true');
+    learn.open();
+  }
+  function closeLearn() {
+    learnPanel.hidden = true;
+    learnButton.setAttribute('aria-expanded', 'false');
+  }
+  learnButton.addEventListener('click', () => {
+    if (learnPanel.hidden) openLearn(); else closeLearn();
+  });
 
   function toggleSun() {
     showSun = !showSun;
@@ -1732,6 +1793,10 @@ function mount() {
       else closeTrails();
     }
     else if (event.key.toLowerCase() === 's' && !typing) { event.preventDefault(); toggleArcs(); }
+    else if (event.key.toLowerCase() === 'l' && !typing) {
+      event.preventDefault();
+      if (learnPanel.hidden) openLearn(); else closeLearn();
+    }
     else if (event.key.toLowerCase() === 'y' && !typing) { event.preventDefault(); toggleSun(); }
     else if (event.key.toLowerCase() === 'w' && !typing) { event.preventDefault(); toggleWire(); }
     else if (event.key.toLowerCase() === 'h' && !typing) {
@@ -1747,6 +1812,7 @@ function mount() {
       if (!histomapPanel.hidden) closeHistomap();
       if (!comparePanel.hidden) closeCompare();
       if (!qualityPanel.hidden) closeQuality();
+      if (!learnPanel.hidden) closeLearn();
       if (!card.hidden && mobileQuery.matches) closeCard();
       searchOverlay.hidden = true;
       helpOverlay.hidden = true;
@@ -1823,6 +1889,15 @@ function mount() {
       wireframe: showWire,
       anomalies: ANOMALIES.meta.count,
       qualityOpen: !qualityPanel.hidden,
+      learning: {
+        open: !learnPanel.hidden,
+        summary: learn?.srs() ?? null,
+        progress: {
+          regions: localProgress.regions.length,
+          trails: localProgress.trails.length,
+          centuries: localProgress.centuries.length,
+        },
+      },
     }),
     selectRegion: (name) => select(name),
     setYear: (value) => applyYear(value),
@@ -1836,6 +1911,12 @@ function mount() {
     openTrailForFamily: (family, year) => openTrailForFamily(family, year),
     toggleSun,
     toggleWire,
+    openLearn,
+    closeLearn,
+    setLearnSection: (id) => {
+      openLearn();
+      learnPanel.querySelector(`.learn-tab[data-section="${id}"]`)?.click();
+    },
     setScale: (mode) => {
       if ((mode === 'recent') !== (scaleMode === 'recent')) scaleButton.click();
     },
