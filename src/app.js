@@ -16,6 +16,7 @@ import { getProvinceTimeline } from './data/province-timeline-store.js';
 import { TRAILS } from './data/trails.js';
 import { TURNING_POINTS } from './data/turning-points.js';
 import { ANOMALIES } from './data/anomalies.js';
+import { DATA_QUALITY } from './data/data-quality.js';
 import { linkedProvinces, arcPairs } from './globe/simultaneity.js';
 import { createTrailPlayer } from './story/trails.js';
 import { createLearnPanel } from './learning/learn-ui.js';
@@ -535,18 +536,58 @@ function mount() {
   trailsClose.setAttribute('aria-label', 'Fermer les récits');
   const trailsKicker = el('p', 'trails-kicker', 'Récits guidés');
   trailsKicker.id = 'trails-kicker';
-  const trailsTitle = el('h2', 'trails-title', 'Cinq parcours dans Chronas');
+  const trailsTitle = el('h2', 'trails-title', 'Dix parcours dans Chronas');
   trailsTitle.id = 'trails-title';
   const trailsList = el('div', 'trails-list');
   trailsList.id = 'trails-list';
+  const trailFilters = el('div', 'trail-filters');
+  const difficultyFilter = document.createElement('select');
+  difficultyFilter.id = 'trail-difficulty';
+  difficultyFilter.className = 'trail-select';
+  difficultyFilter.setAttribute('aria-label', 'Filtrer les récits par difficulté');
+  for (const value of ['tous', 'débutant', 'intermédiaire', 'expert']) {
+    const option = el('option', '', value === 'tous' ? 'Toutes les difficultés' : value);
+    option.value = value;
+    difficultyFilter.appendChild(option);
+  }
+  const tagFilter = document.createElement('select');
+  tagFilter.id = 'trail-tag';
+  tagFilter.className = 'trail-select';
+  tagFilter.setAttribute('aria-label', 'Filtrer les récits par thème');
+  const allTags = el('option', '', 'Tous les thèmes');
+  allTags.value = 'tous';
+  tagFilter.appendChild(allTags);
+  for (const tag of [...new Set(TRAILS.trails.flatMap((trail) => trail.tags))].sort((a, b) => a.localeCompare(b, 'fr'))) {
+    const option = el('option', '', tag);
+    option.value = tag;
+    tagFilter.appendChild(option);
+  }
+  function filterTrails() {
+    const difficulty = difficultyFilter.value;
+    const tag = tagFilter.value;
+    let shown = 0;
+    for (const item of trailsList.children) {
+      const visible = (difficulty === 'tous' || item.dataset.difficulty === difficulty)
+        && (tag === 'tous' || item.dataset.tags.split('|').includes(tag));
+      item.hidden = !visible;
+      if (visible) shown += 1;
+    }
+    trailsList.dataset.visible = String(shown);
+  }
+  difficultyFilter.addEventListener('change', filterTrails);
+  tagFilter.addEventListener('change', filterTrails);
+  trailFilters.append(difficultyFilter, tagFilter);
   for (const trail of TRAILS.trails) {
     const item = el('button', 'trail-item');
     item.type = 'button';
     item.dataset.trail = trail.id;
-    item.append(el('strong', '', trail.title), el('span', '', trail.subtitle));
+    item.dataset.difficulty = trail.difficulty;
+    item.dataset.tags = trail.tags.join('|');
+    item.append(el('strong', '', trail.title), el('span', `${trail.difficulty} · ${trail.duration} min · ${trail.tags.join(', ')}`), el('span', '', trail.subtitle));
     item.addEventListener('click', () => startTrail(trail.id, 0));
     trailsList.appendChild(item);
   }
+  filterTrails();
   const trailsStep = el('div', 'trails-step');
   trailsStep.id = 'trails-step';
   trailsStep.hidden = true;
@@ -572,7 +613,7 @@ function mount() {
   trailsStop.id = 'trails-stop';
   trailsNav.append(trailsPrev, trailsNext, trailsStop);
   trailsStep.append(trailsStepKicker, trailsStepTitle, trailsStepText, trailsFacts, trailsEvidence, trailsNav);
-  trailsPanel.append(trailsClose, trailsKicker, trailsTitle, trailsList, trailsStep);
+  trailsPanel.append(trailsClose, trailsKicker, trailsTitle, trailFilters, trailsList, trailsStep);
 
   const histomapPanel = el('section', 'hud-overlay histomap-panel');
   histomapPanel.id = 'histomap-panel';
@@ -1330,7 +1371,7 @@ function mount() {
       trailsList.hidden = false;
       trailsStep.hidden = true;
       trailsKicker.textContent = 'Récits guidés';
-      trailsTitle.textContent = 'Cinq parcours dans Chronas';
+      trailsTitle.textContent = 'Dix parcours dans Chronas';
     }
     if (mobileQuery.matches) requestAnimationFrame(() => trailsClose.focus());
   }
@@ -1643,6 +1684,38 @@ function mount() {
           action: () => {
             select(members[0].name);
             readout.textContent = `${label} ${code} : ${members.length} régions en ${year}. Extrait Chronas CC BY-SA 4.0.`;
+          },
+        });
+      }
+    }
+    /* Index de référence : retrouve un souverain ou une culture même si
+     * l'année courante ne le porte plus. */
+    for (const reference of DATA_QUALITY.meta.reference_years) {
+      const index = DATA_QUALITY.indexes[reference];
+      if (!index) continue;
+      for (const item of index.rulers) {
+        if (results.length >= 12) break;
+        const display = localizeTimelineValue('ruler', item.code);
+        if (!`${item.code} ${display}`.toLowerCase().includes(needle)) continue;
+        if (results.some((result) => result.text.includes(item.code))) continue;
+        results.push({
+          text: `État ${display} · ${item.count} régions (${reference})`,
+          action: () => {
+            applyYear(reference);
+            readout.textContent = `État ${item.code} : ${item.count} régions en ${reference}. Extrait Chronas.`;
+          },
+        });
+      }
+      for (const item of index.cultures) {
+        if (results.length >= 12) break;
+        const display = localizeTimelineValue('culture', item.code);
+        if (!`${item.code} ${display}`.toLowerCase().includes(needle)) continue;
+        if (results.some((result) => result.text.includes(item.code))) continue;
+        results.push({
+          text: `Culture ${display} · ${Math.round(item.population / 1000)} k hab (${reference})`,
+          action: () => {
+            applyYear(reference);
+            readout.textContent = `Culture ${item.code} : ${Math.round(item.population / 1000)} k habitants en ${reference}. Extrait Chronas.`;
           },
         });
       }

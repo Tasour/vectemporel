@@ -299,7 +299,10 @@ button, input { font: inherit; }
 }
 .trails-kicker { margin: 0 0 4px; color: var(--muted); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; }
 .trails-title { margin: 0 0 12px; font-family: var(--serif); font-size: 21px; font-weight: 450; color: var(--gold-bright); }
+.trail-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+.trail-select { flex: 1 1 180px; min-height: 44px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); font-size: 11px; }
 .trails-list { display: grid; gap: 8px; }
+.trail-item[hidden] { display: none; }
 .trail-item {
   display: grid;
   gap: 3px;
