@@ -78,7 +78,7 @@ button, input { font: inherit; }
 .hud-card {
   position: absolute;
   left: max(18px, env(safe-area-inset-left));
-  bottom: max(150px, calc(env(safe-area-inset-bottom) + 150px));
+  bottom: max(260px, calc(env(safe-area-inset-bottom) + 260px));
   width: min(320px, calc(100vw - 36px));
   padding: 16px 18px;
   border: 1px solid var(--line);
@@ -155,7 +155,7 @@ button, input { font: inherit; }
 .timeline-range { width: calc(100% - 60px); min-height: 44px; margin: 0; accent-color: var(--gold); vertical-align: middle; }
 .timeline-play { min-height: 44px; min-width: 44px; padding: 4px 8px; }
 .century-nav { display: flex; justify-content: space-between; gap: 4px; margin-top: 2px; }
-.century-btn { min-height: 44px; padding: 2px 6px; border: 0; border-radius: 5px; background: none; color: var(--muted); font-size: 10px; cursor: pointer; }
+.century-btn { min-width: 44px; min-height: 44px; padding: 2px 6px; border: 0; border-radius: 5px; background: none; color: var(--muted); font-size: 10px; cursor: pointer; }
 .century-btn:hover { color: var(--gold-bright); background: rgba(230,185,111,.12); }
 .timeline-loading { display: block; min-height: 14px; color: var(--gold); font-size: 10px; text-align: center; }
 #year-dialog input { font-size: 20px; text-align: center; }
@@ -163,7 +163,7 @@ button, input { font: inherit; }
 .hud-readout {
   position: absolute;
   left: 50%;
-  bottom: max(150px, calc(env(safe-area-inset-bottom) + 150px));
+  bottom: max(260px, calc(env(safe-area-inset-bottom) + 260px));
   transform: translateX(-50%);
   max-width: 70vw;
   margin: 0;
@@ -196,14 +196,14 @@ button, input { font: inherit; }
 .globe-label.kind-capital { color: var(--gold-bright); }
 .globe-label[hidden] { display: none; }
 .label-bar { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
-.label-btn { min-height: 44px; padding: 3px 8px; border: 1px solid var(--line); border-radius: 6px; background: rgba(10,15,22,.7); color: var(--muted); font-size: 10px; cursor: pointer; }
+.label-btn { min-width: 44px; min-height: 44px; padding: 3px 8px; border: 1px solid var(--line); border-radius: 6px; background: rgba(10,15,22,.7); color: var(--muted); font-size: 10px; cursor: pointer; }
 .label-btn[aria-checked="true"] { border-color: var(--gold); color: var(--gold-bright); background: rgba(230,185,111,.14); }
 .epic-host { position: relative; display: flex; align-items: center; gap: 6px; }
 .epic-track { position: relative; flex: 1; height: 44px; }
 .epic-tick { position: absolute; bottom: 6px; width: 2px; height: 10px; border-radius: 1px; opacity: .85; }
 .epic-select { min-height: 44px; max-width: 220px; padding: 4px 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); font-size: 11px; }
 .dimension-bar { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
-.dimension-btn { min-height: 44px; padding: 3px 8px; border: 1px solid var(--line); border-radius: 6px; background: rgba(10,15,22,.7); color: var(--muted); font-size: 10px; cursor: pointer; }
+.dimension-btn { min-width: 44px; min-height: 44px; padding: 3px 8px; border: 1px solid var(--line); border-radius: 6px; background: rgba(10,15,22,.7); color: var(--muted); font-size: 10px; cursor: pointer; }
 .dimension-btn[aria-checked="true"] { border-color: var(--gold); color: var(--gold-bright); background: rgba(230,185,111,.14); }
 .map-tooltip {
   position: fixed;
@@ -330,14 +330,14 @@ button, input { font: inherit; }
   .timeline .epic-host { display: none; }
   .era-bands { height: 8px; }
   .era-band { font-size: 7px; line-height: 8px; }
-  .timeline-year { min-height: 32px; font-size: 16px; }
-  .timeline-range { width: calc(100% - 52px); min-height: 32px; }
+  .timeline-year { min-height: 44px; font-size: 16px; }
+  .timeline-range { width: calc(100% - 52px); min-height: 44px; }
   .timeline-play { min-width: 44px; min-height: 44px; }
   .century-nav { overflow-x: auto; gap: 2px; }
-  .century-btn { flex: 0 0 auto; min-height: 32px; font-size: 9px; }
+  .century-btn { flex: 0 0 auto; min-width: 44px; min-height: 44px; font-size: 9px; }
   .timeline-loading { min-height: 12px; }
   .hud-readout {
-    bottom: max(160px, calc(env(safe-area-inset-bottom) + 160px));
+    bottom: max(200px, calc(env(safe-area-inset-bottom) + 200px));
     left: 8px;
     transform: none;
     max-width: calc(100vw - 16px);
@@ -347,7 +347,7 @@ button, input { font: inherit; }
     display: flex;
     position: absolute;
     right: 10px;
-    bottom: max(160px, calc(env(safe-area-inset-bottom) + 160px));
+    bottom: max(200px, calc(env(safe-area-inset-bottom) + 200px));
     gap: 6px;
   }
   body.card-open .timeline,
