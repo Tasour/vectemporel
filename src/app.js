@@ -15,6 +15,7 @@ import {
 import { getProvinceTimeline } from './data/province-timeline-store.js';
 import { TRAILS } from './data/trails.js';
 import { TURNING_POINTS } from './data/turning-points.js';
+import { ANOMALIES } from './data/anomalies.js';
 import { linkedProvinces, arcPairs } from './globe/simultaneity.js';
 import { createTrailPlayer } from './story/trails.js';
 import { CHRONAS_LABELS } from './data/chronas-labels.js';
@@ -64,6 +65,8 @@ function mount() {
   const yearOfPosition = (position) => (zoomMode === 'century'
     ? centuryPositionToYear(position, centuryBase) : positionToYear(position, scaleMode));
   let showArcs = params.get('arcs') === '1';
+  let showSun = params.get('sun') === '1';
+  let showWire = params.get('wire') === '1';
   let arcLinks = [];
   const navHistory = [];
   let navIndex = -1;
@@ -205,6 +208,21 @@ function mount() {
   trailsButton.id = 'hud-trails-button';
   trailsButton.setAttribute('aria-label', 'Récits guidés (touche T)');
   trailsButton.setAttribute('aria-expanded', 'false');
+  const sunButton = el('button', 'hud-btn', '☀');
+  sunButton.type = 'button';
+  sunButton.id = 'hud-sun-button';
+  sunButton.setAttribute('aria-label', 'Afficher l’ombre solaire stylisée (touche Y)');
+  sunButton.setAttribute('aria-pressed', 'false');
+  const wireButton = el('button', 'hud-btn', '▦');
+  wireButton.type = 'button';
+  wireButton.id = 'hud-wire-button';
+  wireButton.setAttribute('aria-label', 'Afficher la sphère en fil de fer (touche W)');
+  wireButton.setAttribute('aria-pressed', 'false');
+  const qualityButton = el('button', 'hud-btn', '⚑');
+  qualityButton.type = 'button';
+  qualityButton.id = 'hud-quality-button';
+  qualityButton.setAttribute('aria-label', 'Voir les anomalies de capitale extraites de Chronas');
+  qualityButton.setAttribute('aria-expanded', 'false');
   const compareButton = el('button', 'hud-btn', 'A/B');
   compareButton.type = 'button';
   compareButton.id = 'hud-compare-button';
@@ -214,7 +232,7 @@ function mount() {
   helpButton.type = 'button';
   helpButton.id = 'hud-help-button';
   helpButton.setAttribute('aria-label', 'Afficher les commandes (touche point d’interrogation)');
-  actions.append(tourButton, searchButton, displayButton, arcsButton, trailsButton, compareButton, reviewButton, themeButton, helpButton);
+  actions.append(tourButton, searchButton, displayButton, arcsButton, sunButton, wireButton, trailsButton, qualityButton, compareButton, reviewButton, themeButton, helpButton);
   const savedTheme = localStorage.getItem('history-theme');
   if (savedTheme === 'light') document.documentElement.dataset.theme = 'light';
 
@@ -286,6 +304,15 @@ function mount() {
   const error = el('p', 'hud-error');
   error.id = 'hud-error';
   error.hidden = true;
+
+  /* Widget de budget réservé au pont devtools : jamais en production. */
+  let budgetWidget = null;
+  if (params.has('devtools')) {
+    budgetWidget = el('div', 'budget-widget');
+    budgetWidget.id = 'budget-widget';
+    budgetWidget.setAttribute('role', 'status');
+    budgetWidget.textContent = 'Budget : mesure en cours…';
+  }
 
   /* Timeline — F15 à F20. */
   const timeline = el('section', 'timeline');
@@ -549,6 +576,32 @@ function mount() {
   hmHost.id = 'hm-host';
   histomapPanel.append(hmHead, hmTools, hmHost);
 
+  const qualityPanel = el('section', 'hud-overlay quality-panel');
+  qualityPanel.id = 'quality-panel';
+  qualityPanel.setAttribute('role', 'dialog');
+  qualityPanel.setAttribute('aria-label', 'Anomalies de capitales dans Chronas');
+  qualityPanel.hidden = true;
+  const qualityClose = el('button', 'hm-close', '✕');
+  qualityClose.type = 'button';
+  qualityClose.id = 'quality-close';
+  qualityClose.setAttribute('aria-label', 'Fermer les anomalies');
+  const qualityTitle = el('h2', '', 'Qualité des données');
+  const qualityMeta = el('p', 'quality-meta', `${ANOMALIES.meta.count} extraits Chronas : capitales qui changent sans changement de souverain. L'an 1 est exclu comme artefact.`);
+  const qualityList = el('div', 'quality-list');
+  qualityList.id = 'quality-list';
+  for (const item of ANOMALIES.items.slice(0, 12)) {
+    const button = el('button', 'quality-item');
+    button.type = 'button';
+    button.append(el('strong', '', `${item.year} · ${item.province}`), el('span', '', `${item.from} → ${item.to}`));
+    button.addEventListener('click', () => {
+      applyYear(item.year, { notify: false });
+      select(item.province);
+      readout.textContent = `${item.province} en ${item.year} : capitale ${item.from} → ${item.to}. Extrait Chronas CC BY-SA 4.0.`;
+    });
+    qualityList.appendChild(button);
+  }
+  qualityPanel.append(qualityClose, qualityTitle, qualityMeta, qualityList);
+
   const comparePanel = el('section', 'hud-overlay compare-panel');
   comparePanel.id = 'compare-panel';
   comparePanel.setAttribute('role', 'dialog');
@@ -602,7 +655,8 @@ function mount() {
   recenter.setAttribute('aria-label', 'Recentrer la sphère');
   navControls.append(zoomIn, zoomOut, recenter);
 
-  hud.append(brand, actions, card, tooltip, arcHost, arcTip, searchOverlay, helpOverlay, yearDialog, reviewPanel, trailsPanel, histomapPanel, comparePanel, readout, timeline, navControls, displayPanel, error);
+  hud.append(brand, actions, card, tooltip, arcHost, arcTip, searchOverlay, helpOverlay, yearDialog, reviewPanel, trailsPanel, histomapPanel, qualityPanel, comparePanel, readout, timeline, navControls, displayPanel, error);
+  if (budgetWidget) hud.appendChild(budgetWidget);
 
   const labelRenderer = createLabelRenderer(document.getElementById('globe-labels'));
   const epicTimeline = createEpicTimeline(epicHost, (epic) => {
@@ -1052,6 +1106,7 @@ function mount() {
       if (selected && reopenCard) renderCard(selected);
       if (notify) announce(selected);
       refreshArcs();
+      if (showSun) globe?.setSunYear(target, true);
       if (histomap && !histomapPanel.hidden) histomap.render(target);
     } catch (issue) {
       if (request !== yearRequest) return;
@@ -1324,6 +1379,29 @@ function mount() {
     readout.textContent = `${step.title} · ${step.province} · ${step.year}.`;
   }
 
+  function toggleSun() {
+    showSun = !showSun;
+    sunButton.setAttribute('aria-pressed', String(showSun));
+    globe?.setSunYear(year, showSun);
+    params.set('sun', showSun ? '1' : '0');
+    writeUrl(params);
+    readout.textContent = showSun
+      ? `Ombre solaire stylisée pour l’année ${year} (déterministe, pas une éphéméride).`
+      : 'Ombre solaire masquée.';
+  }
+
+  function toggleWire() {
+    showWire = !showWire;
+    wireButton.setAttribute('aria-pressed', String(showWire));
+    globe?.setWireframe(showWire);
+    params.set('wire', showWire ? '1' : '0');
+    writeUrl(params);
+    readout.textContent = showWire ? 'Sphère en fil de fer.' : 'Rendu vectoriel restauré.';
+  }
+
+  sunButton.addEventListener('click', toggleSun);
+  wireButton.addEventListener('click', toggleWire);
+
   trailsButton.addEventListener('click', () => {
     if (trailsPanel.hidden) openTrails();
     else closeTrails();
@@ -1386,6 +1464,19 @@ function mount() {
     params.delete('compare');
     writeUrl(params);
   }
+  function openQuality() {
+    qualityPanel.hidden = false;
+    qualityButton.setAttribute('aria-expanded', 'true');
+  }
+  function closeQuality() {
+    qualityPanel.hidden = true;
+    qualityButton.setAttribute('aria-expanded', 'false');
+  }
+  qualityButton.addEventListener('click', () => {
+    if (qualityPanel.hidden) openQuality(); else closeQuality();
+  });
+  qualityClose.addEventListener('click', closeQuality);
+
   compareButton.addEventListener('click', () => {
     if (comparePanel.hidden) openCompare(); else closeCompare();
   });
@@ -1641,6 +1732,8 @@ function mount() {
       else closeTrails();
     }
     else if (event.key.toLowerCase() === 's' && !typing) { event.preventDefault(); toggleArcs(); }
+    else if (event.key.toLowerCase() === 'y' && !typing) { event.preventDefault(); toggleSun(); }
+    else if (event.key.toLowerCase() === 'w' && !typing) { event.preventDefault(); toggleWire(); }
     else if (event.key.toLowerCase() === 'h' && !typing) {
       event.preventDefault();
       if (histomapPanel.hidden) openHistomap();
@@ -1653,6 +1746,7 @@ function mount() {
     else if (event.key === 'Escape') {
       if (!histomapPanel.hidden) closeHistomap();
       if (!comparePanel.hidden) closeCompare();
+      if (!qualityPanel.hidden) closeQuality();
       if (!card.hidden && mobileQuery.matches) closeCard();
       searchOverlay.hidden = true;
       helpOverlay.hidden = true;
@@ -1668,6 +1762,8 @@ function mount() {
   if (globe) {
     globe.setView(initialPos || DEFAULT_VIEW);
     applyYear(year, { notify: false });
+    if (showSun) globe.setSunYear(year, true);
+    if (showWire) globe.setWireframe(true);
     if (initialName) select(initialName, { move: !initialPos });
     else {
       params.set('type', 'area');
@@ -1723,6 +1819,10 @@ function mount() {
       history: { index: navIndex, length: navHistory.length },
       compare: comparePair,
       empire: { active: Boolean(empireRuler), ruler: empireRuler },
+      sun: { enabled: showSun, year: globe?.statistics?.().sunYear ?? null },
+      wireframe: showWire,
+      anomalies: ANOMALIES.meta.count,
+      qualityOpen: !qualityPanel.hidden,
     }),
     selectRegion: (name) => select(name),
     setYear: (value) => applyYear(value),
@@ -1734,6 +1834,8 @@ function mount() {
       if (Boolean(empireRuler) !== on) button?.click();
     },
     openTrailForFamily: (family, year) => openTrailForFamily(family, year),
+    toggleSun,
+    toggleWire,
     setScale: (mode) => {
       if ((mode === 'recent') !== (scaleMode === 'recent')) scaleButton.click();
     },
@@ -1747,6 +1849,11 @@ function mount() {
     diagnostics: () => ({ seed: SEED, features: FEATURES.length, areas: MAP_META.areas, webgl: Boolean(globe) }),
   };
   document.documentElement.dataset.globeReady = 'true';
+  if (budgetWidget) {
+    const resources = performance.getEntriesByType('resource');
+    const bytes = resources.reduce((sum, entry) => sum + (entry.transferSize || 0), 0);
+    budgetWidget.textContent = `Budget : ${resources.length} requêtes · ${Math.round(bytes / 1024)} Ko`;
+  }
 }
 
 function registerServiceWorker() {

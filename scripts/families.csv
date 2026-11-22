@@ -59,7 +59,7 @@ flemish,Européen,6
 dutch,Européen,6
 bihari,Indien,6
 afghani,Islamique,6
-malvi,non classé,6
+malvi,Indien,6
 iberian_caribbean,Amériques,6
 nepali,Indien,6
 gan,Chinois,6
@@ -67,19 +67,19 @@ roman,Européen,6
 tibetan,Asie orientale et du Sud-Est,6
 romanian,Européen,6
 kurdish,Islamique,6
-gondi,non classé,6
-mon,non classé,5
+gondi,Indien,6
+mon,Asie orientale et du Sud-Est,5
 azerbaijani,Islamique,5
 algerian,Islamique,5
-miao,non classé,5
-uyghur,non classé,5
+miao,Asie orientale et du Sud-Est,5
+uyghur,Asie orientale et du Sud-Est,5
 hausa,Islamique,5
 moroccan,Islamique,5
 novgorodian,Européen,5
 neapolitan,Européen,5
 serbian,Européen,5
 hannoverian,Chinois,5
-uzbehk,non classé,5
+uzbehk,Islamique,5
 khmer,Asie orientale et du Sud-Est,5
 venetian,Européen,5
 xiang,Chinois,4
@@ -89,13 +89,146 @@ hungarian,Européen,4
 lombard,Européen,4
 somali,Islamique,4
 assamese,Indien,4
+sindhi,Indien,4
+cham,Asie orientale et du Sud-Est,4
+sulawesi,Asie orientale et du Sud-Est,4
+bai,Chinois,4
+portugese,Européen,4
+yorumba,non classé,4
+jharkhandi,Indien,4
+bulgarian,Européen,4
 shan,Chinois,3
+occitain,Européen,3
+oriya,Indien,3
+bavarian,Européen,3
+chahar,Islamique,3
+baluchi,Islamique,3
+wallonian,Européen,3
+czech,Européen,3
+yi,Asie orientale et du Sud-Est,3
+croatian,Européen,3
+armenian,non classé,3
+sicilian,Européen,3
+scottish,Européen,3
+nubian,Islamique,3
+romagnan,Européen,3
+swahili,Islamique,3
+gulf_arabic,Islamique,3
+zhuang,Chinois,3
+prussian,Européen,3
+umbrian,Européen,3
+amhara,Islamique,3
+khorasani,Islamique,3
 latin,Européen,2
+aka,non classé,2
+swabian,Européen,2
+ligurian,Européen,2
+lao,Asie orientale et du Sud-Est,2
+kanuri,Islamique,2
+georgian,non classé,2
+bashkir,Islamique,2
+kazani,Islamique,2
+khitan,Asie orientale et du Sud-Est,2
+luri,Islamique,2
+british_oceanian,Européen,2
+palestinian,Islamique,2
+yemeni_culture,Islamique,2
+old_egyptian,non classé,2
+malayalam,Asie orientale et du Sud-Est,2
+tuscan,Européen,2
+burgundian,Européen,2
+dyola,non classé,2
+oirats,Asie orientale et du Sud-Est,2
+arpitan,Européen,2
+piedmontese,non classé,2
+chin,non classé,2
+burmese,Asie orientale et du Sud-Est,2
+franconian,Européen,2
+senegambian,non classé,2
+turkmeni,Islamique,2
+french_canadian,Européen,2
+sawabantu,non classé,2
+kongolese,non classé,2
+slovak,Européen,2
+shona,Islamique,2
+irish,Européen,2
 gaul,Européen,1
 belgae,Européen,1
 sillan,Chinois,1
 numidian,non classé,1
 tocharian,non classé,1
+medians,non classé,1
+tuareg,Islamique,1
+nguni,non classé,1
+normand,Européen,1
+gascon,non classé,1
+kashmiri,Indien,1
+saidi,non classé,1
+nupe,non classé,1
+fulani,Islamique,1
+garjati,non classé,1
+_Al-Andalus,Islamique,1
+karen,non classé,1
+bozo,non classé,1
+omani_culture,non classé,1
+basque,Européen,1
+aquitaine,Européen,1
+lithuanian,Européen,1
+mazandarani,non classé,1
+beja,non classé,1
+dagestani,non classé,1
+latvian,Européen,1
+tigray,non classé,1
+kirgiz,non classé,1
+mali,Indien,1
+swiss,non classé,1
+tajik,Islamique,1
+dagomba,non classé,1
+madagascan,non classé,1
+schlesian,non classé,1
+luba,non classé,1
+pommeranian,non classé,1
+tonga,non classé,1
+polynesian,non classé,1
+northern_thai,non classé,1
+leonese,non classé,1
+songhai,Islamique,1
+gbaya,non classé,1
+tupinamba,Amériques,1
+papuan,non classé,1
+breton,Européen,1
+aramaic,non classé,1
+aragonese,non classé,1
+british_caribbean,non classé,1
+aboriginal,non classé,1
+mossi,non classé,1
+scythian,non classé,1
+guarani,Amériques,1
+albanian,non classé,1
+cree,non classé,1
+khoi,non classé,1
+danish,Européen,1
+ge,non classé,1
+crimean,non classé,1
+masai,non classé,1
+sardinian,Européen,1
+soninke,non classé,1
+norwegian,Européen,1
+pontic_greek,non classé,1
+arakanese,non classé,1
+bemba,non classé,1
+harari,non classé,1
+bosniak,non classé,1
+aztek,non classé,1
+assyrian,non classé,1
+circassian,non classé,1
+israeli,non classé,1
+welsh,Européen,1
+bambara,non classé,1
+nyasa,non classé,1
+gallian,non classé,1
+gothic,non classé,1
+buyeo,non classé,1
 britannic,Européen,0
 vindelici,Européen,0
 illyrian,Européen,0
@@ -103,3 +236,67 @@ _Celtic,Européen,0
 shu,Chinois,0
 punic,non classé,0
 axumite,non classé,0
+celtiberian,non classé,0
+rwandan,non classé,0
+avar,non classé,0
+tswana,non classé,0
+yakut,non classé,0
+kachin,non classé,0
+swedish,Européen,0
+sinhala,Indien,0
+sogdian,non classé,0
+galician,Européen,0
+_tai_dam,non classé,0
+bilala,non classé,0
+jukun,non classé,0
+dinka,non classé,0
+slovene,non classé,0
+french_caribbean,Européen,0
+alan,non classé,0
+moluccan,non classé,0
+masaba,non classé,0
+yue,Chinois,0
+carib,Amériques,0
+cuman,Européen,0
+astrakhani,non classé,0
+tangut,Asie orientale et du Sud-Est,0
+piman,non classé,0
+iberi,non classé,0
+matsyanite,non classé,0
+anglo_saxon,Européen,0
+mbundu,non classé,0
+fang,non classé,0
+gojoseon,non classé,0
+emishi,non classé,0
+estonian,Européen,0
+herero,non classé,0
+egyptian,Islamique,0
+british_colombian,non classé,0
+afar,non classé,0
+creek,non classé,0
+mongo,non classé,0
+daamat,non classé,0
+shoshone,non classé,0
+aimara,non classé,0
+germanic_colombian,Européen,0
+inca,Amériques,0
+mauretanian,non classé,0
+habesha,non classé,0
+na,non classé,0
+arawak,Amériques,0
+chinook,non classé,0
+uralic,non classé,0
+finnish,Européen,0
+briton,non classé,0
+sidamo,non classé,0
+acholi,non classé,0
+yucatec,non classé,0
+saurashtranite,non classé,0
+guajiro,non classé,0
+odranite,non classé,0
+ionic,non classé,0
+nanman,non classé,0
+boiian,non classé,0
+muisca,non classé,0
+parthian,non classé,0
+mishary,non classé,0

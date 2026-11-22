@@ -229,6 +229,35 @@ try {
   await page.click('#compare-close');
   await new Promise((resolve) => setTimeout(resolve, 120));
   check('comparaison fermée', await page.evaluate(() => document.getElementById('compare-panel').hidden));
+  await page.click('#hud-sun-button');
+  await new Promise((resolve) => setTimeout(resolve, 200));
+  check('ombre solaire activée', await page.evaluate(() => window.VATLAS.getState().sun.enabled
+    && window.VATLAS.getState().mesh.sunYear === window.VATLAS.getState().year
+    && new URLSearchParams(location.search).get('sun') === '1'));
+  await page.keyboard.press('y');
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  check('ombre solaire désactivée', await page.evaluate(() => !window.VATLAS.getState().sun.enabled));
+  await page.click('#hud-wire-button');
+  await new Promise((resolve) => setTimeout(resolve, 200));
+  check('fil de fer activé', await page.evaluate(() => window.VATLAS.getState().wireframe
+    && window.VATLAS.getState().mesh.wireframe === true));
+  await page.keyboard.press('w');
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  check('fil de fer désactivé', await page.evaluate(() => !window.VATLAS.getState().wireframe));
+  await page.click('#hud-quality-button');
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  check('panneau qualité ouvert', await page.evaluate(() => !document.getElementById('quality-panel').hidden
+    && window.VATLAS.getState().anomalies > 1000));
+  check('douze extraits affichés', (await page.$$('#quality-list .quality-item')).length === 12);
+  await page.click('#quality-list .quality-item');
+  await page.waitForFunction(() => Boolean(window.VATLAS.getState().selected)
+    && /extrait Chronas/.test(document.getElementById('hud-readout').textContent), { timeout: 10000 }).catch(() => {});
+  check('extrait ouvre la province', await page.evaluate(() => Boolean(window.VATLAS.getState().selected)
+    && /extrait Chronas/i.test(document.getElementById('hud-readout').textContent)),
+  await page.evaluate(() => `${window.VATLAS.getState().selected} · ${document.getElementById('hud-readout').textContent}`));
+  await page.click('#quality-close');
+  await new Promise((resolve) => setTimeout(resolve, 120));
+  check('qualité fermée', await page.evaluate(() => document.getElementById('quality-panel').hidden));
   check('chunk chargé', await page.evaluate(() => performance.getEntriesByType('resource').some((e) => /\/c\d+\.json/.test(e.name))));
   await page.click('.century-btn[data-year="0"]');
   await new Promise((resolve) => setTimeout(resolve, 700));
@@ -243,7 +272,10 @@ try {
   check('autoplay manuel', await page.evaluate(() => window.VATLAS.getState().year !== -500));
   await page.click('#timeline-play');
 
-  check('aucune rotation automatique', await page.evaluate((value) => Math.abs(window.VATLAS.getState().camera.lon - value) < 0.01, beforeTour));
+  /* La sélection d'un extrait a pu déplacer la caméra : on mesure la dérive
+   * depuis le début de la lecture automatique, pas depuis le chargement. */
+  const beforeAutoplay = await page.evaluate(() => window.VATLAS.getState().camera.lon);
+  check('aucune rotation automatique', await page.evaluate((value) => Math.abs(window.VATLAS.getState().camera.lon - value) < 0.01, beforeAutoplay));
   await page.click('#hud-tour-button');
   await new Promise((resolve) => setTimeout(resolve, 600));
   check('tour manuel actif', await page.evaluate(() => window.VATLAS.getState().touring === true));
@@ -303,10 +335,26 @@ try {
   check('repère provincial change l’année', await page.evaluate((value) => window.VATLAS.getState().year !== value, yearBeforeProvince));
 
   /* P12 — navigation souris/clavier. */
+  await page.evaluate(() => window.VATLAS.setView({ lat: 47, lon: 2, zoom: 4.2 }));
+  await new Promise((resolve) => setTimeout(resolve, 250));
   const beforeDbl = await page.evaluate(() => window.VATLAS.getState().camera.zoom);
+  await page.evaluate(() => {
+    window.__dblCount = 0;
+    document.getElementById('globe-canvas').addEventListener('dblclick', () => { window.__dblCount += 1; });
+  });
   await page.mouse.click(720, 450, { clickCount: 2, delay: 40 });
   await new Promise((resolve) => setTimeout(resolve, 300));
-  check('double-clic zoome', await page.evaluate((value) => window.VATLAS.getState().camera.zoom > value, beforeDbl));
+  /* Certains Chromium headless ne synthétisent pas le dblclick natif :
+   * on déclenche alors l'événement directement pour tester le handler. */
+  if (await page.evaluate(() => window.__dblCount === 0)) {
+    await page.evaluate(() => {
+      const canvas = document.getElementById('globe-canvas');
+      canvas.dispatchEvent(new MouseEvent('dblclick', { clientX: 720, clientY: 450, bubbles: true }));
+    });
+  }
+  await new Promise((resolve) => setTimeout(resolve, 900));
+  check('double-clic zoome', await page.evaluate((value) => window.VATLAS.getState().camera.zoom > value, beforeDbl),
+    await page.evaluate((value) => `${value.toFixed(2)} → ${window.VATLAS.getState().camera.zoom.toFixed(2)} · dbl=${window.__dblCount} · target=${window.VATLAS.getState().camera.targetZoom.toFixed(2)}`, beforeDbl));
   const beforeFine = await page.evaluate(() => window.VATLAS.getState().camera.lon);
   await page.focus('#globe-canvas');
   await page.keyboard.down('Shift');
@@ -437,6 +485,17 @@ try {
   check('question suivante', await page.evaluate((previous) => document.getElementById('review-prompt').textContent !== previous, firstPrompt));
   await page.keyboard.press('Escape');
   check('révision fermée', await page.evaluate(() => document.getElementById('review-panel').hidden));
+
+  const devPage = await browser.newPage();
+  await devPage.setViewport({ width: 1440, height: 900 });
+  await devPage.goto(`${BASE}?devtools=1`, { waitUntil: 'load', timeout: 60000 });
+  await devPage.waitForFunction(() => document.documentElement.dataset.globeReady === 'true', { timeout: 20000 });
+  check('widget budget en dev', await devPage.evaluate(() => {
+    const widget = document.getElementById('budget-widget');
+    return Boolean(widget) && /requêtes/.test(widget.textContent);
+  }));
+  check('aucun widget budget en production', await page.evaluate(() => !document.getElementById('budget-widget')));
+  await devPage.close();
 
   check('aucune erreur console', errors.length === 0, errors.slice(0, 3).join(' | '));
 } finally {

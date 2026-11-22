@@ -278,6 +278,15 @@ Les features F22 et F27, initialement reportées, ont été livrées en P10 avec
 - Pont Histomap → récit lié (famille → parcours, étape la plus proche) ✅
 - **Rollback** : restaurer `src/app.js`, `src/timeline/scale.js`, `src/globe/texture.js`, `src/globe/labels.js`, `src/histomap/stream.js`, `styles.css` et `tests/e2e.mjs` depuis le commit précédent.
 
+## P26 — Dix idées, lot 3 ✅ 2026-11-23
+
+- Ombre solaire stylisée et déterministe (année → direction), interrupteur `☀` / touche `Y` ✅
+- Mode silhouette fil de fer, interrupteur `▦` / touche `W` ✅
+- 1 372 anomalies de capitale extraites, panneau `⚑`, libellé « extrait Chronas » ✅
+- Table des familles portée à 301 cultures ; « non classé » < 10 % en 1000/1500/2000 ✅
+- Widget de budget réservé à `?devtools=1` ✅
+- **Rollback** : restaurer `src/app.js`, `src/globe/globe.js`, `styles.css`, `scripts/families.csv`, `src/data/histomap.json`, `package.json`, `sw.js`, `scripts/verify.mjs` et `tests/e2e.mjs` ; retirer `scripts/build-anomalies.mjs`, `src/data/anomalies.js`, `tests/anomalies.mjs`.
+
 ## Rollback global
 
 Restaurer `archive/v2-globe-1year/` (ou `archive/v1-map-2d/`) et republier le commit `adc5c9d`.

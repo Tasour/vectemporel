@@ -381,6 +381,16 @@ body.histomap-open .hud-readout, body.histomap-open .nav-controls { display: non
 .compare-inputs input { width: 100%; min-height: 44px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); }
 .compare-result { margin: 12px 0 0; font-size: 12px; line-height: 1.55; color: var(--ink); }
 #hud-compare-button { font-size: 11px; letter-spacing: -.04em; }
+/* Qualité des données : extraits Chronas. */
+.quality-panel { z-index: 52; width: min(560px, calc(100vw - 32px)); max-height: 70vh; overflow-y: auto; }
+.quality-meta { margin: 0 0 10px; color: var(--muted); font-size: 11px; line-height: 1.5; }
+.quality-list { display: grid; gap: 6px; }
+.quality-item { display: grid; gap: 2px; min-height: 44px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); text-align: left; cursor: pointer; }
+.quality-item:hover { border-color: var(--gold); }
+.quality-item strong { color: var(--gold-bright); font-size: 12px; }
+.quality-item span { color: var(--muted); font-size: 10px; }
+#hud-quality-button { font-size: 14px; }
+.budget-widget { position: fixed; left: 8px; bottom: 8px; z-index: 90; padding: 4px 8px; border: 1px solid var(--gold); border-radius: 6px; background: #0b1119; color: var(--gold-bright); font-size: 10px; pointer-events: none; }
 .hud-error {
   position: absolute;
   top: 50%;
