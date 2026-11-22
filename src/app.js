@@ -14,6 +14,7 @@ import {
 import { getProvinceTimeline } from './data/province-timeline-store.js';
 import { TRAILS } from './data/trails.js';
 import { TURNING_POINTS } from './data/turning-points.js';
+import { linkedProvinces, arcPairs } from './globe/simultaneity.js';
 import { createTrailPlayer } from './story/trails.js';
 import { CHRONAS_LABELS } from './data/chronas-labels.js';
 import { clampYear, getAreasForYear } from './data/year-store.js';
@@ -55,6 +56,8 @@ function mount() {
   const params = readParams();
   let year = clampYear(params.get('year') ?? MAP_META.year);
   let scaleMode = params.get('scale') === 'recent' ? 'recent' : 'linear';
+  let showArcs = params.get('arcs') === '1';
+  let arcLinks = [];
   const initialName = params.get('value');
   const initialPos = decodePos(params.get('pos'));
 
@@ -128,6 +131,11 @@ function mount() {
   reviewButton.type = 'button';
   reviewButton.id = 'hud-review-button';
   reviewButton.setAttribute('aria-label', 'Mode révision active (touche É)');
+  const arcsButton = el('button', 'hud-btn', '⌁');
+  arcsButton.type = 'button';
+  arcsButton.id = 'hud-arcs-button';
+  arcsButton.setAttribute('aria-label', 'Afficher les simultanéités (touche S)');
+  arcsButton.setAttribute('aria-pressed', String(showArcs));
   const trailsButton = el('button', 'hud-btn', '❖');
   trailsButton.type = 'button';
   trailsButton.id = 'hud-trails-button';
@@ -137,7 +145,7 @@ function mount() {
   helpButton.type = 'button';
   helpButton.id = 'hud-help-button';
   helpButton.setAttribute('aria-label', 'Afficher les commandes (touche point d’interrogation)');
-  actions.append(tourButton, searchButton, displayButton, trailsButton, reviewButton, themeButton, helpButton);
+  actions.append(tourButton, searchButton, displayButton, arcsButton, trailsButton, reviewButton, themeButton, helpButton);
   const savedTheme = localStorage.getItem('history-theme');
   if (savedTheme === 'light') document.documentElement.dataset.theme = 'light';
 
@@ -856,6 +864,7 @@ function mount() {
       globe?.setCities(capitalsForYear(areas), target);
       if (selected && reopenCard) renderCard(selected);
       if (notify) announce(selected);
+      refreshArcs();
     } catch (issue) {
       if (request !== yearRequest) return;
       error.textContent = `Année ${target} indisponible : ${issue.message}`;
@@ -928,6 +937,32 @@ function mount() {
     }
   });
 
+  function refreshArcs() {
+    if (!showArcs) {
+      arcLinks = [];
+      globe?.setArcs([]);
+      return;
+    }
+    arcLinks = linkedProvinces(areasForYear, selected, 5);
+    globe?.setArcs(arcPairs(selected, arcLinks));
+    const ruler = String(areasForYear?.[selected]?.[0] ?? '');
+    const label = ruler ? localizeTimelineValue('ruler', ruler) : 'souverain inconnu';
+    readout.textContent = arcLinks.length
+      ? `Simultanéité en ${year} : ${arcLinks.length + 1} régions sous ${label} · ${arcLinks.map((item) => `${item.name}, ${item.population} hab`).join(' ; ')}.`
+      : `Aucune autre région ne partage ce souverain en ${year}.`;
+  }
+
+  function toggleArcs() {
+    showArcs = !showArcs;
+    arcsButton.setAttribute('aria-pressed', String(showArcs));
+    params.set('arcs', showArcs ? '1' : '0');
+    writeUrl(params);
+    refreshArcs();
+    if (!showArcs) readout.textContent = 'Simultanéités masquées.';
+  }
+
+  arcsButton.addEventListener('click', toggleArcs);
+
   function select(name, { move = true, open = true } = {}) {
     if (!name) return;
     selected = name;
@@ -939,6 +974,7 @@ function mount() {
     if (move) globe?.focusRegion(name);
     renderCard(name, open);
     announce(name);
+    refreshArcs();
     searchOverlay.hidden = true;
     search.setAttribute('aria-expanded', 'false');
     search.value = '';
@@ -1182,6 +1218,7 @@ function mount() {
       if (trailsPanel.hidden) openTrails();
       else closeTrails();
     }
+    else if (event.key.toLowerCase() === 's' && !typing) { event.preventDefault(); toggleArcs(); }
     else if (event.key === 'Escape') {
       if (!card.hidden && mobileQuery.matches) closeCard();
       searchOverlay.hidden = true;
@@ -1237,6 +1274,7 @@ function mount() {
       review: reviewSnapshot(),
       trail: trailPlayer.state(),
       turn: turningStrip.querySelector('[aria-current="true"]')?.dataset.year ?? null,
+      arcs: { enabled: showArcs, linked: arcLinks.map((item) => item.name) },
     }),
     selectRegion: (name) => select(name),
     setYear: (value) => applyYear(value),

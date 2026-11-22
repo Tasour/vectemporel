@@ -237,6 +237,17 @@ Les features F22 et F27, initialement reportées, ont été livrées en P10 avec
 
 **Rollback** : retirer `src/data/turning-points.js`, `scripts/build-turning-points.mjs`, `tests/turning-points.mjs`, `tests/turning-ui.mjs`, ADR-0012 ; restaurer `src/app.js`, `styles.css`, `sw.js`, `package.json`, `README.md` et `scripts/verify.mjs`.
 
+## P22 — Arcs de simultanéité ✅ 2026-11-22
+
+- `src/globe/simultaneity.js` : provinces partageant le souverain, triées par population ✅
+- `setArcs()` dans `globe.js` : `LineSegments` great-circle, occlusion par la sphère, un rendu par changement ✅
+- `prefers-reduced-motion` : arcs aplatis ✅
+- Bouton HUD `⌁` (touche `S`), `aria-pressed`, deep link `?arcs=1` ✅
+- Readout catégorie / valeur / unité ✅
+- `tests/simultaneity.mjs` et `tests/arcs.mjs` intégrés à `npm run check` ✅
+
+**Rollback** : retirer `src/globe/simultaneity.js`, `tests/simultaneity.mjs`, `tests/arcs.mjs` ; restaurer `src/app.js`, `src/globe/globe.js`, `sw.js`, `package.json`, `README.md` et `scripts/verify.mjs`.
+
 ## Rollback global
 
 Restaurer `archive/v2-globe-1year/` (ou `archive/v1-map-2d/`) et republier le commit `adc5c9d`.

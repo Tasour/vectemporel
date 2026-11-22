@@ -40,6 +40,10 @@ Les récits ne sont pas du texte libre non vérifié : `scripts/build-trails.mjs
 
 La frise porte aussi **49 points de rupture** calculés depuis les 41 chunks annuels (ADR-0012). Règle reproductible : une année où au moins 20 provinces changent de souverain, l'an 1 et les sauts de population $>10$ millions étant exclus comme artefacts de la source. Chaque badge affiche l'année, son nombre de régions et, au clic, amène le globe à l'année puis ouvre la fiche d'une province concernée. Le libellé dit explicitement **« extrait Chronas »** : c'est un constat sur la donnée, pas un récit historique. `?turn=751` sélectionne un point au chargement ; les badges sont des cibles de 44 px dans une bande défilante.
 
+## Simultanéités
+
+Le bouton `⌁` (touche `S`) affiche des arcs entre la province sélectionnée et jusqu'à quatre autres provinces qui partagent le même souverain l'année courante (`?arcs=1` au chargement). Les arcs sont des `LineSegments` dessinés dans le repère de la sphère, donc occlus correctement par le globe ; un seul rendu est déclenché par changement, aucune boucle d'animation supplémentaire. Le `role="status"` annonce la catégorie (souverain), la valeur (province) et l'unité (`hab`) de chaque lien. `prefers-reduced-motion` aplatit les arcs.
+
 ## Interface mobile et navigation
 
 Sous 760 px, la fiche de région s'ouvre en **plein écran** avec un bouton Fermer (`Échap` fonctionne aussi) ; la timeline et les contrôles sont masqués pendant la lecture. Une fois fermée, la frise devient compacte (156 px, année + curseur + lecture sur une ligne) et le readout tient sur deux lignes à gauche des boutons de zoom. Le bouton `☷` ouvre le panneau « Affichage » qui regroupe couleurs, libellés et épiques ; les boutons `+`, `−` et `⌖` pilotent le zoom et le recentrage avec des cibles de 44 px.
@@ -112,6 +116,7 @@ npm run check
 | `npm run points:build` | recalcule les 49 ruptures depuis les chunks, avec SHA-256 |
 | `npm run test:points` | règle ADR-0012, bornes, espacement, reproductibilité |
 | `npm run test:points:ui` | badges, clic, fiche, deep link, timeline mobile |
+| `npm run test:arcs` | simultanéités : bascule, arcs WebGL, clavier, deep link, mobile |
 | `node tests/http-guards.mjs` | vrai serveur : whitelist, en-têtes, entrées malformées, survie |
 | `npm run test:live` | gate live 1440×1000 et 390×844 : cibles ≥ 44 px, collisions HUD, débordement, console, réseau |
 | `npm run test:e2e` | deep link, WebGL, fiche, clavier, recherche, aide, révision |

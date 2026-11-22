@@ -10,7 +10,7 @@ const SHELL = [
   './src/data/chronas-map.js', './src/data/year-store.js',
   './src/globe/labels.js', './src/timeline/epics.js', './src/timeline/scale.js',
   './src/data/chronas-labels.js', './src/data/modern-labels.js', './src/data/chronas-epics.js',
-  './src/data/trails.js', './src/data/turning-points.js', './src/story/trails.js',
+  './src/data/trails.js', './src/data/turning-points.js', './src/story/trails.js', './src/globe/simultaneity.js',
   './src/learning/review.js', './src/learning/questions.js', './src/learning/srs.js', './src/learning/session.js',
   './src/data/province-timelines/index.js', './src/data/province-timelines/b.js',
   './src/data/years/c1000.json', './src/data/chronas-cities.js', './public/three-bundle.js',
