@@ -383,6 +383,14 @@ body.histomap-open .hud-readout, body.histomap-open .nav-controls { display: non
 .compare-inputs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
 .compare-inputs input { width: 100%; min-height: 44px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); }
 .compare-result { margin: 12px 0 0; font-size: 12px; line-height: 1.55; color: var(--ink); }
+.compare-presets { display: grid; gap: 6px; margin-bottom: 8px; }
+.compare-presets .hm-btn, #compare-current { width: 100%; }
+.compare-bars { display: grid; gap: 6px; margin-top: 10px; }
+.compare-bar-row { display: grid; grid-template-columns: 78px 1fr 46px; align-items: center; gap: 8px; font-size: 10px; }
+.compare-bar-label { color: var(--muted); }
+.compare-bar-track { height: 10px; border-radius: 5px; background: rgba(255,255,255,.07); overflow: hidden; }
+.compare-bar-fill { display: block; height: 100%; background: var(--gold); }
+.compare-bar-value { color: var(--gold-bright); text-align: right; }
 #hud-compare-button { font-size: 11px; letter-spacing: -.04em; }
 /* Qualité des données : extraits Chronas. */
 .quality-panel { z-index: 52; width: min(560px, calc(100vw - 32px)); max-height: 70vh; overflow-y: auto; }
@@ -419,6 +427,12 @@ body.histomap-open .hud-readout, body.histomap-open .nav-controls { display: non
 .display-tools { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 10px; }
 .display-tools h3 { grid-column: 1 / -1; margin: 4px 0 0; color: var(--muted); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; }
 .display-tools .hm-btn { min-height: 44px; font-size: 10px; }
+.history-section { grid-column: 1 / -1; display: grid; gap: 6px; margin-top: 4px; }
+.history-section h3 { margin: 0; color: var(--muted); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; }
+.history-list { display: grid; gap: 4px; max-height: 160px; overflow-y: auto; }
+.history-item { min-height: 36px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 6px; background: none; color: var(--ink); font-size: 10px; text-align: left; cursor: pointer; }
+.history-item:hover { border-color: var(--gold); color: var(--gold-bright); }
+.history-empty { margin: 0; color: var(--muted); font-size: 10px; }
 .zen-exit { position: fixed; right: 12px; bottom: 12px; z-index: 95; min-height: 44px; padding: 8px 12px; border: 1px solid var(--gold); border-radius: 8px; background: #0b1119; color: var(--gold-bright); font-size: 11px; cursor: pointer; }
 .zen-exit[hidden] { display: none; }
 body.zen .hud-brand, body.zen .hud-actions, body.zen .hud-card,

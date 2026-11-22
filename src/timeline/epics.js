@@ -54,8 +54,14 @@ export function createEpicTimeline(host, select) {
   filter.className = 'epic-select epic-filter';
   filter.id = 'epic-filter';
   filter.setAttribute('aria-label', 'Filtrer les événements par catégorie');
+  const counts = { all: EPICS.length, guerre: 0, empire: 0, personne: 0, none: 0 };
+  for (const epic of EPICS) counts[categoryOf(epic[4])] += 1;
   for (const [value, label] of [
-    ['all', 'Toutes les catégories'], ['guerre', 'Guerres'], ['empire', 'Empires'], ['personne', 'Personnes'],
+    ['all', `Toutes les catégories (${counts.all})`],
+    ['guerre', `Guerres (${counts.guerre})`],
+    ['empire', `Empires (${counts.empire})`],
+    ['personne', `Personnes (${counts.personne})`],
+    ['none', 'Aucune catégorie'],
   ]) {
     const option = document.createElement('option');
     option.value = value;
@@ -64,7 +70,7 @@ export function createEpicTimeline(host, select) {
   }
   let activeCategory = 'all';
   function setFilter(category) {
-    activeCategory = ['guerre', 'empire', 'personne'].includes(category) ? category : 'all';
+    activeCategory = ['guerre', 'empire', 'personne', 'none'].includes(category) ? category : 'all';
     filter.value = activeCategory;
     for (const [index, tick] of [...track.children].entries()) {
       tick.hidden = activeCategory !== 'all' && categoryOf(EPICS[index][4]) !== activeCategory;
@@ -76,7 +82,8 @@ export function createEpicTimeline(host, select) {
     return visible();
   }
   filter.addEventListener('change', () => setFilter(filter.value));
-  const visible = () => EPICS.filter((epic) => activeCategory === 'all' || categoryOf(epic[4]) === activeCategory);
+  const visible = () => (activeCategory === 'none' ? []
+    : EPICS.filter((epic) => activeCategory === 'all' || categoryOf(epic[4]) === activeCategory));
 
   picker.addEventListener('change', () => {
     const epic = EPICS[Number(picker.value)];
@@ -100,5 +107,5 @@ export function createEpicTimeline(host, select) {
 
   controls.append(filter, picker);
   host.append(track, controls);
-  return { track, picker, controls, filter, setFilter, visible, count: EPICS.length };
+  return { track, picker, controls, filter, setFilter, visible, counts, count: EPICS.length };
 }

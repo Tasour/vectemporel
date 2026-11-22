@@ -138,6 +138,7 @@ npm run check
 | `npm run test:quality` | contrat du rapport qualité et reproductibilité |
 | `npm run test:challenges` | défis d'apprentissage : graine, heatmap, objectifs |
 | `npm run test:throttle` | budget sous CPU x4 et réseau lent |
+| `npm run test:globe` | détails du rendu : focus empire, arcs, ombre, fil de fer |
 | `npm run test:offline` | deep links repris hors ligne depuis le cache PWA |
 | `npm run test:a11y` | noms, rôles, contraste et panneaux accessibles |
 | `npm run test:snapshot` | empreinte déterministe des données générées |
@@ -150,7 +151,7 @@ npm run check
 | `npm run test:devtools` | pont Three.js injecté avant chargement, API in-page |
 | `npm run bridge:check` | configuration du pont OpenCode et CSP production/dev |
 
-Budget mesuré : **34 requêtes / 500 Ko** à la première visite (Three.js et D3 locaux compris), **56 Ko** en régime établi. Le serveur écoute uniquement sur `127.0.0.1`.
+Budget mesuré : **34 requêtes / 501 Ko** à la première visite (Three.js et D3 locaux compris), **56 Ko** en régime établi. Le serveur écoute uniquement sur `127.0.0.1`.
 
 ## Mises à jour et cache
 
@@ -186,6 +187,7 @@ archive/v1-map-2d/          version cartographique plate
 - `docs/ARCHITECTURE.md` — comment c'est fait.
 - `docs/LIMITES.md` — angles morts et ce que l'application ne prouve pas.
 - `docs/GLOSSAIRE.md` — vocabulaire des épiques, ruptures, extraits et du SRS.
+- `docs/FAMILLES.md` — règles de regroupement des cultures et couverture mesurée.
 - `RELEASE.md` — procédure de publication ; `CONTRIBUTING.md` — règles de contribution.
 - `CHANGELOG.md` — historique des versions ; `LICENSES.md` — tableau consolidé des licences.
 

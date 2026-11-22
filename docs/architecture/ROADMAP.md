@@ -333,6 +333,17 @@ Les features F22 et F27, initialement reportées, ont été livrées en P10 avec
 - Audit d'accessibilité étendu aux viewports 320 px et 768 px ✅
 - **Rollback** : restaurer `src/app.js`, `tests/e2e.mjs`, `tests/a11y.mjs` depuis le commit précédent.
 
+## P32 — Finitions timeline, comparaison et rendu ✅ 2026-11-23
+
+- Règles de mapping culture→famille documentées (`docs/FAMILLES.md`) ✅
+- Comparaison : presets, barres de delta, comparaison avec l'année courante, artefacts testés ✅
+- Compatibilité explicite zoom siècle + échelle récents ✅
+- Filtre d'épiques : compteurs, « aucune catégorie », persistance dans l'URL ✅
+- Historique récent visible et effaçable dans les outils ✅
+- Focus empire, ombre, arcs et fil de fer vérifiés par `tests/globe-details.mjs` ✅
+- Bascule automatique en silhouette sur appareil peu puissant ✅
+- Résultats de recherche triés par population ✅
+
 ## Rollback global
 
 Restaurer `archive/v2-globe-1year/` (ou `archive/v1-map-2d/`) et republier le commit `adc5c9d`.

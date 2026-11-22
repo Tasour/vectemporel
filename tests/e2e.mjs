@@ -231,6 +231,13 @@ try {
   await new Promise((resolve) => setTimeout(resolve, 150));
   check('retour frise complète', await page.evaluate(() => window.VATLAS.getState().zoom === 'global'
     && document.getElementById('timeline-range').max === '1000'));
+  await page.evaluate(() => window.VATLAS.setZoom('century'));
+  await page.evaluate(() => window.VATLAS.setScale('recent'));
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  check('siècle + échelle récents compatibles', await page.evaluate(() => window.VATLAS.getState().zoom === 'century'
+    && window.VATLAS.getState().scale === 'recent' && document.getElementById('timeline-range').max === '100'));
+  await page.evaluate(() => window.VATLAS.setScale('linear'));
+  await page.evaluate(() => window.VATLAS.setZoom('global'));
   await page.click('#hud-compare-button');
   await new Promise((resolve) => setTimeout(resolve, 150));
   check('panneau comparaison ouvert', await page.evaluate(() => !document.getElementById('compare-panel').hidden));
@@ -241,6 +248,17 @@ try {
     return /1000 → 1500/.test(text) && /hab/.test(text) && /cultures/.test(text);
   }));
   check('deep link comparaison', await page.evaluate(() => new URLSearchParams(location.search).get('compare') === '1000,1500'));
+  check('presets de comparaison', (await page.$$('#compare-presets .hm-btn')).length === 3);
+  check('barres de delta', (await page.$$('#compare-bars .compare-bar-row')).length === 3);
+  await page.click('#compare-current');
+  await new Promise((resolve) => setTimeout(resolve, 500));
+  check('comparer avec l’année courante', await page.evaluate(() => Number(document.getElementById('compare-b').value) === window.VATLAS.getState().year));
+  await page.evaluate(() => window.VATLAS.compareYears(1000, 1000));
+  await page.waitForFunction(() => /0 souverains/.test(document.getElementById('compare-result').textContent), { timeout: 10000 }).catch(() => {});
+  check('artefact : années identiques', await page.evaluate(() => {
+    const text = document.getElementById('compare-result').textContent;
+    return /0 souverains/.test(text) && /0 cultures/.test(text) && !/NaN/.test(text);
+  }));
   await page.click('#compare-close');
   await new Promise((resolve) => setTimeout(resolve, 120));
   check('comparaison fermée', await page.evaluate(() => document.getElementById('compare-panel').hidden));
@@ -304,8 +322,12 @@ try {
   check('Apprendre fermé', await page.evaluate(() => document.getElementById('learn-panel').hidden));
   await page.click('#hud-display-button');
   await new Promise((resolve) => setTimeout(resolve, 150));
-  check('outils disponibles', await page.evaluate(() => ['tool-reset', 'tool-year', 'tool-copy', 'tool-fullscreen', 'tool-zen']
+  check('outils disponibles', await page.evaluate(() => ['tool-reset', 'tool-year', 'tool-copy', 'tool-fullscreen', 'tool-zen', 'history-clear']
     .every((id) => Boolean(document.getElementById(id)))));
+  check('pile d’historique visible', (await page.$$('#history-list .history-item')).length >= 2);
+  await page.click('#history-clear');
+  await new Promise((resolve) => setTimeout(resolve, 120));
+  check('historique effaçable', (await page.$$('#history-list .history-item')).length === 0);
   await page.click('#tool-year');
   await new Promise((resolve) => setTimeout(resolve, 500));
   check('outil année 1000', await page.evaluate(() => window.VATLAS.getState().year === 1000));
@@ -358,12 +380,23 @@ try {
   check('560 épiques chargés', await page.evaluate(() => window.VATLAS.getState().epics === 560));
   check('sélecteur épiques', await page.evaluate(() => document.querySelectorAll('#epic-select option').length > 560));
   check('filtre épiques présent', Boolean(await page.$('#epic-filter')));
+  check('compteurs par catégorie', await page.evaluate(() => [...document.querySelectorAll('#epic-filter option')]
+    .every((option) => /\(\d+\)|Aucune/.test(option.textContent))));
+  await page.evaluate(() => window.VATLAS.setEpicFilter('none'));
+  await new Promise((resolve) => setTimeout(resolve, 120));
+  check('filtre aucun', await page.evaluate(() => window.VATLAS.getState().epicVisible === 0
+    && [...document.querySelectorAll('.epic-tick')].every((tick) => tick.hidden)));
   await page.evaluate(() => window.VATLAS.setEpicFilter('guerre'));
   await new Promise((resolve) => setTimeout(resolve, 120));
   check('filtre épiques actif', await page.evaluate(() => {
     const state = window.VATLAS.getState();
     return state.epicFilter === 'guerre' && state.epicVisible > 0 && state.epicVisible < 560;
   }));
+  check('filtre épiques dans l’URL', await page.evaluate(() => new URLSearchParams(location.search).get('epic') === 'guerre'));
+  const yearBeforeTick = await page.evaluate(() => window.VATLAS.getState().year);
+  await page.click('.epic-tick:not([hidden])');
+  await new Promise((resolve) => setTimeout(resolve, 400));
+  check('pastille filtrée cliquable', await page.evaluate((previous) => window.VATLAS.getState().year !== previous, yearBeforeTick));
   check('pastilles filtrées', await page.evaluate(() => [...document.querySelectorAll('.epic-tick')]
     .some((tick) => tick.hidden)));
   await page.evaluate(() => window.VATLAS.setEpicFilter('all'));

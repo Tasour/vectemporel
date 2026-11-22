@@ -37,4 +37,4 @@ Les captures des lots sont archivées dans `captures/`, en 1658×1150 et 390×84
 
 ## Budget mesuré
 
-Dernier `npm run check` : 1 303 PASS, 34 requêtes / 500 Ko en première visite, 56 Ko en régime établi.
+Dernier `npm run check` : 1 328 PASS, 34 requêtes / 501 Ko en première visite, 56 Ko en régime établi.
