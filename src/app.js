@@ -1284,11 +1284,14 @@ function mount() {
     return CHRONAS_LABELS.names[dimension]?.[value] || value;
   }
 
+  let provincePixi = null;
   function renderProvinceTimeline(name) {
     const token = ++provinceTimelineToken;
     const host = el('section', 'province-timeline');
     host.id = 'province-timeline';
     host.appendChild(el('h3', 'pt-title', 'Chronologie de la région'));
+    const pixiHost = el('div', 'pixi-timeline-host');
+    host.appendChild(pixiHost);
     const status = el('p', 'pt-status', 'Chargement de la chronologie…');
     host.appendChild(status);
     card.appendChild(host);
@@ -1336,6 +1339,18 @@ function mount() {
         rows.appendChild(row);
       }
       host.appendChild(rows);
+
+      if (provincePixi) { provincePixi.destroy(); provincePixi = null; }
+      const provinceEvents = PROVINCE_DIMENSIONS.flatMap((dimension) =>
+        (timeline[dimension.id] || []).slice(0, 40).map(([entryYear, value]) => ({
+          id: `${dimension.id}-${entryYear}`, year: entryYear,
+          title: `${dimension.label} : ${localizeTimelineValue(dimension.id, value)}`,
+          category: dimension.id,
+        })));
+      provincePixi = new PixiTimeline(pixiHost, {
+        events: provinceEvents, mode: 'province', title: `Chronologie de ${name}`, year,
+        onSelect: (event) => applyYear(event.year),
+      });
 
       const picker = el('select', 'pt-select');
       picker.id = 'province-event-select';
@@ -2006,6 +2021,7 @@ function mount() {
     writeUrl(params);
   }
   let histography = null;
+  let histoPixi = null;
   function openHistography() {
     closeAllPanels();
     markAction('histographie');
@@ -2019,10 +2035,29 @@ function mount() {
         else readout.textContent = `${event.title} · ${event.source}`;
       },
     });
+    const histoPixiHost = el('div', 'pixi-timeline-host');
+    histographyHost.appendChild(histoPixiHost);
+    const histoEvents = [
+      ...EPICS.map((epic) => ({
+        id: epic[0], year: epicYear(epic), title: epic[1],
+        category: categoryOf(epic[4]), report: epic[4] === 'religion' ? 'catholicisme' : null,
+      })),
+      ...TURNING_POINTS.points.map((point) => ({
+        id: `turn-${point.year}`, year: point.year, title: point.label || 'Rupture', category: 'rupture',
+      })),
+    ];
+    histoPixi = new PixiTimeline(histoPixiHost, {
+      events: histoEvents, mode: 'events', title: 'Histographie', year,
+      onSelect: (event) => {
+        if (event.report) openReport(event.report);
+        else readout.textContent = `${event.title} · Chronas CC BY-SA 4.0`;
+      },
+    });
     params.set('histography', '1');
     writeUrl(params);
   }
   function closeHistography() {
+    if (histoPixi) { histoPixi.destroy(); histoPixi = null; }
     if (histography) { histography.destroy(); histography = null; }
     histographyPanel.hidden = true;
     histographyButton.setAttribute('aria-pressed', 'false');
@@ -2143,6 +2178,7 @@ function mount() {
     startTrail(id, index);
   }
 
+  let hmPixi = null;
   async function openHistomap() {
     markAction('histomap');
     closeAllPanels();
@@ -2168,6 +2204,23 @@ function mount() {
       });
       histomap.setMode(scaleMode);
       histomap.render(year);
+
+      const hmPixiHost = el('div', 'pixi-timeline-host');
+      hmHost.appendChild(hmPixiHost);
+      const hmEvents = [];
+      for (let index = 0; index < data.years.length; index += 5) {
+        for (const [family, values] of Object.entries(data.series)) {
+          hmEvents.push({
+            id: `${family}-${index}`, year: data.years[index],
+            title: `${family} · ${Number(values[index]).toLocaleString('fr-FR')} hab`,
+            category: family,
+          });
+        }
+      }
+      hmPixi = new PixiTimeline(hmPixiHost, {
+        events: hmEvents, mode: 'families', title: 'Histomap des familles culturelles', year,
+        onSelect: (event) => applyYear(event.year),
+      });
     } catch (issue) {
       if (issue.name !== 'AbortError') hmHost.textContent = 'Histomap indisponible.';
     } finally {
@@ -2176,6 +2229,7 @@ function mount() {
   }
 
   function closeHistomap() {
+    if (hmPixi) { hmPixi.destroy(); hmPixi = null; }
     histomapPanel.hidden = true;
     document.body.classList.remove('histomap-open');
     histomapButton.setAttribute('aria-pressed', 'false');
