@@ -23,6 +23,7 @@ import { createLearnPanel } from './learning/learn-ui.js';
 import { createScrolly } from './reports/scrolly.js';
 import { createHistography } from './histography/index.js';
 import { createSubjectField } from './histography/subject.js';
+import { PixiTimeline } from './timeline/pixi-timeline.js';
 import { CHRONAS_LABELS } from './data/chronas-labels.js';
 import { clampYear, getAreasForYear } from './data/year-store.js';
 
@@ -865,13 +866,9 @@ function mount() {
   subjectPanel.setAttribute('role', 'dialog');
   subjectPanel.setAttribute('aria-label', 'Articles Wikipédia du sujet');
   subjectPanel.hidden = true;
-  const subjectClose = el('button', 'hm-close', '✕');
-  subjectClose.type = 'button';
-  subjectClose.id = 'subject-close';
-  subjectClose.setAttribute('aria-label', 'Fermer le sujet');
   const subjectHost = el('div', 'subject-host');
   subjectHost.id = 'subject-host';
-  subjectPanel.append(subjectClose, subjectHost);
+  subjectPanel.appendChild(subjectHost);
 
   const reportPanel = el('section', 'hud-overlay report-panel');
   reportPanel.id = 'report-panel';
@@ -1021,6 +1018,17 @@ function mount() {
   navControls.append(zoomIn, zoomOut, recenter);
 
   hud.append(brand, actions, card, tooltip, arcHost, arcTip, searchOverlay, helpOverlay, yearDialog, reviewPanel, trailsPanel, histomapPanel, learnPanel, qualityPanel, turningDrawer, comparePanel, reportPanel, histographyPanel, subjectPanel, readout, timeline, navControls, displayPanel, error);
+
+  const friseCanvas = el('div', 'pixi-timeline-host');
+  timeline.prepend(friseCanvas);
+  const friseEvents = [
+    ...EPICS.map((epic) => ({ id: epic[0], year: epicYear(epic), title: epic[1], category: categoryOf(epic[4]) })),
+    ...TURNING_POINTS.points.map((point) => ({ id: `turn-${point.year}`, year: point.year, title: point.label || 'Rupture', category: 'rupture' })),
+  ];
+  const friseTimeline = new PixiTimeline(friseCanvas, {
+    events: friseEvents, mode: 'years', title: 'Frise des événements', year,
+    onSelect: (event) => { if (Number.isFinite(event.year)) applyYear(event.year); },
+  });
   if (budgetWidget) hud.appendChild(budgetWidget);
 
   const panelIndicator = el('div', 'panel-indicator');
@@ -1513,6 +1521,7 @@ function mount() {
     }
     trackProgress('centuries', centuryStart(target));
     recordNav();
+    friseTimeline.setYear(target);
     yearLabel.textContent = String(target);
     slider.max = zoomMode === 'century' ? String(CENTURY_STEPS) : '1000';
     slider.value = String(positionOf(target));
@@ -2040,13 +2049,13 @@ function mount() {
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data = await response.json();
       subjectField = await createSubjectField(subjectHost, data, {
+        onClose: closeSubject,
         onArticle: (article) => {
           const report = id === 'dauphine' && /dauphin/i.test(article.title) ? 'dauphine' : null;
           if (report) openReport(report);
           else readout.textContent = `${article.title} · Wikipédia FR · CC BY-SA 4.0`;
         },
       });
-      subjectClose.onclick = closeSubject;
     } catch (issue) {
       subjectHost.textContent = `Sujet non généré : ${id} (${issue.message}).`;
     }
@@ -2058,7 +2067,6 @@ function mount() {
     params.delete('subject');
     writeUrl(params);
   }
-  subjectClose.addEventListener('click', closeSubject);
 
   let scrolly = null;
   let reportId = null;
