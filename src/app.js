@@ -433,6 +433,20 @@ function mount() {
   toolsSection.appendChild(importInput);
   toolButton('Importer un profil', 'tool-import-button', () => importInput.click());
   displayPanel.appendChild(toolsSection);
+  const reportsSection = el('div', 'display-tools');
+  reportsSection.id = 'display-reports';
+  reportsSection.appendChild(el('h3', '', 'Récits d’un item'));
+  for (const [label, id, reportId] of [
+    ['Lignée du Dauphiné', 'report-open-dauphine', 'dauphine'],
+    ['Histoire du catholicisme', 'report-open-catholicisme', 'catholicisme'],
+  ]) {
+    const button = el('button', 'hm-btn', label);
+    button.type = 'button';
+    button.id = id;
+    button.addEventListener('click', () => openReport(reportId));
+    reportsSection.appendChild(button);
+  }
+  displayPanel.appendChild(reportsSection);
 
   const searchOverlay = el('div', 'hud-overlay');
   searchOverlay.id = 'hud-search';
@@ -1374,6 +1388,13 @@ function mount() {
       reportButton.addEventListener('click', () => openReport('dauphine'));
       card.append(reportButton);
     }
+    if (/cathol/i.test(String(info.religion || ''))) {
+      const religionButton = el('button', 'hud-dimension', 'Lire l’histoire du catholicisme →');
+      religionButton.type = 'button';
+      religionButton.id = 'card-report-religion';
+      religionButton.addEventListener('click', () => openReport('catholicisme'));
+      card.append(religionButton);
+    }
     renderProvinceTimeline(name);
     if (open) openCard();
     else {
@@ -1955,7 +1976,7 @@ function mount() {
     histography = createHistography(histographyHost, {
       province: selected === 'Dauphiné' ? selected : null,
       onEvent: (event) => {
-        if (selected === 'Dauphiné') openReport('dauphine');
+        if (event.report) openReport(event.report);
         else readout.textContent = `${event.title} · ${event.source}`;
       },
     });
@@ -1989,7 +2010,8 @@ function mount() {
       const response = await fetch(`./public/reports/${id}.html`);
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const documentReport = new DOMParser().parseFromString(await response.text(), 'text/html');
-      reportHost.replaceChildren(documentReport.querySelector('main') || documentReport.body);
+      const reportStyles = [...documentReport.querySelectorAll('style')];
+      reportHost.replaceChildren(...reportStyles, documentReport.querySelector('main') || documentReport.body);
       scrolly = createScrolly(reportHost, {
         onYear: (year) => { if (Number.isFinite(year)) applyYear(year, { notify: false }); },
       });
@@ -2355,9 +2377,9 @@ function mount() {
       if (!comparePanel.hidden) closeCompare();
       if (!qualityPanel.hidden) closeQuality();
       if (!learnPanel.hidden) closeLearn();
-    if (!reportPanel.hidden) closeReport();
-    if (!histographyPanel.hidden) closeHistography();
-    if (!turningDrawer.hidden) {
+      if (!reportPanel.hidden) closeReport();
+      if (!histographyPanel.hidden) closeHistography();
+      if (!turningDrawer.hidden) {
       turningDrawer.hidden = true;
       document.body.classList.remove('turning-open');
     }

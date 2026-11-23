@@ -13,7 +13,7 @@
 .scrolly-progress i { display: block; height: 100%; width: 0; background: var(--gold); }
 .scrolly-year { font-family: var(--serif); font-size: 40px; color: var(--gold-bright); text-align: center; }
 .scrolly-caption { color: var(--muted); font-size: 11px; text-align: center; }
-.scrolly-source { font-size: 10px; color: var(--muted); }
+.scrolly-source { font-size: 10px; color: var(--muted); overflow-wrap: anywhere; }
 @media (max-width: 900px) {
   .scrolly-wrap { grid-template-columns: 1fr; }
   .scrolly-figure { position: sticky; top: 0; height: 40vh; order: -1; }

@@ -14,6 +14,16 @@ const ERAS = [
   ['Moderne', 1500, 1800], ['Contemporain', 1800, 2000],
 ];
 
+/* Repères de la fiche de convergence catholique, avec le récit qu'ils ouvrent. */
+const REPORT_EVENTS = [
+  { id: 'rel-325', year: 325, title: 'Symbole de Nicée', category: 'religion', report: 'catholicisme', source: 'Wikipédia FR · Grokipedia' },
+  { id: 'rel-1215', year: 1215, title: 'Concile du Latran', category: 'religion', report: 'catholicisme', source: 'Grokipedia' },
+  { id: 'rel-1517', year: 1517, title: 'Réforme de Luther', category: 'religion', report: 'catholicisme', source: 'Grokipedia' },
+  { id: 'rel-1545', year: 1545, title: 'Concile de Trente', category: 'religion', report: 'catholicisme', source: 'Wikipédia FR · Grokipedia' },
+  { id: 'rel-1962', year: 1962, title: 'Concile Vatican II', category: 'religion', report: 'catholicisme', source: 'Wikipédia FR · Grokipedia' },
+  { id: 'rep-1349', year: 1349, title: 'Traité de Romans — Dauphiné', category: 'province', report: 'dauphine', source: 'Wikipédia FR · Grokipedia' },
+];
+
 function hash(text) {
   let value = 2166136261;
   for (let index = 0; index < text.length; index += 1) {
@@ -72,6 +82,8 @@ export function createHistography(host, { province = null, onEvent = () => {} } 
       category: 'rupture', source: 'Extrait Chronas CC BY-SA 4.0',
     });
   }
+  for (const event of REPORT_EVENTS) events.push({ ...event });
+
   if (province) {
     for (const point of TURNING_POINTS.points.filter((item) => item.provinces.includes(province))) {
       events.push({
