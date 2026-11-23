@@ -20,6 +20,7 @@
     "quality:build": "node scripts/build-data-quality.mjs",
     "snapshot:make": "node scripts/make-snapshot.mjs",
     "licenses:check": "node scripts/check-licenses.mjs",
+    "report:build": "node scripts/build-report.mjs && node scripts/build-report-html.mjs",
     "prebuild:pages": "npm run three:build && npm run d3:build",
     "test:years": "node tests/year-integrity.mjs",
     "test:vector": "node tests/vector-provinces.mjs",

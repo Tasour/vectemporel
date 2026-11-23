@@ -50,6 +50,14 @@ Le bouton `⌁` (touche `S`) affiche des arcs entre la province sélectionnée e
 
 Le bouton `Histomap` de la frise (touche `H`) ouvre une seconde lecture du temps : un **streamgraph D3 de la part de population estimée par famille culturelle**, tous les 25 ans de −2000 à 2000. La métrique est relative (chaque année a la même hauteur), ce qui rend les quatre millénaires lisibles malgré la croissance démographique ; les valeurs absolues restent dans les tooltips et la table miroir. Sept rubans, dont une bande **« non classé »** hachurée pour les cultures absentes de `scripts/families.csv` (table éditoriale auditable, 104 cultures). Le graphique réutilise l'échelle `src/timeline/scale.js` (linéaire ou récents), possède sa propre minimap, des étiquettes directes, des tooltips « famille · population · part · source », une table miroir et le clavier ←/→ / Début / Fin. Un clic sur un ruban amène le globe à l'année correspondante ; `?histomap=1&year=1500` ouvre directement le mode. D3 v7 local (ISC, `vendor/`), chargé à la demande, zéro réseau externe.
 
+## Lignée d'un item et Histographie
+
+La fiche du **Dauphiné** porte un bouton « Lire la lignée du Dauphiné → » ; `?report=dauphine` ouvre directement le récit. C'est un profil **scrollytelling** de 27 jalons couvrant toute l'histoire connue de l'item, de −2000 à 2000 : 24 jalons sont des extraits Chronas, 3 des repères où Wikipédia FR et Grokipedia convergent. Le sélecteur d'année reste un filtre de découverte des items ; il n'ancre pas le récit. Figure épinglée (courbe de population), progression annoncée dans un `role="status"`, navigation clavier ↑/↓ et `prefers-reduced-motion`. Le HTML est un fragment sémantique chargé à la demande dans l'app : **aucun script inline**, le runtime est le module local `src/reports/scrolly.js`, compatible avec la CSP `script-src 'self'`. Le rapport n'est pas publié dans la bibliothèque Noeta : il ne vit que dans l'app.
+
+Les deux pages source sont archivées dans `docs/sources/dauphine/` (`SOURCES.md`, empreintes SHA-256, `convergence.md`). Aucun paragraphe n'est reproduit ; la prose est originale. Les faits communs aux deux encyclopédies sont retenus, Grokipedia est préférée par défaut pour l'interprétation, et tout chiffre contesté est écarté (le prix du traité de Romans n'est pas avancé). Wikipédia est CC BY-SA 4.0, Grokipedia sert de référence factuelle uniquement. `npm run report:build` régénère `dauphine.json` et le HTML. La copie de preuve Noeta est construite par `node scripts/build-report-proof.mjs` et validée par `spec` (24/24), `scrolly-probe` et `prove` (VERT) dans le harnais de `~/Projects/noeta`.
+
+Le bouton **HIST** (`?histography=1`) ouvre une frise d'événements dans l'esprit d'Histography : champ gris, points blancs, menu sombre, pied à deux bornes d'années, curseur vertical et fiche d'événement. Les catégories (guerres, empires, ruptures, provinces) filtrent les 560 épiques Chronas et les 49 ruptures ; les époques déplacent la plage. Le bouton « Lire les récits → » bascule vers un flux éditorial déterministe groupé par époque (ruptures et faits de province prioritaires, puis échantillonnage régulier), où chaque carte ouvre le récit lié. Sur mobile, le menu passe en tiroir. **Réimplémentation originale** : le site de référence ne publie aucune licence, donc aucun code ni asset n'a été copié (spécification et observations dans `docs/architecture/HISTOGRAPHE-SPEC.md`).
+
 ## Qualité des données
 
 Le bouton `⚑` ouvre un rapport d'**extraits Chronas** : 1 372 changements de capitale sans changement de souverain, avec l'année et la province. `scripts/build-data-quality.mjs` produit aussi la couverture des champs par siècle et les index des souverains et cultures les plus présents en 1000, 1500 et 2000 ; ces index alimentent la recherche locale. `npm run quality:build`, `npm run test:quality` et `npm run test:snapshot` garantissent un rapport reproductible, résumé dans `data-snapshot.sha256`. Aucun de ces chiffres n'est présenté comme validé historiquement.
@@ -83,6 +91,8 @@ http://127.0.0.1:4181/index.html?type=area&value=Berry&pos=47.08,2.4,4.2&year=10
 - `value` : région sélectionnée (ex. `Berry`, capitale Bourges) ; un marqueur doré la situe sur la sphère.
 - `pos` : `lat,lon,zoom` de la caméra, synchronisé à chaque déplacement.
 - `year` : année affichée. Le snapshot embarqué contient **l'an 1000** : 2 429 régions et 2 492 géométries.
+- `report=dauphine` : ouvre la lignée scrollytelling du Dauphiné.
+- `histography=1` : ouvre la frise d'événements Histographie. Plusieurs panneaux ne peuvent pas être ouverts en même temps.
 
 Le format est aussi accepté dans le hash (`#type=area&…`) pour compatibilité avec les anciens liens.
 
@@ -133,6 +143,8 @@ npm run check
 | `npm run test:points` | règle ADR-0012, bornes, espacement, reproductibilité |
 | `npm run test:points:ui` | badges, clic, fiche, deep link, timeline mobile |
 | `npm run test:arcs` | simultanéités : bascule, arcs WebGL, clavier, deep link, mobile |
+| `npm run report:build` | régénère `dauphine.json` et le HTML du récit depuis les sources convergentes |
+| `node scripts/build-report-proof.mjs` | construit la copie de preuve Noeta (CSS/JS inline, fichier livré intact) |
 | `npm run histomap:build` | régénère histomap.json depuis les chunks et families.csv |
 | `npm run test:histomap` | données : 161 échantillons, SHA-256, budget 80 Ko |
 | `npm run test:histomap:ui` | rubans D3, tooltips, clavier, minimap, deep link, mobile |
@@ -153,7 +165,7 @@ npm run check
 | `npm run test:devtools` | pont Three.js injecté avant chargement, API in-page |
 | `npm run bridge:check` | configuration du pont OpenCode et CSP production/dev |
 
-Budget mesuré : **35 requêtes / 507 Ko** à la première visite (Three.js et D3 locaux compris), **56 Ko** en régime établi. Le serveur écoute uniquement sur `127.0.0.1`.
+Budget mesuré : **38 requêtes / 516 Ko** à la première visite (Three.js et D3 locaux compris), **56 Ko** en régime établi. Le serveur écoute uniquement sur `127.0.0.1`.
 
 ## Mises à jour et cache
 

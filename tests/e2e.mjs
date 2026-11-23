@@ -306,6 +306,38 @@ try {
   await page.click('#quality-close');
   await new Promise((resolve) => setTimeout(resolve, 120));
   check('qualité fermée', await page.evaluate(() => document.getElementById('quality-panel').hidden));
+  await page.evaluate(() => window.VATLAS.openReport('dauphine'));
+  await page.waitForFunction(() => document.querySelectorAll('#report-panel [data-scrolly-step]').length === 27, { timeout: 20000 });
+  check('rapport Dauphiné ouvert', await page.evaluate(() => !document.getElementById('report-panel').hidden
+    && window.VATLAS.getState().report.id === 'dauphine'));
+  check('deep link report', await page.evaluate(() => new URLSearchParams(location.search).get('report') === 'dauphine'));
+  await page.focus('#report-panel .scrolly-wrap');
+  await page.keyboard.press('ArrowDown');
+  await new Promise((resolve) => setTimeout(resolve, 200));
+  check('navigation du récit', await page.evaluate(() => window.VATLAS.getState().report.step === 1));
+  await page.keyboard.press('Escape');
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  check('rapport fermé', await page.evaluate(() => document.getElementById('report-panel').hidden));
+  await page.click('#hud-histography-button');
+  await new Promise((resolve) => setTimeout(resolve, 400));
+  check('mode histographie ouvert', await page.evaluate(() => !document.getElementById('histography-panel').hidden
+    && window.VATLAS.getState().histography.events > 500));
+  check('canvas et curseur présents', await page.evaluate(() => Boolean(document.querySelector('.histo-canvas'))
+    && Boolean(document.querySelector('.histo-cursor'))));
+  await page.click('#histo-mode');
+  await new Promise((resolve) => setTimeout(resolve, 200));
+  check('mode récits actif', await page.evaluate(() => window.VATLAS.getState().histography.mode === 'recits'
+    && window.VATLAS.getState().histography.stories > 0
+    && !document.querySelector('.histo-recits').hidden
+    && document.querySelectorAll('.histo-recit').length > 0));
+  check('répartition par époques', (await page.$$('#histography-panel .histo-recit-era')).length >= 3);
+  await page.click('#histo-mode');
+  await new Promise((resolve) => setTimeout(resolve, 200));
+  check('retour à la frise', await page.evaluate(() => window.VATLAS.getState().histography.mode === 'frise'
+    && document.querySelector('.histo-recits').hidden));
+  await page.keyboard.press('Escape');
+  await new Promise((resolve) => setTimeout(resolve, 200));
+  check('histographie fermée', await page.evaluate(() => document.getElementById('histography-panel').hidden));
   await page.click('#hud-learn-button');
   await new Promise((resolve) => setTimeout(resolve, 200));
   check('panneau Apprendre ouvert', await page.evaluate(() => !document.getElementById('learn-panel').hidden));
