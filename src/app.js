@@ -22,6 +22,7 @@ import { createTrailPlayer } from './story/trails.js';
 import { createLearnPanel } from './learning/learn-ui.js';
 import { createScrolly } from './reports/scrolly.js';
 import { createHistography } from './histography/index.js';
+import { createSubjectField } from './histography/subject.js';
 import { CHRONAS_LABELS } from './data/chronas-labels.js';
 import { clampYear, getAreasForYear } from './data/year-store.js';
 
@@ -323,7 +324,18 @@ function mount() {
   histographyButton.setAttribute('aria-label', 'Ouvrir la frise Histographie');
   histographyButton.setAttribute('aria-pressed', 'false');
   actionsMore.append(tourButton, arcsButton, sunButton, wireButton, histographyButton, qualityButton, compareButton, reviewButton, themeButton, helpButton);
-  actions.append(searchButton, displayButton, trailsButton, learnButton, actionsMore);
+  const toolsButton = el('button', 'hud-btn', '⋯');
+  toolsButton.type = 'button';
+  toolsButton.id = 'hud-tools-button';
+  toolsButton.setAttribute('aria-label', 'Ouvrir les outils (13 commandes)');
+  toolsButton.setAttribute('aria-expanded', 'false');
+  toolsButton.setAttribute('aria-controls', 'hud-actions-more');
+  toolsButton.addEventListener('click', () => {
+    const open = !document.body.classList.contains('tools-open');
+    document.body.classList.toggle('tools-open', open);
+    toolsButton.setAttribute('aria-expanded', String(open));
+  });
+  actions.append(searchButton, displayButton, trailsButton, learnButton, toolsButton, actionsMore);
   const savedTheme = localStorage.getItem('history-theme');
   if (savedTheme === 'light') document.documentElement.dataset.theme = 'light';
 
@@ -848,6 +860,19 @@ function mount() {
   histographyDrawer.addEventListener('click', () => document.body.classList.toggle('histo-drawer'));
   histographyPanel.appendChild(histographyDrawer);
 
+  const subjectPanel = el('section', 'hud-overlay subject-panel');
+  subjectPanel.id = 'subject-panel';
+  subjectPanel.setAttribute('role', 'dialog');
+  subjectPanel.setAttribute('aria-label', 'Articles Wikipédia du sujet');
+  subjectPanel.hidden = true;
+  const subjectClose = el('button', 'hm-close', '✕');
+  subjectClose.type = 'button';
+  subjectClose.id = 'subject-close';
+  subjectClose.setAttribute('aria-label', 'Fermer le sujet');
+  const subjectHost = el('div', 'subject-host');
+  subjectHost.id = 'subject-host';
+  subjectPanel.append(subjectClose, subjectHost);
+
   const reportPanel = el('section', 'hud-overlay report-panel');
   reportPanel.id = 'report-panel';
   reportPanel.setAttribute('role', 'dialog');
@@ -995,7 +1020,7 @@ function mount() {
   recenter.setAttribute('aria-label', 'Recentrer la sphère');
   navControls.append(zoomIn, zoomOut, recenter);
 
-  hud.append(brand, actions, card, tooltip, arcHost, arcTip, searchOverlay, helpOverlay, yearDialog, reviewPanel, trailsPanel, histomapPanel, learnPanel, qualityPanel, turningDrawer, comparePanel, reportPanel, histographyPanel, readout, timeline, navControls, displayPanel, error);
+  hud.append(brand, actions, card, tooltip, arcHost, arcTip, searchOverlay, helpOverlay, yearDialog, reviewPanel, trailsPanel, histomapPanel, learnPanel, qualityPanel, turningDrawer, comparePanel, reportPanel, histographyPanel, subjectPanel, readout, timeline, navControls, displayPanel, error);
   if (budgetWidget) hud.appendChild(budgetWidget);
 
   const panelIndicator = el('div', 'panel-indicator');
@@ -1066,8 +1091,7 @@ function mount() {
     if (epicTimeline.controls.parentElement !== pickerTarget) {
       pickerTarget.appendChild(epicTimeline.controls);
     }
-    const reviewTarget = mobile ? displayPanel : actions;
-    if (reviewButton.parentElement !== reviewTarget) reviewTarget.appendChild(reviewButton);
+    if (reviewButton.parentElement !== actionsMore) actionsMore.appendChild(reviewButton);
     if (!mobile) {
       displayPanel.hidden = true;
       displayButton.setAttribute('aria-expanded', 'false');
@@ -1689,6 +1713,7 @@ function mount() {
     writeUrl(params);
     globe?.setSelected(name);
     if (move) globe?.focusRegion(name);
+    if (open && SUBJECT_BY_NAME[name]) { openSubject(SUBJECT_BY_NAME[name]); announce(name); refreshArcs(); return; }
     renderCard(name, open);
     announce(name);
     refreshArcs();
@@ -1819,9 +1844,14 @@ function mount() {
     if (!learnPanel.hidden) closeLearn();
     if (!reportPanel.hidden) closeReport();
     if (!histographyPanel.hidden) closeHistography();
+    if (!subjectPanel.hidden) closeSubject();
     if (!turningDrawer.hidden) {
       turningDrawer.hidden = true;
       document.body.classList.remove('turning-open');
+    }
+    if (document.body.classList.contains('tools-open')) {
+      document.body.classList.remove('tools-open');
+      toolsButton.setAttribute('aria-expanded', 'false');
     }
     if (!searchOverlay.hidden) { searchOverlay.hidden = true; search.setAttribute('aria-expanded', 'false'); }
     if (!helpOverlay.hidden) helpOverlay.hidden = true;
@@ -1994,6 +2024,41 @@ function mount() {
   histographyButton.addEventListener('click', () => {
     if (histographyPanel.hidden) openHistography(); else closeHistography();
   });
+
+  const SUBJECT_BY_NAME = { Dauphiné: 'dauphine' };
+  let subjectField = null;
+  let subjectId = null;
+  async function openSubject(id) {
+    closeAllPanels();
+    subjectPanel.hidden = false;
+    subjectId = id;
+    params.set('subject', id);
+    writeUrl(params);
+    if (subjectField) { subjectField.destroy(); subjectField = null; }
+    try {
+      const response = await fetch(`./src/data/subjects/${id}.json`);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data = await response.json();
+      subjectField = await createSubjectField(subjectHost, data, {
+        onArticle: (article) => {
+          const report = id === 'dauphine' && /dauphin/i.test(article.title) ? 'dauphine' : null;
+          if (report) openReport(report);
+          else readout.textContent = `${article.title} · Wikipédia FR · CC BY-SA 4.0`;
+        },
+      });
+      subjectClose.onclick = closeSubject;
+    } catch (issue) {
+      subjectHost.textContent = `Sujet non généré : ${id} (${issue.message}).`;
+    }
+  }
+  function closeSubject() {
+    if (subjectField) { subjectField.destroy(); subjectField = null; }
+    subjectPanel.hidden = true;
+    subjectId = null;
+    params.delete('subject');
+    writeUrl(params);
+  }
+  subjectClose.addEventListener('click', closeSubject);
 
   let scrolly = null;
   let reportId = null;
@@ -2297,6 +2362,8 @@ function mount() {
     } else if (event.key === 'Escape') {
       searchOverlay.hidden = true;
       search.setAttribute('aria-expanded', 'false');
+      search.blur();
+      canvas.focus?.();
     }
   });
 
@@ -2417,6 +2484,7 @@ function mount() {
     if (initialTrail && trailPlayer.has(initialTrail)) {
       startTrail(initialTrail, Number(params.get('step') || 0));
     }
+    if (params.has('subject')) openSubject(params.get('subject'));
     if (params.has('report')) openReport(params.get('report'));
     if (params.get('histography') === '1') openHistography();
     const initialEpic = params.get('epic');
@@ -2469,6 +2537,7 @@ function mount() {
       history: { index: navIndex, length: navHistory.length },
       lastAction: window.__vatlasLastAction || null,
       report: { id: reportId, open: !reportPanel.hidden, step: scrolly?.current() ?? 0 },
+      subject: { id: subjectId, open: !subjectPanel.hidden, ...(subjectField?.state() || {}) },
       histography: histography?.state() ?? null,
       compare: comparePair,
       empire: { active: Boolean(empireRuler), ruler: empireRuler },
@@ -2498,6 +2567,8 @@ function mount() {
     },
     openTrailForFamily: (family, year) => openTrailForFamily(family, year),
     openReport,
+    openSubject,
+    closeSubject,
     toggleSun,
     toggleWire,
     openLearn,

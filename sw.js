@@ -2,7 +2,7 @@
  * Cache-first sur les ressources same-origin : la première visite en ligne
  * remplit le cache, les suivantes fonctionnent hors ligne. Aucune requête
  * cross-origin n'est interceptée ni mise en cache (contrainte zéro réseau). */
-const CACHE = 'vectemporel-89d11874af6d';
+const CACHE = 'vectemporel-e7c413ddfb12';
 const SHELL = [
   './', './index.html', './manifest.webmanifest', './styles.css', './sw.js',
   './src/app.js', './src/map/data.js', './src/map/projection.js',
@@ -16,6 +16,9 @@ const SHELL = [
   './src/reports/scrolly.js', './src/reports/scrolly.css', './src/data/reports/dauphine.json',
   './src/data/reports/catholicisme.json', './public/reports/dauphine.html',
   './public/reports/catholicisme.html', './src/histography/index.js', './public/d3-bundle.js',
+  './src/histography/subject.js', './src/data/subjects/dauphine.json',
+  './public/histography/jquery-1.10.2.min.js', './public/histography/plugins.js',
+  './public/histography/style.css',
   './src/learning/review.js', './src/learning/questions.js', './src/learning/srs.js', './src/learning/session.js',
   './src/data/province-timelines/index.js', './src/data/province-timelines/b.js',
   './src/data/years/c1000.json', './src/data/chronas-cities.js', './public/three-bundle.js',
