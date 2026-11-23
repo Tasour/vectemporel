@@ -371,7 +371,7 @@ button.hud-dimension { display: inline-flex; align-items: center; width: 100%; m
 .histomap-panel {
   z-index: 48;
   left: 50%;
-  bottom: max(300px, calc(env(safe-area-inset-bottom) + 300px));
+  bottom: max(240px, calc(env(safe-area-inset-bottom) + 240px));
   width: min(1120px, calc(100vw - 36px));
   max-height: 64vh;
   overflow-y: auto;
@@ -774,3 +774,24 @@ button, input, select, th, td { padding: 8px 12px !important; }
 .timeline .pixi-timeline-host, .timeline .pixi-timeline { position: absolute; inset: 0; z-index: 0; opacity: .9; }
 .timeline > :not(.pixi-timeline):not(.pixi-timeline-host) { position: relative; z-index: 1; }
 .province-timeline .pixi-timeline { height: 120px; margin-top: 8px; }
+.province-timeline .pt-rows { display: none; }
+
+/* Migration_histographie : couche Pixi par-dessus l'ancien canvas. */
+.histography-host { position: relative; }
+.histography-host .pixi-timeline-host { position: absolute; inset: 0 0 64px 260px; z-index: 1; }
+.histography-host .histo-menu, .histography-host .histo-footer { position: relative; z-index: 2; }
+.histography-host .histo-canvas { opacity: 0; pointer-events: none; }
+@media (max-width: 760px) {
+  .histography-host .pixi-timeline-host { inset: 64px 0 72px 0; }
+}
+
+/* Migration Histomap : couche Pixi, D3 conservé dans le DOM pour l'accessibilité. */
+.hm-host { position: relative; height: 200px; }
+@media (max-width: 760px) { .hm-host { height: 260px; } }
+.hm-host .pixi-timeline-host { position: absolute; inset: 0; z-index: 1; }
+.hm-host > svg { opacity: 0; pointer-events: none; }
+.hm-tools { position: relative; z-index: 2; }
+
+/* Les repères visuels remplacés par Pixi restent dans le DOM pour les tests
+ * et l'accessibilité, mais ne sont plus dessinés deux fois. */
+.timeline .epic-track, .timeline .timeline-minimap-density { opacity: 0; }
