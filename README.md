@@ -130,7 +130,7 @@ npm run bridge:check   # config MCP, wrapper, CSP production/dev, proxy si actif
 npm run check
 ```
 
-`npm run check` ne demande aucun terminal annexe : les harnais e2e, perf et pwa démarrent leur propre serveur loopback (ports 4186, 4187, 4188) et l'arrêtent en sortie.
+`npm run check` ne demande aucun terminal annexe : les harnais e2e, perf et pwa démarrent leur propre serveur loopback (ports 4186, 4187, 4188) et l'arrêtent en sortie. Le gate de design (`npm run design:gate`) balaie 21 états de l'app (tous les panneaux, les deux thèmes implicitement via les états pilotés, les deep links) aux deux viewports imposés, puis contrôle les deux fragments de récit ; il réutilise `~/.config/opencode/design/apple-design-gate.sh` sans dupliquer les 60 règles universelles. Les règles non mesurables par le script restent `notMeasured`, jamais déclarées vertes.
 
 | Commande | Rôle |
 |---|---|
@@ -159,6 +159,7 @@ npm run check
 | `npm run licenses:check` | mentions de licence dans les livrables |
 | `node tests/http-guards.mjs` | vrai serveur : whitelist, en-têtes, entrées malformées, survie |
 | `npm run test:live` | gate live 1440×1000 et 390×844 : cibles ≥ 44 px, collisions HUD, débordement, console, réseau |
+| `npm run design:gate` | gate de design universel : 21 états × 2 viewports + les deux fragments de récit, aucune règle réimplémentée |
 | `npm run test:e2e` | deep link, WebGL, fiche, clavier, recherche, aide, révision |
 | `npm run test:perf` | budget < 50 requêtes / < 1 Mo |
 | `npm run test:pwa` | manifest, cache versionné, survie hors ligne |
