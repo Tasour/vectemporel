@@ -20,6 +20,8 @@ import { DATA_QUALITY } from './data/data-quality.js';
 import { linkedProvinces, arcPairs } from './globe/simultaneity.js';
 import { createTrailPlayer } from './story/trails.js';
 import { createLearnPanel } from './learning/learn-ui.js';
+import { createScrolly } from './reports/scrolly.js';
+import { createHistography } from './histography/index.js';
 import { CHRONAS_LABELS } from './data/chronas-labels.js';
 import { clampYear, getAreasForYear } from './data/year-store.js';
 
@@ -315,7 +317,12 @@ function mount() {
    * secondaires rejoignent le tiroir Affichage via .hud-actions-more. */
   const actionsMore = el('div', 'hud-actions-more');
   actionsMore.id = 'hud-actions-more';
-  actionsMore.append(tourButton, arcsButton, sunButton, wireButton, qualityButton, compareButton, reviewButton, themeButton, helpButton);
+  const histographyButton = el('button', 'hud-btn', 'HIST');
+  histographyButton.type = 'button';
+  histographyButton.id = 'hud-histography-button';
+  histographyButton.setAttribute('aria-label', 'Ouvrir la frise Histographie');
+  histographyButton.setAttribute('aria-pressed', 'false');
+  actionsMore.append(tourButton, arcsButton, sunButton, wireButton, histographyButton, qualityButton, compareButton, reviewButton, themeButton, helpButton);
   actions.append(searchButton, displayButton, trailsButton, learnButton, actionsMore);
   const savedTheme = localStorage.getItem('history-theme');
   if (savedTheme === 'light') document.documentElement.dataset.theme = 'light';
@@ -808,6 +815,38 @@ function mount() {
   learnPanel.setAttribute('aria-label', 'Défis d’apprentissage locaux');
   learnPanel.hidden = true;
 
+  const histographyPanel = el('div', 'histography-panel');
+  histographyPanel.id = 'histography-panel';
+  histographyPanel.setAttribute('role', 'dialog');
+  histographyPanel.setAttribute('aria-label', 'Frise des événements historiques');
+  histographyPanel.hidden = true;
+  const histographyClose = el('button', 'histo-close', 'Fermer ✕');
+  histographyClose.type = 'button';
+  histographyClose.id = 'histography-close';
+  histographyClose.addEventListener('click', () => closeHistography());
+  const histographyHost = el('div', 'histography-host');
+  histographyHost.id = 'histography-host';
+  histographyPanel.append(histographyClose, histographyHost);
+  const histographyDrawer = el('button', 'histo-drawer-button', '☰');
+  histographyDrawer.type = 'button';
+  histographyDrawer.id = 'histography-drawer';
+  histographyDrawer.setAttribute('aria-label', 'Afficher les catégories');
+  histographyDrawer.addEventListener('click', () => document.body.classList.toggle('histo-drawer'));
+  histographyPanel.appendChild(histographyDrawer);
+
+  const reportPanel = el('section', 'hud-overlay report-panel');
+  reportPanel.id = 'report-panel';
+  reportPanel.setAttribute('role', 'dialog');
+  reportPanel.setAttribute('aria-label', 'Récit de la province');
+  reportPanel.hidden = true;
+  const reportClose = el('button', 'hm-close', '✕');
+  reportClose.type = 'button';
+  reportClose.id = 'report-close';
+  reportClose.setAttribute('aria-label', 'Fermer le récit');
+  const reportHost = el('div', 'report-host');
+  reportHost.id = 'report-host';
+  reportPanel.append(reportClose, reportHost);
+
   const qualityPanel = el('section', 'hud-overlay quality-panel');
   qualityPanel.id = 'quality-panel';
   qualityPanel.setAttribute('role', 'dialog');
@@ -942,7 +981,7 @@ function mount() {
   recenter.setAttribute('aria-label', 'Recentrer la sphère');
   navControls.append(zoomIn, zoomOut, recenter);
 
-  hud.append(brand, actions, card, tooltip, arcHost, arcTip, searchOverlay, helpOverlay, yearDialog, reviewPanel, trailsPanel, histomapPanel, learnPanel, qualityPanel, turningDrawer, comparePanel, readout, timeline, navControls, displayPanel, error);
+  hud.append(brand, actions, card, tooltip, arcHost, arcTip, searchOverlay, helpOverlay, yearDialog, reviewPanel, trailsPanel, histomapPanel, learnPanel, qualityPanel, turningDrawer, comparePanel, reportPanel, histographyPanel, readout, timeline, navControls, displayPanel, error);
   if (budgetWidget) hud.appendChild(budgetWidget);
 
   const panelIndicator = el('div', 'panel-indicator');
@@ -1328,6 +1367,13 @@ function mount() {
     wiki.target = '_blank';
     wiki.rel = 'noopener noreferrer';
     card.append(wiki, el('p', 'hud-credit', 'Chronas · CC BY-SA 4.0'));
+    if (name === 'Dauphiné') {
+      const reportButton = el('button', 'hud-dimension', 'Lire la lignée du Dauphiné →');
+      reportButton.type = 'button';
+      reportButton.id = 'card-report';
+      reportButton.addEventListener('click', () => openReport('dauphine'));
+      card.append(reportButton);
+    }
     renderProvinceTimeline(name);
     if (open) openCard();
     else {
@@ -1750,6 +1796,8 @@ function mount() {
     if (!qualityPanel.hidden) closeQuality();
     if (!comparePanel.hidden) closeCompare();
     if (!learnPanel.hidden) closeLearn();
+    if (!reportPanel.hidden) closeReport();
+    if (!histographyPanel.hidden) closeHistography();
     if (!turningDrawer.hidden) {
       turningDrawer.hidden = true;
       document.body.classList.remove('turning-open');
@@ -1897,6 +1945,66 @@ function mount() {
     params.delete('compare');
     writeUrl(params);
   }
+  let histography = null;
+  function openHistography() {
+    closeAllPanels();
+    markAction('histographie');
+    histographyPanel.hidden = false;
+    histographyButton.setAttribute('aria-pressed', 'true');
+    document.body.classList.add('histography-open');
+    histography = createHistography(histographyHost, {
+      province: selected === 'Dauphiné' ? selected : null,
+      onEvent: (event) => {
+        if (selected === 'Dauphiné') openReport('dauphine');
+        else readout.textContent = `${event.title} · ${event.source}`;
+      },
+    });
+    params.set('histography', '1');
+    writeUrl(params);
+  }
+  function closeHistography() {
+    if (histography) { histography.destroy(); histography = null; }
+    histographyPanel.hidden = true;
+    histographyButton.setAttribute('aria-pressed', 'false');
+    document.body.classList.remove('histography-open', 'histo-drawer');
+    params.delete('histography');
+    writeUrl(params);
+  }
+  histographyButton.addEventListener('click', () => {
+    if (histographyPanel.hidden) openHistography(); else closeHistography();
+  });
+
+  let scrolly = null;
+  let reportId = null;
+  async function openReport(id = 'dauphine') {
+    closeAllPanels();
+    markAction('report');
+    reportPanel.hidden = false;
+    reportId = id;
+    params.set('report', id);
+    writeUrl(params);
+    if (scrolly && reportId === id) return;
+    if (scrolly) { scrolly.destroy(); scrolly = null; }
+    try {
+      const response = await fetch(`./public/reports/${id}.html`);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const documentReport = new DOMParser().parseFromString(await response.text(), 'text/html');
+      reportHost.replaceChildren(documentReport.querySelector('main') || documentReport.body);
+      scrolly = createScrolly(reportHost, {
+        onYear: (year) => { if (Number.isFinite(year)) applyYear(year, { notify: false }); },
+      });
+    } catch (issue) {
+      reportHost.textContent = `Récit indisponible : ${issue.message}`;
+    }
+  }
+  function closeReport() {
+    if (scrolly) { scrolly.destroy(); scrolly = null; }
+    reportPanel.hidden = true;
+    params.delete('report');
+    writeUrl(params);
+  }
+  reportClose.addEventListener('click', closeReport);
+
   function openQuality() {
     markAction('quality');
     closeAllPanels();
@@ -2247,6 +2355,8 @@ function mount() {
       if (!comparePanel.hidden) closeCompare();
       if (!qualityPanel.hidden) closeQuality();
       if (!learnPanel.hidden) closeLearn();
+    if (!reportPanel.hidden) closeReport();
+    if (!histographyPanel.hidden) closeHistography();
     if (!turningDrawer.hidden) {
       turningDrawer.hidden = true;
       document.body.classList.remove('turning-open');
@@ -2285,6 +2395,8 @@ function mount() {
     if (initialTrail && trailPlayer.has(initialTrail)) {
       startTrail(initialTrail, Number(params.get('step') || 0));
     }
+    if (params.has('report')) openReport(params.get('report'));
+    if (params.get('histography') === '1') openHistography();
     const initialEpic = params.get('epic');
     if (initialEpic) {
       epicTimeline.setFilter(initialEpic);
@@ -2334,6 +2446,8 @@ function mount() {
       histomap: histomap ? histomap.getState() : { open: false, year, mode: scaleMode, samples: 161 },
       history: { index: navIndex, length: navHistory.length },
       lastAction: window.__vatlasLastAction || null,
+      report: { id: reportId, open: !reportPanel.hidden, step: scrolly?.current() ?? 0 },
+      histography: histography?.state() ?? null,
       compare: comparePair,
       empire: { active: Boolean(empireRuler), ruler: empireRuler },
       sun: { enabled: showSun, year: globe?.statistics?.().sunYear ?? null },
@@ -2361,6 +2475,7 @@ function mount() {
       if (Boolean(empireRuler) !== on) button?.click();
     },
     openTrailForFamily: (family, year) => openTrailForFamily(family, year),
+    openReport,
     toggleSun,
     toggleWire,
     openLearn,
