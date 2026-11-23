@@ -83,6 +83,7 @@ try {
     return brand.right < actions.x;
   }));
   check('mobile : cibles ≥ 44 px', await mobile.evaluate(() => [...document.querySelectorAll('.hud-actions .hud-btn')]
+    .filter((button) => button.getClientRects().length)
     .every((button) => button.getBoundingClientRect().height >= 44)));
   await mobile.close();
 

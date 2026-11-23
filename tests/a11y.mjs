@@ -183,6 +183,10 @@ try {
     ['learn-panel', '#hud-learn-button'],
     ['quality-panel', '#hud-quality-button'],
   ]) {
+    if (trigger === '#hud-quality-button') {
+      await page.click('#hud-display-button');
+      await new Promise((resolve) => setTimeout(resolve, 150));
+    }
     await page.click(trigger);
     await new Promise((resolve) => setTimeout(resolve, 200));
     check(`${id} mobile`, await page.evaluate((panelId) => {

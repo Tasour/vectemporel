@@ -64,6 +64,8 @@ Sur téléphone, les gestes sont désormais déterministes (P14) : un **double-t
 
 Les épiques se filtrent par catégorie (la minimap se recalcule), les ruptures exposent leurs provinces comme raccourcis, `Alt+←/→` parcourt l'historique des années et des provinces, les arcs portent des marqueurs interactifs, et les libellés projected évitent les collisions en priorisant les groupes les plus étendus.
 
+Sur mobile, quatre actions primaires (recherche, affichage, récits, apprentissage) sont dans la zone pouce ; les bascules secondaires se déplient depuis le panneau Affichage ou par appui long. Les 49 ruptures sont aussi accessibles dans un tiroir vertical par siècle. Le clavier utilise un `roving tabindex` (34 arrêts au lieu de 151) et deux liens d'évitement. `Ctrl+K` inclut les bascules secondaires. Sous `?devtools=1`, la latence du dernier geste est affichée et `npm run test:ergonomics` mesure 20 répétitions par option.
+
 La frise peut zoomer sur un seul siècle (101 crans), le bouton `A/B` compare deux années, la dimension **Empire** isole les provinces d'un même souverain, la recherche trouve aussi les souverains et cultures de l'année, et un clic sur un ruban Histomap ouvre le récit correspondant. Le panneau **Affichage** (bouton `☷`, présent sur desktop et mobile) regroupe les outils : recentrer, revenir à 1000, copier le lien, plein écran et **mode zen** (`Z`). `Ctrl+K` ouvre la recherche et un seul panneau peut être ouvert à la fois.
 
 ## Mode révision active
@@ -151,7 +153,7 @@ npm run check
 | `npm run test:devtools` | pont Three.js injecté avant chargement, API in-page |
 | `npm run bridge:check` | configuration du pont OpenCode et CSP production/dev |
 
-Budget mesuré : **35 requêtes / 578 Ko** à la première visite (Three.js et D3 locaux compris), **56 Ko** en régime établi. Le serveur écoute uniquement sur `127.0.0.1`.
+Budget mesuré : **35 requêtes / 507 Ko** à la première visite (Three.js et D3 locaux compris), **56 Ko** en régime établi. Le serveur écoute uniquement sur `127.0.0.1`.
 
 ## Mises à jour et cache
 

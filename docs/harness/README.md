@@ -42,6 +42,17 @@ Relance du parcours en 1658×1150 et 390×844, thèmes sombre et clair, panneaux
 
 Captures de preuve : `captures/fix-verify-dark-trails.png`, `captures/fixv-light-compare.png`, `captures/fixv2-light-histomap.png`, `captures/fixv2-light-1440.png`.
 
+## Ergonomie par option
+
+`npm run test:ergonomics` répète 20 fois chaque option et mesure la latence médiane (1 ms sur la plupart des bascules). Captures relues : `captures/ergo-390-dark.png` (barre primaire en zone pouce), `captures/ergo2-390-turning.png` (tiroir des ruptures), `captures/ergo3-390-drawer.png` (secondaires dans le panneau Affichage), `captures/ergo-1658-dark.png`.
+
+| Avant | Après |
+|---|---|
+| 12 boutons HUD en haut sur mobile | 4 actions primaires en zone pouce |
+| 151 arrêts Tab | 34 |
+| 49 ruptures en bande horizontale | tiroir vertical groupé par siècle |
+| Accès aux bascules secondaires : 1 tap en haut | appui long ou panneau Affichage |
+
 ## Matrice idée → fichiers → tests
 
 | Idée | Fichiers clés | Tests |
@@ -59,4 +70,4 @@ Captures de preuve : `captures/fix-verify-dark-trails.png`, `captures/fixv-light
 
 ## Budget mesuré
 
-Dernier `npm run check` : 1 359 PASS, 35 requêtes / 578 Ko en première visite, 56 Ko en régime établi.
+Dernier `npm run check` : 1 386 PASS, 35 requêtes / 507 Ko en première visite, 56 Ko en régime établi.

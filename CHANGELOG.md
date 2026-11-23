@@ -8,6 +8,7 @@
 - Contrôle automatisé des mentions de licence.
 - Outils d'affichage (recentrage, retour à 1000, copie de lien, plein écran, mode zen) et panneau unique.
 - Onboarding non modal, indicateur de panneau, cartes UI et tutoriel en cinq écrans.
+- Ergonomie : barre d'actions pouce sur mobile, tiroir des ruptures, roving tabindex, palette de commandes étendue.
 
 ### Annulé
 - 20 épiques supplémentaires : l'API Chronas ne publie que 561 épiques et 560 sont déjà importés. Aucune donnée n'a été fabriquée.
@@ -26,8 +27,8 @@
 - Preuves : `audit.mjs --advanced` 40/40 et `roast.mjs` 0 défaut pour le dashboard Histomap.
 
 ### Vérifié
-- `npm run check` : 1 359 PASS / 0 échec.
-- Budget : 35 requêtes / 578 Ko à la première visite, 56 Ko en régime établi.
+- `npm run check` : 1 386 PASS / 0 échec.
+- Budget : 35 requêtes / 507 Ko à la première visite, 56 Ko en régime établi.
 - Captures 1658×1150 et 390×844 relues.
 
 ## 0.1.0 — 2026-11-21

@@ -355,6 +355,18 @@ Les features F22 et F27, initialement reportées, ont été livrées en P10 avec
 - **Annulés et documentés** : 20 épiques supplémentaires (l'API Chronas n'en publie que 561, dont 560 déjà importés ; aucun chiffre inventé), refonte du HUD en navigation principale et réduction à 6 boutons (conflit avec les raccourcis validés), audit axe-core externe (licence MPL nécessitant validation humaine).
 - **Rollback** : restaurer `src/app.js`, `styles.css`, `tests/*`, `README.md`, `docs/` depuis le commit précédent.
 
+## P34 — Ergonomie par option ✅ 2026-11-23
+
+- Score ergonomique instrumenté sous `?devtools=1` (latence geste → effet) ✅
+- Mobile : 4 actions primaires dans la zone pouce, secondaires dans le panneau Affichage ou par appui long ✅
+- Tiroir vertical des 49 ruptures, regroupées par siècle ✅
+- Roving tabindex : 151 → 34 arrêts Tab ; deux liens d'évitement ✅
+- Bascules secondaires ajoutées à la palette `Ctrl+K` ✅
+- Feedback visuel immédiat sur les bascules ✅
+- `tests/ergonomics.mjs` : 20 répétitions par option, latence médiane < 300 ms ✅
+- Captures 1658×1150 et 390×844 (sombre, clair, tiroirs) relues ✅
+- **Rollback** : restaurer `src/app.js`, `index.html`, `styles.css`, `package.json`, `scripts/verify.mjs`, `README.md`, `tests/e2e.mjs`, `tests/a11y.mjs`, `tests/turning-ui.mjs` ; retirer `tests/ergonomics.mjs`.
+
 ## Rollback global
 
 Restaurer `archive/v2-globe-1year/` (ou `archive/v1-map-2d/`) et republier le commit `adc5c9d`.

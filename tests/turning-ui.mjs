@@ -30,6 +30,16 @@ try {
   await page.waitForFunction(() => document.documentElement.dataset.globeReady === 'true', { timeout: 20000 });
 
   check('49 badges détectés', (await page.$$('#turning-strip .turning-badge')).length === 49);
+  await page.click('#timeline-turning');
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  check('tiroir vertical des ruptures', await page.evaluate(() => !document.getElementById('turning-drawer').hidden));
+  check('49 entrées dans le tiroir', (await page.$$('#turning-drawer-list .turning-drawer-item')).length === 49);
+  await page.click('#turning-drawer-list .turning-drawer-item');
+  await new Promise((resolve) => setTimeout(resolve, 500));
+  check('choix dans le tiroir', await page.evaluate(() => document.getElementById('turning-drawer').hidden
+    && window.VATLAS.getState().year === -1335));
+  await page.reload({ waitUntil: 'load', timeout: 60000 });
+  await page.waitForFunction(() => document.documentElement.dataset.globeReady === 'true', { timeout: 20000 });
   check('badges accessibles', await page.evaluate(() => [...document.querySelectorAll('.turning-badge')]
     .every((badge) => badge.getAttribute('aria-label')?.includes('régions changent de souverain'))));
   check('cibles ≥ 44 px', await page.evaluate(() => [...document.querySelectorAll('.turning-badge')]

@@ -69,9 +69,13 @@ button, input { font: inherit; }
   position: absolute;
   top: max(16px, env(safe-area-inset-top));
   right: max(18px, env(safe-area-inset-right));
+  z-index: 46;
   display: flex;
   gap: 8px;
 }
+.hud-actions-more { display: flex; gap: 8px; }
+.hud-btn { transition: transform .12s ease, background-color .12s ease, border-color .12s ease; }
+.hud-btn:active { transform: scale(.94); }
 .hud-btn {
   min-width: 44px;
   min-height: 44px;
@@ -432,8 +436,16 @@ body.histomap-open .hud-readout, body.histomap-open .nav-controls { display: non
 .learn-goal { display: flex; justify-content: space-between; gap: 10px; padding: 10px; border: 1px solid var(--line); border-radius: 8px; font-size: 12px; }
 .learn-goal.done { border-color: var(--gold); color: var(--gold-bright); }
 .learn-next { min-height: 44px; width: 100%; margin-top: 4px; padding: 8px 10px; border: 1px solid var(--gold); border-radius: 8px; background: rgba(230,185,111,.12); color: var(--gold-bright); font-size: 12px; cursor: pointer; }
+.skip-link { position: absolute; top: -100px; left: 8px; z-index: 120; padding: 10px 14px; border: 1px solid var(--gold); border-radius: 8px; background: var(--panel-strong); color: var(--gold-bright); font-size: 12px; text-decoration: none; }
+.skip-link:focus { top: 8px; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
 /* Indicateur de panneau actif (CSS :has, sans état JS). */
+.turning-drawer { z-index: 53; top: auto; right: max(18px, env(safe-area-inset-right)); bottom: max(310px, calc(env(safe-area-inset-bottom) + 310px)); left: auto; width: min(320px, calc(100vw - 36px)); max-height: 56vh; overflow-y: auto; transform: none; }
+.turning-drawer h2 { margin: 0 0 4px; font-family: var(--serif); font-size: 16px; font-weight: 450; color: var(--gold-bright); }
+.turning-drawer-list { display: grid; gap: 4px; margin-top: 8px; }
+.turning-century { margin: 10px 0 2px; color: var(--muted); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; }
+.turning-drawer-item { min-height: 44px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); font-size: 11px; text-align: left; cursor: pointer; }
+.turning-drawer-item:hover { border-color: var(--gold); }
 .panel-indicator { position: fixed; top: max(132px, calc(env(safe-area-inset-top) + 132px)); left: max(18px, env(safe-area-inset-left)); z-index: 70; display: none; padding: 4px 10px; border: 1px solid var(--gold); border-radius: 999px; background: var(--panel-strong); color: var(--gold-bright); font-size: 10px; }
 body:has(.trails-panel:not([hidden])) .panel-indicator,
 body:has(.learn-panel:not([hidden])) .panel-indicator,
@@ -457,6 +469,8 @@ body:has(.histomap-panel:not([hidden])) .panel-indicator::after { content: 'Hist
 .display-tools { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 10px; }
 .display-tools h3 { grid-column: 1 / -1; margin: 4px 0 0; color: var(--muted); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; }
 .display-tools .hm-btn { min-height: 44px; font-size: 10px; }
+.display-panel .hud-actions-more { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.display-panel .hud-actions-more .hud-btn { min-height: 44px; padding: 6px 8px; font-size: 11px; }
 .history-section { grid-column: 1 / -1; display: grid; gap: 6px; margin-top: 4px; }
 .history-section h3 { margin: 0; color: var(--muted); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; }
 .history-list { display: grid; gap: 4px; max-height: 160px; overflow-y: auto; }
@@ -491,7 +505,7 @@ body.zen .arc-host, body.zen #globe-labels { display: none !important; }
 .hud-close { display: none; }
 #hud-display-button { display: inline-flex; }
 .nav-controls { display: none; }
-.display-panel { z-index: 45; }
+.display-panel { z-index: 45; max-height: 72vh; overflow-y: auto; }
 .display-panel .dimension-bar, .display-panel .label-bar { margin-top: 8px; }
 .display-panel .epic-select { width: 100%; max-width: none; margin-top: 8px; }
 
@@ -499,7 +513,18 @@ body.zen .arc-host, body.zen #globe-labels { display: none !important; }
   .hud-brand { top: max(10px, env(safe-area-inset-top)); left: 10px; max-width: 150px; }
   .hud-brand strong { font-size: 9px; letter-spacing: .12em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .hud-brand > span { display: none; }
-  .hud-actions { top: max(10px, env(safe-area-inset-top)); right: 10px; gap: 4px; flex-wrap: wrap; justify-content: flex-end; max-width: 220px; }
+  .hud-actions {
+    top: auto;
+    right: 10px;
+    bottom: max(252px, calc(env(safe-area-inset-bottom) + 252px));
+    gap: 4px;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    max-width: none;
+  }
+  .hud-actions-more { display: none; flex-wrap: wrap; gap: 4px; max-width: 188px; justify-content: flex-end; }
+  body.actions-expanded .hud-actions-more { display: flex; }
+  body.actions-expanded .hud-actions { flex-wrap: wrap; max-width: 188px; }
   .hud-btn { min-width: 44px; min-height: 44px; padding: 8px; }
   #hud-display-button { display: inline-flex; }
 
@@ -556,6 +581,7 @@ body.zen .arc-host, body.zen #globe-labels { display: none !important; }
   .turning-badge { min-width: 44px; min-height: 44px; font-size: 9px; }
   /* En mobile le titre du panneau suffit : l'indicateur le recouvrirait. */
   .panel-indicator { display: none !important; }
+  .display-panel { top: 56px; bottom: auto; max-height: calc(100dvh - 340px); transform: translateX(-50%); }
   .timeline-loading { min-height: 12px; }
   .histomap-panel {
     bottom: max(196px, calc(env(safe-area-inset-bottom) + 196px));
