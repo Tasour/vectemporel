@@ -77,8 +77,14 @@ const jalons = years.map(([year, title]) => {
 const payload = {
   meta: {
     item: 'Dauphiné',
+    title: 'Dauphiné — lignée d’une province',
+    convergence: 'docs/sources/dauphine/convergence.md',
     type: 'province',
     source: 'Chronas CC BY-SA 4.0 + Wikipédia FR + Grokipedia',
+    metric: 'population',
+    metricLabel: 'Population estimée',
+    metricUnit: 'habitants',
+    proofFigures: '<strong>27</strong> jalons · <strong>4 001 ans</strong> · <strong>900 mm</strong> de précipitations annuelles et <strong>25 %</strong> de territoire forestier (Grokipedia).',
     firstYear: years[0][0],
     lastYear: years.at(-1)[0],
     count: jalons.length,

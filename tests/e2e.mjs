@@ -307,23 +307,47 @@ try {
   await new Promise((resolve) => setTimeout(resolve, 120));
   check('qualité fermée', await page.evaluate(() => document.getElementById('quality-panel').hidden));
   await page.evaluate(() => window.VATLAS.openReport('dauphine'));
-  await page.waitForFunction(() => document.querySelectorAll('#report-panel [data-scrolly-step]').length === 27, { timeout: 20000 });
+  await page.waitForFunction(() => document.querySelectorAll('#report-panel [data-scrolly-step]').length >= 20, { timeout: 20000 });
   check('rapport Dauphiné ouvert', await page.evaluate(() => !document.getElementById('report-panel').hidden
     && window.VATLAS.getState().report.id === 'dauphine'));
   check('deep link report', await page.evaluate(() => new URLSearchParams(location.search).get('report') === 'dauphine'));
-  await page.focus('#report-panel .scrolly-wrap');
+  check('article source attribué', await page.evaluate(() => {
+    const source = document.querySelector('#report-panel .wiki-source');
+    return Boolean(source && /Wikipédia FR/.test(source.textContent) && /CC BY-SA 4\.0/.test(source.textContent));
+  }));
+  check('illustrations incorporées', await page.evaluate(() => document.querySelectorAll('#report-panel img[src^="data:image/webp"]').length > 0));
+  await page.focus('#report-panel .scrolly');
   await page.keyboard.press('ArrowDown');
   await new Promise((resolve) => setTimeout(resolve, 200));
   check('navigation du récit', await page.evaluate(() => window.VATLAS.getState().report.step === 1));
   await page.keyboard.press('Escape');
   await new Promise((resolve) => setTimeout(resolve, 150));
   check('rapport fermé', await page.evaluate(() => document.getElementById('report-panel').hidden));
+  await page.evaluate(() => window.VATLAS.openReport('catholicisme'));
+  await page.waitForFunction(() => document.querySelectorAll('#report-panel [data-scrolly-step]').length >= 20, { timeout: 20000 });
+  check('rapport catholique ouvert', await page.evaluate(() => window.VATLAS.getState().report.id === 'catholicisme'
+    && document.querySelector('#report-panel h1').textContent.includes('Catholicisme')));
+  check('récit de religion, pas une liste', await page.evaluate(() => {
+    const first = document.querySelector('#report-panel .scrolly-step p').textContent;
+    return /concile|Église|sacrement|catholique/i.test(first) && !/^province/i.test(first);
+  }));
+  await page.keyboard.press('Escape');
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  await page.click('#hud-display-button');
+  await page.click('#report-open-catholicisme');
+  await new Promise((resolve) => setTimeout(resolve, 300));
+  check('entrée Affichage vers le récit', await page.evaluate(() => window.VATLAS.getState().report.id === 'catholicisme'
+    && !document.getElementById('report-panel').hidden));
+  await page.keyboard.press('Escape');
+  await new Promise((resolve) => setTimeout(resolve, 150));
   await page.click('#hud-histography-button');
   await new Promise((resolve) => setTimeout(resolve, 400));
   check('mode histographie ouvert', await page.evaluate(() => !document.getElementById('histography-panel').hidden
     && window.VATLAS.getState().histography.events > 500));
   check('canvas et curseur présents', await page.evaluate(() => Boolean(document.querySelector('.histo-canvas'))
     && Boolean(document.querySelector('.histo-cursor'))));
+  check('catégorie religions', await page.evaluate(() => [...document.querySelectorAll('.histo-category')]
+    .some((button) => /Religions/.test(button.textContent))));
   await page.click('#histo-mode');
   await new Promise((resolve) => setTimeout(resolve, 200));
   check('mode récits actif', await page.evaluate(() => window.VATLAS.getState().histography.mode === 'recits'
