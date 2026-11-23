@@ -62,3 +62,12 @@ sans réseau ni navigateur supplémentaire. C'est la voie de vérification reten
 - Les deep links historiques `#/pays/époque/événement` doivent rester hydratables (adaptateur V3-9).
 - Le déploiement GitHub Pages part de `dist-pages` : vérifier que rien de non redistribuable
   (voir `~/.config/opencode/THIRD-PARTY.md`) n'y entre.
+
+
+## Design gate Apple — obligatoire (v1.0.0)
+
+- Sources uniques : `~/.config/opencode/design/UNIVERSAL_DESIGN_RULES.md` (v1.0.0, 60 règles U01–U60) et `SOURCES.md` (18 sources). `APPLE_DESIGN_RULES.md` reste le sous-ensemble aliasé R01–R20. Aucune copie locale.
+- Avant toute livraison d'interface : `~/.config/opencode/design/apple-design-gate.sh --url <URL> --fail-on P0` (ou `--file <fichier>`).
+- **P0 = livraison interdite** (le plugin `apple-design-gates` bloque `git commit`/`git push`) ; P1 = acceptation explicite ; P2 = consigné.
+- Tout écart mesuré devient une ligne `FIX-nn` avec règle, sélecteur, mesure, attendu et capture. Aucun écart inventé.
+- Les agents `ui-architecte`, `ux-accessibilite`, `visual-regression`, `architect-frontend` chargent le skill `apple-design-gates`.

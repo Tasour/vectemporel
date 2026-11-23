@@ -1,0 +1,1 @@
+/home/tasour/.config/opencode/design/UNIVERSAL_DESIGN_RULES.md
