@@ -66,6 +66,19 @@ function mount() {
     ? yearToCenturyPosition(value, centuryBase) : yearToPosition(value, scaleMode));
   const yearOfPosition = (position) => (zoomMode === 'century'
     ? centuryPositionToYear(position, centuryBase) : positionToYear(position, scaleMode));
+  /* Mesure ergonomique : délai gesture → effet, exposé seulement aux tests. */
+  let gestureStart = 0;
+  document.addEventListener('pointerdown', () => { gestureStart = performance.now(); }, { capture: true });
+  document.addEventListener('keydown', (event) => {
+    if (!event.repeat) gestureStart = performance.now();
+  }, { capture: true });
+  function markAction(name) {
+    window.__vatlasLastAction = {
+      name,
+      latency: gestureStart ? Math.max(0, Math.round(performance.now() - gestureStart)) : 0,
+    };
+  }
+
   let showArcs = params.get('arcs') === '1';
   const PROGRESS_KEY = 'vectemporel-progress-v1';
   function loadProgress() {
@@ -109,6 +122,33 @@ function mount() {
     if (entry.selected) select(entry.selected);
     replayingNav = false;
     readout.textContent = `Historique : ${entry.year}${entry.selected ? ` · ${entry.selected}` : ''}.`;
+  }
+
+  /* Tab navigation parcimonieuse dans les grilles : un seul arrêt Tab,
+   * puis les flèches pour circuler (roving tabindex). */
+  function enableRoving(container, selector) {
+    if (!container) return;
+    const items = [...container.querySelectorAll(selector)];
+    if (!items.length) return;
+    items.forEach((item, index) => item.setAttribute('tabindex', index === 0 ? '0' : '-1'));
+    for (const item of items) {
+      item.addEventListener('focus', () => {
+        for (const other of items) other.setAttribute('tabindex', other === item ? '0' : '-1');
+      });
+    }
+    container.addEventListener('keydown', (event) => {
+      const keys = ['ArrowRight', 'ArrowLeft', 'ArrowDown', 'ArrowUp', 'Home', 'End'];
+      if (!keys.includes(event.key)) return;
+      const current = items.indexOf(document.activeElement);
+      if (current < 0) return;
+      event.preventDefault();
+      let next = current;
+      if (event.key === 'Home') next = 0;
+      else if (event.key === 'End') next = items.length - 1;
+      else if (event.key === 'ArrowRight' || event.key === 'ArrowDown') next = (current + 1) % items.length;
+      else next = (current - 1 + items.length) % items.length;
+      items[next].focus();
+    });
   }
 
   function renderHistoryList() {
@@ -271,7 +311,12 @@ function mount() {
   helpButton.type = 'button';
   helpButton.id = 'hud-help-button';
   helpButton.setAttribute('aria-label', 'Afficher les commandes (touche point d’interrogation)');
-  actions.append(tourButton, searchButton, displayButton, arcsButton, sunButton, wireButton, trailsButton, learnButton, qualityButton, compareButton, reviewButton, themeButton, helpButton);
+  /* Mobile : quatre actions primaires dans la zone pouce ; les bascules
+   * secondaires rejoignent le tiroir Affichage via .hud-actions-more. */
+  const actionsMore = el('div', 'hud-actions-more');
+  actionsMore.id = 'hud-actions-more';
+  actionsMore.append(tourButton, arcsButton, sunButton, wireButton, qualityButton, compareButton, reviewButton, themeButton, helpButton);
+  actions.append(searchButton, displayButton, trailsButton, learnButton, actionsMore);
   const savedTheme = localStorage.getItem('history-theme');
   if (savedTheme === 'light') document.documentElement.dataset.theme = 'light';
 
@@ -574,12 +619,21 @@ function mount() {
   histomapButton.id = 'hud-histomap-button';
   histomapButton.setAttribute('aria-pressed', 'false');
   histomapButton.setAttribute('aria-label', 'Ouvrir l’Histomap des familles culturelles (touche H)');
+  const turningListButton = el('button', 'timeline-scale', 'Ruptures');
+  turningListButton.type = 'button';
+  turningListButton.id = 'timeline-turning';
+  turningListButton.setAttribute('aria-label', 'Ouvrir la liste verticale des ruptures');
   const zoomButton = el('button', 'timeline-scale', zoomMode === 'century' ? 'Siècle' : '4 001 ans');
   zoomButton.type = 'button';
   zoomButton.id = 'timeline-zoom';
   zoomButton.setAttribute('aria-pressed', String(zoomMode === 'century'));
   zoomButton.setAttribute('aria-label', 'Basculer le zoom de la frise entre 4 001 ans et un siècle');
-  minimapRow.append(minimap, scaleButton, zoomButton, histomapButton);
+  minimapRow.append(minimap, scaleButton, zoomButton, turningListButton, histomapButton);
+  turningListButton.addEventListener('click', () => {
+    markAction('ruptures');
+    turningDrawer.hidden = !turningDrawer.hidden;
+    document.body.classList.toggle('turning-open', !turningDrawer.hidden);
+  });
   const loading = el('span', 'timeline-loading', '');
   loading.id = 'timeline-loading';
   loading.hidden = true;
@@ -780,6 +834,38 @@ function mount() {
   }
   qualityPanel.append(qualityClose, qualityTitle, qualityMeta, qualityList);
 
+  const turningDrawer = el('section', 'hud-overlay turning-drawer');
+  turningDrawer.id = 'turning-drawer';
+  turningDrawer.setAttribute('role', 'dialog');
+  turningDrawer.setAttribute('aria-label', 'Liste des ruptures par siècle');
+  turningDrawer.hidden = true;
+  const turningDrawerTitle = el('h2', '', 'Ruptures détectées');
+  const centuryCount = new Set(TURNING_POINTS.points.map((point) => Math.floor(point.year / 100))).size;
+  const turningDrawerMeta = el('p', 'learn-meta', `${TURNING_POINTS.points.length} extraits Chronas · ${centuryCount} siècles`);
+  const turningDrawerList = el('div', 'turning-drawer-list');
+  turningDrawerList.id = 'turning-drawer-list';
+  let currentCentury = null;
+  for (const point of TURNING_POINTS.points) {
+    const century = Math.floor(point.year / 100) * 100;
+    if (century !== currentCentury) {
+      currentCentury = century;
+      turningDrawerList.appendChild(el('h3', 'turning-century', century < 0 ? `${-century} av. J.-C.` : `${century} apr. J.-C.`));
+    }
+    const item = el('button', 'turning-drawer-item', `${point.year < 0 ? `−${-point.year}` : point.year} · ${point.provinces[0] || ''}`);
+    item.type = 'button';
+    item.setAttribute('aria-label', `Rupture en ${point.year}, ${point.rulers} régions`);
+    item.addEventListener('click', () => {
+      applyYear(point.year, { notify: false });
+      if (point.provinces[0]) select(point.provinces[0]);
+      showTurningProvinces(point);
+      markAction('rupture');
+      turningDrawer.hidden = true;
+      document.body.classList.remove('turning-open');
+    });
+    turningDrawerList.appendChild(item);
+  }
+  turningDrawer.append(turningDrawerTitle, turningDrawerMeta, turningDrawerList);
+
   const comparePanel = el('section', 'hud-overlay compare-panel');
   comparePanel.id = 'compare-panel';
   comparePanel.setAttribute('role', 'dialog');
@@ -856,7 +942,7 @@ function mount() {
   recenter.setAttribute('aria-label', 'Recentrer la sphère');
   navControls.append(zoomIn, zoomOut, recenter);
 
-  hud.append(brand, actions, card, tooltip, arcHost, arcTip, searchOverlay, helpOverlay, yearDialog, reviewPanel, trailsPanel, histomapPanel, learnPanel, qualityPanel, comparePanel, readout, timeline, navControls, displayPanel, error);
+  hud.append(brand, actions, card, tooltip, arcHost, arcTip, searchOverlay, helpOverlay, yearDialog, reviewPanel, trailsPanel, histomapPanel, learnPanel, qualityPanel, turningDrawer, comparePanel, readout, timeline, navControls, displayPanel, error);
   if (budgetWidget) hud.appendChild(budgetWidget);
 
   const panelIndicator = el('div', 'panel-indicator');
@@ -939,6 +1025,13 @@ function mount() {
 
   function toggleDisplayPanel() {
     displayPanel.hidden = !displayPanel.hidden;
+    /* Sur mobile, les bascules secondaires vivent dans le panneau Affichage
+     * plutôt que de flotter au-dessus de la frise. */
+    if (mobileQuery.matches) {
+      if (displayPanel.hidden) actions.appendChild(actionsMore);
+      else displayPanel.appendChild(actionsMore);
+    }
+    document.body.classList.toggle('display-open', !displayPanel.hidden);
     displayButton.setAttribute('aria-expanded', String(!displayPanel.hidden));
     if (!displayPanel.hidden && !reviewPanel.hidden) closeReview();
   }
@@ -1507,6 +1600,7 @@ function mount() {
   }
 
   function toggleArcs() {
+    markAction('arcs');
     showArcs = !showArcs;
     arcsButton.setAttribute('aria-pressed', String(showArcs));
     params.set('arcs', showArcs ? '1' : '0');
@@ -1546,6 +1640,7 @@ function mount() {
   let histomapAbort = null;
 
   function openTrails() {
+    markAction('trails');
     closeAllPanels();
     trailsPanel.hidden = false;
     trailsButton.setAttribute('aria-expanded', 'true');
@@ -1655,6 +1750,10 @@ function mount() {
     if (!qualityPanel.hidden) closeQuality();
     if (!comparePanel.hidden) closeCompare();
     if (!learnPanel.hidden) closeLearn();
+    if (!turningDrawer.hidden) {
+      turningDrawer.hidden = true;
+      document.body.classList.remove('turning-open');
+    }
     if (!searchOverlay.hidden) { searchOverlay.hidden = true; search.setAttribute('aria-expanded', 'false'); }
     if (!helpOverlay.hidden) helpOverlay.hidden = true;
     if (!yearDialog.hidden) yearDialog.hidden = true;
@@ -1663,6 +1762,7 @@ function mount() {
 
   let learn = null;
   function openLearn() {
+    markAction('learn');
     closeAllPanels();
     if (!learn) {
       learn = createLearnPanel(learnPanel, {
@@ -1694,6 +1794,7 @@ function mount() {
   });
 
   function toggleSun() {
+    markAction('sun');
     showSun = !showSun;
     sunButton.setAttribute('aria-pressed', String(showSun));
     globe?.setSunYear(year, showSun);
@@ -1705,6 +1806,7 @@ function mount() {
   }
 
   function toggleWire() {
+    markAction('wire');
     showWire = !showWire;
     wireButton.setAttribute('aria-pressed', String(showWire));
     globe?.setWireframe(showWire);
@@ -1784,6 +1886,7 @@ function mount() {
   }
 
   function openCompare() {
+    markAction('compare');
     closeAllPanels();
     comparePanel.hidden = false;
     compareButton.setAttribute('aria-expanded', 'true');
@@ -1795,6 +1898,7 @@ function mount() {
     writeUrl(params);
   }
   function openQuality() {
+    markAction('quality');
     closeAllPanels();
     qualityPanel.hidden = false;
     qualityButton.setAttribute('aria-expanded', 'true');
@@ -1837,6 +1941,7 @@ function mount() {
   }
 
   async function openHistomap() {
+    markAction('histomap');
     closeAllPanels();
     histomapPanel.hidden = false;
     document.body.classList.add('histomap-open');
@@ -1952,6 +2057,20 @@ function mount() {
           },
         });
       }
+    }
+    /* Palette de commandes : les bascules secondaires restent accessibles
+     * au clavier sans reproduire les boutons dans le HUD mobile. */
+    const commands = [
+      ['ombre solaire', 'Basculer l’ombre solaire', () => toggleSun()],
+      ['fil de fer', 'Basculer le rendu fil de fer', () => toggleWire()],
+      ['simultanéité', 'Basculer les arcs de simultanéité', () => toggleArcs()],
+      ['anomalies', 'Ouvrir la qualité des données', () => openQuality()],
+      ['comparer', 'Ouvrir la comparaison A/B', () => openCompare()],
+      ['ruptures', 'Ouvrir la liste des ruptures', () => turningListButton.click()],
+    ];
+    for (const [keyword, label, action] of commands) {
+      if (!keyword.includes(needle)) continue;
+      results.push({ text: `Commande · ${label}`, weight: 0, action });
     }
     return results.sort((a, b) => (b.weight || 0) - (a.weight || 0) || a.text.localeCompare(b.text, 'fr'));
   }
@@ -2128,6 +2247,10 @@ function mount() {
       if (!comparePanel.hidden) closeCompare();
       if (!qualityPanel.hidden) closeQuality();
       if (!learnPanel.hidden) closeLearn();
+    if (!turningDrawer.hidden) {
+      turningDrawer.hidden = true;
+      document.body.classList.remove('turning-open');
+    }
       if (!card.hidden && mobileQuery.matches) closeCard();
       searchOverlay.hidden = true;
       helpOverlay.hidden = true;
@@ -2210,6 +2333,7 @@ function mount() {
       arcs: { enabled: showArcs, linked: arcLinks.map((item) => item.name) },
       histomap: histomap ? histomap.getState() : { open: false, year, mode: scaleMode, samples: 161 },
       history: { index: navIndex, length: navHistory.length },
+      lastAction: window.__vatlasLastAction || null,
       compare: comparePair,
       empire: { active: Boolean(empireRuler), ruler: empireRuler },
       sun: { enabled: showSun, year: globe?.statistics?.().sunYear ?? null },
@@ -2264,11 +2388,42 @@ function mount() {
     setView: (view) => globe?.setView(view),
     diagnostics: () => ({ seed: SEED, features: FEATURES.length, areas: MAP_META.areas, webgl: Boolean(globe) }),
   };
+  /* Appui long sur une action primaire : déplie les options secondaires. */
+  let longPressTimer = 0;
+  actions.addEventListener('pointerdown', (event) => {
+    if (!event.target.closest('#hud-actions > .hud-btn')) return;
+    longPressTimer = window.setTimeout(() => {
+      document.body.classList.add('actions-expanded');
+      markAction('appui-long');
+      readout.textContent = 'Options secondaires dépliées.';
+    }, 600);
+  });
+  const clearLongPress = () => { window.clearTimeout(longPressTimer); };
+  actions.addEventListener('pointerup', clearLongPress);
+  actions.addEventListener('pointercancel', clearLongPress);
+  actions.addEventListener('pointerleave', clearLongPress);
+
+  for (const link of document.querySelectorAll('.skip-link')) {
+    link.addEventListener('click', () => {
+      const target = document.querySelector(link.getAttribute('href'));
+      target?.focus?.();
+    });
+  }
+
+  enableRoving(dimensions, '.dimension-btn');
+  enableRoving(labelBar, '.label-btn');
+  enableRoving(trailsList, '.trail-item');
+  enableRoving(turningStrip, '.turning-badge');
+  enableRoving(turningDrawerList, '.turning-drawer-item');
+  enableRoving(learnPanel.querySelector('.learn-tabs'), '.learn-tab');
+  enableRoving(comparePresets, '.hm-btn');
+  enableRoving(document.getElementById('history-list'), '.history-item');
+
   document.documentElement.dataset.globeReady = 'true';
   if (budgetWidget) {
     const resources = performance.getEntriesByType('resource');
     const bytes = resources.reduce((sum, entry) => sum + (entry.transferSize || 0), 0);
-    budgetWidget.textContent = `Budget : ${resources.length} requêtes · ${Math.round(bytes / 1024)} Ko`;
+    budgetWidget.textContent = `Budget : ${resources.length} requêtes · ${Math.round(bytes / 1024)} Ko · dernière action : ${window.__vatlasLastAction?.latency ?? 0} ms`;
   }
 }
 
