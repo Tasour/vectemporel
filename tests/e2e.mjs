@@ -594,6 +594,38 @@ try {
   await mobile.click('#hud-card-close');
   await new Promise((resolve) => setTimeout(resolve, 200));
   check('mobile : fermeture fiche', await mobile.evaluate(() => document.getElementById('hud-card').hidden && !document.body.classList.contains('card-open')));
+  await mobile.evaluate(() => window.VATLAS.openSubject('dauphine'));
+  await mobile.waitForFunction(() => window.VATLAS.getState().subject.articles > 0, { timeout: 30000 });
+  check('mobile : titre du sujet visible', await mobile.evaluate(() => {
+    const title = document.querySelector('.subject-header h2').getBoundingClientRect();
+    return title.width > 0 && title.top < 120;
+  }));
+  check('mobile : périodes tactiles', await mobile.evaluate(() => [...document.querySelectorAll('.subject-period')]
+    .every((button) => button.getBoundingClientRect().height >= 44)));
+  const beforeSwipe = await mobile.evaluate(() => window.VATLAS.getState().subject.from);
+  await mobile.evaluate(() => {
+    const before = window.VATLAS.getState().subject.from;
+    void before;
+    const canvas = document.querySelector('.subject-canvas canvas');
+    const rect = canvas.getBoundingClientRect();
+    const y = rect.top + rect.height / 2;
+    canvas.dispatchEvent(new PointerEvent('pointerdown', { pointerId: 7, pointerType: 'touch', clientX: rect.left + 300, clientY: y, bubbles: true }));
+    canvas.dispatchEvent(new PointerEvent('pointermove', { pointerId: 7, pointerType: 'touch', clientX: rect.left + 120, clientY: y, bubbles: true }));
+    canvas.dispatchEvent(new PointerEvent('pointerup', { pointerId: 7, pointerType: 'touch', clientX: rect.left + 120, clientY: y, bubbles: true }));
+  });
+  await new Promise((resolve) => setTimeout(resolve, 200));
+  check('mobile : glissement du champ', await mobile.evaluate((previous) => window.VATLAS.getState().subject.from !== previous, beforeSwipe));
+  await mobile.evaluate(() => {
+    const canvas = document.querySelector('.subject-canvas canvas');
+    const rect = canvas.getBoundingClientRect();
+    const point = window.VATLAS.getState().subject.points[0];
+    if (!point) return;
+    canvas.dispatchEvent(new PointerEvent('pointerdown', { pointerId: 8, pointerType: 'touch', clientX: rect.left + point.x, clientY: rect.top + point.y, bubbles: true }));
+    canvas.dispatchEvent(new PointerEvent('pointerup', { pointerId: 8, pointerType: 'touch', clientX: rect.left + point.x, clientY: rect.top + point.y, bubbles: true }));
+  });
+  await new Promise((resolve) => setTimeout(resolve, 200));
+  check('mobile : feuille article', await mobile.evaluate(() => !document.querySelector('.subject-card').hidden));
+  await mobile.evaluate(() => document.getElementById('subject-close').click());
   const layout = await mobile.evaluate(() => {
     const box = (selector) => {
       const element = document.querySelector(selector);

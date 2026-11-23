@@ -28,7 +28,7 @@ const external = [];
 page.on('pageerror', (error) => errors.push(error.message));
 page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
 page.on('request', (request) => {
-  if (!request.url().startsWith(`${ORIGIN}/`)) external.push(request.url());
+  if (!request.url().startsWith(`${ORIGIN}/`) && !request.url().startsWith('data:')) external.push(request.url());
 });
 
 try {

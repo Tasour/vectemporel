@@ -27,7 +27,7 @@ try {
   page.on('pageerror', (error) => errors.push(error.message));
   page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
   page.on('request', (request) => {
-    if (!request.url().startsWith(new URL(BASE).origin)) external.push(request.url());
+    if (!request.url().startsWith(new URL(BASE).origin) && !request.url().startsWith('data:')) external.push(request.url());
   });
   await page.goto(`${BASE}?year=1000`, { waitUntil: 'load', timeout: 60000 });
   await page.waitForFunction(() => document.documentElement.dataset.globeReady === 'true', { timeout: 20000 });

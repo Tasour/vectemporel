@@ -188,17 +188,26 @@ export function createHistography(host, { province = null, onEvent = () => {} } 
     ctx.fillRect(0, 0, width, height);
     points = [];
     const shown = visibleEvents();
+    const columns = new Map();
     for (const event of shown) {
-      const seed = hash(event.id);
-      const x = 30 + ((event.year - from) / Math.max(1, to - from)) * (width - 60);
-      const lane = seed % 24;
-      const y = 40 + lane * ((height - 80) / 24);
-      const size = hovered === event ? 7 : 3;
-      ctx.beginPath();
-      ctx.arc(x, y, size, 0, Math.PI * 2);
-      ctx.fillStyle = hovered === event ? '#ffffff' : 'rgba(255,255,255,.82)';
-      ctx.fill();
-      points.push({ event, x, y });
+      if (!columns.has(event.year)) columns.set(event.year, []);
+      columns.get(event.year).push(event);
+    }
+    const baseline = height / 2;
+    const gap = 10;
+    for (const [year, list] of columns) {
+      const x = 30 + ((year - from) / Math.max(1, to - from)) * (width - 60);
+      list.forEach((event, index) => {
+        const level = Math.floor(index / 2) + 1;
+        const sign = index % 2 === 0 ? -1 : 1;
+        const y = Math.max(20, Math.min(height - 20, baseline + sign * level * gap));
+        const size = hovered === event ? 7 : 3;
+        ctx.beginPath();
+        ctx.arc(x, y, size, 0, Math.PI * 2);
+        ctx.fillStyle = hovered === event ? '#ffffff' : 'rgba(255,255,255,.82)';
+        ctx.fill();
+        points.push({ event, x, y });
+      });
     }
   }
 
