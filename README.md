@@ -56,6 +56,8 @@ Les récits `?report=dauphine` et `?report=catholicisme` sont générés depuis 
 
 Le sélecteur d'année reste un filtre de découverte des items ; il n'ancre pas le récit. Figure épinglée avec progression par section, readout `role="status"`, navigation clavier ↑/↓, `prefers-reduced-motion`. Le HTML livré à l'app est un fragment sans `<script>` inline : le runtime est le module local `src/reports/scrolly.js`, compatible avec la CSP `script-src 'self'`. Les deux récits sont accessibles depuis le panneau **Affichage → Récits d'un item**, depuis la fiche du Dauphiné, et depuis les repères « Religions » de la frise Histographie. Les anciens récits composés à partir des seules séries Chronas ne sont plus livrés.
 
+Cliquer une province cartographiée ouvre désormais le **mode sujet** (`?subject=dauphine`) à la place de la fiche : un champ PixiJS reprenant la direction artistique d'Histography, avec des **carrés** pour les articles Wikipédia archivés localement, un double curseur d'années et un mode « Récits ». La stack d'origine (jQuery 1.10.2 + PixiJS 3) est archivée dans `docs/histography-source/` avec les empreintes et l'accord explicite de l'utilisateur ; les appels distants en ont été retirés. Dauphiné est le pilote (19 articles) ; `node scripts/build-subject.mjs <item> "<requête>"` génère les autres sujets à la demande. Les 13 commandes secondaires sont regroupées dans le bouton **⋯ Outils**, et toutes les croix de fermeture sont en haut à droite.
+
 Le bouton **HIST** (`?histography=1`) ouvre une frise d'événements dans l'esprit d'Histography : champ gris, points blancs, menu sombre, pied à deux bornes d'années, curseur vertical et fiche d'événement. Les catégories (guerres, empires, ruptures, provinces) filtrent les 560 épiques Chronas et les 49 ruptures ; les époques déplacent la plage. Le bouton « Lire les récits → » bascule vers un flux éditorial déterministe groupé par époque (ruptures et faits de province prioritaires, puis échantillonnage régulier), où chaque carte ouvre le récit lié. Sur mobile, le menu passe en tiroir. **Réimplémentation originale** : le site de référence ne publie aucune licence, donc aucun code ni asset n'a été copié (spécification et observations dans `docs/architecture/HISTOGRAPHE-SPEC.md`).
 
 ## Qualité des données
@@ -130,7 +132,7 @@ npm run bridge:check   # config MCP, wrapper, CSP production/dev, proxy si actif
 npm run check
 ```
 
-`npm run check` ne demande aucun terminal annexe : les harnais e2e, perf et pwa démarrent leur propre serveur loopback (ports 4186, 4187, 4188) et l'arrêtent en sortie. Le gate de design (`npm run design:gate`) balaie 21 états de l'app (tous les panneaux, les deux thèmes implicitement via les états pilotés, les deep links) aux deux viewports imposés, puis contrôle les deux fragments de récit ; il réutilise `~/.config/opencode/design/apple-design-gate.sh` sans dupliquer les 60 règles universelles. Les règles non mesurables par le script restent `notMeasured`, jamais déclarées vertes.
+`npm run check` ne demande aucun terminal annexe : les harnais e2e, perf et pwa démarrent leur propre serveur loopback (ports 4186, 4187, 4188) et l'arrêtent en sortie. Le gate de design (`npm run design:gate`) balaie 23 états de l'app (tous les panneaux, les deux thèmes implicitement via les états pilotés, les deep links) aux deux viewports imposés, puis contrôle les deux fragments de récit ; il réutilise `~/.config/opencode/design/apple-design-gate.sh` sans dupliquer les 60 règles universelles. Les règles non mesurables par le script restent `notMeasured`, jamais déclarées vertes.
 
 | Commande | Rôle |
 |---|---|
@@ -159,7 +161,8 @@ npm run check
 | `npm run licenses:check` | mentions de licence dans les livrables |
 | `node tests/http-guards.mjs` | vrai serveur : whitelist, en-têtes, entrées malformées, survie |
 | `npm run test:live` | gate live 1440×1000 et 390×844 : cibles ≥ 44 px, collisions HUD, débordement, console, réseau |
-| `npm run design:gate` | gate de design universel : 21 états × 2 viewports + les deux fragments de récit, aucune règle réimplémentée |
+| `npm run design:gate` | gate de design universel : 23 états × 2 viewports (dont le mode sujet) + les deux fragments de récit |
+| `node scripts/build-subject.mjs <item> "<requête>"` | génère le jeu d'articles Wikipédia local d'un sujet |
 | `npm run test:e2e` | deep link, WebGL, fiche, clavier, recherche, aide, révision |
 | `npm run test:perf` | budget < 50 requêtes / < 1 Mo |
 | `npm run test:pwa` | manifest, cache versionné, survie hors ligne |

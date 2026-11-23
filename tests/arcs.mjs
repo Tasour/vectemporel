@@ -31,6 +31,8 @@ try {
   await wait(900);
 
   check('bouton simultanéité présent', Boolean(await page.$('#hud-arcs-button')));
+  await page.evaluate(() => document.getElementById('hud-tools-button')?.click());
+  await wait(100);
   check('bouton 44 px', await page.evaluate(() => {
     const box = document.getElementById('hud-arcs-button').getBoundingClientRect();
     return box.width >= 44 && box.height >= 44;

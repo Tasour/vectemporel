@@ -94,6 +94,10 @@ try {
     ['learn-panel', '#hud-learn-button'],
     ['quality-panel', '#hud-quality-button'],
   ]) {
+    if (trigger === '#hud-quality-button') {
+      await page.evaluate(() => document.getElementById('hud-tools-button')?.click());
+      await new Promise((resolve) => setTimeout(resolve, 80));
+    }
     await page.click(trigger);
     await new Promise((resolve) => setTimeout(resolve, 200));
     const state = await page.evaluate((panelId) => {
@@ -128,6 +132,8 @@ try {
     const headings = [...document.querySelectorAll('h1,h2,h3')].map((node) => Number(node.tagName[1]));
     return headings[0] === 1 && headings.every((level, index) => index === 0 || level >= headings[index - 1] - 1);
   }));
+  await page.evaluate(() => document.getElementById('hud-tools-button')?.click());
+  await new Promise((resolve) => setTimeout(resolve, 100));
   check('aide non recouverte', await page.evaluate(() => {
     const button = document.getElementById('hud-help-button');
     const box = button.getBoundingClientRect();

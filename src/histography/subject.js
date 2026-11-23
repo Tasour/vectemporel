@@ -35,7 +35,7 @@ export async function createSubjectField(host, data, { onArticle = () => {} } = 
   shell.className = 'subject-shell';
   const menu = document.createElement('aside');
   menu.className = 'subject-menu';
-  menu.innerHTML = `<h2>${data.title}</h2><p class="subject-sub">${data.articles.length} articles Wikipédia</p>`
+  menu.innerHTML = `<h2>${data.meta.title}</h2><p class="subject-sub">${data.articles.length} articles Wikipédia</p>`
     + '<button type="button" class="subject-mode" aria-pressed="false">Lire les récits →</button>'
     + '<p class="subject-source">Articles archivés localement · CC BY-SA 4.0</p>';
   const stage = document.createElement('div');
@@ -83,13 +83,14 @@ export async function createSubjectField(host, data, { onArticle = () => {} } = 
   fromInput.value = String(from);
   toInput.value = String(to);
 
-  const app = new PIXI.Application(Math.max(320, stage.clientWidth), Math.max(240, stage.clientHeight), {
+  const renderer = PIXI.autoDetectRenderer(Math.max(320, stage.clientWidth), Math.max(240, stage.clientHeight), {
     backgroundColor: 0x9a9a9a, antialias: true,
   });
-  canvasHost.appendChild(app.view);
+  const stagePixi = new PIXI.Stage();
+  canvasHost.appendChild(renderer.view);
   const squares = [];
   const graphics = new PIXI.Graphics();
-  app.stage.addChild(graphics);
+  stagePixi.addChild(graphics);
 
   function visible() {
     return data.articles.filter((article) => article.year >= from && article.year <= to);
@@ -97,7 +98,7 @@ export async function createSubjectField(host, data, { onArticle = () => {} } = 
   function draw() {
     const width = Math.max(320, stage.clientWidth);
     const height = Math.max(240, stage.clientHeight);
-    app.renderer.resize(width, height);
+    renderer.resize(width, height);
     graphics.clear();
     squares.length = 0;
     for (const article of visible()) {
@@ -111,6 +112,7 @@ export async function createSubjectField(host, data, { onArticle = () => {} } = 
       graphics.endFill();
       squares.push({ article, x, y });
     }
+    renderer.render(stagePixi);
   }
   function loop() {
     raf = null;
@@ -160,7 +162,7 @@ export async function createSubjectField(host, data, { onArticle = () => {} } = 
   }
 
   const onMove = (event) => {
-    const rect = app.view.getBoundingClientRect();
+    const rect = renderer.view.getBoundingClientRect();
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
     cursor.style.left = `${x}px`;
@@ -182,8 +184,8 @@ export async function createSubjectField(host, data, { onArticle = () => {} } = 
       schedule();
     }
   };
-  app.view.addEventListener('mousemove', onMove);
-  app.view.addEventListener('click', onClick);
+  renderer.view.addEventListener('mousemove', onMove);
+  renderer.view.addEventListener('click', onClick);
   canvasHost.addEventListener('keydown', onKey);
   const onFrom = () => { from = Math.min(to - 1, Number(fromInput.value) || from); schedule(); };
   const onTo = () => { to = Math.max(from + 1, Number(toInput.value) || to); schedule(); };
@@ -204,9 +206,9 @@ export async function createSubjectField(host, data, { onArticle = () => {} } = 
       if (raf !== null) cancelAnimationFrame(raf);
       document.removeEventListener('visibilitychange', onVisibility);
       window.removeEventListener('resize', onResize);
-      app.view.removeEventListener('mousemove', onMove);
-      app.view.removeEventListener('click', onClick);
-      app.destroy();
+      renderer.view.removeEventListener('mousemove', onMove);
+      renderer.view.removeEventListener('click', onClick);
+      renderer.destroy();
       host.replaceChildren();
     },
   };

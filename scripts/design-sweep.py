@@ -39,6 +39,8 @@ STATES = [
     ('histographie-recits', '?histography=1', ["document.getElementById('histo-mode').click()"]),
     ('rapport-dauphine', '?report=dauphine', []),
     ('rapport-catholicisme', '?report=catholicisme', []),
+    ('sujet-dauphine', '?subject=dauphine', []),
+    ('sujet-recits', '?subject=dauphine', ["document.querySelector('.subject-mode').click()"]),
     ('trail', '?trail=soie&step=2', []),
     ('arcs', '?arcs=1', []),
     ('soleil', '?sun=1', []),
@@ -64,6 +66,8 @@ def main():
                 ctx = browser.new_context(viewport={'width': width, 'height': height})
                 pg = ctx.new_page()
                 pg.goto(args.url + query, wait_until='load', timeout=60000)
+                if 'subject=' in query:
+                    pg.wait_for_selector('.subject-canvas canvas', timeout=30000)
                 pg.wait_for_timeout(400)
                 for action in actions:
                     try:

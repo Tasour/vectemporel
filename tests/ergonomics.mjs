@@ -40,10 +40,15 @@ try {
     ['Histomap', '#hud-histomap-button'],
     ['ruptures', '#timeline-turning'],
   ];
+  await page.evaluate(() => document.getElementById('hud-tools-button')?.click());
+  await new Promise((resolve) => setTimeout(resolve, 100));
   const medians = {};
   for (const [name, selector] of options) {
     const latencies = [];
     for (let index = 0; index < 20; index += 1) {
+      await page.evaluate(() => {
+        if (!document.body.classList.contains('tools-open')) document.getElementById('hud-tools-button')?.click();
+      });
       await page.click(selector);
       await new Promise((resolve) => setTimeout(resolve, 30));
       const action = await page.evaluate(() => window.__vatlasLastAction || null);

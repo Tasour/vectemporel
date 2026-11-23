@@ -13,6 +13,20 @@ const check = (name, ok, detail = '') => {
   console.log(`${ok ? 'PASS' : 'FAIL'} ${name}${detail ? ` — ${detail}` : ''}`);
 };
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const SECONDARY = new Set([
+  'hud-help-button', 'hud-theme-button', 'hud-compare-button', 'hud-sun-button',
+  'hud-wire-button', 'hud-quality-button', 'hud-histography-button',
+  'hud-tour-button', 'hud-review-button', 'hud-arcs-button',
+]);
+async function clickHud(page, id) {
+  if (SECONDARY.has(id)) {
+    await page.evaluate(() => {
+      if (!document.body.classList.contains('tools-open')) document.getElementById('hud-tools-button')?.click();
+    });
+    await wait(80);
+  }
+  await page.click(`#${id}`);
+}
 
 /* Événements pointer synthétiques : indépendants de la latence du headless. */
 async function touchEvents(page, events) {
@@ -169,7 +183,7 @@ try {
   await new Promise((resolve) => setTimeout(resolve, 120));
   check('recherche sans résultat : état explicite', await page.evaluate(() => document.getElementById('region-suggestions').hidden));
 
-  await page.click('#hud-help-button');
+  await clickHud(page, 'hud-help-button');
   await wait(120);
   check('aide visible', await page.evaluate(() => !document.getElementById('hud-help').hidden));
   await page.keyboard.press('Escape');
@@ -189,7 +203,7 @@ try {
   await page.click('.dimension-btn[data-dimension="empire"]');
   await new Promise((resolve) => setTimeout(resolve, 200));
   check('focus empire désactivé', await page.evaluate(() => !window.VATLAS.getState().empire.active));
-  await page.click('#hud-theme-button');
+  await clickHud(page, 'hud-theme-button');
   await new Promise((resolve) => setTimeout(resolve, 120));
   check('thème clair persistant', await page.evaluate(() => document.documentElement.dataset.theme === 'light' && localStorage.getItem('history-theme') === 'light'));
 
@@ -253,7 +267,7 @@ try {
     && window.VATLAS.getState().scale === 'recent' && document.getElementById('timeline-range').max === '100'));
   await page.evaluate(() => window.VATLAS.setScale('linear'));
   await page.evaluate(() => window.VATLAS.setZoom('global'));
-  await page.click('#hud-compare-button');
+  await clickHud(page, 'hud-compare-button');
   await new Promise((resolve) => setTimeout(resolve, 150));
   check('panneau comparaison ouvert', await page.evaluate(() => !document.getElementById('compare-panel').hidden));
   await page.evaluate(() => window.VATLAS.compareYears(1000, 1500));
@@ -277,7 +291,7 @@ try {
   await page.click('#compare-close');
   await new Promise((resolve) => setTimeout(resolve, 120));
   check('comparaison fermée', await page.evaluate(() => document.getElementById('compare-panel').hidden));
-  await page.click('#hud-sun-button');
+  await clickHud(page, 'hud-sun-button');
   await new Promise((resolve) => setTimeout(resolve, 200));
   check('ombre solaire activée', await page.evaluate(() => window.VATLAS.getState().sun.enabled
     && window.VATLAS.getState().mesh.sunYear === window.VATLAS.getState().year
@@ -285,14 +299,14 @@ try {
   await page.keyboard.press('y');
   await new Promise((resolve) => setTimeout(resolve, 150));
   check('ombre solaire désactivée', await page.evaluate(() => !window.VATLAS.getState().sun.enabled));
-  await page.click('#hud-wire-button');
+  await clickHud(page, 'hud-wire-button');
   await new Promise((resolve) => setTimeout(resolve, 200));
   check('fil de fer activé', await page.evaluate(() => window.VATLAS.getState().wireframe
     && window.VATLAS.getState().mesh.wireframe === true));
   await page.keyboard.press('w');
   await new Promise((resolve) => setTimeout(resolve, 150));
   check('fil de fer désactivé', await page.evaluate(() => !window.VATLAS.getState().wireframe));
-  await page.click('#hud-quality-button');
+  await clickHud(page, 'hud-quality-button');
   await new Promise((resolve) => setTimeout(resolve, 150));
   check('panneau qualité ouvert', await page.evaluate(() => !document.getElementById('quality-panel').hidden
     && window.VATLAS.getState().anomalies > 1000));
@@ -340,7 +354,7 @@ try {
     && !document.getElementById('report-panel').hidden));
   await page.keyboard.press('Escape');
   await new Promise((resolve) => setTimeout(resolve, 150));
-  await page.click('#hud-histography-button');
+  await clickHud(page, 'hud-histography-button');
   await new Promise((resolve) => setTimeout(resolve, 400));
   check('mode histographie ouvert', await page.evaluate(() => !document.getElementById('histography-panel').hidden
     && window.VATLAS.getState().histography.events > 500));
@@ -362,6 +376,18 @@ try {
   await page.keyboard.press('Escape');
   await new Promise((resolve) => setTimeout(resolve, 200));
   check('histographie fermée', await page.evaluate(() => document.getElementById('histography-panel').hidden));
+  await page.evaluate(() => window.VATLAS.openSubject('dauphine'));
+  await page.waitForFunction(() => window.VATLAS.getState().subject.articles > 0, { timeout: 30000 });
+  check('sujet Dauphiné ouvert', await page.evaluate(() => !document.getElementById('subject-panel').hidden
+    && new URLSearchParams(location.search).get('subject') === 'dauphine'));
+  check('carrés Pixi rendus', await page.evaluate(() => Boolean(document.querySelector('.subject-canvas canvas'))));
+  await page.click('.subject-mode');
+  await new Promise((resolve) => setTimeout(resolve, 200));
+  check('récits du sujet', await page.evaluate(() => window.VATLAS.getState().subject.mode === 'recits'
+    && document.querySelectorAll('.subject-recit').length > 0));
+  await page.click('#subject-close');
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  check('sujet fermé', await page.evaluate(() => document.getElementById('subject-panel').hidden));
   await page.click('#hud-learn-button');
   await new Promise((resolve) => setTimeout(resolve, 200));
   check('panneau Apprendre ouvert', await page.evaluate(() => !document.getElementById('learn-panel').hidden));
@@ -449,10 +475,10 @@ try {
    * depuis le début de la lecture automatique, pas depuis le chargement. */
   const beforeAutoplay = await page.evaluate(() => window.VATLAS.getState().camera.lon);
   check('aucune rotation automatique', await page.evaluate((value) => Math.abs(window.VATLAS.getState().camera.lon - value) < 0.01, beforeAutoplay));
-  await page.click('#hud-tour-button');
+  await clickHud(page, 'hud-tour-button');
   await new Promise((resolve) => setTimeout(resolve, 600));
   check('tour manuel actif', await page.evaluate(() => window.VATLAS.getState().touring === true));
-  await page.click('#hud-tour-button');
+  await clickHud(page, 'hud-tour-button');
   check('tour manuel arrêté', await page.evaluate(() => window.VATLAS.getState().touring === false));
   /* P10 — libellés et épiques. */
   await page.evaluate(() => window.VATLAS.setYear(1000));
@@ -651,7 +677,7 @@ try {
 
   /* P16 — révision active. */
   await page.evaluate(() => document.getElementById('hud-card-close')?.click());
-  await page.click('#hud-review-button');
+  await clickHud(page, 'hud-review-button');
   await page.waitForFunction(() => window.VATLAS?.getState?.().review?.total > 0, { timeout: 8000 }).catch(() => {});
   check('panneau révision ouvert', await page.evaluate(() => !document.getElementById('review-panel').hidden));
   check('question affichée', await page.evaluate(() => (document.getElementById('review-prompt').textContent || '').length > 10));

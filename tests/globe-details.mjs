@@ -66,6 +66,7 @@ try {
   await new Promise((resolve) => setTimeout(resolve, 400));
   check('marqueurs masqués côté globe', await page.evaluate(() => [...document.querySelectorAll('#arc-host .arc-marker')]
     .some((marker) => marker.hidden)));
+  await page.evaluate(() => document.getElementById('hud-tools-button')?.click());
   await page.click('#hud-arcs-button');
   const after = await page.evaluate(() => performance.getEntriesByType('resource').length);
   check('bascule graphique sans requête', after === before, `${before} → ${after}`);
