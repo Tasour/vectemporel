@@ -8,9 +8,9 @@
   --muted-2: #8c8d91;
   --gold: #e6b96f;
   --gold-bright: #f4d69e;
-  --panel: var(--panel);
-  --panel-soft: var(--panel-soft);
-  --panel-strong: var(--panel-strong);
+  --panel: rgba(10, 15, 22, .94);
+  --panel-soft: rgba(10, 15, 22, .88);
+  --panel-strong: #101822;
   --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --serif: Georgia, "Times New Roman", serif;
 }
@@ -66,6 +66,7 @@ button, input { font: inherit; }
 }
 .hud-brand strong { font-size: 11px; letter-spacing: .22em; color: var(--gold-bright); }
 .hud-brand span { font-size: 10px; color: var(--muted); letter-spacing: .06em; }
+.hud-version { color: var(--gold) !important; font-variant-numeric: tabular-nums; }
 
 .hud-actions {
   position: absolute;
@@ -527,6 +528,8 @@ body.zen .arc-host, body.zen #globe-labels { display: none !important; }
   .hud-brand { top: max(10px, env(safe-area-inset-top)); left: 10px; max-width: 150px; }
   .hud-brand strong { font-size: 9px; letter-spacing: .12em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .hud-brand > span { display: none; }
+  .hud-brand > .hud-version { display: inline; font-size: 8px; }
+  .zen-exit { top: max(56px, calc(env(safe-area-inset-top) + 56px)); bottom: auto; right: 10px; z-index: 121; background: var(--panel-strong); }
   .hud-actions {
     top: auto;
     right: 10px;
@@ -540,7 +543,7 @@ body.zen .arc-host, body.zen #globe-labels { display: none !important; }
   body.actions-expanded .hud-actions-more { display: flex; }
   body.actions-expanded .hud-actions { flex-wrap: wrap; max-width: 188px; }
   .hud-btn { min-width: 44px; min-height: 44px; padding: 8px; }
-  #hud-display-button { display: inline-flex; }
+  #hud-display-button, #hud-trails-button, #hud-learn-button { display: none; }
 
   .hud-card {
     position: fixed;
@@ -581,7 +584,11 @@ body.zen .arc-host, body.zen #globe-labels { display: none !important; }
     transform: none;
     padding: 4px 8px 6px;
   }
-  .timeline .epic-host { display: none; }
+  .timeline .epic-host, .timeline .era-bands, .timeline-range, .timeline-play,
+  .timeline .century-nav, .timeline-minimap-row, .turning-strip { display: none; }
+  .timeline { min-height: 96px; padding: 4px; }
+  .timeline .pixi-timeline-host, .timeline .pixi-timeline { opacity: 1; }
+  .timeline-scrub { display: flex; justify-content: flex-start; }
   .timeline-minimap-row { margin-top: 0; }
   .era-bands { height: 8px; }
   .era-band { font-size: 7px; line-height: 8px; }
@@ -795,3 +802,7 @@ button, input, select, th, td { padding: 8px 12px !important; }
 /* Les repères visuels remplacés par Pixi restent dans le DOM pour les tests
  * et l'accessibilité, mais ne sont plus dessinés deux fois. */
 .timeline .epic-track, .timeline .timeline-minimap-density { opacity: 0; }
+
+/* Sélecteur de thème dans les options. */
+.theme-group { display: flex; flex-wrap: wrap; gap: 8px; }
+.theme-group .hm-btn[aria-checked="true"] { border-color: var(--gold-bright); color: var(--gold-bright); background: var(--panel-strong); }

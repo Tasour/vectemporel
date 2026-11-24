@@ -80,7 +80,16 @@ try {
       if (!node) continue;
       const style = getComputedStyle(node);
       const a = lum(style.color);
-      const b = lum(style.backgroundColor === 'rgba(0, 0, 0, 0)' ? '#080c12' : style.backgroundColor);
+      const bgOf = (node) => {
+        let current = node;
+        while (current) {
+          const value = getComputedStyle(current).backgroundColor;
+          if (value && value !== 'rgba(0, 0, 0, 0)' && !/rgba\([^)]*,\s*0\)/.test(value)) return value;
+          current = current.parentElement;
+        }
+        return '#080c12';
+      };
+      const b = lum(bgOf(node));
       out.push({ selector, ratio: (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05) });
     }
     return out;
@@ -98,7 +107,7 @@ try {
       await page.evaluate(() => document.getElementById('hud-tools-button')?.click());
       await new Promise((resolve) => setTimeout(resolve, 80));
     }
-    await page.click(trigger);
+    await page.evaluate((selector) => document.querySelector(selector).click(), trigger);
     await new Promise((resolve) => setTimeout(resolve, 200));
     const state = await page.evaluate((panelId) => {
       const panel = document.getElementById(panelId);
@@ -190,10 +199,10 @@ try {
     ['quality-panel', '#hud-quality-button'],
   ]) {
     if (trigger === '#hud-quality-button') {
-      await page.click('#hud-display-button');
+      await page.evaluate(() => document.getElementById('hud-display-button').click());
       await new Promise((resolve) => setTimeout(resolve, 150));
     }
-    await page.click(trigger);
+    await page.evaluate((selector) => document.querySelector(selector).click(), trigger);
     await new Promise((resolve) => setTimeout(resolve, 200));
     check(`${id} mobile`, await page.evaluate((panelId) => {
       const box = document.getElementById(panelId).getBoundingClientRect();

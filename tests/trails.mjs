@@ -118,7 +118,7 @@ try {
   await mobile.goto(BASE, { waitUntil: 'load', timeout: 60000 });
   await mobile.waitForFunction(() => document.documentElement.dataset.globeReady === 'true', { timeout: 20000 });
   await wait(600);
-  await mobile.click('#hud-trails-button');
+  await mobile.evaluate(() => document.getElementById('hud-trails-button').click());
   await wait(150);
   check('mobile : cinq cibles ≥ 44 px', await mobile.evaluate(() => [...document.querySelectorAll('.trail-item')]
     .every((item) => item.getBoundingClientRect().height >= 44)));

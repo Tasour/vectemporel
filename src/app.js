@@ -174,8 +174,12 @@ function mount() {
   const initialPos = decodePos(params.get('pos'));
 
   const brand = el('div', 'hud-brand');
+  const buildAsset = document.querySelector('link[rel="manifest"]')?.href || '';
+  const buildHash = new URL(buildAsset, location.href).searchParams.get('v') || '';
+  const versionLabel = `v0.2.0${buildHash ? ` · ${buildHash.slice(0, 7)}` : ''}`;
   brand.append(
     el('strong', '', 'HISTOIRE DU MONDE'),
+    el('span', 'hud-version', versionLabel),
     el('span', '', `-2000 → 2000 · ${MAP_META.areas} régions · ${MAP_META.features} contours`),
   );
   const dimensions = el('div', 'dimension-bar');
@@ -446,6 +450,24 @@ function mount() {
   toolsSection.appendChild(importInput);
   toolButton('Importer un profil', 'tool-import-button', () => importInput.click());
   displayPanel.appendChild(toolsSection);
+  const themeSection = el('div', 'display-tools');
+  themeSection.id = 'display-theme';
+  themeSection.appendChild(el('h3', '', 'Thème'));
+  const themeGroup = el('div', 'theme-group');
+  themeGroup.id = 'theme-group';
+  themeGroup.setAttribute('role', 'radiogroup');
+  themeGroup.setAttribute('aria-label', 'Choix du thème');
+  for (const [label, mode] of [['Sombre', 'dark'], ['Clair', 'light'], ['Système', 'system']]) {
+    const button = el('button', 'hm-btn', label);
+    button.type = 'button';
+    button.dataset.theme = mode;
+    button.setAttribute('role', 'radio');
+    button.setAttribute('aria-checked', 'false');
+    button.addEventListener('click', () => applyTheme(mode));
+    themeGroup.appendChild(button);
+  }
+  themeSection.appendChild(themeGroup);
+  displayPanel.appendChild(themeSection);
   const reportsSection = el('div', 'display-tools');
   reportsSection.id = 'display-reports';
   reportsSection.appendChild(el('h3', '', 'Récits d’un item'));
@@ -2384,11 +2406,25 @@ function mount() {
     tourButton.setAttribute('aria-label', active ? 'Arrêter le tour du monde' : 'Lancer le tour du monde');
     readout.textContent = active ? 'Tour du monde en cours.' : 'Tour du monde arrêté.';
   });
+  function applyTheme(mode) {
+    const effective = mode === 'system'
+      ? (matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark')
+      : mode;
+    if (effective === 'light') document.documentElement.dataset.theme = 'light';
+    else delete document.documentElement.dataset.theme;
+    localStorage.setItem('history-theme', mode);
+    for (const button of themeGroup.children) {
+      button.setAttribute('aria-checked', String(button.dataset.theme === mode));
+    }
+    globe?.setTheme(effective);
+    for (const timeline of [friseTimeline, histoPixi, hmPixi, provincePixi]) timeline?.setTheme(effective);
+    themeButton.setAttribute('aria-label', `Thème ${effective === 'light' ? 'clair' : 'sombre'} — basculer`);
+    readout.textContent = `Thème ${effective === 'light' ? 'clair' : 'sombre'}.`;
+  }
+  applyTheme(localStorage.getItem('history-theme') || 'system');
   themeButton.addEventListener('click', () => {
-    const light = document.documentElement.dataset.theme === 'light';
-    if (light) delete document.documentElement.dataset.theme;
-    else document.documentElement.dataset.theme = 'light';
-    localStorage.setItem('history-theme', light ? 'dark' : 'light');
+    const current = localStorage.getItem('history-theme') || 'system';
+    applyTheme(current === 'light' ? 'dark' : 'light');
   });
   displayButton.addEventListener('click', toggleDisplayPanel);
   reviewButton.addEventListener('click', openReview);

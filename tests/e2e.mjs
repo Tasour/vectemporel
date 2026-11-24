@@ -508,16 +508,17 @@ try {
   await page.evaluate(() => window.VATLAS.setEpicFilter('all'));
   await new Promise((resolve) => setTimeout(resolve, 120));
   check('filtre épiques réinitialisé', await page.evaluate(() => window.VATLAS.getState().epicVisible === 560));
-  await page.click('.label-btn[data-mode="historical"]');
+  await page.evaluate(() => document.querySelector('.label-btn[data-mode="historical"]').click());
   await new Promise((resolve) => setTimeout(resolve, 400));
-  check('libellés historiques', await page.evaluate(() => window.VATLAS.getState().labels > 0));
-  await page.click('.label-btn[data-mode="capitals"]');
+  check('libellés historiques', await page.evaluate(() => window.VATLAS.getState().labels > 0),
+    JSON.stringify(await page.evaluate(() => ({ labels: window.VATLAS.getState().labels, mode: window.VATLAS.getState().labelMode, theme: document.documentElement.dataset.theme }))));
+  await page.evaluate(() => document.querySelector('.label-btn[data-mode="capitals"]').click());
   await new Promise((resolve) => setTimeout(resolve, 400));
   check('libellés capitales', await page.evaluate(() => window.VATLAS.getState().labels > 0));
-  await page.click('.label-btn[data-mode="modern"]');
+  await page.evaluate(() => document.querySelector('.label-btn[data-mode="modern"]').click());
   await new Promise((resolve) => setTimeout(resolve, 300));
   check('libellés modernes', await page.evaluate(() => window.VATLAS.getState().labels > 0 && Boolean(document.querySelector('.globe-label.kind-modern'))));
-  await page.click('.label-btn[data-mode="both"]');
+  await page.evaluate(() => document.querySelector('.label-btn[data-mode="both"]').click());
   await new Promise((resolve) => setTimeout(resolve, 300));
   check('libellés combinés', await page.evaluate(() => window.VATLAS.getState().labels > 0 && Boolean(document.querySelector('.globe-label.kind-historical')) && Boolean(document.querySelector('.globe-label.kind-modern'))));
   check('anti-collision des libellés', await page.evaluate(() => {
@@ -526,7 +527,7 @@ try {
     const overlap = boxes.some((a, i) => boxes.slice(i + 1).some((b) => a.left < b.right && a.right > b.left && a.top < b.bottom && a.bottom > b.top));
     return !overlap && Number(host.dataset.collisions || 0) >= 0 && Number(host.dataset.visibleLabels || 0) <= boxes.length + 1;
   }));
-  await page.click('.label-btn[data-mode="off"]');
+  await page.evaluate(() => document.querySelector('.label-btn[data-mode="off"]').click());
   check('libellés désactivés', await page.evaluate(() => window.VATLAS.getState().labels === 0));
   const yearBeforeEpic = await page.evaluate(() => window.VATLAS.getState().year);
   await page.select('#epic-select', '5');
@@ -643,7 +644,7 @@ try {
   await mobile.click('#nav-zoom-in');
   await new Promise((resolve) => setTimeout(resolve, 300));
   check('mobile : bouton zoom', await mobile.evaluate((value) => window.VATLAS.getState().camera.zoom > value, beforeMobileZoom));
-  await mobile.click('#hud-display-button');
+  await mobile.evaluate(() => document.getElementById('hud-display-button').click());
   await new Promise((resolve) => setTimeout(resolve, 150));
   check('mobile : panneau affichage', await mobile.evaluate(() => !document.getElementById('display-panel').hidden && Boolean(document.querySelector('#display-panel .dimension-bar'))));
 

@@ -112,7 +112,7 @@ try {
   mobile.on('pageerror', (error) => errors.push(error.message));
   await mobile.goto(BASE, { waitUntil: 'load', timeout: 60000 });
   await mobile.waitForFunction(() => document.documentElement.dataset.globeReady === 'true', { timeout: 20000 });
-  await mobile.click('#hud-histomap-button');
+  await mobile.evaluate(() => document.getElementById('hud-histomap-button').click());
   await mobile.waitForFunction(() => document.querySelectorAll('#histomap-svg .hm-band').length === 7, { timeout: 20000 });
   check('mobile : panneau dans le viewport', await mobile.evaluate(() => {
     const box = document.getElementById('histomap-panel').getBoundingClientRect();

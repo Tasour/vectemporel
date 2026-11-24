@@ -84,6 +84,44 @@ export class PixiTimeline {
         this.#select(this.points[0].event);
       }
     };
+    this.onPointerDown = (event) => {
+      this.drag = {
+        x: event.clientX, from: this.from, to: this.to, year: this.year,
+        last: Math.round(this.year), rect: this.renderer.view.getBoundingClientRect(),
+      };
+      try { this.renderer.view.setPointerCapture?.(event.pointerId); } catch { /* pointeur synthétique */ }
+    };
+    this.onPointerMove = (event) => {
+      if (!this.drag) return;
+      const shift = ((event.clientX - this.drag.x) / this.drag.rect.width) * (this.drag.to - this.drag.from);
+      if (Math.abs(shift) < 1 && !this.drag.moved) return;
+      this.drag.moved = true;
+      this.from = this.drag.from - shift;
+      this.to = this.drag.to - shift;
+      this.year = this.drag.year - shift;
+      const step = Math.round(this.year);
+      if (step !== this.drag.last) {
+        this.drag.last = step;
+        if (navigator.vibrate) navigator.vibrate(8);
+      }
+      this.canvas.setAttribute('aria-valuetext', yearText(step));
+      this.schedule();
+    };
+    this.onPointerUp = (event) => {
+      if (!this.drag) return;
+      const moved = Boolean(this.drag.moved);
+      this.drag = null;
+      if (moved) return;
+      const rect = this.renderer.view.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      const nearest = this.points.find((point) => Math.hypot(point.x - x, point.y - y) < 18);
+      if (nearest) this.#select(nearest.event);
+    };
+    this.renderer.view.addEventListener('pointerdown', this.onPointerDown);
+    this.renderer.view.addEventListener('pointermove', this.onPointerMove);
+    this.renderer.view.addEventListener('pointerup', this.onPointerUp);
+    this.canvas.setAttribute('aria-valuenow', String(Math.round(this.year)));
     this.onVisibility = () => { this.hidden = document.hidden; if (!this.hidden) this.schedule(); };
     this.onResize = () => this.schedule();
     this.canvas.addEventListener('keydown', this.onKeyDown);
@@ -140,6 +178,7 @@ export class PixiTimeline {
     this.graphics.lineTo(cursorX, height - 12);
     this.renderer.render(this.stage);
     this.status.textContent = `${this.title} : ${points.length} événements, ${yearText(Math.round(this.year))}`;
+    this.canvas.setAttribute('aria-valuenow', String(Math.round(this.year)));
   }
 
   #tick() {
@@ -198,6 +237,9 @@ export class PixiTimeline {
   destroy() {
     if (this.raf !== null) cancelAnimationFrame(this.raf);
     this.canvas.removeEventListener('keydown', this.onKeyDown);
+    this.renderer.view.removeEventListener('pointerdown', this.onPointerDown);
+    this.renderer.view.removeEventListener('pointermove', this.onPointerMove);
+    this.renderer.view.removeEventListener('pointerup', this.onPointerUp);
     document.removeEventListener('visibilitychange', this.onVisibility);
     window.removeEventListener('resize', this.onResize);
     this.renderer.destroy();

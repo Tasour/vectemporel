@@ -74,9 +74,10 @@ def main():
                         pg.evaluate(action)
                         pg.wait_for_timeout(250)
                     except Exception as exc:
-                        findings.append(audit.finding('R99', 'P1', f'état {name}', action[:60],
-                                                      'action exécutable', str(exc)[:100],
-                                                      f'{width}x{height}'))
+                        item = audit.finding('R99', 'P1', f'état {name}', action[:60],
+                                             'action exécutable', str(exc)[:100])
+                        item['viewport'] = f'{width}x{height}'
+                        findings.append(item)
                 for finding in audit.runtime_rules(pg):
                     finding['viewport'] = f'{width}x{height}'
                     finding['state'] = name
