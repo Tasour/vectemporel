@@ -19,6 +19,9 @@ const keyOf = (name) => name.replace(/[^a-zA-Z0-9_-]+/g, '_');
 for (let year = -2000; year <= 2000; year += 1) {
   tasks.push({ name: `areas/${year}`, url: `/areas/${year}`, gzip: true });
 }
+for (let year = -2000; year <= 2000; year += 1) {
+  tasks.push({ name: `raw/${keyOf(`markers?year=${year}`)}`, url: `/markers?year=${year}`, gzip: false });
+}
 for (const query of [
   'markers?year=1000', 'markers?year=1500', 'markers?year=0', 'markers?year=-500',
   'markers?year=1800', 'markers?year=1900', 'markers?year=2000', 'markers?year=-3000',
@@ -46,7 +49,13 @@ let done = 0;
 async function run(task) {
   const target = path.join(OUT, task.gzip ? `${task.name}.gz` : `${task.name}.json`);
   fs.mkdirSync(path.dirname(target), { recursive: true });
-  if (fs.existsSync(target)) return;
+  if (fs.existsSync(target)) {
+    const stored = fs.readFileSync(target);
+    const body = task.gzip ? zlib.gunzipSync(stored) : stored;
+    manifest.push({ name: task.name, url: task.url, bytes: body.length,
+      sha256: crypto.createHash('sha256').update(body).digest('hex') });
+    return;
+  }
   let lastError = null;
   for (let attempt = 0; attempt < RETRIES; attempt += 1) {
     try {

@@ -19,9 +19,16 @@ html = html.replace('<base href="./" />', '');
 html = html.replace(/<link rel="preconnect"[^>]*googleapis[^>]*>/g, '')
   .replace(/<link rel="preconnect"[^>]*gstatic[^>]*>/g, '')
   .replace(/<link href="https:\/\/fonts\.googleapis\.com[^>]*>/g, '');
-html = html.replace(/<script type="module"([^>]*)src="\.\/(assets\/[^"]+\.js)"><\/script>/g,
+import crypto from 'node:crypto';
+const versionOf = (file) => crypto.createHash('sha256')
+  .update(fs.readFileSync(path.join(OUT, file))).digest('hex').slice(0, 10);
+const mainAsset = (html.match(/src="\.\/(assets\/[^"]+\.js)"/) || [])[1] || '';
+const version = mainAsset ? versionOf(mainAsset) : Date.now().toString(36);
+html = html.replace(/src="\.\/(assets\/[^"]+\.(?:js|css))"/g, (match, asset) => `src="./${asset}?v=${version}"`);
+html = html.replace(/href="\.\/(assets\/[^"]+\.css)"/g, (match, asset) => `href="./${asset}?v=${version}"`);
+html = html.replace(/<script type="module"([^>]*)src="\.\/(assets\/[^"]+\.js)\?v=[^"]*"><\/script>/g,
   '<script>\n'
-  + '  navigator.serviceWorker.register("./mirror-sw.js").then(() => navigator.serviceWorker.ready).then(() => {\n'
+  + `  navigator.serviceWorker.register("./mirror-sw.js?v=${version}").then(() => navigator.serviceWorker.ready).then(() => {\n`
   + '    const script = document.createElement("script"); script.type = "module";'
   + ' script.src = "./$2"; document.head.appendChild(script);\n'
   + '  }).catch(() => { const s = document.createElement("script"); s.type = "module";'
@@ -34,8 +41,7 @@ for (const file of fs.readdirSync(path.join(OUT, 'assets'))) {
   const target = path.join(OUT, 'assets', file);
   let body = fs.readFileSync(target, 'utf8');
   const before = body;
-  body = body.replace(/"\/styles\//g, '"./styles/').replace(/"\/images\//g, '"./images/');
-  body = body.replace(/"\/assets\//g, '"./assets/');
+  body = body.replace(/(["'`])\/(styles|images|assets|fonts)\//g, '$1./$2/');
   if (body !== before) fs.writeFileSync(target, body);
 }
 console.log(`pages préparées : ${OUT}`);

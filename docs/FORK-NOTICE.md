@@ -18,3 +18,7 @@ Aucun fichier `LICENSE` n'est détecté sur le dépôt amont au moment du fork. 
 ## Ancienne version
 
 L'atlas Vectemporel précédent est conservé tel quel sur la branche `atlas-legacy` (`762a0ca`).
+
+## Limite connue
+
+Les tuiles du fond de carte (`tiles.openfreemap.org`, données Natural Earth / OpenStreetMap) restent chargées depuis le réseau : ce sont des ressources de la stack MapLibre du fork, pas des endpoints de l'API Chronas. Le miroir local couvre l'API (8 023 réponses), pas les tuiles cartographiques.
