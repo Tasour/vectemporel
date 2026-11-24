@@ -10,11 +10,9 @@
  * - Discover icon (compass)
  * - Random icon (dice)
  * - Settings icon
- * - Support icon (hand + heart)
  * - Collections icon
  * - Play icon (gamepad)
  * - Help icon
- * - Logout icon
  *
  * Production reference: https://chronas.org
  */
@@ -49,20 +47,18 @@ const mockUseNavigationStore = useNavigationStore as unknown as ReturnType<typeo
  * Required navigation item IDs as defined in Requirements 2.2
  * These match the production sidebar at https://chronas.org
  * 
- * Production order:
+ * Local v0 order:
  * Top: Layers, Discover, Random, Settings
- * Bottom: Support, Collections, Play, Help, Logout
+ * Bottom: Collections, Play, Help
  */
 const REQUIRED_NAV_ITEMS = [
   { id: 'layers', label: 'Layers' },
   { id: 'discover', label: 'Discover' },
   { id: 'random', label: 'Random Article' },
   { id: 'settings', label: 'Configuration' },
-  { id: 'support', label: 'Support Chronas' },
   { id: 'collections', label: 'Collections' },
   { id: 'play', label: 'Play' },
   { id: 'help', label: 'Help' },
-  { id: 'logout', label: 'Logout' },
 ] as const;
 
 describe('Sidebar Property Tests', () => {
@@ -254,27 +250,6 @@ describe('Sidebar Property Tests', () => {
       );
     });
 
-    it('should contain Support navigation item for any sidebar state', () => {
-      fc.assert(
-        fc.property(
-          sidebarPropsArbitrary,
-          authStateArbitrary,
-          uiStateArbitrary,
-          navigationStateArbitrary,
-          (props, authState, uiState, navState) => {
-            setupMocks(uiState, authState, navState);
-            const { unmount } = renderSidebar(props);
-
-            const supportItem = screen.getByTestId('nav-item-support');
-            expect(supportItem).toBeInTheDocument();
-
-            unmount();
-          }
-        ),
-        { numRuns: 100 }
-      );
-    });
-
     it('should contain Collections navigation item for any sidebar state', () => {
       fc.assert(
         fc.property(
@@ -338,27 +313,6 @@ describe('Sidebar Property Tests', () => {
       );
     });
 
-    it('should contain Logout navigation item for any sidebar state', () => {
-      fc.assert(
-        fc.property(
-          sidebarPropsArbitrary,
-          authStateArbitrary,
-          uiStateArbitrary,
-          navigationStateArbitrary,
-          (props, authState, uiState, navState) => {
-            setupMocks(uiState, authState, navState);
-            const { unmount } = renderSidebar(props);
-
-            const logoutItem = screen.getByTestId('nav-item-logout');
-            expect(logoutItem).toBeInTheDocument();
-
-            unmount();
-          }
-        ),
-        { numRuns: 100 }
-      );
-    });
-
     it('should contain ALL required navigation items for any sidebar state', () => {
       fc.assert(
         fc.property(
@@ -383,7 +337,7 @@ describe('Sidebar Property Tests', () => {
       );
     });
 
-    it('should have exactly 9 required navigation items for any sidebar state', () => {
+    it('should have exactly 7 required navigation items for any sidebar state', () => {
       fc.assert(
         fc.property(
           sidebarPropsArbitrary,
@@ -526,14 +480,12 @@ describe('Sidebar Property Tests', () => {
             expect(topSection?.querySelector('[data-testid="nav-item-random"]')).toBeInTheDocument();
             expect(topSection?.querySelector('[data-testid="nav-item-settings"]')).toBeInTheDocument();
 
-            // Bottom section items: pro, collections, play, help, logout
+            // Bottom section items: collections, play, help
             const bottomSection = container.querySelector('[aria-label="Secondary navigation"]');
             expect(bottomSection).toBeInTheDocument();
-            expect(bottomSection?.querySelector('[data-testid="nav-item-support"]')).toBeInTheDocument();
             expect(bottomSection?.querySelector('[data-testid="nav-item-collections"]')).toBeInTheDocument();
             expect(bottomSection?.querySelector('[data-testid="nav-item-play"]')).toBeInTheDocument();
             expect(bottomSection?.querySelector('[data-testid="nav-item-help"]')).toBeInTheDocument();
-            expect(bottomSection?.querySelector('[data-testid="nav-item-logout"]')).toBeInTheDocument();
 
             unmount();
           }

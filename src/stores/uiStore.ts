@@ -19,6 +19,7 @@ import type { Marker } from '@/api/types';
 export type DrawerContent =
   | { type: 'area'; provinceId: string; provinceName: string; wikiUrl?: string }
   | { type: 'marker'; marker: Marker }
+  | { type: 'article'; articleId: string; articleTitle: string }
   | { type: 'epic'; epicId: string; epicName: string; wikiUrl: string };
 
 /**
@@ -120,7 +121,7 @@ export type UIStore = UIState & UIActions;
  */
 const defaultState: UIState = {
   theme: 'light',
-  locale: 'en',
+  locale: 'fr',
   sidebarOpen: true,
   isFullscreen: false,
   rightDrawerOpen: false,
@@ -241,6 +242,7 @@ export const useUIStore = create<UIStore>()(
         set({
           rightDrawerOpen: true,
           rightDrawerContent: content,
+          sidebarOpen: false,
         });
       },
 

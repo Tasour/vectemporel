@@ -10,6 +10,7 @@ export default tseslint.config(
   {
     ignores: [
       'dist',
+      'dist-pages',
       'dist-node',
       'node_modules',
       'coverage',
@@ -18,6 +19,8 @@ export default tseslint.config(
       '.playwright-mcp',
       '*.config.js',
       '*.config.mts',
+      'scripts/**',
+      'public/mirror-sw.js',
       'playwright.deploy.config.ts',
     ],
   },

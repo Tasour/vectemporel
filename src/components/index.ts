@@ -20,5 +20,8 @@ export * from './forms';
 // Page components
 export * from './pages';
 
+// Local library components
+export * from './library';
+
 // Timeline components
 export * from './timeline';

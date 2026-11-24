@@ -35,6 +35,7 @@ html = html.replace(/<script type="module"([^>]*)src="\.\/(assets\/[^"]+\.js)\?v
   + '    .then(() => navigator.serviceWorker.ready) ?? Promise.resolve();\n'
   + '  Promise.race([ready.catch(() => {}), new Promise((r) => setTimeout(r, 1500))]).then(start);\n'
   + '</script>');
+html = html.replace(/[ \t]+$/gm, '');
 fs.writeFileSync(indexPath, html);
 
 for (const file of fs.readdirSync(path.join(OUT, 'assets'))) {

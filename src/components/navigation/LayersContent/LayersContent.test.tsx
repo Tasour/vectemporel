@@ -15,6 +15,7 @@ import { render, screen, fireEvent, within } from '@testing-library/react';
 import { LayersContent } from './LayersContent';
 import { useMapStore } from '@/stores/mapStore';
 import { useTimelineStore, type EpicType } from '@/stores/timelineStore';
+import i18n from '@/i18n/i18n';
 
 // Mock the mapStore
 vi.mock('@/stores/mapStore', async () => {
@@ -83,6 +84,7 @@ describe('LayersContent', () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
+    void i18n.changeLanguage('en');
     // Setup mapStore mock implementation
     (useMapStore as unknown as ReturnType<typeof vi.fn>).mockImplementation((selector: (state: typeof mockMapState) => unknown) => {
       return selector(mockMapState);

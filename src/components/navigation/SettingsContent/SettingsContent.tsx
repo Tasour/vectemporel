@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useUIStore, type DetailLevel, type Theme } from '@/stores/uiStore';
 import { useMapStore, type LabelNameMode } from '@/stores/mapStore';
+import { useNavigationStore } from '@/stores/navigationStore';
 import { SUPPORTED_LANGUAGES } from '@/i18n/i18n';
 import { getShareableURL } from '@/utils/urlStateUtils';
 import styles from './SettingsContent.module.css';
@@ -35,6 +36,7 @@ export const SettingsContent: React.FC<SettingsContentProps> = ({ onClose: _onCl
   const detailLevel = useUIStore((s) => s.detailLevel);
   const setDetailLevel = useUIStore((s) => s.setDetailLevel);
   const [copied, setCopied] = useState(false);
+  const openDrawer = useNavigationStore((state) => state.openDrawer);
 
   // Keep store state in sync with browser fullscreen changes (user pressing Esc, etc.)
   useEffect(() => {
@@ -191,6 +193,21 @@ export const SettingsContent: React.FC<SettingsContentProps> = ({ onClose: _onCl
             {copied
               ? t('settings.linkCopied', 'Link copied!')
               : t('settings.copyLink', 'Copy link')}
+          </button>
+        </div>
+      </div>
+
+      {/* Bibliothèque locale — sélection hiérarchique */}
+      <div className={styles['section']}>
+        <div className={styles['sectionLabel']}>Bibliothèque locale</div>
+        <div className={styles['actionButtons']}>
+          <button
+            type="button"
+            className={styles['actionBtn']}
+            onClick={() => openDrawer('downloads')}
+            data-testid="open-downloads"
+          >
+            Gérer les téléchargements
           </button>
         </div>
       </div>

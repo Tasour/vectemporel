@@ -487,7 +487,7 @@ describe('ProvinceDrawerContent', () => {
   });
 
   describe('ArticleIframe Embedding (Requirement 2.6)', () => {
-    it('should render ArticleIframe on default (Ruler) tab', () => {
+    it('should show a local fallback on default (Ruler) tab', () => {
       render(
         <ProvinceDrawerContent
           provinceId="Italia"
@@ -496,11 +496,11 @@ describe('ProvinceDrawerContent', () => {
         />
       );
 
-      const iframe = screen.getByTestId('mock-article-iframe');
-      expect(iframe).toBeInTheDocument();
+      expect(screen.queryByTestId('mock-article-iframe')).not.toBeInTheDocument();
+      expect(screen.getByText(/n’est pas encore téléchargée/)).toBeInTheDocument();
     });
 
-    it('should render entity wiki URL in ArticleIframe', () => {
+    it('should offer a shortcut to downloads when the local article is missing', () => {
       render(
         <ProvinceDrawerContent
           provinceId="Italia"
@@ -509,8 +509,7 @@ describe('ProvinceDrawerContent', () => {
         />
       );
 
-      const iframe = screen.getByTestId('mock-article-iframe');
-      expect(iframe).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'Ouvrir les téléchargements' })).toBeInTheDocument();
     });
 
     it('should have article section with aria-label', () => {
@@ -537,7 +536,7 @@ describe('ProvinceDrawerContent', () => {
         />
       );
       expect(screen.getByTestId('entity-section')).toBeInTheDocument();
-      expect(screen.getByTestId('mock-article-iframe')).toBeInTheDocument();
+      expect(screen.getByText(/n’est pas encore téléchargée/)).toBeInTheDocument();
     });
 
     it('renders 4 tab buttons (Ruler/Culture/Religion/ReligionGeneral)', () => {
@@ -555,7 +554,7 @@ describe('ProvinceDrawerContent', () => {
       expect(screen.queryByTestId('province-tab-summary')).not.toBeInTheDocument();
     });
 
-    it('switches to Ruler tab and shows entity iframe for ruler wiki', () => {
+    it('switches to Ruler tab and keeps the article local', () => {
       render(
         <ProvinceDrawerContent
           provinceId="Italia"
@@ -564,8 +563,8 @@ describe('ProvinceDrawerContent', () => {
         />
       );
       fireEvent.click(screen.getByTestId('province-tab-ruler'));
-      const iframe = screen.getByTestId('mock-article-iframe');
-      expect(iframe).toHaveAttribute('data-url', 'https://en.wikipedia.org/wiki/ROM');
+      expect(screen.queryByTestId('mock-article-iframe')).not.toBeInTheDocument();
+      expect(screen.getByTestId('article-section')).toHaveAttribute('aria-label', 'Fiche locale pour Roman Empire');
     });
   });
 

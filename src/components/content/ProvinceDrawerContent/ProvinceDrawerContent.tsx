@@ -14,13 +14,12 @@ import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import styles from './ProvinceDrawerContent.module.css';
 import { formatPopulation } from '@/utils/formatUtils';
-import { ArticleIframe } from '@/components/content/ArticleIframe/ArticleIframe';
+import { LocalArticleReader } from '@/components/library/LocalArticleReader';
+import { useArticle } from '@/features/library/useLibrary';
+import { collectionKey, useCollectionsStore } from '@/stores/collectionsStore';
+import { useNavigationStore } from '@/stores/navigationStore';
 import type { EntityMetadata, MetadataEntry, ProvinceData } from '@/api/types';
-import {
-  buildEntityWikiUrl,
-  getEntityMetadata,
-  getReligionGeneralMetadata,
-} from './ProvinceDrawerContent.utils';
+import { getEntityMetadata, getReligionGeneralMetadata } from './ProvinceDrawerContent.utils';
 
 export interface ProvinceDrawerContentProps {
   /** Province ID (name) */
@@ -78,6 +77,36 @@ const EntityRow: React.FC<EntityRowProps> = ({ label, entry, icon }) => (
   </div>
 );
 
+interface EntityArticlePanelProps {
+  articleId: string | null;
+  entityName: string;
+}
+
+const EntityArticlePanel: React.FC<EntityArticlePanelProps> = ({ articleId, entityName }) => {
+  const { article } = useArticle(articleId);
+  const openDrawer = useNavigationStore((state) => state.openDrawer);
+  if (!articleId) {
+    return <p className={styles['localNotice']}>Aucune fiche locale associée à « {entityName} ».</p>;
+  }
+  if (!article) {
+    return (
+      <>
+        <p className={styles['localNotice']}>
+          La fiche locale de « {entityName} » n’est pas encore téléchargée.
+        </p>
+        <button
+          type="button"
+          className={styles['localButton']}
+          onClick={() => openDrawer('downloads')}
+        >
+          Ouvrir les téléchargements
+        </button>
+      </>
+    );
+  }
+  return <LocalArticleReader articleId={articleId} />;
+};
+
 export const ProvinceDrawerContent: React.FC<ProvinceDrawerContentProps> = ({
   provinceId,
   provinceData,
@@ -85,20 +114,29 @@ export const ProvinceDrawerContent: React.FC<ProvinceDrawerContentProps> = ({
 }) => {
   const { t } = useTranslation();
   const [activeTab, setActiveTab] = useState<TabId>('ruler');
+  const entries = useCollectionsStore((state) => state.entries);
+  const addCollection = useCollectionsStore((state) => state.add);
+  const removeCollection = useCollectionsStore((state) => state.remove);
 
   const [, , religionId, , population] = provinceData;
   const formattedPopulation = formatPopulation(population);
   const religionGeneralEntry = getReligionGeneralMetadata(religionId, metadata);
 
-  // Precompute entity entries + their wiki urls so the tab panels render cleanly
+  // Precompute entity entries and their local article identifiers.
   const entityEntries = useMemo(() => {
     return ENTITY_TABS.map((cfg) => {
       if (cfg.isDerived) {
-        return { cfg, entityId: religionGeneralEntry.name, entry: religionGeneralEntry, wiki: buildEntityWikiUrl(religionGeneralEntry, religionGeneralEntry.name) };
+        return {
+          cfg,
+          entityId: religionGeneralEntry.name,
+          entry: religionGeneralEntry,
+          articleId: null,
+        };
       }
       const entityId = provinceData[cfg.dataIndex] as string;
       const entry = getEntityMetadata(entityId, cfg.metadataKey, metadata);
-      return { cfg, entityId, entry, wiki: buildEntityWikiUrl(entry, entityId) };
+      const articleId = entityId ? `${cfg.id}-${entityId}` : null;
+      return { cfg, entityId, entry, articleId };
     });
   }, [provinceData, metadata, religionGeneralEntry]);
 
@@ -112,7 +150,7 @@ export const ProvinceDrawerContent: React.FC<ProvinceDrawerContentProps> = ({
   const renderTabPanel = (): React.ReactNode => {
     const found = entityEntries.find((e) => e.cfg.id === activeTab);
     if (!found) return null;
-    const { entry, entityId, wiki, cfg } = found;
+    const { entry, articleId, cfg } = found;
     return (
       <>
         <section className={styles['entitySection']} aria-label={`${tabLabel(activeTab)} details`}>
@@ -129,16 +167,42 @@ export const ProvinceDrawerContent: React.FC<ProvinceDrawerContentProps> = ({
         <section
           className={styles['articleSection']}
           data-testid="article-section"
-          aria-label={`Wikipedia article for ${entry.name}`}
+          aria-label={`Fiche locale pour ${entry.name}`}
         >
-          <ArticleIframe url={wiki} title={`Wikipedia article for ${entry.name || entityId}`} />
+          <EntityArticlePanel articleId={articleId} entityName={entry.name} />
         </section>
       </>
     );
   };
 
+  const provinceKey = collectionKey('province', provinceId);
+  const provinceSaved = entries.some((entry) => entry.key === provinceKey);
+
   return (
     <div className={styles['container']} data-testid="province-drawer-content">
+      <div className={styles['entitySection']}>
+        <button
+          type="button"
+          className={styles['localButton']}
+          data-testid="province-collection-toggle"
+          onClick={() =>
+            provinceSaved
+              ? removeCollection(provinceKey)
+              : addCollection({
+                  key: provinceKey,
+                  kind: 'province',
+                  id: provinceId,
+                  title: provinceId,
+                  subtitle: 'Province',
+                  continent: '',
+                  epoch: '',
+                  addedAt: new Date().toISOString(),
+                })
+          }
+        >
+          {provinceSaved ? 'Retirer des collections' : 'Ajouter aux collections'}
+        </button>
+      </div>
       <div
         role="tablist"
         aria-label="Province information tabs"

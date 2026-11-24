@@ -40,7 +40,6 @@ import {
   POPULATION_OPACITY_MAX,
   MAX_POPULATION_FOR_OPACITY,
   DEFAULT_FILL_OPACITY,
-  ATTRIBUTION_OPTIONS,
   OWN_SOURCE_IDS, MODERN_PLACE_SOURCE_LAYERS,
 } from './MapView.constants';
 import {
@@ -1533,7 +1532,7 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
         onMouseLeave={handleMouseLeave}
         onClick={handleClick}
         interactiveLayerIds={['area-fill', 'provinces-fill', 'ruler-fill', 'culture-fill', 'religion-fill', 'religionGeneral-fill', 'population-fill', 'markers-layer', 'clusters', 'area-labels-layer', 'area-labels-points']}
-        attributionControl={ATTRIBUTION_OPTIONS}
+        attributionControl={false}
         reuseMaps
         // Requirement 5.3: WHEN the user hovers over a marker, THE Cursor SHALL change to a pointer
         {...(hoveredMarkerId ? { cursor: 'pointer' } : {})}

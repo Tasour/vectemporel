@@ -1,7 +1,7 @@
 /**
  * NavItem — lean atlas rail button
  *
- * 40×40 inside a 50px rail. Active state shows a gold indicator on the
+ * 44×44 inside a 50px rail. Active state shows a gold indicator on the
  * left edge (like a bookmark tab) rather than a filled background.
  */
 
@@ -10,8 +10,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   margin: 2px 0;
   border: none;

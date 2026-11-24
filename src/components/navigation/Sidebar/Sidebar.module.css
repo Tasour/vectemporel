@@ -102,10 +102,10 @@
 .toggleButton {
   display: none;
   position: absolute;
-  right: -28px;
+  right: -44px;
   top: 50%;
   transform: translateY(-50%);
-  width: 28px;
+  width: 44px;
   height: 52px;
   background: linear-gradient(180deg, #fdfcf8 0%, #f6f3ec 100%);
   border: 1px solid rgba(120, 95, 40, 0.12);

@@ -28,7 +28,7 @@ describe('uiStore', () => {
       const state = useUIStore.getState();
       
       expect(state.theme).toBe('light');
-      expect(state.locale).toBe('en');
+      expect(state.locale).toBe('fr');
       expect(state.sidebarOpen).toBe(true);
       expect(state.isFullscreen).toBe(false);
     });
@@ -271,7 +271,7 @@ describe('uiStore', () => {
       // Verify defaults
       state = useUIStore.getState();
       expect(state.theme).toBe('light');
-      expect(state.locale).toBe('en');
+      expect(state.locale).toBe('fr');
       expect(state.sidebarOpen).toBe(true);
       expect(state.isFullscreen).toBe(false);
     });

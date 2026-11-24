@@ -1,17 +1,16 @@
 import type React from 'react';
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import { MainContent } from './MainContent';
 import { Sidebar } from '../navigation/Sidebar';
 import { MenuDrawer } from '../navigation/MenuDrawer';
 import { RightDrawer } from './RightDrawer/RightDrawer';
-import { CollectionsPlaceholder } from '../placeholders';
+import { CollectionsContent } from '../library/CollectionsContent';
+import { DownloadManager } from '../library/DownloadManager';
 import { LayersContent } from '../navigation/LayersContent';
 import { SettingsContent } from '../navigation/SettingsContent';
 import { LoadingBar } from '../global/LoadingBar';
-import { AnnouncementBanner } from '../global/AnnouncementBanner/AnnouncementBanner';
 import { LoginDialog } from '../auth/LoginDialog/LoginDialog';
 import { InfoDialog } from '../global/InfoDialog/InfoDialog';
-import { SupportDialog } from '../global/SupportDialog/SupportDialog';
 import { useUIStore } from '../../stores/uiStore';
 import { useNavigationStore } from '../../stores/navigationStore';
 import { clearURLParams } from '../../utils/urlStateUtils';
@@ -29,8 +28,14 @@ export interface AppShellProps {
  * Requirements: 2.1, 2.4, 2.7, 2.8, 2.9
  */
 export const AppShell: React.FC<AppShellProps> = ({ children, className }) => {
-  const { sidebarOpen, toggleSidebar, rightDrawerOpen, rightDrawerContent, closeRightDrawer, loginDialogOpen, closeLoginDialog, infoDialogOpen, infoDialogTab, openInfoDialog, closeInfoDialog, supportDialogOpen, closeSupportDialog } = useUIStore();
+  const { sidebarOpen, toggleSidebar, setSidebarOpen, rightDrawerOpen, rightDrawerContent, closeRightDrawer, loginDialogOpen, closeLoginDialog, infoDialogOpen, infoDialogTab, closeInfoDialog } = useUIStore();
   const { drawerOpen, drawerContent, closeDrawer } = useNavigationStore();
+
+  useEffect(() => {
+    if (drawerOpen && window.matchMedia('(max-width: 767px)').matches) {
+      setSidebarOpen(false);
+    }
+  }, [drawerOpen, setSidebarOpen]);
 
   /**
    * Handles closing the right drawer and clearing URL params.
@@ -50,9 +55,7 @@ export const AppShell: React.FC<AppShellProps> = ({ children, className }) => {
       {/* Header hidden - production uses sidebar logo as branding */}
       {/* <Header /> */}
       
-      <AnnouncementBanner />
-
-      {/* Loading bar at top of viewport - matches production */}
+      {/* Loading bar at top of viewport */}
       <LoadingBar />
       
       <div className={styles['body']}>
@@ -61,19 +64,20 @@ export const AppShell: React.FC<AppShellProps> = ({ children, className }) => {
           onToggle={toggleSidebar}
         />
         
+        <MainContent>
+          {children}
+        </MainContent>
+
         <MenuDrawer
           isOpen={drawerOpen}
           contentType={drawerContent}
           onClose={closeDrawer}
         >
           {drawerContent === 'layers' && <LayersContent onClose={closeDrawer} />}
-          {drawerContent === 'collections' && <CollectionsPlaceholder />}
+          {drawerContent === 'collections' && <CollectionsContent onClose={closeDrawer} />}
+          {drawerContent === 'downloads' && <DownloadManager />}
           {drawerContent === 'settings' && <SettingsContent onClose={closeDrawer} />}
         </MenuDrawer>
-        
-        <MainContent>
-          {children}
-        </MainContent>
         
         {/* Right drawer for province/marker details */}
         {/* Requirement 2.1: WHEN a province is clicked, THE RightDrawer SHALL open */}
@@ -91,14 +95,6 @@ export const AppShell: React.FC<AppShellProps> = ({ children, className }) => {
 
       <LoginDialog isOpen={loginDialogOpen} onClose={closeLoginDialog} />
       <InfoDialog isOpen={infoDialogOpen} onClose={closeInfoDialog} initialTab={infoDialogTab} />
-      <SupportDialog
-        isOpen={supportDialogOpen}
-        onClose={closeSupportDialog}
-        onRequestContact={() => {
-          closeSupportDialog();
-          openInfoDialog('contact');
-        }}
-      />
     </div>
   );
 };

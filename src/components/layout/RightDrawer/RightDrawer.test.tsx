@@ -196,7 +196,7 @@ describe('RightDrawer', () => {
       );
 
       const closeButton = screen.getByTestId('right-drawer-close');
-      expect(closeButton).toHaveAttribute('aria-label', 'Close panel');
+      expect(closeButton).toHaveAttribute('aria-label', 'Fermer le panneau');
     });
   });
 
@@ -313,7 +313,7 @@ describe('RightDrawer', () => {
         />
       );
 
-      expect(screen.getByText('No content selected')).toBeInTheDocument();
+      expect(screen.getByText('Aucun contenu sélectionné')).toBeInTheDocument();
     });
   });
 
@@ -414,8 +414,9 @@ describe('RightDrawer', () => {
         />
       );
 
-      // ArticleIframe renders with data-testid="article-iframe-container"
-      expect(screen.getByTestId('article-iframe-container')).toBeInTheDocument();
+      // Le tiroir n'embarque aucun iframe externe : l'épopée reste locale.
+      expect(screen.queryByTestId('article-iframe-container')).not.toBeInTheDocument();
+      expect(screen.getByText(/Aucun article local associé/)).toBeInTheDocument();
     });
 
     it('should pass correct wikiUrl to ArticleIframe for epic content', () => {
@@ -427,9 +428,7 @@ describe('RightDrawer', () => {
         />
       );
 
-      // The iframe should be rendered with the wiki URL
-      const iframe = screen.getByTestId('article-iframe');
-      expect(iframe).toHaveAttribute('src', 'https://en.wikipedia.org/wiki/Roman_Empire');
+      expect(screen.queryByTestId('article-iframe')).not.toBeInTheDocument();
     });
   });
 });

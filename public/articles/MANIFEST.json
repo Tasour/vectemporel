@@ -1,0 +1,1589 @@
+{
+  "date": "2026-11-25",
+  "source": "Wikipédia FR REST summary + Wikimedia Commons",
+  "count": 78,
+  "articles": [
+    {
+      "id": "culture-aboriginal",
+      "title": "Aboriginal Australians",
+      "label": "Aboriginal Australians",
+      "description": "One of the two categories of Indigenous Australians",
+      "type": "culture",
+      "typeLabel": "Culture",
+      "continents": [
+        "Oceanie"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 37,
+      "hasImage": false,
+      "sha256": "5019074d6ff08ee2be224ae2c38b90c4dc464b2ddc53b64fb1513a37be008ace"
+    },
+    {
+      "id": "culture-american",
+      "title": "Autochtones d'Amérique",
+      "label": "Amérindiens",
+      "description": "peuples originels des Amériques",
+      "type": "culture",
+      "typeLabel": "Culture",
+      "continents": [
+        "Afrique",
+        "Ameriques",
+        "Europe"
+      ],
+      "epochs": [
+        "antiquite",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 200,
+      "hasImage": true,
+      "sha256": "d78be0bb1b285d2e3ebb1da5e69aadfdc3edb792269b150a624b9fbcf4c01f00"
+    },
+    {
+      "id": "culture-berber",
+      "title": "Berbères",
+      "label": "Berbères",
+      "description": "groupe ethnique autochtone d'Afrique du Nord",
+      "type": "culture",
+      "typeLabel": "Culture",
+      "continents": [
+        "Afrique",
+        "Europe"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 38,
+      "hasImage": true,
+      "sha256": "c37bfc826a7daaedc7849817bb1aeedd9a63d4bed341ad7adf8d50a3d2316637"
+    },
+    {
+      "id": "culture-castillian",
+      "title": "Castilian",
+      "label": "Castilian",
+      "description": "race de chevaux",
+      "type": "culture",
+      "typeLabel": "Culture",
+      "continents": [
+        "Afrique",
+        "Ameriques",
+        "Asie",
+        "Europe"
+      ],
+      "epochs": [
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 200,
+      "hasImage": true,
+      "sha256": "5975382f7df92e0b952a1d1a4a4162cf0968f567e596513b349e82c465298918"
+    },
+    {
+      "id": "culture-cosmopolitan_french",
+      "title": "Culture française",
+      "label": "culture française",
+      "description": "l’ensemble des expressions artistiques, sociales et intellectuelles de la France",
+      "type": "culture",
+      "typeLabel": "Culture",
+      "continents": [
+        "Ameriques",
+        "Asie",
+        "Autres",
+        "Europe"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 98,
+      "hasImage": true,
+      "sha256": "e934b84a979b147627a864b6d07339ebff92f9bed0efcb50c8e73f21ccdf60ad"
+    },
+    {
+      "id": "culture-dutch",
+      "title": "Néerlandais",
+      "label": "néerlandais",
+      "description": "langue germanique",
+      "type": "culture",
+      "typeLabel": "Culture",
+      "continents": [
+        "Afrique",
+        "Ameriques",
+        "Autres",
+        "Europe"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 35,
+      "hasImage": true,
+      "sha256": "e527a7dc7b134e243f44c8161cddacbf608fe6e33b6b1842ff8cff438917015a"
+    },
+    {
+      "id": "culture-english",
+      "title": "Anglais",
+      "label": "Anglais",
+      "description": "langue germanique occidentale",
+      "type": "culture",
+      "typeLabel": "Culture",
+      "continents": [
+        "Ameriques",
+        "Asie",
+        "Autres",
+        "Europe",
+        "Oceanie"
+      ],
+      "epochs": [
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 129,
+      "hasImage": true,
+      "sha256": "fdebdc7133d1a97fac1a1584a0913f7775f57b44d54c3af056d0d8e755e0c202"
+    },
+    {
+      "id": "culture-frankish",
+      "title": "Francs",
+      "label": "Francs",
+      "description": "groupe ethnique germanique historique",
+      "type": "culture",
+      "typeLabel": "Culture",
+      "continents": [
+        "Europe"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age"
+      ],
+      "itemCount": 16,
+      "hasImage": true,
+      "sha256": "b505d07956e750f5f20a07137d302730dbed8b718d175d66f33587447aff7581"
+    },
+    {
+      "id": "culture-greek",
+      "title": "Grecs",
+      "label": "grecs",
+      "description": "peuple méditerranéen",
+      "type": "culture",
+      "typeLabel": "Culture",
+      "continents": [
+        "Afrique",
+        "Europe"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 47,
+      "hasImage": true,
+      "sha256": "d442283cfefefe1201fc8cfd38d81ab9e5c3547f1d10fb8e00d79b3f9e941c1d"
+    },
+    {
+      "id": "culture-papuan",
+      "title": "Papous",
+      "label": "Papous",
+      "description": "populations autochtones de la Nouvelle-Guinée",
+      "type": "culture",
+      "typeLabel": "Culture",
+      "continents": [
+        "Asie",
+        "Oceanie"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 19,
+      "hasImage": true,
+      "sha256": "a147aee2380f06757d4aff9bc2284d198b85e83455a6e9121a9a56397c7526e4"
+    },
+    {
+      "id": "culture-polynesian",
+      "title": "Polynésiens",
+      "label": "Polynésiens",
+      "description": "groupe ethnique, de l’océan Pacifique",
+      "type": "culture",
+      "typeLabel": "Culture",
+      "continents": [
+        "Ameriques",
+        "Asie",
+        "Oceanie"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 19,
+      "hasImage": true,
+      "sha256": "ec413a9a4f73ae8f67e8e7c1b7a5d45ef0c1ab42d0c8cfc716891a108282276a"
+    },
+    {
+      "id": "culture-portugese",
+      "title": "Momo Challenge",
+      "label": "Défi Momo",
+      "description": "Cyberintimidation via WhatsApp",
+      "type": "culture",
+      "typeLabel": "Culture",
+      "continents": [
+        "Afrique",
+        "Ameriques",
+        "Europe",
+        "Oceanie"
+      ],
+      "epochs": [
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 89,
+      "hasImage": true,
+      "sha256": "56cec737f40d5011e9191d34a299c0869f954db62802d1cee6ddcb84b81b1bd3"
+    },
+    {
+      "id": "culture-russian",
+      "title": "Lists of indigenous peoples of Russia",
+      "label": "Russian",
+      "description": "",
+      "type": "culture",
+      "typeLabel": "Culture",
+      "continents": [
+        "Ameriques",
+        "Asie",
+        "Europe"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 177,
+      "hasImage": false,
+      "sha256": "779a8073ba05fb3e747c6df8eb126d22f75b28a3bc7b075dac612d23f6349f17"
+    },
+    {
+      "id": "culture-turkish",
+      "title": "Peuples turciques",
+      "label": "Peuples turcs",
+      "description": "ensemble de groupes ethniques d'Eurasie",
+      "type": "culture",
+      "typeLabel": "Culture",
+      "continents": [
+        "Asie",
+        "Europe"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 53,
+      "hasImage": true,
+      "sha256": "551ea6a49f22a03508088ce61011af303da6b9bab60e70f9b1392fc43afcc911"
+    },
+    {
+      "id": "religion-animism",
+      "title": "Animisme",
+      "label": "animisme",
+      "description": "croyance religieuse",
+      "type": "religion",
+      "typeLabel": "Religion",
+      "continents": [
+        "Afrique",
+        "Ameriques",
+        "Asie",
+        "Autres",
+        "Europe",
+        "Oceanie"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 200,
+      "hasImage": true,
+      "sha256": "c082277746b0fdfab90278804046cc5fade8c19ce97f60cba32faedd79e1d3e9"
+    },
+    {
+      "id": "religion-catholic",
+      "title": "Église catholique",
+      "label": "Église catholique",
+      "description": "ensemble des Églises chrétiennes en communion avec l'évêque de Rome",
+      "type": "religion",
+      "typeLabel": "Religion",
+      "continents": [
+        "Afrique",
+        "Ameriques",
+        "Asie",
+        "Autres",
+        "Europe",
+        "Oceanie"
+      ],
+      "epochs": [
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 200,
+      "hasImage": true,
+      "sha256": "a3aa07de0b40c26636cf1c7bbe127514cd3965a844bb04a9db9ab854ddfda941"
+    },
+    {
+      "id": "religion-chalcedonism",
+      "title": "Chalcédonisme",
+      "label": "Chalcédonisme",
+      "description": "doctrine sur la conception du Christ, fixée lors du concile de Chalcédoine (451)",
+      "type": "religion",
+      "typeLabel": "Religion",
+      "continents": [
+        "Afrique",
+        "Asie",
+        "Europe"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age"
+      ],
+      "itemCount": 200,
+      "hasImage": false,
+      "sha256": "6c48546a60fe0c51dc14f65729a5dce84cecaa6ee9a0debdc6976256c1aa5d9a"
+    },
+    {
+      "id": "religion-confucianism",
+      "title": "Confucianisme",
+      "label": "confucianisme",
+      "description": "école asiatique de philosophe",
+      "type": "religion",
+      "typeLabel": "Religion",
+      "continents": [
+        "Asie"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 124,
+      "hasImage": true,
+      "sha256": "1ef872150a3751f889ca480fc907fa3af0852ce528324ddef788f6dfe93b8457"
+    },
+    {
+      "id": "religion-coptic",
+      "title": "Coptic",
+      "label": "Coptic",
+      "description": "",
+      "type": "religion",
+      "typeLabel": "Religion",
+      "continents": [
+        "Afrique",
+        "Asie",
+        "Europe"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 59,
+      "hasImage": true,
+      "sha256": "09681c8e620b729f928d424cbeb2f73dea06529a822c10933c3dcbd339e65d08"
+    },
+    {
+      "id": "religion-druidism",
+      "title": "Religion des Celtes",
+      "label": "religion des Celtes",
+      "description": "religion pratiquée par le peuple Celte antique",
+      "type": "religion",
+      "typeLabel": "Religion",
+      "continents": [
+        "Europe"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age"
+      ],
+      "itemCount": 137,
+      "hasImage": true,
+      "sha256": "569b4cc1abddf306ce0acd3af864ca52af979b1c10241a0c0e645cbd17d29d73"
+    },
+    {
+      "id": "religion-germanic",
+      "title": "Mythologie germanique",
+      "label": "mythologie germanique",
+      "description": "version remaniée de diverses mythologies plus anciennes des peuples germaniques",
+      "type": "religion",
+      "typeLabel": "Religion",
+      "continents": [
+        "Europe"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age"
+      ],
+      "itemCount": 179,
+      "hasImage": true,
+      "sha256": "ed69b93eb56b85306e16e95e4ab195af9edf39233aa8ea89bb2491eb11273e20"
+    },
+    {
+      "id": "religion-hellenism",
+      "title": "Religion hellénistique",
+      "label": "Religion hellénistique",
+      "description": "",
+      "type": "religion",
+      "typeLabel": "Religion",
+      "continents": [
+        "Afrique",
+        "Asie",
+        "Europe"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age"
+      ],
+      "itemCount": 177,
+      "hasImage": false,
+      "sha256": "1bfbbce178e66b7849c180dd7650dc015c75d7be5255cfcf9bab544d38399249"
+    },
+    {
+      "id": "religion-hinduism",
+      "title": "Hindouisme",
+      "label": "hindouisme",
+      "description": "religion dominante du sous-continent indien, majoritaire en Inde et au Népal",
+      "type": "religion",
+      "typeLabel": "Religion",
+      "continents": [
+        "Asie",
+        "Oceanie"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 200,
+      "hasImage": true,
+      "sha256": "f0b1d8ef777b6b36c273285c3132fef600aec4f066cb56ed5d082958e6ea470e"
+    },
+    {
+      "id": "religion-inti",
+      "title": "Inti",
+      "label": "Inti",
+      "description": "manifestation inca/panandine du soleil",
+      "type": "religion",
+      "typeLabel": "Religion",
+      "continents": [
+        "Ameriques"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age",
+        "moderne"
+      ],
+      "itemCount": 40,
+      "hasImage": true,
+      "sha256": "cc728977ce1a1c5de13b80f659576f40b42745213177702e6747905f5742da3e"
+    },
+    {
+      "id": "religion-mahayana",
+      "title": "Bouddhisme mahāyāna",
+      "label": "mahāyāna",
+      "description": "courant du bouddhisme, apparu au tournant de notre ère, présent surtout en Asie de l'Est",
+      "type": "religion",
+      "typeLabel": "Religion",
+      "continents": [
+        "Asie"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 200,
+      "hasImage": true,
+      "sha256": "c3bfcd7ac7005a16b8c0a2e2b932edf6eb6f5a0d17a0dfe51a6af1c36ff6dbea"
+    },
+    {
+      "id": "religion-orthodox",
+      "title": "Orthodox",
+      "label": "Orthodox",
+      "description": "",
+      "type": "religion",
+      "typeLabel": "Religion",
+      "continents": [
+        "Afrique",
+        "Ameriques",
+        "Asie",
+        "Europe"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 200,
+      "hasImage": true,
+      "sha256": "fd3c3e46547f74ec59c1e1a8d71f6f8ea73e9e4983d29f5cbdeabaf09f9c772e"
+    },
+    {
+      "id": "religion-protestant",
+      "title": "Protestantisme",
+      "label": "protestantisme",
+      "description": "courant du christianisme",
+      "type": "religion",
+      "typeLabel": "Religion",
+      "continents": [
+        "Afrique",
+        "Ameriques",
+        "Asie",
+        "Autres",
+        "Europe",
+        "Oceanie"
+      ],
+      "epochs": [
+        "antiquite",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 200,
+      "hasImage": false,
+      "sha256": "220d755801d59f6c4a6217ba543a88c0303a757f97564db97b8fd664557689f3"
+    },
+    {
+      "id": "religion-reformed",
+      "title": "Reformed Christianity",
+      "label": "Calvinism",
+      "description": "Protestant denominational family",
+      "type": "religion",
+      "typeLabel": "Religion",
+      "continents": [
+        "Afrique",
+        "Ameriques",
+        "Asie",
+        "Autres",
+        "Europe",
+        "Oceanie"
+      ],
+      "epochs": [
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 118,
+      "hasImage": true,
+      "sha256": "273104a61d64ae8320e3cfa8603d1139fc4170855f63ce6197e5010a7d4886c1"
+    },
+    {
+      "id": "religion-shamanism",
+      "title": "Shamanism",
+      "label": "Shamanism",
+      "description": "Religious practice",
+      "type": "religion",
+      "typeLabel": "Religion",
+      "continents": [
+        "Afrique",
+        "Ameriques",
+        "Asie",
+        "Europe"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 200,
+      "hasImage": true,
+      "sha256": "69b44566c43ee42087319695c19e792bf481ff8cf00a6300cefcf492dadbbb21"
+    },
+    {
+      "id": "religion-south_american",
+      "title": "South America",
+      "label": "South American",
+      "description": "Continent",
+      "type": "religion",
+      "typeLabel": "Religion",
+      "continents": [
+        "Ameriques"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 177,
+      "hasImage": true,
+      "sha256": "7c2b83bf423af0608d16884fa46986e301e252c42bab6bd52ca320e177e8e518"
+    },
+    {
+      "id": "religion-sunni",
+      "title": "Sunnisme",
+      "label": "sunnisme",
+      "description": "principal courant religieux de l'islam",
+      "type": "religion",
+      "typeLabel": "Religion",
+      "continents": [
+        "Afrique",
+        "Asie",
+        "Europe",
+        "Oceanie"
+      ],
+      "epochs": [
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 200,
+      "hasImage": true,
+      "sha256": "c62dc122b69dc5c60a2aba82ca99af6bae66a61e4d191e9e6536d377eee0fb15"
+    },
+    {
+      "id": "religion-tengri",
+      "title": "Tengrisme",
+      "label": "tengrisme",
+      "description": "religion turco-mongole",
+      "type": "religion",
+      "typeLabel": "Religion",
+      "continents": [
+        "Asie",
+        "Europe"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 200,
+      "hasImage": true,
+      "sha256": "998d17ce449f3fbe35cf271aac76653e70213d22dada42e39435ef2b79c2263e"
+    },
+    {
+      "id": "religion-totemism",
+      "title": "Totem",
+      "label": "Totemism",
+      "description": "Emblem of a group of people",
+      "type": "religion",
+      "typeLabel": "Religion",
+      "continents": [
+        "Ameriques"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 200,
+      "hasImage": true,
+      "sha256": "9d5e6a928bad365ce3f912ff00ad437d3fbad004c94e467b3bd2a17258b68ccc"
+    },
+    {
+      "id": "ruler-ABA",
+      "title": "Califat abbasside",
+      "label": "califat abbasside",
+      "description": "troisième califat (750-1258) gouverné par la dynastie abbasside",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Afrique",
+        "Asie",
+        "Europe"
+      ],
+      "epochs": [
+        "moyen-age"
+      ],
+      "itemCount": 198,
+      "hasImage": true,
+      "sha256": "bcdc811b4a6d21f2c86d8e9caa5848c35bba4d4b263605b3cc6fc0cdc9b3156d"
+    },
+    {
+      "id": "ruler-BRZ",
+      "title": "Brésil",
+      "label": "Brésil",
+      "description": "pays d'Amérique du Sud",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Ameriques",
+        "Europe"
+      ],
+      "epochs": [
+        "antiquite",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 90,
+      "hasImage": true,
+      "sha256": "34a0da7493f198a92ee7fe40cb7551232d36402d2d2cdcabb1c543b3a4ff662c"
+    },
+    {
+      "id": "ruler-BYZ",
+      "title": "Empire byzantin",
+      "label": "Empire byzantin",
+      "description": "État issu de la scission de l'Empire romain du IVe siècle jusqu'au XVè siècle",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Afrique",
+        "Asie",
+        "Europe"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age"
+      ],
+      "itemCount": 183,
+      "hasImage": true,
+      "sha256": "5fa97cf76412770569f70f5bdf43d27ebaae93e88ac048fea743bbeef6b3065e"
+    },
+    {
+      "id": "ruler-CHN",
+      "title": "Chine",
+      "label": "République populaire de Chine",
+      "description": "pays d'Asie de l'Est",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Asie"
+      ],
+      "epochs": [
+        "contemporain"
+      ],
+      "itemCount": 160,
+      "hasImage": true,
+      "sha256": "664b69d1869b9444ad97bad270964b68642cb7c04b78122da9e2b471ab2365ce"
+    },
+    {
+      "id": "ruler-DAN",
+      "title": "Danemark",
+      "label": "Danemark",
+      "description": "État souverain et monarchie constitutionnelle transcontinentale",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Afrique",
+        "Ameriques",
+        "Europe"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 47,
+      "hasImage": true,
+      "sha256": "8166c5e1da453db422b4318ac66cd1b7afe49e2eeca566cc8ba44d42a96f7d35"
+    },
+    {
+      "id": "ruler-FR2",
+      "title": "France",
+      "label": "France",
+      "description": "pays transcontinental au territoire métropolitain situé en Europe de l'Ouest",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Afrique",
+        "Ameriques",
+        "Asie",
+        "Autres",
+        "Europe",
+        "Oceanie"
+      ],
+      "epochs": [
+        "contemporain"
+      ],
+      "itemCount": 200,
+      "hasImage": true,
+      "sha256": "e9e7aee9ac87dd12740e92f21ca88744fa197e8e4451113dade07b74d90c57b4"
+    },
+    {
+      "id": "ruler-FRA",
+      "title": "France",
+      "label": "France",
+      "description": "pays transcontinental au territoire métropolitain situé en Europe de l'Ouest",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Afrique",
+        "Ameriques",
+        "Asie",
+        "Autres",
+        "Europe",
+        "Oceanie"
+      ],
+      "epochs": [
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 136,
+      "hasImage": true,
+      "sha256": "a23a2f27c2705fe39a3ddab3dfdf4a997e3a9fc53643ba1af3a73f44df09eaf0"
+    },
+    {
+      "id": "ruler-FRK",
+      "title": "Royaumes francs",
+      "label": "Royaume des Francs",
+      "description": "anciens États",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Europe"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age"
+      ],
+      "itemCount": 140,
+      "hasImage": true,
+      "sha256": "7d1eacd5a617227ea4ae5abf4d3b471b575173841e961587d5f9d2bec4ad22a1"
+    },
+    {
+      "id": "ruler-FRV",
+      "title": "Régime de Vichy",
+      "label": "régime de Vichy",
+      "description": "régime politique de la France au cours de la Seconde Guerre mondiale, entre juillet 1940 et août 1944",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Afrique",
+        "Ameriques",
+        "Europe"
+      ],
+      "epochs": [
+        "contemporain"
+      ],
+      "itemCount": 118,
+      "hasImage": true,
+      "sha256": "05de6226e758fc5e1bfd4ab843fe771abd357bcd84b2c900f126a3d96c170f2d"
+    },
+    {
+      "id": "ruler-GBR",
+      "title": "Royaume-Uni",
+      "label": "Royaume-Uni",
+      "description": "pays d'Europe occidentale",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Afrique",
+        "Ameriques",
+        "Asie",
+        "Autres",
+        "Europe",
+        "Oceanie"
+      ],
+      "epochs": [
+        "contemporain"
+      ],
+      "itemCount": 200,
+      "hasImage": true,
+      "sha256": "1bc1821c86c127f3f8bc4381566583a3a7cd436cf9139a12d0b7ad2c4edcceee"
+    },
+    {
+      "id": "ruler-IND",
+      "title": "Inde",
+      "label": "Inde",
+      "description": "pays d'Asie du Sud",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Asie"
+      ],
+      "epochs": [
+        "contemporain"
+      ],
+      "itemCount": 120,
+      "hasImage": true,
+      "sha256": "29bae13f7759d0d59ca141ae048cc6a1903098c4038d91a7cbf7a3e63594645f"
+    },
+    {
+      "id": "ruler-IRO",
+      "title": "Iroquois",
+      "label": "Iroquois",
+      "description": "peuples autochtones d'Amérique du Nord",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Ameriques"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age",
+        "moderne"
+      ],
+      "itemCount": 33,
+      "hasImage": true,
+      "sha256": "95f2731f44a6ea1481f3a048061dcf31980881c86ddbb186c6c7db33ce6aea9a"
+    },
+    {
+      "id": "ruler-KHA",
+      "title": "Empire mongol",
+      "label": "Empire mongol",
+      "description": "État du XIIIe siècle fondé par Gengis Khan",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Afrique",
+        "Asie",
+        "Europe"
+      ],
+      "epochs": [
+        "moyen-age"
+      ],
+      "itemCount": 200,
+      "hasImage": true,
+      "sha256": "6851db22c10d951ff47c844f56ff85ed623c682a16414010ddb46da0d39eb73f"
+    },
+    {
+      "id": "ruler-KUT",
+      "title": "Royaume de Kutai",
+      "label": "Royaume de Kutai",
+      "description": "ancien royaume d'Indonésie",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Asie",
+        "Oceanie"
+      ],
+      "epochs": [
+        "antiquite",
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 5,
+      "hasImage": true,
+      "sha256": "23e7169bd2cc9fdf3a644d12eace2e7d872117db2888c6e8461466e5be9a3a88"
+    },
+    {
+      "id": "ruler-MAC",
+      "title": "Royaume de Macédoine",
+      "label": "Royaume de Macédoine",
+      "description": "État grec antique situé au nord de la Grèce antique",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Afrique",
+        "Asie",
+        "Europe"
+      ],
+      "epochs": [
+        "antiquite"
+      ],
+      "itemCount": 187,
+      "hasImage": true,
+      "sha256": "fd2ad354a78c3b6654d1d3f93586a253aa4a733bc66103f3dd412dfd8b0c5b16"
+    },
+    {
+      "id": "ruler-MAJ",
+      "title": "Majapahit",
+      "label": "Majapahit",
+      "description": "royaume sur l'île de Java de 1293 à 1527",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Asie",
+        "Oceanie"
+      ],
+      "epochs": [
+        "moyen-age",
+        "moderne"
+      ],
+      "itemCount": 19,
+      "hasImage": true,
+      "sha256": "49846e60052e9d1c75b080b0322a39ab2f29bb7d7711b1c09ed22c7e6d827dd5"
+    },
+    {
+      "id": "ruler-MEX",
+      "title": "Mexique",
+      "label": "Mexique",
+      "description": "pays d'Amérique du Nord",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Ameriques"
+      ],
+      "epochs": [
+        "contemporain"
+      ],
+      "itemCount": 117,
+      "hasImage": true,
+      "sha256": "9f6f55838c85bb8a07a16f9b3e8b354e46c2a1c5838d925eaabf377773427cbc"
+    },
+    {
+      "id": "ruler-MNG",
+      "title": "Dynastie Ming",
+      "label": "dynastie Ming",
+      "description": "dynastie d’empereurs chinois, du XIVe au XVIIe siècle",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Asie"
+      ],
+      "epochs": [
+        "moyen-age",
+        "moderne"
+      ],
+      "itemCount": 117,
+      "hasImage": true,
+      "sha256": "dfa1ecf65acb4de26c66356d61d8f6e3c376eecff2b491932359a1a17da4b344"
+    },
+    {
+      "id": "ruler-MUG",
+      "title": "Empire moghol",
+      "label": "Empire moghol",
+      "description": "État turco-mongol musulman de l'Inde (1526-1857)",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Asie"
+      ],
+      "epochs": [
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 131,
+      "hasImage": true,
+      "sha256": "450d33ce0fd40720d45733d9d9656731a6bbe9ceba6b56e8ccdc3dbae2ba0d84"
+    },
+    {
+      "id": "ruler-NED",
+      "title": "Pays-Bas",
+      "label": "Pays-Bas",
+      "description": "État souverain et monarchie constitutionnelle transcontinentale",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Afrique",
+        "Ameriques",
+        "Asie",
+        "Autres",
+        "Europe",
+        "Oceanie"
+      ],
+      "epochs": [
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 117,
+      "hasImage": true,
+      "sha256": "7717f81d334665d4cd12db51b370dc7cc7673becc996824582760a7089beb9a7"
+    },
+    {
+      "id": "ruler-PSE",
+      "title": "Achéménides",
+      "label": "Empire achéménide",
+      "description": "premier empire perse, de 550 à 330 av. J.-C.",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Afrique",
+        "Asie",
+        "Europe"
+      ],
+      "epochs": [
+        "antiquite"
+      ],
+      "itemCount": 200,
+      "hasImage": true,
+      "sha256": "c391e4a689728b330db731ed4de4e05c858c0f448ec741bdfe0896064da104b1"
+    },
+    {
+      "id": "ruler-QNG",
+      "title": "Dynastie Qing",
+      "label": "dynastie Qing",
+      "description": "dynastie d'origine mandchoue et dernière dynastie impériale de Chine, du XVIIe au XXe siècle",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Asie"
+      ],
+      "epochs": [
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 191,
+      "hasImage": true,
+      "sha256": "2cb4a2a62177559b022c026b694ca082c66f249060e869d0cd7f0c1e9ea6c10f"
+    },
+    {
+      "id": "ruler-R1O",
+      "title": "Auguste",
+      "label": "Auguste",
+      "description": "premier empereur romain de 27 av. J.–C. à 14",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Afrique",
+        "Asie",
+        "Europe"
+      ],
+      "epochs": [
+        "antiquite"
+      ],
+      "itemCount": 200,
+      "hasImage": true,
+      "sha256": "2abf8ffc4069727601810186f9b7f882afdb995901628a8f71d1c79dfcfbe1ee"
+    },
+    {
+      "id": "ruler-ROM",
+      "title": "Empire romain",
+      "label": "empire romain",
+      "description": "nom donné à la domination romaine antique entre 27 av. J.-C. et 395 ap. J.-C.",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Afrique",
+        "Asie",
+        "Europe"
+      ],
+      "epochs": [
+        "antiquite"
+      ],
+      "itemCount": 200,
+      "hasImage": true,
+      "sha256": "b552ad3d193e83047abd1e27fbf9f6b70e36b9e307f14e853c72fa7255375d0f"
+    },
+    {
+      "id": "ruler-ROW",
+      "title": "Empire romain d'Occident",
+      "label": "Empire romain d'Occident",
+      "description": "provinces indépendantes à l'Ouest de l'Empire romain de 395 à 476",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Afrique",
+        "Europe"
+      ],
+      "epochs": [
+        "antiquite"
+      ],
+      "itemCount": 199,
+      "hasImage": true,
+      "sha256": "33074cbb23a710c598738e5d1265ef7b570ba01f44643eea8cf40ca5492ab4f5"
+    },
+    {
+      "id": "ruler-RSD",
+      "title": "Califes bien guidés",
+      "label": "califat Rachidun",
+      "description": "premier califat islamique, dirigé par quatre califes de 632 à 661",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Afrique",
+        "Asie",
+        "Europe"
+      ],
+      "epochs": [
+        "moyen-age"
+      ],
+      "itemCount": 172,
+      "hasImage": true,
+      "sha256": "0d3a83eb79d1c4d0446f333c1d5d0fcc510ed433ce7cd475f8c24df8c9ea1c2f"
+    },
+    {
+      "id": "ruler-RUS",
+      "title": "Russie",
+      "label": "Russie",
+      "description": "pays d'Europe de l'Est et d'Asie du Nord",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Afrique",
+        "Ameriques",
+        "Asie",
+        "Europe"
+      ],
+      "epochs": [
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 200,
+      "hasImage": true,
+      "sha256": "491c8ba3af8666ee94d295bb7206ec351868e4ce413bfe7903b48661ca856dbd"
+    },
+    {
+      "id": "ruler-SOV",
+      "title": "Union des républiques socialistes soviétiques",
+      "label": "Union des républiques socialistes soviétiques",
+      "description": "ancien État d'Eurasie (1922–1991)",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Afrique",
+        "Ameriques",
+        "Asie",
+        "Europe"
+      ],
+      "epochs": [
+        "contemporain"
+      ],
+      "itemCount": 200,
+      "hasImage": true,
+      "sha256": "d37612cd6b1a4e99a9a53b9b05723c133ffabdf452f82d009af99dcc7de54735"
+    },
+    {
+      "id": "ruler-TNG",
+      "title": "Dynastie Tang",
+      "label": "dynastie Tang",
+      "description": "dynastie chinoise",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Asie"
+      ],
+      "epochs": [
+        "moyen-age"
+      ],
+      "itemCount": 120,
+      "hasImage": true,
+      "sha256": "9b14967b52de58fcb37137cfac01895bb8227714cfba4709afd9a0e1012ce8d0"
+    },
+    {
+      "id": "ruler-TUR",
+      "title": "Empire ottoman",
+      "label": "Empire ottoman",
+      "description": "État multi-ethnique transcontinental ayant existé de 1299 à 1922",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Afrique",
+        "Asie",
+        "Europe"
+      ],
+      "epochs": [
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 200,
+      "hasImage": true,
+      "sha256": "98e09ae78c63363f494c113e47f6b8f290d97fdaf6a8d19c31ac8fe12c2f89ed"
+    },
+    {
+      "id": "ruler-UMA",
+      "title": "Omeyyades",
+      "label": "Omeyyades",
+      "description": "dynastie qui gouverne le monde musulman de 661 à 750 puis Al-Andalus de 756 à 1031",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Afrique",
+        "Asie",
+        "Europe"
+      ],
+      "epochs": [
+        "moyen-age"
+      ],
+      "itemCount": 200,
+      "hasImage": true,
+      "sha256": "bc45a59abc4fed10e529862dabd499cca56f2f55a8973ad1c9ddab1c81c18a6b"
+    },
+    {
+      "id": "ruler-USA",
+      "title": "États-Unis",
+      "label": "États-Unis",
+      "description": "pays d'Amérique du Nord",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Afrique",
+        "Ameriques",
+        "Asie",
+        "Europe",
+        "Oceanie"
+      ],
+      "epochs": [
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 200,
+      "hasImage": true,
+      "sha256": "07db71dd1c0ede47bd5e372a456cc090ba1527df167c819c3111cf59d0041d1d"
+    },
+    {
+      "id": "ruler-YUA",
+      "title": "Yuan",
+      "label": "Yuan",
+      "description": "monnaie officielle de la république populaire de Chine",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Asie"
+      ],
+      "epochs": [
+        "moyen-age"
+      ],
+      "itemCount": 172,
+      "hasImage": true,
+      "sha256": "a83ad5abccb2ed38479f38508dfab391584fa261842e500f8ce61cd227eb7da5"
+    },
+    {
+      "id": "ruler-_Empire_of_Japan",
+      "title": "Empire of Japan",
+      "label": "Empire of Japan",
+      "description": "Japanese nation state from 1868 to 1947",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Asie",
+        "Oceanie"
+      ],
+      "epochs": [
+        "contemporain"
+      ],
+      "itemCount": 200,
+      "hasImage": true,
+      "sha256": "15f3a2f1910d14a6e22debbcbe536740fb6a25f1831cc1a0b8dbae2c89eb8b02"
+    },
+    {
+      "id": "ruler-_German_Empire",
+      "title": "Empire allemand",
+      "label": "Empire allemand",
+      "description": "État-nation historique de l'Allemagne de 1871 à 1918",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Afrique",
+        "Asie",
+        "Europe",
+        "Oceanie"
+      ],
+      "epochs": [
+        "contemporain"
+      ],
+      "itemCount": 137,
+      "hasImage": true,
+      "sha256": "562d110184dcde4c9fb349cf8d6e7febf57dc6d3946154d551ac8f8be7d8977e"
+    },
+    {
+      "id": "ruler-_Kingdom_of_England",
+      "title": "Royaume d'Angleterre",
+      "label": "Royaume d'Angleterre",
+      "description": "État historique des îles Britanniques, 927–1649 et 1660–1707",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Ameriques",
+        "Asie",
+        "Autres",
+        "Europe"
+      ],
+      "epochs": [
+        "moyen-age",
+        "moderne"
+      ],
+      "itemCount": 72,
+      "hasImage": true,
+      "sha256": "5e566e02d043b43965049a234fca97dc10116bc93775f634eee2ec24d93eaf56"
+    },
+    {
+      "id": "ruler-_Kingdom_of_France",
+      "title": "Royaume de France",
+      "label": "royaume de France",
+      "description": "entité géopolitique monarchique ayant gouverné la France de 987 à 1792, puis de 1814 à 1848 (à l'exception des Cent-Jours en 1815)",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Ameriques",
+        "Asie",
+        "Autres",
+        "Europe"
+      ],
+      "epochs": [
+        "moyen-age",
+        "moderne"
+      ],
+      "itemCount": 141,
+      "hasImage": true,
+      "sha256": "72b90bfae1cd7e52a29e39d820518a73cabea263a31b842f7a589aa2398ac882"
+    },
+    {
+      "id": "ruler-_Kingdom_of_Great_Britain",
+      "title": "Kingdom of Great Britain",
+      "label": "Kingdom of Great Britain",
+      "description": "Sovereign state in Western Europe (1707–1801)",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Afrique",
+        "Ameriques",
+        "Asie",
+        "Autres",
+        "Europe",
+        "Oceanie"
+      ],
+      "epochs": [
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 193,
+      "hasImage": true,
+      "sha256": "8e10d9617f1d7b9295dbaa8e0dd2937b66deb6306014bd09de7970d9d4378802"
+    },
+    {
+      "id": "ruler-_Kingdom_of_Portugal",
+      "title": "Kingdom of Portugal",
+      "label": "Kingdom of Portugal",
+      "description": "Kingdom in Southwestern Europe (1139–1910)",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Afrique",
+        "Ameriques",
+        "Asie",
+        "Europe",
+        "Oceanie"
+      ],
+      "epochs": [
+        "moyen-age",
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 131,
+      "hasImage": true,
+      "sha256": "2959f722f5534355b77d9e9ee79fb7ac0dd2fbf8e7162425c3b67dfeac991ee1"
+    },
+    {
+      "id": "ruler-_Nazi_Germany",
+      "title": "Nazi Germany",
+      "label": "ALEMANIA NAZImo",
+      "description": "German state from 1933 to 1945",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Europe"
+      ],
+      "epochs": [
+        "contemporain"
+      ],
+      "itemCount": 200,
+      "hasImage": true,
+      "sha256": "ef034a059e50e29de56e4c74511cf8d318dc89ea67c0f84fec03ae486a6f8311"
+    },
+    {
+      "id": "ruler-_Spanish_Empire",
+      "title": "Empire espagnol",
+      "label": "Empire espagnol",
+      "description": "ensemble des territoires sous domination espagnole de 1492 à 1898",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Afrique",
+        "Ameriques",
+        "Asie",
+        "Europe"
+      ],
+      "epochs": [
+        "moderne",
+        "contemporain"
+      ],
+      "itemCount": 200,
+      "hasImage": true,
+      "sha256": "5b6bbfc159fcfef6ed54c673c1d7c65ad4ac197991df5cbc74c3019a450cf8f7"
+    },
+    {
+      "id": "ruler-_Wu_Zhou",
+      "title": "Wu Zhou",
+      "label": "Wu Zhou",
+      "description": "Chinese imperial dynasty (690–705)",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Asie"
+      ],
+      "epochs": [
+        "moyen-age"
+      ],
+      "itemCount": 120,
+      "hasImage": true,
+      "sha256": "5730311acb6a24f897874eeabcf3f25069194e06eeea486570559ef7eba90e56"
+    },
+    {
+      "id": "ruler-bcMAU",
+      "title": "Empire maurya",
+      "label": "Empire Maurya",
+      "description": "ancien État",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Asie"
+      ],
+      "epochs": [
+        "antiquite"
+      ],
+      "itemCount": 129,
+      "hasImage": true,
+      "sha256": "e4c104803ab236cc6d843d366e1f5c67d323548199244222b9737568a6ca6d2e"
+    },
+    {
+      "id": "ruler-bcROM",
+      "title": "République romaine",
+      "label": "République romaine",
+      "description": "phase de la civilisation de la Rome antique, de 509 à 27 av. J.-C.",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Afrique",
+        "Asie",
+        "Europe"
+      ],
+      "epochs": [
+        "antiquite"
+      ],
+      "itemCount": 184,
+      "hasImage": true,
+      "sha256": "6b91de6b3ba12b72aa33dce9980a507610b28c1d1fa032315e84bd383b0d3d10"
+    },
+    {
+      "id": "ruler-bcSEL",
+      "title": "Séleucides",
+      "label": "Séleucides",
+      "description": "royaume hellénistique (312-63 avant J.-C.)",
+      "type": "ruler",
+      "typeLabel": "Souveraineté",
+      "continents": [
+        "Afrique",
+        "Asie",
+        "Europe"
+      ],
+      "epochs": [
+        "antiquite"
+      ],
+      "itemCount": 135,
+      "hasImage": true,
+      "sha256": "e274c60da2f11e43fad531f3dec47fc6e373f1dc285af75695bbc5a1f63159d3"
+    }
+  ]
+}

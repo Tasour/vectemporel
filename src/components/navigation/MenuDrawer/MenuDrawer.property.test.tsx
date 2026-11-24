@@ -56,8 +56,7 @@ describe('MenuDrawer - Property Tests', () => {
         />
       );
 
-      const title = screen.getByTestId('menu-drawer-title');
-      expect(title.textContent).toBe('');
+      expect(screen.queryByTestId('menu-drawer-title')).not.toBeInTheDocument();
     });
 
     it('should consistently map contentType to title', () => {

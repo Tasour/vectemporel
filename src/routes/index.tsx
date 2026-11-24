@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router';
 import { lazy, Suspense, useState } from 'react';
 import { ROUTES } from './routes';
-import { AppShell, FeaturePlaceholder, HomePage as HomePageComponent } from '../components';
+import { AppShell, DiscoverPage, FeaturePlaceholder, HomePage as HomePageComponent } from '../components';
 import { useAnalytics } from '../hooks/useAnalytics';
 
 // Lazy-loaded components for code splitting (NFR-1.4)
@@ -29,17 +29,6 @@ function ConfigurationPage() {
   );
 }
 
-function DiscoverPage() {
-  return (
-    <AppShell>
-      <FeaturePlaceholder
-        featureName="Discover"
-        description="Explore historical content and articles."
-        migrationPriority="medium"
-      />
-    </AppShell>
-  );
-}
 
 function LoginPage() {
   const [mode, setMode] = useState<'login' | 'signup'>('login');
@@ -75,7 +64,7 @@ export default function AppRoutes() {
     <Routes>
       <Route path={ROUTES.HOME} element={<HomePage />} />
       <Route path={ROUTES.CONFIGURATION} element={<ConfigurationPage />} />
-      <Route path={ROUTES.DISCOVER} element={<DiscoverPage />} />
+      <Route path={ROUTES.DISCOVER} element={<AppShell><DiscoverPage /></AppShell>} />
       <Route path={ROUTES.LOGIN} element={<LoginPage />} />
       <Route path={ROUTES.ARTICLE} element={<ArticlePage />} />
       {/* Catch-all redirect to home */}

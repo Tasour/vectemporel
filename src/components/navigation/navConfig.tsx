@@ -6,9 +6,9 @@
  *
  * Requirements: 3.1-3.4, 4.1-4.7, 2.2
  *
- * Production reference icons (https://chronas.org) - Material-UI icons:
- * Top section: Layers, Discover (compass), Random (dice), Settings (gear)
- * Bottom section: Support (heart), Collections, Play (gamepad), Help, Logout (power)
+ * Interface locale v0 : icônes conservées de la production, entry Support et Logout retirées.
+ * Top section : Layers, Discover, Random, Settings
+ * Bottom section : Collections, Play, Help
  *
  * Icon styling from production:
  * - viewBox="0 0 24 24"
@@ -23,11 +23,9 @@ import {
   DiscoverIcon,
   RandomIcon,
   SettingsIcon,
-  SupportIcon,
   CollectionsIcon,
   PlayIcon,
   HelpIcon,
-  LogoutIcon,
 } from './navConfig.icons';
 
 /**
@@ -37,12 +35,10 @@ export type NavAction =
   | 'layers'
   | 'collections'
   | 'random'
-  | 'logout'
   | 'settings'
   | 'help'
   | 'info'
-  | 'play'
-  | 'support';
+  | 'play';
 
 /**
  * Navigation item configuration interface.
@@ -93,7 +89,6 @@ export const NAV_ITEMS: NavItemConfig[] = [
     label: 'Discover',
     to: '/discover',
     section: 'top',
-    disabled: true,
   },
   {
     id: 'random',
@@ -101,7 +96,6 @@ export const NAV_ITEMS: NavItemConfig[] = [
     label: 'Random Article',
     action: 'random',
     section: 'top',
-    disabled: true,
   },
   {
     id: 'settings',
@@ -112,20 +106,11 @@ export const NAV_ITEMS: NavItemConfig[] = [
   },
 
   {
-    id: 'support',
-    icon: <SupportIcon />,
-    label: 'Support Chronas',
-    action: 'support',
-    section: 'bottom',
-    highlightWhenPro: true,
-  },
-  {
     id: 'collections',
     icon: <CollectionsIcon />,
     label: 'Collections',
     action: 'collections',
     section: 'bottom',
-    disabled: true,
   },
   {
     id: 'play',
@@ -140,15 +125,6 @@ export const NAV_ITEMS: NavItemConfig[] = [
     label: 'Help',
     action: 'info',
     section: 'bottom',
-  },
-  {
-    id: 'logout',
-    icon: <LogoutIcon />,
-    label: 'Logout',
-    action: 'logout',
-    section: 'bottom',
-    highlightWhenAuth: true,
-    disabled: true,
   },
 ];
 

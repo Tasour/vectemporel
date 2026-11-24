@@ -45,10 +45,9 @@ export const Sidebar: React.FC<SidebarProps> = ({
 }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { theme } = useUIStore();
-  const { isAuthenticated, username, avatar, score, subscription, clearUser } = useAuthStore();
+  const { theme, setSidebarOpen } = useUIStore();
+  const { isAuthenticated, username, avatar, score, subscription } = useAuthStore();
   const { toggleDrawer, drawerOpen, drawerContent } = useNavigationStore();
-  const currentAreaData = useMapStore((s) => s.currentAreaData);
   const openRightDrawer = useUIStore((s) => s.openRightDrawer);
 
   const topItems = getNavItemsBySection('top');
@@ -65,31 +64,29 @@ export const Sidebar: React.FC<SidebarProps> = ({
       if (item.action) {
         switch (item.action) {
           case 'layers':
-            toggleDrawer('layers');
-            break;
           case 'collections':
-            toggleDrawer('collections');
-            break;
           case 'settings':
-            toggleDrawer('settings');
+            setSidebarOpen(false);
+            toggleDrawer(item.action);
             break;
           case 'random': {
-            // Pick a random province from area data and open its Wikipedia article
-            if (currentAreaData) {
-              const keys = Object.keys(currentAreaData);
-              if (keys.length > 0) {
-                const randomKey = keys[Math.floor(Math.random() * keys.length)];
-                if (randomKey) {
-                  const wikiUrl = `https://en.wikipedia.org/wiki/${encodeURIComponent(randomKey.replace(/ /g, '_'))}`;
-                  openRightDrawer({
-                    type: 'area',
-                    provinceId: randomKey,
-                    provinceName: randomKey,
-                    wikiUrl,
-                  });
-                }
+            // Tirage d'une province de l'année courante, uniquement depuis le miroir local.
+            void (async () => {
+              const year = useTimelineStore.getState().selectedYear;
+              let data = useMapStore.getState().currentAreaData;
+              if (!data) {
+                await useMapStore.getState().loadAreaData(year);
+                data = useMapStore.getState().currentAreaData;
               }
-            }
+              const keys = Object.keys(data ?? {});
+              if (!keys.length) return;
+              const random = new Uint32Array(1);
+              crypto.getRandomValues(random);
+              const provinceId = keys[(random[0] ?? 0) % keys.length];
+              if (provinceId) {
+                openRightDrawer({ type: 'area', provinceId, provinceName: provinceId });
+              }
+            })();
             break;
           }
           case 'play': {
@@ -103,28 +100,13 @@ export const Sidebar: React.FC<SidebarProps> = ({
             break;
           }
           case 'help':
-            useUIStore.getState().toggleBanner();
-            break;
           case 'info':
             useUIStore.getState().openInfoDialog();
-            break;
-          case 'support':
-            // Issue #53: opens the Support Chronas (Patreon) dialog
-            useUIStore.getState().openSupportDialog();
-            break;
-          case 'logout':
-            if (isAuthenticated) {
-              clearUser();
-              void navigate('/');
-            } else {
-              // Open login dialog overlay
-              useUIStore.getState().openLoginDialog();
-            }
             break;
         }
       }
     },
-    [toggleDrawer, isAuthenticated, clearUser, navigate, currentAreaData, openRightDrawer]
+    [toggleDrawer, openRightDrawer, setSidebarOpen]
   );
 
   /**

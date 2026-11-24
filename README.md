@@ -1,7 +1,17 @@
 
 ## v0-local — miroir API local
 
-Cette branche part du fork intégral de `Chronasorg/chronas-frontend` ; l'interface React/MapLibre est conservée. L'API est reproduite localement dans `api/v1/` par `node scripts/extract-api.mjs` : 4 001 années de `/areas`, marqueurs et métadonnées, avec manifeste et empreintes. `public/mirror-sw.js` sert ces réponses sans appel réseau externe ; `scripts/patch-pages.mjs` corrige les chemins absolus du build pour GitHub Pages. Voir `docs/FORK-NOTICE.md`.
+Cette branche part du fork intégral de `Chronasorg/chronas-frontend`. L'API est reproduite localement dans `api/v1/` (4 001 années, marqueurs, métadonnées) et servie par `public/mirror-sw.js`. L'interface est francisée et expose trois vues réellement utilisables : **Découvrir** (onglets Articles / Époques / Régions), **Article aléatoire** (province de l'année courante, tiroir local) et **Collections** (provinces + articles persistés). Le panneau **Téléchargements** permet une sélection hiérarchique continent → époque → groupe → provinces, persistée et exportable en JSON.
+
+Les articles Wikipédia sont extraits hors ligne dans `public/articles/` avec vignettes WebP ≤ 25 Ko et crédits Commons. Le catalogue contient 2 338 groupes ; 78 fiches sont validées au manifeste. Les échecs d'extraction restent journalisés dans `public/articles/FAILURES.json` et ne sont pas remplacés par des données inventées. Voir `docs/FORK-NOTICE.md` pour le périmètre et le risque juridique assumé.
+
+```bash
+npm run catalog:build     # régénère public/articles/catalog.json
+npm run articles:extract  # reprend l'extraction Wikipédia
+npm run articles:verify   # vérifie SHA-256, images et crédits
+```
+
+`scripts/patch-pages.mjs` corrige les chemins absolus du build pour GitHub Pages. Le fond de carte OpenFreeMap reste la seule ressource externe au runtime.
 
 # Chronas Frontend
 

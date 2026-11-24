@@ -89,9 +89,9 @@ function getPersistedLocale(): string {
       }
     }
   } catch {
-    // Ignore parse errors — fall back to 'en'
+    // Ignore parse errors — interface locale is French
   }
-  return 'en';
+  return 'fr';
 }
 
 /**

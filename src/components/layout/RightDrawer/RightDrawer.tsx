@@ -13,7 +13,7 @@ import type { DrawerContent } from '@/stores/uiStore';
 import { useMapStore } from '@/stores/mapStore';
 import { ProvinceDrawerContent } from '@/components/content/ProvinceDrawerContent/ProvinceDrawerContent';
 import { MarkerDrawerContent } from '@/components/content/MarkerDrawerContent/MarkerDrawerContent';
-import { ArticleIframe } from '@/components/content/ArticleIframe/ArticleIframe';
+import { LocalArticleReader } from '@/components/library/LocalArticleReader';
 import styles from './RightDrawer.module.css';
 
 export interface RightDrawerProps {
@@ -36,6 +36,8 @@ function getDrawerTitle(content: DrawerContent | null): string {
       return content.provinceName;
     case 'marker':
       return content.marker.name;
+    case 'article':
+      return content.articleTitle;
     case 'epic':
       return content.epicName;
     default:
@@ -253,20 +255,11 @@ export const RightDrawer: React.FC<RightDrawerProps> = ({
                   />
                 );
               }
-              // No province data — show Wikipedia article directly if URL available
-              if (content.wikiUrl) {
-                return (
-                  <ArticleIframe
-                    url={content.wikiUrl}
-                    title={`Wikipedia article for ${content.provinceName}`}
-                  />
-                );
-              }
               return (
                 <div className={placeholderClass}>
-                  <p>Province: {content.provinceName}</p>
+                  <p>Province : {content.provinceName}</p>
                   <p className={placeholderNoteClass}>
-                    {t('drawer.provinceDataNotAvailable', 'Province data not available for this selection.')}
+                    {t('drawer.provinceDataNotAvailable', 'Données de province indisponibles pour cette sélection.')}
                   </p>
                 </div>
               );
@@ -275,12 +268,14 @@ export const RightDrawer: React.FC<RightDrawerProps> = ({
             {content.type === 'marker' && (
               <MarkerDrawerContent marker={content.marker} />
             )}
-            {/* Render ArticleIframe for epic type (Requirement 6.3) */}
+            {/* Article local : aucun iframe externe */}
+            {content.type === 'article' && <LocalArticleReader articleId={content.articleId} />}
+            {/* Les épopées ne chargent aucun article distant : le miroir local fait foi */}
             {content.type === 'epic' && (
-              <ArticleIframe
-                url={content.wikiUrl}
-                title={`Wikipedia article: ${content.epicName}`}
-              />
+              <div className={placeholderClass}>
+                <p>Épopée : {content.epicName}</p>
+                <p className={placeholderNoteClass}>Aucun article local associé à cette épopée.</p>
+              </div>
             )}
           </div>
         ) : (

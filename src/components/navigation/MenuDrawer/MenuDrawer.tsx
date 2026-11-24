@@ -18,7 +18,7 @@ export interface MenuDrawerProps {
   /** Whether the drawer is open */
   isOpen: boolean;
   /** Content type to display */
-  contentType: 'layers' | 'collections' | 'settings' | null;
+  contentType: 'layers' | 'collections' | 'downloads' | 'settings' | null;
   /** Callback when close is requested */
   onClose: () => void;
   /** Children to render in the content area */
@@ -33,6 +33,7 @@ export interface MenuDrawerProps {
 const TITLE_KEYS: Record<string, { key: string; fallback: string }> = {
   layers: { key: 'nav.layers', fallback: 'Layers' },
   collections: { key: 'nav.collections', fallback: 'Collections' },
+  downloads: { key: 'nav.downloads', fallback: 'Téléchargements' },
   settings: { key: 'nav.configuration', fallback: 'Configuration' },
 };
 
@@ -53,7 +54,11 @@ export const MenuDrawer: React.FC<MenuDrawerProps> = ({
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   // Determine if using light theme (for Layers and Settings)
-  const isLightTheme = contentType === 'layers' || contentType === 'settings';
+  const isLightTheme =
+    contentType === 'layers' ||
+    contentType === 'collections' ||
+    contentType === 'downloads' ||
+    contentType === 'settings';
   // Hide header for Layers (LayersContent has its own header); Settings shows header
   const hideHeader = contentType === 'layers';
 
@@ -110,9 +115,11 @@ export const MenuDrawer: React.FC<MenuDrawerProps> = ({
       data-testid={testId}
     >
       <div className={headerClass}>
-        <h2 className={styles['title']} data-testid={`${testId}-title`}>
-          {title}
-        </h2>
+        {title ? (
+          <h2 className={styles['title']} data-testid={`${testId}-title`}>
+            {title}
+          </h2>
+        ) : null}
         <button
           ref={closeButtonRef}
           type="button"

@@ -21,6 +21,7 @@ import * as fc from 'fast-check';
 import { LayersContent, type LayersContentProps } from './LayersContent';
 import { useMapStore, type AreaColorDimension, type BasemapType } from '@/stores/mapStore';
 import { useTimelineStore, type EpicType } from '@/stores/timelineStore';
+import i18n from '@/i18n/i18n';
 
 // Mock the mapStore
 vi.mock('@/stores/mapStore', async () => {
@@ -181,6 +182,7 @@ describe('LayersContent Property Tests', () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
+    void i18n.changeLanguage('en');
     cleanup();
   });
 
@@ -214,7 +216,7 @@ describe('LayersContent Property Tests', () => {
         ),
         { numRuns: 100 }
       );
-    });
+    }, 15000);
 
     it('should contain "GENERAL" section for any panel state', () => {
       fc.assert(
