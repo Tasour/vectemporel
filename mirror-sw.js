@@ -14,8 +14,11 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
   if (url.origin !== self.location.origin || !url.pathname.startsWith(PREFIX)) return;
   let name = url.pathname.slice(PREFIX.length).replace(/^\/+|\/+$/g, '');
-  name = name.replace(/[^\w./-]/g, '_');
-  const candidates = [`${name}.json.gz`, `${name}.gz`, `${name}.json`, `${name}`];
+  const query = url.search.replace(/^\?/, '');
+  if (query) name = `${name}?${query}`;
+  const safe = name.replace(/[^\w./-]/g, '_');
+  const key = name.startsWith('areas/') ? name : `raw/${safe}`;
+  const candidates = [`${key}.json.gz`, `${key}.gz`, `${key}.json`, `${key}`, `${name}`];
   event.respondWith((async () => {
     for (const candidate of candidates) {
       const response = await fetch(new URL(`./api/v1/${candidate}`, self.location.href));
