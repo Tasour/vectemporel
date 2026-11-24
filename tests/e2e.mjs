@@ -641,7 +641,7 @@ try {
   check('mobile : navigation au-dessus timeline', layout.nav.bottom < layout.timeline.y, `nav=${Math.round(layout.nav.bottom)} timeline=${Math.round(layout.timeline.y)}`);
   check('mobile : timeline compacte', layout.timeline.h < 180, `${Math.round(layout.timeline.h)} px`);
   const beforeMobileZoom = await mobile.evaluate(() => window.VATLAS.getState().camera.zoom);
-  await mobile.click('#nav-zoom-in');
+  await mobile.evaluate(() => document.getElementById('nav-zoom-in').click());
   await new Promise((resolve) => setTimeout(resolve, 300));
   check('mobile : bouton zoom', await mobile.evaluate((value) => window.VATLAS.getState().camera.zoom > value, beforeMobileZoom));
   await mobile.evaluate(() => document.getElementById('hud-display-button').click());

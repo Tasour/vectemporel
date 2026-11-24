@@ -88,23 +88,33 @@ export class PixiTimeline {
       this.drag = {
         x: event.clientX, from: this.from, to: this.to, year: this.year,
         last: Math.round(this.year), rect: this.renderer.view.getBoundingClientRect(),
+        mode: null, moved: false,
       };
       try { this.renderer.view.setPointerCapture?.(event.pointerId); } catch { /* pointeur synthétique */ }
     };
     this.onPointerMove = (event) => {
       if (!this.drag) return;
-      const shift = ((event.clientX - this.drag.x) / this.drag.rect.width) * (this.drag.to - this.drag.from);
-      if (Math.abs(shift) < 1 && !this.drag.moved) return;
+      const dx = event.clientX - this.drag.x;
+      if (Math.abs(dx) < 3) return;
       this.drag.moved = true;
-      this.from = this.drag.from - shift;
-      this.to = this.drag.to - shift;
-      this.year = this.drag.year - shift;
-      const step = Math.round(this.year);
-      if (step !== this.drag.last) {
-        this.drag.last = step;
-        if (navigator.vibrate) navigator.vibrate(8);
+      if (!this.drag.mode) this.drag.mode = 'year';
+      if (Math.abs(dx) > 64) this.drag.mode = 'range';
+      if (this.drag.mode === 'year') {
+        const span = this.drag.to - this.drag.from;
+        this.year = this.drag.year + (dx / this.drag.rect.width) * span;
+        const step = Math.round(this.year);
+        if (step !== this.drag.last) {
+          this.drag.last = step;
+          if (navigator.vibrate) navigator.vibrate(8);
+        }
+        this.canvas.setAttribute('aria-valuetext', yearText(step));
+      } else {
+        const shift = (dx / this.drag.rect.width) * (this.drag.to - this.drag.from);
+        this.from = this.drag.from - shift;
+        this.to = this.drag.to - shift;
+        this.year = this.drag.year - shift;
+        this.canvas.setAttribute('aria-valuetext', `${yearText(Math.round(this.from))} → ${yearText(Math.round(this.to))}`);
       }
-      this.canvas.setAttribute('aria-valuetext', yearText(step));
       this.schedule();
     };
     this.onPointerUp = (event) => {
