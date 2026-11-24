@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <base href="/vectemporel/" />
     <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Chronas - Explore world history through an interactive map. Discover how civilizations, cultures, and political boundaries evolved over 5000 years." />
@@ -15,14 +14,14 @@
     <meta http-equiv="X-Content-Type-Options" content="nosniff" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    
+    
+    
     <title>Chronas - Interactive Historical Map</title>
     <!-- Google Analytics (only loads when VITE_GA_MEASUREMENT_ID is set) -->
     <script>
       (function() {
-        var id = 'G-GPBDVMQJHN';
+        var id = '%VITE_GA_MEASUREMENT_ID%';
         if (!id || id.indexOf('VITE_GA') !== -1) return;
         var s = document.createElement('script');
         s.async = true;
@@ -35,7 +34,11 @@
         gtag('config', id, { send_page_view: false });
       })();
     </script>
-    <script type="module" crossorigin src="./assets/index-CSky0F6p.js"></script>
+    <script>
+  navigator.serviceWorker.register("./mirror-sw.js").then(() => navigator.serviceWorker.ready).then(() => {
+    const script = document.createElement("script"); script.type = "module"; script.src = "./assets/index-BAR_zhRB.js"; document.head.appendChild(script);
+  }).catch(() => { const s = document.createElement("script"); s.type = "module"; s.src = "./assets/index-BAR_zhRB.js"; document.head.appendChild(s); });
+</script>
     <link rel="modulepreload" crossorigin href="./assets/rolldown-runtime-Dd_uD5pT.js">
     <link rel="modulepreload" crossorigin href="./assets/state-L2g2pCj2.js">
     <link rel="modulepreload" crossorigin href="./assets/vendor-EaEOE3Xh.js">
