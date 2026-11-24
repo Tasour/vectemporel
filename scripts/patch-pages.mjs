@@ -18,7 +18,8 @@ html = html.replace(/(src|href)="\//g, '$1="./');
 html = html.replace('<base href="./" />', '');
 html = html.replace(/<link rel="preconnect"[^>]*googleapis[^>]*>/g, '')
   .replace(/<link rel="preconnect"[^>]*gstatic[^>]*>/g, '')
-  .replace(/<link href="https:\/\/fonts\.googleapis\.com[^>]*>/g, '');
+  .replace(/<link href="https:\/\/fonts\.googleapis\.com[^>]*>/g, '')
+  .replace(/<script>[\s\S]*?googletagmanager[\s\S]*?<\/script>/g, '');
 import crypto from 'node:crypto';
 const versionOf = (file) => crypto.createHash('sha256')
   .update(fs.readFileSync(path.join(OUT, file))).digest('hex').slice(0, 10);
@@ -28,11 +29,11 @@ html = html.replace(/src="\.\/(assets\/[^"]+\.(?:js|css))"/g, (match, asset) => 
 html = html.replace(/href="\.\/(assets\/[^"]+\.css)"/g, (match, asset) => `href="./${asset}?v=${version}"`);
 html = html.replace(/<script type="module"([^>]*)src="\.\/(assets\/[^"]+\.js)\?v=[^"]*"><\/script>/g,
   '<script>\n'
-  + `  navigator.serviceWorker.register("./mirror-sw.js?v=${version}").then(() => navigator.serviceWorker.ready).then(() => {\n`
-  + '    const script = document.createElement("script"); script.type = "module";'
-  + ' script.src = "./$2"; document.head.appendChild(script);\n'
-  + '  }).catch(() => { const s = document.createElement("script"); s.type = "module";'
-  + ' s.src = "./$2"; document.head.appendChild(s); });\n'
+  + `  const start = () => { const s = document.createElement("script"); s.type = "module";`
+  + ` s.src = "./$2?v=${version}"; document.head.appendChild(s); };\n`
+  + `  const ready = navigator.serviceWorker?.register("./mirror-sw.js?v=${version}")\n`
+  + '    .then(() => navigator.serviceWorker.ready) ?? Promise.resolve();\n'
+  + '  Promise.race([ready.catch(() => {}), new Promise((r) => setTimeout(r, 1500))]).then(start);\n'
   + '</script>');
 fs.writeFileSync(indexPath, html);
 
