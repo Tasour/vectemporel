@@ -1,25 +1,46 @@
 <!doctype html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="description" content="Sphère historique mondiale interactive : les régions de l'an 1000 sur un globe, données Chronas sous CC BY-SA 4.0." />
-  <title>Histoire du monde — Sphère historique</title>
-  <meta name="theme-color" content="#070a0e" />
-  <link rel="manifest" href="./manifest.webmanifest?v=9376d59d9ae7" />
-  <link rel="icon" href="./icons/icon-192.png?v=9376d59d9ae7" />
-  <link rel="apple-touch-icon" href="./icons/icon-192.png?v=9376d59d9ae7" />
-  <link rel="stylesheet" href="./styles.css?v=9376d59d9ae7" />
-  <link rel="stylesheet" href="./src/reports/scrolly.css" />
-</head>
-<body>
-  <a class="skip-link" href="#timeline">Aller à la frise</a>
-  <a class="skip-link" href="#hud-trails-button">Aller aux récits</a>
-  <h1 class="sr-only">Histoire du monde — sphère historique interactive</h1>
-  <canvas id="globe-canvas" tabindex="0" role="img" aria-label="Sphère historique mondiale. Flèches pour tourner, plus et moins pour zoomer. Cliquer une capitale ou une région ouvre sa fiche. Touche slash pour rechercher une région, point d'interrogation pour l'aide."></canvas>
-  <div id="globe-labels" aria-hidden="true"></div>
-  <div id="hud"></div>
-  <noscript><p class="noscript">Cette sphère nécessite JavaScript. Les données restent consultables dans le fichier source.</p></noscript>
-  <script type="module" src="./src/app.js?v=9376d59d9ae7"></script>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Chronas - Explore world history through an interactive map. Discover how civilizations, cultures, and political boundaries evolved over 5000 years." />
+    <meta name="theme-color" content="#1a1a2e" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Chronas - Interactive Historical Map" />
+    <meta property="og:description" content="Explore world history through an interactive map spanning 5000 years." />
+    <meta property="og:type" content="website" />
+    <!-- Security headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <title>Chronas - Interactive Historical Map</title>
+    <!-- Google Analytics (only loads when VITE_GA_MEASUREMENT_ID is set) -->
+    <script>
+      (function() {
+        var id = 'G-GPBDVMQJHN';
+        if (!id || id.indexOf('VITE_GA') !== -1) return;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', id, { send_page_view: false });
+      })();
+    </script>
+    <script type="module" crossorigin src="./assets/index-CSky0F6p.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/rolldown-runtime-Dd_uD5pT.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-L2g2pCj2.js">
+    <link rel="modulepreload" crossorigin href="./assets/vendor-EaEOE3Xh.js">
+    <link rel="stylesheet" crossorigin href="./assets/index-Chk1OGwX.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
 </html>
