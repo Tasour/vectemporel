@@ -6,8 +6,8 @@ import { CHRONAS_LABELS } from '../data/chronas-labels.js';
 import { MODERN_LABELS } from '../data/modern-labels.js';
 
 const FEATURE_BY_NAME = new Map(FEATURES.map((feature) => [feature.name, feature]));
-const LIMIT = 24;
-const MIN_ZOOM = 3;
+const LIMIT = 40;
+const MIN_ZOOM = 1;
 const DIMENSION_KEYS = ['ruler', 'culture', 'religion', 'capital', 'population', 'empire'];
 
 const tableOf = (dimension) => CHRONAS_LABELS.names[dimension] || {};

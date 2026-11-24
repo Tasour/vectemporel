@@ -22,7 +22,7 @@ import { createTrailPlayer } from './story/trails.js';
 import { createLearnPanel } from './learning/learn-ui.js';
 import { createScrolly } from './reports/scrolly.js';
 import { createHistography } from './histography/index.js';
-import { createSubjectField } from './histography/subject.js';
+import { createArticleGraph } from './histography/graph.js';
 import { PixiTimeline } from './timeline/pixi-timeline.js';
 import { CHRONAS_LABELS } from './data/chronas-labels.js';
 import { clampYear, getAreasForYear } from './data/year-store.js';
@@ -73,6 +73,7 @@ function mount() {
   /* Mesure ergonomique : délai gesture → effet, exposé seulement aux tests. */
   let gestureStart = 0;
   document.addEventListener('pointerdown', () => { gestureStart = performance.now(); }, { capture: true });
+
   document.addEventListener('keydown', (event) => {
     if (!event.repeat) gestureStart = performance.now();
   }, { capture: true });
@@ -235,12 +236,31 @@ function mount() {
     dimensions.appendChild(button);
   }
   brand.appendChild(dimensions);
+  const dimensionSelect = el('select', 'dimension-select');
+  dimensionSelect.id = 'dimension-select';
+  dimensionSelect.setAttribute('aria-label', 'Type de couleur des régions');
+  for (const item of DIMENSIONS) {
+    const option = el('option', '', item.label);
+    option.value = item.id;
+    dimensionSelect.appendChild(option);
+  }
+  dimensionSelect.value = dimension;
+  dimensionSelect.addEventListener('change', () => {
+    dimension = dimensionSelect.value;
+    empireRuler = null;
+    for (const other of dimensions.children) {
+      other.setAttribute('aria-checked', String(other.dataset.dimension === dimension));
+    }
+    applyDimension();
+    renderCard(selected);
+  });
+  brand.appendChild(dimensionSelect);
 
   const labelBar = el('div', 'label-bar');
   labelBar.id = 'label-bar';
   labelBar.setAttribute('role', 'radiogroup');
   labelBar.setAttribute('aria-label', 'Affichage des libellés');
-  let labelMode = 'off';
+  let labelMode = 'historical';
   for (const mode of LABEL_MODES) {
     const button = el('button', 'label-btn', mode.label);
     button.type = 'button';
@@ -882,9 +902,13 @@ function mount() {
   subjectPanel.setAttribute('role', 'dialog');
   subjectPanel.setAttribute('aria-label', 'Articles Wikipédia du sujet');
   subjectPanel.hidden = true;
+  const subjectClose = el('button', 'hm-close', '✕');
+  subjectClose.type = 'button';
+  subjectClose.id = 'subject-close';
+  subjectClose.setAttribute('aria-label', 'Fermer le sujet');
   const subjectHost = el('div', 'subject-host');
   subjectHost.id = 'subject-host';
-  subjectPanel.appendChild(subjectHost);
+  subjectPanel.append(subjectClose, subjectHost);
 
   const reportPanel = el('section', 'hud-overlay report-panel');
   reportPanel.id = 'report-panel';
@@ -1256,11 +1280,17 @@ function mount() {
     onSelect: (name) => select(name),
     onZoneSelect: (zone) => {
       const key = String(zone.value || '').toLowerCase();
-      const id = /cathol/i.test(key) ? 'catholicisme'
-        : zone.features.includes('Dauphiné') ? 'dauphine' : null;
+      const reportId = /cathol/i.test(key) ? 'catholicisme'
+        : /dauphin/i.test(key) ? 'dauphine' : null;
       const label = CHRONAS_LABELS.names[dimension]?.[zone.value] || zone.value;
-      if (id) openReport(id);
-      else readout.textContent = `${label} · ${zone.count} provinces · aucun récit local.`;
+      const index = DIMENSIONS.find((item) => item.id === dimension)?.index ?? 1;
+      const fields = ['state', 'culture', 'religion', 'capital', 'population'];
+      const matching = Object.entries(areasForYear || {})
+        .filter(([, row]) => String(Array.isArray(row) ? row[index] : row?.[fields[index]]) === String(zone.value))
+        .map(([name]) => name);
+      selected = zone.features[0] || matching[0] || null;
+      if (reportId) openReport(reportId);
+      else readout.textContent = `${label} · ${matching.length || zone.count} provinces · aucun récit local.`;
     },
     onHover: (name, x, y) => showTooltip(name, x, y),
     onFrame: (view) => {
@@ -2099,16 +2129,14 @@ function mount() {
       const response = await fetch(`./src/data/subjects/${id}.json`);
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       const data = await response.json();
-      subjectField = await createSubjectField(subjectHost, data, {
-        onClose: closeSubject,
-        year,
-        onYear: (value) => { if (Number.isFinite(value)) applyYear(value, { notify: false, reopenCard: false }); },
+      subjectField = createArticleGraph(subjectHost, data, {
         onArticle: (article) => {
-          const report = id === 'dauphine' && /dauphin/i.test(article.title) ? 'dauphine' : null;
+          const report = /dauphin/i.test(article.title) ? 'dauphine' : null;
           if (report) openReport(report);
           else readout.textContent = `${article.title} · Wikipédia FR · CC BY-SA 4.0`;
         },
       });
+      subjectClose.onclick = closeSubject;
     } catch (issue) {
       subjectHost.textContent = `Sujet non généré : ${id} (${issue.message}).`;
     }

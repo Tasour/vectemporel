@@ -14,4 +14,11 @@ export const {
   axisLeft,
   max,
   format,
+  forceSimulation,
+  forceLink,
+  forceManyBody,
+  forceCenter,
+  forceCollide,
+  zoom,
+  drag,
 } = d3;

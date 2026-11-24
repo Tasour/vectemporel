@@ -35,7 +35,7 @@
 /* Rayons réduits à deux valeurs (8px, 4px) pour le gate de design. */
 *::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 8px; opacity: .7; }
 *::-webkit-scrollbar-thumb:hover { background: var(--gold-bright); }
-html, body { height: 100%; margin: 0; overflow: hidden; background: var(--bg); }
+html, body { width: 100dvw; height: 100dvh; margin: 0; overflow: hidden; background: var(--bg); }
 body { color: var(--ink); font-family: var(--sans); font-size: 13px; -webkit-font-smoothing: antialiased; }
 button, input { font: inherit; }
 :focus-visible { outline: 2px solid var(--gold-bright); outline-offset: 3px; }
@@ -100,6 +100,7 @@ body.tools-open .hud-actions-more .hud-btn { min-height: 44px; }
   backdrop-filter: blur(6px);
 }
 .hud-btn:hover { border-color: var(--gold); color: var(--gold-bright); }
+.hud-actions, .hud-brand, .hud-readout, .timeline, .nav-controls, .hud-card button, .globe-label { user-select: none; -webkit-user-select: none; }
 
 .hud-card {
   position: absolute;
@@ -260,6 +261,7 @@ body.tools-open .hud-actions-more .hud-btn { min-height: 44px; }
 .epic-tick { position: absolute; bottom: 6px; width: 2px; height: 10px; border-radius: 4px; opacity: .85; }
 .epic-select { min-height: 44px; max-width: 220px; padding: 4px 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); font-size: 11px; }
 .dimension-bar { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+.dimension-select { display: none; }
 .dimension-btn { min-width: 44px; min-height: 44px; padding: 3px 8px; border: 1px solid var(--line); border-radius: 8px; background: rgba(10,15,22,.7); color: var(--muted); font-size: 10px; cursor: pointer; }
 .dimension-btn[aria-checked="true"] { border-color: var(--gold); color: var(--gold-bright); background: rgba(230,185,111,.14); }
 .map-tooltip {
@@ -529,6 +531,8 @@ body.zen .arc-host, body.zen #globe-labels { display: none !important; }
   .hud-brand strong { font-size: 9px; letter-spacing: .12em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .hud-brand > span { display: none; }
   .hud-brand > .hud-version { display: inline; font-size: 8px; }
+  .hud-brand .dimension-bar { display: none; }
+  .dimension-select { display: inline-flex; min-height: 44px; padding: 8px; border: 1px solid var(--gold); border-radius: 8px; background: var(--panel-strong); color: var(--ink); font-size: 12px; }
   .zen-exit { top: max(56px, calc(env(safe-area-inset-top) + 56px)); bottom: auto; right: 10px; z-index: 121; background: var(--panel-strong); }
   .hud-actions {
     top: auto;
@@ -809,3 +813,20 @@ button, input, select, th, td { padding: 8px 12px !important; }
 /* Sélecteur de thème dans les options. */
 .theme-group { display: flex; flex-wrap: wrap; gap: 8px; }
 .theme-group .hm-btn[aria-checked="true"] { border-color: var(--gold-bright); color: var(--gold-bright); background: var(--panel-strong); }
+
+/* Vue Obsidian du récit local. */
+.article-graph { position: relative; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; height: 100%; }
+.article-graph-header { padding: 8px 16px; color: #fff; }
+.article-graph-header h2 { margin: 0; font-family: Georgia, serif; font-size: 24px; font-weight: 400; }
+.article-graph-header p { margin: 4px 0 0; font-size: 11px; color: rgba(255,255,255,.7); }
+.article-graph svg { width: 100%; height: 100%; min-height: 240px; background: #9a9a9a; }
+.graph-links line { stroke: #303438; stroke-opacity: .45; }
+.graph-nodes g { cursor: pointer; }
+.graph-nodes circle { fill: #fff; stroke: #303438; }
+.graph-nodes g:last-child circle { fill: #4ade80; }
+.graph-nodes text { fill: #303438; font-size: 9px; pointer-events: none; }
+.article-graph-detail { max-height: 30vh; overflow-y: auto; padding: 12px 16px; background: #fff; color: #303438; }
+.article-graph-detail[hidden] { display: none; }
+.article-graph-detail h3 { margin: 0 0 4px; font-family: Georgia, serif; font-size: 16px; }
+.article-graph-detail p { font-size: 11px; line-height: 1.5; }
+.article-graph-detail button { min-height: 44px; margin-top: 8px; border: 1px solid #303438; background: #fff; color: #303438; cursor: pointer; }
