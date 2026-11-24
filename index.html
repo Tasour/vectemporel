@@ -19,25 +19,12 @@
     
     <title>Chronas - Interactive Historical Map</title>
     <!-- Google Analytics (only loads when VITE_GA_MEASUREMENT_ID is set) -->
+    
     <script>
-      (function() {
-        var id = '%VITE_GA_MEASUREMENT_ID%';
-        if (!id || id.indexOf('VITE_GA') !== -1) return;
-        var s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
-        document.head.appendChild(s);
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        window.gtag = gtag;
-        gtag('js', new Date());
-        gtag('config', id, { send_page_view: false });
-      })();
-    </script>
-    <script>
-  navigator.serviceWorker.register("./mirror-sw.js?v=e90282c0d6").then(() => navigator.serviceWorker.ready).then(() => {
-    const script = document.createElement("script"); script.type = "module"; script.src = "./assets/index-D3adwlmp.js"; document.head.appendChild(script);
-  }).catch(() => { const s = document.createElement("script"); s.type = "module"; s.src = "./assets/index-D3adwlmp.js"; document.head.appendChild(s); });
+  const start = () => { const s = document.createElement("script"); s.type = "module"; s.src = "./assets/index-D3adwlmp.js?v=e90282c0d6"; document.head.appendChild(s); };
+  const ready = navigator.serviceWorker?.register("./mirror-sw.js?v=e90282c0d6")
+    .then(() => navigator.serviceWorker.ready) ?? Promise.resolve();
+  Promise.race([ready.catch(() => {}), new Promise((r) => setTimeout(r, 1500))]).then(start);
 </script>
     <link rel="modulepreload" crossorigin href="./assets/rolldown-runtime-Dd_uD5pT.js">
     <link rel="modulepreload" crossorigin href="./assets/state-L2g2pCj2.js">
