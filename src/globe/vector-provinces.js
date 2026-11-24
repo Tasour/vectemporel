@@ -3,6 +3,7 @@
  * Zéro réseau, déterminisme strict, aucune aléa. */
 import { FEATURES, AREAS, colorFor } from '../map/data.js';
 import { normalizeLongitude, vectorFromLonLat } from './lonlat.js';
+import { edgeKey } from './zones.js';
 
 const RADIUS = 1.003;
 const EDGE_RADIUS = 1.004;
@@ -27,7 +28,7 @@ export function dimensionValue(row, index) {
 }
 
 /* Pur et testable : produit les tableaux de géométrie sans dépendre de THREE. */
-export function buildProvinceData(areas, dimensionIndex, THREE) {
+export function buildProvinceData(areas, dimensionIndex, THREE, zones = null) {
   const positions = [];
   const colors = [];
   const indices = [];
@@ -63,6 +64,7 @@ export function buildProvinceData(areas, dimensionIndex, THREE) {
       for (let index = 0; index < ring.length; index += 1) {
         const [lonA, latA] = ring[index];
         const [lonB, latB] = ring[(index + 1) % ring.length];
+        if (zones && !zones.edges.has(edgeKey([lonA, latA], [lonB, latB]))) continue;
         const a = vectorFromLonLat(lonA, latA, EDGE_RADIUS);
         const b = vectorFromLonLat(lonB, latB, EDGE_RADIUS);
         edges.push(a.x, a.y, a.z, b.x, b.y, b.z);
@@ -72,8 +74,8 @@ export function buildProvinceData(areas, dimensionIndex, THREE) {
   return { positions, colors, indices, edges, triangles, skipped };
 }
 
-export function createProvinceMesh(THREE, areas, dimensionIndex) {
-  const data = buildProvinceData(areas, dimensionIndex, THREE);
+export function createProvinceMesh(THREE, areas, dimensionIndex, zones = null) {
+  const data = buildProvinceData(areas, dimensionIndex, THREE, zones);
   const geometry = new THREE.BufferGeometry();
   geometry.setAttribute('position', new THREE.Float32BufferAttribute(data.positions, 3));
   geometry.setAttribute('color', new THREE.Float32BufferAttribute(data.colors, 3));

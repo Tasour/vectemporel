@@ -33,7 +33,7 @@ const PERIODS = [
   ['Moderne', 1500, 1800], ['Contemporain', 1800, 2100],
 ];
 
-export async function createSubjectField(host, data, { onArticle = () => {}, onClose = () => {} } = {}) {
+export async function createSubjectField(host, data, { onArticle = () => {}, onClose = () => {}, onYear = () => {}, year = null } = {}) {
   host.replaceChildren();
   const PIXI = await ensurePixi();
   const mobile = () => window.innerWidth < 760;
@@ -283,10 +283,15 @@ export async function createSubjectField(host, data, { onArticle = () => {}, onC
     const x = event.clientX - rect.left;
     const y = event.clientY - rect.top;
     if (dragStart && Math.abs(event.clientX - dragStart.x) > 12) {
-      const ratio = (dragStart.x - event.clientX) / dragStart.rect.width;
+      const dx = event.clientX - dragStart.x;
+      const ratio = -dx / dragStart.rect.width;
       const span = dragStart.to - dragStart.from;
-      from = dragStart.from + ratio * span;
-      to = dragStart.to + ratio * span;
+      if (Math.abs(dx) > 64) {
+        from = dragStart.from + ratio * span;
+        to = dragStart.to + ratio * span;
+      }
+      const nextYear = Math.round(year === null ? dragStart.from + ratio * span : year + (dx / dragStart.rect.width) * span);
+      if (nextYear !== year) { year = nextYear; onYear(year); }
       card.hidden = true;
       schedule();
       return;

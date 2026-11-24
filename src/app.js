@@ -1049,6 +1049,7 @@ function mount() {
   ];
   const friseTimeline = new PixiTimeline(friseCanvas, {
     events: friseEvents, mode: 'years', title: 'Frise des événements', year,
+    onYear: (value) => { if (Number.isFinite(value)) applyYear(value, { notify: false, reopenCard: false }); },
     onSelect: (event) => { if (Number.isFinite(event.year)) applyYear(event.year); },
   });
   if (budgetWidget) hud.appendChild(budgetWidget);
@@ -1259,6 +1260,14 @@ function mount() {
 
   const globe = createGlobe(canvas, {
     onSelect: (name) => select(name),
+    onZoneSelect: (zone) => {
+      const key = String(zone.value || '').toLowerCase();
+      const id = /cathol/i.test(key) ? 'catholicisme'
+        : zone.features.includes('Dauphiné') ? 'dauphine' : null;
+      const label = CHRONAS_LABELS.names[dimension]?.[zone.value] || zone.value;
+      if (id) openReport(id);
+      else readout.textContent = `${label} · ${zone.count} provinces · aucun récit local.`;
+    },
     onHover: (name, x, y) => showTooltip(name, x, y),
     onFrame: (view) => {
       labelRenderer.update((lon, lat) => globe?.project(lon, lat), view.zoom);
@@ -1371,6 +1380,7 @@ function mount() {
         })));
       provincePixi = new PixiTimeline(pixiHost, {
         events: provinceEvents, mode: 'province', title: `Chronologie de ${name}`, year,
+        onYear: (value) => { if (Number.isFinite(value)) applyYear(value, { notify: false, reopenCard: false }); },
         onSelect: (event) => applyYear(event.year),
       });
 
@@ -1526,7 +1536,7 @@ function mount() {
     const effective = labelMode === 'capitals'
       ? 'capital'
       : (dimension === 'population' ? 'ruler' : dimension);
-    const historical = buildLabels(areasForYear, effective);
+    const historical = buildLabels(areasForYear, effective, globe?.zones());
     labelRenderer.setLabels(labelMode === 'both'
       ? combineLabels(historical, buildModernLabels())
       : historical);
@@ -1558,7 +1568,7 @@ function mount() {
     }
     trackProgress('centuries', centuryStart(target));
     recordNav();
-    friseTimeline.setYear(target);
+    friseTimeline.setYear(target, { notify: false });
     yearLabel.textContent = String(target);
     slider.max = zoomMode === 'century' ? String(CENTURY_STEPS) : '1000';
     slider.value = String(positionOf(target));
@@ -2070,6 +2080,7 @@ function mount() {
     ];
     histoPixi = new PixiTimeline(histoPixiHost, {
       events: histoEvents, mode: 'events', title: 'Histographie', year,
+      onYear: (value) => { if (Number.isFinite(value)) applyYear(value, { notify: false, reopenCard: false }); },
       onSelect: (event) => {
         if (event.report) openReport(event.report);
         else readout.textContent = `${event.title} · Chronas CC BY-SA 4.0`;
@@ -2107,6 +2118,8 @@ function mount() {
       const data = await response.json();
       subjectField = await createSubjectField(subjectHost, data, {
         onClose: closeSubject,
+        year,
+        onYear: (value) => { if (Number.isFinite(value)) applyYear(value, { notify: false, reopenCard: false }); },
         onArticle: (article) => {
           const report = id === 'dauphine' && /dauphin/i.test(article.title) ? 'dauphine' : null;
           if (report) openReport(report);
@@ -2241,6 +2254,7 @@ function mount() {
       }
       hmPixi = new PixiTimeline(hmPixiHost, {
         events: hmEvents, mode: 'families', title: 'Histomap des familles culturelles', year,
+        onYear: (value) => { if (Number.isFinite(value)) applyYear(value, { notify: false, reopenCard: false }); },
         onSelect: (event) => applyYear(event.year),
       });
     } catch (issue) {

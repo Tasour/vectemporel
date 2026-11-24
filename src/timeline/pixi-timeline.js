@@ -106,6 +106,7 @@ export class PixiTimeline {
         if (step !== this.drag.last) {
           this.drag.last = step;
           if (navigator.vibrate) navigator.vibrate(8);
+          this.onYear(step);
         }
         this.canvas.setAttribute('aria-valuetext', yearText(step));
       } else {
@@ -114,6 +115,7 @@ export class PixiTimeline {
         this.to = this.drag.to - shift;
         this.year = this.drag.year - shift;
         this.canvas.setAttribute('aria-valuetext', `${yearText(Math.round(this.from))} → ${yearText(Math.round(this.to))}`);
+        this.onYear(Math.round((this.from + this.to) / 2));
       }
       this.schedule();
     };
@@ -194,7 +196,6 @@ export class PixiTimeline {
   #tick() {
     this.raf = null;
     if (!this.hidden) this.draw();
-    if (!this.hidden) this.raf = requestAnimationFrame(() => this.#tick());
   }
 
   schedule() {
@@ -209,9 +210,9 @@ export class PixiTimeline {
     this.schedule();
   }
 
-  setYear(year) {
+  setYear(year, { notify = true } = {}) {
     this.year = Math.max(this.from, Math.min(this.to, Number(year) || this.from));
-    this.onYear(Math.round(this.year));
+    if (notify) this.onYear(Math.round(this.year));
     this.schedule();
     return this;
   }
