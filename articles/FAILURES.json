@@ -1,0 +1,18 @@
+[
+  {
+    "id": "culture-carib",
+    "error": "résumé indisponible"
+  },
+  {
+    "id": "ruler-ITA",
+    "error": "échec après 3 tentatives : HTTP 429"
+  },
+  {
+    "id": "ruler-_Republic_of_China",
+    "error": "échec après 3 tentatives : HTTP 429"
+  },
+  {
+    "id": "ruler-_Russian_Federation",
+    "error": "échec après 3 tentatives : HTTP 429"
+  }
+]
