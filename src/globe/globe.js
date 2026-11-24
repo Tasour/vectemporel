@@ -36,7 +36,7 @@ export function createGlobe(canvas, {
   renderer.outputColorSpace = THREE.SRGBColorSpace;
 
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x05080d);
+  scene.background = new THREE.Color(0x0d1524);
   const camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
 
   const latGroup = new THREE.Group();
@@ -114,8 +114,9 @@ export function createGlobe(canvas, {
   }));
   scene.add(stars);
 
-  scene.add(new THREE.AmbientLight(0x506070, 0.95));
-  const sun = new THREE.DirectionalLight(0xfff0d2, 1.15);
+  const ambient = new THREE.AmbientLight(0x8fa4bd, 1.35);
+  scene.add(ambient);
+  const sun = new THREE.DirectionalLight(0xfff0d2, 1.45);
   sun.position.set(4, 2.5, 5);
   scene.add(sun);
 
@@ -725,6 +726,12 @@ export function createGlobe(canvas, {
   start();
 
   return {
+    setTheme(theme) {
+      const light = theme === 'light';
+      scene.background.set(light ? 0xe9e2d5 : 0x0d1524);
+      ambient.intensity = light ? 1.6 : 1.35;
+      sun.intensity = light ? 1.6 : 1.45;
+    },
     getView: () => ({
       ...current,
       lastInput,
