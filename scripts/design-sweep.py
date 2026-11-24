@@ -44,7 +44,6 @@ STATES = [
     ('trail', '?trail=soie&step=2', []),
     ('arcs', '?arcs=1', []),
     ('soleil', '?sun=1', []),
-    ('fil-de-fer', '?wire=1', []),
 ]
 
 

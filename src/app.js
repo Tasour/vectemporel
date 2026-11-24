@@ -100,7 +100,6 @@ function mount() {
   }
 
   let showSun = params.get('sun') === '1';
-  let showWire = params.get('wire') === '1';
   let arcLinks = [];
   const navHistory = [];
   let navIndex = -1;
@@ -295,11 +294,6 @@ function mount() {
   sunButton.id = 'hud-sun-button';
   sunButton.setAttribute('aria-label', 'Afficher l’ombre solaire stylisée (touche Y)');
   sunButton.setAttribute('aria-pressed', 'false');
-  const wireButton = el('button', 'hud-btn', '▦');
-  wireButton.type = 'button';
-  wireButton.id = 'hud-wire-button';
-  wireButton.setAttribute('aria-label', 'Afficher la sphère en fil de fer (touche W)');
-  wireButton.setAttribute('aria-pressed', 'false');
   const learnButton = el('button', 'hud-btn', '✧');
   learnButton.type = 'button';
   learnButton.id = 'hud-learn-button';
@@ -328,7 +322,7 @@ function mount() {
   histographyButton.id = 'hud-histography-button';
   histographyButton.setAttribute('aria-label', 'Ouvrir la frise Histographie');
   histographyButton.setAttribute('aria-pressed', 'false');
-  actionsMore.append(tourButton, arcsButton, sunButton, wireButton, histographyButton, qualityButton, compareButton, reviewButton, themeButton, helpButton);
+  actionsMore.append(tourButton, arcsButton, sunButton, histographyButton, qualityButton, compareButton, reviewButton, themeButton, helpButton);
   const toolsButton = el('button', 'hud-btn', '⋯');
   toolsButton.type = 'button';
   toolsButton.id = 'hud-tools-button';
@@ -1960,18 +1954,7 @@ function mount() {
       : 'Ombre solaire masquée.';
   }
 
-  function toggleWire() {
-    markAction('wire');
-    showWire = !showWire;
-    wireButton.setAttribute('aria-pressed', String(showWire));
-    globe?.setWireframe(showWire);
-    params.set('wire', showWire ? '1' : '0');
-    writeUrl(params);
-    readout.textContent = showWire ? 'Sphère en fil de fer.' : 'Rendu vectoriel restauré.';
-  }
-
   sunButton.addEventListener('click', toggleSun);
-  wireButton.addEventListener('click', toggleWire);
 
   trailsButton.addEventListener('click', () => {
     if (trailsPanel.hidden) openTrails();
@@ -2355,7 +2338,6 @@ function mount() {
      * au clavier sans reproduire les boutons dans le HUD mobile. */
     const commands = [
       ['ombre solaire', 'Basculer l’ombre solaire', () => toggleSun()],
-      ['fil de fer', 'Basculer le rendu fil de fer', () => toggleWire()],
       ['simultanéité', 'Basculer les arcs de simultanéité', () => toggleArcs()],
       ['anomalies', 'Ouvrir la qualité des données', () => openQuality()],
       ['comparer', 'Ouvrir la comparaison A/B', () => openCompare()],
@@ -2541,7 +2523,6 @@ function mount() {
       openSearch();
     }
     else if (event.key.toLowerCase() === 'y' && !typing) { event.preventDefault(); toggleSun(); }
-    else if (event.key.toLowerCase() === 'w' && !typing) { event.preventDefault(); toggleWire(); }
     else if (event.key.toLowerCase() === 'h' && !typing) {
       event.preventDefault();
       if (histomapPanel.hidden) openHistomap();
@@ -2578,13 +2559,6 @@ function mount() {
     globe.setView(initialPos || DEFAULT_VIEW);
     applyYear(year, { notify: false });
     if (showSun) globe.setSunYear(year, true);
-    if (showWire) globe.setWireframe(true);
-    else if ((navigator.hardwareConcurrency || 8) <= 4) {
-      showWire = true;
-      wireButton.setAttribute('aria-pressed', 'true');
-      globe.setWireframe(true);
-      readout.textContent = 'Mode silhouette activé automatiquement (appareil peu puissant).';
-    }
     if (initialName) select(initialName, { move: !initialPos });
     else {
       params.set('type', 'area');
@@ -2654,7 +2628,6 @@ function mount() {
       compare: comparePair,
       empire: { active: Boolean(empireRuler), ruler: empireRuler },
       sun: { enabled: showSun, year: globe?.statistics?.().sunYear ?? null },
-      wireframe: showWire,
       zen: document.body.classList.contains('zen'),
       anomalies: ANOMALIES.meta.count,
       qualityOpen: !qualityPanel.hidden,
@@ -2682,7 +2655,6 @@ function mount() {
     openSubject,
     closeSubject,
     toggleSun,
-    toggleWire,
     openLearn,
     closeLearn,
     toggleZen,

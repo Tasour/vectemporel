@@ -71,13 +71,9 @@ try {
   const after = await page.evaluate(() => performance.getEntriesByType('resource').length);
   check('bascule graphique sans requête', after === before, `${before} → ${after}`);
 
-  await page.evaluate(() => window.VATLAS.toggleWire());
   await page.evaluate(() => window.VATLAS.setView({ lat: 20, lon: 0, zoom: 7.2 }));
   await new Promise((resolve) => setTimeout(resolve, 250));
-  check('zoom maximal en fil de fer', await page.evaluate(() => window.VATLAS.getState().wireframe
-    && window.VATLAS.getState().camera.zoom > 7.1));
-  await page.evaluate(() => window.VATLAS.toggleWire());
-  check('retour du rendu vectoriel', await page.evaluate(() => !window.VATLAS.getState().wireframe));
+  check('zoom maximal', await page.evaluate(() => window.VATLAS.getState().camera.zoom > 7.1));
 
   check('aucune erreur console', errors.length === 0, errors.slice(0, 2).join(' | '));
 } finally {

@@ -98,7 +98,6 @@ export function createGlobe(canvas, {
   const terminator = new THREE.Mesh(new THREE.SphereGeometry(1.003, 96, 64), sunMaterial);
   terminator.visible = false;
   scene.add(terminator);
-  let wireframe = false;
 
   const starPositions = [];
   const random = mulberry32(SEED);
@@ -268,14 +267,6 @@ export function createGlobe(canvas, {
       terminator.visible = true;
       sunYear = Number(year);
     }
-    renderer.render(scene, camera);
-  }
-
-  function setWireframe(enabled) {
-    wireframe = Boolean(enabled);
-    sphere.material.wireframe = wireframe;
-    if (provinceMesh) provinceMesh.group.visible = !wireframe;
-    atmosphere.visible = !wireframe;
     renderer.render(scene, camera);
   }
 
@@ -759,7 +750,6 @@ export function createGlobe(canvas, {
     },
     setArcs,
     setSunYear,
-    setWireframe,
     focusRegion(name) {
       const box = INDEX[name];
       if (!box) return;
@@ -791,7 +781,6 @@ export function createGlobe(canvas, {
       cityCount,
       arcCount,
       sunYear,
-      wireframe,
       citySprite: Boolean(discTexture?.image),
     }),
     rotateBy(dLon, dLat) {

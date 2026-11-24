@@ -32,7 +32,6 @@ try {
   const options = [
     ['arcs', '#hud-arcs-button'],
     ['ombre', '#hud-sun-button'],
-    ['fil de fer', '#hud-wire-button'],
     ['récits', '#hud-trails-button'],
     ['apprendre', '#hud-learn-button'],
     ['qualité', '#hud-quality-button'],

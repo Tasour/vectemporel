@@ -38,7 +38,7 @@ try {
     ['?compare=1000,1500', () => window.VATLAS.getState().compare?.[0] === 1000],
     ['?year=1000&arcs=1&value=Berry', () => window.VATLAS.getState().arcs.enabled === true],
     ['?zoom=century&year=1450', () => window.VATLAS.getState().zoom === 'century' && document.getElementById('timeline-range').max === '100'],
-    ['?sun=1&wire=1', () => window.VATLAS.getState().sun.enabled && window.VATLAS.getState().wireframe],
+    ['?sun=1', () => window.VATLAS.getState().sun.enabled],
   ];
 
   for (const [query, assertion] of cases) {

@@ -158,7 +158,7 @@ npm run check
 | `npm run test:quality` | contrat du rapport qualité et reproductibilité |
 | `npm run test:challenges` | défis d'apprentissage : graine, heatmap, objectifs |
 | `npm run test:throttle` | budget sous CPU x4 et réseau lent |
-| `npm run test:globe` | détails du rendu : focus empire, arcs, ombre, fil de fer |
+| `npm run test:globe` | détails du rendu : focus empire, arcs, ombre |
 | `npm run test:offline` | deep links repris hors ligne depuis le cache PWA |
 | `npm run test:a11y` | noms, rôles, contraste et panneaux accessibles |
 | `npm run test:snapshot` | empreinte déterministe des données générées |

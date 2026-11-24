@@ -4,7 +4,7 @@ Tous les composants sont locaux, sans bibliothèque d'interface.
 
 | Composant | Fichier | Responsabilité |
 |---|---|---|
-| `createGlobe` | `src/globe/globe.js` | scène Three.js, rAF unique, picking, arcs, ombre, fil de fer |
+| `createGlobe` | `src/globe/globe.js` | scène Three.js, rAF unique, picking, arcs, ombre |
 | `createProvinceMesh` | `src/globe/vector-provinces.js` | maillage vectoriel des contours |
 | `createLabelRenderer` | `src/globe/labels.js` | libellés projetés et anti-collision |
 | `createEpicTimeline` | `src/timeline/epics.js` | 560 épiques, filtre par catégorie |

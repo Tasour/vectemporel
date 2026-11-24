@@ -15,7 +15,7 @@ const check = (name, ok, detail = '') => {
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const SECONDARY = new Set([
   'hud-help-button', 'hud-theme-button', 'hud-compare-button', 'hud-sun-button',
-  'hud-wire-button', 'hud-quality-button', 'hud-histography-button',
+'hud-quality-button', 'hud-histography-button',
   'hud-tour-button', 'hud-review-button', 'hud-arcs-button',
 ]);
 async function clickHud(page, id) {
@@ -299,13 +299,6 @@ try {
   await page.keyboard.press('y');
   await new Promise((resolve) => setTimeout(resolve, 150));
   check('ombre solaire désactivée', await page.evaluate(() => !window.VATLAS.getState().sun.enabled));
-  await clickHud(page, 'hud-wire-button');
-  await new Promise((resolve) => setTimeout(resolve, 200));
-  check('fil de fer activé', await page.evaluate(() => window.VATLAS.getState().wireframe
-    && window.VATLAS.getState().mesh.wireframe === true));
-  await page.keyboard.press('w');
-  await new Promise((resolve) => setTimeout(resolve, 150));
-  check('fil de fer désactivé', await page.evaluate(() => !window.VATLAS.getState().wireframe));
   await clickHud(page, 'hud-quality-button');
   await new Promise((resolve) => setTimeout(resolve, 150));
   check('panneau qualité ouvert', await page.evaluate(() => !document.getElementById('quality-panel').hidden
