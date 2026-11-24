@@ -1,6 +1,7 @@
 /* Sphère WebGL plein écran. Une seule boucle rAF, pause sur document.hidden,
  * picking par raycast puis test de polygone, déterminisme et zéro réseau. */
 import { FEATURES, INDEX, AREAS, featureByName } from '../map/data.js';
+import { computeZones } from './zones.js';
 import { pointInFeature, clamp } from '../map/projection.js';
 import {
   vectorFromLonLat, lonLatFromVector, centerOfBounds, clampLatitude, normalizeLongitude,
@@ -22,7 +23,7 @@ const distanceForZoom = (zoom) => 3.2 - clamp(zoom, 0, ZOOM_MAX) * 0.19;
 const clampZoom = (zoom) => clamp(zoom, 0, ZOOM_MAX);
 
 export function createGlobe(canvas, {
-  onSelect, onCitySelect, onView, onError, onHover, onFrame,
+  onSelect, onZoneSelect, onCitySelect, onView, onError, onHover, onFrame,
 } = {}) {
   let renderer;
   try {
@@ -54,13 +55,17 @@ export function createGlobe(canvas, {
 
   let provinceMesh = null;
   let provinceStatistics = null;
+  let zones = { zones: [], byFeature: new Map() };
   function rebuildProvinces(areas, dimension = 'culture') {
     if (provinceMesh) {
       lonGroup.remove(provinceMesh.group);
       provinceMesh.dispose();
     }
     const index = DIMENSIONS.find((item) => item.id === dimension)?.index ?? 1;
-    provinceMesh = createProvinceMesh(THREE, areas || AREAS, index);
+    zones = computeZones(areas || AREAS, index);
+    const outerEdges = new Set();
+    for (const zone of zones.zones) for (const edge of zone.edges) outerEdges.add(edge);
+    provinceMesh = createProvinceMesh(THREE, areas || AREAS, index, { edges: outerEdges });
     provinceStatistics = provinceMesh.statistics;
     lonGroup.add(provinceMesh.group);
   }
@@ -680,7 +685,9 @@ export function createGlobe(canvas, {
     if (name) {
       selected = name;
       buildMarker(name);
-      onSelect?.(name);
+      const zone = zones.byFeature.get(name);
+      if (zone) onZoneSelect?.(zone);
+      else onSelect?.(name);
     }
   }
 
@@ -795,6 +802,8 @@ export function createGlobe(canvas, {
       lastInput = 'keyboard';
     },
     pick,
+    zoneOf: (name) => zones.byFeature.get(name) || null,
+    zones: () => zones.zones,
     project,
     arcScreenPoints,
     pickCity,

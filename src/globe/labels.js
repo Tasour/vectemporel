@@ -10,6 +10,8 @@ const LIMIT = 24;
 const MIN_ZOOM = 3;
 const DIMENSION_KEYS = ['ruler', 'culture', 'religion', 'capital', 'population', 'empire'];
 
+const tableOf = (dimension) => CHRONAS_LABELS.names[dimension] || {};
+
 function centerOf(feature) {
   const box = boundsOf(feature.rings);
   return {
@@ -18,10 +20,26 @@ function centerOf(feature) {
   };
 }
 
-export function buildLabels(areas, dimension) {
+export function buildLabels(areas, dimension, zones = null) {
   const dimensionKey = DIMENSION_KEYS.includes(dimension) ? dimension : 'culture';
   const keyIndex = dimensionKey === 'capital' ? 3 : DIMENSION_KEYS.indexOf(dimensionKey);
   if (dimensionKey === 'population' || dimensionKey === 'empire') return [];
+
+  if (zones && zones.length) {
+    return zones
+      .filter((zone) => zone.value && zone.features.length)
+      .sort((a, b) => b.features.length - a.features.length || String(a.value).localeCompare(String(b.value), 'fr'))
+      .slice(0, LIMIT)
+      .filter((zone) => zone.center.lat >= -85 && zone.center.lat <= 85)
+      .map((zone) => ({
+        key: zone.value,
+        text: dimensionKey === 'capital' ? zone.value : (tableOf(dimensionKey)[zone.value] || zone.value),
+        lon: zone.center.lon,
+        lat: zone.center.lat,
+        count: zone.features.length,
+        zone: zone.id,
+      }));
+  }
 
   const groups = new Map();
   for (const [provinceName, row] of Object.entries(areas || {})) {
