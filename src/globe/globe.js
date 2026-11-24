@@ -48,7 +48,7 @@ export function createGlobe(canvas, {
   const { texture: globeTexture } = createGlobeTexture(THREE, quality, renderer);
   const sphere = new THREE.Mesh(
     new THREE.SphereGeometry(1, quality.segments[0], quality.segments[1]),
-    new THREE.MeshPhongMaterial({ map: globeTexture, shininess: 8, specular: 0x111111 }),
+    new THREE.MeshPhongMaterial({ map: globeTexture, shininess: 8, specular: 0x222222, emissive: 0x141414 }),
   );
   lonGroup.add(sphere);
 

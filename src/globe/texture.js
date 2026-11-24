@@ -30,9 +30,9 @@ export function createEquirectangularCanvas(quality = globeQuality()) {
   const ctx = canvas.getContext('2d');
 
   const ocean = ctx.createLinearGradient(0, 0, 0, HEIGHT);
-  ocean.addColorStop(0, '#0a1420');
-  ocean.addColorStop(0.5, '#0d1a29');
-  ocean.addColorStop(1, '#0a1420');
+  ocean.addColorStop(0, '#1d3b5c');
+  ocean.addColorStop(0.5, '#244a70');
+  ocean.addColorStop(1, '#1d3b5c');
   ctx.fillStyle = ocean;
   ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
