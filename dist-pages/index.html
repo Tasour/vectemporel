@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Chronas - Explore world history through an interactive map. Discover how civilizations, cultures, and political boundaries evolved over 5000 years." />
+    <meta name="theme-color" content="#1a1a2e" />
+    <!-- Open Graph -->
+    <meta property="og:title" content="Chronas - Interactive Historical Map" />
+    <meta property="og:description" content="Explore world history through an interactive map spanning 5000 years." />
+    <meta property="og:type" content="website" />
+    <!-- Security headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <!-- Fonts -->
+    
+    
+    
+    <title>Chronas - Interactive Historical Map</title>
+    <!-- Google Analytics (only loads when VITE_GA_MEASUREMENT_ID is set) -->
+    <script>
+      (function() {
+        var id = '%VITE_GA_MEASUREMENT_ID%';
+        if (!id || id.indexOf('VITE_GA') !== -1) return;
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id;
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', id, { send_page_view: false });
+      })();
+    </script>
+    <script>
+  navigator.serviceWorker.register("./mirror-sw.js").then(() => navigator.serviceWorker.ready).then(() => {
+    const script = document.createElement("script"); script.type = "module"; script.src = "./assets/index-BAR_zhRB.js"; document.head.appendChild(script);
+  }).catch(() => { const s = document.createElement("script"); s.type = "module"; s.src = "./assets/index-BAR_zhRB.js"; document.head.appendChild(s); });
+</script>
+    <link rel="modulepreload" crossorigin href="./assets/rolldown-runtime-Dd_uD5pT.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-L2g2pCj2.js">
+    <link rel="modulepreload" crossorigin href="./assets/vendor-EaEOE3Xh.js">
+    <link rel="stylesheet" crossorigin href="./assets/index-Chk1OGwX.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>

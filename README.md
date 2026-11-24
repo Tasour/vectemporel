@@ -1,3 +1,8 @@
+
+## v0-local — miroir API local
+
+Cette branche part du fork intégral de `Chronasorg/chronas-frontend` ; l'interface React/MapLibre est conservée. L'API est reproduite localement dans `api/v1/` par `node scripts/extract-api.mjs` : 4 001 années de `/areas`, marqueurs et métadonnées, avec manifeste et empreintes. `public/mirror-sw.js` sert ces réponses sans appel réseau externe ; `scripts/patch-pages.mjs` corrige les chemins absolus du build pour GitHub Pages. Voir `docs/FORK-NOTICE.md`.
+
 # Chronas Frontend
 
 Modern React 19 + Vite 8 + TypeScript frontend shell for the Chronas interactive historical map application.
