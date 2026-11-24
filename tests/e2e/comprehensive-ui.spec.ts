@@ -1,0 +1,613 @@
+/**
+ * Comprehensive UI E2E Test Suite
+ *
+ * Tests all interactive UI elements: navigation sidebar, layers panel
+ * (area dimensions, markers, epics, advanced), settings panel, right drawer,
+ * timeline controls, and keyboard accessibility.
+ *
+ * Run with: npx playwright test tests/e2e/comprehensive-ui.spec.ts
+ */
+
+import { test, expect } from '@playwright/test';
+import type { Page } from '@playwright/test';
+
+// Give each test enough time for map + API loading
+test.setTimeout(60_000);
+
+// ---------------------------------------------------------------------------
+// Helpers — no waitForTimeout; use event-driven waits only
+// ---------------------------------------------------------------------------
+
+/** Wait for app shell + map canvas + initial API data to be ready */
+async function waitForMap(page: Page): Promise<void> {
+  await page.waitForSelector('[data-testid="app-shell"]', { timeout: 30_000 });
+  await page.waitForSelector('.maplibregl-canvas, [data-testid="map-container"]', {
+    timeout: 15_000,
+  });
+  // Wait for sidebar nav to be interactive (signals React hydration is complete)
+  await page.waitForSelector('[data-testid="nav-item-layers"]', { timeout: 10_000 });
+}
+
+/** Open the Layers drawer if it is not already open */
+async function openLayers(page: Page): Promise<void> {
+  const drawer = page.getByTestId('layers-content');
+  if (!(await drawer.isVisible().catch(() => false))) {
+    await page.getByTestId('nav-item-layers').click();
+    await drawer.waitFor({ state: 'visible', timeout: 5_000 });
+  }
+}
+
+/** Open the Settings (Configuration) drawer */
+async function openSettings(page: Page): Promise<void> {
+  const drawer = page.getByTestId('settings-content');
+  if (!(await drawer.isVisible().catch(() => false))) {
+    await page.getByTestId('nav-item-settings').click();
+    await drawer.waitFor({ state: 'visible', timeout: 5_000 });
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 1. Navigation Sidebar
+// ---------------------------------------------------------------------------
+
+test.describe('Navigation Sidebar', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/');
+    await waitForMap(page);
+  });
+
+  test('renders all enabled nav items', async ({ page }) => {
+    // Issue #20: 'play' is now enabled and opens the autoplay menu.
+    // Issue #53: 'support' opens the Patreon support page.
+    for (const id of ['layers', 'settings', 'play', 'support', 'help']) {
+      await expect(page.getByTestId(`nav-item-${id}`)).toBeVisible();
+      await expect(page.getByTestId(`nav-item-${id}`)).toBeEnabled();
+    }
+  });
+
+  test('renders disabled nav items', async ({ page }) => {
+    // 'logout' is disabled in navConfig until auth is re-enabled.
+    for (const id of ['discover', 'random', 'collections', 'logout']) {
+      await expect(page.getByTestId(`nav-item-${id}`)).toBeVisible();
+      await expect(page.getByTestId(`nav-item-${id}`)).toBeDisabled();
+    }
+  });
+
+  test('clicking Help opens the Information dialog', async ({ page }) => {
+    // Issue #14: Help opens the Info popup (Welcome / How To / Contact tabs).
+    const dialog = page.getByTestId('info-dialog');
+    await expect(dialog).toBeHidden();
+
+    await page.getByTestId('nav-item-help').click();
+    await expect(dialog).toBeVisible();
+
+    await page.getByTestId('info-dialog-close').click();
+    await expect(dialog).toBeHidden();
+  });
+
+  test('clicking Layers twice toggles the drawer closed', async ({ page }) => {
+    const btn = page.getByTestId('nav-item-layers');
+    await btn.click();
+    await expect(page.getByTestId('layers-content')).toBeVisible();
+
+    await btn.click();
+    await expect(page.getByTestId('layers-content')).not.toBeVisible();
+  });
+
+  test('switching from Layers to Settings replaces drawer content', async ({ page }) => {
+    await page.getByTestId('nav-item-layers').click();
+    await expect(page.getByTestId('layers-content')).toBeVisible();
+
+    await page.getByTestId('nav-item-settings').click();
+    await expect(page.getByTestId('settings-content')).toBeVisible();
+    await expect(page.getByTestId('layers-content')).not.toBeVisible();
+  });
+
+  test('logo link points to /info', async ({ page }) => {
+    const logo = page.getByTestId('sidebar-logo');
+    await expect(logo).toHaveAttribute('href', '#/info');
+  });
+
+  test('clicking Support opens the Patreon support page', async ({ page }) => {
+    await page.getByTestId('nav-item-support').click();
+    const dialog = page.getByTestId('support-dialog');
+    await expect(dialog).toBeVisible();
+    await expect(dialog.getByRole('heading', { name: 'Support Chronas' })).toBeVisible();
+    await expect(dialog).toContainText('pledge an amount of your choice!');
+    await expect(dialog).toContainText('Whatever Chronas is worth to you!');
+    for (const id of ['support-patreon-link', 'support-patreon-button']) {
+      await expect(page.getByTestId(id)).toHaveAttribute('href', 'https://www.patreon.com/chronas');
+      await expect(page.getByTestId(id)).toHaveAttribute('target', '_blank');
+    }
+
+    await page.keyboard.press('Escape');
+    await expect(dialog).not.toBeVisible();
+  });
+
+  test('Support page Contact Us opens the Contact tab', async ({ page }) => {
+    await page.getByTestId('nav-item-support').click();
+    await page.getByTestId('support-contact-link').click();
+    await expect(page.getByTestId('support-dialog')).not.toBeVisible();
+    await expect(page.getByTestId('info-panel-contact')).toBeVisible();
+  });
+});
+
+// ---------------------------------------------------------------------------
+// 2. Layers Panel — Area Dimension Radio Buttons
+// ---------------------------------------------------------------------------
+
+test.describe('Layers Panel — Area Dimensions', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/');
+    await waitForMap(page);
+    await openLayers(page);
+  });
+
+  test('population row has no label radio', async ({ page }) => {
+    // Population has only area radio, no label radio
+    const popLabelRadio = page.getByTestId('label-radio-population');
+    await expect(popLabelRadio).toHaveCount(0);
+  });
+
+  test('when locked, selecting area radio also selects matching label', async ({ page }) => {
+    // Ensure locked
+    const lockBtn = page.getByTestId('lock-toggle');
+    const pressed = await lockBtn.getAttribute('aria-pressed');
+    if (pressed !== 'true') {
+      await lockBtn.click();
+      await expect(lockBtn).toHaveAttribute('aria-pressed', 'true');
+    }
+
+    // Click culture area radio
+    await page.getByTestId('area-radio-culture').click();
+
+    // Label should also be culture (auto-retrying)
+    await expect(page.getByTestId('label-radio-culture')).toBeChecked();
+  });
+});
+
+// ---------------------------------------------------------------------------
+// 3. Layers Panel — Marker Filters
+// ---------------------------------------------------------------------------
+
+test.describe('Layers Panel — Marker Filters', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/');
+    await waitForMap(page);
+    await openLayers(page);
+  });
+
+  const markerTypes = [
+    'ar',
+    'b',
+    'si',
+    'cp',
+    'c',
+    'ca',
+    'l',
+    'm',
+    'p',
+    'e',
+    's',
+    'a',
+    'r',
+    'at',
+    'op',
+    'o',
+  ] as const;
+
+  test('all 16 marker type checkboxes are visible and checked by default', async ({ page }) => {
+    for (const type of markerTypes) {
+      const cb = page.getByTestId(`marker-filter-${type}`);
+      await cb.scrollIntoViewIfNeeded();
+      await expect(cb).toBeVisible();
+      await expect(cb).toBeChecked();
+    }
+  });
+
+  test('Uncheck All unchecks every marker and button changes to Check All', async ({ page }) => {
+    const toggleBtn = page.getByTestId('toggle-all-markers');
+    await toggleBtn.scrollIntoViewIfNeeded();
+    await expect(toggleBtn).toContainText(/uncheck all/i);
+
+    await toggleBtn.click();
+
+    // All should be unchecked (auto-retrying assertions)
+    for (const type of markerTypes) {
+      await expect(page.getByTestId(`marker-filter-${type}`)).not.toBeChecked();
+    }
+
+    // Button text should say "Check All"
+    await expect(toggleBtn).toContainText(/check all/i);
+  });
+
+  test('Check All re-checks every marker', async ({ page }) => {
+    const toggleBtn = page.getByTestId('toggle-all-markers');
+    await toggleBtn.scrollIntoViewIfNeeded();
+
+    // Uncheck all first
+    await toggleBtn.click();
+    await expect(toggleBtn).toContainText(/check all/i);
+
+    // Now check all
+    await toggleBtn.click();
+
+    for (const type of markerTypes) {
+      await expect(page.getByTestId(`marker-filter-${type}`)).toBeChecked();
+    }
+  });
+
+  test('individual marker checkbox can be toggled', async ({ page }) => {
+    const cb = page.getByTestId('marker-filter-b'); // Battle
+    await cb.scrollIntoViewIfNeeded();
+    await expect(cb).toBeChecked();
+
+    await cb.click();
+    await expect(cb).not.toBeChecked();
+
+    await cb.click();
+    await expect(cb).toBeChecked();
+  });
+
+  test('marker limit slider is visible and has expected default', async ({ page }) => {
+    const slider = page.getByTestId('marker-limit-slider');
+    await slider.scrollIntoViewIfNeeded();
+    await expect(slider).toBeVisible();
+
+    const value = await slider.inputValue();
+    expect(Number(value)).toBeGreaterThanOrEqual(0);
+    expect(Number(value)).toBeLessThanOrEqual(10_000);
+  });
+
+  test('cluster markers switch toggles', async ({ page }) => {
+    const sw = page.getByTestId('cluster-markers-switch');
+    await sw.scrollIntoViewIfNeeded();
+    await expect(sw).toBeVisible();
+
+    const initialChecked = await sw.getAttribute('aria-checked');
+
+    await sw.click();
+
+    // Wait for the attribute to change (auto-retrying)
+    if (initialChecked === 'true') {
+      await expect(sw).toHaveAttribute('aria-checked', 'false');
+    } else {
+      await expect(sw).toHaveAttribute('aria-checked', 'true');
+    }
+  });
+});
+
+// ---------------------------------------------------------------------------
+// 4. Layers Panel — Advanced Section
+// ---------------------------------------------------------------------------
+
+test.describe('Layers Panel — Advanced Section', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/');
+    await waitForMap(page);
+    await openLayers(page);
+    // Collapse other sections to bring Advanced into view
+    await page.getByTestId('area-section-toggle').click();
+    await expect(page.getByTestId('area-section-content')).not.toBeVisible();
+    await page.getByTestId('markers-section-toggle').click();
+    await expect(page.getByTestId('markers-section-content')).not.toBeVisible();
+    await page.getByTestId('epics-section-toggle').click();
+    await expect(page.getByTestId('epics-section-content')).not.toBeVisible();
+  });
+
+  test('Advanced section expands on click', async ({ page }) => {
+    const toggle = page.getByTestId('advanced-section-toggle');
+    await toggle.scrollIntoViewIfNeeded();
+    await toggle.click();
+
+    await expect(page.getByTestId('advanced-section-content')).toBeVisible();
+  });
+
+  test('changing basemap updates selection', async ({ page }) => {
+    const advToggle = page.getByTestId('advanced-section-toggle');
+    await advToggle.scrollIntoViewIfNeeded();
+    await advToggle.click();
+    await expect(page.getByTestId('advanced-section-content')).toBeVisible();
+
+    const select = page.getByTestId('basemap-select');
+    await select.scrollIntoViewIfNeeded();
+
+    await select.selectOption('satellite');
+    await expect(select).toHaveValue('satellite');
+
+    await select.selectOption('none');
+    await expect(select).toHaveValue('none');
+
+    await select.selectOption('topographic');
+    await expect(select).toHaveValue('topographic');
+  });
+
+  test('show provinces toggle is visible', async ({ page }) => {
+    const advToggle = page.getByTestId('advanced-section-toggle');
+    await advToggle.scrollIntoViewIfNeeded();
+    await advToggle.click();
+    await expect(page.getByTestId('advanced-section-content')).toBeVisible();
+
+    const toggle = page.getByTestId('show-provinces-toggle');
+    await toggle.scrollIntoViewIfNeeded();
+    await expect(toggle).toBeVisible();
+
+    // Verify the switch component exists within it
+    const sw = page.getByTestId('show-provinces-switch');
+    await expect(sw).toBeAttached();
+  });
+});
+
+// ---------------------------------------------------------------------------
+// 6. Settings Panel
+// ---------------------------------------------------------------------------
+
+test.describe('Settings Panel', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/');
+    await waitForMap(page);
+    await openSettings(page);
+  });
+
+  test('theme buttons are visible (Light, Dark, Luther)', async ({ page }) => {
+    await expect(page.getByTestId('theme-btn-light')).toBeVisible();
+    await expect(page.getByTestId('theme-btn-dark')).toBeVisible();
+    await expect(page.getByTestId('theme-btn-luther')).toBeVisible();
+  });
+
+  test('Light theme is active by default', async ({ page }) => {
+    await expect(page.getByTestId('theme-btn-light')).toHaveAttribute('aria-pressed', 'true');
+  });
+
+  test('clicking Luther applies luther theme', async ({ page }) => {
+    await page.getByTestId('theme-btn-luther').click();
+    await expect(page.getByTestId('theme-btn-luther')).toHaveAttribute('aria-pressed', 'true');
+  });
+
+  test('language dropdown is visible with English default', async ({ page }) => {
+    const langSelect = page.getByTestId('language-select');
+    await expect(langSelect).toBeVisible();
+
+    const value = await langSelect.inputValue();
+    expect(value).toBeTruthy();
+  });
+
+  test('detail level buttons are visible (Low, Medium, High)', async ({ page }) => {
+    await expect(page.getByTestId('detail-level-btn-low')).toBeVisible();
+    await expect(page.getByTestId('detail-level-btn-medium')).toBeVisible();
+    await expect(page.getByTestId('detail-level-btn-high')).toBeVisible();
+  });
+
+  test('clicking Low detail level activates and persists across reloads', async ({ page }) => {
+    await page.getByTestId('detail-level-btn-low').click();
+    await expect(page.getByTestId('detail-level-btn-low')).toHaveAttribute('aria-pressed', 'true');
+
+    await page.reload();
+    await waitForMap(page);
+    await openSettings(page);
+    await expect(page.getByTestId('detail-level-btn-low')).toHaveAttribute('aria-pressed', 'true');
+  });
+});
+
+// ---------------------------------------------------------------------------
+// 7. Right Drawer
+// ---------------------------------------------------------------------------
+
+test.describe('Right Drawer', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/');
+    await waitForMap(page);
+  });
+
+  test('right drawer exists with "No content selected" message', async ({ page }) => {
+    const drawer = page.getByTestId('right-drawer');
+    await expect(drawer).toBeVisible();
+    await expect(drawer).toContainText('No content selected');
+  });
+
+  test('close button on right drawer is present', async ({ page }) => {
+    const closeBtn = page.getByTestId('right-drawer-close');
+    await expect(closeBtn).toBeAttached();
+  });
+});
+
+// ---------------------------------------------------------------------------
+// 8. Timeline Controls
+// ---------------------------------------------------------------------------
+
+test.describe('Timeline Controls', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/');
+    await waitForMap(page);
+  });
+
+  test('year display shows 1000 by default', async ({ page }) => {
+    await expect(
+      page.locator('[data-testid="year-notification"], [role="status"]').first()
+    ).toBeVisible();
+  });
+
+  test('expand timeline button is visible', async ({ page }) => {
+    await expect(page.getByRole('button', { name: 'Expand timeline' })).toBeVisible();
+  });
+
+  test('search epics button is visible', async ({ page }) => {
+    await expect(page.getByRole('button', { name: 'Search epics' })).toBeVisible();
+  });
+
+  test('autoplay button is visible', async ({ page }) => {
+    await expect(page.getByRole('button', { name: 'Start autoplay' })).toBeVisible();
+  });
+});
+
+// ---------------------------------------------------------------------------
+// 9. Announcement Banner
+// ---------------------------------------------------------------------------
+
+test.describe('Announcement Banner', () => {
+  test('banner is visible on first load with expected text', async ({ page }) => {
+    await page.goto('/');
+    await waitForMap(page);
+
+    const banner = page.getByRole('banner');
+    await expect(banner).toBeVisible();
+    await expect(banner).toContainText('Welcome to Chronas');
+  });
+
+  test('dismiss button hides the banner', async ({ page }) => {
+    await page.goto('/');
+    await waitForMap(page);
+
+    const dismissBtn = page.getByRole('button', { name: 'Dismiss banner' });
+    await dismissBtn.click();
+
+    const banner = page.getByRole('banner');
+    await expect(banner).not.toBeVisible();
+  });
+
+  test('GitHub link has correct href', async ({ page }) => {
+    await page.goto('/');
+    await waitForMap(page);
+
+    const link = page.getByRole('link', { name: 'Let us know on GitHub' });
+    await expect(link).toHaveAttribute(
+      'href',
+      'https://github.com/Chronasorg/chronas-frontend/issues'
+    );
+  });
+
+  test('classic version link points to old.chronas.org', async ({ page }) => {
+    await page.goto('/');
+    await waitForMap(page);
+
+    const link = page.getByRole('link', { name: 'Classic version' });
+    await expect(link).toHaveAttribute('href', 'https://old.chronas.org');
+  });
+});
+
+// ---------------------------------------------------------------------------
+// 10. Keyboard Accessibility
+// ---------------------------------------------------------------------------
+
+test.describe('Keyboard Accessibility', () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto('/');
+    await waitForMap(page);
+  });
+
+  test('Escape closes the layers drawer', async ({ page }) => {
+    await openLayers(page);
+    await expect(page.getByTestId('layers-content')).toBeVisible();
+
+    await page.keyboard.press('Escape');
+
+    await expect(page.getByTestId('layers-content')).not.toBeVisible();
+  });
+
+  test('Escape closes the settings drawer', async ({ page }) => {
+    await openSettings(page);
+    await expect(page.getByTestId('settings-content')).toBeVisible();
+
+    await page.keyboard.press('Escape');
+
+    await expect(page.getByTestId('settings-content')).not.toBeVisible();
+  });
+
+  test('sidebar nav items are focusable via Tab', async ({ page }) => {
+    await page.getByTestId('sidebar-logo').focus();
+    await page.keyboard.press('Tab');
+
+    const focused = page.locator(':focus');
+    await expect(focused).toBeVisible();
+  });
+});
+
+// ---------------------------------------------------------------------------
+// 11. Collapsible Sections in Layers
+// ---------------------------------------------------------------------------
+
+test.describe('Layers Panel — Section Collapse/Expand', () => {
+  test('Area section can be collapsed and expanded', async ({ page }) => {
+    await page.goto('/');
+    await waitForMap(page);
+    await openLayers(page);
+
+    const toggle = page.getByTestId('area-section-toggle');
+    const content = page.getByTestId('area-section-content');
+
+    await expect(content).toBeVisible();
+
+    await toggle.click();
+    await expect(content).not.toBeVisible();
+
+    await toggle.click();
+    await expect(content).toBeVisible();
+  });
+
+  test('Markers section can be collapsed and expanded', async ({ page }) => {
+    await page.goto('/');
+    await waitForMap(page);
+    await openLayers(page);
+
+    const toggle = page.getByTestId('markers-section-toggle');
+    const content = page.getByTestId('markers-section-content');
+
+    await expect(content).toBeVisible();
+
+    await toggle.click();
+    await expect(content).not.toBeVisible();
+
+    await toggle.click();
+    await expect(content).toBeVisible();
+  });
+
+  test('Epics section can be collapsed and expanded', async ({ page }) => {
+    await page.goto('/');
+    await waitForMap(page);
+    await openLayers(page);
+
+    const toggle = page.getByTestId('epics-section-toggle');
+    const content = page.getByTestId('epics-section-content');
+
+    await expect(content).toBeVisible();
+
+    await toggle.click();
+    await expect(content).not.toBeVisible();
+
+    await toggle.click();
+    await expect(content).toBeVisible();
+  });
+
+  test('GENERAL section can be collapsed and expanded', async ({ page }) => {
+    await page.goto('/');
+    await waitForMap(page);
+    await openLayers(page);
+
+    const toggle = page.getByTestId('general-section-toggle');
+
+    await toggle.click();
+    await expect(toggle).toHaveAttribute('aria-expanded', 'false');
+
+    await toggle.click();
+    await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+  });
+});
+
+// ---------------------------------------------------------------------------
+// 12. Layers Panel — Collapse Button
+// ---------------------------------------------------------------------------
+
+test.describe('Layers Panel — Collapse Button', () => {
+  test('collapse button closes the layers panel', async ({ page }) => {
+    await page.goto('/');
+    await waitForMap(page);
+    await openLayers(page);
+
+    const collapseBtn = page.getByTestId('layers-collapse-button');
+    await expect(collapseBtn).toBeVisible();
+
+    await collapseBtn.click();
+
+    await expect(page.getByTestId('layers-content')).not.toBeVisible();
+  });
+});

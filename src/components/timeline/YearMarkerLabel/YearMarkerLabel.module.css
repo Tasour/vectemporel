@@ -1,0 +1,68 @@
+/**
+ * YearMarkerLabel Styles
+ * 
+ * Styles for the year label displayed on the timeline marker.
+ * Matches production styling - year in a box on the timeline bar.
+ */
+
+.yearLabel {
+  /* Reset button styles */
+  pointer-events: all !important;
+  background: none;
+  border: none;
+  border-radius: 0;
+  cursor: pointer;
+  padding: 0;
+
+  /* Typography - matching production currentYearLabel */
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+  text-shadow:
+    0 0 4px #fff,
+    0 0 4px #fff,
+    1px 1px 2px rgba(255, 255, 255, 0.8);
+
+  /* Positioning - to the RIGHT of the red marker line */
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 4px);
+  transform: translateY(-50%);
+  z-index: 10000;
+  white-space: nowrap;
+}
+
+.yearLabel:hover {
+  color: #000;
+}
+
+.yearLabel:focus-visible {
+  outline: 2px solid var(--chronas-highlight, #4a90d9);
+  outline-offset: 2px;
+}
+
+/* Suggested year indicator (appears above main year on hover) */
+.suggestedYear {
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: opacity 0.3s ease;
+}
+
+.arrowIcon {
+  height: 16px;
+  width: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+}
+
+.suggestedYearText {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  white-space: nowrap;
+}

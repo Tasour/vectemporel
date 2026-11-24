@@ -1,0 +1,106 @@
+import type React from 'react';
+import { lazy, Suspense } from 'react';
+import { MainContent } from './MainContent';
+import { Sidebar } from '../navigation/Sidebar';
+import { MenuDrawer } from '../navigation/MenuDrawer';
+import { RightDrawer } from './RightDrawer/RightDrawer';
+import { CollectionsPlaceholder } from '../placeholders';
+import { LayersContent } from '../navigation/LayersContent';
+import { SettingsContent } from '../navigation/SettingsContent';
+import { LoadingBar } from '../global/LoadingBar';
+import { AnnouncementBanner } from '../global/AnnouncementBanner/AnnouncementBanner';
+import { LoginDialog } from '../auth/LoginDialog/LoginDialog';
+import { InfoDialog } from '../global/InfoDialog/InfoDialog';
+import { SupportDialog } from '../global/SupportDialog/SupportDialog';
+import { useUIStore } from '../../stores/uiStore';
+import { useNavigationStore } from '../../stores/navigationStore';
+import { clearURLParams } from '../../utils/urlStateUtils';
+import styles from './AppShell.module.css';
+
+const Timeline = lazy(() => import('../timeline/Timeline/Timeline').then((m) => ({ default: m.Timeline })));
+
+export interface AppShellProps {
+  children: React.ReactNode;
+  className?: string;
+}
+
+/**
+ * AppShell component - Main layout wrapper combining all layout areas.
+ * Requirements: 2.1, 2.4, 2.7, 2.8, 2.9
+ */
+export const AppShell: React.FC<AppShellProps> = ({ children, className }) => {
+  const { sidebarOpen, toggleSidebar, rightDrawerOpen, rightDrawerContent, closeRightDrawer, loginDialogOpen, closeLoginDialog, infoDialogOpen, infoDialogTab, openInfoDialog, closeInfoDialog, supportDialogOpen, closeSupportDialog } = useUIStore();
+  const { drawerOpen, drawerContent, closeDrawer } = useNavigationStore();
+
+  /**
+   * Handles closing the right drawer and clearing URL params.
+   * Requirement 2.7: WHEN the close button is clicked, THE RightDrawer SHALL close
+   * Requirement 2.9: WHEN the RightDrawer closes, THE System SHALL remove type and value from URL
+   */
+  const handleRightDrawerClose = () => {
+    closeRightDrawer();
+    clearURLParams(['type', 'value']);
+  };
+
+  return (
+    <div
+      data-testid="app-shell"
+      className={`${styles['shell'] ?? ''} ${sidebarOpen ? styles['sidebarOpen'] ?? '' : styles['sidebarClosed'] ?? ''} ${className ?? ''}`.trim()}
+    >
+      {/* Header hidden - production uses sidebar logo as branding */}
+      {/* <Header /> */}
+      
+      <AnnouncementBanner />
+
+      {/* Loading bar at top of viewport - matches production */}
+      <LoadingBar />
+      
+      <div className={styles['body']}>
+        <Sidebar
+          isOpen={sidebarOpen}
+          onToggle={toggleSidebar}
+        />
+        
+        <MenuDrawer
+          isOpen={drawerOpen}
+          contentType={drawerContent}
+          onClose={closeDrawer}
+        >
+          {drawerContent === 'layers' && <LayersContent onClose={closeDrawer} />}
+          {drawerContent === 'collections' && <CollectionsPlaceholder />}
+          {drawerContent === 'settings' && <SettingsContent onClose={closeDrawer} />}
+        </MenuDrawer>
+        
+        <MainContent>
+          {children}
+        </MainContent>
+        
+        {/* Right drawer for province/marker details */}
+        {/* Requirement 2.1: WHEN a province is clicked, THE RightDrawer SHALL open */}
+        {/* Requirement 2.2: WHEN the RightDrawer opens, THE MapView SHALL reduce its width by 25% */}
+        <RightDrawer
+          isOpen={rightDrawerOpen}
+          content={rightDrawerContent}
+          onClose={handleRightDrawerClose}
+        />
+      </div>
+      
+      <Suspense fallback={null}>
+        <Timeline />
+      </Suspense>
+
+      <LoginDialog isOpen={loginDialogOpen} onClose={closeLoginDialog} />
+      <InfoDialog isOpen={infoDialogOpen} onClose={closeInfoDialog} initialTab={infoDialogTab} />
+      <SupportDialog
+        isOpen={supportDialogOpen}
+        onClose={closeSupportDialog}
+        onRequestContact={() => {
+          closeSupportDialog();
+          openInfoDialog('contact');
+        }}
+      />
+    </div>
+  );
+};
+
+export default AppShell;

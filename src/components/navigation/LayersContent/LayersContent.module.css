@@ -1,0 +1,737 @@
+/**
+ * LayersContent — editorial archival panel
+ *
+ * Flat, no heavy cards. Section titles are small-caps tracked labels.
+ * Expandable sub-sections are separated by hairlines only.
+ */
+
+.layersContent {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow: hidden auto;
+  background: #faf7f0;
+  color: #3a3731;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 13.5px;
+  line-height: 1.5;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(120, 95, 40, 0.22) transparent;
+}
+
+/* Force light-theme text colors for any child component (e.g. LayerToggle)
+   that reads these CSS custom properties — the ivory panel background is
+   fixed regardless of global theme, so dark theme's cream text would be
+   invisible on it. Uses :global to pierce CSS Modules' local scoping. */
+.layersContent :global(.layerToggle),
+.layersContent [class*='layerToggle'] {
+  --color-text-primary: #3a3731 !important;
+  --color-text-secondary: #8a847a !important;
+  --color-border: rgba(120, 95, 40, 0.18) !important;
+  --color-border-strong: rgba(120, 95, 40, 0.45) !important;
+  --color-hover-background: rgba(173, 135, 27, 0.06) !important;
+  --color-highlight-background: rgba(173, 135, 27, 0.1) !important;
+  --color-primary: #ad872d !important;
+  --color-focus: #ad872d !important;
+}
+
+.layersContent::-webkit-scrollbar { width: 6px; }
+.layersContent::-webkit-scrollbar-thumb {
+  background-color: rgba(120, 95, 40, 0.22);
+  border-radius: 3px;
+}
+
+/* ============================================================
+ * Header — Cinzel title + gold underline + close chevron
+ * ============================================================ */
+.layersBanner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22px 22px 18px;
+  border-bottom: 1px solid rgba(120, 95, 40, 0.1);
+  background: transparent;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.layersBannerTitle {
+  font-family: 'Cinzel', 'Inter', serif;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #2a2925;
+  position: relative;
+  flex: 1;
+}
+
+.layersBannerTitle::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -7px;
+  width: 26px;
+  height: 1.5px;
+  background: #ad872d;
+}
+
+.layersBannerTitle span {
+  color: inherit;
+  font-size: inherit;
+}
+
+.layersBannerClose {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.layersBannerClose button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  color: #78736a;
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease;
+  outline: none;
+}
+
+.layersBannerClose button:hover {
+  background: rgba(173, 135, 27, 0.08);
+  color: #2a2925;
+}
+
+.layersBannerClose button:focus-visible {
+  box-shadow: 0 0 0 2px rgba(173, 135, 27, 0.5);
+}
+
+.chevronLeft {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+/* ============================================================
+ * Section cards — no borders, just a subtle top rule
+ * ============================================================ */
+.card,
+.hiddenSection {
+  padding: 4px 0;
+  border: none;
+  background: transparent;
+  margin: 0;
+}
+
+.hiddenSection {
+  border-top: 1px solid rgba(120, 95, 40, 0.1);
+  margin-top: 8px;
+}
+
+.cardHeaderBtn {
+  display: flex;
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 14px 22px 6px;
+  text-align: left;
+  transition: background-color 160ms ease;
+}
+
+.cardHeaderBtn:hover {
+  background: rgba(173, 135, 27, 0.04);
+}
+
+.cardHeader {
+  display: block;
+  color: #8a847a;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  text-transform: uppercase;
+  padding: 0;
+  width: 100%;
+}
+
+.layersHeader { display: none; }
+
+.sectionContent {
+  display: flex;
+  flex-direction: column;
+  padding: 0 14px 6px;
+}
+
+/* ============================================================
+ * ListItem — Area / Markers / Epics header rows
+ * ============================================================ */
+.listItem {
+  display: block;
+  box-sizing: border-box;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  position: relative;
+  color: #3a3731;
+  background: transparent;
+  border-radius: 6px;
+  transition: background-color 160ms ease;
+  font-family: inherit;
+  font-size: 14px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.listItem:hover {
+  background: rgba(173, 135, 27, 0.05);
+}
+
+.listItem:focus-visible {
+  box-shadow: 0 0 0 2px rgba(173, 135, 27, 0.5);
+}
+
+.listItemInner {
+  padding: 10px 36px 10px 32px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.listItemInner > div:last-child {
+  flex: 1;
+  color: #2a2925;
+}
+
+.listItemIcon {
+  display: block;
+  color: #8a847a;
+  fill: currentColor;
+  height: 18px;
+  width: 18px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 8px;
+  transition: color 160ms ease;
+}
+
+.listItem:hover .listItemIcon { color: #ad872d; }
+
+.listItemArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  outline: none;
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #8a847a;
+}
+
+.listItemArrowSvg {
+  display: block;
+  color: currentColor;
+  fill: currentColor;
+  height: 16px;
+  width: 16px;
+  transition: transform 200ms ease;
+}
+
+.listItemContent {
+  padding: 4px 0 10px 32px;
+  margin: 0 0 6px;
+}
+
+/* ============================================================
+ * Area controls (LayerToggle wrapper)
+ * ============================================================ */
+.areaControls { display: flex; flex-direction: column; gap: 4px; }
+.areaHeader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding-bottom: 4px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid rgba(120, 95, 40, 0.1);
+}
+.areaHeaderLabel {
+  font-size: 10px;
+  font-weight: 600;
+  color: #8a847a;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  width: 40px;
+  text-align: center;
+}
+.lockButton { padding: 2px 4px; background: transparent; border: none; cursor: pointer; font-size: 12px; }
+.lockButton.locked { color: #ad872d; }
+.dimensionRow { display: flex; align-items: center; padding: 2px 0; }
+.dimensionLabel { flex: 1; font-size: 12.5px; color: #3a3731; }
+.radioGroup { display: flex; align-items: center; gap: 24px; }
+.radioGroup input[type="radio"] { width: 14px; height: 14px; cursor: pointer; accent-color: #ad872d; }
+
+/* ============================================================
+ * "Check all / Uncheck all" pill — ghost link in the corner
+ * ============================================================ */
+.toggleAllRow {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 10px;
+}
+
+.toggleAllButton {
+  padding: 5px 10px;
+  background: transparent;
+  border: 1px solid rgba(120, 95, 40, 0.2);
+  border-radius: 999px;
+  color: #6a655b;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  cursor: pointer;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+}
+
+.toggleAllButton:hover {
+  background: rgba(173, 135, 27, 0.08);
+  border-color: rgba(173, 135, 27, 0.45);
+  color: #2a2925;
+}
+
+/* ============================================================
+ * Marker filters — single-column list (sprite icons are sized for 40px)
+ * ============================================================ */
+.markerFilters { display: flex; flex-direction: column; }
+
+.markerTypeList {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.markerTypeRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 3px 4px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 140ms ease;
+}
+
+.markerTypeRow:hover { background-color: rgba(173, 135, 27, 0.05); }
+
+.markerCheckbox {
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+  accent-color: #7a6428;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.markerIcon {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  background-repeat: no-repeat;
+}
+
+.markerLabel {
+  font-size: 13px;
+  color: #3a3731;
+  flex: 1;
+  line-height: 1.2;
+}
+
+/* ============================================================
+ * Epic filters — single-column list
+ * ============================================================ */
+.epicFilters { display: flex; flex-direction: column; }
+
+.epicTypeList {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.epicTypeRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 4px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 140ms ease;
+}
+
+.epicTypeRow:hover { background-color: rgba(173, 135, 27, 0.05); }
+
+.epicCheckbox {
+  width: 14px;
+  height: 14px;
+  cursor: pointer;
+  accent-color: #7a6428;
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.epicIcon {
+  font-size: 16px;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.epicLabel {
+  font-size: 12.5px;
+  color: #3a3731;
+  flex: 1;
+  letter-spacing: 0.01em;
+}
+
+/* ============================================================
+ * Toggle row (for show-provinces, cluster-markers)
+ * ============================================================ */
+.toggleRow {
+  display: flex;
+  align-items: center;
+  padding: 10px 22px;
+  cursor: pointer;
+  transition: background-color 140ms ease;
+  font-size: 13.5px;
+  color: #3a3731;
+}
+
+.toggleRow:hover { background-color: rgba(173, 135, 27, 0.04); }
+
+.toggleLabel {
+  flex: 1;
+  font-size: 13.5px;
+  color: #3a3731;
+}
+
+/* ============================================================
+ * Basemap select
+ * ============================================================ */
+.basemapRow {
+  padding: 8px 22px;
+}
+
+.basemapSelect {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid rgba(120, 95, 40, 0.22);
+  border-radius: 6px;
+  background: #fdfcf8;
+  color: #3a3731;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.basemapSelect:hover { border-color: rgba(173, 135, 27, 0.45); }
+
+.basemapSelect:focus {
+  border-color: #ad872d;
+  box-shadow: 0 0 0 3px rgba(173, 135, 27, 0.14);
+}
+
+/* ============================================================
+ * Slider
+ * ============================================================ */
+.sliderRow {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 6px 4px;
+  margin-top: 8px;
+  border-top: 1px solid rgba(120, 95, 40, 0.08);
+}
+
+.sliderLabel {
+  font-size: 10.5px;
+  color: #6a655b;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.slider {
+  width: 100%;
+  height: 3px;
+  cursor: pointer;
+  accent-color: #ad872d;
+}
+
+/* ============================================================
+ * Footer
+ * ============================================================ */
+.suggestions {
+  padding: 14px 22px 22px;
+  border-top: 1px solid rgba(120, 95, 40, 0.08);
+  margin-top: 10px;
+}
+
+.suggestionsText p {
+  margin: 0;
+  color: #8a847a;
+  font-size: 11.5px;
+  line-height: 1.5;
+  font-style: italic;
+  letter-spacing: 0.01em;
+}
+
+.suggestionsLink {
+  color: #ad872d;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.suggestionsLink:hover { text-decoration: underline; }
+
+/* Legacy classes kept for test compatibility */
+.section {}
+.sectionHeader { display: none; }
+.sectionTitle {}
+.expandIcon { display: none; }
+.subsectionHeader { display: none; }
+.subsectionTitle {}
+.subsectionContent {}
+.advancedSettings {}
+.selectRow {}
+.selectLabel {}
+.select {}
+.toggleCheckbox {}
+.collapseButton {}
+.collapseArrow {}
+.layersTitle {}
+.cardFull {
+  padding: 0 0 8px;
+  border: none;
+  background: transparent;
+}
+
+/* ============================================================
+ * Dark theme — charcoal paper, warm gold accents
+ * ============================================================ */
+[data-theme='dark'] .layersContent {
+  background: #1e1c1a;
+  color: #d8d2c1;
+  scrollbar-color: rgba(212, 169, 58, 0.25) transparent;
+}
+
+[data-theme='dark'] .layersContent :global(.layerToggle),
+[data-theme='dark'] .layersContent [class*='layerToggle'] {
+  --color-text-primary: #e8e3d6 !important;
+  --color-text-secondary: #a8a398 !important;
+  --color-border: rgba(212, 169, 58, 0.2) !important;
+  --color-border-strong: rgba(212, 169, 58, 0.55) !important;
+  --color-hover-background: rgba(212, 169, 58, 0.08) !important;
+  --color-highlight-background: rgba(212, 169, 58, 0.14) !important;
+  --color-primary: #d4a93a !important;
+  --color-focus: #d4a93a !important;
+}
+
+[data-theme='dark'] .layersBanner,
+[data-theme='dark'] .hiddenSection,
+[data-theme='dark'] .suggestions,
+[data-theme='dark'] .sliderRow {
+  border-color: rgba(212, 169, 58, 0.12);
+}
+
+[data-theme='dark'] .layersBannerTitle {
+  color: #f6f3ec;
+}
+
+[data-theme='dark'] .layersBannerTitle::after {
+  background: #d4a93a;
+}
+
+[data-theme='dark'] .layersBannerClose button {
+  color: #a8a398;
+}
+
+[data-theme='dark'] .layersBannerClose button:hover {
+  background: rgba(212, 169, 58, 0.1);
+  color: #f6f3ec;
+}
+
+[data-theme='dark'] .cardHeader {
+  color: rgba(212, 169, 58, 0.72);
+}
+
+[data-theme='dark'] .cardHeaderBtn:hover {
+  background: rgba(212, 169, 58, 0.06);
+}
+
+[data-theme='dark'] .listItem { color: #d8d2c1; }
+[data-theme='dark'] .listItemInner > div:last-child { color: #f6f3ec; }
+[data-theme='dark'] .listItem:hover { background: rgba(212, 169, 58, 0.08); }
+[data-theme='dark'] .listItem:hover .listItemIcon { color: #d4a93a; }
+[data-theme='dark'] .listItemIcon,
+[data-theme='dark'] .listItemArrow { color: #a8a398; }
+
+[data-theme='dark'] .toggleAllButton {
+  border-color: rgba(212, 169, 58, 0.28);
+  color: #d8d2c1;
+}
+
+[data-theme='dark'] .toggleAllButton:hover {
+  background: rgba(212, 169, 58, 0.1);
+  border-color: rgba(212, 169, 58, 0.55);
+  color: #fff;
+}
+
+[data-theme='dark'] .markerTypeRow:hover,
+[data-theme='dark'] .epicTypeRow:hover {
+  background-color: rgba(212, 169, 58, 0.06);
+}
+
+[data-theme='dark'] .markerCheckbox,
+[data-theme='dark'] .epicCheckbox { accent-color: #d4a93a; }
+
+[data-theme='dark'] .markerLabel,
+[data-theme='dark'] .epicLabel,
+[data-theme='dark'] .toggleLabel,
+[data-theme='dark'] .toggleRow { color: #e8e3d6; }
+
+[data-theme='dark'] .basemapSelect {
+  background: #16140f;
+  border-color: rgba(212, 169, 58, 0.22);
+  color: #e8e3d6;
+}
+
+[data-theme='dark'] .basemapSelect:hover { border-color: rgba(212, 169, 58, 0.55); }
+[data-theme='dark'] .basemapSelect:focus {
+  border-color: #d4a93a;
+  box-shadow: 0 0 0 3px rgba(212, 169, 58, 0.2);
+}
+
+[data-theme='dark'] .sliderLabel { color: #a8a398; }
+[data-theme='dark'] .slider { accent-color: #d4a93a; }
+
+[data-theme='dark'] .suggestionsText p { color: #8a847a; }
+
+/* ============================================================
+ * Luther theme — navy + burgundy, cream text
+ * ============================================================ */
+[data-theme='luther'] .layersContent {
+  background: #011c31;
+  color: #fff3d3;
+  scrollbar-color: rgba(255, 243, 211, 0.25) transparent;
+}
+
+[data-theme='luther'] .layersContent :global(.layerToggle),
+[data-theme='luther'] .layersContent [class*='layerToggle'] {
+  --color-text-primary: #fff3d3 !important;
+  --color-text-secondary: rgba(255, 243, 211, 0.7) !important;
+  --color-border: rgba(255, 243, 211, 0.2) !important;
+  --color-border-strong: rgba(255, 243, 211, 0.6) !important;
+  --color-hover-background: rgba(255, 243, 211, 0.08) !important;
+  --color-highlight-background: rgba(255, 243, 211, 0.14) !important;
+  --color-primary: #d4a84b !important;
+  --color-focus: #d4a84b !important;
+}
+
+[data-theme='luther'] .layersBanner,
+[data-theme='luther'] .hiddenSection,
+[data-theme='luther'] .suggestions,
+[data-theme='luther'] .sliderRow {
+  border-color: rgba(255, 243, 211, 0.12);
+}
+
+[data-theme='luther'] .layersBannerTitle {
+  color: #fff3d3;
+}
+
+[data-theme='luther'] .layersBannerTitle::after {
+  background: #d4a84b;
+}
+
+[data-theme='luther'] .layersBannerClose button {
+  color: rgba(255, 243, 211, 0.65);
+}
+
+[data-theme='luther'] .layersBannerClose button:hover {
+  background: rgba(255, 243, 211, 0.1);
+  color: #fff3d3;
+}
+
+[data-theme='luther'] .cardHeader {
+  color: rgba(255, 243, 211, 0.6);
+}
+
+[data-theme='luther'] .cardHeaderBtn:hover {
+  background: rgba(255, 243, 211, 0.06);
+}
+
+[data-theme='luther'] .listItem { color: #fff3d3; }
+[data-theme='luther'] .listItemInner > div:last-child { color: #fff3d3; }
+[data-theme='luther'] .listItem:hover { background: rgba(255, 243, 211, 0.08); }
+[data-theme='luther'] .listItem:hover .listItemIcon { color: #d4a84b; }
+[data-theme='luther'] .listItemIcon,
+[data-theme='luther'] .listItemArrow { color: rgba(255, 243, 211, 0.6); }
+
+[data-theme='luther'] .toggleAllButton {
+  border-color: rgba(255, 243, 211, 0.28);
+  color: rgba(255, 243, 211, 0.85);
+}
+
+[data-theme='luther'] .toggleAllButton:hover {
+  background: rgba(255, 243, 211, 0.1);
+  border-color: rgba(255, 243, 211, 0.55);
+  color: #fff;
+}
+
+[data-theme='luther'] .markerTypeRow:hover,
+[data-theme='luther'] .epicTypeRow:hover {
+  background-color: rgba(255, 243, 211, 0.06);
+}
+
+[data-theme='luther'] .markerCheckbox,
+[data-theme='luther'] .epicCheckbox { accent-color: #d4a84b; }
+
+[data-theme='luther'] .markerLabel,
+[data-theme='luther'] .epicLabel,
+[data-theme='luther'] .toggleLabel,
+[data-theme='luther'] .toggleRow { color: #fff3d3; }
+
+[data-theme='luther'] .basemapSelect {
+  background: rgba(255, 243, 211, 0.06);
+  border-color: rgba(255, 243, 211, 0.22);
+  color: #fff3d3;
+}
+
+[data-theme='luther'] .basemapSelect:hover { border-color: rgba(255, 243, 211, 0.55); }
+[data-theme='luther'] .basemapSelect:focus {
+  border-color: #d4a84b;
+  box-shadow: 0 0 0 3px rgba(255, 243, 211, 0.18);
+}
+
+[data-theme='luther'] .sliderLabel { color: rgba(255, 243, 211, 0.7); }
+[data-theme='luther'] .slider { accent-color: #d4a84b; }
+
+[data-theme='luther'] .suggestionsText p { color: rgba(255, 243, 211, 0.65); }

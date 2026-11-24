@@ -1,0 +1,637 @@
+/**
+ * VisTimelineWrapper Styles
+ * Styles for the vis.js timeline wrapper component.
+ * 
+ * Requirements: 5.1, 10.1, 10.7, 10.8, 11.1, 11.2
+ */
+
+.container {
+  width: 100%;
+  height: 100%;
+  min-height: 110px;
+  position: relative;
+}
+
+/* Override vis.js default styles for theming - CRITICAL for visibility */
+.container :global(.vis-timeline) {
+  border: none;
+  background-color: transparent !important;
+  background: transparent !important;
+  visibility: visible !important;
+  width: 100% !important;
+  height: 110px !important;
+  pointer-events: all;
+  overflow: visible !important;
+}
+
+/* CRITICAL: Override ALL vis-timeline panel backgrounds */
+.container :global(.vis-panel) {
+  background: transparent !important;
+  background-color: transparent !important;
+  overflow: visible !important;
+}
+
+.container :global(.vis-panel.vis-center) {
+  background-color: transparent !important;
+  background: transparent !important;
+  pointer-events: all;
+  cursor: ew-resize;
+  z-index: 5;
+  overflow: visible !important;
+}
+
+.container :global(.vis-panel.vis-bottom) {
+  background-color: transparent !important;
+  background: transparent !important;
+  pointer-events: none;
+  overflow: visible !important;
+}
+
+.container :global(.vis-panel.vis-top) {
+  background-color: transparent !important;
+  background: transparent !important;
+  pointer-events: none;
+  /* Ensure time axis labels are visible at top */
+  height: auto !important;
+  min-height: 24px;
+}
+
+.container :global(.vis-panel.vis-left),
+.container :global(.vis-panel.vis-right) {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+/* Time axis foreground - enable pointer events */
+.container :global(.vis-time-axis.vis-foreground) {
+  pointer-events: all;
+  cursor: ew-resize;
+}
+
+/* Vertical grid lines */
+.container :global(.vis-time-axis .vis-grid.vis-vertical) {
+  position: absolute;
+  border-left: 1px solid;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Panel heights */
+.container :global(.vis-panel.vis-bottom),
+.container :global(.vis-panel.vis-center),
+.container :global(.vis-panel.vis-top) {
+  min-height: 24px;
+}
+
+/* Custom time marker styling (year marker) */
+.container :global(.vis-custom-time) {
+  background-color: #FF7F6E;
+  width: 4px;
+  cursor: default;
+  z-index: 10;
+  overflow: visible !important;
+}
+
+/* Selected year marker - matches production .vis-custom-time.selectedYear */
+.container :global(.vis-custom-time.selectedYear) {
+  z-index: 10;
+  transition: left 100ms cubic-bezier(0.4, 0, 0.2, 1), right 100ms cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: visible !important;
+}
+
+/* Ensure the drag handle doesn't block the year label button */
+.container :global(.vis-custom-time.selectedYear > div:first-child) {
+  z-index: 1;
+}
+
+/* ============================================
+ * Epic Item Styling
+ * Requirements: 10.1, 10.7, 10.8
+ * ============================================ */
+
+/* Base item styling — intentionally no background; type-specific rules set colors */
+.container :global(.vis-item) {
+  border: none;
+  border-radius: 3px;
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 12px;
+  transition: background-color 0.15s ease, opacity 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Epic item specific styling */
+.container :global(.vis-item.epic-item) {
+  border: none;
+  border-radius: 3px;
+  padding: 2px 6px;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: visible;
+}
+
+/* Hover effects for epic items — type-specific :hover rules add the color */
+.container :global(.vis-item:hover),
+.container :global(.vis-item.epic-item:hover) {
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  opacity: 1;
+}
+
+/* Active/pressed state */
+.container :global(.vis-item:active),
+.container :global(.vis-item.epic-item:active) {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Range item styling — base defaults only, type-specific colors below */
+.container :global(.vis-item.vis-range),
+.container :global(.vis-item.epic-item.vis-range) {
+  border-radius: 3px;
+  height: 22px !important;
+  line-height: 22px;
+  margin-top: 1px;
+  overflow: hidden;
+}
+
+/* Range item content — show truncated text matching production */
+.container :global(.vis-item.vis-range .vis-item-content) {
+  display: block;
+  overflow: hidden;
+  padding: 0 4px;
+  height: 100%;
+}
+
+/* warContainer — truncated epic name label */
+.container :global(.vis-item.vis-range .warContainer) {
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 22px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+}
+
+/* Ensure vis-item-overflow is visible for icons */
+.container :global(.vis-item .vis-item-overflow) {
+  overflow: visible !important;
+}
+
+/* ============================================
+ * Time Axis Styling - Match Production
+ * Year labels must be visible in collapsed mode
+ * ============================================ */
+
+.container :global(.vis-time-axis .vis-text) {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 12px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+  font-weight: 600;
+}
+
+/* Minor labels (year numbers) - visible at bottom of timeline */
+.container :global(.vis-text.vis-minor) {
+  padding-left: 4px;
+  padding-top: 2px;
+}
+
+/* Major labels (century markers) */
+.container :global(.vis-text.vis-major) {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.container :global(.vis-time-axis .vis-grid.vis-minor) {
+  border-color: var(--chronas-border, rgba(200, 200, 200, 0.3));
+}
+
+.container :global(.vis-time-axis .vis-grid.vis-major) {
+  border-color: var(--chronas-border, rgba(200, 200, 200, 0.5));
+}
+
+/* Vertical grid lines */
+.container :global(.vis-time-axis .vis-grid.vis-vertical) {
+  position: absolute;
+  border-left: 1px solid;
+  border-color: rgba(200, 200, 200, 0.4);
+}
+
+/* Panel borders */
+.container :global(.vis-panel.vis-bottom),
+.container :global(.vis-panel.vis-center),
+.container :global(.vis-panel.vis-left),
+.container :global(.vis-panel.vis-right),
+.container :global(.vis-panel.vis-top) {
+  border: 2px #ffffff;
+}
+
+/* CRITICAL: Ensure all panels have transparent backgrounds */
+.container :global(.vis-panel.vis-background) {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+.container :global(.vis-panel.vis-background.vis-horizontal) {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Content area must be transparent */
+.container :global(.vis-content) {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* ============================================
+ * Dark Theme Adjustments
+ * ============================================ */
+
+/* When in dark theme, adjust epic item colors */
+:global([data-theme="dark"]) .container :global(.vis-item),
+:global([data-theme="dark"]) .container :global(.vis-item.epic-item) {
+  background-color: rgba(100, 100, 100, 0.35);
+  color: var(--chronas-fore-2, #e0e0e0);
+  border-color: var(--chronas-border, rgba(100, 100, 100, 0.5));
+}
+
+:global([data-theme="dark"]) .container :global(.vis-item:hover),
+:global([data-theme="dark"]) .container :global(.vis-item.epic-item:hover) {
+  background-color: rgba(120, 120, 120, 0.5);
+}
+
+:global([data-theme="dark"]) .container :global(.vis-time-axis .vis-text) {
+  color: var(--chronas-fore-1, #b0b0b0);
+}
+
+/* ============================================
+ * Luther Theme Adjustments
+ * ============================================ */
+
+:global([data-theme="luther"]) .container :global(.vis-item),
+:global([data-theme="luther"]) .container :global(.vis-item.epic-item) {
+  background-color: rgba(139, 119, 101, 0.25);
+  color: var(--chronas-fore-2, #4a3f35);
+  border-color: var(--chronas-border, rgba(139, 119, 101, 0.4));
+}
+
+:global([data-theme="luther"]) .container :global(.vis-item:hover),
+:global([data-theme="luther"]) .container :global(.vis-item.epic-item:hover) {
+  background-color: rgba(139, 119, 101, 0.4);
+}
+
+/* ============================================
+ * Tooltip Styling
+ * ============================================ */
+
+.container :global(.vis-tooltip) {
+  background-color: var(--chronas-back-1, #ffffff);
+  color: var(--chronas-fore-1, #333333);
+  border: 1px solid var(--chronas-border, #cccccc);
+  border-radius: 4px;
+  padding: 6px 10px;
+  font-size: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  max-width: 300px;
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+/* ============================================
+ * Accessibility - Focus States
+ * ============================================ */
+
+.container :global(.vis-item:focus),
+.container :global(.vis-item.epic-item:focus) {
+  outline: 2px solid var(--chronas-highlight, #4a90d9);
+  outline-offset: 2px;
+}
+
+/* ============================================
+ * Animation for Item Appearance
+ * ============================================ */
+
+@keyframes itemFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.container :global(.vis-item.epic-item) {
+  animation: itemFadeIn 0.2s ease-out;
+}
+
+/* ============================================
+ * Epic Item Type-Specific Styling
+ * Matches production main.scss timelineItem_* classes
+ * ============================================ */
+
+/* War epic items (ew) — red */
+.container :global(.vis-item.timelineItem_ew) {
+  background-color: rgba(231, 76, 60, 0.55) !important;
+  border: none !important;
+  border-left: 3px solid #e74c3c !important;
+  border-bottom: 2px solid #c0392b !important;
+  border-radius: 3px !important;
+  cursor: pointer;
+  height: 22px !important;
+  line-height: 22px;
+  margin-top: 1px;
+}
+
+.container :global(.vis-item.timelineItem_ew:hover) {
+  background-color: rgba(231, 76, 60, 0.75) !important;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.container :global(.vis-item.timelineItem_ew.vis-selected) {
+  z-index: 1000;
+  border: 2px solid #e74c3c !important;
+  background: rgba(231, 76, 60, 0.85) !important;
+  color: white !important;
+}
+
+/* Empire epic items (ee) — green */
+.container :global(.vis-item.timelineItem_ee) {
+  background-color: rgba(46, 204, 113, 0.5) !important;
+  border: none !important;
+  border-left: 3px solid #27ae60 !important;
+  border-bottom: 2px solid #27ae60 !important;
+  border-radius: 3px !important;
+  cursor: pointer;
+  height: 22px !important;
+  line-height: 22px;
+  margin-top: 1px;
+}
+
+.container :global(.vis-item.timelineItem_ee:hover) {
+  background-color: rgba(46, 204, 113, 0.7) !important;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.container :global(.vis-item.timelineItem_ee.vis-selected) {
+  border: 2px solid #27ae60 !important;
+  background: rgba(46, 204, 113, 0.85) !important;
+  color: white !important;
+  z-index: 1000;
+}
+
+/* Discovery/invention epic items (ei) — orange */
+.container :global(.vis-item.timelineItem_ei) {
+  background-color: rgba(243, 156, 18, 0.5) !important;
+  border: none !important;
+  border-left: 3px solid #f39c12 !important;
+  border-bottom: 2px solid #e67e22 !important;
+  border-radius: 3px !important;
+  cursor: pointer;
+  pointer-events: auto;
+  height: 22px !important;
+  line-height: 22px;
+  margin-top: 1px;
+}
+
+.container :global(.vis-item.timelineItem_ei:hover) {
+  background-color: rgba(243, 156, 18, 0.7) !important;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.container :global(.vis-item.timelineItem_ei.vis-selected) {
+  border: 2px solid #e67e22 !important;
+  background: rgba(243, 156, 18, 0.85) !important;
+  color: white !important;
+  z-index: 1000;
+}
+
+/* Person epic items (ps) — blue */
+.container :global(.vis-item.timelineItem_ps) {
+  background-color: rgba(52, 152, 219, 0.5) !important;
+  border: none !important;
+  border-left: 3px solid #3498db !important;
+  border-bottom: 2px solid #2980b9 !important;
+  border-radius: 3px !important;
+  cursor: pointer;
+  pointer-events: auto;
+  height: 22px !important;
+  line-height: 22px;
+  margin-top: 1px;
+}
+
+.container :global(.vis-item.timelineItem_ps:hover) {
+  background-color: rgba(52, 152, 219, 0.7) !important;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.container :global(.vis-item.timelineItem_ps.vis-selected) {
+  border: 2px solid #2980b9 !important;
+  background: rgba(52, 152, 219, 0.85) !important;
+  color: white !important;
+  z-index: 1000;
+}
+
+/* Biography epic items (ebio) — green */
+.container :global(.vis-item.timelineItem_ebio) {
+  background-color: rgba(46, 204, 113, 0.45) !important;
+  border: none !important;
+  border-left: 3px solid #27ae60 !important;
+  border-bottom: 2px solid #27ae60 !important;
+  border-radius: 3px !important;
+  cursor: pointer;
+  height: 22px !important;
+  line-height: 22px;
+  margin-top: 1px;
+}
+
+/* Culture epic items (ec) — orange */
+.container :global(.vis-item.timelineItem_ec) {
+  background-color: rgba(243, 156, 18, 0.5) !important;
+  border: none !important;
+  border-left: 3px solid #f39c12 !important;
+  border-bottom: 2px solid #e67e22 !important;
+  border-radius: 3px !important;
+  cursor: pointer;
+  height: 22px !important;
+  line-height: 22px;
+  margin-top: 1px;
+}
+
+/* Other epic items (eo) — gray */
+.container :global(.vis-item.timelineItem_eo) {
+  background-color: rgba(180, 180, 180, 0.4) !important;
+  border: none !important;
+  border-left: 3px solid rgba(180, 180, 180, 0.7) !important;
+  border-bottom: 2px solid rgba(180, 180, 180, 0.5) !important;
+  border-radius: 3px !important;
+  cursor: pointer;
+  height: 22px !important;
+  line-height: 22px;
+  margin-top: 1px;
+}
+
+/* Battle epic items (eb) — red */
+.container :global(.vis-item.timelineItem_eb) {
+  background-color: rgba(231, 76, 60, 0.45) !important;
+  border: none !important;
+  border-left: 3px solid #e74c3c !important;
+  border-bottom: 2px solid #c0392b !important;
+  border-radius: 3px !important;
+  cursor: pointer;
+  height: 22px !important;
+  line-height: 22px;
+  margin-top: 1px;
+}
+
+/* Extended timeline mode - larger items when expanded */
+:global(.extendedTimeline) .container :global(.vis-item.timelineItem_ee) {
+  background-color: white !important;
+  border: 4px solid rgb(0, 140, 36) !important;
+}
+
+:global(.extendedTimeline) .container :global(.vis-item.timelineItem_ew) {
+  background-color: white !important;
+}
+
+/* ============================================
+ * Epic Item Icon Styling
+ * Matches production main.scss icon classes
+ * ============================================ */
+
+/* War container - wrapper for epic item content */
+.container :global(.warContainer) {
+  white-space: nowrap;
+  overflow: visible;
+}
+
+/* Transparent tick images - used as icon backgrounds */
+.container :global(.tsTicks) {
+  display: inherit;
+}
+
+/* War icon styling */
+.container :global(.warIcon) {
+  margin-right: 0;
+  height: 16px;
+  width: 16px;
+  background: url(/images/abstract-atlas.png) -1px -460px;
+  background-size: 60px 119px;
+  margin-top: -36px;
+  margin-left: -7px;
+}
+
+.container :global(.warIcon.tsTicks) {
+  display: inherit;
+}
+
+.container :global(.warIcon.timelineTooltipIcon) {
+  margin: 0;
+  opacity: 1;
+}
+
+/* Discovery icon styling */
+.container :global(.discoveryIcon) {
+  pointer-events: all;
+  margin-right: 0;
+  height: 20px;
+  width: 16px;
+  background: url(/images/abstract-atlas.png) -30px -322px;
+  background-size: 60px 119px;
+  margin-top: 9px;
+  margin-left: -7px;
+  opacity: 0.6;
+}
+
+.container :global(.discoveryIcon.tsTicks) {
+  display: inherit;
+}
+
+.container :global(.discoveryIcon.timelineTooltipIcon) {
+  margin: 0;
+  opacity: 1;
+}
+
+.container :global(.discoveryIcon:hover) {
+  opacity: 1;
+}
+
+.container :global(.warContainer .discoveryIcon) {
+  filter: drop-shadow(rgb(0, 0, 0) 0px 0px 2px);
+}
+
+/* Person icon styling - variant 1 */
+.container :global(.esIcon1) {
+  pointer-events: all;
+  margin-right: 0;
+  height: 15px;
+  width: 8px;
+  background: url(/images/abstract-atlas.png) -26px -460px;
+  background-size: 90px 119px;
+  margin-top: -39px;
+  margin-left: -7px;
+  opacity: 0.6;
+}
+
+/* Person icon styling - variant 2 */
+.container :global(.esIcon2) {
+  pointer-events: all;
+  margin-right: 0;
+  height: 15px;
+  width: 8px;
+  background: url(/images/abstract-atlas.png) -28px -460px;
+  background-size: 70px 119px;
+  margin-top: -39px;
+  margin-left: -7px;
+  opacity: 0.6;
+}
+
+/* Person icon styling - base */
+.container :global(.esIcon) {
+  margin-right: 0;
+  height: 16px;
+  width: 16px;
+  background: url(/images/abstract-atlas.png) -56px -442px;
+  background-size: 74px 119px;
+  margin-top: -36px;
+  margin-left: -7px;
+  opacity: 0.6;
+}
+
+.container :global(.esIcon.tsTicks),
+.container :global(.esIcon1.tsTicks),
+.container :global(.esIcon2.tsTicks) {
+  display: inherit;
+}
+
+.container :global(.esIcon.timelineTooltipIcon),
+.container :global(.esIcon1.timelineTooltipIcon),
+.container :global(.esIcon2.timelineTooltipIcon) {
+  margin: 0;
+  opacity: 1;
+}
+
+/* Battle icon styling */
+.container :global(.battleIcon1) {
+  margin-right: 0;
+  margin-left: 32%;
+  height: 38px;
+  width: 15px;
+  background: url(/images/abstract-atlas.png) -30px -200px;
+  background-size: 121px 278px;
+}
+
+.container :global(.battleIcon2) {
+  margin-right: 0;
+  margin-left: 75%;
+  height: 38px;
+  width: 15px;
+  background: url(/images/abstract-atlas.png) -45px -200px;
+  background-size: 121px 278px;
+}

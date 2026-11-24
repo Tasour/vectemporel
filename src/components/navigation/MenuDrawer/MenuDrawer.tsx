@@ -1,0 +1,149 @@
+/**
+ * MenuDrawer Component
+ *
+ * A slide-out panel for displaying Layers or Collections content.
+ * Positioned to the right of the sidebar.
+ * 
+ * - Layers: Light theme, no header (LayersContent has its own)
+ * - Collections: Dark theme, with header
+ *
+ * Requirements: 6.1-6.9
+ */
+
+import React, { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
+import styles from './MenuDrawer.module.css';
+
+export interface MenuDrawerProps {
+  /** Whether the drawer is open */
+  isOpen: boolean;
+  /** Content type to display */
+  contentType: 'layers' | 'collections' | 'settings' | null;
+  /** Callback when close is requested */
+  onClose: () => void;
+  /** Children to render in the content area */
+  children?: React.ReactNode;
+  /** Additional CSS class name */
+  className?: string;
+  /** Test ID for testing */
+  testId?: string;
+}
+
+/** i18n key for each content type title */
+const TITLE_KEYS: Record<string, { key: string; fallback: string }> = {
+  layers: { key: 'nav.layers', fallback: 'Layers' },
+  collections: { key: 'nav.collections', fallback: 'Collections' },
+  settings: { key: 'nav.configuration', fallback: 'Configuration' },
+};
+
+/**
+ * MenuDrawer component that slides out from the left side.
+ * Displays a header with title and close button, and a scrollable content area.
+ * Uses light theme for Layers (matching production), dark theme for Collections.
+ */
+export const MenuDrawer: React.FC<MenuDrawerProps> = ({
+  isOpen,
+  contentType,
+  onClose,
+  children,
+  className,
+  testId = 'menu-drawer',
+}) => {
+  const drawerRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  // Determine if using light theme (for Layers and Settings)
+  const isLightTheme = contentType === 'layers' || contentType === 'settings';
+  // Hide header for Layers (LayersContent has its own header); Settings shows header
+  const hideHeader = contentType === 'layers';
+
+  // Focus trap and focus management
+  useEffect(() => {
+    if (isOpen && closeButtonRef.current && !hideHeader) {
+      closeButtonRef.current.focus();
+    }
+  }, [isOpen, hideHeader]);
+
+  // Handle escape key to close
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isOpen) {
+        onClose();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isOpen, onClose]);
+
+  const drawerClass = [
+    styles['drawer'],
+    isOpen && styles['open'],
+    isLightTheme && styles['light'],
+    className,
+  ].filter(Boolean).join(' ');
+
+  const headerClass = [
+    styles['header'],
+    hideHeader && styles['headerHidden'],
+  ].filter(Boolean).join(' ');
+
+  const contentClass = [
+    styles['content'],
+    !isLightTheme && styles['padded'],
+  ].filter(Boolean).join(' ');
+
+  const { t } = useTranslation();
+  const titleConfig = contentType ? TITLE_KEYS[contentType] : undefined;
+  const title = titleConfig ? t(titleConfig.key, titleConfig.fallback) : '';
+
+  return (
+    <div
+      ref={drawerRef}
+      className={drawerClass}
+      role="dialog"
+      aria-modal="true"
+      aria-label={title || 'Menu drawer'}
+      aria-hidden={!isOpen}
+      data-testid={testId}
+    >
+      <div className={headerClass}>
+        <h2 className={styles['title']} data-testid={`${testId}-title`}>
+          {title}
+        </h2>
+        <button
+          ref={closeButtonRef}
+          type="button"
+          className={styles['closeButton']}
+          onClick={onClose}
+          aria-label="Close drawer"
+          data-testid={`${testId}-close`}
+        >
+          <svg
+            viewBox="0 0 24 24"
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            {/* Chevron-left icon matching legacy fa-chevron-left */}
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+        </button>
+      </div>
+      <div
+        className={contentClass}
+        data-testid={`${testId}-content`}
+      >
+        {children}
+      </div>
+    </div>
+  );
+};
+
+export default MenuDrawer;

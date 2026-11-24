@@ -1,0 +1,297 @@
+/**
+ * Sidebar Component
+ *
+ * The main navigation container that renders the vertical icon menu.
+ * Integrates with useUIStore, useAuthStore, and useNavigationStore.
+ *
+ * Requirements: 1.1-1.6, 7.1-7.5, 10.1, 10.3, 10.4
+ */
+
+import React, { useCallback } from 'react';
+import { useNavigate } from 'react-router';
+import { useTranslation } from 'react-i18next';
+import { Logo } from '../Logo';
+import { NavItem } from '../NavItem';
+import { UserAvatar } from '../UserAvatar';
+import { getNavItemsBySection, type NavItemConfig } from '../navConfig';
+import { useUIStore } from '../../../stores/uiStore';
+import { useAuthStore } from '../../../stores/authStore';
+import { useNavigationStore } from '../../../stores/navigationStore';
+import { useMapStore } from '../../../stores/mapStore';
+import { useTimelineStore } from '../../../stores/timelineStore';
+import { isProSubscription } from '../../../utils/subscriptionUtils';
+import styles from './Sidebar.module.css';
+
+export interface SidebarProps {
+  /** Whether the sidebar is open (for mobile responsive behavior) */
+  isOpen?: boolean;
+  /** Callback when sidebar toggle is requested */
+  onToggle?: () => void;
+  /** Additional CSS class name */
+  className?: string;
+  /** Test ID for testing */
+  testId?: string;
+}
+
+/**
+ * Sidebar component - the main navigation container.
+ * Renders Logo, NavItems, and UserAvatar based on authentication state.
+ */
+export const Sidebar: React.FC<SidebarProps> = ({
+  isOpen = true,
+  onToggle,
+  className,
+  testId = 'navigation-sidebar',
+}) => {
+  const navigate = useNavigate();
+  const { t } = useTranslation();
+  const { theme } = useUIStore();
+  const { isAuthenticated, username, avatar, score, subscription, clearUser } = useAuthStore();
+  const { toggleDrawer, drawerOpen, drawerContent } = useNavigationStore();
+  const currentAreaData = useMapStore((s) => s.currentAreaData);
+  const openRightDrawer = useUIStore((s) => s.openRightDrawer);
+
+  const topItems = getNavItemsBySection('top');
+  const bottomItems = getNavItemsBySection('bottom');
+
+  const isPro = isProSubscription(subscription);
+
+  /**
+   * Handle navigation item click.
+   * Routes to path or triggers action based on item configuration.
+   */
+  const handleItemClick = useCallback(
+    (item: NavItemConfig) => {
+      if (item.action) {
+        switch (item.action) {
+          case 'layers':
+            toggleDrawer('layers');
+            break;
+          case 'collections':
+            toggleDrawer('collections');
+            break;
+          case 'settings':
+            toggleDrawer('settings');
+            break;
+          case 'random': {
+            // Pick a random province from area data and open its Wikipedia article
+            if (currentAreaData) {
+              const keys = Object.keys(currentAreaData);
+              if (keys.length > 0) {
+                const randomKey = keys[Math.floor(Math.random() * keys.length)];
+                if (randomKey) {
+                  const wikiUrl = `https://en.wikipedia.org/wiki/${encodeURIComponent(randomKey.replace(/ /g, '_'))}`;
+                  openRightDrawer({
+                    type: 'area',
+                    provinceId: randomKey,
+                    provinceName: randomKey,
+                    wikiUrl,
+                  });
+                }
+              }
+            }
+            break;
+          }
+          case 'play': {
+            // Issue #20: sidebar Play opens the autoplay menu (or stops autoplay if active)
+            const ts = useTimelineStore.getState();
+            if (ts.isAutoplayActive) {
+              ts.stopAutoplay();
+            } else {
+              ts.toggleAutoplayMenu();
+            }
+            break;
+          }
+          case 'help':
+            useUIStore.getState().toggleBanner();
+            break;
+          case 'info':
+            useUIStore.getState().openInfoDialog();
+            break;
+          case 'support':
+            // Issue #53: opens the Support Chronas (Patreon) dialog
+            useUIStore.getState().openSupportDialog();
+            break;
+          case 'logout':
+            if (isAuthenticated) {
+              clearUser();
+              void navigate('/');
+            } else {
+              // Open login dialog overlay
+              useUIStore.getState().openLoginDialog();
+            }
+            break;
+        }
+      }
+    },
+    [toggleDrawer, isAuthenticated, clearUser, navigate, currentAreaData, openRightDrawer]
+  );
+
+  /**
+   * Handle user avatar click - navigate to profile.
+   */
+  const handleAvatarClick = useCallback(() => {
+    if (username) {
+      void navigate(`/community/user/${username}`);
+    }
+  }, [navigate, username]);
+
+  /**
+   * Determine if a navigation item should be visible.
+   */
+  const isItemVisible = (item: NavItemConfig): boolean => {
+    if (item.showWhenAuth && !isAuthenticated) {
+      return false;
+    }
+    return true;
+  };
+
+  /**
+   * Determine if a navigation item should be highlighted.
+   */
+  const isItemHighlighted = (item: NavItemConfig): boolean => {
+    if (item.highlightWhenPro && isPro) {
+      return true;
+    }
+    if (item.highlightWhenAuth && isAuthenticated) {
+      return true;
+    }
+    return false;
+  };
+
+  /**
+   * Determine if a navigation item is active (drawer open with matching content).
+   */
+  const isItemActive = (item: NavItemConfig): boolean => {
+    if (item.action === 'layers' && drawerOpen && drawerContent === 'layers') {
+      return true;
+    }
+    if (item.action === 'collections' && drawerOpen && drawerContent === 'collections') {
+      return true;
+    }
+    if (item.action === 'settings' && drawerOpen && drawerContent === 'settings') {
+      return true;
+    }
+    return false;
+  };
+
+  /**
+   * Render a navigation item with optional separator.
+   */
+  const renderNavItem = (item: NavItemConfig) => {
+    if (!isItemVisible(item)) {
+      return null;
+    }
+
+    return (
+      <React.Fragment key={item.id}>
+        <NavItem
+          icon={item.icon}
+          label={t(`nav.${item.id}`, item.label)}
+          to={item.disabled ? undefined : item.to}
+          onClick={item.action && !item.disabled ? () => handleItemClick(item) : undefined}
+          isActive={isItemActive(item)}
+          isHighlighted={isItemHighlighted(item)}
+          disabled={item.disabled === true}
+          testId={`nav-item-${item.id}`}
+        />
+      </React.Fragment>
+    );
+  };
+
+  const sidebarClass = [
+    styles['sidebar'],
+    isOpen && styles['open'],
+    !isOpen && styles['closed'],
+    className,
+  ]
+    .filter(Boolean)
+    .join(' ');
+
+  return (
+    <aside
+      className={sidebarClass}
+      aria-label="Main navigation"
+      data-testid={testId}
+      data-theme={theme}
+    >
+      <div className={styles['content']}>
+        {/* Logo at top */}
+        <div className={styles['logoSection']}>
+          <Logo testId="sidebar-logo" />
+        </div>
+
+        {/* Top navigation items */}
+        <nav
+          className={styles['topSection']}
+          aria-label="Primary navigation"
+          data-testid="nav-section-top"
+        >
+          {topItems.map(renderNavItem)}
+        </nav>
+
+        {/* Spacer */}
+        <div className={styles['spacer']} />
+
+        {/* Bottom navigation items */}
+        <nav
+          className={styles['bottomSection']}
+          aria-label="Secondary navigation"
+          data-testid="nav-section-bottom"
+        >
+          {bottomItems.map(renderNavItem)}
+
+          {/* User avatar (shown when authenticated) */}
+          {isAuthenticated && (
+            <div className={styles['avatarSection']}>
+              <UserAvatar
+                avatarUrl={avatar}
+                username={username}
+                score={score}
+                onClick={handleAvatarClick}
+                testId="sidebar-user-avatar"
+              />
+            </div>
+          )}
+        </nav>
+      </div>
+
+      {/* Mobile toggle button */}
+      {onToggle && (
+        <button
+          type="button"
+          className={styles['toggleButton']}
+          onClick={onToggle}
+          aria-label={isOpen ? 'Close sidebar' : 'Open sidebar'}
+          data-testid="sidebar-toggle"
+        >
+          <svg
+            viewBox="0 0 24 24"
+            width="16"
+            height="16"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            {isOpen ? (
+              <>
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </>
+            ) : (
+              <>
+                <line x1="3" y1="12" x2="21" y2="12" />
+                <line x1="3" y1="6" x2="21" y2="6" />
+                <line x1="3" y1="18" x2="21" y2="18" />
+              </>
+            )}
+          </svg>
+        </button>
+      )}
+    </aside>
+  );
+};
+
+export default Sidebar;

@@ -1,0 +1,177 @@
+{
+  "nav": {
+    "layers": "Layers",
+    "discover": "Discover",
+    "random": "Random Article",
+    "configuration": "Configuration",
+    "settings": "Configuration",
+    "pro": "PRO Version",
+    "collections": "Collections",
+    "play": "Play",
+    "help": "Help",
+    "logout": "Logout",
+    "community": "Community Board",
+    "account": "Manage Account",
+    "support": "Support Chronas"
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signingIn": "Signing in...",
+    "creatingAccount": "Creating account...",
+    "email": "Email",
+    "password": "Password",
+    "username": "Username",
+    "or": "or",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "loginFailed": "Login failed. Please check your credentials.",
+    "signupFailed": "Signup failed. Please try again."
+  },
+  "map": {
+    "loading": "Loading map...",
+    "ruler": "Ruler",
+    "culture": "Culture",
+    "religion": "Religion",
+    "religionGeneral": "Faith",
+    "capital": "Capital",
+    "population": "Population"
+  },
+  "layers": {
+    "title": "Layers",
+    "general": "GENERAL",
+    "advanced": "Advanced",
+    "area": "Area",
+    "label": "Label",
+    "markers": "Markers",
+    "epics": "Epics",
+    "migration": "Migration",
+    "basemap": "Basemap",
+    "showProvinces": "Show Provinces",
+    "opacityByPopulation": "Opacity By Population",
+    "clusterMarkers": "Cluster Markers",
+    "markerLimit": "Marker Limit",
+    "uncheckAll": "Uncheck All",
+    "checkAll": "Check All",
+    "suggestions": "Suggestions based on your machine...",
+    "markerTypes": {
+      "artifact": "Artifact",
+      "battle": "Battle",
+      "siege": "Siege",
+      "capital": "Capital",
+      "city": "City",
+      "castle": "Castle",
+      "landmark": "Landmark",
+      "military": "Military",
+      "politician": "Politician",
+      "explorer": "Explorer",
+      "scientist": "Scientist",
+      "artist": "Artist",
+      "religious": "Religious",
+      "athlete": "Athlete",
+      "unclassified": "Unclassified",
+      "unknown": "Unknown"
+    },
+    "basemapTypes": {
+      "topographic": "Topographic",
+      "satellite": "Satellite",
+      "light": "Light",
+      "none": "None"
+    },
+    "mapLabels": "Map Labels",
+    "labelModes": {
+      "historical": "Historical Names",
+      "modern": "Modern Names",
+      "both": "Both"
+    },
+    "epicTypes": {
+      "wars": "Wars",
+      "empires": "Empires",
+      "religion": "Religion",
+      "culture": "Culture",
+      "people": "People",
+      "other": "Other"
+    }
+  },
+  "settings": {
+    "title": "Configuration",
+    "theme": "Theme",
+    "language": "Language",
+    "fullscreen": "Fullscreen",
+    "toggle": "Toggle",
+    "enterFullscreen": "Enter Fullscreen",
+    "exitFullscreen": "Exit Fullscreen",
+    "share": "Share this view",
+    "copyLink": "Copy link",
+    "linkCopied": "Link copied!",
+    "fontType": "Font",
+    "markerType": "Marker Type",
+    "themes": {
+      "light": "Light",
+      "dark": "Dark",
+      "luther": "Luther"
+    },
+    "detailLevel": "Detail Level",
+    "detailLevels": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    },
+    "detailLevelCaptions": {
+      "low": "Borders and labels only — best for older or mobile devices.",
+      "medium": "Up to 2,000 clustered markers — recommended default.",
+      "high": "All markers visible, no clustering — needs a faster computer."
+    }
+  },
+  "timeline": {
+    "expandTimeline": "Expand Timeline",
+    "collapseTimeline": "Collapse Timeline",
+    "resetView": "Reset Timeline View",
+    "searchEpics": "Search Epics",
+    "autoplay": "Start Autoplay",
+    "stopAutoplay": "Stop Autoplay",
+    "autoplayTitle": "AUTOPLAY",
+    "autoplaySubtitle": "CHANGES YEAR BY STEP SIZE",
+    "startYear": "Start Year",
+    "endYear": "End Year",
+    "stepSize": "Step Size in Years",
+    "delay": "Delay in Sec",
+    "repeat": "Repeat",
+    "startSlideshow": "START SLIDESHOW"
+  },
+  "drawer": {
+    "noContent": "No content selected",
+    "closePanel": "Close panel",
+    "provinceDataNotAvailable": "Province data not available for this selection.",
+    "tabs": {
+      "summary": "Summary"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "close": "Close",
+    "cancel": "Cancel",
+    "save": "Save",
+    "edit": "Edit",
+    "delete": "Delete",
+    "back": "Go Back",
+    "ad": "AD",
+    "bc": "BC"
+  },
+  "support": {
+    "title": "Support Chronas",
+    "subtitle": "Keep history on the map",
+    "intro": "Chronas is free for everyone, without ads. Your support keeps the servers running and the map growing.",
+    "ctaBefore": "Head over to",
+    "ctaAfter": "and pledge an amount of your choice!",
+    "ctaEmphasis": "Whatever Chronas is worth to you!",
+    "button": "Become a patron",
+    "supporter": "You are already supporting Chronas, thank you!",
+    "otherTitle": "Other ways to help",
+    "github": "Found a bug or have an idea? Let us know on GitHub",
+    "help": "If you have any questions or need help",
+    "contact": "Contact Us",
+    "close": "Close",
+    "opensInNewTab": "(opens in a new tab)"
+  }
+}

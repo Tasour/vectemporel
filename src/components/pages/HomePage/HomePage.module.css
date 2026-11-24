@@ -1,0 +1,42 @@
+/**
+ * HomePage Styles - Map-based home page
+ *
+ * Requirement 1.3: THE MapView SHALL be the primary visual element on the home page
+ */
+
+.homePage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--chronas-back-1, #ffffff);
+}
+
+/* Map View Container */
+.mapView {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+/* Year Notification - Top center positioning */
+.yearNotification {
+  position: absolute;
+  top: var(--spacing-lg, 24px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+/* Dark Theme Adjustments */
+[data-theme='dark'] .homePage {
+  background: var(--chronas-back-1, #333);
+}
+
+/* Luther Theme Adjustments */
+[data-theme='luther'] .homePage {
+  background: var(--chronas-back-1, #011c31);
+}

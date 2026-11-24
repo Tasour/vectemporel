@@ -1,0 +1,247 @@
+/**
+ * Timeline Component Styles
+ *
+ * Implements fixed positioning at bottom of viewport with
+ * smooth height transitions between collapsed and expanded states.
+ *
+ * Requirements: 1.1, 1.2, 1.3, 1.4, 1.5, 1.6
+ */
+
+/* Main timeline container */
+.timeline {
+  position: fixed;
+  bottom: 0;
+  /* Start after the sidebar (50px) to avoid overlapping nav items */
+  left: 50px;
+  right: 0;
+  width: auto;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.8) 60%, rgba(0, 0, 0, 0.4) 100%);
+  z-index: var(--z-timeline, 350);
+  overflow: visible;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+/* Collapsed state */
+.collapsed {
+  height: 110px;
+}
+
+/* Expanded state */
+.expanded {
+  height: 280px;
+}
+
+/* Content wrapper - no padding, transparent */
+.content {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  /* Enable pointer events on content while container is transparent */
+  pointer-events: auto;
+}
+
+/* Year display container - removed, year now shown on marker */
+.yearDisplayWrapper {
+  display: none;
+}
+
+/* Vis.js Timeline container - full width, no margin */
+.visTimeline {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  /* Enable pointer events for timeline interaction */
+  pointer-events: auto;
+}
+
+/* Placeholder content (temporary until sub-components are added) */
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: var(--spacing-sm, 0.5rem);
+  color: var(--chronas-fore-1, #6a6a6a);
+}
+
+/* Year display placeholder */
+.yearDisplay {
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--chronas-fore-2, #494949);
+  text-shadow: 0 0 4px var(--chronas-back-1, #ffffff);
+}
+
+/* State indicator placeholder */
+.stateIndicator {
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--chronas-fore-1, #6a6a6a);
+  opacity: 0.7;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 767px) {
+  .timeline {
+    --timeline-collapsed-height: 64px;
+    --timeline-expanded-height: 220px;
+  }
+
+  .collapsed {
+    height: var(--timeline-collapsed-height, 64px);
+  }
+
+  .expanded {
+    height: var(--timeline-expanded-height, 220px);
+  }
+  
+  .yearDisplay {
+    font-size: 24px;
+  }
+}
+
+/* Dark theme backdrop */
+[data-theme='dark'] .timeline {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.85) 60%, rgba(0, 0, 0, 0.5) 100%);
+}
+
+/* Luther theme backdrop */
+[data-theme='luther'] .timeline {
+  background: linear-gradient(to top, rgba(1, 28, 49, 0.95) 0%, rgba(1, 28, 49, 0.8) 60%, rgba(1, 28, 49, 0.4) 100%);
+}
+
+/* Print styles - hide timeline when printing */
+@media print {
+  .timeline {
+    display: none;
+  }
+}
+
+
+/* Search Epics button - positioned on the right side of timeline */
+.searchEpicsButton {
+  position: absolute;
+  right: 16px;
+  bottom: 12px;
+  
+  /* Reset button styles */
+  border: none;
+  margin: 0;
+  
+  /* Button styling matching production */
+  padding: 8px 16px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: rgba(255, 255, 255, 0.9);
+  
+  /* Typography */
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-family: inherit;
+  
+  /* Border and shadow */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  box-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.4),
+    0 1px 3px rgba(0, 0, 0, 0.3);
+  
+  /* Interactive styling */
+  cursor: pointer;
+  transition: 
+    background-color 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease,
+    box-shadow 150ms ease;
+  
+  /* Ensure button is above timeline content */
+  z-index: 10;
+}
+
+.searchEpicsButton:hover {
+  background-color: rgba(0, 0, 0, 0.85);
+  color: var(--chronas-highlight, rgb(173, 135, 27));
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 
+    0 4px 12px rgba(0, 0, 0, 0.5),
+    0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+.searchEpicsButton:focus-visible {
+  outline: 2px solid var(--chronas-highlight, rgb(173, 135, 27));
+  outline-offset: 2px;
+}
+
+.searchEpicsButton:active {
+  transform: scale(0.98);
+}
+
+/* Epic search container - positioned above the button */
+.epicSearchContainer {
+  position: absolute;
+  right: 16px;
+  bottom: 56px;
+  z-index: 1000;
+}
+
+/* Dark theme adjustments */
+[data-theme='dark'] .searchEpicsButton {
+  background-color: rgba(0, 0, 0, 0.8);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme='dark'] .searchEpicsButton:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+  color: var(--chronas-highlight, rgb(173, 135, 27));
+}
+
+/* Luther theme adjustments */
+[data-theme='luther'] .searchEpicsButton {
+  background-color: rgba(1, 28, 49, 0.85);
+  color: var(--chronas-fore-1, #fff3d3);
+  border-color: rgba(255, 243, 211, 0.15);
+}
+
+[data-theme='luther'] .searchEpicsButton:hover {
+  background-color: rgba(1, 28, 49, 0.95);
+  color: var(--chronas-highlight, rgba(69, 28, 46, 200));
+  border-color: rgba(255, 243, 211, 0.25);
+}
+
+/* Zoom hint — fades out after a few seconds */
+.zoomHint {
+  position: absolute;
+  right: 16px;
+  top: 30px;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 3px 8px;
+  border-radius: 3px;
+  pointer-events: none;
+  z-index: 10;
+  animation: zoomHintFade 6s ease-in-out forwards;
+}
+
+@keyframes zoomHintFade {
+  0%, 70% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .searchEpicsButton {
+    right: 8px;
+    bottom: 12px;
+    padding: 6px 12px;
+    font-size: 11px;
+  }
+  
+  .epicSearchContainer {
+    right: 8px;
+    bottom: 48px;
+  }
+}

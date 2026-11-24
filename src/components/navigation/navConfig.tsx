@@ -1,0 +1,167 @@
+/**
+ * Navigation Configuration
+ *
+ * Defines the navigation items for the sidebar.
+ * Each item specifies its icon, label, route or action, and visibility conditions.
+ *
+ * Requirements: 3.1-3.4, 4.1-4.7, 2.2
+ *
+ * Production reference icons (https://chronas.org) - Material-UI icons:
+ * Top section: Layers, Discover (compass), Random (dice), Settings (gear)
+ * Bottom section: Support (heart), Collections, Play (gamepad), Help, Logout (power)
+ *
+ * Icon styling from production:
+ * - viewBox="0 0 24 24"
+ * - color: rgb(106, 106, 106)
+ * - fill: currentcolor
+ * - height: 24px, width: 24px
+ */
+
+import type React from 'react';
+import {
+  LayersIcon,
+  DiscoverIcon,
+  RandomIcon,
+  SettingsIcon,
+  SupportIcon,
+  CollectionsIcon,
+  PlayIcon,
+  HelpIcon,
+  LogoutIcon,
+} from './navConfig.icons';
+
+/**
+ * Action types for navigation items that don't navigate to a route.
+ */
+export type NavAction =
+  | 'layers'
+  | 'collections'
+  | 'random'
+  | 'logout'
+  | 'settings'
+  | 'help'
+  | 'info'
+  | 'play'
+  | 'support';
+
+/**
+ * Navigation item configuration interface.
+ */
+export interface NavItemConfig {
+  /** Unique identifier for the item */
+  id: string;
+  /** Icon component to render */
+  icon: React.ReactNode;
+  /** Tooltip text and aria-label */
+  label: string;
+  /** Navigation path (if navigating to a route) */
+  to?: string;
+  /** Action to perform (if not navigating) */
+  action?: NavAction;
+  /** Section of the sidebar (top or bottom) */
+  section: 'top' | 'bottom';
+  /** Whether the item requires authentication to be visible */
+  requiresAuth?: boolean;
+  /** Whether the item should only show when authenticated */
+  showWhenAuth?: boolean;
+  /** Whether to highlight when the user is a Patreon supporter */
+  highlightWhenPro?: boolean;
+  /** Whether to highlight when user is authenticated */
+  highlightWhenAuth?: boolean;
+  /** Whether the item is disabled (not yet implemented) */
+  disabled?: boolean;
+}
+
+/**
+ * Navigation items configuration.
+ * Defines all items in the sidebar with their properties.
+ * Order matches production (https://chronas.org):
+ * Top: Layers, Discover, Random, Settings
+ * Bottom: Support, Collections, Play, Help, Logout
+ */
+export const NAV_ITEMS: NavItemConfig[] = [
+  {
+    id: 'layers',
+    icon: <LayersIcon />,
+    label: 'Layers',
+    action: 'layers',
+    section: 'top',
+  },
+  {
+    id: 'discover',
+    icon: <DiscoverIcon />,
+    label: 'Discover',
+    to: '/discover',
+    section: 'top',
+    disabled: true,
+  },
+  {
+    id: 'random',
+    icon: <RandomIcon />,
+    label: 'Random Article',
+    action: 'random',
+    section: 'top',
+    disabled: true,
+  },
+  {
+    id: 'settings',
+    icon: <SettingsIcon />,
+    label: 'Configuration',
+    action: 'settings',
+    section: 'top',
+  },
+
+  {
+    id: 'support',
+    icon: <SupportIcon />,
+    label: 'Support Chronas',
+    action: 'support',
+    section: 'bottom',
+    highlightWhenPro: true,
+  },
+  {
+    id: 'collections',
+    icon: <CollectionsIcon />,
+    label: 'Collections',
+    action: 'collections',
+    section: 'bottom',
+    disabled: true,
+  },
+  {
+    id: 'play',
+    icon: <PlayIcon />,
+    label: 'Play',
+    action: 'play',
+    section: 'bottom',
+  },
+  {
+    id: 'help',
+    icon: <HelpIcon />,
+    label: 'Help',
+    action: 'info',
+    section: 'bottom',
+  },
+  {
+    id: 'logout',
+    icon: <LogoutIcon />,
+    label: 'Logout',
+    action: 'logout',
+    section: 'bottom',
+    highlightWhenAuth: true,
+    disabled: true,
+  },
+];
+
+/**
+ * Get navigation items filtered by section.
+ */
+export function getNavItemsBySection(section: 'top' | 'bottom'): NavItemConfig[] {
+  return NAV_ITEMS.filter((item) => item.section === section);
+}
+
+/**
+ * Get a navigation item by ID.
+ */
+export function getNavItemById(id: string): NavItemConfig | undefined {
+  return NAV_ITEMS.find((item) => item.id === id);
+}

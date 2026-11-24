@@ -1,1 +1,0 @@
-/home/tasour/.config/opencode/design/APPLE_DESIGN_RULES.md

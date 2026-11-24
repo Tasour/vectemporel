@@ -1,0 +1,382 @@
+/**
+ * Map Theme Configuration
+ *
+ * Theme configurations for the map component including colors,
+ * fonts, and styling constants.
+ *
+ * Requirements: 6.3, 6.4, 6.5
+ */
+
+import type { Theme } from '../stores/uiStore';
+
+/**
+ * Theme configuration interface for map styling.
+ * Requirement 6.3: THE MapView SHALL use theme-specific colors
+ */
+export interface ThemeConfig {
+  /** Foreground colors [primary, secondary, tertiary] */
+  foreColors: [string, string, string];
+  /** Background colors [primary, secondary, tertiary] */
+  backColors: [string, string, string];
+  /** Border colors */
+  borderColors: [string];
+  /** Highlight colors for selections and hover */
+  highlightColors: [string];
+  /** Gradient colors for backgrounds */
+  gradientColors: [string];
+  /** CSS class name for the theme */
+  className: string;
+}
+
+/**
+ * Theme configurations for light, dark, and luther themes.
+ * Requirement 6.4: THE MapView SHALL support light, dark, and luther themes
+ * Requirement 6.5: THE MapView SHALL use exact color values for each theme
+ */
+export const themes: Record<Theme, ThemeConfig> = {
+  light: {
+    foreColors: ['#6a6a6a', '#494949', '#383B32'],
+    backColors: ['#ffffff', '#F2F2F2', '#cbcbcb'],
+    borderColors: ['rgba(200,200,200,100)'],
+    highlightColors: ['rgb(173, 135, 27)'],
+    gradientColors: ['linear-gradient(180deg,#fff 0,#F2F2F2)'],
+    className: 'lightTheme',
+  },
+  dark: {
+    foreColors: ['#F2F2F2', '#e2e2e2', '#cbcbcb'],
+    backColors: ['#333', '#171717', '#000'],
+    borderColors: ['rgba(200,200,200,100)'],
+    highlightColors: ['rgba(173, 135, 27)'],
+    gradientColors: ['linear-gradient(180deg,#333 0,#000)'],
+    className: 'darkTheme',
+  },
+  luther: {
+    foreColors: ['#fff3d3', '#e9caab', '#e9caab'],
+    backColors: ['#011c31', '#451c2e', '#451c2e'],
+    borderColors: ['rgba(200,200,200,100)'],
+    highlightColors: ['rgba(69,28,46,200)'],
+    gradientColors: ['linear-gradient(180deg,#011c31 0,#451c2e)'],
+    className: 'lutherTheme',
+  },
+};
+
+/**
+ * Gets the theme configuration for a given theme.
+ *
+ * @param theme - The theme name
+ * @returns The theme configuration
+ */
+export function getThemeConfig(theme: Theme): ThemeConfig {
+  return themes[theme];
+}
+
+/**
+ * Gets the primary foreground color for a theme.
+ *
+ * @param theme - The theme name
+ * @returns The primary foreground color
+ */
+export function getThemeForeColor(theme: Theme): string {
+  return themes[theme].foreColors[0];
+}
+
+/**
+ * Gets the primary background color for a theme.
+ *
+ * @param theme - The theme name
+ * @returns The primary background color
+ */
+export function getThemeBackColor(theme: Theme): string {
+  return themes[theme].backColors[0];
+}
+
+/**
+ * Gets the highlight color for a theme.
+ *
+ * @param theme - The theme name
+ * @returns The highlight color
+ */
+export function getThemeHighlightColor(theme: Theme): string {
+  return themes[theme].highlightColors[0];
+}
+
+/**
+ * Language to font mapping for area labels.
+ * Requirement 6.5: THE MapView SHALL use appropriate fonts for different locales
+ *
+ * Western locales use Cinzel Regular (serif font for historical feel)
+ * Asian and other locales use Noto Sans variants for proper character support
+ *
+ * Every value here must be a fontstack we can actually serve. In practice that
+ * means one of `LOCAL_FONT_NAMES` (self-hosted PBF ranges under `public/fonts/`,
+ * redirected by MapView's `transformRequest`) — every value below is now local,
+ * so area labels no longer depend on a third-party glyph endpoint. If you add a
+ * remote one, note OpenFreeMap publishes exactly `Noto Sans Regular`,
+ * `Noto Sans Italic` and `Noto Sans Bold` — plain `Noto Sans` 404s.
+ */
+export const languageToFont: Record<string, string> = {
+  // Western languages - Cinzel Regular
+  en: 'Cinzel Regular',
+  de: 'Cinzel Regular',
+  fr: 'Cinzel Regular',
+  es: 'Cinzel Regular',
+  it: 'Cinzel Regular',
+  pt: 'Cinzel Regular',
+  nl: 'Cinzel Regular',
+  pl: 'Cinzel Regular',
+  sv: 'Cinzel Regular',
+
+  // Greek - Cinzel has no Greek block, so use the universal Noto stack
+  el: 'Noto Sans Regular',
+
+  // Asian languages - Noto Sans variants
+  zh: 'Noto Sans SC',
+  ja: 'Noto Sans Regular',
+  ko: 'Noto Sans Regular',
+  vi: 'Noto Sans Regular',
+  hi: 'Noto Sans Regular',
+
+  // Arabic - Cairo font
+  ar: 'Cairo',
+
+  // Russian and Cyrillic - Noto Sans
+  ru: 'Noto Sans Regular',
+};
+
+/**
+ * Default font for locales not in the mapping.
+ *
+ * `Noto Sans Regular` is a merged build covering Latin, Greek, Cyrillic,
+ * Devanagari, Arabic, Kana, CJK and Hangul, so it is a safe universal default.
+ * (Verified against the self-hosted copies: ranges 768-1023, 1024-1279,
+ * 1536-1791, 2304-2559, 12288-12543, 19968-20223 and 44032-44287 all carry
+ * glyph data.) Self-hosted — see {@link LOCAL_FONT_NAMES}.
+ */
+export const DEFAULT_FONT = 'Noto Sans Regular';
+
+/**
+ * Bold companion to {@link DEFAULT_FONT}, for labels that need emphasis
+ * (cluster counts). Also self-hosted — see {@link LOCAL_FONT_NAMES}.
+ */
+export const DEFAULT_BOLD_FONT = 'Noto Sans Bold';
+
+/**
+ * Gets the appropriate font for a locale.
+ *
+ * @param locale - The locale code (e.g., 'en', 'zh', 'ar')
+ * @returns The font family name to use
+ */
+export function getFontForLocale(locale: string): string {
+  // Extract the language code from locale (e.g., 'en-US' -> 'en')
+  const parts = locale.split('-');
+  const languageCode = (parts[0] ?? '').toLowerCase();
+  return languageToFont[languageCode] ?? DEFAULT_FONT;
+}
+
+/**
+ * Area label styling configuration.
+ * Styled to match the classical atlas / historical cartography aesthetic of old Chronas,
+ * while preserving the higher label density of the new version.
+ *
+ * The `d` property on each label feature is `lineDistance / name.length^0.2` (in km).
+ * Text size uses a nested zoom × d interpolation with 4 zoom stops for smooth scaling:
+ *   - zoom 2 (far):  only major empires (high d) are legible
+ *   - zoom 4 (mid):  secondary labels become readable
+ *   - zoom 7 (close): dense local labels fill in
+ *   - zoom 9 (max):  full detail
+ */
+export const AREA_LABEL_CONFIG = {
+  /** Mapbox layout properties for the bezier-curve line labels */
+  lineLayout: {
+    symbolPlacement: 'line-center' as const,
+    textTransform: 'uppercase' as const,
+    textAllowOverlap: false,
+    /** Letter spacing for a spread-out atlas / cartographic feel */
+    textLetterSpacing: 0.18,
+    /** Max angle change per character along bezier — keeps text from bending too sharply */
+    textMaxAngle: 45,
+    textPadding: 6,
+    /**
+     * Nested interpolation: zoom → (d → fontSize).
+     * 4 zoom stops give a gradual reveal from far to close zoom.
+     * At each zoom level, 3 d-stops define a clear hierarchy:
+     *   low d (small entities) → small text
+     *   mid d (medium entities) → medium text
+     *   high d (major empires) → large text
+     */
+    textSize: [
+      'interpolate',
+      ['linear'],
+      ['zoom'],
+      2,
+      ['interpolate', ['linear'], ['get', 'd'], 500, 8, 1500, 18, 3500, 42],
+      4,
+      ['interpolate', ['linear'], ['get', 'd'], 500, 18, 1500, 48, 3500, 120],
+      7,
+      ['interpolate', ['linear'], ['get', 'd'], 500, 50, 1500, 120, 3500, 300],
+      9,
+      ['interpolate', ['linear'], ['get', 'd'], 500, 90, 1500, 200, 3500, 440],
+    ],
+  },
+  /**
+   * Mapbox paint properties for the bezier-curve line labels.
+   * Warm charcoal text with a subtle parchment halo for the editorial atlas look.
+   */
+  linePaint: {
+    /** Dark warm brown — maximum readability over saturated polygon fills */
+    textColor: '#1a1206',
+    textHaloWidth: 2,
+    textHaloBlur: 1,
+    /** Opaque warm parchment halo */
+    textHaloColor: 'rgba(255, 252, 235, 0.97)',
+  },
+  /** Mapbox layout properties for the point fallback labels */
+  pointLayout: {
+    textTransform: 'uppercase' as const,
+    textAnchor: 'center' as const,
+    textAllowOverlap: false,
+    textIgnorePlacement: false,
+    textOptional: true,
+    textLetterSpacing: 0.2,
+    textMaxWidth: 12,
+    textPadding: 10,
+    textSize: [
+      'interpolate',
+      ['linear'],
+      ['zoom'],
+      1, ['*', ['get', 'fontSize'], 0.25],
+      3, ['*', ['get', 'fontSize'], 0.5],
+      5, ['*', ['get', 'fontSize'], 0.85],
+      7, ['*', ['get', 'fontSize'], 1.2],
+    ],
+  },
+  /** Mapbox paint properties for the point fallback labels */
+  pointPaint: {
+    textColor: '#1a1206',
+    textHaloColor: 'rgba(255, 252, 235, 0.97)',
+    textHaloWidth: 2,
+    textHaloBlur: 1,
+  },
+  /**
+   * Zoom-dependent text opacity for smooth label fade-in.
+   * Prevents abrupt popping when labels appear at zoom thresholds.
+   */
+  lineTextOpacity: [
+    'interpolate',
+    ['linear'],
+    ['zoom'],
+    1.5, 0,
+    2.2, 1,
+  ],
+  /** Zoom-dependent opacity for point fallback labels */
+  pointTextOpacity: [
+    'interpolate',
+    ['linear'],
+    ['zoom'],
+    1.5, 0,
+    2.5, 1,
+  ],
+  /**
+   * Fallback font used when the locale has no mapping in `languageToFont`.
+   *
+   * Was `Arial Unicode MS Regular`, which only ever existed on Mapbox's glyph
+   * endpoint. It is not published by OpenFreeMap and is not self-hosted, so it
+   * would 404 on every range.
+   */
+  fallbackFonts: [DEFAULT_FONT] as string[],
+  bezierOptions: {
+    sharpness: 0.85,
+    resolution: 10000,
+  },
+};
+
+/**
+ * Builds the `text-font` array for area labels based on locale.
+ *
+ * Returns a **single-font** stack, deliberately. A glyph server resolves
+ * `text-font: [a, b]` as one request for the comma-joined stack `a,b`, and
+ * OpenFreeMap serves only exact single-font names — `Noto Sans Regular,Noto
+ * Sans Bold` 404s even though both fonts exist individually. A two-font stack
+ * would therefore drop every glyph in the layer.
+ *
+ * This is not a behaviour change in practice: the previous
+ * `[primary, 'Arial Unicode MS Regular']` tuple was already collapsed to
+ * `primary` for all three self-hosted fonts by MapView's `transformRequest`
+ * redirect. `getFontForLocale` now returns a font with full script coverage for
+ * its locale, so the fallback slot has nothing left to do.
+ *
+ * @param locale - The locale code (e.g. 'en', 'zh', 'ar')
+ * @returns A single-element font stack
+ */
+export function getAreaLabelFonts(locale: string): [string] {
+  return [getFontForLocale(locale)];
+}
+
+/**
+ * Fonts served locally as PBF glyphs in public/fonts/ (all 256 ranges each).
+ *
+ * MapView's `transformRequest` intercepts glyph requests for these fontstacks
+ * and redirects them to the local files, bypassing the basemap's own `glyphs`
+ * endpoint. Two reasons a font ends up here:
+ *
+ *  - `Cinzel Regular`, `Cairo` and `Noto Sans SC` are not published by any
+ *    basemap glyph endpoint at all, so redirecting is the only way to get them.
+ *  - `Noto Sans Regular` / `Noto Sans Bold` *are* published by OpenFreeMap, but
+ *    they carry every label Chronas draws itself — the `DEFAULT_FONT` fallback,
+ *    cluster counts, marker labels, and el/ja/ko/vi/hi/ru area labels. Leaving
+ *    them remote meant an OpenFreeMap outage blanked Chronas's own labels even
+ *    on the `none` basemap, which has no third-party dependency otherwise. The
+ *    ranges here are byte-for-byte copies of OpenFreeMap's, so self-hosting is
+ *    cartographically a no-op. See docs/adr/0001-openfreemap-hosted-basemaps.md.
+ */
+export const LOCAL_FONT_NAMES = new Set([
+  'Cinzel Regular',
+  'Cairo',
+  'Noto Sans SC',
+  'Noto Sans Regular',
+  'Noto Sans Bold',
+]);
+
+/**
+ * Marker theme types
+ */
+export type MarkerTheme = 'themed' | 'abstract';
+
+/**
+ * Gets the icon atlas URL for a marker theme.
+ *
+ * @param markerTheme - The marker theme ('themed' or 'abstract')
+ * @param isPainted - Whether to use the painted variant
+ * @returns The URL to the icon atlas image
+ */
+export function getIconAtlasUrl(markerTheme: MarkerTheme, isPainted = false): string {
+  const paintedSuffix = isPainted ? '-painted' : '';
+  return `/images/${markerTheme}${paintedSuffix}-atlas.png`;
+}
+
+/**
+ * Gets the cluster icon atlas URL for a marker theme.
+ *
+ * @param markerTheme - The marker theme ('themed' or 'abstract')
+ * @param isPainted - Whether to use the painted variant
+ * @returns The URL to the cluster icon atlas image
+ */
+export function getClusterIconAtlasUrl(markerTheme: MarkerTheme, isPainted = false): string {
+  const paintedSuffix = isPainted ? '-painted' : '';
+  return `/images/${markerTheme}${paintedSuffix}-cluster-atlas.png`;
+}
+
+/**
+ * All supported theme names
+ */
+export const THEME_NAMES: Theme[] = ['light', 'dark', 'luther'];
+
+/**
+ * Validates if a string is a valid theme name.
+ *
+ * @param theme - The string to validate
+ * @returns true if the string is a valid theme name
+ */
+export function isValidThemeName(theme: string): theme is Theme {
+  return THEME_NAMES.includes(theme as Theme);
+}

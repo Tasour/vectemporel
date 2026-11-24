@@ -1,1 +1,0 @@
-/home/tasour/.config/opencode/design/apple-design-gate.sh

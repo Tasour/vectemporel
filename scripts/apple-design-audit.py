@@ -1,1 +1,0 @@
-/home/tasour/.config/opencode/skills/apple-design-gates/scripts/apple_design_audit.py
