@@ -41,7 +41,7 @@ export class PixiTimeline {
     this.theme = options.theme || (document.documentElement.dataset.theme === 'light' ? 'light' : 'dark');
     this.palette = PALETTES[this.theme] || PALETTES.dark;
     this.selected = null;
-    this.year = options.year ?? this.from;
+    this.year = Math.max(this.from, Math.min(this.to, options.year ?? this.from));
     this.points = [];
     this.raf = null;
     this.hidden = document.hidden;
