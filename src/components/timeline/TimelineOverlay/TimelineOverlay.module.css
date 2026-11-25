@@ -1,0 +1,59 @@
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 12;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.period {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.18);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 60%);
+}
+
+.periodLabel {
+  position: absolute;
+  top: 3px;
+  left: 5px;
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: rgba(12, 10, 8, 0.55);
+  color: rgba(255, 243, 211, 0.9);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.tick {
+  position: absolute;
+  bottom: 0;
+  height: 12px;
+  border-left: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.tickLabel {
+  position: absolute;
+  bottom: 12px;
+  left: 4px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  .periodLabel {
+    font-size: 11px;
+  }
+
+  .tickLabel {
+    font-size: 11px;
+  }
+}

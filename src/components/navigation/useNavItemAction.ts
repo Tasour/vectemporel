@@ -26,6 +26,7 @@ export function useNavItemAction(): (item: NavItemConfig) => void {
         case 'layers':
         case 'collections':
         case 'settings':
+        case 'discover':
           toggleDrawer(item.action);
           break;
         case 'random': {

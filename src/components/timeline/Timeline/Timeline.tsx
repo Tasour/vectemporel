@@ -22,6 +22,7 @@ import { AutoplayMenu } from '../AutoplayMenu/AutoplayMenu';
 import { EpicSearchAutocomplete } from '../EpicSearchAutocomplete/EpicSearchAutocomplete';
 import { VisTimelineWrapper, type TimelineItem, type TimelineGroup, type TimelineOptions, type VisTimelineRef, type TimelineClickEvent } from '../VisTimelineWrapper/VisTimelineWrapper';
 import { YearMarkerLabel } from '../YearMarkerLabel';
+import { TimelineOverlay } from '../TimelineOverlay/TimelineOverlay';
 import styles from './Timeline.module.css';
 
 /**
@@ -118,6 +119,10 @@ export const Timeline: React.FC<TimelineProps> = ({
 
   // Zoom hint visibility — shown briefly on first render
   const [showZoomHint, setShowZoomHint] = useState(true);
+  const [overlayRange, setOverlayRange] = useState<{ start: number; end: number } | null>(() => ({
+    start: selectedYear - 250,
+    end: selectedYear + 250,
+  }));
 
   useEffect(() => {
     const timer = setTimeout(() => setShowZoomHint(false), 6000);
@@ -418,11 +423,18 @@ export const Timeline: React.FC<TimelineProps> = ({
     closeAutoplayMenu();
   }, [startAutoplay, closeAutoplayMenu]);
 
+  const handleOverlayRangeChanged = useCallback(() => {
+    const windowRange = timelineRef.current?.getWindow();
+    if (!windowRange) return;
+    setOverlayRange({ start: dateToYear(windowRange.start), end: dateToYear(windowRange.end) });
+  }, []);
+
   /** Sur mobile, l'année est celle qui passe sous le trait central fixe. */
   const handleRangeChange = useCallback(() => {
-    if (!isMobile || skipRangeSyncRef.current) return;
     const timeline = timelineRef.current;
     if (!timeline) return;
+    handleOverlayRangeChanged();
+    if (!isMobile || skipRangeSyncRef.current) return;
     const windowRange = timeline.getWindow();
     const center = new Date((windowRange.start.getTime() + windowRange.end.getTime()) / 2);
     const year = dateToYear(center);
@@ -430,7 +442,7 @@ export const Timeline: React.FC<TimelineProps> = ({
       setYear(year);
       setNotDefaultView();
     }
-  }, [isMobile, setNotDefaultView, setYear]);
+  }, [handleOverlayRangeChanged, isMobile, setNotDefaultView, setYear]);
 
   useEffect(() => {
     if (!isMobile) return;
@@ -494,7 +506,7 @@ export const Timeline: React.FC<TimelineProps> = ({
       data-year={selectedYear}
       data-expanded={isExpanded}
       className={combinedClassName}
-      style={{ height: `${String(currentHeight)}px`, right: timelineRight, transition: 'right 300ms ease-in-out, height 500ms ease-in-out' }}
+      style={{ height: `${String(currentHeight)}px`, right: timelineRight, transition: 'right 300ms ease-in-out, height 500ms ease-in-out, bottom 280ms cubic-bezier(0.23, 1, 0.32, 1)' }}
       role="navigation"
       aria-label="Timeline navigation"
     >
@@ -512,6 +524,7 @@ export const Timeline: React.FC<TimelineProps> = ({
           onClick={handleEpicClick}
           onTimelineClick={handleTimelineClick}
           onRangeChange={handleRangeChange}
+          onRangeChanged={handleOverlayRangeChanged}
           manualPan={isMobile}
           onPanEnd={() => {
             suppressClickRef.current = true;
@@ -528,6 +541,8 @@ export const Timeline: React.FC<TimelineProps> = ({
             glisser pour explorer &middot; pincer pour zoomer
           </div>
         )}
+
+        <TimelineOverlay start={overlayRange?.start ?? null} end={overlayRange?.end ?? null} />
 
         {isMobile ? <div className={styles['centerLine']} aria-hidden="true" data-testid="timeline-center-line" /> : null}
 

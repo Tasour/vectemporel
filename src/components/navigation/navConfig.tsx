@@ -34,6 +34,7 @@ import {
 export type NavAction =
   | 'layers'
   | 'collections'
+  | 'discover'
   | 'random'
   | 'settings'
   | 'help'
@@ -87,7 +88,7 @@ export const NAV_ITEMS: NavItemConfig[] = [
     id: 'discover',
     icon: <DiscoverIcon />,
     label: 'Discover',
-    to: '/discover',
+    action: 'discover',
     section: 'top',
   },
   {

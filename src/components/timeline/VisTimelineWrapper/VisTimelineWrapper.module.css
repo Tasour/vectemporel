@@ -208,11 +208,9 @@
  * Year labels must be visible in collapsed mode
  * ============================================ */
 
+/* Les graduations sont dessinées par TimelineOverlay (années + grandes périodes). */
 .container :global(.vis-time-axis .vis-text) {
-  color: rgba(255, 255, 255, 0.85);
-  font-size: 12px;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
-  font-weight: 600;
+  display: none;
 }
 
 /* Minor labels (year numbers) - visible at bottom of timeline */

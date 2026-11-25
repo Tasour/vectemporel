@@ -11,15 +11,34 @@ npm run articles:extract  # reprend l'extraction Wikipédia
 npm run articles:verify   # vérifie SHA-256, images et crédits
 ```
 
-### Barre basse et navigation temporelle
+### Langue
 
-La sidebar et ses réservations d’espace sont supprimées sur tous les écrans : la carte occupe toute la largeur. Une **barre basse compacte à cinq boutons** la remplace : Couches, Découvrir, Aléatoire, Collections et Outils. Le bouton Outils ouvre une feuille au-dessus de la barre avec Réglages, Aide, Agrandir/Réduire, Réinitialiser, Épopées et Lecture auto. La timeline reste au-dessus de la barre, sans contrôles flottants à gauche. Le trait d'année est fixe au centre : glisser le doigt horizontalement fait défiler le temps derrière lui et l'année affichée suit le centre. Le français est la langue par défaut et le repli.
+Le français est la langue **par défaut et de repli** de l’application : `DEFAULT_LOCALE = 'fr'` dans `src/i18n/i18n.ts`, état initial du store UI, `<html lang="fr">`, titre et métadonnées en français. Les autres langues restent disponibles dans les réglages.
+
+### Barre basse, menus et navigation temporelle
+
+La sidebar et ses réservations d’espace sont supprimées sur tous les écrans : la carte occupe toute la largeur, y compris quand un menu est ouvert. Une **barre basse compacte à cinq boutons** la remplace : Couches, Découvrir, Aléatoire, Collections et Outils.
+
+Tous les panneaux du bas (Couches, Découvrir, Collections, Téléchargements, Réglages, Aide et Outils) s’ouvrent dans **un conteneur unique** (`BottomMenu`) inséré sous la timeline et juste au-dessus des boutons. La timeline se décale vers le haut de la hauteur réelle du menu (`ResizeObserver` → `--bottom-menu-height`) et le menu monte par une transition `translateY(100%) → 0`. Chaque menu possède un bouton de fermeture ; le bouton de la barre basse retoggle le même panneau et `aria-expanded` suit l’état réel. L’état visuel des boutons dérive uniquement du store (plus de `:hover` collant au tactile).
+
+La timeline porte une **surcouche** (`TimelineOverlay`) au-dessus de vis-timeline : graduations d’années recalculées depuis la fenêtre visible et grandes périodes (Antiquité, Moyen Âge, Temps modernes, Contemporain). Elle est synchronisée pendant le drag, ignore les pointeurs et ne bloque ni le trait central fixe ni le geste tactile. Les étiquettes dupliquées de vis-time-axis sont masquées.
+
+### Frontières entre régions
+
+Les frontières ne sont plus noires à 100 % : chaque province reçoit, pour la dimension de couleur active, une **teinte assombrie de la couleur de son ensemble** (`darkenColor`, facteur 0,65). Les deux couches de lignes MapLibre utilisent la même expression, ce qui supprime le liseré noir résiduel tout en conservant la lisibilité entre ensembles distincts.
+
+### Performance du changement d’année
+
+Le chemin année → carte est mesuré avec `performance.mark/measure` (`vectemporel-year-<année>`). Mesures locales en 390×844 : **18–50 ms** pour une année froide, **12–17 ms** pour une année en cache. Le service worker met en cache les réponses décompressées (LRU de 12), le store met en cache les données d’année (LRU borné) et précharge les deux années voisines lorsque l’application est active. Le GeoJSON est muté sur place puis publié par une seule référence, et les expressions de couleur sont mémoïsées.
+
+**Décision Rust/Wasm : non retenu.** Le profil montre que le coût dominant est le chargement/décodage local et la propagation MapLibre/React, pas le calcul JS. Un module Wasm imposerait un binaire, un pipeline de build et une conversion des 4 001 fichiers pour un gain inférieur à la marge de mesure ; le cache et le préchargement apportent un gain supérieur pour un coût bien moindre. Le seuil de réévaluation est un p95 > 8 ms **après** cache, hors rendu MapLibre.
 
 ### Superpositions et ergonomie
 
-- **Modales** (année, aide, connexion) : une seule à la fois, au-dessus de tout, focus piégé ; elles ferment la feuille Outils et les menus de timeline.
-- **Drawers** (gauche et droite) : sur mobile, l’ouverture de l’un ferme l’autre ; sur desktop, les deux peuvent coexister et la carte se décale des deux côtés.
-- **Popovers** (Outils, lecture auto, recherche d’épopées) : un seul à la fois ; tout autre panneau le ferme.
+- **Modales** (année, aide, connexion) : une seule à la fois, au-dessus de tout, focus piégé ; elles ferment les menus bas et les popovers de timeline.
+- **Menu bas** : un seul à la fois ; couches, découverte, collections, réglages, aide et outils partagent le même conteneur.
+- **Popovers** (lecture auto, recherche d’épopées) : un seul à la fois ; tout autre panneau le ferme.
+- **Tiroir droit** (détails de province/article) : indépendant du menu bas, réduit uniquement la largeur de la carte.
 - **Échap** ferme uniquement la couche la plus haute ; le focus revient au bouton déclencheur.
 - Les requêtes annulées lors d’un changement rapide d’année ne déclenchent plus d’erreur visible.
 

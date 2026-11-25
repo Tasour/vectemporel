@@ -1,10 +1,10 @@
 # v0-local — miroir local du fork Chronas
 
-La branche `v0-local` part du fork intégral de `Chronasorg/chronas-frontend` (commit amont `3a7f784`), sans modification de l'interface React, MapLibre ou deck.gl.
+La branche `v0-local` part du fork intégral de `Chronasorg/chronas-frontend` (commit amont `3a7f784`). L'interface React, MapLibre et deck.gl sont depuis largement adaptés pour l'usage local : voir les sections « Interface locale v0 » et « Architecture locale ».
 
 ## Périmètre
 
-- Le code source du fork reste inchangé, hormis la configuration `.env.production`.
+- Les endpoints de l'API sont redirigés vers le miroir local, sans dépendance au réseau pour les données.
 - L'API est reproduite localement dans `api/v1/` à partir de réponses réelles extraites de `https://d24mkpax7rmotx.cloudfront.net/v1` : 4 001 années, marqueurs et métadonnées.
 - Chaque réponse est horodatée et checksummée dans `api/MANIFEST.json`.
 - Un service worker (`public/mirror-sw.js`) sert ces réponses ; aucun appel réseau externe de l'application.
@@ -40,9 +40,18 @@ L'utilisateur a explicitement demandé la suppression des attributions affichée
 - `node scripts/finalize-articles.mjs` vérifie chaque SHA-256, la taille des images et la présence des crédits avant de reconstruire `public/articles/MANIFEST.json`.
 - Les liens Wikipédia ne sont plus chargés au runtime : ils ne s'ouvrent que sur clic explicite, dans un nouvel onglet.
 
+## Architecture locale
+
+- Le français est la langue par défaut (`DEFAULT_LOCALE`), y compris pour le document HTML et les métadonnées.
+- La navigation basse est un conteneur unique inséré sous la timeline ; la timeline se décale de sa hauteur mesurée.
+- La timeline porte une surcouche de graduations et de grandes périodes, sans capter les gestes.
+- Les frontières internes utilisent une teinte assombrie de la couleur de l'ensemble, jamais un noir opaque.
+- Le changement d'année est mesuré par `performance.mark/measure`. Cache LRU dans le service worker et le store, préchargement des années voisines, mutation GeoJSON sur place.
+- **Rust/Wasm écarté** : le profil (18–50 ms à froid, 12–17 ms en cache) montre que le coût dominant est le décodage/rendu, pas le calcul JS. Le gain attendu d'un module Wasm ne justifie pas son poids ni la conversion des 4 001 fichiers. Réévaluation seulement si le p95 après cache dépasse 8 ms hors rendu MapLibre.
+
 ## Vérification de design
 
-Le gate Apple v1.9.0 sur `Découvrir` en 1658×1150 et 390×844 rend **P0 = 0**, **P1 = 0**, **P2 = 1**. Le P2 restant (`U35`, longueur de ligne) porte sur le libellé court « Atlas local · hors ligne » ; il est consigné sans correction forcée.
+Le gate Apple v1.9.0 sur l'application en 1658×1150 et 390×844 rend **P0 = 0**, **P1 = 0**, **P2 = 0**.
 
 ## Limite réseau connue
 

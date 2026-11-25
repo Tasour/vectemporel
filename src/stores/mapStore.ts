@@ -18,6 +18,9 @@ import type { AdjacencyGraph } from '../utils/geoLabelUtils';
 import { AREAS, METADATA, MARKERS } from '../api/endpoints';
 import type { MapAreaData, Marker, MarkerFilterState, MarkerType } from '../api/types';
 import { updateQueryStringParameter } from '../utils/mapUtils';
+import { darkenColor } from '../utils/colorUtils';
+
+const prefetchingYears = new Set<number>();
 
 /** Les annulations de requêtes ne sont pas des erreurs utilisateur. */
 function isRequestCanceled(error: unknown): boolean {
@@ -172,6 +175,8 @@ export interface MapState {
   flyToTarget: FlyToOptions | null;
   /** Cached area data by year - Requirement 12.2 */
   areaDataCache: Map<number, AreaData>;
+  /** Active seulement dans l'app : précharge les années voisines */
+  prefetchEnabled: boolean;
   /** Current area data for the selected year */
   currentAreaData: AreaData | null;
   /** Whether area data is currently being loaded */
@@ -394,6 +399,11 @@ export interface MapActions {
    * @returns Promise that resolves when data is loaded or retrieved from cache
    */
   loadAreaData: (year: number) => Promise<AreaData | null>;
+
+  /** Précharge une année dans le cache sans changer l'année affichée */
+  prefetchAreaData: (year: number) => Promise<void>;
+  /** Active ou désactive le préchargement des années voisines */
+  setPrefetchEnabled: (enabled: boolean) => void;
 
   /**
    * Sets area data directly (used for testing and API response handling).
@@ -832,6 +842,7 @@ export const initialState: MapState = {
   isFlying: false,
   flyToTarget: null,
   areaDataCache: new Map<number, AreaData>(),
+  prefetchEnabled: false,
   currentAreaData: null,
   isLoadingAreaData: false,
   selectedProvince: null,
@@ -1272,6 +1283,8 @@ export const useMapStore = create<MapStore>((set, get) => ({
    */
   loadAreaData: async (year: number): Promise<AreaData | null> => {
     const startTime = performance.now();
+    const perfMark = `vectemporel-year-${String(year)}`;
+    performance.mark(`${perfMark}-start`);
     
     // Validate year is a finite number
     if (!Number.isFinite(year)) {
@@ -1376,6 +1389,12 @@ export const useMapStore = create<MapStore>((set, get) => ({
       // Update province properties with the new area data
       // Requirement 4.2: WHEN area data changes, THE MapView SHALL update the province feature properties
       get().updateProvinceProperties(areaData);
+      performance.mark(`${perfMark}-end`);
+      performance.measure(perfMark, `${perfMark}-start`, `${perfMark}-end`);
+      if (get().prefetchEnabled) {
+        void get().prefetchAreaData(year + 1);
+        void get().prefetchAreaData(year - 1);
+      }
 
       return areaData;
     } catch (error) {
@@ -1418,6 +1437,35 @@ export const useMapStore = create<MapStore>((set, get) => ({
 
       return null;
     }
+  },
+
+  prefetchAreaData: async (year: number): Promise<void> => {
+    if (!Number.isFinite(year) || year < -2000 || year > 2000) return;
+    if (get().areaDataCache.has(year) || prefetchingYears.has(year)) return;
+    prefetchingYears.add(year);
+    try {
+      const data = await apiClient.get<MapAreaData>(AREAS.GET_BY_YEAR(year), {
+        signal: AbortSignal.timeout(4000),
+      });
+      if (typeof data !== 'object') return;
+      set((state) => {
+        const newCache = new Map(state.areaDataCache);
+        newCache.set(year, data);
+        if (newCache.size > AREA_DATA_CACHE_MAX_SIZE) {
+          const keysToRemove = [...newCache.keys()].slice(0, newCache.size - AREA_DATA_CACHE_MAX_SIZE);
+          for (const key of keysToRemove) newCache.delete(key);
+        }
+        return { areaDataCache: newCache };
+      });
+    } catch {
+      // Le préchargement est opportuniste : aucun état d'erreur n'est exposé.
+    } finally {
+      prefetchingYears.delete(year);
+    }
+  },
+
+  setPrefetchEnabled: (enabled: boolean): void => {
+    set({ prefetchEnabled: enabled });
   },
 
   /**
@@ -1996,8 +2044,15 @@ export const useMapStore = create<MapStore>((set, get) => ({
     if (!provincesGeoJSON) {
       return;
     }
+    const metadata: EntityMetadata = state.metadata ?? {
+      ruler: {},
+      culture: {},
+      religion: {},
+      religionGeneral: {},
+    };
 
-    // Create updated features, reusing unchanged objects to reduce allocations
+    // Mutate properties in place and publish a new collection reference for MapLibre.
+    const changedIds: string[] = [];
     const updatedFeatures = provincesGeoJSON.features.map((feature) => {
       const provinceId = feature.properties?.['name'] as string | undefined;
 
@@ -2016,6 +2071,10 @@ export const useMapStore = create<MapStore>((set, get) => ({
       const religion = data[2];
       const population = data[4];
       const religionGeneral = get().getReligionGeneral(religion);
+      const rulerDark = darkenColor(metadata.ruler[ruler]?.color);
+      const cultureDark = darkenColor(metadata.culture[culture]?.color);
+      const religionDark = darkenColor(metadata.religion[religion]?.color);
+      const religionGeneralDark = darkenColor(metadata.religionGeneral[religionGeneral]?.color);
 
       const props = feature.properties as Record<string, unknown>;
       if (
@@ -2023,27 +2082,30 @@ export const useMapStore = create<MapStore>((set, get) => ({
         props['c'] === culture &&
         props['e'] === religion &&
         props['g'] === religionGeneral &&
-        props['p'] === population
+        props['p'] === population &&
+        props['rDark'] === rulerDark &&
+        props['cDark'] === cultureDark &&
+        props['eDark'] === religionDark &&
+        props['gDark'] === religionGeneralDark
       ) {
         return feature;
       }
 
-      return {
-        ...feature,
-        properties: {
-          ...feature.properties,
-          id: provinceId,
-          r: ruler,
-          c: culture,
-          e: religion,
-          g: religionGeneral,
-          p: population,
-        },
-      };
+      props['id'] = provinceId;
+      props['r'] = ruler;
+      props['c'] = culture;
+      props['e'] = religion;
+      props['g'] = religionGeneral;
+      props['p'] = population;
+      props['rDark'] = rulerDark;
+      props['cDark'] = cultureDark;
+      props['eDark'] = religionDark;
+      props['gDark'] = religionGeneralDark;
+      changedIds.push(provinceId);
+      return feature;
     });
 
-    // Skip update if no features actually changed (same object references)
-    if (updatedFeatures.every((f, i) => f === provincesGeoJSON.features[i])) return;
+    if (changedIds.length === 0) return;
 
     set({
       provincesGeoJSON: {

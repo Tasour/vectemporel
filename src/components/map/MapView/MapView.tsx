@@ -32,8 +32,6 @@ import {
   type MapExpression,
   type HoverInfo,
   YEAR_CHANGE_DEBOUNCE_MS,
-  SIDEBAR_WIDTH_OPEN,
-  SIDEBAR_WIDTH_CLOSED,
   RIGHT_DRAWER_WIDTH_PERCENT,
   POPULATION_FILL_COLOR,
   POPULATION_OPACITY_MIN,
@@ -301,6 +299,7 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
         culture: FALLBACK_COLOR,
         religion: FALLBACK_COLOR,
         religionGeneral: FALLBACK_COLOR,
+        border: ['coalesce', ['get', 'rDark'], '#3a3731'] as unknown as string,
       };
     }
 
@@ -323,13 +322,19 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
       if (entry.color) religionGeneralColors[id] = entry.color;
     }
 
+    const darkKey = activeColor === 'ruler' ? 'rDark'
+      : activeColor === 'culture' ? 'cDark'
+        : activeColor === 'religion' ? 'eDark'
+          : 'gDark';
+
     return {
       ruler: buildColorMatchExpression('r', rulerColors),
       culture: buildColorMatchExpression('c', cultureColors),
       religion: buildColorMatchExpression('e', religionColors),
       religionGeneral: buildColorMatchExpression('g', religionGeneralColors),
+      border: ['coalesce', ['get', darkKey], '#3a3731'] as unknown as string,
     };
-  }, [metadata]);
+  }, [activeColor, metadata]);
 
   /**
    * Memoized max population for opacity interpolation.
@@ -570,8 +575,7 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
      * The viewport width is reduced by the sidebar width.
      */
     const handleResize = () => {
-      const sidebarWidth = drawerOpen ? SIDEBAR_WIDTH_OPEN : SIDEBAR_WIDTH_CLOSED;
-      const newWidth = window.innerWidth - sidebarWidth;
+      const newWidth = window.innerWidth;
       const newHeight = window.innerHeight;
 
       setViewport({
@@ -592,7 +596,7 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, [drawerOpen, setViewport]);
+  }, [setViewport]);
 
   /**
    * Subscribe to selectedYear changes and trigger data fetch.
@@ -1415,11 +1419,8 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
     .filter(Boolean)
     .join(' ');
 
-  /**
-   * Plus de sidebar : la carte occupe toute la largeur.
-   * Seul le MenuDrawer décale la carte lorsqu'il est ouvert.
-   */
-  const leftOffset = drawerOpen ? SIDEBAR_WIDTH_OPEN - SIDEBAR_WIDTH_CLOSED : 0;
+  /** Plus de sidebar ni de tiroir latéral : le menu bas ne décale pas la carte. */
+  const leftOffset = 0;
 
   /**
    * Calculate right offset for right drawer.
@@ -1622,9 +1623,9 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
             id="province-borders"
             type="line"
             paint={{
-              'line-color': '#333333',
-              'line-width': 0.5,
-              'line-opacity': 0.8,
+              'line-color': colorExpressions.border,
+              'line-width': 0.6,
+              'line-opacity': 0.9,
             }}
             layout={{
               visibility: showProvinceBorders ? 'visible' : 'none',
@@ -1636,9 +1637,9 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
             id="provinces-outline"
             type="line"
             paint={{
-              'line-color': themeConfig.foreColors[0],
+              'line-color': colorExpressions.border,
               'line-width': 0.5,
-              'line-opacity': 0.3,
+              'line-opacity': 0.35,
             }}
           />
         </Source>

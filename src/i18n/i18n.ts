@@ -56,6 +56,9 @@ export const SUPPORTED_LANGUAGES = [
 
 const SUPPORTED_CODES = new Set<string>(SUPPORTED_LANGUAGES.map((l) => l.code));
 
+/** Langue par défaut de cette application locale : le français. */
+export const DEFAULT_LOCALE = 'fr';
+
 /**
  * Detect locale from a language subdomain (e.g. de.chronas.org → 'de').
  * Returns the locale code if matched, otherwise undefined.
@@ -91,7 +94,7 @@ function getPersistedLocale(): string {
   } catch {
     // Ignore parse errors — interface locale is French
   }
-  return 'fr';
+  return DEFAULT_LOCALE;
 }
 
 /**
@@ -125,7 +128,7 @@ void i18n
       ca: { translation: ca },
     },
     lng: getInitialLocale(),
-    fallbackLng: 'fr',
+    fallbackLng: DEFAULT_LOCALE,
     interpolation: {
       escapeValue: false,
     },

@@ -9,7 +9,7 @@
 
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
-import i18n, { getSubdomainLocale } from '@/i18n/i18n';
+import i18n, { DEFAULT_LOCALE, getSubdomainLocale } from '@/i18n/i18n';
 import type { Marker } from '@/api/types';
 
 /**
@@ -125,7 +125,7 @@ export type UIStore = UIState & UIActions;
  */
 const defaultState: UIState = {
   theme: 'light',
-  locale: 'fr',
+  locale: DEFAULT_LOCALE,
   sidebarOpen: true,
   isFullscreen: false,
   rightDrawerOpen: false,

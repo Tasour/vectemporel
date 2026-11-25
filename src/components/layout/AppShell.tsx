@@ -1,10 +1,13 @@
 import type React from 'react';
 import { lazy, Suspense, useCallback, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { MainContent } from './MainContent';
 import { BottomDock } from '../navigation/BottomDock';
-import { MenuDrawer } from '../navigation/MenuDrawer';
+import { BottomMenu } from './BottomMenu/BottomMenu';
+import { ToolsPanel } from '../navigation/ToolsPanel/ToolsPanel';
 import { RightDrawer } from './RightDrawer/RightDrawer';
 import { CollectionsContent } from '../library/CollectionsContent';
+import { DiscoverPage } from '../library/DiscoverPage';
 import { DownloadManager } from '../library/DownloadManager';
 import { LayersContent } from '../navigation/LayersContent';
 import { SettingsContent } from '../navigation/SettingsContent';
@@ -14,6 +17,7 @@ import { InfoDialog } from '../global/InfoDialog/InfoDialog';
 import { useUIStore } from '../../stores/uiStore';
 import { useNavigationStore } from '../../stores/navigationStore';
 import { useTimelineStore } from '../../stores/timelineStore';
+import { useMapStore } from '../../stores/mapStore';
 import { clearURLParams } from '../../utils/urlStateUtils';
 import styles from './AppShell.module.css';
 
@@ -29,6 +33,7 @@ export interface AppShellProps {
  * Requirements: 2.1, 2.4, 2.7, 2.8, 2.9
  */
 export const AppShell: React.FC<AppShellProps> = ({ children, className }) => {
+  const { t } = useTranslation();
   const { rightDrawerOpen, rightDrawerContent, closeRightDrawer, loginDialogOpen, closeLoginDialog, infoDialogOpen, infoDialogTab, closeInfoDialog, bottomToolsOpen, setBottomToolsOpen } = useUIStore();
   const { drawerOpen, drawerContent, closeDrawer } = useNavigationStore();
   const isYearDialogOpen = useTimelineStore((state) => state.isYearDialogOpen);
@@ -44,6 +49,29 @@ export const AppShell: React.FC<AppShellProps> = ({ children, className }) => {
     closeRightDrawer();
     clearURLParams(['type', 'value']);
   }, [closeRightDrawer]);
+
+  const closeBottomMenu = useCallback(() => {
+    if (bottomToolsOpen) setBottomToolsOpen(false);
+    else closeDrawer();
+  }, [bottomToolsOpen, closeDrawer, setBottomToolsOpen]);
+
+  const menuTitle = bottomToolsOpen
+    ? t('nav.tools', 'Outils')
+    : drawerContent === 'layers'
+      ? t('nav.layers', 'Couches')
+      : drawerContent === 'collections'
+        ? t('nav.collections', 'Collections')
+        : drawerContent === 'settings'
+          ? t('nav.configuration', 'Configuration')
+          : drawerContent === 'discover'
+            ? t('nav.discover', 'Découvrir')
+            : t('nav.downloads', 'Téléchargements');
+
+  // Préchargement des années voisines, activé uniquement dans l'application.
+  useEffect(() => {
+    useMapStore.getState().setPrefetchEnabled(true);
+    return () => useMapStore.getState().setPrefetchEnabled(false);
+  }, []);
 
   // Un drawer ouvre toujours la voie : la feuille Outils se referme.
   useEffect(() => {
@@ -100,6 +128,7 @@ export const AppShell: React.FC<AppShellProps> = ({ children, className }) => {
       data-testid="app-shell"
       className={`${styles['shell'] ?? ''} ${className ?? ''}`.trim()}
     >
+      <h1 className={styles['srOnly']}>Vectemporel — Atlas historique interactif</h1>
       {/* Header hidden - production uses sidebar logo as branding */}
       {/* <Header /> */}
       
@@ -111,16 +140,6 @@ export const AppShell: React.FC<AppShellProps> = ({ children, className }) => {
           {children}
         </MainContent>
 
-        <MenuDrawer
-          isOpen={drawerOpen}
-          contentType={drawerContent}
-          onClose={closeDrawer}
-        >
-          {drawerContent === 'layers' && <LayersContent onClose={closeDrawer} />}
-          {drawerContent === 'collections' && <CollectionsContent onClose={closeDrawer} />}
-          {drawerContent === 'downloads' && <DownloadManager />}
-          {drawerContent === 'settings' && <SettingsContent onClose={closeDrawer} />}
-        </MenuDrawer>
         
         {/* Right drawer for province/marker details */}
         {/* Requirement 2.1: WHEN a province is clicked, THE RightDrawer SHALL open */}
@@ -135,6 +154,20 @@ export const AppShell: React.FC<AppShellProps> = ({ children, className }) => {
       <Suspense fallback={null}>
         <Timeline />
       </Suspense>
+
+      <BottomMenu open={drawerOpen || bottomToolsOpen} title={menuTitle} onClose={closeBottomMenu}>
+        {bottomToolsOpen ? (
+          <ToolsPanel onClose={closeBottomMenu} />
+        ) : (
+          <>
+            {drawerContent === 'layers' && <LayersContent onClose={closeBottomMenu} />}
+            {drawerContent === 'collections' && <CollectionsContent onClose={closeBottomMenu} />}
+            {drawerContent === 'downloads' && <DownloadManager />}
+            {drawerContent === 'settings' && <SettingsContent onClose={closeBottomMenu} />}
+            {drawerContent === 'discover' && <DiscoverPage />}
+          </>
+        )}
+      </BottomMenu>
 
       <BottomDock />
 

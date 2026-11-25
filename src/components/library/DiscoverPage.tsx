@@ -1,6 +1,7 @@
 /** Vue Découvrir : onglets Articles, Époques, Régions, alimentés par le miroir local. */
 
 import React, { useMemo, useState } from 'react';
+import { useNavigate } from 'react-router';
 import { formatRange } from '@/features/library/format';
 import { openProvince } from '@/features/library/openProvince';
 import { useLibraryData } from '@/features/library/useLibrary';
@@ -22,9 +23,11 @@ function normalize(value: string): string {
 }
 
 export const DiscoverPage: React.FC = () => {
+  const navigate = useNavigate();
   const { catalog, manifest, loading, error } = useLibraryData();
   const openRightDrawer = useUIStore((state) => state.openRightDrawer);
   const openDrawer = useNavigationStore((state) => state.openDrawer);
+  const closeDrawer = useNavigationStore((state) => state.closeDrawer);
   const [tab, setTab] = useState<TabId>('articles');
   const [query, setQuery] = useState('');
   const [continent, setContinent] = useState('');
@@ -93,9 +96,22 @@ export const DiscoverPage: React.FC = () => {
             Explorer les fiches téléchargées, les époques et les régions du miroir Chronas.
           </p>
         </div>
-        <button type="button" className={styles['button']} onClick={() => openDrawer('downloads')}>
-          Téléchargements
-        </button>
+        <div className={styles['readerMeta']}>
+          <button type="button" className={styles['button']} onClick={() => openDrawer('downloads')}>
+            Téléchargements
+          </button>
+          <button
+            type="button"
+            className={styles['button']}
+            onClick={() => {
+              closeDrawer();
+              void navigate('/');
+            }}
+            aria-label="Fermer Découvrir"
+          >
+            Fermer
+          </button>
+        </div>
       </div>
 
       <div className={styles['tabs']} role="tablist" aria-label="Sections de Découvrir">
@@ -116,21 +132,21 @@ export const DiscoverPage: React.FC = () => {
 
       <div className={styles['searchRow']}>
         <input
+          aria-label="Rechercher dans Découvrir"
           className={styles['input']}
           type="search"
           value={query}
+          placeholder="Rechercher dans le catalogue local"
           onChange={(event) => {
             setQuery(event.target.value);
             setVisibleGroups(80);
           }}
-          placeholder="Rechercher dans le catalogue local"
-          aria-label="Rechercher dans Découvrir"
         />
         <select
+          aria-label="Filtrer par continent"
           className={styles['select']}
           value={continent}
           onChange={(event) => setContinent(event.target.value)}
-          aria-label="Filtrer par continent"
         >
           <option value="">Tous les continents</option>
           {(catalog?.continents ?? []).map((item) => (
@@ -147,10 +163,10 @@ export const DiscoverPage: React.FC = () => {
           <section aria-label="Articles téléchargés">
             <div className={styles['readerMeta']}>
               <select
+                aria-label="Filtrer les articles par époque"
                 className={styles['select']}
                 value={epoch}
                 onChange={(event) => setEpoch(event.target.value)}
-                aria-label="Filtrer les articles par époque"
               >
                 <option value="">Toutes les époques</option>
                 {(catalog?.epochs ?? []).map((item) => (
