@@ -216,8 +216,10 @@ for (const viewport of [
 
     test('les données viennent du pack binaire local', async ({ page }) => {
       const areaRequests: string[] = [];
+      const markerRequests: string[] = [];
       page.on('request', (request) => {
         if (request.url().includes('/areas/')) areaRequests.push(request.url());
+        if (request.url().includes('/markers?year=')) markerRequests.push(request.url());
       });
       await open(page);
       await page.waitForFunction(
@@ -225,8 +227,18 @@ for (const viewport of [
         null,
         { timeout: 15_000 }
       );
-      record(`pack-${viewport.name}`, { areaRequests: areaRequests.length });
+      record(`pack-${viewport.name}`, {
+        areaRequests: areaRequests.length,
+        markerRequests: markerRequests.length,
+        markers: await page.evaluate(() => performance.getEntriesByName('markers-pack-year').length),
+      });
       expect(areaRequests).toHaveLength(0);
+      expect(markerRequests).toHaveLength(0);
+      await page.waitForFunction(
+        () => performance.getEntriesByName('markers-pack-year').length > 0,
+        null,
+        { timeout: 15_000 }
+      );
     });
 
     test('le zoom ctrl+molette est ancré et réversible', async ({ page }) => {

@@ -49,7 +49,7 @@ La pile de la timeline est explicitement ordonnée : panneaux vis < grille < sur
 
 ### Modèle binaire préchargé
 
-Les 4 001 années d'aires ne sont plus chargées par requête : un pack binaire de **886 Ko compressés** (dictionnaires + keyframes tous les 100 ans + deltas de 18 provinces par an) est préchargé au démarrage. Le décodage d'une année prend ~0,2 ms (p95 2,3 ms) et les requêtes `/areas` disparaissent. Détails, format et vérification : [`docs/ATLAS-PACK.md`](docs/ATLAS-PACK.md).
+Les 4 001 années d'aires ne sont plus chargées par requête : un pack binaire de **886 Ko compressés** (dictionnaires + keyframes tous les 100 ans + deltas de 18 provinces par an) et un pack marqueurs de **2,72 Mo** (68 473 fiches uniques + index année → ids) sont préchargés au démarrage. Le décodage d'une année prend ~0,2 ms (p95 2,3 ms) et les requêtes `/areas` et `/markers?year=` disparaissent. Détails, format et vérification : [`docs/ATLAS-PACK.md`](docs/ATLAS-PACK.md).
 
 ### Invalidation du cache
 

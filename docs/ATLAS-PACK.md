@@ -69,11 +69,22 @@ Les centroïdes et surfaces des provinces sont calculés une seule fois
 (`geometryCache`) : les années suivantes ne refont que le regroupement des
 entités et le placement des libellés.
 
+## Pack marqueurs
+
+`markers-v1.bin.gz` (2,72 Mo compressés, 11,7 Mo bruts) contient **68 473
+marqueurs uniques** et un index des 4 002 années. Le décodage d'une année prend
+**0,4 ms** et aucune requête `/markers?year=` n'est émise. Vérification :
+`npm run pack:markers:verify` compare 6 années (dont 1714 et 2000).
+
+Le pack stocke `_id`, `name`, `coo`/`coo2`, `year`, `end` et `type`. Les champs
+`names`/`capital` des fiches de villes restent servis par le fichier
+« toutes les villes » (`markers?types=c…`), qui fournit les libellés
+historiques.
+
 ## Limites
 
-- Le pack couvre les aires. Les marqueurs restent chargés par année ; un pack
-  équivalent (68 473 marqueurs uniques + index année → ids) est la prochaine
-  étape pour supprimer aussi ces requêtes.
+- Les tuiles du fond de carte restent réseau (ce ne sont pas des données
+  Chronas).
 - Un fichier `areas/*.gz` contient une valeur de population non numérique
   (`Azow`, 1714) ; le pack la normalise à 0 et le vérificateur le consigne.
 - Le pack doit être régénéré si les données du miroir changent ; `pack:verify`

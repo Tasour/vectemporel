@@ -26,5 +26,5 @@
     "noUncheckedIndexedAccess": true
   },
   "include": ["vite.config.ts", "playwright.config.ts", "scripts/**/*.ts"],
-  "exclude": ["scripts/verify-atlas-pack.ts"]
+  "exclude": ["scripts/verify-atlas-pack.ts", "scripts/verify-markers-pack.ts"]
 }

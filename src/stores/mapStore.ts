@@ -20,6 +20,7 @@ import type { MapAreaData, Marker, MarkerFilterState, MarkerType } from '../api/
 import { updateQueryStringParameter } from '../utils/mapUtils';
 import { FRENCH_NAMES } from '../data/frenchNames';
 import { ensureAtlasPack } from '../features/atlasPack/atlasPack';
+import { ensureMarkersPack } from '../features/atlasPack/markersPack';
 
 const prefetchingYears = new Set<number>();
 
@@ -2218,6 +2219,18 @@ export const useMapStore = create<MapStore>((set, get) => ({
     const abortController = new AbortController();
 
     set({ isLoadingMarkers: true, markersAbortController: abortController });
+
+    // Pack binaire préchargé : aucune requête réseau.
+    const markersPack = await ensureMarkersPack();
+    if (markersPack) {
+      if (get().markersAbortController !== abortController) return [];
+      performance.mark('markers-pack-start');
+      const packed = markersPack.getYear(year);
+      performance.measure('markers-pack-year', 'markers-pack-start');
+      const data = markerLimit > 0 ? packed.slice(0, markerLimit) : packed;
+      set({ markers: data, isLoadingMarkers: false, markersAbortController: null });
+      return data;
+    }
 
     try {
       // Fetch from /v1/markers?year={year}&limit={markerLimit} endpoint

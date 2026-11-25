@@ -109,7 +109,7 @@
     height: var(--timeline-current-height, 64px) !important;
     min-height: 0 !important;
     overflow: hidden;
-    touch-action: none;
+    touch-action: pan-y;
     user-select: none;
     overscroll-behavior-x: contain;
   }

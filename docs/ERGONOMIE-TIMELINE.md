@@ -85,8 +85,10 @@ les captures `zones-*.png` et `burst-*.png`.
 - **Boutons** : `−` (zoom arrière), `500 ans` (échelle par défaut), `+` (zoom
   avant), placés au-dessus de la timeline pour ne pas intercepter les gestes.
 - **Annulation de l'inertie** : un nouveau pointerdown arrête la glisse net.
-- **Touches `+`/`−`** : les boutons sont focusables et ont des libellés
-  explicites (`Zoom avant`, `Zoom arrière`, `Revenir à 500 ans`).
+- **Touches `+`/`−`** : les boutons sont focusables, font 44×44 et ont des
+  libellés explicites (`Zoom avant`, `Zoom arrière`, `Revenir à 500 ans`).
+- **Défilement mobile préservé** : `touch-action: pan-y` sur la timeline ; un
+  geste vertical fait défiler la page, un geste horizontal contrôle le temps.
 
 Le zoom par vitesse reste l'accélérateur ; ces contrôles rendent l'échelle
 réversible et prévisible.

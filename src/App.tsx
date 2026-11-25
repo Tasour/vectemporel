@@ -9,6 +9,7 @@ import { getPositionFromURL, getYearFromURL } from './utils/mapUtils';
 import { parseURLState } from './utils/urlStateUtils';
 import { DETAIL_LEVEL_PRESETS } from './utils/detailLevelUtils';
 import { ensureAtlasPack } from './features/atlasPack/atlasPack';
+import { ensureMarkersPack } from './features/atlasPack/markersPack';
 
 /**
  * Builds a wiki URL for a province based on metadata.
@@ -95,6 +96,7 @@ function App() {
   useEffect(() => {
     // Démarre le pack binaire en parallèle des métadonnées.
     void ensureAtlasPack();
+    void ensureMarkersPack();
     loadFromStorage();
     // Load metadata for entity colors on app startup (with current locale)
     void loadMetadata(locale);
