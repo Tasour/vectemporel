@@ -55,6 +55,19 @@
   pointer-events: auto;
 }
 
+/* Trait central fixe : le temps défile derrière lui */
+.centerLine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  z-index: 15;
+  width: 2px;
+  transform: translateX(-50%);
+  background: #ff7f6e;
+  pointer-events: none;
+}
+
 /* Badge d'année mobile, au-dessus du trait central */
 .mobileYearBadge {
   position: absolute;

@@ -15,6 +15,14 @@ npm run articles:verify   # vérifie SHA-256, images et crédits
 
 La sidebar et ses réservations d’espace sont supprimées sur tous les écrans : la carte occupe toute la largeur. Une **barre basse compacte à cinq boutons** la remplace : Couches, Découvrir, Aléatoire, Collections et Outils. Le bouton Outils ouvre une feuille au-dessus de la barre avec Réglages, Aide, Agrandir/Réduire, Réinitialiser, Épopées et Lecture auto. La timeline reste au-dessus de la barre, sans contrôles flottants à gauche. Le trait d'année est fixe au centre : glisser le doigt horizontalement fait défiler le temps derrière lui et l'année affichée suit le centre. Le français est la langue par défaut et le repli.
 
+### Superpositions et ergonomie
+
+- **Modales** (année, aide, connexion) : une seule à la fois, au-dessus de tout, focus piégé ; elles ferment la feuille Outils et les menus de timeline.
+- **Drawers** (gauche et droite) : sur mobile, l’ouverture de l’un ferme l’autre ; sur desktop, les deux peuvent coexister et la carte se décale des deux côtés.
+- **Popovers** (Outils, lecture auto, recherche d’épopées) : un seul à la fois ; tout autre panneau le ferme.
+- **Échap** ferme uniquement la couche la plus haute ; le focus revient au bouton déclencheur.
+- Les requêtes annulées lors d’un changement rapide d’année ne déclenchent plus d’erreur visible.
+
 `scripts/patch-pages.mjs` corrige les chemins absolus du build pour GitHub Pages. Le fond de carte OpenFreeMap reste la seule ressource externe au runtime.
 
 # Chronas Frontend

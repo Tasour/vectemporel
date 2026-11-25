@@ -9,7 +9,7 @@
 
 .tooltip {
   position: absolute;
-  z-index: 10100;
+  z-index: var(--z-tooltip, 650);
   padding: 6px 11px 5px;
   font-family: 'Inter', system-ui, sans-serif;
   font-size: 10.5px;

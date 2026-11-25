@@ -114,6 +114,7 @@ export const Timeline: React.FC<TimelineProps> = ({
   const timelineRef = useRef<VisTimelineRef>(null);
   const isMobile = useIsMobile();
   const skipRangeSyncRef = useRef(false);
+  const suppressClickRef = useRef(false);
 
   // Zoom hint visibility — shown briefly on first render
   const [showZoomHint, setShowZoomHint] = useState(true);
@@ -223,8 +224,6 @@ export const Timeline: React.FC<TimelineProps> = ({
         : TIMELINE_HEIGHT_COLLAPSED,
     min: '-002500-01-01',
     max: '2500-01-01',
-    start: viewStart,
-    end: viewEnd,
     zoomMin: 315360000000,
     stack: isExpanded,
     showCurrentTime: false,
@@ -235,7 +234,7 @@ export const Timeline: React.FC<TimelineProps> = ({
     zoomable: true,
     moveable: true,
     timeAxis: { scale: 'year', step: 100 },
-  }), [isExpanded, isMobile, viewStart, viewEnd]);
+  }), [isExpanded, isMobile]);
 
   /**
    * Custom time marker for current year
@@ -253,6 +252,7 @@ export const Timeline: React.FC<TimelineProps> = ({
    * Flies the map to show the epic's related locations
    */
   const handleEpicClick = useCallback((event: TimelineClickEvent) => {
+    if (suppressClickRef.current) return;
     if (event.item) {
       // Find the clicked epic item
       const filteredEpics = getFilteredEpicItems();
@@ -342,6 +342,7 @@ export const Timeline: React.FC<TimelineProps> = ({
    * Handle timeline click (not on an item) - set year
    */
   const handleTimelineClick = useCallback((event: TimelineClickEvent) => {
+    if (suppressClickRef.current) return;
     if (!event.item) {
       const clickedYear = event.time.getFullYear();
       setYear(clickedYear);
@@ -503,12 +504,21 @@ export const Timeline: React.FC<TimelineProps> = ({
           key={isMobile ? 'mobile' : 'desktop'}
           ref={timelineRef}
           options={timelineOptions}
+          initialStart={viewStart}
+          initialEnd={viewEnd}
           items={timelineItems}
           groups={TIMELINE_GROUPS}
-          customTimes={customTimes}
+          customTimes={isMobile ? {} : customTimes}
           onClick={handleEpicClick}
           onTimelineClick={handleTimelineClick}
           onRangeChange={handleRangeChange}
+          manualPan={isMobile}
+          onPanEnd={() => {
+            suppressClickRef.current = true;
+            window.setTimeout(() => {
+              suppressClickRef.current = false;
+            }, 120);
+          }}
           className={styles['visTimeline'] ?? ''}
         />
 
@@ -518,6 +528,8 @@ export const Timeline: React.FC<TimelineProps> = ({
             glisser pour explorer &middot; pincer pour zoomer
           </div>
         )}
+
+        {isMobile ? <div className={styles['centerLine']} aria-hidden="true" data-testid="timeline-center-line" /> : null}
 
         {/* Year label on the red marker (like production) */}
         <YearMarkerLabel

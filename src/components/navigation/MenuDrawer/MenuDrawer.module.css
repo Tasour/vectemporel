@@ -13,7 +13,7 @@
   background-color: #faf7f0;
   border-right: 1px solid rgba(120, 95, 40, 0.08);
   box-shadow: 8px 0 28px -14px rgba(40, 30, 10, 0.22);
-  z-index: 300;
+  z-index: var(--z-drawer, 400);
   display: flex;
   flex-direction: column;
   transform: translateX(-100%);
@@ -44,6 +44,22 @@
   transform: translateX(0);
   opacity: 1;
   visibility: visible;
+}
+
+.backdrop {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: calc(var(--z-drawer, 400) - 1);
+    border: none;
+    background: rgba(12, 10, 8, 0.45);
+    cursor: pointer;
+  }
 }
 
 .header {

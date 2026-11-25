@@ -19,6 +19,14 @@ import { AREAS, METADATA, MARKERS } from '../api/endpoints';
 import type { MapAreaData, Marker, MarkerFilterState, MarkerType } from '../api/types';
 import { updateQueryStringParameter } from '../utils/mapUtils';
 
+/** Les annulations de requêtes ne sont pas des erreurs utilisateur. */
+function isRequestCanceled(error: unknown): boolean {
+  if (!(error instanceof Error)) return false;
+  if (error.name === 'AbortError' || error.name === 'CanceledError') return true;
+  if ((error as { code?: unknown }).code === 'ERR_CANCELED') return true;
+  return /cancel/i.test(error.message);
+}
+
 /**
  * Area data for a single province
  * Index 0: ruler ID
@@ -1335,6 +1343,9 @@ export const useMapStore = create<MapStore>((set, get) => ({
       // Cast to AreaData (same structure as MapAreaData)
       const areaData = data;
 
+      // Une requête plus récente a pris le relais : ignorer cette réponse périmée.
+      if (get().areaDataAbortController !== abortController) return data;
+
       // Cache the response - Requirement 12.2
       const duration = performance.now() - startTime;
       console.debug(
@@ -1369,9 +1380,11 @@ export const useMapStore = create<MapStore>((set, get) => ({
       return areaData;
     } catch (error) {
       // Check if request was aborted - Requirement 9.5
-      if (error instanceof Error && error.name === 'AbortError') {
+      if (isRequestCanceled(error)) {
         console.debug(`[Performance] Request for year ${String(year)} was cancelled`);
-        // Don't update state for aborted requests - let the new request handle it
+        if (get().areaDataAbortController === abortController) {
+          set({ isLoadingAreaData: false, areaDataAbortController: null });
+        }
         return null;
       }
       
@@ -1394,6 +1407,7 @@ export const useMapStore = create<MapStore>((set, get) => ({
       });
 
       // Store error state - Requirement 13.4
+      if (get().areaDataAbortController !== abortController) return null;
       const errorInstance =
         error instanceof Error ? error : new Error(`Failed to load area data for year ${String(year)}`);
       set({
@@ -2103,6 +2117,8 @@ export const useMapStore = create<MapStore>((set, get) => ({
         return [];
       }
 
+      if (get().markersAbortController !== abortController) return [];
+
       // Store markers in state
       set({
         markers: data,
@@ -2113,9 +2129,11 @@ export const useMapStore = create<MapStore>((set, get) => ({
       return data;
     } catch (error) {
       // Check if request was aborted - Requirement 9.5
-      if (error instanceof Error && error.name === 'AbortError') {
+      if (isRequestCanceled(error)) {
         console.debug(`[Performance] Markers request for year ${String(year)} was cancelled`);
-        // Don't update state for aborted requests
+        if (get().markersAbortController === abortController) {
+          set({ isLoadingMarkers: false, markersAbortController: null });
+        }
         return [];
       }
 
@@ -2138,6 +2156,7 @@ export const useMapStore = create<MapStore>((set, get) => ({
       });
 
       // Store error state
+      if (get().markersAbortController !== abortController) return [];
       const errorInstance =
         error instanceof Error ? error : new Error(`Failed to load markers for year ${String(year)}`);
       set({
@@ -2424,7 +2443,7 @@ export const useMapStore = create<MapStore>((set, get) => ({
     const state = get();
     if (state.areaDataAbortController) {
       state.areaDataAbortController.abort();
-      set({ areaDataAbortController: null });
+      set({ areaDataAbortController: null, isLoadingAreaData: false });
     }
   },
 
@@ -2436,7 +2455,7 @@ export const useMapStore = create<MapStore>((set, get) => ({
     const state = get();
     if (state.markersAbortController) {
       state.markersAbortController.abort();
-      set({ markersAbortController: null });
+      set({ markersAbortController: null, isLoadingMarkers: false });
     }
   },
 

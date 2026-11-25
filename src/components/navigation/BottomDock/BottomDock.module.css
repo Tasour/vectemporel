@@ -5,7 +5,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 360;
+  z-index: var(--z-dock, 360);
   display: flex;
   align-items: center;
   height: calc(var(--bottom-dock-height, 72px) + env(safe-area-inset-bottom, 0px));

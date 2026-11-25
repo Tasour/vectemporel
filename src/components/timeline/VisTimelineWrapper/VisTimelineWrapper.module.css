@@ -114,20 +114,11 @@
     overscroll-behavior-x: contain;
   }
 
-  .container :global(.vis-timeline) {
-    height: var(--timeline-current-height, 64px) !important;
-    overflow: hidden;
-  }
-
-  .container :global(.vis-panel.vis-background) {
-    pointer-events: none;
-  }
-
   .container :global(.vis-custom-time.selectedYear) {
-    /* Le panneau vis commence après 50 px d'axe : on vise le centre du viewport. */
-    left: calc(50vw - 50px) !important;
+    /* Le trait central est dessiné par la Timeline ; le marqueur vis reste libre. */
+    opacity: 0;
+    pointer-events: none;
     height: var(--timeline-current-height, 64px) !important;
-    transition: none;
   }
 
   .container :global(.vis-loading-screen) {

@@ -73,15 +73,18 @@
   --transition-base: 250ms ease;
   --transition-slow: 350ms ease;
 
-  /* Z-index layers */
+  /* Z-index layers — ordre unique des superpositions */
   --z-dropdown: 100;
   --z-sticky: 200;
+  --z-map: 10;
   --z-fixed: 300;
   --z-timeline: 350;
-  --z-modal-backdrop: 400;
-  --z-modal: 500;
-  --z-popover: 600;
-  --z-tooltip: 700;
+  --z-dock: 360;
+  --z-drawer: 400;
+  --z-modal-backdrop: 450;
+  --z-popover: 500;
+  --z-tooltip: 650;
+  --z-modal: 700;
 
   /* Layout */
   --header-height: 64px;

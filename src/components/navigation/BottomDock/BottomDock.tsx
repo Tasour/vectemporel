@@ -1,6 +1,6 @@
 /** Barre basse compacte : navigation principale + feuille Outils. */
 
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { NAV_ITEMS, type NavItemConfig } from '../navConfig';
@@ -104,6 +104,8 @@ export const BottomDock: React.FC<BottomDockProps> = ({ testId = 'bottom-dock' }
   const toolsOpen = useUIStore((state) => state.bottomToolsOpen);
   const setToolsOpen = useUIStore((state) => state.setBottomToolsOpen);
   const controls = useTimelineQuickControls();
+  const sheetRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
 
   const closeTools = useCallback(() => setToolsOpen(false), [setToolsOpen]);
   const runControl = useCallback(
@@ -131,6 +133,18 @@ export const BottomDock: React.FC<BottomDockProps> = ({ testId = 'bottom-dock' }
     };
   }, [closeTools, testId, toolsOpen]);
 
+  useEffect(() => {
+    if (toolsOpen) {
+      triggerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+      sheetRef.current?.querySelector('button')?.focus();
+      return;
+    }
+    if (triggerRef.current) {
+      triggerRef.current.focus();
+      triggerRef.current = null;
+    }
+  }, [toolsOpen]);
+
   const isNavActive = (item: NavItemConfig): boolean => {
     if (item.to) {
       return location.pathname === item.to || location.pathname.startsWith(`${item.to}/`);
@@ -155,7 +169,7 @@ export const BottomDock: React.FC<BottomDockProps> = ({ testId = 'bottom-dock' }
   return (
     <div className={styles['dock']} data-testid={testId}>
       {toolsOpen ? (
-        <div className={styles['toolsSheet']} role="dialog" aria-label={t('nav.tools', 'Outils')} data-testid="bottom-dock-tools-sheet">
+        <div ref={sheetRef} className={styles['toolsSheet']} role="dialog" aria-label={t('nav.tools', 'Outils')} data-testid="bottom-dock-tools-sheet">
           <p className={styles['sheetTitle']}>{t('nav.tools', 'Outils')}</p>
           <div className={styles['sheetGrid']}>
             {secondaryItems.map((item) => {

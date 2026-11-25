@@ -105,8 +105,18 @@ export const MenuDrawer: React.FC<MenuDrawerProps> = ({
   const title = titleConfig ? t(titleConfig.key, titleConfig.fallback) : '';
 
   return (
-    <div
-      ref={drawerRef}
+    <>
+      {isOpen ? (
+        <button
+          type="button"
+          className={styles['backdrop']}
+          onClick={onClose}
+          aria-label={t('drawer.closePanel', 'Fermer le panneau')}
+          data-testid={`${testId}-backdrop`}
+        />
+      ) : null}
+      <div
+        ref={drawerRef}
       className={drawerClass}
       role="dialog"
       aria-modal="true"
@@ -149,7 +159,8 @@ export const MenuDrawer: React.FC<MenuDrawerProps> = ({
       >
         {children}
       </div>
-    </div>
+      </div>
+    </>
   );
 };
 

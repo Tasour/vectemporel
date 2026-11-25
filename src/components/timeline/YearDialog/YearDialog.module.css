@@ -24,7 +24,7 @@
   justify-content: center;
   
   /* Above all other content */
-  z-index: 9999;
+  z-index: var(--z-modal, 700);
 
   /* Override pointer-events: none inherited from Timeline container */
   pointer-events: auto;
@@ -58,7 +58,7 @@
   position: absolute;
   top: 24px;
   right: 24px;
-  z-index: 10001;
+  z-index: calc(var(--z-modal, 700) + 1);
   
   /* Reset button styles */
   border: none;

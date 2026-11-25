@@ -201,8 +201,18 @@ export const RightDrawer: React.FC<RightDrawerProps> = ({
   const draggingClass = styles['dragging'] ?? '';
 
   return (
-    <aside
-      ref={drawerRef}
+    <>
+      {isOpen ? (
+        <button
+          type="button"
+          className={styles['backdrop']}
+          onClick={onClose}
+          aria-label={t('drawer.closePanel', 'Fermer le panneau')}
+          data-testid="right-drawer-backdrop"
+        />
+      ) : null}
+      <aside
+        ref={drawerRef}
       data-testid="right-drawer"
       className={`${drawerClass} ${isOpen ? openClass : closedClass} ${isDragging ? draggingClass : ''}`}
       style={isOpen ? { width: drawerWidth } : undefined}
@@ -284,7 +294,8 @@ export const RightDrawer: React.FC<RightDrawerProps> = ({
           </div>
         )}
       </div>
-    </aside>
+      </aside>
+    </>
   );
 };
 

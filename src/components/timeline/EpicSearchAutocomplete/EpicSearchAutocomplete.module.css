@@ -23,7 +23,7 @@
     0 2px 4px rgba(0, 0, 0, 0.1);
   
   /* Ensure it appears above other content */
-  z-index: 1000;
+  z-index: var(--z-popover, 500);
 }
 
 /* Input container */
