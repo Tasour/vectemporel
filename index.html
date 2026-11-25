@@ -21,15 +21,17 @@
     <!-- Google Analytics (only loads when VITE_GA_MEASUREMENT_ID is set) -->
 
     <script>
-  const start = () => { const s = document.createElement("script"); s.type = "module"; s.src = "./assets/index-S4H5xUNW.js?v=0df751803d"; document.head.appendChild(s); };
-  const ready = navigator.serviceWorker?.register("./mirror-sw.js?v=0df751803d")
-    .then(() => navigator.serviceWorker.ready) ?? Promise.resolve();
+  const start = () => { const s = document.createElement("script"); s.type = "module"; s.src = "./assets/index-CYDdueqn.js?v=7a5b70532f"; document.head.appendChild(s); };
+  const ready = navigator.serviceWorker?.register("./mirror-sw.js?v=7a5b70532f")
+    .then((reg) => navigator.serviceWorker.getRegistrations().then((regs) => Promise.all(regs
+      .filter((other) => other !== reg && other.active?.scriptURL.includes("mirror-sw.js"))
+      .map((other) => other.unregister()))).then(() => navigator.serviceWorker.ready)) ?? Promise.resolve();
   Promise.race([ready.catch(() => {}), new Promise((r) => setTimeout(r, 1500))]).then(start);
 </script>
     <link rel="modulepreload" crossorigin href="./assets/rolldown-runtime-Dd_uD5pT.js">
     <link rel="modulepreload" crossorigin href="./assets/state-L2g2pCj2.js">
     <link rel="modulepreload" crossorigin href="./assets/vendor-DdtCbtC2.js">
-    <link rel="stylesheet" crossorigin href="./assets/index-wyO6eveM.css?v=0df751803d">
+    <link rel="stylesheet" crossorigin href="./assets/index-DzVyNy7c.css?v=7a5b70532f">
   </head>
   <body>
     <div id="root"></div>

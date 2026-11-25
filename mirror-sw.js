@@ -1,10 +1,24 @@
 /* Miroir API local — sert les réponses extraites de l'API Chronas, sans réseau externe. */
 const PREFIX = new URL('./api/v1/', self.location.href).pathname;
+const BUILD_VERSION = '7a5b70532f';
+const CACHE_NAME = `vectemporel-api-${BUILD_VERSION}`;
+const CACHE_PREFIX = 'vectemporel-api-';
 const MAX_DECOMPRESSED_CACHE = 12;
 const decompressedCache = new Map();
 
 self.addEventListener('install', () => self.skipWaiting());
-self.addEventListener('activate', (event) => event.waitUntil(self.clients.claim()));
+self.addEventListener('activate', (event) => event.waitUntil((async () => {
+  const names = await caches.keys();
+  await Promise.all(names
+    .filter((name) => name.startsWith(CACHE_PREFIX) && name !== CACHE_NAME)
+    .map((name) => caches.delete(name)));
+  decompressedCache.clear();
+  await self.clients.claim();
+  const clients = await self.clients.matchAll({ type: 'window' });
+  for (const client of clients) {
+    client.postMessage({ type: 'VECTEMPOREL_CACHE_RESET', version: BUILD_VERSION });
+  }
+})()));
 
 function decompress(buffer) {
   if (typeof DecompressionStream === 'undefined') return null;
