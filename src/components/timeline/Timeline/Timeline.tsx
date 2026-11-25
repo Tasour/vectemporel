@@ -16,7 +16,7 @@ import type { EpicItem } from '../../../stores/timelineStore';
 import { useUIStore } from '../../../stores/uiStore';
 import { useMapStore } from '../../../stores/mapStore';
 import { useIsMobile } from '../../../hooks/useIsMobile';
-import { dateToYear, formatYearForDisplay, yearToDate } from '../../../utils/yearUtils';
+import { dateToYear, formatYearForDisplay, MAX_YEAR, MIN_YEAR, yearToDate } from '../../../utils/yearUtils';
 import { YearDialog } from '../YearDialog/YearDialog';
 import { AutoplayMenu } from '../AutoplayMenu/AutoplayMenu';
 import { EpicSearchAutocomplete } from '../EpicSearchAutocomplete/EpicSearchAutocomplete';
@@ -117,6 +117,7 @@ export const Timeline: React.FC<TimelineProps> = ({
   const skipRangeSyncRef = useRef(false);
   const initialWindowReadyRef = useRef(false);
   const lastWindowCenterRef = useRef(selectedYear);
+  const lastBufferRef = useRef(0);
   const suppressClickRef = useRef(false);
 
   // Zoom hint visibility — shown briefly on first render
@@ -427,11 +428,32 @@ export const Timeline: React.FC<TimelineProps> = ({
     closeAutoplayMenu();
   }, [startAutoplay, closeAutoplayMenu]);
 
+  /** Élargit les bornes pour que chaque année sélectionnable puisse rester centrée. */
+  const applyDynamicBounds = useCallback((startYear: number, endYear: number) => {
+    const span = Math.max(1, endYear - startYear);
+    const margin = Math.max(250, Math.ceil(span / 2));
+    if (Math.abs(margin - lastBufferRef.current) < 25) return;
+    lastBufferRef.current = margin;
+    const timeline = timelineRef.current;
+    if (!timeline) return;
+    skipRangeSyncRef.current = true;
+    timeline.setOptions({
+      min: yearToDate(MIN_YEAR - margin).toISOString(),
+      max: yearToDate(MAX_YEAR + margin).toISOString(),
+    });
+    window.setTimeout(() => {
+      skipRangeSyncRef.current = false;
+    }, 80);
+  }, []);
+
   const handleOverlayRangeChanged = useCallback(() => {
     const windowRange = timelineRef.current?.getWindow();
     if (!windowRange) return;
-    setOverlayRange({ start: dateToYear(windowRange.start), end: dateToYear(windowRange.end) });
-  }, []);
+    const startYear = dateToYear(windowRange.start);
+    const endYear = dateToYear(windowRange.end);
+    setOverlayRange({ start: startYear, end: endYear });
+    applyDynamicBounds(startYear, endYear);
+  }, [applyDynamicBounds]);
 
   /** Remet la fenêtre autour de l'année courante après un saut automatique. */
   const restoreWindow = useCallback((year: number) => {

@@ -1860,8 +1860,10 @@ export const useMapStore = create<MapStore>((set, get) => ({
         religionGeneral: convertToMetadataEntry(religionGeneralData, false, localizedNames?.['religionGeneral']),
       };
 
-      // Set provinces GeoJSON and compute adjacency graph if available
-      if (provincesData?.features) {
+      // Le rechargement localisé ne doit pas écraser les propriétés de couleur
+      // déjà calculées : on ne remplace la géométrie qu'au premier chargement.
+      const currentGeoJSON = get().provincesGeoJSON;
+      if (!currentGeoJSON && provincesData?.features) {
         const adjacencyGraph = computeAdjacencyGraph(provincesData);
         set({ provincesGeoJSON: provincesData, adjacencyGraph });
       }
@@ -1870,6 +1872,11 @@ export const useMapStore = create<MapStore>((set, get) => ({
         metadata,
         isLoadingMetadata: false,
       });
+
+      // Les noms changent avec la langue, les couleurs doivent rester celles
+      // de l'année courante.
+      const currentAreaData = get().currentAreaData;
+      if (currentAreaData) get().updateProvinceProperties(currentAreaData);
 
       return metadata;
     } catch (error) {

@@ -1875,6 +1875,31 @@ describe('entity outline', () => {
         expect(result!.religion['chalcedonism']?.parent).toBe('Christianity');
       });
 
+      it('should keep province colors when reloading metadata for another locale', async () => {
+        setupMetadataMock({
+          ruler: { _Almohad_Caliphate: 'Almohades' },
+        });
+        const feature = {
+          type: 'Feature' as const,
+          properties: { name: 'ProvinceTest' },
+          geometry: { type: 'Point' as const, coordinates: [0, 0] },
+        };
+        useMapStore.setState({
+          provincesGeoJSON: { type: 'FeatureCollection', features: [feature] } as never,
+          currentAreaData: { ProvinceTest: ['_Almohad_Caliphate', 'chamic', 'chalcedonism', 'cap', 100] } as never,
+        });
+
+        await act(async () => {
+          await useMapStore.getState().loadMetadata('fr');
+        });
+
+        const props = useMapStore.getState().provincesGeoJSON?.features[0]?.properties as Record<string, unknown>;
+        expect(props['r']).toBe('_Almohad_Caliphate');
+        expect(props['c']).toBe('chamic');
+        expect(props['rDark']).toBeTruthy();
+        expect(useMapStore.getState().metadata?.ruler['_Almohad_Caliphate']?.name).toBe('Almohades');
+      });
+
       it('should fall back to English names when localized fetch fails', async () => {
         setupMetadataMock(new Error('Localization not available'));
 

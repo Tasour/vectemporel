@@ -7,27 +7,52 @@
 }
 
 .period {
+  --period-bg: color-mix(in srgb, var(--period-color) 16%, #ffffff);
+  --period-label-color: var(--period-color);
   position: absolute;
   top: 0;
   bottom: 0;
-  border-left: 1px solid rgba(255, 255, 255, 0.18);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 60%);
+  border-left: 2px solid var(--period-color);
+  background: var(--period-bg);
+  transition: none;
+}
+
+.toneAntiquity {
+  --period-color: #8a6b1f;
+}
+
+.toneMedieval {
+  --period-color: #6b4f8a;
+}
+
+.toneModern {
+  --period-color: #1f6b78;
+}
+
+.toneContemporary {
+  --period-color: #8a3f4f;
+}
+
+[data-theme='dark'] .period,
+[data-theme='luther'] .period {
+  --period-bg: color-mix(in srgb, var(--period-color) 38%, #000000);
+  --period-label-color: color-mix(in srgb, var(--period-color) 55%, #ffffff);
 }
 
 .periodLabel {
   position: absolute;
   top: 3px;
-  left: 5px;
   padding: 1px 5px;
   border-radius: 3px;
-  background: rgba(12, 10, 8, 0.55);
-  color: rgba(255, 243, 211, 0.9);
+  background: var(--period-bg);
+  color: var(--period-label-color);
   font-family: 'Inter', system-ui, sans-serif;
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   white-space: nowrap;
+  transition: none;
 }
 
 .tick {
@@ -35,6 +60,7 @@
   bottom: 0;
   height: 12px;
   border-left: 1px solid rgba(255, 255, 255, 0.35);
+  transition: none;
 }
 
 .tickLabel {

@@ -53,6 +53,10 @@ L'utilisateur a explicitement demandé la suppression des attributions affichée
 
 Le gate Apple v1.9.0 sur l'application en 1658×1150 et 390×844 rend **P0 = 0**, **P1 = 0**, **P2 = 0**.
 
+## Paquet de téléchargement
+
+Le bouton de téléchargement assemble un JSON local par langue : fiches sélectionnées, vignettes/crédits inlinés, source et `locale`. Aucun appel réseau supplémentaire. Les extraits conservent la langue de leur source d’extraction (`en.wikipedia.org`) ; seule l’étiquette du paquet et l’interface sont françaises par défaut.
+
 ## Limite réseau connue
 
 Les tuiles du fond de carte (`tiles.openfreemap.org`, données Natural Earth / OpenStreetMap) restent chargées depuis le réseau : ce sont des ressources de la stack MapLibre du fork, pas des endpoints de l'API Chronas. Le miroir local couvre l'API (8 023 réponses), pas les tuiles cartographiques.

@@ -23,6 +23,12 @@ Tous les panneaux du bas (Couches, Découvrir, Collections, Téléchargements, R
 
 La timeline porte une **surcouche** (`TimelineOverlay`) au-dessus de vis-timeline : graduations d’années recalculées depuis la fenêtre visible et grandes périodes (Antiquité, Moyen Âge, Temps modernes, Contemporain). Elle est synchronisée pendant le drag, ignore les pointeurs et ne bloque ni le trait central fixe ni le geste tactile. Les étiquettes dupliquées de vis-time-axis sont masquées.
 
+Le pas de graduation suit le zoom : `graduationStep` choisit un multiple 1-2-5 de puissance de dix d’après la largeur réelle de la surcouche (`ResizeObserver`) et la fenêtre affichée. Dézoomer augmente donc le pas au lieu de conserver les mêmes graduations.
+
+Chaque période possède sa propre couleur : le rectangle couvre **l’intégralité des années de début et de fin**, même lorsqu’il dépasse la fenêtre visible ; seul le débordement est masqué. Le libellé est ancré dans la portion visible, sans transition de sortie, ce qui évite la superposition avec la période précédente. La teinte de fond est éclaircie en thème clair et assombrie en thème sombre.
+
+Les bornes de vis-timeline sont élargies dynamiquement d’une marge égale à la moitié de la fenêtre visible : `-2000` et `2000` peuvent tous deux être amenés sous le trait central, quel que soit le niveau de zoom. L’année sélectionnée reste limitée à `[-2000, 2000]`.
+
 ### Frontières entre régions
 
 Les frontières ne sont plus noires à 100 % : chaque province reçoit, pour la dimension de couleur active, une **teinte assombrie de la couleur de son ensemble** (`darkenColor`, facteur 0,65). Les deux couches de lignes MapLibre utilisent la même expression, ce qui supprime le liseré noir résiduel tout en conservant la lisibilité entre ensembles distincts.
@@ -41,6 +47,11 @@ Le chemin année → carte est mesuré avec `performance.mark/measure` (`vectemp
 - **Tiroir droit** (détails de province/article) : indépendant du menu bas, réduit uniquement la largeur de la carte.
 - **Échap** ferme uniquement la couche la plus haute ; le focus revient au bouton déclencheur.
 - Les requêtes annulées lors d’un changement rapide d’année ne déclenchent plus d’erreur visible.
+- Le rechargement des métadonnées pour changer de langue ne remplace plus le GeoJSON déjà coloré : les noms suivent la locale tandis que les couleurs de l’année courante sont réappliquées.
+
+### Téléchargements
+
+Le panneau Téléchargements sélectionne toujours des groupes ou des provinces ; le bouton **Télécharger en `<langue>`** construit maintenant un paquet JSON local contenant les fiches disponibles, leurs vignettes et crédits déjà inlinés, ainsi que `locale`, la source et la date de génération. Le nom de fichier inclut la langue (`vectemporel-fr-articles-…json`). Aucune requête réseau n’est ajoutée : les fiches sont lues depuis `./articles/`. Les fiches indisponibles sont ignorées et comptées à part dans le statut. Le corps des extraits reste celui de la source locale extraite (`en.wikipedia.org`) : le paquet est identifié `fr` et utilise l’interface et les métadonnées françaises, mais aucune traduction n’est fabriquée artificiellement.
 
 `scripts/patch-pages.mjs` corrige les chemins absolus du build pour GitHub Pages. Le fond de carte OpenFreeMap reste la seule ressource externe au runtime.
 

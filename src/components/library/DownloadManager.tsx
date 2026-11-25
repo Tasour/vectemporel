@@ -1,10 +1,12 @@
 /** Panneau de sélection hiérarchique : continent → époque → groupe → provinces. */
 
 import React, { useCallback, useMemo, useState } from 'react';
+import { buildDownloadBundle, saveBundle } from '@/features/library/downloadBundle';
 import { effectiveGroupIds, groupSelectionKey, itemSelectionKey } from '@/features/library/selection';
 import { useLibraryData } from '@/features/library/useLibrary';
 import type { CatalogGroup, DownloadKey } from '@/features/library/types';
 import { useDownloadStore } from '@/stores/downloadStore';
+import { useUIStore } from '@/stores/uiStore';
 import styles from './Library.module.css';
 
 interface TriStateCheckboxProps {
@@ -27,11 +29,11 @@ const TriStateCheckbox: React.FC<TriStateCheckboxProps> = ({
   return (
     <input
       ref={ref}
+      aria-label={label}
       className={styles['checkbox']}
       type="checkbox"
       checked={checked}
       onChange={onChange}
-      aria-label={label}
     />
   );
 };
@@ -86,11 +88,11 @@ const TreeGroup: React.FC<TreeGroupProps> = ({
                 className={`${styles['itemChip'] ?? ''} ${selected.has(key) ? styles['itemChipActive'] ?? '' : ''}`}
               >
                 <input
+                  aria-label={`Sélectionner la province ${item}`}
                   className={styles['checkbox']}
                   type="checkbox"
                   checked={selected.has(key)}
                   onChange={() => onToggleItem(group, item)}
-                  aria-label={`Sélectionner la province ${item}`}
                 />
                 {item}
               </label>
@@ -113,6 +115,9 @@ export const DownloadManager: React.FC = () => {
   const [query, setQuery] = useState('');
   const [expanded, setExpanded] = useState<ReadonlySet<string>>(new Set());
   const [visibleGroups, setVisibleGroups] = useState(60);
+  const [downloadStatus, setDownloadStatus] = useState('');
+  const [downloading, setDownloading] = useState(false);
+  const locale = useUIStore((state) => state.locale);
 
   const selectedSet = useMemo(() => new Set(selected), [selected]);
   const available = useMemo(
@@ -212,6 +217,26 @@ export const DownloadManager: React.FC = () => {
     URL.revokeObjectURL(url);
   };
 
+  const runDownload = async () => {
+    if (!manifest || selectedGroupIds.length === 0 || downloading) return;
+    setDownloading(true);
+    setDownloadStatus('Préparation du paquet…');
+    try {
+      const bundle = await buildDownloadBundle({
+        groupIds: selectedGroupIds,
+        manifest,
+        locale,
+        onProgress: (done, total) => setDownloadStatus(`Fiches ${String(done)}/${String(total)}`),
+      });
+      saveBundle(bundle);
+      setDownloadStatus(`${String(bundle.count)} fiche(s) exportée(s) pour la langue ${locale}.`);
+    } catch (error) {
+      setDownloadStatus(error instanceof Error ? error.message : 'Échec du téléchargement.');
+    } finally {
+      setDownloading(false);
+    }
+  };
+
   return (
     <div className={styles['panel']} data-testid="download-manager">
       <div className={styles['panelHeader']}>
@@ -226,17 +251,18 @@ export const DownloadManager: React.FC = () => {
 
       <div className={styles['searchRow']}>
         <input
+          aria-label="Rechercher dans le catalogue"
           className={styles['input']}
           type="search"
           value={query}
+          placeholder="Rechercher un peuple, un souverain, une province…"
           onChange={(event) => {
             setQuery(event.target.value);
             setVisibleGroups(60);
           }}
-          placeholder="Rechercher un peuple, un souverain, une province…"
-          aria-label="Rechercher dans le catalogue"
         />
         <select
+          aria-label="Filtrer par continent"
           className={styles['select']}
           value={continent}
           onChange={(event) => {
@@ -244,7 +270,6 @@ export const DownloadManager: React.FC = () => {
             setEpoch('');
             setVisibleGroups(60);
           }}
-          aria-label="Filtrer par continent"
         >
           <option value="">Tous les continents</option>
           {(catalog?.continents ?? []).map((item) => (
@@ -255,13 +280,13 @@ export const DownloadManager: React.FC = () => {
 
       {continent ? (
         <select
+          aria-label="Filtrer par époque"
           className={styles['select']}
           value={epoch}
           onChange={(event) => {
             setEpoch(event.target.value);
             setVisibleGroups(60);
           }}
-          aria-label="Filtrer par époque"
         >
           <option value="">Toutes les époques</option>
           {epochRows.map((item) => (
@@ -377,6 +402,17 @@ export const DownloadManager: React.FC = () => {
           >
             {allSelected ? 'Sélection complète' : someSelected ? 'Compléter la sélection' : 'Tout prendre ici'}
           </button>
+          <button
+            type="button"
+            className={styles['button']}
+            onClick={() => {
+              void runDownload();
+            }}
+            disabled={!readyCount || downloading}
+            data-testid="download-run"
+          >
+            {downloading ? 'Téléchargement…' : `Télécharger en ${locale}`}
+          </button>
           <button type="button" className={styles['button']} onClick={exportSelection} disabled={!selectedGroupIds.length}>
             Exporter la sélection
           </button>
@@ -386,7 +422,7 @@ export const DownloadManager: React.FC = () => {
         </div>
       </div>
       <p className={styles['status']} role="status" aria-live="polite">
-        Sélection enregistrée sur cet appareil.
+        {downloadStatus || 'Sélection enregistrée sur cet appareil.'}
       </p>
     </div>
   );

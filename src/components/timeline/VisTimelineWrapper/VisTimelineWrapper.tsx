@@ -83,6 +83,7 @@ export interface VisTimelineRef {
   moveTo: (time: Date, options?: { animation?: boolean }) => void;
   zoomIn: (percentage: number) => void;
   zoomOut: (percentage: number) => void;
+  setOptions: (options: TimelineOptions) => void;
 }
 
 export interface VisTimelineWrapperProps {
@@ -218,6 +219,7 @@ function VisTimelineWrapperComponent(
     moveTo: (time: Date, opts?: { animation?: boolean }) => timelineRef.current?.moveTo(time, opts),
     zoomIn: (percentage: number) => timelineRef.current?.zoomIn(percentage),
     zoomOut: (percentage: number) => timelineRef.current?.zoomOut(percentage),
+    setOptions: (options: TimelineOptions) => timelineRef.current?.setOptions(options),
   }), []);
 
   useEffect(() => {
