@@ -147,7 +147,15 @@
     "stepSize": "Step Size in Years",
     "delay": "Delay in Sec",
     "repeat": "Repeat",
-    "startSlideshow": "START SLIDESHOW"
+    "startSlideshow": "START SLIDESHOW",
+    "dockLabel": "Timeline",
+    "short": {
+      "expand": "Expand",
+      "collapse": "Collapse",
+      "reset": "Reset",
+      "search": "Epics",
+      "autoplay": "Play"
+    }
   },
   "drawer": {
     "noContent": "No content selected",

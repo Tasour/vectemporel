@@ -15,17 +15,13 @@ import { useTimelineStore, fetchEpicCoordinates } from '../../../stores/timeline
 import type { EpicItem } from '../../../stores/timelineStore';
 import { useUIStore } from '../../../stores/uiStore';
 import { useMapStore } from '../../../stores/mapStore';
-import { useNavigationStore } from '../../../stores/navigationStore';
 import { useIsMobile } from '../../../hooks/useIsMobile';
 import { dateToYear, formatYearForDisplay, yearToDate } from '../../../utils/yearUtils';
-import { TimelineControls } from '../TimelineControls/TimelineControls';
 import { YearDialog } from '../YearDialog/YearDialog';
 import { AutoplayMenu } from '../AutoplayMenu/AutoplayMenu';
 import { EpicSearchAutocomplete } from '../EpicSearchAutocomplete/EpicSearchAutocomplete';
 import { VisTimelineWrapper, type TimelineItem, type TimelineGroup, type TimelineOptions, type VisTimelineRef, type TimelineClickEvent } from '../VisTimelineWrapper/VisTimelineWrapper';
 import { YearMarkerLabel } from '../YearMarkerLabel';
-import { CenturyNav } from '../CenturyNav';
-import { EraBands } from '../EraBands';
 import styles from './Timeline.module.css';
 
 /**
@@ -33,7 +29,7 @@ import styles from './Timeline.module.css';
  */
 const TIMELINE_GROUPS: TimelineGroup[] = [{
   id: 1,
-  content: 'Epics',
+  content: '',
   className: 'timelineGroup_epics',
 }];
 
@@ -92,16 +88,20 @@ export const Timeline: React.FC<TimelineProps> = ({
     suggestedYear,
     isExpanded,
     isAutoplayActive,
+    isAutoplayMenuOpen,
+    isSearchOpen,
+    isYearDialogOpen,
     autoplayConfig,
-    toggleExpanded,
     setYear,
     setAutoplayConfig,
     startAutoplay,
-    stopAutoplay,
+    setNotDefaultView,
+    toggleYearDialog,
     getFilteredEpicItems,
     epicItems, // Subscribe to epicItems to trigger re-render when loaded
     epicFilters, // Subscribe to epicFilters to trigger re-render when filters change
-    isAutoplayMenuOpen: storeAutoplayMenuOpen,
+    centerOnYearRequest,
+    clearCenterOnYearRequest,
   } = useTimelineStore();
 
   // Get right drawer state to shift timeline away from it
@@ -109,9 +109,6 @@ export const Timeline: React.FC<TimelineProps> = ({
   // Get openRightDrawer from uiStore for epic click handling
   // Requirements: 6.3
   const openRightDrawer = useUIStore((state) => state.openRightDrawer);
-  // Get layers drawer state to shift timeline controls
-  const layersDrawerOpen = useNavigationStore((state) => state.drawerOpen);
-
   // Ref for the vis-timeline wrapper
   const timelineRef = useRef<VisTimelineRef>(null);
   const isMobile = useIsMobile();
@@ -125,19 +122,9 @@ export const Timeline: React.FC<TimelineProps> = ({
     return () => clearTimeout(timer);
   }, []);
 
-  // Local state for dialogs/menus
-  const [isYearDialogOpen, setIsYearDialogOpen] = useState(false);
-  const [isLocalAutoplayMenuOpen, setIsLocalAutoplayMenuOpen] = useState(false);
-  // Show the menu if either the local (timeline-button) state or the store (sidebar) state is open
-  const isAutoplayMenuOpen = isLocalAutoplayMenuOpen || storeAutoplayMenuOpen;
   const closeAutoplayMenu = useCallback(() => {
-    setIsLocalAutoplayMenuOpen(false);
-    if (useTimelineStore.getState().isAutoplayMenuOpen) {
-      useTimelineStore.setState({ isAutoplayMenuOpen: false });
-    }
+    useTimelineStore.setState({ isAutoplayMenuOpen: false });
   }, []);
-  const [isEpicSearchOpen, setIsEpicSearchOpen] = useState(false);
-  const [isDefaultView, setIsDefaultView] = useState(true);
 
   const getDotHtml = useCallback((subtype: string): string => {
     const color = TYPE_DOT_COLORS[subtype] ?? 'rgba(180,180,180,0.6)';
@@ -295,7 +282,7 @@ export const Timeline: React.FC<TimelineProps> = ({
         
         // Set year to the epic's start year
         setYear(clickedEpic.start.getFullYear());
-        setIsDefaultView(false);
+        setNotDefaultView();
         
         // Fetch epic linked content and fly map to show coordinates
         // This matches production behavior where clicking an epic flies the map
@@ -348,7 +335,7 @@ export const Timeline: React.FC<TimelineProps> = ({
         }
       }
     }
-  }, [getFilteredEpicItems, onEpicSelect, openRightDrawer, setYear]);
+  }, [getFilteredEpicItems, onEpicSelect, openRightDrawer, setNotDefaultView, setYear]);
 
   /**
    * Handle timeline click (not on an item) - set year
@@ -357,9 +344,9 @@ export const Timeline: React.FC<TimelineProps> = ({
     if (!event.item) {
       const clickedYear = event.time.getFullYear();
       setYear(clickedYear);
-      setIsDefaultView(false);
+      setNotDefaultView();
     }
-  }, [setYear]);
+  }, [setNotDefaultView, setYear]);
 
   /** Recentre la fenêtre sur une année sans répercuter le mouvement sur le store. */
   const centerOnYear = useCallback((year: number, animated = false) => {
@@ -372,57 +359,38 @@ export const Timeline: React.FC<TimelineProps> = ({
     }, animated ? 450 : 60);
   }, []);
 
-  // Handlers
-  const handleToggleExpand = useCallback(() => {
-    toggleExpanded();
-  }, [toggleExpanded]);
-
-  const handleReset = useCallback(() => {
-    setYear(1000);
-    setIsDefaultView(true);
-    if (isMobile) centerOnYear(1000);
-  }, [centerOnYear, isMobile, setYear]);
-
-  const handleSearchOpen = useCallback(() => {
-    setIsEpicSearchOpen((prev) => !prev);
-  }, []);
-
-  const handleAutoplayOpen = useCallback(() => {
-    if (isAutoplayActive) {
-      // If autoplay is running, stop it directly
-      stopAutoplay();
-    } else {
-      // Otherwise toggle the autoplay menu (local, from timeline button)
-      setIsLocalAutoplayMenuOpen((prev) => !prev);
-    }
-  }, [isAutoplayActive, stopAutoplay]);
+  useEffect(() => {
+    if (centerOnYearRequest === null) return;
+    centerOnYear(centerOnYearRequest);
+    clearCenterOnYearRequest();
+  }, [centerOnYear, centerOnYearRequest, clearCenterOnYearRequest]);
 
   const handleYearDialogClose = useCallback(() => {
-    setIsYearDialogOpen(false);
+    useTimelineStore.setState({ isYearDialogOpen: false });
   }, []);
 
   const handleYearDialogSubmit = useCallback((year: number) => {
     setYear(year);
-    setIsYearDialogOpen(false);
-    setIsDefaultView(false);
+    useTimelineStore.setState({ isYearDialogOpen: false });
+    setNotDefaultView();
     // Move the timeline viewport to center on the new year
     if (isMobile) centerOnYear(year, true);
     else if (timelineRef.current) {
       const targetDate = new Date(new Date(0, 1, 1).setFullYear(year));
       timelineRef.current.moveTo(targetDate, { animation: true });
     }
-  }, [centerOnYear, isMobile, setYear]);
+  }, [centerOnYear, isMobile, setNotDefaultView, setYear]);
 
   const handleYearClick = useCallback(() => {
-    setIsYearDialogOpen(true);
-  }, []);
+    toggleYearDialog();
+  }, [toggleYearDialog]);
 
   const handleAutoplayMenuClose = useCallback(() => {
     closeAutoplayMenu();
   }, [closeAutoplayMenu]);
 
   const handleEpicSearchClose = useCallback(() => {
-    setIsEpicSearchOpen(false);
+    useTimelineStore.setState({ isSearchOpen: false });
   }, []);
 
   const handleEpicSearchSelect = useCallback((epic: EpicItem, startYear: number, endYear: number) => {
@@ -434,31 +402,19 @@ export const Timeline: React.FC<TimelineProps> = ({
     }
     // Set year to the epic's start year
     setYear(startYear);
-    setIsEpicSearchOpen(false);
-    setIsDefaultView(false);
+    useTimelineStore.setState({ isSearchOpen: false });
+    setNotDefaultView();
     
     // Call optional callback if provided
     if (onEpicSelect) {
       onEpicSelect(epic);
     }
-  }, [setYear, onEpicSelect]);
+  }, [setNotDefaultView, setYear, onEpicSelect]);
 
   const handleAutoplayStart = useCallback(() => {
     startAutoplay();
     closeAutoplayMenu();
   }, [startAutoplay, closeAutoplayMenu]);
-
-  const handleCenturyJump = useCallback((year: number) => {
-    setYear(year);
-    setIsDefaultView(false);
-    if (timelineRef.current) {
-      const start = new Date(0, 0, 1);
-      start.setFullYear(year - 250);
-      const end = new Date(0, 0, 1);
-      end.setFullYear(year + 250);
-      timelineRef.current.setWindow(start, end, { animation: true });
-    }
-  }, [setYear]);
 
   /** Sur mobile, l'année est celle qui passe sous le trait central fixe. */
   const handleRangeChange = useCallback(() => {
@@ -470,9 +426,9 @@ export const Timeline: React.FC<TimelineProps> = ({
     const year = dateToYear(center);
     if (year !== useTimelineStore.getState().selectedYear) {
       setYear(year);
-      setIsDefaultView(false);
+      setNotDefaultView();
     }
-  }, [isMobile, setYear]);
+  }, [isMobile, setNotDefaultView, setYear]);
 
   useEffect(() => {
     if (!isMobile) return;
@@ -529,8 +485,6 @@ export const Timeline: React.FC<TimelineProps> = ({
 
   // Shift timeline away from open drawers on desktop only
   const timelineRight = rightDrawerOpen && !isMobile ? '35%' : '0';
-  // Controls left: 50px sidebar + 250px layers panel + 14px gap = 314px when open, 64px when closed
-  const controlsLeft = isMobile ? 0 : layersDrawerOpen ? 314 : 64;
 
   const timelineContent = (
     <div
@@ -543,24 +497,6 @@ export const Timeline: React.FC<TimelineProps> = ({
       aria-label="Timeline navigation"
     >
       <div className={styles['content']}>
-        {/* Century quick-nav bar */}
-        <CenturyNav selectedYear={selectedYear} onJumpToYear={handleCenturyJump} />
-
-        {/* Era background bands for orientation */}
-        <EraBands />
-
-        {/* Timeline controls (Requirement 6.1-6.10) */}
-        <TimelineControls
-          isExpanded={isExpanded}
-          isDefaultView={isDefaultView}
-          onToggleExpand={handleToggleExpand}
-          onReset={handleReset}
-          onSearchOpen={handleSearchOpen}
-          onAutoplayOpen={handleAutoplayOpen}
-          isAutoplayActive={isAutoplayActive}
-          leftOffset={controlsLeft}
-        />
-
         {/* Vis.js Timeline with epic items (Requirements 6.2, 6.4, 6.5) */}
         <VisTimelineWrapper
           key={isMobile ? 'mobile' : 'desktop'}
@@ -612,7 +548,7 @@ export const Timeline: React.FC<TimelineProps> = ({
         )}
 
         {/* Epic Search Autocomplete (Requirement 8.1-8.7) */}
-        {isEpicSearchOpen && (
+        {isSearchOpen && (
           <div className={styles['epicSearchContainer']}>
             <EpicSearchAutocomplete
               epics={getFilteredEpicItems()}

@@ -130,7 +130,15 @@
     "stepSize": "Taille du pas en années",
     "delay": "Délai en secondes",
     "repeat": "Répéter",
-    "startSlideshow": "DÉMARRER LE DIAPORAMA"
+    "startSlideshow": "DÉMARRER LE DIAPORAMA",
+    "dockLabel": "Chronologie",
+    "short": {
+      "expand": "Agrandir",
+      "collapse": "Réduire",
+      "reset": "Réinitialiser",
+      "search": "Épopées",
+      "autoplay": "Lecture"
+    }
   },
   "drawer": {
     "noContent": "Aucun contenu sélectionné",

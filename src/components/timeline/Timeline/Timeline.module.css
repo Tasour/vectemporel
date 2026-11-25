@@ -10,9 +10,8 @@
 /* Main timeline container */
 .timeline {
   position: fixed;
-  bottom: 0;
-  /* Start after the sidebar (50px) to avoid overlapping nav items */
-  left: 50px;
+  bottom: calc(var(--bottom-dock-height, 128px) + env(safe-area-inset-bottom, 0px));
+  left: 0;
   right: 0;
   width: auto;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.8) 60%, rgba(0, 0, 0, 0.4) 100%);
@@ -119,8 +118,6 @@
   .timeline {
     --timeline-collapsed-height: 64px;
     --timeline-expanded-height: 220px;
-    left: 0;
-    bottom: calc(var(--mobile-dock-height, 72px) + env(safe-area-inset-bottom, 0px));
   }
 
   .collapsed {

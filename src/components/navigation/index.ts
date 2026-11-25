@@ -9,7 +9,7 @@ export { NavItem, type NavItemProps } from './NavItem';
 export { Logo, type LogoProps } from './Logo';
 export { UserAvatar, type UserAvatarProps } from './UserAvatar';
 export { MenuDrawer, type MenuDrawerProps } from './MenuDrawer';
-export { MobileDock, type MobileDockProps } from './MobileDock';
+export { BottomDock, type BottomDockProps } from './BottomDock';
 export { Tooltip, type TooltipProps, type TooltipPosition } from './Tooltip';
 export {
   NAV_ITEMS,

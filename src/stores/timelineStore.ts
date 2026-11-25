@@ -180,6 +180,8 @@ export interface TimelineState {
   isAutoplayMenuOpen: boolean;
   /** Whether year dialog is open */
   isYearDialogOpen: boolean;
+  /** Année à recentrer sur la timeline mobile, consommée par le composant timeline */
+  centerOnYearRequest: number | null;
 }
 
 /**
@@ -222,6 +224,10 @@ export interface TimelineActions {
   toggleYearDialog: () => void;
   /** Close all menus */
   closeAllMenus: () => void;
+  /** Demande le recentrage visuel sur une année */
+  requestCenterOnYear: (year: number) => void;
+  /** Consomme la demande de recentrage */
+  clearCenterOnYearRequest: () => void;
 }
 
 /**
@@ -369,6 +375,7 @@ export const initialState: TimelineState = {
   isSearchOpen: false,
   isAutoplayMenuOpen: false,
   isYearDialogOpen: false,
+  centerOnYearRequest: null,
 };
 
 /**
@@ -905,6 +912,14 @@ export const useTimelineStore = create<TimelineStore>((set, get) => ({
       isAutoplayMenuOpen: false,
       isYearDialogOpen: false,
     });
+  },
+
+  requestCenterOnYear: (year: number) => {
+    set({ centerOnYearRequest: clampYear(year) });
+  },
+
+  clearCenterOnYearRequest: () => {
+    set({ centerOnYearRequest: null });
   },
 }));
 

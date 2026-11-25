@@ -226,7 +226,7 @@
 /* Mobile : les contrôles restent au-dessus de la barre de navigation */
 @media (max-width: 767px) {
   .timelineControls {
-    bottom: calc(var(--mobile-dock-height, 72px) + env(safe-area-inset-bottom, 0px));
+    bottom: calc(var(--bottom-dock-height, 128px) + env(safe-area-inset-bottom, 0px));
   }
 }
 
@@ -235,7 +235,7 @@
   .timelineControls {
     /* La sidebar est remplacée par la barre basse */
     left: 0;
-    bottom: calc(var(--mobile-dock-height, 72px) + env(safe-area-inset-bottom, 0px));
+    bottom: calc(var(--bottom-dock-height, 128px) + env(safe-area-inset-bottom, 0px));
     gap: 6px;
   }
   

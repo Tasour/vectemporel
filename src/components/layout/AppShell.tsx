@@ -1,8 +1,7 @@
 import type React from 'react';
-import { lazy, Suspense, useEffect } from 'react';
+import { lazy, Suspense } from 'react';
 import { MainContent } from './MainContent';
-import { Sidebar } from '../navigation/Sidebar';
-import { MobileDock } from '../navigation/MobileDock';
+import { BottomDock } from '../navigation/BottomDock';
 import { MenuDrawer } from '../navigation/MenuDrawer';
 import { RightDrawer } from './RightDrawer/RightDrawer';
 import { CollectionsContent } from '../library/CollectionsContent';
@@ -29,14 +28,8 @@ export interface AppShellProps {
  * Requirements: 2.1, 2.4, 2.7, 2.8, 2.9
  */
 export const AppShell: React.FC<AppShellProps> = ({ children, className }) => {
-  const { sidebarOpen, toggleSidebar, setSidebarOpen, rightDrawerOpen, rightDrawerContent, closeRightDrawer, loginDialogOpen, closeLoginDialog, infoDialogOpen, infoDialogTab, closeInfoDialog } = useUIStore();
+  const { rightDrawerOpen, rightDrawerContent, closeRightDrawer, loginDialogOpen, closeLoginDialog, infoDialogOpen, infoDialogTab, closeInfoDialog } = useUIStore();
   const { drawerOpen, drawerContent, closeDrawer } = useNavigationStore();
-
-  useEffect(() => {
-    if (drawerOpen && window.matchMedia('(max-width: 767px)').matches) {
-      setSidebarOpen(false);
-    }
-  }, [drawerOpen, setSidebarOpen]);
 
   /**
    * Handles closing the right drawer and clearing URL params.
@@ -51,7 +44,7 @@ export const AppShell: React.FC<AppShellProps> = ({ children, className }) => {
   return (
     <div
       data-testid="app-shell"
-      className={`${styles['shell'] ?? ''} ${sidebarOpen ? styles['sidebarOpen'] ?? '' : styles['sidebarClosed'] ?? ''} ${className ?? ''}`.trim()}
+      className={`${styles['shell'] ?? ''} ${className ?? ''}`.trim()}
     >
       {/* Header hidden - production uses sidebar logo as branding */}
       {/* <Header /> */}
@@ -60,11 +53,6 @@ export const AppShell: React.FC<AppShellProps> = ({ children, className }) => {
       <LoadingBar />
       
       <div className={styles['body']}>
-        <Sidebar
-          isOpen={sidebarOpen}
-          onToggle={toggleSidebar}
-        />
-        
         <MainContent>
           {children}
         </MainContent>
@@ -94,7 +82,7 @@ export const AppShell: React.FC<AppShellProps> = ({ children, className }) => {
         <Timeline />
       </Suspense>
 
-      <MobileDock />
+      <BottomDock />
 
       <LoginDialog isOpen={loginDialogOpen} onClose={closeLoginDialog} />
       <InfoDialog isOpen={infoDialogOpen} onClose={closeInfoDialog} initialTab={infoDialogTab} />
