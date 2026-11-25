@@ -263,29 +263,6 @@ export function DeckGLOverlay(props: DeckGLOverlayProps) {
      * - Population uses opacity interpolation between 0.3 and 0.8
      */
     if (provincesGeoJSON && layerVisibility[activeColor]) {
-      /**
-       * Frontières dérivées du remplissage : une teinte proche de la province,
-       * avec une alpha faible. Les frontières internes (même entité) se fondent
-       * dans la couleur commune ; les frontières entre entités restent visibles
-       * par la superposition des deux teintes.
-       */
-      const isDark = theme.className === 'dark';
-      const borderFactor = isDark ? 1.3 : 0.7;
-      const borderAlpha = isDark ? 160 : 128;
-      const clampByte = (value: number) => Math.max(0, Math.min(255, Math.round(value)));
-      const getBorderColor = (feature: unknown): [number, number, number, number] => {
-        const props = (feature as { properties?: Record<string, unknown> } | null)?.properties;
-        const provinceId = (props?.['id'] as string | undefined) ?? (props?.['name'] as string | undefined);
-        if (!provinceId) return [80, 80, 80, borderAlpha];
-        const fill = getProvinceColor(provinceId, areaData, activeColor, metadata);
-        return [
-          clampByte(fill[0] * borderFactor),
-          clampByte(fill[1] * borderFactor),
-          clampByte(fill[2] * borderFactor),
-          borderAlpha,
-        ];
-      };
-
       const areaColorLayer = new GeoJsonLayer({
         id: `area-color-${activeColor}`,
         data: provincesGeoJSON,
@@ -302,13 +279,12 @@ export function DeckGLOverlay(props: DeckGLOverlayProps) {
           return getProvinceColor(provinceId, areaData, activeColor, metadata);
         },
         // Requirements: 5.5 - Population opacity interpolation
-        getLineColor: getBorderColor,
-        getLineWidth: 0.9,
+        getLineColor: [80, 80, 80, 255] as [number, number, number, number],
+        getLineWidth: 1,
         // Apply opacity for population dimension
         opacity: activeColor === 'population' ? 0.7 : 0.8,
         updateTriggers: {
           getFillColor: [activeColor, areaData],
-          getLineColor: [activeColor, areaData, theme.className],
           opacity: [activeColor],
         },
       });
@@ -498,7 +474,6 @@ export function DeckGLOverlay(props: DeckGLOverlayProps) {
     selectedYear,
     selectedItem.wiki,
     activeColor,
-    theme.className,
     layerVisibility,
     provincesGeoJSON,
     areaData,

@@ -8,7 +8,6 @@ import { useUIStore } from './stores/uiStore';
 import { getPositionFromURL, getYearFromURL } from './utils/mapUtils';
 import { parseURLState } from './utils/urlStateUtils';
 import { DETAIL_LEVEL_PRESETS } from './utils/detailLevelUtils';
-import { MAP_LOCALE } from './config/mapLocale';
 
 /**
  * Builds a wiki URL for a province based on metadata.
@@ -70,7 +69,7 @@ function App() {
   useEffect(() => {
     if (localeRef.current !== locale) {
       localeRef.current = locale;
-      void loadMetadata(MAP_LOCALE);
+      void loadMetadata(locale);
     }
   }, [locale, loadMetadata]);
 
@@ -95,7 +94,7 @@ function App() {
   useEffect(() => {
     loadFromStorage();
     // Load metadata for entity colors on app startup (with current locale)
-    void loadMetadata(MAP_LOCALE);
+    void loadMetadata(locale);
     // Load epic items for timeline display
     void loadEpicItems();
 

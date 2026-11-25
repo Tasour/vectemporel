@@ -53,7 +53,6 @@ import {
   buildLocalizedNameExpression,
   resolveLocalGlyphUrl,
 } from './MapView.utils';
-import { MAP_LOCALE } from '../../../config/mapLocale';
 
 /** Icon dimensions from production properties.js */
 const ICON_WIDTH = 135;
@@ -255,6 +254,7 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
   const setHoveredMarker = useMapStore((state) => state.setHoveredMarker);
   const getEntityWiki = useMapStore((state) => state.getEntityWiki);
   const theme = useUIStore((state) => state.theme);
+  const locale = useUIStore((state) => state.locale);
   const openRightDrawer = useUIStore((state) => state.openRightDrawer);
   // Right drawer state for width adjustment
   // Requirement 2.2: WHEN the RightDrawer opens, THE MapView SHALL reduce its width by 25%
@@ -885,7 +885,7 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
     const map = mapRef.current?.getMap();
     if (!map || !isLoaded) return;
 
-    const localizedName = buildLocalizedNameExpression(MAP_LOCALE);
+    const localizedName = buildLocalizedNameExpression(locale);
     const serializedTarget = JSON.stringify(localizedName);
 
     try {
@@ -902,7 +902,7 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
     } catch {
       // Style may not be loaded yet — the styledata bump will retry.
     }
-  }, [isLoaded, basemap, styleVersion]);
+  }, [locale, isLoaded, basemap, styleVersion]);
 
   /**
    * Toggle basemap place labels based on labelNameMode.
@@ -1896,7 +1896,7 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
               visibility: labelNameMode === 'modern' ? 'none' : 'visible',
               'symbol-placement': AREA_LABEL_CONFIG.lineLayout.symbolPlacement,
               'text-field': ['get', 'n'],
-              'text-font': getAreaLabelFonts(MAP_LOCALE),
+              'text-font': getAreaLabelFonts(locale),
               'text-transform': AREA_LABEL_CONFIG.lineLayout.textTransform,
               'text-allow-overlap': AREA_LABEL_CONFIG.lineLayout.textAllowOverlap,
               'text-size': AREA_LABEL_CONFIG.lineLayout.textSize as MapExpression,
@@ -1924,7 +1924,7 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
               visibility: labelNameMode === 'modern' ? 'none' : 'visible',
               'text-field': ['get', 'name'],
               'text-size': AREA_LABEL_CONFIG.pointLayout.textSize as MapExpression,
-              'text-font': getAreaLabelFonts(MAP_LOCALE),
+              'text-font': getAreaLabelFonts(locale),
               'text-anchor': AREA_LABEL_CONFIG.pointLayout.textAnchor,
               'text-allow-overlap': AREA_LABEL_CONFIG.pointLayout.textAllowOverlap,
               'text-ignore-placement': AREA_LABEL_CONFIG.pointLayout.textIgnorePlacement,
