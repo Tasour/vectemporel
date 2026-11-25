@@ -31,7 +31,7 @@ Les bornes de vis-timeline sont élargies dynamiquement d’une marge égale à 
 
 ### Frontières entre régions
 
-Les frontières ne sont plus noires à 100 % : `buildBorderExpression` dérive la teinte de bordure de la **couleur de remplissage réellement résolue** par MapLibre. Deux entités qui partagent la même couleur partagent donc exactement la même bordure, quelle que soit la dimension active. Le cas `population` utilise une teinte neutre explicite. Les deux couches de lignes utilisent la même expression.
+Les frontières internes sont dérivées de la **couleur de remplissage réellement résolue** par MapLibre, assombrie de 18 % seulement (`darkenColor`, facteur 0,82) : elles restent proches de la teinte de la région au lieu de tirer vers le noir. Deux entités qui partagent la même couleur partagent exactement la même bordure, quelle que soit la dimension active ; le cas `population` utilise une teinte neutre.
 
 ### Performance du changement d’année
 
@@ -41,7 +41,7 @@ Le chemin année → carte est mesuré avec `performance.mark/measure` (`vectemp
 
 ### Geste temporel et zoom
 
-Le défilement à la molette ou au pavé tactile est une cinématique calibrée : un déplacement en pixels est converti en temps avec la **fenêtre au début du geste**, ce qui garantit un déplacement 1:1 (100 px sur 390 px = 128 ans pour une fenêtre de 500 ans). Une vitesse soutenue élargit progressivement la fenêtre (facteur ≤ 2,5), tandis qu’un cran isolé ne fait que translater. L’inertie décroît exponentiellement (τ = 120 ms, glisse ≤ 60 % de la largeur) dans l’unique boucle rAF, avec un garde-fou qui termine le geste même si les frames sont rares, et pause sur `document.hidden`. Le centre reste borné à `[-2000, 2000]` et la fenêtre à `[-2250, 2250]`. Le glisser tactile et la souris suivent la même direction (droite = futur) ; `prefers-reduced-motion` supprime l’inertie.
+Le défilement est un **intégrateur unique** : chaque pixel est converti avec le span instantané (`Δt = dx/largeur × S(t)`), et le span suit la vitesse (`S = S₀ · g(v)`). L’accélération n’est donc pas ajoutée après le geste : plus le doigt va vite, plus la fenêtre s’élargit, donc plus les pixels suivants couvrent d’années. Sous 650 px/s, le geste reste strictement 1:1 (100 px sur 390 px = 128 ans pour 500 ans de fenêtre). Un cran isolé translate sans zoomer ; une rafale atteint une date lointaine et dézoome (facteur ≤ 2,5). L’inertie décroît (τ = 120 ms) sans retour de zoom, avec un watchdog qui termine le geste même si les frames rAF sont rares. Le centre interne fait foi : une fenêtre vis-timeline en retard ne peut plus provoquer de retour en arrière. Bornes `[-2000, 2000]` pour le centre, `[-2250, 2250]` pour la fenêtre ; `prefers-reduced-motion` supprime l’inertie.
 
 Le modèle, ses constantes et les mesures sont détaillés dans [`docs/ERGONOMIE-TIMELINE.md`](docs/ERGONOMIE-TIMELINE.md). Les tests d’ergonomie sont dans `tests/e2e/timeline-ergonomics.spec.ts` (390×844 et 1658×1150) et écrivent leurs mesures dans `test-results/ergonomie/`.
 

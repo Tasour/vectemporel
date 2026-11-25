@@ -19,4 +19,17 @@ describe('darkenColor', () => {
   it('handles short hex colors', () => {
     expect(darkenColor('#abc')).toMatch(/^#[0-9a-f]{6}$/);
   });
+
+  it('keeps internal borders close to the fill color', () => {
+    const fill = '#6c8bd0';
+    const border = darkenColor(fill);
+    const luminance = (hex: string): number => {
+      const value = Number.parseInt(hex.slice(1), 16);
+      const channels = [(value >> 16) & 255, (value >> 8) & 255, value & 255];
+      return channels.reduce((sum, channel) => sum + channel, 0) / 3;
+    };
+    const ratio = luminance(border) / luminance(fill);
+    expect(ratio).toBeGreaterThan(0.75);
+    expect(ratio).toBeLessThan(0.9);
+  });
 });

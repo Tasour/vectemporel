@@ -927,6 +927,8 @@ export const useTimelineStore = create<TimelineStore>((set, get) => ({
   },
 
   setGestureActive: (active: boolean) => {
+    // Appelé à chaque frame : ne pas notifier les abonnés si rien ne change.
+    if (get().isGestureActive === active) return;
     set({ isGestureActive: active });
   },
 }));

@@ -1,99 +1,106 @@
-# Ergonomie de la timeline — modèle calibré et mesures
+# Ergonomie de la timeline — modèle, calibrage et mesures
 
-Ce document décrit la cinématique `geste → date + zoom` et les tests qui la
-verrouillent. Il complète le `README.md` et le `FORK-NOTICE`.
+Ce document décrit la cinématique `geste → date + zoom`, les raisons du
+calibrage et les tests qui la verrouillent.
 
-## 1. Pourquoi un calibrage était nécessaire
+## 1. Théorie : un seul intégrateur
 
-Avec l'ancienne cinématique, un seul cran de molette (100 px, 16 ms) produisait :
+Le geste n'a pas deux étages (« déplacer, puis ajouter un zoom »). Il n'y a
+qu'un état `(centre, span)` et une règle :
 
-- une vitesse bornée à 4 000 px/s au lieu de ~600 px/s ;
-- un facteur de zoom de 2,35 (fenêtre 500 → 1 175 ans) ;
-- une inertie de 720 px appliquée **après** le dézoom, soit ≈ 2 170 ans de glisse.
+```
+Δt = (dx / largeur) × S(t)
+S_cible = S₀ × g(v)
+g(v) = 1 + k · ln(1 + max(0, (|v| − v₀) / v₀))
+```
 
-Résultat mesuré : `1000 → 2000` en un geste, sans précision ni retour possible.
+- `S(t)` est le span **instantané**. Chaque pixel est converti à l'échelle
+  courante, pas à celle du début du geste.
+- `v` est la vitesse lissée du doigt. `S` suit `v` : plus le geste est rapide,
+  plus la fenêtre s'élargit, donc plus **les pixels suivants couvrent
+  d'années**. L'accélération est le zoom, pas un supplément appliqué après.
+- Sous `v₀` (650 px/s), `g = 1` : un geste lent est strictement 1:1.
+- Au relâchement, la cible de span est **gelée** : pas de retour de zoom.
+  L'inertie décroît, puis l'échelle est réancrée à l'arrêt.
+- Le centre interne fait foi. Il n'est **jamais** réinitialisé depuis une
+  fenêtre vis-timeline en retard. Seules les actions externes (dialogue
+  d'année, autoplay, restauration) passent par `resetGestureToWindow`.
 
-## 2. Modèle
-
-Deux règles structurent `src/components/timeline/VisTimelineWrapper/kinematics.ts` :
-
-1. **Distance.** Chaque pixel est converti en temps avec la fenêtre au début du
-   geste (`span0`), jamais avec la fenêtre déjà élargie. Le déplacement reste
-   1:1 : 100 px sur 390 px de large déplacent `100/390 × span0`.
-2. **Zoom.** Il découle d'une **vitesse soutenue**, pas d'un cran isolé. Il est
-   interpolé dans l'unique boucle rAF, puis l'échelle est réancrée à l'arrêt.
-
-La molette utilise une règle virtuelle de 700 px (`WHEEL_REFERENCE_WIDTH`), pour
-qu'un cran représente la même durée sur mobile et sur desktop. Le glisser
-souris/tactile utilise la largeur réelle du conteneur.
+Cette séparation supprime le défaut mesuré auparavant : la trace faisait
+`1128 → 1017 → 1128` après le relâchement, parce qu'une entrée tardive
+réinitialisait le centre depuis une fenêtre en retard.
 
 ### Constantes
 
 | Constante | Valeur | Rôle |
 |---|---:|---|
 | `WHEEL_REFERENCE_WIDTH` | 700 px | règle virtuelle de la molette |
-| `MIN_WHEEL_DT_MS` | 32 ms | plancher de dt (un cran n'est pas un flick) |
-| `VELOCITY_TAU_MS` | 70 ms | lissage exponentiel de la vitesse |
-| `MAX_VELOCITY` | 2 500 px/s | plafond de vitesse |
-| `ZOOM_MIN_SAMPLES` | 3 | échantillons avant zoom |
-| `ZOOM_MIN_DISTANCE` | 150 px | distance avant zoom |
-| `ZOOM_MIN_SPEED` | 700 px/s | vitesse avant zoom |
-| `ZOOM_GAIN` | 0,45 | poids du `log1p(vitesse/1200)` |
+| `MIN_WHEEL_DT_MS` / `MIN_DRAG_DT_MS` | 32 / 8 ms | planchers de dt |
+| `VELOCITY_TAU_MS` | 65 ms | lissage de la vitesse |
+| `MAX_VELOCITY` | 3 000 px/s | plafond |
+| `ZOOM_MIN_SPEED` | 650 px/s | zone morte : pas de zoom sous ce seuil |
+| `ZOOM_SPEED_REF` | 900 px/s | référence logarithmique |
+| `ZOOM_GAIN` | 0,9 | pente de la courbe |
 | `MAX_ZOOM_FACTOR` | 2,5 | plafond de dézoom |
-| `ZOOM_TAU_MS` | 100 ms | interpolation du zoom |
+| `ZOOM_TAU_MS` | 70 ms | interpolation du span |
 | `INERTIA_TAU_MS` | 120 ms | décroissance de la vitesse |
 | `COAST_BUDGET_RATIO` | 0,6 | glisse max = 60 % de la largeur |
-| `GESTURE_GAP_MS` | 260 ms | fin logique du geste |
-| watchdog | `GESTURE_GAP_MS + 300` ms | fin garantie même si les frames rAF sont rares |
+| `WHEEL_GESTURE_GAP_MS` / `DRAG_GESTURE_GAP_MS` | 260 / 700 ms | fin logique du geste |
+| watchdog | `DRAG_GESTURE_GAP_MS + 300` ms | fin garantie même si les frames rAF sont rares |
 
 La fenêtre entière est bornée à `[-2250, 2250]` et le centre à `[-2000, 2000]`.
-Avec `prefers-reduced-motion`, la translation est immédiate et il n'y a ni
-inertie ni interpolation de zoom.
+`prefers-reduced-motion` supprime l'inertie et l'interpolation de zoom.
 
-## 3. Tests
+## 2. Tests
 
 ### Unitaires
 
-`src/components/timeline/VisTimelineWrapper/kinematics.test.ts` simule le même
-chemin que le composant (`applyGestureInput` + `advanceMotion`, frames de 16 ms)
-et vérifie : cran isolé, 3 crans, rafale, glisser 1:1 mobile/desktop, flick,
-direction, bornes, stabilité.
+`kinematics.test.ts` simule le chemin exact du composant (`applyGestureInput`
+puis `advanceMotion`, frames de 16 ms). Il couvre : cran isolé, 3 crans, rafale,
+glisser 1:1 mobile/desktop, flick, direction, bornes, stabilité et **fenêtre en
+retard** (le centre rapporté est décalé de 120 ans, le geste ne recule pas).
 
 ### E2E
 
-`tests/e2e/timeline-ergonomics.spec.ts` (15 tests) mesure Chromium en
-**390×844** et **1658×1150**, plus un glisser tactile. Il écrit
-`test-results/ergonomie/ergonomie-timeline.json` et les captures
-`zones-*.png` / `burst-*.png`.
-
-Commande locale (le miroir API doit être servi sur le port 4189) :
+`tests/e2e/timeline-ergonomics.spec.ts` : 17 tests en 390×844 et 1658×1150,
+plus un glisser tactile. Le test `le geste ne revient jamais en arrière`
+échantillonne l'année toutes les 60 ms pendant et après un glisser réel et
+échoue si une baisse dépasse 3 ans.
 
 ```bash
 VITE_API_BASE_URL=http://127.0.0.1:4189/api/v1 VITE_ENVIRONMENT=development \
   npx playwright test tests/e2e/timeline-ergonomics.spec.ts
 ```
 
-## 4. Résultats mesurés (25/11/2026, 15 tests verts)
+Le rapport est écrit dans `test-results/ergonomie/ergonomie-timeline.json` avec
+les captures `zones-*.png` et `burst-*.png`.
+
+## 3. Résultats mesurés (25/11/2026)
 
 | Geste | 390×844 | 1658×1150 |
 |---|---:|---:|
 | 1 cran | +71 ans, fenêtre 500 → 500 | +71 ans, 500 → 500 |
 | glisser 100 px | +128 ans (attendu 128) | +30 ans (attendu 30) |
-| rafale de 10 crans | +873 ans, 500 → 754 | +881 ans, 500 → 754 |
+| rafale de 10 crans | +711 ans, 500 → 1 078 | +711 ans, 500 → 1 025 |
 | aller-retour 100 px | retour à 1000 | retour à 1000 |
-| longue rafale | centre 1873 / -1683 | centre 1889 / -1696 |
-| stabilité à +1,5 s | 1610 → 1610 | 1592 → 1592 |
+| longue rafale | 1711 / -1089, span 2 323 | 1713 / -1090, span 2 323 |
+| stabilité à +1,5 s | année et span identiques | année et span identiques |
+| retour en arrière maximal | **0 an** | **0 an** |
 | tactile 100 px | +128 ans, retour à 1000 | — |
 
-Les captures associées montrent les zones colorées présentes au premier
-chargement (plus de message « No Data Available ») et l'élargissement des
-graduations après la rafale.
+## 4. Frontières intérieures
 
-## 5. Régression du premier chargement
+La bordure est dérivée de la couleur de remplissage résolue, assombrie de
+**18 %** (`darkenColor`, facteur 0,82), avec une opacité de 0,9 sur les
+frontières internes et 0,35 sur le contour. Les anciennes propriétés
+`rDark/cDark/eDark/gDark` ont été supprimées : elles dupliquaient la couleur et
+ajoutaient un calcul par feature.
 
-`resetStaleCache()` est désormais appelé avant `createRoot` (`main.tsx`) : aucune
-requête d'aire n'est en vol au moment du reset. `loadAreaData` compare un
-identifiant de requête monotone au lieu de l'`AbortController`, et le reset
-aborte explicitement la requête courante. Un test unitaire couvre la réponse
-tardive et le test E2E `le premier chargement affiche les zones colorées` couvre
-le cas réel.
+## 5. Libellés français
+
+L'API ne fournit `*_fr` que pour une partie des entités. `src/data/frenchNames.ts`
+complète les noms manquants les plus visibles (royaumes, empires, cultures et
+religions) à partir de libellés français publiés (Wikidata / Wikipédia). Les
+noms officiels de l'API restent prioritaires ; les entités sans équivalent
+français établi conservent leur nom source. La couverture est mesurée dans
+`docs/FR-LABELS-COVERAGE.md`.

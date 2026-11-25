@@ -171,6 +171,49 @@ for (const viewport of [
       );
     });
 
+    test('le geste ne revient jamais en arrière', async ({ page }) => {
+      await open(page);
+      await page.evaluate(() => {
+        const w = window as unknown as {
+          __samples: { year: number }[];
+          __timer: number;
+        };
+        w.__samples = [];
+        w.__timer = window.setInterval(() => {
+          const timeline = document.querySelector('[data-testid="timeline"]');
+          w.__samples.push({ year: Number(timeline?.getAttribute('data-year')) });
+        }, 60);
+      });
+
+      const box = await page.locator('[data-testid="timeline"]').boundingBox();
+      if (!box) throw new Error('Timeline introuvable');
+      const startX = box.x + box.width / 2 - 50;
+      const y = box.y + box.height / 2;
+      await page.mouse.move(startX, y);
+      await page.mouse.down();
+      for (let step = 1; step <= 10; step += 1) {
+        await page.mouse.move(startX + step * 10, y);
+        await page.waitForTimeout(25);
+      }
+      await page.mouse.up();
+      await page.waitForTimeout(1800);
+
+      const samples = await page.evaluate(() => {
+        const w = window as unknown as {
+          __samples: { year: number }[];
+          __timer: number;
+        };
+        window.clearInterval(w.__timer);
+        return w.__samples;
+      });
+      let maxDip = 0;
+      for (let index = 1; index < samples.length; index += 1) {
+        maxDip = Math.max(maxDip, samples[index - 1]!.year - samples[index]!.year);
+      }
+      record(`nodip-${viewport.name}`, { maxDip, samples: samples.length });
+      expect(maxDip).toBeLessThanOrEqual(3);
+    });
+
     test('le centre reste borné après une longue rafale', async ({ page }) => {
       await open(page);
       await wheel(page, 40);
@@ -192,7 +235,7 @@ for (const viewport of [
       // vis-timeline arrondit parfois la fenêtre de quelques années au dernier
       // `rangechange` ; la stabilité exigée est l'absence de dérive sensible.
       expect(Math.abs(later.year - settled.year)).toBeLessThanOrEqual(5);
-      expect(later.span).toBe(settled.span);
+      expect(Math.abs(later.span - settled.span)).toBeLessThanOrEqual(5);
     });
   });
 }

@@ -12,8 +12,9 @@ import {
   advanceMotion,
   applyGestureInput,
   createGestureState,
-  GESTURE_GAP_MS,
+  DRAG_GESTURE_GAP_MS,
   normalizeWheelDelta,
+  resetGestureToWindow,
   type GestureState,
   YEAR_MS,
 } from './kinematics';
@@ -106,6 +107,8 @@ export interface VisTimelineWrapperProps {
   onInitialWindowApplied?: () => void;
   /** Signale un changement de fenêtre issu d'un geste utilisateur. */
   onGestureActivity?: () => void;
+  /** Fin du geste : permet de committer l'année finale une seule fois. */
+  onGestureEnd?: (year: number) => void;
   /** Année et largeur de fenêtre atteintes par le geste, sans round-trip vis. */
   onTimeShift?: (year: number, spanYears: number) => void;
   onMouseMove?: (event: TimelineMouseEvent) => void;
@@ -124,7 +127,7 @@ function VisTimelineWrapperComponent(
   props: VisTimelineWrapperProps,
   ref: ForwardedRef<VisTimelineRef>
 ): React.JSX.Element {
-  const { options, items = [], groups = [], customTimes = {}, initialStart, initialEnd, onTimelineClick, onRangeChange, onRangeChanged, onInitialWindowApplied, onGestureActivity, onTimeShift, onMouseMove, onClick, manualPan = false, onPanEnd, className } = props;
+  const { options, items = [], groups = [], customTimes = {}, initialStart, initialEnd, onTimelineClick, onRangeChange, onRangeChanged, onInitialWindowApplied, onGestureActivity, onGestureEnd, onTimeShift, onMouseMove, onClick, manualPan = false, onPanEnd, className } = props;
   const containerRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<VisTimeline | null>(null);
   const itemsDataSetRef = useRef<DataSet<TimelineItem> | null>(null);
@@ -134,11 +137,11 @@ function VisTimelineWrapperComponent(
   const touchRef = useRef<{ identifier: number; x: number; width: number } | null>(null);
   const motionRef = useRef<GestureState>(createGestureState());
   const settleTimerRef = useRef(0);
-  const callbacksRef = useRef({ onTimelineClick, onRangeChange, onRangeChanged, onInitialWindowApplied, onGestureActivity, onTimeShift, onMouseMove, onClick });
+  const callbacksRef = useRef({ onTimelineClick, onRangeChange, onRangeChanged, onInitialWindowApplied, onGestureActivity, onGestureEnd, onTimeShift, onMouseMove, onClick });
 
   useEffect(() => {
-    callbacksRef.current = { onTimelineClick, onRangeChange, onRangeChanged, onInitialWindowApplied, onGestureActivity, onTimeShift, onMouseMove, onClick };
-  }, [onGestureActivity, onInitialWindowApplied, onMouseMove, onClick, onRangeChange, onRangeChanged, onTimeShift, onTimelineClick]);
+    callbacksRef.current = { onTimelineClick, onRangeChange, onRangeChanged, onInitialWindowApplied, onGestureActivity, onGestureEnd, onTimeShift, onMouseMove, onClick };
+  }, [onGestureActivity, onGestureEnd, onInitialWindowApplied, onMouseMove, onClick, onRangeChange, onRangeChanged, onTimeShift, onTimelineClick]);
 
   const handleClick = useCallback((properties: { event: MouseEvent; time: Date; item: string | null }) => {
     const clickEvent: TimelineClickEvent = { event: properties.event, time: properties.time, item: properties.item };
@@ -166,7 +169,6 @@ function VisTimelineWrapperComponent(
     state.span = state.targetSpan || state.span;
     state.targetSpan = state.span;
     state.baseSpan = state.span;
-    state.samples = 0;
     state.distance = 0;
     state.kind = null;
     state.active = false;
@@ -175,6 +177,7 @@ function VisTimelineWrapperComponent(
       new Date(state.center + state.span / 2)
     );
     callbacksRef.current.onTimeShift?.(new Date(state.center).getFullYear(), state.span / YEAR_MS);
+    callbacksRef.current.onGestureEnd?.(new Date(state.center).getFullYear());
   }, []);
 
   /** Déplace la fenêtre et détend le zoom dans l'unique boucle d'animation. */
@@ -190,7 +193,12 @@ function VisTimelineWrapperComponent(
         new Date(motion.center + motion.span / 2)
       );
       callbacksRef.current.onTimeShift?.(new Date(motion.center).getFullYear(), motion.span / YEAR_MS);
-      state.frame = motion.active ? requestAnimationFrame(step) : 0;
+      if (!motion.active) {
+        callbacksRef.current.onGestureEnd?.(new Date(motion.center).getFullYear());
+        state.frame = 0;
+      } else {
+        state.frame = requestAnimationFrame(step);
+      }
     };
     if (!state.frame) {
       state.lastFrame = 0;
@@ -222,15 +230,17 @@ function VisTimelineWrapperComponent(
       result.span = result.targetSpan;
     }
 
+    // Marquer le geste avant toute écriture : le garde-fou de fenêtre lit ce
+    // drapeau de façon synchrone dans `rangechange`.
+    callbacksRef.current.onGestureActivity?.();
     timeline.setWindow(
       new Date(result.center - result.span / 2),
       new Date(result.center + result.span / 2)
     );
-    callbacksRef.current.onGestureActivity?.();
     callbacksRef.current.onTimeShift?.(new Date(result.center).getFullYear(), result.span / YEAR_MS);
     runMotion();
     window.clearTimeout(settleTimerRef.current);
-    settleTimerRef.current = window.setTimeout(finishMotion, GESTURE_GAP_MS + 300);
+    settleTimerRef.current = window.setTimeout(finishMotion, DRAG_GESTURE_GAP_MS + 300);
   }, [finishMotion, runMotion]);
 
   /**
@@ -243,6 +253,7 @@ function VisTimelineWrapperComponent(
     if (event.pointerType === 'mouse' && event.button !== 0) return;
     const container = containerRef.current;
     if (!container) return;
+    callbacksRef.current.onGestureActivity?.();
     pointerRef.current = {
       id: event.pointerId,
       x: event.clientX,
@@ -353,11 +364,33 @@ function VisTimelineWrapperComponent(
   }, [handlePointerDown, handleWheel, runMotion]);
 
   useImperativeHandle(ref, () => ({
-    setWindow: (start: Date, end: Date, opts?: { animation?: boolean }) => timelineRef.current?.setWindow(start, end, opts),
+    setWindow: (start: Date, end: Date, opts?: { animation?: boolean }) => {
+      resetGestureToWindow(
+        motionRef.current,
+        (start.getTime() + end.getTime()) / 2,
+        end.getTime() - start.getTime()
+      );
+      timelineRef.current?.setWindow(start, end, opts);
+    },
     setSelection: (ids: string[]) => timelineRef.current?.setSelection(ids),
     getWindow: () => timelineRef.current?.getWindow() ?? { start: new Date(), end: new Date() },
-    fit: () => timelineRef.current?.fit(),
-    moveTo: (time: Date, opts?: { animation?: boolean }) => timelineRef.current?.moveTo(time, opts),
+    fit: () => {
+      const state = motionRef.current;
+      state.seeded = false;
+      timelineRef.current?.fit();
+    },
+    moveTo: (time: Date, opts?: { animation?: boolean }) => {
+      const timeline = timelineRef.current;
+      if (timeline) {
+        const range = timeline.getWindow();
+        resetGestureToWindow(
+          motionRef.current,
+          time.getTime(),
+          range.end.getTime() - range.start.getTime()
+        );
+      }
+      timeline?.moveTo(time, opts);
+    },
     zoomIn: (percentage: number) => timelineRef.current?.zoomIn(percentage),
     zoomOut: (percentage: number) => timelineRef.current?.zoomOut(percentage),
     setOptions: (options: TimelineOptions) => timelineRef.current?.setOptions(options),

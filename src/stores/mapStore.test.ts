@@ -1784,6 +1784,11 @@ describe('entity outline', () => {
             'Kingdom_of_England',
             '0/00/Royal_Coat_of_Arms_of_England.svg',
           ],
+          _Kingdom_of_Great_Britain: [
+            'Kingdom of Great Britain',
+            'rgb(181,0,51)',
+            'Kingdom_of_Great_Britain',
+          ],
         },
         culture: {
           chamic: [
@@ -1802,6 +1807,7 @@ describe('entity outline', () => {
             'Christianity',
             'f/f0/Duccio.jpg',
           ],
+          shamanism: ['Shamanism', 'rgb(180,180,180)', 'Shamanism'],
         },
         religionGeneral: {
           Shamanism: [
@@ -1941,8 +1947,19 @@ describe('entity outline', () => {
         const props = useMapStore.getState().provincesGeoJSON?.features[0]?.properties as Record<string, unknown>;
         expect(props['r']).toBe('_Almohad_Caliphate');
         expect(props['c']).toBe('chamic');
-        expect(props['rDark']).toBeTruthy();
         expect(useMapStore.getState().metadata?.ruler['_Almohad_Caliphate']?.name).toBe('Almohades');
+      });
+
+      it('should fill missing French names from the local override table', async () => {
+        setupMetadataMock({});
+
+        let result: EntityMetadata | null = null;
+        await act(async () => {
+          result = await useMapStore.getState().loadMetadata('fr');
+        });
+
+        expect(result!.ruler['_Kingdom_of_Great_Britain']?.name).toBe('Royaume de Grande-Bretagne');
+        expect(result!.religion['shamanism']?.name).toBe('Chamanisme');
       });
 
       it('should fall back to English names when localized fetch fails', async () => {

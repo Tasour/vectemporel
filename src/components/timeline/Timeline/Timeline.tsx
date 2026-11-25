@@ -121,6 +121,8 @@ export const Timeline: React.FC<TimelineProps> = ({
   const gestureTimerRef = useRef(0);
   const guardWindowRef = useRef(true);
   const suppressClickRef = useRef(false);
+  const hasUserInteractedRef = useRef(false);
+  const lastYearCommitRef = useRef(0);
 
   // Zoom hint visibility — shown briefly on first render
   const [showZoomHint, setShowZoomHint] = useState(true);
@@ -472,6 +474,7 @@ export const Timeline: React.FC<TimelineProps> = ({
     if (
       timelineItems.length === 0 ||
       !initialWindowReadyRef.current ||
+      hasUserInteractedRef.current ||
       useTimelineStore.getState().isGestureActive
     ) return;
     restoreWindow(useTimelineStore.getState().selectedYear);
@@ -493,6 +496,9 @@ export const Timeline: React.FC<TimelineProps> = ({
     }
     lastWindowCenterRef.current = year;
     handleOverlayRangeChanged(false);
+    // Pendant un geste, `onTimeShift` est l'unique écrivain de l'année : lire
+    // ici la fenêtre vis-timeline, parfois en retard, provoquait un aller-retour.
+    if (gestureActive) return;
     if (!isMobile || skipRangeSyncRef.current) return;
     if (year !== useTimelineStore.getState().selectedYear) {
       setYear(year);
@@ -594,6 +600,7 @@ export const Timeline: React.FC<TimelineProps> = ({
           }}
           onGestureActivity={() => {
             guardWindowRef.current = false;
+            hasUserInteractedRef.current = true;
             useTimelineStore.getState().setGestureActive(true);
             window.clearTimeout(gestureTimerRef.current);
             gestureTimerRef.current = window.setTimeout(() => {
@@ -602,10 +609,19 @@ export const Timeline: React.FC<TimelineProps> = ({
           }}
           onTimeShift={(year, spanYears) => {
             setOverlayRange({ start: year - spanYears / 2, end: year + spanYears / 2 });
+            const now = performance.now();
+            if (now - lastYearCommitRef.current < 80) return;
+            lastYearCommitRef.current = now;
             if (year !== useTimelineStore.getState().selectedYear) {
               setYear(year);
-              setNotDefaultView();
             }
+          }}
+          onGestureEnd={(year) => {
+            lastYearCommitRef.current = 0;
+            if (year !== useTimelineStore.getState().selectedYear) {
+              setYear(year);
+            }
+            setNotDefaultView();
           }}
           manualPan
           onPanEnd={() => {

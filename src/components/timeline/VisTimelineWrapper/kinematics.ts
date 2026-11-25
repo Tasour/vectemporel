@@ -1,15 +1,16 @@
 /**
- * Cinématique du défilement temporel : vitesse → date, puis vitesse → zoom.
+ * Cinématique du défilement temporel.
  *
- * Deux règles structurent le modèle :
- *  1. la distance temporelle est calculée avec la fenêtre au début du geste
- *     (`baseSpan`), jamais avec la fenêtre déjà élargie — sinon chaque pixel
- *     de l'inertie vaut de plus en plus d'années et le geste s'emballe ;
- *  2. le zoom n'est déclenché que par une vitesse *soutenue*, pas par un cran
- *     de molette isolé.
+ * Un seul intégrateur : chaque pixel est converti avec le **span instantané**
+ * (pas celui du début du geste), et le span suit la vitesse. L'accélération
+ * n'est donc pas ajoutée après coup : c'est l'élargissement de la fenêtre qui
+ * fait que les pixels suivants couvrent davantage d'années.
  *
- * Toutes les fonctions sont pures ou mutent un `GestureState` explicite : les
- * tests d'ergonomie simulent exactement le même chemin que le composant.
+ *   Δt = (dx / largeur) × S(t)
+ *   S_cible = S₀ × g(v),  g(v) = 1 + k·ln(1 + max(0, (|v| − v₀)/v₀))
+ *
+ * Le centre interne fait foi : il n'est jamais réinitialisé depuis une fenêtre
+ * vis-timeline en retard pendant un geste.
  */
 
 export const YEAR_MS = 365.25 * 24 * 3600 * 1000;
@@ -21,43 +22,48 @@ export const MIN_YEAR = -2000;
 export const MAX_YEAR = 2000;
 export const WINDOW_MARGIN_YEARS = 250;
 
-/** Une molette est calibrée sur une règle virtuelle, pas sur la largeur réelle. */
+/** Règle virtuelle de la molette : même durée par cran sur tous les écrans. */
 export const WHEEL_REFERENCE_WIDTH = 700;
 export const MIN_WHEEL_DT_MS = 32;
 export const MIN_DRAG_DT_MS = 8;
 export const MAX_INPUT_DT_MS = 120;
 export const MAX_FRAME_DT_MS = 64;
 
-/** Vitesse lissée : moyenne exponentielle, bornée. */
-export const VELOCITY_TAU_MS = 70;
-export const MAX_VELOCITY = 2500;
+/** Vitesse lissée. */
+export const VELOCITY_TAU_MS = 65;
+export const MAX_VELOCITY = 3000;
 
-/** Zoom : déclenché seulement après un geste soutenu et rapide. */
-export const ZOOM_MIN_SAMPLES = 3;
-export const ZOOM_MIN_DISTANCE = 150;
-export const ZOOM_MIN_SPEED = 700;
-export const ZOOM_SPEED_REF = 1200;
-export const ZOOM_GAIN = 0.45;
+/** Courbe vitesse → échelle : morte sous v₀, logarithmique ensuite. */
+export const ZOOM_MIN_SPEED = 650;
+export const ZOOM_SPEED_REF = 900;
+export const ZOOM_GAIN = 0.9;
 export const MAX_ZOOM_FACTOR = 2.5;
-export const ZOOM_TAU_MS = 100;
+export const ZOOM_TAU_MS = 70;
 
 /** Inertie : glisse maximum de 60 % de la largeur de référence. */
 export const INERTIA_TAU_MS = 120;
 export const COAST_BUDGET_RATIO = 0.6;
-export const GESTURE_GAP_MS = 260;
+
+/** Un glisser peut marquer une pause sans devenir un nouveau geste. */
+export const WHEEL_GESTURE_GAP_MS = 260;
+export const DRAG_GESTURE_GAP_MS = 700;
+
+
 
 export interface GestureState {
   velocity: number;
+  /** Échelle au début du geste (réancrée à l'arrêt). */
   baseSpan: number;
+  /** Span instantané, utilisé pour convertir chaque pixel. */
   span: number;
   targetSpan: number;
   center: number;
   referenceWidth: number;
-  samples: number;
   distance: number;
   kind: 'wheel' | 'drag' | null;
-  /** Reste vrai tant que le geste n'a pas été au calme assez longtemps. */
   active: boolean;
+  /** Le centre a-t-il déjà été initialisé depuis une fenêtre réelle ? */
+  seeded: boolean;
   lastInput: number;
   lastFrame: number;
   frame: number;
@@ -95,21 +101,20 @@ export function normalizeWheelDelta(delta: number, mode: number, width: number):
 export function smoothedVelocity(previous: number, deltaPx: number, dtMs: number): number {
   const dt = Math.max(dtMs, MIN_DRAG_DT_MS);
   const instant = (deltaPx / dt) * 1000;
-  const alpha = clamp(dt / (dt + VELOCITY_TAU_MS), 0.05, 0.5);
+  const alpha = clamp(dt / (dt + VELOCITY_TAU_MS), 0.08, 0.6);
   return clamp(previous * (1 - alpha) + instant * alpha, -MAX_VELOCITY, MAX_VELOCITY);
 }
 
 /**
- * Plus le geste est rapide, plus la fenêtre est large — mais le facteur reste
- * borné à 2,5 et une faible vitesse ne dézoome pas.
+ * Échelle cible pour une vitesse donnée. Continue : aucune marche à un seuil,
+ * un cran isolé (≈ 700 px/s) ne zoome pas, une rafale élargit progressivement.
  */
 export function spanForSpeed(baseSpan: number, speedPxPerSecond: number): number {
-  if (Math.abs(speedPxPerSecond) < ZOOM_MIN_SPEED) {
-    return clamp(baseSpan, MIN_SPAN_MS, MAX_SPAN_MS);
-  }
-  const normalized = clamp(Math.abs(speedPxPerSecond) / ZOOM_SPEED_REF, 0, 12);
-  const factor = clamp(1 + ZOOM_GAIN * Math.log1p(normalized), 1, MAX_ZOOM_FACTOR);
-  return clamp(baseSpan * factor, MIN_SPAN_MS, MAX_SPAN_MS);
+  const excess = Math.abs(speedPxPerSecond) - ZOOM_MIN_SPEED;
+  const span = excess <= 0
+    ? baseSpan
+    : baseSpan * (1 + ZOOM_GAIN * Math.log1p(excess / ZOOM_SPEED_REF));
+  return clamp(span, MIN_SPAN_MS, MAX_SPAN_MS);
 }
 
 /** Décroissance exponentielle de la vitesse après la dernière entrée. */
@@ -117,7 +122,7 @@ export function decayVelocity(velocity: number, dtMs: number, tau = INERTIA_TAU_
   return velocity * Math.exp(-Math.max(dtMs, 0) / tau);
 }
 
-/** Correspondance pixel → temps, à l'échelle de référence du geste. */
+/** Correspondance pixel → temps, à l'échelle courante. */
 export function timeShift(deltaPx: number, referenceWidth: number, span: number): number {
   return (deltaPx / Math.max(referenceWidth, 1)) * span;
 }
@@ -147,10 +152,10 @@ export function createGestureState(): GestureState {
     targetSpan: 0,
     center: 0,
     referenceWidth: WHEEL_REFERENCE_WIDTH,
-    samples: 0,
     distance: 0,
     kind: null,
     active: false,
+    seeded: false,
     lastInput: 0,
     lastFrame: 0,
     frame: 0,
@@ -158,9 +163,31 @@ export function createGestureState(): GestureState {
 }
 
 /**
- * Enregistre un déplacement (molette, souris ou tactile) et retourne la
- * fenêtre à appliquer immédiatement. Le zoom n'est qu'une cible : c'est
- * `advanceMotion` qui l'interpole dans l'unique boucle rAF.
+ * Réaligne l'état sur une fenêtre choisie par l'extérieur (dialogue d'année,
+ * autoplay, restauration). C'est le seul chemin autorisé à changer le centre
+ * hors geste : une fenêtre vis-timeline en retard ne peut pas l'écraser.
+ */
+export function resetGestureToWindow(
+  state: GestureState,
+  centerMs: number,
+  spanMs: number
+): void {
+  const span = clamp(spanMs, MIN_SPAN_MS, MAX_SPAN_MS);
+  state.center = centerMs;
+  state.baseSpan = span;
+  state.span = span;
+  state.targetSpan = span;
+  state.velocity = 0;
+  state.distance = 0;
+  state.kind = null;
+  state.active = false;
+  state.seeded = true;
+  state.lastFrame = 0;
+}
+
+/**
+ * Enregistre un déplacement et retourne la fenêtre à appliquer immédiatement.
+ * Le déplacement utilise `state.span` (échelle courante), pas `baseSpan`.
  */
 export function applyGestureInput(state: GestureState, input: GestureInput): {
   center: number;
@@ -168,18 +195,27 @@ export function applyGestureInput(state: GestureState, input: GestureInput): {
   targetSpan: number;
 } {
   const width = Math.max(input.width, 1);
+  const gap = input.kind === 'wheel' ? WHEEL_GESTURE_GAP_MS : DRAG_GESTURE_GAP_MS;
   const isNewGesture =
     state.kind === null ||
     state.kind !== input.kind ||
     !state.active ||
-    input.now - state.lastInput > GESTURE_GAP_MS;
+    input.now - state.lastInput > gap;
 
   if (isNewGesture) {
-    state.baseSpan = clamp(input.spanMs, MIN_SPAN_MS, MAX_SPAN_MS);
-    state.span = state.baseSpan;
-    state.targetSpan = state.baseSpan;
-    state.center = input.centerMs;
-    state.samples = 0;
+    const span = clamp(input.spanMs, MIN_SPAN_MS, MAX_SPAN_MS);
+    state.baseSpan = span;
+    state.span = span;
+    state.targetSpan = span;
+
+    // Le centre interne fait foi. Une fenêtre vis-timeline en retard ne doit
+    // jamais réinitialiser le geste : seules les actions externes passent par
+    // `resetGestureToWindow`.
+    if (!state.seeded) {
+      state.center = input.centerMs;
+      state.seeded = true;
+    }
+
     state.distance = 0;
     state.velocity = 0;
   }
@@ -189,41 +225,42 @@ export function applyGestureInput(state: GestureState, input: GestureInput): {
   state.referenceWidth = input.kind === 'wheel' ? WHEEL_REFERENCE_WIDTH : width;
 
   const floor = input.kind === 'wheel' ? MIN_WHEEL_DT_MS : MIN_DRAG_DT_MS;
-  const rawDt = state.lastInput ? input.now - state.lastInput : floor;
-  const dt = clamp(rawDt, floor, MAX_INPUT_DT_MS);
+  const dt = clamp(
+    state.lastInput ? input.now - state.lastInput : floor,
+    floor,
+    MAX_INPUT_DT_MS
+  );
   state.lastInput = input.now;
 
-  const shift = timeShift(input.deltaPx, state.referenceWidth, state.baseSpan);
-  state.center = clampCenterForSpan(state.center + shift, state.baseSpan);
+  // Le pixel est converti à l'échelle instantanée : c'est ici que l'accélération
+  // s'intègre au mouvement, puisque `state.span` grandit avec la vitesse.
+  const shift = timeShift(input.deltaPx, state.referenceWidth, state.span);
+  state.center = clampCenterForSpan(state.center + shift, state.span);
 
-  const cap = Math.min(MAX_VELOCITY, (COAST_BUDGET_RATIO * state.referenceWidth) / (INERTIA_TAU_MS / 1000));
+  const cap = Math.min(
+    MAX_VELOCITY,
+    (COAST_BUDGET_RATIO * state.referenceWidth) / (INERTIA_TAU_MS / 1000)
+  );
   state.velocity = clamp(smoothedVelocity(state.velocity, input.deltaPx, dt), -cap, cap);
-  state.samples += 1;
   state.distance += Math.abs(input.deltaPx);
 
-  const sustained =
-    state.samples >= ZOOM_MIN_SAMPLES || state.distance >= ZOOM_MIN_DISTANCE;
-  const fastEnough = Math.abs(state.velocity) >= ZOOM_MIN_SPEED;
-
-  state.targetSpan = sustained && fastEnough
-    ? spanForSpeed(state.baseSpan, state.velocity)
-    : state.baseSpan;
-
-  // Un cran isolé ou un glisser lent ne doit ni zoomer ni glisser. En revanche
-  // on laisse la vitesse s'accumuler pendant les premières frames d'un flick,
-  // sinon un geste rapide jamais atteint le seuil de zoom.
-  const isolatedWheel = input.kind === 'wheel' && state.samples === 1 && state.distance < ZOOM_MIN_DISTANCE;
-  if (isolatedWheel || Math.abs(state.velocity) < ZOOM_MIN_SPEED / 2) {
+  // Sous le seuil de zoom, le geste reste précis : pas d'inertie. Un cran de
+  // molette isolé translate lui aussi sans glisser.
+  if (
+    Math.abs(state.velocity) < ZOOM_MIN_SPEED ||
+    (input.kind === 'wheel' && state.distance < 150)
+  ) {
     state.velocity = 0;
   }
 
+  state.targetSpan = spanForSpeed(state.baseSpan, state.velocity);
   state.lastFrame = 0;
   return { center: state.center, span: state.span, targetSpan: state.targetSpan };
 }
 
 /**
- * Avance d'une frame d'animation : inertie sur `baseSpan`, interpolation du zoom
- * vers `targetSpan`, puis réancrage de l'échelle à l'arrêt.
+ * Avance d'une frame : interpolation du span vers la cible, puis déplacement
+ * avec ce span interpolé. L'inertie conserve l'échelle atteinte (pas de retour).
  */
 export function advanceMotion(state: GestureState, now: number): {
   center: number;
@@ -235,7 +272,7 @@ export function advanceMotion(state: GestureState, now: number): {
 
   const target = state.targetSpan > 0 ? state.targetSpan : state.span;
   const nextSpan = target + (state.span - target) * Math.exp(-dt / ZOOM_TAU_MS);
-  const shift = timeShift((state.velocity * dt) / 1000, state.referenceWidth, state.baseSpan);
+  const shift = timeShift((state.velocity * dt) / 1000, state.referenceWidth, nextSpan);
   const nextCenter = clampCenterForSpan(state.center + shift, nextSpan);
 
   state.velocity = decayVelocity(state.velocity, dt);
@@ -243,13 +280,8 @@ export function advanceMotion(state: GestureState, now: number): {
   state.center = nextCenter;
   state.span = nextSpan;
 
-  // On ne clôt le geste qu'après un silence : sinon une rafale de crans serait
-  // décutée en gestes indépendants et ne déclencherait jamais le zoom.
-  const quiet = now - state.lastInput > GESTURE_GAP_MS;
-  // Délai absolu : si les frames sont rares (GPU occupé), le temps simulé par
-  // `dt` avance moins vite que l'horloge. On garantit quand même la fin du
-  // geste ~1,2 s après la dernière entrée.
-  const expired = now - state.lastInput > GESTURE_GAP_MS + 1000;
+  const quiet = now - state.lastInput > (state.kind === 'wheel' ? WHEEL_GESTURE_GAP_MS : DRAG_GESTURE_GAP_MS);
+  const expired = now - state.lastInput > DRAG_GESTURE_GAP_MS + 800;
   const settled =
     expired ||
     (quiet &&
@@ -261,7 +293,6 @@ export function advanceMotion(state: GestureState, now: number): {
     state.span = target;
     state.targetSpan = target;
     state.baseSpan = target; // réancrage : le geste suivant part de l'échelle visible
-    state.samples = 0;
     state.distance = 0;
     state.kind = null;
     state.active = false;

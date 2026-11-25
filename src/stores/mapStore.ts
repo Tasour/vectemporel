@@ -18,7 +18,7 @@ import type { AdjacencyGraph } from '../utils/geoLabelUtils';
 import { AREAS, METADATA, MARKERS } from '../api/endpoints';
 import type { MapAreaData, Marker, MarkerFilterState, MarkerType } from '../api/types';
 import { updateQueryStringParameter } from '../utils/mapUtils';
-import { darkenColor } from '../utils/colorUtils';
+import { FRENCH_NAMES } from '../data/frenchNames';
 
 const prefetchingYears = new Set<number>();
 
@@ -1843,6 +1843,18 @@ export const useMapStore = create<MapStore>((set, get) => ({
         }
       }
 
+      // Complète les noms français absents de l'API. Les noms officiels de
+      // l'API restent prioritaires ; ce fichier ne fait que combler les trous.
+      if (locale === 'fr') {
+        const apiFr = localizedNames;
+        localizedNames = {
+          ruler: { ...FRENCH_NAMES.ruler, ...(apiFr?.['ruler'] ?? {}) },
+          culture: { ...FRENCH_NAMES.culture, ...(apiFr?.['culture'] ?? {}) },
+          religion: { ...FRENCH_NAMES.religion, ...(apiFr?.['religion'] ?? {}) },
+          religionGeneral: { ...(apiFr?.['religionGeneral'] ?? {}) },
+        };
+      }
+
       // Convert array format to MetadataEntry format
       // Original format: [name, color, wiki?, icon?, parent?]
       const convertToMetadataEntry = (
@@ -2064,13 +2076,6 @@ export const useMapStore = create<MapStore>((set, get) => ({
     if (!provincesGeoJSON) {
       return;
     }
-    const metadata: EntityMetadata = state.metadata ?? {
-      ruler: {},
-      culture: {},
-      religion: {},
-      religionGeneral: {},
-    };
-
     // Mutate properties in place and publish a new collection reference for MapLibre.
     const changedIds: string[] = [];
     const updatedFeatures = provincesGeoJSON.features.map((feature) => {
@@ -2091,10 +2096,6 @@ export const useMapStore = create<MapStore>((set, get) => ({
       const religion = data[2];
       const population = data[4];
       const religionGeneral = get().getReligionGeneral(religion);
-      const rulerDark = darkenColor(metadata.ruler[ruler]?.color);
-      const cultureDark = darkenColor(metadata.culture[culture]?.color);
-      const religionDark = darkenColor(metadata.religion[religion]?.color);
-      const religionGeneralDark = darkenColor(metadata.religionGeneral[religionGeneral]?.color);
 
       const props = feature.properties as Record<string, unknown>;
       if (
@@ -2102,11 +2103,7 @@ export const useMapStore = create<MapStore>((set, get) => ({
         props['c'] === culture &&
         props['e'] === religion &&
         props['g'] === religionGeneral &&
-        props['p'] === population &&
-        props['rDark'] === rulerDark &&
-        props['cDark'] === cultureDark &&
-        props['eDark'] === religionDark &&
-        props['gDark'] === religionGeneralDark
+        props['p'] === population
       ) {
         return feature;
       }
@@ -2117,10 +2114,6 @@ export const useMapStore = create<MapStore>((set, get) => ({
       props['e'] = religion;
       props['g'] = religionGeneral;
       props['p'] = population;
-      props['rDark'] = rulerDark;
-      props['cDark'] = cultureDark;
-      props['eDark'] = religionDark;
-      props['gDark'] = religionGeneralDark;
       changedIds.push(provinceId);
       return feature;
     });

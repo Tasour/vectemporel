@@ -26,7 +26,7 @@ function parseColor(color: string): [number, number, number] | null {
   return null;
 }
 
-export function darkenColor(color: string | undefined, amount = 0.35): string {
+export function darkenColor(color: string | undefined, amount = 0.18): string {
   const parsed = color ? parseColor(color) : null;
   if (!parsed) return '#3a3731';
   const factor = Math.max(0, Math.min(1, 1 - amount));

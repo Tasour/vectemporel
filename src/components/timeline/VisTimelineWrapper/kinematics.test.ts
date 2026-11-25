@@ -37,7 +37,7 @@ interface Simulation {
  */
 function simulate(
   samples: Sample[],
-  options: { width: number; kind: Kind; startYear?: number; settleMs?: number }
+  options: { width: number; kind: Kind; startYear?: number; settleMs?: number; lagYears?: number }
 ): Simulation {
   let now = 1000;
   let center = msForYear(options.startYear ?? 1000);
@@ -48,6 +48,7 @@ function simulate(
   state.span = span;
   state.targetSpan = span;
   state.center = center;
+  state.seeded = true;
   let maxFrameShiftYears = 0;
   let frames = 0;
 
@@ -73,7 +74,7 @@ function simulate(
     advanceUntil(now + sample.dtMs);
     const result = applyGestureInput(state, {
       deltaPx: sample.deltaPx,
-      centerMs: center,
+      centerMs: center - (options.lagYears ?? 0) * YEAR_MS,
       spanMs: span,
       width: options.width,
       now,
@@ -145,7 +146,7 @@ describe('timeline ergonomics — calibrated gestures', () => {
     const result = simulate(burst(3, 100, 40), { width: 390, kind: 'wheel' });
     const shift = result.year - 1000;
     expect(shift).toBeGreaterThan(250);
-    expect(shift).toBeLessThan(420);
+    expect(shift).toBeLessThan(450);
     expect(result.spanYears / 500).toBeGreaterThan(1.2);
     expect(result.spanYears / 500).toBeLessThan(1.6);
   });
@@ -176,6 +177,14 @@ describe('timeline ergonomics — calibrated gestures', () => {
     expect(result.year - 1000).toBeGreaterThan(300);
     expect(result.spanYears / 500).toBeGreaterThan(1.25);
     expect(result.maxFrameShiftYears).toBeLessThan(result.spanYears * 0.2);
+  });
+
+  it('never rewinds when the reported window lags behind the gesture', () => {
+    const samples = burst(10, 20, 30);
+    const lagged = simulate(samples, { width: 390, kind: 'drag', lagYears: 120 });
+    const reference = simulate(samples, { width: 390, kind: 'drag' });
+    expect(lagged.year).toBeGreaterThanOrEqual(1000);
+    expect(Math.abs(lagged.year - reference.year)).toBeLessThan(20);
   });
 
   it('drag and wheel share the same direction', () => {
