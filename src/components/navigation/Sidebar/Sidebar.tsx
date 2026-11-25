@@ -17,9 +17,8 @@ import { getNavItemsBySection, type NavItemConfig } from '../navConfig';
 import { useUIStore } from '../../../stores/uiStore';
 import { useAuthStore } from '../../../stores/authStore';
 import { useNavigationStore } from '../../../stores/navigationStore';
-import { useMapStore } from '../../../stores/mapStore';
-import { useTimelineStore } from '../../../stores/timelineStore';
 import { isProSubscription } from '../../../utils/subscriptionUtils';
+import { useNavItemAction } from '../useNavItemAction';
 import styles from './Sidebar.module.css';
 
 export interface SidebarProps {
@@ -45,69 +44,15 @@ export const Sidebar: React.FC<SidebarProps> = ({
 }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { theme, setSidebarOpen } = useUIStore();
+  const { theme } = useUIStore();
   const { isAuthenticated, username, avatar, score, subscription } = useAuthStore();
-  const { toggleDrawer, drawerOpen, drawerContent } = useNavigationStore();
-  const openRightDrawer = useUIStore((s) => s.openRightDrawer);
+  const { drawerOpen, drawerContent } = useNavigationStore();
+  const handleItemClick = useNavItemAction();
 
   const topItems = getNavItemsBySection('top');
   const bottomItems = getNavItemsBySection('bottom');
 
   const isPro = isProSubscription(subscription);
-
-  /**
-   * Handle navigation item click.
-   * Routes to path or triggers action based on item configuration.
-   */
-  const handleItemClick = useCallback(
-    (item: NavItemConfig) => {
-      if (item.action) {
-        switch (item.action) {
-          case 'layers':
-          case 'collections':
-          case 'settings':
-            setSidebarOpen(false);
-            toggleDrawer(item.action);
-            break;
-          case 'random': {
-            // Tirage d'une province de l'année courante, uniquement depuis le miroir local.
-            void (async () => {
-              const year = useTimelineStore.getState().selectedYear;
-              let data = useMapStore.getState().currentAreaData;
-              if (!data) {
-                await useMapStore.getState().loadAreaData(year);
-                data = useMapStore.getState().currentAreaData;
-              }
-              const keys = Object.keys(data ?? {});
-              if (!keys.length) return;
-              const random = new Uint32Array(1);
-              crypto.getRandomValues(random);
-              const provinceId = keys[(random[0] ?? 0) % keys.length];
-              if (provinceId) {
-                openRightDrawer({ type: 'area', provinceId, provinceName: provinceId });
-              }
-            })();
-            break;
-          }
-          case 'play': {
-            // Issue #20: sidebar Play opens the autoplay menu (or stops autoplay if active)
-            const ts = useTimelineStore.getState();
-            if (ts.isAutoplayActive) {
-              ts.stopAutoplay();
-            } else {
-              ts.toggleAutoplayMenu();
-            }
-            break;
-          }
-          case 'help':
-          case 'info':
-            useUIStore.getState().openInfoDialog();
-            break;
-        }
-      }
-    },
-    [toggleDrawer, openRightDrawer, setSidebarOpen]
-  );
 
   /**
    * Handle user avatar click - navigate to profile.

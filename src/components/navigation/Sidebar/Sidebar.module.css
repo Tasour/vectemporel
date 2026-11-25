@@ -80,7 +80,7 @@
 
 .spacer {
   flex: 1;
-  min-height: 16px;
+  min-block-size: 16px;
 }
 
 .avatarSection {
@@ -125,12 +125,14 @@
   outline-offset: 2px;
 }
 
-/* Mobile */
+/* Mobile — remplacée par la barre de lancement basse */
 @media (max-width: 767px) {
-  .sidebar { z-index: 10001; }
-  .sidebar.closed { margin-left: -50px; }
-  .sidebar.open { margin-left: 0; }
-  .toggleButton { display: flex; }
+  .sidebar,
+  .sidebar.closed,
+  .sidebar.open,
+  .toggleButton {
+    display: none;
+  }
 }
 
 /* Dark theme — darker charcoal paper, warm gold accents unchanged */

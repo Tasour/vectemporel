@@ -53,7 +53,7 @@
   pointer-events: none;
   /* Ensure time axis labels are visible at top */
   height: auto !important;
-  min-height: 24px;
+  min-block-size: 24px;
 }
 
 .container :global(.vis-panel.vis-left),
@@ -79,7 +79,7 @@
 .container :global(.vis-panel.vis-bottom),
 .container :global(.vis-panel.vis-center),
 .container :global(.vis-panel.vis-top) {
-  min-height: 24px;
+  min-block-size: 24px;
 }
 
 /* Custom time marker styling (year marker) */
@@ -101,6 +101,39 @@
 /* Ensure the drag handle doesn't block the year label button */
 .container :global(.vis-custom-time.selectedYear > div:first-child) {
   z-index: 1;
+}
+
+/* Mobile : le trait reste au centre, le temps défile derrière lui */
+@media (max-width: 767px) {
+  .container {
+    height: var(--timeline-current-height, 64px) !important;
+    min-height: 0 !important;
+    overflow: hidden;
+    touch-action: none;
+    user-select: none;
+    overscroll-behavior-x: contain;
+  }
+
+  .container :global(.vis-timeline) {
+    height: var(--timeline-current-height, 64px) !important;
+    overflow: hidden;
+  }
+
+  .container :global(.vis-panel.vis-background) {
+    pointer-events: none;
+  }
+
+  .container :global(.vis-custom-time.selectedYear) {
+    /* Le panneau vis commence après 50 px d'axe : on vise le centre du viewport. */
+    left: calc(50vw - 50px) !important;
+    height: var(--timeline-current-height, 64px) !important;
+    transition: none;
+  }
+
+  .container :global(.vis-loading-screen) {
+    height: var(--timeline-current-height, 64px) !important;
+    pointer-events: none;
+  }
 }
 
 /* ============================================

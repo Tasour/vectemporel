@@ -10,6 +10,15 @@
     "downloads": "Downloads",
     "play": "Play",
     "help": "Help",
+    "short": {
+      "layers": "Layers",
+      "discover": "Discover",
+      "random": "Random",
+      "settings": "Settings",
+      "collections": "Saved",
+      "play": "Play",
+      "help": "Help"
+    },
     "logout": "Logout",
     "community": "Community Board",
     "account": "Manage Account",

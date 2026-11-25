@@ -97,16 +97,21 @@ function VisTimelineWrapperComponent(
   const itemsDataSetRef = useRef<DataSet<TimelineItem> | null>(null);
   const groupsDataSetRef = useRef<DataSet<TimelineGroup> | null>(null);
   const customTimeIdsRef = useRef(new Set());
+  const callbacksRef = useRef({ onTimelineClick, onRangeChange, onRangeChanged, onMouseMove, onClick });
+
+  useEffect(() => {
+    callbacksRef.current = { onTimelineClick, onRangeChange, onRangeChanged, onMouseMove, onClick };
+  }, [onTimelineClick, onRangeChange, onRangeChanged, onMouseMove, onClick]);
 
   const handleClick = useCallback((properties: { event: MouseEvent; time: Date; item: string | null }) => {
     const clickEvent: TimelineClickEvent = { event: properties.event, time: properties.time, item: properties.item };
-    if (properties.item && onClick) onClick(clickEvent);
-    else if (!properties.item && onTimelineClick) onTimelineClick(clickEvent);
-  }, [onClick, onTimelineClick]);
+    if (properties.item) callbacksRef.current.onClick?.(clickEvent);
+    else callbacksRef.current.onTimelineClick?.(clickEvent);
+  }, []);
 
   const handleMouseMove = useCallback((properties: { time: Date }) => {
-    if (onMouseMove) onMouseMove({ time: properties.time });
-  }, [onMouseMove]);
+    callbacksRef.current.onMouseMove?.({ time: properties.time });
+  }, []);
 
   useImperativeHandle(ref, () => ({
     setWindow: (start: Date, end: Date, opts?: { animation?: boolean }) => timelineRef.current?.setWindow(start, end, opts),
@@ -125,8 +130,8 @@ function VisTimelineWrapperComponent(
     const timeline = new VisTimeline(containerRef.current, itemsDataSetRef.current, groupsDataSetRef.current, options);
     timelineRef.current = timeline;
     // Store references so off() uses the same function objects as on()
-    const handleRangeChange = () => onRangeChange?.();
-    const handleRangeChanged = () => onRangeChanged?.();
+    const handleRangeChange = () => callbacksRef.current.onRangeChange?.();
+    const handleRangeChanged = () => callbacksRef.current.onRangeChanged?.();
     timeline.on('click', handleClick);
     timeline.on('rangechange', handleRangeChange);
     timeline.on('rangechanged', handleRangeChanged);

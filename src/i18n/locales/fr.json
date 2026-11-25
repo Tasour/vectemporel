@@ -10,6 +10,15 @@
     "downloads": "Téléchargements",
     "play": "Jouer",
     "help": "Aide",
+    "short": {
+      "layers": "Couches",
+      "discover": "Découvrir",
+      "random": "Aléatoire",
+      "settings": "Réglages",
+      "collections": "Collections",
+      "play": "Lecture",
+      "help": "Aide"
+    },
     "logout": "Déconnexion",
     "community": "Forum communautaire",
     "account": "Gérer le compte"
@@ -138,5 +147,21 @@
     "back": "Retour",
     "ad": "ap. J.-C.",
     "bc": "av. J.-C."
+  },
+  "support": {
+    "title": "Soutenir Chronas",
+    "subtitle": "Gardez l’histoire sur la carte",
+    "intro": "Chronas est gratuit pour tous, sans publicité. Votre soutien permet de maintenir les serveurs et de faire grandir la carte.",
+    "ctaBefore": "Rendez-vous sur",
+    "ctaAfter": "et choisissez le montant de votre soutien !",
+    "ctaEmphasis": "Selon la valeur que vous donnez à Chronas !",
+    "button": "Devenir mécène",
+    "supporter": "Vous soutenez déjà Chronas, merci !",
+    "otherTitle": "Autres façons d’aider",
+    "github": "Un bug ou une idée ? Faites-le nous savoir sur GitHub",
+    "help": "Si vous avez une question ou besoin d’aide",
+    "contact": "Nous contacter",
+    "close": "Fermer",
+    "opensInNewTab": "(ouvre un nouvel onglet)"
   }
 }

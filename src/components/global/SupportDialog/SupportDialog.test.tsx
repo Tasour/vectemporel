@@ -30,7 +30,7 @@ describe('SupportDialog', () => {
 
   it('renders as a modal dialog portalled to body', () => {
     renderDialog();
-    const dialog = screen.getByRole('dialog', { name: 'Support Chronas' });
+    const dialog = screen.getByRole('dialog', { name: 'Soutenir Chronas' });
     expect(dialog).toHaveAttribute('aria-modal', 'true');
     expect(dialog.parentElement).toBe(document.body);
   });
@@ -38,9 +38,9 @@ describe('SupportDialog', () => {
   it('shows the Patreon pledge call to action', () => {
     renderDialog();
     const pledge = screen.getByTestId('support-pledge');
-    expect(pledge).toHaveTextContent('Head over to');
-    expect(pledge).toHaveTextContent('and pledge an amount of your choice!');
-    expect(pledge).toHaveTextContent('Whatever Chronas is worth to you!');
+    expect(pledge).toHaveTextContent('Rendez-vous sur');
+    expect(pledge).toHaveTextContent('et choisissez le montant de votre soutien !');
+    expect(pledge).toHaveTextContent('Selon la valeur que vous donnez à Chronas !');
   });
 
   it('links to Patreon in a new tab', () => {
@@ -50,7 +50,7 @@ describe('SupportDialog', () => {
       expect(link).toHaveAttribute('href', PATREON_URL);
       expect(link).toHaveAttribute('target', '_blank');
       expect(link).toHaveAttribute('rel', 'noopener noreferrer');
-      expect(link).toHaveTextContent('(opens in a new tab)');
+      expect(link).toHaveTextContent('(ouvre un nouvel onglet)');
     }
   });
 
@@ -87,7 +87,7 @@ describe('SupportDialog', () => {
 
   it('does not close when clicking inside the dialog', () => {
     renderDialog();
-    fireEvent.click(screen.getByText('Support Chronas', { selector: 'h2' }));
+    fireEvent.click(screen.getByText('Soutenir Chronas', { selector: 'h2' }));
     expect(onClose).not.toHaveBeenCalled();
   });
 

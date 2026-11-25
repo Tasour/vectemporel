@@ -2,6 +2,7 @@ import type React from 'react';
 import { lazy, Suspense, useEffect } from 'react';
 import { MainContent } from './MainContent';
 import { Sidebar } from '../navigation/Sidebar';
+import { MobileDock } from '../navigation/MobileDock';
 import { MenuDrawer } from '../navigation/MenuDrawer';
 import { RightDrawer } from './RightDrawer/RightDrawer';
 import { CollectionsContent } from '../library/CollectionsContent';
@@ -92,6 +93,8 @@ export const AppShell: React.FC<AppShellProps> = ({ children, className }) => {
       <Suspense fallback={null}>
         <Timeline />
       </Suspense>
+
+      <MobileDock />
 
       <LoginDialog isOpen={loginDialogOpen} onClose={closeLoginDialog} />
       <InfoDialog isOpen={infoDialogOpen} onClose={closeInfoDialog} initialTab={infoDialogTab} />

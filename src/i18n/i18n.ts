@@ -2,7 +2,7 @@
  * i18n Configuration
  *
  * Sets up react-i18next with 17 supported languages.
- * English is the default and fallback language.
+ * French is the default and fallback language.
  * Other languages load on demand.
  *
  * Requirements: US-9.1, US-9.2
@@ -125,7 +125,7 @@ void i18n
       ca: { translation: ca },
     },
     lng: getInitialLocale(),
-    fallbackLng: 'en',
+    fallbackLng: 'fr',
     interpolation: {
       escapeValue: false,
     },

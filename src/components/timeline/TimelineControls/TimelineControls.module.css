@@ -11,7 +11,7 @@
 .timelineControls {
   position: fixed;
   left: 64px; /* default; overridden by inline style when layers panel open */
-  bottom: 0;
+  bottom: var(--desktop-controls-bottom, 0px);
   
   /* Vertical stacking */
   display: flex;
@@ -223,24 +223,30 @@
   border-right-color: var(--chronas-fore-2, #e9caab);
 }
 
+/* Mobile : les contrôles restent au-dessus de la barre de navigation */
+@media (max-width: 767px) {
+  .timelineControls {
+    bottom: calc(var(--mobile-dock-height, 72px) + env(safe-area-inset-bottom, 0px));
+  }
+}
+
 /* Responsive adjustments */
 @media (max-width: 767px) {
   .timelineControls {
-    /* Keep after sidebar on mobile */
-    left: 60px;
-    bottom: 12px;
+    /* La sidebar est remplacée par la barre basse */
+    left: 0;
+    bottom: calc(var(--mobile-dock-height, 72px) + env(safe-area-inset-bottom, 0px));
     gap: 6px;
   }
   
   .controlButton {
-    /* Slightly smaller on mobile but still touch-friendly */
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
   }
   
   .controlButton svg {
-    width: 18px;
-    height: 18px;
+    width: 24px;
+    height: 24px;
   }
   
   .tooltip {

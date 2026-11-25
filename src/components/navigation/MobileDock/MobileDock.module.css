@@ -1,0 +1,118 @@
+/* Barre de lancement mobile, fixe sous la timeline. */
+
+.dock {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 360;
+  height: calc(var(--mobile-dock-height, 72px) + env(safe-area-inset-bottom, 0px));
+  padding: 4px 8px calc(4px + env(safe-area-inset-bottom, 0px));
+  box-sizing: border-box;
+  background: linear-gradient(180deg, #f6f3ec 0%, #fdfcf8 100%);
+  border-top: 1px solid rgba(120, 95, 40, 0.16);
+  box-shadow: 0 -6px 20px -12px rgba(40, 30, 10, 0.35);
+}
+
+.items {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+.items::-webkit-scrollbar {
+  display: none;
+}
+
+.item {
+  display: flex;
+  flex: 0 0 auto;
+  min-width: 52px;
+  min-height: 56px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: #4b4942;
+  cursor: pointer;
+  font-family: 'Inter', system-ui, sans-serif;
+  transition: background-color 160ms ease, color 160ms ease;
+}
+
+.item:hover,
+.active {
+  background-color: rgba(173, 135, 27, 0.14);
+  color: #6d5316;
+}
+
+.item:focus-visible {
+  outline: 3px solid rgba(173, 135, 27, 0.7);
+  outline-offset: -2px;
+}
+
+.itemIcon {
+  display: flex;
+  height: 24px;
+  align-items: center;
+  justify-content: center;
+}
+
+.itemIcon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.itemLabel {
+  max-width: 64px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  .dock {
+    display: block;
+  }
+}
+
+[data-theme='dark'] .dock {
+  background: linear-gradient(180deg, #16140f 0%, #1e1c1a 100%);
+  border-top-color: rgba(212, 169, 58, 0.18);
+}
+
+[data-theme='dark'] .item {
+  color: #d8d2c1;
+}
+
+[data-theme='dark'] .item:hover,
+[data-theme='dark'] .active {
+  background-color: rgba(212, 169, 58, 0.16);
+  color: #f6f3ec;
+}
+
+[data-theme='luther'] .dock {
+  background: linear-gradient(180deg, #011c31 0%, #3a1826 100%);
+  border-top-color: rgba(255, 243, 211, 0.14);
+}
+
+[data-theme='luther'] .item {
+  color: #fff3d3;
+}
+
+[data-theme='luther'] .item:hover,
+[data-theme='luther'] .active {
+  background-color: rgba(255, 243, 211, 0.12);
+}

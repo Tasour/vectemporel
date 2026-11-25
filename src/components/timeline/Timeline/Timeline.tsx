@@ -16,6 +16,8 @@ import type { EpicItem } from '../../../stores/timelineStore';
 import { useUIStore } from '../../../stores/uiStore';
 import { useMapStore } from '../../../stores/mapStore';
 import { useNavigationStore } from '../../../stores/navigationStore';
+import { useIsMobile } from '../../../hooks/useIsMobile';
+import { dateToYear, formatYearForDisplay, yearToDate } from '../../../utils/yearUtils';
 import { TimelineControls } from '../TimelineControls/TimelineControls';
 import { YearDialog } from '../YearDialog/YearDialog';
 import { AutoplayMenu } from '../AutoplayMenu/AutoplayMenu';
@@ -52,6 +54,8 @@ export interface TimelineProps {
  */
 export const TIMELINE_HEIGHT_COLLAPSED = 110;
 export const TIMELINE_HEIGHT_EXPANDED = 280;
+export const TIMELINE_HEIGHT_COLLAPSED_MOBILE = 64;
+export const TIMELINE_HEIGHT_EXPANDED_MOBILE = 220;
 
 /**
  * Color dot HTML for each epic type — used as a visual category indicator.
@@ -110,6 +114,8 @@ export const Timeline: React.FC<TimelineProps> = ({
 
   // Ref for the vis-timeline wrapper
   const timelineRef = useRef<VisTimelineRef>(null);
+  const isMobile = useIsMobile();
+  const skipRangeSyncRef = useRef(false);
 
   // Zoom hint visibility — shown briefly on first render
   const [showZoomHint, setShowZoomHint] = useState(true);
@@ -220,7 +226,13 @@ export const Timeline: React.FC<TimelineProps> = ({
 
   const timelineOptions = useMemo((): TimelineOptions => ({
     width: '100%',
-    height: isExpanded ? TIMELINE_HEIGHT_EXPANDED : TIMELINE_HEIGHT_COLLAPSED,
+    height: isExpanded
+      ? isMobile
+        ? TIMELINE_HEIGHT_EXPANDED_MOBILE
+        : TIMELINE_HEIGHT_EXPANDED
+      : isMobile
+        ? TIMELINE_HEIGHT_COLLAPSED_MOBILE
+        : TIMELINE_HEIGHT_COLLAPSED,
     min: '-002500-01-01',
     max: '2500-01-01',
     start: viewStart,
@@ -235,7 +247,7 @@ export const Timeline: React.FC<TimelineProps> = ({
     zoomable: true,
     moveable: true,
     timeAxis: { scale: 'year', step: 100 },
-  }), [isExpanded, viewStart, viewEnd]);
+  }), [isExpanded, isMobile, viewStart, viewEnd]);
 
   /**
    * Custom time marker for current year
@@ -349,6 +361,17 @@ export const Timeline: React.FC<TimelineProps> = ({
     }
   }, [setYear]);
 
+  /** Recentre la fenêtre sur une année sans répercuter le mouvement sur le store. */
+  const centerOnYear = useCallback((year: number, animated = false) => {
+    const timeline = timelineRef.current;
+    if (!timeline) return;
+    skipRangeSyncRef.current = true;
+    timeline.moveTo(yearToDate(year), { animation: animated });
+    window.setTimeout(() => {
+      skipRangeSyncRef.current = false;
+    }, animated ? 450 : 60);
+  }, []);
+
   // Handlers
   const handleToggleExpand = useCallback(() => {
     toggleExpanded();
@@ -357,7 +380,8 @@ export const Timeline: React.FC<TimelineProps> = ({
   const handleReset = useCallback(() => {
     setYear(1000);
     setIsDefaultView(true);
-  }, [setYear]);
+    if (isMobile) centerOnYear(1000);
+  }, [centerOnYear, isMobile, setYear]);
 
   const handleSearchOpen = useCallback(() => {
     setIsEpicSearchOpen((prev) => !prev);
@@ -382,11 +406,12 @@ export const Timeline: React.FC<TimelineProps> = ({
     setIsYearDialogOpen(false);
     setIsDefaultView(false);
     // Move the timeline viewport to center on the new year
-    if (timelineRef.current) {
+    if (isMobile) centerOnYear(year, true);
+    else if (timelineRef.current) {
       const targetDate = new Date(new Date(0, 1, 1).setFullYear(year));
       timelineRef.current.moveTo(targetDate, { animation: true });
     }
-  }, [setYear]);
+  }, [centerOnYear, isMobile, setYear]);
 
   const handleYearClick = useCallback(() => {
     setIsYearDialogOpen(true);
@@ -435,6 +460,30 @@ export const Timeline: React.FC<TimelineProps> = ({
     }
   }, [setYear]);
 
+  /** Sur mobile, l'année est celle qui passe sous le trait central fixe. */
+  const handleRangeChange = useCallback(() => {
+    if (!isMobile || skipRangeSyncRef.current) return;
+    const timeline = timelineRef.current;
+    if (!timeline) return;
+    const windowRange = timeline.getWindow();
+    const center = new Date((windowRange.start.getTime() + windowRange.end.getTime()) / 2);
+    const year = dateToYear(center);
+    if (year !== useTimelineStore.getState().selectedYear) {
+      setYear(year);
+      setIsDefaultView(false);
+    }
+  }, [isMobile, setYear]);
+
+  useEffect(() => {
+    if (!isMobile) return;
+    centerOnYear(useTimelineStore.getState().selectedYear);
+  }, [centerOnYear, isMobile]);
+
+  useEffect(() => {
+    if (!isMobile || !isAutoplayActive || skipRangeSyncRef.current) return;
+    centerOnYear(selectedYear);
+  }, [centerOnYear, isAutoplayActive, isMobile, selectedYear]);
+
   // Create portal container for timeline
   const [portalContainer, setPortalContainer] = useState<HTMLElement | null>(null);
 
@@ -457,7 +506,19 @@ export const Timeline: React.FC<TimelineProps> = ({
   }, []);
 
   // Determine the current height based on expanded state
-  const currentHeight = isExpanded ? TIMELINE_HEIGHT_EXPANDED : TIMELINE_HEIGHT_COLLAPSED;
+  const currentHeight = isExpanded
+    ? isMobile
+      ? TIMELINE_HEIGHT_EXPANDED_MOBILE
+      : TIMELINE_HEIGHT_EXPANDED
+    : isMobile
+      ? TIMELINE_HEIGHT_COLLAPSED_MOBILE
+      : TIMELINE_HEIGHT_COLLAPSED;
+
+  useEffect(() => {
+    if (portalContainer) {
+      portalContainer.style.setProperty('--timeline-current-height', `${String(currentHeight)}px`);
+    }
+  }, [currentHeight, portalContainer]);
 
   // Build class names safely
   const timelineClass = styles['timeline'] ?? '';
@@ -466,10 +527,10 @@ export const Timeline: React.FC<TimelineProps> = ({
   const stateClass = isExpanded ? expandedClass : collapsedClass;
   const combinedClassName = `${timelineClass} ${stateClass} ${className ?? ''}`.trim();
 
-  // Shift timeline away from open drawers
-  const timelineRight = rightDrawerOpen ? '35%' : '0';
+  // Shift timeline away from open drawers on desktop only
+  const timelineRight = rightDrawerOpen && !isMobile ? '35%' : '0';
   // Controls left: 50px sidebar + 250px layers panel + 14px gap = 314px when open, 64px when closed
-  const controlsLeft = layersDrawerOpen ? 314 : 64;
+  const controlsLeft = isMobile ? 0 : layersDrawerOpen ? 314 : 64;
 
   const timelineContent = (
     <div
@@ -502,6 +563,7 @@ export const Timeline: React.FC<TimelineProps> = ({
 
         {/* Vis.js Timeline with epic items (Requirements 6.2, 6.4, 6.5) */}
         <VisTimelineWrapper
+          key={isMobile ? 'mobile' : 'desktop'}
           ref={timelineRef}
           options={timelineOptions}
           items={timelineItems}
@@ -509,13 +571,14 @@ export const Timeline: React.FC<TimelineProps> = ({
           customTimes={customTimes}
           onClick={handleEpicClick}
           onTimelineClick={handleTimelineClick}
+          onRangeChange={handleRangeChange}
           className={styles['visTimeline'] ?? ''}
         />
 
         {/* Zoom hint — fades after a few seconds */}
         {showZoomHint && (
           <div className={styles['zoomHint']} aria-hidden="true">
-            scroll to zoom &middot; drag to pan
+            glisser pour explorer &middot; pincer pour zoomer
           </div>
         )}
 
@@ -525,6 +588,18 @@ export const Timeline: React.FC<TimelineProps> = ({
           suggestedYear={suggestedYear}
           onYearClick={handleYearClick}
         />
+
+        {isMobile ? (
+          <button
+            type="button"
+            className={styles['mobileYearBadge']}
+            onClick={handleYearClick}
+            aria-label={`Choisir l’année ${formatYearForDisplay(selectedYear)}`}
+            data-testid="mobile-year-badge"
+          >
+            {formatYearForDisplay(selectedYear)}
+          </button>
+        ) : null}
 
         {/* Autoplay menu (Requirement 9.1-9.7) */}
         {isAutoplayMenuOpen && (

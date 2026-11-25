@@ -56,6 +56,38 @@
   pointer-events: auto;
 }
 
+/* Badge d'année mobile, au-dessus du trait central */
+.mobileYearBadge {
+  position: absolute;
+  top: -44px;
+  left: 50%;
+  z-index: 20;
+  min-height: 44px;
+  padding: 0 14px;
+  transform: translateX(-50%);
+  border: 1px solid rgba(120, 95, 40, 0.25);
+  border-radius: 10px;
+  background: #fdfcf8;
+  color: #3a3731;
+  box-shadow: 0 4px 14px -6px rgba(40, 30, 10, 0.4);
+  cursor: pointer;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.mobileYearBadge:focus-visible {
+  outline: 3px solid rgba(173, 135, 27, 0.7);
+  outline-offset: 2px;
+}
+
+[data-theme='dark'] .mobileYearBadge,
+[data-theme='luther'] .mobileYearBadge {
+  background: #2a2721;
+  color: #f6f3ec;
+}
+
 /* Placeholder content (temporary until sub-components are added) */
 .placeholder {
   display: flex;
@@ -87,6 +119,8 @@
   .timeline {
     --timeline-collapsed-height: 64px;
     --timeline-expanded-height: 220px;
+    left: 0;
+    bottom: calc(var(--mobile-dock-height, 72px) + env(safe-area-inset-bottom, 0px));
   }
 
   .collapsed {

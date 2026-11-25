@@ -17,6 +17,9 @@
   --color-error: #f44336;
   --color-info: #2196f3;
 
+  /* Mobile launcher bar below the timeline */
+  --mobile-dock-height: 72px;
+
   /* Chronas Theme Colors - Light (default) */
   --chronas-fore-1: #6a6a6a;
   --chronas-fore-2: #494949;
