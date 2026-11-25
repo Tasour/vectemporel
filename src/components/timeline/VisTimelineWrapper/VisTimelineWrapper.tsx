@@ -93,6 +93,7 @@ export interface VisTimelineWrapperProps {
   onTimelineClick?: (event: TimelineClickEvent) => void;
   onRangeChange?: () => void;
   onRangeChanged?: () => void;
+  onInitialWindowApplied?: () => void;
   onMouseMove?: (event: TimelineMouseEvent) => void;
   onClick?: (event: TimelineClickEvent) => void;
   /** Fenêtre initiale appliquée à la création du timeline */
@@ -109,7 +110,7 @@ function VisTimelineWrapperComponent(
   props: VisTimelineWrapperProps,
   ref: ForwardedRef<VisTimelineRef>
 ): React.JSX.Element {
-  const { options, items = [], groups = [], customTimes = {}, initialStart, initialEnd, onTimelineClick, onRangeChange, onRangeChanged, onMouseMove, onClick, manualPan = false, onPanEnd, className } = props;
+  const { options, items = [], groups = [], customTimes = {}, initialStart, initialEnd, onTimelineClick, onRangeChange, onRangeChanged, onInitialWindowApplied, onMouseMove, onClick, manualPan = false, onPanEnd, className } = props;
   const containerRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<VisTimeline | null>(null);
   const itemsDataSetRef = useRef<DataSet<TimelineItem> | null>(null);
@@ -117,11 +118,11 @@ function VisTimelineWrapperComponent(
   const customTimeIdsRef = useRef(new Set());
   const pointerRef = useRef<{ id: number; x: number; start: number; end: number; width: number } | null>(null);
   const touchRef = useRef<{ identifier: number; x: number; start: number; end: number; width: number } | null>(null);
-  const callbacksRef = useRef({ onTimelineClick, onRangeChange, onRangeChanged, onMouseMove, onClick });
+  const callbacksRef = useRef({ onTimelineClick, onRangeChange, onRangeChanged, onInitialWindowApplied, onMouseMove, onClick });
 
   useEffect(() => {
-    callbacksRef.current = { onTimelineClick, onRangeChange, onRangeChanged, onMouseMove, onClick };
-  }, [onTimelineClick, onRangeChange, onRangeChanged, onMouseMove, onClick]);
+    callbacksRef.current = { onTimelineClick, onRangeChange, onRangeChanged, onInitialWindowApplied, onMouseMove, onClick };
+  }, [onInitialWindowApplied, onMouseMove, onClick, onRangeChange, onRangeChanged, onTimelineClick]);
 
   const handleClick = useCallback((properties: { event: MouseEvent; time: Date; item: string | null }) => {
     const clickEvent: TimelineClickEvent = { event: properties.event, time: properties.time, item: properties.item };
@@ -225,9 +226,11 @@ function VisTimelineWrapperComponent(
     groupsDataSetRef.current = new DataSet<TimelineGroup>();
     const timeline = new VisTimeline(containerRef.current, itemsDataSetRef.current, groupsDataSetRef.current, options);
     timelineRef.current = timeline;
-    const initialWindowTimer = initialStart && initialEnd
-      ? window.setTimeout(() => timeline.setWindow(new Date(initialStart), new Date(initialEnd)), 0)
-      : null;
+    const applyInitialWindow = () => {
+      if (initialStart && initialEnd) timeline.setWindow(new Date(initialStart), new Date(initialEnd));
+      callbacksRef.current.onInitialWindowApplied?.();
+    };
+    const initialWindowTimer = window.setTimeout(applyInitialWindow, 0);
     // Store references so off() uses the same function objects as on()
     const handleRangeChange = () => callbacksRef.current.onRangeChange?.();
     const handleRangeChanged = () => callbacksRef.current.onRangeChanged?.();
@@ -237,7 +240,7 @@ function VisTimelineWrapperComponent(
     timeline.on('mouseMove', handleMouseMove);
     const customTimeIds = customTimeIdsRef.current;
     return () => {
-      if (initialWindowTimer !== null) window.clearTimeout(initialWindowTimer);
+      window.clearTimeout(initialWindowTimer);
       timeline.off('click', handleClick);
       timeline.off('rangechange', handleRangeChange);
       timeline.off('rangechanged', handleRangeChanged);

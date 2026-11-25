@@ -115,6 +115,8 @@ export const Timeline: React.FC<TimelineProps> = ({
   const timelineRef = useRef<VisTimelineRef>(null);
   const isMobile = useIsMobile();
   const skipRangeSyncRef = useRef(false);
+  const initialWindowReadyRef = useRef(false);
+  const userInteractedRef = useRef(false);
   const suppressClickRef = useRef(false);
 
   // Zoom hint visibility — shown briefly on first render
@@ -257,6 +259,7 @@ export const Timeline: React.FC<TimelineProps> = ({
    * Flies the map to show the epic's related locations
    */
   const handleEpicClick = useCallback((event: TimelineClickEvent) => {
+    userInteractedRef.current = true;
     if (suppressClickRef.current) return;
     if (event.item) {
       // Find the clicked epic item
@@ -347,6 +350,7 @@ export const Timeline: React.FC<TimelineProps> = ({
    * Handle timeline click (not on an item) - set year
    */
   const handleTimelineClick = useCallback((event: TimelineClickEvent) => {
+    userInteractedRef.current = true;
     if (suppressClickRef.current) return;
     if (!event.item) {
       const clickedYear = event.time.getFullYear();
@@ -377,6 +381,7 @@ export const Timeline: React.FC<TimelineProps> = ({
   }, []);
 
   const handleYearDialogSubmit = useCallback((year: number) => {
+    userInteractedRef.current = true;
     setYear(year);
     useTimelineStore.setState({ isYearDialogOpen: false });
     setNotDefaultView();
@@ -401,6 +406,7 @@ export const Timeline: React.FC<TimelineProps> = ({
   }, []);
 
   const handleEpicSearchSelect = useCallback((epic: EpicItem, startYear: number, endYear: number) => {
+    userInteractedRef.current = true;
     // Navigate timeline to the epic's date range
     if (timelineRef.current) {
       const startDate = new Date(new Date(0, 1, 1).setFullYear(startYear));
@@ -419,6 +425,7 @@ export const Timeline: React.FC<TimelineProps> = ({
   }, [setNotDefaultView, setYear, onEpicSelect]);
 
   const handleAutoplayStart = useCallback(() => {
+    userInteractedRef.current = true;
     startAutoplay();
     closeAutoplayMenu();
   }, [startAutoplay, closeAutoplayMenu]);
@@ -429,10 +436,33 @@ export const Timeline: React.FC<TimelineProps> = ({
     setOverlayRange({ start: dateToYear(windowRange.start), end: dateToYear(windowRange.end) });
   }, []);
 
+  // L'ajout des épopées peut faire recalculer la fenêtre par vis-timeline :
+  // la réappliquer tant que l'utilisateur n'a pas manipulé la timeline.
+  useEffect(() => {
+    if (timelineItems.length === 0 || userInteractedRef.current || !initialWindowReadyRef.current) return;
+    const timeline = timelineRef.current;
+    if (!timeline) return;
+    skipRangeSyncRef.current = true;
+    timeline.setWindow(yearToDate(selectedYear - 250), yearToDate(selectedYear + 250));
+    const timer = window.setTimeout(() => {
+      skipRangeSyncRef.current = false;
+    }, 80);
+    return () => window.clearTimeout(timer);
+  }, [selectedYear, timelineItems.length]);
+
+  // Une fois les épopées stabilisées, le drag redevient pleinement piloté par la fenêtre.
+  useEffect(() => {
+    if (timelineItems.length === 0) return undefined;
+    const timer = window.setTimeout(() => {
+      userInteractedRef.current = true;
+    }, 1200);
+    return () => window.clearTimeout(timer);
+  }, [timelineItems.length]);
+
   /** Sur mobile, l'année est celle qui passe sous le trait central fixe. */
   const handleRangeChange = useCallback(() => {
     const timeline = timelineRef.current;
-    if (!timeline) return;
+    if (!timeline || !initialWindowReadyRef.current || userInteractedRef.current) return;
     handleOverlayRangeChanged();
     if (!isMobile || skipRangeSyncRef.current) return;
     const windowRange = timeline.getWindow();
@@ -525,8 +555,12 @@ export const Timeline: React.FC<TimelineProps> = ({
           onTimelineClick={handleTimelineClick}
           onRangeChange={handleRangeChange}
           onRangeChanged={handleOverlayRangeChanged}
+          onInitialWindowApplied={() => {
+            initialWindowReadyRef.current = true;
+          }}
           manualPan={isMobile}
           onPanEnd={() => {
+            userInteractedRef.current = true;
             suppressClickRef.current = true;
             window.setTimeout(() => {
               suppressClickRef.current = false;

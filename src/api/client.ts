@@ -31,6 +31,13 @@ const TOKEN_STORAGE_KEY = 'chs_token';
  */
 const AUTHENTICATED_GET_PREFIXES = ['/users', '/revisions', '/auth'];
 
+/** Une annulation est un flux normal lors d'un changement rapide d'année. */
+function isCanceledError(error: AxiosError): boolean {
+  if (error.name === 'AbortError' || error.name === 'CanceledError') return true;
+  if (error.code === 'ERR_CANCELED') return true;
+  return /cancel/i.test(error.message);
+}
+
 /**
  * Whether a request needs the Authorization header: every write, and GETs
  * under the authenticated prefixes. `url` may be relative to the base URL
@@ -148,6 +155,7 @@ function createApiClient(): AxiosInstance {
       return config;
     },
     (error: AxiosError): Promise<never> => {
+      if (isCanceledError(error)) return Promise.reject(error);
       // Handle request errors
       console.error('API request error:', error);
       return Promise.reject(error);
@@ -161,6 +169,7 @@ function createApiClient(): AxiosInstance {
       return response;
     },
     async (error: AxiosError): Promise<AxiosResponse> => {
+      if (isCanceledError(error)) return Promise.reject(error);
       // Retry idempotent reads that hit a busy or briefly unavailable API
       if (isRetryable(error)) {
         const config = error.config as RetryableConfig;
