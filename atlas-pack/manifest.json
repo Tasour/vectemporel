@@ -1,0 +1,16 @@
+{
+  "schema": 1,
+  "hash": "e53ad973e214",
+  "bytes": 1994748,
+  "gzipBytes": 886497,
+  "years": 4001,
+  "provinces": 2429,
+  "dictionaries": [
+    1748,
+    542,
+    64,
+    4717
+  ],
+  "keyframes": 49,
+  "generatedAt": "2026-11-25T21:13:35.421Z"
+}
