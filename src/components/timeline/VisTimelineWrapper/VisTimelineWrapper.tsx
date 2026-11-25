@@ -8,6 +8,15 @@ import React, { forwardRef, useRef, useEffect, useCallback, useImperativeHandle,
 import { Timeline as VisTimeline } from 'vis-timeline';
 import { DataSet } from 'vis-data';
 import 'vis-timeline/styles/vis-timeline-graph2d.css';
+import {
+  clamp,
+  clampCenterMs,
+  decayVelocity,
+  normalizeWheelDelta,
+  smoothedVelocity,
+  spanForSpeed,
+  timeShift,
+} from './kinematics';
 import styles from './VisTimelineWrapper.module.css';
 
 export const EPIC_ITEM_CLASS = 'epic-item';
@@ -95,6 +104,10 @@ export interface VisTimelineWrapperProps {
   onRangeChange?: () => void;
   onRangeChanged?: () => void;
   onInitialWindowApplied?: () => void;
+  /** Signale un changement de fenêtre issu d'un geste utilisateur. */
+  onGestureActivity?: () => void;
+  /** Année et largeur de fenêtre atteintes par le geste, sans round-trip vis. */
+  onTimeShift?: (year: number, spanYears: number) => void;
   onMouseMove?: (event: TimelineMouseEvent) => void;
   onClick?: (event: TimelineClickEvent) => void;
   /** Fenêtre initiale appliquée à la création du timeline */
@@ -111,7 +124,7 @@ function VisTimelineWrapperComponent(
   props: VisTimelineWrapperProps,
   ref: ForwardedRef<VisTimelineRef>
 ): React.JSX.Element {
-  const { options, items = [], groups = [], customTimes = {}, initialStart, initialEnd, onTimelineClick, onRangeChange, onRangeChanged, onInitialWindowApplied, onMouseMove, onClick, manualPan = false, onPanEnd, className } = props;
+  const { options, items = [], groups = [], customTimes = {}, initialStart, initialEnd, onTimelineClick, onRangeChange, onRangeChanged, onInitialWindowApplied, onGestureActivity, onTimeShift, onMouseMove, onClick, manualPan = false, onPanEnd, className } = props;
   const containerRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<VisTimeline | null>(null);
   const itemsDataSetRef = useRef<DataSet<TimelineItem> | null>(null);
@@ -119,11 +132,21 @@ function VisTimelineWrapperComponent(
   const customTimeIdsRef = useRef(new Set());
   const pointerRef = useRef<{ id: number; x: number; start: number; end: number; width: number } | null>(null);
   const touchRef = useRef<{ identifier: number; x: number; start: number; end: number; width: number } | null>(null);
-  const callbacksRef = useRef({ onTimelineClick, onRangeChange, onRangeChanged, onInitialWindowApplied, onMouseMove, onClick });
+  const motionRef = useRef({
+    velocity: 0,
+    baseSpan: 0,
+    center: 0,
+    span: 0,
+    targetSpan: 0,
+    lastInput: 0,
+    lastFrame: 0,
+    frame: 0,
+  });
+  const callbacksRef = useRef({ onTimelineClick, onRangeChange, onRangeChanged, onInitialWindowApplied, onGestureActivity, onTimeShift, onMouseMove, onClick });
 
   useEffect(() => {
-    callbacksRef.current = { onTimelineClick, onRangeChange, onRangeChanged, onInitialWindowApplied, onMouseMove, onClick };
-  }, [onInitialWindowApplied, onMouseMove, onClick, onRangeChange, onRangeChanged, onTimelineClick]);
+    callbacksRef.current = { onTimelineClick, onRangeChange, onRangeChanged, onInitialWindowApplied, onGestureActivity, onTimeShift, onMouseMove, onClick };
+  }, [onGestureActivity, onInitialWindowApplied, onMouseMove, onClick, onRangeChange, onRangeChanged, onTimeShift, onTimelineClick]);
 
   const handleClick = useCallback((properties: { event: MouseEvent; time: Date; item: string | null }) => {
     const clickEvent: TimelineClickEvent = { event: properties.event, time: properties.time, item: properties.item };
@@ -155,10 +178,11 @@ function VisTimelineWrapperComponent(
   const handlePointerMove = useCallback((event: React.PointerEvent<HTMLDivElement>) => {
     const pointer = pointerRef.current;
     if (pointer?.id !== event.pointerId) return;
-    const deltaPx = pointer.x - event.clientX;
+    const deltaPx = event.clientX - pointer.x;
     if (Math.abs(deltaPx) < 2) return;
     const span = pointer.end - pointer.start;
     const shift = (deltaPx / pointer.width) * span;
+    callbacksRef.current.onGestureActivity?.();
     timelineRef.current?.setWindow(new Date(pointer.start + shift), new Date(pointer.end + shift));
   }, []);
 
@@ -195,10 +219,11 @@ function VisTimelineWrapperComponent(
     if (!pointer) return;
     const touch = findTouch(event.touches, pointer.identifier);
     if (!touch) return;
-    const deltaPx = pointer.x - touch.clientX;
+    const deltaPx = touch.clientX - pointer.x;
     if (Math.abs(deltaPx) < 2) return;
     const span = pointer.end - pointer.start;
     const shift = (deltaPx / pointer.width) * span;
+    callbacksRef.current.onGestureActivity?.();
     timelineRef.current?.setWindow(new Date(pointer.start + shift), new Date(pointer.end + shift));
   }, []);
 
@@ -210,6 +235,90 @@ function VisTimelineWrapperComponent(
     touchRef.current = null;
     if (moved) onPanEnd?.();
   }, [onPanEnd]);
+
+  /** Déplace la fenêtre et détend le zoom dans l'unique boucle d'animation. */
+  const runMotion = useCallback(() => {
+    const state = motionRef.current;
+    const timeline = timelineRef.current;
+    const container = containerRef.current;
+    if (!timeline || !container) return;
+    const step = (now: number) => {
+      const dt = state.lastFrame ? Math.min(now - state.lastFrame, 64) : 16;
+      state.lastFrame = now;
+      const span = state.span;
+      const center = state.center;
+      const shift = timeShift((state.velocity * dt) / 1000, container.getBoundingClientRect().width, span);
+      const nextSpan = span;
+      state.velocity = decayVelocity(state.velocity, dt);
+      if (Math.abs(state.velocity) < 1 && Math.abs(nextSpan - span) < 1) {
+        state.frame = 0;
+        state.lastFrame = 0;
+        return;
+      }
+      state.center = clampCenterMs(center + shift);
+      if (state.center === center) state.velocity = 0;
+      state.span = nextSpan;
+      callbacksRef.current.onGestureActivity?.();
+      timeline.setWindow(new Date(state.center - nextSpan / 2), new Date(state.center + nextSpan / 2));
+      callbacksRef.current.onTimeShift?.(new Date(state.center).getFullYear(), nextSpan / 31536000000);
+      state.frame = requestAnimationFrame(step);
+    };
+    if (!state.frame) {
+      state.lastFrame = 0;
+      state.frame = requestAnimationFrame(step);
+    }
+  }, []);
+
+  /** Pavé tactile et molette : la vitesse pilote la date et le zoom. */
+  const handleWheel = useCallback((event: WheelEvent) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const timeline = timelineRef.current;
+    const container = containerRef.current;
+    if (!timeline || !container) return;
+    const width = container.getBoundingClientRect().width;
+    const rawDelta = event.deltaX !== 0 ? event.deltaX : event.deltaY;
+    const deltaPx = normalizeWheelDelta(rawDelta, event.deltaMode, width);
+    if (deltaPx === 0) return;
+    const now = performance.now();
+    const state = motionRef.current;
+    const dt = state.lastInput ? clamp(now - state.lastInput, 8, 80) : 16;
+    state.lastInput = now;
+    const wasIdle = Math.abs(state.velocity) < 1;
+    state.velocity = smoothedVelocity(state.velocity, deltaPx, dt);
+    const windowRange = timeline.getWindow();
+    const span = windowRange.end.getTime() - windowRange.start.getTime();
+    if (wasIdle || state.baseSpan === 0) state.baseSpan = span;
+    state.targetSpan = spanForSpeed(state.baseSpan, state.velocity);
+    state.center = clampCenterMs((windowRange.start.getTime() + windowRange.end.getTime()) / 2 + timeShift(deltaPx, width, span));
+    state.span = state.targetSpan;
+    callbacksRef.current.onGestureActivity?.();
+    timeline.setWindow(new Date(state.center - state.span / 2), new Date(state.center + state.span / 2));
+    const shiftedYear = new Date(state.center).getFullYear();
+    callbacksRef.current.onTimeShift?.(shiftedYear, state.span / 31536000000);
+    runMotion();
+
+  }, [runMotion]);
+
+  useEffect(() => {
+    const element = containerRef.current;
+    if (!element) return undefined;
+    element.addEventListener('wheel', handleWheel, { passive: false, capture: true });
+    const onVisibilityChange = () => {
+      const state = motionRef.current;
+      if (document.hidden) {
+        cancelAnimationFrame(state.frame);
+        state.frame = 0;
+      } else if (state.targetSpan > 0) {
+        runMotion();
+      }
+    };
+    document.addEventListener('visibilitychange', onVisibilityChange);
+    return () => {
+      element.removeEventListener('wheel', handleWheel, { capture: true });
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+    };
+  }, [handleWheel, runMotion]);
 
   useImperativeHandle(ref, () => ({
     setWindow: (start: Date, end: Date, opts?: { animation?: boolean }) => timelineRef.current?.setWindow(start, end, opts),
@@ -241,12 +350,15 @@ function VisTimelineWrapperComponent(
     timeline.on('rangechanged', handleRangeChanged);
     timeline.on('mouseMove', handleMouseMove);
     const customTimeIds = customTimeIdsRef.current;
+    const motion = motionRef.current;
     return () => {
       window.clearTimeout(initialWindowTimer);
       timeline.off('click', handleClick);
       timeline.off('rangechange', handleRangeChange);
       timeline.off('rangechanged', handleRangeChanged);
       timeline.off('mouseMove', handleMouseMove);
+      cancelAnimationFrame(motion.frame);
+      motion.frame = 0;
       timeline.destroy();
       timelineRef.current = null;
       itemsDataSetRef.current = null;

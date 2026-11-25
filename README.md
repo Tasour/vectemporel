@@ -31,13 +31,23 @@ Les bornes de vis-timeline sont élargies dynamiquement d’une marge égale à 
 
 ### Frontières entre régions
 
-Les frontières ne sont plus noires à 100 % : chaque province reçoit, pour la dimension de couleur active, une **teinte assombrie de la couleur de son ensemble** (`darkenColor`, facteur 0,65). Les deux couches de lignes MapLibre utilisent la même expression, ce qui supprime le liseré noir résiduel tout en conservant la lisibilité entre ensembles distincts.
+Les frontières ne sont plus noires à 100 % : `buildBorderExpression` dérive la teinte de bordure de la **couleur de remplissage réellement résolue** par MapLibre. Deux entités qui partagent la même couleur partagent donc exactement la même bordure, quelle que soit la dimension active. Le cas `population` utilise une teinte neutre explicite. Les deux couches de lignes utilisent la même expression.
 
 ### Performance du changement d’année
 
 Le chemin année → carte est mesuré avec `performance.mark/measure` (`vectemporel-year-<année>`). Mesures locales en 390×844 : **18–50 ms** pour une année froide, **12–17 ms** pour une année en cache. Le service worker met en cache les réponses décompressées (LRU de 12), le store met en cache les données d’année (LRU borné) et précharge les deux années voisines lorsque l’application est active. Le GeoJSON est muté sur place puis publié par une seule référence, et les expressions de couleur sont mémoïsées.
 
 **Décision Rust/Wasm : non retenu.** Le profil montre que le coût dominant est le chargement/décodage local et la propagation MapLibre/React, pas le calcul JS. Un module Wasm imposerait un binaire, un pipeline de build et une conversion des 4 001 fichiers pour un gain inférieur à la marge de mesure ; le cache et le préchargement apportent un gain supérieur pour un coût bien moindre. Le seuil de réévaluation est un p95 > 8 ms **après** cache, hors rendu MapLibre.
+
+### Geste temporel et zoom
+
+Le défilement à la molette ou au pavé tactile est une cinématique unique : un déplacement en pixels est converti en temps avec le facteur pixel → année courant, puis une vitesse lissée pilote la largeur de la fenêtre. Plus le geste est rapide, plus la fenêtre s’élargit : une forte accélération vers la droite amène une date lointaine dans le futur tout en dézoomant, tandis qu’un geste lent reste précis. L’inertie décroît exponentiellement dans l’unique boucle rAF, avec pause sur `document.hidden`. Le centre reste borné à `[-2000, 2000]`. Le glisser tactile et la souris suivent la même direction (droite = futur).
+
+La pile de la timeline est explicitement ordonnée : panneaux vis < grille < surcouche périodes/graduations < trait central < marqueur et libellé d’année < popovers.
+
+### Invalidation du cache
+
+Chaque déploiement injecte un `BUILD_VERSION` dans le service worker et dans le bundle. Lors d’un changement de version, les anciens caches du service worker sont supprimés, le cache de décompression est vidé, les anciennes inscriptions sont désenregistrées et les stores persistés (interface, collections, téléchargements) sont remis à zéro. Une application ouverte avec un ancien cache recharge donc des données propres, y compris sur mobile.
 
 ### Superpositions et ergonomie
 

@@ -31,5 +31,5 @@ export function darkenColor(color: string | undefined, amount = 0.35): string {
   if (!parsed) return '#3a3731';
   const factor = Math.max(0, Math.min(1, 1 - amount));
   const [red, green, blue] = parsed.map((value) => Math.round(Math.max(0, Math.min(255, value * factor))));
-  return `#${[red, green, blue].map((value) => String(value).padStart(2, '0')).join('')}`;
+  return `#${[red, green, blue].map((value) => (value ?? 0).toString(16).padStart(2, '0')).join('')}`;
 }

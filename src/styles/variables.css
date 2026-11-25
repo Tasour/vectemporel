@@ -85,6 +85,13 @@
   --z-popover: 500;
   --z-tooltip: 650;
   --z-modal: 700;
+  /* Pile interne de la timeline : fond → grille → surcouche → trait → marqueur */
+  --z-vis-panel: 1;
+  --z-vis-grid: 2;
+  --z-timeline-overlay: 3;
+  --z-timeline-center: 4;
+  --z-vis-custom-time: 5;
+  --z-year-marker: 6;
 
   /* Layout */
   --header-height: 64px;

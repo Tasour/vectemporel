@@ -43,6 +43,7 @@ import {
 import {
   useDebounce,
   buildColorMatchExpression,
+  buildBorderExpression,
   buildPopulationOpacityExpression,
   calculateMaxPopulation,
   checkWebGLSupport,
@@ -299,7 +300,7 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
         culture: FALLBACK_COLOR,
         religion: FALLBACK_COLOR,
         religionGeneral: FALLBACK_COLOR,
-        border: ['coalesce', ['get', 'rDark'], '#3a3731'] as unknown as string,
+        border: buildBorderExpression(FALLBACK_COLOR, {}),
       };
     }
 
@@ -322,17 +323,23 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
       if (entry.color) religionGeneralColors[id] = entry.color;
     }
 
-    const darkKey = activeColor === 'ruler' ? 'rDark'
-      : activeColor === 'culture' ? 'cDark'
-        : activeColor === 'religion' ? 'eDark'
-          : 'gDark';
-
-    return {
+    const fills = {
       ruler: buildColorMatchExpression('r', rulerColors),
       culture: buildColorMatchExpression('c', cultureColors),
       religion: buildColorMatchExpression('e', religionColors),
       religionGeneral: buildColorMatchExpression('g', religionGeneralColors),
-      border: ['coalesce', ['get', darkKey], '#3a3731'] as unknown as string,
+    } as const;
+    const colorMaps = {
+      ruler: rulerColors,
+      culture: cultureColors,
+      religion: religionColors,
+      religionGeneral: religionGeneralColors,
+    } as const;
+    const dimension = activeColor === 'population' ? 'ruler' : activeColor;
+
+    return {
+      ...fills,
+      border: buildBorderExpression(fills[dimension], colorMaps[dimension]),
     };
   }, [activeColor, metadata]);
 

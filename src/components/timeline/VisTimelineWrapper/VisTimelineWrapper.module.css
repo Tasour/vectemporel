@@ -36,7 +36,7 @@
   background: transparent !important;
   pointer-events: all;
   cursor: ew-resize;
-  z-index: 5;
+  z-index: var(--z-vis-panel, 1);
   overflow: visible !important;
 }
 
@@ -87,13 +87,13 @@
   background-color: #FF7F6E;
   width: 4px;
   cursor: default;
-  z-index: 10;
+  z-index: var(--z-vis-custom-time, 5);
   overflow: visible !important;
 }
 
 /* Selected year marker - matches production .vis-custom-time.selectedYear */
 .container :global(.vis-custom-time.selectedYear) {
-  z-index: 10;
+  z-index: var(--z-vis-custom-time, 5);
   transition: left 100ms cubic-bezier(0.4, 0, 0.2, 1), right 100ms cubic-bezier(0.4, 0, 0.2, 1);
   overflow: visible !important;
 }

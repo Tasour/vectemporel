@@ -32,7 +32,9 @@ html = html.replace(/<script type="module"([^>]*)src="\.\/(assets\/[^"]+\.js)\?v
   + `  const start = () => { const s = document.createElement("script"); s.type = "module";`
   + ` s.src = "./$2?v=${version}"; document.head.appendChild(s); };\n`
   + `  const ready = navigator.serviceWorker?.register("./mirror-sw.js?v=${version}")\n`
-  + '    .then(() => navigator.serviceWorker.ready) ?? Promise.resolve();\n'
+  + `    .then((reg) => navigator.serviceWorker.getRegistrations().then((regs) => Promise.all(regs\n`
+  + `      .filter((other) => other !== reg && other.active?.scriptURL.includes("mirror-sw.js"))\n`
+  + `      .map((other) => other.unregister()))).then(() => navigator.serviceWorker.ready)) ?? Promise.resolve();\n`
   + '  Promise.race([ready.catch(() => {}), new Promise((r) => setTimeout(r, 1500))]).then(start);\n'
   + '</script>');
 html = html.replace(/[ \t]+$/gm, '');
@@ -44,6 +46,9 @@ for (const file of fs.readdirSync(path.join(OUT, 'assets'))) {
   let body = fs.readFileSync(target, 'utf8');
   const before = body;
   body = body.replace(/(["'`])\/(styles|images|assets|fonts)\//g, '$1./$2/');
+  body = body.replaceAll('__BUILD_VERSION__', version);
   if (body !== before) fs.writeFileSync(target, body);
 }
+const swPath = path.join(OUT, 'mirror-sw.js');
+fs.writeFileSync(swPath, fs.readFileSync(swPath, 'utf8').replaceAll('__BUILD_VERSION__', version));
 console.log(`pages préparées : ${OUT}`);

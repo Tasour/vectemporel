@@ -118,6 +118,8 @@ export const Timeline: React.FC<TimelineProps> = ({
   const initialWindowReadyRef = useRef(false);
   const lastWindowCenterRef = useRef(selectedYear);
   const lastBufferRef = useRef(0);
+  const gestureTimerRef = useRef(0);
+  const guardWindowRef = useRef(true);
   const suppressClickRef = useRef(false);
 
   // Zoom hint visibility — shown briefly on first render
@@ -436,23 +438,19 @@ export const Timeline: React.FC<TimelineProps> = ({
     lastBufferRef.current = margin;
     const timeline = timelineRef.current;
     if (!timeline) return;
-    skipRangeSyncRef.current = true;
     timeline.setOptions({
       min: yearToDate(MIN_YEAR - margin).toISOString(),
       max: yearToDate(MAX_YEAR + margin).toISOString(),
     });
-    window.setTimeout(() => {
-      skipRangeSyncRef.current = false;
-    }, 80);
   }, []);
 
-  const handleOverlayRangeChanged = useCallback(() => {
+  const handleOverlayRangeChanged = useCallback((updateBounds = true) => {
     const windowRange = timelineRef.current?.getWindow();
     if (!windowRange) return;
     const startYear = dateToYear(windowRange.start);
     const endYear = dateToYear(windowRange.end);
     setOverlayRange({ start: startYear, end: endYear });
-    applyDynamicBounds(startYear, endYear);
+    if (updateBounds && !useTimelineStore.getState().isGestureActive) applyDynamicBounds(startYear, endYear);
   }, [applyDynamicBounds]);
 
   /** Remet la fenêtre autour de l'année courante après un saut automatique. */
@@ -482,18 +480,26 @@ export const Timeline: React.FC<TimelineProps> = ({
     const year = dateToYear(center);
     // Un saut brutal vers l'année courante est un défaut d'initialisation de
     // vis-timeline, pas un geste utilisateur : on restaure la fenêtre voulue.
-    if (Math.abs(year - lastWindowCenterRef.current) > 300) {
+    const gestureActive = useTimelineStore.getState().isGestureActive;
+    if (guardWindowRef.current && !gestureActive && Math.abs(year - lastWindowCenterRef.current) > 300) {
       restoreWindow(useTimelineStore.getState().selectedYear);
       return;
     }
     lastWindowCenterRef.current = year;
-    handleOverlayRangeChanged();
+    handleOverlayRangeChanged(false);
     if (!isMobile || skipRangeSyncRef.current) return;
     if (year !== useTimelineStore.getState().selectedYear) {
       setYear(year);
       setNotDefaultView();
     }
   }, [handleOverlayRangeChanged, isMobile, restoreWindow, setNotDefaultView, setYear]);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      guardWindowRef.current = false;
+    }, 8000);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     if (!isMobile) return;
@@ -578,6 +584,21 @@ export const Timeline: React.FC<TimelineProps> = ({
           onRangeChanged={handleOverlayRangeChanged}
           onInitialWindowApplied={() => {
             initialWindowReadyRef.current = true;
+          }}
+          onGestureActivity={() => {
+            guardWindowRef.current = false;
+            useTimelineStore.getState().setGestureActive(true);
+            window.clearTimeout(gestureTimerRef.current);
+            gestureTimerRef.current = window.setTimeout(() => {
+              useTimelineStore.getState().setGestureActive(false);
+            }, 600);
+          }}
+          onTimeShift={(year, spanYears) => {
+            setOverlayRange({ start: year - spanYears / 2, end: year + spanYears / 2 });
+            if (year !== useTimelineStore.getState().selectedYear) {
+              setYear(year);
+              setNotDefaultView();
+            }
           }}
           manualPan={isMobile}
           onPanEnd={() => {

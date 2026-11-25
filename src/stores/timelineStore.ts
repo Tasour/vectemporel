@@ -182,6 +182,8 @@ export interface TimelineState {
   isYearDialogOpen: boolean;
   /** Année à recentrer sur la timeline mobile, consommée par le composant timeline */
   centerOnYearRequest: number | null;
+  /** Geste de défilement en cours : suspend la correction automatique de fenêtre */
+  isGestureActive: boolean;
 }
 
 /**
@@ -228,6 +230,7 @@ export interface TimelineActions {
   requestCenterOnYear: (year: number) => void;
   /** Consomme la demande de recentrage */
   clearCenterOnYearRequest: () => void;
+  setGestureActive: (active: boolean) => void;
 }
 
 /**
@@ -376,6 +379,7 @@ export const initialState: TimelineState = {
   isAutoplayMenuOpen: false,
   isYearDialogOpen: false,
   centerOnYearRequest: null,
+  isGestureActive: false,
 };
 
 /**
@@ -920,6 +924,10 @@ export const useTimelineStore = create<TimelineStore>((set, get) => ({
 
   clearCenterOnYearRequest: () => {
     set({ centerOnYearRequest: null });
+  },
+
+  setGestureActive: (active: boolean) => {
+    set({ isGestureActive: active });
   },
 }));
 

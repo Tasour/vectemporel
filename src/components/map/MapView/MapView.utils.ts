@@ -12,6 +12,7 @@ import type { FeatureCollection, Point, Polygon, MultiPolygon } from 'geojson';
 import { FALLBACK_COLOR } from '../../../stores/mapStore';
 import type { Marker } from '../../../api/types';
 import { cityNameInYear } from '../../../utils/cityNames';
+import { darkenColor } from '../../../utils/colorUtils';
 import {
   type MapExpression,
   POPULATION_OPACITY_MIN,
@@ -111,6 +112,26 @@ export function buildColorMatchExpression(
   matchExpr.push(fallback);
 
   return asExpression(matchExpr);
+}
+
+/**
+ * Construit la teinte de bordure depuis la couleur de remplissage réellement
+ * résolue. Deux entités partageant la même couleur partagent ainsi exactement
+ * la même bordure, quelle que soit la dimension active.
+ */
+export function buildBorderExpression(
+  fill: MapExpression | string,
+  colorMap: Record<string, string>
+): MapExpression | string {
+  const shades = new Map<string, string>();
+  for (const color of Object.values(colorMap)) {
+    if (color && !shades.has(color)) shades.set(color, darkenColor(color));
+  }
+  if (shades.size === 0) return typeof fill === 'string' ? darkenColor(fill) : '#3a3731';
+  const expr: [string, ...unknown[]] = ['match', fill];
+  for (const [color, shade] of shades) expr.push(color, shade);
+  expr.push('#3a3731');
+  return asExpression(expr);
 }
 
 /**
