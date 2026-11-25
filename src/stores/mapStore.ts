@@ -19,6 +19,7 @@ import { AREAS, METADATA, MARKERS } from '../api/endpoints';
 import type { MapAreaData, Marker, MarkerFilterState, MarkerType } from '../api/types';
 import { updateQueryStringParameter } from '../utils/mapUtils';
 import { FRENCH_NAMES } from '../data/frenchNames';
+import { ensureAtlasPack } from '../features/atlasPack/atlasPack';
 
 const prefetchingYears = new Set<number>();
 
@@ -30,6 +31,24 @@ const prefetchingYears = new Set<number>();
  * reste vide (« No Data Available ») jusqu'au rechargement suivant.
  */
 let areaRequestSeq = 0;
+
+/** Géométrie statique des provinces : centroïde, surface et anneaux. */
+interface ProvinceGeometry {
+  centroid: [number, number];
+  area: number;
+  coords: number[][][];
+}
+const geometryCache = new WeakMap<Feature, ProvinceGeometry>();
+
+/** Libellés déjà calculés pour une année et une dimension de libellé. */
+interface LabelCacheEntry {
+  labelData: LabelFeatureCollection;
+  labelLineData: LabelLineFeatureCollection;
+}
+const labelCache = new WeakMap<
+  AreaData,
+  WeakMap<EntityMetadata, Map<AreaColorDimension, LabelCacheEntry>>
+>();
 
 /** Les annulations de requêtes ne sont pas des erreurs utilisateur. */
 function isRequestCanceled(error: unknown): boolean {
@@ -1344,7 +1363,28 @@ export const useMapStore = create<MapStore>((set, get) => ({
       return cachedData;
     }
 
-    // Create new abort controller for this request - Requirement 9.5
+    // Modèle binaire préchargé : décodage local, aucune requête réseau.
+    set({ isLoadingAreaData: true, error: null });
+    const pack = await ensureAtlasPack();
+    if (pack) {
+      performance.mark('atlas-pack-start');
+      const packedData: AreaData = pack.getYear(year);
+      performance.measure('atlas-pack-year', 'atlas-pack-start');
+      set((state) => {
+        const newCache = new Map(state.areaDataCache);
+        newCache.set(year, packedData);
+        return {
+          areaDataCache: newCache,
+          currentAreaData: packedData,
+          isLoadingAreaData: false,
+          areaDataAbortController: null,
+        };
+      });
+      get().updateProvinceProperties(packedData);
+      return packedData;
+    }
+
+    // Repli : API locale (pack absent ou illisible).
     const abortController = new AbortController();
     const requestId = ++areaRequestSeq;
 
@@ -1454,6 +1494,7 @@ export const useMapStore = create<MapStore>((set, get) => ({
 
   prefetchAreaData: async (year: number): Promise<void> => {
     if (!Number.isFinite(year) || year < -2000 || year > 2000) return;
+    if (await ensureAtlasPack()) return;
     if (get().areaDataCache.has(year) || prefetchingYears.has(year)) return;
     prefetchingYears.add(year);
     try {
@@ -2310,6 +2351,15 @@ export const useMapStore = create<MapStore>((set, get) => ({
       return;
     }
 
+    const areaData = state.currentAreaData;
+    const metadata = state.metadata;
+    const cached = labelCache.get(areaData)?.get(metadata)?.get(dimension);
+    if (cached) {
+      set({ labelData: cached.labelData, labelLineData: cached.labelLineData });
+      return;
+    }
+
+    performance.mark('atlas-labels-start');
     const dimensionIndex = DIMENSION_INDEX[dimension];
     const features = state.provincesGeoJSON.features;
 
@@ -2340,24 +2390,31 @@ export const useMapStore = create<MapStore>((set, get) => ({
       }
 
       try {
-        const centroid = turf.centroid(feature);
-        const area = turf.area(feature);
-
-        const geom = feature.geometry;
-        let coords: number[][][] = [];
-        if (geom.type === 'Polygon') {
-          coords = geom.coordinates;
-        } else {
-          for (const poly of geom.coordinates) {
-            coords.push(...(poly as number[][][]));
+        let geometry = geometryCache.get(feature);
+        if (!geometry) {
+          const centroid = turf.centroid(feature);
+          const geom = feature.geometry;
+          let coords: number[][][] = [];
+          if (geom.type === 'Polygon') {
+            coords = geom.coordinates;
+          } else {
+            for (const poly of geom.coordinates) {
+              coords.push(...(poly as number[][][]));
+            }
           }
+          geometry = {
+            centroid: centroid.geometry.coordinates as [number, number],
+            area: turf.area(feature),
+            coords,
+          };
+          geometryCache.set(feature, geometry);
         }
 
         const info: ProvinceInfo = {
           featureIndex: fi,
-          centroid: centroid.geometry.coordinates as [number, number],
-          area,
-          coords,
+          centroid: geometry.centroid,
+          area: geometry.area,
+          coords: geometry.coords,
         };
 
         const existing = entityProvinces.get(entityValue);
@@ -2497,7 +2554,7 @@ export const useMapStore = create<MapStore>((set, get) => ({
       }
     }
 
-    set({
+    const entry: LabelCacheEntry = {
       labelData: {
         type: 'FeatureCollection',
         features: labelFeatures,
@@ -2506,7 +2563,20 @@ export const useMapStore = create<MapStore>((set, get) => ({
         type: 'FeatureCollection',
         features: labelLineFeatures,
       },
-    });
+    };
+    let byMetadata = labelCache.get(areaData);
+    if (!byMetadata) {
+      byMetadata = new WeakMap();
+      labelCache.set(areaData, byMetadata);
+    }
+    let byDimension = byMetadata.get(metadata);
+    if (!byDimension) {
+      byDimension = new Map();
+      byMetadata.set(metadata, byDimension);
+    }
+    byDimension.set(dimension, entry);
+    performance.measure('atlas-labels', 'atlas-labels-start');
+    set(entry);
   },
 
   /**

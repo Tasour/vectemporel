@@ -28,6 +28,18 @@ function decompress(buffer) {
 
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
+  // Pack binaire de l'atlas : cache-first, disponible hors ligne.
+  if (url.origin === self.location.origin && url.pathname.includes('/atlas-pack/')) {
+    event.respondWith((async () => {
+      const cache = await caches.open(CACHE_NAME);
+      const hit = await cache.match(event.request);
+      if (hit) return hit;
+      const response = await fetch(event.request);
+      if (response.ok) await cache.put(event.request, response.clone());
+      return response;
+    })());
+    return;
+  }
   if (url.origin !== self.location.origin || !url.pathname.startsWith(PREFIX)) return;
   let name = url.pathname.slice(PREFIX.length).replace(/^\/+|\/+$/g, '');
   const query = url.search.replace(/^\?/, '');

@@ -59,6 +59,8 @@ export interface GestureState {
   targetSpan: number;
   center: number;
   referenceWidth: number;
+  /** Position du point d'ancrage du zoom, en fraction du span depuis le centre. */
+  anchorOffset: number;
   distance: number;
   kind: 'wheel' | 'drag' | null;
   active: boolean;
@@ -76,6 +78,8 @@ export interface GestureInput {
   width: number;
   now: number;
   kind: 'wheel' | 'drag';
+  /** −0,5 = bord gauche, 0 = centre, +0,5 = bord droit. */
+  anchorOffset?: number;
 }
 
 export function clamp(value: number, min: number, max: number): number {
@@ -152,6 +156,7 @@ export function createGestureState(): GestureState {
     targetSpan: 0,
     center: 0,
     referenceWidth: WHEEL_REFERENCE_WIDTH,
+    anchorOffset: 0,
     distance: 0,
     kind: null,
     active: false,
@@ -222,6 +227,7 @@ export function applyGestureInput(state: GestureState, input: GestureInput): {
 
   state.kind = input.kind;
   state.active = true;
+  state.anchorOffset = clamp(input.anchorOffset ?? 0, -0.5, 0.5);
   state.referenceWidth = input.kind === 'wheel' ? WHEEL_REFERENCE_WIDTH : width;
 
   const floor = input.kind === 'wheel' ? MIN_WHEEL_DT_MS : MIN_DRAG_DT_MS;
@@ -273,7 +279,12 @@ export function advanceMotion(state: GestureState, now: number): {
   const target = state.targetSpan > 0 ? state.targetSpan : state.span;
   const nextSpan = target + (state.span - target) * Math.exp(-dt / ZOOM_TAU_MS);
   const shift = timeShift((state.velocity * dt) / 1000, state.referenceWidth, nextSpan);
-  const nextCenter = clampCenterForSpan(state.center + shift, nextSpan);
+  // Ancre le zoom sous le doigt/curseur : le temps sous ce point reste fixe.
+  const anchorTime = state.center + state.anchorOffset * state.span;
+  const nextCenter = clampCenterForSpan(
+    anchorTime - state.anchorOffset * nextSpan + shift,
+    nextSpan
+  );
 
   state.velocity = decayVelocity(state.velocity, dt);
   if (shift !== 0 && nextCenter === state.center) state.velocity = 0;

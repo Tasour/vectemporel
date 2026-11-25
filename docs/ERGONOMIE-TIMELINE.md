@@ -75,7 +75,23 @@ VITE_API_BASE_URL=http://127.0.0.1:4189/api/v1 VITE_ENVIRONMENT=development \
 Le rapport est écrit dans `test-results/ergonomie/ergonomie-timeline.json` avec
 les captures `zones-*.png` et `burst-*.png`.
 
-## 3. Résultats mesurés (25/11/2026)
+## 3. Zoom ancré et réversible
+
+- **Ancrage au pointeur** : pendant l'interpolation du span, le temps sous le
+  curseur/doigt reste fixe (`anchorOffset` dans `GestureState`). Le zoom ne fait
+  plus glisser la date visée.
+- **Ctrl/⌘ + molette** : zoom explicite autour du curseur, sans déplacement
+  temporel. C'est le moyen de revenir en arrière après un dézoom par vitesse.
+- **Boutons** : `−` (zoom arrière), `500 ans` (échelle par défaut), `+` (zoom
+  avant), placés au-dessus de la timeline pour ne pas intercepter les gestes.
+- **Annulation de l'inertie** : un nouveau pointerdown arrête la glisse net.
+- **Touches `+`/`−`** : les boutons sont focusables et ont des libellés
+  explicites (`Zoom avant`, `Zoom arrière`, `Revenir à 500 ans`).
+
+Le zoom par vitesse reste l'accélérateur ; ces contrôles rendent l'échelle
+réversible et prévisible.
+
+## 4. Résultats mesurés (26/11/2026)
 
 | Geste | 390×844 | 1658×1150 |
 |---|---:|---:|
@@ -88,7 +104,7 @@ les captures `zones-*.png` et `burst-*.png`.
 | retour en arrière maximal | **0 an** | **0 an** |
 | tactile 100 px | +128 ans, retour à 1000 | — |
 
-## 4. Frontières intérieures
+## 5. Frontières intérieures
 
 La bordure est dérivée de la couleur de remplissage résolue, assombrie de
 **18 %** (`darkenColor`, facteur 0,82), avec une opacité de 0,9 sur les
@@ -96,7 +112,7 @@ frontières internes et 0,35 sur le contour. Les anciennes propriétés
 `rDark/cDark/eDark/gDark` ont été supprimées : elles dupliquaient la couleur et
 ajoutaient un calcul par feature.
 
-## 5. Libellés français
+## 6. Libellés français
 
 L'API ne fournit `*_fr` que pour une partie des entités. `src/data/frenchNames.ts`
 complète les noms manquants les plus visibles (royaumes, empires, cultures et

@@ -8,6 +8,7 @@ import { useUIStore } from './stores/uiStore';
 import { getPositionFromURL, getYearFromURL } from './utils/mapUtils';
 import { parseURLState } from './utils/urlStateUtils';
 import { DETAIL_LEVEL_PRESETS } from './utils/detailLevelUtils';
+import { ensureAtlasPack } from './features/atlasPack/atlasPack';
 
 /**
  * Builds a wiki URL for a province based on metadata.
@@ -92,6 +93,8 @@ function App() {
   // Requirement 2.1: WHEN the application initializes, THE Map_Store SHALL fetch metadata
   // Requirement 9.4: THE application SHALL restore drawer state from URL on page load
   useEffect(() => {
+    // Démarre le pack binaire en parallèle des métadonnées.
+    void ensureAtlasPack();
     loadFromStorage();
     // Load metadata for entity colors on app startup (with current locale)
     void loadMetadata(locale);

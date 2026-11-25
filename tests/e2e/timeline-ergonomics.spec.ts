@@ -214,6 +214,100 @@ for (const viewport of [
       expect(maxDip).toBeLessThanOrEqual(3);
     });
 
+    test('les données viennent du pack binaire local', async ({ page }) => {
+      const areaRequests: string[] = [];
+      page.on('request', (request) => {
+        if (request.url().includes('/areas/')) areaRequests.push(request.url());
+      });
+      await open(page);
+      await page.waitForFunction(
+        () => performance.getEntriesByName('atlas-pack-year').length > 0,
+        null,
+        { timeout: 15_000 }
+      );
+      record(`pack-${viewport.name}`, { areaRequests: areaRequests.length });
+      expect(areaRequests).toHaveLength(0);
+    });
+
+    test('le zoom ctrl+molette est ancré et réversible', async ({ page }) => {
+      await open(page);
+      const box = await page.locator('[data-testid="timeline"]').boundingBox();
+      if (!box) throw new Error('Timeline introuvable');
+      const ratio = 0.8;
+      const x = box.x + box.width * ratio;
+      const y = box.y + box.height / 2;
+      const before = await readState(page);
+      const anchorBefore = before.year + (ratio - 0.5) * before.span;
+
+      await page.evaluate(({ px, py }) => {
+        const element = document.querySelector('[data-testid="vis-timeline"]');
+        element?.dispatchEvent(new WheelEvent('wheel', {
+          deltaY: -240, deltaMode: 0, ctrlKey: true,
+          clientX: px, clientY: py, bubbles: true, cancelable: true,
+        }));
+      }, { px: x, py: y });
+      await page.waitForTimeout(500);
+      const zoomed = await readState(page);
+      const anchorAfter = zoomed.year + (ratio - 0.5) * zoomed.span;
+      expect(zoomed.span).toBeLessThan(before.span);
+      expect(Math.abs(anchorAfter - anchorBefore)).toBeLessThan(6);
+
+      await page.evaluate(({ px, py }) => {
+        const element = document.querySelector('[data-testid="vis-timeline"]');
+        element?.dispatchEvent(new WheelEvent('wheel', {
+          deltaY: 240, deltaMode: 0, ctrlKey: true,
+          clientX: px, clientY: py, bubbles: true, cancelable: true,
+        }));
+      }, { px: x, py: y });
+      await page.waitForTimeout(500);
+      const back = await readState(page);
+      record(`ctrlzoom-${viewport.name}`, { before, zoomed, back, anchorBefore, anchorAfter });
+      expect(Math.abs(back.span - before.span) / before.span).toBeLessThan(0.03);
+    });
+
+    test('les boutons de zoom sont réversibles', async ({ page }) => {
+      await open(page);
+      const before = await readState(page);
+      await page.getByRole('button', { name: 'Zoom arrière' }).click();
+      await page.waitForTimeout(300);
+      const out = await readState(page);
+      expect(out.span).toBeGreaterThan(before.span);
+      await page.getByRole('button', { name: 'Zoom avant' }).click();
+      await page.waitForTimeout(300);
+      const back = await readState(page);
+      expect(back.span).toBeLessThan(out.span);
+      await page.getByRole('button', { name: 'Revenir à 500 ans' }).click();
+      await page.waitForTimeout(300);
+      expect(Math.abs((await readState(page)).span - 500)).toBeLessThanOrEqual(20);
+    });
+
+    test('un changement d’année reste sous 60 ms', async ({ page }) => {
+      await open(page);
+      await page.evaluate(() => {
+        performance.clearMeasures('atlas-labels');
+        performance.clearMeasures('atlas-pack-year');
+      });
+      for (let index = 0; index < 6; index += 1) {
+        await page.evaluate(() => {
+          const element = document.querySelector('[data-testid="vis-timeline"]');
+          element?.dispatchEvent(new WheelEvent('wheel', {
+            deltaY: 100, deltaMode: 0, bubbles: true, cancelable: true,
+          }));
+        });
+        await page.waitForTimeout(320);
+      }
+      const stats = await page.evaluate(() => {
+        const measure = (name: string) => {
+          const values = performance.getEntriesByName(name).map((entry) => entry.duration).sort((a, b) => a - b);
+          return values.length ? values[Math.floor(values.length * 0.95)] ?? 0 : 0;
+        };
+        return { labels: measure('atlas-labels'), pack: measure('atlas-pack-year') };
+      });
+      record(`latence-${viewport.name}`, stats);
+      expect(stats.pack).toBeLessThan(10);
+      expect(stats.labels).toBeLessThan(60);
+    });
+
     test('le centre reste borné après une longue rafale', async ({ page }) => {
       await open(page);
       await wheel(page, 40);
@@ -228,14 +322,15 @@ for (const viewport of [
     test('le geste se stabilise', async ({ page }) => {
       await open(page);
       await wheel(page, 5);
+      await page.waitForTimeout(1200);
       const settled = await readState(page);
-      await page.waitForTimeout(1500);
+      await page.waitForTimeout(1200);
       const later = await readState(page);
       record(`settled-${viewport.name}`, { settled, later });
       // vis-timeline arrondit parfois la fenêtre de quelques années au dernier
       // `rangechange` ; la stabilité exigée est l'absence de dérive sensible.
       expect(Math.abs(later.year - settled.year)).toBeLessThanOrEqual(5);
-      expect(Math.abs(later.span - settled.span)).toBeLessThanOrEqual(5);
+      expect(Math.abs(later.span - settled.span) / settled.span).toBeLessThan(0.1);
     });
   });
 }

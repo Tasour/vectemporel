@@ -46,6 +46,7 @@ L'utilisateur a explicitement demandé la suppression des attributions affichée
 - La navigation basse est un conteneur unique inséré sous la timeline ; la timeline se décale de sa hauteur mesurée.
 - La timeline porte une surcouche de graduations et de grandes périodes, sans capter les gestes.
 - La cinématique `vitesse → date + zoom` et son calibrage sont décrits dans `docs/ERGONOMIE-TIMELINE.md` ; les tests d'ergonomie couvrent 390×844, 1658×1150 et le tactile.
+- Les aires sont servies par un pack binaire préchargé (`docs/ATLAS-PACK.md`) : 886 Ko au lieu de 110 Mo, décodage < 1 ms par année.
 - Le reset de cache d'un nouveau build s'exécute avant le montage React ; une requête d'aires en vol ne peut plus être invalidée par le reset.
 - Les frontières internes utilisent la couleur résolue de l'ensemble assombrie de 18 % (facteur 0,82), jamais un noir opaque.
 - Les libellés d'entités sont en français : noms `*_fr` de l'API complétés par `src/data/frenchNames.ts` (couverture mesurée dans `docs/FR-LABELS-COVERAGE.md`).

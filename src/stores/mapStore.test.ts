@@ -612,9 +612,10 @@ describe('mapStore', () => {
 
         let first!: Promise<AreaData | null>;
         let second!: Promise<AreaData | null>;
-        act(() => {
+        await act(async () => {
           first = useMapStore.getState().loadAreaData(1000);
           second = useMapStore.getState().loadAreaData(1001);
+          await new Promise((resolve) => setTimeout(resolve, 0));
         });
 
         await act(async () => {
@@ -634,8 +635,9 @@ describe('mapStore', () => {
         mockGet.mockImplementationOnce(() => new Promise<AreaData>((resolve) => { resolveRequest = resolve; }));
 
         let pending!: Promise<AreaData | null>;
-        act(() => {
+        await act(async () => {
           pending = useMapStore.getState().loadAreaData(1000);
+          await new Promise((resolve) => setTimeout(resolve, 0));
         });
         act(() => {
           useMapStore.getState().cancelAreaDataRequest();

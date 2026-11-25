@@ -17,6 +17,7 @@ import { useUIStore } from '../../../stores/uiStore';
 import { useMapStore } from '../../../stores/mapStore';
 import { useIsMobile } from '../../../hooks/useIsMobile';
 import { dateToYear, formatYearForDisplay, MAX_YEAR, MIN_YEAR, yearToDate } from '../../../utils/yearUtils';
+import { YEAR_MS } from '../VisTimelineWrapper/kinematics';
 import { YearDialog } from '../YearDialog/YearDialog';
 import { AutoplayMenu } from '../AutoplayMenu/AutoplayMenu';
 import { EpicSearchAutocomplete } from '../EpicSearchAutocomplete/EpicSearchAutocomplete';
@@ -398,6 +399,35 @@ export const Timeline: React.FC<TimelineProps> = ({
     }
   }, [centerOnYear, isMobile, setNotDefaultView, setYear]);
 
+  const zoomBy = useCallback((factor: number) => {
+    const timeline = timelineRef.current;
+    if (!timeline) return;
+    const range = timeline.getWindow();
+    const spanMs = range.end.getTime() - range.start.getTime();
+    const centerMs = (range.start.getTime() + range.end.getTime()) / 2;
+    const nextSpan = Math.min(4500 * YEAR_MS, Math.max(40 * YEAR_MS, spanMs * factor));
+    const minCenter = yearToDate(MIN_YEAR).getTime() + nextSpan / 2;
+    const maxCenter = yearToDate(MAX_YEAR).getTime() - nextSpan / 2;
+    const nextCenter = Math.max(minCenter, Math.min(maxCenter, centerMs));
+    const start = new Date(nextCenter - nextSpan / 2);
+    const end = new Date(nextCenter + nextSpan / 2);
+    timeline.setWindow(start, end);
+    const year = dateToYear(new Date(nextCenter));
+    setOverlayRange({ start: year - nextSpan / YEAR_MS / 2, end: year + nextSpan / YEAR_MS / 2 });
+    setYear(year);
+    setNotDefaultView();
+  }, [setNotDefaultView, setYear]);
+
+  const resetZoom = useCallback(() => {
+    const timeline = timelineRef.current;
+    if (!timeline) return;
+    const center = yearToDate(selectedYear).getTime();
+    const span = 500 * YEAR_MS;
+    timeline.setWindow(new Date(center - span / 2), new Date(center + span / 2));
+    setOverlayRange({ start: selectedYear - 250, end: selectedYear + 250 });
+    setNotDefaultView();
+  }, [selectedYear, setNotDefaultView]);
+
   const handleYearClick = useCallback(() => {
     toggleYearDialog();
   }, [toggleYearDialog]);
@@ -641,6 +671,12 @@ export const Timeline: React.FC<TimelineProps> = ({
         )}
 
         <TimelineOverlay start={overlayRange?.start ?? null} end={overlayRange?.end ?? null} />
+
+        <div className={styles['zoomControls']} role="group" aria-label="Échelle de la timeline">
+          <button type="button" onClick={() => { zoomBy(1.5); }} aria-label="Zoom arrière">−</button>
+          <button type="button" onClick={resetZoom} aria-label="Revenir à 500 ans">500 ans</button>
+          <button type="button" onClick={() => { zoomBy(1 / 1.5); }} aria-label="Zoom avant">+</button>
+        </div>
 
         {isMobile ? <div className={styles['centerLine']} aria-hidden="true" data-testid="timeline-center-line" /> : null}
 

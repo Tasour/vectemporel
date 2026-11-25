@@ -11,8 +11,12 @@ import 'vis-timeline/styles/vis-timeline-graph2d.css';
 import {
   advanceMotion,
   applyGestureInput,
+  clamp,
+  clampCenterForSpan,
   createGestureState,
   DRAG_GESTURE_GAP_MS,
+  MAX_SPAN_MS,
+  MIN_SPAN_MS,
   normalizeWheelDelta,
   resetGestureToWindow,
   type GestureState,
@@ -207,10 +211,13 @@ function VisTimelineWrapperComponent(
   }, []);
 
   /** Applique une entrée au modèle et publie la fenêtre résultante. */
-  const applyInput = useCallback((deltaPx: number, kind: 'wheel' | 'drag', width: number) => {
+  const applyInput = useCallback((deltaPx: number, kind: 'wheel' | 'drag', width: number, clientX: number) => {
     const timeline = timelineRef.current;
-    if (!timeline) return;
+    const container = containerRef.current;
+    if (!timeline || !container) return;
     const windowRange = timeline.getWindow();
+    const rect = container.getBoundingClientRect();
+    const anchorOffset = rect.width > 0 ? (clientX - rect.left) / rect.width - 0.5 : 0;
     const result = applyGestureInput(motionRef.current, {
       deltaPx,
       centerMs: (windowRange.start.getTime() + windowRange.end.getTime()) / 2,
@@ -218,6 +225,7 @@ function VisTimelineWrapperComponent(
       width,
       now: performance.now(),
       kind,
+      anchorOffset,
     });
 
     // Mouvement réduit : translation immédiate à la cible, sans inertie ni zoom animé.
@@ -253,6 +261,16 @@ function VisTimelineWrapperComponent(
     if (event.pointerType === 'mouse' && event.button !== 0) return;
     const container = containerRef.current;
     if (!container) return;
+    const state = motionRef.current;
+    if (state.frame) {
+      cancelAnimationFrame(state.frame);
+      state.frame = 0;
+    }
+    state.velocity = 0;
+    state.active = false;
+    state.kind = null;
+    state.targetSpan = state.span;
+    state.baseSpan = state.span;
     callbacksRef.current.onGestureActivity?.();
     pointerRef.current = {
       id: event.pointerId,
@@ -272,7 +290,7 @@ function VisTimelineWrapperComponent(
     const deltaPx = event.clientX - pointer.x;
     pointer.x = event.clientX;
     if (Math.abs(deltaPx) < 1) return;
-    applyInput(deltaPx, 'drag', pointer.width);
+    applyInput(deltaPx, 'drag', pointer.width, event.clientX);
   }, [applyInput]);
 
   const handlePointerUp = useCallback((event: React.PointerEvent<HTMLDivElement>) => {
@@ -281,7 +299,7 @@ function VisTimelineWrapperComponent(
     // Le dernier pointermove peut être coalescé avec le pointerup : on applique
     // le delta restant avant de fermer le geste.
     const remaining = event.clientX - pointer.x;
-    if (Math.abs(remaining) >= 1) applyInput(remaining, 'drag', pointer.width);
+    if (Math.abs(remaining) >= 1) applyInput(remaining, 'drag', pointer.width, event.clientX);
     const moved = Math.abs(pointer.x - event.clientX) > 2;
     pointerRef.current = null;
     if (containerRef.current?.hasPointerCapture(event.pointerId)) {
@@ -311,7 +329,7 @@ function VisTimelineWrapperComponent(
     const deltaPx = touch.clientX - pointer.x;
     pointer.x = touch.clientX;
     if (Math.abs(deltaPx) < 1) return;
-    applyInput(deltaPx, 'drag', pointer.width);
+    applyInput(deltaPx, 'drag', pointer.width, touch.clientX);
   }, [applyInput]);
 
   const handleTouchEnd = useCallback((event: React.TouchEvent<HTMLDivElement>) => {
@@ -320,7 +338,7 @@ function VisTimelineWrapperComponent(
     const touch = findTouch(event.changedTouches, pointer.identifier);
     if (touch) {
       const remaining = touch.clientX - pointer.x;
-      if (Math.abs(remaining) >= 1) applyInput(remaining, 'drag', pointer.width);
+      if (Math.abs(remaining) >= 1) applyInput(remaining, 'drag', pointer.width, touch.clientX);
     }
     const moved = Boolean(touch && Math.abs(pointer.x - touch.clientX) > 2);
     touchRef.current = null;
@@ -333,11 +351,33 @@ function VisTimelineWrapperComponent(
     event.stopPropagation();
     const container = containerRef.current;
     if (!container) return;
-    const width = container.getBoundingClientRect().width;
+    const rect = container.getBoundingClientRect();
+    const width = rect.width;
+    const timeline = timelineRef.current;
+    if (!timeline) return;
+
+    // Ctrl/⌘ + molette : zoom explicite et réversible, ancré sous le curseur.
+    if (event.ctrlKey || event.metaKey) {
+      const range = timeline.getWindow();
+      const span = range.end.getTime() - range.start.getTime();
+      const center = (range.start.getTime() + range.end.getTime()) / 2;
+      const offset = width > 0 ? (event.clientX - rect.left) / width - 0.5 : 0;
+      const nextSpan = clamp(span * Math.exp(event.deltaY * 0.0015), MIN_SPAN_MS, MAX_SPAN_MS);
+      if (Math.abs(nextSpan - span) < 1) return;
+      const anchorTime = center + offset * span;
+      const nextCenter = clampCenterForSpan(anchorTime - offset * nextSpan, nextSpan);
+      resetGestureToWindow(motionRef.current, nextCenter, nextSpan);
+      timeline.setWindow(new Date(nextCenter - nextSpan / 2), new Date(nextCenter + nextSpan / 2));
+      callbacksRef.current.onGestureActivity?.();
+      callbacksRef.current.onTimeShift?.(new Date(nextCenter).getFullYear(), nextSpan / YEAR_MS);
+      callbacksRef.current.onGestureEnd?.(new Date(nextCenter).getFullYear());
+      return;
+    }
+
     const rawDelta = event.deltaX !== 0 ? event.deltaX : event.deltaY;
     const deltaPx = normalizeWheelDelta(rawDelta, event.deltaMode, width);
     if (deltaPx === 0) return;
-    applyInput(deltaPx, 'wheel', width);
+    applyInput(deltaPx, 'wheel', width, event.clientX);
   }, [applyInput]);
 
   useEffect(() => {

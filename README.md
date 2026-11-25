@@ -41,11 +41,15 @@ Le chemin année → carte est mesuré avec `performance.mark/measure` (`vectemp
 
 ### Geste temporel et zoom
 
-Le défilement est un **intégrateur unique** : chaque pixel est converti avec le span instantané (`Δt = dx/largeur × S(t)`), et le span suit la vitesse (`S = S₀ · g(v)`). L’accélération n’est donc pas ajoutée après le geste : plus le doigt va vite, plus la fenêtre s’élargit, donc plus les pixels suivants couvrent d’années. Sous 650 px/s, le geste reste strictement 1:1 (100 px sur 390 px = 128 ans pour 500 ans de fenêtre). Un cran isolé translate sans zoomer ; une rafale atteint une date lointaine et dézoome (facteur ≤ 2,5). L’inertie décroît (τ = 120 ms) sans retour de zoom, avec un watchdog qui termine le geste même si les frames rAF sont rares. Le centre interne fait foi : une fenêtre vis-timeline en retard ne peut plus provoquer de retour en arrière. Bornes `[-2000, 2000]` pour le centre, `[-2250, 2250]` pour la fenêtre ; `prefers-reduced-motion` supprime l’inertie.
+Le défilement est un **intégrateur unique** : chaque pixel est converti avec le span instantané (`Δt = dx/largeur × S(t)`), et le span suit la vitesse (`S = S₀ · g(v)`). L’accélération n’est donc pas ajoutée après le geste : plus le doigt va vite, plus la fenêtre s’élargit, donc plus les pixels suivants couvrent d’années. Sous 650 px/s, le geste reste strictement 1:1 (100 px sur 390 px = 128 ans pour 500 ans de fenêtre). Un cran isolé translate sans zoomer ; une rafale atteint une date lointaine et dézoome (facteur ≤ 2,5). L’inertie décroît (τ = 120 ms) sans retour de zoom, avec un watchdog qui termine le geste même si les frames rAF sont rares. Le zoom est **ancré sous le doigt/curseur** et **réversible** : `Ctrl`/`⌘` + molette, boutons `−` / `500 ans` / `+`. Un nouveau toucher annule l’inertie. Le centre interne fait foi : une fenêtre vis-timeline en retard ne peut plus provoquer de retour en arrière. Bornes `[-2000, 2000]` pour le centre, `[-2250, 2250]` pour la fenêtre ; `prefers-reduced-motion` supprime l’inertie.
 
 Le modèle, ses constantes et les mesures sont détaillés dans [`docs/ERGONOMIE-TIMELINE.md`](docs/ERGONOMIE-TIMELINE.md). Les tests d’ergonomie sont dans `tests/e2e/timeline-ergonomics.spec.ts` (390×844 et 1658×1150) et écrivent leurs mesures dans `test-results/ergonomie/`.
 
 La pile de la timeline est explicitement ordonnée : panneaux vis < grille < surcouche périodes/graduations < trait central < marqueur et libellé d’année < popovers.
+
+### Modèle binaire préchargé
+
+Les 4 001 années d'aires ne sont plus chargées par requête : un pack binaire de **886 Ko compressés** (dictionnaires + keyframes tous les 100 ans + deltas de 18 provinces par an) est préchargé au démarrage. Le décodage d'une année prend ~0,2 ms (p95 2,3 ms) et les requêtes `/areas` disparaissent. Détails, format et vérification : [`docs/ATLAS-PACK.md`](docs/ATLAS-PACK.md).
 
 ### Invalidation du cache
 

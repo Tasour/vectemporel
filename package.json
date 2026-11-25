@@ -29,7 +29,9 @@
     "typecheck": "tsc --noEmit",
     "ci": "npm run lint && npm run test && npm run build",
     "ci:full": "npm run lint && npm run test && npm run test:e2e && npm run build",
-    "verify": "npm run lint && npm run test && npm run build"
+    "verify": "npm run lint && npm run test && npm run build",
+    "pack:build": "node scripts/build-atlas-pack.mjs",
+    "pack:verify": "tsx scripts/verify-atlas-pack.ts"
   },
   "overrides": {
     "fast-xml-parser": "^5.3.4"
