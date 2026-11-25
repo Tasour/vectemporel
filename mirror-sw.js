@@ -1,6 +1,6 @@
 /* Miroir API local — sert les réponses extraites de l'API Chronas, sans réseau externe. */
 const PREFIX = new URL('./api/v1/', self.location.href).pathname;
-const BUILD_VERSION = 'b01ff3aaa6';
+const BUILD_VERSION = 'e092fa02e0';
 const CACHE_NAME = `vectemporel-api-${BUILD_VERSION}`;
 const CACHE_PREFIX = 'vectemporel-api-';
 const MAX_DECOMPRESSED_CACHE = 12;
