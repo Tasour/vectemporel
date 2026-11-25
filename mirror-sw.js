@@ -1,5 +1,7 @@
 /* Miroir API local — sert les réponses extraites de l'API Chronas, sans réseau externe. */
 const PREFIX = new URL('./api/v1/', self.location.href).pathname;
+const MAX_DECOMPRESSED_CACHE = 12;
+const decompressedCache = new Map();
 
 self.addEventListener('install', () => self.skipWaiting());
 self.addEventListener('activate', (event) => event.waitUntil(self.clients.claim()));
@@ -29,8 +31,19 @@ self.addEventListener('fetch', (event) => {
       const response = await fetch(new URL(`./api/v1/${candidate}`, self.location.href));
       if (!response.ok) continue;
       if (candidate.endsWith('.gz')) {
+        const cached = decompressedCache.get(candidate);
+        if (cached) {
+          return new Response(cached, { headers: { 'Content-Type': 'application/json' } });
+        }
         const decompressed = decompress(await response.arrayBuffer());
-        if (decompressed) return decompressed;
+        if (decompressed) {
+          const text = await decompressed.text();
+          decompressedCache.set(candidate, text);
+          while (decompressedCache.size > MAX_DECOMPRESSED_CACHE) {
+            decompressedCache.delete(decompressedCache.keys().next().value);
+          }
+          return new Response(text, { headers: { 'Content-Type': 'application/json' } });
+        }
       }
       return response;
     }
