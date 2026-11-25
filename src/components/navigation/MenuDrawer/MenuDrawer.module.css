@@ -1,11 +1,11 @@
 /**
- * MenuDrawer — editorial archival panel that slides from the sidebar
+ * MenuDrawer — editorial archival panel that slides from the left edge
  */
 
 .drawer {
   position: fixed;
   top: 0;
-  left: 50px;
+  left: 0;
   bottom: 0;
   width: 320px;
   min-width: 280px;

@@ -1,6 +1,6 @@
-/** Barre basse universelle : navigation et contrôles de chronologie. */
+/** Barre basse compacte : navigation principale + feuille Outils. */
 
-import React from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { useLocation } from 'react-router';
 import { useTranslation } from 'react-i18next';
 import { NAV_ITEMS, type NavItemConfig } from '../navConfig';
@@ -8,11 +8,21 @@ import { useNavItemAction } from '../useNavItemAction';
 import { useTimelineQuickControls } from '../../timeline/useTimelineQuickControls';
 import { useNavigationStore } from '@/stores/navigationStore';
 import { useTimelineStore } from '@/stores/timelineStore';
+import { useUIStore } from '@/stores/uiStore';
 import styles from './BottomDock.module.css';
 
 export interface BottomDockProps {
   testId?: string;
 }
+
+const DIRECT_IDS = ['discover', 'random', 'layers', 'collections'];
+const SECONDARY_IDS = ['settings', 'help'];
+
+const ToolsIcon: React.FC = () => (
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+    <path d="M3 3h8v8H3V3zm10 0h8v8h-8V3zM3 13h8v8H3v-8zm10 0h8v8h-8v-8z" />
+  </svg>
+);
 
 const CollapseIcon: React.FC = () => (
   <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
@@ -52,6 +62,7 @@ interface DockButtonProps {
   disabled?: boolean;
   active?: boolean;
   pressed?: boolean;
+  expanded?: boolean;
   testId: string;
 }
 
@@ -63,6 +74,7 @@ const DockButton: React.FC<DockButtonProps> = ({
   disabled = false,
   active = false,
   pressed,
+  expanded,
   testId,
 }) => (
   <button
@@ -72,6 +84,7 @@ const DockButton: React.FC<DockButtonProps> = ({
     disabled={disabled}
     aria-label={label}
     aria-pressed={pressed}
+    aria-expanded={expanded}
     data-testid={testId}
   >
     <span className={styles['itemIcon']} aria-hidden="true">
@@ -88,7 +101,35 @@ export const BottomDock: React.FC<BottomDockProps> = ({ testId = 'bottom-dock' }
   const drawerOpen = useNavigationStore((state) => state.drawerOpen);
   const drawerContent = useNavigationStore((state) => state.drawerContent);
   const isAutoplayActive = useTimelineStore((state) => state.isAutoplayActive);
+  const toolsOpen = useUIStore((state) => state.bottomToolsOpen);
+  const setToolsOpen = useUIStore((state) => state.setBottomToolsOpen);
   const controls = useTimelineQuickControls();
+
+  const closeTools = useCallback(() => setToolsOpen(false), [setToolsOpen]);
+  const runControl = useCallback(
+    (action: () => void) => {
+      action();
+      setToolsOpen(false);
+    },
+    [setToolsOpen],
+  );
+
+  useEffect(() => {
+    if (!toolsOpen) return undefined;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') closeTools();
+    };
+    const onPointerDown = (event: PointerEvent) => {
+      const target = event.target;
+      if (target instanceof Element && !target.closest(`[data-testid="${testId}"]`)) closeTools();
+    };
+    document.addEventListener('keydown', onKeyDown);
+    document.addEventListener('pointerdown', onPointerDown);
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      document.removeEventListener('pointerdown', onPointerDown);
+    };
+  }, [closeTools, testId, toolsOpen]);
 
   const isNavActive = (item: NavItemConfig): boolean => {
     if (item.to) {
@@ -101,6 +142,9 @@ export const BottomDock: React.FC<BottomDockProps> = ({ testId = 'bottom-dock' }
     return false;
   };
 
+  const directItems = NAV_ITEMS.filter((item) => DIRECT_IDS.includes(item.id));
+  const secondaryItems = NAV_ITEMS.filter((item) => SECONDARY_IDS.includes(item.id));
+
   const expandLabel = controls.isExpanded
     ? t('timeline.collapseTimeline', 'Réduire la chronologie')
     : t('timeline.expandTimeline', 'Agrandir la chronologie');
@@ -110,8 +154,68 @@ export const BottomDock: React.FC<BottomDockProps> = ({ testId = 'bottom-dock' }
 
   return (
     <div className={styles['dock']} data-testid={testId}>
+      {toolsOpen ? (
+        <div className={styles['toolsSheet']} role="dialog" aria-label={t('nav.tools', 'Outils')} data-testid="bottom-dock-tools-sheet">
+          <p className={styles['sheetTitle']}>{t('nav.tools', 'Outils')}</p>
+          <div className={styles['sheetGrid']}>
+            {secondaryItems.map((item) => {
+              const label = t(`nav.${item.id}`, item.label);
+              return (
+                <DockButton
+                  key={item.id}
+                  icon={item.icon}
+                  label={label}
+                  shortLabel={t(`nav.short.${item.id}`, label)}
+                  onClick={() => {
+                    closeTools();
+                    onItemClick(item);
+                  }}
+                  active={isNavActive(item)}
+                  testId={`bottom-dock-tools-${item.id}`}
+                />
+              );
+            })}
+            <DockButton
+              icon={controls.isExpanded ? <CollapseIcon /> : <ExpandIcon />}
+              label={expandLabel}
+              shortLabel={t('timeline.short.expand', controls.isExpanded ? 'Réduire' : 'Agrandir')}
+              onClick={() => runControl(controls.toggleExpand)}
+              active={controls.isExpanded}
+              pressed={controls.isExpanded}
+              testId="bottom-dock-tools-expand"
+            />
+            <DockButton
+              icon={<ResetIcon />}
+              label={t('timeline.resetView', 'Réinitialiser la chronologie')}
+              shortLabel={t('timeline.short.reset', 'Réinitialiser')}
+              onClick={() => runControl(controls.reset)}
+              disabled={controls.isDefaultView}
+              testId="bottom-dock-tools-reset"
+            />
+            <DockButton
+              icon={<SearchIcon />}
+              label={t('timeline.searchEpics', 'Rechercher des épopées')}
+              shortLabel={t('timeline.short.search', 'Épopées')}
+              onClick={() => runControl(controls.toggleSearch)}
+              active={controls.isSearchOpen}
+              pressed={controls.isSearchOpen}
+              testId="bottom-dock-tools-search"
+            />
+            <DockButton
+              icon={<AutoplayIcon active={isAutoplayActive} />}
+              label={autoplayLabel}
+              shortLabel={t('timeline.short.autoplay', isAutoplayActive ? 'Arrêter' : 'Lecture')}
+              onClick={() => runControl(controls.toggleAutoplay)}
+              active={isAutoplayActive || controls.isAutoplayMenuOpen}
+              pressed={isAutoplayActive}
+              testId="bottom-dock-tools-autoplay"
+            />
+          </div>
+        </div>
+      ) : null}
+
       <div className={styles['row']} data-testid="bottom-dock-navigation">
-        {NAV_ITEMS.map((item) => {
+        {directItems.map((item) => {
           const label = t(`nav.${item.id}`, item.label);
           return (
             <DockButton
@@ -125,44 +229,15 @@ export const BottomDock: React.FC<BottomDockProps> = ({ testId = 'bottom-dock' }
             />
           );
         })}
-      </div>
-
-      <div className={`${styles['row'] ?? ''} ${styles['timelineRow'] ?? ''}`} data-testid="bottom-dock-timeline">
-        <span className={styles['rowLabel']}>{t('timeline.dockLabel', 'Chronologie')}</span>
         <DockButton
-          icon={controls.isExpanded ? <CollapseIcon /> : <ExpandIcon />}
-          label={expandLabel}
-          shortLabel={t('timeline.short.expand', controls.isExpanded ? 'Réduire' : 'Agrandir')}
-          onClick={controls.toggleExpand}
-          active={controls.isExpanded}
-          pressed={controls.isExpanded}
-          testId="bottom-dock-expand"
-        />
-        <DockButton
-          icon={<ResetIcon />}
-          label={t('timeline.resetView', 'Réinitialiser la chronologie')}
-          shortLabel={t('timeline.short.reset', 'Réinitialiser')}
-          onClick={controls.reset}
-          disabled={controls.isDefaultView}
-          testId="bottom-dock-reset"
-        />
-        <DockButton
-          icon={<SearchIcon />}
-          label={t('timeline.searchEpics', 'Rechercher des épopées')}
-          shortLabel={t('timeline.short.search', 'Épopées')}
-          onClick={controls.toggleSearch}
-          active={controls.isSearchOpen}
-          pressed={controls.isSearchOpen}
-          testId="bottom-dock-search"
-        />
-        <DockButton
-          icon={<AutoplayIcon active={isAutoplayActive} />}
-          label={autoplayLabel}
-          shortLabel={t('timeline.short.autoplay', isAutoplayActive ? 'Arrêter' : 'Lecture')}
-          onClick={controls.toggleAutoplay}
-          active={isAutoplayActive || controls.isAutoplayMenuOpen}
-          pressed={isAutoplayActive}
-          testId="bottom-dock-autoplay"
+          icon={<ToolsIcon />}
+          label={t('nav.tools', 'Outils')}
+          shortLabel={t('nav.tools', 'Outils')}
+          onClick={() => setToolsOpen(!toolsOpen)}
+          active={toolsOpen}
+          pressed={toolsOpen}
+          expanded={toolsOpen}
+          testId="bottom-dock-tools"
         />
       </div>
     </div>

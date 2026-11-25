@@ -8,6 +8,7 @@
     "pro": "Version PRO",
     "collections": "Collections",
     "downloads": "Téléchargements",
+    "tools": "Outils",
     "play": "Jouer",
     "help": "Aide",
     "short": {
@@ -137,7 +138,8 @@
       "collapse": "Réduire",
       "reset": "Réinitialiser",
       "search": "Épopées",
-      "autoplay": "Lecture"
+      "autoplay": "Lecture",
+      "stop": "Arrêter"
     }
   },
   "drawer": {

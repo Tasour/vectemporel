@@ -8,6 +8,7 @@
     "pro": "PRO Version",
     "collections": "Collections",
     "downloads": "Downloads",
+    "tools": "Tools",
     "play": "Play",
     "help": "Help",
     "short": {
@@ -154,7 +155,8 @@
       "collapse": "Collapse",
       "reset": "Reset",
       "search": "Epics",
-      "autoplay": "Play"
+      "autoplay": "Play",
+      "stop": "Stop"
     }
   },
   "drawer": {

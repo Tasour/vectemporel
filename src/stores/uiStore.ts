@@ -77,6 +77,8 @@ export interface UIState {
   supportDialogOpen: boolean;
   /** Rendering detail level — null until first chosen/auto-detected (Issue #8) */
   detailLevel: DetailLevel | null;
+  /** Feuille Outils de la barre basse */
+  bottomToolsOpen: boolean;
 }
 
 /**
@@ -109,6 +111,8 @@ export interface UIActions {
   closeSupportDialog: () => void;
   /** Sets the rendering detail level preset (Issue #8) */
   setDetailLevel: (level: DetailLevel) => void;
+  /** Ouvre ou ferme la feuille Outils */
+  setBottomToolsOpen: (open: boolean) => void;
 }
 
 /**
@@ -132,6 +136,7 @@ const defaultState: UIState = {
   infoDialogTab: 'welcome',
   supportDialogOpen: false,
   detailLevel: null,
+  bottomToolsOpen: false,
 };
 
 export function isValidDetailLevel(level: unknown): level is DetailLevel {
@@ -291,6 +296,10 @@ export const useUIStore = create<UIStore>()(
           return;
         }
         set({ detailLevel: level });
+      },
+
+      setBottomToolsOpen: (open: boolean) => {
+        set({ bottomToolsOpen: open });
       },
     }),
     {

@@ -1416,10 +1416,10 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
     .join(' ');
 
   /**
-   * Calculate sidebar layout offsets.
-   * Sidebar is always 50px. When the menu drawer is open, add its width.
+   * Plus de sidebar : la carte occupe toute la largeur.
+   * Seul le MenuDrawer décale la carte lorsqu'il est ouvert.
    */
-  const leftOffset = drawerOpen ? SIDEBAR_WIDTH_OPEN : SIDEBAR_WIDTH_CLOSED;
+  const leftOffset = drawerOpen ? SIDEBAR_WIDTH_OPEN - SIDEBAR_WIDTH_CLOSED : 0;
 
   /**
    * Calculate right offset for right drawer.

@@ -1,4 +1,4 @@
-/* Barre basse universelle en deux rangées. */
+/* Barre basse compacte : une rangée + feuille Outils. */
 
 .dock {
   position: fixed;
@@ -7,9 +7,8 @@
   bottom: 0;
   z-index: 360;
   display: flex;
-  flex-direction: column;
-  gap: 4px;
-  height: calc(var(--bottom-dock-height, 128px) + env(safe-area-inset-bottom, 0px));
+  align-items: center;
+  height: calc(var(--bottom-dock-height, 72px) + env(safe-area-inset-bottom, 0px));
   padding: 4px 8px calc(4px + env(safe-area-inset-bottom, 0px));
   box-sizing: border-box;
   background: linear-gradient(180deg, #f6f3ec 0%, #fdfcf8 100%);
@@ -21,9 +20,10 @@
 
 .row {
   display: flex;
-  flex: 1;
-  min-height: 0;
+  width: 100%;
+  height: 100%;
   align-items: center;
+  justify-content: space-around;
   gap: 8px;
   overflow-x: auto;
   overscroll-behavior-x: contain;
@@ -32,21 +32,6 @@
 
 .row::-webkit-scrollbar {
   display: none;
-}
-
-.timelineRow {
-  padding-top: 4px;
-  border-top: 1px solid rgba(120, 95, 40, 0.14);
-}
-
-.rowLabel {
-  flex: 0 0 auto;
-  padding: 0 8px;
-  color: #8a6b1f;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
 }
 
 .item {
@@ -102,7 +87,42 @@
   white-space: nowrap;
 }
 
-[data-theme='dark'] .dock {
+.toolsSheet {
+  position: absolute;
+  right: 8px;
+  bottom: calc(100% + 8px);
+  width: min(320px, calc(100vw - 16px));
+  padding: 16px;
+  box-sizing: border-box;
+  border: 1px solid rgba(120, 95, 40, 0.18);
+  border-radius: 14px;
+  background: #fdfcf8;
+  box-shadow: 0 14px 36px -18px rgba(40, 30, 10, 0.55);
+  color: #4b4942;
+}
+
+.sheetTitle {
+  margin: 0 0 16px;
+  color: #8a6b1f;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.sheetGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.sheetGrid .item {
+  width: 100%;
+  min-width: 0;
+}
+
+[data-theme='dark'] .dock,
+[data-theme='dark'] .toolsSheet {
   background: linear-gradient(180deg, #16140f 0%, #1e1c1a 100%);
   border-top-color: rgba(212, 169, 58, 0.18);
   color: #d8d2c1;
@@ -114,15 +134,12 @@
   color: #f6f3ec;
 }
 
-[data-theme='dark'] .timelineRow {
-  border-top-color: rgba(212, 169, 58, 0.14);
-}
-
-[data-theme='dark'] .rowLabel {
+[data-theme='dark'] .sheetTitle {
   color: #d4a93a;
 }
 
-[data-theme='luther'] .dock {
+[data-theme='luther'] .dock,
+[data-theme='luther'] .toolsSheet {
   background: linear-gradient(180deg, #011c31 0%, #3a1826 100%);
   border-top-color: rgba(255, 243, 211, 0.14);
   color: #fff3d3;
@@ -131,8 +148,4 @@
 [data-theme='luther'] .item:hover:not(:disabled),
 [data-theme='luther'] .active {
   background-color: rgba(255, 243, 211, 0.12);
-}
-
-[data-theme='luther'] .timelineRow {
-  border-top-color: rgba(255, 243, 211, 0.14);
 }

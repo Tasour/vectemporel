@@ -106,6 +106,7 @@ export const Timeline: React.FC<TimelineProps> = ({
 
   // Get right drawer state to shift timeline away from it
   const rightDrawerOpen = useUIStore((state) => state.rightDrawerOpen);
+  const bottomToolsOpen = useUIStore((state) => state.bottomToolsOpen);
   // Get openRightDrawer from uiStore for epic click handling
   // Requirements: 6.3
   const openRightDrawer = useUIStore((state) => state.openRightDrawer);
@@ -525,7 +526,7 @@ export const Timeline: React.FC<TimelineProps> = ({
           onYearClick={handleYearClick}
         />
 
-        {isMobile ? (
+        {isMobile && !bottomToolsOpen ? (
           <button
             type="button"
             className={styles['mobileYearBadge']}

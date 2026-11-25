@@ -13,7 +13,7 @@ npm run articles:verify   # vérifie SHA-256, images et crédits
 
 ### Barre basse et navigation temporelle
 
-La sidebar est supprimée sur tous les écrans. Une **barre basse universelle à deux rangées** la remplace : navigation (Couches, Découvrir, Aléatoire, Réglages, Collections, Lecture, Aide) puis chronologie (Agrandir, Réinitialiser, Épopées, Lecture). Chaque rangée défile horizontalement si nécessaire. La timeline reste au-dessus de cette barre, sans contrôles flottants à gauche. Le trait d'année est fixe au centre : glisser le doigt horizontalement fait défiler le temps derrière lui et l'année affichée suit le centre. Le français est la langue par défaut et le repli.
+La sidebar et ses réservations d’espace sont supprimées sur tous les écrans : la carte occupe toute la largeur. Une **barre basse compacte à cinq boutons** la remplace : Couches, Découvrir, Aléatoire, Collections et Outils. Le bouton Outils ouvre une feuille au-dessus de la barre avec Réglages, Aide, Agrandir/Réduire, Réinitialiser, Épopées et Lecture auto. La timeline reste au-dessus de la barre, sans contrôles flottants à gauche. Le trait d'année est fixe au centre : glisser le doigt horizontalement fait défiler le temps derrière lui et l'année affichée suit le centre. Le français est la langue par défaut et le repli.
 
 `scripts/patch-pages.mjs` corrige les chemins absolus du build pour GitHub Pages. Le fond de carte OpenFreeMap reste la seule ressource externe au runtime.
 
