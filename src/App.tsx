@@ -8,7 +8,7 @@ import { useUIStore } from './stores/uiStore';
 import { getPositionFromURL, getYearFromURL } from './utils/mapUtils';
 import { parseURLState } from './utils/urlStateUtils';
 import { DETAIL_LEVEL_PRESETS } from './utils/detailLevelUtils';
-import { resetStaleCache } from './features/cache/cacheReset';
+import { MAP_LOCALE } from './config/mapLocale';
 
 /**
  * Builds a wiki URL for a province based on metadata.
@@ -70,7 +70,7 @@ function App() {
   useEffect(() => {
     if (localeRef.current !== locale) {
       localeRef.current = locale;
-      void loadMetadata(locale);
+      void loadMetadata(MAP_LOCALE);
     }
   }, [locale, loadMetadata]);
 
@@ -93,10 +93,9 @@ function App() {
   // Requirement 2.1: WHEN the application initializes, THE Map_Store SHALL fetch metadata
   // Requirement 9.4: THE application SHALL restore drawer state from URL on page load
   useEffect(() => {
-    resetStaleCache();
     loadFromStorage();
     // Load metadata for entity colors on app startup (with current locale)
-    void loadMetadata(locale);
+    void loadMetadata(MAP_LOCALE);
     // Load epic items for timeline display
     void loadEpicItems();
 

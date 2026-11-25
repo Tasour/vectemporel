@@ -9,13 +9,13 @@ import { Timeline as VisTimeline } from 'vis-timeline';
 import { DataSet } from 'vis-data';
 import 'vis-timeline/styles/vis-timeline-graph2d.css';
 import {
-  clamp,
-  clampCenterMs,
-  decayVelocity,
+  advanceMotion,
+  applyGestureInput,
+  createGestureState,
+  GESTURE_GAP_MS,
   normalizeWheelDelta,
-  smoothedVelocity,
-  spanForSpeed,
-  timeShift,
+  type GestureState,
+  YEAR_MS,
 } from './kinematics';
 import styles from './VisTimelineWrapper.module.css';
 
@@ -130,18 +130,10 @@ function VisTimelineWrapperComponent(
   const itemsDataSetRef = useRef<DataSet<TimelineItem> | null>(null);
   const groupsDataSetRef = useRef<DataSet<TimelineGroup> | null>(null);
   const customTimeIdsRef = useRef(new Set());
-  const pointerRef = useRef<{ id: number; x: number; start: number; end: number; width: number } | null>(null);
-  const touchRef = useRef<{ identifier: number; x: number; start: number; end: number; width: number } | null>(null);
-  const motionRef = useRef({
-    velocity: 0,
-    baseSpan: 0,
-    center: 0,
-    span: 0,
-    targetSpan: 0,
-    lastInput: 0,
-    lastFrame: 0,
-    frame: 0,
-  });
+  const pointerRef = useRef<{ id: number; x: number; width: number } | null>(null);
+  const touchRef = useRef<{ identifier: number; x: number; width: number } | null>(null);
+  const motionRef = useRef<GestureState>(createGestureState());
+  const settleTimerRef = useRef(0);
   const callbacksRef = useRef({ onTimelineClick, onRangeChange, onRangeChanged, onInitialWindowApplied, onGestureActivity, onTimeShift, onMouseMove, onClick });
 
   useEffect(() => {
@@ -158,58 +150,144 @@ function VisTimelineWrapperComponent(
     callbacksRef.current.onMouseMove?.({ time: properties.time });
   }, []);
 
-  const handlePointerDown = useCallback((event: React.PointerEvent<HTMLDivElement>) => {
+  /**
+   * Termine le geste même si les frames rAF sont rares (carte WebGL occupée) :
+   * sans ce garde-fou, l'animation peut durer plusieurs secondes de plus.
+   */
+  const finishMotion = useCallback(() => {
+    const state = motionRef.current;
+    const timeline = timelineRef.current;
+    if (!timeline || !state.active) return;
+    if (state.frame) {
+      cancelAnimationFrame(state.frame);
+      state.frame = 0;
+    }
+    state.velocity = 0;
+    state.span = state.targetSpan || state.span;
+    state.targetSpan = state.span;
+    state.baseSpan = state.span;
+    state.samples = 0;
+    state.distance = 0;
+    state.kind = null;
+    state.active = false;
+    timeline.setWindow(
+      new Date(state.center - state.span / 2),
+      new Date(state.center + state.span / 2)
+    );
+    callbacksRef.current.onTimeShift?.(new Date(state.center).getFullYear(), state.span / YEAR_MS);
+  }, []);
+
+  /** Déplace la fenêtre et détend le zoom dans l'unique boucle d'animation. */
+  const runMotion = useCallback(() => {
+    const state = motionRef.current;
+    const timeline = timelineRef.current;
+    if (!timeline) return;
+    const step = (now: number) => {
+      const motion = advanceMotion(state, now);
+      callbacksRef.current.onGestureActivity?.();
+      timeline.setWindow(
+        new Date(motion.center - motion.span / 2),
+        new Date(motion.center + motion.span / 2)
+      );
+      callbacksRef.current.onTimeShift?.(new Date(motion.center).getFullYear(), motion.span / YEAR_MS);
+      state.frame = motion.active ? requestAnimationFrame(step) : 0;
+    };
+    if (!state.frame) {
+      state.lastFrame = 0;
+      state.frame = requestAnimationFrame(step);
+    }
+  }, []);
+
+  /** Applique une entrée au modèle et publie la fenêtre résultante. */
+  const applyInput = useCallback((deltaPx: number, kind: 'wheel' | 'drag', width: number) => {
+    const timeline = timelineRef.current;
+    if (!timeline) return;
+    const windowRange = timeline.getWindow();
+    const result = applyGestureInput(motionRef.current, {
+      deltaPx,
+      centerMs: (windowRange.start.getTime() + windowRange.end.getTime()) / 2,
+      spanMs: windowRange.end.getTime() - windowRange.start.getTime(),
+      width,
+      now: performance.now(),
+      kind,
+    });
+
+    // Mouvement réduit : translation immédiate à la cible, sans inertie ni zoom animé.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const state = motionRef.current;
+      state.velocity = 0;
+      state.span = result.targetSpan;
+      state.targetSpan = result.targetSpan;
+      state.baseSpan = result.targetSpan;
+      result.span = result.targetSpan;
+    }
+
+    timeline.setWindow(
+      new Date(result.center - result.span / 2),
+      new Date(result.center + result.span / 2)
+    );
+    callbacksRef.current.onGestureActivity?.();
+    callbacksRef.current.onTimeShift?.(new Date(result.center).getFullYear(), result.span / YEAR_MS);
+    runMotion();
+    window.clearTimeout(settleTimerRef.current);
+    settleTimerRef.current = window.setTimeout(finishMotion, GESTURE_GAP_MS + 300);
+  }, [finishMotion, runMotion]);
+
+  /**
+   * Capture native : vis-timeline arrête la propagation des pointerdown sur ses
+   * éléments personnalisés (notamment le libellé de l'année). Sans capture, un
+   * glisser commencé sur le libellé ne déplace pas la timeline.
+   */
+  const handlePointerDown = useCallback((event: PointerEvent) => {
     if (!manualPan || event.pointerType === 'touch') return;
     if (event.pointerType === 'mouse' && event.button !== 0) return;
-    const timeline = timelineRef.current;
     const container = containerRef.current;
-    if (!timeline || !container) return;
-    const windowRange = timeline.getWindow();
+    if (!container) return;
     pointerRef.current = {
       id: event.pointerId,
       x: event.clientX,
-      start: windowRange.start.getTime(),
-      end: windowRange.end.getTime(),
       width: Math.max(container.getBoundingClientRect().width, 1),
     };
-    container.setPointerCapture(event.pointerId);
+    try {
+      container.setPointerCapture(event.pointerId);
+    } catch {
+      // Les événements synthétiques de test n'ont pas de capture active.
+    }
   }, [manualPan]);
 
   const handlePointerMove = useCallback((event: React.PointerEvent<HTMLDivElement>) => {
     const pointer = pointerRef.current;
     if (pointer?.id !== event.pointerId) return;
     const deltaPx = event.clientX - pointer.x;
-    if (Math.abs(deltaPx) < 2) return;
-    const span = pointer.end - pointer.start;
-    const shift = (deltaPx / pointer.width) * span;
-    callbacksRef.current.onGestureActivity?.();
-    timelineRef.current?.setWindow(new Date(pointer.start + shift), new Date(pointer.end + shift));
-  }, []);
+    pointer.x = event.clientX;
+    if (Math.abs(deltaPx) < 1) return;
+    applyInput(deltaPx, 'drag', pointer.width);
+  }, [applyInput]);
 
   const handlePointerUp = useCallback((event: React.PointerEvent<HTMLDivElement>) => {
     const pointer = pointerRef.current;
     if (pointer?.id !== event.pointerId) return;
+    // Le dernier pointermove peut être coalescé avec le pointerup : on applique
+    // le delta restant avant de fermer le geste.
+    const remaining = event.clientX - pointer.x;
+    if (Math.abs(remaining) >= 1) applyInput(remaining, 'drag', pointer.width);
     const moved = Math.abs(pointer.x - event.clientX) > 2;
     pointerRef.current = null;
     if (containerRef.current?.hasPointerCapture(event.pointerId)) {
       containerRef.current.releasePointerCapture(event.pointerId);
     }
     if (moved) onPanEnd?.();
-  }, [onPanEnd]);
+  }, [applyInput, onPanEnd]);
 
   const handleTouchStart = useCallback((event: React.TouchEvent<HTMLDivElement>) => {
     if (!manualPan || event.touches.length !== 1) return;
-    const timeline = timelineRef.current;
     const container = containerRef.current;
-    if (!timeline || !container) return;
+    if (!container) return;
     const touch = event.touches[0];
     if (!touch) return;
-    const windowRange = timeline.getWindow();
     touchRef.current = {
       identifier: touch.identifier,
       x: touch.clientX,
-      start: windowRange.start.getTime(),
-      end: windowRange.end.getTime(),
       width: Math.max(container.getBoundingClientRect().width, 1),
     };
   }, [manualPan]);
@@ -220,90 +298,42 @@ function VisTimelineWrapperComponent(
     const touch = findTouch(event.touches, pointer.identifier);
     if (!touch) return;
     const deltaPx = touch.clientX - pointer.x;
-    if (Math.abs(deltaPx) < 2) return;
-    const span = pointer.end - pointer.start;
-    const shift = (deltaPx / pointer.width) * span;
-    callbacksRef.current.onGestureActivity?.();
-    timelineRef.current?.setWindow(new Date(pointer.start + shift), new Date(pointer.end + shift));
-  }, []);
+    pointer.x = touch.clientX;
+    if (Math.abs(deltaPx) < 1) return;
+    applyInput(deltaPx, 'drag', pointer.width);
+  }, [applyInput]);
 
   const handleTouchEnd = useCallback((event: React.TouchEvent<HTMLDivElement>) => {
     const pointer = touchRef.current;
     if (!pointer) return;
     const touch = findTouch(event.changedTouches, pointer.identifier);
+    if (touch) {
+      const remaining = touch.clientX - pointer.x;
+      if (Math.abs(remaining) >= 1) applyInput(remaining, 'drag', pointer.width);
+    }
     const moved = Boolean(touch && Math.abs(pointer.x - touch.clientX) > 2);
     touchRef.current = null;
     if (moved) onPanEnd?.();
-  }, [onPanEnd]);
-
-  /** Déplace la fenêtre et détend le zoom dans l'unique boucle d'animation. */
-  const runMotion = useCallback(() => {
-    const state = motionRef.current;
-    const timeline = timelineRef.current;
-    const container = containerRef.current;
-    if (!timeline || !container) return;
-    const step = (now: number) => {
-      const dt = state.lastFrame ? Math.min(now - state.lastFrame, 64) : 16;
-      state.lastFrame = now;
-      const span = state.span;
-      const center = state.center;
-      const shift = timeShift((state.velocity * dt) / 1000, container.getBoundingClientRect().width, span);
-      const nextSpan = span;
-      state.velocity = decayVelocity(state.velocity, dt);
-      if (Math.abs(state.velocity) < 1 && Math.abs(nextSpan - span) < 1) {
-        state.frame = 0;
-        state.lastFrame = 0;
-        return;
-      }
-      state.center = clampCenterMs(center + shift);
-      if (state.center === center) state.velocity = 0;
-      state.span = nextSpan;
-      callbacksRef.current.onGestureActivity?.();
-      timeline.setWindow(new Date(state.center - nextSpan / 2), new Date(state.center + nextSpan / 2));
-      callbacksRef.current.onTimeShift?.(new Date(state.center).getFullYear(), nextSpan / 31536000000);
-      state.frame = requestAnimationFrame(step);
-    };
-    if (!state.frame) {
-      state.lastFrame = 0;
-      state.frame = requestAnimationFrame(step);
-    }
-  }, []);
+  }, [applyInput, onPanEnd]);
 
   /** Pavé tactile et molette : la vitesse pilote la date et le zoom. */
   const handleWheel = useCallback((event: WheelEvent) => {
     event.preventDefault();
     event.stopPropagation();
-    const timeline = timelineRef.current;
     const container = containerRef.current;
-    if (!timeline || !container) return;
+    if (!container) return;
     const width = container.getBoundingClientRect().width;
     const rawDelta = event.deltaX !== 0 ? event.deltaX : event.deltaY;
     const deltaPx = normalizeWheelDelta(rawDelta, event.deltaMode, width);
     if (deltaPx === 0) return;
-    const now = performance.now();
-    const state = motionRef.current;
-    const dt = state.lastInput ? clamp(now - state.lastInput, 8, 80) : 16;
-    state.lastInput = now;
-    const wasIdle = Math.abs(state.velocity) < 1;
-    state.velocity = smoothedVelocity(state.velocity, deltaPx, dt);
-    const windowRange = timeline.getWindow();
-    const span = windowRange.end.getTime() - windowRange.start.getTime();
-    if (wasIdle || state.baseSpan === 0) state.baseSpan = span;
-    state.targetSpan = spanForSpeed(state.baseSpan, state.velocity);
-    state.center = clampCenterMs((windowRange.start.getTime() + windowRange.end.getTime()) / 2 + timeShift(deltaPx, width, span));
-    state.span = state.targetSpan;
-    callbacksRef.current.onGestureActivity?.();
-    timeline.setWindow(new Date(state.center - state.span / 2), new Date(state.center + state.span / 2));
-    const shiftedYear = new Date(state.center).getFullYear();
-    callbacksRef.current.onTimeShift?.(shiftedYear, state.span / 31536000000);
-    runMotion();
-
-  }, [runMotion]);
+    applyInput(deltaPx, 'wheel', width);
+  }, [applyInput]);
 
   useEffect(() => {
     const element = containerRef.current;
     if (!element) return undefined;
     element.addEventListener('wheel', handleWheel, { passive: false, capture: true });
+    element.addEventListener('pointerdown', handlePointerDown, { capture: true });
     const onVisibilityChange = () => {
       const state = motionRef.current;
       if (document.hidden) {
@@ -316,9 +346,11 @@ function VisTimelineWrapperComponent(
     document.addEventListener('visibilitychange', onVisibilityChange);
     return () => {
       element.removeEventListener('wheel', handleWheel, { capture: true });
+      element.removeEventListener('pointerdown', handlePointerDown, { capture: true });
       document.removeEventListener('visibilitychange', onVisibilityChange);
+      window.clearTimeout(settleTimerRef.current);
     };
-  }, [handleWheel, runMotion]);
+  }, [handlePointerDown, handleWheel, runMotion]);
 
   useImperativeHandle(ref, () => ({
     setWindow: (start: Date, end: Date, opts?: { animation?: boolean }) => timelineRef.current?.setWindow(start, end, opts),
@@ -412,7 +444,6 @@ function VisTimelineWrapperComponent(
       ref={containerRef}
       className={containerClassName}
       data-testid="vis-timeline"
-      onPointerDown={handlePointerDown}
       onPointerMove={handlePointerMove}
       onPointerUp={handlePointerUp}
       onPointerCancel={handlePointerUp}

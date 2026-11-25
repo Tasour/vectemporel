@@ -45,6 +45,8 @@ L'utilisateur a explicitement demandé la suppression des attributions affichée
 - Le français est la langue par défaut (`DEFAULT_LOCALE`), y compris pour le document HTML et les métadonnées.
 - La navigation basse est un conteneur unique inséré sous la timeline ; la timeline se décale de sa hauteur mesurée.
 - La timeline porte une surcouche de graduations et de grandes périodes, sans capter les gestes.
+- La cinématique `vitesse → date + zoom` et son calibrage sont décrits dans `docs/ERGONOMIE-TIMELINE.md` ; les tests d'ergonomie couvrent 390×844, 1658×1150 et le tactile.
+- Le reset de cache d'un nouveau build s'exécute avant le montage React ; une requête d'aires en vol ne peut plus être invalidée par le reset.
 - Les frontières internes utilisent une teinte assombrie de la couleur de l'ensemble, jamais un noir opaque.
 - Le changement d'année est mesuré par `performance.mark/measure`. Cache LRU dans le service worker et le store, préchargement des années voisines, mutation GeoJSON sur place.
 - **Rust/Wasm écarté** : le profil (18–50 ms à froid, 12–17 ms en cache) montre que le coût dominant est le décodage/rendu, pas le calcul JS. Le gain attendu d'un module Wasm ne justifie pas son poids ni la conversion des 4 001 fichiers. Réévaluation seulement si le p95 après cache dépasse 8 ms hors rendu MapLibre.

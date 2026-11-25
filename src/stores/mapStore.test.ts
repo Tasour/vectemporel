@@ -603,6 +603,51 @@ describe('mapStore', () => {
     });
 
     describe('loadAreaData', () => {
+      it('should ignore a late response superseded by a newer year request', async () => {
+        let resolveFirst!: (value: AreaData) => void;
+        let resolveSecond!: (value: AreaData) => void;
+        mockGet
+          .mockImplementationOnce(() => new Promise<AreaData>((resolve) => { resolveFirst = resolve; }))
+          .mockImplementationOnce(() => new Promise<AreaData>((resolve) => { resolveSecond = resolve; }));
+
+        let first!: Promise<AreaData | null>;
+        let second!: Promise<AreaData | null>;
+        act(() => {
+          first = useMapStore.getState().loadAreaData(1000);
+          second = useMapStore.getState().loadAreaData(1001);
+        });
+
+        await act(async () => {
+          resolveSecond(sampleAreaData2);
+          await second;
+        });
+        await act(async () => {
+          resolveFirst(sampleAreaData);
+          await first;
+        });
+
+        expect(useMapStore.getState().currentAreaData).toEqual(sampleAreaData2);
+      });
+
+      it('should not publish a response whose request was canceled by a cache reset', async () => {
+        let resolveRequest!: (value: AreaData) => void;
+        mockGet.mockImplementationOnce(() => new Promise<AreaData>((resolve) => { resolveRequest = resolve; }));
+
+        let pending!: Promise<AreaData | null>;
+        act(() => {
+          pending = useMapStore.getState().loadAreaData(1000);
+        });
+        act(() => {
+          useMapStore.getState().cancelAreaDataRequest();
+        });
+        await act(async () => {
+          resolveRequest(sampleAreaData);
+          await pending;
+        });
+
+        expect(useMapStore.getState().currentAreaData).toBeNull();
+      });
+
       it('should return cached data if available', async () => {
         // First cache some data
         act(() => {

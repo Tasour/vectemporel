@@ -10,6 +10,7 @@ import { useUIStore } from './stores/uiStore';
 import { useMapStore } from './stores/mapStore';
 import { DETAIL_LEVEL_PRESETS, detectDetailLevel } from './utils/detailLevelUtils';
 import { registerMapWorker } from './config/mapWorker';
+import { resetStaleCache } from './features/cache/cacheReset';
 
 // Must run before any Map is constructed: MapLibre caches its worker pool globally.
 // No RTL text plugin is registered — MapLibre >= 6.9 shapes Arabic and Hebrew
@@ -32,6 +33,11 @@ console.log(`%cChronas build: ${__BUILD_TIMESTAMP__}`, 'color: #888; font-size: 
   map.setMarkerLimit(preset.markerLimit);
   map.setClusterMarkers(preset.clusterMarkers);
 })();
+
+// Avant tout montage React : aucun composant n'a encore lancé de requête, donc
+// le reset ne peut pas invalider une réponse d'API en vol (bug « No Data
+// Available » au premier chargement après un déploiement).
+resetStaleCache();
 
 const rootElement = document.getElementById('root');
 

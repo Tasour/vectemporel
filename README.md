@@ -41,13 +41,17 @@ Le chemin année → carte est mesuré avec `performance.mark/measure` (`vectemp
 
 ### Geste temporel et zoom
 
-Le défilement à la molette ou au pavé tactile est une cinématique unique : un déplacement en pixels est converti en temps avec le facteur pixel → année courant, puis une vitesse lissée pilote la largeur de la fenêtre. Plus le geste est rapide, plus la fenêtre s’élargit : une forte accélération vers la droite amène une date lointaine dans le futur tout en dézoomant, tandis qu’un geste lent reste précis. L’inertie décroît exponentiellement dans l’unique boucle rAF, avec pause sur `document.hidden`. Le centre reste borné à `[-2000, 2000]`. Le glisser tactile et la souris suivent la même direction (droite = futur).
+Le défilement à la molette ou au pavé tactile est une cinématique calibrée : un déplacement en pixels est converti en temps avec la **fenêtre au début du geste**, ce qui garantit un déplacement 1:1 (100 px sur 390 px = 128 ans pour une fenêtre de 500 ans). Une vitesse soutenue élargit progressivement la fenêtre (facteur ≤ 2,5), tandis qu’un cran isolé ne fait que translater. L’inertie décroît exponentiellement (τ = 120 ms, glisse ≤ 60 % de la largeur) dans l’unique boucle rAF, avec un garde-fou qui termine le geste même si les frames sont rares, et pause sur `document.hidden`. Le centre reste borné à `[-2000, 2000]` et la fenêtre à `[-2250, 2250]`. Le glisser tactile et la souris suivent la même direction (droite = futur) ; `prefers-reduced-motion` supprime l’inertie.
+
+Le modèle, ses constantes et les mesures sont détaillés dans [`docs/ERGONOMIE-TIMELINE.md`](docs/ERGONOMIE-TIMELINE.md). Les tests d’ergonomie sont dans `tests/e2e/timeline-ergonomics.spec.ts` (390×844 et 1658×1150) et écrivent leurs mesures dans `test-results/ergonomie/`.
 
 La pile de la timeline est explicitement ordonnée : panneaux vis < grille < surcouche périodes/graduations < trait central < marqueur et libellé d’année < popovers.
 
 ### Invalidation du cache
 
 Chaque déploiement injecte un `BUILD_VERSION` dans le service worker et dans le bundle. Lors d’un changement de version, les anciens caches du service worker sont supprimés, le cache de décompression est vidé, les anciennes inscriptions sont désenregistrées et les stores persistés (interface, collections, téléchargements) sont remis à zéro. Une application ouverte avec un ancien cache recharge donc des données propres, y compris sur mobile.
+
+Le reset est effectué **avant le montage React** (`main.tsx`) : il ne peut plus invalider une requête d’aires en vol et laisser la carte vide au premier chargement. Les requêtes sont en outre identifiées par un compteur monotone, ce qui rend les réponses tardives inoffensives.
 
 ### Superpositions et ergonomie
 

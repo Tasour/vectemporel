@@ -31,6 +31,9 @@ export function resetStaleCache(): boolean {
   useUIStore.setState({ ...defaultState });
   useCollectionsStore.getState().clear();
   useDownloadStore.getState().clear();
+  // Aborter d'abord : sinon la réponse en vol se voit opposer un contrôleur
+  // remis à null et est silencieusement jetée (carte vide au premier chargement).
+  useMapStore.getState().cancelAreaDataRequest();
   useMapStore.setState({
     areaDataCache: new Map(),
     currentAreaData: null,

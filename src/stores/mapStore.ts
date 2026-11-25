@@ -22,6 +22,15 @@ import { darkenColor } from '../utils/colorUtils';
 
 const prefetchingYears = new Set<number>();
 
+/**
+ * Identifiant monotone des requêtes d'aires de jeu.
+ *
+ * Comparer les `AbortController` ne suffit pas : un reset de cache qui remet le
+ * contrôleur à `null` fait passer une réponse légitime pour périmée, et la carte
+ * reste vide (« No Data Available ») jusqu'au rechargement suivant.
+ */
+let areaRequestSeq = 0;
+
 /** Les annulations de requêtes ne sont pas des erreurs utilisateur. */
 function isRequestCanceled(error: unknown): boolean {
   if (!(error instanceof Error)) return false;
@@ -1337,6 +1346,7 @@ export const useMapStore = create<MapStore>((set, get) => ({
 
     // Create new abort controller for this request - Requirement 9.5
     const abortController = new AbortController();
+    const requestId = ++areaRequestSeq;
 
     // Data not in cache, set loading state and fetch from API
     set({ isLoadingAreaData: true, error: null, areaDataAbortController: abortController });
@@ -1357,7 +1367,10 @@ export const useMapStore = create<MapStore>((set, get) => ({
       const areaData = data;
 
       // Une requête plus récente a pris le relais : ignorer cette réponse périmée.
-      if (get().areaDataAbortController !== abortController) return data;
+      if (areaRequestSeq !== requestId) {
+        console.debug(`[Performance] Response for year ${String(year)} superseded by a newer request`);
+        return data;
+      }
 
       // Cache the response - Requirement 12.2
       const duration = performance.now() - startTime;
@@ -1401,7 +1414,7 @@ export const useMapStore = create<MapStore>((set, get) => ({
       // Check if request was aborted - Requirement 9.5
       if (isRequestCanceled(error)) {
         console.debug(`[Performance] Request for year ${String(year)} was cancelled`);
-        if (get().areaDataAbortController === abortController) {
+        if (areaRequestSeq === requestId) {
           set({ isLoadingAreaData: false, areaDataAbortController: null });
         }
         return null;
@@ -1426,7 +1439,7 @@ export const useMapStore = create<MapStore>((set, get) => ({
       });
 
       // Store error state - Requirement 13.4
-      if (get().areaDataAbortController !== abortController) return null;
+      if (areaRequestSeq !== requestId) return null;
       const errorInstance =
         error instanceof Error ? error : new Error(`Failed to load area data for year ${String(year)}`);
       set({
@@ -2510,6 +2523,9 @@ export const useMapStore = create<MapStore>((set, get) => ({
    */
   cancelAreaDataRequest: () => {
     const state = get();
+    // Invalide d'abord la réponse en vol, même si le client HTTP n'aborterait
+    // pas (fetch déjà résolu) : elle ne doit plus écraser l'état courant.
+    areaRequestSeq += 1;
     if (state.areaDataAbortController) {
       state.areaDataAbortController.abort();
       set({ areaDataAbortController: null, isLoadingAreaData: false });

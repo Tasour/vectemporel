@@ -242,7 +242,9 @@ export const Timeline: React.FC<TimelineProps> = ({
     showMinorLabels: true,
     horizontalScroll: true,
     zoomable: true,
-    moveable: true,
+    // Le déplacement est entièrement piloté par notre cinématique (molette,
+    // souris, tactile) : le pan natif de vis-timeline doublerait le geste.
+    moveable: false,
     timeAxis: { scale: 'year', step: 100 },
   }), [isExpanded, isMobile]);
 
@@ -467,7 +469,11 @@ export const Timeline: React.FC<TimelineProps> = ({
 
   // L'ajout des épopées peut faire recalculer la fenêtre par vis-timeline.
   useEffect(() => {
-    if (timelineItems.length === 0 || !initialWindowReadyRef.current) return;
+    if (
+      timelineItems.length === 0 ||
+      !initialWindowReadyRef.current ||
+      useTimelineStore.getState().isGestureActive
+    ) return;
     restoreWindow(useTimelineStore.getState().selectedYear);
   }, [restoreWindow, timelineItems.length]);
 
@@ -561,6 +567,7 @@ export const Timeline: React.FC<TimelineProps> = ({
     <div
       data-testid="timeline"
       data-year={selectedYear}
+      data-span={overlayRange ? Math.round(overlayRange.end - overlayRange.start) : undefined}
       data-expanded={isExpanded}
       className={combinedClassName}
       style={{ height: `${String(currentHeight)}px`, right: timelineRight, transition: 'right 300ms ease-in-out, height 500ms ease-in-out, bottom 280ms cubic-bezier(0.23, 1, 0.32, 1)' }}
@@ -600,7 +607,7 @@ export const Timeline: React.FC<TimelineProps> = ({
               setNotDefaultView();
             }
           }}
-          manualPan={isMobile}
+          manualPan
           onPanEnd={() => {
                     suppressClickRef.current = true;
             window.setTimeout(() => {
