@@ -109,8 +109,8 @@ export interface VisTimelineWrapperProps {
   onRangeChange?: () => void;
   onRangeChanged?: () => void;
   onInitialWindowApplied?: () => void;
-  /** Signale un changement de fenêtre issu d'un geste utilisateur. */
-  onGestureActivity?: () => void;
+  /** Signale l'état du geste : true dès la première entrée, false à la fin de l'inertie. */
+  onGestureActivity?: (active: boolean) => void;
   /** Fin du geste : permet de committer l'année finale une seule fois. */
   onGestureEnd?: (year: number) => void;
   /** Cran haptique : appelé à chaque frame de geste. */
@@ -169,6 +169,7 @@ function VisTimelineWrapperComponent(
   const finishMotion = useCallback(() => {
     const state = motionRef.current;
     const timeline = timelineRef.current;
+    window.clearTimeout(settleTimerRef.current);
     if (!timeline || !state.active) return;
     if (state.frame) {
       cancelAnimationFrame(state.frame);
@@ -184,10 +185,12 @@ function VisTimelineWrapperComponent(
     if (containerRef.current) delete containerRef.current.dataset['gesture'];
     timeline.setWindow(
       new Date(state.center - state.span / 2),
-      new Date(state.center + state.span / 2)
+      new Date(state.center + state.span / 2),
+      { animation: false }
     );
     callbacksRef.current.onTimeShift?.(new Date(state.center).getFullYear(), state.span / YEAR_MS);
     callbacksRef.current.onGestureEnd?.(new Date(state.center).getFullYear());
+    callbacksRef.current.onGestureActivity?.(false);
   }, []);
 
   /** Déplace la fenêtre et détend le zoom dans l'unique boucle d'animation. */
@@ -197,7 +200,8 @@ function VisTimelineWrapperComponent(
     if (!timeline) return;
     const step = (now: number) => {
       const motion = advanceMotion(state, now);
-      callbacksRef.current.onGestureActivity?.();
+      const held = pointerRef.current !== null || touchRef.current !== null;
+      callbacksRef.current.onGestureActivity?.(motion.active || held);
       const motionYear = new Date(motion.center).getFullYear();
       callbacksRef.current.onTimeShift?.(motionYear, motion.span / YEAR_MS);
       callbacksRef.current.onHaptic?.(motionYear, motion.span / YEAR_MS, precisionRef.current);
@@ -206,13 +210,15 @@ function VisTimelineWrapperComponent(
       if (now - lastWindowCommitRef.current >= (motion.active ? 30 : 0) || !motion.active) {
         timeline.setWindow(
           new Date(motion.center - motion.span / 2),
-          new Date(motion.center + motion.span / 2)
+          new Date(motion.center + motion.span / 2),
+          { animation: false }
         );
         lastWindowCommitRef.current = now;
       }
       if (!motion.active) {
         if (containerRef.current) delete containerRef.current.dataset['gesture'];
         callbacksRef.current.onGestureEnd?.(new Date(motion.center).getFullYear());
+        callbacksRef.current.onGestureActivity?.(false);
         state.frame = 0;
       } else {
         state.frame = requestAnimationFrame(step);
@@ -255,10 +261,11 @@ function VisTimelineWrapperComponent(
 
     // Marquer le geste avant toute écriture : le garde-fou de fenêtre lit ce
     // drapeau de façon synchrone dans `rangechange`.
-    callbacksRef.current.onGestureActivity?.();
+    callbacksRef.current.onGestureActivity?.(true);
     timeline.setWindow(
       new Date(result.center - result.span / 2),
-      new Date(result.center + result.span / 2)
+      new Date(result.center + result.span / 2),
+      { animation: false }
     );
     const resultYear = new Date(result.center).getFullYear();
     callbacksRef.current.onTimeShift?.(resultYear, result.span / YEAR_MS);
@@ -288,7 +295,6 @@ function VisTimelineWrapperComponent(
     state.kind = null;
     state.targetSpan = state.span;
     state.baseSpan = state.span;
-    callbacksRef.current.onGestureActivity?.();
     pointerRef.current = {
       id: event.pointerId,
       x: event.clientX,
@@ -323,7 +329,11 @@ function VisTimelineWrapperComponent(
       containerRef.current.releasePointerCapture(event.pointerId);
     }
     if (moved) onPanEnd?.();
-  }, [applyInput, onPanEnd]);
+    // Le relâchement clôt le geste tout de suite : le dernier `setWindow`
+    // n'attend pas la fin de l'inertie (1 s), sinon la frise semblait revenir
+    // à sa position initiale avant de rattraper.
+    finishMotion();
+  }, [applyInput, finishMotion, onPanEnd]);
 
   const handleTouchStart = useCallback((event: React.TouchEvent<HTMLDivElement>) => {
     if (!manualPan || event.touches.length !== 1) return;
@@ -379,7 +389,8 @@ function VisTimelineWrapperComponent(
     precisionRef.current = false;
     if (containerRef.current) delete containerRef.current.dataset['precision'];
     if (moved) onPanEnd?.();
-  }, [applyInput, onPanEnd]);
+    finishMotion();
+  }, [applyInput, finishMotion, onPanEnd]);
 
   /** Pavé tactile et molette : la vitesse pilote la date et le zoom. */
   const handleWheel = useCallback((event: WheelEvent) => {
@@ -403,10 +414,11 @@ function VisTimelineWrapperComponent(
       const anchorTime = center + offset * span;
       const nextCenter = clampCenterForSpan(anchorTime - offset * nextSpan, nextSpan);
       resetGestureToWindow(motionRef.current, nextCenter, nextSpan);
-      timeline.setWindow(new Date(nextCenter - nextSpan / 2), new Date(nextCenter + nextSpan / 2));
-      callbacksRef.current.onGestureActivity?.();
+      timeline.setWindow(new Date(nextCenter - nextSpan / 2), new Date(nextCenter + nextSpan / 2), { animation: false });
+      callbacksRef.current.onGestureActivity?.(true);
       callbacksRef.current.onTimeShift?.(new Date(nextCenter).getFullYear(), nextSpan / YEAR_MS);
       callbacksRef.current.onGestureEnd?.(new Date(nextCenter).getFullYear());
+      callbacksRef.current.onGestureActivity?.(false);
       return;
     }
 
@@ -447,7 +459,7 @@ function VisTimelineWrapperComponent(
         (start.getTime() + end.getTime()) / 2,
         end.getTime() - start.getTime()
       );
-      timelineRef.current?.setWindow(start, end, opts);
+      timelineRef.current?.setWindow(start, end, opts ?? { animation: false });
     },
     setSelection: (ids: string[]) => timelineRef.current?.setSelection(ids),
     getWindow: () => timelineRef.current?.getWindow() ?? { start: new Date(), end: new Date() },
@@ -480,7 +492,7 @@ function VisTimelineWrapperComponent(
     const timeline = new VisTimeline(containerRef.current, itemsDataSetRef.current, groupsDataSetRef.current, options);
     timelineRef.current = timeline;
     const applyInitialWindow = () => {
-      if (initialStart && initialEnd) timeline.setWindow(new Date(initialStart), new Date(initialEnd));
+      if (initialStart && initialEnd) timeline.setWindow(new Date(initialStart), new Date(initialEnd), { animation: false });
       callbacksRef.current.onInitialWindowApplied?.();
     };
     const initialWindowTimer = window.setTimeout(applyInitialWindow, 0);

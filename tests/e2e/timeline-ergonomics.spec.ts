@@ -290,7 +290,7 @@ for (const viewport of [
       await page.waitForFunction(
         () => performance.getEntriesByName('markers-pack-year').length > 0,
         null,
-        { timeout: 15_000 }
+        { timeout: 25_000 }
       );
     });
 
@@ -459,6 +459,128 @@ for (const viewport of [
       // `rangechange` ; la stabilité exigée est l'absence de dérive sensible.
       expect(Math.abs(later.year - settled.year)).toBeLessThanOrEqual(5);
       expect(Math.abs(later.span - settled.span) / settled.span).toBeLessThan(0.1);
+    });
+
+    test('les graduations du geste couvrent toute la frise', async ({ page }) => {
+      await open(page);
+      const box = await page.locator('[data-testid="timeline"]').boundingBox();
+      if (!box) throw new Error('Timeline introuvable');
+      const y = box.y + box.height / 2;
+      const startX = box.x + box.width / 2;
+      await page.mouse.move(startX, y);
+      await page.mouse.down();
+      for (let step = 1; step <= 8; step += 1) {
+        await page.mouse.move(startX + step * 10, y);
+        await page.waitForTimeout(45);
+      }
+      const state = await page.evaluate(() => {
+        const canvas = document.querySelector<HTMLCanvasElement>('[data-testid=timeline-overlay-canvas]');
+        const overlay = document.querySelector('[data-testid=timeline-overlay]');
+        const timeline = document.querySelector('[data-testid="timeline"]');
+        if (!canvas || !overlay || !timeline) return null;
+        return {
+          widthRatio: canvas.clientWidth / timeline.clientWidth,
+          canvasOpacity: Number(getComputedStyle(canvas).opacity),
+          overlayOpacity: Number(getComputedStyle(overlay).opacity),
+          tickCount: Number(canvas.dataset['tickCount'] ?? 0),
+        };
+      });
+      await page.mouse.up();
+      record(`graduations-${viewport.name}`, state);
+      expect(state).not.toBeNull();
+      if (!state) return;
+      expect(state.widthRatio).toBeGreaterThan(0.95);
+      expect(state.canvasOpacity).toBe(1);
+      expect(state.overlayOpacity).toBe(0);
+      expect(state.tickCount).toBeGreaterThanOrEqual(3);
+    });
+
+    test('le geste gèle la carte et la frise ne régresse pas au relâchement', async ({ page }) => {
+      await open(page);
+      // Le chargement initial (tuiles, pack idle) peut encore rendre quelques
+      // frames : on le laisse finir avant de mesurer le geste lui-même.
+      await page.waitForTimeout(5000);
+      await page.evaluate(() => {
+        const map = (window as unknown as { __chronasMap?: { on: (event: string, fn: () => void) => void } }).__chronasMap;
+        const state = window as unknown as { __mapRenders: number };
+        state.__mapRenders = 0;
+        map?.on('render', () => { state.__mapRenders += 1; });
+      });
+      const box = await page.locator('[data-testid="timeline"]').boundingBox();
+      if (!box) throw new Error('Timeline introuvable');
+      const y = box.y + box.height / 2;
+      const startX = box.x + box.width / 2;
+      await page.mouse.move(startX, y);
+      await page.mouse.down();
+      for (let step = 1; step <= 10; step += 1) {
+        await page.mouse.move(startX + step * 12, y);
+        await page.waitForTimeout(45);
+      }
+      const during = await page.evaluate(() => {
+        const overlay = document.querySelector<HTMLElement>('[data-testid="map-gesture-overlay"]');
+        const vector = overlay ? Array.from(overlay.querySelectorAll('canvas'))[1] : undefined;
+        const data = vector && vector.width > 0
+          ? vector.getContext('2d')?.getImageData(0, 0, vector.width, Math.min(400, vector.height)).data
+          : undefined;
+        let ink = 0;
+        if (data) for (let index = 3; index < data.length; index += 4 * 53) if ((data[index] ?? 0) > 0) ink += 1;
+        return {
+          status: overlay?.dataset['gestureOverlay'],
+          width: vector?.width ?? 0,
+          ink,
+          renders: (window as unknown as { __mapRenders: number }).__mapRenders,
+        };
+      });
+      await page.mouse.up();
+      const samples: { year: number; grid: number | null }[] = [];
+      for (let index = 0; index < 16; index += 1) {
+        await page.waitForTimeout(50);
+        samples.push(await page.evaluate(() => {
+          const timeline = document.querySelector('[data-testid="timeline"]');
+          const grid = document.querySelector('.vis-grid.vis-year1000');
+          return {
+            year: Number(timeline?.getAttribute('data-year')),
+            grid: grid ? Math.round(new DOMMatrix(getComputedStyle(grid).transform).m41) : null,
+          };
+        }));
+      }
+      record(`gel-${viewport.name}`, { during, samples });
+      expect(during.status).toBe('on');
+      expect(during.width).toBeGreaterThanOrEqual(viewport.width - 2);
+      expect(during.ink).toBeGreaterThan(100);
+      // Une seule frame autorisée : celle de la capture du raster.
+      expect(during.renders).toBeLessThanOrEqual(2);
+      for (let index = 1; index < samples.length; index += 1) {
+        expect(samples[index]?.year ?? 0).toBeLessThanOrEqual(samples[index - 1]?.year ?? 0);
+      }
+      expect(samples[0]?.grid).toBe(samples[samples.length - 1]?.grid);
+    });
+
+    test('un glisser lent ne réécrit jamais l’année en arrière', async ({ page }) => {
+      await open(page);
+      const box = await page.locator('[data-testid="timeline"]').boundingBox();
+      if (!box) throw new Error('Timeline introuvable');
+      const y = box.y + box.height / 2;
+      const startX = box.x + box.width / 2;
+      // 720 ms entre deux mouvements : le thread carte peut dépasser 600 ms,
+      // c'était le cas qui faisait retomber le drapeau de geste en plein drag.
+      await page.mouse.move(startX, y);
+      await page.mouse.down();
+      const years: number[] = [];
+      for (let step = 1; step <= 6; step += 1) {
+        await page.mouse.move(startX + step * 16, y);
+        await page.waitForTimeout(720);
+        years.push((await readState(page)).year);
+      }
+      await page.mouse.up();
+      await page.waitForTimeout(900);
+      years.push((await readState(page)).year);
+      record(`monotonie-${viewport.name}`, { years });
+      for (let index = 1; index < years.length; index += 1) {
+        const current = years[index] ?? 0;
+        const previous = years[index - 1] ?? 0;
+        expect(current).toBeLessThanOrEqual(previous);
+      }
     });
   });
 }

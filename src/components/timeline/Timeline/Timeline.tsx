@@ -131,6 +131,13 @@ export const Timeline: React.FC<TimelineProps> = ({
   const lastSpanRef = useRef(500);
   const hasUserInteractedRef = useRef(false);
   const lastYearCommitRef = useRef(0);
+  /** Commit d'année post-geste, déclenché par le `rangechanged` de vis-timeline. */
+  const pendingFinalYearRef = useRef<number | null>(null);
+  const pendingYearFrameRef = useRef(0);
+  const pendingYearTimerRef = useRef(0);
+  /** La fenêtre vis peut arriver en retard : on ignore ses écritures jusqu'à convergence. */
+  const suppressRangeYearRef = useRef(false);
+  const suppressRangeTimerRef = useRef(0);
 
   // Zoom hint visibility — shown briefly on first render
   const [showZoomHint, setShowZoomHint] = useState(true);
@@ -529,14 +536,47 @@ export const Timeline: React.FC<TimelineProps> = ({
     });
   }, []);
 
+  const flushPendingYear = useCallback(() => {
+    const year = pendingFinalYearRef.current;
+    if (year === null) return;
+    pendingFinalYearRef.current = null;
+    window.clearTimeout(pendingYearTimerRef.current);
+    cancelAnimationFrame(pendingYearFrameRef.current);
+    pendingYearFrameRef.current = requestAnimationFrame(() => {
+      pendingYearFrameRef.current = 0;
+      if (useTimelineStore.getState().isGestureActive) return;
+      if (year !== useTimelineStore.getState().selectedYear) setYear(year);
+    });
+  }, [setYear]);
+
   const handleOverlayRangeChanged = useCallback((updateBounds = true) => {
     const windowRange = timelineRef.current?.getWindow();
     if (!windowRange) return;
     const startYear = dateToYear(windowRange.start);
     const endYear = dateToYear(windowRange.end);
     setOverlayRange({ start: startYear, end: endYear });
+    if (pendingFinalYearRef.current !== null) flushPendingYear();
     if (updateBounds && !useTimelineStore.getState().isGestureActive) applyDynamicBounds(startYear, endYear);
-  }, [applyDynamicBounds]);
+  }, [applyDynamicBounds, flushPendingYear]);
+
+  /**
+   * Commit d'année post-geste : on laisse la frise peindre sa fenêtre finale
+   * avant de réveiller la carte. Sans ce décalage, le rendu MapLibre sature le
+   * thread principal et vis-timeline n'applique sa fenêtre qu'une seconde plus
+   * tard (la frise semblait revenir à sa position initiale).
+   */
+  const commitYearAfterPaint = useCallback((year: number) => {
+    pendingFinalYearRef.current = year;
+    window.clearTimeout(pendingYearTimerRef.current);
+    // Repli si vis-timeline ne publie pas de `rangechanged` (fenêtre inchangée).
+    pendingYearTimerRef.current = window.setTimeout(flushPendingYear, 300);
+  }, [flushPendingYear]);
+
+  useEffect(() => () => {
+    cancelAnimationFrame(pendingYearFrameRef.current);
+    window.clearTimeout(pendingYearTimerRef.current);
+    window.clearTimeout(suppressRangeTimerRef.current);
+  }, []);
 
   /** Remet la fenêtre autour de l'année courante après un saut automatique. */
   const restoreWindow = useCallback((year: number) => {
@@ -578,6 +618,14 @@ export const Timeline: React.FC<TimelineProps> = ({
     // ici la fenêtre vis-timeline, parfois en retard, provoquait un aller-retour.
     if (gestureActive) return;
     if (!isMobile || performance.now() < skipRangeSyncUntilRef.current) return;
+    if (suppressRangeYearRef.current) {
+      // La fenêtre vis est encore en retard sur l'année commitée au relâchement :
+      // l'écrire dans le store ferait revenir la carte en arrière.
+      if (Math.abs(year - useTimelineStore.getState().selectedYear) <= 3) {
+        suppressRangeYearRef.current = false;
+        window.clearTimeout(suppressRangeTimerRef.current);
+      } else return;
+    }
     if (year !== useTimelineStore.getState().selectedYear) {
       setYear(year);
       setNotDefaultView();
@@ -678,15 +726,28 @@ export const Timeline: React.FC<TimelineProps> = ({
           onInitialWindowApplied={() => {
             initialWindowReadyRef.current = true;
           }}
-          onGestureActivity={() => {
-            overlayRef.current?.setGesture(true);
+          onGestureActivity={(active) => {
+            if (active) {
+              pendingFinalYearRef.current = null;
+              suppressRangeYearRef.current = false;
+              window.clearTimeout(pendingYearTimerRef.current);
+              window.clearTimeout(suppressRangeTimerRef.current);
+            }
+            overlayRef.current?.setGesture(active);
             guardWindowRef.current = false;
             hasUserInteractedRef.current = true;
-            useTimelineStore.getState().setGestureActive(true);
+            useTimelineStore.getState().setGestureActive(active);
             window.clearTimeout(gestureTimerRef.current);
-            gestureTimerRef.current = window.setTimeout(() => {
-              useTimelineStore.getState().setGestureActive(false);
-            }, 600);
+            if (active) {
+              // Simple filet de sécurité : le drapeau est normalement remis à
+              // zéro explicitement par le wrapper à la fin de l'inertie. Un
+              // timer court (600 ms) pouvait tomber entre deux frames et
+              // laisser `handleRangeChange` réécrire une année périmée.
+              gestureTimerRef.current = window.setTimeout(() => {
+                useTimelineStore.getState().setGestureActive(false);
+                overlayRef.current?.setGesture(false);
+              }, 2500);
+            }
           }}
           onTimeShift={(year, spanYears) => {
             const now = performance.now();
@@ -717,6 +778,16 @@ export const Timeline: React.FC<TimelineProps> = ({
           onGestureEnd={(year) => {
             window.clearTimeout(gestureTimerRef.current);
             useTimelineStore.getState().setGestureActive(false);
+            useMapStore.getState().flushGestureMarkers();
+            // Fenêtre morte : le dernier `rangechange` de vis-timeline peut
+            // arriver après la fin du geste avec une fenêtre en retard.
+            skipRangeSyncUntilRef.current = performance.now() + 800;
+            suppressRangeYearRef.current = true;
+            window.clearTimeout(suppressRangeTimerRef.current);
+            suppressRangeTimerRef.current = window.setTimeout(() => {
+              suppressRangeYearRef.current = false;
+            }, 2000);
+            lastWindowCenterRef.current = year;
             lastYearCommitRef.current = 0;
             lastOverlayRef.current = 0;
             setOverlayRange({
@@ -724,9 +795,7 @@ export const Timeline: React.FC<TimelineProps> = ({
               end: year + lastSpanRef.current / 2,
             });
             overlayRef.current?.setGesture(false);
-            if (year !== useTimelineStore.getState().selectedYear) {
-              setYear(year);
-            }
+            commitYearAfterPaint(year);
             setNotDefaultView();
           }}
           manualPan

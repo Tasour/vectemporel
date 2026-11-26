@@ -78,8 +78,19 @@ Pendant `isGestureActive`, la timeline garde la priorité :
 - la carte est committée à **4 Hz**, avec une mise à jour finale au relâchement ;
 - les **marqueurs et libellés ne sont pas rechargés pendant le geste** (2 000
   symboles MapLibre sont le poste le plus coûteux) ;
-- `setWindow` de vis-timeline est plafonné à **30 Hz**, les épopées ne sont pas
-  repeintes pendant le geste ;
+- `setWindow` de vis-timeline est plafonné à **30 Hz** et toujours appelé avec
+  `{ animation: false }` : l'animation par défaut de vis-timeline dure 500 ms et
+  faisait « revenir puis rattraper » la frise après chaque relâchement ;
+- la carte elle-même est **gelée** : `MapGestureOverlay` capture un raster du
+  fond, masque les cinq couches de remplissage et neutralise `triggerRepaint`.
+  Les provinces visibles seules sont recolorées en canvas 2D à ~14 Hz, avec
+  leurs noms ; au relâchement, un seul rendu MapLibre couvre la planète entière
+  et un fondu de 120 ms rétablit la carte exacte ;
+- le drapeau `isGestureActive` est piloté par pointeur/fin d'inertie, plus par
+  un timer de 600 ms qui pouvait tomber entre deux frames et laisser une
+  écriture d'année périmée (contrôle par convergence jusqu'à ±3 ans) ;
+- le commit d'année final est différé jusqu'au `rangechanged` de vis-timeline :
+  la frise est peinte avant que la carte ne reprenne le thread principal ;
 - la passe de mutation des 2 429 propriétés de provinces a été supprimée :
   les couleurs passent uniquement par `feature-state`.
 

@@ -46,6 +46,11 @@ export const TimelineOverlay = forwardRef<TimelineOverlayHandle, TimelineOverlay
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [width, setWidth] = useState(0);
     const gestureRef = useRef(false);
+    // Dernière fenêtre connue : la bascule DOM→canvas doit pouvoir dessiner
+    // avant de masquer les graduations DOM, même si la ref impérative a été
+    // créée lors d'un rendu plus ancien.
+    const rangeRef = useRef<{ start: number | null; end: number | null }>({ start: null, end: null });
+    rangeRef.current = { start, end };
 
     const draw = (from: number, to: number): void => {
       const canvas = canvasRef.current;
@@ -76,6 +81,20 @@ export const TimelineOverlay = forwardRef<TimelineOverlayHandle, TimelineOverlay
         ctx.fillRect(left, 0, right - left, h);
       });
       ctx.globalAlpha = 1;
+      // Les grandes périodes conservent leur libellé pendant le geste.
+      ctx.font = '700 10px Inter, system-ui, sans-serif';
+      ctx.textBaseline = 'top';
+      PERIODS.forEach((period) => {
+        const rawLeft = x(period.from);
+        const rawRight = x(period.to);
+        const left = Math.max(0, rawLeft);
+        const right = Math.min(w, rawRight);
+        if (right - left <= 14) return;
+        ctx.globalAlpha = dark ? 0.85 : 0.75;
+        ctx.fillStyle = dark ? 'rgba(241,236,225,0.92)' : 'rgba(43,40,35,0.86)';
+        ctx.fillText(period.label, left + 4, 3, right - left - 8);
+      });
+      ctx.globalAlpha = 1;
 
       const step = graduationStep(span, w);
       const first = Math.ceil(from / step) * step;
@@ -93,6 +112,7 @@ export const TimelineOverlay = forwardRef<TimelineOverlayHandle, TimelineOverlay
         ctx.fillText(formatYearForDisplay(year), px + 4, h - 24);
         count += 1;
       }
+      canvas.dataset['tickCount'] = String(count);
     };
 
     useImperativeHandle(ref, () => ({
@@ -100,9 +120,12 @@ export const TimelineOverlay = forwardRef<TimelineOverlayHandle, TimelineOverlay
       setGesture: (active: boolean) => {
         if (gestureRef.current === active) return;
         gestureRef.current = active;
+        const { start: from, end: to } = rangeRef.current;
+        // On peint d'abord : masquer les graduations DOM avant d'avoir un
+        // canvas valide laissait la frise entièrement vide.
+        if (active && from !== null && to !== null && to > from) draw(from, to);
         if (overlayRef.current) overlayRef.current.style.opacity = active ? '0' : '1';
         if (canvasRef.current) canvasRef.current.style.opacity = active ? '1' : '0';
-        if (active && start !== null && end !== null) draw(start, end);
       },
     }));
 

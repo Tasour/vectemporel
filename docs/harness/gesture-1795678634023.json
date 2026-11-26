@@ -1,0 +1,30 @@
+{
+  "url": "http://localhost:5173/?year=1000&cb=harness",
+  "viewport": {
+    "width": 1658,
+    "height": 1150
+  },
+  "gpu": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "softwareRendering": true,
+  "dpr": 1,
+  "during": {
+    "renders": 1,
+    "overlay": "on",
+    "overlayWidth": 1658,
+    "ink": 2050,
+    "longTasks": 2,
+    "longP50": 183,
+    "longP95": 183
+  },
+  "release": {
+    "yearAtRelease": 960,
+    "finalYear": 956,
+    "gridAtRelease": 974,
+    "finalGrid": 974,
+    "gridSettleMs": 0,
+    "yearSettleMs": 56,
+    "regressions": 0,
+    "rendersAfterRelease": 0
+  },
+  "errors": []
+}

@@ -81,6 +81,10 @@
 .overlayCanvas {
   position: absolute;
   inset: 0;
+  /* Sans dimensions explicites, un canvas absolu garde sa taille intrinsèque
+     de 300×150 px : les graduations du geste n'occupaient qu'un coin. */
+  width: 100%;
+  height: 100%;
   z-index: var(--z-timeline-overlay, 3);
   pointer-events: none;
   opacity: 0;

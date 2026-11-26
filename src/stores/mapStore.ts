@@ -281,6 +281,8 @@ export interface MapState {
   areaDataAbortController: AbortController | null;
   /** AbortController for cancelling in-flight marker requests - Requirement 9.5, 11.2 */
   markersAbortController: AbortController | null;
+  /** Année dont le chargement marqueurs a été différé pendant le geste. */
+  pendingGestureMarkersYear: number | null;
 }
 
 /**
@@ -603,6 +605,9 @@ export interface MapActions {
    */
   loadMarkers: (year: number) => Promise<Marker[]>;
 
+  /** Rejoue le chargement de marqueurs différé par un geste de timeline. */
+  flushGestureMarkers: () => void;
+
   /**
    * Loads every city marker once, for the historical city labels. A failed
    * load can be retried by calling it again.
@@ -922,6 +927,7 @@ export const initialState: MapState = {
   adjacencyGraph: null,
   areaDataAbortController: null,
   markersAbortController: null,
+  pendingGestureMarkersYear: null,
 };
 
 /**
@@ -2224,7 +2230,9 @@ export const useMapStore = create<MapStore>((set, get) => ({
     // Pendant le geste, la timeline garde le main thread : les marqueurs
     // (2 000 symboles MapLibre) ne sont rechargés qu'au relâchement.
     if (useTimelineStore.getState().isGestureActive) {
-      set({ isLoadingMarkers: false });
+      // On ne jette pas la demande : le commit final peut porter la même année
+      // que le dernier commit throttlé, et aucun nouvel effet ne se déclencherait.
+      set({ isLoadingMarkers: false, pendingGestureMarkersYear: year });
       return [];
     }
 
@@ -2314,6 +2322,13 @@ export const useMapStore = create<MapStore>((set, get) => ({
 
       return [];
     }
+  },
+
+  flushGestureMarkers: () => {
+    const year = get().pendingGestureMarkersYear;
+    if (year === null || useTimelineStore.getState().isGestureActive) return;
+    set({ pendingGestureMarkersYear: null });
+    void get().loadMarkers(year);
   },
 
   /**

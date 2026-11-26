@@ -17,7 +17,8 @@ import Map, { type MapRef, type ViewStateChangeEvent, type MapMouseEvent, Source
 import type { GeoJSONSource, Map as MapLibreMap, ProjectionSpecification, StyleSpecification } from 'maplibre-gl';
 import type { FeatureCollection, Feature, Point, Polygon, MultiPolygon } from 'geojson';
 import { useMapStore, FALLBACK_COLOR, BASEMAP_STYLES, DIMENSION_INDEX, type AreaData, type LabelFeatureCollection, type LabelLineFeatureCollection } from '../../../stores/mapStore';
-import { darkenColor } from '../../../utils/colorUtils';
+import { getProvinceStyle } from './provinceStyle';
+import { MapGestureOverlay } from './MapGestureOverlay';
 import { useUIStore } from '../../../stores/uiStore';
 import { useTimelineStore } from '../../../stores/timelineStore';
 import { citiesToGeoJSON } from '../../../utils/cityNames';
@@ -174,6 +175,7 @@ export interface MapViewProps {
  */
 export function MapView({ className, isBlurred = false }: MapViewProps) {
   const mapRef = useRef<MapRef>(null);
+  const [mapInstance, setMapInstance] = useState<MapLibreMap | null>(null);
   const provinceStateRef = useRef<{
     data: AreaData | null;
     dimension: string;
@@ -753,7 +755,9 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
    */
   useEffect(() => {
     const map = mapRef.current?.getMap();
-    if (!map || !isLoaded || !provincesGeoJSON || !currentAreaData || !metadata) return;
+    // Pendant un geste de timeline, la surcouche 2D assume les couleurs :
+    // aucun setFeatureState, donc aucun rendu MapLibre à ce moment-là.
+    if (!map || !isLoaded || !provincesGeoJSON || !currentAreaData || !metadata || timelineGestureActive) return;
     const dimension = activeColor === 'population' ? 'population' : activeColor;
     const previous = provinceStateRef.current;
     const full = !previous.data || previous.dimension !== dimension || previous.metadata !== metadata;
@@ -762,43 +766,24 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
     for (const feature of provincesGeoJSON.features) {
       const provinceId = feature.properties?.['name'] as string | undefined;
       if (!provinceId) continue;
-      const data = currentAreaData[provinceId];
-      let fill = FALLBACK_COLOR;
-      let border = '#3a3731';
-      let opacity = DEFAULT_FILL_OPACITY;
-      let nextValue: string | number | null | undefined = data?.[dimensionIndex];
-
-      if (dimension === 'population') {
-        const population = typeof data?.[4] === 'number' ? data[4] : 0;
-        nextValue = population;
-        fill = POPULATION_FILL_COLOR;
-        border = darkenColor(POPULATION_FILL_COLOR);
-        opacity = POPULATION_OPACITY_MIN
-          + (POPULATION_OPACITY_MAX - POPULATION_OPACITY_MIN)
-          * Math.min(1, population / MAX_POPULATION_FOR_OPACITY);
-      } else {
-        if (activeColor === 'religionGeneral' && nextValue) {
-          nextValue = getReligionGeneral(String(nextValue));
-        }
-        if (nextValue) {
-          const key = activeColor as 'ruler' | 'culture' | 'religion' | 'religionGeneral';
-          const color = metadata[key][String(nextValue)]?.color ?? FALLBACK_COLOR;
-          fill = color;
-          border = darkenColor(color);
-        }
-      }
+      const style = getProvinceStyle(
+        provinceId, currentAreaData, activeColor, metadata, getReligionGeneral,
+      );
 
       if (!full) {
         const previousValue = dimension === 'population'
           ? previous.data?.[provinceId]?.[4]
           : previous.data?.[provinceId]?.[dimensionIndex];
-        if (previousValue === nextValue) continue;
+        if (previousValue === style.value) continue;
       }
 
-      map.setFeatureState({ source: 'provinces', id: provinceId }, { fill, border, opacity });
+      map.setFeatureState(
+        { source: 'provinces', id: provinceId },
+        { fill: style.fill, border: style.border, opacity: style.opacity },
+      );
     }
     provinceStateRef.current = { data: currentAreaData, dimension, metadata };
-  }, [activeColor, currentAreaData, getReligionGeneral, isLoaded, metadata, provincesGeoJSON]);
+  }, [activeColor, currentAreaData, getReligionGeneral, isLoaded, metadata, provincesGeoJSON, timelineGestureActive]);
 
   /**
    * Recalculate labels when activeColor dimension changes or when required data becomes available.
@@ -870,10 +855,12 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
       // same MapView (a basemap remount, a Fast Refresh cycle) would be skipped
       // and silently render no marker icons at all.
       iconsInstalledRef.current = false;
+      setMapInstance(null);
       return;
     }
     if (iconsInstalledRef.current) return;
     iconsInstalledRef.current = true;
+    setMapInstance(map);
 
     // Expose the MapLibre instance for end-to-end tests. MapLibre doesn't
     // attach its instance to the DOM, so style internals (layers, resolved
@@ -1595,6 +1582,16 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
           height: '100%',
         }}
         mapStyle={BASEMAP_STYLES[basemap]}
+        // Le zoom courant (2,5) dessinait plusieurs copies du monde : coefficient
+        // de remplissage inutile sur le fragment shader.
+        renderWorldCopies={false}
+        fadeDuration={0}
+        refreshExpiredTiles={false}
+        canvasContextAttributes={{
+          antialias: false,
+          desynchronized: true,
+          powerPreference: 'high-performance',
+        }}
         onMove={handleMove}
         onLoad={handleLoad}
         onStyleData={handleStyleData}
@@ -1625,6 +1622,7 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
               visibility: layerVisibility.ruler ? 'visible' : 'none',
             }}
             paint={{
+              'fill-antialias': false,
               'fill-color': ['coalesce', ['feature-state', 'fill'], colorExpressions.ruler],
               'fill-opacity': ['coalesce', ['feature-state', 'opacity'], fillOpacityExpr],
             }}
@@ -1639,6 +1637,7 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
               visibility: layerVisibility.culture ? 'visible' : 'none',
             }}
             paint={{
+              'fill-antialias': false,
               'fill-color': ['coalesce', ['feature-state', 'fill'], colorExpressions.culture],
               'fill-opacity': ['coalesce', ['feature-state', 'opacity'], fillOpacityExpr],
             }}
@@ -1653,6 +1652,7 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
               visibility: layerVisibility.religion ? 'visible' : 'none',
             }}
             paint={{
+              'fill-antialias': false,
               'fill-color': ['coalesce', ['feature-state', 'fill'], colorExpressions.religion],
               'fill-opacity': ['coalesce', ['feature-state', 'opacity'], fillOpacityExpr],
             }}
@@ -1667,6 +1667,7 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
               visibility: layerVisibility.religionGeneral ? 'visible' : 'none',
             }}
             paint={{
+              'fill-antialias': false,
               'fill-color': ['coalesce', ['feature-state', 'fill'], colorExpressions.religionGeneral],
               'fill-opacity': ['coalesce', ['feature-state', 'opacity'], fillOpacityExpr],
             }}
@@ -1681,6 +1682,7 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
               visibility: layerVisibility.population ? 'visible' : 'none',
             }}
             paint={{
+              'fill-antialias': false,
               'fill-color': POPULATION_FILL_COLOR,
               'fill-opacity': ['coalesce', ['feature-state', 'opacity'], populationOpacityExpr],
             }}
@@ -2063,6 +2065,18 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
           </Popup>
         )}
       </Map>
+
+      {/* Pendant le geste : carte figée + seules les entités visibles recolored. */}
+      <MapGestureOverlay
+        active={timelineGestureActive}
+        map={mapInstance}
+        provinces={provincesGeoJSON?.features ?? null}
+        areaData={currentAreaData}
+        activeColor={activeColor}
+        metadata={metadata}
+        labels={labelData}
+        resolveReligionGeneral={getReligionGeneral}
+      />
 
       {/* Province hover tooltip */}
       {/* Requirement 1.1: WHEN the user hovers over a province, THE Tooltip SHALL appear within 100ms at the cursor position */}
