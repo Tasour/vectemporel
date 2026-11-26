@@ -556,6 +556,76 @@ for (const viewport of [
       expect(samples[0]?.grid).toBe(samples[samples.length - 1]?.grid);
     });
 
+    test('la carte reste tournable après le relâchement', async ({ page }) => {
+      await open(page);
+      await page.waitForTimeout(3000);
+      const readMap = () => page.evaluate(() => {
+        const map = (window as unknown as {
+          __chronasMap?: {
+            getLayoutProperty: (id: string, key: string) => unknown;
+            getCenter: () => { lng: number; lat: number };
+            triggerRepaint: unknown;
+          };
+        }).__chronasMap;
+        if (!map) return null;
+        return {
+          ruler: map.getLayoutProperty('ruler-fill', 'visibility'),
+          patched: String(map.triggerRepaint).includes('allowCaptureFrame'),
+          center: [map.getCenter().lng, map.getCenter().lat],
+          overlay: document.querySelector('[data-testid="map-gesture-overlay"]')?.getAttribute('data-gesture-overlay'),
+        };
+      });
+      const dragTimeline = async () => {
+        const box = await page.locator('[data-testid="timeline"]').boundingBox();
+        if (!box) throw new Error('Timeline introuvable');
+        const y = box.y + box.height / 2;
+        const x = box.x + box.width / 2;
+        await page.mouse.move(x, y);
+        await page.mouse.down();
+        for (let step = 1; step <= 8; step += 1) {
+          await page.mouse.move(x + step * 10, y);
+          await page.waitForTimeout(40);
+        }
+        await page.mouse.up();
+      };
+
+      const before = await readMap();
+      expect(before).not.toBeNull();
+      if (!before) return;
+      await dragTimeline();
+      await page.waitForTimeout(700);
+      const restored = await readMap();
+      expect(restored?.ruler).toBe(before.ruler);
+      expect(restored?.patched).toBe(false);
+      expect(restored?.overlay).toBe('off');
+
+      const mapBox = await page.locator('[data-testid="map-container"]').boundingBox();
+      if (!mapBox) throw new Error('Carte introuvable');
+      const cx = mapBox.x + mapBox.width / 2;
+      const cy = mapBox.y + mapBox.height / 2;
+      await page.mouse.move(cx - 60, cy);
+      await page.mouse.down();
+      for (let step = 1; step <= 6; step += 1) {
+        await page.mouse.move(cx - 60 + step * 20, cy);
+        await page.waitForTimeout(40);
+      }
+      await page.mouse.up();
+      await page.waitForTimeout(500);
+      const afterPan = await readMap();
+      const moved = Math.abs((afterPan?.center[0] ?? 0) - (before.center[0] ?? 0)) > 1;
+      record(`interactive-${viewport.name}`, { before, restored, afterPan, moved });
+      expect(moved).toBe(true);
+
+      // Un second geste doit pouvoir geler puis restaurer à nouveau.
+      const yearBefore = (await readState(page)).year;
+      await dragTimeline();
+      await page.waitForTimeout(700);
+      const second = await readMap();
+      expect(second?.patched).toBe(false);
+      expect(second?.ruler).toBe(before.ruler);
+      expect((await readState(page)).year).toBeLessThan(yearBefore);
+    });
+
     test('un glisser lent ne réécrit jamais l’année en arrière', async ({ page }) => {
       await open(page);
       const box = await page.locator('[data-testid="timeline"]').boundingBox();

@@ -70,6 +70,9 @@ export function MapGestureOverlay({
   const repaintRef = useRef<(() => void) | null>(null);
   /** Restauration des couches différée de deux frames pour laisser peindre la frise. */
   const restoreFrameRef = useRef(0);
+  const restoreTimerRef = useRef(0);
+  /** Abandon immédiat du gel (carte déplacée, onglet de retour, unmount). */
+  const restoreNowRef = useRef<(() => void) | null>(null);
   const handlersRef = useRef({ areaData, activeColor, metadata, labels, resolveReligionGeneral });
   useEffect(() => {
     handlersRef.current = { areaData, activeColor, metadata, labels, resolveReligionGeneral };
@@ -188,7 +191,12 @@ export function MapGestureOverlay({
 
   useEffect(() => {
     if (!map) return undefined;
-    const invalidate = () => { geometryDirtyRef.current = true; };
+    const invalidate = () => {
+      geometryDirtyRef.current = true;
+      // Un déplacement de la carte pendant le gel signifie que l'utilisateur
+      // tourne le globe : on rend la main à MapLibre immédiatement.
+      restoreNowRef.current?.();
+    };
     map.on('move', invalidate);
     return () => { map.off('move', invalidate); };
   }, [map]);
@@ -208,6 +216,9 @@ export function MapGestureOverlay({
 
     const restoreLayers = () => {
       if (!map) return;
+      // Idempotent : la restauration peut être déclenchée par le rAF, le timer
+      // de sécurité, un changement de visibilité ou un déplacement de carte.
+      if (!repaintRef.current && Object.keys(previousVisibilityRef.current).length === 0) return;
       if (repaintRef.current) {
         map.triggerRepaint = repaintRef.current;
         repaintRef.current = null;
@@ -219,10 +230,26 @@ export function MapGestureOverlay({
       map.triggerRepaint();
     };
 
+    const finishRestore = () => {
+      cancelAnimationFrame(restoreFrameRef.current);
+      restoreFrameRef.current = 0;
+      window.clearTimeout(restoreTimerRef.current);
+      restoreTimerRef.current = 0;
+      restoreLayers();
+      root.style.opacity = '0';
+      root.dataset['gestureOverlay'] = 'off';
+      bitmapRef.current?.close();
+      bitmapRef.current = null;
+      projectedRef.current = null;
+      geometryDirtyRef.current = true;
+      restoreNowRef.current = null;
+    };
+
     const deactivate = (restore = true) => {
       stopLoop();
-      cancelAnimationFrame(restoreFrameRef.current);
       if (!restore) {
+        // Le cleanup de l'effet actif a déjà programmé `finishRestore` : ne
+        // surtout pas l'annuler ici, sinon la carte reste gelée à vie.
         root.style.opacity = '0';
         root.dataset['gestureOverlay'] = 'off';
         return undefined;
@@ -232,16 +259,12 @@ export function MapGestureOverlay({
       // affamait le rAF de la frise pendant ~600 ms.
       restoreFrameRef.current = requestAnimationFrame(() => {
         restoreFrameRef.current = requestAnimationFrame(() => {
-          restoreFrameRef.current = 0;
-          restoreLayers();
-          root.style.opacity = '0';
-          root.dataset['gestureOverlay'] = 'off';
-          bitmapRef.current?.close();
-          bitmapRef.current = null;
-          projectedRef.current = null;
-          geometryDirtyRef.current = true;
+          finishRestore();
         });
       });
+      // Filet dur : dans un onglet masqué, le rAF peut ne jamais venir.
+      window.clearTimeout(restoreTimerRef.current);
+      restoreTimerRef.current = window.setTimeout(finishRestore, 400);
       return undefined;
     };
 
@@ -249,6 +272,11 @@ export function MapGestureOverlay({
       deactivate(false);
       return undefined;
     }
+    restoreNowRef.current = finishRestore;
+    const onVisibility = () => { if (!document.hidden) finishRestore(); };
+    const onPageHide = () => finishRestore();
+    document.addEventListener('visibilitychange', onVisibility);
+    window.addEventListener('pagehide', onPageHide);
     if (!map || typeof createImageBitmap !== 'function') {
       // Repli : on laisse la carte vivante plutôt qu'un écran vide.
       root.dataset['gestureOverlay'] = 'fallback';
@@ -281,6 +309,8 @@ export function MapGestureOverlay({
     // ignorées jusqu'au relâchement.
     cancelAnimationFrame(restoreFrameRef.current);
     restoreFrameRef.current = 0;
+    window.clearTimeout(restoreTimerRef.current);
+    restoreTimerRef.current = 0;
     map.stop();
     if (repaintRef.current) {
       // eslint-disable-next-line react-hooks/immutability
@@ -309,6 +339,8 @@ export function MapGestureOverlay({
     return () => {
       cancelled = true;
       map.off('render', captured);
+      document.removeEventListener('visibilitychange', onVisibility);
+      window.removeEventListener('pagehide', onPageHide);
       deactivate();
     };
   // `drawVector` est volontairement exclu : il est recréé à chaque rendu et

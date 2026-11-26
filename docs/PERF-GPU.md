@@ -42,7 +42,10 @@ exploite cela au lieu de demander au GPU de recalculer la planète :
 4. surcouche canvas 2D : remplissages + noms des seules entités visibles,
    rafraîchis à ~14 Hz, DPR plafonné à 2 ;
 5. au relâchement : restauration des couches après deux frames, rendu MapLibre
-   unique de toute la planète, fondu de 120 ms.
+   unique de toute la planète, fondu de 120 ms. La restauration est idempotente
+   et doublée d'un timer de 400 ms : le `!active` de React ne doit jamais
+   annuler le rAF programmé par le cleanup, sinon la carte reste figée et
+   non interactive (bug corrigé le 26/11).
 
 Les couleurs de la surcouche et celles de MapLibre viennent de la même fonction
 pure `getProvinceStyle` : aucun écart de teinte au fondu.

@@ -31,7 +31,7 @@ import type { MapAreaData, Marker, MarkerFilterState, MarkerType } from '../api/
 import { updateQueryStringParameter } from '../utils/mapUtils';
 import { FRENCH_NAMES } from '../data/frenchNames';
 import { ensureAtlasPack } from '../features/atlasPack/atlasPack';
-import { getReadyMarkersPack } from '../features/atlasPack/markersPack';
+import { ensureMarkersPack, getReadyMarkersPack } from '../features/atlasPack/markersPack';
 
 const prefetchingYears = new Set<number>();
 
@@ -2328,7 +2328,10 @@ export const useMapStore = create<MapStore>((set, get) => ({
     const year = get().pendingGestureMarkersYear;
     if (year === null || useTimelineStore.getState().isGestureActive) return;
     set({ pendingGestureMarkersYear: null });
-    void get().loadMarkers(year);
+    // Le pack est chargé en idle : l'attendre évite un second appel API quand
+    // le relâchement arrive avant la fin du téléchargement.
+    const load = () => { void get().loadMarkers(year); };
+    void ensureMarkersPack().then(load, load);
   },
 
   /**
