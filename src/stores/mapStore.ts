@@ -1372,10 +1372,8 @@ export const useMapStore = create<MapStore>((set, get) => ({
         return { areaDataCache: newCache, currentAreaData: cachedData, isLoadingAreaData: false, areaDataAbortController: null };
       });
 
-      // Update province properties with the cached area data
-      // Requirement 4.2: WHEN area data changes, THE MapView SHALL update the province feature properties
-      get().updateProvinceProperties(cachedData);
-
+      // Les couleurs passent par feature-state (MapView) : on ne réécrit pas
+      // les propriétés des 2 429 features à chaque année.
       return cachedData;
     }
 
@@ -1396,7 +1394,6 @@ export const useMapStore = create<MapStore>((set, get) => ({
           areaDataAbortController: null,
         };
       });
-      get().updateProvinceProperties(packedData);
       performance.measure('atlas-year-total', 'atlas-year-start');
       return packedData;
     }
@@ -1456,9 +1453,7 @@ export const useMapStore = create<MapStore>((set, get) => ({
         };
       });
 
-      // Update province properties with the new area data
-      // Requirement 4.2: WHEN area data changes, THE MapView SHALL update the province feature properties
-      get().updateProvinceProperties(areaData);
+      // Les couleurs passent par feature-state (MapView).
       performance.mark(`${perfMark}-end`);
       performance.measure(perfMark, `${perfMark}-start`, `${perfMark}-end`);
       if (get().prefetchEnabled) {

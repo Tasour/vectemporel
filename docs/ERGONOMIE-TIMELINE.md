@@ -60,6 +60,19 @@ puis `advanceMotion`, frames de 16 ms). Il couvre : cran isolé, 3 crans, rafale
 glisser 1:1 mobile/desktop, flick, direction, bornes, stabilité et **fenêtre en
 retard** (le centre rapporté est décalé de 120 ans, le geste ne recule pas).
 
+### Fluidité pendant le geste
+
+Pendant `isGestureActive`, la timeline garde la priorité :
+
+- les graduations sont dessinées sur un **canvas** dans la rAF (plus de rendu
+  React par frame) ;
+- le badge d'année est mis à jour par `textContent` ;
+- la carte est committée à **4 Hz**, avec une mise à jour finale au relâchement ;
+- `setWindow` de vis-timeline est plafonné à **30 Hz**, les épopées ne sont pas
+  repeintes pendant le geste ;
+- la passe de mutation des 2 429 propriétés de provinces a été supprimée :
+  les couleurs passent uniquement par `feature-state`.
+
 ### Couleurs par feature-state
 
 La géométrie des provinces reste stable. `MapView` pose `feature-state.fill`,

@@ -77,3 +77,11 @@
     font-size: 11px;
   }
 }
+
+.overlayCanvas {
+  position: absolute;
+  inset: 0;
+  z-index: var(--z-timeline-overlay, 3);
+  pointer-events: none;
+  opacity: 0;
+}

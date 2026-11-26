@@ -68,6 +68,16 @@
   cursor: ew-resize;
 }
 
+/* Pendant le geste, les épopées ne sont pas repeintes : priorité au mouvement. */
+.container[data-gesture='on'] :global(.vis-item) {
+  visibility: hidden !important;
+}
+
+/* L'axe natif est dessiné par notre surcouche canvas/DOM. */
+.container :global(.vis-time-axis) {
+  visibility: hidden !important;
+}
+
 /* Axes et grille : suivent le thème de la timeline */
 .container :global(.vis-time-axis .vis-text) {
   color: var(--tl-muted) !important;
@@ -240,6 +250,16 @@
 
 .container :global(.vis-time-axis .vis-grid.vis-major) {
   border-color: var(--chronas-border, rgba(200, 200, 200, 0.5));
+}
+
+/* Pendant le geste, les épopées ne sont pas repeintes : priorité au mouvement. */
+.container[data-gesture='on'] :global(.vis-item) {
+  visibility: hidden !important;
+}
+
+/* L'axe natif est dessiné par notre surcouche canvas/DOM. */
+.container :global(.vis-time-axis) {
+  visibility: hidden !important;
 }
 
 /* Axes et grille : suivent le thème de la timeline */

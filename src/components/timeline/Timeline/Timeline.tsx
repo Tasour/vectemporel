@@ -20,11 +20,11 @@ import { dateToYear, formatYearForDisplay, MAX_YEAR, MIN_YEAR, yearToDate } from
 import { YEAR_MS } from '../VisTimelineWrapper/kinematics';
 import { hapticDetents } from '../VisTimelineWrapper/haptics';
 import { YearDialog } from '../YearDialog/YearDialog';
+import TimelineOverlay, { type TimelineOverlayHandle } from '../TimelineOverlay/TimelineOverlay';
 import { AutoplayMenu } from '../AutoplayMenu/AutoplayMenu';
 import { EpicSearchAutocomplete } from '../EpicSearchAutocomplete/EpicSearchAutocomplete';
 import { VisTimelineWrapper, type TimelineItem, type TimelineGroup, type TimelineOptions, type VisTimelineRef, type TimelineClickEvent } from '../VisTimelineWrapper/VisTimelineWrapper';
 import { YearMarkerLabel } from '../YearMarkerLabel';
-import { TimelineOverlay } from '../TimelineOverlay/TimelineOverlay';
 import styles from './Timeline.module.css';
 
 /**
@@ -126,6 +126,9 @@ export const Timeline: React.FC<TimelineProps> = ({
   const suppressClickRef = useRef(false);
   const mobileBadgeRef = useRef<HTMLButtonElement>(null);
   const detentTimerRef = useRef(0);
+  const lastOverlayRef = useRef(0);
+  const overlayRef = useRef<TimelineOverlayHandle>(null);
+  const lastSpanRef = useRef(500);
   const hasUserInteractedRef = useRef(false);
   const lastYearCommitRef = useRef(0);
 
@@ -246,7 +249,7 @@ export const Timeline: React.FC<TimelineProps> = ({
     showCurrentTime: false,
     editable: false,
     showMajorLabels: false,
-    showMinorLabels: true,
+    showMinorLabels: false,
     horizontalScroll: true,
     zoomable: true,
     // Le déplacement est entièrement piloté par notre cinématique (molette,
@@ -676,6 +679,7 @@ export const Timeline: React.FC<TimelineProps> = ({
             initialWindowReadyRef.current = true;
           }}
           onGestureActivity={() => {
+            overlayRef.current?.setGesture(true);
             guardWindowRef.current = false;
             hasUserInteractedRef.current = true;
             useTimelineStore.getState().setGestureActive(true);
@@ -685,9 +689,22 @@ export const Timeline: React.FC<TimelineProps> = ({
             }, 600);
           }}
           onTimeShift={(year, spanYears) => {
-            setOverlayRange({ start: year - spanYears / 2, end: year + spanYears / 2 });
             const now = performance.now();
-            if (now - lastYearCommitRef.current < 80) return;
+            const active = useTimelineStore.getState().isGestureActive;
+            // Le badge suit la rAF sans rendu React ; les graduations et le
+            // store sont throttlés pour laisser la carte respirer.
+            const label = formatYearForDisplay(year);
+            if (mobileBadgeRef.current) mobileBadgeRef.current.textContent = label;
+            const desktopBadge = document.querySelector('.vis-custom-time.selectedYear button');
+            if (desktopBadge) desktopBadge.textContent = label;
+            lastSpanRef.current = spanYears;
+            if (active) {
+              overlayRef.current?.draw(year - spanYears / 2, year + spanYears / 2);
+            } else if (now - lastOverlayRef.current >= 16) {
+              lastOverlayRef.current = now;
+              setOverlayRange({ start: year - spanYears / 2, end: year + spanYears / 2 });
+            }
+            if (now - lastYearCommitRef.current < (active ? 250 : 80)) return;
             lastYearCommitRef.current = now;
             if (year !== useTimelineStore.getState().selectedYear) {
               setYear(year);
@@ -699,6 +716,12 @@ export const Timeline: React.FC<TimelineProps> = ({
           }}
           onGestureEnd={(year) => {
             lastYearCommitRef.current = 0;
+            lastOverlayRef.current = 0;
+            setOverlayRange({
+              start: year - lastSpanRef.current / 2,
+              end: year + lastSpanRef.current / 2,
+            });
+            overlayRef.current?.setGesture(false);
             if (year !== useTimelineStore.getState().selectedYear) {
               setYear(year);
             }
@@ -721,7 +744,7 @@ export const Timeline: React.FC<TimelineProps> = ({
           </div>
         )}
 
-        <TimelineOverlay start={overlayRange?.start ?? null} end={overlayRange?.end ?? null} />
+        <TimelineOverlay ref={overlayRef} start={overlayRange?.start ?? null} end={overlayRange?.end ?? null} />
 
         {isMobile ? <div className={styles['centerLine']} aria-hidden="true" data-testid="timeline-center-line" /> : null}
 

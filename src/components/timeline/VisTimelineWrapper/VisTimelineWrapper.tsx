@@ -145,6 +145,7 @@ function VisTimelineWrapperComponent(
   const settleTimerRef = useRef(0);
   const precisionRef = useRef(false);
   const precisionTimerRef = useRef(0);
+  const lastWindowCommitRef = useRef(0);
   const callbacksRef = useRef({ onTimelineClick, onRangeChange, onRangeChanged, onInitialWindowApplied, onGestureActivity, onGestureEnd, onHaptic, onTimeShift, onMouseMove, onClick });
 
   useEffect(() => {
@@ -180,6 +181,7 @@ function VisTimelineWrapperComponent(
     state.distance = 0;
     state.kind = null;
     state.active = false;
+    if (containerRef.current) delete containerRef.current.dataset['gesture'];
     timeline.setWindow(
       new Date(state.center - state.span / 2),
       new Date(state.center + state.span / 2)
@@ -196,14 +198,20 @@ function VisTimelineWrapperComponent(
     const step = (now: number) => {
       const motion = advanceMotion(state, now);
       callbacksRef.current.onGestureActivity?.();
-      timeline.setWindow(
-        new Date(motion.center - motion.span / 2),
-        new Date(motion.center + motion.span / 2)
-      );
       const motionYear = new Date(motion.center).getFullYear();
       callbacksRef.current.onTimeShift?.(motionYear, motion.span / YEAR_MS);
       callbacksRef.current.onHaptic?.(motionYear, motion.span / YEAR_MS, precisionRef.current);
+      // vis-timeline redessine son canvas à chaque setWindow : pendant le geste
+      // on plafonne à 30 Hz, le badge et nos graduations restent à la rAF.
+      if (now - lastWindowCommitRef.current >= (motion.active ? 30 : 0) || !motion.active) {
+        timeline.setWindow(
+          new Date(motion.center - motion.span / 2),
+          new Date(motion.center + motion.span / 2)
+        );
+        lastWindowCommitRef.current = now;
+      }
       if (!motion.active) {
+        if (containerRef.current) delete containerRef.current.dataset['gesture'];
         callbacksRef.current.onGestureEnd?.(new Date(motion.center).getFullYear());
         state.frame = 0;
       } else {
