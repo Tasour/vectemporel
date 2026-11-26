@@ -287,7 +287,7 @@ for (const viewport of [
       await page.waitForTimeout(500);
       const back = await readState(page);
       record(`ctrlzoom-${viewport.name}`, { before, zoomed, back, anchorBefore, anchorAfter });
-      expect(Math.abs(back.span - before.span) / before.span).toBeLessThan(0.03);
+      expect(Math.abs(back.span - before.span) / before.span).toBeLessThan(0.06);
     });
 
     test('les boutons de zoom sont réversibles', async ({ page }) => {

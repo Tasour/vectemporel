@@ -51,6 +51,20 @@ const labelCache = new WeakMap<
   WeakMap<EntityMetadata, Map<AreaColorDimension, LabelCacheEntry>>
 >();
 
+/** Cache incrémental : on ne recalcule que les entités dont les provinces changent. */
+interface EntityLabelCacheEntry {
+  signature: string;
+  point: LabelFeatureCollection['features'];
+  line: LabelLineFeatureCollection['features'];
+}
+interface EntityLabelCache {
+  dimension: AreaColorDimension;
+  metadata: EntityMetadata;
+  featureRef: unknown;
+  entities: Map<string, EntityLabelCacheEntry>;
+}
+let entityLabelCache: EntityLabelCache | null = null;
+
 /** Les annulations de requêtes ne sont pas des erreurs utilisateur. */
 function isRequestCanceled(error: unknown): boolean {
   if (!(error instanceof Error)) return false;
@@ -2381,6 +2395,7 @@ export const useMapStore = create<MapStore>((set, get) => ({
     // Build province index → feature index mapping, grouped by entity
     interface ProvinceInfo {
       featureIndex: number;
+      provinceId: string;
       centroid: [number, number];
       area: number;
       coords: number[][][];
@@ -2427,6 +2442,7 @@ export const useMapStore = create<MapStore>((set, get) => ({
 
         const info: ProvinceInfo = {
           featureIndex: fi,
+          provinceId,
           centroid: geometry.centroid,
           area: geometry.area,
           coords: geometry.coords,
@@ -2443,12 +2459,34 @@ export const useMapStore = create<MapStore>((set, get) => ({
       }
     }
 
+    if (
+      entityLabelCache?.dimension !== dimension ||
+      entityLabelCache.metadata !== metadata ||
+      entityLabelCache.featureRef !== features[0]
+    ) {
+      entityLabelCache = {
+        dimension,
+        metadata,
+        featureRef: features[0],
+        entities: new Map(),
+      };
+    }
+
     const labelFeatures: Feature<Point, LabelFeatureProperties>[] = [];
     const labelLineFeatures: Feature<LineString, LabelLineFeatureProperties>[] = [];
 
     const adjacency = state.adjacencyGraph;
 
     for (const [entityId, provinces] of entityProvinces) {
+      const signature = provinces.map((province) => province.provinceId).sort().join('|');
+      const cachedEntity = entityLabelCache.entities.get(entityId);
+      if (cachedEntity?.signature === signature) {
+        labelFeatures.push(...cachedEntity.point);
+        labelLineFeatures.push(...cachedEntity.line);
+        continue;
+      }
+      const entityPoint: Feature<Point, LabelFeatureProperties>[] = [];
+      const entityLine: Feature<LineString, LabelLineFeatureProperties>[] = [];
       try {
         const metadataKey = dimension === 'religionGeneral' ? 'religionGeneral' : dimension;
         const dimensionMetadata = state.metadata[metadataKey];
@@ -2496,7 +2534,7 @@ export const useMapStore = create<MapStore>((set, get) => ({
           const fontSize = calculateFontSize(totalArea);
 
           // Point feature (fallback)
-          labelFeatures.push({
+          entityPoint.push({
             type: 'Feature',
             geometry: {
               type: 'Point',
@@ -2551,7 +2589,7 @@ export const useMapStore = create<MapStore>((set, get) => ({
             const lineDistance = turf.length(bareLine, { units: 'kilometers' });
             const d = lineDistance / Math.pow(entityName.length, 0.2);
 
-            labelLineFeatures.push({
+            entityLine.push({
               type: 'Feature',
               geometry: bezierLine.geometry,
               properties: {
@@ -2567,6 +2605,9 @@ export const useMapStore = create<MapStore>((set, get) => ({
       } catch (error) {
         console.warn(`calculateLabels: Failed to process entity ${entityId}`, error);
       }
+      entityLabelCache.entities.set(entityId, { signature, point: entityPoint, line: entityLine });
+      labelFeatures.push(...entityPoint);
+      labelLineFeatures.push(...entityLine);
     }
 
     const entry: LabelCacheEntry = {

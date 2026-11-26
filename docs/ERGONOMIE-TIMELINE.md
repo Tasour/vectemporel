@@ -60,6 +60,13 @@ puis `advanceMotion`, frames de 16 ms). Il couvre : cran isolé, 3 crans, rafale
 glisser 1:1 mobile/desktop, flick, direction, bornes, stabilité et **fenêtre en
 retard** (le centre rapporté est décalé de 120 ans, le geste ne recule pas).
 
+### Libellés incrémentaux
+
+`calculateLabels` compare la signature des provinces de chaque entité avec
+l'année précédente et ne recalcule que les entités modifiées. Les features des
+entités inchangées sont réutilisées. Mesure après la première année : médiane
+**1 ms**, p95 **8,8 ms** (contre 15–44 ms auparavant).
+
 ### E2E
 
 `tests/e2e/timeline-ergonomics.spec.ts` : 17 tests en 390×844 et 1658×1150,
