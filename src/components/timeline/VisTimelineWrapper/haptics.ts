@@ -6,8 +6,8 @@
  * fois, puis on bascule sur le repli visuel.
  */
 
-export type HapticsMode = 'auto' | 'vibrate' | 'visual';
-export type HapticsStatus = 'ok' | 'unsupported' | 'refused' | 'blocked' | 'error' | 'visual';
+export type HapticsMode = 'auto' | 'vibrate' | 'visual' | 'sound';
+export type HapticsStatus = 'ok' | 'unsupported' | 'refused' | 'blocked' | 'error' | 'visual' | 'sound';
 
 export interface HapticsCapability {
   api: boolean;
@@ -100,6 +100,34 @@ export function resetHapticsGuard(): void {
   lastStatus = 'visual';
 }
 
+let audioContext: AudioContext | null = null;
+
+/** Clic audio de repli, pour les appareils qui suppriment la vibration. */
+export function playDetentClick(major = false): boolean {
+  try {
+    const audioWindow = window as unknown as {
+      AudioContext?: typeof AudioContext;
+      webkitAudioContext?: typeof AudioContext;
+    };
+    const Context = audioWindow.AudioContext ?? audioWindow.webkitAudioContext;
+    if (!Context) return false;
+    audioContext ??= new Context();
+    if (audioContext.state === 'suspended') void audioContext.resume();
+    const oscillator = audioContext.createOscillator();
+    const gain = audioContext.createGain();
+    oscillator.type = 'triangle';
+    oscillator.frequency.value = major ? 280 : 190;
+    gain.gain.setValueAtTime(major ? 0.055 : 0.028, audioContext.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.0001, audioContext.currentTime + 0.05);
+    oscillator.connect(gain).connect(audioContext.destination);
+    oscillator.start();
+    oscillator.stop(audioContext.currentTime + 0.055);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 /** Pas du cran en années, selon l'échelle visible. */
 export function detentStep(spanYears: number, fine: boolean): number {
   if (fine) return 1;
@@ -160,6 +188,9 @@ export class HapticDetents {
     let status: HapticsStatus = 'visual';
     if (mode === 'auto' || mode === 'vibrate') {
       status = vibrateSafely(pattern).status;
+    } else if (mode === 'sound') {
+      playDetentClick(Array.isArray(pattern));
+      status = 'sound';
     }
     return { step, year, pattern, status };
   }

@@ -7,7 +7,7 @@ import { useNavigationStore } from '@/stores/navigationStore';
 import { SUPPORTED_LANGUAGES } from '@/i18n/i18n';
 import { getShareableURL } from '@/utils/urlStateUtils';
 import styles from './SettingsContent.module.css';
-import { detectHaptics, getLastHapticsStatus, resetHapticsGuard, vibrateSafely } from '../../timeline/VisTimelineWrapper/haptics';
+import { detectHaptics, getLastHapticsStatus, playDetentClick, resetHapticsGuard, vibrateSafely } from '../../timeline/VisTimelineWrapper/haptics';
 
 interface SettingsContentProps {
   onClose: () => void;
@@ -87,6 +87,7 @@ export const SettingsContent: React.FC<SettingsContentProps> = ({ onClose: _onCl
   const testVibration = useCallback(() => {
     resetHapticsGuard();
     const result = vibrateSafely([200, 100, 200]);
+    playDetentClick(true);
     setHapticsStatus(result.status);
   }, []);
 
@@ -134,7 +135,7 @@ export const SettingsContent: React.FC<SettingsContentProps> = ({ onClose: _onCl
       <div className={styles['section']}>
         <div className={styles['sectionLabel']}>{t('settings.haptics', 'Retour de cran')}</div>
         <div className={styles['themeButtons']}>
-          {(['auto', 'vibrate', 'visual'] as const).map((mode) => (
+          {(['auto', 'vibrate', 'visual', 'sound'] as const).map((mode) => (
             <button
               key={mode}
               type="button"
@@ -147,7 +148,13 @@ export const SettingsContent: React.FC<SettingsContentProps> = ({ onClose: _onCl
               data-testid={`haptics-mode-${mode}`}
               aria-pressed={hapticsMode === mode}
             >
-              {mode === 'auto' ? 'Auto' : mode === 'vibrate' ? 'Vibration' : 'Visuel'}
+              {mode === 'auto'
+                ? 'Auto'
+                : mode === 'vibrate'
+                  ? 'Vibration'
+                  : mode === 'visual'
+                    ? 'Visuel'
+                    : 'Son + visuel'}
             </button>
           ))}
         </div>
@@ -156,9 +163,11 @@ export const SettingsContent: React.FC<SettingsContentProps> = ({ onClose: _onCl
           {hapticsCapability.brave ? ' · Brave' : ''} · dernier : {hapticsStatus}
         </p>
         <p className={styles['hapticsHint']}>
-          {hapticsCapability.api
-            ? 'Si « ok » mais rien ne vibre : vérifie Ne pas déranger, le mode silencieux et l’intensité système.'
-            : 'Vibration indisponible sur ce navigateur (iOS/WebView) : le cran visuel est utilisé.'}
+          {hapticsCapability.standalone
+            ? 'PWA installée : si rien ne vibre, teste dans un onglet Brave ou réinstalle via Chrome, puis passe en « Son + visuel » si besoin.'
+            : hapticsCapability.api
+              ? 'Si « ok » mais rien ne vibre : vérifie la sonnerie (Vibreur), Ne pas déranger et l’intensité système.'
+              : 'Vibration indisponible sur ce navigateur (iOS/WebView) : le cran visuel est utilisé.'}
         </p>
         <div className={styles['themeButtons']}>
           <button type="button" className={styles['themeBtn']} onClick={testVibration} data-testid="haptics-test">

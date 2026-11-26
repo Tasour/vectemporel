@@ -48,6 +48,14 @@ describe('haptic detents', () => {
     expect(vibrate).not.toHaveBeenCalled();
   });
 
+  it('uses sound without vibrating in sound mode', () => {
+    const detents = new HapticDetents();
+    detents.update(1000, 500, false, 'sound', 1000);
+    const detent = detents.update(1100, 500, false, 'sound', 1010);
+    expect(detent?.status).toBe('sound');
+    expect(vibrate).not.toHaveBeenCalled();
+  });
+
   it('uses one-year detents in precision mode', () => {
     expect(detentPattern(1, 1001)).toBe(35);
     expect(detentStep(500, true)).toBe(1);

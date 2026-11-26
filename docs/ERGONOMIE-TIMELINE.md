@@ -136,12 +136,14 @@ l'échelle : 100 ans à 500 ans de fenêtre, 50, 20, 10 ans selon le zoom, **1 a
 en mode précision**. Motifs : **35 ms** pour un cran, `[50, 30, 50]` pour un cran
 majeur, throttle 45 ms.
 
-Trois modes dans Paramètres :
+Quatre modes dans Paramètres :
 
 - **Auto** : vibration si `navigator.vibrate` est disponible et accepté, sinon
   repli visuel ;
 - **Vibration** : force la vibration (repli visuel si refus) ;
-- **Visuel** : jamais de vibration, pulse du badge d'année à chaque cran.
+- **Visuel** : jamais de vibration, pulse du badge d'année à chaque cran ;
+- **Son + visuel** : clic Web Audio (oscillateur 190 Hz, 50 ms ; 280 Hz pour un
+  cran majeur) en plus du pulse, pour les appareils qui suppriment la vibration.
 
 Le panneau affiche l'état réel : API présente/absente, plateforme, Brave,
 activation utilisateur et dernier retour. Un bouton **Tester la vibration**
@@ -151,8 +153,11 @@ envoie `[200, 100, 200]` et **Copier le diagnostic** copie l'UA et le statut.
 mode visuel est alors la seule réponse web. Sur Android, un refus (DND, mode
 silencieux, WebView) coupe l'API après deux essais et bascule sur le visuel.
 Le W3C documente des appareils où `vibrate()` renvoie `true` sans vibration :
-si le test 200 ms ne produit rien, vérifier Ne pas déranger et l'intensité de
-vibration système, puis passer en mode Visuel.
+si le test 200 ms ne produit rien, vérifier la **sonnerie** (Vibreur, pas
+Silencieux), Ne pas déranger et l'intensité système. En **PWA installée**
+(`standalone=true`), tester dans un onglet Brave ou réinstaller via Chrome :
+le conteneur Brave peut n'avoir pas déclaré `android.permission.VIBRATE`.
+Passer ensuite en mode **Son + visuel** ou **Visuel**.
 
 ## 6. Frontières intérieures
 

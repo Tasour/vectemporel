@@ -60,7 +60,7 @@ export interface UIState {
   theme: Theme;
   locale: string;
   /** Mode de retour des crans de la timeline. */
-  hapticsMode: 'auto' | 'vibrate' | 'visual';
+  hapticsMode: 'auto' | 'vibrate' | 'visual' | 'sound';
   sidebarOpen: boolean;
   isFullscreen: boolean;
   /** Whether the right drawer is open - Requirement 2.1, 3.1 */
@@ -89,7 +89,7 @@ export interface UIState {
 export interface UIActions {
   setTheme: (theme: Theme) => void;
   setLocale: (locale: string) => void;
-  setHapticsMode: (mode: 'auto' | 'vibrate' | 'visual') => void;
+  setHapticsMode: (mode: 'auto' | 'vibrate' | 'visual' | 'sound') => void;
   toggleSidebar: () => void;
   setSidebarOpen: (open: boolean) => void;
   setFullscreen: (isFullscreen: boolean) => void;
