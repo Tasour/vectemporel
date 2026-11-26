@@ -15,7 +15,8 @@
   left: 0;
   right: 0;
   width: auto;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.8) 60%, rgba(0, 0, 0, 0.4) 100%);
+  background: linear-gradient(to top, var(--tl-bg) 0%, color-mix(in srgb, var(--tl-bg) 94%, transparent) 100%);
+  border-top: 1px solid var(--tl-border);
   z-index: var(--z-timeline, 350);
   overflow: visible;
   box-sizing: border-box;
@@ -80,8 +81,9 @@
   transform: translateX(-50%);
   border: 1px solid rgba(120, 95, 40, 0.25);
   border-radius: 10px;
-  background: #fdfcf8;
-  color: #3a3731;
+  background: var(--tl-bg-elevated);
+  color: var(--tl-text);
+  border-color: var(--tl-border);
   box-shadow: 0 4px 14px -6px rgba(40, 30, 10, 0.4);
   cursor: pointer;
   font-family: 'Inter', system-ui, sans-serif;
@@ -95,11 +97,7 @@
   outline-offset: 2px;
 }
 
-[data-theme='dark'] .mobileYearBadge,
-[data-theme='luther'] .mobileYearBadge {
-  background: #2a2721;
-  color: #f6f3ec;
-}
+
 
 /* Placeholder content (temporary until sub-components are added) */
 .placeholder {
@@ -145,16 +143,6 @@
   .yearDisplay {
     font-size: 24px;
   }
-}
-
-/* Dark theme backdrop */
-[data-theme='dark'] .timeline {
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.85) 60%, rgba(0, 0, 0, 0.5) 100%);
-}
-
-/* Luther theme backdrop */
-[data-theme='luther'] .timeline {
-  background: linear-gradient(to top, rgba(1, 28, 49, 0.95) 0%, rgba(1, 28, 49, 0.8) 60%, rgba(1, 28, 49, 0.4) 100%);
 }
 
 /* Print styles - hide timeline when printing */
@@ -261,7 +249,7 @@
   position: absolute;
   right: 16px;
   top: 30px;
-  color: rgba(255, 255, 255, 0.35);
+  color: var(--tl-muted);
   font-size: 10px;
   background: rgba(0, 0, 0, 0.3);
   padding: 3px 8px;
@@ -289,78 +277,6 @@
     right: 8px;
     bottom: 48px;
   }
-}
-
-.zoomControls {
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  z-index: var(--z-timeline-overlay, 20);
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  transform: translateY(-50%);
-}
-
-.zoomControls button {
-  min-width: 44px;
-  min-height: 44px;
-  padding: 0 8px;
-  border: 1px solid rgba(120, 95, 40, 0.25);
-  border-radius: 8px;
-  background: #fdfcf8;
-  color: #3a3731;
-  font: inherit;
-  font-size: 12px;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.zoomControls button:focus-visible {
-  outline: 3px solid rgba(173, 135, 27, 0.7);
-  outline-offset: 2px;
-}
-
-[data-theme='dark'] .zoomControls button,
-[data-theme='luther'] .zoomControls button {
-  border-color: rgba(255, 255, 255, 0.2);
-  background: #2a2721;
-  color: #f6f3ec;
-}
-
-.yearStepControls {
-  position: absolute;
-  left: 8px;
-  top: -46px;
-  z-index: var(--z-timeline-overlay, 20);
-  display: flex;
-  gap: 4px;
-}
-
-.yearStepControls button {
-  min-width: 44px;
-  min-height: 44px;
-  padding: 0 8px;
-  border: 1px solid rgba(120, 95, 40, 0.25);
-  border-radius: 8px;
-  background: #fdfcf8;
-  color: #3a3731;
-  font: inherit;
-  font-size: 12px;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.yearStepControls button:focus-visible {
-  outline: 3px solid rgba(173, 135, 27, 0.7);
-  outline-offset: 2px;
-}
-
-[data-theme='dark'] .yearStepControls button,
-[data-theme='luther'] .yearStepControls button {
-  border-color: rgba(255, 255, 255, 0.2);
-  background: #2a2721;
-  color: #f6f3ec;
 }
 
 .container[data-precision='on']::after {

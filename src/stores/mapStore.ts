@@ -2134,19 +2134,19 @@ export const useMapStore = create<MapStore>((set, get) => ({
     if (!provincesGeoJSON) {
       return;
     }
-    // Mutate properties in place and publish a new collection reference for MapLibre.
-    const changedIds: string[] = [];
-    const updatedFeatures = provincesGeoJSON.features.map((feature) => {
+    // Mutate properties in place: la géométrie reste stable, les couleurs
+    // passent par feature-state (aucun re-upload GeoJSON par année).
+    provincesGeoJSON.features.forEach((feature) => {
       const provinceId = feature.properties?.['name'] as string | undefined;
 
       if (!provinceId) {
-        return feature;
+        return;
       }
 
       const data = areaData[provinceId];
 
       if (!data || !Array.isArray(data)) {
-        return feature;
+        return;
       }
 
       const ruler = data[0];
@@ -2163,7 +2163,7 @@ export const useMapStore = create<MapStore>((set, get) => ({
         props['g'] === religionGeneral &&
         props['p'] === population
       ) {
-        return feature;
+        return;
       }
 
       props['id'] = provinceId;
@@ -2172,17 +2172,6 @@ export const useMapStore = create<MapStore>((set, get) => ({
       props['e'] = religion;
       props['g'] = religionGeneral;
       props['p'] = population;
-      changedIds.push(provinceId);
-      return feature;
-    });
-
-    if (changedIds.length === 0) return;
-
-    set({
-      provincesGeoJSON: {
-        ...provincesGeoJSON,
-        features: updatedFeatures,
-      },
     });
   },
 

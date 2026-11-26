@@ -31,6 +31,16 @@
   --chronas-border: rgba(200, 200, 200, 1);
   --chronas-gradient: linear-gradient(180deg, #fff 0, #F2F2F2);
 
+  /* Timeline — thème clair */
+  --tl-bg: #f6f3ec;
+  --tl-bg-elevated: #fdfcf8;
+  --tl-text: #2b2823;
+  --tl-muted: rgba(43, 40, 35, 0.58);
+  --tl-grid: rgba(43, 40, 35, 0.12);
+  --tl-tick: rgba(43, 40, 35, 0.42);
+  --tl-accent: #9a761c;
+  --tl-border: rgba(43, 40, 35, 0.16);
+
   /* Typography */
   --font-family-base:
     'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
@@ -118,6 +128,16 @@
   --chronas-highlight: rgba(173, 135, 27);
   --chronas-border: rgba(200, 200, 200, 1);
   --chronas-gradient: linear-gradient(180deg, #333 0, #000);
+
+  /* Timeline — thème sombre */
+  --tl-bg: #1e1c18;
+  --tl-bg-elevated: #2a2721;
+  --tl-text: #f1ece1;
+  --tl-muted: rgba(241, 236, 225, 0.62);
+  --tl-grid: rgba(241, 236, 225, 0.1);
+  --tl-tick: rgba(241, 236, 225, 0.42);
+  --tl-accent: #d4b25e;
+  --tl-border: rgba(241, 236, 225, 0.16);
 }
 
 /* Luther theme (historical/sepia) */
@@ -141,4 +161,14 @@
   --chronas-highlight: rgba(69, 28, 46, 200);
   --chronas-border: rgba(200, 200, 200, 1);
   --chronas-gradient: linear-gradient(180deg, #011c31 0, #451c2e);
+
+  /* Timeline — thème Luther */
+  --tl-bg: #0f2433;
+  --tl-bg-elevated: #163247;
+  --tl-text: #ece5d3;
+  --tl-muted: rgba(236, 229, 211, 0.62);
+  --tl-grid: rgba(236, 229, 211, 0.12);
+  --tl-tick: rgba(236, 229, 211, 0.4);
+  --tl-accent: #c9a24a;
+  --tl-border: rgba(236, 229, 211, 0.18);
 }

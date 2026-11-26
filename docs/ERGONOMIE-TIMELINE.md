@@ -60,6 +60,12 @@ puis `advanceMotion`, frames de 16 ms). Il couvre : cran isolé, 3 crans, rafale
 glisser 1:1 mobile/desktop, flick, direction, bornes, stabilité et **fenêtre en
 retard** (le centre rapporté est décalé de 120 ans, le geste ne recule pas).
 
+### Couleurs par feature-state
+
+La géométrie des provinces reste stable. `MapView` pose `feature-state.fill`,
+`border` et `opacity` uniquement pour les provinces dont l'entité change
+(~18/an). Plus de `setData` des 2 429 polygones à chaque année.
+
 ### Libellés incrémentaux
 
 `calculateLabels` compare la signature des provinces de chaque entité avec

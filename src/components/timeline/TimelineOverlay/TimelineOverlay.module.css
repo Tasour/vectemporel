@@ -7,8 +7,8 @@
 }
 
 .period {
-  --period-bg: color-mix(in srgb, var(--period-color) 16%, #ffffff);
-  --period-label-color: var(--period-color);
+  --period-bg: color-mix(in srgb, var(--period-color) 16%, var(--tl-bg));
+  --period-label-color: color-mix(in srgb, var(--period-color) 70%, var(--tl-text));
   position: absolute;
   top: 0;
   bottom: 0;
@@ -33,12 +33,6 @@
   --period-color: #8a3f4f;
 }
 
-[data-theme='dark'] .period,
-[data-theme='luther'] .period {
-  --period-bg: color-mix(in srgb, var(--period-color) 38%, #000000);
-  --period-label-color: color-mix(in srgb, var(--period-color) 55%, #ffffff);
-}
-
 .periodLabel {
   position: absolute;
   top: 3px;
@@ -59,7 +53,7 @@
   position: absolute;
   bottom: 0;
   height: 12px;
-  border-left: 1px solid rgba(255, 255, 255, 0.35);
+  border-left: 1px solid var(--tl-tick);
   transition: none;
 }
 
@@ -67,7 +61,7 @@
   position: absolute;
   bottom: 12px;
   left: 4px;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--tl-muted);
   font-size: 11px;
   font-variant-numeric: tabular-nums;
   line-height: 1.2;

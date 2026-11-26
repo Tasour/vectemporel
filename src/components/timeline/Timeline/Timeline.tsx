@@ -415,16 +415,6 @@ export const Timeline: React.FC<TimelineProps> = ({
     setNotDefaultView();
   }, [setNotDefaultView, setYear]);
 
-  const resetZoom = useCallback(() => {
-    const timeline = timelineRef.current;
-    if (!timeline) return;
-    const center = yearToDate(selectedYear).getTime();
-    const span = 500 * YEAR_MS;
-    timeline.setWindow(new Date(center - span / 2), new Date(center + span / 2));
-    setOverlayRange({ start: selectedYear - 250, end: selectedYear + 250 });
-    setNotDefaultView();
-  }, [selectedYear, setNotDefaultView]);
-
   const stepYear = useCallback((delta: number) => {
     const timeline = timelineRef.current;
     const next = Math.max(MIN_YEAR, Math.min(MAX_YEAR, selectedYear + delta));
@@ -706,17 +696,6 @@ export const Timeline: React.FC<TimelineProps> = ({
         )}
 
         <TimelineOverlay start={overlayRange?.start ?? null} end={overlayRange?.end ?? null} />
-
-        <div className={styles['zoomControls']} role="group" aria-label="Échelle de la timeline">
-          <button type="button" onClick={() => { zoomBy(1.5); }} aria-label="Zoom arrière">−</button>
-          <button type="button" onClick={resetZoom} aria-label="Revenir à 500 ans">500 ans</button>
-          <button type="button" onClick={() => { zoomBy(1 / 1.5); }} aria-label="Zoom avant">+</button>
-        </div>
-
-        <div className={styles['yearStepControls']} role="group" aria-label="Année précise">
-          <button type="button" onClick={() => { stepYear(-1); }} aria-label="Année précédente">−1 an</button>
-          <button type="button" onClick={() => { stepYear(1); }} aria-label="Année suivante">+1 an</button>
-        </div>
 
         {isMobile ? <div className={styles['centerLine']} aria-hidden="true" data-testid="timeline-center-line" /> : null}
 

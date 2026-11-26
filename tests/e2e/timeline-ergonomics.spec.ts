@@ -116,6 +116,38 @@ for (const viewport of [
   test.describe(`ergonomie timeline ${viewport.name}`, () => {
     test.use({ viewport: { width: viewport.width, height: viewport.height } });
 
+    test('la timeline n’a plus de boutons de zoom ou de pas', async ({ page }) => {
+      await open(page);
+      const controls = page.getByRole('button', {
+        name: /Zoom (avant|arrière)|Année (suivante|précédente)|Revenir à 500 ans/,
+      });
+      await expect(controls).toHaveCount(0);
+    });
+
+    test('la timeline suit le thème clair et sombre', async ({ page }) => {
+      await open(page);
+      const read = () => page.evaluate(() => {
+        const timeline = document.querySelector('[data-testid="timeline"]');
+        const tick = document.querySelector('[data-testid="timeline-overlay"] [class*="tickLabel"]');
+        return {
+          background: timeline ? getComputedStyle(timeline).backgroundImage : '',
+          tick: tick ? getComputedStyle(tick).color : '',
+        };
+      });
+      await page.evaluate(() => document.documentElement.setAttribute('data-theme', 'light'));
+      await page.waitForTimeout(200);
+      const light = await read();
+      await page.evaluate(() => document.documentElement.setAttribute('data-theme', 'dark'));
+      await page.waitForTimeout(200);
+      const dark = await read();
+      expect(light.background).not.toBe(dark.background);
+      expect(light.tick).not.toBe(dark.tick);
+      const lightChannel = Number(/\d+/.exec(light.tick)?.[0] ?? 255);
+      const darkChannel = Number(/\d+/.exec(dark.tick)?.[0] ?? 0);
+      expect(lightChannel).toBeLessThan(darkChannel);
+      await page.evaluate(() => document.documentElement.setAttribute('data-theme', 'light'));
+    });
+
     test('le premier chargement affiche les zones colorées', async ({ page }) => {
       await open(page);
       await expect(page.locator('text=No Data Available')).toHaveCount(0);
@@ -290,22 +322,6 @@ for (const viewport of [
       expect(Math.abs(back.span - before.span) / before.span).toBeLessThan(0.06);
     });
 
-    test('les boutons de zoom sont réversibles', async ({ page }) => {
-      await open(page);
-      const before = await readState(page);
-      await page.getByRole('button', { name: 'Zoom arrière' }).click();
-      await page.waitForTimeout(300);
-      const out = await readState(page);
-      expect(out.span).toBeGreaterThan(before.span);
-      await page.getByRole('button', { name: 'Zoom avant' }).click();
-      await page.waitForTimeout(300);
-      const back = await readState(page);
-      expect(back.span).toBeLessThan(out.span);
-      await page.getByRole('button', { name: 'Revenir à 500 ans' }).click();
-      await page.waitForTimeout(300);
-      expect(Math.abs((await readState(page)).span - 500)).toBeLessThanOrEqual(20);
-    });
-
     test('un changement d’année reste sous 60 ms', async ({ page }) => {
       await open(page);
       await page.evaluate(() => {
@@ -331,22 +347,6 @@ for (const viewport of [
       record(`latence-${viewport.name}`, stats);
       expect(stats.pack).toBeLessThan(10);
       expect(stats.labels).toBeLessThan(60);
-    });
-
-    test('les boutons ±1 sélectionnent chaque année exactement', async ({ page }) => {
-      await open(page);
-      const before = await readState(page);
-      for (let step = 1; step <= 5; step += 1) {
-        await page.getByRole('button', { name: 'Année suivante' }).click();
-        await page.waitForTimeout(150);
-        const state = await readState(page);
-        expect(state.year).toBe(before.year + step);
-      }
-      for (let step = 1; step <= 5; step += 1) {
-        await page.getByRole('button', { name: 'Année précédente' }).click();
-        await page.waitForTimeout(150);
-        expect((await readState(page)).year).toBe(before.year + 5 - step);
-      }
     });
 
     test('le clavier sélectionne l’année précédente et suivante', async ({ page }) => {

@@ -62,7 +62,8 @@ Chromium, 390×844, 10 changements d'année :
 | Mesure | Médiane | p95 |
 |---|---:|---:|
 | Décodage d'une année (`atlas-pack-year`) | 0,2 ms | 2,3 ms |
-| Calcul des libellés (`atlas-labels`) | ~20 ms | ~60 ms (cache géométrique chaud) |
+| Calcul des libellés (`atlas-labels`) | 1,2 ms | 1,9 ms |
+| Mise à jour DOM de l'année | 13,5 ms | — |
 | Requêtes `/areas` | **0** | — |
 
 Les centroïdes et surfaces des provinces sont calculés une seule fois

@@ -68,11 +68,20 @@
   cursor: ew-resize;
 }
 
+/* Axes et grille : suivent le thème de la timeline */
+.container :global(.vis-time-axis .vis-text) {
+  color: var(--tl-muted) !important;
+}
+
+.container :global(.vis-time-axis .vis-grid.vis-major) {
+  border-color: var(--tl-border);
+}
+
 /* Vertical grid lines */
 .container :global(.vis-time-axis .vis-grid.vis-vertical) {
   position: absolute;
   border-left: 1px solid;
-  border-color: rgba(255, 255, 255, 0.25);
+  border-color: var(--tl-grid);
 }
 
 /* Panel heights */
@@ -231,6 +240,15 @@
 
 .container :global(.vis-time-axis .vis-grid.vis-major) {
   border-color: var(--chronas-border, rgba(200, 200, 200, 0.5));
+}
+
+/* Axes et grille : suivent le thème de la timeline */
+.container :global(.vis-time-axis .vis-text) {
+  color: var(--tl-muted) !important;
+}
+
+.container :global(.vis-time-axis .vis-grid.vis-major) {
+  border-color: var(--tl-border);
 }
 
 /* Vertical grid lines */

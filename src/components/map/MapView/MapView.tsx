@@ -16,7 +16,8 @@ import { useCallback, useEffect, useRef, useState, useMemo } from 'react';
 import Map, { type MapRef, type ViewStateChangeEvent, type MapMouseEvent, Source, Layer, Popup } from 'react-map-gl/maplibre';
 import type { GeoJSONSource, Map as MapLibreMap, ProjectionSpecification, StyleSpecification } from 'maplibre-gl';
 import type { FeatureCollection, Feature, Point, Polygon, MultiPolygon } from 'geojson';
-import { useMapStore, FALLBACK_COLOR, BASEMAP_STYLES, type LabelFeatureCollection, type LabelLineFeatureCollection } from '../../../stores/mapStore';
+import { useMapStore, FALLBACK_COLOR, BASEMAP_STYLES, DIMENSION_INDEX, type AreaData, type LabelFeatureCollection, type LabelLineFeatureCollection } from '../../../stores/mapStore';
+import { darkenColor } from '../../../utils/colorUtils';
 import { useUIStore } from '../../../stores/uiStore';
 import { useTimelineStore } from '../../../stores/timelineStore';
 import { citiesToGeoJSON } from '../../../utils/cityNames';
@@ -173,6 +174,11 @@ export interface MapViewProps {
  */
 export function MapView({ className, isBlurred = false }: MapViewProps) {
   const mapRef = useRef<MapRef>(null);
+  const provinceStateRef = useRef<{
+    data: AreaData | null;
+    dimension: string;
+    metadata: unknown;
+  }>({ data: null, dimension: '', metadata: null });
   const containerRef = useRef<HTMLDivElement>(null);
   const iconsInstalledRef = useRef(false);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -232,6 +238,7 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
   const cities = useMapStore((state) => state.cities);
   const loadCities = useMapStore((state) => state.loadCities);
   const calculateLabels = useMapStore((state) => state.calculateLabels);
+  const getReligionGeneral = useMapStore((state) => state.getReligionGeneral);
   const activeColor = useMapStore((state) => state.activeColor);
   // Active label dimension for map labels (can be different from activeColor when unlocked)
   // Requirement 7.1: Labels display based on activeLabel dimension
@@ -738,6 +745,59 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
       }
     }
   }, [provincesGeoJSON, currentAreaData, updateProvinceProperties]);
+
+  /**
+   * Couleurs des provinces par feature-state : seules les provinces modifiées
+   * sont renvoyées à MapLibre, sans re-upload du GeoJSON.
+   */
+  useEffect(() => {
+    const map = mapRef.current?.getMap();
+    if (!map || !isLoaded || !provincesGeoJSON || !currentAreaData || !metadata) return;
+    const dimension = activeColor === 'population' ? 'population' : activeColor;
+    const previous = provinceStateRef.current;
+    const full = !previous.data || previous.dimension !== dimension || previous.metadata !== metadata;
+    const dimensionIndex = DIMENSION_INDEX[activeColor];
+
+    for (const feature of provincesGeoJSON.features) {
+      const provinceId = feature.properties?.['name'] as string | undefined;
+      if (!provinceId) continue;
+      const data = currentAreaData[provinceId];
+      let fill = FALLBACK_COLOR;
+      let border = '#3a3731';
+      let opacity = DEFAULT_FILL_OPACITY;
+      let nextValue: string | number | null | undefined = data?.[dimensionIndex];
+
+      if (dimension === 'population') {
+        const population = typeof data?.[4] === 'number' ? data[4] : 0;
+        nextValue = population;
+        fill = POPULATION_FILL_COLOR;
+        border = darkenColor(POPULATION_FILL_COLOR);
+        opacity = POPULATION_OPACITY_MIN
+          + (POPULATION_OPACITY_MAX - POPULATION_OPACITY_MIN)
+          * Math.min(1, population / MAX_POPULATION_FOR_OPACITY);
+      } else {
+        if (activeColor === 'religionGeneral' && nextValue) {
+          nextValue = getReligionGeneral(String(nextValue));
+        }
+        if (nextValue) {
+          const key = activeColor as 'ruler' | 'culture' | 'religion' | 'religionGeneral';
+          const color = metadata[key][String(nextValue)]?.color ?? FALLBACK_COLOR;
+          fill = color;
+          border = darkenColor(color);
+        }
+      }
+
+      if (!full) {
+        const previousValue = dimension === 'population'
+          ? previous.data?.[provinceId]?.[4]
+          : previous.data?.[provinceId]?.[dimensionIndex];
+        if (previousValue === nextValue) continue;
+      }
+
+      map.setFeatureState({ source: 'provinces', id: provinceId }, { fill, border, opacity });
+    }
+    provinceStateRef.current = { data: currentAreaData, dimension, metadata };
+  }, [activeColor, currentAreaData, getReligionGeneral, isLoaded, metadata, provincesGeoJSON]);
 
   /**
    * Recalculate labels when activeColor dimension changes or when required data becomes available.
@@ -1551,6 +1611,7 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
         <Source 
           id="provinces" 
           type="geojson" 
+          promoteId="name"
           data={provincesGeoJSON ?? emptyProvincesGeoJSON}
         >
           {/* Ruler fill layer */}
@@ -1562,8 +1623,8 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
               visibility: layerVisibility.ruler ? 'visible' : 'none',
             }}
             paint={{
-              'fill-color': colorExpressions.ruler,
-              'fill-opacity': fillOpacityExpr,
+              'fill-color': ['coalesce', ['feature-state', 'fill'], colorExpressions.ruler],
+              'fill-opacity': ['coalesce', ['feature-state', 'opacity'], fillOpacityExpr],
             }}
           />
 
@@ -1576,8 +1637,8 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
               visibility: layerVisibility.culture ? 'visible' : 'none',
             }}
             paint={{
-              'fill-color': colorExpressions.culture,
-              'fill-opacity': fillOpacityExpr,
+              'fill-color': ['coalesce', ['feature-state', 'fill'], colorExpressions.culture],
+              'fill-opacity': ['coalesce', ['feature-state', 'opacity'], fillOpacityExpr],
             }}
           />
 
@@ -1590,8 +1651,8 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
               visibility: layerVisibility.religion ? 'visible' : 'none',
             }}
             paint={{
-              'fill-color': colorExpressions.religion,
-              'fill-opacity': fillOpacityExpr,
+              'fill-color': ['coalesce', ['feature-state', 'fill'], colorExpressions.religion],
+              'fill-opacity': ['coalesce', ['feature-state', 'opacity'], fillOpacityExpr],
             }}
           />
 
@@ -1604,8 +1665,8 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
               visibility: layerVisibility.religionGeneral ? 'visible' : 'none',
             }}
             paint={{
-              'fill-color': colorExpressions.religionGeneral,
-              'fill-opacity': fillOpacityExpr,
+              'fill-color': ['coalesce', ['feature-state', 'fill'], colorExpressions.religionGeneral],
+              'fill-opacity': ['coalesce', ['feature-state', 'opacity'], fillOpacityExpr],
             }}
           />
 
@@ -1619,7 +1680,7 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
             }}
             paint={{
               'fill-color': POPULATION_FILL_COLOR,
-              'fill-opacity': populationOpacityExpr,
+              'fill-opacity': ['coalesce', ['feature-state', 'opacity'], populationOpacityExpr],
             }}
           />
 
@@ -1631,7 +1692,7 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
             id="province-borders"
             type="line"
             paint={{
-              'line-color': colorExpressions.border,
+              'line-color': ['coalesce', ['feature-state', 'border'], colorExpressions.border],
               'line-width': 0.6,
               'line-opacity': 0.9,
             }}
@@ -1645,7 +1706,7 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
             id="provinces-outline"
             type="line"
             paint={{
-              'line-color': colorExpressions.border,
+              'line-color': ['coalesce', ['feature-state', 'border'], colorExpressions.border],
               'line-width': 0.5,
               'line-opacity': 0.35,
             }}

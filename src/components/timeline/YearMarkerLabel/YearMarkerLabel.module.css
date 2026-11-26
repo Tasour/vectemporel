@@ -22,11 +22,8 @@
   /* Typography - matching production currentYearLabel */
   font-size: 16px;
   font-weight: 600;
-  color: #333;
-  text-shadow:
-    0 0 4px #fff,
-    0 0 4px #fff,
-    1px 1px 2px rgba(255, 255, 255, 0.8);
+  color: var(--tl-text);
+  text-shadow: 0 1px 2px color-mix(in srgb, var(--tl-bg) 75%, transparent);
 
   /* Positioning - to the RIGHT of the red marker line */
   position: absolute;
@@ -38,7 +35,7 @@
 }
 
 .yearLabel:hover {
-  color: #000;
+  color: var(--tl-accent);
 }
 
 .yearLabel:focus-visible {
@@ -61,14 +58,12 @@
 .arrowIcon {
   height: 16px;
   width: 16px;
-  color: rgba(255, 255, 255, 0.8);
-  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+  color: var(--tl-muted);
 }
 
 .suggestedYearText {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.9);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  color: var(--tl-muted);
   white-space: nowrap;
 }
 
