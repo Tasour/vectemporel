@@ -28,7 +28,8 @@ export type MapExpression = ExpressionSpecification;
  * Debounce delay for year changes in milliseconds.
  * Requirement 11.2: THE MapView SHALL debounce year change events to prevent excessive API calls
  */
-export const YEAR_CHANGE_DEBOUNCE_MS = 300;
+export const YEAR_CHANGE_DEBOUNCE_MS = 0;
+export const MARKER_LIMIT_DEBOUNCE_MS = 300;
 
 /**
  * Hover information for province interactions

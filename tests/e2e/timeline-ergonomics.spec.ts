@@ -37,7 +37,19 @@ async function open(page: Page): Promise<void> {
   page.setDefaultTimeout(30_000);
   await page.goto('/?year=1000&cb=ergonomie');
   await page.waitForSelector('[data-testid="timeline"]', { timeout: 30_000 });
-  await page.waitForTimeout(1500);
+  await page.waitForTimeout(1200);
+  // Laisse vis-timeline finir son ajustement initial : l'année doit être stable.
+  await page.waitForFunction(() => {
+    const element = document.querySelector('[data-testid="timeline"]');
+    const year = element?.getAttribute('data-year');
+    const state = window as unknown as { __stableYear?: string | null; __stableAt?: number };
+    if (state.__stableYear !== year) {
+      state.__stableYear = year ?? null;
+      state.__stableAt = Date.now();
+      return false;
+    }
+    return Date.now() - (state.__stableAt ?? 0) > 400;
+  }, null, { timeout: 15_000 });
 }
 
 async function readState(page: Page): Promise<{ year: number; span: number }> {
@@ -70,8 +82,8 @@ async function wheel(page: Page, count: number, deltaY = 100): Promise<void> {
 }
 
 /** Glisser synthétique : évite la coalescence des pointermove en headless. */
-async function drag(page: Page, deltaPx: number): Promise<void> {
-  await page.evaluate((delta) => {
+async function drag(page: Page, deltaPx: number, fine = false): Promise<void> {
+  await page.evaluate(({ delta, fine: precision }) => {
     const element = document.querySelector('[data-testid="vis-timeline"]');
     if (!element) throw new Error('Conteneur vis-timeline introuvable');
     const rect = element.getBoundingClientRect();
@@ -82,6 +94,7 @@ async function drag(page: Page, deltaPx: number): Promise<void> {
       pointerType: 'mouse',
       button: 0,
       buttons: type === 'pointerup' ? 0 : 1,
+      shiftKey: precision,
       clientX: x,
       clientY: y,
       bubbles: true,
@@ -92,7 +105,7 @@ async function drag(page: Page, deltaPx: number): Promise<void> {
       element.dispatchEvent(event('pointermove', startX + (delta * step) / 10));
     }
     element.dispatchEvent(event('pointerup', startX + delta));
-  }, deltaPx);
+  }, { delta: deltaPx, fine });
   await page.waitForTimeout(1500);
 }
 
@@ -318,6 +331,44 @@ for (const viewport of [
       record(`latence-${viewport.name}`, stats);
       expect(stats.pack).toBeLessThan(10);
       expect(stats.labels).toBeLessThan(60);
+    });
+
+    test('les boutons ±1 sélectionnent chaque année exactement', async ({ page }) => {
+      await open(page);
+      const before = await readState(page);
+      for (let step = 1; step <= 5; step += 1) {
+        await page.getByRole('button', { name: 'Année suivante' }).click();
+        await page.waitForTimeout(150);
+        const state = await readState(page);
+        expect(state.year).toBe(before.year + step);
+      }
+      for (let step = 1; step <= 5; step += 1) {
+        await page.getByRole('button', { name: 'Année précédente' }).click();
+        await page.waitForTimeout(150);
+        expect((await readState(page)).year).toBe(before.year + 5 - step);
+      }
+    });
+
+    test('le clavier sélectionne l’année précédente et suivante', async ({ page }) => {
+      await open(page);
+      const before = await readState(page);
+      await page.locator('[data-testid="timeline"]').focus();
+      await page.keyboard.press('ArrowRight');
+      await page.waitForTimeout(150);
+      expect((await readState(page)).year).toBe(before.year + 1);
+      await page.keyboard.press('ArrowLeft');
+      await page.waitForTimeout(150);
+      expect((await readState(page)).year).toBe(before.year);
+    });
+
+    test('le mode précision réduit le span et avance lentement', async ({ page }) => {
+      await open(page);
+      const before = await readState(page);
+      await drag(page, 10, true);
+      const after = await readState(page);
+      record(`precision-${viewport.name}`, { before, after });
+      expect(after.span).toBeLessThanOrEqual(viewport.width + 10);
+      expect(Math.abs(after.year - before.year)).toBeLessThanOrEqual(3);
     });
 
     test('le centre reste borné après une longue rafale', async ({ page }) => {

@@ -115,7 +115,7 @@ export const Timeline: React.FC<TimelineProps> = ({
   // Ref for the vis-timeline wrapper
   const timelineRef = useRef<VisTimelineRef>(null);
   const isMobile = useIsMobile();
-  const skipRangeSyncRef = useRef(false);
+  const skipRangeSyncUntilRef = useRef(0);
   const initialWindowReadyRef = useRef(false);
   const lastWindowCenterRef = useRef(selectedYear);
   const lastBufferRef = useRef(0);
@@ -369,11 +369,8 @@ export const Timeline: React.FC<TimelineProps> = ({
   const centerOnYear = useCallback((year: number, animated = false) => {
     const timeline = timelineRef.current;
     if (!timeline) return;
-    skipRangeSyncRef.current = true;
+    skipRangeSyncUntilRef.current = performance.now() + (animated ? 450 : 60);
     timeline.moveTo(yearToDate(year), { animation: animated });
-    window.setTimeout(() => {
-      skipRangeSyncRef.current = false;
-    }, animated ? 450 : 60);
   }, []);
 
   useEffect(() => {
@@ -427,6 +424,45 @@ export const Timeline: React.FC<TimelineProps> = ({
     setOverlayRange({ start: selectedYear - 250, end: selectedYear + 250 });
     setNotDefaultView();
   }, [selectedYear, setNotDefaultView]);
+
+  const stepYear = useCallback((delta: number) => {
+    const timeline = timelineRef.current;
+    const next = Math.max(MIN_YEAR, Math.min(MAX_YEAR, selectedYear + delta));
+    setYear(next);
+    setNotDefaultView();
+    if (!timeline) return;
+    const range = timeline.getWindow();
+    const span = range.end.getTime() - range.start.getTime();
+    const center = yearToDate(next).getTime();
+    skipRangeSyncUntilRef.current = performance.now() + 600;
+    timeline.setWindow(new Date(center - span / 2), new Date(center + span / 2));
+    setOverlayRange({ start: next - span / YEAR_MS / 2, end: next + span / YEAR_MS / 2 });
+  }, [selectedYear, setNotDefaultView, setYear]);
+
+  const handleTimelineKeyDown = useCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
+    if (event.target !== event.currentTarget) return;
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      stepYear(event.shiftKey ? -10 : -1);
+    } else if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      stepYear(event.shiftKey ? 10 : 1);
+    } else if (event.key === '+' || event.key === '=') {
+      event.preventDefault();
+      zoomBy(1 / 1.5);
+    } else if (event.key === '-') {
+      event.preventDefault();
+      zoomBy(1.5);
+    } else if (event.key === 'Home') {
+      event.preventDefault();
+      setYear(MIN_YEAR);
+      setNotDefaultView();
+    } else if (event.key === 'End') {
+      event.preventDefault();
+      setYear(MAX_YEAR);
+      setNotDefaultView();
+    }
+  }, [setNotDefaultView, setYear, stepYear, zoomBy]);
 
   const handleYearClick = useCallback(() => {
     toggleYearDialog();
@@ -491,12 +527,9 @@ export const Timeline: React.FC<TimelineProps> = ({
   const restoreWindow = useCallback((year: number) => {
     const timeline = timelineRef.current;
     if (!timeline) return;
-    skipRangeSyncRef.current = true;
+    skipRangeSyncUntilRef.current = performance.now() + 80;
     timeline.setWindow(yearToDate(year - 250), yearToDate(year + 250));
     lastWindowCenterRef.current = year;
-    window.setTimeout(() => {
-      skipRangeSyncRef.current = false;
-    }, 80);
   }, []);
 
   // L'ajout des épopées peut faire recalculer la fenêtre par vis-timeline.
@@ -529,7 +562,7 @@ export const Timeline: React.FC<TimelineProps> = ({
     // Pendant un geste, `onTimeShift` est l'unique écrivain de l'année : lire
     // ici la fenêtre vis-timeline, parfois en retard, provoquait un aller-retour.
     if (gestureActive) return;
-    if (!isMobile || skipRangeSyncRef.current) return;
+    if (!isMobile || performance.now() < skipRangeSyncUntilRef.current) return;
     if (year !== useTimelineStore.getState().selectedYear) {
       setYear(year);
       setNotDefaultView();
@@ -549,7 +582,7 @@ export const Timeline: React.FC<TimelineProps> = ({
   }, [centerOnYear, isMobile]);
 
   useEffect(() => {
-    if (!isMobile || !isAutoplayActive || skipRangeSyncRef.current) return;
+    if (!isMobile || !isAutoplayActive || performance.now() < skipRangeSyncUntilRef.current) return;
     centerOnYear(selectedYear);
   }, [centerOnYear, isAutoplayActive, isMobile, selectedYear]);
 
@@ -609,6 +642,8 @@ export const Timeline: React.FC<TimelineProps> = ({
       style={{ height: `${String(currentHeight)}px`, right: timelineRight, transition: 'right 300ms ease-in-out, height 500ms ease-in-out, bottom 280ms cubic-bezier(0.23, 1, 0.32, 1)' }}
       role="navigation"
       aria-label="Timeline navigation"
+      tabIndex={0}
+      onKeyDown={handleTimelineKeyDown}
     >
       <div className={styles['content']}>
         {/* Vis.js Timeline with epic items (Requirements 6.2, 6.4, 6.5) */}
@@ -676,6 +711,11 @@ export const Timeline: React.FC<TimelineProps> = ({
           <button type="button" onClick={() => { zoomBy(1.5); }} aria-label="Zoom arrière">−</button>
           <button type="button" onClick={resetZoom} aria-label="Revenir à 500 ans">500 ans</button>
           <button type="button" onClick={() => { zoomBy(1 / 1.5); }} aria-label="Zoom avant">+</button>
+        </div>
+
+        <div className={styles['yearStepControls']} role="group" aria-label="Année précise">
+          <button type="button" onClick={() => { stepYear(-1); }} aria-label="Année précédente">−1 an</button>
+          <button type="button" onClick={() => { stepYear(1); }} aria-label="Année suivante">+1 an</button>
         </div>
 
         {isMobile ? <div className={styles['centerLine']} aria-hidden="true" data-testid="timeline-center-line" /> : null}

@@ -46,6 +46,9 @@ export const COAST_BUDGET_RATIO = 0.6;
 
 /** Un glisser peut marquer une pause sans devenir un nouveau geste. */
 export const WHEEL_GESTURE_GAP_MS = 260;
+
+/** Facteur du mode précision : 0,2 an par pixel au lieu de ~1,28. */
+export const FINE_FACTOR = 0.2;
 export const DRAG_GESTURE_GAP_MS = 700;
 
 
@@ -80,6 +83,8 @@ export interface GestureInput {
   kind: 'wheel' | 'drag';
   /** −0,5 = bord gauche, 0 = centre, +0,5 = bord droit. */
   anchorOffset?: number;
+  /** Mode précision : déplacement ×0,2 et span plafonné à 1 an/pixel. */
+  fine?: boolean;
 }
 
 export function clamp(value: number, min: number, max: number): number {
@@ -240,7 +245,8 @@ export function applyGestureInput(state: GestureState, input: GestureInput): {
 
   // Le pixel est converti à l'échelle instantanée : c'est ici que l'accélération
   // s'intègre au mouvement, puisque `state.span` grandit avec la vitesse.
-  const shift = timeShift(input.deltaPx, state.referenceWidth, state.span);
+  const precision = input.fine ? FINE_FACTOR : 1;
+  const shift = timeShift(input.deltaPx * precision, state.referenceWidth, state.span);
   state.center = clampCenterForSpan(state.center + shift, state.span);
 
   const cap = Math.min(
@@ -260,6 +266,14 @@ export function applyGestureInput(state: GestureState, input: GestureInput): {
   }
 
   state.targetSpan = spanForSpeed(state.baseSpan, state.velocity);
+
+  if (input.fine) {
+    // Garantit au plus 1 an/pixel : le span ne dépasse pas la largeur en années.
+    const fineSpan = clamp(input.width * YEAR_MS, MIN_SPAN_MS, MAX_SPAN_MS);
+    state.targetSpan = Math.min(state.targetSpan, fineSpan);
+    state.velocity = 0;
+  }
+
   state.lastFrame = 0;
   return { center: state.center, span: state.span, targetSpan: state.targetSpan };
 }
@@ -302,6 +316,7 @@ export function advanceMotion(state: GestureState, now: number): {
   if (settled) {
     state.velocity = 0;
     state.span = target;
+    state.center = msForYear(new Date(state.center).getFullYear());
     state.targetSpan = target;
     state.baseSpan = target; // réancrage : le geste suivant part de l'échelle visible
     state.distance = 0;

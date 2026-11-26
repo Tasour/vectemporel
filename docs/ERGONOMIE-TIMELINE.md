@@ -89,6 +89,13 @@ les captures `zones-*.png` et `burst-*.png`.
   libellés explicites (`Zoom avant`, `Zoom arrière`, `Revenir à 500 ans`).
 - **Défilement mobile préservé** : `touch-action: pan-y` sur la timeline ; un
   geste vertical fait défiler la page, un geste horizontal contrôle le temps.
+- **Précision à l'année** : boutons `−1 an` / `+1 an`, clavier `←/→` (±1),
+  `Shift` (±10). Chaque appui sélectionne exactement l'année demandée.
+- **Mode précision** : `Shift`/`⌘` + glisser, ou appui long 300 ms sur mobile.
+  Le déplacement est divisé par 5 et le span est plafonné à `largeur` années
+  (≤ 1 an/pixel), sans inertie. Badge « Précision ×5 ».
+- **Magnétisme** : au relâchement, l'année est arrondie à l'entier et le centre
+  est calé sur le 1er janvier de cette année.
 
 Le zoom par vitesse reste l'accélérateur ; ces contrôles rendent l'échelle
 réversible et prévisible.

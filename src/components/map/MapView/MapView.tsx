@@ -31,6 +31,7 @@ import styles from './MapView.module.css';
 import {
   type MapExpression,
   type HoverInfo,
+  MARKER_LIMIT_DEBOUNCE_MS,
   YEAR_CHANGE_DEBOUNCE_MS,
   RIGHT_DRAWER_WIDTH_PERCENT,
   POPULATION_FILL_COLOR,
@@ -287,7 +288,7 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
 
   // Debounce the marker limit so dragging the slider doesn't fire a request per px
   const markerLimit = useMapStore((state) => state.markerLimit);
-  const debouncedMarkerLimit = useDebounce(markerLimit, YEAR_CHANGE_DEBOUNCE_MS);
+  const debouncedMarkerLimit = useDebounce(markerLimit, MARKER_LIMIT_DEBOUNCE_MS);
 
   /**
    * Memoized color match expressions for each dimension.

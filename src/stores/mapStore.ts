@@ -1312,6 +1312,7 @@ export const useMapStore = create<MapStore>((set, get) => ({
    */
   loadAreaData: async (year: number): Promise<AreaData | null> => {
     const startTime = performance.now();
+    performance.mark('atlas-year-start');
     const perfMark = `vectemporel-year-${String(year)}`;
     performance.mark(`${perfMark}-start`);
     
@@ -1382,6 +1383,7 @@ export const useMapStore = create<MapStore>((set, get) => ({
         };
       });
       get().updateProvinceProperties(packedData);
+      performance.measure('atlas-year-total', 'atlas-year-start');
       return packedData;
     }
 

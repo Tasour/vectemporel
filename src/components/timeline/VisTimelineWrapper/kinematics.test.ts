@@ -179,6 +179,32 @@ describe('timeline ergonomics — calibrated gestures', () => {
     expect(result.maxFrameShiftYears).toBeLessThan(result.spanYears * 0.2);
   });
 
+  it('fine mode clamps the window to one year per pixel', () => {
+    const state = createGestureState();
+    state.baseSpan = 500 * YEAR_MS;
+    state.span = 500 * YEAR_MS;
+    state.targetSpan = state.baseSpan;
+    state.center = msForYear(1000);
+    state.seeded = true;
+    const width = 390;
+    let now = 1000;
+    for (let index = 0; index < 10; index += 1) {
+      now += 16;
+      applyGestureInput(state, {
+        deltaPx: 1,
+        centerMs: state.center,
+        spanMs: state.span,
+        width,
+        now,
+        kind: 'drag',
+        fine: true,
+      });
+      advanceMotion(state, now + 16);
+    }
+    expect(state.targetSpan / YEAR_MS).toBeLessThanOrEqual(width);
+    expect(Math.abs(new Date(state.center).getFullYear() - 1000)).toBeLessThanOrEqual(3);
+  });
+
   it('never rewinds when the reported window lags behind the gesture', () => {
     const samples = burst(10, 20, 30);
     const lagged = simulate(samples, { width: 390, kind: 'drag', lagYears: 120 });

@@ -141,6 +141,8 @@ function VisTimelineWrapperComponent(
   const touchRef = useRef<{ identifier: number; x: number; width: number } | null>(null);
   const motionRef = useRef<GestureState>(createGestureState());
   const settleTimerRef = useRef(0);
+  const precisionRef = useRef(false);
+  const precisionTimerRef = useRef(0);
   const callbacksRef = useRef({ onTimelineClick, onRangeChange, onRangeChanged, onInitialWindowApplied, onGestureActivity, onGestureEnd, onTimeShift, onMouseMove, onClick });
 
   useEffect(() => {
@@ -211,7 +213,7 @@ function VisTimelineWrapperComponent(
   }, []);
 
   /** Applique une entrée au modèle et publie la fenêtre résultante. */
-  const applyInput = useCallback((deltaPx: number, kind: 'wheel' | 'drag', width: number, clientX: number) => {
+  const applyInput = useCallback((deltaPx: number, kind: 'wheel' | 'drag', width: number, clientX: number, fine = false) => {
     const timeline = timelineRef.current;
     const container = containerRef.current;
     if (!timeline || !container) return;
@@ -226,6 +228,7 @@ function VisTimelineWrapperComponent(
       now: performance.now(),
       kind,
       anchorOffset,
+      fine,
     });
 
     // Mouvement réduit : translation immédiate à la cible, sans inertie ni zoom animé.
@@ -290,7 +293,7 @@ function VisTimelineWrapperComponent(
     const deltaPx = event.clientX - pointer.x;
     pointer.x = event.clientX;
     if (Math.abs(deltaPx) < 1) return;
-    applyInput(deltaPx, 'drag', pointer.width, event.clientX);
+    applyInput(deltaPx, 'drag', pointer.width, event.clientX, event.shiftKey || event.metaKey || precisionRef.current);
   }, [applyInput]);
 
   const handlePointerUp = useCallback((event: React.PointerEvent<HTMLDivElement>) => {
@@ -319,6 +322,12 @@ function VisTimelineWrapperComponent(
       x: touch.clientX,
       width: Math.max(container.getBoundingClientRect().width, 1),
     };
+    window.clearTimeout(precisionTimerRef.current);
+    precisionTimerRef.current = window.setTimeout(() => {
+      precisionRef.current = true;
+      container.dataset['precision'] = 'on';
+      if (typeof navigator.vibrate === 'function') navigator.vibrate(8);
+    }, 300);
   }, [manualPan]);
 
   const handleTouchMove = useCallback((event: React.TouchEvent<HTMLDivElement>) => {
@@ -328,8 +337,9 @@ function VisTimelineWrapperComponent(
     if (!touch) return;
     const deltaPx = touch.clientX - pointer.x;
     pointer.x = touch.clientX;
+    if (Math.abs(deltaPx) > 2) window.clearTimeout(precisionTimerRef.current);
     if (Math.abs(deltaPx) < 1) return;
-    applyInput(deltaPx, 'drag', pointer.width, touch.clientX);
+    applyInput(deltaPx, 'drag', pointer.width, touch.clientX, precisionRef.current);
   }, [applyInput]);
 
   const handleTouchEnd = useCallback((event: React.TouchEvent<HTMLDivElement>) => {
@@ -338,10 +348,13 @@ function VisTimelineWrapperComponent(
     const touch = findTouch(event.changedTouches, pointer.identifier);
     if (touch) {
       const remaining = touch.clientX - pointer.x;
-      if (Math.abs(remaining) >= 1) applyInput(remaining, 'drag', pointer.width, touch.clientX);
+      if (Math.abs(remaining) >= 1) applyInput(remaining, 'drag', pointer.width, touch.clientX, precisionRef.current);
     }
     const moved = Boolean(touch && Math.abs(pointer.x - touch.clientX) > 2);
     touchRef.current = null;
+    window.clearTimeout(precisionTimerRef.current);
+    precisionRef.current = false;
+    if (containerRef.current) delete containerRef.current.dataset['precision'];
     if (moved) onPanEnd?.();
   }, [applyInput, onPanEnd]);
 
@@ -377,7 +390,7 @@ function VisTimelineWrapperComponent(
     const rawDelta = event.deltaX !== 0 ? event.deltaX : event.deltaY;
     const deltaPx = normalizeWheelDelta(rawDelta, event.deltaMode, width);
     if (deltaPx === 0) return;
-    applyInput(deltaPx, 'wheel', width, event.clientX);
+    applyInput(deltaPx, 'wheel', width, event.clientX, event.shiftKey);
   }, [applyInput]);
 
   useEffect(() => {
@@ -400,6 +413,7 @@ function VisTimelineWrapperComponent(
       element.removeEventListener('pointerdown', handlePointerDown, { capture: true });
       document.removeEventListener('visibilitychange', onVisibilityChange);
       window.clearTimeout(settleTimerRef.current);
+      window.clearTimeout(precisionTimerRef.current);
     };
   }, [handlePointerDown, handleWheel, runMotion]);
 
