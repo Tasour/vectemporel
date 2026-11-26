@@ -6,6 +6,7 @@ import { useMapStore, type LabelNameMode } from '@/stores/mapStore';
 import { useNavigationStore } from '@/stores/navigationStore';
 import { SUPPORTED_LANGUAGES } from '@/i18n/i18n';
 import { getShareableURL } from '@/utils/urlStateUtils';
+import { getWebGLDiagnostics } from '@/utils/webglDiagnostics';
 import styles from './SettingsContent.module.css';
 import { detectHaptics, getLastHapticsStatus, playDetentClick, resetHapticsGuard, vibrateSafely } from '../../timeline/VisTimelineWrapper/haptics';
 
@@ -93,7 +94,13 @@ export const SettingsContent: React.FC<SettingsContentProps> = ({ onClose: _onCl
 
   const copyDiagnostic = useCallback(async () => {
     const capability = detectHaptics();
+    const gpu = getWebGLDiagnostics();
     const text = [
+      `gpu=${gpu.renderer}`,
+      `gpuVendor=${gpu.vendor}`,
+      `gpuSoftware=${String(gpu.software)}`,
+      `dpr=${String(gpu.dpr)}`,
+      `cores=${String(gpu.hardwareConcurrency)}`,
       `api=${String(capability.api)}`,
       `platform=${capability.platform}`,
       `brave=${String(capability.brave)}`,
@@ -200,10 +207,10 @@ export const SettingsContent: React.FC<SettingsContentProps> = ({ onClose: _onCl
         <div className={styles['sectionLabel']}>{t('layers.mapLabels', 'Map Labels')}</div>
         <select
           className={styles['languageSelect']}
+          aria-label={t('layers.mapLabels', 'Map Labels')}
           value={labelNameMode}
           onChange={(e) => setLabelNameMode(e.target.value as LabelNameMode)}
           data-testid="label-name-mode-select"
-          aria-label={t('layers.mapLabels', 'Map Labels')}
         >
           {LABEL_NAME_MODE_OPTIONS.map((o) => (
             <option key={o.value} value={o.value}>
