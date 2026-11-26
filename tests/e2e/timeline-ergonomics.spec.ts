@@ -518,7 +518,7 @@ for (const viewport of [
       }
       const during = await page.evaluate(() => {
         const overlay = document.querySelector<HTMLElement>('[data-testid="map-gesture-overlay"]');
-        const vector = overlay ? Array.from(overlay.querySelectorAll('canvas'))[1] : undefined;
+        const vector = overlay ? Array.from(overlay.querySelectorAll('canvas'))[0] : undefined;
         const data = vector && vector.width > 0
           ? vector.getContext('2d')?.getImageData(0, 0, vector.width, Math.min(400, vector.height)).data
           : undefined;
@@ -570,12 +570,12 @@ for (const viewport of [
         if (!map) return null;
         return {
           ruler: map.getLayoutProperty('ruler-fill', 'visibility'),
-          patched: String(map.triggerRepaint).includes('allowCaptureFrame'),
+          patched: String(map.triggerRepaint) === '() => undefined',
           center: [map.getCenter().lng, map.getCenter().lat],
           overlay: document.querySelector('[data-testid="map-gesture-overlay"]')?.getAttribute('data-gesture-overlay'),
         };
       });
-      const dragTimeline = async () => {
+      const dragTimeline = async (during?: () => Promise<void>) => {
         const box = await page.locator('[data-testid="timeline"]').boundingBox();
         if (!box) throw new Error('Timeline introuvable');
         const y = box.y + box.height / 2;
@@ -586,13 +586,17 @@ for (const viewport of [
           await page.mouse.move(x + step * 10, y);
           await page.waitForTimeout(40);
         }
+        if (during) await during();
         await page.mouse.up();
       };
 
       const before = await readMap();
       expect(before).not.toBeNull();
       if (!before) return;
-      await dragTimeline();
+      const frozenRef: { current: Awaited<ReturnType<typeof readMap>> } = { current: null };
+      await dragTimeline(async () => { frozenRef.current = await readMap(); });
+      expect(frozenRef.current?.ruler).toBe(before.ruler);
+      expect(frozenRef.current?.patched).toBe(true);
       await page.waitForTimeout(700);
       const restored = await readMap();
       expect(restored?.ruler).toBe(before.ruler);
@@ -624,6 +628,58 @@ for (const viewport of [
       expect(second?.patched).toBe(false);
       expect(second?.ruler).toBe(before.ruler);
       expect((await readState(page)).year).toBeLessThan(yearBefore);
+    });
+
+    test('le gel ne dépend pas de la capture du canvas WebGL', async ({ page }) => {
+      // Sur certains GPUs mobiles, le readback du canvas WebGL ne revient pas.
+      // Les données doivent rester visibles malgré tout.
+      await page.addInitScript(() => {
+        window.createImageBitmap = () => new Promise<ImageBitmap>(() => undefined);
+      });
+      await open(page);
+      const box = await page.locator('[data-testid="timeline"]').boundingBox();
+      if (!box) throw new Error('Timeline introuvable');
+      const y = box.y + box.height / 2;
+      const x = box.x + box.width / 2;
+      await page.mouse.move(x, y);
+      await page.mouse.down();
+      for (let step = 1; step <= 8; step += 1) {
+        await page.mouse.move(x + step * 12, y);
+        await page.waitForTimeout(45);
+      }
+      const read = () => page.evaluate(() => {
+        const overlay = document.querySelector<HTMLElement>('[data-testid="map-gesture-overlay"]');
+        const canvas = overlay ? Array.from(overlay.querySelectorAll('canvas'))[0] : undefined;
+        const data = canvas && canvas.width > 0
+          ? canvas.getContext('2d')?.getImageData(0, 0, canvas.width, Math.min(400, canvas.height)).data
+          : undefined;
+        let ink = 0;
+        if (data) for (let index = 3; index < data.length; index += 4 * 53) if ((data[index] ?? 0) > 0) ink += 1;
+        const map = (window as unknown as {
+          __chronasMap?: {
+            getLayoutProperty: (id: string, key: string) => unknown;
+            triggerRepaint: unknown;
+          };
+        }).__chronasMap;
+        return {
+          status: overlay?.dataset['gestureOverlay'],
+          width: canvas?.width ?? 0,
+          ink,
+          ruler: map?.getLayoutProperty('ruler-fill', 'visibility'),
+          patched: map ? String(map.triggerRepaint) === '() => undefined' : false,
+        };
+      });
+      const during = await read();
+      await page.mouse.up();
+      await page.waitForTimeout(800);
+      const after = await read();
+      record(`sans-capture-${viewport.name}`, { during, after });
+      expect(during.status).toBe('on');
+      expect(during.width).toBeGreaterThanOrEqual(viewport.width - 2);
+      expect(during.ink).toBeGreaterThan(100);
+      expect(during.ruler).toBe('visible');
+      expect(after.ruler).toBe('visible');
+      expect(after.patched).toBe(false);
     });
 
     test('un glisser lent ne réécrit jamais l’année en arrière', async ({ page }) => {

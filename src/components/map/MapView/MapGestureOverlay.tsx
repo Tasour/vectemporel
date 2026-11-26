@@ -1,10 +1,11 @@
 /**
- * Surcouche de geste : pendant un déplacement de la timeline, la carte est
- * figée sur un raster du fond de carte et seules les entités visibles sont
- * recolorées en canvas 2D. Aucun rendu MapLibre n'est demandé pendant le geste.
+ * Surcouche de geste : pendant un déplacement de la timeline, MapLibre ne rend
+ * plus (triggerRepaint neutralisé) et la carte garde sa dernière frame. Les
+ * seules entités visibles sont recolorées en canvas 2D par-dessus.
  *
- * Au relâchement, les couches sont restaurées : MapLibre fait un seul rendu
- * complet (planète entière) et la surcouche disparaît avec un fondu courts.
+ * Aucune capture du canvas WebGL ni masquage de couche : si la surcouche ne
+ * peut pas peindre, la carte reste affichée avec l'année précédente au lieu
+ * de devenir vide. Le gel n'est donc jamais une condition de correction.
  */
 
 import { useEffect, useRef } from 'react';
@@ -19,16 +20,10 @@ import {
 import { getProvinceStyle } from './provinceStyle';
 import styles from './MapGestureOverlay.module.css';
 
-const FILL_LAYER_IDS = [
-  'ruler-fill',
-  'culture-fill',
-  'religion-fill',
-  'religionGeneral-fill',
-  'population-fill',
-];
-
 /** Rafraîchissement des couleurs : inutile d'aller plus vite pendant le geste. */
 const REFRESH_MS = 70;
+const LAND_LIGHT = '#e9e5db';
+const LAND_DARK = '#2a2926';
 
 export interface MapGestureOverlayProps {
   active: boolean;
@@ -58,31 +53,29 @@ export function MapGestureOverlay({
   resolveReligionGeneral,
 }: MapGestureOverlayProps) {
   const rootRef = useRef<HTMLDivElement>(null);
-  const rasterRef = useRef<HTMLCanvasElement>(null);
-  const vectorRef = useRef<HTMLCanvasElement>(null);
-  const bitmapRef = useRef<ImageBitmap | null>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const projectedRef = useRef<ProjectedFeature[] | null>(null);
   const geometryDirtyRef = useRef(true);
   const frameRef = useRef(0);
   const lastDrawRef = useRef(0);
-  const previousVisibilityRef = useRef<Record<string, string>>({});
-  /** `triggerRepaint` neutralisé pendant le gel : aucun rendu MapLibre. */
+  /** `triggerRepaint` d'origine, restauré au relâchement. */
   const repaintRef = useRef<(() => void) | null>(null);
-  /** Restauration des couches différée de deux frames pour laisser peindre la frise. */
   const restoreFrameRef = useRef(0);
   const restoreTimerRef = useRef(0);
   /** Abandon immédiat du gel (carte déplacée, onglet de retour, unmount). */
   const restoreNowRef = useRef<(() => void) | null>(null);
   const handlersRef = useRef({ areaData, activeColor, metadata, labels, resolveReligionGeneral });
+
   useEffect(() => {
     handlersRef.current = { areaData, activeColor, metadata, labels, resolveReligionGeneral };
   }, [areaData, activeColor, metadata, labels, resolveReligionGeneral]);
 
   /** Projette les géométries une seule fois et ne garde que ce qui touche l'écran. */
   const projectGeometry = (): ProjectedFeature[] => {
-    if (!map || !provinces || !bitmapRef.current) return projectedRef.current ?? [];
-    const width = map.getCanvas().clientWidth;
-    const height = map.getCanvas().clientHeight;
+    if (!map || !provinces) return [];
+    const canvas = canvasRef.current;
+    const width = canvas?.clientWidth ?? map.getCanvas().clientWidth;
+    const height = canvas?.clientHeight ?? map.getCanvas().clientHeight;
     const inside = (x: number, y: number) => x >= -40 && x <= width + 40 && y >= -40 && y <= height + 40;
     const result: ProjectedFeature[] = [];
     for (const feature of provinces) {
@@ -108,27 +101,8 @@ export function MapGestureOverlay({
     return result;
   };
 
-  const drawRaster = (): void => {
-    const canvas = rasterRef.current;
-    const bitmap = bitmapRef.current;
-    if (!canvas || !bitmap) return;
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const width = canvas.clientWidth;
-    const height = canvas.clientHeight;
-    if (width <= 0 || height <= 0) return;
-    if (canvas.width !== Math.round(width * dpr) || canvas.height !== Math.round(height * dpr)) {
-      canvas.width = Math.round(width * dpr);
-      canvas.height = Math.round(height * dpr);
-    }
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.clearRect(0, 0, width, height);
-    ctx.drawImage(bitmap, 0, 0, width, height);
-  };
-
   const drawVector = (): void => {
-    const canvas = vectorRef.current;
+    const canvas = canvasRef.current;
     if (!canvas) return;
     const width = canvas.clientWidth;
     const height = canvas.clientHeight;
@@ -147,6 +121,8 @@ export function MapGestureOverlay({
       projectedRef.current = projectGeometry();
       geometryDirtyRef.current = false;
     }
+    const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const land = dark ? LAND_DARK : LAND_LIGHT;
     const { areaData: data, activeColor: dimension, metadata: meta, labels: labelCollection, resolveReligionGeneral: resolve } = handlersRef.current;
     if (data && meta) {
       ctx.lineWidth = 0.5;
@@ -160,6 +136,11 @@ export function MapGestureOverlay({
           }
           ctx.closePath();
         }
+        // Fond opaque : il efface l'année précédente et ses libellés avant de
+        // poser la nouvelle couleur à l'opacité MapLibre.
+        ctx.globalAlpha = 1;
+        ctx.fillStyle = land;
+        ctx.fill();
         ctx.globalAlpha = style.opacity;
         ctx.fillStyle = style.fill;
         ctx.fill();
@@ -174,8 +155,8 @@ export function MapGestureOverlay({
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.lineWidth = 3;
-      ctx.strokeStyle = 'rgba(255,255,255,0.85)';
-      ctx.fillStyle = 'rgba(30,28,24,0.95)';
+      ctx.strokeStyle = dark ? 'rgba(30,28,24,0.85)' : 'rgba(255,255,255,0.85)';
+      ctx.fillStyle = dark ? 'rgba(241,236,225,0.95)' : 'rgba(30,28,24,0.95)';
       for (const feature of labelCollection.features) {
         const name = feature.properties.name;
         if (typeof name !== 'string') continue;
@@ -187,6 +168,7 @@ export function MapGestureOverlay({
         ctx.fillText(name, point.x, point.y);
       }
     }
+    canvas.dataset['tickCount'] = String(projectedRef.current.length);
   };
 
   useEffect(() => {
@@ -201,32 +183,20 @@ export function MapGestureOverlay({
     return () => { map.off('move', invalidate); };
   }, [map]);
 
-  // Le gel neutralise temporairement `map.triggerRepaint` : c'est une mutation
-  // volontaire de l'instance MapLibre, restaurée intégralement au relâchement.
   // eslint-disable-next-line react-hooks/immutability
   useEffect(() => {
     const root = rootRef.current;
     if (!root) return undefined;
-    let cancelled = false;
 
     const stopLoop = () => {
       cancelAnimationFrame(frameRef.current);
       frameRef.current = 0;
     };
 
-    const restoreLayers = () => {
-      if (!map) return;
-      // Idempotent : la restauration peut être déclenchée par le rAF, le timer
-      // de sécurité, un changement de visibilité ou un déplacement de carte.
-      if (!repaintRef.current && Object.keys(previousVisibilityRef.current).length === 0) return;
-      if (repaintRef.current) {
-        map.triggerRepaint = repaintRef.current;
-        repaintRef.current = null;
-      }
-      for (const [id, visibility] of Object.entries(previousVisibilityRef.current)) {
-        try { map.setLayoutProperty(id, 'visibility', visibility as 'visible' | 'none'); } catch { /* style pas chargé */ }
-      }
-      previousVisibilityRef.current = {};
+    const restoreRepaint = () => {
+      if (!map || !repaintRef.current) return;
+      map.triggerRepaint = repaintRef.current;
+      repaintRef.current = null;
       map.triggerRepaint();
     };
 
@@ -235,11 +205,9 @@ export function MapGestureOverlay({
       restoreFrameRef.current = 0;
       window.clearTimeout(restoreTimerRef.current);
       restoreTimerRef.current = 0;
-      restoreLayers();
+      restoreRepaint();
       root.style.opacity = '0';
       root.dataset['gestureOverlay'] = 'off';
-      bitmapRef.current?.close();
-      bitmapRef.current = null;
       projectedRef.current = null;
       geometryDirtyRef.current = true;
       restoreNowRef.current = null;
@@ -249,18 +217,14 @@ export function MapGestureOverlay({
       stopLoop();
       if (!restore) {
         // Le cleanup de l'effet actif a déjà programmé `finishRestore` : ne
-        // surtout pas l'annuler ici, sinon la carte reste gelée à vie.
+        // surtout pas l'annuler ici, sinon la carte resterait gelée à vie.
         root.style.opacity = '0';
         root.dataset['gestureOverlay'] = 'off';
         return undefined;
       }
-      // Laissons d'abord vis-timeline appliquer et peindre sa fenêtre finale :
-      // restaurer les couches immédiatement déclenchait un rendu MapLibre qui
-      // affamait le rAF de la frise pendant ~600 ms.
+      // Laissons d'abord vis-timeline appliquer et peindre sa fenêtre finale.
       restoreFrameRef.current = requestAnimationFrame(() => {
-        restoreFrameRef.current = requestAnimationFrame(() => {
-          finishRestore();
-        });
+        restoreFrameRef.current = requestAnimationFrame(finishRestore);
       });
       // Filet dur : dans un onglet masqué, le rAF peut ne jamais venir.
       window.clearTimeout(restoreTimerRef.current);
@@ -272,41 +236,16 @@ export function MapGestureOverlay({
       deactivate(false);
       return undefined;
     }
+    if (!map) {
+      root.dataset['gestureOverlay'] = 'fallback';
+      return undefined;
+    }
     restoreNowRef.current = finishRestore;
     const onVisibility = () => { if (!document.hidden) finishRestore(); };
     const onPageHide = () => finishRestore();
     document.addEventListener('visibilitychange', onVisibility);
     window.addEventListener('pagehide', onPageHide);
-    if (!map || typeof createImageBitmap !== 'function') {
-      // Repli : on laisse la carte vivante plutôt qu'un écran vide.
-      root.dataset['gestureOverlay'] = 'fallback';
-      return undefined;
-    }
 
-    const captured = () => {
-      createImageBitmap(map.getCanvas()).then((bitmap) => {
-        if (cancelled) { bitmap.close(); return; }
-        bitmapRef.current = bitmap;
-        drawRaster();
-        drawVector();
-        root.style.opacity = '1';
-        root.dataset['gestureOverlay'] = 'on';
-        cancelAnimationFrame(frameRef.current);
-        const tick = (now: number) => {
-          frameRef.current = requestAnimationFrame(tick);
-          if (now - lastDrawRef.current < REFRESH_MS) return;
-          lastDrawRef.current = now;
-          drawVector();
-        };
-        frameRef.current = requestAnimationFrame(tick);
-      }).catch(() => {
-        if (!cancelled) deactivate();
-      });
-    };
-
-    // Une seule frame est autorisée : celle qui produit le raster. Toutes les
-    // demandes suivantes (setProps de react-map-gl, timers, animations) sont
-    // ignorées jusqu'au relâchement.
     cancelAnimationFrame(restoreFrameRef.current);
     restoreFrameRef.current = 0;
     window.clearTimeout(restoreTimerRef.current);
@@ -318,27 +257,21 @@ export function MapGestureOverlay({
       repaintRef.current = null;
     }
     repaintRef.current = map.triggerRepaint.bind(map);
-    let allowCaptureFrame = true;
-    map.triggerRepaint = () => {
-      if (!allowCaptureFrame) return;
-      allowCaptureFrame = false;
-      repaintRef.current?.();
-    };
+    // Aucune frame n'est nécessaire : la carte garde la dernière déjà peinte.
+    map.triggerRepaint = () => undefined;
 
-    previousVisibilityRef.current = {};
-    for (const id of FILL_LAYER_IDS) {
-      if (!map.getLayer(id)) continue;
-      const current = map.getLayoutProperty(id, 'visibility');
-      previousVisibilityRef.current[id] = typeof current === 'string' ? current : 'visible';
-      try { map.setLayoutProperty(id, 'visibility', 'none'); } catch { /* style pas chargé */ }
-    }
-    // Chaque `setLayoutProperty` ci-dessus demande déjà un rendu : le premier
-    // `render` suffit à capturer le raster sans déclencher de frame supplémentaire.
-    map.once('render', captured);
+    drawVector();
+    root.style.opacity = '1';
+    root.dataset['gestureOverlay'] = 'on';
+    const tick = (now: number) => {
+      frameRef.current = requestAnimationFrame(tick);
+      if (now - lastDrawRef.current < REFRESH_MS) return;
+      lastDrawRef.current = now;
+      drawVector();
+    };
+    frameRef.current = requestAnimationFrame(tick);
 
     return () => {
-      cancelled = true;
-      map.off('render', captured);
       document.removeEventListener('visibilitychange', onVisibility);
       window.removeEventListener('pagehide', onPageHide);
       deactivate();
@@ -350,8 +283,7 @@ export function MapGestureOverlay({
 
   return (
     <div ref={rootRef} className={styles['root']} aria-hidden="true" data-testid="map-gesture-overlay">
-      <canvas ref={rasterRef} className={styles['layer']} />
-      <canvas ref={vectorRef} className={styles['layer']} />
+      <canvas ref={canvasRef} className={styles['layer']} />
     </div>
   );
 }

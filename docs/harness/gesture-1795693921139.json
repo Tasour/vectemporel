@@ -1,0 +1,30 @@
+{
+  "url": "http://localhost:5173/?year=1000&cb=harnessgpu2",
+  "viewport": {
+    "width": 1658,
+    "height": 1150
+  },
+  "gpu": "ANGLE (AMD, AMD Radeon 860M Graphics (radeonsi krackan1 ACO), OpenGL ES 3.2)",
+  "softwareRendering": false,
+  "dpr": 1,
+  "during": {
+    "renders": 0,
+    "overlay": "on",
+    "overlayWidth": 1658,
+    "ink": 2036,
+    "longTasks": 1,
+    "longP50": 93,
+    "longP95": 93
+  },
+  "release": {
+    "yearAtRelease": 963,
+    "finalYear": 956,
+    "gridAtRelease": 974,
+    "finalGrid": 974,
+    "gridSettleMs": 0,
+    "yearSettleMs": 148,
+    "regressions": 0,
+    "rendersAfterRelease": 13
+  },
+  "errors": []
+}

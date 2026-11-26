@@ -1,7 +1,7 @@
 /**
  * Harnais de mesure du geste de timeline.
  *
- * Usage : node scripts/measure-gesture.mjs [URL]
+ * Usage : node scripts/measure-gesture.mjs [URL] [--gpu]
  * Nécessite un serveur de dev (window.__chronasMap n'est exposé qu'en dev/test).
  * Sortie : JSON sur stdout, archivé dans docs/harness/gesture-*.json.
  */
@@ -10,9 +10,12 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { chromium } from 'playwright-core';
 
-const url = process.argv[2] ?? 'http://localhost:5173/?year=1000';
+const url = process.argv.find((arg) => arg.startsWith('http')) ?? 'http://localhost:5173/?year=1000';
+const useGpu = process.argv.includes('--gpu');
 const viewport = { width: 1658, height: 1150 };
-const browser = await chromium.launch();
+const browser = await chromium.launch({
+  args: useGpu ? ['--enable-gpu', '--use-gl=angle', '--use-angle=gl'] : [],
+});
 const page = await browser.newPage({ viewport });
 const errors = [];
 page.on('pageerror', (error) => errors.push(String(error).slice(0, 200)));
@@ -36,7 +39,7 @@ const read = () => page.evaluate(() => {
   const timeline = document.querySelector('[data-testid="timeline"]');
   const grid = document.querySelector('.vis-grid.vis-year1000');
   const overlay = document.querySelector('[data-testid="map-gesture-overlay"]');
-  const vector = overlay?.querySelectorAll('canvas')[1];
+  const vector = overlay?.querySelectorAll('canvas')[0];
   let ink = 0;
   if (vector?.width) {
     const data = vector.getContext('2d')?.getImageData(0, 0, vector.width, Math.min(400, vector.height)).data;

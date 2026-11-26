@@ -16,36 +16,47 @@
 
 | Indicateur | Avant | Après |
 |---|---:|---:|
-| Rendus MapLibre pendant un geste de 12 mouvements | 8 | **1** (frame de capture) |
+| Rendus MapLibre pendant un geste de 12 mouvements | 8 | **0** |
 | Rendus MapLibre dans la seconde suivant le relâchement | 8 | **0–1** |
-| Long task p50 pendant le geste | ~200 ms | 183 ms (capture) |
+| Long task p50 pendant le geste | ~200 ms | **aucune** |
 | Année qui repart en arrière après relâchement | oui (919 → 846) | **0 régression** |
 | Position finale de la frise | ~1,3 s après relâchement | **0 ms** |
 | Canvas des graduations pendant le geste | 300 × 150 px | pleine largeur |
 | Sommes de projection des provinces (une fois) | — | 21 ms / 24 520 sommets |
 | Redessin 2D des entités visibles | — | 2 ms / 1 260 entités |
 
-Le renderer mesuré est `ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device))` :
-ces durées de rendu **ne décrivent pas un téléphone ni un GPU de bureau**. Elles
-servent uniquement à comparer deux versions sur la même machine.
+Le renderer par défaut du headless est `ANGLE (Google, Vulkan 1.3.0
+(SwiftShader Device))`. Le harnais `--gpu` force le GPU réel : sur cette machine
+(`ANGLE (AMD Radeon 860M)`), un geste de 12 mouvements donne **0 rendu MapLibre**,
+une seule long task de **93 ms** (projection + premier dessin), la frise à sa
+position finale en **0 ms**, le commit d'année en **148 ms**, **0 régression**.
+
+Le chiffre du téléphone reste à mesurer par l'utilisateur ; le GPU de bureau ne
+remplace pas le Brave Android.
 
 ## Parade retenue
 
 Pendant le geste, la carte ne bouge pas (seules les couleurs changent). On
 exploite cela au lieu de demander au GPU de recalculer la planète :
 
-1. `map.stop()` puis capture du canvas WebGL dans l'événement `render` ;
-2. masquage des cinq couches `*-fill` et neutralisation de `triggerRepaint`
-   (une seule frame autorisée, celle de la capture) ;
-3. projection unique des géométries, avec culling par bbox écran (1 260 entités
+1. `map.stop()` et neutralisation de `triggerRepaint` : la carte conserve sa
+   dernière frame, **aucune couche n'est masquée et aucun readback n'est fait** ;
+2. projection unique des géométries, avec culling par bbox écran (1 260 entités
    visibles sur 2 492) ;
-4. surcouche canvas 2D : remplissages + noms des seules entités visibles,
-   rafraîchis à ~14 Hz, DPR plafonné à 2 ;
-5. au relâchement : restauration des couches après deux frames, rendu MapLibre
-   unique de toute la planète, fondu de 120 ms. La restauration est idempotente
-   et doublée d'un timer de 400 ms : le `!active` de React ne doit jamais
-   annuler le rAF programmé par le cleanup, sinon la carte reste figée et
-   non interactive (bug corrigé le 26/11).
+3. surcouche canvas 2D : fond terre opaque (efface l'année précédente),
+   remplissage à l'opacité MapLibre, frontière et noms des seules entités
+   visibles, rafraîchis à ~14 Hz, DPR plafonné à 2 ;
+4. au relâchement : restauration de `triggerRepaint` après deux frames, rendu
+   MapLibre unique de toute la planète, fondu de 120 ms. La restauration est
+   idempotente et doublée d'un timer de 400 ms : le `!active` de React ne doit
+   jamais annuler le rAF programmé par le cleanup, sinon la carte reste figée
+   et non interactive (bug corrigé le 26/11).
+
+Une version antérieure masquait les couches **avant** de capturer un raster du
+canvas via `createImageBitmap`. Sur les GPUs où le readback est lent ou bloqué,
+la capture ne revenait pas et les provinces disparaissaient pendant tout le
+geste. La correction supprime cette dépendance : même si la surcouche ne peint
+pas, la carte reste affichée avec l'année précédente.
 
 Les couleurs de la surcouche et celles de MapLibre viennent de la même fonction
 pure `getProvinceStyle` : aucun écart de teinte au fondu.
@@ -55,18 +66,20 @@ pure `getProvinceStyle` : aucun écart de teinte au fondu.
 Appliqués : `renderWorldCopies: false` (le zoom 2,5 dessinait plusieurs copies
 du monde), `fill-antialias: false` sur les cinq couches de provinces,
 `fadeDuration: 0`, `refreshExpiredTiles: false`,
-`canvasContextAttributes: { antialias: false, desynchronized: true,
-powerPreference: 'high-performance' }`. Le gain individuel de chacun n'a pas été
-isolé : le gel rend le coût pendant le geste négligeable, seule la frame finale
-en bénéficie.
+`canvasContextAttributes: { antialias: false, powerPreference: 'high-performance' }`.
+`desynchronized` a été retiré : il fragilisait le readback et n'apportait rien
+au gel. Le gain individuel de chaque levier n'a pas été isolé : le gel rend le
+coût pendant le geste négligeable, seule la frame finale en bénéficie.
 
 ## Limites
 
-- Le **120 Hz constant** ne peut pas être validé en headless : à vérifier sur
-  la machine de l'utilisateur avec le harnais et le diagnostic GPU.
-- Si `createImageBitmap` est indisponible ou échoue, la surcouche se désactive
-  et la carte reste vivante (aucun écran vide).
-- Si la carte bouge (pan/zoom) pendant le geste, les couches sont restaurées
+- Le **120 Hz constant** doit être validé sur la machine de l'utilisateur. Le
+  harnais peut force le GPU réel avec `node scripts/measure-gesture.mjs URL --gpu`
+  (vérifie que `gpu` ne contient pas `SwiftShader`).
+- Plus aucun readback n'est utilisé : `createImageBitmap` ne peut plus faire
+  disparaître les données.
+- Si la carte bouge (pan/zoom) pendant le geste, `triggerRepaint` est restauré
   immédiatement et le gel est abandonné.
-- `desynchronized: true` peut provoquer un léger tearing sur certains pilotes ;
-  à retirer si le diagnostic utilisateur le signale.
+- Pendant le geste, le relief sous les provinces est aplati et quelques
+  étiquettes du fond restent visibles en mer ; le rendu exact revient au
+  relâchement en 120 ms.

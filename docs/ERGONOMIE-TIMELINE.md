@@ -81,11 +81,11 @@ Pendant `isGestureActive`, la timeline garde la priorité :
 - `setWindow` de vis-timeline est plafonné à **30 Hz** et toujours appelé avec
   `{ animation: false }` : l'animation par défaut de vis-timeline dure 500 ms et
   faisait « revenir puis rattraper » la frise après chaque relâchement ;
-- la carte elle-même est **gelée** : `MapGestureOverlay` capture un raster du
-  fond, masque les cinq couches de remplissage et neutralise `triggerRepaint`.
-  Les provinces visibles seules sont recolorées en canvas 2D à ~14 Hz, avec
-  leurs noms ; au relâchement, un seul rendu MapLibre couvre la planète entière
-  et un fondu de 120 ms rétablit la carte exacte ;
+- la carte elle-même est **gelée** : `MapGestureOverlay` neutralise
+  `triggerRepaint` sans masquer de couche ni capturer le canvas WebGL. Les
+  provinces visibles seules sont recolorées en canvas 2D à ~14 Hz sur un fond
+  terre opaque, avec leurs noms ; au relâchement, un seul rendu MapLibre couvre
+  la planète entière et un fondu de 120 ms rétablit la carte exacte ;
 - le drapeau `isGestureActive` est piloté par pointeur/fin d'inertie, plus par
   un timer de 600 ms qui pouvait tomber entre deux frames et laisser une
   écriture d'année périmée (contrôle par convergence jusqu'à ±3 ans) ;

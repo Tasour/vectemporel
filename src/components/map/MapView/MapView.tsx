@@ -1589,7 +1589,6 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
         refreshExpiredTiles={false}
         canvasContextAttributes={{
           antialias: false,
-          desynchronized: true,
           powerPreference: 'high-performance',
         }}
         onMove={handleMove}
