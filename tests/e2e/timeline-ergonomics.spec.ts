@@ -194,9 +194,10 @@ for (const viewport of [
       await drag(page, 100);
       const after = await readState(page);
       const expected = (100 / viewport.width) * before.span;
+      const shift = before.year - after.year;
       record(`drag-${viewport.name}`, { before, after, expected });
-      expect(after.year - before.year).toBeGreaterThan(expected * 0.8);
-      expect(after.year - before.year).toBeLessThan(expected * 1.2);
+      expect(shift).toBeGreaterThan(expected * 0.8);
+      expect(shift).toBeLessThan(expected * 1.2);
       expect(after.span / before.span).toBeLessThan(1.05);
     });
 
@@ -208,7 +209,7 @@ for (const viewport of [
       await drag(page, -100);
       const back = await readState(page);
       record(`direction-${viewport.name}`, { before, forward, back });
-      expect(forward.year).toBeGreaterThan(before.year);
+      expect(forward.year).toBeLessThan(before.year);
       // Le navigateur peut coalescer le dernier pointermove : tolérance de 20 %
       // sur la distance aller (≈ 25 ans sur mobile).
       expect(Math.abs(back.year - before.year)).toBeLessThan(
@@ -232,12 +233,12 @@ for (const viewport of [
 
       const box = await page.locator('[data-testid="timeline"]').boundingBox();
       if (!box) throw new Error('Timeline introuvable');
-      const startX = box.x + box.width / 2 - 50;
+      const startX = box.x + box.width / 2 + 50;
       const y = box.y + box.height / 2;
       await page.mouse.move(startX, y);
       await page.mouse.down();
       for (let step = 1; step <= 10; step += 1) {
-        await page.mouse.move(startX + step * 10, y);
+        await page.mouse.move(startX - step * 10, y);
         await page.waitForTimeout(25);
       }
       await page.mouse.up();
@@ -361,6 +362,63 @@ for (const viewport of [
       expect((await readState(page)).year).toBe(before.year);
     });
 
+    test('le contenu reste sous le doigt pendant le glissement', async ({ page }) => {
+      await open(page);
+      const box = await page.locator('[data-testid="timeline"]').boundingBox();
+      if (!box) throw new Error('Timeline introuvable');
+      const ratio = 0.6;
+      const before = await readState(page);
+      const yearAtStart = before.year + (ratio - 0.5) * before.span;
+      const startX = box.x + box.width * ratio;
+      const endX = startX + 60;
+      const y = box.y + box.height / 2;
+      await page.mouse.move(startX, y);
+      await page.mouse.down();
+      for (let step = 1; step <= 6; step += 1) {
+        await page.mouse.move(startX + step * 10, y);
+        await page.waitForTimeout(35);
+      }
+      await page.mouse.up();
+      await page.waitForTimeout(600);
+      const after = await readState(page);
+      const yearAtEnd = after.year + ((endX - box.x) / box.width - 0.5) * after.span;
+      record(`under-finger-${viewport.name}`, { before, after, yearAtStart, yearAtEnd });
+      expect(after.year).toBeLessThan(before.year);
+      expect(Math.abs(yearAtEnd - yearAtStart)).toBeLessThanOrEqual(4);
+    });
+
+    test('le glissement produit des crans haptiques', async ({ page }) => {
+      await page.addInitScript(() => {
+        const state = window as unknown as { __vibrations: Array<number | number[]> };
+        state.__vibrations = [];
+        Object.defineProperty(navigator, 'vibrate', {
+          configurable: true,
+          value: (pattern: number | number[]) => {
+            state.__vibrations.push(pattern);
+            return true;
+          },
+        });
+      });
+      await open(page);
+      const box = await page.locator('[data-testid="timeline"]').boundingBox();
+      if (!box) throw new Error('Timeline introuvable');
+      const y = box.y + box.height / 2;
+      const startX = box.x + box.width / 2;
+      await page.mouse.move(startX, y);
+      await page.mouse.down();
+      for (let step = 1; step <= 12; step += 1) {
+        await page.mouse.move(startX + step * 20, y);
+        await page.waitForTimeout(45);
+      }
+      await page.mouse.up();
+      await page.waitForTimeout(400);
+      const vibrations = await page.evaluate(
+        () => (window as unknown as { __vibrations: Array<number | number[]> }).__vibrations
+      );
+      record(`haptics-${viewport.name}`, { vibrations });
+      expect(vibrations.length).toBeGreaterThan(0);
+    });
+
     test('le mode précision réduit le span et avance lentement', async ({ page }) => {
       await open(page);
       const before = await readState(page);
@@ -436,8 +494,8 @@ test.describe('ergonomie tactile 390x844', () => {
     const back = await readState(page);
 
     record('touch-390x844', { before, forward, back });
-    expect(forward.year - before.year).toBeGreaterThan(100);
-    expect(forward.year - before.year).toBeLessThan(160);
+    expect(before.year - forward.year).toBeGreaterThan(100);
+    expect(before.year - forward.year).toBeLessThan(160);
     expect(Math.abs(back.year - before.year)).toBeLessThan(
       Math.max(12, Math.abs(forward.year - before.year) * 0.2)
     );

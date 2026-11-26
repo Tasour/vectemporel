@@ -27,6 +27,8 @@ export const SettingsContent: React.FC<SettingsContentProps> = ({ onClose: _onCl
   const { t } = useTranslation();
   const theme = useUIStore((s) => s.theme);
   const setTheme = useUIStore((s) => s.setTheme);
+  const hapticsEnabled = useUIStore((s) => s.hapticsEnabled);
+  const setHapticsEnabled = useUIStore((s) => s.setHapticsEnabled);
   const locale = useUIStore((s) => s.locale);
   const setLocale = useUIStore((s) => s.setLocale);
   const labelNameMode = useMapStore((s) => s.labelNameMode);
@@ -97,6 +99,25 @@ export const SettingsContent: React.FC<SettingsContentProps> = ({ onClose: _onCl
             </button>
           ))}
         </div>
+      </div>
+
+      <div className={styles['section']}>
+        <div className={styles['sectionLabel']}>{t('settings.haptics', 'Retour haptique')}</div>
+        <button
+          type="button"
+          className={`${styles['themeBtn'] ?? ''} ${hapticsEnabled ? (styles['themeBtnActive'] ?? '') : ''}`}
+          onClick={() => {
+            const next = !hapticsEnabled;
+            setHapticsEnabled(next);
+            if (next && typeof navigator.vibrate === 'function') navigator.vibrate(20);
+          }}
+          data-testid="haptics-toggle"
+          aria-pressed={hapticsEnabled}
+        >
+          {hapticsEnabled
+            ? t('settings.hapticsOn', 'Activé')
+            : t('settings.hapticsOff', 'Désactivé')}
+        </button>
       </div>
 
       <div className={styles['section']}>

@@ -245,16 +245,20 @@ export function applyGestureInput(state: GestureState, input: GestureInput): {
 
   // Le pixel est converti à l'échelle instantanée : c'est ici que l'accélération
   // s'intègre au mouvement, puisque `state.span` grandit avec la vitesse.
+  // Glisser = molette : le doigt attrape le contenu. Vers la droite, les
+  // années antérieures passent sous le doigt (passé) ; vers la gauche, futur.
+  const direction = input.kind === 'drag' ? -1 : 1;
+  const effectiveDelta = input.deltaPx * direction;
   const precision = input.fine ? FINE_FACTOR : 1;
-  const shift = timeShift(input.deltaPx * precision, state.referenceWidth, state.span);
+  const shift = timeShift(effectiveDelta * precision, state.referenceWidth, state.span);
   state.center = clampCenterForSpan(state.center + shift, state.span);
 
   const cap = Math.min(
     MAX_VELOCITY,
     (COAST_BUDGET_RATIO * state.referenceWidth) / (INERTIA_TAU_MS / 1000)
   );
-  state.velocity = clamp(smoothedVelocity(state.velocity, input.deltaPx, dt), -cap, cap);
-  state.distance += Math.abs(input.deltaPx);
+  state.velocity = clamp(smoothedVelocity(state.velocity, effectiveDelta, dt), -cap, cap);
+  state.distance += Math.abs(effectiveDelta);
 
   // Sous le seuil de zoom, le geste reste précis : pas d'inertie. Un cran de
   // molette isolé translate lui aussi sans glisser.

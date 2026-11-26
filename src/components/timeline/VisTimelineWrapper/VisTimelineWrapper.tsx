@@ -113,6 +113,8 @@ export interface VisTimelineWrapperProps {
   onGestureActivity?: () => void;
   /** Fin du geste : permet de committer l'année finale une seule fois. */
   onGestureEnd?: (year: number) => void;
+  /** Cran haptique : appelé à chaque frame de geste. */
+  onHaptic?: (year: number, spanYears: number, fine: boolean) => void;
   /** Année et largeur de fenêtre atteintes par le geste, sans round-trip vis. */
   onTimeShift?: (year: number, spanYears: number) => void;
   onMouseMove?: (event: TimelineMouseEvent) => void;
@@ -131,7 +133,7 @@ function VisTimelineWrapperComponent(
   props: VisTimelineWrapperProps,
   ref: ForwardedRef<VisTimelineRef>
 ): React.JSX.Element {
-  const { options, items = [], groups = [], customTimes = {}, initialStart, initialEnd, onTimelineClick, onRangeChange, onRangeChanged, onInitialWindowApplied, onGestureActivity, onGestureEnd, onTimeShift, onMouseMove, onClick, manualPan = false, onPanEnd, className } = props;
+  const { options, items = [], groups = [], customTimes = {}, initialStart, initialEnd, onTimelineClick, onRangeChange, onRangeChanged, onInitialWindowApplied, onGestureActivity, onGestureEnd, onHaptic, onTimeShift, onMouseMove, onClick, manualPan = false, onPanEnd, className } = props;
   const containerRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<VisTimeline | null>(null);
   const itemsDataSetRef = useRef<DataSet<TimelineItem> | null>(null);
@@ -143,11 +145,11 @@ function VisTimelineWrapperComponent(
   const settleTimerRef = useRef(0);
   const precisionRef = useRef(false);
   const precisionTimerRef = useRef(0);
-  const callbacksRef = useRef({ onTimelineClick, onRangeChange, onRangeChanged, onInitialWindowApplied, onGestureActivity, onGestureEnd, onTimeShift, onMouseMove, onClick });
+  const callbacksRef = useRef({ onTimelineClick, onRangeChange, onRangeChanged, onInitialWindowApplied, onGestureActivity, onGestureEnd, onHaptic, onTimeShift, onMouseMove, onClick });
 
   useEffect(() => {
-    callbacksRef.current = { onTimelineClick, onRangeChange, onRangeChanged, onInitialWindowApplied, onGestureActivity, onGestureEnd, onTimeShift, onMouseMove, onClick };
-  }, [onGestureActivity, onGestureEnd, onInitialWindowApplied, onMouseMove, onClick, onRangeChange, onRangeChanged, onTimeShift, onTimelineClick]);
+    callbacksRef.current = { onTimelineClick, onRangeChange, onRangeChanged, onInitialWindowApplied, onGestureActivity, onGestureEnd, onHaptic, onTimeShift, onMouseMove, onClick };
+  }, [onGestureActivity, onGestureEnd, onHaptic, onInitialWindowApplied, onMouseMove, onClick, onRangeChange, onRangeChanged, onTimeShift, onTimelineClick]);
 
   const handleClick = useCallback((properties: { event: MouseEvent; time: Date; item: string | null }) => {
     const clickEvent: TimelineClickEvent = { event: properties.event, time: properties.time, item: properties.item };
@@ -198,7 +200,9 @@ function VisTimelineWrapperComponent(
         new Date(motion.center - motion.span / 2),
         new Date(motion.center + motion.span / 2)
       );
-      callbacksRef.current.onTimeShift?.(new Date(motion.center).getFullYear(), motion.span / YEAR_MS);
+      const motionYear = new Date(motion.center).getFullYear();
+      callbacksRef.current.onTimeShift?.(motionYear, motion.span / YEAR_MS);
+      callbacksRef.current.onHaptic?.(motionYear, motion.span / YEAR_MS, precisionRef.current);
       if (!motion.active) {
         callbacksRef.current.onGestureEnd?.(new Date(motion.center).getFullYear());
         state.frame = 0;
@@ -248,7 +252,9 @@ function VisTimelineWrapperComponent(
       new Date(result.center - result.span / 2),
       new Date(result.center + result.span / 2)
     );
-    callbacksRef.current.onTimeShift?.(new Date(result.center).getFullYear(), result.span / YEAR_MS);
+    const resultYear = new Date(result.center).getFullYear();
+    callbacksRef.current.onTimeShift?.(resultYear, result.span / YEAR_MS);
+    callbacksRef.current.onHaptic?.(resultYear, result.span / YEAR_MS, fine);
     runMotion();
     window.clearTimeout(settleTimerRef.current);
     settleTimerRef.current = window.setTimeout(finishMotion, DRAG_GESTURE_GAP_MS + 300);

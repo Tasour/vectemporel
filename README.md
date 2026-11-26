@@ -112,7 +112,7 @@ réversible et prévisible.
 | Geste | 390×844 | 1658×1150 |
 |---|---:|---:|
 | 1 cran | +71 ans, fenêtre 500 → 500 | +71 ans, 500 → 500 |
-| glisser 100 px | +128 ans (attendu 128) | +30 ans (attendu 30) |
+| glisser 100 px vers la droite | −128 ans (passé) | −30 ans (passé) |
 | rafale de 10 crans | +711 ans, 500 → 1 078 | +711 ans, 500 → 1 025 |
 | aller-retour 100 px | retour à 1000 | retour à 1000 |
 | longue rafale | 1711 / -1089, span 2 323 | 1713 / -1090, span 2 323 |

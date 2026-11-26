@@ -90,6 +90,9 @@ les captures `zones-*.png` et `burst-*.png`.
 
 ## 3. Zoom ancré et réversible
 
+- **Sens molette** : glisser à droite fait passer les années antérieures sous
+  le doigt (passé), glisser à gauche va vers le futur. La molette souris garde
+  son sens (bas = futur).
 - **Ancrage au pointeur** : pendant l'interpolation du span, le temps sous le
   curseur/doigt reste fixe (`anchorOffset` dans `GestureState`). Le zoom ne fait
   plus glisser la date visée.
@@ -118,7 +121,7 @@ réversible et prévisible.
 | Geste | 390×844 | 1658×1150 |
 |---|---:|---:|
 | 1 cran | +71 ans, fenêtre 500 → 500 | +71 ans, 500 → 500 |
-| glisser 100 px | +128 ans (attendu 128) | +30 ans (attendu 30) |
+| glisser 100 px vers la droite | −128 ans (passé) | −30 ans (passé) |
 | rafale de 10 crans | +711 ans, 500 → 1 078 | +711 ans, 500 → 1 025 |
 | aller-retour 100 px | retour à 1000 | retour à 1000 |
 | longue rafale | 1711 / -1089, span 2 323 | 1713 / -1090, span 2 323 |
@@ -126,7 +129,18 @@ réversible et prévisible.
 | retour en arrière maximal | **0 an** | **0 an** |
 | tactile 100 px | +128 ans, retour à 1000 | — |
 
-## 5. Frontières intérieures
+## 5. Crans haptiques
+
+Le glisser tactile déclenche une vibration à chaque cran franchi. Le pas suit
+l'échelle : 100 ans à 500 ans de fenêtre, 20 ans sous 100 ans, **1 an en mode
+précision**. Un cran majeur (décade de crans) utilise `[8, 16, 8]`, les autres
+`5 ms`, avec un throttle de 24 ms.
+
+`navigator.vibrate` n'existe que sur Android/Chrome en HTTPS ; sur iOS l'appel
+est ignoré. Le réglage **Paramètres → Retour haptique** active/désactive les
+crans (une vibration de 20 ms confirme l'activation).
+
+## 6. Frontières intérieures
 
 La bordure est dérivée de la couleur de remplissage résolue, assombrie de
 **18 %** (`darkenColor`, facteur 0,82), avec une opacité de 0,9 sur les
@@ -134,7 +148,7 @@ frontières internes et 0,35 sur le contour. Les anciennes propriétés
 `rDark/cDark/eDark/gDark` ont été supprimées : elles dupliquaient la couleur et
 ajoutaient un calcul par feature.
 
-## 6. Libellés français
+## 7. Libellés français
 
 L'API ne fournit `*_fr` que pour une partie des entités. `src/data/frenchNames.ts`
 complète les noms manquants les plus visibles (royaumes, empires, cultures et

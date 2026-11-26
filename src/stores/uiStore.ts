@@ -59,6 +59,8 @@ export type DetailLevel = 'low' | 'medium' | 'high';
 export interface UIState {
   theme: Theme;
   locale: string;
+  /** Retour haptique sur les crans de la timeline. */
+  hapticsEnabled: boolean;
   sidebarOpen: boolean;
   isFullscreen: boolean;
   /** Whether the right drawer is open - Requirement 2.1, 3.1 */
@@ -87,6 +89,7 @@ export interface UIState {
 export interface UIActions {
   setTheme: (theme: Theme) => void;
   setLocale: (locale: string) => void;
+  setHapticsEnabled: (enabled: boolean) => void;
   toggleSidebar: () => void;
   setSidebarOpen: (open: boolean) => void;
   setFullscreen: (isFullscreen: boolean) => void;
@@ -126,6 +129,7 @@ export type UIStore = UIState & UIActions;
 const defaultState: UIState = {
   theme: 'light',
   locale: DEFAULT_LOCALE,
+  hapticsEnabled: true,
   sidebarOpen: true,
   isFullscreen: false,
   rightDrawerOpen: false,
@@ -187,6 +191,10 @@ export const useUIStore = create<UIStore>()(
         }
         applyThemeToDocument(theme);
         set({ theme });
+      },
+
+      setHapticsEnabled: (enabled: boolean) => {
+        set({ hapticsEnabled: enabled });
       },
 
       /**
@@ -309,6 +317,7 @@ export const useUIStore = create<UIStore>()(
       partialize: (state) => ({
         theme: state.theme,
         locale: state.locale,
+        hapticsEnabled: state.hapticsEnabled,
         sidebarOpen: state.sidebarOpen,
         isFullscreen: state.isFullscreen,
         detailLevel: state.detailLevel,

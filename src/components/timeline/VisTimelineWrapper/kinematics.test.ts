@@ -161,20 +161,20 @@ describe('timeline ergonomics — calibrated gestures', () => {
 
   it('a slow 100px drag stays 1:1 on mobile', () => {
     const result = simulate(burst(10, 10, 16), { width: 390, kind: 'drag' });
-    expect(result.year - 1000).toBeGreaterThanOrEqual(123);
-    expect(result.year - 1000).toBeLessThanOrEqual(133);
+    expect(result.year - 1000).toBeLessThanOrEqual(-123);
+    expect(result.year - 1000).toBeGreaterThanOrEqual(-133);
     expect(result.spanYears / 500).toBeLessThan(1.02);
   });
 
   it('a slow 100px drag stays 1:1 on desktop', () => {
     const result = simulate(burst(10, 10, 16), { width: 1658, kind: 'drag' });
-    expect(result.year - 1000).toBeGreaterThanOrEqual(28);
-    expect(result.year - 1000).toBeLessThanOrEqual(34);
+    expect(result.year - 1000).toBeLessThanOrEqual(-28);
+    expect(result.year - 1000).toBeGreaterThanOrEqual(-34);
   });
 
   it('a fast flick zooms out and coasts less than one window', () => {
     const result = simulate(burst(6, 50, 16), { width: 390, kind: 'drag' });
-    expect(result.year - 1000).toBeGreaterThan(300);
+    expect(1000 - result.year).toBeGreaterThan(300);
     expect(result.spanYears / 500).toBeGreaterThan(1.25);
     expect(result.maxFrameShiftYears).toBeLessThan(result.spanYears * 0.2);
   });
@@ -209,15 +209,15 @@ describe('timeline ergonomics — calibrated gestures', () => {
     const samples = burst(10, 20, 30);
     const lagged = simulate(samples, { width: 390, kind: 'drag', lagYears: 120 });
     const reference = simulate(samples, { width: 390, kind: 'drag' });
-    expect(lagged.year).toBeGreaterThanOrEqual(1000);
+    expect(lagged.year).toBeLessThanOrEqual(1000);
     expect(Math.abs(lagged.year - reference.year)).toBeLessThan(20);
   });
 
   it('drag and wheel share the same direction', () => {
     const forwards = simulate(burst(8, 30, 20), { width: 390, kind: 'drag' });
     const backwards = simulate(burst(8, -30, 20), { width: 390, kind: 'drag' });
-    expect(forwards.year).toBeGreaterThan(1000);
-    expect(backwards.year).toBeLessThan(1000);
+    expect(forwards.year).toBeLessThan(1000);
+    expect(backwards.year).toBeGreaterThan(1000);
     expect(Math.abs(forwards.year - 1000)).toBeCloseTo(Math.abs(backwards.year - 1000), -1);
   });
 

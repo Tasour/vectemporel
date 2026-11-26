@@ -18,6 +18,7 @@ import { useMapStore } from '../../../stores/mapStore';
 import { useIsMobile } from '../../../hooks/useIsMobile';
 import { dateToYear, formatYearForDisplay, MAX_YEAR, MIN_YEAR, yearToDate } from '../../../utils/yearUtils';
 import { YEAR_MS } from '../VisTimelineWrapper/kinematics';
+import { hapticDetents } from '../VisTimelineWrapper/haptics';
 import { YearDialog } from '../YearDialog/YearDialog';
 import { AutoplayMenu } from '../AutoplayMenu/AutoplayMenu';
 import { EpicSearchAutocomplete } from '../EpicSearchAutocomplete/EpicSearchAutocomplete';
@@ -108,6 +109,7 @@ export const Timeline: React.FC<TimelineProps> = ({
 
   // Get right drawer state to shift timeline away from it
   const rightDrawerOpen = useUIStore((state) => state.rightDrawerOpen);
+  const hapticsEnabled = useUIStore((state) => state.hapticsEnabled);
   const bottomToolsOpen = useUIStore((state) => state.bottomToolsOpen);
   // Get openRightDrawer from uiStore for epic click handling
   // Requirements: 6.3
@@ -670,6 +672,9 @@ export const Timeline: React.FC<TimelineProps> = ({
             if (year !== useTimelineStore.getState().selectedYear) {
               setYear(year);
             }
+          }}
+          onHaptic={(year, spanYears, fine) => {
+            hapticDetents.update(year, spanYears, fine, hapticsEnabled);
           }}
           onGestureEnd={(year) => {
             lastYearCommitRef.current = 0;
