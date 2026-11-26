@@ -8,10 +8,21 @@
  */
 
 import { create } from 'zustand';
-import * as turf from '@turf/turf';
+import {
+  area as turfArea,
+  bbox as turfBbox,
+  bezierSpline as turfBezierSpline,
+  centroid as turfCentroid,
+  featureCollection as turfFeatureCollection,
+  length as turfLength,
+  lineString as turfLineString,
+  union as turfUnion,
+  unkinkPolygon as turfUnkinkPolygon,
+} from '@turf/turf';
 import type { Feature, Polygon, MultiPolygon, FeatureCollection, Point, LineString } from 'geojson';
 import type GeoJSON from 'geojson';
 import { apiClient } from '../api/client';
+import { useTimelineStore } from './timelineStore';
 import { AREA_LABEL_CONFIG } from '../config/mapTheme';
 import { computeAdjacencyGraph, findConnectedComponents } from '../utils/geoLabelUtils';
 import type { AdjacencyGraph } from '../utils/geoLabelUtils';
@@ -20,7 +31,7 @@ import type { MapAreaData, Marker, MarkerFilterState, MarkerType } from '../api/
 import { updateQueryStringParameter } from '../utils/mapUtils';
 import { FRENCH_NAMES } from '../data/frenchNames';
 import { ensureAtlasPack } from '../features/atlasPack/atlasPack';
-import { ensureMarkersPack } from '../features/atlasPack/markersPack';
+import { getReadyMarkersPack } from '../features/atlasPack/markersPack';
 
 const prefetchingYears = new Set<number>();
 
@@ -1702,8 +1713,8 @@ export const useMapStore = create<MapStore>((set, get) => ({
           mergedPolygon = feature;
         } else {
           // Use turf.union to merge polygons
-          const unionResult: Feature<Polygon | MultiPolygon> | null = turf.union(
-            turf.featureCollection([mergedPolygon, feature])
+          const unionResult: Feature<Polygon | MultiPolygon> | null = turfUnion(
+            turfFeatureCollection([mergedPolygon, feature])
           );
           if (unionResult) {
             mergedPolygon = unionResult;
@@ -1719,7 +1730,7 @@ export const useMapStore = create<MapStore>((set, get) => ({
       // Handle self-intersecting polygons using turf.unkinkPolygon
       // Requirement 8.5: THE MapView SHALL use turf.unkinkPolygon to handle self-intersecting polygons
       try {
-        const unkinked = turf.unkinkPolygon(mergedPolygon);
+        const unkinked = turfUnkinkPolygon(mergedPolygon);
         if (unkinked.features.length > 0) {
           // If unkink produced multiple polygons, union them back together
           if (unkinked.features.length === 1) {
@@ -1734,8 +1745,8 @@ export const useMapStore = create<MapStore>((set, get) => ({
               if (!remerged) {
                 remerged = f;
               } else {
-                const innerUnionResult: Feature<Polygon | MultiPolygon> | null = turf.union(
-                  turf.featureCollection([remerged, f])
+                const innerUnionResult: Feature<Polygon | MultiPolygon> | null = turfUnion(
+                  turfFeatureCollection([remerged, f])
                 );
                 if (innerUnionResult) {
                   remerged = innerUnionResult;
@@ -1784,7 +1795,7 @@ export const useMapStore = create<MapStore>((set, get) => ({
     try {
       // Calculate bounding box using turf.bbox
       // Requirement 8.3: THE MapView SHALL fit the viewport to the entity outline bounding box
-      const bbox = turf.bbox(state.entityOutline);
+      const bbox = turfBbox(state.entityOutline);
 
       // bbox is [minLng, minLat, maxLng, maxLat]
       const [minLng, minLat, maxLng, maxLat] = bbox;
@@ -2210,6 +2221,13 @@ export const useMapStore = create<MapStore>((set, get) => ({
       return [];
     }
 
+    // Pendant le geste, la timeline garde le main thread : les marqueurs
+    // (2 000 symboles MapLibre) ne sont rechargés qu'au relâchement.
+    if (useTimelineStore.getState().isGestureActive) {
+      set({ isLoadingMarkers: false });
+      return [];
+    }
+
     // Cancel any in-flight request - Requirement 9.5
     if (state.markersAbortController) {
       state.markersAbortController.abort();
@@ -2220,8 +2238,8 @@ export const useMapStore = create<MapStore>((set, get) => ({
 
     set({ isLoadingMarkers: true, markersAbortController: abortController });
 
-    // Pack binaire préchargé : aucune requête réseau.
-    const markersPack = await ensureMarkersPack();
+    // Pack binaire déjà chargé en idle : sinon repli API pour la première année.
+    const markersPack = getReadyMarkersPack();
     if (markersPack) {
       if (get().markersAbortController !== abortController) return [];
       performance.mark('markers-pack-start');
@@ -2406,7 +2424,7 @@ export const useMapStore = create<MapStore>((set, get) => ({
       try {
         let geometry = geometryCache.get(feature);
         if (!geometry) {
-          const centroid = turf.centroid(feature);
+          const centroid = turfCentroid(feature);
           const geom = feature.geometry;
           let coords: number[][][] = [];
           if (geom.type === 'Polygon') {
@@ -2418,7 +2436,7 @@ export const useMapStore = create<MapStore>((set, get) => ({
           }
           geometry = {
             centroid: centroid.geometry.coordinates as [number, number],
-            area: turf.area(feature),
+            area: turfArea(feature),
             coords,
           };
           geometryCache.set(feature, geometry);
@@ -2568,9 +2586,9 @@ export const useMapStore = create<MapStore>((set, get) => ({
           }
 
           try {
-            const bareLine = turf.lineString(lineCoords);
-            const bezierLine = turf.bezierSpline(bareLine, AREA_LABEL_CONFIG.bezierOptions);
-            const lineDistance = turf.length(bareLine, { units: 'kilometers' });
+            const bareLine = turfLineString(lineCoords);
+            const bezierLine = turfBezierSpline(bareLine, AREA_LABEL_CONFIG.bezierOptions);
+            const lineDistance = turfLength(bareLine, { units: 'kilometers' });
             const d = lineDistance / Math.pow(entityName.length, 0.2);
 
             entityLine.push({

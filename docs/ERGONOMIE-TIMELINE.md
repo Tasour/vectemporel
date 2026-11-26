@@ -60,6 +60,14 @@ puis `advanceMotion`, frames de 16 ms). Il couvre : cran isolé, 3 crans, rafale
 glisser 1:1 mobile/desktop, flick, direction, bornes, stabilité et **fenêtre en
 retard** (le centre rapporté est décalé de 120 ans, le geste ne recule pas).
 
+### Démarrage allégé
+
+Le pack marqueurs (2,33 Mo gzip après delta-encodage de l'index au lieu de
+2,68 Mo) n'est plus chargé au démarrage : il est différé à `requestIdleCallback`.
+La première année utilise la requête API légère, les suivantes viennent du pack.
+Les imports turf sont ciblés et `union`/`unkinkPolygon` ne servent qu'au contour
+d'entité.
+
 ### Fluidité pendant le geste
 
 Pendant `isGestureActive`, la timeline garde la priorité :
@@ -68,6 +76,8 @@ Pendant `isGestureActive`, la timeline garde la priorité :
   React par frame) ;
 - le badge d'année est mis à jour par `textContent` ;
 - la carte est committée à **4 Hz**, avec une mise à jour finale au relâchement ;
+- les **marqueurs et libellés ne sont pas rechargés pendant le geste** (2 000
+  symboles MapLibre sont le poste le plus coûteux) ;
 - `setWindow` de vis-timeline est plafonné à **30 Hz**, les épopées ne sont pas
   repeintes pendant le geste ;
 - la passe de mutation des 2 429 propriétés de provinces a été supprimée :

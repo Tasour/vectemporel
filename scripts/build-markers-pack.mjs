@@ -117,14 +117,25 @@ function build() {
     return buf;
   });
 
+  // Index delta-variante : les indices triés sont stockés en écarts, ce qui
+  // réduit fortement la taille compressée du pack.
   const indexParts = [];
   for (const { year, indices } of yearIndex) {
     const head = Buffer.alloc(6);
     head.writeInt16LE(year, 0);
     head.writeUInt32LE(indices.length, 2);
-    const body = Buffer.alloc(indices.length * 4);
-    indices.forEach((value, position) => body.writeUInt32LE(value, position * 4));
-    indexParts.push(head, body);
+    const bytes = [];
+    let previous = 0;
+    for (const value of [...indices].sort((a, b) => a - b)) {
+      let delta = (value - previous) >>> 0;
+      previous = value;
+      while (delta >= 0x80) {
+        bytes.push((delta & 0x7f) | 0x80);
+        delta >>>= 7;
+      }
+      bytes.push(delta);
+    }
+    indexParts.push(head, Buffer.from(bytes));
   }
 
   const binary = Buffer.concat([

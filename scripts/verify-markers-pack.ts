@@ -27,11 +27,11 @@ for (const year of years) {
     if (typeof a === 'number' && typeof b === 'number') return Math.abs(a - b) < 1e-3;
     return a === b;
   };
-  const mismatch = expected.findIndex((marker, index) => {
-    const got = actual[index];
+  const actualById = new Map(actual.map((marker) => [marker._id, marker]));
+  const mismatch = expected.findIndex((marker) => {
+    const got = actualById.get(String(marker['_id']));
     if (!got) return true;
-    return marker['_id'] !== got._id
-      || marker['name'] !== got.name
+    return marker['name'] !== got.name
       || marker['year'] !== got.year
       || (marker['end'] ?? undefined) !== got.end
       || marker['type'] !== got.type
@@ -42,7 +42,7 @@ for (const year of years) {
     failures += 1;
     console.error(year, { expected: expected.length, actual: actual.length, mismatch });
     console.error(' expected', expected[mismatch]);
-    console.error(' actual', actual[mismatch]);
+    console.error(' actual', actualById.get(expected[mismatch]?.['_id'] as string));
   } else {
     console.log(year, 'ok', actual.length);
   }

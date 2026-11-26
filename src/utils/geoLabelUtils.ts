@@ -1,4 +1,4 @@
-import * as turf from '@turf/turf';
+import { bbox as turfBbox } from '@turf/turf';
 import type { Feature, Polygon, MultiPolygon, FeatureCollection } from 'geojson';
 
 export type AdjacencyGraph = Map<number, Set<number>>;
@@ -11,7 +11,7 @@ interface BBox {
 }
 
 function getBBox(feature: Feature<Polygon | MultiPolygon>): BBox {
-  const bbox = turf.bbox(feature);
+  const bbox = turfBbox(feature);
   return { minX: bbox[0], minY: bbox[1], maxX: bbox[2], maxY: bbox[3] };
 }
 

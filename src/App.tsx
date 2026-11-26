@@ -96,7 +96,14 @@ function App() {
   useEffect(() => {
     // Démarre le pack binaire en parallèle des métadonnées.
     void ensureAtlasPack();
-    void ensureMarkersPack();
+    // Le pack marqueurs est le plus gros asset : on ne le charge qu'après la
+    // première frame pour ne pas bloquer la timeline et le fond de carte.
+    const loadMarkersIdle = () => { void ensureMarkersPack(); };
+    if (typeof requestIdleCallback === 'function') {
+      requestIdleCallback(loadMarkersIdle, { timeout: 3000 });
+    } else {
+      window.setTimeout(loadMarkersIdle, 400);
+    }
     loadFromStorage();
     // Load metadata for entity colors on app startup (with current locale)
     void loadMetadata(locale);

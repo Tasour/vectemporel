@@ -26,6 +26,26 @@ const HEADER_BYTES = 24;
 const RECORD_BYTES = 30;
 
 let packPromise: Promise<MarkersPack | null> | null = null;
+let resolvedPack: MarkersPack | null = null;
+
+/** Pack déjà chargé : évite d'attendre 2,7 Mo lors du premier rendu. */
+export function getReadyMarkersPack(): MarkersPack | null {
+  return resolvedPack;
+}
+
+function readVarint(view: DataView, offset: number): { value: number; next: number } {
+  let result = 0;
+  let shift = 0;
+  let cursor = offset;
+  for (;;) {
+    const byte = view.getUint8(cursor);
+    cursor += 1;
+    result |= (byte & 0x7f) << shift;
+    if ((byte & 0x80) === 0) break;
+    shift += 7;
+  }
+  return { value: result >>> 0, next: cursor };
+}
 
 function readStrings(view: DataView, offset: number): { values: string[]; next: number } {
   const count = view.getUint32(offset, true);
@@ -63,7 +83,11 @@ export function parseMarkersPack(buffer: ArrayBuffer): MarkersPack {
     const year = view.getInt16(blockCursor, true);
     const count = view.getUint32(blockCursor + 2, true);
     blocks.set(year, { offset: blockCursor + 6, count });
-    blockCursor += 6 + count * 4;
+    let next = blockCursor + 6;
+    for (let index = 0; index < count; index += 1) {
+      next = readVarint(view, next).next;
+    }
+    blockCursor = next;
   }
 
   return new MarkersPack({
@@ -96,8 +120,12 @@ class MarkersPack {
     // Les offsets de blocs sont absolus dans le buffer du pack.
     const global = new DataView(this.index.records.buffer);
     const result: Marker[] = new Array<Marker>(block.count);
+    let cursor = block.offset;
+    let markerIndex = 0;
     for (let position = 0; position < block.count; position += 1) {
-      const markerIndex = global.getUint32(block.offset + position * 4, true);
+      const decoded = readVarint(global, cursor);
+      markerIndex += decoded.value;
+      cursor = decoded.next;
       const offset = markerIndex * RECORD_BYTES;
       const idIndex = view.getUint32(offset, true);
       const nameIndex = view.getUint32(offset + 4, true);
@@ -146,7 +174,8 @@ async function loadPack(): Promise<MarkersPack | null> {
     const raw = bytes.length > 1 && bytes[0] === 0x1f && bytes[1] === 0x8b
       ? await decompress(buffer)
       : buffer;
-    return parseMarkersPack(raw);
+    resolvedPack = parseMarkersPack(raw);
+    return resolvedPack;
   } catch (error) {
     if (import.meta.env.DEV) console.warn('[markers-pack] chargement impossible', error);
     return null;

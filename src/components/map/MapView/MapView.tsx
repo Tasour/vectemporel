@@ -240,6 +240,7 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
   const calculateLabels = useMapStore((state) => state.calculateLabels);
   const getReligionGeneral = useMapStore((state) => state.getReligionGeneral);
   const activeColor = useMapStore((state) => state.activeColor);
+  const timelineGestureActive = useTimelineStore((state) => state.isGestureActive);
   // Active label dimension for map labels (can be different from activeColor when unlocked)
   // Requirement 7.1: Labels display based on activeLabel dimension
   const activeLabel = useMapStore((state) => state.activeLabel);
@@ -812,13 +813,14 @@ export function MapView({ className, isBlurred = false }: MapViewProps) {
    * of area coloring and label display when the lock is disabled.
    */
   useEffect(() => {
+    if (timelineGestureActive) return;
     if (provincesGeoJSON && currentAreaData && metadata && activeLabel !== 'population') {
       calculateLabels(activeLabel);
     } else if (activeLabel === 'population') {
       // Population dimension doesn't have entity labels - clear them
       calculateLabels(activeLabel);
     }
-  }, [activeLabel, provincesGeoJSON, currentAreaData, metadata, calculateLabels]);
+  }, [activeLabel, currentAreaData, metadata, provincesGeoJSON, calculateLabels, timelineGestureActive]);
 
   /**
    * Handles viewport changes from user interaction.

@@ -140,7 +140,7 @@ function VisTimelineWrapperComponent(
   const groupsDataSetRef = useRef<DataSet<TimelineGroup> | null>(null);
   const customTimeIdsRef = useRef(new Set());
   const pointerRef = useRef<{ id: number; x: number; width: number } | null>(null);
-  const touchRef = useRef<{ identifier: number; x: number; width: number } | null>(null);
+  const touchRef = useRef<{ identifier: number; x: number; initialX: number; width: number } | null>(null);
   const motionRef = useRef<GestureState>(createGestureState());
   const settleTimerRef = useRef(0);
   const precisionRef = useRef(false);
@@ -334,10 +334,13 @@ function VisTimelineWrapperComponent(
     touchRef.current = {
       identifier: touch.identifier,
       x: touch.clientX,
+      initialX: touch.clientX,
       width: Math.max(container.getBoundingClientRect().width, 1),
     };
     window.clearTimeout(precisionTimerRef.current);
     precisionTimerRef.current = window.setTimeout(() => {
+      const current = touchRef.current;
+      if (current && Math.abs(current.x - current.initialX) > 4) return;
       precisionRef.current = true;
       container.dataset['precision'] = 'on';
       if (typeof navigator.vibrate === 'function') navigator.vibrate(8);
@@ -351,7 +354,13 @@ function VisTimelineWrapperComponent(
     if (!touch) return;
     const deltaPx = touch.clientX - pointer.x;
     pointer.x = touch.clientX;
-    if (Math.abs(deltaPx) > 2) window.clearTimeout(precisionTimerRef.current);
+    window.clearTimeout(precisionTimerRef.current);
+    // Si l'appui long a été déclenché par un ralentissement du main thread
+    // alors que le doigt bougeait, on annule dès le premier mouvement franc.
+    if (precisionRef.current && Math.abs(touch.clientX - pointer.initialX) > 4) {
+      precisionRef.current = false;
+      if (containerRef.current) delete containerRef.current.dataset['precision'];
+    }
     if (Math.abs(deltaPx) < 1) return;
     applyInput(deltaPx, 'drag', pointer.width, touch.clientX, precisionRef.current);
   }, [applyInput]);

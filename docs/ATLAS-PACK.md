@@ -72,7 +72,7 @@ entités et le placement des libellés.
 
 ## Pack marqueurs
 
-`markers-v1.bin.gz` (2,72 Mo compressés, 11,7 Mo bruts) contient **68 473
+`markers-v1.bin.gz` (2,33 Mo compressés, 6,6 Mo bruts, index delta-variante) contient **68 473
 marqueurs uniques** et un index des 4 002 années. Le décodage d'une année prend
 **0,4 ms** et aucune requête `/markers?year=` n'est émise. Vérification :
 `npm run pack:markers:verify` compare 6 années (dont 1714 et 2000).

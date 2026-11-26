@@ -715,6 +715,8 @@ export const Timeline: React.FC<TimelineProps> = ({
             if (detent) pulseDetent();
           }}
           onGestureEnd={(year) => {
+            window.clearTimeout(gestureTimerRef.current);
+            useTimelineStore.getState().setGestureActive(false);
             lastYearCommitRef.current = 0;
             lastOverlayRef.current = 0;
             setOverlayRange({
