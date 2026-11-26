@@ -1,11 +1,14 @@
 import { describe, expect, it, vi, beforeEach } from 'vitest';
 import { HapticDetents, detentPattern, detentStep } from './haptics';
 
+const vibrate = vi.fn();
+
 describe('haptic detents', () => {
   beforeEach(() => {
-    vi.stubGlobal('navigator', {
-      ...navigator,
-      vibrate: vi.fn(),
+    vibrate.mockReset();
+    Object.defineProperty(navigator, 'vibrate', {
+      configurable: true,
+      value: vibrate,
     });
   });
 
@@ -21,31 +24,32 @@ describe('haptic detents', () => {
 
   it('vibrates once per crossed detent, not within the same detent', () => {
     const detents = new HapticDetents();
-    expect(detents.update(1000, 500, false, true, 1000)).toBeNull();
-    expect(detents.update(1040, 500, false, true, 1010)).toBeNull();
-    const crossed = detents.update(1100, 500, false, true, 1020);
-    expect(crossed?.pattern).toBe(5);
-    expect(navigator.vibrate).toHaveBeenCalledTimes(1);
-    expect(detents.update(1100, 500, false, true, 1100)).toBeNull();
-    expect(navigator.vibrate).toHaveBeenCalledTimes(1);
+    expect(detents.update(1000, 500, false, 'vibrate', 1000)).toBeNull();
+    expect(detents.update(1040, 500, false, 'vibrate', 1010)).toBeNull();
+    const crossed = detents.update(1100, 500, false, 'vibrate', 1020);
+    expect(crossed?.pattern).toBe(35);
+    expect(vibrate).toHaveBeenCalledTimes(1);
+    expect(detents.update(1100, 500, false, 'vibrate', 1100)).toBeNull();
+    expect(vibrate).toHaveBeenCalledTimes(1);
   });
 
   it('uses a distinct pattern for major detents', () => {
     const detents = new HapticDetents();
-    detents.update(1990, 500, false, true, 1000);
-    const major = detents.update(2000, 500, false, true, 1100);
-    expect(major?.pattern).toEqual([8, 16, 8]);
+    detents.update(1990, 500, false, 'vibrate', 1000);
+    const major = detents.update(2000, 500, false, 'vibrate', 1100);
+    expect(major?.pattern).toEqual([50, 30, 50]);
   });
 
-  it('does nothing when haptics are disabled', () => {
+  it('returns a visual detent without vibrating in visual mode', () => {
     const detents = new HapticDetents();
-    detents.update(1000, 500, false, false, 1000);
-    expect(detents.update(1100, 500, false, false, 1010)).toBeNull();
-    expect(navigator.vibrate).not.toHaveBeenCalled();
+    detents.update(1000, 500, false, 'visual', 1000);
+    const detent = detents.update(1100, 500, false, 'visual', 1010);
+    expect(detent?.status).toBe('visual');
+    expect(vibrate).not.toHaveBeenCalled();
   });
 
   it('uses one-year detents in precision mode', () => {
-    expect(detentPattern(1, 1001)).toBe(5);
+    expect(detentPattern(1, 1001)).toBe(35);
     expect(detentStep(500, true)).toBe(1);
   });
 });

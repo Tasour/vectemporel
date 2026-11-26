@@ -1,5 +1,5 @@
 import type React from 'react';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useUIStore, type DetailLevel, type Theme } from '@/stores/uiStore';
 import { useMapStore, type LabelNameMode } from '@/stores/mapStore';
@@ -7,6 +7,7 @@ import { useNavigationStore } from '@/stores/navigationStore';
 import { SUPPORTED_LANGUAGES } from '@/i18n/i18n';
 import { getShareableURL } from '@/utils/urlStateUtils';
 import styles from './SettingsContent.module.css';
+import { detectHaptics, getLastHapticsStatus, resetHapticsGuard, vibrateSafely } from '../../timeline/VisTimelineWrapper/haptics';
 
 interface SettingsContentProps {
   onClose: () => void;
@@ -27,8 +28,8 @@ export const SettingsContent: React.FC<SettingsContentProps> = ({ onClose: _onCl
   const { t } = useTranslation();
   const theme = useUIStore((s) => s.theme);
   const setTheme = useUIStore((s) => s.setTheme);
-  const hapticsEnabled = useUIStore((s) => s.hapticsEnabled);
-  const setHapticsEnabled = useUIStore((s) => s.setHapticsEnabled);
+  const hapticsMode = useUIStore((s) => s.hapticsMode);
+  const setHapticsMode = useUIStore((s) => s.setHapticsMode);
   const locale = useUIStore((s) => s.locale);
   const setLocale = useUIStore((s) => s.setLocale);
   const labelNameMode = useMapStore((s) => s.labelNameMode);
@@ -80,6 +81,35 @@ export const SettingsContent: React.FC<SettingsContentProps> = ({ onClose: _onCl
     }
   }, []);
 
+  const hapticsCapability = useMemo(() => detectHaptics(), []);
+  const [hapticsStatus, setHapticsStatus] = useState<string>(getLastHapticsStatus());
+
+  const testVibration = useCallback(() => {
+    resetHapticsGuard();
+    const result = vibrateSafely([200, 100, 200]);
+    setHapticsStatus(result.status);
+  }, []);
+
+  const copyDiagnostic = useCallback(async () => {
+    const capability = detectHaptics();
+    const text = [
+      `api=${String(capability.api)}`,
+      `platform=${capability.platform}`,
+      `brave=${String(capability.brave)}`,
+      `touch=${String(capability.touch)}`,
+      `standalone=${String(capability.standalone)}`,
+      `activation=${String(capability.userActivation)}`,
+      `last=${getLastHapticsStatus()}`,
+      `ua=${capability.userAgent}`,
+    ].join(' ');
+    try {
+      await navigator.clipboard.writeText(text);
+      setHapticsStatus('diagnostic copié');
+    } catch {
+      setHapticsStatus('copie impossible');
+    }
+  }, []);
+
   return (
     <div className={styles['container']} data-testid="settings-content">
 
@@ -102,22 +132,42 @@ export const SettingsContent: React.FC<SettingsContentProps> = ({ onClose: _onCl
       </div>
 
       <div className={styles['section']}>
-        <div className={styles['sectionLabel']}>{t('settings.haptics', 'Retour haptique')}</div>
-        <button
-          type="button"
-          className={`${styles['themeBtn'] ?? ''} ${hapticsEnabled ? (styles['themeBtnActive'] ?? '') : ''}`}
-          onClick={() => {
-            const next = !hapticsEnabled;
-            setHapticsEnabled(next);
-            if (next && typeof navigator.vibrate === 'function') navigator.vibrate(20);
-          }}
-          data-testid="haptics-toggle"
-          aria-pressed={hapticsEnabled}
-        >
-          {hapticsEnabled
-            ? t('settings.hapticsOn', 'Activé')
-            : t('settings.hapticsOff', 'Désactivé')}
-        </button>
+        <div className={styles['sectionLabel']}>{t('settings.haptics', 'Retour de cran')}</div>
+        <div className={styles['themeButtons']}>
+          {(['auto', 'vibrate', 'visual'] as const).map((mode) => (
+            <button
+              key={mode}
+              type="button"
+              className={`${styles['themeBtn'] ?? ''} ${hapticsMode === mode ? (styles['themeBtnActive'] ?? '') : ''}`}
+              onClick={() => {
+                setHapticsMode(mode);
+                if (mode === 'visual') setHapticsStatus('visual');
+                else testVibration();
+              }}
+              data-testid={`haptics-mode-${mode}`}
+              aria-pressed={hapticsMode === mode}
+            >
+              {mode === 'auto' ? 'Auto' : mode === 'vibrate' ? 'Vibration' : 'Visuel'}
+            </button>
+          ))}
+        </div>
+        <p className={styles['hapticsStatus']} data-testid="haptics-status">
+          API {hapticsCapability.api ? 'présente' : 'absente'} · {hapticsCapability.platform}
+          {hapticsCapability.brave ? ' · Brave' : ''} · dernier : {hapticsStatus}
+        </p>
+        <p className={styles['hapticsHint']}>
+          {hapticsCapability.api
+            ? 'Si « ok » mais rien ne vibre : vérifie Ne pas déranger, le mode silencieux et l’intensité système.'
+            : 'Vibration indisponible sur ce navigateur (iOS/WebView) : le cran visuel est utilisé.'}
+        </p>
+        <div className={styles['themeButtons']}>
+          <button type="button" className={styles['themeBtn']} onClick={testVibration} data-testid="haptics-test">
+            Tester la vibration
+          </button>
+          <button type="button" className={styles['themeBtn']} onClick={() => { void copyDiagnostic(); }} data-testid="haptics-copy">
+            Copier le diagnostic
+          </button>
+        </div>
       </div>
 
       <div className={styles['section']}>

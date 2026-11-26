@@ -389,7 +389,7 @@ for (const viewport of [
 
     test('le glissement produit des crans haptiques', async ({ page }) => {
       await page.addInitScript(() => {
-        const state = window as unknown as { __vibrations: Array<number | number[]> };
+        const state = window as unknown as { __vibrations: (number | number[])[] };
         state.__vibrations = [];
         Object.defineProperty(navigator, 'vibrate', {
           configurable: true,
@@ -413,7 +413,7 @@ for (const viewport of [
       await page.mouse.up();
       await page.waitForTimeout(400);
       const vibrations = await page.evaluate(
-        () => (window as unknown as { __vibrations: Array<number | number[]> }).__vibrations
+        () => (window as unknown as { __vibrations: (number | number[])[] }).__vibrations
       );
       record(`haptics-${viewport.name}`, { vibrations });
       expect(vibrations.length).toBeGreaterThan(0);

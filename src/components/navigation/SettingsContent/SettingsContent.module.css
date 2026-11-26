@@ -288,3 +288,17 @@
 }
 
 [data-theme='luther'] .caption { color: rgba(255, 243, 211, 0.7); }
+
+.hapticsStatus {
+  margin: 6px 0 8px;
+  color: var(--color-text-secondary, #6b6b6b);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.hapticsHint {
+  margin: 0 0 8px;
+  color: var(--color-text-secondary, #6b6b6b);
+  font-size: 11px;
+  line-height: 1.35;
+}

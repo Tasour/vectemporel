@@ -129,16 +129,30 @@ réversible et prévisible.
 | retour en arrière maximal | **0 an** | **0 an** |
 | tactile 100 px | +128 ans, retour à 1000 | — |
 
-## 5. Crans haptiques
+## 5. Crans haptiques robustes
 
-Le glisser tactile déclenche une vibration à chaque cran franchi. Le pas suit
-l'échelle : 100 ans à 500 ans de fenêtre, 20 ans sous 100 ans, **1 an en mode
-précision**. Un cran majeur (décade de crans) utilise `[8, 16, 8]`, les autres
-`5 ms`, avec un throttle de 24 ms.
+Le glisser tactile déclenche un cran à chaque graduation franchie. Le pas suit
+l'échelle : 100 ans à 500 ans de fenêtre, 50, 20, 10 ans selon le zoom, **1 an
+en mode précision**. Motifs : **35 ms** pour un cran, `[50, 30, 50]` pour un cran
+majeur, throttle 45 ms.
 
-`navigator.vibrate` n'existe que sur Android/Chrome en HTTPS ; sur iOS l'appel
-est ignoré. Le réglage **Paramètres → Retour haptique** active/désactive les
-crans (une vibration de 20 ms confirme l'activation).
+Trois modes dans Paramètres :
+
+- **Auto** : vibration si `navigator.vibrate` est disponible et accepté, sinon
+  repli visuel ;
+- **Vibration** : force la vibration (repli visuel si refus) ;
+- **Visuel** : jamais de vibration, pulse du badge d'année à chaque cran.
+
+Le panneau affiche l'état réel : API présente/absente, plateforme, Brave,
+activation utilisateur et dernier retour. Un bouton **Tester la vibration**
+envoie `[200, 100, 200]` et **Copier le diagnostic** copie l'UA et le statut.
+
+`navigator.vibrate` n'existe pas sur iOS (Safari, Brave iOS, Chrome iOS) : le
+mode visuel est alors la seule réponse web. Sur Android, un refus (DND, mode
+silencieux, WebView) coupe l'API après deux essais et bascule sur le visuel.
+Le W3C documente des appareils où `vibrate()` renvoie `true` sans vibration :
+si le test 200 ms ne produit rien, vérifier Ne pas déranger et l'intensité de
+vibration système, puis passer en mode Visuel.
 
 ## 6. Frontières intérieures
 

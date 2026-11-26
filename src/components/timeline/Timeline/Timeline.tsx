@@ -109,7 +109,7 @@ export const Timeline: React.FC<TimelineProps> = ({
 
   // Get right drawer state to shift timeline away from it
   const rightDrawerOpen = useUIStore((state) => state.rightDrawerOpen);
-  const hapticsEnabled = useUIStore((state) => state.hapticsEnabled);
+  const hapticsMode = useUIStore((state) => state.hapticsMode);
   const bottomToolsOpen = useUIStore((state) => state.bottomToolsOpen);
   // Get openRightDrawer from uiStore for epic click handling
   // Requirements: 6.3
@@ -124,6 +124,8 @@ export const Timeline: React.FC<TimelineProps> = ({
   const gestureTimerRef = useRef(0);
   const guardWindowRef = useRef(true);
   const suppressClickRef = useRef(false);
+  const mobileBadgeRef = useRef<HTMLButtonElement>(null);
+  const detentTimerRef = useRef(0);
   const hasUserInteractedRef = useRef(false);
   const lastYearCommitRef = useRef(0);
 
@@ -456,6 +458,24 @@ export const Timeline: React.FC<TimelineProps> = ({
     }
   }, [setNotDefaultView, setYear, stepYear, zoomBy]);
 
+  const pulseDetent = useCallback(() => {
+    const targets: Element[] = [];
+    const desktopLabel = document.querySelector('.vis-custom-time.selectedYear button');
+    if (desktopLabel) targets.push(desktopLabel);
+    if (mobileBadgeRef.current) targets.push(mobileBadgeRef.current);
+    for (const target of targets) {
+      target.classList.remove('timeline-detent-pulse');
+      target.getBoundingClientRect();
+      target.classList.add('timeline-detent-pulse');
+    }
+    window.clearTimeout(detentTimerRef.current);
+    detentTimerRef.current = window.setTimeout(() => {
+      for (const target of targets) target.classList.remove('timeline-detent-pulse');
+    }, 180);
+  }, []);
+
+  useEffect(() => () => window.clearTimeout(detentTimerRef.current), []);
+
   const handleYearClick = useCallback(() => {
     toggleYearDialog();
   }, [toggleYearDialog]);
@@ -674,7 +694,8 @@ export const Timeline: React.FC<TimelineProps> = ({
             }
           }}
           onHaptic={(year, spanYears, fine) => {
-            hapticDetents.update(year, spanYears, fine, hapticsEnabled);
+            const detent = hapticDetents.update(year, spanYears, fine, hapticsMode);
+            if (detent) pulseDetent();
           }}
           onGestureEnd={(year) => {
             lastYearCommitRef.current = 0;
@@ -713,6 +734,7 @@ export const Timeline: React.FC<TimelineProps> = ({
 
         {isMobile && !bottomToolsOpen ? (
           <button
+            ref={mobileBadgeRef}
             type="button"
             className={styles['mobileYearBadge']}
             onClick={handleYearClick}

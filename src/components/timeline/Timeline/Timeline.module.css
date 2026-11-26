@@ -293,3 +293,12 @@
   font-size: 11px;
   pointer-events: none;
 }
+
+:global(.timeline-detent-pulse) {
+  animation: timeline-detent 150ms ease-out;
+}
+
+@keyframes timeline-detent {
+  0%, 100% { filter: brightness(1); }
+  35% { filter: brightness(1.55); }
+}
